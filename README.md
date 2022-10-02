@@ -13,4 +13,5 @@ Remaining regions:
 - 081C1D54-end: larger data files (including levels, graphics, tilemaps, palettes, music, sound effects). These need to be exported to .bin files. Also, the music/sound region has relative pointers, which need to be included as labels.
 
 ## See also
-[Super Mario World 2: Yoshi's Island Disassembly](https://github.com/brunovalads/yoshisisland-disassembly/) - SNES version code
+[Yoshi's Island (SMA3) (U) documentation](https://docs.google.com/spreadsheets/d/1CTFCkLnR21BXwHq5X9ldGkFWHairEo8TILOWzcE1nwE/) - Documentation spreadsheet, including ROM/RAM maps, various IDs, and other info
+[Super Mario World 2: Yoshi's Island (SNES) Disassembly](https://github.com/brunovalads/yoshisisland-disassembly/) - SNES version code
