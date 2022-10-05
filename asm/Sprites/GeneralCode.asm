@@ -28,7 +28,7 @@ add   r0,r0,r1            ; 08049EB2
 ldrb  r0,[r0]             ; 08049EB4
 cmp   r0,0x21             ; 08049EB6
 bne   @Code08049F10       ; 08049EB8
-ldr   r6,=CodePtrs0816FE9C; 08049EBA
+ldr   r6,=SecondarySprPtrs; 08049EBA
 @Code08049EBC:
 ldrh  r0,[r4,0x24]        ; 08049EBC
 cmp   r0,0x0              ; 08049EBE
@@ -53,7 +53,7 @@ b     @Code08049F30       ; 08049EE2
 .pool                     ; 08049EE4
 
 @Code08049F10:
-ldr   r6,=CodePtrs0816FE9C; 08049F10
+ldr   r6,=SecondarySprPtrs; 08049F10
 @Code08049F12:
 ldrh  r0,[r4,0x24]        ; 08049F12
 cmp   r0,0x0              ; 08049F14
@@ -236,7 +236,7 @@ ldr   r1,[r0]             ; 0804A064
 mov   r0,0xA6             ; 0804A066
 lsl   r0,r0,0x6           ; 0804A068
 add   r5,r1,r0            ; 0804A06A
-ldr   r2,=Data08192394    ; 0804A06C
+ldr   r2,=StdSprStripeIDs ; 0804A06C
 mov   r3,r12              ; 0804A06E
 ldrh  r0,[r3,0x32]        ; 0804A070
 lsl   r0,r0,0x1           ; 0804A072
@@ -3637,7 +3637,7 @@ bl    Sub0804A250         ; 0804BC8A
 strh  r4,[r5,0x34]        ; 0804BC8E
 strh  r7,[r6]             ; 0804BC90
 mov   r0,r5               ; 0804BC92
-bl    Sub0804D8F4         ; 0804BC94  Sprite status 1-2: init
+bl    SpriteStatus1Init         ; 0804BC94  Sprite status 1-2: init
 mov   r0,r5               ; 0804BC98
 add   r0,0x60             ; 0804BC9A
 ldrh  r0,[r0]             ; 0804BC9C
@@ -7051,12 +7051,12 @@ pop   {r0}                ; 0804D8E4
 bx    r0                  ; 0804D8E6
 .pool                     ; 0804D8E8
 
-Sub0804D8F4:
+SpriteStatus1Init:
 ; Sprite status 1-2 (init)
 push  {lr}                ; 0804D8F4
 mov   r1,0x8              ; 0804D8F6
 strh  r1,[r0,0x24]        ; 0804D8F8  set sprite status to 8
-ldr   r2,=CodePtrs08170248; 0804D8FA
+ldr   r2,=StdSprInitPtrs  ; 0804D8FA
 ldrh  r1,[r0,0x32]        ; 0804D8FC
 lsl   r1,r1,0x2           ; 0804D8FE
 add   r1,r1,r2            ; 0804D900
@@ -7066,10 +7066,10 @@ pop   {r0}                ; 0804D908
 bx    r0                  ; 0804D90A
 .pool                     ; 0804D90C
 
-Sub0804D910:
+SpriteStatus8Main:
 ; Sprite status 8 (main)
 push  {lr}                ; 0804D910
-ldr   r2,=CodePtrs08170958; 0804D912
+ldr   r2,=StdSprMainPtrs  ; 0804D912
 ldrh  r1,[r0,0x32]        ; 0804D914
 lsl   r1,r1,0x2           ; 0804D916
 add   r1,r1,r2            ; 0804D918
@@ -7079,7 +7079,7 @@ pop   {r0}                ; 0804D920
 bx    r0                  ; 0804D922
 .pool                     ; 0804D924
 
-Sub0804D928:
+SpriteStatus3:
 ; Sprite status 3
 push  {r4-r7,lr}          ; 0804D928
 mov   r4,r0               ; 0804D92A
@@ -7098,7 +7098,7 @@ mov   r0,r4               ; 0804D942
 bl    Sub0804A3B8         ; 0804D944
 @Code0804D948:
 mov   r0,r4               ; 0804D948
-bl    Sub0804D910         ; 0804D94A  Sprite status 8: main
+bl    SpriteStatus8Main         ; 0804D94A  Sprite status 8: main
 ldr   r1,=0x03002200      ; 0804D94E
 ldr   r0,[r4]             ; 0804D950
 asr   r0,r0,0x8           ; 0804D952
@@ -7442,7 +7442,7 @@ pop   {r0}                ; 0804DC42
 bx    r0                  ; 0804DC44
 .pool                     ; 0804DC46
 
-Sub0804DC4C:
+SpriteStatus4:
 ; Sprite status 4: in Yoshi's mouth
 push  {r4-r7,lr}          ; 0804DC4C
 mov   r7,r10              ; 0804DC4E
@@ -7463,7 +7463,7 @@ add   r0,r0,r2            ; 0804DC6A
 ldrb  r0,[r0]             ; 0804DC6C
 mov   r10,r0              ; 0804DC6E
 mov   r0,r7               ; 0804DC70
-bl    Sub0804D910         ; 0804DC72  Sprite status 8: main
+bl    SpriteStatus8Main         ; 0804DC72  Sprite status 8: main
 ldr   r0,[r4]             ; 0804DC76
 ldr   r3,=0x11B0          ; 0804DC78
 add   r0,r0,r3            ; 0804DC7A
@@ -8386,11 +8386,11 @@ pop   {r0}                ; 0804E41A
 bx    r0                  ; 0804E41C
 .pool                     ; 0804E41E
 
-Sub0804E434:
+SpriteStatus5:
 ; Sprite status 5: on Yoshi's back
 push  {r4-r5,lr}          ; 0804E434
 mov   r4,r0               ; 0804E436
-bl    Sub0804D910         ; 0804E438  Sprite status 8: main
+bl    SpriteStatus8Main         ; 0804E438  Sprite status 8: main
 mov   r0,0x0              ; 0804E43C
 str   r0,[r4,0xC]         ; 0804E43E
 str   r0,[r4,0x8]         ; 0804E440
@@ -8480,7 +8480,7 @@ ldr   r0,[r2]             ; 0804E4DC
 add   r0,r0,r1            ; 0804E4DE
 str   r0,[r4]             ; 0804E4E0
 strh  r3,[r4,0x36]        ; 0804E4E2
-ldr   r1,=CodePtrs08171778; 0804E4E4
+ldr   r1,=StdSprRideYoshiPtrs; 0804E4E4
 ldrh  r0,[r4,0x32]        ; 0804E4E6
 lsl   r0,r0,0x2           ; 0804E4E8
 add   r0,r0,r1            ; 0804E4EA
@@ -8492,7 +8492,7 @@ pop   {r0}                ; 0804E4F6
 bx    r0                  ; 0804E4F8
 .pool                     ; 0804E4FA
 
-Sub0804E50C:
+SpriteStatus6:
 ; Sprite status 6
 push  {r4-r5,lr}          ; 0804E50C
 mov   r5,r0               ; 0804E50E
@@ -8501,7 +8501,7 @@ ldr   r4,[r0]             ; 0804E512
 ldr   r0,=0x2708          ; 0804E514
 add   r4,r4,r0            ; 0804E516
 mov   r0,r5               ; 0804E518
-bl    Sub0804D910         ; 0804E51A  Sprite status 8: main
+bl    SpriteStatus8Main         ; 0804E51A  Sprite status 8: main
 ldrh  r0,[r4,0x28]        ; 0804E51E
 cmp   r0,0x0              ; 0804E520
 bne   @Code0804E530       ; 0804E522
@@ -8515,10 +8515,10 @@ pop   {r0}                ; 0804E532
 bx    r0                  ; 0804E534
 .pool                     ; 0804E536
 
-Sub0804E540:
+SpriteStatus7:
 ; Sprite status 7
 push  {lr}                ; 0804E540
-ldr   r2,=CodePtrs08171068; 0804E542
+ldr   r2,=StdSprStatus7Ptrs; 0804E542
 ldrh  r1,[r0,0x32]        ; 0804E544
 lsl   r1,r1,0x2           ; 0804E546
 add   r1,r1,r2            ; 0804E548
@@ -8528,7 +8528,7 @@ pop   {r0}                ; 0804E550
 bx    r0                  ; 0804E552
 .pool                     ; 0804E554
 
-Sub0804E558:
+SpriteStatus9:
 ; Sprite status 9
 push  {r4-r6,lr}          ; 0804E558
 mov   r5,r0               ; 0804E55A
@@ -8537,7 +8537,7 @@ ldr   r4,[r6]             ; 0804E55E
 ldr   r0,=0x2708          ; 0804E560
 add   r4,r4,r0            ; 0804E562
 mov   r0,r5               ; 0804E564
-bl    Sub0804D910         ; 0804E566  Sprite status 8: main
+bl    SpriteStatus8Main         ; 0804E566  Sprite status 8: main
 ldrh  r0,[r4,0x28]        ; 0804E56A
 cmp   r0,0x0              ; 0804E56C
 bne   @Code0804E5FC       ; 0804E56E
@@ -8654,7 +8654,7 @@ Sub0804E660:
 ; sprite 005,007,009,023-025,027-02B,107,1A5-1A9,1B7 status 7 code
 push  {r4,lr}             ; 0804E660
 mov   r4,r0               ; 0804E662
-bl    Sub0804D910         ; 0804E664  Sprite status 8: main
+bl    SpriteStatus8Main         ; 0804E664  Sprite status 8: main
 ldrh  r1,[r4,0x2A]        ; 0804E668
 ldr   r0,=0xFFF3          ; 0804E66A
 and   r0,r1               ; 0804E66C
@@ -8720,3 +8720,1392 @@ bl    Sub0804E660         ; 0804E6E2
 pop   {r4}                ; 0804E6E6
 pop   {r0}                ; 0804E6E8
 bx    r0                  ; 0804E6EA
+
+Sub0804E6EC:
+push  {r4-r6,lr}          ; 0804E6EC
+mov   r6,r8               ; 0804E6EE
+push  {r6}                ; 0804E6F0
+add   sp,-0xC             ; 0804E6F2
+ldr   r0,=0x03007240      ; 0804E6F4  Normal gameplay IWRAM (0300220C)
+ldr   r0,[r0]             ; 0804E6F6
+mov   r8,r0               ; 0804E6F8
+ldr   r1,=0x03002200      ; 0804E6FA
+ldr   r2,=0x47E4          ; 0804E6FC
+add   r0,r1,r2            ; 0804E6FE
+mov   r3,0x0              ; 0804E700
+ldsh  r6,[r0,r3]          ; 0804E702
+ldr   r2,=Data0817209E    ; 0804E704
+mov   r3,r8               ; 0804E706
+ldrh  r0,[r3,0x1A]        ; 0804E708
+lsl   r0,r0,0x1           ; 0804E70A
+add   r0,r0,r2            ; 0804E70C
+mov   r2,0x0              ; 0804E70E
+ldsh  r3,[r0,r2]          ; 0804E710
+add   r3,r6,r3            ; 0804E712
+asr   r3,r3,0x4           ; 0804E714
+ldr   r0,=0x47EC          ; 0804E716
+add   r1,r1,r0            ; 0804E718
+mov   r2,0x0              ; 0804E71A
+ldsh  r4,[r1,r2]          ; 0804E71C
+mov   r5,r4               ; 0804E71E
+sub   r5,0x30             ; 0804E720
+asr   r5,r5,0x4           ; 0804E722
+ldr   r1,=Data081720A2    ; 0804E724
+mov   r2,r8               ; 0804E726
+ldrh  r0,[r2,0x1C]        ; 0804E728
+lsl   r0,r0,0x1           ; 0804E72A
+add   r0,r0,r1            ; 0804E72C
+mov   r1,0x0              ; 0804E72E
+ldsh  r0,[r0,r1]          ; 0804E730
+add   r4,r4,r0            ; 0804E732
+asr   r4,r4,0x4           ; 0804E734
+sub   r6,0x30             ; 0804E736
+asr   r6,r6,0x4           ; 0804E738
+ldr   r2,=0x2968          ; 0804E73A
+add   r8,r2               ; 0804E73C
+mov   r1,r8               ; 0804E73E
+ldr   r0,[r1]             ; 0804E740
+ldr   r1,=0x0201BA00      ; 0804E742
+ldr   r2,=0x0201B900      ; 0804E744
+str   r5,[sp]             ; 0804E746
+str   r4,[sp,0x4]         ; 0804E748
+str   r6,[sp,0x8]         ; 0804E74A
+bl    Sub08000868         ; 0804E74C
+add   sp,0xC              ; 0804E750
+pop   {r3}                ; 0804E752
+mov   r8,r3               ; 0804E754
+pop   {r4-r6}             ; 0804E756
+pop   {r0}                ; 0804E758
+bx    r0                  ; 0804E75A
+.pool                     ; 0804E75C
+
+Sub0804E780:
+push  {r4-r7,lr}          ; 0804E780
+lsl   r0,r0,0x10          ; 0804E782
+lsl   r1,r1,0x10          ; 0804E784
+lsr   r3,r1,0x10          ; 0804E786
+ldr   r2,=0x03007240      ; 0804E788  Normal gameplay IWRAM (0300220C)
+ldr   r1,[r2]             ; 0804E78A  r1 = [03007240] (0300220C)
+ldr   r4,=0x25F8          ; 0804E78C
+add   r5,r1,r4            ; 0804E78E  r5 = [03007240]+25F8 (03004804)
+ldr   r6,=0x2610          ; 0804E790
+add   r4,r1,r6            ; 0804E792  r4 = [03007240]+2610 (0300481C)
+ldr   r1,=0xFE3C0000      ; 0804E794
+add   r0,r0,r1            ; 0804E796  r0 = 013C220C?
+lsr   r1,r0,0x10          ; 0804E798  r1 = 013C?
+mov   r6,0x3              ; 0804E79A
+cmp   r4,r5               ; 0804E79C
+blo   @Code0804E820       ; 0804E79E
+lsl   r3,r3,0x1           ; 0804E7A0
+ldr   r0,=0x0201B904      ; 0804E7A2
+add   r7,r3,r0            ; 0804E7A4
+ldr   r0,=CmdSprInitPtrs  ; 0804E7A6
+mov   r12,r0              ; 0804E7A8
+@Code0804E7AA:
+ldrh  r0,[r4]             ; 0804E7AA
+cmp   r0,0x0              ; 0804E7AC
+bne   @Code0804E810       ; 0804E7AE
+add   r0,r1,0x1           ; 0804E7B0
+strh  r0,[r4]             ; 0804E7B2
+ldr   r1,=0x0201B906      ; 0804E7B4
+add   r0,r3,r1            ; 0804E7B6
+ldrh  r0,[r0]             ; 0804E7B8
+strh  r0,[r4,0x2]         ; 0804E7BA
+ldr   r1,[r2]             ; 0804E7BC
+ldr   r2,=0x0201B902      ; 0804E7BE
+add   r0,r3,r2            ; 0804E7C0
+ldrh  r2,[r0]             ; 0804E7C2
+ldr   r3,=0x2A12          ; 0804E7C4
+add   r0,r1,r3            ; 0804E7C6
+strh  r2,[r0]             ; 0804E7C8
+ldrh  r0,[r7]             ; 0804E7CA
+ldr   r2,=0x2A16          ; 0804E7CC
+add   r1,r1,r2            ; 0804E7CE
+strh  r0,[r1]             ; 0804E7D0
+ldrh  r0,[r4]             ; 0804E7D2
+sub   r0,0x1              ; 0804E7D4
+lsl   r0,r0,0x2           ; 0804E7D6
+add   r0,r12              ; 0804E7D8
+ldr   r1,[r0]             ; 0804E7DA
+mov   r0,r4               ; 0804E7DC
+bl    Sub_bx_r1           ; 0804E7DE  bx r1
+mov   r0,0xFF             ; 0804E7E2
+strh  r0,[r4,0x2]         ; 0804E7E4
+b     @Code0804E820       ; 0804E7E6
+.pool                     ; 0804E7E8
+
+@Code0804E810:
+sub   r4,0x8              ; 0804E810
+lsl   r0,r6,0x18          ; 0804E812
+mov   r6,0xFF             ; 0804E814
+lsl   r6,r6,0x18          ; 0804E816
+add   r0,r0,r6            ; 0804E818
+lsr   r6,r0,0x18          ; 0804E81A
+cmp   r4,r5               ; 0804E81C
+bhs   @Code0804E7AA       ; 0804E81E
+@Code0804E820:
+lsl   r0,r6,0x18          ; 0804E820
+asr   r0,r0,0x18          ; 0804E822
+pop   {r4-r7}             ; 0804E824
+pop   {r1}                ; 0804E826
+bx    r1                  ; 0804E828
+.pool                     ; 0804E82A
+
+Sub0804E82C:
+push  {r4-r6,lr}          ; 0804E82C
+mov   r4,r1               ; 0804E82E
+lsl   r0,r0,0x10          ; 0804E830
+lsr   r5,r0,0x10          ; 0804E832
+ldr   r1,=0x03007240      ; 0804E834  Normal gameplay IWRAM (0300220C)
+ldr   r0,[r1]             ; 0804E836
+ldr   r2,=0x25F8          ; 0804E838
+add   r3,r0,r2            ; 0804E83A
+ldr   r6,=0x2618          ; 0804E83C
+add   r2,r0,r6            ; 0804E83E
+@Code0804E840:
+ldrh  r0,[r3]             ; 0804E840
+cmp   r0,0x0              ; 0804E842
+beq   @Code0804E85C       ; 0804E844
+add   r3,0x8              ; 0804E846
+cmp   r3,r2               ; 0804E848
+blo   @Code0804E840       ; 0804E84A
+mov   r0,0x1              ; 0804E84C
+b     @Code0804E88A       ; 0804E84E
+.pool                     ; 0804E850
+
+@Code0804E85C:
+add   r0,r5,0x1           ; 0804E85C
+strh  r0,[r3]             ; 0804E85E
+ldrh  r0,[r4,0x6]         ; 0804E860
+strh  r0,[r3,0x2]         ; 0804E862
+ldr   r1,[r1]             ; 0804E864
+ldrh  r2,[r4,0x2]         ; 0804E866
+ldr   r5,=0x2A12          ; 0804E868
+add   r0,r1,r5            ; 0804E86A
+strh  r2,[r0]             ; 0804E86C
+ldrh  r0,[r4,0x4]         ; 0804E86E
+ldr   r6,=0x2A16          ; 0804E870
+add   r1,r1,r6            ; 0804E872
+strh  r0,[r1]             ; 0804E874
+ldr   r1,=CmdSprInitPtrs  ; 0804E876
+ldrh  r0,[r3]             ; 0804E878
+sub   r0,0x1              ; 0804E87A
+lsl   r0,r0,0x2           ; 0804E87C
+add   r0,r0,r1            ; 0804E87E
+ldr   r1,[r0]             ; 0804E880
+mov   r0,r3               ; 0804E882
+bl    Sub_bx_r1           ; 0804E884  bx r1
+mov   r0,0x0              ; 0804E888
+@Code0804E88A:
+pop   {r4-r6}             ; 0804E88A
+pop   {r1}                ; 0804E88C
+bx    r1                  ; 0804E88E
+.pool                     ; 0804E890
+
+Sub0804E89C:
+push  {r4-r6,lr}          ; 0804E89C
+mov   r4,0xFF             ; 0804E89E
+ldr   r0,=0x03007240      ; 0804E8A0  Normal gameplay IWRAM (0300220C)
+ldr   r0,[r0]             ; 0804E8A2
+mov   r2,0xC1             ; 0804E8A4
+lsl   r2,r2,0x2           ; 0804E8A6
+add   r1,r0,r2            ; 0804E8A8
+mov   r2,0x1              ; 0804E8AA
+ldr   r6,=Data08192B8E    ; 0804E8AC
+ldr   r5,=0x010F          ; 0804E8AE
+@Code0804E8B0:
+ldrh  r0,[r1,0x32]        ; 0804E8B0
+add   r0,r0,r6            ; 0804E8B2
+ldrb  r3,[r0]             ; 0804E8B4
+ldrb  r0,[r0]             ; 0804E8B6
+lsl   r0,r0,0x18          ; 0804E8B8
+asr   r0,r0,0x18          ; 0804E8BA
+cmp   r0,0x0              ; 0804E8BC
+bge   @Code0804E8EE       ; 0804E8BE
+ldrh  r0,[r1,0x22]        ; 0804E8C0
+add   r0,0x20             ; 0804E8C2
+lsl   r0,r0,0x10          ; 0804E8C4
+lsr   r0,r0,0x10          ; 0804E8C6
+cmp   r0,0xDF             ; 0804E8C8
+bhi   @Code0804E8D8       ; 0804E8CA
+ldrh  r0,[r1,0x20]        ; 0804E8CC
+add   r0,0x20             ; 0804E8CE
+lsl   r0,r0,0x10          ; 0804E8D0
+lsr   r0,r0,0x10          ; 0804E8D2
+cmp   r0,r5               ; 0804E8D4
+bls   @Code0804E8E8       ; 0804E8D6
+@Code0804E8D8:
+mov   r0,r2               ; 0804E8D8
+b     @Code0804E8FC       ; 0804E8DA
+.pool                     ; 0804E8DC
+
+@Code0804E8E8:
+cmp   r3,0x82             ; 0804E8E8
+bne   @Code0804E8EE       ; 0804E8EA
+mov   r4,r2               ; 0804E8EC
+@Code0804E8EE:
+add   r1,0xB0             ; 0804E8EE
+add   r0,r2,0x1           ; 0804E8F0
+lsl   r0,r0,0x18          ; 0804E8F2
+lsr   r2,r0,0x18          ; 0804E8F4
+cmp   r2,0x17             ; 0804E8F6
+bls   @Code0804E8B0       ; 0804E8F8
+mov   r0,r4               ; 0804E8FA
+@Code0804E8FC:
+pop   {r4-r6}             ; 0804E8FC
+pop   {r1}                ; 0804E8FE
+bx    r1                  ; 0804E900
+.pool                     ; 0804E902
+
+Sub0804E904:
+push  {r4-r7,lr}          ; 0804E904
+mov   r7,r10              ; 0804E906
+mov   r6,r9               ; 0804E908
+mov   r5,r8               ; 0804E90A
+push  {r5-r7}             ; 0804E90C
+add   sp,-0x20            ; 0804E90E
+ldr   r7,=0x0201B900      ; 0804E910
+ldr   r0,=0x03007240      ; 0804E912  Normal gameplay IWRAM (0300220C)
+ldr   r0,[r0]             ; 0804E914
+str   r0,[sp,0x8]         ; 0804E916
+mov   r1,0x95             ; 0804E918
+lsl   r1,r1,0x2           ; 0804E91A
+add   r1,r0,r1            ; 0804E91C
+str   r1,[sp,0xC]         ; 0804E91E
+bl    Sub0804E6EC         ; 0804E920
+ldr   r0,=0x03006D80      ; 0804E924
+ldr   r2,=0x021A          ; 0804E926
+add   r0,r0,r2            ; 0804E928
+ldrh  r0,[r0]             ; 0804E92A
+str   r0,[sp,0x4]         ; 0804E92C
+ldrh  r1,[r7]             ; 0804E92E
+ldr   r0,=0xFFFF          ; 0804E930
+cmp   r1,r0               ; 0804E932
+bne   @Code0804E938       ; 0804E934
+b     @Code0804EBDA       ; 0804E936
+@Code0804E938:
+ldr   r0,=0x01C3          ; 0804E938
+cmp   r1,r0               ; 0804E93A
+bls   @Code0804E970       ; 0804E93C
+ldr   r2,=0xFFFFFE3C      ; 0804E93E
+add   r0,r1,r2            ; 0804E940
+lsl   r0,r0,0x10          ; 0804E942
+lsr   r0,r0,0x10          ; 0804E944
+mov   r1,r7               ; 0804E946
+bl    Sub0804E82C         ; 0804E948
+lsl   r0,r0,0x18          ; 0804E94C
+cmp   r0,0x0              ; 0804E94E
+bne   @Code0804E9D4       ; 0804E950
+b     @Code0804EBCE       ; 0804E952
+.pool                     ; 0804E954
+
+@Code0804E970:
+ldr   r0,[sp,0x4]         ; 0804E970
+cmp   r0,0x0              ; 0804E972
+beq   @Code0804E9BE       ; 0804E974
+ldr   r1,=Data08191574    ; 0804E976
+ldrh  r0,[r7]             ; 0804E978
+lsl   r0,r0,0x1           ; 0804E97A
+add   r0,r0,r1            ; 0804E97C
+ldrh  r1,[r0]             ; 0804E97E
+mov   r2,0xC0             ; 0804E980
+lsl   r2,r2,0x7           ; 0804E982
+mov   r0,r2               ; 0804E984
+and   r0,r1               ; 0804E986
+cmp   r0,0x0              ; 0804E988
+beq   @Code0804E9BE       ; 0804E98A
+ldr   r0,[sp,0x4]         ; 0804E98C
+add   r0,0x1              ; 0804E98E
+cmp   r0,0x0              ; 0804E990
+beq   @Code0804E9D4       ; 0804E992
+ldrh  r1,[r7,0x2]         ; 0804E994
+lsl   r1,r1,0x4           ; 0804E996
+ldr   r2,=0x03006D80      ; 0804E998
+ldr   r0,[r2]             ; 0804E99A
+asr   r0,r0,0x8           ; 0804E99C
+sub   r1,r1,r0            ; 0804E99E
+add   r1,0x60             ; 0804E9A0
+lsl   r1,r1,0x10          ; 0804E9A2
+lsr   r4,r1,0x10          ; 0804E9A4
+cmp   r4,0xC1             ; 0804E9A6
+bhi   @Code0804E9BE       ; 0804E9A8
+ldrh  r1,[r7,0x4]         ; 0804E9AA
+lsl   r1,r1,0x4           ; 0804E9AC
+ldr   r0,[r2,0x4]         ; 0804E9AE
+asr   r0,r0,0x8           ; 0804E9B0
+sub   r1,r1,r0            ; 0804E9B2
+add   r1,0x60             ; 0804E9B4
+lsl   r1,r1,0x10          ; 0804E9B6
+lsr   r4,r1,0x10          ; 0804E9B8
+cmp   r4,0xC1             ; 0804E9BA
+bls   @Code0804E9D4       ; 0804E9BC
+@Code0804E9BE:
+ldr   r0,[sp,0xC]         ; 0804E9BE
+mov   r1,0xFD             ; 0804E9C0
+lsl   r1,r1,0x4           ; 0804E9C2
+add   r5,r0,r1            ; 0804E9C4
+@Code0804E9C6:
+ldrh  r0,[r5,0x24]        ; 0804E9C6
+cmp   r0,0x0              ; 0804E9C8
+beq   @Code0804EA40       ; 0804E9CA
+sub   r5,0xB0             ; 0804E9CC
+ldr   r2,[sp,0xC]         ; 0804E9CE
+cmp   r5,r2               ; 0804E9D0
+bhs   @Code0804E9C6       ; 0804E9D2
+@Code0804E9D4:
+bl    Sub0804E89C         ; 0804E9D4
+lsl   r0,r0,0x18          ; 0804E9D8
+lsr   r4,r0,0x18          ; 0804E9DA
+cmp   r4,0xFF             ; 0804E9DC
+beq   @Code0804EA04       ; 0804E9DE
+ldr   r1,=0x03007240      ; 0804E9E0  Normal gameplay IWRAM (0300220C)
+mov   r0,0xB0             ; 0804E9E2
+mul   r0,r4               ; 0804E9E4
+mov   r2,0x95             ; 0804E9E6
+lsl   r2,r2,0x2           ; 0804E9E8
+add   r0,r0,r2            ; 0804E9EA
+ldr   r1,[r1]             ; 0804E9EC
+add   r5,r1,r0            ; 0804E9EE
+mov   r0,0x0              ; 0804E9F0
+strh  r0,[r5,0x24]        ; 0804E9F2
+b     @Code0804EA40       ; 0804E9F4
+.pool                     ; 0804E9F6
+
+@Code0804EA04:
+ldr   r1,=0xFFFFFE46      ; 0804EA04
+mov   r0,r1               ; 0804EA06
+ldrh  r2,[r7]             ; 0804EA08
+add   r0,r0,r2            ; 0804EA0A
+lsl   r0,r0,0x10          ; 0804EA0C
+lsr   r0,r0,0x10          ; 0804EA0E
+cmp   r0,0x3              ; 0804EA10
+bhi   @Code0804EA2C       ; 0804EA12
+ldrh  r0,[r7,0x8]         ; 0804EA14
+lsl   r0,r0,0x1           ; 0804EA16
+ldr   r1,=0x0201BA00      ; 0804EA18
+add   r0,r0,r1            ; 0804EA1A
+mov   r1,0x0              ; 0804EA1C
+strh  r1,[r0]             ; 0804EA1E
+b     @Code0804EBCC       ; 0804EA20
+.pool                     ; 0804EA22
+
+@Code0804EA2C:
+ldrh  r0,[r7,0x6]         ; 0804EA2C
+lsl   r0,r0,0x1           ; 0804EA2E
+ldr   r2,=0x0201BA00      ; 0804EA30
+add   r0,r0,r2            ; 0804EA32
+mov   r1,0x0              ; 0804EA34
+strh  r1,[r0]             ; 0804EA36
+b     @Code0804EBCE       ; 0804EA38
+.pool                     ; 0804EA3A
+
+@Code0804EA40:
+mov   r0,0x0              ; 0804EA40
+str   r0,[sp]             ; 0804EA42
+mov   r0,sp               ; 0804EA44
+mov   r1,r5               ; 0804EA46
+ldr   r2,=0x0500002C      ; 0804EA48
+bl    swi_MemoryCopy4or2  ; 0804EA4A  Memory copy/fill, 4- or 2-byte blocks
+ldrh  r0,[r7,0x2]         ; 0804EA4E
+lsl   r0,r0,0xC           ; 0804EA50
+str   r0,[r5]             ; 0804EA52
+ldrh  r0,[r7,0x4]         ; 0804EA54
+lsl   r0,r0,0xC           ; 0804EA56
+str   r0,[r5,0x4]         ; 0804EA58
+mov   r0,r5               ; 0804EA5A
+add   r0,0x8C             ; 0804EA5C
+mov   r1,0x80             ; 0804EA5E
+lsl   r1,r1,0x1           ; 0804EA60
+strh  r1,[r0]             ; 0804EA62
+sub   r0,0x2              ; 0804EA64
+strh  r1,[r0]             ; 0804EA66
+ldrh  r0,[r5,0x3C]        ; 0804EA68
+ldr   r1,=0xFFFF          ; 0804EA6A
+orr   r0,r1               ; 0804EA6C
+strh  r0,[r5,0x3C]        ; 0804EA6E
+ldrh  r0,[r5,0x34]        ; 0804EA70
+orr   r0,r1               ; 0804EA72
+strh  r0,[r5,0x34]        ; 0804EA74
+mov   r1,r5               ; 0804EA76
+add   r1,0xA1             ; 0804EA78
+mov   r0,0xFF             ; 0804EA7A
+strb  r0,[r1]             ; 0804EA7C
+add   r1,0x1              ; 0804EA7E
+mov   r0,0x1F             ; 0804EA80
+strb  r0,[r1]             ; 0804EA82
+ldrh  r0,[r7]             ; 0804EA84
+strh  r0,[r5,0x32]        ; 0804EA86
+ldr   r0,=0x03007240      ; 0804EA88  Normal gameplay IWRAM (0300220C)
+ldr   r2,[r0]             ; 0804EA8A
+mov   r0,0xA6             ; 0804EA8C
+lsl   r0,r0,0x6           ; 0804EA8E
+add   r3,r2,r0            ; 0804EA90
+ldr   r1,=StdSprStripeIDs ; 0804EA92
+ldrh  r0,[r5,0x32]        ; 0804EA94
+lsl   r0,r0,0x1           ; 0804EA96
+add   r0,r0,r1            ; 0804EA98
+ldrh  r4,[r0]             ; 0804EA9A
+mov   r6,0x0              ; 0804EA9C
+mov   r1,0x5              ; 0804EA9E
+ldr   r0,=0x298A          ; 0804EAA0
+add   r2,r2,r0            ; 0804EAA2  r2 = [03007240]+298A (03004B86)
+mov   r0,0x98             ; 0804EAA4
+add   r0,r0,r5            ; 0804EAA6
+mov   r12,r0              ; 0804EAA8
+mov   r0,0x94             ; 0804EAAA
+add   r0,r0,r5            ; 0804EAAC
+mov   r8,r0               ; 0804EAAE
+mov   r0,0x4A             ; 0804EAB0
+add   r0,r0,r5            ; 0804EAB2
+mov   r10,r0              ; 0804EAB4
+mov   r0,r5               ; 0804EAB6
+add   r0,0x4C             ; 0804EAB8
+str   r0,[sp,0x10]        ; 0804EABA
+add   r0,0x2              ; 0804EABC
+str   r0,[sp,0x14]        ; 0804EABE
+add   r0,0x2              ; 0804EAC0
+str   r0,[sp,0x18]        ; 0804EAC2
+mov   r0,0x9B             ; 0804EAC4
+add   r0,r0,r5            ; 0804EAC6
+mov   r9,r0               ; 0804EAC8
+mov   r0,r5               ; 0804EACA
+add   r0,0x9C             ; 0804EACC
+str   r0,[sp,0x1C]        ; 0804EACE
+ldrh  r2,[r2]             ; 0804EAD0
+cmp   r4,r2               ; 0804EAD2
+bne   @Code0804EAF0       ; 0804EAD4
+mov   r6,0x34             ; 0804EAD6
+b     @Code0804EB06       ; 0804EAD8
+.pool                     ; 0804EADA
+
+@Code0804EAF0:
+sub   r1,0x1              ; 0804EAF0
+cmp   r1,0x0              ; 0804EAF2
+blt   @Code0804EB06       ; 0804EAF4
+lsl   r0,r1,0x1           ; 0804EAF6
+add   r0,r0,r3            ; 0804EAF8
+ldrh  r0,[r0]             ; 0804EAFA
+cmp   r4,r0               ; 0804EAFC
+bne   @Code0804EAF0       ; 0804EAFE
+mov   r0,r1               ; 0804EB00
+add   r0,0x8              ; 0804EB02
+lsl   r6,r0,0x2           ; 0804EB04
+@Code0804EB06:
+ldrh  r0,[r5,0x32]        ; 0804EB06
+lsl   r0,r0,0x11          ; 0804EB08
+lsr   r4,r0,0x10          ; 0804EB0A
+mov   r1,r12              ; 0804EB0C
+strb  r6,[r1]             ; 0804EB0E
+ldr   r2,=Data08191C84    ; 0804EB10
+add   r3,r4,0x1           ; 0804EB12
+add   r0,r3,r2            ; 0804EB14
+ldrb  r1,[r0]             ; 0804EB16
+mov   r0,0x20             ; 0804EB18
+eor   r0,r1               ; 0804EB1A
+strh  r0,[r5,0x2C]        ; 0804EB1C
+add   r2,r4,r2            ; 0804EB1E
+ldrb  r0,[r2]             ; 0804EB20
+mov   r2,r8               ; 0804EB22
+strb  r0,[r2]             ; 0804EB24
+ldr   r1,=Data0819200C    ; 0804EB26
+add   r0,r4,r1            ; 0804EB28
+ldrb  r0,[r0]             ; 0804EB2A
+lsl   r0,r0,0x18          ; 0804EB2C
+asr   r0,r0,0x18          ; 0804EB2E
+str   r0,[r5,0x14]        ; 0804EB30
+add   r3,r3,r1            ; 0804EB32
+mov   r0,0x0              ; 0804EB34
+ldsb  r0,[r3,r0]          ; 0804EB36
+lsl   r0,r0,0x4           ; 0804EB38
+str   r0,[r5,0x1C]        ; 0804EB3A
+ldrh  r0,[r5,0x32]        ; 0804EB3C
+lsl   r0,r0,0x1           ; 0804EB3E
+ldr   r1,=Data081918FC    ; 0804EB40
+add   r3,r0,r1            ; 0804EB42
+ldrh  r0,[r3]             ; 0804EB44
+strh  r0,[r5,0x2A]        ; 0804EB46
+ldr   r1,=0xFFFFFC78      ; 0804EB48
+add   r3,r3,r1            ; 0804EB4A
+ldrh  r0,[r3]             ; 0804EB4C
+strh  r0,[r5,0x28]        ; 0804EB4E
+add   r3,r3,r1            ; 0804EB50
+ldrh  r0,[r3]             ; 0804EB52
+strh  r0,[r5,0x26]        ; 0804EB54
+ldrh  r1,[r3]             ; 0804EB56
+mov   r0,0x1F             ; 0804EB58
+and   r0,r1               ; 0804EB5A
+lsl   r0,r0,0x3           ; 0804EB5C
+ldr   r1,=Data081910EC    ; 0804EB5E
+add   r3,r0,r1            ; 0804EB60
+ldrh  r0,[r3]             ; 0804EB62
+mov   r1,r10              ; 0804EB64
+strh  r0,[r1]             ; 0804EB66
+ldrh  r0,[r3,0x2]         ; 0804EB68
+ldr   r2,[sp,0x10]        ; 0804EB6A
+strh  r0,[r2]             ; 0804EB6C
+ldrh  r0,[r3,0x4]         ; 0804EB6E
+ldr   r1,[sp,0x14]        ; 0804EB70
+strh  r0,[r1]             ; 0804EB72
+ldrh  r0,[r3,0x6]         ; 0804EB74
+ldr   r2,[sp,0x18]        ; 0804EB76
+strh  r0,[r2]             ; 0804EB78
+ldr   r1,[sp,0x8]         ; 0804EB7A
+ldrh  r0,[r1,0x1A]        ; 0804EB7C
+lsl   r0,r0,0x1           ; 0804EB7E
+strh  r0,[r5,0x36]        ; 0804EB80
+mov   r0,0x1              ; 0804EB82
+strh  r0,[r5,0x24]        ; 0804EB84
+ldrh  r0,[r7,0x6]         ; 0804EB86
+mov   r2,r9               ; 0804EB88
+strb  r0,[r2]             ; 0804EB8A
+ldrh  r0,[r7,0x6]         ; 0804EB8C
+lsr   r0,r0,0x8           ; 0804EB8E
+ldr   r1,[sp,0x1C]        ; 0804EB90
+strb  r0,[r1]             ; 0804EB92
+ldr   r2,=0xFFFFFE46      ; 0804EB94
+mov   r0,r2               ; 0804EB96
+ldrh  r1,[r5,0x32]        ; 0804EB98
+add   r0,r0,r1            ; 0804EB9A
+lsl   r0,r0,0x10          ; 0804EB9C
+lsr   r0,r0,0x10          ; 0804EB9E
+cmp   r0,0x3              ; 0804EBA0
+bhi   @Code0804EBCE       ; 0804EBA2
+ldrh  r1,[r7,0x6]         ; 0804EBA4
+mov   r0,0xF0             ; 0804EBA6
+and   r0,r1               ; 0804EBA8
+mov   r1,r5               ; 0804EBAA
+add   r1,0x6C             ; 0804EBAC
+strh  r0,[r1]             ; 0804EBAE
+ldrh  r1,[r7,0x6]         ; 0804EBB0
+mov   r0,0xF              ; 0804EBB2
+and   r0,r1               ; 0804EBB4
+lsl   r0,r0,0x4           ; 0804EBB6
+mov   r1,r5               ; 0804EBB8
+add   r1,0x6E             ; 0804EBBA
+strh  r0,[r1]             ; 0804EBBC
+ldrh  r0,[r7,0x8]         ; 0804EBBE
+mov   r2,r9               ; 0804EBC0
+strb  r0,[r2]             ; 0804EBC2
+ldrh  r0,[r7,0x8]         ; 0804EBC4
+lsr   r0,r0,0x8           ; 0804EBC6
+ldr   r1,[sp,0x1C]        ; 0804EBC8
+strb  r0,[r1]             ; 0804EBCA
+@Code0804EBCC:
+add   r7,0x2              ; 0804EBCC
+@Code0804EBCE:
+add   r7,0x8              ; 0804EBCE
+ldrh  r1,[r7]             ; 0804EBD0
+ldr   r2,=0xFFFF          ; 0804EBD2
+cmp   r1,r2               ; 0804EBD4
+beq   @Code0804EBDA       ; 0804EBD6
+b     @Code0804E938       ; 0804EBD8
+@Code0804EBDA:
+add   sp,0x20             ; 0804EBDA
+pop   {r3-r5}             ; 0804EBDC
+mov   r8,r3               ; 0804EBDE
+mov   r9,r4               ; 0804EBE0
+mov   r10,r5              ; 0804EBE2
+pop   {r4-r7}             ; 0804EBE4
+pop   {r0}                ; 0804EBE6
+bx    r0                  ; 0804EBE8
+.pool                     ; 0804EBEA
+
+Sub0804EC08:
+push  {r4,lr}             ; 0804EC08
+mov   r3,r0               ; 0804EC0A
+ldr   r0,=0x0300702C      ; 0804EC0C  Sprite RAM structs (03002460)
+ldr   r2,[r0]             ; 0804EC0E
+ldr   r0,[r3]             ; 0804EC10
+asr   r0,r0,0x8           ; 0804EC12
+mov   r4,0x8A             ; 0804EC14
+lsl   r4,r4,0x5           ; 0804EC16
+add   r1,r2,r4            ; 0804EC18
+strh  r0,[r1]             ; 0804EC1A
+ldr   r0,[r3,0x4]         ; 0804EC1C
+asr   r0,r0,0x8           ; 0804EC1E
+ldr   r1,=0x1142          ; 0804EC20
+add   r2,r2,r1            ; 0804EC22
+strh  r0,[r2]             ; 0804EC24
+ldr   r1,=0x03006D80      ; 0804EC26
+mov   r4,0xD4             ; 0804EC28
+lsl   r4,r4,0x1           ; 0804EC2A
+add   r1,r1,r4            ; 0804EC2C
+ldr   r0,=0x03007240      ; 0804EC2E  Normal gameplay IWRAM (0300220C)
+ldr   r2,[r0]             ; 0804EC30
+ldr   r4,=0x29B0          ; 0804EC32
+add   r0,r2,r4            ; 0804EC34
+ldrh  r1,[r1]             ; 0804EC36
+ldrh  r0,[r0]             ; 0804EC38
+orr   r1,r0               ; 0804EC3A
+ldr   r0,=0x29BA          ; 0804EC3C
+add   r2,r2,r0            ; 0804EC3E
+ldrh  r0,[r2]             ; 0804EC40
+orr   r1,r0               ; 0804EC42
+ldr   r4,=SpriteStatusPtrs; 0804EC44
+cmp   r1,0x0              ; 0804EC46
+bne   @Code0804EC62       ; 0804EC48
+mov   r1,r3               ; 0804EC4A
+add   r1,0x42             ; 0804EC4C
+mov   r2,r3               ; 0804EC4E
+add   r2,0x4A             ; 0804EC50
+@Code0804EC52:
+ldrh  r0,[r1]             ; 0804EC52
+cmp   r0,0x0              ; 0804EC54
+beq   @Code0804EC5C       ; 0804EC56
+sub   r0,0x1              ; 0804EC58
+strh  r0,[r1]             ; 0804EC5A
+@Code0804EC5C:
+add   r1,0x2              ; 0804EC5C
+cmp   r1,r2               ; 0804EC5E
+bne   @Code0804EC52       ; 0804EC60
+@Code0804EC62:
+mov   r1,r3               ; 0804EC62
+add   r1,0x9E             ; 0804EC64
+ldrb  r0,[r1]             ; 0804EC66
+cmp   r0,0x0              ; 0804EC68
+beq   @Code0804EC70       ; 0804EC6A
+sub   r0,0x1              ; 0804EC6C
+strb  r0,[r1]             ; 0804EC6E
+@Code0804EC70:
+ldrh  r0,[r3,0x24]        ; 0804EC70
+sub   r0,0x1              ; 0804EC72
+lsl   r0,r0,0x2           ; 0804EC74
+add   r0,r0,r4            ; 0804EC76
+ldr   r1,[r0]             ; 0804EC78
+mov   r0,r3               ; 0804EC7A
+bl    Sub_bx_r1           ; 0804EC7C  bx r1
+pop   {r4}                ; 0804EC80
+pop   {r0}                ; 0804EC82
+bx    r0                  ; 0804EC84
+.pool                     ; 0804EC86
+
+Sub0804ECA4:
+ldr   r1,[r0]             ; 0804ECA4
+ldr   r2,[r0,0x8]         ; 0804ECA6
+add   r1,r1,r2            ; 0804ECA8
+str   r1,[r0]             ; 0804ECAA
+ldr   r1,[r0,0x4]         ; 0804ECAC
+ldr   r2,[r0,0xC]         ; 0804ECAE
+add   r1,r1,r2            ; 0804ECB0
+str   r1,[r0,0x4]         ; 0804ECB2
+bx    lr                  ; 0804ECB4
+.pool                     ; 0804ECB6
+
+Sub0804ECB8:
+push  {lr}                ; 0804ECB8
+ldr   r3,=0x03007240      ; 0804ECBA  Normal gameplay IWRAM (0300220C)
+ldrh  r1,[r0,0x10]        ; 0804ECBC
+lsl   r2,r1,0x3           ; 0804ECBE
+ldr   r0,=0x25F8          ; 0804ECC0
+add   r2,r2,r0            ; 0804ECC2
+ldr   r0,[r3]             ; 0804ECC4
+add   r0,r0,r2            ; 0804ECC6
+ldr   r2,=CmdSprMainPtrs  ; 0804ECC8
+sub   r1,0x1              ; 0804ECCA
+lsl   r1,r1,0x2           ; 0804ECCC
+add   r1,r1,r2            ; 0804ECCE
+ldr   r1,[r1]             ; 0804ECD0
+bl    Sub_bx_r1           ; 0804ECD2  bx r1
+pop   {r0}                ; 0804ECD6
+bx    r0                  ; 0804ECD8
+.pool                     ; 0804ECDA
+
+Sub0804ECE8:
+push  {r4-r7,lr}          ; 0804ECE8
+mov   r7,r9               ; 0804ECEA
+mov   r6,r8               ; 0804ECEC
+push  {r6-r7}             ; 0804ECEE
+ldr   r3,=Data081AF94E    ; 0804ECF0
+ldr   r1,=0x03002200      ; 0804ECF2
+ldr   r2,=0x47F6          ; 0804ECF4
+add   r0,r1,r2            ; 0804ECF6
+ldrb  r2,[r0]             ; 0804ECF8
+add   r0,r2,r3            ; 0804ECFA
+ldrb  r0,[r0]             ; 0804ECFC
+lsl   r0,r0,0x18          ; 0804ECFE
+asr   r0,r0,0x18          ; 0804ED00
+lsl   r0,r0,0x10          ; 0804ED02
+lsr   r5,r0,0x10          ; 0804ED04
+mov   r6,r5               ; 0804ED06
+mov   r8,r6               ; 0804ED08
+ldr   r4,=0x03006D80      ; 0804ED0A
+mov   r5,0x9E             ; 0804ED0C
+add   r5,r5,r4            ; 0804ED0E
+mov   r9,r5               ; 0804ED10
+lsl   r0,r6,0x18          ; 0804ED12
+asr   r0,r0,0x18          ; 0804ED14
+mov   r7,0x0              ; 0804ED16
+ldsb  r7,[r5,r7]          ; 0804ED18
+mul   r0,r7               ; 0804ED1A
+lsl   r0,r0,0x12          ; 0804ED1C
+asr   r0,r0,0x18          ; 0804ED1E
+lsl   r0,r0,0x10          ; 0804ED20
+lsr   r5,r0,0x10          ; 0804ED22
+ldr   r0,=0x47FC          ; 0804ED24
+add   r1,r1,r0            ; 0804ED26
+mvn   r0,r5               ; 0804ED28
+ldrh  r1,[r1]             ; 0804ED2A
+add   r0,r0,r1            ; 0804ED2C
+lsl   r0,r0,0x10          ; 0804ED2E
+lsr   r5,r0,0x10          ; 0804ED30
+ldr   r0,[r4,0x4]         ; 0804ED32
+asr   r0,r0,0x8           ; 0804ED34
+add   r0,r5,r0            ; 0804ED36
+mov   r1,r4               ; 0804ED38
+add   r1,0x9A             ; 0804ED3A
+strh  r0,[r1]             ; 0804ED3C
+add   r3,0x40             ; 0804ED3E
+add   r2,r2,r3            ; 0804ED40
+mov   r0,0x0              ; 0804ED42
+ldsb  r0,[r2,r0]          ; 0804ED44
+lsl   r0,r0,0x10          ; 0804ED46
+lsr   r5,r0,0x10          ; 0804ED48
+mov   r2,r5               ; 0804ED4A
+mov   r12,r2              ; 0804ED4C
+lsl   r0,r2,0x18          ; 0804ED4E
+asr   r0,r0,0x18          ; 0804ED50
+mul   r0,r7               ; 0804ED52
+lsl   r0,r0,0x12          ; 0804ED54
+asr   r0,r0,0x18          ; 0804ED56
+lsl   r0,r0,0x10          ; 0804ED58
+mov   r1,0x80             ; 0804ED5A
+lsl   r1,r1,0xC           ; 0804ED5C
+add   r0,r0,r1            ; 0804ED5E
+lsr   r5,r0,0x10          ; 0804ED60
+ldr   r0,[r4]             ; 0804ED62
+asr   r0,r0,0x8           ; 0804ED64
+add   r0,r5,r0            ; 0804ED66
+mov   r1,r4               ; 0804ED68
+add   r1,0x98             ; 0804ED6A
+strh  r0,[r1]             ; 0804ED6C
+sub   r0,r6,0x1           ; 0804ED6E
+lsl   r0,r0,0x10          ; 0804ED70
+cmp   r0,0x0              ; 0804ED72
+bge   @Code0804ED7E       ; 0804ED74
+neg   r0,r6               ; 0804ED76
+lsl   r0,r0,0x10          ; 0804ED78
+lsr   r0,r0,0x10          ; 0804ED7A
+mov   r8,r0               ; 0804ED7C
+@Code0804ED7E:
+sub   r0,r2,0x1           ; 0804ED7E
+lsl   r0,r0,0x10          ; 0804ED80
+cmp   r0,0x0              ; 0804ED82
+bge   @Code0804ED8E       ; 0804ED84
+neg   r0,r2               ; 0804ED86
+lsl   r0,r0,0x10          ; 0804ED88
+lsr   r0,r0,0x10          ; 0804ED8A
+mov   r12,r0              ; 0804ED8C
+@Code0804ED8E:
+add   r4,0x9C             ; 0804ED8E
+mov   r2,0x0              ; 0804ED90
+ldsb  r2,[r4,r2]          ; 0804ED92
+mov   r5,r8               ; 0804ED94
+lsl   r3,r5,0x18          ; 0804ED96
+asr   r3,r3,0x18          ; 0804ED98
+mov   r1,r2               ; 0804ED9A
+mul   r1,r3               ; 0804ED9C
+lsl   r1,r1,0x10          ; 0804ED9E
+lsr   r1,r1,0x10          ; 0804EDA0
+mov   r5,r12              ; 0804EDA2
+lsl   r0,r5,0x18          ; 0804EDA4
+asr   r0,r0,0x18          ; 0804EDA6
+mul   r2,r0               ; 0804EDA8
+lsl   r2,r2,0x10          ; 0804EDAA
+lsr   r2,r2,0x10          ; 0804EDAC
+mul   r0,r7               ; 0804EDAE
+lsl   r0,r0,0x10          ; 0804EDB0
+lsr   r5,r0,0x10          ; 0804EDB2
+add   r1,r5,r1            ; 0804EDB4
+lsl   r1,r1,0x12          ; 0804EDB6
+lsr   r1,r1,0x18          ; 0804EDB8
+strh  r1,[r4]             ; 0804EDBA
+mov   r0,r7               ; 0804EDBC
+mul   r0,r3               ; 0804EDBE
+lsl   r0,r0,0x10          ; 0804EDC0
+lsr   r5,r0,0x10          ; 0804EDC2
+add   r2,r5,r2            ; 0804EDC4
+lsl   r2,r2,0x12          ; 0804EDC6
+lsr   r2,r2,0x18          ; 0804EDC8
+mov   r0,r9               ; 0804EDCA
+strh  r2,[r0]             ; 0804EDCC
+pop   {r3-r4}             ; 0804EDCE
+mov   r8,r3               ; 0804EDD0
+mov   r9,r4               ; 0804EDD2
+pop   {r4-r7}             ; 0804EDD4
+pop   {r0}                ; 0804EDD6
+bx    r0                  ; 0804EDD8
+.pool                     ; 0804EDDA
+
+Sub0804EDF0:
+push  {r4,lr}             ; 0804EDF0
+ldr   r3,=0x03006D80      ; 0804EDF2
+mov   r4,r3               ; 0804EDF4
+add   r4,0x9C             ; 0804EDF6
+mov   r0,0x8              ; 0804EDF8
+strh  r0,[r4]             ; 0804EDFA
+ldr   r0,[r3]             ; 0804EDFC
+asr   r0,r0,0x8           ; 0804EDFE
+add   r0,0x8              ; 0804EE00
+mov   r1,r3               ; 0804EE02
+add   r1,0x98             ; 0804EE04
+strh  r0,[r1]             ; 0804EE06
+mov   r2,0xC              ; 0804EE08
+ldrh  r0,[r3,0x32]        ; 0804EE0A
+cmp   r0,0x8              ; 0804EE0C
+bne   @Code0804EE68       ; 0804EE0E
+mov   r1,0xB2             ; 0804EE10
+lsl   r1,r1,0x1           ; 0804EE12
+add   r0,r3,r1            ; 0804EE14
+ldrh  r0,[r0]             ; 0804EE16
+cmp   r0,0x0              ; 0804EE18
+beq   @Code0804EE88       ; 0804EE1A
+mov   r1,r3               ; 0804EE1C
+add   r1,0x9E             ; 0804EE1E
+mov   r0,0x4              ; 0804EE20
+strh  r0,[r1]             ; 0804EE22
+strh  r0,[r4]             ; 0804EE24
+mov   r2,0xFF             ; 0804EE26
+mov   r0,r3               ; 0804EE28
+add   r0,0x42             ; 0804EE2A
+ldrh  r0,[r0]             ; 0804EE2C
+cmp   r0,0x0              ; 0804EE2E
+beq   @Code0804EE34       ; 0804EE30
+mov   r2,0x7F             ; 0804EE32
+@Code0804EE34:
+ldr   r1,=0x03002200      ; 0804EE34
+mov   r4,0x84             ; 0804EE36
+lsl   r4,r4,0x1           ; 0804EE38
+add   r0,r3,r4            ; 0804EE3A
+ldrh  r0,[r0]             ; 0804EE3C
+eor   r2,r0               ; 0804EE3E
+add   r2,0x1              ; 0804EE40
+ldr   r3,=0x47F6          ; 0804EE42
+add   r0,r1,r3            ; 0804EE44
+strh  r2,[r0]             ; 0804EE46
+ldr   r4,=0x47FC          ; 0804EE48
+add   r1,r1,r4            ; 0804EE4A
+mov   r0,0x14             ; 0804EE4C
+strh  r0,[r1]             ; 0804EE4E
+bl    Sub0804ECE8         ; 0804EE50
+b     @Code0804EEF4       ; 0804EE54
+.pool                     ; 0804EE56
+
+@Code0804EE68:
+mov   r0,r3               ; 0804EE68
+add   r0,0x40             ; 0804EE6A
+ldrh  r0,[r0]             ; 0804EE6C
+cmp   r0,0x0              ; 0804EE6E
+beq   @Code0804EE76       ; 0804EE70
+mov   r2,0x6              ; 0804EE72
+b     @Code0804EE88       ; 0804EE74
+@Code0804EE76:
+ldrh  r0,[r3,0x3E]        ; 0804EE76
+cmp   r0,0x0              ; 0804EE78
+beq   @Code0804EE88       ; 0804EE7A
+mov   r0,r3               ; 0804EE7C
+add   r0,0x50             ; 0804EE7E
+ldrh  r0,[r0]             ; 0804EE80
+cmp   r0,0x2              ; 0804EE82
+bls   @Code0804EE88       ; 0804EE84
+mov   r2,0xE              ; 0804EE86
+@Code0804EE88:
+mov   r1,r3               ; 0804EE88
+add   r1,0x9E             ; 0804EE8A
+strh  r2,[r1]             ; 0804EE8C
+ldrh  r0,[r3,0x32]        ; 0804EE8E
+cmp   r0,0x10             ; 0804EE90
+bne   @Code0804EEE0       ; 0804EE92
+mov   r4,0xBB             ; 0804EE94
+lsl   r4,r4,0x1           ; 0804EE96
+add   r0,r3,r4            ; 0804EE98
+ldrh  r0,[r0]             ; 0804EE9A
+cmp   r0,0x0              ; 0804EE9C
+beq   @Code0804EEE0       ; 0804EE9E
+add   r0,r2,0x1           ; 0804EEA0
+strh  r0,[r1]             ; 0804EEA2
+mov   r1,0x84             ; 0804EEA4
+lsl   r1,r1,0x1           ; 0804EEA6
+add   r0,r3,r1            ; 0804EEA8
+ldrh  r2,[r0]             ; 0804EEAA
+mov   r0,r3               ; 0804EEAC
+add   r0,0x42             ; 0804EEAE
+ldrh  r0,[r0]             ; 0804EEB0
+cmp   r0,0x0              ; 0804EEB2
+bne   @Code0804EEBC       ; 0804EEB4
+neg   r0,r2               ; 0804EEB6
+lsl   r0,r0,0x10          ; 0804EEB8
+lsr   r2,r0,0x10          ; 0804EEBA
+@Code0804EEBC:
+ldr   r0,=0x03002200      ; 0804EEBC
+ldr   r3,=0x47F6          ; 0804EEBE
+add   r1,r0,r3            ; 0804EEC0
+strh  r2,[r1]             ; 0804EEC2
+ldr   r4,=0x47FC          ; 0804EEC4
+add   r0,r0,r4            ; 0804EEC6
+mov   r1,0x21             ; 0804EEC8
+strh  r1,[r0]             ; 0804EECA
+bl    Sub0804ECE8         ; 0804EECC
+b     @Code0804EEF4       ; 0804EED0
+.pool                     ; 0804EED2
+
+@Code0804EEE0:
+mov   r0,0x20             ; 0804EEE0
+sub   r0,r0,r2            ; 0804EEE2
+lsl   r0,r0,0x10          ; 0804EEE4
+lsr   r2,r0,0x10          ; 0804EEE6
+ldr   r0,[r3,0x4]         ; 0804EEE8
+asr   r0,r0,0x8           ; 0804EEEA
+add   r0,r2,r0            ; 0804EEEC
+mov   r1,r3               ; 0804EEEE
+add   r1,0x9A             ; 0804EEF0
+strh  r0,[r1]             ; 0804EEF2
+@Code0804EEF4:
+pop   {r4}                ; 0804EEF4
+pop   {r0}                ; 0804EEF6
+bx    r0                  ; 0804EEF8
+.pool                     ; 0804EEFA
+
+Sub0804EEFC:
+push  {r4-r6,lr}          ; 0804EEFC
+ldr   r0,=0x03007240      ; 0804EEFE  Normal gameplay IWRAM (0300220C)
+ldr   r0,[r0]             ; 0804EF00
+mov   r1,0x95             ; 0804EF02
+lsl   r1,r1,0x2           ; 0804EF04
+add   r6,r0,r1            ; 0804EF06
+ldr   r1,=0x1224          ; 0804EF08
+add   r4,r0,r1            ; 0804EF0A
+ldr   r0,=0x0300702C      ; 0804EF0C  Sprite RAM structs (03002460)
+ldr   r0,[r0]             ; 0804EF0E
+ldr   r1,=0x156E          ; 0804EF10
+add   r5,r0,r1            ; 0804EF12
+mov   r0,0x17             ; 0804EF14
+strb  r0,[r5]             ; 0804EF16
+@Code0804EF18:
+ldrh  r0,[r4,0x24]        ; 0804EF18
+cmp   r0,0x0              ; 0804EF1A
+beq   @Code0804EF34       ; 0804EF1C
+bl    Sub08035648         ; 0804EF1E
+ldr   r0,=0x0300702C      ; 0804EF22  Sprite RAM structs (03002460)
+ldr   r0,[r0]             ; 0804EF24
+ldr   r1,=0x11B0          ; 0804EF26
+add   r0,r0,r1            ; 0804EF28
+mov   r1,0x0              ; 0804EF2A
+strh  r1,[r0]             ; 0804EF2C
+mov   r0,r4               ; 0804EF2E
+bl    Sub0804EC08         ; 0804EF30
+@Code0804EF34:
+ldrb  r0,[r5]             ; 0804EF34
+sub   r0,0x1              ; 0804EF36
+strb  r0,[r5]             ; 0804EF38
+sub   r4,0xB0             ; 0804EF3A
+cmp   r4,r6               ; 0804EF3C
+bhs   @Code0804EF18       ; 0804EF3E
+pop   {r4-r6}             ; 0804EF40
+pop   {r0}                ; 0804EF42
+bx    r0                  ; 0804EF44
+.pool                     ; 0804EF46
+
+Sub0804EF5C:
+push  {r4-r6,lr}          ; 0804EF5C
+ldr   r0,=0x03007240      ; 0804EF5E  Normal gameplay IWRAM (0300220C)
+ldr   r1,[r0]             ; 0804EF60
+ldr   r0,=0x25F8          ; 0804EF62
+add   r5,r1,r0            ; 0804EF64
+ldr   r2,=0x2610          ; 0804EF66
+add   r4,r1,r2            ; 0804EF68
+ldr   r0,=0x03006D80      ; 0804EF6A
+mov   r3,0xD4             ; 0804EF6C
+lsl   r3,r3,0x1           ; 0804EF6E
+add   r0,r0,r3            ; 0804EF70
+ldr   r2,=0x29B0          ; 0804EF72
+add   r3,r1,r2            ; 0804EF74
+ldrh  r2,[r0]             ; 0804EF76
+ldrh  r0,[r3]             ; 0804EF78
+orr   r2,r0               ; 0804EF7A
+ldr   r3,=0x29BA          ; 0804EF7C
+add   r0,r1,r3            ; 0804EF7E
+ldrh  r0,[r0]             ; 0804EF80
+orr   r2,r0               ; 0804EF82
+ldr   r0,=0x29C8          ; 0804EF84
+add   r1,r1,r0            ; 0804EF86
+strh  r2,[r1]             ; 0804EF88
+ldr   r6,=CmdSprMainPtrs  ; 0804EF8A
+@Code0804EF8C:
+ldrh  r0,[r4]             ; 0804EF8C
+cmp   r0,0x0              ; 0804EF8E
+beq   @Code0804EFA0       ; 0804EF90
+sub   r0,0x1              ; 0804EF92
+lsl   r0,r0,0x2           ; 0804EF94
+add   r0,r0,r6            ; 0804EF96
+ldr   r1,[r0]             ; 0804EF98
+mov   r0,r4               ; 0804EF9A
+bl    Sub_bx_r1           ; 0804EF9C  bx r1
+@Code0804EFA0:
+sub   r4,0x8              ; 0804EFA0
+cmp   r4,r5               ; 0804EFA2
+bhs   @Code0804EF8C       ; 0804EFA4
+pop   {r4-r6}             ; 0804EFA6
+pop   {r0}                ; 0804EFA8
+bx    r0                  ; 0804EFAA
+.pool                     ; 0804EFAC
+
+Sub0804EFCC:
+push  {r4-r7,lr}          ; 0804EFCC
+mov   r7,r9               ; 0804EFCE
+mov   r6,r8               ; 0804EFD0
+push  {r6-r7}             ; 0804EFD2
+ldr   r0,=0x03007240      ; 0804EFD4  Normal gameplay IWRAM (0300220C)
+ldr   r1,[r0]             ; 0804EFD6
+mov   r2,0xE0             ; 0804EFD8
+lsl   r2,r2,0x1           ; 0804EFDA
+add   r2,r2,r1            ; 0804EFDC
+mov   r9,r2               ; 0804EFDE
+mov   r3,0x8C             ; 0804EFE0
+lsl   r3,r3,0x2           ; 0804EFE2
+add   r6,r1,r3            ; 0804EFE4
+ldr   r1,=0x0300702C      ; 0804EFE6  Sprite RAM structs (03002460)
+ldr   r1,[r1]             ; 0804EFE8
+ldr   r5,=0x1892          ; 0804EFEA
+add   r1,r1,r5            ; 0804EFEC
+ldrb  r3,[r1]             ; 0804EFEE
+mov   r4,r0               ; 0804EFF0
+ldr   r7,=0x03006D80      ; 0804EFF2
+cmp   r3,0x0              ; 0804EFF4
+beq   @Code0804F00A       ; 0804EFF6
+sub   r0,r3,0x1           ; 0804EFF8
+strb  r0,[r1]             ; 0804EFFA
+lsl   r0,r0,0x18          ; 0804EFFC
+cmp   r0,0x0              ; 0804EFFE
+beq   @Code0804F00A       ; 0804F000
+mov   r1,r7               ; 0804F002
+add   r1,0x54             ; 0804F004
+mov   r0,0x0              ; 0804F006
+strh  r0,[r1]             ; 0804F008
+@Code0804F00A:
+mov   r8,r7               ; 0804F00A
+mov   r0,0xD4             ; 0804F00C
+lsl   r0,r0,0x1           ; 0804F00E
+add   r0,r8               ; 0804F010
+ldr   r2,[r4]             ; 0804F012
+ldr   r3,=0x29B0          ; 0804F014
+add   r1,r2,r3            ; 0804F016
+ldrh  r0,[r0]             ; 0804F018
+ldrh  r1,[r1]             ; 0804F01A
+orr   r0,r1               ; 0804F01C
+ldr   r5,=0x29BA          ; 0804F01E
+add   r2,r2,r5            ; 0804F020
+ldrh  r1,[r2]             ; 0804F022
+orr   r0,r1               ; 0804F024
+cmp   r0,0x0              ; 0804F026
+bne   @Code0804F036       ; 0804F028
+ldr   r1,=0x03002200      ; 0804F02A
+ldr   r0,=0x48A2          ; 0804F02C
+add   r1,r1,r0            ; 0804F02E
+ldrh  r0,[r1]             ; 0804F030
+add   r0,0x1              ; 0804F032
+strh  r0,[r1]             ; 0804F034
+@Code0804F036:
+ldr   r0,[r4]             ; 0804F036
+ldr   r1,=0x2A72          ; 0804F038
+add   r0,r0,r1            ; 0804F03A
+mov   r5,0x0              ; 0804F03C
+strh  r5,[r0]             ; 0804F03E
+bl    Sub080DEBA4         ; 0804F040
+bl    Sub0804EDF0         ; 0804F044
+bl    Sub0810C700         ; 0804F048
+bl    Sub08049E80         ; 0804F04C
+ldr   r0,[r4]             ; 0804F050
+cmp   r0,0x0              ; 0804F052
+bne   @Code0804F058       ; 0804F054
+b     @Code0804F274       ; 0804F056
+@Code0804F058:
+ldr   r1,=0x021A          ; 0804F058
+add   r1,r8               ; 0804F05A
+ldrh  r0,[r1]             ; 0804F05C
+sub   r0,0x1              ; 0804F05E
+lsl   r0,r0,0x10          ; 0804F060
+cmp   r0,0x0              ; 0804F062
+blt   @Code0804F06A       ; 0804F064
+ldr   r0,=0xFFF8          ; 0804F066
+strh  r0,[r1]             ; 0804F068
+@Code0804F06A:
+ldr   r4,=0x0300702C      ; 0804F06A  Sprite RAM structs (03002460)
+ldr   r1,[r4]             ; 0804F06C
+ldr   r2,=0x1146          ; 0804F06E
+add   r0,r1,r2            ; 0804F070
+strh  r5,[r0]             ; 0804F072
+mov   r3,0xDA             ; 0804F074
+lsl   r3,r3,0x1           ; 0804F076
+add   r0,r7,r3            ; 0804F078
+strh  r5,[r0]             ; 0804F07A
+ldr   r0,=0x1144          ; 0804F07C
+add   r2,r1,r0            ; 0804F07E
+ldr   r0,=0xFFFF          ; 0804F080
+strh  r0,[r2]             ; 0804F082
+ldr   r2,=0x1686          ; 0804F084
+add   r0,r1,r2            ; 0804F086
+strh  r5,[r0]             ; 0804F088
+ldr   r3,=0x1684          ; 0804F08A
+add   r1,r1,r3            ; 0804F08C
+strh  r5,[r1]             ; 0804F08E
+bl    Sub0804EEFC         ; 0804F090
+ldr   r4,[r4]             ; 0804F094
+ldr   r5,=0x16C6          ; 0804F096
+add   r0,r4,r5            ; 0804F098
+ldrh  r0,[r0]             ; 0804F09A
+cmp   r0,0x0              ; 0804F09C
+beq   @Code0804F0FC       ; 0804F09E
+ldr   r0,=0x16CA          ; 0804F0A0
+add   r4,r4,r0            ; 0804F0A2
+ldrh  r0,[r4]             ; 0804F0A4
+cmp   r0,0x2F             ; 0804F0A6
+bls   @Code0804F0F8       ; 0804F0A8
+mov   r0,0x1              ; 0804F0AA
+b     @Code0804F0FA       ; 0804F0AC
+.pool                     ; 0804F0AE
+
+@Code0804F0F8:
+add   r0,0x1              ; 0804F0F8
+@Code0804F0FA:
+strh  r0,[r4]             ; 0804F0FA
+@Code0804F0FC:
+bl    Sub0804EF5C         ; 0804F0FC
+ldr   r3,=0x03006D80      ; 0804F100
+ldr   r1,=0x021A          ; 0804F102
+add   r2,r3,r1            ; 0804F104
+ldrh  r4,[r2]             ; 0804F106
+mov   r5,0x0              ; 0804F108
+ldsh  r0,[r2,r5]          ; 0804F10A
+cmp   r0,0x0              ; 0804F10C
+blt   @Code0804F112       ; 0804F10E
+b     @Code0804F274       ; 0804F110
+@Code0804F112:
+mov   r1,r9               ; 0804F112
+add   r1,0x5C             ; 0804F114
+ldr   r0,=0x03007240      ; 0804F116  Normal gameplay IWRAM (0300220C)
+ldr   r0,[r0]             ; 0804F118
+ldr   r5,=0x2B3A          ; 0804F11A
+add   r0,r0,r5            ; 0804F11C
+ldrb  r0,[r0]             ; 0804F11E
+lsl   r0,r0,0x1C          ; 0804F120
+lsr   r0,r0,0x1C          ; 0804F122
+ldrh  r1,[r1]             ; 0804F124
+orr   r0,r1               ; 0804F126
+cmp   r0,0x0              ; 0804F128
+bne   @Code0804F162       ; 0804F12A
+add   r0,r4,0x1           ; 0804F12C
+strh  r0,[r2]             ; 0804F12E
+lsl   r0,r0,0x10          ; 0804F130
+cmp   r0,0x0              ; 0804F132
+bge   @Code0804F1BC       ; 0804F134
+ldrh  r1,[r3,0x2C]        ; 0804F136
+mov   r0,r1               ; 0804F138
+sub   r0,0x38             ; 0804F13A
+lsl   r0,r0,0x10          ; 0804F13C
+cmp   r0,0x0              ; 0804F13E
+blt   @Code0804F162       ; 0804F140
+mov   r0,r1               ; 0804F142
+sub   r0,0xB8             ; 0804F144
+lsl   r0,r0,0x10          ; 0804F146
+cmp   r0,0x0              ; 0804F148
+bge   @Code0804F162       ; 0804F14A
+ldrh  r1,[r3,0x2E]        ; 0804F14C
+mov   r0,r1               ; 0804F14E
+sub   r0,0x40             ; 0804F150
+lsl   r0,r0,0x10          ; 0804F152
+cmp   r0,0x0              ; 0804F154
+blt   @Code0804F162       ; 0804F156
+mov   r0,r1               ; 0804F158
+sub   r0,0x80             ; 0804F15A
+lsl   r0,r0,0x10          ; 0804F15C
+cmp   r0,0x0              ; 0804F15E
+blt   @Code0804F258       ; 0804F160
+@Code0804F162:
+ldr   r2,=0x03006D80      ; 0804F162
+mov   r0,0xD3             ; 0804F164
+lsl   r0,r0,0x1           ; 0804F166
+add   r1,r2,r0            ; 0804F168
+mov   r0,0x1              ; 0804F16A
+strh  r0,[r1]             ; 0804F16C
+mov   r3,0xD4             ; 0804F16E
+lsl   r3,r3,0x1           ; 0804F170
+add   r1,r2,r3            ; 0804F172
+strh  r0,[r1]             ; 0804F174
+strh  r0,[r6,0x14]        ; 0804F176
+strh  r0,[r6,0x12]        ; 0804F178
+ldr   r1,=0x03002200      ; 0804F17A
+ldr   r5,=0x47E4          ; 0804F17C
+add   r0,r1,r5            ; 0804F17E
+ldrh  r0,[r0]             ; 0804F180
+lsl   r0,r0,0x8           ; 0804F182
+str   r0,[r6]             ; 0804F184
+ldr   r0,=0x47EC          ; 0804F186
+add   r1,r1,r0            ; 0804F188
+ldrh  r0,[r1]             ; 0804F18A
+ldr   r1,=0x025E          ; 0804F18C
+add   r2,r2,r1            ; 0804F18E
+ldrh  r1,[r2]             ; 0804F190
+sub   r0,r0,r1            ; 0804F192
+lsl   r0,r0,0x8           ; 0804F194
+str   r0,[r6,0x4]         ; 0804F196
+b     @Code0804F274       ; 0804F198
+.pool                     ; 0804F19A
+
+@Code0804F1BC:
+strh  r4,[r2]             ; 0804F1BC
+ldr   r2,=0x03002200      ; 0804F1BE
+ldr   r5,=0x0242          ; 0804F1C0
+add   r7,r3,r5            ; 0804F1C2
+ldrh  r0,[r7]             ; 0804F1C4
+ldr   r1,=0x47F6          ; 0804F1C6
+add   r5,r2,r1            ; 0804F1C8
+strh  r0,[r5]             ; 0804F1CA
+mov   r0,0x91             ; 0804F1CC
+lsl   r0,r0,0x2           ; 0804F1CE
+add   r0,r0,r3            ; 0804F1D0
+mov   r8,r0               ; 0804F1D2
+ldrh  r0,[r0]             ; 0804F1D4
+add   r1,0x2              ; 0804F1D6
+add   r4,r2,r1            ; 0804F1D8
+strh  r0,[r4]             ; 0804F1DA
+ldr   r0,[r6]             ; 0804F1DC
+asr   r0,r0,0x8           ; 0804F1DE
+ldr   r3,=0x47FA          ; 0804F1E0
+add   r1,r2,r3            ; 0804F1E2
+strh  r0,[r1]             ; 0804F1E4
+ldr   r0,[r6,0x4]         ; 0804F1E6
+asr   r0,r0,0x8           ; 0804F1E8
+add   r3,0x2              ; 0804F1EA
+add   r1,r2,r3            ; 0804F1EC
+strh  r0,[r1]             ; 0804F1EE
+mov   r0,0x90             ; 0804F1F0
+lsl   r0,r0,0x7           ; 0804F1F2
+add   r2,r2,r0            ; 0804F1F4
+mov   r0,0xC0             ; 0804F1F6
+lsl   r0,r0,0x3           ; 0804F1F8
+strh  r0,[r2]             ; 0804F1FA
+bl    Sub080DC778         ; 0804F1FC
+mov   r1,0x0              ; 0804F200
+ldsh  r0,[r5,r1]          ; 0804F202
+str   r0,[r6,0x8]         ; 0804F204
+mov   r2,0x0              ; 0804F206
+ldsh  r0,[r4,r2]          ; 0804F208
+str   r0,[r6,0xC]         ; 0804F20A
+mov   r0,r6               ; 0804F20C
+bl    Sub0804ECA4         ; 0804F20E
+ldr   r1,[r6]             ; 0804F212
+asr   r1,r1,0x8           ; 0804F214
+ldrh  r0,[r7]             ; 0804F216
+sub   r0,r0,r1            ; 0804F218
+lsl   r0,r0,0x10          ; 0804F21A
+lsr   r1,r0,0x10          ; 0804F21C
+cmp   r1,0x0              ; 0804F21E
+beq   @Code0804F232       ; 0804F220
+ldr   r0,[r6,0x8]         ; 0804F222
+eor   r1,r0               ; 0804F224
+lsl   r0,r1,0x10          ; 0804F226
+cmp   r0,0x0              ; 0804F228
+bge   @Code0804F274       ; 0804F22A
+ldrh  r0,[r7]             ; 0804F22C
+lsl   r0,r0,0x8           ; 0804F22E
+str   r0,[r6]             ; 0804F230
+@Code0804F232:
+ldr   r1,[r6,0x4]         ; 0804F232
+asr   r1,r1,0x8           ; 0804F234
+mov   r3,r8               ; 0804F236
+ldrh  r0,[r3]             ; 0804F238
+sub   r0,r0,r1            ; 0804F23A
+lsl   r0,r0,0x10          ; 0804F23C
+lsr   r1,r0,0x10          ; 0804F23E
+cmp   r1,0x0              ; 0804F240
+beq   @Code0804F254       ; 0804F242
+ldr   r0,[r6,0xC]         ; 0804F244
+eor   r1,r0               ; 0804F246
+lsl   r0,r1,0x10          ; 0804F248
+cmp   r0,0x0              ; 0804F24A
+bge   @Code0804F274       ; 0804F24C
+ldrh  r0,[r3]             ; 0804F24E
+lsl   r0,r0,0x8           ; 0804F250
+str   r0,[r6,0x4]         ; 0804F252
+@Code0804F254:
+bl    Sub080375B8         ; 0804F254
+@Code0804F258:
+ldr   r0,=0x03006D80      ; 0804F258
+ldr   r5,=0x021A          ; 0804F25A
+add   r2,r0,r5            ; 0804F25C
+mov   r1,0x0              ; 0804F25E
+strh  r1,[r2]             ; 0804F260
+mov   r3,0xD3             ; 0804F262
+lsl   r3,r3,0x1           ; 0804F264
+add   r2,r0,r3            ; 0804F266
+strh  r1,[r2]             ; 0804F268
+sub   r5,0x72             ; 0804F26A
+add   r0,r0,r5            ; 0804F26C
+strh  r1,[r0]             ; 0804F26E
+strh  r1,[r6,0x14]        ; 0804F270
+strh  r1,[r6,0x12]        ; 0804F272
+@Code0804F274:
+pop   {r3-r4}             ; 0804F274
+mov   r8,r3               ; 0804F276
+mov   r9,r4               ; 0804F278
+pop   {r4-r7}             ; 0804F27A
+pop   {r0}                ; 0804F27C
+bx    r0                  ; 0804F27E
+.pool                     ; 0804F280
+
+Sub0804F298:
+push  {r4-r6,lr}          ; 0804F298
+ldr   r0,=0x03007240      ; 0804F29A  Normal gameplay IWRAM (0300220C)
+ldr   r6,[r0]             ; 0804F29C
+ldr   r0,=0x25F4          ; 0804F29E
+add   r1,r6,r0            ; 0804F2A0
+mov   r2,0x0              ; 0804F2A2
+mov   r0,0x10             ; 0804F2A4
+strh  r0,[r1]             ; 0804F2A6
+ldr   r0,=0x03002200      ; 0804F2A8
+ldr   r3,=0x47E4          ; 0804F2AA
+add   r1,r0,r3            ; 0804F2AC
+ldrh  r5,[r1]             ; 0804F2AE
+ldr   r3,=0xFFFFFEA0      ; 0804F2B0
+add   r0,r5,r3            ; 0804F2B2
+strh  r0,[r1]             ; 0804F2B4
+strh  r2,[r6,0x1A]        ; 0804F2B6
+ldrh  r0,[r1]             ; 0804F2B8
+cmp   r0,r5               ; 0804F2BA
+beq   @Code0804F2D0       ; 0804F2BC
+mov   r4,r1               ; 0804F2BE
+@Code0804F2C0:
+ldrh  r0,[r4]             ; 0804F2C0
+add   r0,0x10             ; 0804F2C2
+strh  r0,[r4]             ; 0804F2C4
+bl    Sub0804E904         ; 0804F2C6
+ldrh  r0,[r4]             ; 0804F2CA
+cmp   r0,r5               ; 0804F2CC
+bne   @Code0804F2C0       ; 0804F2CE
+@Code0804F2D0:
+mov   r0,r6               ; 0804F2D0
+add   r0,0x66             ; 0804F2D2
+mov   r1,0x80             ; 0804F2D4
+lsl   r1,r1,0x7           ; 0804F2D6
+strh  r1,[r0]             ; 0804F2D8
+sub   r0,0x2              ; 0804F2DA
+strh  r1,[r0]             ; 0804F2DC
+pop   {r4-r6}             ; 0804F2DE
+pop   {r0}                ; 0804F2E0
+bx    r0                  ; 0804F2E2
+.pool                     ; 0804F2E4
+
+Sub0804F2F8:
+push  {lr}                ; 0804F2F8
+bl    Sub0804EFCC         ; 0804F2FA
+pop   {r0}                ; 0804F2FE
+bx    r0                  ; 0804F300
+.pool                     ; 0804F302
+
+Sub0804F304:
+push  {lr}                ; 0804F304
+bl    Sub0804E904         ; 0804F306
+bl    Sub0804EFCC         ; 0804F30A
+pop   {r0}                ; 0804F30E
+bx    r0                  ; 0804F310
+.pool                     ; 0804F312

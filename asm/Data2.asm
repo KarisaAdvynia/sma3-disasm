@@ -5479,7 +5479,9 @@ Data08307E4C:           ; 08307E4C
 Data08307EC4:           ; 08307EC4
 .org 0x083080A4
 Data083080A4:           ; 083080A4
-.org 0x083081B0
+.org 0x083081A4
+.byte "EEPROM_V122"
+.byte 0x00
 Data083081B0:           ; 083081B0
 .org 0x083081BC
 Data083081BC:           ; 083081BC

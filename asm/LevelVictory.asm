@@ -4329,7 +4329,7 @@ cmp   r4,0xC              ; 080E5B28
 bhi   @Code080E5B30       ; 080E5B2A
 bl    Sub0802D688         ; 080E5B2C
 @Code080E5B30:
-ldr   r0,=CodePtrs081945B8; 080E5B30
+ldr   r0,=LevelVictorySubstates; 080E5B30
 sub   r1,r4,0x1           ; 080E5B32
 asr   r1,r1,0x1           ; 080E5B34
 lsl   r1,r1,0x2           ; 080E5B36

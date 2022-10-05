@@ -67,7 +67,7 @@ ldrh  r4,[r0]             ; 08013498  r4 = world number ID
 cmp   r4,0xA              ; 0801349A
 bne   @Code080134D4       ; 0801349C
                           ;          \ run only if in world 6
-ldr   r0,=DataPtrs08165D04; 0801349E  use alternate pointer table
+ldr   r0,=L1TilesetW6Graphics; 0801349E  use alternate pointer table
 add   r1,r6,0x2           ; 080134A0
 lsl   r2,r1,0x2           ; 080134A2
 add   r0,r2,r0            ; 080134A4
@@ -77,14 +77,14 @@ add   r0,r3,r5            ; 080134AA  r0 = 0300633E
 ldrh  r0,[r0]             ; 080134AC  r0 = cursor position within current world
 cmp   r0,0x10             ; 080134AE  check if Secret 6
 bne   @Code080134DE       ; 080134B0
-ldr   r0,=DataPtrs08165C44; 080134B2  if Secret 6, use regular pointer table
+ldr   r0,=L1TilesetGraphics; 080134B2  if Secret 6, use regular pointer table
 add   r0,r2,r0            ; 080134B4
 b     @Code080134DC       ; 080134B6 /
 .pool                     ; 080134B8
 
 @Code080134D4:
                           ;          \ run if not in world 6
-ldr   r1,=DataPtrs08165C44; 080134D4
+ldr   r1,=L1TilesetGraphics; 080134D4
 add   r0,r6,0x2           ; 080134D6  r0 = 3*hv01+2
 lsl   r0,r0,0x2           ; 080134D8  r0 = 0C*hv01+8
 add   r0,r0,r1            ; 080134DA / r0 = 08165C44 + 0C*hv01+8
@@ -116,7 +116,7 @@ bl    swi_LZ77_VRAM       ; 0801350C  LZ77 decompress (VRAM)
 cmp   r4,0xA              ; 08013510
 bne   @Code0801355C       ; 08013512
                           ;          \ run only if in world 6
-ldr   r0,=DataPtrs08165D04; 08013514  use alternate pointer table
+ldr   r0,=L1TilesetW6Graphics; 08013514  use alternate pointer table
 lsl   r2,r6,0x2           ; 08013516
 add   r0,r2,r0            ; 08013518
 ldr   r1,[r0]             ; 0801351A
@@ -126,14 +126,14 @@ add   r0,r0,r3            ; 08013520
 ldrh  r0,[r0]             ; 08013522
 cmp   r0,0x10             ; 08013524  check if Secret 6
 bne   @Code08013564       ; 08013526
-ldr   r0,=DataPtrs08165C44; 08013528  if Secret 6, use regular pointer table
+ldr   r0,=L1TilesetGraphics; 08013528  if Secret 6, use regular pointer table
 add   r0,r2,r0            ; 0801352A
 b     @Code08013562       ; 0801352C /
 .pool                     ; 0801352E
 
 @Code0801355C:
                           ;          \ run if not in world 6
-ldr   r1,=DataPtrs08165C44; 0801355C
+ldr   r1,=L1TilesetGraphics; 0801355C
 lsl   r0,r6,0x2           ; 0801355E  r0 = 0C*hv01
 add   r0,r0,r1            ; 08013560 / r0 = 08165C44 + 0C*hv01
 @Code08013562:
@@ -145,7 +145,7 @@ bl    swi_LZ77_VRAM       ; 08013568  LZ77 decompress (VRAM)
 cmp   r4,0xA              ; 0801356C
 bne   @Code080135A0       ; 0801356E
                           ;          \ run only if in world 6
-ldr   r0,=DataPtrs08165D04; 08013570  use alternate pointer table
+ldr   r0,=L1TilesetW6Graphics; 08013570  use alternate pointer table
 add   r1,r6,0x1           ; 08013572
 lsl   r2,r1,0x2           ; 08013574
 add   r0,r2,r0            ; 08013576
@@ -156,14 +156,14 @@ add   r0,r0,r5            ; 0801357E
 ldrh  r0,[r0]             ; 08013580
 cmp   r0,0x10             ; 08013582  check if Secret 6
 bne   @Code080135AA       ; 08013584
-ldr   r0,=DataPtrs08165C44; 08013586  if Secret 6, use regular pointer table
+ldr   r0,=L1TilesetGraphics; 08013586  if Secret 6, use regular pointer table
 add   r0,r2,r0            ; 08013588
 b     @Code080135A8       ; 0801358A /
 .pool                     ; 0801358C
 
 @Code080135A0:
                           ;          \ run if not in world 6
-ldr   r1,=DataPtrs08165C44; 080135A0
+ldr   r1,=L1TilesetGraphics; 080135A0
 add   r0,r6,0x1           ; 080135A2  r0=3*hv01+1
 lsl   r0,r0,0x2           ; 080135A4  r0=0C*hv01+4
 add   r0,r0,r1            ; 080135A6 / r0=08165C44 + 0C*hv01+4
@@ -180,7 +180,7 @@ add   r0,r0,r6            ; 080135B8  r0 = [03007240]+2996 (03004BA2)
 ldrh  r0,[r0]             ; 080135BA  r0 = layer 2 image ID
 lsl   r0,r0,0x19          ; 080135BC
 lsr   r6,r0,0x18          ; 080135BE  r6 = 2*hv03, capped to 8 bits
-ldr   r4,=DataPtrs08165DC4; 080135C0
+ldr   r4,=L2ImageGraphics ; 080135C0
 lsl   r0,r6,0x2           ; 080135C2  r0 = 8*hv03
 add   r0,r0,r4            ; 080135C4  r0 = 08165DC4 + 8*hv03
 ldr   r1,[r0]             ; 080135C6  load from pointer
@@ -200,7 +200,7 @@ add   r0,r0,r7            ; 080135E4  r0 = [03007240]+299A (03004BA6)
 ldrh  r0,[r0]             ; 080135E6  r0 = layer 3 image
 lsl   r0,r0,0x19          ; 080135E8
 lsr   r6,r0,0x18          ; 080135EA  r6 = 2*hv05, capped to 8 bits
-ldr   r4,=DataPtrs08165EC4; 080135EC
+ldr   r4,=L3ImageGraphics ; 080135EC
 lsl   r0,r6,0x2           ; 080135EE  r0 = 8*hv05
 add   r0,r0,r4            ; 080135F0  r0 = 08165EC4 + 8*hv05
 ldr   r1,[r0]             ; 080135F2  load from pointer
@@ -227,7 +227,7 @@ lsl   r1,r0,0x1           ; 08013620
 add   r1,r1,r0            ; 08013622  r1 = 3*hv07
 lsl   r1,r1,0x11          ; 08013624
 lsr   r1,r1,0x10          ; 08013626  r1 = 6*hv07, capped to 16-bit
-ldr   r2,=Data08166044    ; 08013628
+ldr   r2,=SprTilesetStripeIDs; 08013628
 add   r0,r1,r2            ; 0801362A  r0 = 08166044 + 6*hv07 (index to sprite graphics IDs table)
               ; unrolled loop to copy 6 sprite graphics IDs,
               ;  from 08166044 + 6*hv07, to every 2 bytes from 03004B8C-03004B98
@@ -270,7 +270,7 @@ ldrb  r0,[r2]             ; 08013670
 ldr   r2,=0x298A          ; 08013672
 add   r4,r4,r2            ; 08013674
 strh  r0,[r4]             ; 08013676 / end of unrolled loop
-ldr   r7,=DataPtrs081663C8; 08013678
+ldr   r7,=SprTilesetStripePtrs; 08013678
 lsl   r1,r1,0x2           ; 0801367A  r1 = 18*hv07
 add   r1,r1,r7            ; 0801367C  r1 = 081663C8 + 18*hv07
 ldr   r1,[r1]             ; 0801367E  load from pointer
@@ -6427,7 +6427,7 @@ add   r0,r3,r1            ; 08016DE4  r0 = [03007240]+2998 (03004BA4)
 ldrh  r0,[r0]             ; 08016DE6  layer 2 palette
 cmp   r0,0xE              ; 08016DE8
 bne   @Code08016DEE       ; 08016DEA
-ldr   r2,=Data0816777A    ; 08016DEC / if L2 image and palette are both 0E, use different L2 control pointer
+ldr   r2,=Data08167776+0x4; 08016DEC / if L2 image and palette are both 0E, use different L2 control pointer
 @Code08016DEE:
 ldr   r1,[r7]             ; 08016DEE
 ldr   r3,=0x299A          ; 08016DF0
@@ -6440,7 +6440,7 @@ add   r0,r1,r5            ; 08016DFC  r0 = [03007240]+29A2 (03004BAE)
 ldrh  r0,[r0]             ; 08016DFE
 cmp   r0,0x6              ; 08016E00
 bne   @Code08016E06       ; 08016E02
-ldr   r4,=Data0816780C    ; 08016E04 / if L3 image is 2C and hv09 is 06, use different L3 control pointer
+ldr   r4,=Data08167804+0x8; 08016E04 / if L3 image is 2C and hv09 is 06, use different L3 control pointer
 @Code08016E06:
 ldr   r1,[r7]             ; 08016E06
 ldr   r3,=0x2996          ; 08016E08
@@ -6453,7 +6453,7 @@ add   r0,r1,r5            ; 08016E14  r0 = [03007240]+299A (03004BA6)
 ldrh  r0,[r0]             ; 08016E16  layer 3 image ID
 cmp   r0,0x2A             ; 08016E18
 bne   @Code08016E1E       ; 08016E1A
-ldr   r2,=Data0816777A    ; 08016E1C / if L2 image is 01 and L3 image is 2A, use different L2 control pointer
+ldr   r2,=Data08167776+0x4; 08016E1C / if L2 image is 01 and L3 image is 2A, use different L2 control pointer
 @Code08016E1E:
 ldr   r1,[r7]             ; 08016E1E
 ldr   r3,=0x299A          ; 08016E20
@@ -6466,7 +6466,7 @@ add   r0,r1,r5            ; 08016E2C  r0 = [03007240]+2AAC (03004CB8)
 ldrh  r0,[r0]             ; 08016E2E  sublevel ID
 cmp   r0,0x29             ; 08016E30  29: 5-6 1/2
 bne   @Code08016E36       ; 08016E32
-ldr   r4,=Data0816780C    ; 08016E34 / if layer 3 image is 2E and sublevel is 29, use different L3 control pointer
+ldr   r4,=Data08167804+0x8; 08016E34 / if layer 3 image is 2E and sublevel is 29, use different L3 control pointer
 @Code08016E36:
 ldr   r1,[r7]             ; 08016E36
 ldr   r3,=0x2AAC          ; 08016E38
@@ -6474,7 +6474,7 @@ add   r0,r1,r3            ; 08016E3A  r0 = [03007240]+2AAC (03004CB8)
 ldrh  r3,[r0]             ; 08016E3C  sublevel ID
 cmp   r3,0x2C             ; 08016E3E  2C: 5-Extra first half
 bne   @Code08016E44       ; 08016E40
-ldr   r4,=Data0816780C    ; 08016E42  if sublevel is 2C: use different L3 control pointer
+ldr   r4,=Data08167804+0x8; 08016E42  if sublevel is 2C: use different L3 control pointer
 @Code08016E44:
 ldr   r5,=0x299A          ; 08016E44
 add   r0,r1,r5            ; 08016E46  r0 = [03007240]+299A (03004BA6)
@@ -6483,7 +6483,7 @@ cmp   r0,0x2E             ; 08016E4A
 bne   @Code08016E54       ; 08016E4C
 cmp   r3,0xEB             ; 08016E4E  EB: 5-Secret jungle rooms
 bne   @Code08016E54       ; 08016E50
-ldr   r4,=Data0816780C    ; 08016E52  if layer 3 image is 2E and sublevel is EB, use different L3 control pointer
+ldr   r4,=Data08167804+0x8; 08016E52  if layer 3 image is 2E and sublevel is EB, use different L3 control pointer
 @Code08016E54:
 ldr   r1,=0x03002200      ; 08016E54
 ldr   r2,[r2]             ; 08016E56  load layer 2 control from pointer
@@ -6735,7 +6735,7 @@ mov   r10,r0              ; 080170EE  r10 = [03007240]
 ldr   r0,=0x2B08          ; 080170F0 \ r0 = [03007240]+2B08 (03004D14)
 add   r0,r10              ; 080170F2 /
 ldr   r4,[r0]             ; 080170F4  r4 = pointer to sublevel object data
-ldr   r3,=Data08167766    ; 080170F6  r3 = pointer to table of bit counts to retrieve from header, 00-terminated
+ldr   r3,=SublevelHeaderBits; 080170F6  r3 = pointer to table of bit counts to retrieve from header, 00-terminated
 ldrb  r0,[r3]             ; 080170F8  r0 = number of bits to retrieve
 cmp   r0,0x0              ; 080170FA \ first byte is 05,
 beq   @Code0801716A       ; 080170FC /  so this branch never occurs
@@ -6803,7 +6803,7 @@ mov   r1,r8               ; 08017158 \
 lsl   r0,r1,0x10          ; 0801715A | clear high 16 bits of r8
 lsr   r0,r0,0x10          ; 0801715C |
 mov   r8,r0               ; 0801715E /
-ldr   r3,=Data08167766    ; 08017160  r3 = pointer to table of number of bits to retrieve
+ldr   r3,=SublevelHeaderBits; 08017160  r3 = pointer to table of number of bits to retrieve
 add   r0,r6,r3            ; 08017162 
 ldrb  r0,[r0]             ; 08017164  r0 = number of bits to retrieve
 cmp   r0,0x0              ; 08017166  if 0, end of table, so exit loop
@@ -7111,7 +7111,7 @@ strh  r0,[r3,0x36]        ; 080173EE  store offset of next object to process (03
 mov   r0,r12              ; 080173F0
 add   r0,0x42             ; 080173F2  [03007240]+42 (0300224E)
 ldrh  r4,[r0]             ; 080173F4  r4 = object ID
-ldr   r1,=CodePtrs0816828C; 080173F6  standard object init pointer table
+ldr   r1,=StdObjInitPtrs  ; 080173F6  standard object init pointer table
 lsl   r0,r4,0x2           ; 080173F8  index with object ID
 add   r0,r0,r1            ; 080173FA
 ldr   r3,[r0]             ; 080173FC  pointer to object code
@@ -7145,7 +7145,7 @@ add   r2,0x42             ; 08017434  r2 = [03007240]+42 (0300224E)
 strh  r4,[r2]             ; 08017436  store extended object ID
 add   r1,0x1              ; 08017438
 strh  r1,[r0,0x36]        ; 0801743A  store offset of next object to process (03002242)
-ldr   r2,=CodePtrs08167E8C; 0801743C  extended object init pointer table
+ldr   r2,=ExtObjInitPtrs  ; 0801743C  extended object init pointer table
 lsl   r1,r4,0x2           ; 0801743E
 add   r1,r1,r2            ; 08017440  index with object ID
 ldr   r3,[r1]             ; 08017442  pointer to extended object code
@@ -12012,17 +12012,17 @@ strb  r2,[r5]             ; 08019DD8  clear 030022BE
 mov   r0,r6               ; 08019DDA
 bl    Sub08019D64         ; 08019DDC  set layer 1 tilemap index and pre-existing tile
 mov   r9,r4               ; 08019DE0  r9 = [03007240]+50 (0300225C)
-ldr   r0,=CodePtrs08168AAC; 08019DE2
+ldr   r0,=StdObjMainPtrs  ; 08019DE2
 ldr   r2,[sp]             ; 08019DE4  r2 = standard/extended object ID
 lsl   r1,r2,0x2           ; 08019DE6  use as index to pointer tables
 add   r0,r1,r0            ; 08019DE8
 str   r0,[sp,0x8]         ; 08019DEA  [sp+8] = 08168AAC + 4*objectID
-ldr   r0,=CodePtrs08168F2C; 08019DEC
+ldr   r0,=ExtObjMainPtrs  ; 08019DEC
 add   r1,r1,r0            ; 08019DEE
 str   r1,[sp,0xC]         ; 08019DF0  [sp+C] = 08168F2C + 4*objectID
 mov   r8,r5               ; 08019DF2  r8 = [03007240]+B2 (030022BE)
-@Code08019DF4:
-                       ; begin loop across all tiles in object's rectangular (or sometimes parallelogram/trapezoidal) region
+
+@Code08019DF4:            ; begin loop across all tiles in object's rectangular (or sometimes parallelogram/trapezoidal) region
 mov   r0,r9               ; 08019DF4  r0 = [03007240]+50 (0300225C)
 ldrh  r3,[r0]             ; 08019DF6  r3 = current tile relative Y
 mov   r0,r6               ; 08019DF8
@@ -17970,7 +17970,7 @@ bne   @Code0802EF20       ; 0802EF08  if 03006F28 is nonzero, skip
 ldr   r2,=0x29A6          ; 0802EF0A
 add   r0,r1,r2            ; 0802EF0C  r0 = [03007240]+29A6 (03004BB2)
 ldrh  r0,[r0]             ; 0802EF0E  r0 = palette animation ID
-ldr   r1,=CodePtrs081695C8; 0802EF10
+ldr   r1,=PaletteAnimPtrs ; 0802EF10
 lsl   r0,r0,0x2           ; 0802EF12
 add   r0,r0,r1            ; 0802EF14  use ID as index to pointer table
 ldr   r2,[r0]             ; 0802EF16  r2 = pointer from table
