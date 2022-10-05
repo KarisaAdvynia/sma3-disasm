@@ -14907,7 +14907,7 @@ pop   {r4-r7}             ; 0803CC66
 pop   {r0}                ; 0803CC68
 bx    r0                  ; 0803CC6A
 
-Sub0803CC6C:
+Return0803CC6C:
 bx    lr                  ; 0803CC6C
 .pool                     ; 0803CC6E
 
@@ -17077,7 +17077,7 @@ bl    Sub0803DAA4         ; 0803DE44
 pop   {r0}                ; 0803DE48
 bx    r0                  ; 0803DE4A
 
-Sub0803DE4C:
+Return0803DE4C:
 bx    lr                  ; 0803DE4C
 .pool                     ; 0803DE4E
 
@@ -18826,7 +18826,7 @@ pop   {r0}                ; 0803ED2E
 bx    r0                  ; 0803ED30
 .pool                     ; 0803ED32
 
-Sub0803ED40:
+Return0803ED40:
 bx    lr                  ; 0803ED40
 .pool                     ; 0803ED42
 
@@ -21014,7 +21014,7 @@ pop   {r0}                ; 0804004C
 bx    r0                  ; 0804004E
 .pool                     ; 08040050
 
-Sub0804006C:
+Return0804006C:
 bx    lr                  ; 0804006C
 .pool                     ; 0804006E
 

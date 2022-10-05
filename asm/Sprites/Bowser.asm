@@ -354,7 +354,7 @@ pop   {r0}                ; 08102528
 bx    r0                  ; 0810252A
 .pool                     ; 0810252C
 
-Sub08102530:
+Return08102530:
 ; sprite 134 init
 bx    lr                  ; 08102530
 .pool                     ; 08102532
@@ -3503,7 +3503,7 @@ pop   {r0}                ; 08104148
 bx    r0                  ; 0810414A
 .pool                     ; 0810414C
 
-Sub08104158:
+Return08104158:
 ; sprite 008 init
 bx    lr                  ; 08104158
 .pool                     ; 0810415A
@@ -3702,7 +3702,7 @@ pop   {r0}                ; 081042E8
 bx    r0                  ; 081042EA
 .pool                     ; 081042EC
 
-Sub081042F8:
+Return081042F8:
 ; sprite 0AC init
 bx    lr                  ; 081042F8
 .pool                     ; 081042FA
@@ -7164,7 +7164,7 @@ pop   {r0}                ; 08106060
 bx    r0                  ; 08106062
 .pool                     ; 08106064
 
-Sub08106068:
+Return08106068:
 ; sprite 128 init
 bx    lr                  ; 08106068
 .pool                     ; 0810606A

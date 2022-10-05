@@ -2468,7 +2468,7 @@ pop   {r0}                ; 080022DC
 bx    r0                  ; 080022DE
 .pool                     ; 080022E0
 
-Sub080022FC:
+Return080022FC:
 bx    lr                  ; 080022FC
 .pool                     ; 080022FE
 

@@ -6534,7 +6534,7 @@ bl    swi_LZ77_WRAM       ; 08016EAE  LZ77 decompress (WRAM)
 str   r7,[sp,0x4]         ; 08016EB2
 ldr   r4,=0x0201DC00      ; 08016EB4
 mov   r0,r9               ; 08016EB6  constant 0 (r9 was set at 08016CBC)
-mov   r1,r4               ; 08016EB8  At 0x201DC00...
+mov   r1,r4               ; 08016EB8  At 0201DC00...
 mov   r2,r5               ; 08016EBA  ...clear 800 words (2000 bytes)
 bl    swi_MemoryCopy4or2  ; 08016EBC  Memory copy/fill, 4- or 2-byte blocks
 ldr   r1,=DataPtrs0816766C; 08016EC0
@@ -9442,7 +9442,7 @@ pop   {r0}                ; 08018772
 bx    r0                  ; 08018774
 .pool                     ; 08018776
 
-Sub08018778:
+Return08018778:
 bx    lr                  ; 08018778
 .pool                     ; 0801877A
 
@@ -9707,7 +9707,7 @@ strh  r1,[r0]             ; 0801899A
 bx    lr                  ; 0801899C
 .pool                     ; 0801899E
 
-Sub080189AC:
+Return080189AC:
 bx    lr                  ; 080189AC
 .pool                     ; 080189AE
 
@@ -10382,7 +10382,7 @@ pop   {r0}                ; 08018FA8
 bx    r0                  ; 08018FAA
 .pool                     ; 08018FAC
 
-Sub08018FC0:
+Return08018FC0:
 bx    lr                  ; 08018FC0
 .pool                     ; 08018FC2
 
@@ -10427,7 +10427,7 @@ ldrh  r1,[r1]             ; 0801900C
 add   r4,0x14             ; 0801900E
 add   r3,r3,r4            ; 08019010
 strh  r1,[r3]             ; 08019012
-bl    Sub08018FC0         ; 08019014
+bl    Return08018FC0         ; 08019014
 pop   {r4}                ; 08019018
 pop   {r0}                ; 0801901A
 bx    r0                  ; 0801901C
@@ -10474,7 +10474,7 @@ ldr   r1,[r1]             ; 0801907C
 add   r3,0x14             ; 0801907E
 add   r1,r1,r3            ; 08019080
 strh  r2,[r1]             ; 08019082
-bl    Sub08018FC0         ; 08019084
+bl    Return08018FC0         ; 08019084
 pop   {r0}                ; 08019088
 bx    r0                  ; 0801908A
 .pool                     ; 0801908C
@@ -11168,7 +11168,7 @@ strh  r0,[r1]             ; 080196E8
 bx    lr                  ; 080196EA
 .pool                     ; 080196EC
 
-Sub080196F0:
+Return080196F0:
 bx    lr                  ; 080196F0
 .pool                     ; 080196F2
 
@@ -13480,7 +13480,7 @@ pop   {r4-r6}             ; 0802C476
 pop   {r0}                ; 0802C478
 bx    r0                  ; 0802C47A
 
-Sub0802C47C:
+Return0802C47C:
 bx    lr                  ; 0802C47C
 .pool                     ; 0802C47E
 
@@ -13802,7 +13802,7 @@ ldr   r2,=0x03007240      ; 0802C70E  Normal gameplay IWRAM (0300220C)
 ldr   r0,[r2]             ; 0802C710
 ldr   r3,=0x28C4          ; 0802C712
 add   r0,r0,r3            ; 0802C714  r2 = [03007240]+28C4 (03004AD0)
-ldr   r5,=Sub0802C47C+1   ; 0802C716
+ldr   r5,=Return0802C47C+1   ; 0802C716
 str   r5,[r0]             ; 0802C718  [03004AD0] = 0802C47D (pointer to bx r14)
 b     @Code0802C90E       ; 0802C71A  Sublevel load
 .pool                     ; 0802C71C
@@ -13883,7 +13883,7 @@ lsr   r4,r0,0x8           ; 0802C86A
 ldr   r1,=0x48F5          ; 0802C86C
 add   r0,r6,r1            ; 0802C86E
 strb  r4,[r0]             ; 0802C870
-bl    Sub080EAD40         ; 0802C872
+bl    Return080EAD40         ; 0802C872
 ldr   r2,=0x4A09          ; 0802C876
 add   r1,r6,r2            ; 0802C878
 mov   r0,0xFF             ; 0802C87A
@@ -14094,7 +14094,7 @@ lsr   r2,r0,0x10          ; 0802CA6E
 cmp   r2,0x2              ; 0802CA70
 bls   @Code0802CA60       ; 0802CA72 /
 mov   r0,r7               ; 0802CA74  r0 = [03007240] (0300220C)
-bl    Sub080E3584         ; 0802CA76  subroutine: ?
+bl    GraphicsAnimInit    ; 0802CA76
 ldr   r4,=0x03007240      ; 0802CA7A  Normal gameplay IWRAM (0300220C)
 ldr   r0,[r4]             ; 0802CA7C
 ldr   r5,=0x2992          ; 0802CA7E
@@ -14917,7 +14917,7 @@ bl    Sub080E6070         ; 0802D260
 bl    Sub08036B7C         ; 0802D264
 bl    Sub080169B4         ; 0802D268
 mov   r0,r6               ; 0802D26C
-bl    Sub080E34B8         ; 0802D26E  process graphics animations
+bl    GraphicsAnimMain    ; 0802D26E  process graphics animations
 ldr   r5,=0x03002200      ; 0802D272
 ldr   r4,=0x47EC          ; 0802D274
 add   r0,r5,r4            ; 0802D276
@@ -14973,7 +14973,7 @@ bl    Sub0804F304         ; 0802D2E0
 bl    Sub08109A24         ; 0802D2E4
 bl    Sub080195F4         ; 0802D2E8
 mov   r0,r6               ; 0802D2EC
-bl    Sub0802EEC8         ; 0802D2EE  Process palette animations
+bl    PaletteAnimMain     ; 0802D2EE
 ldr   r0,[r4]             ; 0802D2F2
 ldr   r4,=0x29B0          ; 0802D2F4
 add   r2,r0,r4            ; 0802D2F6
@@ -16302,7 +16302,7 @@ ldr   r0,[r4]             ; 0802DFEC
 ldr   r3,=0x28C4          ; 0802DFEE
 add   r2,r0,r3            ; 0802DFF0  r2 = [03007240]+28C4 (03004AD0)
 ldr   r1,[r2]             ; 0802DFF2  load code pointer
-ldr   r0,=Sub0802C47C+1   ; 0802DFF4  pointer to bx r14
+ldr   r0,=Return0802C47C+1   ; 0802DFF4  pointer to bx r14
 cmp   r1,r0               ; 0802DFF6
 bne   @Code0802DFFE       ; 0802DFF8
 ldr   r0,=Sub0802DF70+1   ; 0802DFFA \ runs if pointer was bx r14:
@@ -16742,14 +16742,14 @@ pop   {r0}                ; 0802E422
 bx    r0                  ; 0802E424
 .pool                     ; 0802E426
 
-Sub0802E44C:
+PaletteAnim1314:
 ; runs if palette animation ID is 13 or 14
 push  {r4-r5,lr}          ; 0802E44C
 mov   r5,r0               ; 0802E44E
 lsl   r4,r1,0x18          ; 0802E450
 lsr   r4,r4,0x18          ; 0802E452
 mov   r1,r4               ; 0802E454
-bl    Sub0802ED1C         ; 0802E456
+bl    PaletteAnim02       ; 0802E456
 add   r1,r4,0x1           ; 0802E45A
 lsl   r1,r1,0x18          ; 0802E45C
 lsr   r1,r1,0x18          ; 0802E45E
@@ -16777,19 +16777,19 @@ pop   {r0}                ; 0802E48C
 bx    r0                  ; 0802E48E
 .pool                     ; 0802E490
 
-Sub0802E49C:
+PaletteAnim12:
 ; runs if palette animation ID is 12
 push  {r4-r5,lr}          ; 0802E49C
 mov   r5,r0               ; 0802E49E
 lsl   r4,r1,0x18          ; 0802E4A0
 lsr   r4,r4,0x18          ; 0802E4A2
 mov   r1,r4               ; 0802E4A4
-bl    Sub0802E924         ; 0802E4A6
+bl    PaletteAnim0A       ; 0802E4A6
 add   r1,r4,0x1           ; 0802E4AA
 lsl   r1,r1,0x18          ; 0802E4AC
 lsr   r1,r1,0x18          ; 0802E4AE
 mov   r0,r5               ; 0802E4B0
-bl    Sub0802E5E8         ; 0802E4B2
+bl    PaletteAnim10       ; 0802E4B2
 ldr   r2,=0x354E          ; 0802E4B6
 add   r4,0x3              ; 0802E4B8
 lsl   r4,r4,0x18          ; 0802E4BA
@@ -16902,14 +16902,13 @@ pop   {r0}                ; 0802E59E
 bx    r0                  ; 0802E5A0
 .pool                     ; 0802E5A2
 
-Sub0802E5C0:
-; runs if palette animation ID is 11
+PaletteAnim11:
 push  {r4-r5,lr}          ; 0802E5C0
 mov   r4,r0               ; 0802E5C2
 lsl   r5,r1,0x18          ; 0802E5C4
 lsr   r5,r5,0x18          ; 0802E5C6
 mov   r1,r5               ; 0802E5C8
-bl    Sub0802E718         ; 0802E5CA
+bl    PaletteAnim0E       ; 0802E5CA
 ldr   r2,=0x34CE          ; 0802E5CE
 add   r5,0x2              ; 0802E5D0
 lsl   r5,r5,0x18          ; 0802E5D2
@@ -16922,8 +16921,8 @@ pop   {r0}                ; 0802E5E0
 bx    r0                  ; 0802E5E2
 .pool                     ; 0802E5E4
 
-Sub0802E5E8:
-; runs if palette animation ID is 10
+PaletteAnim10:
+; also called by 12
 push  {r4-r6,lr}          ; 0802E5E8
 mov   r5,r0               ; 0802E5EA
 lsl   r1,r1,0x18          ; 0802E5EC
@@ -16978,8 +16977,7 @@ pop   {r0}                ; 0802E64E
 bx    r0                  ; 0802E650
 .pool                     ; 0802E652
 
-Sub0802E664:
-; runs if palette animation ID is 0F
+PaletteAnim0F:
 push  {lr}                ; 0802E664
 lsl   r3,r1,0x18          ; 0802E666
 lsr   r3,r3,0x18          ; 0802E668
@@ -17052,8 +17050,8 @@ pop   {r0}                ; 0802E6F6
 bx    r0                  ; 0802E6F8
 .pool                     ; 0802E6FA
 
-Sub0802E718:
-; runs if palette animation ID is 0E
+PaletteAnim0E:
+; also called by 11
 push  {r4-r5,lr}          ; 0802E718
 mov   r5,r0               ; 0802E71A
 lsl   r1,r1,0x18          ; 0802E71C
@@ -17067,7 +17065,7 @@ cmp   r0,0x8              ; 0802E72A
 bne   @Code0802E74C       ; 0802E72C
 mov   r0,r5               ; 0802E72E
 mov   r1,r4               ; 0802E730
-bl    Sub0802E924         ; 0802E732
+bl    PaletteAnim0A       ; 0802E732
 add   r1,r4,0x1           ; 0802E736
 lsl   r1,r1,0x18          ; 0802E738
 lsr   r1,r1,0x18          ; 0802E73A
@@ -17102,8 +17100,7 @@ pop   {r0}                ; 0802E778
 bx    r0                  ; 0802E77A
 .pool                     ; 0802E77C
 
-Sub0802E788:
-; runs if palette animation ID is 0D
+PaletteAnim0D:
 push  {r4-r5,lr}          ; 0802E788
 mov   r5,r0               ; 0802E78A  r5 = [03007240] (0300220C)
 lsl   r1,r1,0x18          ; 0802E78C
@@ -17163,8 +17160,7 @@ pop   {r0}                ; 0802E7FA
 bx    r0                  ; 0802E7FC
 .pool                     ; 0802E7FE
 
-Sub0802E804:
-; runs if palette animation ID is 0C
+PaletteAnim0C:
 push  {r4,lr}             ; 0802E804
 mov   r2,r0               ; 0802E806
 lsl   r1,r1,0x18          ; 0802E808
@@ -17235,8 +17231,7 @@ pop   {r0}                ; 0802E882
 bx    r0                  ; 0802E884
 .pool                     ; 0802E886
 
-Sub0802E8A0:
-; runs if palette animation ID is 0B
+PaletteAnim0B:
 push  {r4,lr}             ; 0802E8A0
 mov   r2,r0               ; 0802E8A2
 lsl   r1,r1,0x18          ; 0802E8A4
@@ -17300,8 +17295,8 @@ pop   {r0}                ; 0802E910
 bx    r0                  ; 0802E912
 .pool                     ; 0802E914
 
-Sub0802E924:
-; runs if palette animation ID is 0A
+PaletteAnim0A:
+; also called by 0E,11,12
 push  {lr}                ; 0802E924
 lsl   r3,r1,0x18          ; 0802E926
 lsr   r3,r3,0x18          ; 0802E928
@@ -17322,8 +17317,7 @@ pop   {r0}                ; 0802E946
 bx    r0                  ; 0802E948
 .pool                     ; 0802E94A
 
-Sub0802E958:
-; runs if palette animation ID is 09
+PaletteAnim09:
 push  {r4-r6,lr}          ; 0802E958
 mov   r3,r0               ; 0802E95A
 lsl   r1,r1,0x18          ; 0802E95C
@@ -17394,8 +17388,7 @@ pop   {r0}                ; 0802E9DA
 bx    r0                  ; 0802E9DC
 .pool                     ; 0802E9DE
 
-Sub0802EA00:
-; runs if palette animation ID is 08
+PaletteAnim08:
 push  {lr}                ; 0802EA00
 ldr   r0,=0x03002200      ; 0802EA02
 ldr   r1,=0x48A2          ; 0802EA04
@@ -17415,8 +17408,7 @@ pop   {r0}                ; 0802EA20
 bx    r0                  ; 0802EA22
 .pool                     ; 0802EA24
 
-Sub0802EA30:
-; runs if palette animation ID is 07
+PaletteAnim07:
 push  {r4-r5,lr}          ; 0802EA30
 mov   r5,r0               ; 0802EA32
 lsl   r4,r1,0x18          ; 0802EA34
@@ -17428,14 +17420,14 @@ lsl   r4,r4,0x18          ; 0802EA40
 lsr   r4,r4,0x18          ; 0802EA42
 mov   r0,r5               ; 0802EA44
 mov   r1,r4               ; 0802EA46
-bl    Sub0802EA54         ; 0802EA48
+bl    PaletteAnim06       ; 0802EA48
 pop   {r4-r5}             ; 0802EA4C
 pop   {r0}                ; 0802EA4E
 bx    r0                  ; 0802EA50
 .pool                     ; 0802EA52
 
-Sub0802EA54:
-; runs if palette animation ID is 06
+PaletteAnim06:
+; also called by 07
 push  {r4-r5,lr}          ; 0802EA54
 lsl   r4,r1,0x18          ; 0802EA56
 lsr   r4,r4,0x18          ; 0802EA58
@@ -17541,8 +17533,7 @@ pop   {r0}                ; 0802EB2E
 bx    r0                  ; 0802EB30
 .pool                     ; 0802EB32
 
-Sub0802EB58:
-; runs if palette animation ID is 05
+PaletteAnim05:
 push  {r4-r7,lr}          ; 0802EB58
 mov   r7,r0               ; 0802EB5A
 lsl   r1,r1,0x18          ; 0802EB5C
@@ -17593,7 +17584,7 @@ pop   {r0}                ; 0802EBB8
 bx    r0                  ; 0802EBBA
 .pool                     ; 0802EBBC
 
-Sub0802EBD0:
+PaletteAnim04:
 ; runs if palette animation ID is 04
 push  {r4-r7,lr}          ; 0802EBD0
 mov   r7,r8               ; 0802EBD2
@@ -17666,8 +17657,7 @@ pop   {r0}                ; 0802EC54
 bx    r0                  ; 0802EC56
 .pool                     ; 0802EC58
 
-Sub0802EC7C:
-; runs if palette animation ID is 03
+PaletteAnim03:
 push  {r4-r7,lr}          ; 0802EC7C
 lsl   r1,r1,0x18          ; 0802EC7E
 lsr   r1,r1,0x18          ; 0802EC80
@@ -17733,8 +17723,8 @@ pop   {r0}                ; 0802ECF4
 bx    r0                  ; 0802ECF6
 .pool                     ; 0802ECF8
 
-Sub0802ED1C:
-; runs if palette animation ID is 02
+PaletteAnim02:
+; also called by 13-14
 push  {r4-r7,lr}          ; 0802ED1C
 mov   r5,r0               ; 0802ED1E
 lsl   r1,r1,0x18          ; 0802ED20
@@ -17879,8 +17869,7 @@ pop   {r0}                ; 0802EE2C
 bx    r0                  ; 0802EE2E
 .pool                     ; 0802EE30
 
-Sub0802EE58:
-; runs if palette animation ID is 01
+PaletteAnim01:
 push  {r4,lr}             ; 0802EE58
 mov   r4,r0               ; 0802EE5A
 add   r0,0xA0             ; 0802EE5C
@@ -17936,12 +17925,12 @@ pop   {r0}                ; 0802EEBC
 bx    r0                  ; 0802EEBE
 .pool                     ; 0802EEC0
 
-Sub0802EEC4:
+Return0802EEC4:
 ; runs if palette animation ID is 00
 bx    lr                  ; 0802EEC4
 .pool                     ; 0802EEC6
 
-Sub0802EEC8:
+PaletteAnimMain:
 ; subroutine: Process palette animations
 ; runs every frame during levels
 push  {r4-r6,lr}          ; 0802EEC8

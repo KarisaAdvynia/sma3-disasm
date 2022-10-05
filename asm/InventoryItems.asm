@@ -297,7 +297,7 @@ bl    Sub080E6000         ; 080E6064
 pop   {r0}                ; 080E6068
 bx    r0                  ; 080E606A
 
-Sub080E606C:
+Return080E606C:
 bx    lr                  ; 080E606C
 .pool                     ; 080E606E
 
@@ -378,7 +378,7 @@ pop   {r0}                ; 080E610E
 bx    r0                  ; 080E6110
 .pool                     ; 080E6112
 
-Sub080E6114:
+Return080E6114:
 bx    lr                  ; 080E6114
 .pool                     ; 080E6116
 
@@ -424,7 +424,7 @@ pop   {r0}                ; 080E6162
 bx    r0                  ; 080E6164
 .pool                     ; 080E6166
 
-Sub080E6174:
+Return080E6174:
 bx    lr                  ; 080E6174
 .pool                     ; 080E6176
 
@@ -455,6 +455,6 @@ pop   {r0}                ; 080E61B2
 bx    r0                  ; 080E61B4
 .pool                     ; 080E61B6
 
-Sub080E61B8:
+Return080E61B8:
 bx    lr                  ; 080E61B8
 .pool                     ; 080E61BA

@@ -13,7 +13,7 @@ strh  r2,[r1]             ; 0802982C  store tile 0
 bx    lr                  ; 0802982E
 .pool                     ; 08029830
 
-Sub08029834:
+Return08029834:
 ; object 00.E1-FC,FE-FF main
 bx    lr                  ; 08029834
 .pool                     ; 08029836
@@ -2513,7 +2513,7 @@ pop   {r0}                ; 0802ABDE
 bx    r0                  ; 0802ABE0
 .pool                     ; 0802ABE2
 
-Sub0802ABE8:
+Return0802ABE8:
 ; never called. Would run for objects 00.71-7D if extended object ID is 70
 bx    lr                  ; 0802ABE8
 .pool                     ; 0802ABEA
@@ -3858,7 +3858,7 @@ pop   {r0}                ; 0802B630
 bx    r0                  ; 0802B632
 .pool                     ; 0802B634
 
-Sub0802B63C:
+Return0802B63C:
 ; object 00.20-2F main
 bx    lr                  ; 0802B63C
 .pool                     ; 0802B63E

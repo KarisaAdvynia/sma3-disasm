@@ -30,6 +30,7 @@
 .include "asm/YITitle.asm"
 .include "asm/Sprites/Bowser.asm"
 .include "asm/GameOver.asm"
+.include "asm/0810D264.asm"
 .include "asm/ChooseAGame.asm"
 .include "asm/MarioBros.asm"
 .include "asm/Sound.asm"

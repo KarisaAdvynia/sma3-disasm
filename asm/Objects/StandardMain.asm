@@ -18748,7 +18748,7 @@ pop   {r0}                ; 080264C2
 bx    r0                  ; 080264C4
 .pool                     ; 080264C6
 
-Sub080264D8:
+Return080264D8:
 bx    lr                  ; 080264D8
 .pool                     ; 080264DA
 
@@ -24677,7 +24677,7 @@ pop   {r0}                ; 0802930A
 bx    r0                  ; 0802930C
 .pool                     ; 0802930E
 
-Sub08029318:
+Return08029318:
 ; never called. Would run for objects 02-03,0A-0B if object ID is 04-09
 bx    lr                  ; 08029318
 .pool                     ; 0802931A
@@ -25304,7 +25304,7 @@ pop   {r0}                ; 08029810
 bx    r0                  ; 08029812
 .pool                     ; 08029814
 
-Sub08029818:
+Return08029818:
 ; object 00 main (unused)
 bx    lr                  ; 08029818
 .pool                     ; 0802981A

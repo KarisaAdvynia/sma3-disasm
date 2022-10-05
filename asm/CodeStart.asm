@@ -35,13 +35,13 @@ b      CodeStart                 ; 080000F0
 .word  0x03007F80                ; 080000F8
 
 InterruptHandler:
-mov    r12,0x4000000             ; 080000FC
-add    r3,r12,0x200              ; 08000100
+mov    r12,0x04000000            ; 080000FC
+add    r3,r12,0x0200             ; 08000100
 ldr    r2,[r3]                   ; 08000104
 and    r1,r2,r2,lsr 0x10         ; 08000108
 mov    r2,0x0                    ; 0800010C
 ands   r0,r1,0x2000              ; 08000110
-strneb r0,[r3,-0x17C]            ; 08000114
+strneb r0,[r3,-0x017C]           ; 08000114
 @Code08000118:
 bne    @Code08000118             ; 08000118
 add    r2,r2,0x4                 ; 0800011C
@@ -70,16 +70,16 @@ add    r2,r2,0x4                 ; 08000174
 ands   r0,r1,0x20                ; 08000178
 bne    @Code080001B8             ; 0800017C
 add    r2,r2,0x4                 ; 08000180
-ands   r0,r1,0x100               ; 08000184
+ands   r0,r1,0x0100              ; 08000184
 bne    @Code080001B8             ; 08000188
 add    r2,r2,0x4                 ; 0800018C
-ands   r0,r1,0x200               ; 08000190
+ands   r0,r1,0x0200              ; 08000190
 bne    @Code080001B8             ; 08000194
 add    r2,r2,0x4                 ; 08000198
-ands   r0,r1,0x400               ; 0800019C
+ands   r0,r1,0x0400              ; 0800019C
 bne    @Code080001B8             ; 080001A0
 add    r2,r2,0x4                 ; 080001A4
-ands   r0,r1,0x800               ; 080001A8
+ands   r0,r1,0x0800              ; 080001A8
 bne    @Code080001B8             ; 080001AC
 add    r2,r2,0x4                 ; 080001B0
 ands   r0,r1,0x1000              ; 080001B4
@@ -92,13 +92,13 @@ bx     r0                        ; 080001C8
 
 Sub080001CC:
 ; Alternate interrupt handler?
-mov    r12,0x4000000             ; 080001CC
-add    r3,r12,0x200              ; 080001D0
+mov    r12,0x04000000            ; 080001CC
+add    r3,r12,0x0200             ; 080001D0
 ldr    r2,[r3]                   ; 080001D4
 and    r1,r2,r2,lsr 0x10         ; 080001D8
 mov    r2,0x0                    ; 080001DC
 ands   r0,r1,0x2000              ; 080001E0
-strneb r0,[r3,-0x17C]            ; 080001E4
+strneb r0,[r3,-0x017C]           ; 080001E4
 @Code080001E8:
 bne    @Code080001E8             ; 080001E8
 add    r2,r2,0x4                 ; 080001EC
@@ -118,16 +118,16 @@ add    r2,r2,0x4                 ; 08000220
 ands   r0,r1,0x4                 ; 08000224
 bne    @Code08000264             ; 08000228
 add    r2,r2,0x4                 ; 0800022C
-ands   r0,r1,0x100               ; 08000230
+ands   r0,r1,0x0100              ; 08000230
 bne    @Code08000264             ; 08000234
 add    r2,r2,0x4                 ; 08000238
-ands   r0,r1,0x200               ; 0800023C
+ands   r0,r1,0x0200              ; 0800023C
 bne    @Code08000264             ; 08000240
 add    r2,r2,0x4                 ; 08000244
-ands   r0,r1,0x400               ; 08000248
+ands   r0,r1,0x0400              ; 08000248
 bne    @Code08000264             ; 0800024C
 add    r2,r2,0x4                 ; 08000250
-ands   r0,r1,0x800               ; 08000254
+ands   r0,r1,0x0800              ; 08000254
 bne    @Code08000264             ; 08000258
 add    r2,r2,0x4                 ; 0800025C
 ands   r0,r1,0x1000              ; 08000260
@@ -1033,15 +1033,15 @@ str   r0,[r5,0x18]               ; 08000970
 add   r1,r1,r12                  ; 08000974
 ldrb  r12,[r3,r4]                ; 08000978
 add   r1,r1,r2                   ; 0800097C
-add   r4,r1,0x800                ; 08000980
+add   r4,r1,0x0800               ; 08000980
 add   r12,r12,0x2                ; 08000984
 mov   r3,r12,lsl 0x3             ; 08000988
-and   r3,r3,0x7C0                ; 0800098C
+and   r3,r3,0x07C0               ; 0800098C
 add   r2,r1,r3                   ; 08000990
 tst   r12,0x4                    ; 08000994
 moveq r3,lr                      ; 08000998
 movne r3,r0                      ; 0800099C
-add   r0,r3,0x800                ; 080009A0
+add   r0,r3,0x0800               ; 080009A0
 @Code080009A4:
 ldrh  r12,[r2]                   ; 080009A4
 strh  r12,[r3]                   ; 080009A8
@@ -1078,7 +1078,7 @@ mov   r12,r13                    ; 08000A08
 stmfd r13!,{r4,r5,r11,r12,lr,pc} ; 08000A0C
 sub   r11,r12,0x4                ; 08000A10
 mov   r4,r0                      ; 08000A14
-ldr   lr,=0x30072A0              ; 08000A18
+ldr   lr,=0x030072A0             ; 08000A18
 mov   r12,r4                     ; 08000A1C
 sub   r3,lr,0x30                 ; 08000A20
 ldrh  r2,[r3,0x92]               ; 08000A24
@@ -1092,6 +1092,7 @@ add   r2,lr,0x40                 ; 08000A40
 strb  r0,[r12],0x1               ; 08000A44
 cmp   lr,r2                      ; 08000A48
 bcs   @Code08000A78              ; 08000A4C
+@Code08000A50:
 cmp   r12,r5                     ; 08000A50
 ldrb  r3,[r14]                   ; 08000A54
 moveq r12,r4                     ; 08000A58
@@ -1103,7 +1104,7 @@ b     @Code08000A74              ; 08000A6C
 .pool                            ; 08000A70
 
 @Code08000A74:
-bcc   0x8000A50                  ; 08000A74
+bcc   @Code08000A50              ; 08000A74
 @Code08000A78:
 ldmdb r11,{r4,r5,r11,r13,lr}     ; 08000A78
 bx    lr                         ; 08000A7C

@@ -73,7 +73,7 @@ pop   {r4}                ; 0801C02A
 pop   {r0}                ; 0801C02C
 bx    r0                  ; 0801C02E
 
-Sub0801C030:
+Return0801C030:
 ; object 00.FC (unused ID) init
 bx    lr                  ; 0801C030
 .pool                     ; 0801C032
@@ -93,7 +93,7 @@ strb  r1,[r0]             ; 0801C046  set screen memory index corresponding to t
 bx    lr                  ; 0801C048
 .pool                     ; 0801C04A
 
-Sub0801C050:
+Return0801C050:
 ; object 00 and 00.E1-FA (unused IDs) init
 bx    lr                  ; 0801C050
 .pool                     ; 0801C052
@@ -1958,7 +1958,7 @@ ldrh  r0,[r1]             ; 0801CE64  object ID
 sub   r0,0x8              ; 0801CE66
 strh  r0,[r1]             ; 0801CE68  object ID -= 8
 mov   r0,r4               ; 0801CE6A
-bl    Sub0802B63C         ; 0801CE6C
+bl    Return0802B63C         ; 0801CE6C
 pop   {r4}                ; 0801CE70
 pop   {r0}                ; 0801CE72
 bx    r0                  ; 0801CE74

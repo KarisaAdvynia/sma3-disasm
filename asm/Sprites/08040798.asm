@@ -1442,7 +1442,7 @@ pop   {r0}                ; 0804135A
 bx    r0                  ; 0804135C
 .pool                     ; 0804135E
 
-Sub08041360:
+Return08041360:
 bx    lr                  ; 08041360
 .pool                     ; 08041362
 
@@ -2389,7 +2389,7 @@ pop   {r0}                ; 08041B86
 bx    r0                  ; 08041B88
 .pool                     ; 08041B8A
 
-Sub08041B90:
+Return08041B90:
 bx    lr                  ; 08041B90
 .pool                     ; 08041B92
 
@@ -2458,7 +2458,7 @@ pop   {r0}                ; 08041C3A
 bx    r0                  ; 08041C3C
 .pool                     ; 08041C3E
 
-Sub08041C40:
+Return08041C40:
 bx    lr                  ; 08041C40
 .pool                     ; 08041C42
 
@@ -2507,7 +2507,7 @@ pop   {r0}                ; 08041C92
 bx    r0                  ; 08041C94
 .pool                     ; 08041C96
 
-Sub08041C98:
+Return08041C98:
 bx    lr                  ; 08041C98
 .pool                     ; 08041C9A
 
@@ -4039,7 +4039,7 @@ pop   {r0}                ; 08042936
 bx    r0                  ; 08042938
 .pool                     ; 0804293A
 
-Sub0804295C:
+Return0804295C:
 bx    lr                  ; 0804295C
 .pool                     ; 0804295E
 
@@ -4118,11 +4118,11 @@ pop   {r0}                ; 080429E6
 bx    r0                  ; 080429E8
 .pool                     ; 080429EA
 
-Sub08042A00:
+Return08042A00:
 bx    lr                  ; 08042A00
 .pool                     ; 08042A02
 
-Sub08042A04:
+Return08042A04:
 bx    lr                  ; 08042A04
 .pool                     ; 08042A06
 
@@ -4499,7 +4499,7 @@ pop   {r0}                ; 08042D14
 bx    r0                  ; 08042D16
 .pool                     ; 08042D18
 
-Sub08042D24:
+Return08042D24:
 bx    lr                  ; 08042D24
 .pool                     ; 08042D26
 
@@ -5491,7 +5491,7 @@ pop   {r0}                ; 080435DA
 bx    r0                  ; 080435DC
 .pool                     ; 080435DE
 
-Sub080435F4:
+Return080435F4:
 bx    lr                  ; 080435F4
 .pool                     ; 080435F6
 

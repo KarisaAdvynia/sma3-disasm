@@ -76,15 +76,13 @@ pop   {r0}                ; 08049F32
 bx    r0                  ; 08049F34
 .pool                     ; 08049F36
 
-Sub08049F40:
-;;; Standard/command sprite code starts here
-
+Return08049F40:
 ; sprite 01A,087,0A1,0B3,0D4,13B,1BE-1C1 init
 ; sprite 05D,086,0F1,162,1B9 init+main (unused sprite IDs)
 bx    lr                  ; 08049F40
 .pool                     ; 08049F42
 
-Sub08049F44:
+Return08049F44:
 ; command sprite 1DF-1E0,1E2-1E5,1E7,1E9,1EB,1ED-1EE,1F0,1F2,1F4,1F6,1F8,1FB-1FD main
 bx    lr                  ; 08049F44
 .pool                     ; 08049F46

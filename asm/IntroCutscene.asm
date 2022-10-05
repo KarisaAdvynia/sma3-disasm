@@ -501,7 +501,7 @@ lsr   r2,r0,0x10          ; 080F5DFC
 cmp   r2,0x2              ; 080F5DFE
 bls   @Code080F5DEE       ; 080F5E00
 mov   r0,r6               ; 080F5E02
-bl    Sub080E3584         ; 080F5E04
+bl    GraphicsAnimInit    ; 080F5E04
 mov   r7,0x0              ; 080F5E08
 mov   r0,0xA              ; 080F5E0A
 strh  r0,[r6,0x36]        ; 080F5E0C
@@ -936,7 +936,7 @@ pop   {r0}                ; 080F62A0
 bx    r0                  ; 080F62A2
 .pool                     ; 080F62A4
 
-Sub080F62B0:
+Return080F62B0:
 bx    lr                  ; 080F62B0
 .pool                     ; 080F62B2
 

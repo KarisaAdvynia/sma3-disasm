@@ -1645,7 +1645,7 @@ pop   {r0}                ; 080FDC8A
 bx    r0                  ; 080FDC8C
 .pool                     ; 080FDC8E
 
-Sub080FDC90:
+Return080FDC90:
 bx    lr                  ; 080FDC90
 .pool                     ; 080FDC92
 
@@ -2606,7 +2606,7 @@ pop   {r0}                ; 080FE444
 bx    r0                  ; 080FE446
 .pool                     ; 080FE448
 
-Sub080FE45C:
+Return080FE45C:
 bx    lr                  ; 080FE45C
 .pool                     ; 080FE45E
 
@@ -2808,7 +2808,7 @@ pop   {r0}                ; 080FE630
 bx    r0                  ; 080FE632
 .pool                     ; 080FE634
 
-Sub080FE650:
+Return080FE650:
 bx    lr                  ; 080FE650
 .pool                     ; 080FE652
 
@@ -3136,7 +3136,7 @@ pop   {r0}                ; 080FE9BA
 bx    r0                  ; 080FE9BC
 .pool                     ; 080FE9BE
 
-Sub080FE9C8:
+Return080FE9C8:
 bx    lr                  ; 080FE9C8
 .pool                     ; 080FE9CA
 
@@ -3626,7 +3626,7 @@ bl    Sub0812D100         ; 080FEE66
 ldr   r4,=0x03007250      ; 080FEE6A
 ldr   r0,[r4]             ; 080FEE6C
 add   r0,0x60             ; 080FEE6E
-bl    Sub080FE9C8         ; 080FEE70
+bl    Return080FE9C8         ; 080FEE70
 ldr   r5,=0x03002200      ; 080FEE74
 ldr   r2,=0x4906          ; 080FEE76
 add   r1,r5,r2            ; 080FEE78
@@ -9142,7 +9142,7 @@ pop   {r0}                ; 08101ECE
 bx    r0                  ; 08101ED0
 .pool                     ; 08101ED2
 
-Sub08101EDC:
+Return08101EDC:
 bx    lr                  ; 08101EDC
 .pool                     ; 08101EDE
 
@@ -9220,7 +9220,7 @@ ldr   r1,=0x4888          ; 08101F6C
 add   r0,r0,r1            ; 08101F6E
 mov   r1,0x0              ; 08101F70
 strh  r4,[r0]             ; 08101F72
-ldr   r0,=Sub08101EDC+1   ; 08101F74
+ldr   r0,=Return08101EDC+1   ; 08101F74
 str   r0,[r5,0x18]        ; 08101F76
 strb  r1,[r5,0x1F]        ; 08101F78
 b     @Code08101FA0       ; 08101F7A
@@ -9255,7 +9255,7 @@ mov   r0,0x80             ; 08101FC8
 lsl   r0,r0,0x5           ; 08101FCA
 cmp   r2,r0               ; 08101FCC
 ble   @Code08101FEC       ; 08101FCE
-ldr   r0,=Sub08101EDC+1   ; 08101FD0
+ldr   r0,=Return08101EDC+1   ; 08101FD0
 str   r0,[r3,0x18]        ; 08101FD2
 mov   r0,0x0              ; 08101FD4
 strb  r0,[r3,0x1F]        ; 08101FD6
@@ -9270,7 +9270,7 @@ pop   {r0}                ; 08101FF0
 bx    r0                  ; 08101FF2
 
 Sub08101FF4:
-ldr   r1,=Sub08101EDC+1   ; 08101FF4
+ldr   r1,=Return08101EDC+1   ; 08101FF4
 str   r1,[r0,0x18]        ; 08101FF6
 mov   r1,0x0              ; 08101FF8
 strb  r1,[r0,0x1F]        ; 08101FFA

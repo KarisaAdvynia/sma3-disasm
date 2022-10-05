@@ -2010,7 +2010,7 @@ pop   {r0}                ; 080FC19A
 bx    r0                  ; 080FC19C
 .pool                     ; 080FC19E
 
-Sub080FC1AC:
+Return080FC1AC:
 bx    lr                  ; 080FC1AC
 .pool                     ; 080FC1AE
 

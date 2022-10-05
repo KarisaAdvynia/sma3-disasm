@@ -8687,7 +8687,7 @@ pop   {r4-r7}             ; 08113F3E
 pop   {r0}                ; 08113F40
 bx    r0                  ; 08113F42
 
-Sub08113F44:
+Return08113F44:
 bx    lr                  ; 08113F44
 .pool                     ; 08113F46
 
@@ -13231,7 +13231,7 @@ pop   {r0}                ; 08116582
 bx    r0                  ; 08116584
 .pool                     ; 08116586
 
-Sub081165A8:
+Return081165A8:
 bx    lr                  ; 081165A8
 .pool                     ; 081165AA
 
@@ -14014,7 +14014,7 @@ ldr   r2,=0x0424          ; 08116CEC
 add   r0,r0,r2            ; 08116CEE
 mov   r1,0x0              ; 08116CF0
 strh  r1,[r0]             ; 08116CF2
-bl    Sub081165A8         ; 08116CF4
+bl    Return081165A8         ; 08116CF4
 ldr   r0,=0x4906          ; 08116CF8
 add   r4,r4,r0            ; 08116CFA
 ldrb  r0,[r4]             ; 08116CFC
@@ -19598,7 +19598,7 @@ pop   {r0}                ; 0811A09C
 bx    r0                  ; 0811A09E
 .pool                     ; 0811A0A0
 
-Sub0811A0C4:
+Return0811A0C4:
 bx    lr                  ; 0811A0C4
 .pool                     ; 0811A0C6
 
@@ -23495,7 +23495,7 @@ pop   {r0}                ; 0811C302
 bx    r0                  ; 0811C304
 .pool                     ; 0811C306
 
-Sub0811C314:
+Return0811C314:
 bx    lr                  ; 0811C314
 .pool                     ; 0811C316
 
@@ -28509,7 +28509,7 @@ pop   {r4-r6}             ; 0811EB5E
 pop   {r1}                ; 0811EB60
 bx    r1                  ; 0811EB62
 
-Sub0811EB64:
+Return0811EB64:
 bx    lr                  ; 0811EB64
 .pool                     ; 0811EB66
 
@@ -28576,7 +28576,7 @@ ldr   r0,=Sub0811E98C+1   ; 0811EBE2
 str   r0,[r5,0x2C]        ; 0811EBE4
 ldr   r0,=Sub0811E9D8+1   ; 0811EBE6
 str   r0,[r5,0x30]        ; 0811EBE8
-ldr   r0,=Sub0811EB64+1   ; 0811EBEA
+ldr   r0,=Return0811EB64+1   ; 0811EBEA
 str   r0,[r5,0x34]        ; 0811EBEC
 ldrb  r0,[r5,0x4]         ; 0811EBEE
 add   r0,0x1              ; 0811EBF0
@@ -31759,7 +31759,7 @@ pop   {r0}                ; 081204E0
 bx    r0                  ; 081204E2
 .pool                     ; 081204E4
 
-Sub081204F0:
+Return081204F0:
 bx    lr                  ; 081204F0
 .pool                     ; 081204F2
 
@@ -35229,7 +35229,7 @@ ldr   r0,=Sub08121C4C+1   ; 0812205E
 str   r0,[r4,0x2C]        ; 08122060
 ldr   r0,=Sub08121C34+1   ; 08122062
 str   r0,[r4,0x30]        ; 08122064
-ldr   r0,=Sub081204F0+1   ; 08122066
+ldr   r0,=Return081204F0+1   ; 08122066
 str   r0,[r4,0x34]        ; 08122068
 ldrb  r0,[r4,0x4]         ; 0812206A
 add   r0,0x1              ; 0812206C
@@ -36727,7 +36727,7 @@ ldr   r0,=Sub08122A34+1   ; 08122C70
 str   r0,[r5,0x2C]        ; 08122C72
 ldr   r0,=Sub08122A6C+1   ; 08122C74
 str   r0,[r5,0x30]        ; 08122C76
-ldr   r0,=Sub081204F0+1   ; 08122C78
+ldr   r0,=Return081204F0+1   ; 08122C78
 str   r0,[r5,0x34]        ; 08122C7A
 ldrb  r0,[r5,0x4]         ; 08122C7C
 add   r0,0x1              ; 08122C7E
@@ -37845,7 +37845,7 @@ strb  r2,[r3,0xB]         ; 0812357A
 pop   {r0}                ; 0812357C
 bx    r0                  ; 0812357E
 
-Sub08123580:
+Return08123580:
 bx    lr                  ; 08123580
 .pool                     ; 08123582
 
@@ -39308,7 +39308,7 @@ ldr   r0,=Sub08123E88+1   ; 08124118
 str   r0,[r5,0x2C]        ; 0812411A
 ldr   r0,=Sub08123EE0+1   ; 0812411C
 str   r0,[r5,0x30]        ; 0812411E
-ldr   r0,=Sub081204F0+1   ; 08124120
+ldr   r0,=Return081204F0+1   ; 08124120
 str   r0,[r5,0x34]        ; 08124122
 ldr   r1,[r5,0x38]        ; 08124124
 mov   r0,0xFF             ; 08124126
@@ -39978,7 +39978,7 @@ add   r0,0x27             ; 08124668
 strb  r3,[r0]             ; 0812466A
 add   r0,0x1              ; 0812466C
 strb  r3,[r0]             ; 0812466E
-ldr   r0,=Sub081204F0+1   ; 08124670
+ldr   r0,=Return081204F0+1   ; 08124670
 str   r0,[r5,0x2C]        ; 08124672
 str   r0,[r5,0x30]        ; 08124674
 str   r0,[r5,0x34]        ; 08124676
@@ -49996,19 +49996,19 @@ pop   {r0}                ; 08129694
 bx    r0                  ; 08129696
 .pool                     ; 08129698
 
-Sub081296B8:
+Return081296B8:
 bx    lr                  ; 081296B8
 .pool                     ; 081296BA
 
-Sub081296BC:
+Return081296BC:
 bx    lr                  ; 081296BC
 .pool                     ; 081296BE
 
-Sub081296C0:
+Return081296C0:
 bx    lr                  ; 081296C0
 .pool                     ; 081296C2
 
-Sub081296C4:
+Return081296C4:
 bx    lr                  ; 081296C4
 .pool                     ; 081296C6
 
@@ -54516,7 +54516,7 @@ mov   r1,0x3              ; 0812BC1A
 strb  r1,[r0]             ; 0812BC1C
 add   r0,0x1              ; 0812BC1E
 strb  r1,[r0]             ; 0812BC20
-ldr   r0,=Sub081204F0+1   ; 0812BC22
+ldr   r0,=Return081204F0+1   ; 0812BC22
 str   r0,[r5,0x2C]        ; 0812BC24
 str   r0,[r5,0x30]        ; 0812BC26
 str   r0,[r5,0x34]        ; 0812BC28

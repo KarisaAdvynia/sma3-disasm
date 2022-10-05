@@ -13,7 +13,7 @@ Sub0812C230:
 push  {lr}                ; 0812C230
 bl    Sub0812C684         ; 0812C232
 bl    Sub0812C2FC         ; 0812C236
-bl    Sub0812CD8C         ; 0812C23A
+bl    Return0812CD8C         ; 0812C23A
 bl    Sub0812EEA8         ; 0812C23E
 pop   {r0}                ; 0812C242
 bx    r0                  ; 0812C244
@@ -1447,7 +1447,7 @@ pop   {r0}                ; 0812CD80
 bx    r0                  ; 0812CD82
 .pool                     ; 0812CD84
 
-Sub0812CD8C:
+Return0812CD8C:
 bx    lr                  ; 0812CD8C
 .pool                     ; 0812CD8E
 

@@ -313,63 +313,63 @@ pop   {r0}                ; 080E8384
 bx    r0                  ; 080E8386
 .pool                     ; 080E8388
 
-Sub080E838C:
+Return080E838C:
 bx    lr                  ; 080E838C
 .pool                     ; 080E838E
 
-Sub080E8390:
+Return080E8390:
 bx    lr                  ; 080E8390
 .pool                     ; 080E8392
 
-Sub080E8394:
+Return080E8394:
 bx    lr                  ; 080E8394
 .pool                     ; 080E8396
 
-Sub080E8398:
+Return080E8398:
 bx    lr                  ; 080E8398
 .pool                     ; 080E839A
 
-Sub080E839C:
+Return080E839C:
 bx    lr                  ; 080E839C
 .pool                     ; 080E839E
 
-Sub080E83A0:
+Return080E83A0:
 bx    lr                  ; 080E83A0
 .pool                     ; 080E83A2
 
-Sub080E83A4:
+Return080E83A4:
 bx    lr                  ; 080E83A4
 .pool                     ; 080E83A6
 
-Sub080E83A8:
+Return080E83A8:
 bx    lr                  ; 080E83A8
 .pool                     ; 080E83AA
 
-Sub080E83AC:
+Return080E83AC:
 bx    lr                  ; 080E83AC
 .pool                     ; 080E83AE
 
-Sub080E83B0:
+Return080E83B0:
 bx    lr                  ; 080E83B0
 .pool                     ; 080E83B2
 
-Sub080E83B4:
+Return080E83B4:
 bx    lr                  ; 080E83B4
 .pool                     ; 080E83B6
 
-Sub080E83B8:
+Return080E83B8:
 bx    lr                  ; 080E83B8
 .pool                     ; 080E83BA
 
-Sub080E83BC:
+Return080E83BC:
 bx    lr                  ; 080E83BC
 .pool                     ; 080E83BE
 
-Sub080E83C0:
+Return080E83C0:
 bx    lr                  ; 080E83C0
 .pool                     ; 080E83C2
 
-Sub080E83C4:
+Return080E83C4:
 bx    lr                  ; 080E83C4
 .pool                     ; 080E83C6
 

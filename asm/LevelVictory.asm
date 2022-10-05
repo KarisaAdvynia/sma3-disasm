@@ -877,7 +877,7 @@ pop   {r0}                ; 080E3D4C
 bx    r0                  ; 080E3D4E
 .pool                     ; 080E3D50
 
-Sub080E3D58:
+Return080E3D58:
 bx    lr                  ; 080E3D58
 .pool                     ; 080E3D5A
 
@@ -4273,7 +4273,7 @@ pop   {r0}                ; 080E5AAA
 bx    r0                  ; 080E5AAC
 .pool                     ; 080E5AAE
 
-Sub080E5AD0:
+Return080E5AD0:
 ; Goal/score substate 01-02
 bx    lr                  ; 080E5AD0
 .pool                     ; 080E5AD2

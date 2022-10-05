@@ -2786,11 +2786,11 @@ pop   {r0}                ; 080FA904
 bx    r0                  ; 080FA906
 .pool                     ; 080FA908
 
-Sub080FA924:
+Return080FA924:
 bx    lr                  ; 080FA924
 .pool                     ; 080FA926
 
-Sub080FA928:
+Return080FA928:
 bx    lr                  ; 080FA928
 .pool                     ; 080FA92A
 
@@ -2847,7 +2847,7 @@ pop   {r0}                ; 080FA98C
 bx    r0                  ; 080FA98E
 .pool                     ; 080FA990
 
-Sub080FA9AC:
+Return080FA9AC:
 bx    lr                  ; 080FA9AC
 .pool                     ; 080FA9AE
 

@@ -665,7 +665,7 @@ pop   {r0}                ; 080E289C
 bx    r0                  ; 080E289E
 .pool                     ; 080E28A0
 
-Sub080E28B4:
+Return080E28B4:
 bx    lr                  ; 080E28B4
 .pool                     ; 080E28B6
 
@@ -860,7 +860,7 @@ pop   {r0}                ; 080E2A6A
 bx    r0                  ; 080E2A6C
 .pool                     ; 080E2A6E
 
-Sub080E2A7C:
+GraphicsAnim00:
 ; runs if graphics animation ID is 00
 push  {lr}                ; 080E2A7C
 ldr   r3,=0x03002200      ; 080E2A7E
@@ -904,8 +904,7 @@ pop   {r0}                ; 080E2AC6
 bx    r0                  ; 080E2AC8
 .pool                     ; 080E2ACA
 
-Sub080E2AE8:
-; runs if graphics animation ID is 01
+GraphicsAnim01:
 ldr   r2,=0x03002200      ; 080E2AE8
 ldr   r1,=0x48A2          ; 080E2AEA
 add   r0,r2,r1            ; 080E2AEC  03006AA2
@@ -937,8 +936,8 @@ strh  r0,[r2]             ; 080E2B1E  set bytes to copy for slot 1
 bx    lr                  ; 080E2B20
 .pool                     ; 080E2B22
 
-Sub080E2B40:
-; runs if graphics animation ID is 02; called by 0B
+GraphicsAnim02:
+; also called by 0B
 push  {r4-r7,lr}          ; 080E2B40
 mov   r7,r8               ; 080E2B42
 push  {r7}                ; 080E2B44
@@ -1007,8 +1006,8 @@ pop   {r0}                ; 080E2BC0
 bx    r0                  ; 080E2BC2
 .pool                     ; 080E2BC4
 
-Sub080E2BEC:
-; runs if graphics animation ID is 03; called by 11
+GraphicsAnim03:
+; also called by 11
 ldr   r1,=0x03002200      ; 080E2BEC
 ldr   r2,=0x48A2          ; 080E2BEE
 add   r0,r1,r2            ; 080E2BF0  03006AA2
@@ -1039,7 +1038,7 @@ strh  r0,[r1]             ; 080E2C20  set bytes to copy for slot 1
 bx    lr                  ; 080E2C22
 .pool                     ; 080E2C24
 
-Sub080E2C40:
+Return080E2C40:
 ; runs if graphics animation ID is 04: return
 bx    lr                  ; 080E2C40
 .pool                     ; 080E2C42
@@ -1080,8 +1079,7 @@ pop   {r0}                ; 080E2C7C
 bx    r0                  ; 080E2C7E
 .pool                     ; 080E2C80
 
-Sub080E2C94:
-; runs if graphics animation ID is 05
+GraphicsAnim05:
 push  {lr}                ; 080E2C94
 mov   r1,r0               ; 080E2C96
 add   r1,0x92             ; 080E2C98
@@ -1107,8 +1105,7 @@ pop   {r0}                ; 080E2CBE
 bx    r0                  ; 080E2CC0
 .pool                     ; 080E2CC2
 
-Sub080E2CC8:
-; runs if graphics animation ID is 06
+GraphicsAnim06:
 push  {r4,lr}             ; 080E2CC8
 mov   r2,r0               ; 080E2CCA
 mov   r1,r2               ; 080E2CCC
@@ -1177,8 +1174,8 @@ pop   {r0}                ; 080E2D5C
 bx    r0                  ; 080E2D5E
 .pool                     ; 080E2D60
 
-Sub080E2D64:
-; runs if graphics animation ID is 07; called by 0D
+GraphicsAnim07:
+; also called by 0D
 push  {r4-r6,lr}          ; 080E2D64
 mov   r3,r0               ; 080E2D66
 mov   r2,r3               ; 080E2D68
@@ -1301,8 +1298,7 @@ pop   {r0}                ; 080E2E6C
 bx    r0                  ; 080E2E6E
 .pool                     ; 080E2E70
 
-Sub080E2E90:
-; runs if graphics animation ID is 08
+GraphicsAnim08:
 push  {r4-r6,lr}          ; 080E2E90
 mov   r2,r0               ; 080E2E92
 mov   r1,r2               ; 080E2E94
@@ -1374,8 +1370,7 @@ pop   {r0}                ; 080E2F14
 bx    r0                  ; 080E2F16
 .pool                     ; 080E2F18
 
-Sub080E2F40:
-; runs if graphics animation ID is 09
+GraphicsAnim09:
 push  {r4-r5,lr}          ; 080E2F40
 mov   r12,r0              ; 080E2F42
 mov   r1,r12              ; 080E2F44
@@ -1515,8 +1510,7 @@ pop   {r0}                ; 080E307C
 bx    r0                  ; 080E307E
 .pool                     ; 080E3080
 
-Sub080E3090:
-; runs if graphics animation ID is 0A
+GraphicsAnim0A:
 push  {lr}                ; 080E3090
 mov   r2,r0               ; 080E3092
 mov   r1,r2               ; 080E3094
@@ -1551,8 +1545,7 @@ pop   {r0}                ; 080E30CC
 bx    r0                  ; 080E30CE
 .pool                     ; 080E30D0
 
-Sub080E30D4:
-; runs if graphics animation ID is 0B
+GraphicsAnim0B:
 push  {r4,lr}             ; 080E30D4
 mov   r2,r0               ; 080E30D6
 ldr   r0,=0x03002200      ; 080E30D8
@@ -1564,7 +1557,7 @@ and   r0,r1               ; 080E30E2  frame parity
 cmp   r0,0x0              ; 080E30E4
 bne   @Code080E30F8       ; 080E30E6
 mov   r0,r2               ; 080E30E8 \ runs if frame counter is even
-bl    Sub080E2B40         ; 080E30EA  graphics animation 02
+bl    GraphicsAnim02      ; 080E30EA  graphics animation 02
 b     @Code080E3134       ; 080E30EE /
 .pool                     ; 080E30F0
 
@@ -1606,8 +1599,8 @@ pop   {r0}                ; 080E3136
 bx    r0                  ; 080E3138
 .pool                     ; 080E313A
 
-Sub080E3144:
-; runs if graphics animation ID is 0C; called by 0E,11
+GraphicsAnim0C:
+; also called by 0E,11
 push  {r4-r6,lr}          ; 080E3144
 mov   r3,r0               ; 080E3146
 mov   r4,r3               ; 080E3148
@@ -1725,8 +1718,7 @@ pop   {r0}                ; 080E3240
 bx    r0                  ; 080E3242
 .pool                     ; 080E3244
 
-Sub080E3268:
-; runs if graphics animation ID is 0D
+GraphicsAnim0D:
 push  {lr}                ; 080E3268
 mov   r2,r0               ; 080E326A
 mov   r1,r2               ; 080E326C
@@ -1758,14 +1750,13 @@ b     @Code080E32AA       ; 080E329C /
 
 @Code080E32A4:
 mov   r0,r2               ; 080E32A4
-bl    Sub080E2D64         ; 080E32A6  graphics animation 07
+bl    GraphicsAnim07      ; 080E32A6  graphics animation 07
 @Code080E32AA:
 pop   {r0}                ; 080E32AA
 bx    r0                  ; 080E32AC
 .pool                     ; 080E32AE
 
-Sub080E32B0:
-; runs if graphics animation ID is 0E
+GraphicsAnim0E:
 push  {lr}                ; 080E32B0
 mov   r2,r0               ; 080E32B2
 mov   r3,r2               ; 080E32B4
@@ -1800,14 +1791,13 @@ b     @Code080E32FE       ; 080E32EA /
 
 @Code080E32F8:
 mov   r0,r2               ; 080E32F8 \ runs if frame counter is odd
-bl    Sub080E3144         ; 080E32FA / graphics animation 0C
+bl    GraphicsAnim0C      ; 080E32FA / graphics animation 0C
 @Code080E32FE:
 pop   {r0}                ; 080E32FE
 bx    r0                  ; 080E3300
 .pool                     ; 080E3302
 
-Sub080E3304:
-; runs if graphics animation ID is 0F
+GraphicsAnim0F:
 push  {lr}                ; 080E3304
 mov   r2,r0               ; 080E3306
 mov   r3,r2               ; 080E3308
@@ -1845,8 +1835,7 @@ pop   {r0}                ; 080E3342
 bx    r0                  ; 080E3344
 .pool                     ; 080E3346
 
-Sub080E334C:
-; runs if graphics animation ID is 10
+GraphicsAnim10:
 push  {r4-r6,lr}          ; 080E334C
 add   r0,0x98             ; 080E334E  [03007240]+98 (030022A4)
 ldrh  r3,[r0]             ; 080E3350
@@ -1895,8 +1884,7 @@ pop   {r0}                ; 080E33A4
 bx    r0                  ; 080E33A6
 .pool                     ; 080E33A8
 
-Sub080E33D0:
-; runs if graphics animation ID is 11
+GraphicsAnim11:
 push  {lr}                ; 080E33D0
 mov   r2,r0               ; 080E33D2
 ldr   r0,=0x03002200      ; 080E33D4
@@ -1908,20 +1896,19 @@ and   r0,r1               ; 080E33DE
 cmp   r0,0x0              ; 080E33E0
 bne   @Code080E33F4       ; 080E33E2
 mov   r0,r2               ; 080E33E4
-bl    Sub080E2BEC         ; 080E33E6  graphics animation 03
+bl    GraphicsAnim03      ; 080E33E6  graphics animation 03
 b     @Code080E33FA       ; 080E33EA
 .pool                     ; 080E33EC
 
 @Code080E33F4:
 mov   r0,r2               ; 080E33F4
-bl    Sub080E3144         ; 080E33F6  graphics animation 0C
+bl    GraphicsAnim0C      ; 080E33F6  graphics animation 0C
 @Code080E33FA:
 pop   {r0}                ; 080E33FA
 bx    r0                  ; 080E33FC
 .pool                     ; 080E33FE
 
-Sub080E3400:
-; runs if graphics animation ID is 12
+GraphicsAnim12:
 push  {r4-r6,lr}          ; 080E3400
 mov   r2,r0               ; 080E3402
 mov   r1,r2               ; 080E3404
@@ -1994,8 +1981,8 @@ pop   {r0}                ; 080E3486
 bx    r0                  ; 080E3488
 .pool                     ; 080E348A
 
-Sub080E34B8:
-; Subroutine: Process graphics animations
+GraphicsAnimMain:
+; Process graphics animations
 ; Runs in sublevel load, and every frame in levels
 push  {r4-r5,lr}          ; 080E34B8
 add   sp,-0x4             ; 080E34BA
@@ -2023,7 +2010,7 @@ add   r1,0x98             ; 080E34E0  r1 = [03007240]+98 (030022A4)
 ldrh  r0,[r1]             ; 080E34E2
 add   r0,0x1              ; 080E34E4
 strh  r0,[r1]             ; 080E34E6  increment 030022A4
-ldr   r1,=CodePtrs08193608; 080E34E8  code pointer table
+ldr   r1,=GraphicsAnimPtrs; 080E34E8  code pointer table
 ldr   r0,=0x03007240      ; 080E34EA  Normal gameplay IWRAM (0300220C)
 ldr   r0,[r0]             ; 080E34EC
 ldr   r2,=0x29A4          ; 080E34EE
@@ -2081,7 +2068,7 @@ pop   {r0}                ; 080E354E
 bx    r0                  ; 080E3550
 .pool                     ; 080E3552
 
-Sub080E3584:
+GraphicsAnimInit:
 ; subroutine: Initialize graphics animations
 push  {r4-r7,lr}          ; 080E3584
 mov   r7,r9               ; 080E3586
@@ -2108,7 +2095,7 @@ ldrh  r0,[r7]             ; 080E35AA \ increment frame counter (03006AA2)
 add   r0,0x1              ; 080E35AC |  to process all frames of
 strh  r0,[r7]             ; 080E35AE /  each animation?
 mov   r0,r9               ; 080E35B0  r0 = [03007240] (0300220C)
-bl    Sub080E34B8         ; 080E35B2  process graphics animations
+bl    GraphicsAnimMain    ; 080E35B2  process graphics animations
 sub   r0,r6,0x1           ; 080E35B6 \ decrement r6
 lsl   r0,r0,0x10          ; 080E35B8 |
 lsr   r6,r0,0x10          ; 080E35BA /

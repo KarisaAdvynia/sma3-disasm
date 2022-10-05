@@ -1,3 +1,319 @@
+Sub0810D4D0:
+push  {r4-r7,lr}          ; 0810D4D0
+mov   r7,r8               ; 0810D4D2
+push  {r7}                ; 0810D4D4
+mov   r4,r0               ; 0810D4D6
+mov   r2,0x0              ; 0810D4D8
+mov   r0,0x7A             ; 0810D4DA
+add   r0,r0,r4            ; 0810D4DC
+mov   r12,r0              ; 0810D4DE
+mov   r3,0x0              ; 0810D4E0
+mov   r5,0x80             ; 0810D4E2
+lsl   r5,r5,0x1           ; 0810D4E4
+mov   r7,0x84             ; 0810D4E6
+add   r7,r7,r4            ; 0810D4E8
+mov   r8,r7               ; 0810D4EA
+mov   r6,r4               ; 0810D4EC
+add   r6,0x8E             ; 0810D4EE
+@Code0810D4F0:
+lsl   r1,r2,0x1           ; 0810D4F0
+mov   r7,r12              ; 0810D4F2
+add   r0,r7,r1            ; 0810D4F4
+strh  r3,[r0]             ; 0810D4F6
+mov   r7,r8               ; 0810D4F8
+add   r0,r7,r1            ; 0810D4FA
+strh  r3,[r0]             ; 0810D4FC
+add   r1,r6,r1            ; 0810D4FE
+strh  r3,[r1]             ; 0810D500
+lsl   r0,r2,0x3           ; 0810D502
+add   r0,r4,r0            ; 0810D504
+strh  r5,[r0]             ; 0810D506
+strh  r5,[r0,0x2]         ; 0810D508
+strh  r3,[r0,0x4]         ; 0810D50A
+add   r0,r2,0x1           ; 0810D50C
+lsl   r0,r0,0x10          ; 0810D50E
+lsr   r2,r0,0x10          ; 0810D510
+cmp   r2,0x4              ; 0810D512
+bls   @Code0810D4F0       ; 0810D514
+pop   {r3}                ; 0810D516
+mov   r8,r3               ; 0810D518
+pop   {r4-r7}             ; 0810D51A
+pop   {r0}                ; 0810D51C
+bx    r0                  ; 0810D51E
+
+ChooseAGameInit:
+; Game state 2F: Choose a game menu init
+push  {r4-r7,lr}          ; 0810D520
+mov   r7,r10              ; 0810D522
+mov   r6,r9               ; 0810D524
+mov   r5,r8               ; 0810D526
+push  {r5-r7}             ; 0810D528
+add   sp,-0x8             ; 0810D52A
+ldr   r5,=0x03002200      ; 0810D52C
+ldr   r0,=0x48F6          ; 0810D52E
+add   r1,r5,r0            ; 0810D530
+mov   r6,0x0              ; 0810D532
+mov   r0,0x5              ; 0810D534
+strb  r0,[r1]             ; 0810D536
+ldr   r2,=0x04000054      ; 0810D538
+mov   r0,0xF              ; 0810D53A
+ldr   r1,=0x03006AFA      ; 0810D53C
+strb  r0,[r1]             ; 0810D53E
+ldr   r3,=0x488C          ; 0810D540
+add   r1,r5,r3            ; 0810D542
+strh  r0,[r1]             ; 0810D544
+strh  r0,[r2]             ; 0810D546
+ldr   r1,=0x04000050      ; 0810D548
+mov   r0,0xFF             ; 0810D54A
+ldr   r2,=0x03006A88      ; 0810D54C
+strh  r0,[r2]             ; 0810D54E
+strh  r0,[r1]             ; 0810D550
+bl    Sub08002338         ; 0810D552
+ldr   r3,=0x47C6          ; 0810D556
+add   r1,r5,r3            ; 0810D558
+mov   r0,0xB8             ; 0810D55A
+lsl   r0,r0,0x5           ; 0810D55C
+strh  r0,[r1]             ; 0810D55E
+ldr   r0,=0x47C8          ; 0810D560
+add   r7,r5,r0            ; 0810D562
+ldr   r0,=0x1D01          ; 0810D564
+strh  r0,[r7]             ; 0810D566
+ldr   r0,=0x1E02          ; 0810D568
+ldr   r1,=0x030069CA      ; 0810D56A
+strh  r0,[r1]             ; 0810D56C
+ldr   r0,=0x1F03          ; 0810D56E
+ldr   r2,=0x030069CC      ; 0810D570
+strh  r0,[r2]             ; 0810D572
+add   r3,0xE              ; 0810D574
+add   r0,r5,r3            ; 0810D576
+strh  r6,[r0]             ; 0810D578
+ldr   r1,=0x47E4          ; 0810D57A
+add   r0,r5,r1            ; 0810D57C
+strh  r6,[r0]             ; 0810D57E
+ldr   r2,=0x47DC          ; 0810D580
+add   r0,r5,r2            ; 0810D582
+strh  r6,[r0]             ; 0810D584
+add   r3,0x18             ; 0810D586
+add   r0,r5,r3            ; 0810D588
+strh  r6,[r0]             ; 0810D58A
+sub   r1,0xE              ; 0810D58C
+add   r0,r5,r1            ; 0810D58E
+strh  r6,[r0]             ; 0810D590
+add   r2,0xA              ; 0810D592
+add   r0,r5,r2            ; 0810D594
+strh  r6,[r0]             ; 0810D596
+sub   r3,0xE              ; 0810D598
+add   r0,r5,r3            ; 0810D59A
+strh  r6,[r0]             ; 0810D59C
+add   r1,0x18             ; 0810D59E
+add   r0,r5,r1            ; 0810D5A0
+strh  r6,[r0]             ; 0810D5A2
+sub   r2,0xE              ; 0810D5A4
+add   r0,r5,r2            ; 0810D5A6
+strh  r6,[r0]             ; 0810D5A8
+add   r3,0xA              ; 0810D5AA
+add   r0,r5,r3            ; 0810D5AC
+strh  r6,[r0]             ; 0810D5AE
+sub   r1,0xE              ; 0810D5B0
+add   r0,r5,r1            ; 0810D5B2
+strh  r6,[r0]             ; 0810D5B4
+add   r2,0x18             ; 0810D5B6
+add   r0,r5,r2            ; 0810D5B8
+strh  r6,[r0]             ; 0810D5BA
+sub   r3,0xE              ; 0810D5BC
+add   r0,r5,r3            ; 0810D5BE
+strh  r6,[r0]             ; 0810D5C0
+add   r1,0xA              ; 0810D5C2
+add   r0,r5,r1            ; 0810D5C4
+strh  r6,[r0]             ; 0810D5C6
+sub   r2,0xE              ; 0810D5C8
+add   r0,r5,r2            ; 0810D5CA
+strh  r6,[r0]             ; 0810D5CC
+add   r3,0x18             ; 0810D5CE
+add   r0,r5,r3            ; 0810D5D0
+strh  r6,[r0]             ; 0810D5D2
+ldr   r0,=Data082DEFBC    ; 0810D5D4  Choose a game layer graphics
+mov   r1,0xC0             ; 0810D5D6
+lsl   r1,r1,0x13          ; 0810D5D8
+mov   r9,r1               ; 0810D5DA
+bl    swi_LZ77_VRAM       ; 0810D5DC  LZ77 decompress (VRAM)
+ldr   r4,=Data082E02FC    ; 0810D5E0  Choose a game sprite graphics
+ldr   r2,=0x06010000      ; 0810D5E2
+mov   r10,r2              ; 0810D5E4
+mov   r0,r4               ; 0810D5E6
+mov   r1,r10              ; 0810D5E8
+bl    swi_LZ77_VRAM       ; 0810D5EA  LZ77 decompress (VRAM)
+ldr   r3,=0x02011400      ; 0810D5EE
+mov   r8,r3               ; 0810D5F0
+mov   r0,r4               ; 0810D5F2
+mov   r1,r8               ; 0810D5F4
+bl    swi_LZ77_WRAM       ; 0810D5F6  LZ77 decompress (WRAM)
+ldr   r0,=Data082B2480    ; 0810D5FA  Pause menu/sleep mode menu graphics
+ldr   r1,=0x02015400      ; 0810D5FC
+bl    swi_LZ77_WRAM       ; 0810D5FE  LZ77 decompress (WRAM)
+ldr   r0,=Data082E27D4    ; 0810D602  Choose a game sleep mode text graphics
+ldr   r1,=0x02017400      ; 0810D604
+bl    swi_LZ77_WRAM       ; 0810D606  LZ77 decompress (WRAM)
+mov   r2,0x80             ; 0810D60A
+lsl   r2,r2,0x5           ; 0810D60C
+mov   r0,r8               ; 0810D60E
+mov   r1,r10              ; 0810D610
+bl    swi_MemoryCopy32    ; 0810D612  Memory copy/fill, 32-byte blocks
+ldr   r0,=Data082DFCB0    ; 0810D616  Choose a game layer 0 tilemap
+ldrh  r2,[r7]             ; 0810D618
+mov   r4,0xF8             ; 0810D61A
+lsl   r4,r4,0x5           ; 0810D61C
+mov   r1,r4               ; 0810D61E
+and   r1,r2               ; 0810D620
+lsl   r1,r1,0x3           ; 0810D622
+add   r1,r9               ; 0810D624
+bl    swi_LZ77_VRAM       ; 0810D626  LZ77 decompress (VRAM)
+ldr   r0,=Data082DFF44    ; 0810D62A  Choose a game layer 1 tilemap
+ldr   r1,=0x030069CA      ; 0810D62C
+ldrh  r2,[r1]             ; 0810D62E
+mov   r1,r4               ; 0810D630
+and   r1,r2               ; 0810D632
+lsl   r1,r1,0x3           ; 0810D634
+add   r1,r9               ; 0810D636
+bl    swi_LZ77_VRAM       ; 0810D638  LZ77 decompress (VRAM)
+ldr   r0,=Data082E00D8    ; 0810D63C  Choose a game layer 2 tilemap
+ldr   r2,=0x030069CC      ; 0810D63E
+ldrh  r1,[r2]             ; 0810D640
+and   r4,r1               ; 0810D642
+lsl   r4,r4,0x3           ; 0810D644
+add   r4,r9               ; 0810D646
+mov   r1,r4               ; 0810D648
+bl    swi_LZ77_VRAM       ; 0810D64A  LZ77 decompress (VRAM)
+str   r6,[sp]             ; 0810D64E
+ldr   r3,=0x02010400      ; 0810D650
+mov   r9,r3               ; 0810D652
+ldr   r0,=0x05000100      ; 0810D654
+mov   r8,r0               ; 0810D656
+mov   r0,sp               ; 0810D658
+mov   r1,r9               ; 0810D65A
+mov   r2,r8               ; 0810D65C
+bl    swi_MemoryCopy4or2  ; 0810D65E  Memory copy/fill, 4- or 2-byte blocks
+str   r6,[sp,0x4]         ; 0810D662
+add   r0,sp,0x4           ; 0810D664
+ldr   r4,=0x02010C00      ; 0810D666
+mov   r1,r4               ; 0810D668
+mov   r2,r8               ; 0810D66A
+bl    swi_MemoryCopy4or2  ; 0810D66C  Memory copy/fill, 4- or 2-byte blocks
+ldr   r0,=Data082DFC50    ; 0810D670  Choose a game layer palette (00-2F)
+mov   r1,r4               ; 0810D672
+mov   r2,0x30             ; 0810D674
+bl    swi_MemoryCopy4or2  ; 0810D676  Memory copy/fill, 4- or 2-byte blocks
+ldr   r0,=Data082E2E3C    ; 0810D67A  Choose a game sprite palette (100-1CF)
+ldr   r1,=0x02010E00      ; 0810D67C
+mov   r2,0xD0             ; 0810D67E
+bl    swi_MemoryCopy4or2  ; 0810D680  Memory copy/fill, 4- or 2-byte blocks
+mov   r1,0xA0             ; 0810D684
+lsl   r1,r1,0x13          ; 0810D686
+mov   r2,0x80             ; 0810D688
+lsl   r2,r2,0x2           ; 0810D68A
+mov   r0,r9               ; 0810D68C
+bl    swi_MemoryCopy4or2  ; 0810D68E  Memory copy/fill, 4- or 2-byte blocks
+mov   r1,0x90             ; 0810D692
+lsl   r1,r1,0x1           ; 0810D694  120
+mov   r0,r5               ; 0810D696
+bl    DynamicAllocate     ; 0810D698
+mov   r2,r0               ; 0810D69C
+ldr   r1,=0x4A50          ; 0810D69E
+add   r0,r5,r1            ; 0810D6A0
+str   r2,[r0]             ; 0810D6A2
+mov   r0,0x80             ; 0810D6A4
+str   r0,[r2,0x28]        ; 0810D6A6
+str   r6,[r2,0x34]        ; 0810D6A8
+str   r6,[r2,0x60]        ; 0810D6AA
+str   r6,[r2,0x64]        ; 0810D6AC
+mov   r0,r2               ; 0810D6AE
+add   r0,0xB2             ; 0810D6B0
+strh  r6,[r0]             ; 0810D6B2
+ldr   r3,=0x406C          ; 0810D6B4
+add   r0,r5,r3            ; 0810D6B6
+ldr   r0,[r0]             ; 0810D6B8
+str   r0,[r2,0x70]        ; 0810D6BA
+ldr   r1,=0x4070          ; 0810D6BC
+add   r0,r5,r1            ; 0810D6BE
+ldrb  r1,[r0]             ; 0810D6C0
+mov   r0,r2               ; 0810D6C2
+add   r0,0x74             ; 0810D6C4
+strh  r1,[r0]             ; 0810D6C6
+add   r0,0x36             ; 0810D6C8
+strh  r6,[r0]             ; 0810D6CA
+add   r0,0x2              ; 0810D6CC
+strh  r6,[r0]             ; 0810D6CE
+add   r0,0x10             ; 0810D6D0
+strh  r6,[r0]             ; 0810D6D2
+ldr   r3,=0x4A48          ; 0810D6D4
+add   r0,r5,r3            ; 0810D6D6
+ldrb  r0,[r0]             ; 0810D6D8
+lsl   r0,r0,0x1F          ; 0810D6DA
+lsr   r0,r0,0x1F          ; 0810D6DC
+mov   r1,r2               ; 0810D6DE
+add   r1,0xBE             ; 0810D6E0
+strh  r0,[r1]             ; 0810D6E2
+mov   r0,r2               ; 0810D6E4
+add   r0,0xC4             ; 0810D6E6
+strh  r6,[r0]             ; 0810D6E8
+str   r6,[r2,0x68]        ; 0810D6EA
+str   r6,[r2,0x6C]        ; 0810D6EC
+sub   r0,0x4E             ; 0810D6EE
+strh  r6,[r0]             ; 0810D6F0
+add   r0,0x2              ; 0810D6F2
+strh  r6,[r0]             ; 0810D6F4
+add   r0,0x36             ; 0810D6F6
+strh  r6,[r0]             ; 0810D6F8
+ldr   r1,=0x4076          ; 0810D6FA
+add   r0,r5,r1            ; 0810D6FC
+ldrh  r0,[r0]             ; 0810D6FE
+add   r0,0x1              ; 0810D700
+mov   r1,r2               ; 0810D702
+add   r1,0xCA             ; 0810D704
+strh  r0,[r1]             ; 0810D706
+mov   r0,r2               ; 0810D708
+bl    Sub0810D4D0         ; 0810D70A
+ldr   r2,=0x47C4          ; 0810D70E
+add   r1,r5,r2            ; 0810D710
+mov   r0,0x8              ; 0810D712
+strh  r0,[r1]             ; 0810D714
+ldr   r3,=0x47C2          ; 0810D716
+add   r1,r5,r3            ; 0810D718
+ldr   r0,=0x2001          ; 0810D71A
+strh  r0,[r1]             ; 0810D71C
+ldr   r1,=0x030021C0      ; 0810D71E
+ldr   r0,=Sub08002054+1   ; 0810D720
+str   r0,[r1,0x14]        ; 0810D722
+mov   r0,0x10             ; 0810D724
+ldr   r1,=0x03006AFA      ; 0810D726
+strb  r0,[r1]             ; 0810D728
+ldr   r0,=0x0442          ; 0810D72A
+ldr   r2,=0x03006A88      ; 0810D72C
+strh  r0,[r2]             ; 0810D72E
+add   r3,0xC8             ; 0810D730
+add   r1,r5,r3            ; 0810D732
+ldr   r0,=0x0A06          ; 0810D734
+strh  r0,[r1]             ; 0810D736
+mov   r0,0x1F             ; 0810D738
+mov   r1,0x0              ; 0810D73A
+bl    PlayYISound         ; 0810D73C
+mov   r0,0x2              ; 0810D740  02: Choose a game
+bl    Sub0812C3B4         ; 0810D742  Change music (YI)
+ldr   r0,=0x4905          ; 0810D746
+add   r5,r5,r0            ; 0810D748
+ldrb  r0,[r5]             ; 0810D74A
+add   r0,0x1              ; 0810D74C
+strb  r0,[r5]             ; 0810D74E
+add   sp,0x8              ; 0810D750
+pop   {r3-r5}             ; 0810D752
+mov   r8,r3               ; 0810D754
+mov   r9,r4               ; 0810D756
+mov   r10,r5              ; 0810D758
+pop   {r4-r7}             ; 0810D75A
+pop   {r0}                ; 0810D75C
+bx    r0                  ; 0810D75E
+.pool                     ; 0810D760
+
 Sub0810D818:
 push  {r4-r7,lr}          ; 0810D818
 mov   r7,r10              ; 0810D81A

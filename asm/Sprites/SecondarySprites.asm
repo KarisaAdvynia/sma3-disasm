@@ -133,7 +133,7 @@ pop   {r0}                ; 08047A2E
 bx    r0                  ; 08047A30
 .pool                     ; 08047A32
 
-Sub08047A5C:
+Return08047A5C:
 ; secondary sprite 209 main
 bx    lr                  ; 08047A5C
 .pool                     ; 08047A5E

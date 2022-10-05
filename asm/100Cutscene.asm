@@ -2073,7 +2073,7 @@ pop   {r0}                ; 080F7BA0
 bx    r0                  ; 080F7BA2
 .pool                     ; 080F7BA4
 
-Sub080F7C14:
+Return080F7C14:
 bx    lr                  ; 080F7C14
 .pool                     ; 080F7C16
 
@@ -3077,7 +3077,7 @@ pop   {r0}                ; 080F84AC
 bx    r0                  ; 080F84AE
 .pool                     ; 080F84B0
 
-Sub080F84B4:
+Return080F84B4:
 bx    lr                  ; 080F84B4
 .pool                     ; 080F84B6
 

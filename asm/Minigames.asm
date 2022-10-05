@@ -1035,19 +1035,19 @@ pop   {r0}                ; 080EA0E2
 bx    r0                  ; 080EA0E4
 .pool                     ; 080EA0E6
 
-Sub080EA0F0:
+Return080EA0F0:
 bx    lr                  ; 080EA0F0
 .pool                     ; 080EA0F2
 
-Sub080EA0F4:
+Return080EA0F4:
 bx    lr                  ; 080EA0F4
 .pool                     ; 080EA0F6
 
-Sub080EA0F8:
+Return080EA0F8:
 bx    lr                  ; 080EA0F8
 .pool                     ; 080EA0FA
 
-Sub080EA0FC:
+Return080EA0FC:
 bx    lr                  ; 080EA0FC
 .pool                     ; 080EA0FE
 
@@ -1564,7 +1564,7 @@ pop   {r0}                ; 080EA5B6
 bx    r0                  ; 080EA5B8
 .pool                     ; 080EA5BA
 
-Sub080EA5C4:
+Return080EA5C4:
 bx    lr                  ; 080EA5C4
 .pool                     ; 080EA5C6
 
@@ -1601,7 +1601,7 @@ bl    Sub080E9DC8         ; 080EA5FE
 ldrh  r0,[r5]             ; 080EA602
 cmp   r0,0x0              ; 080EA604
 bne   @Code080EA60C       ; 080EA606
-bl    Sub080EA5C4         ; 080EA608
+bl    Return080EA5C4         ; 080EA608
 @Code080EA60C:
 ldr   r0,=0x03007240      ; 080EA60C  Normal gameplay IWRAM (0300220C)
 ldr   r0,[r0]             ; 080EA60E
@@ -1736,19 +1736,19 @@ pop   {r0}                ; 080EA746
 bx    r0                  ; 080EA748
 .pool                     ; 080EA74A
 
-Sub080EA7C8:
+Return080EA7C8:
 bx    lr                  ; 080EA7C8
 .pool                     ; 080EA7CA
 
-Sub080EA7CC:
+Return080EA7CC:
 bx    lr                  ; 080EA7CC
 .pool                     ; 080EA7CE
 
-Sub080EA7D0:
+Return080EA7D0:
 bx    lr                  ; 080EA7D0
 .pool                     ; 080EA7D2
 
-Sub080EA7D4:
+Return080EA7D4:
 bx    lr                  ; 080EA7D4
 .pool                     ; 080EA7D6
 
@@ -2291,7 +2291,7 @@ bx    r0                  ; 080EAD28
 bx    lr                  ; 080EAD3C
 .pool                     ; 080EAD3E
 
-Sub080EAD40:
+Return080EAD40:
 bx    lr                  ; 080EAD40
 .pool                     ; 080EAD42
 
@@ -7077,7 +7077,7 @@ pop   {r0}                ; 080ED692
 bx    r0                  ; 080ED694
 .pool                     ; 080ED696
 
-Sub080ED6A0:
+Return080ED6A0:
 bx    lr                  ; 080ED6A0
 .pool                     ; 080ED6A2
 
@@ -13066,7 +13066,7 @@ pop   {r4}                ; 080F0C3A
 pop   {r0}                ; 080F0C3C
 bx    r0                  ; 080F0C3E
 
-Sub080F0C40:
+Return080F0C40:
 bx    lr                  ; 080F0C40
 .pool                     ; 080F0C42
 
