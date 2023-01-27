@@ -173,14 +173,15 @@ ldrh  r0,[r2]             ; 080E23FA
 cmp   r0,0x6C             ; 080E23FC  6C (10.8)
 bhi   @Code080E24A4       ; 080E23FE
 ldr   r0,=0x29B4          ; 080E2400
-add   r1,r4,r0            ; 080E2402
-ldrh  r0,[r1]             ; 080E2404
-add   r0,0x1              ; 080E2406
-strh  r0,[r1]             ; 080E2408
+add   r1,r4,r0            ; 080E2402  [03007240]+29B4 (03004BC0)
+ldrh  r0,[r1]             ; 080E2404 \
+add   r0,0x1              ; 080E2406 | increment star recovery timer
+strh  r0,[r1]             ; 080E2408 /
 lsl   r0,r0,0x10          ; 080E240A
 lsr   r0,r0,0x10          ; 080E240C
 cmp   r0,0x8              ; 080E240E
 bls   @Code080E24A4       ; 080E2410
+                          ;           runs every 0xA frames
 strh  r3,[r1]             ; 080E2412
 ldrh  r1,[r7,0x4]         ; 080E2414
 ldrh  r0,[r7,0x6]         ; 080E2416
@@ -188,7 +189,7 @@ orr   r0,r1               ; 080E2418
 cmp   r0,0x0              ; 080E241A
 bne   @Code080E2424       ; 080E241C
 ldrh  r0,[r2]             ; 080E241E \
-add   r0,0x1              ; 080E2420  if stars <= 10.8, increment stars
+add   r0,0x1              ; 080E2420 | if stars <= 10.8, increment stars
 strh  r0,[r2]             ; 080E2422 /
 @Code080E2424:
 ldrh  r0,[r2]             ; 080E2424
@@ -217,23 +218,24 @@ cmp   r0,0x0              ; 080E2460
 bne   @Code080E254C       ; 080E2462
 ldr   r0,=0x03002200      ; 080E2464
 ldr   r1,=0x48CE          ; 080E2466
-add   r2,r0,r1            ; 080E2468
-ldrh  r0,[r2]             ; 080E246A
+add   r2,r0,r1            ; 080E2468  03006ACE
+ldrh  r0,[r2]             ; 080E246A  stars (fixed-point)
 cmp   r0,0x0              ; 080E246C
 beq   @Code080E254C       ; 080E246E
 ldr   r0,=0x29B2          ; 080E2470
-add   r1,r4,r0            ; 080E2472
-ldrh  r0,[r1]             ; 080E2474
-add   r0,0x1              ; 080E2476
-strh  r0,[r1]             ; 080E2478
+add   r1,r4,r0            ; 080E2472  [03007240]+29B2 (03004BBE)
+ldrh  r0,[r1]             ; 080E2474 \
+add   r0,0x1              ; 080E2476 | increase star countdown timer
+strh  r0,[r1]             ; 080E2478 /
 lsl   r0,r0,0x10          ; 080E247A
 lsr   r0,r0,0x10          ; 080E247C
 cmp   r0,0x5              ; 080E247E
 bls   @Code080E24A4       ; 080E2480
+                          ;           runs every 6 frames
 strh  r3,[r1]             ; 080E2482
-ldrh  r0,[r2]             ; 080E2484
-sub   r0,0x1              ; 080E2486
-strh  r0,[r2]             ; 080E2488
+ldrh  r0,[r2]             ; 080E2484 \
+sub   r0,0x1              ; 080E2486 | decrement stars
+strh  r0,[r2]             ; 080E2488 /
 lsl   r0,r0,0x10          ; 080E248A
 lsr   r0,r0,0x10          ; 080E248C
 cmp   r0,0x59             ; 080E248E

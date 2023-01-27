@@ -237,7 +237,7 @@ mov   r0,0x1              ; 0801D42A
 and   r0,r2               ; 0801D42C
 cmp   r0,0x0              ; 0801D42E
 beq   @Code0801D446       ; 0801D430
-bl    Sub08019C28         ; 0801D432  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801D432  Generate pseudo-random byte
 mov   r1,0x2              ; 0801D436
 and   r1,r0               ; 0801D438
 cmp   r1,0x0              ; 0801D43A
@@ -426,7 +426,7 @@ lsl   r0,r0,0x7           ; 0801D5B6  7900
 cmp   r3,r0               ; 0801D5B8
 bne   @Code0801D5D0       ; 0801D5BA
                           ;          \ runs if tile at x-1's high byte is 79
-bl    Sub08019C28         ; 0801D5BC  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801D5BC  Generate pseudo-random byte
 mov   r1,0x6              ; 0801D5C0
 ldr   r2,=Data081C1850    ; 0801D5C2
 and   r1,r0               ; 0801D5C4
@@ -570,7 +570,7 @@ cmp   r3,r0               ; 0801D6EC
 bne   @Code0801D704       ; 0801D6EE
 
                           ;          \ runs if tile at x+1's high byte is 79
-bl    Sub08019C28         ; 0801D6F0  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801D6F0  Generate pseudo-random byte
 mov   r1,0x6              ; 0801D6F4
 ldr   r2,=Data081C1850    ; 0801D6F6
 and   r1,r0               ; 0801D6F8
@@ -835,7 +835,7 @@ add   r0,0x50             ; 0801D8DE
 ldrh  r0,[r0]             ; 0801D8E0
 cmp   r0,0x0              ; 0801D8E2
 bne   @Code0801D8F2       ; 0801D8E4
-bl    Sub08019C28         ; 0801D8E6  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801D8E6  Generate pseudo-random byte
 mov   r1,0x7              ; 0801D8EA
 and   r1,r0               ; 0801D8EC
 lsl   r1,r1,0x1           ; 0801D8EE
@@ -878,7 +878,7 @@ add   r0,0x50             ; 0801D930
 ldrh  r1,[r0]             ; 0801D932
 cmp   r1,0x0              ; 0801D934
 bne   @Code0801D944       ; 0801D936
-bl    Sub08019C28         ; 0801D938  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801D938  Generate pseudo-random byte
 mov   r1,0x7              ; 0801D93C
 and   r1,r0               ; 0801D93E
 lsl   r1,r1,0x1           ; 0801D940
@@ -955,7 +955,7 @@ add   r0,0x50             ; 0801D9C4
 ldrh  r1,[r0]             ; 0801D9C6
 cmp   r1,0x0              ; 0801D9C8
 bne   @Code0801DA04       ; 0801D9CA
-bl    Sub08019C28         ; 0801D9CC  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801D9CC  Generate pseudo-random byte
 mov   r1,0x7              ; 0801D9D0
 and   r1,r0               ; 0801D9D2
 lsl   r1,r1,0x1           ; 0801D9D4
@@ -1006,7 +1006,7 @@ ldrh  r0,[r0]             ; 0801DA28  r0 = relative Y
 cmp   r0,0x0              ; 0801DA2A
 bne   @Code0801DA3E       ; 0801DA2C
                           ;          \ runs if relative Y is 0
-bl    Sub08019C28         ; 0801DA2E  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801DA2E  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 0801DA32
 mov   r1,0xE0             ; 0801DA34
 lsl   r1,r1,0xB           ; 0801DA36  r1 = 70000
@@ -1054,7 +1054,7 @@ ldrh  r0,[r0]             ; 0801DA80  r0 = relative Y
 cmp   r0,0x0              ; 0801DA82
 bne   @Code0801DA96       ; 0801DA84
                           ;          \ runs if relative Y is 0
-bl    Sub08019C28         ; 0801DA86  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801DA86  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 0801DA8A
 mov   r1,0xE0             ; 0801DA8C
 lsl   r1,r1,0xB           ; 0801DA8E  r1 = 70000
@@ -1139,7 +1139,7 @@ cmp   r1,0x0              ; 0801DB1C
 bne   @Code0801DB58       ; 0801DB1E
 
                           ;          \ runs if even X parity and relY == 0
-bl    Sub08019C28         ; 0801DB20  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801DB20  Generate pseudo-random byte
 mov   r1,0x7              ; 0801DB24
 and   r1,r0               ; 0801DB26
 lsl   r1,r1,0x1           ; 0801DB28
@@ -1188,7 +1188,7 @@ push  {r4-r5,lr}          ; 0801DB70
 mov   r5,r0               ; 0801DB72
 lsl   r4,r1,0x10          ; 0801DB74
 lsr   r4,r4,0x10          ; 0801DB76  r4 = 2*(relY-3)
-bl    Sub08019C28         ; 0801DB78  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801DB78  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 0801DB7C
 mov   r1,0xF0             ; 0801DB7E
 lsl   r1,r1,0xC           ; 0801DB80  r1 = F0000
@@ -1239,7 +1239,7 @@ bne   @Code0801DBE4       ; 0801DBD2
 cmp   r2,0x0              ; 0801DBD4
 bne   @Code0801DBE4       ; 0801DBD6
                           ;          \ runs if relY is 0 and relX is even
-bl    Sub08019C28         ; 0801DBD8  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801DBD8  Generate pseudo-random byte
 mov   r1,0xF              ; 0801DBDC
 and   r1,r0               ; 0801DBDE
 lsl   r1,r1,0x1           ; 0801DBE0
@@ -1981,7 +1981,7 @@ sub   r0,0x10             ; 0801E164  +40
 ldrh  r2,[r0]             ; 0801E166  pre-existing tile
 cmp   r2,0x0              ; 0801E168
 bne   @Code0801E1C0       ; 0801E16A  if pre-existing tile is nonzero, return
-bl    Sub08019C28         ; 0801E16C  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801E16C  Generate pseudo-random byte
 mov   r1,0x6              ; 0801E170
 ldr   r2,=Data081C142E    ; 0801E172
 and   r1,r0               ; 0801E174  random 2-bit value <<1
@@ -2244,7 +2244,7 @@ b     @Code0801E43A       ; 0801E394
 .pool                     ; 0801E396
 
 @Code0801E39C:
-bl    Sub08019C28         ; 0801E39C  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801E39C  Generate pseudo-random byte
 mov   r1,0x7              ; 0801E3A0
 mov   r3,r1               ; 0801E3A2
 and   r3,r0               ; 0801E3A4
@@ -2476,7 +2476,7 @@ bls   @Code0801E580       ; 0801E594
 ldrh  r2,[r4,0x3A]        ; 0801E596
 cmp   r2,0x0              ; 0801E598
 bne   @Code0801E618       ; 0801E59A
-bl    Sub08019C28         ; 0801E59C  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801E59C  Generate pseudo-random byte
 mov   r1,0x7              ; 0801E5A0
 mov   r3,r1               ; 0801E5A2
 and   r3,r0               ; 0801E5A4
@@ -2712,7 +2712,7 @@ bls   @Code0801E78C       ; 0801E7A0
 ldrh  r2,[r4,0x3A]        ; 0801E7A2
 cmp   r2,0x0              ; 0801E7A4
 bne   @Code0801E828       ; 0801E7A6
-bl    Sub08019C28         ; 0801E7A8  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801E7A8  Generate pseudo-random byte
 mov   r1,0x7              ; 0801E7AC
 mov   r3,r1               ; 0801E7AE
 and   r3,r0               ; 0801E7B0
@@ -2946,7 +2946,7 @@ bls   @Code0801E994       ; 0801E9A8
 ldrh  r2,[r4,0x3A]        ; 0801E9AA
 cmp   r2,0x0              ; 0801E9AC
 bne   @Code0801EA30       ; 0801E9AE
-bl    Sub08019C28         ; 0801E9B0  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801E9B0  Generate pseudo-random byte
 mov   r1,0x7              ; 0801E9B4
 mov   r3,r1               ; 0801E9B6
 and   r3,r0               ; 0801E9B8
@@ -8765,7 +8765,7 @@ ldrh  r0,[r0]             ; 080215B4  height
 cmp   r2,r0               ; 080215B6
 beq   @Code080215C6       ; 080215B8
                           ;          \ runs if not final Y
-bl    Sub08019C28         ; 080215BA  Generate pseudo-random byte
+bl    GenRandomByte       ; 080215BA  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 080215BE
 lsr   r3,r0,0x10          ; 080215C0
 mov   r0,0x1              ; 080215C2
@@ -9054,7 +9054,7 @@ add   r0,0x50             ; 080217D0
 ldrh  r3,[r0]             ; 080217D2
 cmp   r3,0x0              ; 080217D4
 beq   @Code08021818       ; 080217D6
-bl    Sub08019C28         ; 080217D8  Generate pseudo-random byte
+bl    GenRandomByte       ; 080217D8  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 080217DC
 mov   r1,0xC0             ; 080217DE
 lsl   r1,r1,0xA           ; 080217E0
@@ -9169,7 +9169,7 @@ add   r0,0x50             ; 080218CA
 ldrh  r3,[r0]             ; 080218CC
 cmp   r3,0x0              ; 080218CE
 beq   @Code08021918       ; 080218D0
-bl    Sub08019C28         ; 080218D2  Generate pseudo-random byte
+bl    GenRandomByte       ; 080218D2  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 080218D6
 mov   r1,0xC0             ; 080218D8
 lsl   r1,r1,0xA           ; 080218DA
@@ -11551,7 +11551,7 @@ Sub08022B8C:
 ; object 6F code if not last Y
 push  {r4,lr}             ; 08022B8C
 mov   r4,r0               ; 08022B8E
-bl    Sub08019C28         ; 08022B90  Generate pseudo-random byte
+bl    GenRandomByte       ; 08022B90  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 08022B94
 mov   r1,0xC0             ; 08022B96
 lsl   r1,r1,0xA           ; 08022B98  30000
@@ -11645,7 +11645,7 @@ Sub08022C44:
 ; object 6E/8B main
 push  {r4,lr}             ; 08022C44
 mov   r4,r0               ; 08022C46
-bl    Sub08019C28         ; 08022C48  Generate pseudo-random byte
+bl    GenRandomByte       ; 08022C48  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 08022C4C
 mov   r1,0xE0             ; 08022C4E
 lsl   r1,r1,0xB           ; 08022C50  70000
@@ -12361,7 +12361,7 @@ Sub08023238:
 ; object 67 in flower tileset
 push  {r4,lr}             ; 08023238
 mov   r4,r0               ; 0802323A
-bl    Sub08019C28         ; 0802323C  Generate pseudo-random byte
+bl    GenRandomByte       ; 0802323C  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 08023240
 mov   r1,0xFC             ; 08023242
 lsl   r1,r1,0xE           ; 08023244  3F0000
@@ -16584,7 +16584,7 @@ add   r1,r1,r0            ; 0802537C
 strh  r2,[r1]             ; 0802537E
 cmp   r3,0x0              ; 08025380
 bne   @Code080253A4       ; 08025382
-bl    Sub08019C28         ; 08025384  Generate pseudo-random byte
+bl    GenRandomByte       ; 08025384  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 08025388
 mov   r1,0xE0             ; 0802538A
 lsl   r1,r1,0xC           ; 0802538C
@@ -16601,7 +16601,7 @@ mov   r2,0x31             ; 080253A4
 b     @Code080253C2       ; 080253A6
 @Code080253A8:
                           ;          \ runs if relY is 0 and tile is not 00C2/C4/C5
-bl    Sub08019C28         ; 080253A8  Generate pseudo-random byte
+bl    GenRandomByte       ; 080253A8  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 080253AC
 mov   r1,0xE0             ; 080253AE
 lsl   r1,r1,0xC           ; 080253B0  E0000
@@ -17491,7 +17491,7 @@ add   r0,0x50             ; 08025AD4
 ldrh  r2,[r0]             ; 08025AD6
 cmp   r2,0x1              ; 08025AD8
 bne   @Code08025AF8       ; 08025ADA
-bl    Sub08019C28         ; 08025ADC  Generate pseudo-random byte
+bl    GenRandomByte       ; 08025ADC  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 08025AE0
 mov   r1,0xC0             ; 08025AE2
 lsl   r1,r1,0xB           ; 08025AE4
@@ -18130,7 +18130,7 @@ bx    r0                  ; 08025F9A
 Sub08025F9C:
 push  {r4,lr}             ; 08025F9C
 mov   r4,r0               ; 08025F9E
-bl    Sub08019C28         ; 08025FA0  Generate pseudo-random byte
+bl    GenRandomByte       ; 08025FA0  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 08025FA4
 mov   r1,0xE0             ; 08025FA6
 lsl   r1,r1,0xB           ; 08025FA8  70000
@@ -19355,7 +19355,7 @@ add   r5,0x42             ; 080269C2
 cmp   r6,0x0              ; 080269C4
 bne   @Code080269D8       ; 080269C6
                           ;           \ runs if relY is 0, X even
-bl    Sub08019C28         ; 080269C8  Generate pseudo-random byte
+bl    GenRandomByte       ; 080269C8  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 080269CC
 mov   r1,0xC0             ; 080269CE
 lsl   r1,r1,0xB           ; 080269D0  60000
@@ -19421,7 +19421,7 @@ b     @Code08026AA0       ; 08026A3E
 .pool                     ; 08026A40
 
 @Code08026A44:
-bl    Sub08019C28         ; 08026A44  Generate pseudo-random byte
+bl    GenRandomByte       ; 08026A44  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 08026A48
 mov   r1,0xC0             ; 08026A4A
 lsl   r1,r1,0xB           ; 08026A4C  60000
@@ -19496,7 +19496,7 @@ ldrh  r0,[r5]             ; 08026AC4  relative Y
 cmp   r0,0x0              ; 08026AC6
 bne   @Code08026ADA       ; 08026AC8
                           ;          \ runs if relY is 0
-bl    Sub08019C28         ; 08026ACA  Generate pseudo-random byte
+bl    GenRandomByte       ; 08026ACA  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 08026ACE
 mov   r1,0xF0             ; 08026AD0
 lsl   r1,r1,0xD           ; 08026AD2  1E0000
@@ -19583,7 +19583,7 @@ add   r0,0x4E             ; 08026B70
 ldrh  r0,[r0]             ; 08026B72
 cmp   r2,r0               ; 08026B74
 beq   @Code08026BC4       ; 08026B76
-bl    Sub08019C28         ; 08026B78  Generate pseudo-random byte
+bl    GenRandomByte       ; 08026B78  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 08026B7C
 mov   r1,0xC0             ; 08026B7E
 lsl   r1,r1,0xA           ; 08026B80
@@ -19608,7 +19608,7 @@ add   r0,0x4E             ; 08026BAA
 ldrh  r0,[r0]             ; 08026BAC
 cmp   r2,r0               ; 08026BAE
 beq   @Code08026BC4       ; 08026BB0
-bl    Sub08019C28         ; 08026BB2  Generate pseudo-random byte
+bl    GenRandomByte       ; 08026BB2  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 08026BB6
 mov   r1,0xC0             ; 08026BB8
 lsl   r1,r1,0xA           ; 08026BBA
@@ -19706,7 +19706,7 @@ bx    r1                  ; 08026C7C
 Sub08026C90:
 push  {r4,lr}             ; 08026C90
 mov   r4,r0               ; 08026C92
-bl    Sub08019C28         ; 08026C94  Generate pseudo-random byte
+bl    GenRandomByte       ; 08026C94  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 08026C98
 mov   r1,0xE0             ; 08026C9A
 lsl   r1,r1,0xB           ; 08026C9C
@@ -19767,7 +19767,7 @@ add   r1,0x4E             ; 08026D02
 ldrh  r1,[r1]             ; 08026D04
 cmp   r0,r1               ; 08026D06
 beq   @Code08026D1C       ; 08026D08
-bl    Sub08019C28         ; 08026D0A  Generate pseudo-random byte
+bl    GenRandomByte       ; 08026D0A  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 08026D0E
 lsr   r2,r0,0x10          ; 08026D10
 mov   r0,0x1              ; 08026D12
@@ -19797,7 +19797,7 @@ add   r1,0x4E             ; 08026D42
 ldrh  r1,[r1]             ; 08026D44
 cmp   r0,r1               ; 08026D46
 beq   @Code08026D5C       ; 08026D48
-bl    Sub08019C28         ; 08026D4A  Generate pseudo-random byte
+bl    GenRandomByte       ; 08026D4A  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 08026D4E
 mov   r1,0xC0             ; 08026D50
 lsl   r1,r1,0xA           ; 08026D52
@@ -19962,7 +19962,7 @@ b     @Code08026F06       ; 08026E7A
 
 @Code08026E84:
 mov   r4,0x1              ; 08026E84
-bl    Sub08019C28         ; 08026E86  Generate pseudo-random byte
+bl    GenRandomByte       ; 08026E86  Generate pseudo-random byte
 and   r4,r0               ; 08026E8A
 mov   r0,r6               ; 08026E8C
 add   r0,0x50             ; 08026E8E
@@ -20218,7 +20218,7 @@ add   r1,0x52             ; 0802708A
 ldrh  r1,[r1]             ; 0802708C
 cmp   r0,r1               ; 0802708E
 beq   @Code080270F2       ; 08027090
-bl    Sub08019C28         ; 08027092  Generate pseudo-random byte
+bl    GenRandomByte       ; 08027092  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 08027096
 mov   r1,0xE0             ; 08027098
 lsl   r1,r1,0xB           ; 0802709A
@@ -20313,7 +20313,7 @@ b     @Code080271AE       ; 0802713A  set tile and return
 cmp   r3,0x3              ; 08027140  if relY+1 == 2...
 beq   @Code08027164       ; 08027142
                           ;          \ runs if 3 <= relY < height-1
-bl    Sub08019C28         ; 08027144  Generate pseudo-random byte
+bl    GenRandomByte       ; 08027144  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 08027148
 lsr   r3,r0,0x10          ; 0802714A
 mov   r0,0x2              ; 0802714C
@@ -20545,7 +20545,7 @@ lsr   r3,r0,0x10          ; 08027316  height-relY-1
 cmp   r3,0x1              ; 08027318
 bls   @Code08027398       ; 0802731A  if relY >= height-2, return
 
-bl    Sub08019C28         ; 0802731C  Generate pseudo-random byte
+bl    GenRandomByte       ; 0802731C  Generate pseudo-random byte
 mov   r1,0x2              ; 08027320
 and   r1,r0               ; 08027322  random 0,2
 cmp   r1,0x0              ; 08027324
@@ -20653,7 +20653,7 @@ ldrh  r3,[r0]             ; 080273F4  relative X
 cmp   r3,0x0              ; 080273F6
 bne   @Code08027414       ; 080273F8
                           ;          \ runs if relY != 0 and relX is 0
-bl    Sub08019C28         ; 080273FA  Generate pseudo-random byte
+bl    GenRandomByte       ; 080273FA  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 080273FE
 mov   r1,0xC0             ; 08027400
 lsl   r1,r1,0xB           ; 08027402  60000
@@ -20765,7 +20765,7 @@ mov   r6,r0               ; 080274C2
 cmp   r1,0x0              ; 080274C4
 bne   @Code080274D6       ; 080274C6 /
                           ;          \ runs if relX is even and relY is 0
-bl    Sub08019C28         ; 080274C8  Generate pseudo-random byte
+bl    GenRandomByte       ; 080274C8  Generate pseudo-random byte
 mov   r1,0x2              ; 080274CC
 and   r1,r0               ; 080274CE  random 0,2
 lsl   r1,r1,0x10          ; 080274D0
@@ -20945,7 +20945,7 @@ b     @Code080276C0       ; 08027622 / set tile and return
 
 @Code0802762C:
                           ;          \ runs if relY <= 2 and (relX != 0 or overlap not detected)
-bl    Sub08019C28         ; 0802762C  Generate pseudo-random byte
+bl    GenRandomByte       ; 0802762C  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 08027630
 lsr   r6,r0,0x10          ; 08027632
 mov   r1,0x1              ; 08027634
@@ -21002,7 +21002,7 @@ b     @Code080276D2       ; 0802769C / return
 
 @Code080276A4:
                           ;          \ runs if relY > 2, or relY == 2 and middle X or overlap not detected
-bl    Sub08019C28         ; 080276A4  Generate pseudo-random byte
+bl    GenRandomByte       ; 080276A4  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 080276A8
 lsr   r0,r0,0x10          ; 080276AA
 ldrh  r4,[r4]             ; 080276AC  relative Y
@@ -21111,7 +21111,7 @@ b     @Code0802780C       ; 08027776 / set tile and return
 
 @Code08027780:
                           ;          \ runs if relY <= 2 and (relX != 0 or overlap not detected)
-bl    Sub08019C28         ; 08027780  Generate pseudo-random byte
+bl    GenRandomByte       ; 08027780  Generate pseudo-random byte
 mov   r2,0x1              ; 08027784
 mov   r4,r6               ; 08027786
 add   r4,0x50             ; 08027788
@@ -21165,7 +21165,7 @@ b     @Code0802781E       ; 080277E8 / return
 
 @Code080277F0:
                           ;          \ runs if relY > 2, or relY == 2 and middle X or overlap not detected
-bl    Sub08019C28         ; 080277F0  Generate pseudo-random byte
+bl    GenRandomByte       ; 080277F0  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 080277F4
 lsr   r0,r0,0x10          ; 080277F6
 ldrh  r4,[r4]             ; 080277F8  relative Y
@@ -21405,7 +21405,7 @@ b     @Code08027A78       ; 080279F2 /
 cmp   r4,0x0              ; 080279F8
 bne   @Code08027A4C       ; 080279FA
                           ;          \ runs if object 25
-bl    Sub08019C28         ; 080279FC  Generate pseudo-random byte
+bl    GenRandomByte       ; 080279FC  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 08027A00
 lsr   r5,r0,0x10          ; 08027A02
 mov   r0,0x1              ; 08027A04
@@ -21442,7 +21442,7 @@ b     @Code08027A8E       ; 08027A3E / return
 
 @Code08027A4C:
                           ;          \ runs if object 26
-bl    Sub08019C28         ; 08027A4C  Generate pseudo-random byte
+bl    GenRandomByte       ; 08027A4C  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 08027A50
 lsr   r6,r0,0x10          ; 08027A52
 mov   r0,0x1              ; 08027A54
@@ -21492,7 +21492,7 @@ ldrh  r2,[r4]             ; 08027AA8  relative Y
 cmp   r2,0x1              ; 08027AAA
 bhi   @Code08027AD0       ; 08027AAC
                           ;          \ runs if relY <= 1
-bl    Sub08019C28         ; 08027AAE  Generate pseudo-random byte
+bl    GenRandomByte       ; 08027AAE  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 08027AB2
 mov   r2,0xC0             ; 08027AB4
 lsl   r2,r2,0xA           ; 08027AB6  30000
@@ -21510,7 +21510,7 @@ b     @Code08027AEC       ; 08027ACA / set tile and return
 
 @Code08027AD0:
                           ;          \ runs if relY > 1
-bl    Sub08019C28         ; 08027AD0  Generate pseudo-random byte
+bl    GenRandomByte       ; 08027AD0  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 08027AD4
 lsr   r0,r0,0x10          ; 08027AD6
 ldrh  r4,[r4]             ; 08027AD8  relative Y
@@ -21564,7 +21564,7 @@ ldrh  r4,[r0]             ; 08027B30  relative Y
 cmp   r4,0x2              ; 08027B32
 bls   @Code08027B6C       ; 08027B34
                           ;          \ runs if relX is 0, relY > 2
-bl    Sub08019C28         ; 08027B36  Generate pseudo-random byte
+bl    GenRandomByte       ; 08027B36  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 08027B3A
 lsr   r4,r0,0x10          ; 08027B3C
 mov   r0,0x1              ; 08027B3E
@@ -21626,7 +21626,7 @@ ldrh  r3,[r0]             ; 08027BA6  relative Y
 cmp   r3,0x2              ; 08027BA8
 bls   @Code08027BF4       ; 08027BAA
                           ;          \ runs if relX is 1, relY > 2
-bl    Sub08019C28         ; 08027BAC  Generate pseudo-random byte
+bl    GenRandomByte       ; 08027BAC  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 08027BB0
 lsr   r4,r0,0x10          ; 08027BB2
 mov   r0,0x1              ; 08027BB4
@@ -21925,7 +21925,7 @@ ldrh  r2,[r4]             ; 08027E24  relative Y
 cmp   r2,0x2              ; 08027E26
 bls   @Code08027E4C       ; 08027E28
                           ;          \ runs if relY > 2
-bl    Sub08019C28         ; 08027E2A  Generate pseudo-random byte
+bl    GenRandomByte       ; 08027E2A  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 08027E2E
 lsr   r0,r0,0x10          ; 08027E30
 ldrh  r4,[r4]             ; 08027E32  relative Y
@@ -21948,7 +21948,7 @@ lsr   r6,r0,0x10          ; 08027E4E  r6 = relY*2
 cmp   r6,0x0              ; 08027E50
 bne   @Code08027E64       ; 08027E52
                           ;          \ runs if relY == 0
-bl    Sub08019C28         ; 08027E54  Generate pseudo-random byte
+bl    GenRandomByte       ; 08027E54  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 08027E58
 mov   r1,0xC0             ; 08027E5A
 lsl   r1,r1,0xA           ; 08027E5C  30000
@@ -22100,7 +22100,7 @@ lsl   r0,r0,0x10          ; 08027F78
 lsr   r2,r0,0x10          ; 08027F7A
 cmp   r2,0x5              ; 08027F7C
 bls   @Code08027F96       ; 08027F7E
-bl    Sub08019C28         ; 08027F80  Generate pseudo-random byte
+bl    GenRandomByte       ; 08027F80  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 08027F84
 lsr   r2,r0,0x10          ; 08027F86
 mov   r0,0x2              ; 08027F88
@@ -22149,7 +22149,7 @@ b     @Code08028018       ; 08027FDC
 .pool                     ; 08027FDE
 
 @Code08027FE4:
-bl    Sub08019C28         ; 08027FE4  Generate pseudo-random byte
+bl    GenRandomByte       ; 08027FE4  Generate pseudo-random byte
 mov   r1,0x3              ; 08027FE8
 mov   r2,r4               ; 08027FEA
 add   r2,0x50             ; 08027FEC
@@ -22160,7 +22160,7 @@ lsl   r1,r1,0x11          ; 08027FF4
 lsr   r2,r1,0x10          ; 08027FF6
 cmp   r2,0xF              ; 08027FF8
 bls   @Code0802800E       ; 08027FFA
-bl    Sub08019C28         ; 08027FFC  Generate pseudo-random byte
+bl    GenRandomByte       ; 08027FFC  Generate pseudo-random byte
 mov   r1,0x2              ; 08028000
 and   r1,r0               ; 08028002
 lsl   r1,r1,0x10          ; 08028004
@@ -24521,7 +24521,7 @@ Sub080291C0:
 ; called by 58 if first or last X, relY > 0, and tile at y+1 is dirt interior
 push  {r4-r7,lr}          ; 080291C0
 mov   r4,r0               ; 080291C2
-bl    Sub08019C28         ; 080291C4  Generate pseudo-random byte
+bl    GenRandomByte       ; 080291C4  Generate pseudo-random byte
 mov   r1,0x3              ; 080291C8
 and   r1,r0               ; 080291CA  r1 = random 2-bit value
 mov   r0,r4               ; 080291CC
@@ -25135,7 +25135,7 @@ beq   @Code080296F4       ; 080296BA / if tile is one of 4 more tiles, return
 @Code080296BC:
 mov   r0,r4               ; 080296BC
 bl    Sub08029548         ; 080296BE
-bl    Sub08019C28         ; 080296C2  Generate pseudo-random byte
+bl    GenRandomByte       ; 080296C2  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 080296C6
 mov   r1,0xE0             ; 080296C8
 lsl   r1,r1,0xB           ; 080296CA  r1 = 70000

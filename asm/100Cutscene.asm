@@ -729,7 +729,7 @@ bl    swi_MemoryCopy4or2  ; 080F6DBC  Memory copy/fill, 4- or 2-byte blocks
 mov   r3,0x0              ; 080F6DC0
 ldr   r7,=0x02010600      ; 080F6DC2
 ldr   r6,=0x02010A00      ; 080F6DC4
-ldr   r5,=Data082CF008    ; 080F6DC6
+ldr   r5,=ColorTable      ; 080F6DC6
 ldr   r4,=0x1813          ; 080F6DC8
 @Code080F6DCA:
 lsl   r1,r3,0x1           ; 080F6DCA

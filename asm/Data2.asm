@@ -3339,7 +3339,7 @@ Data082CA4A8:           ; 082CA4A8
 .org 0x082CA988
 Data082CA988:           ; 082CA988
 .org 0x082CF008
-Data082CF008:           ; 082CF008
+ColorTable:             ; 082CF008
 .org 0x082CF080
 Data082CF080:           ; 082CF080
 .org 0x082CF57A

@@ -3058,10 +3058,10 @@ ldr   r0,=Data08303210    ; 08110C1C
 mov   r1,0xC0             ; 08110C1E
 lsl   r1,r1,0x13          ; 08110C20
 bl    swi_LZ77_VRAM       ; 08110C22  LZ77 decompress (VRAM)
-ldr   r0,=Data08304838    ; 08110C26
+ldr   r0,=Data08304838    ; 08110C26  Title screen sprite graphics
 ldr   r1,=0x06010000      ; 08110C28
 bl    swi_Huffman         ; 08110C2A  Huffman decompress
-ldr   r0,=Data082F1508    ; 08110C2E
+ldr   r0,=Data082F1508    ; 08110C2E  Title screen layer 1 (logo border) tilemap
 ldr   r1,=0x06004000      ; 08110C30
 bl    swi_LZ77_VRAM       ; 08110C32  LZ77 decompress (VRAM)
 mov   r0,sp               ; 08110C36
@@ -3070,10 +3070,10 @@ strh  r1,[r0]             ; 08110C3A
 ldr   r1,=0x06004800      ; 08110C3C
 ldr   r2,=0x01000400      ; 08110C3E
 bl    swi_MemoryCopy4or2  ; 08110C40  Memory copy/fill, 4- or 2-byte blocks
-ldr   r0,=Data082F11F8    ; 08110C44
+ldr   r0,=Data082F11F8    ; 08110C44  Title screen layer 2 (background) tilemap
 ldr   r1,=0x06005000      ; 08110C46
 bl    swi_LZ77_VRAM       ; 08110C48  LZ77 decompress (VRAM)
-ldr   r0,=Data082F1640    ; 08110C4C
+ldr   r0,=Data082F1640    ; 08110C4C  Title screen layer 0 (copyright Nintendo) tilemap
 ldr   r1,=0x06006000      ; 08110C4E
 bl    swi_LZ77_VRAM       ; 08110C50  LZ77 decompress (VRAM)
 ldr   r0,=Data082F0FF8    ; 08110C54
@@ -4217,7 +4217,7 @@ mov   r0,0x40             ; 081116BA
 and   r0,r1               ; 081116BC
 cmp   r0,0x0              ; 081116BE
 bne   @Code081116F0       ; 081116C0
-ldr   r0,=Data082F9BF4    ; 081116C2
+ldr   r0,=Data082F9BF4    ; 081116C2  Gameplay layer graphics
 mov   r4,0xC0             ; 081116C4
 lsl   r4,r4,0x13          ; 081116C6
 mov   r1,r4               ; 081116C8
@@ -4227,7 +4227,7 @@ mov   r2,0xC0             ; 081116D0
 lsl   r2,r2,0x3           ; 081116D2
 mov   r0,r4               ; 081116D4
 bl    swi_MemoryCopy32    ; 081116D6  Memory copy/fill, 32-byte blocks
-ldr   r0,=Data082FDDB4    ; 081116DA
+ldr   r0,=Data082FDDB4    ; 081116DA  Gameplay sprite graphics
 ldr   r1,=0x06010000      ; 081116DC
 bl    swi_Huffman         ; 081116DE  Huffman decompress
 ldr   r1,[r6]             ; 081116E2
@@ -6231,8 +6231,8 @@ add   r0,r5,r1            ; 081128E2
 strh  r6,[r0]             ; 081128E4
 strh  r6,[r7]             ; 081128E6
 ldr   r2,=0x4A4C          ; 081128E8
-add   r0,r5,r2            ; 081128EA
-ldr   r0,[r0]             ; 081128EC
+add   r0,r5,r2            ; 081128EA  03006C4C
+ldr   r0,[r0]             ; 081128EC  0300220C Mario Bros.
 ldr   r1,=0x043F          ; 081128EE
 add   r0,r0,r1            ; 081128F0
 ldrb  r0,[r0]             ; 081128F2
@@ -16950,7 +16950,7 @@ strh  r0,[r1]             ; 081186A8
 add   r1,0x8              ; 081186AA
 mov   r0,0x1              ; 081186AC
 strh  r0,[r1]             ; 081186AE
-ldr   r0,=Data08304838    ; 081186B0
+ldr   r0,=Data08304838    ; 081186B0  Title screen sprite graphics
 ldr   r1,=0x06010000      ; 081186B2
 bl    swi_Huffman         ; 081186B4  Huffman decompress
 ldr   r0,=Data082F1768    ; 081186B8

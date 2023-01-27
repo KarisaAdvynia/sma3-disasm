@@ -3356,8 +3356,7 @@ b     @Code08002B74       ; 08002B64 /
 @Code08002B6C:
 cmp   r0,0x2              ; 08002B6C
 bne   @Code08002B74       ; 08002B6E
-                          ;           runs if game mode 02: GBA link
-bl    Sub08119F94         ; 08002B70
+bl    Sub08119F94         ; 08002B70  call if game mode 02: GBA link
 @Code08002B74:
 ldr   r4,=0x03002200      ; 08002B74
 ldr   r1,=0x48F6          ; 08002B76
@@ -3381,7 +3380,7 @@ add   r2,r4,r0            ; 08002B98
 mov   r3,0x1              ; 08002B9A
 @Code08002B9C:
 ldrh  r1,[r2]             ; 08002B9C
-mov   r0,r3               ; 08002B9E
+mov   r0,r3               ; 08002B9E    
 and   r0,r1               ; 08002BA0
 cmp   r0,0x0              ; 08002BA2
 beq   @Code08002B9C       ; 08002BA4

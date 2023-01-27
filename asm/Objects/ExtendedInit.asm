@@ -539,7 +539,7 @@ lsl   r2,r2,0x18          ; 0801A45C
 lsr   r5,r2,0x18          ; 0801A45E
 mov   r0,0x0              ; 0801A460
 strh  r0,[r4,0x3A]        ; 0801A462  clear object scratch RAM
-bl    Sub08019C28         ; 0801A464  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801A464  Generate pseudo-random byte
 mov   r1,0x3              ; 0801A468
 and   r1,r0               ; 0801A46A  r1 = random 2-bit value
 cmp   r1,0x0              ; 0801A46C
@@ -624,7 +624,7 @@ lsl   r4,r4,0x10          ; 0801A4F4
 lsr   r4,r4,0x10          ; 0801A4F6
 lsl   r5,r5,0x18          ; 0801A4F8
 lsr   r5,r5,0x18          ; 0801A4FA
-bl    Sub08019C28         ; 0801A4FC  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801A4FC  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 0801A500
 mov   r1,0xE0             ; 0801A502
 lsl   r1,r1,0xB           ; 0801A504  70000
@@ -1487,7 +1487,7 @@ lsl   r5,r5,0x18          ; 0801AB40
 lsr   r5,r5,0x18          ; 0801AB42
 mov   r7,r6               ; 0801AB44
 add   r7,0x42             ; 0801AB46
-bl    Sub08019C28         ; 0801AB48  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801AB48  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 0801AB4C
 mov   r2,0x3              ; 0801AB4E
 mov   r1,0xC0             ; 0801AB50
@@ -1532,7 +1532,7 @@ sub   r0,0x2              ; 0801AB98  subtract 2 from x
 and   r0,r2               ; 0801AB9A
 orr   r0,r1               ; 0801AB9C
 strh  r0,[r6]             ; 0801AB9E
-bl    Sub08019C28         ; 0801ABA0  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801ABA0  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 0801ABA4
 mov   r1,0xC0             ; 0801ABA6
 lsl   r1,r1,0xA           ; 0801ABA8  30000
@@ -3302,7 +3302,7 @@ lsl   r4,r4,0x10          ; 0801B8EC
 lsr   r4,r4,0x10          ; 0801B8EE
 lsl   r5,r5,0x18          ; 0801B8F0
 lsr   r5,r5,0x18          ; 0801B8F2
-bl    Sub08019C28         ; 0801B8F4  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801B8F4  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 0801B8F8
 lsr   r0,r0,0x10          ; 0801B8FA
 mov   r1,0x2              ; 0801B8FC
@@ -3409,7 +3409,7 @@ lsl   r2,r2,0x18          ; 0801B9AC
 lsr   r5,r2,0x18          ; 0801B9AE
 mov   r0,0x0              ; 0801B9B0
 strh  r0,[r4,0x3A]        ; 0801B9B2  clear 03002246
-bl    Sub08019C28         ; 0801B9B4  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801B9B4  Generate pseudo-random byte
 mov   r1,0x2              ; 0801B9B8
 and   r1,r0               ; 0801B9BA  random 0,2
 cmp   r1,0x0              ; 0801B9BC
@@ -3447,7 +3447,7 @@ lsl   r4,r4,0x10          ; 0801B9F0
 lsr   r4,r4,0x10          ; 0801B9F2
 lsl   r5,r5,0x18          ; 0801B9F4
 lsr   r5,r5,0x18          ; 0801B9F6
-bl    Sub08019C28         ; 0801B9F8  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801B9F8  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 0801B9FC
 lsr   r0,r0,0x10          ; 0801B9FE
 mov   r1,0x2              ; 0801BA00

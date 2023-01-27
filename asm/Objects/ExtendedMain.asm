@@ -3697,7 +3697,7 @@ Sub0802B4F0:
 ; object 00.46 main
 push  {r4,lr}             ; 0802B4F0
 mov   r4,r0               ; 0802B4F2
-bl    Sub08019C28         ; 0802B4F4  Generate pseudo-random byte
+bl    GenRandomByte       ; 0802B4F4  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 0802B4F8
 mov   r1,0xC0             ; 0802B4FA
 lsl   r1,r1,0xA           ; 0802B4FC  30000

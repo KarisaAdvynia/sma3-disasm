@@ -3468,7 +3468,7 @@ ldr   r0,=0x03002200      ; 0810F212
 ldr   r1,=0x4A50          ; 0810F214
 add   r0,r0,r1            ; 0810F216
 ldr   r4,[r0]             ; 0810F218
-bl    Sub08019C28         ; 0810F21A  Generate pseudo-random byte
+bl    GenRandomByte       ; 0810F21A  Generate pseudo-random byte
 mov   r0,r4               ; 0810F21E
 bl    Sub0810E158         ; 0810F220
 ldr   r1,=CodePtrs082DEF80; 0810F224

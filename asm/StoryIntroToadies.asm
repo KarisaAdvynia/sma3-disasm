@@ -7009,10 +7009,10 @@ mov   r0,0x0              ; 08032CE2
 str   r0,[r4]             ; 08032CE4
 @Code08032CE6:
 ldr   r0,=0x4905          ; 08032CE6
-add   r1,r5,r0            ; 08032CE8
+add   r1,r5,r0            ; 08032CE8  03006B05
 mov   r2,0x0              ; 08032CEA
-mov   r0,0x44             ; 08032CEC
-strb  r0,[r1]             ; 08032CEE
+mov   r0,0x44             ; 08032CEC  44: fade to SMA3 title screen init
+strb  r0,[r1]             ; 08032CEE  change game state
 ldr   r1,=0x48FB          ; 08032CF0
 add   r0,r5,r1            ; 08032CF2
 strb  r2,[r0]             ; 08032CF4
@@ -7045,7 +7045,7 @@ add   r0,0x1              ; 08032D40
 strh  r0,[r1]             ; 08032D42
 mov   r4,0x17             ; 08032D44
 @Code08032D46:
-bl    Sub08019C28         ; 08032D46  Generate pseudo-random byte
+bl    GenRandomByte       ; 08032D46  Generate pseudo-random byte
 mov   r0,r5               ; 08032D4A
 mov   r1,r4               ; 08032D4C
 bl    Sub08032C1C         ; 08032D4E

@@ -171,7 +171,7 @@ ldr   r0,=0x02010E00      ; 080F5A82
 mov   r8,r0               ; 080F5A84
 ldr   r1,=0x02010600      ; 080F5A86
 mov   r12,r1              ; 080F5A88
-ldr   r7,=Data082CF008    ; 080F5A8A
+ldr   r7,=ColorTable      ; 080F5A8A
 ldr   r6,=0x02010A00      ; 080F5A8C
 ldr   r4,=0x1813          ; 080F5A8E
 @Code080F5A90:

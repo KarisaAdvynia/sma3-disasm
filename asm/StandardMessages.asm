@@ -2547,13 +2547,13 @@ mov   r5,r8               ; 080E949E
 push  {r5-r7}             ; 080E94A0
 add   sp,-0x4             ; 080E94A2
 ldr   r2,=0x03002200      ; 080E94A4
-ldr   r1,=0x4905          ; 080E94A6
+ldr   r1,=0x4905          ; 080E94A6  03006B05
 add   r0,r2,r1            ; 080E94A8
-ldrb  r0,[r0]             ; 080E94AA
-cmp   r0,0xD              ; 080E94AC
+ldrb  r0,[r0]             ; 080E94AA  Game state
+cmp   r0,0xD              ; 080E94AC  0D: Normal gameplay
 bne   @Code080E94B2       ; 080E94AE
 b     @Code080E960A       ; 080E94B0
-@Code080E94B2:
+@Code080E94B2:            ;           Runs if game state != 0D
 ldr   r0,=0x03007240      ; 080E94B2  Normal gameplay IWRAM (0300220C)
 ldr   r0,[r0]             ; 080E94B4
 mov   r3,0xDE             ; 080E94B6

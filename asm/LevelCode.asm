@@ -417,10 +417,10 @@ mov   r2,0x0              ; 0801383E
 ldr   r6,=0x0300702C      ; 08013840  Sprite RAM structs (03002460)
 ldr   r0,=0x03007240      ; 08013842  Normal gameplay IWRAM (0300220C)
 mov   r10,r0              ; 08013844  r10 = 03007240 (pointer to 0300220C)
-ldr   r7,=Data08167304    ; 08013846  r7 = 08167304 (layer 2 palette indexes)
-ldr   r1,=Data08167384    ; 08013848
+ldr   r7,=L2PaletteOffsets; 08013846  r7 = 08167304 (layer 2 palette indexes)
+ldr   r1,=L3PaletteOffsets; 08013848
 mov   r8,r1               ; 0801384A  r8 = 08167384 (layer 3 palette indexes)
-ldr   r3,=Data08167404    ; 0801384C
+ldr   r3,=PaletteDEOffsets; 0801384C
 mov   r9,r3               ; 0801384E
 ldr   r4,[@@Pool]         ; 08013850
 mov   r12,r4              ; 08013852  r9=r12 = 08167404 (unused SNES sprite palette indexes)
@@ -460,17 +460,18 @@ ldr   r1,[@@Pool+0x14]    ; 0801388E  if in world 6
 b     @Code080138C2       ; 08013890
 .pool                     ; 08013892
 
-; This pool has a duplicate 08167404, so the rest needs to be manually defined
+; This pool has a duplicate 08167404 (PaletteDEOffsets),
+;  so the rest needs to be manually defined
 @@Pool:
-.word Data08167404        ; 080138A8
+.word PaletteDEOffsets    ; 080138A8
 .word 0x0000153E          ; 080138AC
 .word 0x00002990          ; 080138B0
 .word 0x03002200          ; 080138B4
 .word 0x0000413C          ; 080138B8
-.word Data081672C4        ; 080138BC
+.word L1PaletteOffsetsW6  ; 080138BC
 
 @Code080138C0:
-ldr   r1,=Data08167284    ; 080138C0  if not in world 6
+ldr   r1,=L1PaletteOffsets; 080138C0  if not in world 6
 @Code080138C2:
 ldr   r4,=0x2994          ; 080138C2
 add   r0,r2,r4            ; 080138C4  r0 = [03007240]+2994 (03004BA0)
@@ -490,7 +491,7 @@ ldrh  r0,[r0]             ; 080138DE  r0 = sublevel ID
 cmp   r0,0xF2             ; 080138E0
 bne   @Code080138FC       ; 080138E2
 ldr   r1,[r6]             ; 080138E4 \ runs if sublevel F2 (6-Secret dark forest)
-ldr   r2,=Data08167284    ; 080138E6  use non-W6 table
+ldr   r2,=L1PaletteOffsets; 080138E6  use non-W6 table
 ldr   r5,=0x2994          ; 080138E8
 add   r0,r3,r5            ; 080138EA  r0 = [03007240]+2994 (03004BA0)
 ldrh  r0,[r0]             ; 080138EC  r0 = header value 2
@@ -620,7 +621,7 @@ add   r1,r2,r5            ; 08013A0A  r1 = 03006ABE
 mov   r0,0x0              ; 08013A0C
 strh  r0,[r1]             ; 08013A0E  [03006ABE] = 0
 mov   r5,0x0              ; 08013A10  r5 = loop index
-ldr   r6,=DataPtrs08167434; 08013A12
+ldr   r6,=L3ImagePalPtrs; 08013A12
 mov   r9,r6               ; 08013A14  r9 = 08167434
 @Code08013A16:
                       ; loop: check if layer 3 image is one of 8 specific values
@@ -831,7 +832,7 @@ ldr   r2,=0x4896          ; 08013BC0
 add   r0,r1,r2            ; 08013BC2  r0 = 03006A96
 ldrh  r0,[r0]             ; 08013BC4  Yoshi color
 lsl   r0,r0,0x1           ; 08013BC6
-ldr   r3,=Data08167404    ; 08013BC8
+ldr   r3,=PaletteDEOffsets; 08013BC8
 add   r0,r0,r3            ; 08013BCA
 ldrh  r4,[r0]             ; 08013BCC
 mov   r5,0x0              ; 08013BCE  loop index
@@ -870,7 +871,7 @@ ldr   r5,=0x29A0          ; 08013C0A
 add   r0,r0,r5            ; 08013C0C  r0 = [03007240]+29A0 (03004BAC)
 ldrh  r0,[r0]             ; 08013C0E  header value 8
 lsl   r0,r0,0x2           ; 08013C10
-ldr   r6,=DataPtrs08167454; 08013C12
+ldr   r6,=SpriteHeaderPalPtrs; 08013C12
 add   r0,r0,r6            ; 08013C14
 ldr   r3,[r0]             ; 08013C16  r3 = pointer to sprite palette
 mov   r5,0x0              ; 08013C18  loop index
@@ -1159,7 +1160,7 @@ ldr   r2,=0x03007240      ; 08013ED4  Normal gameplay IWRAM (0300220C)
 mov   r12,r2              ; 08013ED6
 mov   r10,r1              ; 08013ED8
 mov   r9,r8               ; 08013EDA
-ldr   r3,=Data082CF008    ; 08013EDC
+ldr   r3,=ColorTable      ; 08013EDC
 str   r3,[sp,0x8]         ; 08013EDE  [sp+8] = 082CF008
 @Code08013EE0:
                           ;          \ begin loop for number of palettes
@@ -1430,7 +1431,7 @@ mov   r6,r9               ; 080141B8
 mov   r5,r8               ; 080141BA
 push  {r5-r7}             ; 080141BC
 mov   r4,0x0              ; 080141BE
-ldr   r0,=Data08167404    ; 080141C0
+ldr   r0,=PaletteDEOffsets; 080141C0
 mov   r8,r0               ; 080141C2
 ldr   r7,=0x03002200      ; 080141C4
 ldr   r1,=0x03007240      ; 080141C6  Normal gameplay IWRAM (0300220C)
@@ -1511,7 +1512,7 @@ ldr   r3,=0x29A0          ; 08014254
 add   r0,r0,r3            ; 08014256
 ldrh  r0,[r0]             ; 08014258
 lsl   r0,r0,0x2           ; 0801425A
-ldr   r1,=DataPtrs08167454; 0801425C
+ldr   r1,=SpriteHeaderPalPtrs; 0801425C
 add   r0,r0,r1            ; 0801425E
 ldr   r3,[r0]             ; 08014260
 mov   r4,0x0              ; 08014262
@@ -1636,7 +1637,7 @@ lsl   r1,r1,0x13          ; 080143F0
 bl    swi_LZ77_VRAM       ; 080143F2  LZ77 decompress (VRAM)
 mov   r3,0x0              ; 080143F6
 ldr   r5,=0x02010400      ; 080143F8
-ldr   r4,=Data082CF008    ; 080143FA
+ldr   r4,=ColorTable      ; 080143FA
 @Code080143FC:
 lsr   r1,r3,0x1           ; 080143FC
 lsl   r1,r1,0x1           ; 080143FE
@@ -3726,7 +3727,7 @@ ldr   r4,=L1_8x8TilemapPtrs; 08015662
 mov   r12,r4              ; 08015664
 ldr   r5,=0x60FF          ; 08015666
 mov   r4,r5               ; 08015668
-ldr   r0,=DataPtrs081BC444; 0801566A
+ldr   r0,=L0_8x8FlagPtrs  ; 0801566A
 mov   r10,r0              ; 0801566C
 mov   r7,r6               ; 0801566E
 add   r7,0x40             ; 08015670
@@ -3843,7 +3844,7 @@ ldr   r4,=L1_8x8TilemapPtrs; 08015766
 mov   r12,r4              ; 08015768
 ldr   r5,=0x60FF          ; 0801576A
 mov   r7,r5               ; 0801576C
-ldr   r0,=DataPtrs081BC444; 0801576E
+ldr   r0,=L0_8x8FlagPtrs  ; 0801576E
 mov   r10,r0              ; 08015770
 mov   r4,r6               ; 08015772
 add   r4,0x40             ; 08015774
@@ -3995,18 +3996,18 @@ mov   r2,0x0              ; 0801588C
 cmp   r0,0x0              ; 0801588E
 bne   @Code08015896       ; 08015890
 mov   r3,r9               ; 08015892
-ldrh  r2,[r3]             ; 08015894
+ldrh  r2,[r3]             ; 08015894  tile ID
 @Code08015896:
-lsr   r1,r2,0x8           ; 08015896
+lsr   r1,r2,0x8           ; 08015896  tile ID high byte
 lsl   r1,r1,0x2           ; 08015898
 ldr   r0,=L1_8x8TilemapPtrs; 0801589A
-add   r1,r1,r0            ; 0801589C
+add   r1,r1,r0            ; 0801589C  index with tile ID high byte
 lsl   r0,r2,0x18          ; 0801589E
-lsr   r0,r0,0x15          ; 080158A0
-ldr   r1,[r1]             ; 080158A2
-add   r5,r1,r0            ; 080158A4
+lsr   r0,r0,0x15          ; 080158A0  tile ID low byte *8
+ldr   r1,[r1]             ; 080158A2  pointer to tilemaps for current high byte
+add   r5,r1,r0            ; 080158A4  offset with low byte *8
 mov   r1,r8               ; 080158A6
-strh  r2,[r1]             ; 080158A8
+strh  r2,[r1]             ; 080158A8  store tile ID to VRAM layer 1 tilemap
 ldr   r2,[sp,0x14]        ; 080158AA
 add   r4,r2,r6            ; 080158AC
 ldrh  r0,[r5]             ; 080158AE
@@ -4063,7 +4064,7 @@ ldr   r3,[sp,0x8]         ; 08015914
 add   r6,r1,r3            ; 08015916
 mov   r0,0x0              ; 08015918
 mov   r10,r0              ; 0801591A
-ldr   r1,=DataPtrs081BC444; 0801591C
+ldr   r1,=L0_8x8FlagPtrs  ; 0801591C
 mov   r12,r1              ; 0801591E
 ldr   r2,=L1_8x8TilemapPtrs; 08015920
 mov   r9,r2               ; 08015922
@@ -4078,38 +4079,38 @@ ldrh  r0,[r1,0x3E]        ; 08015930
 mov   r2,0x0              ; 08015932
 cmp   r0,0x0              ; 08015934
 bne   @Code0801593A       ; 08015936
-ldrh  r2,[r7]             ; 08015938
+ldrh  r2,[r7]             ; 08015938  tile ID
 @Code0801593A:
-lsr   r1,r2,0x8           ; 0801593A
-lsl   r1,r1,0x2           ; 0801593C
+lsr   r1,r2,0x8           ; 0801593A  tile ID high byte
+lsl   r1,r1,0x2           ; 0801593C  tile ID high byte *4
 mov   r3,r9               ; 0801593E
-add   r0,r1,r3            ; 08015940
+add   r0,r1,r3            ; 08015940  index with tile ID high byte
 lsl   r2,r2,0x18          ; 08015942
 lsr   r2,r2,0x18          ; 08015944
-lsl   r3,r2,0x3           ; 08015946
-ldr   r0,[r0]             ; 08015948
+lsl   r3,r2,0x3           ; 08015946  tile ID low byte *8
+ldr   r0,[r0]             ; 08015948  pointer to tilemaps for current high byte
 add   r5,r0,r3            ; 0801594A
-add   r1,r12              ; 0801594C
-ldr   r0,[r1]             ; 0801594E
+add   r1,r12              ; 0801594C  index tile flag pointers with tile ID high byte
+ldr   r0,[r1]             ; 0801594E  pointer to flags for current high byte
 add   r0,r0,r2            ; 08015950
-ldrb  r1,[r0]             ; 08015952
+ldrb  r1,[r0]             ; 08015952  flags for current tile ID
 mov   r0,0x8              ; 08015954
-and   r0,r1               ; 08015956
+and   r0,r1               ; 08015956  test bit 3
 cmp   r0,0x0              ; 08015958
 beq   @Code08015990       ; 0801595A
-ldrh  r0,[r5]             ; 0801595C
+ldrh  r0,[r5]             ; 0801595C  if bit 3 is set, load tilemap for top-left 8x8
 b     @Code08015992       ; 0801595E
 .pool                     ; 08015960
 
 @Code08015990:
-mov   r0,r8               ; 08015990
+mov   r0,r8               ; 08015990  else, use tile 60FF (empty)
 @Code08015992:
-strh  r0,[r6]             ; 08015992
+strh  r0,[r6]             ; 08015992  store tile to VRAM
 mov   r0,0x4              ; 08015994
-and   r0,r1               ; 08015996
+and   r0,r1               ; 08015996  test bit 2
 cmp   r0,0x0              ; 08015998
 beq   @Code080159A2       ; 0801599A
-ldrh  r0,[r5,0x2]         ; 0801599C
+ldrh  r0,[r5,0x2]         ; 0801599C  if bit 2 is set, load tilemap for top-right 8x8
 strh  r0,[r6,0x2]         ; 0801599E
 b     @Code080159A6       ; 080159A0
 @Code080159A2:
@@ -4117,10 +4118,10 @@ mov   r2,r8               ; 080159A2
 strh  r2,[r6,0x2]         ; 080159A4
 @Code080159A6:
 mov   r0,0x2              ; 080159A6
-and   r0,r1               ; 080159A8
+and   r0,r1               ; 080159A8  test bit 1
 cmp   r0,0x0              ; 080159AA
 beq   @Code080159B4       ; 080159AC
-ldrh  r0,[r5,0x4]         ; 080159AE
+ldrh  r0,[r5,0x4]         ; 080159AE  if bit 1 is set, load tilemap for bottom-left 8x8
 strh  r0,[r4]             ; 080159B0
 b     @Code080159B8       ; 080159B2
 @Code080159B4:
@@ -4128,10 +4129,10 @@ mov   r3,r8               ; 080159B4
 strh  r3,[r4]             ; 080159B6
 @Code080159B8:
 mov   r0,0x1              ; 080159B8
-and   r1,r0               ; 080159BA
+and   r1,r0               ; 080159BA  test bit 0
 cmp   r1,0x0              ; 080159BC
 beq   @Code080159C4       ; 080159BE
-ldrh  r0,[r5,0x6]         ; 080159C0
+ldrh  r0,[r5,0x6]         ; 080159C0  if bit 0 is set, load tilemap for bottom-right 8x8
 b     @Code080159C6       ; 080159C2
 @Code080159C4:
 mov   r0,r8               ; 080159C4
@@ -4508,7 +4509,7 @@ cmp   r0,0x0              ; 08015CE6
 beq   @Code08015CEC       ; 08015CE8
 b     @Code08015E3C       ; 08015CEA
 @Code08015CEC:
-ldr   r2,=DataPtrs081BC444; 08015CEC
+ldr   r2,=L0_8x8FlagPtrs  ; 08015CEC
 mov   r1,r10              ; 08015CEE
 add   r0,r1,r2            ; 08015CF0
 ldr   r0,[r0]             ; 08015CF2
@@ -4892,7 +4893,7 @@ ldr   r0,=0x03007270      ; 08016064
 ldr   r0,[r0,0x2C]        ; 08016066
 cmp   r0,0x0              ; 08016068
 bne   @Code08016152       ; 0801606A
-ldr   r2,=DataPtrs081BC444; 0801606C
+ldr   r2,=L0_8x8FlagPtrs  ; 0801606C
 add   r0,r7,r2            ; 0801606E
 ldr   r0,[r0]             ; 08016070
 add   r0,r0,r6            ; 08016072
@@ -5283,7 +5284,7 @@ cmp   r0,0x0              ; 080163D0
 beq   @Code080163D6       ; 080163D2
 b     @Code080164D4       ; 080163D4
 @Code080163D6:
-ldr   r2,=DataPtrs081BC444; 080163D6
+ldr   r2,=L0_8x8FlagPtrs  ; 080163D6
 add   r0,r7,r2            ; 080163D8
 ldr   r0,[r0]             ; 080163DA
 add   r0,r0,r6            ; 080163DC
@@ -7606,7 +7607,7 @@ ldrh  r0,[r0]             ; 08017818
 mov   r12,r0              ; 0801781A
 ldr   r0,=0x02011000      ; 0801781C
 ldrh  r7,[r0]             ; 0801781E
-ldr   r2,=DataPtrs081BC444; 08017820
+ldr   r2,=L0_8x8FlagPtrs  ; 08017820
 lsr   r0,r5,0x8           ; 08017822
 lsl   r0,r0,0x2           ; 08017824
 add   r0,r0,r2            ; 08017826
@@ -8016,7 +8017,7 @@ mov   r9,r0               ; 08017BA0
 mov   r0,r8               ; 08017BA2
 add   r0,0xB0             ; 08017BA4
 ldrh  r5,[r0]             ; 08017BA6
-ldr   r2,=DataPtrs081BC444; 08017BA8
+ldr   r2,=L0_8x8FlagPtrs  ; 08017BA8
 mov   r1,r9               ; 08017BAA
 lsl   r6,r1,0x2           ; 08017BAC
 add   r0,r6,r2            ; 08017BAE
@@ -11263,7 +11264,7 @@ lsr   r2,r0,0x11          ; 080197C0
 add   r2,r2,r1            ; 080197C2
 add   r3,r2,0x4           ; 080197C4
 mov   r4,0x4              ; 080197C6
-ldr   r6,=Data082CF008    ; 080197C8
+ldr   r6,=ColorTable      ; 080197C8
 ldr   r5,=0x21E4          ; 080197CA
 @Code080197CC:
 add   r0,r3,r5            ; 080197CC
@@ -11774,8 +11775,8 @@ lsl   r0,r0,0x1           ; 08019C16  offset to layer 1 tilemap for y+relY and x
 bx    lr                  ; 08019C18
 .pool                     ; 08019C1A
 
-Sub08019C28:
-; subroutine: Call RNG. Returns one pseudo-random byte.
+GenRandomByte:
+; Call RNG. Returns one pseudo-random byte.
 push  {r4-r7,lr}          ; 08019C28
 mov   r4,0x0              ; 08019C2A  loop index
 ldr   r7,=0x03002200      ; 08019C2C
@@ -16694,7 +16695,7 @@ lsr   r3,r3,0x18          ; 0802E3BE
 lsr   r4,r4,0x11          ; 0802E3C0
 ldr   r6,=0xFFFE          ; 0802E3C2
 and   r6,r0               ; 0802E3C4
-ldr   r0,=Data082CF008    ; 0802E3C6  color table
+ldr   r0,=ColorTable      ; 0802E3C6  color table
 add   r6,r6,r0            ; 0802E3C8
 ldr   r5,=0x03002200      ; 0802E3CA
 ldr   r2,=0x4963          ; 0802E3CC
@@ -16758,7 +16759,7 @@ bl    Sub0802E698         ; 0802E462
 ldr   r0,=0x03002200      ; 0802E466
 ldr   r1,=0x48A2          ; 0802E468
 add   r0,r0,r1            ; 0802E46A
-ldrh  r1,[r0]             ; 0802E46C
+ldrh  r1,[r0]             ; 0802E46C  Frame counter
 mov   r0,0x38             ; 0802E46E
 and   r0,r1               ; 0802E470
 ldr   r1,=Data08169590    ; 0802E472
@@ -16949,7 +16950,7 @@ strh  r0,[r4]             ; 0802E614
 lsl   r0,r0,0x10          ; 0802E616
 cmp   r0,0x0              ; 0802E618
 bge   @Code0802E640       ; 0802E61A
-bl    Sub08019C28         ; 0802E61C  Generate pseudo-random byte
+bl    GenRandomByte       ; 0802E61C  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 0802E620
 ldr   r1,=0x03002200      ; 0802E622
 ldr   r2,=0x4901          ; 0802E624
@@ -16984,7 +16985,7 @@ lsr   r3,r3,0x18          ; 0802E668
 ldr   r0,=0x03002200      ; 0802E66A
 ldr   r1,=0x48A2          ; 0802E66C
 add   r0,r0,r1            ; 0802E66E
-ldrh  r1,[r0]             ; 0802E670
+ldrh  r1,[r0]             ; 0802E670  Frame counter
 mov   r0,0xC              ; 0802E672
 and   r0,r1               ; 0802E674
 ldr   r1,=Data081694CC    ; 0802E676
@@ -17023,7 +17024,7 @@ ldr   r0,=0x03002200      ; 0802E6C0
 ldr   r3,=0x48A2          ; 0802E6C2
 add   r0,r0,r3            ; 0802E6C4
 ldrh  r1,[r1]             ; 0802E6C6
-ldrh  r0,[r0]             ; 0802E6C8
+ldrh  r0,[r0]             ; 0802E6C8  r0 = Frame counter
 and   r0,r1               ; 0802E6CA
 lsl   r0,r0,0x10          ; 0802E6CC
 lsr   r3,r0,0x10          ; 0802E6CE
@@ -17078,7 +17079,7 @@ b     @Code0802E776       ; 0802E742
 ldr   r0,=0x03002200      ; 0802E74C
 ldr   r1,=0x48A2          ; 0802E74E
 add   r0,r0,r1            ; 0802E750
-ldrh  r1,[r0]             ; 0802E752
+ldrh  r1,[r0]             ; 0802E752  Frame counter
 mov   r0,0x18             ; 0802E754
 and   r0,r1               ; 0802E756
 ldr   r1,=Data08169588    ; 0802E758
@@ -17108,24 +17109,25 @@ lsr   r3,r1,0x18          ; 0802E78E  r3 = 0
 mov   r2,r5               ; 0802E790
 add   r2,0xA0             ; 0802E792  r2 = [03007240]+A0 (030022AC)
 ldrh  r0,[r2]             ; 0802E794
-add   r0,0x1              ; 0802E796
+add   r0,0x1              ; 0802E796  increment timer
 lsl   r0,r0,0x10          ; 0802E798
 lsr   r0,r0,0x10          ; 0802E79A
 cmp   r0,0xB              ; 0802E79C
 bls   @Code0802E7AC       ; 0802E79E
-mov   r1,r5               ; 0802E7A0 \ runs if ?
+                          ;          \ runs every 0xB frames
+mov   r1,r5               ; 0802E7A0
 add   r1,0x9E             ; 0802E7A2
-ldrh  r0,[r1]             ; 0802E7A4
-add   r0,0x1              ; 0802E7A6
-strh  r0,[r1]             ; 0802E7A8
-mov   r0,0x0              ; 0802E7AA /
+ldrh  r0,[r1]             ; 0802E7A4  \ [03007240]+9E (030022AA)
+add   r0,0x1              ; 0802E7A6    increment 030022AA
+strh  r0,[r1]             ; 0802E7A8  /
+mov   r0,0x0              ; 0802E7AA / reset timer
 @Code0802E7AC:
-strh  r0,[r2]             ; 0802E7AC
+strh  r0,[r2]             ; 0802E7AC  update timer
 mov   r0,r5               ; 0802E7AE
 add   r0,0x9E             ; 0802E7B0  r0 = [03007240]+9E (030022AA)
-ldrh  r1,[r0]             ; 0802E7B2
+ldrh  r1,[r0]             ; 0802E7B2  processing index?
 mov   r0,0x7              ; 0802E7B4
-and   r0,r1               ; 0802E7B6
+and   r0,r1               ; 0802E7B6  index & 7
 lsl   r2,r0,0x11          ; 0802E7B8
 ldr   r0,=0x03007240      ; 0802E7BA  Normal gameplay IWRAM (0300220C)
 ldr   r0,[r0]             ; 0802E7BC
@@ -17136,12 +17138,12 @@ mov   r0,0x1              ; 0802E7C4
 and   r0,r1               ; 0802E7C6  r0 = bit 0 of layer 3 palette ID
 cmp   r0,0x0              ; 0802E7C8
 bne   @Code0802E7DC       ; 0802E7CA
-ldr   r1,=Data081694EC    ; 0802E7CC  if layer 3 palette ID is even
+ldr   r1,=Data081694EC    ; 0802E7CC  data if layer 3 palette ID is even
 b     @Code0802E7DE       ; 0802E7CE
 .pool                     ; 0802E7D0
 
 @Code0802E7DC:
-ldr   r1,=Data081694FC    ; 0802E7DC  if layer 3 palette ID is odd
+ldr   r1,=Data081694FC    ; 0802E7DC  data if layer 3 palette ID is odd
 @Code0802E7DE:
 lsr   r0,r2,0x10          ; 0802E7DE
 add   r0,r0,r1            ; 0802E7E0
@@ -17303,7 +17305,7 @@ lsr   r3,r3,0x18          ; 0802E928
 ldr   r0,=0x03002200      ; 0802E92A
 ldr   r1,=0x48A2          ; 0802E92C
 add   r0,r0,r1            ; 0802E92E
-ldrh  r1,[r0]             ; 0802E930
+ldrh  r1,[r0]             ; 0802E930  Frame counter
 mov   r0,0x18             ; 0802E932
 and   r0,r1               ; 0802E934
 ldr   r1,=Data08169568    ; 0802E936
@@ -17352,7 +17354,7 @@ lsr   r0,r0,0x1           ; 0802E992
 lsl   r0,r0,0x1           ; 0802E994
 add   r0,r0,r1            ; 0802E996
 ldrh  r0,[r0]             ; 0802E998
-ldr   r1,=Data082CF008    ; 0802E99A
+ldr   r1,=ColorTable      ; 0802E99A
 lsr   r0,r0,0x1           ; 0802E99C
 lsl   r0,r0,0x1           ; 0802E99E
 add   r0,r0,r1            ; 0802E9A0
@@ -17393,7 +17395,7 @@ push  {lr}                ; 0802EA00
 ldr   r0,=0x03002200      ; 0802EA02
 ldr   r1,=0x48A2          ; 0802EA04
 add   r0,r0,r1            ; 0802EA06
-ldrh  r1,[r0]             ; 0802EA08
+ldrh  r1,[r0]             ; 0802EA08  Frame counter
 mov   r0,0xC              ; 0802EA0A
 and   r0,r1               ; 0802EA0C
 ldr   r1,=Data08169580    ; 0802EA0E
@@ -17436,7 +17438,7 @@ bl    Sub0802EAB8         ; 0802EA5C
 ldr   r5,=0x03002200      ; 0802EA60
 ldr   r0,=0x48A2          ; 0802EA62
 add   r5,r5,r0            ; 0802EA64
-ldrh  r1,[r5]             ; 0802EA66
+ldrh  r1,[r5]             ; 0802EA66  Frame counter
 mov   r0,0x38             ; 0802EA68
 and   r0,r1               ; 0802EA6A
 ldr   r1,=Data08169590    ; 0802EA6C
@@ -17498,7 +17500,7 @@ mov   r0,0x71             ; 0802EAEA
 strh  r0,[r1]             ; 0802EAEC
 mov   r4,0x0              ; 0802EAEE
 mov   r12,r3              ; 0802EAF0
-ldr   r6,=Data082CF008    ; 0802EAF2
+ldr   r6,=ColorTable      ; 0802EAF2
 ldr   r3,=0x2730          ; 0802EAF4
 @Code0802EAF6:
 add   r0,r5,r3            ; 0802EAF6
@@ -17549,7 +17551,7 @@ and   r0,r1               ; 0802EB6E
 cmp   r0,0x0              ; 0802EB70
 bne   @Code0802EBAA       ; 0802EB72
 ldr   r0,=0x03002200      ; 0802EB74
-ldr   r1,=0x48A2          ; 0802EB76
+ldr   r1,=0x48A2          ; 0802EB76  Frame counter
 add   r0,r0,r1            ; 0802EB78
 ldrh  r1,[r0]             ; 0802EB7A
 mov   r0,0x38             ; 0802EB7C
@@ -17585,7 +17587,6 @@ bx    r0                  ; 0802EBBA
 .pool                     ; 0802EBBC
 
 PaletteAnim04:
-; runs if palette animation ID is 04
 push  {r4-r7,lr}          ; 0802EBD0
 mov   r7,r8               ; 0802EBD2
 push  {r7}                ; 0802EBD4
@@ -17595,7 +17596,7 @@ lsr   r1,r1,0x18          ; 0802EBDA
 ldr   r4,=0x03002200      ; 0802EBDC
 ldr   r2,=0x48A2          ; 0802EBDE
 add   r0,r4,r2            ; 0802EBE0
-ldrh  r0,[r0]             ; 0802EBE2
+ldrh  r0,[r0]             ; 0802EBE2  Frame counter
 mov   r3,0x1C             ; 0802EBE4
 and   r3,r0               ; 0802EBE6
 add   r2,0xC1             ; 0802EBE8
@@ -17616,7 +17617,7 @@ mov   r0,0x71             ; 0802EC04
 strh  r0,[r1]             ; 0802EC06
 mov   r5,0x0              ; 0802EC08
 mov   r8,r4               ; 0802EC0A
-ldr   r7,=Data082CF008    ; 0802EC0C
+ldr   r7,=ColorTable      ; 0802EC0C
 ldr   r0,=Data081695A0    ; 0802EC0E
 lsr   r3,r3,0x1           ; 0802EC10
 add   r3,r3,r0            ; 0802EC12
@@ -17658,43 +17659,45 @@ bx    r0                  ; 0802EC56
 .pool                     ; 0802EC58
 
 PaletteAnim03:
+; r1: palette animation slot number
 push  {r4-r7,lr}          ; 0802EC7C
 lsl   r1,r1,0x18          ; 0802EC7E
 lsr   r1,r1,0x18          ; 0802EC80
 ldr   r3,=0x03002200      ; 0802EC82
-ldr   r2,=0x48A2          ; 0802EC84
+ldr   r2,=0x48A2          ; 0802EC84  03006AA2
 add   r0,r3,r2            ; 0802EC86
-ldrh  r2,[r0]             ; 0802EC88
+ldrh  r2,[r0]             ; 0802EC88  Frame counter
 mov   r0,0x18             ; 0802EC8A
-and   r2,r0               ; 0802EC8C
+and   r2,r0               ; 0802EC8C  bits 3-4 of frame counter
 lsl   r4,r2,0x2           ; 0802EC8E
 mov   r0,0x1E             ; 0802EC90
-orr   r4,r0               ; 0802EC92
+orr   r4,r0               ; 0802EC92  ??11 1110 where ?? are bits 3-4 of frame counter
 ldr   r7,=0x4963          ; 0802EC94
-add   r0,r3,r7            ; 0802EC96
-add   r0,r1,r0            ; 0802EC98
+add   r0,r3,r7            ; 0802EC96  03006B63
+add   r0,r1,r0            ; 0802EC98  03006B63 + slot number
 mov   r2,0x1              ; 0802EC9A
-strb  r2,[r0]             ; 0802EC9C
-lsl   r1,r1,0x1           ; 0802EC9E
+strb  r2,[r0]             ; 0802EC9C  enable slot
+lsl   r1,r1,0x1           ; 0802EC9E  slot number *2
 ldr   r2,=0x4866          ; 0802ECA0
 add   r0,r3,r2            ; 0802ECA2
-add   r0,r1,r0            ; 0802ECA4
+add   r0,r1,r0            ; 0802ECA4  03006A66 + slot number *2
 mov   r2,0x20             ; 0802ECA6
-strh  r2,[r0]             ; 0802ECA8
+strh  r2,[r0]             ; 0802ECA8  set number of bytes to copy
 sub   r7,0xF5             ; 0802ECAA
-add   r0,r3,r7            ; 0802ECAC
-add   r1,r1,r0            ; 0802ECAE
+add   r0,r3,r7            ; 0802ECAC  486E
+add   r1,r1,r0            ; 0802ECAE  03006A6E
 mov   r0,0x70             ; 0802ECB0
-strh  r0,[r1]             ; 0802ECB2
-mov   r5,0x1E             ; 0802ECB4
-mov   r6,r3               ; 0802ECB6
-ldr   r3,=Data082CF008    ; 0802ECB8
-@Code0802ECBA:
+strh  r0,[r1]             ; 0802ECB2  set starting color to replace
+
+mov   r5,0x1E             ; 0802ECB4  copy from offsets 1E to 00
+mov   r6,r3               ; 0802ECB6  r6 = 03002200
+ldr   r3,=ColorTable      ; 0802ECB8
+@@Loop:                   ;           loop: copy 0x10 colors from one of 4 tables at 082D1294 (depending on frame counter & 0x18) to palette buffer
 ldr   r1,=0x228C          ; 0802ECBA
 add   r0,r4,r1            ; 0802ECBC
 asr   r0,r0,0x1           ; 0802ECBE
 lsl   r0,r0,0x1           ; 0802ECC0
-add   r0,r0,r3            ; 0802ECC2
+add   r0,r0,r3            ; 0802ECC2  color table + 228C + (??11 1110 where ?? are bits 3-4 of frame counter)
 ldrh  r2,[r0]             ; 0802ECC4
 lsr   r0,r5,0x1           ; 0802ECC6
 lsl   r0,r0,0x1           ; 0802ECC8
@@ -17702,21 +17705,22 @@ ldr   r7,=0x020104E0      ; 0802ECCA
 add   r1,r0,r7            ; 0802ECCC
 ldr   r7,=0x020108E0      ; 0802ECCE
 add   r0,r0,r7            ; 0802ECD0
-strh  r2,[r0]             ; 0802ECD2
-strh  r2,[r1]             ; 0802ECD4
-sub   r0,r4,0x2           ; 0802ECD6
+strh  r2,[r0]             ; 0802ECD2  overwrite first buffer at color 70+index
+strh  r2,[r1]             ; 0802ECD4  overwrite second buffer at color 70+index
+sub   r0,r4,0x2           ; 0802ECD6  subtract 2 from color table offset
 lsl   r0,r0,0x10          ; 0802ECD8
 lsr   r4,r0,0x10          ; 0802ECDA
-sub   r0,r5,0x2           ; 0802ECDC
+sub   r0,r5,0x2           ; 0802ECDC  subtract 2 from color destination offset
 lsl   r0,r0,0x10          ; 0802ECDE
 lsr   r5,r0,0x10          ; 0802ECE0
 cmp   r0,0x0              ; 0802ECE2
-bge   @Code0802ECBA       ; 0802ECE4
+bge   @@Loop              ; 0802ECE4  loop until negative
+
 ldr   r0,=0x4967          ; 0802ECE6
-add   r2,r6,r0            ; 0802ECE8
+add   r2,r6,r0            ; 0802ECE8  03006B67
 ldrb  r1,[r2]             ; 0802ECEA
 mov   r0,0x1              ; 0802ECEC
-orr   r0,r1               ; 0802ECEE
+orr   r0,r1               ; 0802ECEE  set bit 0 of 03006B67
 strb  r0,[r2]             ; 0802ECF0
 pop   {r4-r7}             ; 0802ECF2
 pop   {r0}                ; 0802ECF4
@@ -17833,7 +17837,7 @@ add   r0,r0,r1            ; 0802EDE6
 lsl   r0,r0,0x11          ; 0802EDE8
 lsr   r1,r0,0x10          ; 0802EDEA
 add   r1,0x60             ; 0802EDEC
-ldr   r0,=Data082CF008    ; 0802EDEE
+ldr   r0,=ColorTable      ; 0802EDEE
 add   r3,r1,r0            ; 0802EDF0
 @Code0802EDF2:
 ldr   r4,=0x03002200      ; 0802EDF2
@@ -17872,8 +17876,8 @@ bx    r0                  ; 0802EE2E
 PaletteAnim01:
 push  {r4,lr}             ; 0802EE58
 mov   r4,r0               ; 0802EE5A
-add   r0,0xA0             ; 0802EE5C
-ldrh  r1,[r0]             ; 0802EE5E
+add   r0,0xA0             ; 0802EE5C  [03007240]+A0 (030022AC)
+ldrh  r1,[r0]             ; 0802EE5E  Timer
 sub   r1,0x1              ; 0802EE60
 strh  r1,[r0]             ; 0802EE62
 mov   r1,0x0              ; 0802EE64
@@ -17892,7 +17896,7 @@ lsr   r1,r0,0x10          ; 0802EE7C
 strh  r1,[r2]             ; 0802EE7E
 cmp   r1,0x0              ; 0802EE80
 bne   @Code0802EE98       ; 0802EE82
-bl    Sub08019C28         ; 0802EE84  Generate pseudo-random byte
+bl    GenRandomByte       ; 0802EE84  Generate pseudo-random byte
 mov   r1,0x3              ; 0802EE88
 and   r1,r0               ; 0802EE8A
 ldr   r0,=Data081695C4    ; 0802EE8C
@@ -18139,7 +18143,7 @@ ldr   r0,[sp,0xC]         ; 0802F082  r0 = color table index for start of gradie
 ldr   r2,[sp,0x10]        ; 0802F084
 add   r1,r0,r2            ; 0802F086  r1 = color table index for current color, /2
 lsl   r0,r1,0x1           ; 0802F088
-ldr   r3,=Data082CF008    ; 0802F08A
+ldr   r3,=ColorTable      ; 0802F08A
 add   r0,r0,r3            ; 0802F08C
 ldrh  r2,[r0]             ; 0802F08E  r2 = color from table
 mov   r12,r2              ; 0802F090
@@ -18160,7 +18164,7 @@ lsr   r2,r2,0xA           ; 0802F0AC
 mov   r8,r2               ; 0802F0AE  r8 = blue component of first color
 add   r1,0x1              ; 0802F0B0
 lsl   r1,r1,0x1           ; 0802F0B2  repeat for the second color
-ldr   r2,=Data082CF008    ; 0802F0B4
+ldr   r2,=ColorTable      ; 0802F0B4
 add   r1,r1,r2            ; 0802F0B6
 ldrh  r2,[r1]             ; 0802F0B8
 mov   r3,r2               ; 0802F0BA
@@ -18327,7 +18331,7 @@ b     @Code0802F082       ; 0802F1EC
 mov   r2,0x0              ; 0802F1EE
 mov   r9,r2               ; 0802F1F0
 mov   r2,r3               ; 0802F1F2
-ldr   r1,=Data082CF008    ; 0802F1F4
+ldr   r1,=ColorTable      ; 0802F1F4
 ldr   r3,[sp,0x18]        ; 0802F1F6  r3 = color table index for final color, /2
 lsl   r0,r3,0x1           ; 0802F1F8
 add   r0,r0,r1            ; 0802F1FA

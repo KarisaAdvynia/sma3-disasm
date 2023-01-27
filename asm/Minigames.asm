@@ -3933,7 +3933,7 @@ lsr   r5,r0,0x10          ; 080EBB12
 ldr   r6,=Data081960F2    ; 080EBB14
 add   r4,0x2A             ; 080EBB16
 @Code080EBB18:
-bl    Sub08019C28         ; 080EBB18  Generate pseudo-random byte
+bl    GenRandomByte       ; 080EBB18  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 080EBB1C
 mov   r1,0xE0             ; 080EBB1E
 lsl   r1,r1,0xC           ; 080EBB20
@@ -5231,7 +5231,7 @@ mov   r0,0xFF             ; 080EC646
 and   r0,r1               ; 080EC648
 cmp   r0,0x7F             ; 080EC64A
 bls   @Code080EC668       ; 080EC64C
-bl    Sub08019C28         ; 080EC64E  Generate pseudo-random byte
+bl    GenRandomByte       ; 080EC64E  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 080EC652
 lsr   r2,r0,0x10          ; 080EC654
 mov   r0,0x80             ; 080EC656
@@ -5252,7 +5252,7 @@ mov   r6,0x0              ; 080EC672
 mov   r7,r5               ; 080EC674
 add   r7,0x92             ; 080EC676
 @Code080EC678:
-bl    Sub08019C28         ; 080EC678  Generate pseudo-random byte
+bl    GenRandomByte       ; 080EC678  Generate pseudo-random byte
 mov   r2,0x1F             ; 080EC67C
 and   r2,r0               ; 080EC67E
 cmp   r2,0x17             ; 080EC680

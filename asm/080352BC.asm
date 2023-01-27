@@ -21219,7 +21219,7 @@ bl    Sub080416EC         ; 0804020C
 mov   r0,0xB2             ; 08040210
 lsl   r0,r0,0x1           ; 08040212
 strh  r0,[r7,0x3C]        ; 08040214
-ldr   r1,=Data08167404    ; 08040216
+ldr   r1,=PaletteDEOffsets ; 08040216
 ldr   r6,=0x4896          ; 08040218
 add   r5,r4,r6            ; 0804021A
 ldrh  r0,[r5]             ; 0804021C

@@ -8971,7 +8971,8 @@ pop   {r4-r6}             ; 0810BA1E
 pop   {r1}                ; 0810BA20
 bx    r1                  ; 0810BA22
 
-Sub0810BA24:
+AbsoluteValue:
+; returns the absolute value of input r0
 push  {lr}                ; 0810BA24
 cmp   r0,0x0              ; 0810BA26
 bge   @Code0810BA2C       ; 0810BA28

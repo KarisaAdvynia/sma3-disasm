@@ -151,9 +151,9 @@ lsl   r0,r4,0x2           ; 080FD07E
 add   r0,r0,r1            ; 080FD080
 ldr   r0,[r0]             ; 080FD082
 mov   r1,0xC0             ; 080FD084
-lsl   r1,r1,0x13          ; 080FD086
+lsl   r1,r1,0x13          ; 080FD086  06000000
 mov   r2,0x80             ; 080FD088
-lsl   r2,r2,0x1           ; 080FD08A
+lsl   r2,r2,0x1           ; 080FD08A  0100
 bl    swi_MemoryCopy32    ; 080FD08C  Memory copy/fill, 32-byte blocks
 mov   r0,r4               ; 080FD090
 pop   {r4}                ; 080FD092
@@ -352,11 +352,11 @@ push  {r4-r7,lr}          ; 080FD1E4
 mov   r5,r0               ; 080FD1E6
 mov   r12,r1              ; 080FD1E8
 mov   r0,r12              ; 080FD1EA
-add   r0,0x57             ; 080FD1EC
-ldrb  r6,[r0]             ; 080FD1EE
+add   r0,0x57             ; 080FD1EC  [03007250]+4+57
+ldrb  r6,[r0]             ; 080FD1EE  cutscene number to activate (1-6) / "Y" flags to load
 cmp   r6,0x0              ; 080FD1F0
 bne   @Code080FD1F6       ; 080FD1F2
-b     @Code080FD2FC       ; 080FD1F4
+b     @Return080FD2FC     ; 080FD1F4
 @Code080FD1F6:
 ldr   r0,[r1,0x48]        ; 080FD1F6
 ldrb  r1,[r0]             ; 080FD1F8
@@ -365,7 +365,7 @@ mov   r0,r7               ; 080FD1FC
 and   r0,r1               ; 080FD1FE
 cmp   r0,0x0              ; 080FD200
 beq   @Code080FD206       ; 080FD202
-sub   r6,0x1              ; 080FD204
+sub   r6,0x1              ; 080FD204  if cutscene, use cutscene-1 for flag set to load
 @Code080FD206:
 lsl   r3,r6,0x1           ; 080FD206
 ldr   r1,=Data08198FA8    ; 080FD208
@@ -411,14 +411,15 @@ cmp   r6,0x5              ; 080FD256
 bne   @Code080FD2BC       ; 080FD258
 ldr   r0,=0x03002200      ; 080FD25A
 ldr   r2,=0x49B0          ; 080FD25C
-add   r0,r0,r2            ; 080FD25E
-ldrb  r0,[r0]             ; 080FD260
+add   r0,r0,r2            ; 080FD25E  03006BB0
+ldrb  r0,[r0]             ; 080FD260  6-8 clear flags
 cmp   r0,0x1              ; 080FD262
-bne   @Code080FD2FC       ; 080FD264
+bne   @Return080FD2FC     ; 080FD264
+                          ;           runs if W6 castle cutscene
 sub   r4,0x16             ; 080FD266
 add   r1,r5,r4            ; 080FD268
-ldr   r0,=DataPtrs08198BB0; 080FD26A
-ldr   r0,[r0,0x14]        ; 080FD26C
+ldr   r0,=YITitleYoshiMoveData; 080FD26A
+ldr   r0,[r0,0x14]        ; 080FD26C  pointer to W6 movement data
 str   r0,[r1]             ; 080FD26E
 ldr   r0,=Data08198F98    ; 080FD270
 ldrb  r0,[r0,0x5]         ; 080FD272
@@ -432,16 +433,16 @@ strb  r1,[r0]             ; 080FD280
 sub   r4,0x28             ; 080FD282
 add   r0,r5,r4            ; 080FD284
 strb  r6,[r0]             ; 080FD286
-b     @Code080FD2FC       ; 080FD288
+b     @Return080FD2FC     ; 080FD288
 .pool                     ; 080FD28A
 
 @Code080FD2BC:
 ldr   r0,=0x1028          ; 080FD2BC
 add   r2,r5,r0            ; 080FD2BE
-ldr   r1,=DataPtrs08198BB0; 080FD2C0
+ldr   r1,=YITitleYoshiMoveData; 080FD2C0
 lsl   r0,r6,0x2           ; 080FD2C2
 add   r0,r0,r1            ; 080FD2C4
-ldr   r0,[r0]             ; 080FD2C6
+ldr   r0,[r0]             ; 080FD2C6  pointer to current world's movement data
 str   r0,[r2]             ; 080FD2C8
 ldr   r3,=Data08198F98    ; 080FD2CA
 add   r0,r6,r3            ; 080FD2CC
@@ -450,10 +451,10 @@ ldr   r2,=0x1042          ; 080FD2D0
 add   r0,r5,r2            ; 080FD2D2
 strh  r1,[r0]             ; 080FD2D4
 cmp   r6,0x5              ; 080FD2D6
-beq   @Code080FD2FC       ; 080FD2D8
+beq   @Return080FD2FC     ; 080FD2D8
 mov   r2,0x0              ; 080FD2DA
 cmp   r2,r6               ; 080FD2DC
-bge   @Code080FD2FC       ; 080FD2DE
+bge   @Return080FD2FC     ; 080FD2DE
 mov   r7,0x0              ; 080FD2E0
 mov   r4,0x5              ; 080FD2E2
 ldr   r0,=0x0FEC          ; 080FD2E4
@@ -469,7 +470,7 @@ add   r1,0x4              ; 080FD2F4
 add   r2,0x1              ; 080FD2F6
 cmp   r2,r6               ; 080FD2F8
 blt   @Code080FD2E8       ; 080FD2FA
-@Code080FD2FC:
+@Return080FD2FC:
 pop   {r4-r7}             ; 080FD2FC
 pop   {r0}                ; 080FD2FE
 bx    r0                  ; 080FD300
@@ -541,6 +542,7 @@ bx    r1                  ; 080FD38C
 .pool                     ; 080FD38E
 
 Sub080FD390:
+; r0: 03003F68?, r1: 03002F80, r2: 03003FA8
 push  {r4-r7,lr}          ; 080FD390
 mov   r7,r10              ; 080FD392
 mov   r6,r9               ; 080FD394
@@ -551,42 +553,42 @@ str   r0,[sp]             ; 080FD39C
 mov   r4,r1               ; 080FD39E
 mov   r5,r2               ; 080FD3A0
 mov   r1,0x1F             ; 080FD3A2
-ldsb  r1,[r5,r1]          ; 080FD3A4
+ldsb  r1,[r5,r1]          ; 080FD3A4  ? (03003FC7): Yoshi X destination
 mov   r0,0x1              ; 080FD3A6
-ldsb  r0,[r4,r0]          ; 080FD3A8
+ldsb  r0,[r4,r0]          ; 080FD3A8  Yoshi X position?
 sub   r1,r1,r0            ; 080FD3AA
 mov   r9,r1               ; 080FD3AC
 mov   r0,r9               ; 080FD3AE
-bl    Sub0810BA24         ; 080FD3B0
-mov   r6,r0               ; 080FD3B4
+bl    AbsoluteValue       ; 080FD3B0
+mov   r6,r0               ; 080FD3B4  r6 = abs(X diff)
 mov   r0,r5               ; 080FD3B6
-add   r0,0x20             ; 080FD3B8
+add   r0,0x20             ; 080FD3B8  ? (03003FC8)
 mov   r1,0x0              ; 080FD3BA
-ldsb  r1,[r0,r1]          ; 080FD3BC
+ldsb  r1,[r0,r1]          ; 080FD3BC  Yoshi Y destination
 mov   r0,0x2              ; 080FD3BE
-ldsb  r0,[r4,r0]          ; 080FD3C0
+ldsb  r0,[r4,r0]          ; 080FD3C0  Yoshi Y position?
 sub   r1,r1,r0            ; 080FD3C2
 mov   r8,r1               ; 080FD3C4
 mov   r0,r8               ; 080FD3C6
-bl    Sub0810BA24         ; 080FD3C8
-mov   r7,r0               ; 080FD3CC
+bl    AbsoluteValue       ; 080FD3C8
+mov   r7,r0               ; 080FD3CC  r7 = abs(Y diff)
 mov   r0,0x18             ; 080FD3CE
-ldsh  r1,[r5,r0]          ; 080FD3D0
+ldsh  r1,[r5,r0]          ; 080FD3D0  ? (03003FC0): Yoshi X destination
 mov   r0,0x3              ; 080FD3D2
-ldsb  r0,[r4,r0]          ; 080FD3D4
+ldsb  r0,[r4,r0]          ; 080FD3D4  Yoshi Z position?
 sub   r1,r1,r0            ; 080FD3D6
 str   r1,[sp,0x4]         ; 080FD3D8
 mov   r0,r1               ; 080FD3DA
-bl    Sub0810BA24         ; 080FD3DC
+bl    AbsoluteValue       ; 080FD3DC
 mov   r4,r0               ; 080FD3E0
-mov   r10,r4              ; 080FD3E2
-cmp   r7,r4               ; 080FD3E4
-ble   @Code080FD3EA       ; 080FD3E6
-mov   r4,r7               ; 080FD3E8
-@Code080FD3EA:
-cmp   r6,r4               ; 080FD3EA
-ble   @Code080FD3F0       ; 080FD3EC
-mov   r4,r6               ; 080FD3EE
+mov   r10,r4              ; 080FD3E2  r10 = abs(Z diff)
+cmp   r7,r4               ; 080FD3E4 \
+ble   @Code080FD3EA       ; 080FD3E6 |
+mov   r4,r7               ; 080FD3E8 |
+@Code080FD3EA:            ;          | r4 = maximum coordinate difference *2
+cmp   r6,r4               ; 080FD3EA |
+ble   @Code080FD3F0       ; 080FD3EC |
+mov   r4,r6               ; 080FD3EE /
 @Code080FD3F0:
 lsl   r0,r4,0x1           ; 080FD3F0
 str   r0,[r5,0x4]         ; 080FD3F2
@@ -688,20 +690,20 @@ str   r0,[r4,0x4]         ; 080FD4A6
 cmp   r0,0x0              ; 080FD4A8
 bgt   @Code080FD4F8       ; 080FD4AA
 ldr   r0,[r4]             ; 080FD4AC
-ldrb  r0,[r0]             ; 080FD4AE
+ldrb  r0,[r0]             ; 080FD4AE  byte 0 of Yoshi movement data
 lsl   r0,r0,0x18          ; 080FD4B0
 asr   r0,r0,0x18          ; 080FD4B2
 cmp   r0,0x0              ; 080FD4B4
 bge   @Code080FD4C4       ; 080FD4B6
 ldrh  r0,[r4,0x8]         ; 080FD4B8
-add   r0,0x1              ; 080FD4BA
+add   r0,0x1              ; 080FD4BA  increment cutscene substate
 strh  r0,[r4,0x8]         ; 080FD4BC
 mov   r0,r1               ; 080FD4BE
 bl    Sub080FD368         ; 080FD4C0
 @Code080FD4C4:
-ldr   r0,[r4]             ; 080FD4C4
-add   r0,0x4              ; 080FD4C6
-str   r0,[r4]             ; 080FD4C8
+ldr   r0,[r4]             ; 080FD4C4 \
+add   r0,0x4              ; 080FD4C6 | add 4 to pointer to Yoshi movement data
+str   r0,[r4]             ; 080FD4C8 /
 mov   r0,0x0              ; 080FD4CA
 strb  r0,[r5,0x1]         ; 080FD4CC
 ldrb  r1,[r4,0xA]         ; 080FD4CE
@@ -814,16 +816,16 @@ mov   r0,0x1              ; 080FD5A4
 ldsb  r0,[r6,r0]          ; 080FD5A6
 cmp   r0,0x0              ; 080FD5A8
 bne   @Code080FD5CA       ; 080FD5AA
-ldr   r1,[r4]             ; 080FD5AC
+ldr   r1,[r4]             ; 080FD5AC  pointer to current position in Yoshi movement data
 ldrb  r0,[r1,0x1]         ; 080FD5AE
-strb  r0,[r4,0x1F]        ; 080FD5B0
+strb  r0,[r4,0x1F]        ; 080FD5B0  store Yoshi X destination
 ldrb  r2,[r1,0x2]         ; 080FD5B2
 ldr   r3,=0x1048          ; 080FD5B4
 add   r0,r5,r3            ; 080FD5B6
-strb  r2,[r0]             ; 080FD5B8
+strb  r2,[r0]             ; 080FD5B8  store Yoshi Y destination
 mov   r0,0x3              ; 080FD5BA
 ldsb  r0,[r1,r0]          ; 080FD5BC
-strh  r0,[r4,0x18]        ; 080FD5BE
+strh  r0,[r4,0x18]        ; 080FD5BE  store Yoshi Z destination
 mov   r0,r6               ; 080FD5C0
 mov   r1,r7               ; 080FD5C2
 mov   r2,r4               ; 080FD5C4
@@ -2956,7 +2958,7 @@ ldr   r1,=0x06004000      ; 080FE788
 bl    swi_LZ77_VRAM       ; 080FE78A  LZ77 decompress (VRAM)
 ldr   r0,=0x06008000      ; 080FE78E
 bl    Sub08102104         ; 080FE790
-ldr   r1,=CodePtrs08199110; 080FE794  pointer to pointers to layer 3 graphics
+ldr   r1,=DataPtrs08199110; 080FE794  pointer to pointers to layer 3 graphics
 mov   r6,r9               ; 080FE796
 add   r6,0x56             ; 080FE798
 ldrb  r0,[r6]             ; 080FE79A  0 for W1-5, 1 for W6
@@ -2986,7 +2988,7 @@ add   r0,sp,0x4           ; 080FE7CC
 ldr   r1,=0x0600FFE0      ; 080FE7CE
 ldr   r2,=0x01000008      ; 080FE7D0
 bl    swi_MemoryCopy32    ; 080FE7D2  Memory copy/fill, 32-byte blocks
-ldr   r1,=CodePtrs08199108; 080FE7D6
+ldr   r1,=DataPtrs08199108; 080FE7D6
 ldrb  r0,[r6]             ; 080FE7D8  0 for W1-5, 1 for W6
 lsl   r0,r0,0x2           ; 080FE7DA
 add   r0,r0,r1            ; 080FE7DC
@@ -3010,7 +3012,7 @@ mov   r0,r4               ; 080FE802
 bl    Sub0810B794         ; 080FE804
 ldrb  r0,[r6]             ; 080FE808  0 for W1-5, 1 for W6
 bl    Sub080FD09C         ; 080FE80A
-ldr   r1,=CodePtrs08199118; 080FE80E  pointer to pointers to layer 3 tilemaps
+ldr   r1,=DataPtrs08199118; 080FE80E  pointer to pointers to layer 3 tilemaps
 ldrb  r0,[r6]             ; 080FE810  0 for W1-5, 1 for W6
 lsl   r0,r0,0x2           ; 080FE812
 add   r0,r0,r1            ; 080FE814
@@ -3158,6 +3160,7 @@ bx    r0                  ; 080FE9E6
 .pool                     ; 080FE9E8
 
 Sub080FE9F0:
+; YI title substate 0
 push  {r4-r7,lr}          ; 080FE9F0
 add   sp,-0x4             ; 080FE9F2
 bl    Sub0810B828         ; 080FE9F4
@@ -3407,6 +3410,7 @@ bx    r0                  ; 080FEC28
 .pool                     ; 080FEC2A
 
 Sub080FEC5C:
+; YI title substate 1
 push  {lr}                ; 080FEC5C
 ldr   r1,=0x03002200      ; 080FEC5E
 ldr   r0,=0x48F6          ; 080FEC60
@@ -3459,6 +3463,7 @@ bx    r0                  ; 080FECCE
 .pool                     ; 080FECD0
 
 Sub080FECD8:
+; YI title substate 2
 push  {r4-r6,lr}          ; 080FECD8
 ldr   r4,=0x03007250      ; 080FECDA
 ldr   r1,[r4]             ; 080FECDC
@@ -3566,6 +3571,7 @@ bx    r0                  ; 080FEDC0
 .pool                     ; 080FEDC2
 
 Sub080FEDF4:
+; YI title substate 3
 push  {r4-r5,lr}          ; 080FEDF4
 ldr   r1,=0x04000004      ; 080FEDF6
 mov   r0,0x8              ; 080FEDF8

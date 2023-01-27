@@ -314,7 +314,7 @@ ldrh  r0,[r0]             ; 0801C1EC
 mov   r1,r4               ; 0801C1EE
 add   r1,0x52             ; 0801C1F0
 strh  r0,[r1]             ; 0801C1F2  set height
-bl    Sub08019C28         ; 0801C1F4  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801C1F4  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 0801C1F8
 mov   r1,0xC0             ; 0801C1FA
 lsl   r1,r1,0xA           ; 0801C1FC  30000
@@ -389,7 +389,7 @@ mov   r0,0x3              ; 0801C284
 strh  r0,[r1]             ; 0801C286  set width to 3
 add   r1,0x4              ; 0801C288  +52
 strh  r0,[r1]             ; 0801C28A  set height to 3
-bl    Sub08019C28         ; 0801C28C  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801C28C  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 0801C290
 lsr   r0,r0,0x10          ; 0801C292
 mov   r1,0x1              ; 0801C294
@@ -426,7 +426,7 @@ mov   r0,0x2              ; 0801C2CC
 strh  r0,[r1]             ; 0801C2CE  set width to 2
 add   r1,0x4              ; 0801C2D0  +52
 strh  r0,[r1]             ; 0801C2D2  set height to 2
-bl    Sub08019C28         ; 0801C2D4  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801C2D4  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 0801C2D8
 lsr   r0,r0,0x10          ; 0801C2DA
 mov   r1,0x4              ; 0801C2DC
@@ -470,7 +470,7 @@ lsl   r4,r4,0x10          ; 0801C320
 lsr   r4,r4,0x10          ; 0801C322
 lsl   r5,r5,0x18          ; 0801C324
 lsr   r5,r5,0x18          ; 0801C326
-bl    Sub08019C28         ; 0801C328  Generate pseudo-random byte
+bl    GenRandomByte       ; 0801C328  Generate pseudo-random byte
 lsl   r0,r0,0x10          ; 0801C32C
 mov   r1,0xC0             ; 0801C32E
 lsl   r1,r1,0xB           ; 0801C330  60000
