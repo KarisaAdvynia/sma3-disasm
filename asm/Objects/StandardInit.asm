@@ -1,4 +1,4 @@
-Sub0801BFA8:
+ExtObjInitFF:
 ; object 00.FF init
 push  {r4-r6,lr}          ; 0801BFA8
 mov   r3,r0               ; 0801BFAA
@@ -48,7 +48,7 @@ pop   {r0}                ; 0801BFF8
 bx    r0                  ; 0801BFFA
 .pool                     ; 0801BFFC
 
-Sub0801C004:
+ExtObjInitFE:
 ; object 00.FE init
 add   r0,0x48             ; 0801C004
 ldrh  r1,[r0]             ; 0801C006  tile YXyx
@@ -62,13 +62,13 @@ strb  r0,[r1]             ; 0801C014  set high bit of screen memory index
 bx    lr                  ; 0801C016
 .pool                     ; 0801C018
 
-Sub0801C01C:
+ExtObjInitFD:
 ; object 00.FD init
 push  {r4,lr}             ; 0801C01C
 mov   r4,r0               ; 0801C01E
 bl    Sub08019D64         ; 0801C020  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4               ; 0801C024
-bl    Sub0802981C         ; 0801C026
+bl    ExtObjMainFD         ; 0801C026
 pop   {r4}                ; 0801C02A
 pop   {r0}                ; 0801C02C
 bx    r0                  ; 0801C02E
@@ -78,7 +78,7 @@ Return0801C030:
 bx    lr                  ; 0801C030
 .pool                     ; 0801C032
 
-Sub0801C034:
+ExtObjInitFB:
 ; object 00.FB init
 add   r0,0x48             ; 0801C034
 ldrh  r0,[r0]             ; 0801C036  tile YXyx
@@ -98,7 +98,7 @@ Return0801C050:
 bx    lr                  ; 0801C050
 .pool                     ; 0801C052
 
-Sub0801C054:
+ExtObjInitE0:
 ; object 00.E0 init
 push  {r4,lr}             ; 0801C054
 lsl   r1,r1,0x10          ; 0801C056
@@ -118,7 +118,7 @@ pop   {r4}                ; 0801C072
 pop   {r0}                ; 0801C074
 bx    r0                  ; 0801C076
 
-Sub0801C078:
+ExtObjInitD4_DF:
 ; object 00.D4-DF init
 push  {r4-r5,lr}          ; 0801C078
 mov   r4,r0               ; 0801C07A
@@ -156,7 +156,7 @@ pop   {r0}                ; 0801C0BA
 bx    r0                  ; 0801C0BC
 .pool                     ; 0801C0BE
 
-Sub0801C0C8:
+ExtObjInitCA_D3:
 ; object 00.CA-D3 init
 push  {r4,lr}             ; 0801C0C8
 mov   r4,r0               ; 0801C0CA
@@ -167,13 +167,13 @@ ldrh  r0,[r1]             ; 0801C0D4  extended object ID
 sub   r0,0xCA             ; 0801C0D6
 strh  r0,[r1]             ; 0801C0D8  [0300224E] = (extID-CA)
 mov   r0,r4               ; 0801C0DA
-bl    Sub08029928         ; 0801C0DC
+bl    ExtObjMainCA_D3         ; 0801C0DC
 pop   {r4}                ; 0801C0E0
 pop   {r0}                ; 0801C0E2
 bx    r0                  ; 0801C0E4
 .pool                     ; 0801C0E6
 
-Sub0801C0E8:
+ExtObjInitC5_C9:
 ; object 00.C5-C9 init
 push  {r4-r5,lr}          ; 0801C0E8
 mov   r4,r0               ; 0801C0EA
@@ -209,18 +209,18 @@ pop   {r0}                ; 0801C126
 bx    r0                  ; 0801C128
 .pool                     ; 0801C12A
 
-Sub0801C134:
+ExtObjInitC4:
 ; object 00.C4 init
 push  {r4,lr}             ; 0801C134
 mov   r4,r0               ; 0801C136
 bl    Sub08019D64         ; 0801C138  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4               ; 0801C13C
-bl    Sub080299A8         ; 0801C13E
+bl    ExtObjMainC4         ; 0801C13E
 pop   {r4}                ; 0801C142
 pop   {r0}                ; 0801C144
 bx    r0                  ; 0801C146
 
-Sub0801C148:
+ExtObjInitC2_C3:
 ; object 00.C2-C3 init
 push  {r4,lr}             ; 0801C148
 mov   r12,r0              ; 0801C14A
@@ -248,7 +248,7 @@ pop   {r0}                ; 0801C176
 bx    r0                  ; 0801C178
 .pool                     ; 0801C17A
 
-Sub0801C17C:
+ExtObjInitC1:
 ; object 00.C1 init
 push  {r4,lr}             ; 0801C17C
 lsl   r1,r1,0x10          ; 0801C17E
@@ -272,7 +272,7 @@ pop   {r4}                ; 0801C1A2
 pop   {r0}                ; 0801C1A4
 bx    r0                  ; 0801C1A6
 
-Sub0801C1A8:
+ExtObjInitC0:
 ; object 00.C0 init
 push  {r4,lr}             ; 0801C1A8
 lsl   r1,r1,0x10          ; 0801C1AA
@@ -292,7 +292,7 @@ pop   {r4}                ; 0801C1C6
 pop   {r0}                ; 0801C1C8
 bx    r0                  ; 0801C1CA
 
-Sub0801C1CC:
+ExtObjInitBA_BF:
 ; object 00.BA-BF init
 push  {r4-r6,lr}          ; 0801C1CC
 mov   r4,r0               ; 0801C1CE
@@ -335,7 +335,7 @@ pop   {r0}                ; 0801C218
 bx    r0                  ; 0801C21A
 .pool                     ; 0801C21C
 
-Sub0801C220:
+ExtObjInitB8_B9:
 ; object 00.B8-B9 init
 push  {r4-r5,lr}          ; 0801C220
 mov   r4,r0               ; 0801C222
@@ -373,7 +373,7 @@ pop   {r0}                ; 0801C262
 bx    r0                  ; 0801C264
 .pool                     ; 0801C266
 
-Sub0801C270:
+ExtObjInitB6_B7:
 ; object 00.B6-B7 init
 push  {r4-r6,lr}          ; 0801C270
 mov   r6,r0               ; 0801C272
@@ -410,7 +410,7 @@ pop   {r4-r6}             ; 0801C2B2
 pop   {r0}                ; 0801C2B4
 bx    r0                  ; 0801C2B6
 
-Sub0801C2B8:
+ExtObjInitB4_B5:
 ; object 00.B4-B5 init
 push  {r4-r6,lr}          ; 0801C2B8
 mov   r6,r0               ; 0801C2BA
@@ -449,18 +449,18 @@ pop   {r0}                ; 0801C2FE
 bx    r0                  ; 0801C300
 .pool                     ; 0801C302
 
-Sub0801C304:
+ExtObjInitB3:
 ; object 00.B3 init
 push  {r4,lr}             ; 0801C304
 mov   r4,r0               ; 0801C306
 bl    Sub08019D64         ; 0801C308  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4               ; 0801C30C
-bl    Sub08029D2C         ; 0801C30E
+bl    ExtObjMainB3         ; 0801C30E
 pop   {r4}                ; 0801C312
 pop   {r0}                ; 0801C314
 bx    r0                  ; 0801C316
 
-Sub0801C318:
+ExtObjInitAD_B2:
 ; object 00.AD-B2 init
 push  {r4-r6,lr}          ; 0801C318
 mov   r6,r0               ; 0801C31A
@@ -507,7 +507,7 @@ pop   {r0}                ; 0801C36E
 bx    r0                  ; 0801C370
 .pool                     ; 0801C372
 
-Sub0801C37C:
+ExtObjInitA9_AC:
 ; object 00.A9-AC init
 push  {r4-r5,lr}          ; 0801C37C
 lsl   r1,r1,0x10          ; 0801C37E
@@ -538,18 +538,18 @@ pop   {r0}                ; 0801C3B0
 bx    r0                  ; 0801C3B2
 .pool                     ; 0801C3B4
 
-Sub0801C3B8:
+ExtObjInitA7:
 ; object 00.A7 init
 push  {r4,lr}             ; 0801C3B8
 mov   r4,r0               ; 0801C3BA
 bl    Sub08019D64         ; 0801C3BC  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4               ; 0801C3C0
-bl    Sub08029E04         ; 0801C3C2
+bl    ExtObjMainA7         ; 0801C3C2
 pop   {r4}                ; 0801C3C6
 pop   {r0}                ; 0801C3C8
 bx    r0                  ; 0801C3CA
 
-Sub0801C3CC:
+ExtObjInitA5_A6:
 ; object 00.A5-A6 init
 push  {r4-r6,lr}          ; 0801C3CC
 mov   r6,r9               ; 0801C3CE
@@ -614,7 +614,7 @@ pop   {r0}                ; 0801C444
 bx    r0                  ; 0801C446
 .pool                     ; 0801C448
 
-Sub0801C460:
+ExtObjInitA4:
 ; object 00.A4 init
 push  {r4,lr}             ; 0801C460
 lsl   r1,r1,0x10          ; 0801C462
@@ -634,7 +634,7 @@ pop   {r4}                ; 0801C47E
 pop   {r0}                ; 0801C480
 bx    r0                  ; 0801C482
 
-Sub0801C484:
+ExtObjInitA0_A3:
 ; object 00.A0-A3 init
 push  {r4-r6,lr}          ; 0801C484
 mov   r6,r8               ; 0801C486
@@ -686,7 +686,7 @@ pop   {r0}                ; 0801C4E2
 bx    r0                  ; 0801C4E4
 .pool                     ; 0801C4E6
 
-Sub0801C4F8:
+ExtObjInit9E_9F:
 ; object 00.9E-9F init
 push  {r4,lr}             ; 0801C4F8
 mov   r4,r0               ; 0801C4FA
@@ -699,13 +699,13 @@ and   r0,r1               ; 0801C508
 lsl   r0,r0,0x1           ; 0801C50A
 strh  r0,[r2]             ; 0801C50C  (extID&1)*2
 mov   r0,r4               ; 0801C50E
-bl    Sub0802A1D0         ; 0801C510
+bl    ExtObjMain9E_9F         ; 0801C510
 pop   {r4}                ; 0801C514
 pop   {r0}                ; 0801C516
 bx    r0                  ; 0801C518
 .pool                     ; 0801C51A
 
-Sub0801C51C:
+ExtObjInit9A_9D:
 ; object 00.9A-9D init
 push  {r4,lr}             ; 0801C51C
 mov   r4,r0               ; 0801C51E
@@ -721,12 +721,12 @@ and   r0,r1               ; 0801C532
 lsr   r0,r0,0xF           ; 0801C534  (extID&3)<<1
 strh  r0,[r2]             ; 0801C536  set to (extID-9A)*2
 mov   r0,r4               ; 0801C538
-bl    Sub0802A268         ; 0801C53A
+bl    ExtObjMain9A_9D         ; 0801C53A
 pop   {r4}                ; 0801C53E
 pop   {r0}                ; 0801C540
 bx    r0                  ; 0801C542
 
-Sub0801C544:
+ExtObjInit96_99:
 ; object 00.96-99 init
 push  {r4,lr}             ; 0801C544
 mov   r12,r0              ; 0801C546
@@ -756,7 +756,7 @@ pop   {r4}                ; 0801C576
 pop   {r0}                ; 0801C578
 bx    r0                  ; 0801C57A
 
-Sub0801C57C:
+ExtObjInit92_95:
 ; object 00.92-95 init
 push  {r4,lr}             ; 0801C57C
 mov   r12,r0              ; 0801C57E
@@ -786,7 +786,7 @@ pop   {r4}                ; 0801C5AE
 pop   {r0}                ; 0801C5B0
 bx    r0                  ; 0801C5B2
 
-Sub0801C5B4:
+ExtObjInit8E_91:
 ; object 00.8E-91 init
 push  {r4,lr}             ; 0801C5B4
 mov   r4,r0               ; 0801C5B6
@@ -801,24 +801,24 @@ mov   r1,0x3              ; 0801C5C8
 and   r0,r1               ; 0801C5CA
 strh  r0,[r2]             ; 0801C5CC  set to extID-8E
 mov   r0,r4               ; 0801C5CE
-bl    Sub0802A378         ; 0801C5D0
+bl    ExtObjMain8E_91         ; 0801C5D0
 pop   {r4}                ; 0801C5D4
 pop   {r0}                ; 0801C5D6
 bx    r0                  ; 0801C5D8
 .pool                     ; 0801C5DA
 
-Sub0801C5DC:
+ExtObjInit8D:
 ; object 00.8D init
 push  {r4,lr}             ; 0801C5DC
 mov   r4,r0               ; 0801C5DE
 bl    Sub08019D64         ; 0801C5E0  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4               ; 0801C5E4
-bl    Sub0802A4B8         ; 0801C5E6
+bl    ExtObjMain8D         ; 0801C5E6
 pop   {r4}                ; 0801C5EA
 pop   {r0}                ; 0801C5EC
 bx    r0                  ; 0801C5EE
 
-Sub0801C5F0:
+ExtObjInit89_8C:
 ; object 00.89-8C init
 push  {r4,lr}             ; 0801C5F0
 mov   r12,r0              ; 0801C5F2
@@ -862,7 +862,7 @@ pop   {r0}                ; 0801C63E
 bx    r0                  ; 0801C640
 .pool                     ; 0801C642
 
-Sub0801C64C:
+ExtObjInit88:
 ; object 00.88 init
 push  {r4,lr}             ; 0801C64C
 lsl   r1,r1,0x10          ; 0801C64E
@@ -882,7 +882,7 @@ pop   {r4}                ; 0801C66A
 pop   {r0}                ; 0801C66C
 bx    r0                  ; 0801C66E
 
-Sub0801C670:
+ExtObjInit83_87:
 ; object 00.83-87 init
 push  {r4-r6,lr}          ; 0801C670
 mov   r6,r9               ; 0801C672
@@ -944,7 +944,7 @@ pop   {r0}                ; 0801C6E2
 bx    r0                  ; 0801C6E4
 .pool                     ; 0801C6E6
 
-Sub0801C6FC:
+ExtObjInit82:
 ; object 00.82 init
 push  {r4-r6,lr}          ; 0801C6FC
 mov   r12,r0              ; 0801C6FE
@@ -978,7 +978,7 @@ pop   {r0}                ; 0801C736
 bx    r0                  ; 0801C738
 .pool                     ; 0801C73A
 
-Sub0801C744:
+ExtObjInit81:
 ; object 00.81 init
 push  {r4,lr}             ; 0801C744
 lsl   r1,r1,0x10          ; 0801C746
@@ -996,18 +996,18 @@ pop   {r4}                ; 0801C75E
 pop   {r0}                ; 0801C760
 bx    r0                  ; 0801C762
 
-Sub0801C764:
+ExtObjInit80:
 ; object 00.80 init
 push  {r4,lr}             ; 0801C764
 mov   r4,r0               ; 0801C766
 bl    Sub08019D64         ; 0801C768  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4               ; 0801C76C
-bl    Sub0802A94C         ; 0801C76E
+bl    ExtObjMain80         ; 0801C76E
 pop   {r4}                ; 0801C772
 pop   {r0}                ; 0801C774
 bx    r0                  ; 0801C776
 
-Sub0801C778:
+ExtObjInit7E_7F:
 ; object 00.7E-7F init
 push  {r4,lr}             ; 0801C778
 lsl   r1,r1,0x10          ; 0801C77A
@@ -1029,7 +1029,7 @@ pop   {r0}                ; 0801C79A
 bx    r0                  ; 0801C79C
 .pool                     ; 0801C79E
 
-Sub0801C7A0:
+ExtObjInit71_7D:
 ; object 00.71-7D init
 push  {r4-r5,lr}          ; 0801C7A0
 mov   r4,r0               ; 0801C7A2
@@ -1059,7 +1059,7 @@ pop   {r0}                ; 0801C7D2
 bx    r0                  ; 0801C7D4
 .pool                     ; 0801C7D6
 
-Sub0801C7E0:
+ExtObjInit6D_70:
 ; object 00.6D-70 init
 push  {r4,lr}             ; 0801C7E0
 mov   r12,r0              ; 0801C7E2
@@ -1113,7 +1113,7 @@ pop   {r4-r5}             ; 0801C836
 pop   {r0}                ; 0801C838
 bx    r0                  ; 0801C83A
 
-Sub0801C83C:
+ExtObjInit6C:
 ; object 00.6C init
 push  {r4,lr}             ; 0801C83C
 add   sp,-0x4             ; 0801C83E
@@ -1137,7 +1137,7 @@ pop   {r4}                ; 0801C862
 pop   {r0}                ; 0801C864
 bx    r0                  ; 0801C866
 
-Sub0801C868:
+ExtObjInit6B:
 ; object 00.6B init
 push  {r4,lr}             ; 0801C868
 add   sp,-0x4             ; 0801C86A
@@ -1161,7 +1161,7 @@ pop   {r4}                ; 0801C88E
 pop   {r0}                ; 0801C890
 bx    r0                  ; 0801C892
 
-Sub0801C894:
+ExtObjInit6A:
 ; object 00.6A init
 push  {r4,lr}             ; 0801C894
 add   sp,-0x4             ; 0801C896
@@ -1185,24 +1185,24 @@ pop   {r4}                ; 0801C8BA
 pop   {r0}                ; 0801C8BC
 bx    r0                  ; 0801C8BE
 
-Sub0801C8C0:
+ExtObjInit68_69:
 ; object 00.68-69 init
 push  {r4,lr}             ; 0801C8C0
 mov   r4,r0               ; 0801C8C2
 bl    Sub08019D64         ; 0801C8C4  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4               ; 0801C8C8
-bl    Sub0802ACF0         ; 0801C8CA
+bl    ExtObjMain68_69         ; 0801C8CA
 pop   {r4}                ; 0801C8CE
 pop   {r0}                ; 0801C8D0
 bx    r0                  ; 0801C8D2
 
-Sub0801C8D4:
+ExtObjInit67:
 ; object 00.67 init
 push  {r4,lr}             ; 0801C8D4
 mov   r4,r0               ; 0801C8D6
 bl    Sub08019D64         ; 0801C8D8  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4               ; 0801C8DC
-bl    Sub0802AD1C         ; 0801C8DE
+bl    ExtObjMain67         ; 0801C8DE
 pop   {r4}                ; 0801C8E2
 pop   {r0}                ; 0801C8E4
 bx    r0                  ; 0801C8E6
@@ -1241,7 +1241,7 @@ pop   {r0}                ; 0801C912
 bx    r0                  ; 0801C914
 .pool                     ; 0801C916
 
-Sub0801C918:
+ExtObjInit66:
 ; object 00.66 init
 push  {lr}                ; 0801C918
 add   sp,-0x8             ; 0801C91A
@@ -1259,7 +1259,7 @@ add   sp,0x8              ; 0801C932
 pop   {r0}                ; 0801C934
 bx    r0                  ; 0801C936
 
-Sub0801C938:
+ExtObjInit65:
 ; object 00.65 init
 push  {lr}                ; 0801C938
 add   sp,-0x8             ; 0801C93A
@@ -1302,7 +1302,7 @@ pop   {r0}                ; 0801C97E
 bx    r0                  ; 0801C980
 .pool                     ; 0801C982
 
-Sub0801C984:
+ExtObjInit64:
 ; object 00.64 init
 push  {r4-r5,lr}          ; 0801C984
 mov   r4,r0               ; 0801C986
@@ -1320,7 +1320,7 @@ pop   {r4-r5}             ; 0801C99E
 pop   {r0}                ; 0801C9A0
 bx    r0                  ; 0801C9A2
 
-Sub0801C9A4:
+ExtObjInit63:
 ; object 00.63 init
 push  {r4-r5,lr}          ; 0801C9A4
 mov   r4,r0               ; 0801C9A6
@@ -1363,7 +1363,7 @@ pop   {r0}                ; 0801C9EA
 bx    r0                  ; 0801C9EC
 .pool                     ; 0801C9EE
 
-Sub0801C9F0:
+ExtObjInit62:
 ; object 00.62 init
 push  {r4-r5,lr}          ; 0801C9F0
 mov   r4,r0               ; 0801C9F2
@@ -1381,7 +1381,7 @@ pop   {r4-r5}             ; 0801CA0A
 pop   {r0}                ; 0801CA0C
 bx    r0                  ; 0801CA0E
 
-Sub0801CA10:
+ExtObjInit61:
 ; object 00.61 init
 push  {r4-r5,lr}          ; 0801CA10
 mov   r4,r0               ; 0801CA12
@@ -1399,7 +1399,7 @@ pop   {r4-r5}             ; 0801CA2A
 pop   {r0}                ; 0801CA2C
 bx    r0                  ; 0801CA2E
 
-Sub0801CA30:
+ExtObjInit60:
 ; object 00.60 init
 push  {lr}                ; 0801CA30
 add   sp,-0x8             ; 0801CA32
@@ -1417,7 +1417,7 @@ add   sp,0x8              ; 0801CA4A
 pop   {r0}                ; 0801CA4C
 bx    r0                  ; 0801CA4E
 
-Sub0801CA50:
+ExtObjInit5F:
 ; object 00.5F init
 push  {lr}                ; 0801CA50
 add   sp,-0x8             ; 0801CA52
@@ -1435,18 +1435,18 @@ add   sp,0x8              ; 0801CA6A
 pop   {r0}                ; 0801CA6C
 bx    r0                  ; 0801CA6E
 
-Sub0801CA70:
+ExtObjInit5E:
 ; object 00.5E init
 push  {r4,lr}             ; 0801CA70
 mov   r4,r0               ; 0801CA72
 bl    Sub08019D64         ; 0801CA74  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4               ; 0801CA78
-bl    Sub0802AE20         ; 0801CA7A
+bl    ExtObjMain5E         ; 0801CA7A
 pop   {r4}                ; 0801CA7E
 pop   {r0}                ; 0801CA80
 bx    r0                  ; 0801CA82
 
-Sub0801CA84:
+ExtObjInit5B_5D:
 ; object 00.5B-5D init
 push  {r4,lr}             ; 0801CA84
 mov   r12,r0              ; 0801CA86
@@ -1476,7 +1476,7 @@ pop   {r0}                ; 0801CAB6
 bx    r0                  ; 0801CAB8
 .pool                     ; 0801CABA
 
-Sub0801CABC:
+ExtObjInit58_5A:
 ; object 00.58-5A init
 push  {r4-r5,lr}          ; 0801CABC
 mov   r12,r0              ; 0801CABE
@@ -1506,7 +1506,7 @@ pop   {r0}                ; 0801CAEE
 bx    r0                  ; 0801CAF0
 .pool                     ; 0801CAF2
 
-Sub0801CAF4:
+ExtObjInit56_57:
 ; object 00.56-57 init
 push  {r4,lr}             ; 0801CAF4
 mov   r12,r0              ; 0801CAF6
@@ -1534,7 +1534,7 @@ pop   {r4}                ; 0801CB22
 pop   {r0}                ; 0801CB24
 bx    r0                  ; 0801CB26
 
-Sub0801CB28:
+ExtObjInit54_55:
 ; object 00.54-55 init
 push  {r4,lr}             ; 0801CB28
 mov   r12,r0              ; 0801CB2A
@@ -1562,7 +1562,7 @@ pop   {r0}                ; 0801CB56
 bx    r0                  ; 0801CB58
 .pool                     ; 0801CB5A
 
-Sub0801CB5C:
+ExtObjInit53:
 ; object 00.53 init
 push  {r4-r5,lr}          ; 0801CB5C
 mov   r12,r0              ; 0801CB5E
@@ -1596,7 +1596,7 @@ pop   {r0}                ; 0801CB96
 bx    r0                  ; 0801CB98
 .pool                     ; 0801CB9A
 
-Sub0801CBA4:
+ExtObjInit52:
 ; object 00.52 init
 push  {r4-r5,lr}          ; 0801CBA4
 mov   r12,r0              ; 0801CBA6
@@ -1630,18 +1630,18 @@ pop   {r0}                ; 0801CBDE
 bx    r0                  ; 0801CBE0
 .pool                     ; 0801CBE2
 
-Sub0801CBEC:
+ExtObjInit51:
 ; object 00.51 init
 push  {r4,lr}             ; 0801CBEC
 mov   r4,r0               ; 0801CBEE
 bl    Sub08019D64         ; 0801CBF0  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4               ; 0801CBF4
-bl    Sub0802B0D0         ; 0801CBF6
+bl    ExtObjMain51         ; 0801CBF6
 pop   {r4}                ; 0801CBFA
 pop   {r0}                ; 0801CBFC
 bx    r0                  ; 0801CBFE
 
-Sub0801CC00:
+ExtObjInit50_A8:
 ; object 00.50,00.A8 init
 push  {r4,lr}             ; 0801CC00
 mov   r12,r0              ; 0801CC02
@@ -1671,18 +1671,18 @@ pop   {r4}                ; 0801CC32
 pop   {r0}                ; 0801CC34
 bx    r0                  ; 0801CC36
 
-Sub0801CC38:
+ExtObjInit4F:
 ; object 00.4F init
 push  {r4,lr}             ; 0801CC38
 mov   r4,r0               ; 0801CC3A
 bl    Sub08019D64         ; 0801CC3C  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4               ; 0801CC40
-bl    Sub0802B248         ; 0801CC42
+bl    ExtObjMain4F         ; 0801CC42
 pop   {r4}                ; 0801CC46
 pop   {r0}                ; 0801CC48
 bx    r0                  ; 0801CC4A
 
-Sub0801CC4C:
+ExtObjInit4E:
 ; object 00.4E init
 push  {r4,lr}             ; 0801CC4C
 lsl   r1,r1,0x10          ; 0801CC4E
@@ -1706,7 +1706,7 @@ pop   {r4}                ; 0801CC72
 pop   {r0}                ; 0801CC74
 bx    r0                  ; 0801CC76
 
-Sub0801CC78:
+ExtObjInit4D:
 ; object 00.4D init
 push  {r4,lr}             ; 0801CC78
 lsl   r1,r1,0x10          ; 0801CC7A
@@ -1726,40 +1726,40 @@ pop   {r4}                ; 0801CC96
 pop   {r0}                ; 0801CC98
 bx    r0                  ; 0801CC9A
 
-Sub0801CC9C:
+ExtObjInit4C:
 ; object 00.4C init
 push  {r4,lr}             ; 0801CC9C
 mov   r4,r0               ; 0801CC9E
 bl    Sub08019D64         ; 0801CCA0  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4               ; 0801CCA4
-bl    Sub0802B2C4         ; 0801CCA6
+bl    ExtObjMain4C         ; 0801CCA6
 pop   {r4}                ; 0801CCAA
 pop   {r0}                ; 0801CCAC
 bx    r0                  ; 0801CCAE
 
-Sub0801CCB0:
+ExtObjInit4B:
 ; object 00.4B init
 push  {r4,lr}             ; 0801CCB0
 mov   r4,r0               ; 0801CCB2
 bl    Sub08019D64         ; 0801CCB4  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4               ; 0801CCB8
-bl    Sub0802B2E4         ; 0801CCBA
+bl    ExtObjMain4B         ; 0801CCBA
 pop   {r4}                ; 0801CCBE
 pop   {r0}                ; 0801CCC0
 bx    r0                  ; 0801CCC2
 
-Sub0801CCC4:
+ExtObjInit4A:
 ; object 00.4A init
 push  {r4,lr}             ; 0801CCC4
 mov   r4,r0               ; 0801CCC6
 bl    Sub08019D64         ; 0801CCC8  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4               ; 0801CCCC
-bl    Sub0802B348         ; 0801CCCE
+bl    ExtObjMain4A         ; 0801CCCE
 pop   {r4}                ; 0801CCD2
 pop   {r0}                ; 0801CCD4
 bx    r0                  ; 0801CCD6
 
-Sub0801CCD8:
+ExtObjInit49_4A:
 ; object 00.49 init
 push  {r4-r5,lr}          ; 0801CCD8
 mov   r12,r0              ; 0801CCDA
@@ -1793,7 +1793,7 @@ pop   {r0}                ; 0801CD12
 bx    r0                  ; 0801CD14
 .pool                     ; 0801CD16
 
-Sub0801CD20:
+ExtObjInit48:
 ; object 00.48 init
 push  {r4-r6,lr}          ; 0801CD20
 mov   r12,r0              ; 0801CD22
@@ -1828,7 +1828,7 @@ pop   {r0}                ; 0801CD5C
 bx    r0                  ; 0801CD5E
 .pool                     ; 0801CD60
 
-Sub0801CD6C:
+ExtObjInit47:
 ; object 00.47 init
 push  {r4-r6,lr}          ; 0801CD6C
 mov   r12,r0              ; 0801CD6E
@@ -1861,18 +1861,18 @@ pop   {r0}                ; 0801CDA4
 bx    r0                  ; 0801CDA6
 .pool                     ; 0801CDA8
 
-Sub0801CDB0:
+ExtObjInit46:
 ; object 00.46 init
 push  {r4,lr}             ; 0801CDB0
 mov   r4,r0               ; 0801CDB2
 bl    Sub08019D64         ; 0801CDB4  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4               ; 0801CDB8
-bl    Sub0802B4F0         ; 0801CDBA
+bl    ExtObjMain46         ; 0801CDBA
 pop   {r4}                ; 0801CDBE
 pop   {r0}                ; 0801CDC0
 bx    r0                  ; 0801CDC2
 
-Sub0801CDC4:
+ExtObjInit32_45:
 ; object 00.32-45 init
 push  {r4,lr}             ; 0801CDC4
 mov   r4,r0               ; 0801CDC6
@@ -1883,13 +1883,13 @@ ldrh  r0,[r1]             ; 0801CDD0  extended object ID
 sub   r0,0x32             ; 0801CDD2
 strh  r0,[r1]             ; 0801CDD4  extID-32
 mov   r0,r4               ; 0801CDD6
-bl    Sub0802B528         ; 0801CDD8
+bl    ExtObjMain32_45         ; 0801CDD8
 pop   {r4}                ; 0801CDDC
 pop   {r0}                ; 0801CDDE
 bx    r0                  ; 0801CDE0
 .pool                     ; 0801CDE2
 
-Sub0801CDE4:
+ExtObjInit31:
 ; object 00.31 init
 push  {r4,lr}             ; 0801CDE4
 lsl   r1,r1,0x10          ; 0801CDE6
@@ -1913,7 +1913,7 @@ pop   {r4}                ; 0801CE0A
 pop   {r0}                ; 0801CE0C
 bx    r0                  ; 0801CE0E
 
-Sub0801CE10:
+ExtObjInit30:
 ; object 00.30 init
 push  {r4-r5,lr}          ; 0801CE10
 mov   r12,r0              ; 0801CE12
@@ -1947,7 +1947,7 @@ pop   {r0}                ; 0801CE4A
 bx    r0                  ; 0801CE4C
 .pool                     ; 0801CE4E
 
-Sub0801CE58:
+ExtObjInit20_2F:
 ; object 00.20-2F init
 push  {r4,lr}             ; 0801CE58
 mov   r4,r0               ; 0801CE5A
@@ -1964,7 +1964,7 @@ pop   {r0}                ; 0801CE72
 bx    r0                  ; 0801CE74
 .pool                     ; 0801CE76
 
-Sub0801CE78:
+ExtObjInit1F:
 ; object 00.1F init
 push  {r4,lr}             ; 0801CE78
 lsl   r1,r1,0x10          ; 0801CE7A
@@ -1984,7 +1984,7 @@ pop   {r4}                ; 0801CE96
 pop   {r0}                ; 0801CE98
 bx    r0                  ; 0801CE9A
 
-Sub0801CE9C:
+ExtObjInit1E:
 ; object 00.1E init
 push  {r4,lr}             ; 0801CE9C
 lsl   r1,r1,0x10          ; 0801CE9E
@@ -2028,7 +2028,7 @@ pop   {r4}                ; 0801CEE6
 pop   {r0}                ; 0801CEE8
 bx    r0                  ; 0801CEEA
 
-Sub0801CEEC:
+ExtObjInit1B:
 ; object 00.1B init
 push  {r4,lr}             ; 0801CEEC
 lsl   r1,r1,0x10          ; 0801CEEE
@@ -2046,7 +2046,7 @@ pop   {r4}                ; 0801CF06
 pop   {r0}                ; 0801CF08
 bx    r0                  ; 0801CF0A
 
-Sub0801CF0C:
+ExtObjInit1C:
 ; object 00.1C init
 push  {r4,lr}             ; 0801CF0C
 lsl   r1,r1,0x10          ; 0801CF0E
@@ -2064,7 +2064,7 @@ pop   {r4}                ; 0801CF26
 pop   {r0}                ; 0801CF28
 bx    r0                  ; 0801CF2A
 
-Sub0801CF2C:
+ExtObjInit1D:
 ; object 00.1D init
 push  {r4,lr}             ; 0801CF2C
 lsl   r1,r1,0x10          ; 0801CF2E
@@ -2082,7 +2082,7 @@ pop   {r4}                ; 0801CF46
 pop   {r0}                ; 0801CF48
 bx    r0                  ; 0801CF4A
 
-Sub0801CF4C:
+ExtObjInit19:
 ; object 00.19 init
 push  {r4-r5,lr}          ; 0801CF4C
 mov   r4,r0               ; 0801CF4E
@@ -2112,7 +2112,7 @@ pop   {r4-r5}             ; 0801CF7E
 pop   {r0}                ; 0801CF80
 bx    r0                  ; 0801CF82
 
-Sub0801CF84:
+ExtObjInit1A:
 ; object 00.1A init
 push  {lr}                ; 0801CF84
 mov   r12,r0              ; 0801CF86
@@ -2136,7 +2136,7 @@ pop   {r0}                ; 0801CFAA
 bx    r0                  ; 0801CFAC
 .pool                     ; 0801CFAE
 
-Sub0801CFB0:
+ExtObjInit18:
 ; object 00.18 init
 push  {r4,lr}             ; 0801CFB0
 lsl   r1,r1,0x10          ; 0801CFB2
@@ -2156,29 +2156,29 @@ pop   {r4}                ; 0801CFCE
 pop   {r0}                ; 0801CFD0
 bx    r0                  ; 0801CFD2
 
-Sub0801CFD4:
+ExtObjInit17:
 ; object 00.17 init
 push  {r4,lr}             ; 0801CFD4
 mov   r4,r0               ; 0801CFD6
 bl    Sub08019D64         ; 0801CFD8  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4               ; 0801CFDC
-bl    Sub0802B824         ; 0801CFDE
+bl    ExtObjMain17         ; 0801CFDE
 pop   {r4}                ; 0801CFE2
 pop   {r0}                ; 0801CFE4
 bx    r0                  ; 0801CFE6
 
-Sub0801CFE8:
+ExtObjInit16:
 ; object 00.16 init
 push  {r4,lr}             ; 0801CFE8
 mov   r4,r0               ; 0801CFEA
 bl    Sub08019D64         ; 0801CFEC  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4               ; 0801CFF0
-bl    Sub0802B858         ; 0801CFF2
+bl    ExtObjMain16         ; 0801CFF2
 pop   {r4}                ; 0801CFF6
 pop   {r0}                ; 0801CFF8
 bx    r0                  ; 0801CFFA
 
-Sub0801CFFC:
+ExtObjInit14:
 ; object 00.14 init
 push  {r4,lr}             ; 0801CFFC
 mov   r12,r0              ; 0801CFFE
@@ -2212,7 +2212,7 @@ pop   {r0}                ; 0801D036
 bx    r0                  ; 0801D038
 .pool                     ; 0801D03A
 
-Sub0801D040:
+ExtObjInit15:
 ; object 00.15 init
 push  {r4,lr}             ; 0801D040
 mov   r12,r0              ; 0801D042
@@ -2246,7 +2246,7 @@ pop   {r0}                ; 0801D07A
 bx    r0                  ; 0801D07C
 .pool                     ; 0801D07E
 
-Sub0801D084:
+ExtObjInit12:
 ; object 00.12 init
 push  {r4,lr}             ; 0801D084
 lsl   r1,r1,0x10          ; 0801D086
@@ -2270,7 +2270,7 @@ pop   {r4}                ; 0801D0AA
 pop   {r0}                ; 0801D0AC
 bx    r0                  ; 0801D0AE
 
-Sub0801D0B0:
+ExtObjInit13:
 ; object 00.13 init
 push  {r4,lr}             ; 0801D0B0
 lsl   r1,r1,0x10          ; 0801D0B2
@@ -2294,7 +2294,7 @@ pop   {r4}                ; 0801D0D6
 pop   {r0}                ; 0801D0D8
 bx    r0                  ; 0801D0DA
 
-Sub0801D0DC:
+ExtObjInit11:
 ; object 00.11 init
 push  {r4,lr}             ; 0801D0DC
 lsl   r1,r1,0x10          ; 0801D0DE
@@ -2312,7 +2312,7 @@ pop   {r4}                ; 0801D0F6
 pop   {r0}                ; 0801D0F8
 bx    r0                  ; 0801D0FA
 
-Sub0801D0FC:
+ExtObjInit10:
 ; object 00.10 init
 push  {r4,lr}             ; 0801D0FC
 lsl   r1,r1,0x10          ; 0801D0FE
@@ -2330,18 +2330,18 @@ pop   {r4}                ; 0801D116
 pop   {r0}                ; 0801D118
 bx    r0                  ; 0801D11A
 
-Sub0801D11C:
+ExtObjInit0F:
 ; object 00.0F init
 push  {r4,lr}             ; 0801D11C
 mov   r4,r0               ; 0801D11E
 bl    Sub08019D64         ; 0801D120  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4               ; 0801D124
-bl    Sub0802B9F4         ; 0801D126
+bl    ExtObjMain0F         ; 0801D126
 pop   {r4}                ; 0801D12A
 pop   {r0}                ; 0801D12C
 bx    r0                  ; 0801D12E
 
-Sub0801D130:
+ExtObjInit0D_0E:
 ; object 00.0D-0E init
 push  {r4,lr}             ; 0801D130
 mov   r12,r0              ; 0801D132
@@ -2371,7 +2371,7 @@ pop   {r0}                ; 0801D162
 bx    r0                  ; 0801D164
 .pool                     ; 0801D166
 
-Sub0801D168:
+ExtObjInit0C:
 ; object 00.0C init
 push  {r4,lr}             ; 0801D168
 lsl   r1,r1,0x10          ; 0801D16A
@@ -2397,7 +2397,7 @@ pop   {r0}                ; 0801D192
 bx    r0                  ; 0801D194
 .pool                     ; 0801D196
 
-Sub0801D198:
+ExtObjInit0A_0B:
 ; object 00.0A-0B init
 push  {r4,lr}             ; 0801D198
 mov   r12,r0              ; 0801D19A
@@ -2427,7 +2427,7 @@ pop   {r4}                ; 0801D1CA
 pop   {r0}                ; 0801D1CC
 bx    r0                  ; 0801D1CE
 
-Sub0801D1D0:
+ExtObjInit00_09:
 ; object 00.00-09 init
 push  {r4-r6,lr}          ; 0801D1D0
 mov   r4,r0               ; 0801D1D2

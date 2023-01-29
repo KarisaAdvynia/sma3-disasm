@@ -33,7 +33,7 @@ pop   {r4}                ; 0801A086
 pop   {r0}                ; 0801A088
 bx    r0                  ; 0801A08A
 
-Sub0801A08C:
+ObjInitFE:
 ; object FE init
 push  {lr}                ; 0801A08C
 lsl   r1,r1,0x10          ; 0801A08E
@@ -45,7 +45,7 @@ pop   {r0}                ; 0801A09A
 bx    r0                  ; 0801A09C
 .pool                     ; 0801A09E
 
-Sub0801A0A0:
+ObjInitF7_FC:
 ; object F7-FD init
 push  {lr}                ; 0801A0A0
 lsl   r1,r1,0x10          ; 0801A0A2
@@ -57,7 +57,7 @@ pop   {r0}                ; 0801A0AE
 bx    r0                  ; 0801A0B0
 .pool                     ; 0801A0B2
 
-Sub0801A0B4:
+ObjInitF6:
 ; object F6 init
 push  {lr}                ; 0801A0B4
 lsl   r1,r1,0x10          ; 0801A0B6
@@ -69,7 +69,7 @@ pop   {r0}                ; 0801A0C2
 bx    r0                  ; 0801A0C4
 .pool                     ; 0801A0C6
 
-Sub0801A0C8:
+ObjInitF5:
 ; object F5 init
 push  {lr}                ; 0801A0C8
 lsl   r1,r1,0x10          ; 0801A0CA
@@ -81,7 +81,7 @@ pop   {r0}                ; 0801A0D6
 bx    r0                  ; 0801A0D8
 .pool                     ; 0801A0DA
 
-Sub0801A0DC:
+ObjInitF0_F3:
 ; object F0-F3 init
 push  {r4-r7,lr}          ; 0801A0DC
 mov   r7,r9               ; 0801A0DE
@@ -186,7 +186,7 @@ pop   {r0}                ; 0801A1A0
 bx    r0                  ; 0801A1A2
 .pool                     ; 0801A1A4
 
-Sub0801A1A8:
+ObjInitEE_EF:
 ; object EE-EF init
 push  {r4-r6,lr}          ; 0801A1A8
 mov   r4,r0               ; 0801A1AA
@@ -226,7 +226,7 @@ pop   {r0}                ; 0801A1EC
 bx    r0                  ; 0801A1EE
 .pool                     ; 0801A1F0
 
-Sub0801A1F4:
+ObjInitED:
 ; object ED init
 push  {r4-r5,lr}          ; 0801A1F4
 lsl   r1,r1,0x10          ; 0801A1F6
@@ -272,7 +272,7 @@ pop   {r0}                ; 0801A240
 bx    r0                  ; 0801A242
 .pool                     ; 0801A244
 
-Sub0801A24C:
+ObjInitEB_EC:
 ; object EB-EC init
 push  {r4-r5,lr}          ; 0801A24C
 mov   r12,r0              ; 0801A24E
@@ -314,7 +314,7 @@ pop   {r0}                ; 0801A296
 bx    r0                  ; 0801A298
 .pool                     ; 0801A29A
 
-Sub0801A2A4:
+ObjInitEA:
 ; object EA init
 push  {r4-r5,lr}          ; 0801A2A4
 mov   r12,r0              ; 0801A2A6
@@ -349,7 +349,7 @@ pop   {r0}                ; 0801A2E0
 bx    r0                  ; 0801A2E2
 .pool                     ; 0801A2E4
 
-Sub0801A2F0:
+ObjInitE9:
 ; object E9 init
 push  {r4-r6,lr}          ; 0801A2F0
 mov   r6,r0               ; 0801A2F2
@@ -373,7 +373,7 @@ pop   {r0}                ; 0801A318
 bx    r0                  ; 0801A31A
 .pool                     ; 0801A31C
 
-Sub0801A320:
+ObjInitE8:
 ; object E8 init
 push  {r4-r6,lr}          ; 0801A320
 mov   r6,r0               ; 0801A322
@@ -397,7 +397,7 @@ pop   {r0}                ; 0801A348
 bx    r0                  ; 0801A34A
 .pool                     ; 0801A34C
 
-Sub0801A350:
+ObjInitE7:
 ; object E7 init
 push  {r4-r5,lr}          ; 0801A350
 mov   r12,r0              ; 0801A352
@@ -432,7 +432,7 @@ pop   {r0}                ; 0801A38C
 bx    r0                  ; 0801A38E
 .pool                     ; 0801A390
 
-Sub0801A39C:
+ObjInitE6:
 ; object E6 init
 push  {r4-r6,lr}          ; 0801A39C
 mov   r6,r0               ; 0801A39E
@@ -456,7 +456,7 @@ pop   {r0}                ; 0801A3C4
 bx    r0                  ; 0801A3C6
 .pool                     ; 0801A3C8
 
-Sub0801A3CC:
+ObjInitE5:
 ; object E5 init
 push  {r4-r6,lr}          ; 0801A3CC
 mov   r6,r0               ; 0801A3CE
@@ -480,7 +480,7 @@ pop   {r0}                ; 0801A3F4
 bx    r0                  ; 0801A3F6
 .pool                     ; 0801A3F8
 
-Sub0801A3FC:
+ObjInitE4:
 ; object E4 init
 push  {r4-r6,lr}          ; 0801A3FC
 mov   r4,r0               ; 0801A3FE
@@ -499,7 +499,7 @@ pop   {r4-r6}             ; 0801A41A
 pop   {r0}                ; 0801A41C
 bx    r0                  ; 0801A41E
 
-Sub0801A420:
+ObjInitE3:
 ; object E3 init
 push  {lr}                ; 0801A420
 lsl   r1,r1,0x10          ; 0801A422
@@ -511,7 +511,7 @@ pop   {r0}                ; 0801A42E
 bx    r0                  ; 0801A430
 .pool                     ; 0801A432
 
-Sub0801A434:
+ObjInitE2:
 ; object E2 init
 push  {r4,lr}             ; 0801A434
 lsl   r1,r1,0x10          ; 0801A436
@@ -529,7 +529,7 @@ pop   {r4}                ; 0801A44E
 pop   {r0}                ; 0801A450
 bx    r0                  ; 0801A452
 
-Sub0801A454:
+ObjInitE1:
 ; object E1 init
 push  {r4-r6,lr}          ; 0801A454
 mov   r4,r0               ; 0801A456
@@ -562,7 +562,7 @@ pop   {r0}                ; 0801A48A
 bx    r0                  ; 0801A48C
 .pool                     ; 0801A48E
 
-Sub0801A490:
+ObjInitE0:
 ; object E0 init
 push  {lr}                ; 0801A490
 lsl   r1,r1,0x10          ; 0801A492
@@ -574,7 +574,7 @@ pop   {r0}                ; 0801A49E
 bx    r0                  ; 0801A4A0
 .pool                     ; 0801A4A2
 
-Sub0801A4A4:
+ObjInitDF:
 ; object DF init
 push  {r4,lr}             ; 0801A4A4
 lsl   r1,r1,0x10          ; 0801A4A6
@@ -594,7 +594,7 @@ pop   {r0}                ; 0801A4C2
 bx    r0                  ; 0801A4C4
 .pool                     ; 0801A4C6
 
-Sub0801A4C8:
+ObjInitDE:
 ; object DE init
 push  {r4,lr}             ; 0801A4C8
 lsl   r1,r1,0x10          ; 0801A4CA
@@ -614,7 +614,7 @@ pop   {r0}                ; 0801A4E6
 bx    r0                  ; 0801A4E8
 .pool                     ; 0801A4EA
 
-Sub0801A4EC:
+ObjInitDD:
 ; object DD init
 push  {r4-r6,lr}          ; 0801A4EC
 mov   r6,r0               ; 0801A4EE
@@ -641,7 +641,7 @@ pop   {r4-r6}             ; 0801A51A
 pop   {r0}                ; 0801A51C
 bx    r0                  ; 0801A51E
 
-Sub0801A520:
+ObjInitDC:
 ; object DC init
 push  {lr}                ; 0801A520
 lsl   r1,r1,0x10          ; 0801A522
@@ -653,7 +653,7 @@ pop   {r0}                ; 0801A52E
 bx    r0                  ; 0801A530
 .pool                     ; 0801A532
 
-Sub0801A534:
+ObjInitDB:
 ; object DB init
 push  {lr}                ; 0801A534
 lsl   r1,r1,0x10          ; 0801A536
@@ -665,7 +665,7 @@ pop   {r0}                ; 0801A542
 bx    r0                  ; 0801A544
 .pool                     ; 0801A546
 
-Sub0801A548:
+ObjInitDA:
 ; object DA init
 push  {lr}                ; 0801A548
 lsl   r1,r1,0x10          ; 0801A54A
@@ -677,7 +677,7 @@ pop   {r0}                ; 0801A556
 bx    r0                  ; 0801A558
 .pool                     ; 0801A55A
 
-Sub0801A55C:
+ObjInitD8_D9:
 ; object D8-D9 init
 push  {r4-r5,lr}          ; 0801A55C
 lsl   r1,r1,0x10          ; 0801A55E
@@ -706,7 +706,7 @@ pop   {r0}                ; 0801A58C
 bx    r0                  ; 0801A58E
 .pool                     ; 0801A590
 
-Sub0801A594:
+ObjInitD4_D7:
 ; object D4-D7 init
 push  {lr}                ; 0801A594
 lsl   r1,r1,0x10          ; 0801A596
@@ -720,7 +720,7 @@ pop   {r0}                ; 0801A5A6
 bx    r0                  ; 0801A5A8
 .pool                     ; 0801A5AA
 
-Sub0801A5AC:
+ObjInitD3:
 ; object D3 init
 push  {lr}                ; 0801A5AC
 lsl   r1,r1,0x10          ; 0801A5AE
@@ -732,7 +732,7 @@ pop   {r0}                ; 0801A5BA
 bx    r0                  ; 0801A5BC
 .pool                     ; 0801A5BE
 
-Sub0801A5C0:
+ObjInitD2:
 ; object D2 init
 push  {lr}                ; 0801A5C0
 lsl   r1,r1,0x10          ; 0801A5C2
@@ -744,7 +744,7 @@ pop   {r0}                ; 0801A5CE
 bx    r0                  ; 0801A5D0
 .pool                     ; 0801A5D2
 
-Sub0801A5D4:
+ObjInitD1:
 ; object D1 init
 push  {lr}                ; 0801A5D4
 lsl   r1,r1,0x10          ; 0801A5D6
@@ -756,7 +756,7 @@ pop   {r0}                ; 0801A5E2
 bx    r0                  ; 0801A5E4
 .pool                     ; 0801A5E6
 
-Sub0801A5E8:
+ObjInitD0:
 ; object D0 init
 push  {r4-r5,lr}          ; 0801A5E8
 mov   r3,r0               ; 0801A5EA
@@ -789,7 +789,7 @@ pop   {r0}                ; 0801A61E
 bx    r0                  ; 0801A620
 .pool                     ; 0801A622
 
-Sub0801A628:
+ObjInitCF:
 ; object CF init
 push  {r4-r5,lr}          ; 0801A628
 mov   r3,r0               ; 0801A62A
@@ -822,7 +822,7 @@ pop   {r0}                ; 0801A65E
 bx    r0                  ; 0801A660
 .pool                     ; 0801A662
 
-Sub0801A668:
+ObjInitCE:
 ; object CE init
 push  {r4-r5,lr}          ; 0801A668
 mov   r3,r0               ; 0801A66A
@@ -855,7 +855,7 @@ pop   {r0}                ; 0801A69E
 bx    r0                  ; 0801A6A0
 .pool                     ; 0801A6A2
 
-Sub0801A6A8:
+ObjInitCC_CD:
 ; object CC-CD init
 push  {r4,lr}             ; 0801A6A8
 lsl   r1,r1,0x10          ; 0801A6AA
@@ -873,7 +873,7 @@ pop   {r4}                ; 0801A6C2
 pop   {r0}                ; 0801A6C4
 bx    r0                  ; 0801A6C6
 
-Sub0801A6C8:
+ObjInitCB:
 ; object CB init
 push  {lr}                ; 0801A6C8
 lsl   r1,r1,0x10          ; 0801A6CA
@@ -887,7 +887,7 @@ pop   {r0}                ; 0801A6DA
 bx    r0                  ; 0801A6DC
 .pool                     ; 0801A6DE
 
-Sub0801A6E0:
+ObjInitCA:
 ; object CA init
 push  {lr}                ; 0801A6E0
 lsl   r1,r1,0x10          ; 0801A6E2
@@ -899,7 +899,7 @@ pop   {r0}                ; 0801A6EE
 bx    r0                  ; 0801A6F0
 .pool                     ; 0801A6F2
 
-Sub0801A6F4:
+ObjInitC4_C9:
 ; object C4-C9 init
 push  {r4-r6,lr}          ; 0801A6F4
 mov   r3,r0               ; 0801A6F6
@@ -970,7 +970,7 @@ pop   {r4-r6}             ; 0801A76A
 pop   {r0}                ; 0801A76C
 bx    r0                  ; 0801A76E
 
-Sub0801A770:
+ObjInitC0_C3:
 ; object C0-C3 init
 push  {r4,lr}             ; 0801A770
 mov   r3,r0               ; 0801A772
@@ -1010,7 +1010,7 @@ pop   {r0}                ; 0801A7B2
 bx    r0                  ; 0801A7B4
 .pool                     ; 0801A7B6
 
-Sub0801A7B8:
+ObjInitBE_BF:
 ; object BE-BF init
 push  {lr}                ; 0801A7B8
 lsl   r1,r1,0x10          ; 0801A7BA
@@ -1022,7 +1022,7 @@ pop   {r0}                ; 0801A7C6
 bx    r0                  ; 0801A7C8
 .pool                     ; 0801A7CA
 
-Sub0801A7CC:
+ObjInitBA_BD:
 ; object BA-BD init
 push  {lr}                ; 0801A7CC
 lsl   r1,r1,0x10          ; 0801A7CE
@@ -1034,7 +1034,7 @@ pop   {r0}                ; 0801A7DA
 bx    r0                  ; 0801A7DC
 .pool                     ; 0801A7DE
 
-Sub0801A7E0:
+ObjInitB8_B9:
 ; object B8-B9 init
 push  {r4,lr}             ; 0801A7E0
 lsl   r1,r1,0x10          ; 0801A7E2
@@ -1054,7 +1054,7 @@ pop   {r0}                ; 0801A7FE
 bx    r0                  ; 0801A800
 .pool                     ; 0801A802
 
-Sub0801A808:
+ObjInitB6_B7:
 ; object B6-B7 init
 push  {r4,lr}             ; 0801A808
 lsl   r1,r1,0x10          ; 0801A80A
@@ -1074,7 +1074,7 @@ pop   {r0}                ; 0801A826
 bx    r0                  ; 0801A828
 .pool                     ; 0801A82A
 
-Sub0801A830:
+ObjInitB4_B5:
 ; object B4-B5 init
 push  {r4,lr}             ; 0801A830
 lsl   r1,r1,0x10          ; 0801A832
@@ -1094,7 +1094,7 @@ pop   {r0}                ; 0801A84E
 bx    r0                  ; 0801A850
 .pool                     ; 0801A852
 
-Sub0801A858:
+ObjInitB2_B3:
 ; object B2-B3 init
 push  {r4,lr}             ; 0801A858
 lsl   r1,r1,0x10          ; 0801A85A
@@ -1114,7 +1114,7 @@ pop   {r0}                ; 0801A876
 bx    r0                  ; 0801A878
 .pool                     ; 0801A87A
 
-Sub0801A880:
+ObjInitB1:
 ; object B1 init
 push  {lr}                ; 0801A880
 lsl   r1,r1,0x10          ; 0801A882
@@ -1126,7 +1126,7 @@ pop   {r0}                ; 0801A88E
 bx    r0                  ; 0801A890
 .pool                     ; 0801A892
 
-Sub0801A894:
+ObjInitB0:
 ; object B0 init
 push  {lr}                ; 0801A894
 lsl   r1,r1,0x10          ; 0801A896
@@ -1138,7 +1138,7 @@ pop   {r0}                ; 0801A8A2
 bx    r0                  ; 0801A8A4
 .pool                     ; 0801A8A6
 
-Sub0801A8A8:
+ObjInitAE_AF:
 ; object AE-AF init
 push  {r4,lr}             ; 0801A8A8
 mov   r3,r0               ; 0801A8AA
@@ -1170,7 +1170,7 @@ pop   {r0}                ; 0801A8DA
 bx    r0                  ; 0801A8DC
 .pool                     ; 0801A8DE
 
-Sub0801A8E0:
+ObjInitAC_AD:
 ; object AC-AD init
 push  {r4,lr}             ; 0801A8E0
 mov   r4,r0               ; 0801A8E2
@@ -1198,7 +1198,7 @@ pop   {r0}                ; 0801A90A
 bx    r0                  ; 0801A90C
 .pool                     ; 0801A90E
 
-Sub0801A918:
+ObjInitAA_AB:
 ; object AA-AB init
 push  {r4,lr}             ; 0801A918
 lsl   r1,r1,0x10          ; 0801A91A
@@ -1216,7 +1216,7 @@ pop   {r4}                ; 0801A932
 pop   {r0}                ; 0801A934
 bx    r0                  ; 0801A936
 
-Sub0801A938:
+ObjInitA9:
 ; object A9 init
 push  {r4,lr}             ; 0801A938
 mov   r4,r0               ; 0801A93A
@@ -1249,7 +1249,7 @@ pop   {r4}                ; 0801A972
 pop   {r0}                ; 0801A974
 bx    r0                  ; 0801A976
 
-Sub0801A978:
+ObjInitA7_A8:
 ; object A7-A8 init
 push  {r4-r6,lr}          ; 0801A978
 mov   r12,r0              ; 0801A97A
@@ -1288,7 +1288,7 @@ pop   {r0}                ; 0801A9BC
 bx    r0                  ; 0801A9BE
 .pool                     ; 0801A9C0
 
-Sub0801A9C8:
+ObjInitA5_A6:
 ; object A5-A6 init
 push  {r4-r6,lr}          ; 0801A9C8
 mov   r12,r0              ; 0801A9CA
@@ -1347,7 +1347,7 @@ pop   {r0}                ; 0801AA3A
 bx    r0                  ; 0801AA3C
 .pool                     ; 0801AA3E
 
-Sub0801AA40:
+ObjInitA3_A4:
 ; object A3-A4 init
 push  {r4-r5,lr}          ; 0801AA40
 mov   r4,r0               ; 0801AA42
@@ -1390,7 +1390,7 @@ pop   {r0}                ; 0801AA8C
 bx    r0                  ; 0801AA8E
 .pool                     ; 0801AA90
 
-Sub0801AA94:
+ObjInitA0_A2:
 ; object A0-A2 init
 push  {r4,lr}             ; 0801AA94
 lsl   r1,r1,0x10          ; 0801AA96
@@ -1423,7 +1423,7 @@ pop   {r0}                ; 0801AACC
 bx    r0                  ; 0801AACE
 .pool                     ; 0801AAD0
 
-Sub0801AAD4:
+ObjInit9F:
 ; object 9F init
 push  {r4,lr}             ; 0801AAD4
 lsl   r1,r1,0x10          ; 0801AAD6
@@ -1451,7 +1451,7 @@ pop   {r0}                ; 0801AB02
 bx    r0                  ; 0801AB04
 .pool                     ; 0801AB06
 
-Sub0801AB0C:
+ObjInit9E:
 ; object 9E init
 push  {lr}                ; 0801AB0C
 lsl   r1,r1,0x10          ; 0801AB0E
@@ -1463,7 +1463,7 @@ pop   {r0}                ; 0801AB1A
 bx    r0                  ; 0801AB1C
 .pool                     ; 0801AB1E
 
-Sub0801AB20:
+ObjInit9D:
 ; object 9D init
 push  {lr}                ; 0801AB20
 lsl   r1,r1,0x10          ; 0801AB22
@@ -1475,7 +1475,7 @@ pop   {r0}                ; 0801AB2E
 bx    r0                  ; 0801AB30
 .pool                     ; 0801AB32
 
-Sub0801AB34:
+ObjInit9B_9C:
 ; object 9B-9C init
 push  {r4-r7,lr}          ; 0801AB34
 mov   r6,r0               ; 0801AB36
@@ -1506,7 +1506,7 @@ pop   {r4-r7}             ; 0801AB6A
 pop   {r0}                ; 0801AB6C
 bx    r0                  ; 0801AB6E
 
-Sub0801AB70:
+ObjInit9A:
 ; object 9A init
 push  {r4-r7,lr}          ; 0801AB70
 mov   r7,r0               ; 0801AB72
@@ -1552,7 +1552,7 @@ pop   {r0}                ; 0801ABC4
 bx    r0                  ; 0801ABC6
 .pool                     ; 0801ABC8
 
-Sub0801ABD0:
+ObjInit99:
 ; object 99 init
 push  {r4-r6,lr}          ; 0801ABD0
 mov   r6,r8               ; 0801ABD2
@@ -1587,7 +1587,7 @@ pop   {r0}                ; 0801AC0C
 bx    r0                  ; 0801AC0E
 .pool                     ; 0801AC10
 
-Sub0801AC18:
+ObjInit98:
 ; object 98 init
 push  {lr}                ; 0801AC18
 lsl   r1,r1,0x10          ; 0801AC1A
@@ -1599,7 +1599,7 @@ pop   {r0}                ; 0801AC26
 bx    r0                  ; 0801AC28
 .pool                     ; 0801AC2A
 
-Sub0801AC2C:
+ObjInit94_97:
 ; object 94-97 init
 push  {r4-r5,lr}          ; 0801AC2C
 lsl   r1,r1,0x10          ; 0801AC2E
@@ -1629,7 +1629,7 @@ pop   {r0}                ; 0801AC5E
 bx    r0                  ; 0801AC60
 .pool                     ; 0801AC62
 
-Sub0801AC68:
+ObjInit93:
 ; object 93 init
 push  {r4-r6,lr}          ; 0801AC68
 mov   r6,r8               ; 0801AC6A
@@ -1664,7 +1664,7 @@ pop   {r0}                ; 0801ACA4
 bx    r0                  ; 0801ACA6
 .pool                     ; 0801ACA8
 
-Sub0801ACB0:
+ObjInit91_92:
 ; object 91-92 init
 push  {r4-r6,lr}          ; 0801ACB0
 mov   r6,r8               ; 0801ACB2
@@ -1699,7 +1699,7 @@ pop   {r0}                ; 0801ACEC
 bx    r0                  ; 0801ACEE
 .pool                     ; 0801ACF0
 
-Sub0801ACF8:
+ObjInit90:
 ; object 90 init
 push  {r4,lr}             ; 0801ACF8
 lsl   r1,r1,0x10          ; 0801ACFA
@@ -1719,7 +1719,7 @@ pop   {r0}                ; 0801AD16
 bx    r0                  ; 0801AD18
 .pool                     ; 0801AD1A
 
-Sub0801AD24:
+ObjInit8F:
 ; object 8F init
 push  {r4,lr}             ; 0801AD24
 lsl   r1,r1,0x10          ; 0801AD26
@@ -1739,7 +1739,7 @@ pop   {r0}                ; 0801AD42
 bx    r0                  ; 0801AD44
 .pool                     ; 0801AD46
 
-Sub0801AD50:
+ObjInit8E:
 ; object 8E init
 push  {r4,lr}             ; 0801AD50
 lsl   r1,r1,0x10          ; 0801AD52
@@ -1767,7 +1767,7 @@ pop   {r0}                ; 0801AD7E
 bx    r0                  ; 0801AD80
 .pool                     ; 0801AD82
 
-Sub0801AD88:
+ObjInit8D:
 ; object 8D init
 push  {lr}                ; 0801AD88
 lsl   r1,r1,0x10          ; 0801AD8A
@@ -1779,7 +1779,7 @@ pop   {r0}                ; 0801AD96
 bx    r0                  ; 0801AD98
 .pool                     ; 0801AD9A
 
-Sub0801AD9C:
+ObjInit8C:
 ; object 8C init
 push  {r4,lr}             ; 0801AD9C
 lsl   r1,r1,0x10          ; 0801AD9E
@@ -1797,7 +1797,7 @@ pop   {r4}                ; 0801ADB6
 pop   {r0}                ; 0801ADB8
 bx    r0                  ; 0801ADBA
 
-Sub0801ADBC:
+ObjInit89:
 ; object 89 init
 push  {lr}                ; 0801ADBC
 lsl   r1,r1,0x10          ; 0801ADBE
@@ -1809,7 +1809,7 @@ pop   {r0}                ; 0801ADCA
 bx    r0                  ; 0801ADCC
 .pool                     ; 0801ADCE
 
-Sub0801ADD0:
+ObjInit87_88:
 ; object 87-88 init
 push  {r4-r5,lr}          ; 0801ADD0
 lsl   r1,r1,0x10          ; 0801ADD2
@@ -1831,7 +1831,7 @@ pop   {r4-r5}             ; 0801ADF2
 pop   {r0}                ; 0801ADF4
 bx    r0                  ; 0801ADF6
 
-Sub0801ADF8:
+ObjInit86:
 ; object 86 init
 push  {r4-r5,lr}          ; 0801ADF8
 mov   r4,r0               ; 0801ADFA
@@ -1865,7 +1865,7 @@ pop   {r0}                ; 0801AE30
 bx    r0                  ; 0801AE32
 .pool                     ; 0801AE34
 
-Sub0801AE3C:
+ObjInit85:
 ; object 85 init
 push  {lr}                ; 0801AE3C
 lsl   r1,r1,0x10          ; 0801AE3E
@@ -1877,7 +1877,7 @@ pop   {r0}                ; 0801AE4A
 bx    r0                  ; 0801AE4C
 .pool                     ; 0801AE4E
 
-Sub0801AE50:
+ObjInit84:
 ; object 84 init
 push  {r4,lr}             ; 0801AE50
 lsl   r1,r1,0x10          ; 0801AE52
@@ -1894,7 +1894,7 @@ pop   {r0}                ; 0801AE68
 bx    r0                  ; 0801AE6A
 .pool                     ; 0801AE6C
 
-Sub0801AE70:
+ObjInit82_83:
 ; object 82-83 init
 push  {lr}                ; 0801AE70
 lsl   r1,r1,0x10          ; 0801AE72
@@ -1906,7 +1906,7 @@ pop   {r0}                ; 0801AE7E
 bx    r0                  ; 0801AE80
 .pool                     ; 0801AE82
 
-Sub0801AE84:
+ObjInit81:
 ; object 81 init
 push  {r4-r5,lr}          ; 0801AE84
 mov   r3,r0               ; 0801AE86
@@ -1946,7 +1946,7 @@ pop   {r0}                ; 0801AEC8
 bx    r0                  ; 0801AECA
 .pool                     ; 0801AECC
 
-Sub0801AED4:
+ObjInit80:
 ; object 80 init
 push  {r4-r5,lr}          ; 0801AED4
 mov   r4,r0               ; 0801AED6
@@ -1977,7 +1977,7 @@ pop   {r0}                ; 0801AF06
 bx    r0                  ; 0801AF08
 .pool                     ; 0801AF0A
 
-Sub0801AF0C:
+ObjInit7F:
 ; object 7F init
 push  {r4,lr}             ; 0801AF0C
 mov   r4,r0               ; 0801AF0E
@@ -2007,7 +2007,7 @@ pop   {r4}                ; 0801AF3A
 pop   {r0}                ; 0801AF3C
 bx    r0                  ; 0801AF3E
 
-Sub0801AF40:
+ObjInit7D:
 ; object 7D init
 push  {r4,lr}             ; 0801AF40
 lsl   r1,r1,0x10          ; 0801AF42
@@ -2025,7 +2025,7 @@ pop   {r4}                ; 0801AF5A
 pop   {r0}                ; 0801AF5C
 bx    r0                  ; 0801AF5E
 
-Sub0801AF60:
+ObjInit7C:
 ; object 7C init
 push  {r4-r5,lr}          ; 0801AF60
 mov   r4,r0               ; 0801AF62
@@ -2056,7 +2056,7 @@ pop   {r0}                ; 0801AF92
 bx    r0                  ; 0801AF94
 .pool                     ; 0801AF96
 
-Sub0801AF98:
+ObjInit7B:
 ; object 7B init
 push  {r4,lr}             ; 0801AF98
 lsl   r1,r1,0x10          ; 0801AF9A
@@ -2073,7 +2073,7 @@ pop   {r0}                ; 0801AFB0
 bx    r0                  ; 0801AFB2
 .pool                     ; 0801AFB4
 
-Sub0801AFB8:
+ObjInit7A:
 ; object 7A init
 push  {lr}                ; 0801AFB8
 lsl   r1,r1,0x10          ; 0801AFBA
@@ -2085,7 +2085,7 @@ pop   {r0}                ; 0801AFC6
 bx    r0                  ; 0801AFC8
 .pool                     ; 0801AFCA
 
-Sub0801AFCC:
+ObjInit79:
 ; object 79 init (same as object 78 init)
 push  {lr}                ; 0801AFCC
 mov   r12,r0              ; 0801AFCE
@@ -2109,7 +2109,7 @@ pop   {r0}                ; 0801AFF2
 bx    r0                  ; 0801AFF4
 .pool                     ; 0801AFF6
 
-Sub0801B000:
+ObjInit78:
 ; object 78 init
 push  {lr}                ; 0801B000
 mov   r12,r0              ; 0801B002
@@ -2133,7 +2133,7 @@ pop   {r0}                ; 0801B026
 bx    r0                  ; 0801B028
 .pool                     ; 0801B02A
 
-Sub0801B034:
+ObjInit77:
 ; object 77 init
 push  {lr}                ; 0801B034
 lsl   r1,r1,0x10          ; 0801B036
@@ -2145,7 +2145,7 @@ pop   {r0}                ; 0801B042
 bx    r0                  ; 0801B044
 .pool                     ; 0801B046
 
-Sub0801B048:
+ObjInit76:
 ; object 76 init
 push  {r4,lr}             ; 0801B048
 lsl   r1,r1,0x10          ; 0801B04A
@@ -2163,7 +2163,7 @@ pop   {r4}                ; 0801B062
 pop   {r0}                ; 0801B064
 bx    r0                  ; 0801B066
 
-Sub0801B068:
+ObjInit75:
 ; obejct 75 init
 push  {r4,lr}             ; 0801B068
 lsl   r1,r1,0x10          ; 0801B06A
@@ -2181,7 +2181,7 @@ pop   {r4}                ; 0801B082
 pop   {r0}                ; 0801B084
 bx    r0                  ; 0801B086
 
-Sub0801B088:
+ObjInit74:
 ; object 74 init
 push  {r4,lr}             ; 0801B088
 lsl   r1,r1,0x10          ; 0801B08A
@@ -2199,7 +2199,7 @@ pop   {r4}                ; 0801B0A2
 pop   {r0}                ; 0801B0A4
 bx    r0                  ; 0801B0A6
 
-Sub0801B0A8:
+ObjInit73:
 ; object 73 init
 push  {r4,lr}             ; 0801B0A8
 mov   r4,r0               ; 0801B0AA
@@ -2230,7 +2230,7 @@ pop   {r0}                ; 0801B0DA
 bx    r0                  ; 0801B0DC
 .pool                     ; 0801B0DE
 
-Sub0801B0E0:
+ObjInit72:
 ; object 72 init
 push  {r4,lr}             ; 0801B0E0
 mov   r4,r0               ; 0801B0E2
@@ -2261,7 +2261,7 @@ pop   {r0}                ; 0801B112
 bx    r0                  ; 0801B114
 .pool                     ; 0801B116
 
-Sub0801B118:
+ObjInit71:
 ; object 71 init
 push  {r4,lr}             ; 0801B118
 mov   r4,r0               ; 0801B11A
@@ -2292,7 +2292,7 @@ pop   {r0}                ; 0801B14A
 bx    r0                  ; 0801B14C
 .pool                     ; 0801B14E
 
-Sub0801B150:
+ObjInit70:
 ; object 70 init
 push  {r4,lr}             ; 0801B150
 mov   r4,r0               ; 0801B152
@@ -2323,7 +2323,7 @@ pop   {r0}                ; 0801B182
 bx    r0                  ; 0801B184
 .pool                     ; 0801B186
 
-Sub0801B188:
+ObjInit6F:
 ; object 6F init
 push  {lr}                ; 0801B188
 lsl   r1,r1,0x10          ; 0801B18A
@@ -2335,7 +2335,7 @@ pop   {r0}                ; 0801B196
 bx    r0                  ; 0801B198
 .pool                     ; 0801B19A
 
-Sub0801B19C:
+ObjInit6E_8B:
 ; object 6E/8B init
 push  {lr}                ; 0801B19C
 lsl   r1,r1,0x10          ; 0801B19E
@@ -2347,7 +2347,7 @@ pop   {r0}                ; 0801B1AA
 bx    r0                  ; 0801B1AC
 .pool                     ; 0801B1AE
 
-Sub0801B1B0:
+ObjInit6D:
 ; object 6D init
 push  {lr}                ; 0801B1B0
 lsl   r1,r1,0x10          ; 0801B1B2
@@ -2359,7 +2359,7 @@ pop   {r0}                ; 0801B1BE
 bx    r0                  ; 0801B1C0
 .pool                     ; 0801B1C2
 
-Sub0801B1C4:
+ObjInit6C:
 ; object 6C init
 push  {lr}                ; 0801B1C4
 lsl   r1,r1,0x10          ; 0801B1C6
@@ -2371,7 +2371,7 @@ pop   {r0}                ; 0801B1D2
 bx    r0                  ; 0801B1D4
 .pool                     ; 0801B1D6
 
-Sub0801B1D8:
+ObjInit6B:
 ; object 6B init
 push  {r4-r6,lr}          ; 0801B1D8
 lsl   r1,r1,0x10          ; 0801B1DA
@@ -2401,7 +2401,7 @@ pop   {r0}                ; 0801B20A
 bx    r0                  ; 0801B20C
 .pool                     ; 0801B20E
 
-Sub0801B218:
+ObjInit6A:
 ; object 6A init
 push  {lr}                ; 0801B218
 lsl   r1,r1,0x10          ; 0801B21A
@@ -2413,7 +2413,7 @@ pop   {r0}                ; 0801B226
 bx    r0                  ; 0801B228
 .pool                     ; 0801B22A
 
-Sub0801B22C:
+ObjInit69:
 ; object 69 init
 push  {r4,lr}             ; 0801B22C
 mov   r4,r0               ; 0801B22E
@@ -2443,7 +2443,7 @@ pop   {r4}                ; 0801B25A
 pop   {r0}                ; 0801B25C
 bx    r0                  ; 0801B25E
 
-Sub0801B260:
+ObjInit68_8A:
 ; object 68/8A init
 push  {lr}                ; 0801B260
 lsl   r1,r1,0x10          ; 0801B262
@@ -2455,7 +2455,7 @@ pop   {r0}                ; 0801B26E
 bx    r0                  ; 0801B270
 .pool                     ; 0801B272
 
-Sub0801B274:
+ObjInit67:
 ; object 67 init
 push  {lr}                ; 0801B274
 lsl   r1,r1,0x10          ; 0801B276
@@ -2467,7 +2467,7 @@ pop   {r0}                ; 0801B282
 bx    r0                  ; 0801B284
 .pool                     ; 0801B286
 
-Sub0801B288:
+ObjInit66:
 ; object 66 init
 push  {r4-r5,lr}          ; 0801B288
 lsl   r1,r1,0x10          ; 0801B28A
@@ -2490,7 +2490,7 @@ pop   {r0}                ; 0801B2AC
 bx    r0                  ; 0801B2AE
 .pool                     ; 0801B2B0
 
-Sub0801B2B4:
+ObjInit63_65:
 ; object 63-65 init
 push  {r4-r5,lr}          ; 0801B2B4
 lsl   r1,r1,0x10          ; 0801B2B6
@@ -2513,7 +2513,7 @@ pop   {r0}                ; 0801B2D8
 bx    r0                  ; 0801B2DA
 .pool                     ; 0801B2DC
 
-Sub0801B2E0:
+ObjInit61_62:
 ; object 61-62 init
 push  {r4-r7,lr}          ; 0801B2E0
 mov   r12,r0              ; 0801B2E2
@@ -2616,7 +2616,7 @@ pop   {r0}                ; 0801B39C
 bx    r0                  ; 0801B39E
 .pool                     ; 0801B3A0
 
-Sub0801B3AC:
+ObjInit5F_60:
 ; object 5F-60 init
 push  {r4-r7,lr}          ; 0801B3AC
 mov   r12,r0              ; 0801B3AE
@@ -2679,7 +2679,7 @@ pop   {r0}                ; 0801B41C
 bx    r0                  ; 0801B41E
 .pool                     ; 0801B420
 
-Sub0801B42C:
+ObjInit5C_5E:
 ; object 5C-5E init
 push  {r4-r6,lr}          ; 0801B42C
 mov   r12,r0              ; 0801B42E
@@ -2727,7 +2727,7 @@ pop   {r0}                ; 0801B482
 bx    r0                  ; 0801B484
 .pool                     ; 0801B486
 
-Sub0801B498:
+ObjInit59_5B:
 ; object 59-5B init
 push  {r4-r6,lr}          ; 0801B498
 mov   r12,r0              ; 0801B49A
@@ -2784,7 +2784,7 @@ pop   {r0}                ; 0801B500
 bx    r0                  ; 0801B502
 .pool                     ; 0801B504
 
-Sub0801B514:
+ObjInit58:
 ; object 58 init
 push  {r4-r5,lr}          ; 0801B514
 lsl   r1,r1,0x10          ; 0801B516
@@ -2808,7 +2808,7 @@ pop   {r0}                ; 0801B53A
 bx    r0                  ; 0801B53C
 .pool                     ; 0801B53E
 
-Sub0801B544:
+ObjInit57_7E:
 ; object 57/7E init
 push  {r4-r5,lr}          ; 0801B544
 lsl   r1,r1,0x10          ; 0801B546
@@ -2831,7 +2831,7 @@ pop   {r0}                ; 0801B568
 bx    r0                  ; 0801B56A
 .pool                     ; 0801B56C
 
-Sub0801B570:
+ObjInit54_56:
 ; object 54-56 init
 push  {lr}                ; 0801B570
 mov   r12,r0              ; 0801B572
@@ -2861,7 +2861,7 @@ pop   {r0}                ; 0801B5A2
 bx    r0                  ; 0801B5A4
 .pool                     ; 0801B5A6
 
-Sub0801B5B0:
+ObjInit53:
 ; object 53 init
 push  {lr}                ; 0801B5B0
 lsl   r1,r1,0x10          ; 0801B5B2
@@ -2873,7 +2873,7 @@ pop   {r0}                ; 0801B5BE
 bx    r0                  ; 0801B5C0
 .pool                     ; 0801B5C2
 
-Sub0801B5C4:
+ObjInit52:
 ; object 52 init
 push  {r4,lr}             ; 0801B5C4
 lsl   r1,r1,0x10          ; 0801B5C6
@@ -2893,7 +2893,7 @@ pop   {r0}                ; 0801B5E2
 bx    r0                  ; 0801B5E4
 .pool                     ; 0801B5E6
 
-Sub0801B5F0:
+ObjInit50_51:
 ; object 50-51 init
 push  {r4-r5,lr}          ; 0801B5F0
 lsl   r1,r1,0x10          ; 0801B5F2
@@ -2916,7 +2916,7 @@ pop   {r0}                ; 0801B614
 bx    r0                  ; 0801B616
 .pool                     ; 0801B618
 
-Sub0801B61C:
+ObjInit4F:
 ; object 4F init
 push  {r4-r5,lr}          ; 0801B61C
 lsl   r1,r1,0x10          ; 0801B61E
@@ -2939,7 +2939,7 @@ pop   {r0}                ; 0801B640
 bx    r0                  ; 0801B642
 .pool                     ; 0801B644
 
-Sub0801B648:
+ObjInit4E:
 ; object 4E init
 push  {r4-r5,lr}          ; 0801B648
 lsl   r1,r1,0x10          ; 0801B64A
@@ -2962,7 +2962,7 @@ pop   {r0}                ; 0801B66C
 bx    r0                  ; 0801B66E
 .pool                     ; 0801B670
 
-Sub0801B674:
+ObjInit4B_4D:
 ; object 4B-4D init
 push  {r4,lr}             ; 0801B674
 mov   r12,r0              ; 0801B676
@@ -2998,7 +2998,7 @@ pop   {r0}                ; 0801B6B2
 bx    r0                  ; 0801B6B4
 .pool                     ; 0801B6B6
 
-Sub0801B6C0:
+ObjInit49_4A:
 ; object 49-4A init
 push  {r4,lr}             ; 0801B6C0
 mov   r12,r0              ; 0801B6C2
@@ -3025,7 +3025,7 @@ pop   {r0}                ; 0801B6EC
 bx    r0                  ; 0801B6EE
 .pool                     ; 0801B6F0
 
-Sub0801B6F4:
+ObjInit48:
 ; object 48 init
 push  {r4-r5,lr}          ; 0801B6F4
 lsl   r1,r1,0x10          ; 0801B6F6
@@ -3048,7 +3048,7 @@ pop   {r0}                ; 0801B718
 bx    r0                  ; 0801B71A
 .pool                     ; 0801B71C
 
-Sub0801B720:
+ObjInit47:
 ; object 47 init
 push  {lr}                ; 0801B720
 lsl   r1,r1,0x10          ; 0801B722
@@ -3060,7 +3060,7 @@ pop   {r0}                ; 0801B72E
 bx    r0                  ; 0801B730
 .pool                     ; 0801B732
 
-Sub0801B734:
+ObjInit45_46:
 ; object 45-46 init
 push  {r4-r5,lr}          ; 0801B734
 mov   r12,r0              ; 0801B736
@@ -3108,7 +3108,7 @@ pop   {r0}                ; 0801B78A
 bx    r0                  ; 0801B78C
 .pool                     ; 0801B78E
 
-Sub0801B79C:
+ObjInit44:
 ; object 44 init
 push  {lr}                ; 0801B79C
 lsl   r1,r1,0x10          ; 0801B79E
@@ -3122,7 +3122,7 @@ pop   {r0}                ; 0801B7AE
 bx    r0                  ; 0801B7B0
 .pool                     ; 0801B7B2
 
-Sub0801B7B4:
+ObjInit42_43:
 ; object 42-43 init
 push  {lr}                ; 0801B7B4
 lsl   r1,r1,0x10          ; 0801B7B6
@@ -3134,7 +3134,7 @@ pop   {r0}                ; 0801B7C2
 bx    r0                  ; 0801B7C4
 .pool                     ; 0801B7C6
 
-Sub0801B7C8:
+ObjInit41:
 ; object 41 init
 push  {lr}                ; 0801B7C8
 lsl   r1,r1,0x10          ; 0801B7CA
@@ -3146,7 +3146,7 @@ pop   {r0}                ; 0801B7D6
 bx    r0                  ; 0801B7D8
 .pool                     ; 0801B7DA
 
-Sub0801B7DC:
+ObjInit3F_40:
 ; object 3F-40 init
 push  {lr}                ; 0801B7DC
 lsl   r1,r1,0x10          ; 0801B7DE
@@ -3158,7 +3158,7 @@ pop   {r0}                ; 0801B7EA
 bx    r0                  ; 0801B7EC
 .pool                     ; 0801B7EE
 
-Sub0801B7F0:
+ObjInit3E:
 ; object 3E init
 push  {lr}                ; 0801B7F0
 lsl   r1,r1,0x10          ; 0801B7F2
@@ -3170,7 +3170,7 @@ pop   {r0}                ; 0801B7FE
 bx    r0                  ; 0801B800
 .pool                     ; 0801B802
 
-Sub0801B804:
+ObjInit3D:
 ; object 3D init
 push  {r4,lr}             ; 0801B804
 lsl   r1,r1,0x10          ; 0801B806
@@ -3188,7 +3188,7 @@ pop   {r4}                ; 0801B81E
 pop   {r0}                ; 0801B820
 bx    r0                  ; 0801B822
 
-Sub0801B824:
+ObjInit3C_F4:
 ; object 3C/F4 init
 push  {r4,lr}             ; 0801B824
 lsl   r1,r1,0x10          ; 0801B826
@@ -3214,7 +3214,7 @@ pop   {r4}                ; 0801B84E
 pop   {r0}                ; 0801B850
 bx    r0                  ; 0801B852
 
-Sub0801B854:
+ObjInit3B:
 ; object 3B init
 push  {r4-r5,lr}          ; 0801B854
 mov   r4,r0               ; 0801B856
@@ -3250,7 +3250,7 @@ pop   {r4-r5}             ; 0801B88E
 pop   {r0}                ; 0801B890
 bx    r0                  ; 0801B892
 
-Sub0801B894:
+ObjInit3A:
 ; object 3A init
 push  {lr}                ; 0801B894
 lsl   r1,r1,0x10          ; 0801B896
@@ -3262,7 +3262,7 @@ pop   {r0}                ; 0801B8A2
 bx    r0                  ; 0801B8A4
 .pool                     ; 0801B8A6
 
-Sub0801B8A8:
+ObjInit39:
 ; object 39 init
 push  {r4-r5,lr}          ; 0801B8A8
 lsl   r1,r1,0x10          ; 0801B8AA
@@ -3292,7 +3292,7 @@ pop   {r0}                ; 0801B8DA
 bx    r0                  ; 0801B8DC
 .pool                     ; 0801B8DE
 
-Sub0801B8E4:
+ObjInit38:
 ; object 38 init
 push  {r4-r6,lr}          ; 0801B8E4
 mov   r6,r0               ; 0801B8E6
@@ -3321,7 +3321,7 @@ pop   {r0}                ; 0801B916
 bx    r0                  ; 0801B918
 .pool                     ; 0801B91A
 
-Sub0801B91C:
+ObjInit37:
 ; object 37 init
 push  {lr}                ; 0801B91C
 lsl   r1,r1,0x10          ; 0801B91E
@@ -3333,7 +3333,7 @@ pop   {r0}                ; 0801B92A
 bx    r0                  ; 0801B92C
 .pool                     ; 0801B92E
 
-Sub0801B930:
+ObjInit36:
 ; object 36 init
 push  {lr}                ; 0801B930
 lsl   r1,r1,0x10          ; 0801B932
@@ -3347,7 +3347,7 @@ pop   {r0}                ; 0801B942
 bx    r0                  ; 0801B944
 .pool                     ; 0801B946
 
-Sub0801B948:
+ObjInit35:
 ; object 35 init
 push  {r4,lr}             ; 0801B948
 lsl   r1,r1,0x10          ; 0801B94A
@@ -3365,7 +3365,7 @@ pop   {r4}                ; 0801B962
 pop   {r0}                ; 0801B964
 bx    r0                  ; 0801B966
 
-Sub0801B968:
+ObjInit34:
 ; object 34 init
 push  {r4-r5,lr}          ; 0801B968
 lsl   r1,r1,0x10          ; 0801B96A
@@ -3387,7 +3387,7 @@ pop   {r0}                ; 0801B98A
 bx    r0                  ; 0801B98C
 .pool                     ; 0801B98E
 
-Sub0801B990:
+ObjInit32_33:
 ; object 32-33 init
 push  {lr}                ; 0801B990
 lsl   r1,r1,0x10          ; 0801B992
@@ -3399,7 +3399,7 @@ pop   {r0}                ; 0801B99E
 bx    r0                  ; 0801B9A0
 .pool                     ; 0801B9A2
 
-Sub0801B9A4:
+ObjInit30_31:
 ; object 30-31 init
 push  {r4-r6,lr}          ; 0801B9A4
 mov   r4,r0               ; 0801B9A6
@@ -3425,7 +3425,7 @@ pop   {r4-r6}             ; 0801B9CE
 pop   {r0}                ; 0801B9D0
 bx    r0                  ; 0801B9D2
 
-Sub0801B9D4:
+ObjInit2F:
 ; object 2F init
 push  {lr}                ; 0801B9D4
 lsl   r1,r1,0x10          ; 0801B9D6
@@ -3437,7 +3437,7 @@ pop   {r0}                ; 0801B9E2
 bx    r0                  ; 0801B9E4
 .pool                     ; 0801B9E6
 
-Sub0801B9E8:
+ObjInit2D_2E:
 ; object 2D-2E init
 push  {r4-r6,lr}          ; 0801B9E8
 mov   r6,r0               ; 0801B9EA
@@ -3464,7 +3464,7 @@ pop   {r0}                ; 0801BA16
 bx    r0                  ; 0801BA18
 .pool                     ; 0801BA1A
 
-Sub0801BA1C:
+ObjInit2C:
 ; object 2C init
 push  {r4,lr}             ; 0801BA1C
 lsl   r1,r1,0x10          ; 0801BA1E
@@ -3484,7 +3484,7 @@ pop   {r0}                ; 0801BA3A
 bx    r0                  ; 0801BA3C
 .pool                     ; 0801BA3E
 
-Sub0801BA40:
+ObjInit2B:
 ; object 2B init
 push  {lr}                ; 0801BA40
 lsl   r1,r1,0x10          ; 0801BA42
@@ -3496,7 +3496,7 @@ pop   {r0}                ; 0801BA4E
 bx    r0                  ; 0801BA50
 .pool                     ; 0801BA52
 
-Sub0801BA54:
+ObjInit29_2A:
 ; object 29-2A init
 push  {r4-r6,lr}          ; 0801BA54
 lsl   r1,r1,0x10          ; 0801BA56
@@ -3526,7 +3526,7 @@ pop   {r4-r6}             ; 0801BA86
 pop   {r0}                ; 0801BA88
 bx    r0                  ; 0801BA8A
 
-Sub0801BA8C:
+ObjInit27_28:
 ; object 27-28 init
 push  {r4,lr}             ; 0801BA8C
 lsl   r1,r1,0x10          ; 0801BA8E
@@ -3555,7 +3555,7 @@ pop   {r0}                ; 0801BABC
 bx    r0                  ; 0801BABE
 .pool                     ; 0801BAC0
 
-Sub0801BAC4:
+ObjInit25_26:
 ; object 25-26 init
 push  {r4,lr}             ; 0801BAC4
 lsl   r1,r1,0x10          ; 0801BAC6
@@ -3577,7 +3577,7 @@ pop   {r4}                ; 0801BAE6
 pop   {r0}                ; 0801BAE8
 bx    r0                  ; 0801BAEA
 
-Sub0801BAEC:
+ObjInit24:
 ; object 24 init
 push  {lr}                ; 0801BAEC
 lsl   r1,r1,0x10          ; 0801BAEE
@@ -3589,7 +3589,7 @@ pop   {r0}                ; 0801BAFA
 bx    r0                  ; 0801BAFC
 .pool                     ; 0801BAFE
 
-Sub0801BB00:
+ObjInit23:
 ; object 23 init
 push  {r4,lr}             ; 0801BB00
 lsl   r1,r1,0x10          ; 0801BB02
@@ -3609,7 +3609,7 @@ pop   {r0}                ; 0801BB1E
 bx    r0                  ; 0801BB20
 .pool                     ; 0801BB22
 
-Sub0801BB24:
+ObjInit22:
 ; object 22 init
 push  {r4,lr}             ; 0801BB24
 lsl   r1,r1,0x10          ; 0801BB26
@@ -3629,7 +3629,7 @@ pop   {r0}                ; 0801BB42
 bx    r0                  ; 0801BB44
 .pool                     ; 0801BB46
 
-Sub0801BB48:
+ObjInit21:
 ; object 21 init
 push  {lr}                ; 0801BB48
 lsl   r1,r1,0x10          ; 0801BB4A
@@ -3643,7 +3643,7 @@ pop   {r0}                ; 0801BB5A
 bx    r0                  ; 0801BB5C
 .pool                     ; 0801BB5E
 
-Sub0801BB60:
+ObjInit1F_20:
 ; object 1F-20 init
 push  {r4-r7,lr}          ; 0801BB60
 mov   r7,r10              ; 0801BB62
@@ -3766,7 +3766,7 @@ pop   {r0}                ; 0801BC44
 bx    r0                  ; 0801BC46
 .pool                     ; 0801BC48
 
-Sub0801BC4C:
+ObjInit1D_1E:
 ; object 1D-1E init
 push  {lr}                ; 0801BC4C
 lsl   r1,r1,0x10          ; 0801BC4E
@@ -3778,7 +3778,7 @@ pop   {r0}                ; 0801BC5A
 bx    r0                  ; 0801BC5C
 .pool                     ; 0801BC5E
 
-Sub0801BC60:
+ObjInit1C:
 ; object 1C init
 push  {r4,lr}             ; 0801BC60
 lsl   r1,r1,0x10          ; 0801BC62
@@ -3796,7 +3796,7 @@ pop   {r4}                ; 0801BC7A
 pop   {r0}                ; 0801BC7C
 bx    r0                  ; 0801BC7E
 
-Sub0801BC80:
+ObjInit1A_1B:
 ; object 1A-1B init
 push  {lr}                ; 0801BC80
 lsl   r1,r1,0x10          ; 0801BC82
@@ -3808,7 +3808,7 @@ pop   {r0}                ; 0801BC8E
 bx    r0                  ; 0801BC90
 .pool                     ; 0801BC92
 
-Sub0801BC94:
+ObjInit18_19:
 ; object 18-19 init
 push  {lr}                ; 0801BC94
 lsl   r1,r1,0x10          ; 0801BC96
@@ -3820,7 +3820,7 @@ pop   {r0}                ; 0801BCA2
 bx    r0                  ; 0801BCA4
 .pool                     ; 0801BCA6
 
-Sub0801BCA8:
+ObjInit17:
 ; object 17 init
 push  {r4-r6,lr}          ; 0801BCA8
 lsl   r1,r1,0x10          ; 0801BCAA
@@ -3850,7 +3850,7 @@ pop   {r0}                ; 0801BCDA
 bx    r0                  ; 0801BCDC
 .pool                     ; 0801BCDE
 
-Sub0801BCE8:
+ObjInit16:
 ; object 16 init
 push  {lr}                ; 0801BCE8
 lsl   r1,r1,0x10          ; 0801BCEA
@@ -3862,7 +3862,7 @@ pop   {r0}                ; 0801BCF6
 bx    r0                  ; 0801BCF8
 .pool                     ; 0801BCFA
 
-Sub0801BCFC:
+ObjInit15:
 ; object 15 init
 push  {r4,lr}             ; 0801BCFC
 lsl   r1,r1,0x10          ; 0801BCFE
@@ -3880,7 +3880,7 @@ pop   {r4}                ; 0801BD16
 pop   {r0}                ; 0801BD18
 bx    r0                  ; 0801BD1A
 
-Sub0801BD1C:
+ObjInit14:
 ; object 14 init
 push  {lr}                ; 0801BD1C
 lsl   r1,r1,0x10          ; 0801BD1E
@@ -3892,7 +3892,7 @@ pop   {r0}                ; 0801BD2A
 bx    r0                  ; 0801BD2C
 .pool                     ; 0801BD2E
 
-Sub0801BD30:
+ObjInit13:
 ; object 13 init
 push  {lr}                ; 0801BD30
 lsl   r1,r1,0x10          ; 0801BD32
@@ -3904,7 +3904,7 @@ pop   {r0}                ; 0801BD3E
 bx    r0                  ; 0801BD40
 .pool                     ; 0801BD42
 
-Sub0801BD44:
+ObjInit11_12:
 ; object 11-12 init
 push  {r4-r5,lr}          ; 0801BD44
 mov   r4,r0               ; 0801BD46
@@ -3937,7 +3937,7 @@ pop   {r0}                ; 0801BD7C
 bx    r0                  ; 0801BD7E
 .pool                     ; 0801BD80
 
-Sub0801BD88:
+ObjInit10:
 ; object 10 init
 push  {r4,lr}             ; 0801BD88
 lsl   r1,r1,0x10          ; 0801BD8A
@@ -3957,7 +3957,7 @@ pop   {r0}                ; 0801BDA6
 bx    r0                  ; 0801BDA8
 .pool                     ; 0801BDAA
 
-Sub0801BDB0:
+ObjInit0D:
 ; object 0D init
 push  {lr}                ; 0801BDB0
 lsl   r1,r1,0x10          ; 0801BDB2
@@ -3969,7 +3969,7 @@ pop   {r0}                ; 0801BDBE
 bx    r0                  ; 0801BDC0
 .pool                     ; 0801BDC2
 
-Sub0801BDC4:
+ObjInit0C_0E_0F:
 ; object 0C,0E-0F init
 push  {lr}                ; 0801BDC4
 lsl   r1,r1,0x10          ; 0801BDC6
@@ -4005,7 +4005,7 @@ pop   {r0}                ; 0801BDFC
 bx    r0                  ; 0801BDFE
 .pool                     ; 0801BE00
 
-Sub0801BE08:
+ObjInit06_09:
 ; object 06-09 init
 push  {r4-r6,lr}          ; 0801BE08
 mov   r4,r0               ; 0801BE0A
@@ -4052,7 +4052,7 @@ pop   {r0}                ; 0801BE5C
 bx    r0                  ; 0801BE5E
 .pool                     ; 0801BE60
 
-Sub0801BE68:
+ObjInit04_05:
 ; object 04-05 init
 push  {r4-r6,lr}          ; 0801BE68
 mov   r4,r0               ; 0801BE6A
@@ -4091,7 +4091,7 @@ pop   {r0}                ; 0801BEAE
 bx    r0                  ; 0801BEB0
 .pool                     ; 0801BEB2
 
-Sub0801BEB8:
+ObjInit02_03_0A_0B:
 ; object 02-03,0A-0B init
 push  {r4-r7,lr}          ; 0801BEB8
 mov   r7,r9               ; 0801BEBA
@@ -4173,7 +4173,7 @@ pop   {r0}                ; 0801BF48
 bx    r0                  ; 0801BF4A
 .pool                     ; 0801BF4C
 
-Sub0801BF58:
+ObjInit01:
 ; object 01 init
 push  {r4-r6,lr}          ; 0801BF58
 mov   r12,r0              ; 0801BF5A
