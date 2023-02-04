@@ -6,7 +6,7 @@ import os
 def aligncomments(path, startstr=";", commentpos=32):
     print("Processing:", path)
     outputlines = []
-    for line in open(path, "r", newline="").readlines():
+    for line in open(path, "r", newline=""):
         pos = line.find(startstr)
         if pos < 1 or pos == commentpos:
             outputlines.append(line)
