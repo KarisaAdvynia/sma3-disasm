@@ -1,2459 +1,4213 @@
-ExtObjInitFF:
-; object 00.FF init
-push  {r4-r6,lr}          ; 0801BFA8
-mov   r3,r0               ; 0801BFAA
-add   r0,0x48             ; 0801BFAC
-ldrh  r0,[r0]             ; 0801BFAE  tile YXyx
-lsr   r0,r0,0x8           ; 0801BFB0  r0 = screen number
-ldr   r1,=0x0201B800      ; 0801BFB2
-add   r4,r0,r1            ; 0801BFB4
-ldrb  r2,[r4]             ; 0801BFB6  screen memory index
-mov   r0,0x3F             ; 0801BFB8
-and   r2,r0               ; 0801BFBA
-cmp   r2,0x0              ; 0801BFBC
-beq   @Code0801BFF6       ; 0801BFBE  if screen is unused or clear, return
-mov   r0,r3               ; 0801BFC0
-add   r0,0xB4             ; 0801BFC2  [03007240]+B4 (030022C0)
-add   r0,r0,r2            ; 0801BFC4  index with screen memory index
-mov   r1,0x0              ; 0801BFC6
-strb  r1,[r0]             ; 0801BFC8  clear 030022C0+screen memory index
-mov   r0,0x80             ; 0801BFCA
-strb  r0,[r4]             ; 0801BFCC  set screen memory index to 80 (unused)
-lsl   r0,r2,0x19          ; 0801BFCE
-mov   r2,0x0              ; 0801BFD0  loop index
-mov   r4,r3               ; 0801BFD2
-add   r4,0xB3             ; 0801BFD4  [03007240]+B3 (030022BF)
-ldr   r6,=0x03007010      ; 0801BFD6  Layer 1 tilemap EWRAM (0200000C)
-lsr   r3,r0,0x11          ; 0801BFD8  r3 = screen memory index << 8
-mov   r5,0x0              ; 0801BFDA
-@Code0801BFDC:
-                          ;          \ loop: clear current screen's tilemap
-ldr   r0,[r6]             ; 0801BFDC  pointer to layer 1 tilemap
-add   r1,r3,r2            ; 0801BFDE
-lsl   r1,r1,0x1           ; 0801BFE0
-add   r0,r0,r1            ; 0801BFE2  current screen's tilemap, offset loop index *2
-strh  r5,[r0]             ; 0801BFE4  clear tile
-add   r0,r2,0x1           ; 0801BFE6
-lsl   r0,r0,0x10          ; 0801BFE8
-lsr   r2,r0,0x10          ; 0801BFEA
-cmp   r2,0xFF             ; 0801BFEC
-bls   @Code0801BFDC       ; 0801BFEE /
-
-ldrb  r0,[r4]             ; 0801BFF0 \
-sub   r0,0x1              ; 0801BFF2  decrement number of screen memory indexes assigned
-strb  r0,[r4]             ; 0801BFF4 /
-@Code0801BFF6:
-pop   {r4-r6}             ; 0801BFF6
-pop   {r0}                ; 0801BFF8
-bx    r0                  ; 0801BFFA
-.pool                     ; 0801BFFC
-
-ExtObjInitFE:
-; object 00.FE init
-add   r0,0x48             ; 0801C004
-ldrh  r1,[r0]             ; 0801C006  tile YXyx
-lsr   r1,r1,0x8           ; 0801C008  r1 = screen number
-ldr   r0,=0x0201B800      ; 0801C00A
-add   r1,r1,r0            ; 0801C00C
-ldrb  r0,[r1]             ; 0801C00E  screen memory index
-mov   r2,0x80             ; 0801C010
-orr   r0,r2               ; 0801C012
-strb  r0,[r1]             ; 0801C014  set high bit of screen memory index
-bx    lr                  ; 0801C016
-.pool                     ; 0801C018
-
-ExtObjInitFD:
-; object 00.FD init
-push  {r4,lr}             ; 0801C01C
-mov   r4,r0               ; 0801C01E
-bl    Sub08019D64         ; 0801C020  set layer 1 tilemap index and pre-existing tile
-mov   r0,r4               ; 0801C024
-bl    ExtObjMainFD         ; 0801C026
-pop   {r4}                ; 0801C02A
-pop   {r0}                ; 0801C02C
-bx    r0                  ; 0801C02E
-
-Return0801C030:
-; object 00.FC (unused ID) init
-bx    lr                  ; 0801C030
-.pool                     ; 0801C032
-
-ExtObjInitFB:
-; object 00.FB init
-add   r0,0x48             ; 0801C034
-ldrh  r0,[r0]             ; 0801C036  tile YXyx
-lsr   r2,r0,0x8           ; 0801C038  r2 = screen number
-lsl   r0,r0,0x18          ; 0801C03A
-lsr   r0,r0,0x18          ; 0801C03C  r0 = yx position within screen
-ldr   r1,=0x0201B800      ; 0801C03E
-add   r0,r0,r1            ; 0801C040
-add   r2,r2,r1            ; 0801C042
-ldrb  r1,[r2]             ; 0801C044  current screen memory index
-strb  r1,[r0]             ; 0801C046  set screen memory index corresponding to this object's yx position within screen, to match the current screen memory index
-bx    lr                  ; 0801C048
-.pool                     ; 0801C04A
-
-Return0801C050:
-; object 00 and 00.E1-FA (unused IDs) init
-bx    lr                  ; 0801C050
-.pool                     ; 0801C052
-
-ExtObjInitE0:
-; object 00.E0 init
-push  {r4,lr}             ; 0801C054
-lsl   r1,r1,0x10          ; 0801C056
-lsr   r1,r1,0x10          ; 0801C058
-lsl   r2,r2,0x18          ; 0801C05A
-lsr   r2,r2,0x18          ; 0801C05C
-mov   r3,0x4E             ; 0801C05E
-add   r3,r3,r0            ; 0801C060
-mov   r12,r3              ; 0801C062
-mov   r3,0x2              ; 0801C064
-mov   r4,r12              ; 0801C066
-strh  r3,[r4]             ; 0801C068  set width to 2
-mov   r4,0x52             ; 0801C06A
-strh  r3,[r4,r0]          ; 0801C06C  set height to 2
-bl    Sub0801A070         ; 0801C06E  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801C072
-pop   {r0}                ; 0801C074
-bx    r0                  ; 0801C076
-
-ExtObjInitD4_DF:
-; object 00.D4-DF init
-push  {r4-r5,lr}          ; 0801C078
-mov   r4,r0               ; 0801C07A
-lsl   r1,r1,0x10          ; 0801C07C
-lsr   r1,r1,0x10          ; 0801C07E
-lsl   r2,r2,0x18          ; 0801C080
-lsr   r2,r2,0x18          ; 0801C082
-mov   r0,0x42             ; 0801C084
-add   r0,r0,r4            ; 0801C086  r0 = [03007240]+42 (0300224E)
-mov   r12,r0              ; 0801C088
-ldrh  r3,[r0]             ; 0801C08A  r3 = extended object ID
-sub   r3,0xD4             ; 0801C08C
-lsl   r3,r3,0x10          ; 0801C08E
-lsr   r3,r3,0x10          ; 0801C090
-lsl   r0,r3,0x1           ; 0801C092  index width/height tables with extID-D4
-mov   r5,r12              ; 0801C094
-strh  r0,[r5]             ; 0801C096  store extID-D4
-ldr   r0,=Data081C196C    ; 0801C098
-add   r0,r3,r0            ; 0801C09A
-ldrb  r0,[r0]             ; 0801C09C  load width
-mov   r5,0x4E             ; 0801C09E
-strh  r0,[r5,r4]          ; 0801C0A0  set width
-ldr   r0,=Data081C1978    ; 0801C0A2
-add   r3,r3,r0            ; 0801C0A4
-ldrb  r3,[r3]             ; 0801C0A6  load height
-mov   r0,0xF              ; 0801C0A8
-and   r0,r3               ; 0801C0AA  clear high digit for no reason
-mov   r3,r4               ; 0801C0AC
-add   r3,0x52             ; 0801C0AE  r0 = [03007240]+52 (0300225E)
-strh  r0,[r3]             ; 0801C0B0  set height
-mov   r0,r4               ; 0801C0B2
-bl    Sub0801A070         ; 0801C0B4  Object processing main, slope=0, no relative Y threshold
-pop   {r4-r5}             ; 0801C0B8
-pop   {r0}                ; 0801C0BA
-bx    r0                  ; 0801C0BC
-.pool                     ; 0801C0BE
-
-ExtObjInitCA_D3:
-; object 00.CA-D3 init
-push  {r4,lr}             ; 0801C0C8
-mov   r4,r0               ; 0801C0CA
-bl    Sub08019D64         ; 0801C0CC  set layer 1 tilemap index and pre-existing tile
-mov   r1,r4               ; 0801C0D0
-add   r1,0x42             ; 0801C0D2
-ldrh  r0,[r1]             ; 0801C0D4  extended object ID
-sub   r0,0xCA             ; 0801C0D6
-strh  r0,[r1]             ; 0801C0D8  [0300224E] = (extID-CA)
-mov   r0,r4               ; 0801C0DA
-bl    ExtObjMainCA_D3         ; 0801C0DC
-pop   {r4}                ; 0801C0E0
-pop   {r0}                ; 0801C0E2
-bx    r0                  ; 0801C0E4
-.pool                     ; 0801C0E6
-
-ExtObjInitC5_C9:
-; object 00.C5-C9 init
-push  {r4-r5,lr}          ; 0801C0E8
-mov   r4,r0               ; 0801C0EA
-lsl   r1,r1,0x10          ; 0801C0EC
-lsr   r1,r1,0x10          ; 0801C0EE
-lsl   r2,r2,0x18          ; 0801C0F0
-lsr   r2,r2,0x18          ; 0801C0F2
-mov   r0,0x42             ; 0801C0F4
-add   r0,r0,r4            ; 0801C0F6
-mov   r12,r0              ; 0801C0F8
-ldrh  r0,[r0]             ; 0801C0FA  extended object ID
-sub   r0,0xC5             ; 0801C0FC
-lsl   r0,r0,0x11          ; 0801C0FE
-lsr   r3,r0,0x10          ; 0801C100
-mov   r5,r12              ; 0801C102
-strh  r3,[r5]             ; 0801C104  [0300224E] = (extID-C5)*2
-ldr   r3,=Data081C1958    ; 0801C106  table of widths
-lsr   r0,r0,0x10          ; 0801C108
-add   r3,r0,r3            ; 0801C10A  index with extID-C5
-ldrh  r3,[r3]             ; 0801C10C
-mov   r5,0x4E             ; 0801C10E
-strh  r3,[r5,r4]          ; 0801C110  set width
-ldr   r3,=Data081C1962    ; 0801C112  table of heights
-add   r0,r0,r3            ; 0801C114  index with extID-C5
-ldrh  r0,[r0]             ; 0801C116
-mov   r3,r4               ; 0801C118
-add   r3,0x52             ; 0801C11A
-strh  r0,[r3]             ; 0801C11C  set height
-mov   r0,r4               ; 0801C11E
-bl    Sub0801A070         ; 0801C120  Object processing main, slope=0, no relative Y threshold
-pop   {r4-r5}             ; 0801C124
-pop   {r0}                ; 0801C126
-bx    r0                  ; 0801C128
-.pool                     ; 0801C12A
-
-ExtObjInitC4:
-; object 00.C4 init
-push  {r4,lr}             ; 0801C134
-mov   r4,r0               ; 0801C136
-bl    Sub08019D64         ; 0801C138  set layer 1 tilemap index and pre-existing tile
-mov   r0,r4               ; 0801C13C
-bl    ExtObjMainC4         ; 0801C13E
-pop   {r4}                ; 0801C142
-pop   {r0}                ; 0801C144
-bx    r0                  ; 0801C146
-
-ExtObjInitC2_C3:
-; object 00.C2-C3 init
-push  {r4,lr}             ; 0801C148
-mov   r12,r0              ; 0801C14A
-lsl   r1,r1,0x10          ; 0801C14C
-lsr   r1,r1,0x10          ; 0801C14E
-lsl   r2,r2,0x18          ; 0801C150
-lsr   r2,r2,0x18          ; 0801C152
-mov   r3,r12              ; 0801C154
-add   r3,0x4E             ; 0801C156
-mov   r0,0x4              ; 0801C158
-strh  r0,[r3]             ; 0801C15A  set width to 4
-add   r3,0x4              ; 0801C15C
-strh  r0,[r3]             ; 0801C15E  set height to 4
-mov   r4,r12              ; 0801C160
-add   r4,0x42             ; 0801C162
-ldrh  r3,[r4]             ; 0801C164  object ID
-mov   r0,0x1              ; 0801C166
-and   r0,r3               ; 0801C168
-lsl   r0,r0,0x4           ; 0801C16A
-strh  r0,[r4]             ; 0801C16C  [0300224E] = 00,10 for C2,C3
-mov   r0,r12              ; 0801C16E
-bl    Sub0801A070         ; 0801C170  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801C174
-pop   {r0}                ; 0801C176
-bx    r0                  ; 0801C178
-.pool                     ; 0801C17A
-
-ExtObjInitC1:
-; object 00.C1 init
-push  {r4,lr}             ; 0801C17C
-lsl   r1,r1,0x10          ; 0801C17E
-lsr   r1,r1,0x10          ; 0801C180
-lsl   r2,r2,0x18          ; 0801C182
-lsr   r2,r2,0x18          ; 0801C184
-mov   r3,0x4E             ; 0801C186
-add   r3,r3,r0            ; 0801C188
-mov   r12,r3              ; 0801C18A
-mov   r3,0x2              ; 0801C18C
-mov   r4,r12              ; 0801C18E
-strh  r3,[r4]             ; 0801C190  set width to 2
-mov   r3,0x52             ; 0801C192
-add   r3,r3,r0            ; 0801C194
-mov   r12,r3              ; 0801C196
-mov   r3,0x1              ; 0801C198
-mov   r4,r12              ; 0801C19A
-strh  r3,[r4]             ; 0801C19C  set height to 1
-bl    Sub0801A070         ; 0801C19E  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801C1A2
-pop   {r0}                ; 0801C1A4
-bx    r0                  ; 0801C1A6
-
-ExtObjInitC0:
-; object 00.C0 init
-push  {r4,lr}             ; 0801C1A8
-lsl   r1,r1,0x10          ; 0801C1AA
-lsr   r1,r1,0x10          ; 0801C1AC
-lsl   r2,r2,0x18          ; 0801C1AE
-lsr   r2,r2,0x18          ; 0801C1B0
-mov   r3,0x4E             ; 0801C1B2
-add   r3,r3,r0            ; 0801C1B4
-mov   r12,r3              ; 0801C1B6
-mov   r3,0x2              ; 0801C1B8
-mov   r4,r12              ; 0801C1BA  set width to 2
-strh  r3,[r4]             ; 0801C1BC
-mov   r4,0x52             ; 0801C1BE
-strh  r3,[r4,r0]          ; 0801C1C0  set height to 2
-bl    Sub0801A070         ; 0801C1C2  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801C1C6
-pop   {r0}                ; 0801C1C8
-bx    r0                  ; 0801C1CA
-
-ExtObjInitBA_BF:
-; object 00.BA-BF init
-push  {r4-r6,lr}          ; 0801C1CC
-mov   r4,r0               ; 0801C1CE
-lsl   r1,r1,0x10          ; 0801C1D0
-lsr   r6,r1,0x10          ; 0801C1D2
-lsl   r2,r2,0x18          ; 0801C1D4
-lsr   r5,r2,0x18          ; 0801C1D6
-mov   r2,r4               ; 0801C1D8
-add   r2,0x42             ; 0801C1DA
-ldrh  r0,[r2]             ; 0801C1DC  extended object ID
-sub   r0,0xBA             ; 0801C1DE
-lsl   r0,r0,0x11          ; 0801C1E0
-lsr   r1,r0,0x10          ; 0801C1E2
-strh  r1,[r2]             ; 0801C1E4  [0300224E] = (extID-BA)*2
-ldr   r1,=Data081C194C    ; 0801C1E6  height table
-lsr   r0,r0,0x10          ; 0801C1E8
-add   r0,r0,r1            ; 0801C1EA  index with extID-BA
-ldrh  r0,[r0]             ; 0801C1EC
-mov   r1,r4               ; 0801C1EE
-add   r1,0x52             ; 0801C1F0
-strh  r0,[r1]             ; 0801C1F2  set height
-bl    GenRandomByte       ; 0801C1F4  Generate pseudo-random byte
-lsl   r0,r0,0x10          ; 0801C1F8
-mov   r1,0xC0             ; 0801C1FA
-lsl   r1,r1,0xA           ; 0801C1FC  30000
-and   r1,r0               ; 0801C1FE
-lsr   r1,r1,0x10          ; 0801C200  random 2-bit value
-cmp   r1,0x0              ; 0801C202
-beq   @Code0801C20A       ; 0801C204
-mov   r0,0x3              ; 0801C206
-eor   r1,r0               ; 0801C208  if nonzero, swap bits
-@Code0801C20A:
-strh  r1,[r4,0x3A]        ; 0801C20A  store random 0,0,1,2 to scratch RAM
-mov   r0,r4               ; 0801C20C
-mov   r1,r6               ; 0801C20E
-mov   r2,r5               ; 0801C210
-bl    Sub0801A070         ; 0801C212  Object processing main, slope=0, no relative Y threshold
-pop   {r4-r6}             ; 0801C216
-pop   {r0}                ; 0801C218
-bx    r0                  ; 0801C21A
-.pool                     ; 0801C21C
-
-ExtObjInitB8_B9:
-; object 00.B8-B9 init
-push  {r4-r5,lr}          ; 0801C220
-mov   r4,r0               ; 0801C222
-lsl   r1,r1,0x10          ; 0801C224
-lsr   r1,r1,0x10          ; 0801C226
-lsl   r2,r2,0x18          ; 0801C228
-lsr   r2,r2,0x18          ; 0801C22A
-mov   r0,0x42             ; 0801C22C
-add   r0,r0,r4            ; 0801C22E
-mov   r12,r0              ; 0801C230
-ldrh  r3,[r0]             ; 0801C232  extended object ID
-mov   r0,0x1              ; 0801C234
-and   r0,r3               ; 0801C236
-lsl   r0,r0,0x11          ; 0801C238
-lsr   r3,r0,0x10          ; 0801C23A  [0300224E] = (extID-B8)*2
-mov   r5,r12              ; 0801C23C
-strh  r3,[r5]             ; 0801C23E
-ldr   r3,=Data081C1908    ; 0801C240  width table
-lsr   r0,r0,0x11          ; 0801C242
-lsl   r0,r0,0x1           ; 0801C244
-add   r3,r0,r3            ; 0801C246  index with extID-B8
-ldrh  r3,[r3]             ; 0801C248
-mov   r5,0x4E             ; 0801C24A
-strh  r3,[r5,r4]          ; 0801C24C  set width
-ldr   r3,=Data081C190C    ; 0801C24E  height table
-add   r0,r0,r3            ; 0801C250
-ldrh  r0,[r0]             ; 0801C252
-mov   r3,r4               ; 0801C254
-add   r3,0x52             ; 0801C256
-strh  r0,[r3]             ; 0801C258  set height
-mov   r0,r4               ; 0801C25A
-bl    Sub0801A070         ; 0801C25C  Object processing main, slope=0, no relative Y threshold
-pop   {r4-r5}             ; 0801C260
-pop   {r0}                ; 0801C262
-bx    r0                  ; 0801C264
-.pool                     ; 0801C266
-
-ExtObjInitB6_B7:
-; object 00.B6-B7 init
-push  {r4-r6,lr}          ; 0801C270
-mov   r6,r0               ; 0801C272
-mov   r4,r1               ; 0801C274
-mov   r5,r2               ; 0801C276
-lsl   r4,r4,0x10          ; 0801C278
-lsr   r4,r4,0x10          ; 0801C27A
-lsl   r5,r5,0x18          ; 0801C27C
-lsr   r5,r5,0x18          ; 0801C27E
-mov   r1,r6               ; 0801C280
-add   r1,0x4E             ; 0801C282
-mov   r0,0x3              ; 0801C284
-strh  r0,[r1]             ; 0801C286  set width to 3
-add   r1,0x4              ; 0801C288  +52
-strh  r0,[r1]             ; 0801C28A  set height to 3
-bl    GenRandomByte       ; 0801C28C  Generate pseudo-random byte
-lsl   r0,r0,0x10          ; 0801C290
-lsr   r0,r0,0x10          ; 0801C292
-mov   r1,0x1              ; 0801C294
-and   r0,r1               ; 0801C296  r0 = random bit
-mov   r3,r6               ; 0801C298
-add   r3,0x42             ; 0801C29A
-ldrh  r2,[r3]             ; 0801C29C  extended object ID
-and   r1,r2               ; 0801C29E  extID&1
-lsl   r1,r1,0x1           ; 0801C2A0
-orr   r1,r0               ; 0801C2A2  (extID-B6)*2 + random bit
-lsl   r1,r1,0x1           ; 0801C2A4
-strh  r1,[r3]             ; 0801C2A6  [0300224E] = (extID-B6)*4 + random bit*2
-mov   r0,r6               ; 0801C2A8
-mov   r1,r4               ; 0801C2AA
-mov   r2,r5               ; 0801C2AC
-bl    Sub0801A070         ; 0801C2AE  Object processing main, slope=0, no relative Y threshold
-pop   {r4-r6}             ; 0801C2B2
-pop   {r0}                ; 0801C2B4
-bx    r0                  ; 0801C2B6
-
-ExtObjInitB4_B5:
-; object 00.B4-B5 init
-push  {r4-r6,lr}          ; 0801C2B8
-mov   r6,r0               ; 0801C2BA
-mov   r4,r1               ; 0801C2BC
-mov   r5,r2               ; 0801C2BE
-lsl   r4,r4,0x10          ; 0801C2C0
-lsr   r4,r4,0x10          ; 0801C2C2
-lsl   r5,r5,0x18          ; 0801C2C4
-lsr   r5,r5,0x18          ; 0801C2C6
-mov   r1,r6               ; 0801C2C8
-add   r1,0x4E             ; 0801C2CA
-mov   r0,0x2              ; 0801C2CC
-strh  r0,[r1]             ; 0801C2CE  set width to 2
-add   r1,0x4              ; 0801C2D0  +52
-strh  r0,[r1]             ; 0801C2D2  set height to 2
-bl    GenRandomByte       ; 0801C2D4  Generate pseudo-random byte
-lsl   r0,r0,0x10          ; 0801C2D8
-lsr   r0,r0,0x10          ; 0801C2DA
-mov   r1,0x4              ; 0801C2DC
-and   r0,r1               ; 0801C2DE  r0 = random bit <<2
-lsl   r0,r0,0x10          ; 0801C2E0
-lsr   r0,r0,0x10          ; 0801C2E2
-strh  r0,[r6,0x3A]        ; 0801C2E4  store random bit <<2 to scratch RAM
-mov   r2,r6               ; 0801C2E6
-add   r2,0x42             ; 0801C2E8
-ldrh  r1,[r2]             ; 0801C2EA  extended object ID
-mov   r0,0x1              ; 0801C2EC
-and   r0,r1               ; 0801C2EE
-strh  r0,[r2]             ; 0801C2F0  [0300224E] = extID&1
-mov   r0,r6               ; 0801C2F2
-mov   r1,r4               ; 0801C2F4
-mov   r2,r5               ; 0801C2F6
-bl    Sub0801A070         ; 0801C2F8  Object processing main, slope=0, no relative Y threshold
-pop   {r4-r6}             ; 0801C2FC
-pop   {r0}                ; 0801C2FE
-bx    r0                  ; 0801C300
-.pool                     ; 0801C302
-
-ExtObjInitB3:
-; object 00.B3 init
-push  {r4,lr}             ; 0801C304
-mov   r4,r0               ; 0801C306
-bl    Sub08019D64         ; 0801C308  set layer 1 tilemap index and pre-existing tile
-mov   r0,r4               ; 0801C30C
-bl    ExtObjMainB3         ; 0801C30E
-pop   {r4}                ; 0801C312
-pop   {r0}                ; 0801C314
-bx    r0                  ; 0801C316
-
-ExtObjInitAD_B2:
-; object 00.AD-B2 init
-push  {r4-r6,lr}          ; 0801C318
-mov   r6,r0               ; 0801C31A
-mov   r4,r1               ; 0801C31C
-mov   r5,r2               ; 0801C31E
-lsl   r4,r4,0x10          ; 0801C320
-lsr   r4,r4,0x10          ; 0801C322
-lsl   r5,r5,0x18          ; 0801C324
-lsr   r5,r5,0x18          ; 0801C326
-bl    GenRandomByte       ; 0801C328  Generate pseudo-random byte
-lsl   r0,r0,0x10          ; 0801C32C
-mov   r1,0xC0             ; 0801C32E
-lsl   r1,r1,0xB           ; 0801C330  60000
-and   r1,r0               ; 0801C332
-ldr   r0,=Data081C18F4    ; 0801C334
-lsr   r1,r1,0x10          ; 0801C336  2-bit random number << 1
-add   r1,r1,r0            ; 0801C338  index with 2-bit random number
-ldrh  r0,[r1]             ; 0801C33A
-strh  r0,[r6,0x3A]        ; 0801C33C  store to scratch RAM
-mov   r1,r6               ; 0801C33E
-add   r1,0x4E             ; 0801C340
-mov   r0,0x2              ; 0801C342
-strh  r0,[r1]             ; 0801C344  set width to 2
-mov   r2,r6               ; 0801C346
-add   r2,0x42             ; 0801C348
-ldrh  r0,[r2]             ; 0801C34A  extended object ID
-sub   r0,0xAD             ; 0801C34C
-lsl   r0,r0,0x11          ; 0801C34E
-lsr   r1,r0,0x10          ; 0801C350
-strh  r1,[r2]             ; 0801C352  [0300224C] = (extID-AD)*2
-ldr   r1,=Data081C18FC    ; 0801C354
-lsr   r0,r0,0x10          ; 0801C356
-add   r0,r0,r1            ; 0801C358  index with (extID-AD)*2
-ldrh  r0,[r0]             ; 0801C35A
-mov   r1,r6               ; 0801C35C
-add   r1,0x52             ; 0801C35E
-strh  r0,[r1]             ; 0801C360  set height
-mov   r0,r6               ; 0801C362
-mov   r1,r4               ; 0801C364
-mov   r2,r5               ; 0801C366
-bl    Sub0801A070         ; 0801C368  Object processing main, slope=0, no relative Y threshold
-pop   {r4-r6}             ; 0801C36C
-pop   {r0}                ; 0801C36E
-bx    r0                  ; 0801C370
-.pool                     ; 0801C372
-
-ExtObjInitA9_AC:
-; object 00.A9-AC init
-push  {r4-r5,lr}          ; 0801C37C
-lsl   r1,r1,0x10          ; 0801C37E
-lsr   r1,r1,0x10          ; 0801C380
-lsl   r2,r2,0x18          ; 0801C382
-lsr   r2,r2,0x18          ; 0801C384
-mov   r3,0x42             ; 0801C386
-add   r3,r3,r0            ; 0801C388
-mov   r12,r3              ; 0801C38A
-ldrh  r4,[r3]             ; 0801C38C  object ID
-mov   r3,0x7              ; 0801C38E
-and   r3,r4               ; 0801C390  objID-A8
-sub   r3,0x1              ; 0801C392  objID-A9
-lsl   r3,r3,0x11          ; 0801C394
-lsr   r4,r3,0x10          ; 0801C396  (objID-A9)*2
-mov   r5,r12              ; 0801C398
-strh  r4,[r5]             ; 0801C39A  [0300224E] = (objID-A9)*2
-ldr   r4,=Data081C18EC    ; 0801C39C
-lsr   r3,r3,0x10          ; 0801C39E
-add   r3,r3,r4            ; 0801C3A0
-ldrh  r3,[r3]             ; 0801C3A2
-mov   r4,r0               ; 0801C3A4
-add   r4,0x52             ; 0801C3A6
-strh  r3,[r4]             ; 0801C3A8  set height
-bl    Sub0801A070         ; 0801C3AA  Object processing main, slope=0, no relative Y threshold
-pop   {r4-r5}             ; 0801C3AE
-pop   {r0}                ; 0801C3B0
-bx    r0                  ; 0801C3B2
-.pool                     ; 0801C3B4
-
-ExtObjInitA7:
-; object 00.A7 init
-push  {r4,lr}             ; 0801C3B8
-mov   r4,r0               ; 0801C3BA
-bl    Sub08019D64         ; 0801C3BC  set layer 1 tilemap index and pre-existing tile
-mov   r0,r4               ; 0801C3C0
-bl    ExtObjMainA7         ; 0801C3C2
-pop   {r4}                ; 0801C3C6
-pop   {r0}                ; 0801C3C8
-bx    r0                  ; 0801C3CA
-
-ExtObjInitA5_A6:
-; object 00.A5-A6 init
-push  {r4-r6,lr}          ; 0801C3CC
-mov   r6,r9               ; 0801C3CE
-mov   r5,r8               ; 0801C3D0
-push  {r5-r6}             ; 0801C3D2
-mov   r12,r0              ; 0801C3D4
-lsl   r1,r1,0x10          ; 0801C3D6
-lsr   r1,r1,0x10          ; 0801C3D8
-lsl   r2,r2,0x18          ; 0801C3DA
-lsr   r2,r2,0x18          ; 0801C3DC
-mov   r3,r12              ; 0801C3DE
-add   r3,0x42             ; 0801C3E0
-ldrh  r0,[r3]             ; 0801C3E2  object ID
-mov   r5,0x1              ; 0801C3E4
-and   r5,r0               ; 0801C3E6
-strh  r5,[r3]             ; 0801C3E8  set to objID&1 (1,0 if A5,A6)
-mov   r0,0x48             ; 0801C3EA
-add   r0,r12              ; 0801C3EC
-mov   r9,r0               ; 0801C3EE
-ldrh  r3,[r0]             ; 0801C3F0  tile YXyx
-mov   r8,r3               ; 0801C3F2
-ldr   r3,=0x0F0F          ; 0801C3F4
-mov   r4,r3               ; 0801C3F6
-mov   r0,r8               ; 0801C3F8
-and   r4,r0               ; 0801C3FA  0X0x
-ldr   r0,=Data081C18DC    ; 0801C3FC
-lsl   r5,r5,0x1           ; 0801C3FE
-add   r0,r5,r0            ; 0801C400
-ldrh  r0,[r0]             ; 0801C402  X adjustment: 2,1 if A5,A6
-sub   r4,r4,r0            ; 0801C404
-and   r4,r3               ; 0801C406  adjusted 0X0x
-ldr   r6,=0xF0F0          ; 0801C408
-mov   r3,r6               ; 0801C40A
-mov   r0,r8               ; 0801C40C  YXyx
-and   r3,r0               ; 0801C40E  Y0y0
-ldr   r0,=Data081C18E0    ; 0801C410
-add   r0,r5,r0            ; 0801C412
-ldrh  r0,[r0]             ; 0801C414  Y adjustment: 80,40 if A5,A6
-sub   r3,r3,r0            ; 0801C416
-and   r3,r6               ; 0801C418
-orr   r3,r4               ; 0801C41A
-mov   r0,r9               ; 0801C41C
-strh  r3,[r0]             ; 0801C41E  set new YXyx
-ldr   r0,=Data081C18E4    ; 0801C420
-add   r0,r5,r0            ; 0801C422
-ldrh  r0,[r0]             ; 0801C424  5,3 if A5,A6
-mov   r3,r12              ; 0801C426
-add   r3,0x4E             ; 0801C428
-strh  r0,[r3]             ; 0801C42A  set width
-ldr   r0,=Data081C18E8    ; 0801C42C
-add   r5,r5,r0            ; 0801C42E
-ldrh  r0,[r5]             ; 0801C430  9,5 if A5,A6
-add   r3,0x4              ; 0801C432
-strh  r0,[r3]             ; 0801C434  set height
-mov   r0,r12              ; 0801C436
-bl    Sub0801A070         ; 0801C438  Object processing main, slope=0, no relative Y threshold
-pop   {r3-r4}             ; 0801C43C
-mov   r8,r3               ; 0801C43E
-mov   r9,r4               ; 0801C440
-pop   {r4-r6}             ; 0801C442
-pop   {r0}                ; 0801C444
-bx    r0                  ; 0801C446
-.pool                     ; 0801C448
-
-ExtObjInitA4:
-; object 00.A4 init
-push  {r4,lr}             ; 0801C460
-lsl   r1,r1,0x10          ; 0801C462
-lsr   r1,r1,0x10          ; 0801C464
-lsl   r2,r2,0x18          ; 0801C466
-lsr   r2,r2,0x18          ; 0801C468
-mov   r3,0x4E             ; 0801C46A
-add   r3,r3,r0            ; 0801C46C
-mov   r12,r3              ; 0801C46E
-mov   r3,0x2              ; 0801C470
-mov   r4,r12              ; 0801C472
-strh  r3,[r4]             ; 0801C474  set width to 2
-mov   r4,0x52             ; 0801C476
-strh  r3,[r4,r0]          ; 0801C478  set height to 2
-bl    Sub0801A070         ; 0801C47A  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801C47E
-pop   {r0}                ; 0801C480
-bx    r0                  ; 0801C482
-
-ExtObjInitA0_A3:
-; object 00.A0-A3 init
-push  {r4-r6,lr}          ; 0801C484
-mov   r6,r8               ; 0801C486
-push  {r6}                ; 0801C488
-mov   r12,r0              ; 0801C48A
-lsl   r2,r2,0x18          ; 0801C48C
-lsr   r2,r2,0x18          ; 0801C48E
-add   r0,0x42             ; 0801C490
-ldrh  r3,[r0]             ; 0801C492  extended object ID
-mov   r1,0x3              ; 0801C494
-mov   r0,0x48             ; 0801C496
-add   r0,r12              ; 0801C498
-mov   r8,r0               ; 0801C49A
-ldrh  r6,[r0]             ; 0801C49C  tile YXyx
-ldr   r5,=0x0F0F          ; 0801C49E
-ldr   r0,=Data081C18CC    ; 0801C4A0
-and   r1,r3               ; 0801C4A2  extID-A0
-lsl   r4,r1,0x1           ; 0801C4A4  (extID-A0)*2
-add   r0,r4,r0            ; 0801C4A6  index with extID-A0
-mov   r3,r5               ; 0801C4A8
-and   r3,r6               ; 0801C4AA  tile 0X0x
-ldrh  r0,[r0]             ; 0801C4AC  -1,0,-1,0 for A0-A3
-add   r3,r3,r0            ; 0801C4AE
-and   r3,r5               ; 0801C4B0  tile 0X0x, possibly with x-1
-ldr   r5,=0xF0F0          ; 0801C4B2
-ldr   r0,=Data081C18D4    ; 0801C4B4
-add   r4,r4,r0            ; 0801C4B6  index with extID-A0
-mov   r0,r5               ; 0801C4B8
-and   r0,r6               ; 0801C4BA  tile Y0y0
-ldrh  r4,[r4]             ; 0801C4BC  -0x10,-0x10,0,0
-add   r0,r0,r4            ; 0801C4BE
-and   r0,r5               ; 0801C4C0  tile Y0y0, possibly with y-1
-orr   r0,r3               ; 0801C4C2  adjusted YXyx
-mov   r3,r8               ; 0801C4C4
-strh  r0,[r3]             ; 0801C4C6  set adjusted YXyx
-mov   r3,r12              ; 0801C4C8
-add   r3,0x4E             ; 0801C4CA
-mov   r0,0x2              ; 0801C4CC
-strh  r0,[r3]             ; 0801C4CE  set width to 2
-add   r3,0x4              ; 0801C4D0
-strh  r0,[r3]             ; 0801C4D2  set height to 4
-add   r1,0xA0             ; 0801C4D4
-mov   r0,r12              ; 0801C4D6
-bl    Sub0801A070         ; 0801C4D8  Object processing main, slope=0, no relative Y threshold
-pop   {r3}                ; 0801C4DC
-mov   r8,r3               ; 0801C4DE
-pop   {r4-r6}             ; 0801C4E0
-pop   {r0}                ; 0801C4E2
-bx    r0                  ; 0801C4E4
-.pool                     ; 0801C4E6
-
-ExtObjInit9E_9F:
-; object 00.9E-9F init
-push  {r4,lr}             ; 0801C4F8
-mov   r4,r0               ; 0801C4FA
-bl    Sub08019D64         ; 0801C4FC  set layer 1 tilemap index and pre-existing tile
-mov   r2,r4               ; 0801C500
-add   r2,0x42             ; 0801C502
-ldrh  r1,[r2]             ; 0801C504  extended object ID
-mov   r0,0x1              ; 0801C506
-and   r0,r1               ; 0801C508
-lsl   r0,r0,0x1           ; 0801C50A
-strh  r0,[r2]             ; 0801C50C  (extID&1)*2
-mov   r0,r4               ; 0801C50E
-bl    ExtObjMain9E_9F         ; 0801C510
-pop   {r4}                ; 0801C514
-pop   {r0}                ; 0801C516
-bx    r0                  ; 0801C518
-.pool                     ; 0801C51A
-
-ExtObjInit9A_9D:
-; object 00.9A-9D init
-push  {r4,lr}             ; 0801C51C
-mov   r4,r0               ; 0801C51E
-bl    Sub08019D64         ; 0801C520  set layer 1 tilemap index and pre-existing tile
-mov   r2,r4               ; 0801C524
-add   r2,0x42             ; 0801C526
-ldrh  r1,[r2]             ; 0801C528  extended object ID
-sub   r1,0x2              ; 0801C52A
-lsl   r1,r1,0x10          ; 0801C52C
-mov   r0,0xC0             ; 0801C52E
-lsl   r0,r0,0xA           ; 0801C530  30000
-and   r0,r1               ; 0801C532
-lsr   r0,r0,0xF           ; 0801C534  (extID&3)<<1
-strh  r0,[r2]             ; 0801C536  set to (extID-9A)*2
-mov   r0,r4               ; 0801C538
-bl    ExtObjMain9A_9D         ; 0801C53A
-pop   {r4}                ; 0801C53E
-pop   {r0}                ; 0801C540
-bx    r0                  ; 0801C542
-
-ExtObjInit96_99:
-; object 00.96-99 init
-push  {r4,lr}             ; 0801C544
-mov   r12,r0              ; 0801C546
-lsl   r1,r1,0x10          ; 0801C548
-lsr   r1,r1,0x10          ; 0801C54A
-lsl   r2,r2,0x18          ; 0801C54C
-lsr   r2,r2,0x18          ; 0801C54E
-mov   r4,r12              ; 0801C550
-add   r4,0x42             ; 0801C552
-ldrh  r3,[r4]             ; 0801C554  extended object ID
-add   r3,0x2              ; 0801C556
-lsl   r3,r3,0x10          ; 0801C558
-mov   r0,0xC0             ; 0801C55A
-lsl   r0,r0,0xA           ; 0801C55C  30000
-and   r0,r3               ; 0801C55E
-lsr   r0,r0,0xF           ; 0801C560  ((extID+2)&3) << 1
-strh  r0,[r4]             ; 0801C562  set to (extID-96)*2
-mov   r3,r12              ; 0801C564
-add   r3,0x4E             ; 0801C566
-mov   r0,0x8              ; 0801C568
-strh  r0,[r3]             ; 0801C56A  set width to 8
-add   r3,0x4              ; 0801C56C
-strh  r0,[r3]             ; 0801C56E  set height to 8
-mov   r0,r12              ; 0801C570
-bl    Sub0801A070         ; 0801C572  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801C576
-pop   {r0}                ; 0801C578
-bx    r0                  ; 0801C57A
-
-ExtObjInit92_95:
-; object 00.92-95 init
-push  {r4,lr}             ; 0801C57C
-mov   r12,r0              ; 0801C57E
-lsl   r1,r1,0x10          ; 0801C580
-lsr   r1,r1,0x10          ; 0801C582
-lsl   r2,r2,0x18          ; 0801C584
-lsr   r2,r2,0x18          ; 0801C586
-mov   r4,r12              ; 0801C588
-add   r4,0x42             ; 0801C58A
-ldrh  r3,[r4]             ; 0801C58C  extended object ID
-add   r3,0x2              ; 0801C58E
-lsl   r3,r3,0x10          ; 0801C590
-mov   r0,0xC0             ; 0801C592
-lsl   r0,r0,0xA           ; 0801C594  30000
-and   r0,r3               ; 0801C596
-lsr   r0,r0,0xF           ; 0801C598  ((extID+2)&3) << 1
-strh  r0,[r4]             ; 0801C59A  set to (extID-92)*2
-mov   r3,r12              ; 0801C59C
-add   r3,0x4E             ; 0801C59E
-mov   r0,0x2              ; 0801C5A0
-strh  r0,[r3]             ; 0801C5A2  set width to 2
-add   r3,0x4              ; 0801C5A4
-strh  r0,[r3]             ; 0801C5A6  set height to 2
-mov   r0,r12              ; 0801C5A8
-bl    Sub0801A070         ; 0801C5AA  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801C5AE
-pop   {r0}                ; 0801C5B0
-bx    r0                  ; 0801C5B2
-
-ExtObjInit8E_91:
-; object 00.8E-91 init
-push  {r4,lr}             ; 0801C5B4
-mov   r4,r0               ; 0801C5B6
-bl    Sub08019D64         ; 0801C5B8  set layer 1 tilemap index and pre-existing tile
-mov   r2,r4               ; 0801C5BC
-add   r2,0x42             ; 0801C5BE  [03007240]+42 (0300224E)
-ldrh  r0,[r2]             ; 0801C5C0  extended object ID
-add   r0,0x2              ; 0801C5C2
-lsl   r0,r0,0x10          ; 0801C5C4
-lsr   r0,r0,0x10          ; 0801C5C6
-mov   r1,0x3              ; 0801C5C8
-and   r0,r1               ; 0801C5CA
-strh  r0,[r2]             ; 0801C5CC  set to extID-8E
-mov   r0,r4               ; 0801C5CE
-bl    ExtObjMain8E_91         ; 0801C5D0
-pop   {r4}                ; 0801C5D4
-pop   {r0}                ; 0801C5D6
-bx    r0                  ; 0801C5D8
-.pool                     ; 0801C5DA
-
-ExtObjInit8D:
-; object 00.8D init
-push  {r4,lr}             ; 0801C5DC
-mov   r4,r0               ; 0801C5DE
-bl    Sub08019D64         ; 0801C5E0  set layer 1 tilemap index and pre-existing tile
-mov   r0,r4               ; 0801C5E4
-bl    ExtObjMain8D         ; 0801C5E6
-pop   {r4}                ; 0801C5EA
-pop   {r0}                ; 0801C5EC
-bx    r0                  ; 0801C5EE
-
-ExtObjInit89_8C:
-; object 00.89-8C init
-push  {r4,lr}             ; 0801C5F0
-mov   r12,r0              ; 0801C5F2
-lsl   r2,r2,0x18          ; 0801C5F4
-lsr   r2,r2,0x18          ; 0801C5F6
-mov   r4,r12              ; 0801C5F8
-add   r4,0x42             ; 0801C5FA
-ldrh  r3,[r4]             ; 0801C5FC  extended object ID
-mov   r0,0x7              ; 0801C5FE
-ldr   r1,=Data081C18B8    ; 0801C600  width table
-and   r0,r3               ; 0801C602  extID-88
-lsl   r0,r0,0x1           ; 0801C604
-add   r1,r0,r1            ; 0801C606  index with extID-88
-ldrh  r1,[r1]             ; 0801C608  2,2,1,1
-mov   r3,r12              ; 0801C60A
-add   r3,0x4E             ; 0801C60C
-strh  r1,[r3]             ; 0801C60E  set width
-ldr   r1,=Data081C18C2    ; 0801C610  height table
-add   r0,r0,r1            ; 0801C612
-ldrh  r0,[r0]             ; 0801C614  1,1,2,2
-mov   r1,r12              ; 0801C616
-add   r1,0x52             ; 0801C618
-strh  r0,[r1]             ; 0801C61A  set height
-ldrh  r3,[r4]             ; 0801C61C  extended object ID
-sub   r3,0x1              ; 0801C61E  extID-1
-lsl   r3,r3,0x10          ; 0801C620
-lsr   r3,r3,0x10          ; 0801C622
-mov   r1,0x2              ; 0801C624
-and   r1,r3               ; 0801C626  r1 = 0,0,2,2
-lsl   r1,r1,0x10          ; 0801C628
-lsr   r1,r1,0x10          ; 0801C62A
-mov   r0,0x1              ; 0801C62C
-and   r0,r3               ; 0801C62E  r0 = 0,1,0,1
-lsl   r0,r0,0x1           ; 0801C630  r0 = 0,2,0,2
-strh  r0,[r4]             ; 0801C632  [0300224E] = 0,2,0,2
-add   r1,0x89             ; 0801C634  r1 = 89,89,8B,8B
-mov   r0,r12              ; 0801C636
-bl    Sub0801A070         ; 0801C638  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801C63C
-pop   {r0}                ; 0801C63E
-bx    r0                  ; 0801C640
-.pool                     ; 0801C642
-
-ExtObjInit88:
-; object 00.88 init
-push  {r4,lr}             ; 0801C64C
-lsl   r1,r1,0x10          ; 0801C64E
-lsr   r1,r1,0x10          ; 0801C650
-lsl   r2,r2,0x18          ; 0801C652
-lsr   r2,r2,0x18          ; 0801C654
-mov   r3,0x4E             ; 0801C656
-add   r3,r3,r0            ; 0801C658
-mov   r12,r3              ; 0801C65A
-mov   r3,0x4              ; 0801C65C
-mov   r4,r12              ; 0801C65E
-strh  r3,[r4]             ; 0801C660  set width to 4
-mov   r4,0x52             ; 0801C662
-strh  r3,[r4,r0]          ; 0801C664  set height to 4
-bl    Sub0801A070         ; 0801C666  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801C66A
-pop   {r0}                ; 0801C66C
-bx    r0                  ; 0801C66E
-
-ExtObjInit83_87:
-; object 00.83-87 init
-push  {r4-r6,lr}          ; 0801C670
-mov   r6,r9               ; 0801C672
-mov   r5,r8               ; 0801C674
-push  {r5-r6}             ; 0801C676
-mov   r12,r0              ; 0801C678
-lsl   r1,r1,0x10          ; 0801C67A
-lsr   r1,r1,0x10          ; 0801C67C
-lsl   r2,r2,0x18          ; 0801C67E
-lsr   r2,r2,0x18          ; 0801C680
-mov   r3,r12              ; 0801C682
-add   r3,0x42             ; 0801C684
-ldrh  r4,[r3]             ; 0801C686  r4 = object ID
-sub   r4,0x83             ; 0801C688
-lsl   r4,r4,0x11          ; 0801C68A
-lsr   r0,r4,0x10          ; 0801C68C
-mov   r5,0x0              ; 0801C68E
-mov   r9,r5               ; 0801C690
-strh  r0,[r3]             ; 0801C692  set to (objID-83)*2
-mov   r0,0x48             ; 0801C694
-add   r0,r12              ; 0801C696
-mov   r8,r0               ; 0801C698
-ldrh  r3,[r0]             ; 0801C69A  tile YXyx
-ldr   r5,=0x0F0F          ; 0801C69C
-and   r5,r3               ; 0801C69E  0X0x
-ldr   r6,=0x70F0          ; 0801C6A0
-mov   r0,r6               ; 0801C6A2
-and   r0,r3               ; 0801C6A4  Y0y0
-ldr   r3,=Data081C189A    ; 0801C6A6  table of Y offsets << 0x10
-lsr   r4,r4,0x10          ; 0801C6A8
-add   r3,r4,r3            ; 0801C6AA  index with objID-83
-ldrh  r3,[r3]             ; 0801C6AC
-sub   r0,r0,r3            ; 0801C6AE
-and   r0,r6               ; 0801C6B0
-orr   r0,r5               ; 0801C6B2
-mov   r3,r8               ; 0801C6B4
-strh  r0,[r3]             ; 0801C6B6  adjusted YXyx
-ldr   r0,=Data081C18A4    ; 0801C6B8  table of widths
-add   r0,r4,r0            ; 0801C6BA  index with objID-83
-ldrh  r0,[r0]             ; 0801C6BC
-mov   r3,r12              ; 0801C6BE
-add   r3,0x4E             ; 0801C6C0
-strh  r0,[r3]             ; 0801C6C2  set width
-ldr   r0,=Data081C18AE    ; 0801C6C4  table of heights
-add   r4,r4,r0            ; 0801C6C6
-ldrh  r0,[r4]             ; 0801C6C8
-add   r3,0x4              ; 0801C6CA
-strh  r0,[r3]             ; 0801C6CC  set height
-mov   r0,r9               ; 0801C6CE
-mov   r5,r12              ; 0801C6D0
-strh  r0,[r5,0x3A]        ; 0801C6D2  clear scratch RAM
-mov   r0,r12              ; 0801C6D4
-bl    Sub0801A070         ; 0801C6D6  Object processing main, slope=0, no relative Y threshold
-pop   {r3-r4}             ; 0801C6DA
-mov   r8,r3               ; 0801C6DC
-mov   r9,r4               ; 0801C6DE
-pop   {r4-r6}             ; 0801C6E0
-pop   {r0}                ; 0801C6E2
-bx    r0                  ; 0801C6E4
-.pool                     ; 0801C6E6
-
-ExtObjInit82:
-; object 00.82 init
-push  {r4-r6,lr}          ; 0801C6FC
-mov   r12,r0              ; 0801C6FE
-lsl   r1,r1,0x10          ; 0801C700
-lsr   r1,r1,0x10          ; 0801C702
-lsl   r2,r2,0x18          ; 0801C704
-lsr   r2,r2,0x18          ; 0801C706
-mov   r6,r12              ; 0801C708
-add   r6,0x48             ; 0801C70A  [03007240]+48 (03002254)
-ldrh  r5,[r6]             ; 0801C70C  r5 = tile YXyx
-ldr   r3,=0x0F0F          ; 0801C70E
-and   r3,r5               ; 0801C710  0X0x
-ldr   r4,=0x70F0          ; 0801C712
-mov   r0,r4               ; 0801C714
-and   r0,r5               ; 0801C716  Y0y0
-sub   r0,0x40             ; 0801C718  subtract 4 from initial Y
-and   r0,r4               ; 0801C71A  clear X digits again
-orr   r0,r3               ; 0801C71C  new YXyx
-strh  r0,[r6]             ; 0801C71E
-mov   r3,r12              ; 0801C720
-add   r3,0x4E             ; 0801C722  [03007240]+4E (0300225A)
-mov   r0,0x8              ; 0801C724
-strh  r0,[r3]             ; 0801C726  width = 8
-add   r3,0x4              ; 0801C728  [03007240]+52 (0300225E)
-mov   r0,0x5              ; 0801C72A
-strh  r0,[r3]             ; 0801C72C  height = 5
-mov   r0,r12              ; 0801C72E
-bl    Sub0801A070         ; 0801C730  Object processing main, slope=0, no relative Y threshold
-pop   {r4-r6}             ; 0801C734
-pop   {r0}                ; 0801C736
-bx    r0                  ; 0801C738
-.pool                     ; 0801C73A
-
-ExtObjInit81:
-; object 00.81 init
-push  {r4,lr}             ; 0801C744
-lsl   r1,r1,0x10          ; 0801C746
-lsr   r1,r1,0x10          ; 0801C748
-lsl   r2,r2,0x18          ; 0801C74A
-lsr   r2,r2,0x18          ; 0801C74C
-mov   r3,0x4E             ; 0801C74E
-add   r3,r3,r0            ; 0801C750
-mov   r12,r3              ; 0801C752
-mov   r3,0x4              ; 0801C754
-mov   r4,r12              ; 0801C756
-strh  r3,[r4]             ; 0801C758  set width to 4
-bl    Sub0801A070         ; 0801C75A  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801C75E
-pop   {r0}                ; 0801C760
-bx    r0                  ; 0801C762
-
-ExtObjInit80:
-; object 00.80 init
-push  {r4,lr}             ; 0801C764
-mov   r4,r0               ; 0801C766
-bl    Sub08019D64         ; 0801C768  set layer 1 tilemap index and pre-existing tile
-mov   r0,r4               ; 0801C76C
-bl    ExtObjMain80         ; 0801C76E
-pop   {r4}                ; 0801C772
-pop   {r0}                ; 0801C774
-bx    r0                  ; 0801C776
-
-ExtObjInit7E_7F:
-; object 00.7E-7F init
-push  {r4,lr}             ; 0801C778
-lsl   r1,r1,0x10          ; 0801C77A
-lsr   r1,r1,0x10          ; 0801C77C
-lsl   r2,r2,0x18          ; 0801C77E
-lsr   r2,r2,0x18          ; 0801C780
-mov   r3,0x42             ; 0801C782
-add   r3,r3,r0            ; 0801C784
-mov   r12,r3              ; 0801C786
-ldrh  r4,[r3]             ; 0801C788  extended object ID
-mov   r3,0x1              ; 0801C78A
-and   r3,r4               ; 0801C78C
-lsl   r3,r3,0x1           ; 0801C78E
-mov   r4,r12              ; 0801C790
-strh  r3,[r4]             ; 0801C792  [0300224E] = extID-7E
-bl    Sub0801A070         ; 0801C794  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801C798
-pop   {r0}                ; 0801C79A
-bx    r0                  ; 0801C79C
-.pool                     ; 0801C79E
-
-ExtObjInit71_7D:
-; object 00.71-7D init
-push  {r4-r5,lr}          ; 0801C7A0
-mov   r4,r0               ; 0801C7A2
-lsl   r1,r1,0x10          ; 0801C7A4
-lsr   r1,r1,0x10          ; 0801C7A6
-lsl   r2,r2,0x18          ; 0801C7A8
-lsr   r2,r2,0x18          ; 0801C7AA
-add   r0,0x42             ; 0801C7AC
-ldrh  r0,[r0]             ; 0801C7AE  extended object ID
-mov   r3,0xF              ; 0801C7B0
-and   r3,r0               ; 0801C7B2  r3 = extID&0F
-ldr   r0,=Data081C187E    ; 0801C7B4
-add   r0,r3,r0            ; 0801C7B6  index with extID&0F
-ldrb  r0,[r0]             ; 0801C7B8
-mov   r5,0x4E             ; 0801C7BA
-strh  r0,[r5,r4]          ; 0801C7BC  set width
-ldr   r0,=Data081C188C    ; 0801C7BE
-add   r3,r3,r0            ; 0801C7C0  extID&0F
-ldrb  r0,[r3]             ; 0801C7C2
-mov   r3,r4               ; 0801C7C4
-add   r3,0x52             ; 0801C7C6
-strh  r0,[r3]             ; 0801C7C8  set height
-mov   r0,r4               ; 0801C7CA
-bl    Sub0801A070         ; 0801C7CC  Object processing main, slope=0, no relative Y threshold
-pop   {r4-r5}             ; 0801C7D0
-pop   {r0}                ; 0801C7D2
-bx    r0                  ; 0801C7D4
-.pool                     ; 0801C7D6
-
-ExtObjInit6D_70:
-; object 00.6D-70 init
-push  {r4,lr}             ; 0801C7E0
-mov   r12,r0              ; 0801C7E2
-lsl   r1,r1,0x10          ; 0801C7E4
-lsr   r1,r1,0x10          ; 0801C7E6
-lsl   r2,r2,0x18          ; 0801C7E8
-lsr   r2,r2,0x18          ; 0801C7EA
-mov   r4,r12              ; 0801C7EC
-add   r4,0x42             ; 0801C7EE
-ldrh  r3,[r4]             ; 0801C7F0  extended object ID
-sub   r3,0x1              ; 0801C7F2
-lsl   r3,r3,0x10          ; 0801C7F4
-mov   r0,0xC0             ; 0801C7F6
-lsl   r0,r0,0xA           ; 0801C7F8  30000
-and   r0,r3               ; 0801C7FA
-lsr   r0,r0,0xF           ; 0801C7FC
-strh  r0,[r4]             ; 0801C7FE  [0300224E] = (extID-6D)*2
-mov   r3,r12              ; 0801C800
-add   r3,0x4E             ; 0801C802
-mov   r0,0x2              ; 0801C804
-strh  r0,[r3]             ; 0801C806  set width to 2
-add   r3,0x4              ; 0801C808  +52
-strh  r0,[r3]             ; 0801C80A  set height to 2
-mov   r0,r12              ; 0801C80C
-bl    Sub0801A070         ; 0801C80E  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801C812
-pop   {r0}                ; 0801C814
-bx    r0                  ; 0801C816
-
-Sub0801C818:
-; shared code for 00.6A-6C init
-;    r1,r2
-; 6A: 3,2
-; 6B: 4,3
-; 6C: 5,3
-push  {r4-r5,lr}          ; 0801C818
-mov   r4,r2               ; 0801C81A
-ldr   r2,[sp,0xC]         ; 0801C81C
-lsl   r3,r3,0x10          ; 0801C81E
-lsr   r3,r3,0x10          ; 0801C820
-lsl   r2,r2,0x18          ; 0801C822
-lsr   r2,r2,0x18          ; 0801C824
-mov   r5,0x4E             ; 0801C826
-strh  r1,[r5,r0]          ; 0801C828  set width to input r1
-mov   r1,r0               ; 0801C82A
-add   r1,0x52             ; 0801C82C
-strh  r4,[r1]             ; 0801C82E  set height to input r2
-mov   r1,r3               ; 0801C830
-bl    Sub0801A070         ; 0801C832  Object processing main, slope=0, no relative Y threshold
-pop   {r4-r5}             ; 0801C836
-pop   {r0}                ; 0801C838
-bx    r0                  ; 0801C83A
-
-ExtObjInit6C:
-; object 00.6C init
-push  {r4,lr}             ; 0801C83C
-add   sp,-0x4             ; 0801C83E
-mov   r3,r1               ; 0801C840
-lsl   r3,r3,0x10          ; 0801C842
-lsr   r3,r3,0x10          ; 0801C844
-lsl   r2,r2,0x18          ; 0801C846
-lsr   r2,r2,0x18          ; 0801C848
-mov   r1,0x42             ; 0801C84A
-add   r1,r1,r0            ; 0801C84C
-mov   r12,r1              ; 0801C84E
-mov   r1,0x4              ; 0801C850
-mov   r4,r12              ; 0801C852
-strh  r1,[r4]             ; 0801C854  [0300224E] = 4
-str   r2,[sp]             ; 0801C856
-mov   r1,0x5              ; 0801C858
-mov   r2,0x3              ; 0801C85A
-bl    Sub0801C818         ; 0801C85C
-add   sp,0x4              ; 0801C860
-pop   {r4}                ; 0801C862
-pop   {r0}                ; 0801C864
-bx    r0                  ; 0801C866
-
-ExtObjInit6B:
-; object 00.6B init
-push  {r4,lr}             ; 0801C868
-add   sp,-0x4             ; 0801C86A
-mov   r3,r1               ; 0801C86C
-lsl   r3,r3,0x10          ; 0801C86E
-lsr   r3,r3,0x10          ; 0801C870
-lsl   r2,r2,0x18          ; 0801C872
-lsr   r2,r2,0x18          ; 0801C874
-mov   r1,0x42             ; 0801C876
-add   r1,r1,r0            ; 0801C878
-mov   r12,r1              ; 0801C87A
-mov   r1,0x2              ; 0801C87C
-mov   r4,r12              ; 0801C87E
-strh  r1,[r4]             ; 0801C880  [0300224E] = 2
-str   r2,[sp]             ; 0801C882
-mov   r1,0x4              ; 0801C884
-mov   r2,0x3              ; 0801C886
-bl    Sub0801C818         ; 0801C888
-add   sp,0x4              ; 0801C88C
-pop   {r4}                ; 0801C88E
-pop   {r0}                ; 0801C890
-bx    r0                  ; 0801C892
-
-ExtObjInit6A:
-; object 00.6A init
-push  {r4,lr}             ; 0801C894
-add   sp,-0x4             ; 0801C896
-mov   r3,r1               ; 0801C898
-lsl   r3,r3,0x10          ; 0801C89A
-lsr   r3,r3,0x10          ; 0801C89C
-lsl   r2,r2,0x18          ; 0801C89E
-lsr   r2,r2,0x18          ; 0801C8A0
-mov   r1,0x42             ; 0801C8A2
-add   r1,r1,r0            ; 0801C8A4
-mov   r12,r1              ; 0801C8A6
-mov   r1,0x0              ; 0801C8A8
-mov   r4,r12              ; 0801C8AA
-strh  r1,[r4]             ; 0801C8AC  [0300224E] = 0
-str   r2,[sp]             ; 0801C8AE
-mov   r1,0x3              ; 0801C8B0
-mov   r2,0x2              ; 0801C8B2
-bl    Sub0801C818         ; 0801C8B4
-add   sp,0x4              ; 0801C8B8
-pop   {r4}                ; 0801C8BA
-pop   {r0}                ; 0801C8BC
-bx    r0                  ; 0801C8BE
-
-ExtObjInit68_69:
-; object 00.68-69 init
-push  {r4,lr}             ; 0801C8C0
-mov   r4,r0               ; 0801C8C2
-bl    Sub08019D64         ; 0801C8C4  set layer 1 tilemap index and pre-existing tile
-mov   r0,r4               ; 0801C8C8
-bl    ExtObjMain68_69         ; 0801C8CA
-pop   {r4}                ; 0801C8CE
-pop   {r0}                ; 0801C8D0
-bx    r0                  ; 0801C8D2
-
-ExtObjInit67:
-; object 00.67 init
-push  {r4,lr}             ; 0801C8D4
-mov   r4,r0               ; 0801C8D6
-bl    Sub08019D64         ; 0801C8D8  set layer 1 tilemap index and pre-existing tile
-mov   r0,r4               ; 0801C8DC
-bl    ExtObjMain67         ; 0801C8DE
-pop   {r4}                ; 0801C8E2
-pop   {r0}                ; 0801C8E4
-bx    r0                  ; 0801C8E6
-
-Sub0801C8E8:
-; called by 00.5F-60,65-66 init
-; 5F: r1=0, r2=4, r3=2
-; 60: r1=2, r2=5, r3=3
-; 61: r1=4, r2=3, r3=2
-; 62: r1=6, r2=3, r3=2
-; 63: r1=8, r2=5, r3=4
-; 64: r1=A, r2=5, r3=4
-; 65: r1=C, r2=4, r3=3
-; 66: r1=E, r2=2, r3=2
-push  {r4-r6,lr}          ; 0801C8E8
-mov   r5,r0               ; 0801C8EA
-mov   r0,r1               ; 0801C8EC
-mov   r4,r2               ; 0801C8EE
-ldr   r1,[sp,0x10]        ; 0801C8F0
-ldr   r2,[sp,0x14]        ; 0801C8F2
-lsl   r1,r1,0x10          ; 0801C8F4
-lsr   r1,r1,0x10          ; 0801C8F6
-lsl   r2,r2,0x18          ; 0801C8F8
-lsr   r2,r2,0x18          ; 0801C8FA
-mov   r6,0x42             ; 0801C8FC
-strh  r0,[r6,r5]          ; 0801C8FE  [0300224E] = r1 input
-mov   r0,r5               ; 0801C900
-add   r0,0x4E             ; 0801C902
-strh  r4,[r0]             ; 0801C904  width = r2 input
-add   r0,0x4              ; 0801C906
-strh  r3,[r0]             ; 0801C908  height = r3 input
-mov   r0,r5               ; 0801C90A
-bl    Sub0801A070         ; 0801C90C  Object processing main, slope=0, no relative Y threshold
-pop   {r4-r6}             ; 0801C910
-pop   {r0}                ; 0801C912
-bx    r0                  ; 0801C914
-.pool                     ; 0801C916
-
-ExtObjInit66:
-; object 00.66 init
-push  {lr}                ; 0801C918
-add   sp,-0x8             ; 0801C91A
-lsl   r1,r1,0x10          ; 0801C91C
-lsr   r1,r1,0x10          ; 0801C91E
-lsl   r2,r2,0x18          ; 0801C920
-lsr   r2,r2,0x18          ; 0801C922
-str   r1,[sp]             ; 0801C924
-str   r2,[sp,0x4]         ; 0801C926
-mov   r1,0xE              ; 0801C928
-mov   r2,0x2              ; 0801C92A
-mov   r3,0x2              ; 0801C92C
-bl    Sub0801C8E8         ; 0801C92E  00.5F-66 shared init
-add   sp,0x8              ; 0801C932
-pop   {r0}                ; 0801C934
-bx    r0                  ; 0801C936
-
-ExtObjInit65:
-; object 00.65 init
-push  {lr}                ; 0801C938
-add   sp,-0x8             ; 0801C93A
-lsl   r1,r1,0x10          ; 0801C93C
-lsr   r1,r1,0x10          ; 0801C93E
-lsl   r2,r2,0x18          ; 0801C940
-lsr   r2,r2,0x18          ; 0801C942
-str   r1,[sp]             ; 0801C944
-str   r2,[sp,0x4]         ; 0801C946
-mov   r1,0xC              ; 0801C948
-mov   r2,0x4              ; 0801C94A
-mov   r3,0x3              ; 0801C94C
-bl    Sub0801C8E8         ; 0801C94E  00.5F-66 shared init
-add   sp,0x8              ; 0801C952
-pop   {r0}                ; 0801C954
-bx    r0                  ; 0801C956
-
-Sub0801C958:
-; called by 00.63-64 init
-; r0: 8,A for 63,64
-push  {r4,lr}             ; 0801C958
-add   sp,-0x8             ; 0801C95A
-mov   r4,r0               ; 0801C95C
-mov   r0,r1               ; 0801C95E
-lsl   r4,r4,0x10          ; 0801C960
-lsr   r4,r4,0x10          ; 0801C962
-lsl   r2,r2,0x10          ; 0801C964
-lsr   r2,r2,0x10          ; 0801C966
-lsl   r3,r3,0x18          ; 0801C968
-lsr   r3,r3,0x18          ; 0801C96A
-str   r2,[sp]             ; 0801C96C
-str   r3,[sp,0x4]         ; 0801C96E
-mov   r1,r4               ; 0801C970
-mov   r2,0x5              ; 0801C972
-mov   r3,0x4              ; 0801C974
-bl    Sub0801C8E8         ; 0801C976  00.5F-66 shared init
-add   sp,0x8              ; 0801C97A
-pop   {r4}                ; 0801C97C
-pop   {r0}                ; 0801C97E
-bx    r0                  ; 0801C980
-.pool                     ; 0801C982
-
-ExtObjInit64:
-; object 00.64 init
-push  {r4-r5,lr}          ; 0801C984
-mov   r4,r0               ; 0801C986
-mov   r5,r1               ; 0801C988
-mov   r3,r2               ; 0801C98A
-lsl   r5,r5,0x10          ; 0801C98C
-lsr   r5,r5,0x10          ; 0801C98E
-lsl   r3,r3,0x18          ; 0801C990
-lsr   r3,r3,0x18          ; 0801C992
-mov   r0,0xA              ; 0801C994
-mov   r1,r4               ; 0801C996
-mov   r2,r5               ; 0801C998
-bl    Sub0801C958         ; 0801C99A
-pop   {r4-r5}             ; 0801C99E
-pop   {r0}                ; 0801C9A0
-bx    r0                  ; 0801C9A2
-
-ExtObjInit63:
-; object 00.63 init
-push  {r4-r5,lr}          ; 0801C9A4
-mov   r4,r0               ; 0801C9A6
-mov   r5,r1               ; 0801C9A8
-mov   r3,r2               ; 0801C9AA
-lsl   r5,r5,0x10          ; 0801C9AC
-lsr   r5,r5,0x10          ; 0801C9AE
-lsl   r3,r3,0x18          ; 0801C9B0
-lsr   r3,r3,0x18          ; 0801C9B2
-mov   r0,0x8              ; 0801C9B4
-mov   r1,r4               ; 0801C9B6
-mov   r2,r5               ; 0801C9B8
-bl    Sub0801C958         ; 0801C9BA
-pop   {r4-r5}             ; 0801C9BE
-pop   {r0}                ; 0801C9C0
-bx    r0                  ; 0801C9C2
-
-Sub0801C9C4:
-; called by 00.61-62 init
-; r0: 4,6 for 61,62
-push  {r4,lr}             ; 0801C9C4
-add   sp,-0x8             ; 0801C9C6
-mov   r4,r0               ; 0801C9C8
-mov   r0,r1               ; 0801C9CA
-lsl   r4,r4,0x10          ; 0801C9CC
-lsr   r4,r4,0x10          ; 0801C9CE
-lsl   r2,r2,0x10          ; 0801C9D0
-lsr   r2,r2,0x10          ; 0801C9D2
-lsl   r3,r3,0x18          ; 0801C9D4
-lsr   r3,r3,0x18          ; 0801C9D6
-str   r2,[sp]             ; 0801C9D8
-str   r3,[sp,0x4]         ; 0801C9DA
-mov   r1,r4               ; 0801C9DC
-mov   r2,0x3              ; 0801C9DE
-mov   r3,0x2              ; 0801C9E0
-bl    Sub0801C8E8         ; 0801C9E2  00.5F-66 shared init
-add   sp,0x8              ; 0801C9E6
-pop   {r4}                ; 0801C9E8
-pop   {r0}                ; 0801C9EA
-bx    r0                  ; 0801C9EC
-.pool                     ; 0801C9EE
-
-ExtObjInit62:
-; object 00.62 init
-push  {r4-r5,lr}          ; 0801C9F0
-mov   r4,r0               ; 0801C9F2
-mov   r5,r1               ; 0801C9F4
-mov   r3,r2               ; 0801C9F6
-lsl   r5,r5,0x10          ; 0801C9F8
-lsr   r5,r5,0x10          ; 0801C9FA
-lsl   r3,r3,0x18          ; 0801C9FC
-lsr   r3,r3,0x18          ; 0801C9FE
-mov   r0,0x6              ; 0801CA00
-mov   r1,r4               ; 0801CA02
-mov   r2,r5               ; 0801CA04
-bl    Sub0801C9C4         ; 0801CA06
-pop   {r4-r5}             ; 0801CA0A
-pop   {r0}                ; 0801CA0C
-bx    r0                  ; 0801CA0E
-
-ExtObjInit61:
-; object 00.61 init
-push  {r4-r5,lr}          ; 0801CA10
-mov   r4,r0               ; 0801CA12
-mov   r5,r1               ; 0801CA14
-mov   r3,r2               ; 0801CA16
-lsl   r5,r5,0x10          ; 0801CA18
-lsr   r5,r5,0x10          ; 0801CA1A
-lsl   r3,r3,0x18          ; 0801CA1C
-lsr   r3,r3,0x18          ; 0801CA1E
-mov   r0,0x4              ; 0801CA20
-mov   r1,r4               ; 0801CA22
-mov   r2,r5               ; 0801CA24
-bl    Sub0801C9C4         ; 0801CA26
-pop   {r4-r5}             ; 0801CA2A
-pop   {r0}                ; 0801CA2C
-bx    r0                  ; 0801CA2E
-
-ExtObjInit60:
-; object 00.60 init
-push  {lr}                ; 0801CA30
-add   sp,-0x8             ; 0801CA32
-lsl   r1,r1,0x10          ; 0801CA34
-lsr   r1,r1,0x10          ; 0801CA36
-lsl   r2,r2,0x18          ; 0801CA38
-lsr   r2,r2,0x18          ; 0801CA3A
-str   r1,[sp]             ; 0801CA3C
-str   r2,[sp,0x4]         ; 0801CA3E
-mov   r1,0x2              ; 0801CA40
-mov   r2,0x5              ; 0801CA42
-mov   r3,0x3              ; 0801CA44
-bl    Sub0801C8E8         ; 0801CA46  00.5F-66 shared init
-add   sp,0x8              ; 0801CA4A
-pop   {r0}                ; 0801CA4C
-bx    r0                  ; 0801CA4E
-
-ExtObjInit5F:
-; object 00.5F init
-push  {lr}                ; 0801CA50
-add   sp,-0x8             ; 0801CA52
-lsl   r1,r1,0x10          ; 0801CA54
-lsr   r1,r1,0x10          ; 0801CA56
-lsl   r2,r2,0x18          ; 0801CA58
-lsr   r2,r2,0x18          ; 0801CA5A
-str   r1,[sp]             ; 0801CA5C
-str   r2,[sp,0x4]         ; 0801CA5E
-mov   r1,0x0              ; 0801CA60
-mov   r2,0x4              ; 0801CA62
-mov   r3,0x2              ; 0801CA64
-bl    Sub0801C8E8         ; 0801CA66  00.5F-66 shared init
-add   sp,0x8              ; 0801CA6A
-pop   {r0}                ; 0801CA6C
-bx    r0                  ; 0801CA6E
-
-ExtObjInit5E:
-; object 00.5E init
-push  {r4,lr}             ; 0801CA70
-mov   r4,r0               ; 0801CA72
-bl    Sub08019D64         ; 0801CA74  set layer 1 tilemap index and pre-existing tile
-mov   r0,r4               ; 0801CA78
-bl    ExtObjMain5E         ; 0801CA7A
-pop   {r4}                ; 0801CA7E
-pop   {r0}                ; 0801CA80
-bx    r0                  ; 0801CA82
-
-ExtObjInit5B_5D:
-; object 00.5B-5D init
-push  {r4,lr}             ; 0801CA84
-mov   r12,r0              ; 0801CA86
-lsl   r1,r1,0x10          ; 0801CA88
-lsr   r1,r1,0x10          ; 0801CA8A
-lsl   r2,r2,0x18          ; 0801CA8C
-lsr   r2,r2,0x18          ; 0801CA8E
-mov   r4,r12              ; 0801CA90
-add   r4,0x42             ; 0801CA92
-ldrh  r0,[r4]             ; 0801CA94  extended object ID
-add   r0,0x1              ; 0801CA96  extID+1
-mov   r3,0x3              ; 0801CA98
-and   r0,r3               ; 0801CA9A  extID-5C
-lsl   r0,r0,0x1           ; 0801CA9C
-strh  r0,[r4]             ; 0801CA9E  [0300224E] = (extID-5C)*2
-mov   r0,r12              ; 0801CAA0
-add   r0,0x4E             ; 0801CAA2
-strh  r3,[r0]             ; 0801CAA4  set width to 3
-mov   r3,r12              ; 0801CAA6
-add   r3,0x52             ; 0801CAA8
-mov   r0,0x2              ; 0801CAAA
-strh  r0,[r3]             ; 0801CAAC  set height to 2
-mov   r0,r12              ; 0801CAAE
-bl    Sub0801A070         ; 0801CAB0  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801CAB4
-pop   {r0}                ; 0801CAB6
-bx    r0                  ; 0801CAB8
-.pool                     ; 0801CABA
-
-ExtObjInit58_5A:
-; object 00.58-5A init
-push  {r4-r5,lr}          ; 0801CABC
-mov   r12,r0              ; 0801CABE
-lsl   r1,r1,0x10          ; 0801CAC0
-lsr   r1,r1,0x10          ; 0801CAC2
-lsl   r2,r2,0x18          ; 0801CAC4
-lsr   r2,r2,0x18          ; 0801CAC6
-mov   r5,r12              ; 0801CAC8
-add   r5,0x42             ; 0801CACA
-ldrh  r3,[r5]             ; 0801CACC  extended object ID
-mov   r4,0x3              ; 0801CACE
-mov   r0,r4               ; 0801CAD0
-and   r0,r3               ; 0801CAD2
-lsl   r0,r0,0x1           ; 0801CAD4
-strh  r0,[r5]             ; 0801CAD6  [0300224E] = (extID-58)*2
-mov   r0,r12              ; 0801CAD8
-add   r0,0x4E             ; 0801CADA
-strh  r4,[r0]             ; 0801CADC  set width to 3
-mov   r3,r12              ; 0801CADE
-add   r3,0x52             ; 0801CAE0
-mov   r0,0x2              ; 0801CAE2
-strh  r0,[r3]             ; 0801CAE4  set height to 2
-mov   r0,r12              ; 0801CAE6
-bl    Sub0801A070         ; 0801CAE8  Object processing main, slope=0, no relative Y threshold
-pop   {r4-r5}             ; 0801CAEC
-pop   {r0}                ; 0801CAEE
-bx    r0                  ; 0801CAF0
-.pool                     ; 0801CAF2
-
-ExtObjInit56_57:
-; object 00.56-57 init
-push  {r4,lr}             ; 0801CAF4
-mov   r12,r0              ; 0801CAF6
-lsl   r1,r1,0x10          ; 0801CAF8
-lsr   r1,r1,0x10          ; 0801CAFA
-lsl   r2,r2,0x18          ; 0801CAFC
-lsr   r2,r2,0x18          ; 0801CAFE
-mov   r4,r12              ; 0801CB00
-add   r4,0x42             ; 0801CB02
-ldrh  r3,[r4]             ; 0801CB04  extended object ID
-mov   r0,0x1              ; 0801CB06
-and   r0,r3               ; 0801CB08
-lsl   r0,r0,0x1           ; 0801CB0A
-strh  r0,[r4]             ; 0801CB0C  [0300224E] = (extID-56)*2
-mov   r3,r12              ; 0801CB0E
-add   r3,0x4E             ; 0801CB10
-mov   r0,0x5              ; 0801CB12
-strh  r0,[r3]             ; 0801CB14  set width to 5
-add   r3,0x4              ; 0801CB16
-mov   r0,0x3              ; 0801CB18
-strh  r0,[r3]             ; 0801CB1A  set height to 3
-mov   r0,r12              ; 0801CB1C
-bl    Sub0801A070         ; 0801CB1E  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801CB22
-pop   {r0}                ; 0801CB24
-bx    r0                  ; 0801CB26
-
-ExtObjInit54_55:
-; object 00.54-55 init
-push  {r4,lr}             ; 0801CB28
-mov   r12,r0              ; 0801CB2A
-lsl   r1,r1,0x10          ; 0801CB2C
-lsr   r1,r1,0x10          ; 0801CB2E
-lsl   r2,r2,0x18          ; 0801CB30
-lsr   r2,r2,0x18          ; 0801CB32
-mov   r4,r12              ; 0801CB34
-add   r4,0x42             ; 0801CB36
-ldrh  r3,[r4]             ; 0801CB38  extended object ID
-mov   r0,0x1              ; 0801CB3A
-and   r0,r3               ; 0801CB3C
-lsl   r0,r0,0x1           ; 0801CB3E
-strh  r0,[r4]             ; 0801CB40  [0300224E] = (extID-54)*2
-mov   r3,r12              ; 0801CB42
-add   r3,0x4E             ; 0801CB44
-mov   r0,0x3              ; 0801CB46
-strh  r0,[r3]             ; 0801CB48  set width to 3
-add   r3,0x4              ; 0801CB4A  +52
-strh  r0,[r3]             ; 0801CB4C  set height to 3
-mov   r0,r12              ; 0801CB4E
-bl    Sub0801A070         ; 0801CB50  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801CB54
-pop   {r0}                ; 0801CB56
-bx    r0                  ; 0801CB58
-.pool                     ; 0801CB5A
-
-ExtObjInit53:
-; object 00.53 init
-push  {r4-r5,lr}          ; 0801CB5C
-mov   r12,r0              ; 0801CB5E
-lsl   r1,r1,0x10          ; 0801CB60
-lsr   r1,r1,0x10          ; 0801CB62
-lsl   r2,r2,0x18          ; 0801CB64
-lsr   r2,r2,0x18          ; 0801CB66
-mov   r5,r12              ; 0801CB68
-add   r5,0x48             ; 0801CB6A
-ldrh  r4,[r5]             ; 0801CB6C  tile YXyx
-ldr   r3,=0x0F0F          ; 0801CB6E
-mov   r0,r3               ; 0801CB70
-and   r0,r4               ; 0801CB72
-sub   r0,0x1              ; 0801CB74  subtract 1 from x
-and   r0,r3               ; 0801CB76
-ldr   r3,=0xF0F0          ; 0801CB78
-and   r3,r4               ; 0801CB7A
-orr   r3,r0               ; 0801CB7C
-strh  r3,[r5]             ; 0801CB7E  update tile YXyx with x-1
-mov   r3,r12              ; 0801CB80
-add   r3,0x4E             ; 0801CB82
-mov   r0,0x5              ; 0801CB84
-strh  r0,[r3]             ; 0801CB86  set width to 5
-add   r3,0x4              ; 0801CB88  +52
-mov   r0,0x3              ; 0801CB8A
-strh  r0,[r3]             ; 0801CB8C  set height to 3
-mov   r0,r12              ; 0801CB8E
-bl    Sub0801A070         ; 0801CB90  Object processing main, slope=0, no relative Y threshold
-pop   {r4-r5}             ; 0801CB94
-pop   {r0}                ; 0801CB96
-bx    r0                  ; 0801CB98
-.pool                     ; 0801CB9A
-
-ExtObjInit52:
-; object 00.52 init
-push  {r4-r5,lr}          ; 0801CBA4
-mov   r12,r0              ; 0801CBA6
-lsl   r1,r1,0x10          ; 0801CBA8
-lsr   r1,r1,0x10          ; 0801CBAA
-lsl   r2,r2,0x18          ; 0801CBAC
-lsr   r2,r2,0x18          ; 0801CBAE
-mov   r5,r12              ; 0801CBB0
-add   r5,0x48             ; 0801CBB2
-ldrh  r4,[r5]             ; 0801CBB4  tile YXyx
-ldr   r3,=0x0F0F          ; 0801CBB6
-mov   r0,r3               ; 0801CBB8
-and   r0,r4               ; 0801CBBA
-sub   r0,0x1              ; 0801CBBC  subtract 1 from x
-and   r0,r3               ; 0801CBBE
-ldr   r3,=0xF0F0          ; 0801CBC0
-and   r3,r4               ; 0801CBC2
-orr   r3,r0               ; 0801CBC4
-strh  r3,[r5]             ; 0801CBC6  update tile YXyx with x-1
-mov   r3,r12              ; 0801CBC8
-add   r3,0x4E             ; 0801CBCA
-mov   r0,0x5              ; 0801CBCC
-strh  r0,[r3]             ; 0801CBCE  set width to 5
-add   r3,0x4              ; 0801CBD0  +52
-mov   r0,0x2              ; 0801CBD2
-strh  r0,[r3]             ; 0801CBD4  set height to 2
-mov   r0,r12              ; 0801CBD6
-bl    Sub0801A070         ; 0801CBD8  Object processing main, slope=0, no relative Y threshold
-pop   {r4-r5}             ; 0801CBDC
-pop   {r0}                ; 0801CBDE
-bx    r0                  ; 0801CBE0
-.pool                     ; 0801CBE2
-
-ExtObjInit51:
-; object 00.51 init
-push  {r4,lr}             ; 0801CBEC
-mov   r4,r0               ; 0801CBEE
-bl    Sub08019D64         ; 0801CBF0  set layer 1 tilemap index and pre-existing tile
-mov   r0,r4               ; 0801CBF4
-bl    ExtObjMain51         ; 0801CBF6
-pop   {r4}                ; 0801CBFA
-pop   {r0}                ; 0801CBFC
-bx    r0                  ; 0801CBFE
-
-ExtObjInit50_A8:
-; object 00.50,00.A8 init
-push  {r4,lr}             ; 0801CC00
-mov   r12,r0              ; 0801CC02
-lsl   r1,r1,0x10          ; 0801CC04
-lsr   r1,r1,0x10          ; 0801CC06
-lsl   r2,r2,0x18          ; 0801CC08
-lsr   r2,r2,0x18          ; 0801CC0A
-mov   r4,r12              ; 0801CC0C
-add   r4,0x42             ; 0801CC0E  r0 = [03007240]+42 (0300224E)
-ldrh  r3,[r4]             ; 0801CC10  r3 = extended object ID
-mov   r0,0x8              ; 0801CC12
-and   r0,r3               ; 0801CC14
-lsl   r0,r0,0x10          ; 0801CC16
-lsr   r0,r0,0x10          ; 0801CC18
-lsl   r0,r0,0x11          ; 0801CC1A
-lsr   r0,r0,0x10          ; 0801CC1C
-strh  r0,[r4]             ; 0801CC1E  set object ID to 00 for 50, 10 for A8
-mov   r3,r12              ; 0801CC20
-add   r3,0x4E             ; 0801CC22  r3 = [03007240]+4E (0300225A)
-mov   r0,0x2              ; 0801CC24
-strh  r0,[r3]             ; 0801CC26  set width to 2
-add   r3,0x4              ; 0801CC28  r3 = [03007240]+52 (0300225E)
-strh  r0,[r3]             ; 0801CC2A  set height to 2
-mov   r0,r12              ; 0801CC2C
-bl    Sub0801A070         ; 0801CC2E  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801CC32
-pop   {r0}                ; 0801CC34
-bx    r0                  ; 0801CC36
-
-ExtObjInit4F:
-; object 00.4F init
-push  {r4,lr}             ; 0801CC38
-mov   r4,r0               ; 0801CC3A
-bl    Sub08019D64         ; 0801CC3C  set layer 1 tilemap index and pre-existing tile
-mov   r0,r4               ; 0801CC40
-bl    ExtObjMain4F         ; 0801CC42
-pop   {r4}                ; 0801CC46
-pop   {r0}                ; 0801CC48
-bx    r0                  ; 0801CC4A
-
-ExtObjInit4E:
-; object 00.4E init
-push  {r4,lr}             ; 0801CC4C
-lsl   r1,r1,0x10          ; 0801CC4E
-lsr   r1,r1,0x10          ; 0801CC50
-lsl   r2,r2,0x18          ; 0801CC52
-lsr   r2,r2,0x18          ; 0801CC54
-mov   r3,0x4E             ; 0801CC56
-add   r3,r3,r0            ; 0801CC58
-mov   r12,r3              ; 0801CC5A
-mov   r3,0x1              ; 0801CC5C
-mov   r4,r12              ; 0801CC5E
-strh  r3,[r4]             ; 0801CC60  set width to 1
-mov   r3,0x52             ; 0801CC62
-add   r3,r3,r0            ; 0801CC64
-mov   r12,r3              ; 0801CC66
-mov   r3,0x2              ; 0801CC68
-mov   r4,r12              ; 0801CC6A
-strh  r3,[r4]             ; 0801CC6C  set height to 2
-bl    Sub0801A070         ; 0801CC6E  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801CC72
-pop   {r0}                ; 0801CC74
-bx    r0                  ; 0801CC76
-
-ExtObjInit4D:
-; object 00.4D init
-push  {r4,lr}             ; 0801CC78
-lsl   r1,r1,0x10          ; 0801CC7A
-lsr   r1,r1,0x10          ; 0801CC7C
-lsl   r2,r2,0x18          ; 0801CC7E
-lsr   r2,r2,0x18          ; 0801CC80
-mov   r3,0x4E             ; 0801CC82
-add   r3,r3,r0            ; 0801CC84
-mov   r12,r3              ; 0801CC86
-mov   r3,0x2              ; 0801CC88
-mov   r4,r12              ; 0801CC8A
-strh  r3,[r4]             ; 0801CC8C  set width to 2
-mov   r4,0x52             ; 0801CC8E
-strh  r3,[r4,r0]          ; 0801CC90  set height to 2
-bl    Sub0801A070         ; 0801CC92  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801CC96
-pop   {r0}                ; 0801CC98
-bx    r0                  ; 0801CC9A
-
-ExtObjInit4C:
-; object 00.4C init
-push  {r4,lr}             ; 0801CC9C
-mov   r4,r0               ; 0801CC9E
-bl    Sub08019D64         ; 0801CCA0  set layer 1 tilemap index and pre-existing tile
-mov   r0,r4               ; 0801CCA4
-bl    ExtObjMain4C         ; 0801CCA6
-pop   {r4}                ; 0801CCAA
-pop   {r0}                ; 0801CCAC
-bx    r0                  ; 0801CCAE
-
-ExtObjInit4B:
-; object 00.4B init
-push  {r4,lr}             ; 0801CCB0
-mov   r4,r0               ; 0801CCB2
-bl    Sub08019D64         ; 0801CCB4  set layer 1 tilemap index and pre-existing tile
-mov   r0,r4               ; 0801CCB8
-bl    ExtObjMain4B         ; 0801CCBA
-pop   {r4}                ; 0801CCBE
-pop   {r0}                ; 0801CCC0
-bx    r0                  ; 0801CCC2
-
-ExtObjInit4A:
-; object 00.4A init
-push  {r4,lr}             ; 0801CCC4
-mov   r4,r0               ; 0801CCC6
-bl    Sub08019D64         ; 0801CCC8  set layer 1 tilemap index and pre-existing tile
-mov   r0,r4               ; 0801CCCC
-bl    ExtObjMain4A         ; 0801CCCE
-pop   {r4}                ; 0801CCD2
-pop   {r0}                ; 0801CCD4
-bx    r0                  ; 0801CCD6
-
-ExtObjInit49_4A:
-; object 00.49 init
-push  {r4-r5,lr}          ; 0801CCD8
-mov   r12,r0              ; 0801CCDA
-lsl   r1,r1,0x10          ; 0801CCDC
-lsr   r1,r1,0x10          ; 0801CCDE
-lsl   r2,r2,0x18          ; 0801CCE0
-lsr   r2,r2,0x18          ; 0801CCE2
-mov   r5,r12              ; 0801CCE4
-add   r5,0x48             ; 0801CCE6
-ldrh  r4,[r5]             ; 0801CCE8  tile YXyx
-ldr   r3,=0x0F0F          ; 0801CCEA
-mov   r0,r3               ; 0801CCEC
-and   r0,r4               ; 0801CCEE
-sub   r0,0x1              ; 0801CCF0  subtract 1 from x
-and   r0,r3               ; 0801CCF2
-ldr   r3,=0xF0F0          ; 0801CCF4
-and   r3,r4               ; 0801CCF6
-orr   r3,r0               ; 0801CCF8
-strh  r3,[r5]             ; 0801CCFA
-mov   r3,r12              ; 0801CCFC
-add   r3,0x4E             ; 0801CCFE
-mov   r0,0x3              ; 0801CD00
-strh  r0,[r3]             ; 0801CD02  set width to 3
-add   r3,0x4              ; 0801CD04  +52
-mov   r0,0x1              ; 0801CD06
-strh  r0,[r3]             ; 0801CD08  set height to 1
-mov   r0,r12              ; 0801CD0A
-bl    Sub0801A070         ; 0801CD0C  Object processing main, slope=0, no relative Y threshold
-pop   {r4-r5}             ; 0801CD10
-pop   {r0}                ; 0801CD12
-bx    r0                  ; 0801CD14
-.pool                     ; 0801CD16
-
-ExtObjInit48:
-; object 00.48 init
-push  {r4-r6,lr}          ; 0801CD20
-mov   r12,r0              ; 0801CD22
-lsl   r1,r1,0x10          ; 0801CD24
-lsr   r1,r1,0x10          ; 0801CD26
-lsl   r2,r2,0x18          ; 0801CD28
-lsr   r2,r2,0x18          ; 0801CD2A
-mov   r6,r12              ; 0801CD2C
-add   r6,0x48             ; 0801CD2E
-ldrh  r5,[r6]             ; 0801CD30  tile YXyx
-ldr   r3,=0x0F0F          ; 0801CD32
-and   r3,r5               ; 0801CD34  0X0x
-ldr   r4,=0xF0F0          ; 0801CD36
-mov   r0,r4               ; 0801CD38
-and   r0,r5               ; 0801CD3A  Y0y0
-ldr   r5,=0xFFFFEFD0      ; 0801CD3C
-add   r0,r0,r5            ; 0801CD3E  subtract 0x13 from y
-and   r0,r4               ; 0801CD40
-orr   r0,r3               ; 0801CD42
-strh  r0,[r6]             ; 0801CD44  new YXyx
-mov   r3,r12              ; 0801CD46
-add   r3,0x4E             ; 0801CD48
-mov   r0,0x4              ; 0801CD4A
-strh  r0,[r3]             ; 0801CD4C  set width to 4
-add   r3,0x4              ; 0801CD4E
-mov   r0,0x14             ; 0801CD50
-strh  r0,[r3]             ; 0801CD52  set height to 0x14
-mov   r0,r12              ; 0801CD54
-bl    Sub0801A070         ; 0801CD56  Object processing main, slope=0, no relative Y threshold
-pop   {r4-r6}             ; 0801CD5A
-pop   {r0}                ; 0801CD5C
-bx    r0                  ; 0801CD5E
-.pool                     ; 0801CD60
-
-ExtObjInit47:
-; object 00.47 init
-push  {r4-r6,lr}          ; 0801CD6C
-mov   r12,r0              ; 0801CD6E
-lsl   r1,r1,0x10          ; 0801CD70
-lsr   r1,r1,0x10          ; 0801CD72
-lsl   r2,r2,0x18          ; 0801CD74
-lsr   r2,r2,0x18          ; 0801CD76
-mov   r6,r12              ; 0801CD78
-add   r6,0x48             ; 0801CD7A  r1 = [03007240]+48 (03002254)
-ldrh  r5,[r6]             ; 0801CD7C  tile YXyx
-ldr   r3,=0x0F0F          ; 0801CD7E
-and   r3,r5               ; 0801CD80
-ldr   r4,=0xF0F0          ; 0801CD82
-mov   r0,r4               ; 0801CD84
-and   r0,r5               ; 0801CD86
-sub   r0,0x30             ; 0801CD88  subtract 3 from Y
-and   r0,r4               ; 0801CD8A
-orr   r0,r3               ; 0801CD8C
-strh  r0,[r6]             ; 0801CD8E
-mov   r3,r12              ; 0801CD90
-add   r3,0x4E             ; 0801CD92  r1 = [03007240]+4E (0300225A)
-mov   r0,0x4              ; 0801CD94
-strh  r0,[r3]             ; 0801CD96  set width to 4
-add   r3,0x4              ; 0801CD98  r1 = [03007240]+52 (0300225E)
-strh  r0,[r3]             ; 0801CD9A  set height to 4
-mov   r0,r12              ; 0801CD9C
-bl    Sub0801A070         ; 0801CD9E  Object processing main, slope=0, no relative Y threshold
-pop   {r4-r6}             ; 0801CDA2
-pop   {r0}                ; 0801CDA4
-bx    r0                  ; 0801CDA6
-.pool                     ; 0801CDA8
-
-ExtObjInit46:
-; object 00.46 init
-push  {r4,lr}             ; 0801CDB0
-mov   r4,r0               ; 0801CDB2
-bl    Sub08019D64         ; 0801CDB4  set layer 1 tilemap index and pre-existing tile
-mov   r0,r4               ; 0801CDB8
-bl    ExtObjMain46         ; 0801CDBA
-pop   {r4}                ; 0801CDBE
-pop   {r0}                ; 0801CDC0
-bx    r0                  ; 0801CDC2
-
-ExtObjInit32_45:
-; object 00.32-45 init
-push  {r4,lr}             ; 0801CDC4
-mov   r4,r0               ; 0801CDC6
-bl    Sub08019D64         ; 0801CDC8  set layer 1 tilemap index and pre-existing tile
-mov   r1,r4               ; 0801CDCC
-add   r1,0x42             ; 0801CDCE
-ldrh  r0,[r1]             ; 0801CDD0  extended object ID
-sub   r0,0x32             ; 0801CDD2
-strh  r0,[r1]             ; 0801CDD4  extID-32
-mov   r0,r4               ; 0801CDD6
-bl    ExtObjMain32_45         ; 0801CDD8
-pop   {r4}                ; 0801CDDC
-pop   {r0}                ; 0801CDDE
-bx    r0                  ; 0801CDE0
-.pool                     ; 0801CDE2
-
-ExtObjInit31:
-; object 00.31 init
-push  {r4,lr}             ; 0801CDE4
-lsl   r1,r1,0x10          ; 0801CDE6
-lsr   r1,r1,0x10          ; 0801CDE8
-lsl   r2,r2,0x18          ; 0801CDEA
-lsr   r2,r2,0x18          ; 0801CDEC
-mov   r3,0x4E             ; 0801CDEE
-add   r3,r3,r0            ; 0801CDF0
-mov   r12,r3              ; 0801CDF2
-mov   r3,0x6              ; 0801CDF4
-mov   r4,r12              ; 0801CDF6
-strh  r3,[r4]             ; 0801CDF8  set width to 6
-mov   r3,0x52             ; 0801CDFA
-add   r3,r3,r0            ; 0801CDFC
-mov   r12,r3              ; 0801CDFE
-mov   r3,0x7              ; 0801CE00
-mov   r4,r12              ; 0801CE02
-strh  r3,[r4]             ; 0801CE04  set height to 7
-bl    Sub0801A070         ; 0801CE06  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801CE0A
-pop   {r0}                ; 0801CE0C
-bx    r0                  ; 0801CE0E
-
-ExtObjInit30:
-; object 00.30 init
-push  {r4-r5,lr}          ; 0801CE10
-mov   r12,r0              ; 0801CE12
-lsl   r1,r1,0x10          ; 0801CE14
-lsr   r1,r1,0x10          ; 0801CE16
-lsl   r2,r2,0x18          ; 0801CE18
-lsr   r2,r2,0x18          ; 0801CE1A
-mov   r5,r12              ; 0801CE1C
-add   r5,0x48             ; 0801CE1E
-ldrh  r4,[r5]             ; 0801CE20  tile YXyx
-ldr   r3,=0x0F0F          ; 0801CE22
-mov   r0,r3               ; 0801CE24
-and   r0,r4               ; 0801CE26
-sub   r0,0x1              ; 0801CE28  subtract 1 from x
-and   r0,r3               ; 0801CE2A
-ldr   r3,=0xF0F0          ; 0801CE2C
-and   r3,r4               ; 0801CE2E
-orr   r3,r0               ; 0801CE30
-strh  r3,[r5]             ; 0801CE32
-mov   r3,r12              ; 0801CE34
-add   r3,0x4E             ; 0801CE36
-mov   r0,0x4              ; 0801CE38
-strh  r0,[r3]             ; 0801CE3A  set width to 4
-add   r3,0x4              ; 0801CE3C  +52
-mov   r0,0x2              ; 0801CE3E
-strh  r0,[r3]             ; 0801CE40  set height to 4
-mov   r0,r12              ; 0801CE42
-bl    Sub0801A070         ; 0801CE44  Object processing main, slope=0, no relative Y threshold
-pop   {r4-r5}             ; 0801CE48
-pop   {r0}                ; 0801CE4A
-bx    r0                  ; 0801CE4C
-.pool                     ; 0801CE4E
-
-ExtObjInit20_2F:
-; object 00.20-2F init
-push  {r4,lr}             ; 0801CE58
-mov   r4,r0               ; 0801CE5A
-bl    Sub08019D64         ; 0801CE5C  set layer 1 tilemap index and pre-existing tile
-mov   r1,r4               ; 0801CE60
-add   r1,0x42             ; 0801CE62
-ldrh  r0,[r1]             ; 0801CE64  object ID
-sub   r0,0x8              ; 0801CE66
-strh  r0,[r1]             ; 0801CE68  object ID -= 8
-mov   r0,r4               ; 0801CE6A
-bl    Return0802B63C         ; 0801CE6C
-pop   {r4}                ; 0801CE70
-pop   {r0}                ; 0801CE72
-bx    r0                  ; 0801CE74
-.pool                     ; 0801CE76
-
-ExtObjInit1F:
-; object 00.1F init
-push  {r4,lr}             ; 0801CE78
-lsl   r1,r1,0x10          ; 0801CE7A
-lsr   r1,r1,0x10          ; 0801CE7C
-lsl   r2,r2,0x18          ; 0801CE7E
-lsr   r2,r2,0x18          ; 0801CE80
-mov   r3,0x4E             ; 0801CE82
-add   r3,r3,r0            ; 0801CE84
-mov   r12,r3              ; 0801CE86
-mov   r3,0x4              ; 0801CE88
-mov   r4,r12              ; 0801CE8A
-strh  r3,[r4]             ; 0801CE8C  set width to 4
-mov   r4,0x52             ; 0801CE8E
-strh  r3,[r4,r0]          ; 0801CE90  set height to 4
-bl    Sub0801A070         ; 0801CE92  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801CE96
-pop   {r0}                ; 0801CE98
-bx    r0                  ; 0801CE9A
-
-ExtObjInit1E:
-; object 00.1E init
-push  {r4,lr}             ; 0801CE9C
-lsl   r1,r1,0x10          ; 0801CE9E
-lsr   r1,r1,0x10          ; 0801CEA0
-lsl   r2,r2,0x18          ; 0801CEA2
-lsr   r2,r2,0x18          ; 0801CEA4
-mov   r3,0x4E             ; 0801CEA6
-add   r3,r3,r0            ; 0801CEA8
-mov   r12,r3              ; 0801CEAA
-mov   r3,0x8              ; 0801CEAC
-mov   r4,r12              ; 0801CEAE
-strh  r3,[r4]             ; 0801CEB0  set width to 8
-mov   r3,0x52             ; 0801CEB2
-add   r3,r3,r0            ; 0801CEB4
-mov   r12,r3              ; 0801CEB6
-mov   r3,0x4              ; 0801CEB8
-mov   r4,r12              ; 0801CEBA
-strh  r3,[r4]             ; 0801CEBC  set height to 4
-bl    Sub0801A070         ; 0801CEBE  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801CEC2
-pop   {r0}                ; 0801CEC4
-bx    r0                  ; 0801CEC6
-
-Sub0801CEC8:
-; shared code for 00.1B-00.1D init
-push  {r4,lr}             ; 0801CEC8
-lsl   r1,r1,0x10          ; 0801CECA
-lsr   r1,r1,0x10          ; 0801CECC
-lsl   r2,r2,0x18          ; 0801CECE
-lsr   r2,r2,0x18          ; 0801CED0
-mov   r3,0x52             ; 0801CED2
-add   r3,r3,r0            ; 0801CED4
-mov   r12,r3              ; 0801CED6
-mov   r3,0x2              ; 0801CED8
-mov   r4,r12              ; 0801CEDA
-strh  r3,[r4]             ; 0801CEDC  set height to 2
-mov   r4,0x4E             ; 0801CEDE
-strh  r3,[r4,r0]          ; 0801CEE0  set width to 2
-bl    Sub0801A070         ; 0801CEE2  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801CEE6
-pop   {r0}                ; 0801CEE8
-bx    r0                  ; 0801CEEA
-
-ExtObjInit1B:
-; object 00.1B init
-push  {r4,lr}             ; 0801CEEC
-lsl   r1,r1,0x10          ; 0801CEEE
-lsr   r1,r1,0x10          ; 0801CEF0
-lsl   r2,r2,0x18          ; 0801CEF2
-lsr   r2,r2,0x18          ; 0801CEF4
-mov   r3,0x42             ; 0801CEF6
-add   r3,r3,r0            ; 0801CEF8
-mov   r12,r3              ; 0801CEFA
-mov   r3,0x0              ; 0801CEFC
-mov   r4,r12              ; 0801CEFE
-strh  r3,[r4]             ; 0801CF00  [0300224E] = 0
-bl    Sub0801CEC8         ; 0801CF02  set width and height to 2
-pop   {r4}                ; 0801CF06
-pop   {r0}                ; 0801CF08
-bx    r0                  ; 0801CF0A
-
-ExtObjInit1C:
-; object 00.1C init
-push  {r4,lr}             ; 0801CF0C
-lsl   r1,r1,0x10          ; 0801CF0E
-lsr   r1,r1,0x10          ; 0801CF10
-lsl   r2,r2,0x18          ; 0801CF12
-lsr   r2,r2,0x18          ; 0801CF14
-mov   r3,0x42             ; 0801CF16
-add   r3,r3,r0            ; 0801CF18
-mov   r12,r3              ; 0801CF1A
-mov   r3,0x2              ; 0801CF1C
-mov   r4,r12              ; 0801CF1E
-strh  r3,[r4]             ; 0801CF20  [0300224E] = 2
-bl    Sub0801CEC8         ; 0801CF22  set width and height to 2
-pop   {r4}                ; 0801CF26
-pop   {r0}                ; 0801CF28
-bx    r0                  ; 0801CF2A
-
-ExtObjInit1D:
-; object 00.1D init
-push  {r4,lr}             ; 0801CF2C
-lsl   r1,r1,0x10          ; 0801CF2E
-lsr   r1,r1,0x10          ; 0801CF30
-lsl   r2,r2,0x18          ; 0801CF32
-lsr   r2,r2,0x18          ; 0801CF34
-mov   r3,0x42             ; 0801CF36
-add   r3,r3,r0            ; 0801CF38
-mov   r12,r3              ; 0801CF3A
-mov   r3,0x4              ; 0801CF3C
-mov   r4,r12              ; 0801CF3E
-strh  r3,[r4]             ; 0801CF40  [0300224E] = 4
-bl    Sub0801CEC8         ; 0801CF42  set width and height to 2
-pop   {r4}                ; 0801CF46
-pop   {r0}                ; 0801CF48
-bx    r0                  ; 0801CF4A
-
-ExtObjInit19:
-; object 00.19 init
-push  {r4-r5,lr}          ; 0801CF4C
-mov   r4,r0               ; 0801CF4E
-lsl   r1,r1,0x10          ; 0801CF50
-lsr   r1,r1,0x10          ; 0801CF52
-lsl   r2,r2,0x18          ; 0801CF54
-lsr   r2,r2,0x18          ; 0801CF56
-mov   r0,0x4E             ; 0801CF58
-add   r0,r0,r4            ; 0801CF5A
-mov   r12,r0              ; 0801CF5C
-mov   r3,0x0              ; 0801CF5E
-mov   r0,0x18             ; 0801CF60
-mov   r5,r12              ; 0801CF62
-strh  r0,[r5]             ; 0801CF64  set width to 0x18
-mov   r0,0x52             ; 0801CF66
-add   r0,r0,r4            ; 0801CF68
-mov   r12,r0              ; 0801CF6A
-mov   r0,0x3              ; 0801CF6C
-mov   r5,r12              ; 0801CF6E
-strh  r0,[r5]             ; 0801CF70  set height to 3
-mov   r0,r4               ; 0801CF72
-add   r0,0x42             ; 0801CF74
-strh  r3,[r0]             ; 0801CF76  [0300224E] = 0
-mov   r0,r4               ; 0801CF78
-bl    Sub0801A070         ; 0801CF7A  Object processing main, slope=0, no relative Y threshold
-pop   {r4-r5}             ; 0801CF7E
-pop   {r0}                ; 0801CF80
-bx    r0                  ; 0801CF82
-
-ExtObjInit1A:
-; object 00.1A init
-push  {lr}                ; 0801CF84
-mov   r12,r0              ; 0801CF86
-lsl   r1,r1,0x10          ; 0801CF88
-lsr   r1,r1,0x10          ; 0801CF8A
-lsl   r2,r2,0x18          ; 0801CF8C
-lsr   r2,r2,0x18          ; 0801CF8E
-mov   r3,r12              ; 0801CF90
-add   r3,0x4E             ; 0801CF92
-mov   r0,0x20             ; 0801CF94
-strh  r0,[r3]             ; 0801CF96  set width to 0x20
-add   r3,0x4              ; 0801CF98
-mov   r0,0xC              ; 0801CF9A
-strh  r0,[r3]             ; 0801CF9C  set height to 0xC
-sub   r3,0x10             ; 0801CF9E
-mov   r0,0x1              ; 0801CFA0
-strh  r0,[r3]             ; 0801CFA2  [0300224E] = 1
-mov   r0,r12              ; 0801CFA4
-bl    Sub0801A070         ; 0801CFA6  Object processing main, slope=0, no relative Y threshold
-pop   {r0}                ; 0801CFAA
-bx    r0                  ; 0801CFAC
-.pool                     ; 0801CFAE
-
-ExtObjInit18:
-; object 00.18 init
-push  {r4,lr}             ; 0801CFB0
-lsl   r1,r1,0x10          ; 0801CFB2
-lsr   r1,r1,0x10          ; 0801CFB4
-lsl   r2,r2,0x18          ; 0801CFB6
-lsr   r2,r2,0x18          ; 0801CFB8
-mov   r3,0x52             ; 0801CFBA
-add   r3,r3,r0            ; 0801CFBC
-mov   r12,r3              ; 0801CFBE
-mov   r3,0x10             ; 0801CFC0
-mov   r4,r12              ; 0801CFC2
-strh  r3,[r4]             ; 0801CFC4  set width to 0x10
-mov   r4,0x4E             ; 0801CFC6
-strh  r3,[r4,r0]          ; 0801CFC8  set height to 0x10
-bl    Sub0801A070         ; 0801CFCA  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801CFCE
-pop   {r0}                ; 0801CFD0
-bx    r0                  ; 0801CFD2
-
-ExtObjInit17:
-; object 00.17 init
-push  {r4,lr}             ; 0801CFD4
-mov   r4,r0               ; 0801CFD6
-bl    Sub08019D64         ; 0801CFD8  set layer 1 tilemap index and pre-existing tile
-mov   r0,r4               ; 0801CFDC
-bl    ExtObjMain17         ; 0801CFDE
-pop   {r4}                ; 0801CFE2
-pop   {r0}                ; 0801CFE4
-bx    r0                  ; 0801CFE6
-
-ExtObjInit16:
-; object 00.16 init
-push  {r4,lr}             ; 0801CFE8
-mov   r4,r0               ; 0801CFEA
-bl    Sub08019D64         ; 0801CFEC  set layer 1 tilemap index and pre-existing tile
-mov   r0,r4               ; 0801CFF0
-bl    ExtObjMain16         ; 0801CFF2
-pop   {r4}                ; 0801CFF6
-pop   {r0}                ; 0801CFF8
-bx    r0                  ; 0801CFFA
-
-ExtObjInit14:
-; object 00.14 init
-push  {r4,lr}             ; 0801CFFC
-mov   r12,r0              ; 0801CFFE
-lsl   r1,r1,0x10          ; 0801D000
-lsr   r1,r1,0x10          ; 0801D002
-lsl   r2,r2,0x18          ; 0801D004
-lsr   r2,r2,0x18          ; 0801D006
-mov   r3,r12              ; 0801D008
-add   r3,0x52             ; 0801D00A  r0 = [03007240]+52 (0300225E)
-mov   r0,0x2              ; 0801D00C
-strh  r0,[r3]             ; 0801D00E  set height to 2
-sub   r3,0x4              ; 0801D010  r0 = [03007240]+4E (0300225A)
-mov   r0,0x5              ; 0801D012
-strh  r0,[r3]             ; 0801D014  set width to 5
-mov   r0,r12              ; 0801D016
-add   r0,0x42             ; 0801D018  r0 = [03007240]+42 (0300224E)
-ldrh  r3,[r0]             ; 0801D01A  14
-mov   r0,0x1              ; 0801D01C
-ldr   r4,=Data081C187A    ; 0801D01E
-and   r0,r3               ; 0801D020  0
-lsl   r0,r0,0x1           ; 0801D022  0
-add   r0,r0,r4            ; 0801D024
-ldrh  r3,[r0]             ; 0801D026  r3 = 1
-mov   r0,r12              ; 0801D028
-add   r0,0x44             ; 0801D02A  r0 = [03007240]+44 (03002250)
-strh  r3,[r0]             ; 0801D02C  set slope to +1
-mov   r0,r12              ; 0801D02E
-bl    Sub0801A04C         ; 0801D030  Object processing main, no relative Y threshold
-pop   {r4}                ; 0801D034
-pop   {r0}                ; 0801D036
-bx    r0                  ; 0801D038
-.pool                     ; 0801D03A
-
-ExtObjInit15:
-; object 00.15 init
-push  {r4,lr}             ; 0801D040
-mov   r12,r0              ; 0801D042
-lsl   r1,r1,0x10          ; 0801D044
-lsr   r1,r1,0x10          ; 0801D046
-lsl   r2,r2,0x18          ; 0801D048
-lsr   r2,r2,0x18          ; 0801D04A
-mov   r3,r12              ; 0801D04C
-add   r3,0x52             ; 0801D04E  r0 = [03007240]+52 (0300225E)
-mov   r0,0x2              ; 0801D050
-strh  r0,[r3]             ; 0801D052  set height to 2
-sub   r3,0x4              ; 0801D054  r0 = [03007240]+4E (0300225A)
-mov   r0,0x5              ; 0801D056
-strh  r0,[r3]             ; 0801D058  set width to 5
-mov   r0,r12              ; 0801D05A
-add   r0,0x42             ; 0801D05C  r0 = [03007240]+42 (0300224E)
-ldrh  r3,[r0]             ; 0801D05E  15
-mov   r0,0x1              ; 0801D060
-ldr   r4,=Data081C187A    ; 0801D062
-and   r0,r3               ; 0801D064  1
-lsl   r0,r0,0x1           ; 0801D066  2
-add   r0,r0,r4            ; 0801D068
-ldrh  r3,[r0]             ; 0801D06A  r3 = -1
-mov   r0,r12              ; 0801D06C
-add   r0,0x44             ; 0801D06E  r0 = [03007240]+44 (03002250)
-strh  r3,[r0]             ; 0801D070  set slope to -1
-mov   r0,r12              ; 0801D072
-bl    Sub0801A04C         ; 0801D074  Object processing main, no relative Y threshold
-pop   {r4}                ; 0801D078
-pop   {r0}                ; 0801D07A
-bx    r0                  ; 0801D07C
-.pool                     ; 0801D07E
-
-ExtObjInit12:
-; object 00.12 init
-push  {r4,lr}             ; 0801D084
-lsl   r1,r1,0x10          ; 0801D086
-lsr   r1,r1,0x10          ; 0801D088
-lsl   r2,r2,0x18          ; 0801D08A
-lsr   r2,r2,0x18          ; 0801D08C
-mov   r3,0x52             ; 0801D08E
-add   r3,r3,r0            ; 0801D090  r3 = [03007240]+52 (0300225E)
-mov   r12,r3              ; 0801D092
-mov   r3,0x1              ; 0801D094
-mov   r4,r12              ; 0801D096
-strh  r3,[r4]             ; 0801D098  set height to 1
-mov   r3,0x4E             ; 0801D09A
-add   r3,r3,r0            ; 0801D09C  r3 = [03007240]+4E (0300225A)
-mov   r12,r3              ; 0801D09E
-mov   r3,0x5              ; 0801D0A0
-mov   r4,r12              ; 0801D0A2
-strh  r3,[r4]             ; 0801D0A4  set width to 5
-bl    Sub0801A070         ; 0801D0A6  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801D0AA
-pop   {r0}                ; 0801D0AC
-bx    r0                  ; 0801D0AE
-
-ExtObjInit13:
-; object 00.13 init
-push  {r4,lr}             ; 0801D0B0
-lsl   r1,r1,0x10          ; 0801D0B2
-lsr   r1,r1,0x10          ; 0801D0B4
-lsl   r2,r2,0x18          ; 0801D0B6
-lsr   r2,r2,0x18          ; 0801D0B8
-mov   r3,0x52             ; 0801D0BA
-add   r3,r3,r0            ; 0801D0BC  r3 = [03007240]+52 (0300225E)
-mov   r12,r3              ; 0801D0BE
-mov   r3,0x1              ; 0801D0C0
-mov   r4,r12              ; 0801D0C2
-strh  r3,[r4]             ; 0801D0C4  set height to 1
-mov   r3,0x4E             ; 0801D0C6
-add   r3,r3,r0            ; 0801D0C8  r3 = [03007240]+4E (0300225A)
-mov   r12,r3              ; 0801D0CA
-mov   r3,0x5              ; 0801D0CC
-mov   r4,r12              ; 0801D0CE
-strh  r3,[r4]             ; 0801D0D0  set width to 5
-bl    Sub0801A070         ; 0801D0D2  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801D0D6
-pop   {r0}                ; 0801D0D8
-bx    r0                  ; 0801D0DA
-
-ExtObjInit11:
-; object 00.11 init
-push  {r4,lr}             ; 0801D0DC
-lsl   r1,r1,0x10          ; 0801D0DE
-lsr   r1,r1,0x10          ; 0801D0E0
-lsl   r2,r2,0x18          ; 0801D0E2
-lsr   r2,r2,0x18          ; 0801D0E4
-mov   r3,0x1              ; 0801D0E6
-mov   r4,0x52             ; 0801D0E8
-strh  r3,[r4,r0]          ; 0801D0EA  set height to 1
-mov   r3,0x2              ; 0801D0EC
-mov   r4,0x4E             ; 0801D0EE
-strh  r3,[r4,r0]          ; 0801D0F0  set width to 2
-bl    Sub0801A070         ; 0801D0F2  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801D0F6
-pop   {r0}                ; 0801D0F8
-bx    r0                  ; 0801D0FA
-
-ExtObjInit10:
-; object 00.10 init
-push  {r4,lr}             ; 0801D0FC
-lsl   r1,r1,0x10          ; 0801D0FE
-lsr   r1,r1,0x10          ; 0801D100
-lsl   r2,r2,0x18          ; 0801D102
-lsr   r2,r2,0x18          ; 0801D104
-mov   r3,0x10             ; 0801D106
-mov   r4,0x4E             ; 0801D108
-strh  r3,[r4,r0]          ; 0801D10A  set width to 0x10
-mov   r3,0x20             ; 0801D10C
-mov   r4,0x52             ; 0801D10E
-strh  r3,[r4,r0]          ; 0801D110  set height to 0x20
-bl    Sub0801A070         ; 0801D112  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801D116
-pop   {r0}                ; 0801D118
-bx    r0                  ; 0801D11A
-
-ExtObjInit0F:
-; object 00.0F init
-push  {r4,lr}             ; 0801D11C
-mov   r4,r0               ; 0801D11E
-bl    Sub08019D64         ; 0801D120  set layer 1 tilemap index and pre-existing tile
-mov   r0,r4               ; 0801D124
-bl    ExtObjMain0F         ; 0801D126
-pop   {r4}                ; 0801D12A
-pop   {r0}                ; 0801D12C
-bx    r0                  ; 0801D12E
-
-ExtObjInit0D_0E:
-; object 00.0D-0E init
-push  {r4,lr}             ; 0801D130
-mov   r12,r0              ; 0801D132
-lsl   r1,r1,0x10          ; 0801D134
-lsr   r1,r1,0x10          ; 0801D136
-lsl   r2,r2,0x18          ; 0801D138
-lsr   r2,r2,0x18          ; 0801D13A
-mov   r4,r12              ; 0801D13C
-add   r4,0x42             ; 0801D13E
-ldrh  r3,[r4]             ; 0801D140  extended object ID
-mov   r0,0x2              ; 0801D142
-and   r0,r3               ; 0801D144
-lsl   r0,r0,0x10          ; 0801D146
-lsr   r0,r0,0x10          ; 0801D148
-strh  r0,[r4]             ; 0801D14A  [0300224E] = 0,2 if 0D,0E
-mov   r3,r12              ; 0801D14C
-add   r3,0x4E             ; 0801D14E
-mov   r0,0x8              ; 0801D150
-strh  r0,[r3]             ; 0801D152  set width to 8
-add   r3,0x4              ; 0801D154
-mov   r0,0x10             ; 0801D156
-strh  r0,[r3]             ; 0801D158  set height to 0x10
-mov   r0,r12              ; 0801D15A
-bl    Sub0801A070         ; 0801D15C  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801D160
-pop   {r0}                ; 0801D162
-bx    r0                  ; 0801D164
-.pool                     ; 0801D166
-
-ExtObjInit0C:
-; object 00.0C init
-push  {r4,lr}             ; 0801D168
-lsl   r1,r1,0x10          ; 0801D16A
-lsr   r1,r1,0x10          ; 0801D16C
-lsl   r2,r2,0x18          ; 0801D16E
-lsr   r2,r2,0x18          ; 0801D170
-mov   r3,0x4E             ; 0801D172
-add   r3,r3,r0            ; 0801D174
-mov   r12,r3              ; 0801D176
-ldrh  r3,[r3]             ; 0801D178
-add   r3,0x1              ; 0801D17A
-mov   r4,r12              ; 0801D17C
-strh  r3,[r4]             ; 0801D17E  set width to 2
-mov   r3,0x52             ; 0801D180
-add   r3,r3,r0            ; 0801D182
-mov   r12,r3              ; 0801D184
-mov   r3,0x4              ; 0801D186
-mov   r4,r12              ; 0801D188
-strh  r3,[r4]             ; 0801D18A  set height to 4
-bl    Sub0801A070         ; 0801D18C  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801D190
-pop   {r0}                ; 0801D192
-bx    r0                  ; 0801D194
-.pool                     ; 0801D196
-
-ExtObjInit0A_0B:
-; object 00.0A-0B init
-push  {r4,lr}             ; 0801D198
-mov   r12,r0              ; 0801D19A
-lsl   r1,r1,0x10          ; 0801D19C
-lsr   r1,r1,0x10          ; 0801D19E
-lsl   r2,r2,0x18          ; 0801D1A0
-lsr   r2,r2,0x18          ; 0801D1A2
-mov   r3,r12              ; 0801D1A4
-add   r3,0x4E             ; 0801D1A6
-ldrh  r0,[r3]             ; 0801D1A8
-add   r0,0x1              ; 0801D1AA  add 1 to width
-strh  r0,[r3]             ; 0801D1AC
-add   r3,0x4              ; 0801D1AE  +52
-ldrh  r0,[r3]             ; 0801D1B0
-add   r0,0x1              ; 0801D1B2  add 1 to height
-strh  r0,[r3]             ; 0801D1B4
-mov   r4,r12              ; 0801D1B6
-add   r4,0x42             ; 0801D1B8
-ldrh  r0,[r4]             ; 0801D1BA
-mov   r3,0x1              ; 0801D1BC
-and   r0,r3               ; 0801D1BE
-lsl   r0,r0,0x1           ; 0801D1C0
-strh  r0,[r4]             ; 0801D1C2  [0300224E] = (extID-0A)*2
-mov   r0,r12              ; 0801D1C4
-bl    Sub0801A070         ; 0801D1C6  Object processing main, slope=0, no relative Y threshold
-pop   {r4}                ; 0801D1CA
-pop   {r0}                ; 0801D1CC
-bx    r0                  ; 0801D1CE
-
-ExtObjInit00_09:
-; object 00.00-09 init
-push  {r4-r6,lr}          ; 0801D1D0
-mov   r4,r0               ; 0801D1D2
-lsl   r1,r1,0x10          ; 0801D1D4
-lsr   r1,r1,0x10          ; 0801D1D6
-lsl   r2,r2,0x18          ; 0801D1D8
-lsr   r2,r2,0x18          ; 0801D1DA
-mov   r5,r4               ; 0801D1DC
-add   r5,0x42             ; 0801D1DE
-ldrh  r3,[r5]             ; 0801D1E0  extended object ID
-ldr   r0,=Data08167E80    ; 0801D1E2  width table
-add   r0,r3,r0            ; 0801D1E4  index with extID
-ldrb  r0,[r0]             ; 0801D1E6
-mov   r6,0x4E             ; 0801D1E8
-strh  r0,[r6,r4]          ; 0801D1EA  set width
-mov   r0,0x52             ; 0801D1EC
-add   r0,r0,r4            ; 0801D1EE
-mov   r12,r0              ; 0801D1F0
-mov   r0,0x3              ; 0801D1F2
-mov   r6,r12              ; 0801D1F4
-strh  r0,[r6]             ; 0801D1F6  set height to 3
-lsl   r3,r3,0x1           ; 0801D1F8
-strh  r3,[r5]             ; 0801D1FA  [0300224E] = extID*2
-mov   r0,r4               ; 0801D1FC
-bl    Sub0801A070         ; 0801D1FE  Object processing main, slope=0, no relative Y threshold
-pop   {r4-r6}             ; 0801D202
-pop   {r0}                ; 0801D204
-bx    r0                  ; 0801D206
-.pool                     ; 0801D208
+Sub0801A04C:
+; subroutine: Disable relative Y threshold, then call object processing main
+push  {r4,lr}                   ; 0801A04C
+lsl   r1,r1,0x10                ; 0801A04E
+lsr   r1,r1,0x10                ; 0801A050
+lsl   r2,r2,0x18                ; 0801A052
+lsr   r2,r2,0x18                ; 0801A054
+mov   r3,0x46                   ; 0801A056
+add   r3,r3,r0                  ; 0801A058  r3 = [03007240]+46 (03002252)
+mov   r12,r3                    ; 0801A05A
+ldr   r3,=0x7FFF                ; 0801A05C
+mov   r4,r12                    ; 0801A05E  no relative Y threshold
+strh  r3,[r4]                   ; 0801A060
+bl    Sub08019DA8               ; 0801A062  Object processing main
+pop   {r4}                      ; 0801A066
+pop   {r0}                      ; 0801A068
+bx    r0                        ; 0801A06A
+.pool                           ; 0801A06C
+
+Sub0801A070:
+; subroutine: Clear object's slope, disable relative Y threshold, then call object processing main
+push  {r4,lr}                   ; 0801A070
+lsl   r1,r1,0x10                ; 0801A072
+lsr   r1,r1,0x10                ; 0801A074
+lsl   r2,r2,0x18                ; 0801A076
+lsr   r2,r2,0x18                ; 0801A078
+mov   r4,r0                     ; 0801A07A
+add   r4,0x44                   ; 0801A07C  r4 = [03007240]+44 (03002250)
+mov   r3,0x0                    ; 0801A07E
+strh  r3,[r4]                   ; 0801A080  clear slope
+bl    Sub0801A04C               ; 0801A082  Object processing main, no relative Y threshold
+pop   {r4}                      ; 0801A086
+pop   {r0}                      ; 0801A088
+bx    r0                        ; 0801A08A
+
+ObjInitFE:
+; object FE init
+push  {lr}                      ; 0801A08C
+lsl   r1,r1,0x10                ; 0801A08E
+lsr   r1,r1,0x10                ; 0801A090
+lsl   r2,r2,0x18                ; 0801A092
+lsr   r2,r2,0x18                ; 0801A094
+bl    Sub0801A04C               ; 0801A096  Object processing main, no relative Y threshold
+pop   {r0}                      ; 0801A09A
+bx    r0                        ; 0801A09C
+.pool                           ; 0801A09E
+
+ObjInitF7_FC:
+; object F7-FD init
+push  {lr}                      ; 0801A0A0
+lsl   r1,r1,0x10                ; 0801A0A2
+lsr   r1,r1,0x10                ; 0801A0A4
+lsl   r2,r2,0x18                ; 0801A0A6
+lsr   r2,r2,0x18                ; 0801A0A8
+bl    Sub0801A04C               ; 0801A0AA  Object processing main, no relative Y threshold
+pop   {r0}                      ; 0801A0AE
+bx    r0                        ; 0801A0B0
+.pool                           ; 0801A0B2
+
+ObjInitF6:
+; object F6 init
+push  {lr}                      ; 0801A0B4
+lsl   r1,r1,0x10                ; 0801A0B6
+lsr   r1,r1,0x10                ; 0801A0B8
+lsl   r2,r2,0x18                ; 0801A0BA
+lsr   r2,r2,0x18                ; 0801A0BC
+bl    Sub0801A070               ; 0801A0BE  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801A0C2
+bx    r0                        ; 0801A0C4
+.pool                           ; 0801A0C6
+
+ObjInitF5:
+; object F5 init
+push  {lr}                      ; 0801A0C8
+lsl   r1,r1,0x10                ; 0801A0CA
+lsr   r1,r1,0x10                ; 0801A0CC
+lsl   r2,r2,0x18                ; 0801A0CE
+lsr   r2,r2,0x18                ; 0801A0D0
+bl    Sub0801A070               ; 0801A0D2  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801A0D6
+bx    r0                        ; 0801A0D8
+.pool                           ; 0801A0DA
+
+ObjInitF0_F3:
+; object F0-F3 init
+push  {r4-r7,lr}                ; 0801A0DC
+mov   r7,r9                     ; 0801A0DE
+mov   r6,r8                     ; 0801A0E0
+push  {r6-r7}                   ; 0801A0E2
+mov   r12,r0                    ; 0801A0E4
+lsl   r1,r1,0x10                ; 0801A0E6
+lsr   r1,r1,0x10                ; 0801A0E8
+mov   r9,r1                     ; 0801A0EA
+lsl   r2,r2,0x18                ; 0801A0EC
+lsr   r2,r2,0x18                ; 0801A0EE
+mov   r8,r2                     ; 0801A0F0
+add   r0,0x48                   ; 0801A0F2
+ldrh  r1,[r0]                   ; 0801A0F4
+ldrb  r0,[r0]                   ; 0801A0F6
+lsr   r5,r0,0x4                 ; 0801A0F8
+mov   r6,0xF                    ; 0801A0FA
+and   r6,r1                     ; 0801A0FC
+lsr   r3,r1,0x8                 ; 0801A0FE
+mov   r0,r3                     ; 0801A100
+mov   r1,0xF0                   ; 0801A102
+and   r3,r1                     ; 0801A104
+orr   r5,r3                     ; 0801A106
+lsl   r0,r0,0x1C                ; 0801A108
+lsr   r0,r0,0x18                ; 0801A10A
+orr   r6,r0                     ; 0801A10C
+mov   r4,0x0                    ; 0801A10E
+mov   r0,0xA3                   ; 0801A110
+lsl   r0,r0,0x1                 ; 0801A112
+add   r0,r12                    ; 0801A114
+ldrb  r3,[r0]                   ; 0801A116
+ldr   r7,=Data08167E74          ; 0801A118
+cmp   r3,0x0                    ; 0801A11A
+beq   @@Code0801A136            ; 0801A11C
+add   r1,0x54                   ; 0801A11E
+add   r1,r12                    ; 0801A120
+@@Code0801A122:
+add   r0,r4,0x6                 ; 0801A122
+lsl   r0,r0,0x18                ; 0801A124
+lsr   r4,r0,0x18                ; 0801A126
+cmp   r4,0x71                   ; 0801A128
+bhi   @@Code0801A136            ; 0801A12A
+add   r0,r4,0x2                 ; 0801A12C
+add   r0,r1,r0                  ; 0801A12E
+ldrb  r3,[r0]                   ; 0801A130
+cmp   r3,0x0                    ; 0801A132
+bne   @@Code0801A122            ; 0801A134
+@@Code0801A136:
+mov   r2,0xA2                   ; 0801A136
+lsl   r2,r2,0x1                 ; 0801A138
+add   r2,r12                    ; 0801A13A
+add   r0,r2,r4                  ; 0801A13C
+strb  r6,[r0]                   ; 0801A13E
+add   r0,r4,0x1                 ; 0801A140
+add   r0,r2,r0                  ; 0801A142
+strb  r5,[r0]                   ; 0801A144
+add   r1,r4,0x2                 ; 0801A146
+add   r1,r2,r1                  ; 0801A148
+mov   r0,r12                    ; 0801A14A
+add   r0,0x4E                   ; 0801A14C
+ldrb  r0,[r0]                   ; 0801A14E
+sub   r0,0x1                    ; 0801A150
+strb  r0,[r1]                   ; 0801A152
+add   r1,r4,0x3                 ; 0801A154
+add   r1,r2,r1                  ; 0801A156
+mov   r0,r12                    ; 0801A158
+add   r0,0x52                   ; 0801A15A
+ldrb  r0,[r0]                   ; 0801A15C
+sub   r0,0x1                    ; 0801A15E
+strb  r0,[r1]                   ; 0801A160
+mov   r5,r12                    ; 0801A162
+add   r5,0x42                   ; 0801A164
+ldrb  r1,[r5]                   ; 0801A166
+mov   r0,0xF                    ; 0801A168
+and   r0,r1                     ; 0801A16A
+add   r0,r0,r7                  ; 0801A16C
+ldrb  r3,[r0]                   ; 0801A16E
+add   r0,r4,0x4                 ; 0801A170
+add   r2,r2,r0                  ; 0801A172
+strb  r3,[r2]                   ; 0801A174
+mov   r0,r12                    ; 0801A176
+add   r0,0x48                   ; 0801A178
+ldrh  r1,[r0]                   ; 0801A17A
+lsr   r0,r1,0x4                 ; 0801A17C
+eor   r0,r1                     ; 0801A17E
+mov   r1,0x1                    ; 0801A180
+and   r0,r1                     ; 0801A182
+mov   r1,r12                    ; 0801A184
+strh  r0,[r1,0x3A]              ; 0801A186
+mov   r0,0x80                   ; 0801A188
+lsl   r0,r0,0x8                 ; 0801A18A
+strh  r0,[r5]                   ; 0801A18C
+mov   r0,r12                    ; 0801A18E
+mov   r1,r9                     ; 0801A190
+mov   r2,r8                     ; 0801A192
+bl    Sub0801A070               ; 0801A194  Object processing main, slope=0, no relative Y threshold
+pop   {r3-r4}                   ; 0801A198
+mov   r8,r3                     ; 0801A19A
+mov   r9,r4                     ; 0801A19C
+pop   {r4-r7}                   ; 0801A19E
+pop   {r0}                      ; 0801A1A0
+bx    r0                        ; 0801A1A2
+.pool                           ; 0801A1A4
+
+ObjInitEE_EF:
+; object EE-EF init
+push  {r4-r6,lr}                ; 0801A1A8
+mov   r4,r0                     ; 0801A1AA
+lsl   r1,r1,0x10                ; 0801A1AC
+lsr   r6,r1,0x10                ; 0801A1AE
+lsl   r2,r2,0x18                ; 0801A1B0
+lsr   r5,r2,0x18                ; 0801A1B2
+add   r0,0x48                   ; 0801A1B4
+ldrh  r0,[r0]                   ; 0801A1B6
+lsr   r3,r0,0x4                 ; 0801A1B8
+eor   r3,r0                     ; 0801A1BA
+mov   r2,0x1                    ; 0801A1BC
+mov   r1,0x1                    ; 0801A1BE
+and   r3,r1                     ; 0801A1C0
+strh  r3,[r4,0x3A]              ; 0801A1C2
+mov   r0,0x42                   ; 0801A1C4
+add   r0,r0,r4                  ; 0801A1C6
+mov   r12,r0                    ; 0801A1C8
+ldrh  r0,[r0]                   ; 0801A1CA
+mov   r3,r1                     ; 0801A1CC
+and   r3,r0                     ; 0801A1CE
+eor   r3,r2                     ; 0801A1D0
+lsl   r0,r3,0x10                ; 0801A1D2
+lsr   r3,r0,0x10                ; 0801A1D4
+cmp   r3,0x0                    ; 0801A1D6
+bne   @@Code0801A1DC            ; 0801A1D8
+ldr   r3,=0xFFFF                ; 0801A1DA
+@@Code0801A1DC:
+mov   r0,r12                    ; 0801A1DC
+strh  r3,[r0]                   ; 0801A1DE
+mov   r0,r4                     ; 0801A1E0
+mov   r1,r6                     ; 0801A1E2
+mov   r2,r5                     ; 0801A1E4
+bl    Sub0801A070               ; 0801A1E6  Object processing main, slope=0, no relative Y threshold
+pop   {r4-r6}                   ; 0801A1EA
+pop   {r0}                      ; 0801A1EC
+bx    r0                        ; 0801A1EE
+.pool                           ; 0801A1F0
+
+ObjInitED:
+; object ED init
+push  {r4-r5,lr}                ; 0801A1F4
+lsl   r1,r1,0x10                ; 0801A1F6
+lsr   r1,r1,0x10                ; 0801A1F8
+lsl   r2,r2,0x18                ; 0801A1FA
+lsr   r2,r2,0x18                ; 0801A1FC
+mov   r3,r0                     ; 0801A1FE
+add   r3,0x48                   ; 0801A200
+ldrh  r4,[r3]                   ; 0801A202
+mov   r5,0x1                    ; 0801A204
+lsr   r3,r4,0x4                 ; 0801A206
+eor   r3,r4                     ; 0801A208
+and   r3,r5                     ; 0801A20A
+mov   r4,r0                     ; 0801A20C
+add   r4,0x42                   ; 0801A20E
+strh  r3,[r4]                   ; 0801A210
+bl    Sub0801A070               ; 0801A212  Object processing main, slope=0, no relative Y threshold
+pop   {r4-r5}                   ; 0801A216
+pop   {r0}                      ; 0801A218
+bx    r0                        ; 0801A21A
+
+Sub0801A21C:
+; called by objects E4-E6,E8-E9 init: subtract 2 from object Y, add 2 to object height
+push  {r4,lr}                   ; 0801A21C
+mov   r4,r0                     ; 0801A21E
+add   r4,0x48                   ; 0801A220  r4 = [03007240]+48 (03002254)
+ldrh  r3,[r4]                   ; 0801A222  r3 = tile YXyx
+ldr   r2,=0xF0F0                ; 0801A224
+mov   r1,r2                     ; 0801A226
+and   r1,r3                     ; 0801A228
+sub   r1,0x20                   ; 0801A22A
+and   r1,r2                     ; 0801A22C
+ldr   r2,=0x0F0F                ; 0801A22E
+and   r2,r3                     ; 0801A230
+orr   r2,r1                     ; 0801A232
+strh  r2,[r4]                   ; 0801A234
+add   r0,0x52                   ; 0801A236  r0 = [03007240]+52 (0300225E)
+ldrh  r1,[r0]                   ; 0801A238
+add   r1,0x2                    ; 0801A23A  add 2 to object's height
+strh  r1,[r0]                   ; 0801A23C
+pop   {r4}                      ; 0801A23E
+pop   {r0}                      ; 0801A240
+bx    r0                        ; 0801A242
+.pool                           ; 0801A244
+
+ObjInitEB_EC:
+; object EB-EC init
+push  {r4-r5,lr}                ; 0801A24C
+mov   r12,r0                    ; 0801A24E
+lsl   r1,r1,0x10                ; 0801A250
+lsr   r1,r1,0x10                ; 0801A252
+lsl   r2,r2,0x18                ; 0801A254
+lsr   r2,r2,0x18                ; 0801A256
+mov   r4,r12                    ; 0801A258
+add   r4,0x42                   ; 0801A25A  r4 = [03007240]+42 (0300224E)
+ldrh  r3,[r4]                   ; 0801A25C  r3 = object ID (which is already in r1)
+mov   r0,0x4                    ; 0801A25E
+and   r0,r3                     ; 0801A260  r0 = 0 for EB, 4 for EC
+lsl   r0,r0,0x10                ; 0801A262
+lsr   r0,r0,0x11                ; 0801A264  r0 = 0 for EB, 2 for EC
+lsl   r0,r0,0x10                ; 0801A266
+lsr   r0,r0,0x10                ; 0801A268
+strh  r0,[r4]                   ; 0801A26A  object ID = 0 for EB, 2 for EC
+mov   r5,r12                    ; 0801A26C
+add   r5,0x48                   ; 0801A26E  r0 = [03007240]+48 (03002254)
+ldrh  r4,[r5]                   ; 0801A270  r4 = tile YXyx
+ldr   r3,=0xF0F0                ; 0801A272
+mov   r0,r3                     ; 0801A274  Y0y0
+and   r0,r4                     ; 0801A276
+sub   r0,0x10                   ; 0801A278  subtract 1 from y
+and   r0,r3                     ; 0801A27A  handle carry
+ldr   r3,=0x0F0F                ; 0801A27C
+and   r3,r4                     ; 0801A27E  0X0x
+orr   r3,r0                     ; 0801A280  YXyx with y-1
+strh  r3,[r5]                   ; 0801A282  store position with y-1
+mov   r3,r12                    ; 0801A284
+add   r3,0x52                   ; 0801A286  r0 = [03007240]+52 (0300225E)
+ldrh  r0,[r3]                   ; 0801A288 \
+add   r0,0x1                    ; 0801A28A | increment object's height
+strh  r0,[r3]                   ; 0801A28C /
+mov   r0,r12                    ; 0801A28E
+bl    Sub0801A070               ; 0801A290  Object processing main, slope=0, no relative Y threshold
+pop   {r4-r5}                   ; 0801A294
+pop   {r0}                      ; 0801A296
+bx    r0                        ; 0801A298
+.pool                           ; 0801A29A
+
+ObjInitEA:
+; object EA init
+push  {r4-r5,lr}                ; 0801A2A4
+mov   r12,r0                    ; 0801A2A6
+lsl   r1,r1,0x10                ; 0801A2A8
+lsr   r1,r1,0x10                ; 0801A2AA
+lsl   r2,r2,0x18                ; 0801A2AC
+lsr   r2,r2,0x18                ; 0801A2AE
+mov   r5,r12                    ; 0801A2B0
+add   r5,0x48                   ; 0801A2B2  r5 = [03007240]+48 (03002254)
+ldrh  r4,[r5]                   ; 0801A2B4  r4 = tile YXyx
+ldr   r3,=0xF0F0                ; 0801A2B6
+mov   r0,r3                     ; 0801A2B8
+and   r0,r4                     ; 0801A2BA
+sub   r0,0x10                   ; 0801A2BC
+and   r0,r3                     ; 0801A2BE
+ldr   r3,=0x0F0F                ; 0801A2C0
+and   r3,r4                     ; 0801A2C2
+orr   r3,r0                     ; 0801A2C4
+strh  r3,[r5]                   ; 0801A2C6
+mov   r3,r12                    ; 0801A2C8
+add   r3,0x52                   ; 0801A2CA  r3 = [03007240]+52 (0300225E)
+ldrh  r0,[r3]                   ; 0801A2CC
+add   r0,0x1                    ; 0801A2CE  increment object's height
+strh  r0,[r3]                   ; 0801A2D0
+sub   r3,0xE                    ; 0801A2D2  r3 = [03007240]+44 (03002250)
+ldr   r0,=0xFFFE                ; 0801A2D4  diagonal object, slope -2
+strh  r0,[r3]                   ; 0801A2D6
+mov   r0,r12                    ; 0801A2D8
+bl    Sub0801A04C               ; 0801A2DA  Object processing main, no relative Y threshold
+pop   {r4-r5}                   ; 0801A2DE
+pop   {r0}                      ; 0801A2E0
+bx    r0                        ; 0801A2E2
+.pool                           ; 0801A2E4
+
+ObjInitE9:
+; object E9 init
+push  {r4-r6,lr}                ; 0801A2F0
+mov   r6,r0                     ; 0801A2F2
+mov   r4,r1                     ; 0801A2F4
+mov   r5,r2                     ; 0801A2F6
+lsl   r4,r4,0x10                ; 0801A2F8
+lsr   r4,r4,0x10                ; 0801A2FA
+lsl   r5,r5,0x18                ; 0801A2FC
+lsr   r5,r5,0x18                ; 0801A2FE
+bl    Sub0801A21C               ; 0801A300  objY -= 2, height += 2
+mov   r1,r6                     ; 0801A304
+add   r1,0x44                   ; 0801A306  r3 = [03007240]+44 (03002250)
+ldr   r0,=0xFFFF                ; 0801A308  diagonal object, slope -1
+strh  r0,[r1]                   ; 0801A30A
+mov   r0,r6                     ; 0801A30C
+mov   r1,r4                     ; 0801A30E
+mov   r2,r5                     ; 0801A310
+bl    Sub0801A04C               ; 0801A312  Object processing main, no relative Y threshold
+pop   {r4-r6}                   ; 0801A316
+pop   {r0}                      ; 0801A318
+bx    r0                        ; 0801A31A
+.pool                           ; 0801A31C
+
+ObjInitE8:
+; object E8 init
+push  {r4-r6,lr}                ; 0801A320
+mov   r6,r0                     ; 0801A322
+mov   r4,r1                     ; 0801A324
+mov   r5,r2                     ; 0801A326
+lsl   r4,r4,0x10                ; 0801A328
+lsr   r4,r4,0x10                ; 0801A32A
+lsl   r5,r5,0x18                ; 0801A32C
+lsr   r5,r5,0x18                ; 0801A32E
+bl    Sub0801A21C               ; 0801A330  objY -= 2, height += 2
+mov   r1,r6                     ; 0801A334
+add   r1,0x44                   ; 0801A336  r3 = [03007240]+44 (03002250)
+ldr   r0,=0xFFFF                ; 0801A338  diagonal object, slope -1
+strh  r0,[r1]                   ; 0801A33A
+mov   r0,r6                     ; 0801A33C
+mov   r1,r4                     ; 0801A33E
+mov   r2,r5                     ; 0801A340
+bl    Sub0801A04C               ; 0801A342  Object processing main, no relative Y threshold
+pop   {r4-r6}                   ; 0801A346
+pop   {r0}                      ; 0801A348
+bx    r0                        ; 0801A34A
+.pool                           ; 0801A34C
+
+ObjInitE7:
+; object E7 init
+push  {r4-r5,lr}                ; 0801A350
+mov   r12,r0                    ; 0801A352
+lsl   r1,r1,0x10                ; 0801A354
+lsr   r1,r1,0x10                ; 0801A356
+lsl   r2,r2,0x18                ; 0801A358
+lsr   r2,r2,0x18                ; 0801A35A
+mov   r5,r12                    ; 0801A35C
+add   r5,0x48                   ; 0801A35E  r5 = [03007240]+48 (03002254)
+ldrh  r4,[r5]                   ; 0801A360  r4 = tile YXyx
+ldr   r3,=0xF0F0                ; 0801A362
+mov   r0,r3                     ; 0801A364
+and   r0,r4                     ; 0801A366
+sub   r0,0x10                   ; 0801A368
+and   r0,r3                     ; 0801A36A
+ldr   r3,=0x0F0F                ; 0801A36C
+and   r3,r4                     ; 0801A36E
+orr   r3,r0                     ; 0801A370
+strh  r3,[r5]                   ; 0801A372
+mov   r3,r12                    ; 0801A374
+add   r3,0x52                   ; 0801A376  r3 = [03007240]+52 (0300225E)
+ldrh  r0,[r3]                   ; 0801A378
+add   r0,0x1                    ; 0801A37A  increment object's height
+strh  r0,[r3]                   ; 0801A37C
+sub   r3,0xE                    ; 0801A37E  r3 = [03007240]+44 (03002250)
+ldr   r0,=0xFFFE                ; 0801A380  diagonal object, slope -2
+strh  r0,[r3]                   ; 0801A382
+mov   r0,r12                    ; 0801A384
+bl    Sub0801A04C               ; 0801A386  Object processing main, no relative Y threshold
+pop   {r4-r5}                   ; 0801A38A
+pop   {r0}                      ; 0801A38C
+bx    r0                        ; 0801A38E
+.pool                           ; 0801A390
+
+ObjInitE6:
+; object E6 init
+push  {r4-r6,lr}                ; 0801A39C
+mov   r6,r0                     ; 0801A39E
+mov   r4,r1                     ; 0801A3A0
+mov   r5,r2                     ; 0801A3A2
+lsl   r4,r4,0x10                ; 0801A3A4
+lsr   r4,r4,0x10                ; 0801A3A6
+lsl   r5,r5,0x18                ; 0801A3A8
+lsr   r5,r5,0x18                ; 0801A3AA
+bl    Sub0801A21C               ; 0801A3AC  objY -= 2, height += 2
+mov   r1,r6                     ; 0801A3B0
+add   r1,0x44                   ; 0801A3B2  r1 = [03007240]+44 (03002250)
+ldr   r0,=0xFFFF                ; 0801A3B4  diagonal object, slope -1
+strh  r0,[r1]                   ; 0801A3B6
+mov   r0,r6                     ; 0801A3B8
+mov   r1,r4                     ; 0801A3BA
+mov   r2,r5                     ; 0801A3BC
+bl    Sub0801A04C               ; 0801A3BE  Object processing main, no relative Y threshold
+pop   {r4-r6}                   ; 0801A3C2
+pop   {r0}                      ; 0801A3C4
+bx    r0                        ; 0801A3C6
+.pool                           ; 0801A3C8
+
+ObjInitE5:
+; object E5 init
+push  {r4-r6,lr}                ; 0801A3CC
+mov   r6,r0                     ; 0801A3CE
+mov   r4,r1                     ; 0801A3D0
+mov   r5,r2                     ; 0801A3D2
+lsl   r4,r4,0x10                ; 0801A3D4
+lsr   r4,r4,0x10                ; 0801A3D6
+lsl   r5,r5,0x18                ; 0801A3D8
+lsr   r5,r5,0x18                ; 0801A3DA
+bl    Sub0801A21C               ; 0801A3DC  objY -= 2, height += 2
+mov   r1,r6                     ; 0801A3E0
+add   r1,0x44                   ; 0801A3E2  r1 = [03007240]+44 (03002250)
+ldr   r0,=0xFFFF                ; 0801A3E4  diagonal object, slope -1
+strh  r0,[r1]                   ; 0801A3E6
+mov   r0,r6                     ; 0801A3E8
+mov   r1,r4                     ; 0801A3EA
+mov   r2,r5                     ; 0801A3EC
+bl    Sub0801A04C               ; 0801A3EE  Object processing main, no relative Y threshold
+pop   {r4-r6}                   ; 0801A3F2
+pop   {r0}                      ; 0801A3F4
+bx    r0                        ; 0801A3F6
+.pool                           ; 0801A3F8
+
+ObjInitE4:
+; object E4 init
+push  {r4-r6,lr}                ; 0801A3FC
+mov   r4,r0                     ; 0801A3FE
+mov   r5,r1                     ; 0801A400
+mov   r6,r2                     ; 0801A402
+lsl   r5,r5,0x10                ; 0801A404
+lsr   r5,r5,0x10                ; 0801A406
+lsl   r6,r6,0x18                ; 0801A408
+lsr   r6,r6,0x18                ; 0801A40A
+bl    Sub0801A21C               ; 0801A40C  objY -= 2, height += 2
+mov   r0,r4                     ; 0801A410
+mov   r1,r5                     ; 0801A412
+mov   r2,r6                     ; 0801A414
+bl    Sub0801A070               ; 0801A416  Object processing main, slope=0, no relative Y threshold
+pop   {r4-r6}                   ; 0801A41A
+pop   {r0}                      ; 0801A41C
+bx    r0                        ; 0801A41E
+
+ObjInitE3:
+; object E3 init
+push  {lr}                      ; 0801A420
+lsl   r1,r1,0x10                ; 0801A422
+lsr   r1,r1,0x10                ; 0801A424
+lsl   r2,r2,0x18                ; 0801A426
+lsr   r2,r2,0x18                ; 0801A428
+bl    Sub0801A070               ; 0801A42A  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801A42E
+bx    r0                        ; 0801A430
+.pool                           ; 0801A432
+
+ObjInitE2:
+; object E2 init
+push  {r4,lr}                   ; 0801A434
+lsl   r1,r1,0x10                ; 0801A436
+lsr   r1,r1,0x10                ; 0801A438
+lsl   r2,r2,0x18                ; 0801A43A
+lsr   r2,r2,0x18                ; 0801A43C
+mov   r3,0x4E                   ; 0801A43E
+add   r3,r3,r0                  ; 0801A440
+mov   r12,r3                    ; 0801A442
+mov   r3,0x4                    ; 0801A444
+mov   r4,r12                    ; 0801A446
+strh  r3,[r4]                   ; 0801A448  set width to 4
+bl    Sub0801A070               ; 0801A44A  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801A44E
+pop   {r0}                      ; 0801A450
+bx    r0                        ; 0801A452
+
+ObjInitE1:
+; object E1 init
+push  {r4-r6,lr}                ; 0801A454
+mov   r4,r0                     ; 0801A456
+lsl   r1,r1,0x10                ; 0801A458
+lsr   r6,r1,0x10                ; 0801A45A
+lsl   r2,r2,0x18                ; 0801A45C
+lsr   r5,r2,0x18                ; 0801A45E
+mov   r0,0x0                    ; 0801A460
+strh  r0,[r4,0x3A]              ; 0801A462  clear object scratch RAM
+bl    GenRandomByte             ; 0801A464  Generate pseudo-random byte
+mov   r1,0x3                    ; 0801A468
+and   r1,r0                     ; 0801A46A  r1 = random 2-bit value
+cmp   r1,0x0                    ; 0801A46C
+beq   @@Code0801A474            ; 0801A46E
+mov   r0,0x3                    ; 0801A470
+eor   r1,r0                     ; 0801A472
+@@Code0801A474:
+                                ;           r1 = random 0,0,1,2
+lsl   r0,r1,0x13                ; 0801A474
+lsr   r1,r0,0x10                ; 0801A476
+mov   r0,r4                     ; 0801A478
+add   r0,0x42                   ; 0801A47A
+strh  r1,[r0]                   ; 0801A47C  [0300224E] = random 00,00,08,10
+mov   r0,r4                     ; 0801A47E
+mov   r1,r6                     ; 0801A480
+mov   r2,r5                     ; 0801A482
+bl    Sub0801A070               ; 0801A484  Object processing main, slope=0, no relative Y threshold
+pop   {r4-r6}                   ; 0801A488
+pop   {r0}                      ; 0801A48A
+bx    r0                        ; 0801A48C
+.pool                           ; 0801A48E
+
+ObjInitE0:
+; object E0 init
+push  {lr}                      ; 0801A490
+lsl   r1,r1,0x10                ; 0801A492
+lsr   r1,r1,0x10                ; 0801A494
+lsl   r2,r2,0x18                ; 0801A496
+lsr   r2,r2,0x18                ; 0801A498
+bl    Sub0801A070               ; 0801A49A  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801A49E
+bx    r0                        ; 0801A4A0
+.pool                           ; 0801A4A2
+
+ObjInitDF:
+; object DF init
+push  {r4,lr}                   ; 0801A4A4
+lsl   r1,r1,0x10                ; 0801A4A6
+lsr   r1,r1,0x10                ; 0801A4A8
+lsl   r2,r2,0x18                ; 0801A4AA
+lsr   r2,r2,0x18                ; 0801A4AC
+mov   r3,0x52                   ; 0801A4AE
+add   r3,r3,r0                  ; 0801A4B0
+mov   r12,r3                    ; 0801A4B2
+ldrh  r3,[r3]                   ; 0801A4B4  height
+add   r3,0x1                    ; 0801A4B6
+mov   r4,r12                    ; 0801A4B8
+strh  r3,[r4]                   ; 0801A4BA  add 1 to height (set height to 2)
+bl    Sub0801A070               ; 0801A4BC  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801A4C0
+pop   {r0}                      ; 0801A4C2
+bx    r0                        ; 0801A4C4
+.pool                           ; 0801A4C6
+
+ObjInitDE:
+; object DE init
+push  {r4,lr}                   ; 0801A4C8
+lsl   r1,r1,0x10                ; 0801A4CA
+lsr   r1,r1,0x10                ; 0801A4CC
+lsl   r2,r2,0x18                ; 0801A4CE
+lsr   r2,r2,0x18                ; 0801A4D0
+mov   r3,0x4E                   ; 0801A4D2
+add   r3,r3,r0                  ; 0801A4D4
+mov   r12,r3                    ; 0801A4D6
+ldrh  r3,[r3]                   ; 0801A4D8  width
+add   r3,0x1                    ; 0801A4DA
+mov   r4,r12                    ; 0801A4DC
+strh  r3,[r4]                   ; 0801A4DE  add 1 to width
+bl    Sub0801A070               ; 0801A4E0  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801A4E4
+pop   {r0}                      ; 0801A4E6
+bx    r0                        ; 0801A4E8
+.pool                           ; 0801A4EA
+
+ObjInitDD:
+; object DD init
+push  {r4-r6,lr}                ; 0801A4EC
+mov   r6,r0                     ; 0801A4EE
+mov   r4,r1                     ; 0801A4F0
+mov   r5,r2                     ; 0801A4F2
+lsl   r4,r4,0x10                ; 0801A4F4
+lsr   r4,r4,0x10                ; 0801A4F6
+lsl   r5,r5,0x18                ; 0801A4F8
+lsr   r5,r5,0x18                ; 0801A4FA
+bl    GenRandomByte             ; 0801A4FC  Generate pseudo-random byte
+lsl   r0,r0,0x10                ; 0801A500
+mov   r1,0xE0                   ; 0801A502
+lsl   r1,r1,0xB                 ; 0801A504  70000
+and   r1,r0                     ; 0801A506
+lsr   r1,r1,0x10                ; 0801A508
+mov   r0,r6                     ; 0801A50A
+add   r0,0x42                   ; 0801A50C
+strh  r1,[r0]                   ; 0801A50E  [0300224E] = random 3-bit value
+mov   r0,r6                     ; 0801A510
+mov   r1,r4                     ; 0801A512
+mov   r2,r5                     ; 0801A514
+bl    Sub0801A070               ; 0801A516  Object processing main, slope=0, no relative Y threshold
+pop   {r4-r6}                   ; 0801A51A
+pop   {r0}                      ; 0801A51C
+bx    r0                        ; 0801A51E
+
+ObjInitDC:
+; object DC init
+push  {lr}                      ; 0801A520
+lsl   r1,r1,0x10                ; 0801A522
+lsr   r1,r1,0x10                ; 0801A524
+lsl   r2,r2,0x18                ; 0801A526
+lsr   r2,r2,0x18                ; 0801A528
+bl    Sub0801A070               ; 0801A52A  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801A52E
+bx    r0                        ; 0801A530
+.pool                           ; 0801A532
+
+ObjInitDB:
+; object DB init
+push  {lr}                      ; 0801A534
+lsl   r1,r1,0x10                ; 0801A536
+lsr   r1,r1,0x10                ; 0801A538
+lsl   r2,r2,0x18                ; 0801A53A
+lsr   r2,r2,0x18                ; 0801A53C
+bl    Sub0801A070               ; 0801A53E  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801A542
+bx    r0                        ; 0801A544
+.pool                           ; 0801A546
+
+ObjInitDA:
+; object DA init
+push  {lr}                      ; 0801A548
+lsl   r1,r1,0x10                ; 0801A54A
+lsr   r1,r1,0x10                ; 0801A54C
+lsl   r2,r2,0x18                ; 0801A54E
+lsr   r2,r2,0x18                ; 0801A550
+bl    Sub0801A070               ; 0801A552  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801A556
+bx    r0                        ; 0801A558
+.pool                           ; 0801A55A
+
+ObjInitD8_D9:
+; object D8-D9 init
+push  {r4-r5,lr}                ; 0801A55C
+lsl   r1,r1,0x10                ; 0801A55E
+lsr   r1,r1,0x10                ; 0801A560
+lsl   r2,r2,0x18                ; 0801A562
+lsr   r2,r2,0x18                ; 0801A564
+mov   r3,0x42                   ; 0801A566
+add   r3,r3,r0                  ; 0801A568
+mov   r12,r3                    ; 0801A56A
+ldrh  r4,[r3]                   ; 0801A56C  object ID
+mov   r3,0x1                    ; 0801A56E
+and   r3,r4                     ; 0801A570  objID&1
+lsl   r4,r3,0x4                 ; 0801A572
+mov   r5,r12                    ; 0801A574
+strh  r4,[r5]                   ; 0801A576  [0300224E] = 00,10 for D8,D9
+ldr   r4,=Data08167E78          ; 0801A578
+lsl   r3,r3,0x1                 ; 0801A57A
+add   r3,r3,r4                  ; 0801A57C
+ldrh  r3,[r3]                   ; 0801A57E  04,03 for D8,D9
+mov   r4,r0                     ; 0801A580
+add   r4,0x52                   ; 0801A582
+strh  r3,[r4]                   ; 0801A584  set height
+bl    Sub0801A070               ; 0801A586  Object processing main, slope=0, no relative Y threshold
+pop   {r4-r5}                   ; 0801A58A
+pop   {r0}                      ; 0801A58C
+bx    r0                        ; 0801A58E
+.pool                           ; 0801A590
+
+ObjInitD4_D7:
+; object D4-D7 init
+push  {lr}                      ; 0801A594
+lsl   r1,r1,0x10                ; 0801A596
+lsr   r1,r1,0x10                ; 0801A598
+lsl   r2,r2,0x18                ; 0801A59A
+lsr   r2,r2,0x18                ; 0801A59C
+mov   r3,0x0                    ; 0801A59E
+strh  r3,[r0,0x3A]              ; 0801A5A0  clear scratch RAM
+bl    Sub0801A070               ; 0801A5A2  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801A5A6
+bx    r0                        ; 0801A5A8
+.pool                           ; 0801A5AA
+
+ObjInitD3:
+; object D3 init
+push  {lr}                      ; 0801A5AC
+lsl   r1,r1,0x10                ; 0801A5AE
+lsr   r1,r1,0x10                ; 0801A5B0
+lsl   r2,r2,0x18                ; 0801A5B2
+lsr   r2,r2,0x18                ; 0801A5B4
+bl    Sub0801A070               ; 0801A5B6  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801A5BA
+bx    r0                        ; 0801A5BC
+.pool                           ; 0801A5BE
+
+ObjInitD2:
+; object D2 init
+push  {lr}                      ; 0801A5C0
+lsl   r1,r1,0x10                ; 0801A5C2
+lsr   r1,r1,0x10                ; 0801A5C4
+lsl   r2,r2,0x18                ; 0801A5C6
+lsr   r2,r2,0x18                ; 0801A5C8
+bl    Sub0801A070               ; 0801A5CA  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801A5CE
+bx    r0                        ; 0801A5D0
+.pool                           ; 0801A5D2
+
+ObjInitD1:
+; object D1 init
+push  {lr}                      ; 0801A5D4
+lsl   r1,r1,0x10                ; 0801A5D6
+lsr   r1,r1,0x10                ; 0801A5D8
+lsl   r2,r2,0x18                ; 0801A5DA
+lsr   r2,r2,0x18                ; 0801A5DC
+bl    Sub0801A070               ; 0801A5DE  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801A5E2
+bx    r0                        ; 0801A5E4
+.pool                           ; 0801A5E6
+
+ObjInitD0:
+; object D0 init
+push  {r4-r5,lr}                ; 0801A5E8
+mov   r3,r0                     ; 0801A5EA
+lsl   r1,r1,0x10                ; 0801A5EC
+lsr   r4,r1,0x10                ; 0801A5EE
+lsl   r2,r2,0x18                ; 0801A5F0
+lsr   r2,r2,0x18                ; 0801A5F2
+mov   r1,r3                     ; 0801A5F4
+add   r1,0x42                   ; 0801A5F6
+mov   r0,0x2                    ; 0801A5F8
+strh  r0,[r1]                   ; 0801A5FA  set 0300224E (object ID) to 2
+mov   r0,r3                     ; 0801A5FC
+add   r0,0x4E                   ; 0801A5FE
+mov   r5,0x0                    ; 0801A600
+ldsh  r0,[r0,r5]                ; 0801A602  load width as signed
+cmp   r0,0x0                    ; 0801A604
+bge   @@Code0801A60C            ; 0801A606
+mov   r0,0x0                    ; 0801A608
+strh  r0,[r1]                   ; 0801A60A  if negative width, set 0300224E to 0
+@@Code0801A60C:
+mov   r1,r3                     ; 0801A60C
+add   r1,0x44                   ; 0801A60E
+ldr   r0,=0xFFFF                ; 0801A610
+strh  r0,[r1]                   ; 0801A612  set slope to -1
+mov   r0,r3                     ; 0801A614
+mov   r1,r4                     ; 0801A616
+bl    Sub0801A04C               ; 0801A618  Object processing main, no relative Y threshold
+pop   {r4-r5}                   ; 0801A61C
+pop   {r0}                      ; 0801A61E
+bx    r0                        ; 0801A620
+.pool                           ; 0801A622
+
+ObjInitCF:
+; object CF init
+push  {r4-r5,lr}                ; 0801A628
+mov   r3,r0                     ; 0801A62A
+lsl   r1,r1,0x10                ; 0801A62C
+lsr   r4,r1,0x10                ; 0801A62E
+lsl   r2,r2,0x18                ; 0801A630
+lsr   r2,r2,0x18                ; 0801A632
+mov   r1,r3                     ; 0801A634
+add   r1,0x42                   ; 0801A636
+mov   r0,0x2                    ; 0801A638
+strh  r0,[r1]                   ; 0801A63A  set 0300224E (object ID) to 2
+mov   r0,r3                     ; 0801A63C
+add   r0,0x4E                   ; 0801A63E
+mov   r5,0x0                    ; 0801A640
+ldsh  r0,[r0,r5]                ; 0801A642  load width as signed
+cmp   r0,0x0                    ; 0801A644
+bge   @@Code0801A64C            ; 0801A646
+mov   r0,0x0                    ; 0801A648
+strh  r0,[r1]                   ; 0801A64A  if negative width, set 0300224E to 0
+@@Code0801A64C:
+mov   r1,r3                     ; 0801A64C
+add   r1,0x44                   ; 0801A64E
+ldr   r0,=0xFFFF                ; 0801A650
+strh  r0,[r1]                   ; 0801A652  set slope to -1
+mov   r0,r3                     ; 0801A654
+mov   r1,r4                     ; 0801A656
+bl    Sub0801A04C               ; 0801A658  Object processing main, no relative Y threshold
+pop   {r4-r5}                   ; 0801A65C
+pop   {r0}                      ; 0801A65E
+bx    r0                        ; 0801A660
+.pool                           ; 0801A662
+
+ObjInitCE:
+; object CE init
+push  {r4-r5,lr}                ; 0801A668
+mov   r3,r0                     ; 0801A66A
+lsl   r1,r1,0x10                ; 0801A66C
+lsr   r4,r1,0x10                ; 0801A66E
+lsl   r2,r2,0x18                ; 0801A670
+lsr   r2,r2,0x18                ; 0801A672
+mov   r1,r3                     ; 0801A674
+add   r1,0x42                   ; 0801A676
+mov   r0,0x1                    ; 0801A678
+strh  r0,[r1]                   ; 0801A67A  set 0300224E (object ID) to 1
+mov   r0,r3                     ; 0801A67C
+add   r0,0x4E                   ; 0801A67E
+mov   r5,0x0                    ; 0801A680
+ldsh  r0,[r0,r5]                ; 0801A682  load width as signed
+cmp   r0,0x0                    ; 0801A684
+bge   @@Code0801A68C            ; 0801A686
+mov   r0,0x0                    ; 0801A688
+strh  r0,[r1]                   ; 0801A68A  if negative width, set 0300224E to 0
+@@Code0801A68C:
+mov   r1,r3                     ; 0801A68C
+add   r1,0x44                   ; 0801A68E
+ldr   r0,=0xFFFF                ; 0801A690
+strh  r0,[r1]                   ; 0801A692  set slope to -1
+mov   r0,r3                     ; 0801A694
+mov   r1,r4                     ; 0801A696
+bl    Sub0801A04C               ; 0801A698  Object processing main, no relative Y threshold
+pop   {r4-r5}                   ; 0801A69C
+pop   {r0}                      ; 0801A69E
+bx    r0                        ; 0801A6A0
+.pool                           ; 0801A6A2
+
+ObjInitCC_CD:
+; object CC-CD init
+push  {r4,lr}                   ; 0801A6A8
+lsl   r1,r1,0x10                ; 0801A6AA
+lsr   r1,r1,0x10                ; 0801A6AC
+lsl   r2,r2,0x18                ; 0801A6AE
+lsr   r2,r2,0x18                ; 0801A6B0
+mov   r3,0x0                    ; 0801A6B2
+strh  r3,[r0,0x3A]              ; 0801A6B4  clear scratch RAM
+mov   r4,r0                     ; 0801A6B6
+add   r4,0x44                   ; 0801A6B8
+mov   r3,0x1                    ; 0801A6BA
+strh  r3,[r4]                   ; 0801A6BC  set slope to 1
+bl    Sub0801A04C               ; 0801A6BE  Object processing main, no relative Y threshold
+pop   {r4}                      ; 0801A6C2
+pop   {r0}                      ; 0801A6C4
+bx    r0                        ; 0801A6C6
+
+ObjInitCB:
+; object CB init
+push  {lr}                      ; 0801A6C8
+lsl   r1,r1,0x10                ; 0801A6CA
+lsr   r1,r1,0x10                ; 0801A6CC
+lsl   r2,r2,0x18                ; 0801A6CE
+lsr   r2,r2,0x18                ; 0801A6D0
+mov   r3,0x0                    ; 0801A6D2
+strh  r3,[r0,0x3A]              ; 0801A6D4  clear scratch RAM
+bl    Sub0801A070               ; 0801A6D6  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801A6DA
+bx    r0                        ; 0801A6DC
+.pool                           ; 0801A6DE
+
+ObjInitCA:
+; object CA init
+push  {lr}                      ; 0801A6E0
+lsl   r1,r1,0x10                ; 0801A6E2
+lsr   r1,r1,0x10                ; 0801A6E4
+lsl   r2,r2,0x18                ; 0801A6E6
+lsr   r2,r2,0x18                ; 0801A6E8
+bl    Sub0801A070               ; 0801A6EA  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801A6EE
+bx    r0                        ; 0801A6F0
+.pool                           ; 0801A6F2
+
+ObjInitC4_C9:
+; object C4-C9 init
+push  {r4-r6,lr}                ; 0801A6F4
+mov   r3,r0                     ; 0801A6F6
+lsl   r1,r1,0x10                ; 0801A6F8
+lsr   r5,r1,0x10                ; 0801A6FA  r5 = object ID
+lsl   r2,r2,0x18                ; 0801A6FC
+lsr   r6,r2,0x18                ; 0801A6FE  r6 = 1
+add   r0,0x42                   ; 0801A700  [03007240]+42 (0300224E)
+ldrh  r1,[r0]                   ; 0801A702  r1 = object ID, again
+cmp   r1,0xC6                   ; 0801A704
+bls   @@Code0801A70E            ; 0801A706
+add   r0,r1,0x1                 ; 0801A708 \ if object C7-C9...
+lsl   r0,r0,0x10                ; 0801A70A |
+lsr   r1,r0,0x10                ; 0801A70C / r1 = object ID +1
+@@Code0801A70E:
+mov   r2,r1                     ; 0801A70E  r2 = adjusted object ID
+mov   r0,0x1                    ; 0801A710
+mov   r4,0x1                    ; 0801A712
+and   r1,r4                     ; 0801A714  low bit of adjusted object ID
+eor   r1,r0                     ; 0801A716  inverted low bit of adjusted object ID
+                                ;           1 for C4/C6/C7/C9, 0 for C5/C8
+lsl   r0,r1,0x12                ; 0801A718  ???
+cmp   r0,0x0                    ; 0801A71A
+bne   @@Code0801A724            ; 0801A71C
+mov   r0,r3                     ; 0801A71E \ if object C5/C8
+add   r0,0x4E                   ; 0801A720 /  0300225A (width)
+b     @@Code0801A728            ; 0801A722
+@@Code0801A724:
+mov   r0,r3                     ; 0801A724 \ if object C4/C6/C7/C9
+add   r0,0x52                   ; 0801A726 /  0300225E (height)
+@@Code0801A728:
+strh  r4,[r0]                   ; 0801A728  set unused dimension to 1 (even though it should already be 1 from 4-byte object init?)
+lsl   r0,r2,0xE                 ; 0801A72A
+lsr   r1,r0,0x10                ; 0801A72C  r1 = adjusted object ID >> 2
+mov   r0,0x2                    ; 0801A72E
+and   r1,r0                     ; 0801A730  bit 1 of (adjusted object ID >> 2)
+                                ;           0 for C4-C6, 2 for C7-C9
+lsl   r0,r1,0x10                ; 0801A732
+lsr   r1,r0,0x10                ; 0801A734
+mov   r0,r3                     ; 0801A736
+add   r0,0x42                   ; 0801A738  [03007240]+42 (0300224E)
+strh  r1,[r0]                   ; 0801A73A  store 0 or 2 to object ID?!
+mov   r1,r3                     ; 0801A73C
+add   r1,0x44                   ; 0801A73E  [03007240]+44 (03002250)
+ldr   r0,=0xFFFF                ; 0801A740  set slope to -1
+strh  r0,[r1]                   ; 0801A742
+mov   r0,0x3                    ; 0801A744
+and   r2,r0                     ; 0801A746  bits 0-1 of adjusted object ID
+lsl   r0,r2,0x1                 ; 0801A748  (bits 0-1 of adjusted object ID) << 1
+cmp   r0,0x3                    ; 0801A74A
+bhi   @@Code0801A760            ; 0801A74C
+                                ;           runs if object C4/C5/C7/C8
+mov   r0,r3                     ; 0801A74E  r0 = [03007240] (0300220C)
+mov   r1,r5                     ; 0801A750  r1 = (unadjusted) object ID
+mov   r2,r6                     ; 0801A752  r2 = 1
+bl    Sub0801A070               ; 0801A754  Object processing main, slope=0, no relative Y threshold
+b     @@Code0801A76A            ; 0801A758
+.pool                           ; 0801A75A
+
+@@Code0801A760:
+                                ;           runs if object C6 or C9
+mov   r0,r3                     ; 0801A760  r0 = [03007240] (0300220C)
+mov   r1,r5                     ; 0801A762  r1 = (unadjusted) object ID
+mov   r2,r6                     ; 0801A764  r2 = 1
+bl    Sub0801A04C               ; 0801A766  Object processing main, no relative Y threshold
+@@Code0801A76A:
+pop   {r4-r6}                   ; 0801A76A
+pop   {r0}                      ; 0801A76C
+bx    r0                        ; 0801A76E
+
+ObjInitC0_C3:
+; object C0-C3 init
+push  {r4,lr}                   ; 0801A770
+mov   r3,r0                     ; 0801A772
+lsl   r1,r1,0x10                ; 0801A774
+lsr   r4,r1,0x10                ; 0801A776
+lsl   r2,r2,0x18                ; 0801A778
+lsr   r2,r2,0x18                ; 0801A77A
+mov   r1,r3                     ; 0801A77C
+add   r1,0x52                   ; 0801A77E
+mov   r0,0x2                    ; 0801A780
+strh  r0,[r1]                   ; 0801A782  set height to 2
+sub   r1,0xE                    ; 0801A784  +44
+ldr   r0,=0xFFFF                ; 0801A786
+strh  r0,[r1]                   ; 0801A788  set slope to -1
+mov   r0,r3                     ; 0801A78A
+add   r0,0x42                   ; 0801A78C
+ldrh  r1,[r0]                   ; 0801A78E  object ID
+mov   r0,0x3                    ; 0801A790
+and   r0,r1                     ; 0801A792
+lsl   r0,r0,0x1                 ; 0801A794  (objID-C0)*2
+cmp   r0,0x3                    ; 0801A796
+bhi   @@Code0801A7A8            ; 0801A798
+
+mov   r0,r3                     ; 0801A79A  runs if C0-C1
+mov   r1,r4                     ; 0801A79C
+bl    Sub0801A070               ; 0801A79E  Object processing main, slope=0, no relative Y threshold
+b     @@Code0801A7B0            ; 0801A7A2
+.pool                           ; 0801A7A4
+
+@@Code0801A7A8:
+mov   r0,r3                     ; 0801A7A8  runs if C2-C3
+mov   r1,r4                     ; 0801A7AA
+bl    Sub0801A04C               ; 0801A7AC  Object processing main, no relative Y threshold
+@@Code0801A7B0:
+pop   {r4}                      ; 0801A7B0
+pop   {r0}                      ; 0801A7B2
+bx    r0                        ; 0801A7B4
+.pool                           ; 0801A7B6
+
+ObjInitBE_BF:
+; object BE-BF init
+push  {lr}                      ; 0801A7B8
+lsl   r1,r1,0x10                ; 0801A7BA
+lsr   r1,r1,0x10                ; 0801A7BC
+lsl   r2,r2,0x18                ; 0801A7BE
+lsr   r2,r2,0x18                ; 0801A7C0
+bl    Sub0801A070               ; 0801A7C2  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801A7C6
+bx    r0                        ; 0801A7C8
+.pool                           ; 0801A7CA
+
+ObjInitBA_BD:
+; object BA-BD init
+push  {lr}                      ; 0801A7CC
+lsl   r1,r1,0x10                ; 0801A7CE
+lsr   r1,r1,0x10                ; 0801A7D0
+lsl   r2,r2,0x18                ; 0801A7D2
+lsr   r2,r2,0x18                ; 0801A7D4
+bl    Sub0801A070               ; 0801A7D6  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801A7DA
+bx    r0                        ; 0801A7DC
+.pool                           ; 0801A7DE
+
+ObjInitB8_B9:
+; object B8-B9 init
+push  {r4,lr}                   ; 0801A7E0
+lsl   r1,r1,0x10                ; 0801A7E2
+lsr   r1,r1,0x10                ; 0801A7E4
+lsl   r2,r2,0x18                ; 0801A7E6
+lsr   r2,r2,0x18                ; 0801A7E8
+mov   r4,r0                     ; 0801A7EA
+add   r4,0x52                   ; 0801A7EC
+mov   r3,0x4                    ; 0801A7EE
+strh  r3,[r4]                   ; 0801A7F0  set height to 4
+sub   r4,0xE                    ; 0801A7F2  +44
+ldr   r3,=0xFFFF                ; 0801A7F4
+strh  r3,[r4]                   ; 0801A7F6  set slope to -1
+bl    Sub0801A04C               ; 0801A7F8  Object processing main, no relative Y threshold
+pop   {r4}                      ; 0801A7FC
+pop   {r0}                      ; 0801A7FE
+bx    r0                        ; 0801A800
+.pool                           ; 0801A802
+
+ObjInitB6_B7:
+; object B6-B7 init
+push  {r4,lr}                   ; 0801A808
+lsl   r1,r1,0x10                ; 0801A80A
+lsr   r1,r1,0x10                ; 0801A80C
+lsl   r2,r2,0x18                ; 0801A80E
+lsr   r2,r2,0x18                ; 0801A810
+mov   r4,r0                     ; 0801A812
+add   r4,0x52                   ; 0801A814
+mov   r3,0x3                    ; 0801A816
+strh  r3,[r4]                   ; 0801A818  set height to 3
+sub   r4,0xE                    ; 0801A81A  +44
+ldr   r3,=0xFFFF                ; 0801A81C
+strh  r3,[r4]                   ; 0801A81E  set slope to -1
+bl    Sub0801A04C               ; 0801A820  Object processing main, no relative Y threshold
+pop   {r4}                      ; 0801A824
+pop   {r0}                      ; 0801A826
+bx    r0                        ; 0801A828
+.pool                           ; 0801A82A
+
+ObjInitB4_B5:
+; object B4-B5 init
+push  {r4,lr}                   ; 0801A830
+lsl   r1,r1,0x10                ; 0801A832
+lsr   r1,r1,0x10                ; 0801A834
+lsl   r2,r2,0x18                ; 0801A836
+lsr   r2,r2,0x18                ; 0801A838
+mov   r4,r0                     ; 0801A83A
+add   r4,0x52                   ; 0801A83C
+mov   r3,0x4                    ; 0801A83E
+strh  r3,[r4]                   ; 0801A840  set height to 4
+sub   r4,0xE                    ; 0801A842  +44
+ldr   r3,=0xFFFF                ; 0801A844
+strh  r3,[r4]                   ; 0801A846  set slope to -1
+bl    Sub0801A04C               ; 0801A848  Object processing main, no relative Y threshold
+pop   {r4}                      ; 0801A84C
+pop   {r0}                      ; 0801A84E
+bx    r0                        ; 0801A850
+.pool                           ; 0801A852
+
+ObjInitB2_B3:
+; object B2-B3 init
+push  {r4,lr}                   ; 0801A858
+lsl   r1,r1,0x10                ; 0801A85A
+lsr   r1,r1,0x10                ; 0801A85C
+lsl   r2,r2,0x18                ; 0801A85E
+lsr   r2,r2,0x18                ; 0801A860
+mov   r4,r0                     ; 0801A862
+add   r4,0x52                   ; 0801A864
+mov   r3,0x3                    ; 0801A866
+strh  r3,[r4]                   ; 0801A868  set height to 3
+sub   r4,0xE                    ; 0801A86A  +44
+ldr   r3,=0xFFFF                ; 0801A86C
+strh  r3,[r4]                   ; 0801A86E  set slope to -1
+bl    Sub0801A04C               ; 0801A870  Object processing main, no relative Y threshold
+pop   {r4}                      ; 0801A874
+pop   {r0}                      ; 0801A876
+bx    r0                        ; 0801A878
+.pool                           ; 0801A87A
+
+ObjInitB1:
+; object B1 init
+push  {lr}                      ; 0801A880
+lsl   r1,r1,0x10                ; 0801A882
+lsr   r1,r1,0x10                ; 0801A884
+lsl   r2,r2,0x18                ; 0801A886
+lsr   r2,r2,0x18                ; 0801A888
+bl    Sub0801A070               ; 0801A88A  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801A88E
+bx    r0                        ; 0801A890
+.pool                           ; 0801A892
+
+ObjInitB0:
+; object B0 init
+push  {lr}                      ; 0801A894
+lsl   r1,r1,0x10                ; 0801A896
+lsr   r1,r1,0x10                ; 0801A898
+lsl   r2,r2,0x18                ; 0801A89A
+lsr   r2,r2,0x18                ; 0801A89C
+bl    Sub0801A070               ; 0801A89E  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801A8A2
+bx    r0                        ; 0801A8A4
+.pool                           ; 0801A8A6
+
+ObjInitAE_AF:
+; object AE-AF init
+push  {r4,lr}                   ; 0801A8A8
+mov   r3,r0                     ; 0801A8AA
+lsl   r1,r1,0x10                ; 0801A8AC
+lsr   r4,r1,0x10                ; 0801A8AE
+lsl   r2,r2,0x18                ; 0801A8B0
+lsr   r2,r2,0x18                ; 0801A8B2
+add   r0,0x42                   ; 0801A8B4
+ldrh  r1,[r0]                   ; 0801A8B6  object ID
+mov   r0,0x1                    ; 0801A8B8
+and   r0,r1                     ; 0801A8BA  objID-AE
+lsl   r0,r0,0x2                 ; 0801A8BC
+mov   r1,0x2                    ; 0801A8BE
+cmp   r0,0x0                    ; 0801A8C0
+beq   @@Code0801A8CA            ; 0801A8C2
+mov   r0,r3                     ; 0801A8C4
+add   r0,0x52                   ; 0801A8C6  +52: height
+b     @@Code0801A8CE            ; 0801A8C8
+@@Code0801A8CA:
+mov   r0,r3                     ; 0801A8CA
+add   r0,0x4E                   ; 0801A8CC  +4E: width
+@@Code0801A8CE:
+strh  r1,[r0]                   ; 0801A8CE  if AE, width 2; if AF, height 2
+mov   r0,r3                     ; 0801A8D0
+mov   r1,r4                     ; 0801A8D2
+bl    Sub0801A070               ; 0801A8D4  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801A8D8
+pop   {r0}                      ; 0801A8DA
+bx    r0                        ; 0801A8DC
+.pool                           ; 0801A8DE
+
+ObjInitAC_AD:
+; object AC-AD init
+push  {r4,lr}                   ; 0801A8E0
+mov   r4,r0                     ; 0801A8E2
+lsl   r1,r1,0x10                ; 0801A8E4
+lsr   r1,r1,0x10                ; 0801A8E6
+lsl   r2,r2,0x18                ; 0801A8E8
+lsr   r2,r2,0x18                ; 0801A8EA
+ldr   r0,=0x03007240            ; 0801A8EC  Normal gameplay IWRAM (0300220C)
+ldr   r0,[r0]                   ; 0801A8EE
+ldr   r3,=0x2992                ; 0801A8F0
+add   r0,r0,r3                  ; 0801A8F2  [03007240]+2992 (03004B9E)
+ldrh  r0,[r0]                   ; 0801A8F4  r0 = layer 1 tileset ID
+cmp   r0,0xB                    ; 0801A8F6
+bne   @@Code0801A902            ; 0801A8F8
+
+mov   r3,r4                     ; 0801A8FA
+add   r3,0x52                   ; 0801A8FC
+mov   r0,0x2                    ; 0801A8FE
+strh  r0,[r3]                   ; 0801A900  if tileset B, set height to 2
+@@Code0801A902:
+mov   r0,r4                     ; 0801A902
+bl    Sub0801A070               ; 0801A904  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801A908
+pop   {r0}                      ; 0801A90A
+bx    r0                        ; 0801A90C
+.pool                           ; 0801A90E
+
+ObjInitAA_AB:
+; object AA-AB init
+push  {r4,lr}                   ; 0801A918
+lsl   r1,r1,0x10                ; 0801A91A
+lsr   r1,r1,0x10                ; 0801A91C
+lsl   r2,r2,0x18                ; 0801A91E
+lsr   r2,r2,0x18                ; 0801A920
+mov   r3,0x4E                   ; 0801A922
+add   r3,r3,r0                  ; 0801A924
+mov   r12,r3                    ; 0801A926
+mov   r3,0x2                    ; 0801A928
+mov   r4,r12                    ; 0801A92A
+strh  r3,[r4]                   ; 0801A92C  set width to 2
+bl    Sub0801A070               ; 0801A92E  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801A932
+pop   {r0}                      ; 0801A934
+bx    r0                        ; 0801A936
+
+ObjInitA9:
+; object A9 init
+push  {r4,lr}                   ; 0801A938
+mov   r4,r0                     ; 0801A93A
+lsl   r1,r1,0x10                ; 0801A93C
+lsr   r1,r1,0x10                ; 0801A93E
+lsl   r2,r2,0x18                ; 0801A940
+lsr   r2,r2,0x18                ; 0801A942
+ldr   r0,=0x03007240            ; 0801A944  Normal gameplay IWRAM (0300220C)
+ldr   r0,[r0]                   ; 0801A946
+ldr   r3,=0x2992                ; 0801A948
+add   r0,r0,r3                  ; 0801A94A  [03007240]+2992
+ldrh  r0,[r0]                   ; 0801A94C  layer 1 tileset ID
+cmp   r0,0x3                    ; 0801A94E
+bne   @@Code0801A96C            ; 0801A950
+
+mov   r0,0x2                    ; 0801A952  runs if tileset 3
+mov   r3,r4                     ; 0801A954
+add   r3,0x4E                   ; 0801A956
+strh  r0,[r3]                   ; 0801A958  set width to 2
+mov   r0,r4                     ; 0801A95A
+bl    Sub0801A070               ; 0801A95C  Object processing main, slope=0, no relative Y threshold
+b     @@Code0801A972            ; 0801A960
+.pool                           ; 0801A962
+
+@@Code0801A96C:
+mov   r0,r4                     ; 0801A96C  runs if not tileset 3
+bl    Sub0801A070               ; 0801A96E  Object processing main, slope=0, no relative Y threshold
+@@Code0801A972:
+pop   {r4}                      ; 0801A972
+pop   {r0}                      ; 0801A974
+bx    r0                        ; 0801A976
+
+ObjInitA7_A8:
+; object A7-A8 init
+push  {r4-r6,lr}                ; 0801A978
+mov   r12,r0                    ; 0801A97A
+lsl   r1,r1,0x10                ; 0801A97C
+lsr   r1,r1,0x10                ; 0801A97E
+lsl   r2,r2,0x18                ; 0801A980
+lsr   r2,r2,0x18                ; 0801A982
+mov   r6,r12                    ; 0801A984
+add   r6,0x48                   ; 0801A986  [03007240]+48 (03002254)
+ldrh  r5,[r6]                   ; 0801A988  tile YXyx
+ldr   r0,=0xF0F0                ; 0801A98A
+mov   r3,r0                     ; 0801A98C
+and   r3,r5                     ; 0801A98E
+sub   r3,0x10                   ; 0801A990  subtract 1 from initial Y
+and   r3,r0                     ; 0801A992
+ldr   r4,=0x0F0F                ; 0801A994
+mov   r0,r4                     ; 0801A996
+and   r0,r5                     ; 0801A998
+sub   r0,0x1                    ; 0801A99A  subtract 1 from initial X
+and   r0,r4                     ; 0801A99C
+orr   r0,r3                     ; 0801A99E
+strh  r0,[r6]                   ; 0801A9A0
+mov   r3,r12                    ; 0801A9A2
+add   r3,0x4E                   ; 0801A9A4  r3 = [03007240]+4E (0300225A)
+ldrh  r0,[r3]                   ; 0801A9A6
+add   r0,0x2                    ; 0801A9A8  add 2 to width
+strh  r0,[r3]                   ; 0801A9AA
+add   r3,0x4                    ; 0801A9AC
+ldrh  r0,[r3]                   ; 0801A9AE
+add   r0,0x2                    ; 0801A9B0  add 2 to height
+strh  r0,[r3]                   ; 0801A9B2
+mov   r0,r12                    ; 0801A9B4
+bl    Sub0801A070               ; 0801A9B6  Object processing main, slope=0, no relative Y threshold
+pop   {r4-r6}                   ; 0801A9BA
+pop   {r0}                      ; 0801A9BC
+bx    r0                        ; 0801A9BE
+.pool                           ; 0801A9C0
+
+ObjInitA5_A6:
+; object A5-A6 init
+push  {r4-r6,lr}                ; 0801A9C8
+mov   r12,r0                    ; 0801A9CA
+lsl   r1,r1,0x10                ; 0801A9CC
+lsr   r6,r1,0x10                ; 0801A9CE
+lsl   r2,r2,0x18                ; 0801A9D0
+lsr   r5,r2,0x18                ; 0801A9D2
+mov   r3,r12                    ; 0801A9D4
+add   r3,0x42                   ; 0801A9D6  [03007240]+42 (0300224E)
+ldrh  r1,[r3]                   ; 0801A9D8  r1 = object ID
+mov   r0,0x2                    ; 0801A9DA
+and   r0,r1                     ; 0801A9DC
+lsl   r0,r0,0x10                ; 0801A9DE
+lsr   r2,r0,0x10                ; 0801A9E0
+strh  r2,[r3]                   ; 0801A9E2  [0300224E] = 00,02 for A5,A6
+lsl   r0,r2,0x11                ; 0801A9E4
+lsr   r4,r0,0x10                ; 0801A9E6  r4 = 00,04 for A5,A6
+mov   r2,0x2                    ; 0801A9E8
+ldr   r0,=0x03007240            ; 0801A9EA  Normal gameplay IWRAM (0300220C)
+ldr   r0,[r0]                   ; 0801A9EC
+ldr   r1,=0x2992                ; 0801A9EE
+add   r0,r0,r1                  ; 0801A9F0  [0300220C]+2992
+ldrh  r0,[r0]                   ; 0801A9F2  r0 = layer 1 tileset ID
+cmp   r0,0x3                    ; 0801A9F4  03: 2.5D/Hookbill
+bne   @@Code0801AA0C            ; 0801A9F6
+
+ldrh  r2,[r3]                   ; 0801A9F8 \ runs if tileset 3
+mov   r1,0x4                    ; 0801A9FA
+mov   r0,r2                     ; 0801A9FC
+orr   r0,r1                     ; 0801A9FE
+strh  r0,[r3]                   ; 0801AA00  set bit 2 of 0300224E if tileset 3
+ldr   r1,=Data081C19D4          ; 0801AA02
+ldr   r0,=0x0001FFFE            ; 0801AA04
+and   r0,r2                     ; 0801AA06
+add   r0,r0,r1                  ; 0801AA08  index with 00,02 for A5,A6
+ldrh  r2,[r0]                   ; 0801AA0A / 02,04 for A5,A6
+@@Code0801AA0C:
+cmp   r4,0x0                    ; 0801AA0C
+bne   @@Code0801AA28            ; 0801AA0E
+mov   r0,r12                    ; 0801AA10 \ runs if A5
+add   r0,0x4E                   ; 0801AA12
+b     @@Code0801AA2C            ; 0801AA14 /
+.pool                           ; 0801AA16
+
+@@Code0801AA28:
+mov   r0,r12                    ; 0801AA28 \ runs if A6
+add   r0,0x52                   ; 0801AA2A /
+@@Code0801AA2C:
+strh  r2,[r0]                   ; 0801AA2C  set width(A5)/height(A6) to 02 if not tileset 3, 02,04 for A5,A6 if tileset 3
+mov   r0,r12                    ; 0801AA2E
+mov   r1,r6                     ; 0801AA30
+mov   r2,r5                     ; 0801AA32
+bl    Sub0801A070               ; 0801AA34  Object processing main, slope=0, no relative Y threshold
+pop   {r4-r6}                   ; 0801AA38
+pop   {r0}                      ; 0801AA3A
+bx    r0                        ; 0801AA3C
+.pool                           ; 0801AA3E
+
+ObjInitA3_A4:
+; object A3-A4 init
+push  {r4-r5,lr}                ; 0801AA40
+mov   r4,r0                     ; 0801AA42
+lsl   r1,r1,0x10                ; 0801AA44
+lsr   r1,r1,0x10                ; 0801AA46
+lsl   r2,r2,0x18                ; 0801AA48
+lsr   r2,r2,0x18                ; 0801AA4A
+mov   r0,0x42                   ; 0801AA4C
+add   r0,r0,r4                  ; 0801AA4E  r0 = [03007240]+42 (0300224E)
+mov   r12,r0                    ; 0801AA50
+ldrh  r3,[r0]                   ; 0801AA52  r3 = object ID
+mov   r0,0x4                    ; 0801AA54
+and   r0,r3                     ; 0801AA56
+lsl   r0,r0,0x10                ; 0801AA58
+lsr   r0,r0,0x10                ; 0801AA5A
+mov   r3,r12                    ; 0801AA5C
+strh  r0,[r3]                   ; 0801AA5E  [0300224E] = 00,04 if A3,A4
+mov   r5,0x4E                   ; 0801AA60
+ldrh  r0,[r5,r4]                ; 0801AA62  width
+add   r0,0x1                    ; 0801AA64
+lsl   r0,r0,0x10                ; 0801AA66
+lsr   r0,r0,0x10                ; 0801AA68
+ldr   r3,=0xFFFE                ; 0801AA6A
+and   r0,r3                     ; 0801AA6C
+strh  r0,[r5,r4]                ; 0801AA6E  add 1 to width if odd
+mov   r0,0x52                   ; 0801AA70
+add   r0,r0,r4                  ; 0801AA72
+mov   r12,r0                    ; 0801AA74
+ldrh  r0,[r0]                   ; 0801AA76  height
+add   r0,0x1                    ; 0801AA78
+lsl   r0,r0,0x10                ; 0801AA7A
+lsr   r0,r0,0x10                ; 0801AA7C
+and   r0,r3                     ; 0801AA7E
+mov   r3,r12                    ; 0801AA80
+strh  r0,[r3]                   ; 0801AA82  add 1 to height if odd
+mov   r0,r4                     ; 0801AA84
+bl    Sub0801A070               ; 0801AA86  Object processing main, slope=0, no relative Y threshold
+pop   {r4-r5}                   ; 0801AA8A
+pop   {r0}                      ; 0801AA8C
+bx    r0                        ; 0801AA8E
+.pool                           ; 0801AA90
+
+ObjInitA0_A2:
+; object A0-A2 init
+push  {r4,lr}                   ; 0801AA94
+lsl   r1,r1,0x10                ; 0801AA96
+lsr   r1,r1,0x10                ; 0801AA98
+lsl   r2,r2,0x18                ; 0801AA9A
+lsr   r2,r2,0x18                ; 0801AA9C
+mov   r3,0x42                   ; 0801AA9E
+add   r3,r3,r0                  ; 0801AAA0  r3 = [03007240]+42 (0300224E)
+mov   r12,r3                    ; 0801AAA2
+ldrh  r4,[r3]                   ; 0801AAA4  r4 = object ID
+mov   r3,0xF                    ; 0801AAA6
+and   r3,r4                     ; 0801AAA8
+lsl   r3,r3,0x1                 ; 0801AAAA  (objID-A0)*2
+mov   r4,r12                    ; 0801AAAC
+strh  r3,[r4]                   ; 0801AAAE  [0300224E] = (objID-A0)*2
+mov   r3,0x4E                   ; 0801AAB0
+add   r3,r3,r0                  ; 0801AAB2  width
+mov   r12,r3                    ; 0801AAB4
+ldrh  r4,[r3]                   ; 0801AAB6
+add   r4,0x1                    ; 0801AAB8
+lsl   r4,r4,0x10                ; 0801AABA
+ldr   r3,=0xFFFE0000            ; 0801AABC
+and   r3,r4                     ; 0801AABE
+lsr   r3,r3,0x10                ; 0801AAC0
+mov   r4,r12                    ; 0801AAC2
+strh  r3,[r4]                   ; 0801AAC4  add 1 to width if odd
+bl    Sub0801A070               ; 0801AAC6  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801AACA
+pop   {r0}                      ; 0801AACC
+bx    r0                        ; 0801AACE
+.pool                           ; 0801AAD0
+
+ObjInit9F:
+; object 9F init
+push  {r4,lr}                   ; 0801AAD4
+lsl   r1,r1,0x10                ; 0801AAD6
+lsr   r1,r1,0x10                ; 0801AAD8
+lsl   r2,r2,0x18                ; 0801AADA
+lsr   r2,r2,0x18                ; 0801AADC
+mov   r4,r0                     ; 0801AADE
+add   r4,0x52                   ; 0801AAE0
+mov   r3,0x2                    ; 0801AAE2
+strh  r3,[r4]                   ; 0801AAE4  set height to 2
+mov   r3,0x4E                   ; 0801AAE6
+add   r3,r3,r0                  ; 0801AAE8
+mov   r12,r3                    ; 0801AAEA
+ldrh  r4,[r3]                   ; 0801AAEC  width
+add   r4,0x1                    ; 0801AAEE
+lsl   r4,r4,0x10                ; 0801AAF0
+ldr   r3,=0xFFFE0000            ; 0801AAF2
+and   r3,r4                     ; 0801AAF4
+lsr   r3,r3,0x10                ; 0801AAF6
+mov   r4,r12                    ; 0801AAF8
+strh  r3,[r4]                   ; 0801AAFA  add 1 to width if odd
+bl    Sub0801A070               ; 0801AAFC  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801AB00
+pop   {r0}                      ; 0801AB02
+bx    r0                        ; 0801AB04
+.pool                           ; 0801AB06
+
+ObjInit9E:
+; object 9E init
+push  {lr}                      ; 0801AB0C
+lsl   r1,r1,0x10                ; 0801AB0E
+lsr   r1,r1,0x10                ; 0801AB10
+lsl   r2,r2,0x18                ; 0801AB12
+lsr   r2,r2,0x18                ; 0801AB14
+bl    Sub0801A070               ; 0801AB16  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801AB1A
+bx    r0                        ; 0801AB1C
+.pool                           ; 0801AB1E
+
+ObjInit9D:
+; object 9D init
+push  {lr}                      ; 0801AB20
+lsl   r1,r1,0x10                ; 0801AB22
+lsr   r1,r1,0x10                ; 0801AB24
+lsl   r2,r2,0x18                ; 0801AB26
+lsr   r2,r2,0x18                ; 0801AB28
+bl    Sub0801A070               ; 0801AB2A  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801AB2E
+bx    r0                        ; 0801AB30
+.pool                           ; 0801AB32
+
+ObjInit9B_9C:
+; object 9B-9C init
+push  {r4-r7,lr}                ; 0801AB34
+mov   r6,r0                     ; 0801AB36
+mov   r4,r1                     ; 0801AB38
+mov   r5,r2                     ; 0801AB3A
+lsl   r4,r4,0x10                ; 0801AB3C
+lsr   r4,r4,0x10                ; 0801AB3E
+lsl   r5,r5,0x18                ; 0801AB40
+lsr   r5,r5,0x18                ; 0801AB42
+mov   r7,r6                     ; 0801AB44
+add   r7,0x42                   ; 0801AB46
+bl    GenRandomByte             ; 0801AB48  Generate pseudo-random byte
+lsl   r0,r0,0x10                ; 0801AB4C
+mov   r2,0x3                    ; 0801AB4E
+mov   r1,0xC0                   ; 0801AB50
+lsl   r1,r1,0xA                 ; 0801AB52  30000
+and   r1,r0                     ; 0801AB54
+lsr   r1,r1,0x10                ; 0801AB56  random 2-bit value
+strh  r1,[r7]                   ; 0801AB58  [0300224E] = random 2-bit value
+eor   r1,r2                     ; 0801AB5A
+lsl   r1,r1,0x1                 ; 0801AB5C
+strh  r1,[r6,0x3A]              ; 0801AB5E  [03002246] = same random 2-bit value with bits inverted, << 1
+mov   r0,r6                     ; 0801AB60
+mov   r1,r4                     ; 0801AB62
+mov   r2,r5                     ; 0801AB64
+bl    Sub0801A070               ; 0801AB66  Object processing main, slope=0, no relative Y threshold
+pop   {r4-r7}                   ; 0801AB6A
+pop   {r0}                      ; 0801AB6C
+bx    r0                        ; 0801AB6E
+
+ObjInit9A:
+; object 9A init
+push  {r4-r7,lr}                ; 0801AB70
+mov   r7,r0                     ; 0801AB72
+mov   r4,r1                     ; 0801AB74
+mov   r5,r2                     ; 0801AB76
+lsl   r4,r4,0x10                ; 0801AB78
+lsr   r4,r4,0x10                ; 0801AB7A
+lsl   r5,r5,0x18                ; 0801AB7C
+lsr   r5,r5,0x18                ; 0801AB7E
+mov   r1,r7                     ; 0801AB80
+add   r1,0x4E                   ; 0801AB82
+mov   r0,0x4                    ; 0801AB84
+strh  r0,[r1]                   ; 0801AB86  set width to 4
+mov   r6,r7                     ; 0801AB88
+add   r6,0x48                   ; 0801AB8A
+ldrh  r3,[r6]                   ; 0801AB8C  tile YXyx
+ldr   r1,=0xF0F0                ; 0801AB8E
+and   r1,r3                     ; 0801AB90
+ldr   r2,=0x0F0F                ; 0801AB92
+mov   r0,r2                     ; 0801AB94
+and   r0,r3                     ; 0801AB96
+sub   r0,0x2                    ; 0801AB98  subtract 2 from x
+and   r0,r2                     ; 0801AB9A
+orr   r0,r1                     ; 0801AB9C
+strh  r0,[r6]                   ; 0801AB9E
+bl    GenRandomByte             ; 0801ABA0  Generate pseudo-random byte
+lsl   r0,r0,0x10                ; 0801ABA4
+mov   r1,0xC0                   ; 0801ABA6
+lsl   r1,r1,0xA                 ; 0801ABA8  30000
+and   r1,r0                     ; 0801ABAA
+lsr   r1,r1,0x10                ; 0801ABAC  random 2-bit value
+mov   r0,r7                     ; 0801ABAE
+add   r0,0x42                   ; 0801ABB0
+strh  r1,[r0]                   ; 0801ABB2  [0300224E] = random 2-bit value
+lsl   r1,r1,0x1                 ; 0801ABB4
+strh  r1,[r7,0x3A]              ; 0801ABB6  [03002246] = same random 2-bit value <<1
+mov   r0,r7                     ; 0801ABB8
+mov   r1,r4                     ; 0801ABBA
+mov   r2,r5                     ; 0801ABBC
+bl    Sub0801A070               ; 0801ABBE  Object processing main, slope=0, no relative Y threshold
+pop   {r4-r7}                   ; 0801ABC2
+pop   {r0}                      ; 0801ABC4
+bx    r0                        ; 0801ABC6
+.pool                           ; 0801ABC8
+
+ObjInit99:
+; object 99 init
+push  {r4-r6,lr}                ; 0801ABD0
+mov   r6,r8                     ; 0801ABD2
+push  {r6}                      ; 0801ABD4
+lsl   r1,r1,0x10                ; 0801ABD6
+lsr   r1,r1,0x10                ; 0801ABD8
+lsl   r2,r2,0x18                ; 0801ABDA
+lsr   r2,r2,0x18                ; 0801ABDC
+mov   r4,r0                     ; 0801ABDE
+add   r4,0x4E                   ; 0801ABE0
+mov   r3,0x3                    ; 0801ABE2
+strh  r3,[r4]                   ; 0801ABE4  set width to 3
+mov   r3,0x48                   ; 0801ABE6
+add   r3,r3,r0                  ; 0801ABE8
+mov   r8,r3                     ; 0801ABEA
+ldrh  r6,[r3]                   ; 0801ABEC  tile YXyx
+ldr   r4,=0xF0F0                ; 0801ABEE
+and   r4,r6                     ; 0801ABF0
+ldr   r5,=0x0F0F                ; 0801ABF2
+mov   r3,r5                     ; 0801ABF4
+and   r3,r6                     ; 0801ABF6
+sub   r3,0x1                    ; 0801ABF8  subtract 1 from x
+and   r3,r5                     ; 0801ABFA
+orr   r3,r4                     ; 0801ABFC
+mov   r4,r8                     ; 0801ABFE
+strh  r3,[r4]                   ; 0801AC00
+bl    Sub0801A070               ; 0801AC02  Object processing main, slope=0, no relative Y threshold
+pop   {r3}                      ; 0801AC06
+mov   r8,r3                     ; 0801AC08
+pop   {r4-r6}                   ; 0801AC0A
+pop   {r0}                      ; 0801AC0C
+bx    r0                        ; 0801AC0E
+.pool                           ; 0801AC10
+
+ObjInit98:
+; object 98 init
+push  {lr}                      ; 0801AC18
+lsl   r1,r1,0x10                ; 0801AC1A
+lsr   r1,r1,0x10                ; 0801AC1C
+lsl   r2,r2,0x18                ; 0801AC1E
+lsr   r2,r2,0x18                ; 0801AC20
+bl    Sub0801A070               ; 0801AC22  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801AC26
+bx    r0                        ; 0801AC28
+.pool                           ; 0801AC2A
+
+ObjInit94_97:
+; object 94-97 init
+push  {r4-r5,lr}                ; 0801AC2C
+lsl   r1,r1,0x10                ; 0801AC2E
+lsr   r1,r1,0x10                ; 0801AC30
+lsl   r2,r2,0x18                ; 0801AC32
+lsr   r2,r2,0x18                ; 0801AC34
+mov   r3,0x4E                   ; 0801AC36  r3 = [03007240]+4E (0300225A)
+add   r3,r3,r0                  ; 0801AC38
+mov   r12,r3                    ; 0801AC3A
+ldrh  r3,[r3]                   ; 0801AC3C  width
+add   r3,0x1                    ; 0801AC3E
+ldr   r4,=0xFFFE                ; 0801AC40
+and   r3,r4                     ; 0801AC42
+mov   r5,r12                    ; 0801AC44
+strh  r3,[r5]                   ; 0801AC46  add 1 to width if odd
+mov   r3,0x52                   ; 0801AC48
+add   r3,r3,r0                  ; 0801AC4A  r3 = [03007240]+52 (0300225E)
+mov   r12,r3                    ; 0801AC4C
+ldrh  r3,[r3]                   ; 0801AC4E
+add   r3,0x1                    ; 0801AC50
+and   r3,r4                     ; 0801AC52
+mov   r4,r12                    ; 0801AC54
+strh  r3,[r4]                   ; 0801AC56  add 1 to width if odd
+bl    Sub0801A070               ; 0801AC58  Object processing main, slope=0, no relative Y threshold
+pop   {r4-r5}                   ; 0801AC5C
+pop   {r0}                      ; 0801AC5E
+bx    r0                        ; 0801AC60
+.pool                           ; 0801AC62
+
+ObjInit93:
+; object 93 init
+push  {r4-r6,lr}                ; 0801AC68
+mov   r6,r8                     ; 0801AC6A
+push  {r6}                      ; 0801AC6C
+lsl   r1,r1,0x10                ; 0801AC6E
+lsr   r1,r1,0x10                ; 0801AC70
+lsl   r2,r2,0x18                ; 0801AC72
+lsr   r2,r2,0x18                ; 0801AC74
+mov   r4,r0                     ; 0801AC76
+add   r4,0x4E                   ; 0801AC78
+mov   r3,0x4                    ; 0801AC7A
+strh  r3,[r4]                   ; 0801AC7C  set width to 4
+mov   r3,0x48                   ; 0801AC7E
+add   r3,r3,r0                  ; 0801AC80
+mov   r8,r3                     ; 0801AC82
+ldrh  r6,[r3]                   ; 0801AC84  tile YXyx
+ldr   r4,=0xF0F0                ; 0801AC86
+and   r4,r6                     ; 0801AC88  Y0y0
+ldr   r5,=0x0F0F                ; 0801AC8A
+mov   r3,r5                     ; 0801AC8C
+and   r3,r6                     ; 0801AC8E  0X0x
+sub   r3,0x1                    ; 0801AC90
+and   r3,r5                     ; 0801AC92  0X0x with x-1
+orr   r3,r4                     ; 0801AC94
+mov   r4,r8                     ; 0801AC96
+strh  r3,[r4]                   ; 0801AC98  store YXyx with x-1
+bl    Sub0801A070               ; 0801AC9A  Object processing main, slope=0, no relative Y threshold
+pop   {r3}                      ; 0801AC9E
+mov   r8,r3                     ; 0801ACA0
+pop   {r4-r6}                   ; 0801ACA2
+pop   {r0}                      ; 0801ACA4
+bx    r0                        ; 0801ACA6
+.pool                           ; 0801ACA8
+
+ObjInit91_92:
+; object 91-92 init
+push  {r4-r6,lr}                ; 0801ACB0
+mov   r6,r8                     ; 0801ACB2
+push  {r6}                      ; 0801ACB4
+lsl   r1,r1,0x10                ; 0801ACB6
+lsr   r1,r1,0x10                ; 0801ACB8
+lsl   r2,r2,0x18                ; 0801ACBA
+lsr   r2,r2,0x18                ; 0801ACBC
+mov   r4,r0                     ; 0801ACBE
+add   r4,0x4E                   ; 0801ACC0
+mov   r3,0x3                    ; 0801ACC2
+strh  r3,[r4]                   ; 0801ACC4  set width to 3
+mov   r3,0x48                   ; 0801ACC6
+add   r3,r3,r0                  ; 0801ACC8
+mov   r8,r3                     ; 0801ACCA
+ldrh  r6,[r3]                   ; 0801ACCC  tile YXyx
+ldr   r4,=0xF0F0                ; 0801ACCE
+and   r4,r6                     ; 0801ACD0
+ldr   r5,=0x0F0F                ; 0801ACD2
+mov   r3,r5                     ; 0801ACD4
+and   r3,r6                     ; 0801ACD6
+sub   r3,0x1                    ; 0801ACD8  subtract 1 from x
+and   r3,r5                     ; 0801ACDA
+orr   r3,r4                     ; 0801ACDC
+mov   r4,r8                     ; 0801ACDE
+strh  r3,[r4]                   ; 0801ACE0
+bl    Sub0801A070               ; 0801ACE2  Object processing main, slope=0, no relative Y threshold
+pop   {r3}                      ; 0801ACE6
+mov   r8,r3                     ; 0801ACE8
+pop   {r4-r6}                   ; 0801ACEA
+pop   {r0}                      ; 0801ACEC
+bx    r0                        ; 0801ACEE
+.pool                           ; 0801ACF0
+
+ObjInit90:
+; object 90 init
+push  {r4,lr}                   ; 0801ACF8
+lsl   r1,r1,0x10                ; 0801ACFA
+lsr   r1,r1,0x10                ; 0801ACFC
+lsl   r2,r2,0x18                ; 0801ACFE
+lsr   r2,r2,0x18                ; 0801AD00
+mov   r4,r0                     ; 0801AD02
+add   r4,0x46                   ; 0801AD04
+ldr   r3,=0x7FFF                ; 0801AD06
+strh  r3,[r4]                   ; 0801AD08  disable relative Y threshold
+sub   r4,0x2                    ; 0801AD0A  +44
+ldr   r3,=0xFFFF                ; 0801AD0C
+strh  r3,[r4]                   ; 0801AD0E  set slope to -1
+bl    Sub08019DA8               ; 0801AD10  Object processing main
+pop   {r4}                      ; 0801AD14
+pop   {r0}                      ; 0801AD16
+bx    r0                        ; 0801AD18
+.pool                           ; 0801AD1A
+
+ObjInit8F:
+; object 8F init
+push  {r4,lr}                   ; 0801AD24
+lsl   r1,r1,0x10                ; 0801AD26
+lsr   r1,r1,0x10                ; 0801AD28
+lsl   r2,r2,0x18                ; 0801AD2A
+lsr   r2,r2,0x18                ; 0801AD2C
+mov   r4,r0                     ; 0801AD2E
+add   r4,0x46                   ; 0801AD30
+ldr   r3,=0x7FFF                ; 0801AD32
+strh  r3,[r4]                   ; 0801AD34  disable relative Y threshold
+sub   r4,0x2                    ; 0801AD36  +44
+ldr   r3,=0xFFFF                ; 0801AD38
+strh  r3,[r4]                   ; 0801AD3A  set slope to -1
+bl    Sub08019DA8               ; 0801AD3C  Object processing main
+pop   {r4}                      ; 0801AD40
+pop   {r0}                      ; 0801AD42
+bx    r0                        ; 0801AD44
+.pool                           ; 0801AD46
+
+ObjInit8E:
+; object 8E init
+push  {r4,lr}                   ; 0801AD50
+lsl   r1,r1,0x10                ; 0801AD52
+lsr   r1,r1,0x10                ; 0801AD54
+lsl   r2,r2,0x18                ; 0801AD56
+lsr   r2,r2,0x18                ; 0801AD58
+mov   r3,0x4E                   ; 0801AD5A
+add   r3,r3,r0                  ; 0801AD5C  [03007240]+4E (0300225A)
+mov   r12,r3                    ; 0801AD5E
+ldrh  r4,[r3]                   ; 0801AD60  width
+add   r4,0x1                    ; 0801AD62
+lsl   r4,r4,0x10                ; 0801AD64
+ldr   r3,=0xFFFE0000            ; 0801AD66
+and   r3,r4                     ; 0801AD68
+lsr   r3,r3,0x10                ; 0801AD6A
+mov   r4,r12                    ; 0801AD6C
+strh  r3,[r4]                   ; 0801AD6E  add 1 to width if odd
+mov   r4,r0                     ; 0801AD70
+add   r4,0x52                   ; 0801AD72
+mov   r3,0x2                    ; 0801AD74
+strh  r3,[r4]                   ; 0801AD76  set height to 2
+bl    Sub0801A070               ; 0801AD78  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801AD7C
+pop   {r0}                      ; 0801AD7E
+bx    r0                        ; 0801AD80
+.pool                           ; 0801AD82
+
+ObjInit8D:
+; object 8D init
+push  {lr}                      ; 0801AD88
+lsl   r1,r1,0x10                ; 0801AD8A
+lsr   r1,r1,0x10                ; 0801AD8C
+lsl   r2,r2,0x18                ; 0801AD8E
+lsr   r2,r2,0x18                ; 0801AD90
+bl    Sub0801A070               ; 0801AD92  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801AD96
+bx    r0                        ; 0801AD98
+.pool                           ; 0801AD9A
+
+ObjInit8C:
+; object 8C init
+push  {r4,lr}                   ; 0801AD9C
+lsl   r1,r1,0x10                ; 0801AD9E
+lsr   r1,r1,0x10                ; 0801ADA0
+lsl   r2,r2,0x18                ; 0801ADA2
+lsr   r2,r2,0x18                ; 0801ADA4
+mov   r3,0x52                   ; 0801ADA6
+add   r3,r3,r0                  ; 0801ADA8
+mov   r12,r3                    ; 0801ADAA
+mov   r3,0x3                    ; 0801ADAC
+mov   r4,r12                    ; 0801ADAE
+strh  r3,[r4]                   ; 0801ADB0  set height to 3
+bl    Sub0801A070               ; 0801ADB2  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801ADB6
+pop   {r0}                      ; 0801ADB8
+bx    r0                        ; 0801ADBA
+
+ObjInit89:
+; object 89 init
+push  {lr}                      ; 0801ADBC
+lsl   r1,r1,0x10                ; 0801ADBE
+lsr   r1,r1,0x10                ; 0801ADC0
+lsl   r2,r2,0x18                ; 0801ADC2
+lsr   r2,r2,0x18                ; 0801ADC4
+bl    Sub0801A070               ; 0801ADC6  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801ADCA
+bx    r0                        ; 0801ADCC
+.pool                           ; 0801ADCE
+
+ObjInit87_88:
+; object 87-88 init
+push  {r4-r5,lr}                ; 0801ADD0
+lsl   r1,r1,0x10                ; 0801ADD2
+lsr   r1,r1,0x10                ; 0801ADD4
+lsl   r2,r2,0x18                ; 0801ADD6
+lsr   r2,r2,0x18                ; 0801ADD8
+mov   r3,0x46                   ; 0801ADDA
+add   r3,r3,r0                  ; 0801ADDC
+mov   r12,r3                    ; 0801ADDE
+mov   r4,0x0                    ; 0801ADE0
+mov   r3,0x2                    ; 0801ADE2
+mov   r5,r12                    ; 0801ADE4
+strh  r3,[r5]                   ; 0801ADE6  set relative Y threshold to 2
+mov   r3,r0                     ; 0801ADE8
+add   r3,0x44                   ; 0801ADEA
+strh  r4,[r3]                   ; 0801ADEC  clear slope
+bl    Sub08019DA8               ; 0801ADEE  Object processing main
+pop   {r4-r5}                   ; 0801ADF2
+pop   {r0}                      ; 0801ADF4
+bx    r0                        ; 0801ADF6
+
+ObjInit86:
+; object 86 init
+push  {r4-r5,lr}                ; 0801ADF8
+mov   r4,r0                     ; 0801ADFA
+lsl   r1,r1,0x10                ; 0801ADFC
+lsr   r5,r1,0x10                ; 0801ADFE
+lsl   r2,r2,0x18                ; 0801AE00
+lsr   r2,r2,0x18                ; 0801AE02
+add   r0,0x4E                   ; 0801AE04
+ldrh  r0,[r0]                   ; 0801AE06
+mov   r1,0x52                   ; 0801AE08
+add   r1,r1,r4                  ; 0801AE0A
+mov   r12,r1                    ; 0801AE0C
+ldrh  r3,[r1]                   ; 0801AE0E
+sub   r0,r3,r0                  ; 0801AE10
+lsl   r0,r0,0x10                ; 0801AE12
+lsr   r3,r0,0x10                ; 0801AE14
+ldr   r1,=0xFFFF0000            ; 0801AE16
+add   r0,r0,r1                  ; 0801AE18
+ldr   r1,=0x7FFE0000            ; 0801AE1A
+cmp   r0,r1                     ; 0801AE1C
+bls   @@Code0801AE22            ; 0801AE1E
+mov   r3,0x1                    ; 0801AE20
+@@Code0801AE22:
+mov   r0,r12                    ; 0801AE22
+strh  r3,[r0]                   ; 0801AE24
+mov   r0,r4                     ; 0801AE26
+mov   r1,r5                     ; 0801AE28
+bl    Sub0801A070               ; 0801AE2A  Object processing main, slope=0, no relative Y threshold
+pop   {r4-r5}                   ; 0801AE2E
+pop   {r0}                      ; 0801AE30
+bx    r0                        ; 0801AE32
+.pool                           ; 0801AE34
+
+ObjInit85:
+; object 85 init
+push  {lr}                      ; 0801AE3C
+lsl   r1,r1,0x10                ; 0801AE3E
+lsr   r1,r1,0x10                ; 0801AE40
+lsl   r2,r2,0x18                ; 0801AE42
+lsr   r2,r2,0x18                ; 0801AE44
+bl    Sub0801A070               ; 0801AE46  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801AE4A
+bx    r0                        ; 0801AE4C
+.pool                           ; 0801AE4E
+
+ObjInit84:
+; object 84 init
+push  {r4,lr}                   ; 0801AE50
+lsl   r1,r1,0x10                ; 0801AE52
+lsr   r1,r1,0x10                ; 0801AE54
+lsl   r2,r2,0x18                ; 0801AE56
+lsr   r2,r2,0x18                ; 0801AE58
+mov   r4,r0                     ; 0801AE5A
+add   r4,0x44                   ; 0801AE5C
+ldr   r3,=0xFFFF                ; 0801AE5E
+strh  r3,[r4]                   ; 0801AE60  set slope to -1
+bl    Sub0801A04C               ; 0801AE62  Object processing main, no relative Y threshold
+pop   {r4}                      ; 0801AE66
+pop   {r0}                      ; 0801AE68
+bx    r0                        ; 0801AE6A
+.pool                           ; 0801AE6C
+
+ObjInit82_83:
+; object 82-83 init
+push  {lr}                      ; 0801AE70
+lsl   r1,r1,0x10                ; 0801AE72
+lsr   r1,r1,0x10                ; 0801AE74
+lsl   r2,r2,0x18                ; 0801AE76
+lsr   r2,r2,0x18                ; 0801AE78
+bl    Sub0801A070               ; 0801AE7A  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801AE7E
+bx    r0                        ; 0801AE80
+.pool                           ; 0801AE82
+
+ObjInit81:
+; object 81 init
+push  {r4-r5,lr}                ; 0801AE84
+mov   r3,r0                     ; 0801AE86
+lsl   r1,r1,0x10                ; 0801AE88
+lsr   r4,r1,0x10                ; 0801AE8A
+lsl   r2,r2,0x18                ; 0801AE8C
+lsr   r2,r2,0x18                ; 0801AE8E
+mov   r1,r3                     ; 0801AE90
+add   r1,0x46                   ; 0801AE92
+ldr   r0,=0x7FFF                ; 0801AE94
+strh  r0,[r1]                   ; 0801AE96
+sub   r1,0x2                    ; 0801AE98
+ldr   r0,=0xFFFF                ; 0801AE9A
+strh  r0,[r1]                   ; 0801AE9C
+mov   r0,r3                     ; 0801AE9E
+add   r0,0x4E                   ; 0801AEA0
+ldrh  r1,[r0]                   ; 0801AEA2
+mov   r5,0x0                    ; 0801AEA4
+ldsh  r0,[r0,r5]                ; 0801AEA6
+cmp   r0,0x0                    ; 0801AEA8
+bge   @@Code0801AEB8            ; 0801AEAA
+mvn   r0,r1                     ; 0801AEAC
+lsl   r0,r0,0x10                ; 0801AEAE
+mov   r1,0x80                   ; 0801AEB0
+lsl   r1,r1,0x9                 ; 0801AEB2
+add   r0,r0,r1                  ; 0801AEB4
+lsr   r1,r0,0x10                ; 0801AEB6
+@@Code0801AEB8:
+mov   r0,r3                     ; 0801AEB8
+add   r0,0x52                   ; 0801AEBA
+strh  r1,[r0]                   ; 0801AEBC
+mov   r0,r3                     ; 0801AEBE
+mov   r1,r4                     ; 0801AEC0
+bl    Sub08019DA8               ; 0801AEC2  Object processing main
+pop   {r4-r5}                   ; 0801AEC6
+pop   {r0}                      ; 0801AEC8
+bx    r0                        ; 0801AECA
+.pool                           ; 0801AECC
+
+ObjInit80:
+; object 80 init
+push  {r4-r5,lr}                ; 0801AED4
+mov   r4,r0                     ; 0801AED6
+lsl   r1,r1,0x10                ; 0801AED8
+lsr   r1,r1,0x10                ; 0801AEDA
+lsl   r2,r2,0x18                ; 0801AEDC
+lsr   r2,r2,0x18                ; 0801AEDE
+add   r0,0x4E                   ; 0801AEE0
+ldrh  r3,[r0]                   ; 0801AEE2
+mov   r5,0x0                    ; 0801AEE4
+ldsh  r0,[r0,r5]                ; 0801AEE6
+cmp   r0,0x0                    ; 0801AEE8
+bge   @@Code0801AEF8            ; 0801AEEA
+mvn   r0,r3                     ; 0801AEEC
+lsl   r0,r0,0x10                ; 0801AEEE
+mov   r3,0x80                   ; 0801AEF0
+lsl   r3,r3,0x9                 ; 0801AEF2
+add   r0,r0,r3                  ; 0801AEF4
+lsr   r3,r0,0x10                ; 0801AEF6
+@@Code0801AEF8:
+mov   r0,r4                     ; 0801AEF8
+add   r0,0x52                   ; 0801AEFA
+strh  r3,[r0]                   ; 0801AEFC
+mov   r0,r4                     ; 0801AEFE
+bl    Sub0801A070               ; 0801AF00  Object processing main, slope=0, no relative Y threshold
+pop   {r4-r5}                   ; 0801AF04
+pop   {r0}                      ; 0801AF06
+bx    r0                        ; 0801AF08
+.pool                           ; 0801AF0A
+
+ObjInit7F:
+; object 7F init
+push  {r4,lr}                   ; 0801AF0C
+mov   r4,r0                     ; 0801AF0E
+lsl   r1,r1,0x10                ; 0801AF10
+lsr   r1,r1,0x10                ; 0801AF12
+lsl   r2,r2,0x18                ; 0801AF14
+lsr   r2,r2,0x18                ; 0801AF16
+mov   r3,r4                     ; 0801AF18
+add   r3,0x4E                   ; 0801AF1A
+ldrh  r0,[r3]                   ; 0801AF1C  width
+cmp   r0,0x1                    ; 0801AF1E
+bhi   @@Code0801AF26            ; 0801AF20
+mov   r0,0x2                    ; 0801AF22
+strh  r0,[r3]                   ; 0801AF24  if width <= 1, width = 2
+@@Code0801AF26:
+mov   r3,r4                     ; 0801AF26
+add   r3,0x52                   ; 0801AF28
+ldrh  r0,[r3]                   ; 0801AF2A  height
+cmp   r0,0x1                    ; 0801AF2C
+bhi   @@Code0801AF34            ; 0801AF2E
+mov   r0,0x2                    ; 0801AF30
+strh  r0,[r3]                   ; 0801AF32  if height <= 1, height = 2
+@@Code0801AF34:
+mov   r0,r4                     ; 0801AF34
+bl    Sub0801A070               ; 0801AF36  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801AF3A
+pop   {r0}                      ; 0801AF3C
+bx    r0                        ; 0801AF3E
+
+ObjInit7D:
+; object 7D init
+push  {r4,lr}                   ; 0801AF40
+lsl   r1,r1,0x10                ; 0801AF42
+lsr   r1,r1,0x10                ; 0801AF44
+lsl   r2,r2,0x18                ; 0801AF46
+lsr   r2,r2,0x18                ; 0801AF48
+mov   r3,0x52                   ; 0801AF4A
+add   r3,r3,r0                  ; 0801AF4C
+mov   r12,r3                    ; 0801AF4E
+mov   r3,0x2                    ; 0801AF50
+mov   r4,r12                    ; 0801AF52
+strh  r3,[r4]                   ; 0801AF54
+bl    Sub0801A070               ; 0801AF56  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801AF5A
+pop   {r0}                      ; 0801AF5C
+bx    r0                        ; 0801AF5E
+
+ObjInit7C:
+; object 7C init
+push  {r4-r5,lr}                ; 0801AF60
+mov   r4,r0                     ; 0801AF62
+lsl   r1,r1,0x10                ; 0801AF64
+lsr   r1,r1,0x10                ; 0801AF66
+lsl   r2,r2,0x18                ; 0801AF68
+lsr   r2,r2,0x18                ; 0801AF6A
+add   r0,0x4E                   ; 0801AF6C
+ldrh  r3,[r0]                   ; 0801AF6E
+mov   r5,0x0                    ; 0801AF70
+ldsh  r0,[r0,r5]                ; 0801AF72
+cmp   r0,0x0                    ; 0801AF74
+bge   @@Code0801AF84            ; 0801AF76
+mvn   r0,r3                     ; 0801AF78
+lsl   r0,r0,0x10                ; 0801AF7A
+mov   r3,0x80                   ; 0801AF7C
+lsl   r3,r3,0x9                 ; 0801AF7E
+add   r0,r0,r3                  ; 0801AF80
+lsr   r3,r0,0x10                ; 0801AF82
+@@Code0801AF84:
+mov   r0,r4                     ; 0801AF84
+add   r0,0x52                   ; 0801AF86
+strh  r3,[r0]                   ; 0801AF88
+mov   r0,r4                     ; 0801AF8A
+bl    Sub0801A070               ; 0801AF8C  Object processing main, slope=0, no relative Y threshold
+pop   {r4-r5}                   ; 0801AF90
+pop   {r0}                      ; 0801AF92
+bx    r0                        ; 0801AF94
+.pool                           ; 0801AF96
+
+ObjInit7B:
+; object 7B init
+push  {r4,lr}                   ; 0801AF98
+lsl   r1,r1,0x10                ; 0801AF9A
+lsr   r1,r1,0x10                ; 0801AF9C
+lsl   r2,r2,0x18                ; 0801AF9E
+lsr   r2,r2,0x18                ; 0801AFA0
+mov   r4,r0                     ; 0801AFA2
+add   r4,0x44                   ; 0801AFA4
+ldr   r3,=0xFFFF                ; 0801AFA6
+strh  r3,[r4]                   ; 0801AFA8  set slope to -1
+bl    Sub0801A04C               ; 0801AFAA  Object processing main, no relative Y threshold
+pop   {r4}                      ; 0801AFAE
+pop   {r0}                      ; 0801AFB0
+bx    r0                        ; 0801AFB2
+.pool                           ; 0801AFB4
+
+ObjInit7A:
+; object 7A init
+push  {lr}                      ; 0801AFB8
+lsl   r1,r1,0x10                ; 0801AFBA
+lsr   r1,r1,0x10                ; 0801AFBC
+lsl   r2,r2,0x18                ; 0801AFBE
+lsr   r2,r2,0x18                ; 0801AFC0
+bl    Sub0801A070               ; 0801AFC2  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801AFC6
+bx    r0                        ; 0801AFC8
+.pool                           ; 0801AFCA
+
+ObjInit79:
+; object 79 init (same as object 78 init)
+push  {lr}                      ; 0801AFCC
+mov   r12,r0                    ; 0801AFCE
+lsl   r1,r1,0x10                ; 0801AFD0
+lsr   r1,r1,0x10                ; 0801AFD2
+lsl   r2,r2,0x18                ; 0801AFD4
+lsr   r2,r2,0x18                ; 0801AFD6
+mov   r3,r12                    ; 0801AFD8
+add   r3,0x52                   ; 0801AFDA  r3 = [03007240]+52 (0300225E)
+mov   r0,0x2                    ; 0801AFDC
+strh  r0,[r3]                   ; 0801AFDE  set object height to 2
+sub   r3,0xC                    ; 0801AFE0  r3 = [03007240]+46 (03002252)
+ldr   r0,=0x7FFF                ; 0801AFE2
+strh  r0,[r3]                   ; 0801AFE4  no relative Y threshold
+sub   r3,0x2                    ; 0801AFE6  r3 = [03007240]+44 (03002250)
+ldr   r0,=0xFFFF                ; 0801AFE8  set slope to -1
+strh  r0,[r3]                   ; 0801AFEA
+mov   r0,r12                    ; 0801AFEC
+bl    Sub08019DA8               ; 0801AFEE  Object processing main
+pop   {r0}                      ; 0801AFF2
+bx    r0                        ; 0801AFF4
+.pool                           ; 0801AFF6
+
+ObjInit78:
+; object 78 init
+push  {lr}                      ; 0801B000
+mov   r12,r0                    ; 0801B002
+lsl   r1,r1,0x10                ; 0801B004
+lsr   r1,r1,0x10                ; 0801B006
+lsl   r2,r2,0x18                ; 0801B008
+lsr   r2,r2,0x18                ; 0801B00A
+mov   r3,r12                    ; 0801B00C
+add   r3,0x52                   ; 0801B00E  r3 = [03007240]+52 (0300225E)
+mov   r0,0x2                    ; 0801B010
+strh  r0,[r3]                   ; 0801B012  set object height to 2
+sub   r3,0xC                    ; 0801B014  r3 = [03007240]+46 (03002252)
+ldr   r0,=0x7FFF                ; 0801B016
+strh  r0,[r3]                   ; 0801B018  no relative Y threshold
+sub   r3,0x2                    ; 0801B01A  r3 = [03007240]+44 (03002250)
+ldr   r0,=0xFFFF                ; 0801B01C  set slope to -1
+strh  r0,[r3]                   ; 0801B01E
+mov   r0,r12                    ; 0801B020
+bl    Sub08019DA8               ; 0801B022  Object processing main
+pop   {r0}                      ; 0801B026
+bx    r0                        ; 0801B028
+.pool                           ; 0801B02A
+
+ObjInit77:
+; object 77 init
+push  {lr}                      ; 0801B034
+lsl   r1,r1,0x10                ; 0801B036
+lsr   r1,r1,0x10                ; 0801B038
+lsl   r2,r2,0x18                ; 0801B03A
+lsr   r2,r2,0x18                ; 0801B03C
+bl    Sub0801A070               ; 0801B03E  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801B042
+bx    r0                        ; 0801B044
+.pool                           ; 0801B046
+
+ObjInit76:
+; object 76 init
+push  {r4,lr}                   ; 0801B048
+lsl   r1,r1,0x10                ; 0801B04A
+lsr   r1,r1,0x10                ; 0801B04C
+lsl   r2,r2,0x18                ; 0801B04E
+lsr   r2,r2,0x18                ; 0801B050
+mov   r3,0x4E                   ; 0801B052
+add   r3,r3,r0                  ; 0801B054
+mov   r12,r3                    ; 0801B056
+mov   r3,0x2                    ; 0801B058
+mov   r4,r12                    ; 0801B05A
+strh  r3,[r4]                   ; 0801B05C  set width to 2
+bl    Sub0801A070               ; 0801B05E  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801B062
+pop   {r0}                      ; 0801B064
+bx    r0                        ; 0801B066
+
+ObjInit75:
+; obejct 75 init
+push  {r4,lr}                   ; 0801B068
+lsl   r1,r1,0x10                ; 0801B06A
+lsr   r1,r1,0x10                ; 0801B06C
+lsl   r2,r2,0x18                ; 0801B06E
+lsr   r2,r2,0x18                ; 0801B070
+mov   r3,0x4E                   ; 0801B072
+add   r3,r3,r0                  ; 0801B074
+mov   r12,r3                    ; 0801B076
+mov   r3,0x2                    ; 0801B078
+mov   r4,r12                    ; 0801B07A
+strh  r3,[r4]                   ; 0801B07C  set width to 2
+bl    Sub0801A070               ; 0801B07E  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801B082
+pop   {r0}                      ; 0801B084
+bx    r0                        ; 0801B086
+
+ObjInit74:
+; object 74 init
+push  {r4,lr}                   ; 0801B088
+lsl   r1,r1,0x10                ; 0801B08A
+lsr   r1,r1,0x10                ; 0801B08C
+lsl   r2,r2,0x18                ; 0801B08E
+lsr   r2,r2,0x18                ; 0801B090
+mov   r3,0x4E                   ; 0801B092
+add   r3,r3,r0                  ; 0801B094
+mov   r12,r3                    ; 0801B096
+mov   r3,0x3                    ; 0801B098
+mov   r4,r12                    ; 0801B09A
+strh  r3,[r4]                   ; 0801B09C  set width to 3
+bl    Sub0801A070               ; 0801B09E  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801B0A2
+pop   {r0}                      ; 0801B0A4
+bx    r0                        ; 0801B0A6
+
+ObjInit73:
+; object 73 init
+push  {r4,lr}                   ; 0801B0A8
+mov   r4,r0                     ; 0801B0AA
+lsl   r1,r1,0x10                ; 0801B0AC
+lsr   r1,r1,0x10                ; 0801B0AE
+lsl   r2,r2,0x18                ; 0801B0B0
+lsr   r2,r2,0x18                ; 0801B0B2
+mov   r3,r4                     ; 0801B0B4
+add   r3,0x4E                   ; 0801B0B6
+mov   r0,0x3                    ; 0801B0B8
+strh  r0,[r3]                   ; 0801B0BA  set width to 3
+mov   r0,0x52                   ; 0801B0BC
+add   r0,r0,r4                  ; 0801B0BE
+mov   r12,r0                    ; 0801B0C0
+ldrh  r3,[r0]                   ; 0801B0C2  height
+mov   r0,0x1                    ; 0801B0C4
+and   r0,r3                     ; 0801B0C6  height parity
+cmp   r0,0x0                    ; 0801B0C8
+beq   @@Code0801B0D2            ; 0801B0CA
+add   r0,r3,0x1                 ; 0801B0CC
+mov   r3,r12                    ; 0801B0CE
+strh  r0,[r3]                   ; 0801B0D0  if height is odd, add 1
+@@Code0801B0D2:
+mov   r0,r4                     ; 0801B0D2
+bl    Sub0801A070               ; 0801B0D4  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801B0D8
+pop   {r0}                      ; 0801B0DA
+bx    r0                        ; 0801B0DC
+.pool                           ; 0801B0DE
+
+ObjInit72:
+; object 72 init
+push  {r4,lr}                   ; 0801B0E0
+mov   r4,r0                     ; 0801B0E2
+lsl   r1,r1,0x10                ; 0801B0E4
+lsr   r1,r1,0x10                ; 0801B0E6
+lsl   r2,r2,0x18                ; 0801B0E8
+lsr   r2,r2,0x18                ; 0801B0EA
+mov   r0,0x4E                   ; 0801B0EC
+add   r0,r0,r4                  ; 0801B0EE
+mov   r12,r0                    ; 0801B0F0
+ldrh  r3,[r0]                   ; 0801B0F2  width
+mov   r0,0x1                    ; 0801B0F4
+and   r0,r3                     ; 0801B0F6  width parity
+cmp   r0,0x0                    ; 0801B0F8
+beq   @@Code0801B102            ; 0801B0FA
+add   r0,r3,0x1                 ; 0801B0FC
+mov   r3,r12                    ; 0801B0FE
+strh  r0,[r3]                   ; 0801B100  if width is odd, add 1
+@@Code0801B102:
+mov   r3,r4                     ; 0801B102
+add   r3,0x52                   ; 0801B104
+mov   r0,0x2                    ; 0801B106  set height to 2
+strh  r0,[r3]                   ; 0801B108
+mov   r0,r4                     ; 0801B10A
+bl    Sub0801A070               ; 0801B10C  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801B110
+pop   {r0}                      ; 0801B112
+bx    r0                        ; 0801B114
+.pool                           ; 0801B116
+
+ObjInit71:
+; object 71 init
+push  {r4,lr}                   ; 0801B118
+mov   r4,r0                     ; 0801B11A
+lsl   r1,r1,0x10                ; 0801B11C
+lsr   r1,r1,0x10                ; 0801B11E
+lsl   r2,r2,0x18                ; 0801B120
+lsr   r2,r2,0x18                ; 0801B122
+mov   r0,0x4E                   ; 0801B124
+add   r0,r0,r4                  ; 0801B126
+mov   r12,r0                    ; 0801B128
+ldrh  r3,[r0]                   ; 0801B12A  width
+mov   r0,0x1                    ; 0801B12C
+and   r0,r3                     ; 0801B12E  width parity
+cmp   r0,0x0                    ; 0801B130
+beq   @@Code0801B13A            ; 0801B132
+add   r0,r3,0x1                 ; 0801B134
+mov   r3,r12                    ; 0801B136
+strh  r0,[r3]                   ; 0801B138  if width is odd, add 1
+@@Code0801B13A:
+mov   r3,r4                     ; 0801B13A
+add   r3,0x52                   ; 0801B13C
+mov   r0,0x2                    ; 0801B13E
+strh  r0,[r3]                   ; 0801B140  set height to 2
+mov   r0,r4                     ; 0801B142
+bl    Sub0801A070               ; 0801B144  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801B148
+pop   {r0}                      ; 0801B14A
+bx    r0                        ; 0801B14C
+.pool                           ; 0801B14E
+
+ObjInit70:
+; object 70 init
+push  {r4,lr}                   ; 0801B150
+mov   r4,r0                     ; 0801B152
+lsl   r1,r1,0x10                ; 0801B154
+lsr   r1,r1,0x10                ; 0801B156
+lsl   r2,r2,0x18                ; 0801B158
+lsr   r2,r2,0x18                ; 0801B15A
+mov   r0,0x4E                   ; 0801B15C
+add   r0,r0,r4                  ; 0801B15E
+mov   r12,r0                    ; 0801B160
+ldrh  r3,[r0]                   ; 0801B162  width
+mov   r0,0x1                    ; 0801B164
+and   r0,r3                     ; 0801B166  width parity
+cmp   r0,0x0                    ; 0801B168
+beq   @@Code0801B172            ; 0801B16A
+add   r0,r3,0x1                 ; 0801B16C
+mov   r3,r12                    ; 0801B16E
+strh  r0,[r3]                   ; 0801B170  if width is odd, add 1
+@@Code0801B172:
+mov   r3,r4                     ; 0801B172
+add   r3,0x52                   ; 0801B174
+mov   r0,0x2                    ; 0801B176
+strh  r0,[r3]                   ; 0801B178  set height to 2
+mov   r0,r4                     ; 0801B17A
+bl    Sub0801A070               ; 0801B17C  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801B180
+pop   {r0}                      ; 0801B182
+bx    r0                        ; 0801B184
+.pool                           ; 0801B186
+
+ObjInit6F:
+; object 6F init
+push  {lr}                      ; 0801B188
+lsl   r1,r1,0x10                ; 0801B18A
+lsr   r1,r1,0x10                ; 0801B18C
+lsl   r2,r2,0x18                ; 0801B18E
+lsr   r2,r2,0x18                ; 0801B190
+bl    Sub0801A070               ; 0801B192  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801B196
+bx    r0                        ; 0801B198
+.pool                           ; 0801B19A
+
+ObjInit6E_8B:
+; object 6E/8B init
+push  {lr}                      ; 0801B19C
+lsl   r1,r1,0x10                ; 0801B19E
+lsr   r1,r1,0x10                ; 0801B1A0
+lsl   r2,r2,0x18                ; 0801B1A2
+lsr   r2,r2,0x18                ; 0801B1A4
+bl    Sub0801A070               ; 0801B1A6  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801B1AA
+bx    r0                        ; 0801B1AC
+.pool                           ; 0801B1AE
+
+ObjInit6D:
+; object 6D init
+push  {lr}                      ; 0801B1B0
+lsl   r1,r1,0x10                ; 0801B1B2
+lsr   r1,r1,0x10                ; 0801B1B4
+lsl   r2,r2,0x18                ; 0801B1B6
+lsr   r2,r2,0x18                ; 0801B1B8
+bl    Sub0801A070               ; 0801B1BA  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801B1BE
+bx    r0                        ; 0801B1C0
+.pool                           ; 0801B1C2
+
+ObjInit6C:
+; object 6C init
+push  {lr}                      ; 0801B1C4
+lsl   r1,r1,0x10                ; 0801B1C6
+lsr   r1,r1,0x10                ; 0801B1C8
+lsl   r2,r2,0x18                ; 0801B1CA
+lsr   r2,r2,0x18                ; 0801B1CC
+bl    Sub0801A070               ; 0801B1CE  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801B1D2
+bx    r0                        ; 0801B1D4
+.pool                           ; 0801B1D6
+
+ObjInit6B:
+; object 6B init
+push  {r4-r6,lr}                ; 0801B1D8
+lsl   r1,r1,0x10                ; 0801B1DA
+lsr   r1,r1,0x10                ; 0801B1DC
+lsl   r2,r2,0x18                ; 0801B1DE
+lsr   r2,r2,0x18                ; 0801B1E0
+mov   r4,r0                     ; 0801B1E2
+add   r4,0x52                   ; 0801B1E4  [03007240]+52 (0300225E)
+ldrh  r3,[r4]                   ; 0801B1E6 \
+add   r3,0x1                    ; 0801B1E8 | add 1 to height
+strh  r3,[r4]                   ; 0801B1EA /
+mov   r6,r0                     ; 0801B1EC
+add   r6,0x48                   ; 0801B1EE  [03007240]+48 (03002254)
+ldrh  r5,[r6]                   ; 0801B1F0  tile YXyx
+ldr   r4,=0xF0F0                ; 0801B1F2
+mov   r3,r4                     ; 0801B1F4 \
+and   r3,r5                     ; 0801B1F6 |
+sub   r3,0x10                   ; 0801B1F8 | subtract 1 from initial Y
+and   r3,r4                     ; 0801B1FA /
+ldr   r4,=0x0F0F                ; 0801B1FC
+and   r4,r5                     ; 0801B1FE
+orr   r4,r3                     ; 0801B200  new YXyx
+strh  r4,[r6]                   ; 0801B202  set new YXyx
+bl    Sub0801A070               ; 0801B204  Object processing main, slope=0, no relative Y threshold
+pop   {r4-r6}                   ; 0801B208
+pop   {r0}                      ; 0801B20A
+bx    r0                        ; 0801B20C
+.pool                           ; 0801B20E
+
+ObjInit6A:
+; object 6A init
+push  {lr}                      ; 0801B218
+lsl   r1,r1,0x10                ; 0801B21A
+lsr   r1,r1,0x10                ; 0801B21C
+lsl   r2,r2,0x18                ; 0801B21E
+lsr   r2,r2,0x18                ; 0801B220
+bl    Sub0801A070               ; 0801B222  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801B226
+bx    r0                        ; 0801B228
+.pool                           ; 0801B22A
+
+ObjInit69:
+; object 69 init
+push  {r4,lr}                   ; 0801B22C
+mov   r4,r0                     ; 0801B22E
+lsl   r1,r1,0x10                ; 0801B230
+lsr   r1,r1,0x10                ; 0801B232
+lsl   r2,r2,0x18                ; 0801B234
+lsr   r2,r2,0x18                ; 0801B236
+mov   r3,r4                     ; 0801B238
+add   r3,0x4E                   ; 0801B23A
+ldrh  r0,[r3]                   ; 0801B23C  width
+cmp   r0,0x3                    ; 0801B23E
+bhi   @@Code0801B246            ; 0801B240
+mov   r0,0x4                    ; 0801B242
+strh  r0,[r3]                   ; 0801B244  if width <= 3, set width to 4
+@@Code0801B246:
+mov   r3,r4                     ; 0801B246
+add   r3,0x52                   ; 0801B248
+ldrh  r0,[r3]                   ; 0801B24A  height
+cmp   r0,0x3                    ; 0801B24C
+bhi   @@Code0801B254            ; 0801B24E
+mov   r0,0x4                    ; 0801B250
+strh  r0,[r3]                   ; 0801B252  if height <= 3, set height to 4
+@@Code0801B254:
+mov   r0,r4                     ; 0801B254
+bl    Sub0801A070               ; 0801B256  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801B25A
+pop   {r0}                      ; 0801B25C
+bx    r0                        ; 0801B25E
+
+ObjInit68_8A:
+; object 68/8A init
+push  {lr}                      ; 0801B260
+lsl   r1,r1,0x10                ; 0801B262
+lsr   r1,r1,0x10                ; 0801B264
+lsl   r2,r2,0x18                ; 0801B266
+lsr   r2,r2,0x18                ; 0801B268
+bl    Sub0801A070               ; 0801B26A  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801B26E
+bx    r0                        ; 0801B270
+.pool                           ; 0801B272
+
+ObjInit67:
+; object 67 init
+push  {lr}                      ; 0801B274
+lsl   r1,r1,0x10                ; 0801B276
+lsr   r1,r1,0x10                ; 0801B278
+lsl   r2,r2,0x18                ; 0801B27A
+lsr   r2,r2,0x18                ; 0801B27C
+bl    Sub0801A070               ; 0801B27E  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801B282
+bx    r0                        ; 0801B284
+.pool                           ; 0801B286
+
+ObjInit66:
+; object 66 init
+push  {r4-r5,lr}                ; 0801B288
+lsl   r1,r1,0x10                ; 0801B28A
+lsr   r1,r1,0x10                ; 0801B28C
+lsl   r2,r2,0x18                ; 0801B28E
+lsr   r2,r2,0x18                ; 0801B290
+mov   r3,0x46                   ; 0801B292
+add   r3,r3,r0                  ; 0801B294  r3 = [03007240]+46 (03002252)
+mov   r12,r3                    ; 0801B296
+mov   r4,0x0                    ; 0801B298
+ldr   r3,=0x7FFF                ; 0801B29A
+mov   r5,r12                    ; 0801B29C
+strh  r3,[r5]                   ; 0801B29E  no relative Y threshold
+mov   r3,r0                     ; 0801B2A0
+add   r3,0x44                   ; 0801B2A2  r3 = [03007240]+44 (03002250)
+strh  r4,[r3]                   ; 0801B2A4  clear slope
+bl    Sub08019DA8               ; 0801B2A6  Object processing main
+pop   {r4-r5}                   ; 0801B2AA
+pop   {r0}                      ; 0801B2AC
+bx    r0                        ; 0801B2AE
+.pool                           ; 0801B2B0
+
+ObjInit63_65:
+; object 63-65 init
+push  {r4-r5,lr}                ; 0801B2B4
+lsl   r1,r1,0x10                ; 0801B2B6
+lsr   r1,r1,0x10                ; 0801B2B8
+lsl   r2,r2,0x18                ; 0801B2BA
+lsr   r2,r2,0x18                ; 0801B2BC
+mov   r3,0x46                   ; 0801B2BE
+add   r3,r3,r0                  ; 0801B2C0  r3 = [03007240]+46 (03002252)
+mov   r12,r3                    ; 0801B2C2
+mov   r4,0x0                    ; 0801B2C4
+ldr   r3,=0x7FFF                ; 0801B2C6
+mov   r5,r12                    ; 0801B2C8  no relative Y threshold
+strh  r3,[r5]                   ; 0801B2CA
+mov   r3,r0                     ; 0801B2CC
+add   r3,0x44                   ; 0801B2CE  r3 = [03007240]+44 (03002250)
+strh  r4,[r3]                   ; 0801B2D0  clear slope
+bl    Sub08019DA8               ; 0801B2D2  Object processing main
+pop   {r4-r5}                   ; 0801B2D6
+pop   {r0}                      ; 0801B2D8
+bx    r0                        ; 0801B2DA
+.pool                           ; 0801B2DC
+
+ObjInit61_62:
+; object 61-62 init
+push  {r4-r7,lr}                ; 0801B2E0
+mov   r12,r0                    ; 0801B2E2
+lsl   r1,r1,0x10                ; 0801B2E4
+lsr   r7,r1,0x10                ; 0801B2E6
+lsl   r2,r2,0x18                ; 0801B2E8
+lsr   r6,r2,0x18                ; 0801B2EA
+mov   r2,r12                    ; 0801B2EC
+add   r2,0x46                   ; 0801B2EE
+mov   r1,0x0                    ; 0801B2F0
+ldr   r0,=0x7FFF                ; 0801B2F2
+strh  r0,[r2]                   ; 0801B2F4
+mov   r0,r12                    ; 0801B2F6
+add   r0,0x44                   ; 0801B2F8
+strh  r1,[r0]                   ; 0801B2FA
+sub   r0,0x2                    ; 0801B2FC
+ldrh  r1,[r0]                   ; 0801B2FE
+mov   r0,0x2                    ; 0801B300
+and   r0,r1                     ; 0801B302
+cmp   r0,0x0                    ; 0801B304
+beq   @@Code0801B33A            ; 0801B306
+add   r2,0x8                    ; 0801B308
+ldrh  r4,[r2]                   ; 0801B30A
+mov   r3,r4                     ; 0801B30C
+mov   r1,r12                    ; 0801B30E
+add   r1,0x52                   ; 0801B310
+ldrh  r0,[r1]                   ; 0801B312
+orr   r4,r0                     ; 0801B314
+mov   r5,r1                     ; 0801B316
+cmp   r4,0x1                    ; 0801B318
+bne   @@Code0801B328            ; 0801B31A
+add   r0,r3,0x2                 ; 0801B31C
+strh  r0,[r2]                   ; 0801B31E
+b     @@Code0801B362            ; 0801B320
+.pool                           ; 0801B322
+
+@@Code0801B328:
+add   r0,r3,0x2                 ; 0801B328
+strh  r0,[r2]                   ; 0801B32A
+ldrh  r4,[r5]                   ; 0801B32C
+cmp   r4,0x1                    ; 0801B32E
+bls   @@Code0801B362            ; 0801B330
+add   r0,r4,0x2                 ; 0801B332
+strh  r0,[r5]                   ; 0801B334
+ldrh  r0,[r2]                   ; 0801B336
+b     @@Code0801B358            ; 0801B338
+@@Code0801B33A:
+mov   r1,r12                    ; 0801B33A
+add   r1,0x4E                   ; 0801B33C
+ldrh  r0,[r1]                   ; 0801B33E
+add   r0,0x2                    ; 0801B340
+strh  r0,[r1]                   ; 0801B342
+mov   r0,r12                    ; 0801B344
+add   r0,0x52                   ; 0801B346
+ldrh  r4,[r0]                   ; 0801B348
+mov   r5,r0                     ; 0801B34A
+cmp   r4,0x1                    ; 0801B34C
+bls   @@Code0801B362            ; 0801B34E
+add   r0,r4,0x2                 ; 0801B350
+strh  r0,[r5]                   ; 0801B352
+ldrh  r0,[r1]                   ; 0801B354
+lsr   r0,r0,0x1                 ; 0801B356
+@@Code0801B358:
+ldrh  r4,[r5]                   ; 0801B358
+sub   r0,r4,r0                  ; 0801B35A
+lsl   r0,r0,0x10                ; 0801B35C
+lsr   r4,r0,0x10                ; 0801B35E
+strh  r4,[r5]                   ; 0801B360
+@@Code0801B362:
+mov   r3,r12                    ; 0801B362
+add   r3,0x48                   ; 0801B364
+ldrh  r2,[r3]                   ; 0801B366
+ldr   r0,=0xF0F0                ; 0801B368
+and   r0,r2                     ; 0801B36A
+ldr   r1,=0x0F0F                ; 0801B36C
+mov   r4,r1                     ; 0801B36E
+and   r4,r2                     ; 0801B370
+sub   r4,0x1                    ; 0801B372
+and   r4,r1                     ; 0801B374
+orr   r4,r0                     ; 0801B376
+mov   r0,0x0                    ; 0801B378
+strh  r4,[r3]                   ; 0801B37A
+mov   r1,r12                    ; 0801B37C
+strh  r0,[r1,0x3A]              ; 0801B37E
+ldrh  r4,[r5]                   ; 0801B380
+sub   r0,r4,0x1                 ; 0801B382
+lsl   r0,r0,0x10                ; 0801B384
+ldr   r1,=0x7FFE0000            ; 0801B386
+cmp   r0,r1                     ; 0801B388
+bls   @@Code0801B390            ; 0801B38A
+mov   r0,0x1                    ; 0801B38C
+strh  r0,[r5]                   ; 0801B38E
+@@Code0801B390:
+mov   r0,r12                    ; 0801B390
+mov   r1,r7                     ; 0801B392
+mov   r2,r6                     ; 0801B394
+bl    Sub08019DA8               ; 0801B396  Object processing main
+pop   {r4-r7}                   ; 0801B39A
+pop   {r0}                      ; 0801B39C
+bx    r0                        ; 0801B39E
+.pool                           ; 0801B3A0
+
+ObjInit5F_60:
+; object 5F-60 init
+push  {r4-r7,lr}                ; 0801B3AC
+mov   r12,r0                    ; 0801B3AE
+lsl   r1,r1,0x10                ; 0801B3B0
+lsr   r6,r1,0x10                ; 0801B3B2
+lsl   r2,r2,0x18                ; 0801B3B4
+lsr   r5,r2,0x18                ; 0801B3B6
+mov   r1,r12                    ; 0801B3B8
+add   r1,0x46                   ; 0801B3BA
+mov   r7,0x0                    ; 0801B3BC
+ldr   r0,=0x7FFF                ; 0801B3BE
+strh  r0,[r1]                   ; 0801B3C0
+mov   r0,r12                    ; 0801B3C2
+add   r0,0x44                   ; 0801B3C4
+strh  r7,[r0]                   ; 0801B3C6
+mov   r3,r12                    ; 0801B3C8
+add   r3,0x4E                   ; 0801B3CA
+ldrh  r2,[r3]                   ; 0801B3CC
+sub   r0,0x2                    ; 0801B3CE
+ldrh  r1,[r0]                   ; 0801B3D0
+mov   r0,0xF                    ; 0801B3D2
+and   r0,r1                     ; 0801B3D4
+cmp   r0,0x0                    ; 0801B3D6
+beq   @@Code0801B3DC            ; 0801B3D8
+lsr   r2,r2,0x1                 ; 0801B3DA
+@@Code0801B3DC:
+mov   r4,r2                     ; 0801B3DC
+mov   r1,r12                    ; 0801B3DE
+add   r1,0x52                   ; 0801B3E0
+ldrh  r0,[r1]                   ; 0801B3E2
+cmp   r4,r0                     ; 0801B3E4
+blo   @@Code0801B3EA            ; 0801B3E6
+strh  r4,[r1]                   ; 0801B3E8
+@@Code0801B3EA:
+ldrh  r0,[r3]                   ; 0801B3EA
+add   r0,0x2                    ; 0801B3EC
+strh  r0,[r3]                   ; 0801B3EE
+ldrh  r0,[r1]                   ; 0801B3F0
+add   r0,0x1                    ; 0801B3F2
+strh  r0,[r1]                   ; 0801B3F4
+mov   r3,r12                    ; 0801B3F6
+add   r3,0x48                   ; 0801B3F8
+ldrh  r0,[r3]                   ; 0801B3FA
+ldr   r1,=0xF0F0                ; 0801B3FC
+and   r1,r0                     ; 0801B3FE
+ldr   r2,=0x0F0F                ; 0801B400
+mov   r4,r2                     ; 0801B402
+and   r4,r0                     ; 0801B404
+sub   r0,r4,0x1                 ; 0801B406
+and   r0,r2                     ; 0801B408
+orr   r1,r0                     ; 0801B40A
+strh  r1,[r3]                   ; 0801B40C
+mov   r0,r12                    ; 0801B40E
+strh  r7,[r0,0x3A]              ; 0801B410
+mov   r1,r6                     ; 0801B412
+mov   r2,r5                     ; 0801B414
+bl    Sub08019DA8               ; 0801B416  Object processing main
+pop   {r4-r7}                   ; 0801B41A
+pop   {r0}                      ; 0801B41C
+bx    r0                        ; 0801B41E
+.pool                           ; 0801B420
+
+ObjInit5C_5E:
+; object 5C-5E init
+push  {r4-r6,lr}                ; 0801B42C
+mov   r12,r0                    ; 0801B42E
+lsl   r1,r1,0x10                ; 0801B430
+lsr   r1,r1,0x10                ; 0801B432
+lsl   r2,r2,0x18                ; 0801B434
+lsr   r2,r2,0x18                ; 0801B436
+mov   r3,r12                    ; 0801B438
+add   r3,0x46                   ; 0801B43A
+ldr   r0,=0x7FFF                ; 0801B43C
+strh  r0,[r3]                   ; 0801B43E
+mov   r0,r12                    ; 0801B440
+add   r0,0x42                   ; 0801B442
+ldrh  r3,[r0]                   ; 0801B444
+mov   r0,0x3                    ; 0801B446
+and   r0,r3                     ; 0801B448
+ldr   r3,=Data081C19CE          ; 0801B44A
+lsl   r0,r0,0x1                 ; 0801B44C
+add   r0,r0,r3                  ; 0801B44E
+ldrh  r3,[r0]                   ; 0801B450
+mov   r0,r12                    ; 0801B452
+add   r0,0x44                   ; 0801B454
+strh  r3,[r0]                   ; 0801B456
+mov   r3,r12                    ; 0801B458
+add   r3,0x4E                   ; 0801B45A
+ldrh  r0,[r3]                   ; 0801B45C
+add   r0,0x2                    ; 0801B45E
+strh  r0,[r3]                   ; 0801B460
+mov   r6,r12                    ; 0801B462
+add   r6,0x48                   ; 0801B464
+ldrh  r5,[r6]                   ; 0801B466
+ldr   r3,=0xF0F0                ; 0801B468
+and   r3,r5                     ; 0801B46A
+ldr   r4,=0x0F0F                ; 0801B46C
+mov   r0,r4                     ; 0801B46E
+and   r0,r5                     ; 0801B470
+sub   r0,0x1                    ; 0801B472
+and   r0,r4                     ; 0801B474
+orr   r0,r3                     ; 0801B476
+strh  r0,[r6]                   ; 0801B478
+mov   r0,r12                    ; 0801B47A
+bl    Sub08019DA8               ; 0801B47C  Object processing main
+pop   {r4-r6}                   ; 0801B480
+pop   {r0}                      ; 0801B482
+bx    r0                        ; 0801B484
+.pool                           ; 0801B486
+
+ObjInit59_5B:
+; object 59-5B init
+push  {r4-r6,lr}                ; 0801B498
+mov   r12,r0                    ; 0801B49A
+lsl   r1,r1,0x10                ; 0801B49C
+lsr   r1,r1,0x10                ; 0801B49E
+lsl   r2,r2,0x18                ; 0801B4A0
+lsr   r2,r2,0x18                ; 0801B4A2
+mov   r3,r12                    ; 0801B4A4
+add   r3,0x46                   ; 0801B4A6
+ldr   r0,=0x7FFF                ; 0801B4A8
+strh  r0,[r3]                   ; 0801B4AA
+mov   r0,r12                    ; 0801B4AC
+add   r0,0x42                   ; 0801B4AE
+ldrh  r3,[r0]                   ; 0801B4B0
+mov   r0,0x3                    ; 0801B4B2
+and   r0,r3                     ; 0801B4B4
+sub   r0,0x1                    ; 0801B4B6
+lsl   r0,r0,0x10                ; 0801B4B8
+ldr   r3,=Data081C19C8          ; 0801B4BA
+lsr   r0,r0,0xF                 ; 0801B4BC
+add   r0,r0,r3                  ; 0801B4BE
+ldrh  r3,[r0]                   ; 0801B4C0
+mov   r0,r12                    ; 0801B4C2
+add   r0,0x44                   ; 0801B4C4
+strh  r3,[r0]                   ; 0801B4C6
+mov   r3,r12                    ; 0801B4C8
+add   r3,0x52                   ; 0801B4CA
+ldrh  r0,[r3]                   ; 0801B4CC
+add   r0,0x1                    ; 0801B4CE
+strh  r0,[r3]                   ; 0801B4D0
+sub   r3,0x4                    ; 0801B4D2
+ldrh  r0,[r3]                   ; 0801B4D4
+add   r0,0x2                    ; 0801B4D6
+strh  r0,[r3]                   ; 0801B4D8
+mov   r6,r12                    ; 0801B4DA
+add   r6,0x48                   ; 0801B4DC
+ldrh  r5,[r6]                   ; 0801B4DE
+ldr   r0,=0xF0F0                ; 0801B4E0
+mov   r3,r0                     ; 0801B4E2
+and   r3,r5                     ; 0801B4E4
+sub   r3,0x10                   ; 0801B4E6
+and   r3,r0                     ; 0801B4E8
+ldr   r4,=0x0F0F                ; 0801B4EA
+mov   r0,r4                     ; 0801B4EC
+and   r0,r5                     ; 0801B4EE
+sub   r0,0x1                    ; 0801B4F0
+and   r0,r4                     ; 0801B4F2
+orr   r0,r3                     ; 0801B4F4
+strh  r0,[r6]                   ; 0801B4F6
+mov   r0,r12                    ; 0801B4F8
+bl    Sub08019DA8               ; 0801B4FA  Object processing main
+pop   {r4-r6}                   ; 0801B4FE
+pop   {r0}                      ; 0801B500
+bx    r0                        ; 0801B502
+.pool                           ; 0801B504
+
+ObjInit58:
+; object 58 init
+push  {r4-r5,lr}                ; 0801B514
+lsl   r1,r1,0x10                ; 0801B516
+lsr   r1,r1,0x10                ; 0801B518
+lsl   r2,r2,0x18                ; 0801B51A
+lsr   r2,r2,0x18                ; 0801B51C
+mov   r3,0x46                   ; 0801B51E
+add   r3,r3,r0                  ; 0801B520
+mov   r12,r3                    ; 0801B522
+mov   r4,0x0                    ; 0801B524
+ldr   r3,=0x7FFF                ; 0801B526
+mov   r5,r12                    ; 0801B528  r5 = [03007240]+46 (03002252)
+strh  r3,[r5]                   ; 0801B52A  no relative Y threshold
+mov   r3,r0                     ; 0801B52C
+add   r3,0x44                   ; 0801B52E
+strh  r4,[r3]                   ; 0801B530  clear slope
+strh  r4,[r0,0x3A]              ; 0801B532  clear scratch RAM (03002246)
+bl    Sub08019DA8               ; 0801B534  Object processing main
+pop   {r4-r5}                   ; 0801B538
+pop   {r0}                      ; 0801B53A
+bx    r0                        ; 0801B53C
+.pool                           ; 0801B53E
+
+ObjInit57_7E:
+; object 57/7E init
+push  {r4-r5,lr}                ; 0801B544
+lsl   r1,r1,0x10                ; 0801B546
+lsr   r1,r1,0x10                ; 0801B548
+lsl   r2,r2,0x18                ; 0801B54A
+lsr   r2,r2,0x18                ; 0801B54C
+mov   r3,0x46                   ; 0801B54E
+add   r3,r3,r0                  ; 0801B550
+mov   r12,r3                    ; 0801B552
+mov   r4,0x0                    ; 0801B554
+ldr   r3,=0x7FFF                ; 0801B556
+mov   r5,r12                    ; 0801B558  r5 = [03007240]+46 (03002252)
+strh  r3,[r5]                   ; 0801B55A  no relative Y threshold
+mov   r3,r0                     ; 0801B55C
+add   r3,0x44                   ; 0801B55E
+strh  r4,[r3]                   ; 0801B560  clear slope
+bl    Sub08019DA8               ; 0801B562  Object processing main
+pop   {r4-r5}                   ; 0801B566
+pop   {r0}                      ; 0801B568
+bx    r0                        ; 0801B56A
+.pool                           ; 0801B56C
+
+ObjInit54_56:
+; object 54-56 init
+push  {lr}                      ; 0801B570
+mov   r12,r0                    ; 0801B572
+lsl   r1,r1,0x10                ; 0801B574
+lsr   r1,r1,0x10                ; 0801B576
+lsl   r2,r2,0x18                ; 0801B578
+lsr   r2,r2,0x18                ; 0801B57A
+mov   r3,r12                    ; 0801B57C
+add   r3,0x46                   ; 0801B57E
+ldr   r0,=0x7FFF                ; 0801B580
+strh  r0,[r3]                   ; 0801B582
+mov   r0,r12                    ; 0801B584
+add   r0,0x42                   ; 0801B586
+ldrh  r3,[r0]                   ; 0801B588
+mov   r0,0x3                    ; 0801B58A
+and   r0,r3                     ; 0801B58C
+ldr   r3,=Data081C19C2          ; 0801B58E
+lsl   r0,r0,0x1                 ; 0801B590
+add   r0,r0,r3                  ; 0801B592
+ldrh  r3,[r0]                   ; 0801B594
+mov   r0,r12                    ; 0801B596
+add   r0,0x44                   ; 0801B598
+strh  r3,[r0]                   ; 0801B59A
+mov   r0,r12                    ; 0801B59C
+bl    Sub08019DA8               ; 0801B59E  Object processing main
+pop   {r0}                      ; 0801B5A2
+bx    r0                        ; 0801B5A4
+.pool                           ; 0801B5A6
+
+ObjInit53:
+; object 53 init
+push  {lr}                      ; 0801B5B0
+lsl   r1,r1,0x10                ; 0801B5B2
+lsr   r1,r1,0x10                ; 0801B5B4
+lsl   r2,r2,0x18                ; 0801B5B6
+lsr   r2,r2,0x18                ; 0801B5B8
+bl    Sub0801A070               ; 0801B5BA  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801B5BE
+bx    r0                        ; 0801B5C0
+.pool                           ; 0801B5C2
+
+ObjInit52:
+; object 52 init
+push  {r4,lr}                   ; 0801B5C4
+lsl   r1,r1,0x10                ; 0801B5C6
+lsr   r1,r1,0x10                ; 0801B5C8
+lsl   r2,r2,0x18                ; 0801B5CA
+lsr   r2,r2,0x18                ; 0801B5CC
+mov   r4,r0                     ; 0801B5CE
+add   r4,0x46                   ; 0801B5D0
+ldr   r3,=0x7FFF                ; 0801B5D2
+strh  r3,[r4]                   ; 0801B5D4  no relative Y threshold
+sub   r4,0x2                    ; 0801B5D6
+ldr   r3,=0xFFFF                ; 0801B5D8
+strh  r3,[r4]                   ; 0801B5DA  set slope to -1
+bl    Sub08019DA8               ; 0801B5DC  Object processing main
+pop   {r4}                      ; 0801B5E0
+pop   {r0}                      ; 0801B5E2
+bx    r0                        ; 0801B5E4
+.pool                           ; 0801B5E6
+
+ObjInit50_51:
+; object 50-51 init
+push  {r4-r5,lr}                ; 0801B5F0
+lsl   r1,r1,0x10                ; 0801B5F2
+lsr   r1,r1,0x10                ; 0801B5F4
+lsl   r2,r2,0x18                ; 0801B5F6
+lsr   r2,r2,0x18                ; 0801B5F8
+mov   r3,0x46                   ; 0801B5FA
+add   r3,r3,r0                  ; 0801B5FC
+mov   r12,r3                    ; 0801B5FE
+mov   r4,0x0                    ; 0801B600
+ldr   r3,=0x7FFF                ; 0801B602
+mov   r5,r12                    ; 0801B604
+strh  r3,[r5]                   ; 0801B606  no relative Y threshold
+mov   r3,r0                     ; 0801B608
+add   r3,0x44                   ; 0801B60A
+strh  r4,[r3]                   ; 0801B60C  clear slope
+bl    Sub08019DA8               ; 0801B60E  Object processing main
+pop   {r4-r5}                   ; 0801B612
+pop   {r0}                      ; 0801B614
+bx    r0                        ; 0801B616
+.pool                           ; 0801B618
+
+ObjInit4F:
+; object 4F init
+push  {r4-r5,lr}                ; 0801B61C
+lsl   r1,r1,0x10                ; 0801B61E
+lsr   r1,r1,0x10                ; 0801B620
+lsl   r2,r2,0x18                ; 0801B622
+lsr   r2,r2,0x18                ; 0801B624
+mov   r3,0x46                   ; 0801B626
+add   r3,r3,r0                  ; 0801B628
+mov   r12,r3                    ; 0801B62A
+mov   r4,0x0                    ; 0801B62C
+ldr   r3,=0x7FFF                ; 0801B62E
+mov   r5,r12                    ; 0801B630
+strh  r3,[r5]                   ; 0801B632  no relative Y threshold
+mov   r3,r0                     ; 0801B634
+add   r3,0x44                   ; 0801B636
+strh  r4,[r3]                   ; 0801B638  clear slope
+bl    Sub08019DA8               ; 0801B63A  Object processing main
+pop   {r4-r5}                   ; 0801B63E
+pop   {r0}                      ; 0801B640
+bx    r0                        ; 0801B642
+.pool                           ; 0801B644
+
+ObjInit4E:
+; object 4E init
+push  {r4-r5,lr}                ; 0801B648
+lsl   r1,r1,0x10                ; 0801B64A
+lsr   r1,r1,0x10                ; 0801B64C
+lsl   r2,r2,0x18                ; 0801B64E
+lsr   r2,r2,0x18                ; 0801B650
+mov   r3,0x46                   ; 0801B652  r3 = [03007240]+46 (03002252)
+add   r3,r3,r0                  ; 0801B654
+mov   r12,r3                    ; 0801B656
+mov   r4,0x0                    ; 0801B658
+ldr   r3,=0x7FFF                ; 0801B65A
+mov   r5,r12                    ; 0801B65C
+strh  r3,[r5]                   ; 0801B65E  no relative Y threshold
+mov   r3,r0                     ; 0801B660
+add   r3,0x44                   ; 0801B662  r3 = [03007240]+44 (03002250)
+strh  r4,[r3]                   ; 0801B664  clear slope
+bl    Sub08019DA8               ; 0801B666  Object processing main
+pop   {r4-r5}                   ; 0801B66A
+pop   {r0}                      ; 0801B66C
+bx    r0                        ; 0801B66E
+.pool                           ; 0801B670
+
+ObjInit4B_4D:
+; object 4B-4D init
+push  {r4,lr}                   ; 0801B674
+mov   r12,r0                    ; 0801B676
+lsl   r1,r1,0x10                ; 0801B678
+lsr   r1,r1,0x10                ; 0801B67A
+lsl   r2,r2,0x18                ; 0801B67C
+lsr   r2,r2,0x18                ; 0801B67E
+mov   r4,r12                    ; 0801B680
+add   r4,0x46                   ; 0801B682
+mov   r3,0x0                    ; 0801B684
+ldr   r0,=0x7FFF                ; 0801B686
+strh  r0,[r4]                   ; 0801B688  no relative Y threshold
+mov   r0,r12                    ; 0801B68A
+add   r0,0x44                   ; 0801B68C
+strh  r3,[r0]                   ; 0801B68E  clear slope
+sub   r0,0x2                    ; 0801B690  +42
+ldrh  r3,[r0]                   ; 0801B692  object ID
+mov   r0,0x7                    ; 0801B694
+and   r0,r3                     ; 0801B696  3,4,5 for 4B-4D
+sub   r0,0x3                    ; 0801B698  0,1,2 for 4B-4D
+lsl   r0,r0,0x11                ; 0801B69A
+ldr   r3,=Data081C19BC          ; 0801B69C
+lsr   r0,r0,0x10                ; 0801B69E  0,2,4 for 4B-4D
+add   r0,r0,r3                  ; 0801B6A0
+ldrh  r0,[r0]                   ; 0801B6A2  4,6,8 for 4B-4D
+mov   r3,r12                    ; 0801B6A4
+add   r3,0x4E                   ; 0801B6A6
+strh  r0,[r3]                   ; 0801B6A8  set width
+mov   r0,r12                    ; 0801B6AA
+bl    Sub08019DA8               ; 0801B6AC  Object processing main
+pop   {r4}                      ; 0801B6B0
+pop   {r0}                      ; 0801B6B2
+bx    r0                        ; 0801B6B4
+.pool                           ; 0801B6B6
+
+ObjInit49_4A:
+; object 49-4A init
+push  {r4,lr}                   ; 0801B6C0
+mov   r12,r0                    ; 0801B6C2
+lsl   r1,r1,0x10                ; 0801B6C4
+lsr   r1,r1,0x10                ; 0801B6C6
+lsl   r2,r2,0x18                ; 0801B6C8
+lsr   r2,r2,0x18                ; 0801B6CA
+mov   r4,r12                    ; 0801B6CC
+add   r4,0x46                   ; 0801B6CE
+mov   r3,0x0                    ; 0801B6D0
+ldr   r0,=0x7FFF                ; 0801B6D2
+strh  r0,[r4]                   ; 0801B6D4  no relative Y threshold
+mov   r0,r12                    ; 0801B6D6
+add   r0,0x44                   ; 0801B6D8
+strh  r3,[r0]                   ; 0801B6DA  clear slope
+mov   r3,r12                    ; 0801B6DC
+add   r3,0x4E                   ; 0801B6DE
+mov   r0,0x2                    ; 0801B6E0
+strh  r0,[r3]                   ; 0801B6E2  set width to 2
+mov   r0,r12                    ; 0801B6E4
+bl    Sub08019DA8               ; 0801B6E6  Object processing main
+pop   {r4}                      ; 0801B6EA
+pop   {r0}                      ; 0801B6EC
+bx    r0                        ; 0801B6EE
+.pool                           ; 0801B6F0
+
+ObjInit48:
+; object 48 init
+push  {r4-r5,lr}                ; 0801B6F4
+lsl   r1,r1,0x10                ; 0801B6F6
+lsr   r1,r1,0x10                ; 0801B6F8
+lsl   r2,r2,0x18                ; 0801B6FA
+lsr   r2,r2,0x18                ; 0801B6FC
+ldr   r3,=0x7FFF                ; 0801B6FE
+mov   r4,0x46                   ; 0801B700
+add   r4,r4,r0                  ; 0801B702
+mov   r12,r4                    ; 0801B704
+mov   r4,0x0                    ; 0801B706
+mov   r5,r12                    ; 0801B708  r5 = [03007240]+46 (03002252)
+strh  r3,[r5]                   ; 0801B70A  no relative Y threshold
+mov   r3,r0                     ; 0801B70C
+add   r3,0x44                   ; 0801B70E  r5 = [03007240]+44 (03002250)
+strh  r4,[r3]                   ; 0801B710  clear slope
+bl    Sub08019DA8               ; 0801B712  Object processing main
+pop   {r4-r5}                   ; 0801B716
+pop   {r0}                      ; 0801B718
+bx    r0                        ; 0801B71A
+.pool                           ; 0801B71C
+
+ObjInit47:
+; object 47 init
+push  {lr}                      ; 0801B720
+lsl   r1,r1,0x10                ; 0801B722
+lsr   r1,r1,0x10                ; 0801B724
+lsl   r2,r2,0x18                ; 0801B726
+lsr   r2,r2,0x18                ; 0801B728
+bl    Sub0801A070               ; 0801B72A  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801B72E
+bx    r0                        ; 0801B730
+.pool                           ; 0801B732
+
+ObjInit45_46:
+; object 45-46 init
+push  {r4-r5,lr}                ; 0801B734
+mov   r12,r0                    ; 0801B736
+lsl   r1,r1,0x10                ; 0801B738
+lsr   r1,r1,0x10                ; 0801B73A
+lsl   r2,r2,0x18                ; 0801B73C
+lsr   r2,r2,0x18                ; 0801B73E
+mov   r3,r12                    ; 0801B740
+add   r3,0x46                   ; 0801B742
+mov   r0,0x2                    ; 0801B744
+strh  r0,[r3]                   ; 0801B746
+sub   r3,0x4                    ; 0801B748
+ldrh  r3,[r3]                   ; 0801B74A
+and   r0,r3                     ; 0801B74C
+lsl   r0,r0,0x10                ; 0801B74E
+ldr   r3,=Data08167E7C          ; 0801B750
+lsr   r0,r0,0x11                ; 0801B752
+lsl   r0,r0,0x1                 ; 0801B754
+add   r0,r0,r3                  ; 0801B756
+ldrh  r3,[r0]                   ; 0801B758
+mov   r0,r12                    ; 0801B75A
+add   r0,0x44                   ; 0801B75C
+strh  r3,[r0]                   ; 0801B75E
+mov   r5,r12                    ; 0801B760
+add   r5,0x48                   ; 0801B762
+ldrh  r4,[r5]                   ; 0801B764
+ldr   r3,=0xF0F0                ; 0801B766
+mov   r0,r3                     ; 0801B768
+and   r0,r4                     ; 0801B76A
+sub   r0,0x10                   ; 0801B76C
+and   r0,r3                     ; 0801B76E
+ldr   r3,=0x0F0F                ; 0801B770
+and   r3,r4                     ; 0801B772
+orr   r3,r0                     ; 0801B774
+strh  r3,[r5]                   ; 0801B776
+mov   r3,r12                    ; 0801B778
+add   r3,0x52                   ; 0801B77A
+ldrh  r0,[r3]                   ; 0801B77C
+add   r0,0x1                    ; 0801B77E
+strh  r0,[r3]                   ; 0801B780
+mov   r0,r12                    ; 0801B782
+bl    Sub08019DA8               ; 0801B784  Object processing main
+pop   {r4-r5}                   ; 0801B788
+pop   {r0}                      ; 0801B78A
+bx    r0                        ; 0801B78C
+.pool                           ; 0801B78E
+
+ObjInit44:
+; object 44 init
+push  {lr}                      ; 0801B79C
+lsl   r1,r1,0x10                ; 0801B79E
+lsr   r1,r1,0x10                ; 0801B7A0
+lsl   r2,r2,0x18                ; 0801B7A2
+lsr   r2,r2,0x18                ; 0801B7A4
+mov   r3,0x0                    ; 0801B7A6
+strh  r3,[r0,0x3A]              ; 0801B7A8
+bl    Sub0801A070               ; 0801B7AA  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801B7AE
+bx    r0                        ; 0801B7B0
+.pool                           ; 0801B7B2
+
+ObjInit42_43:
+; object 42-43 init
+push  {lr}                      ; 0801B7B4
+lsl   r1,r1,0x10                ; 0801B7B6
+lsr   r1,r1,0x10                ; 0801B7B8
+lsl   r2,r2,0x18                ; 0801B7BA
+lsr   r2,r2,0x18                ; 0801B7BC
+bl    Sub0801A070               ; 0801B7BE  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801B7C2
+bx    r0                        ; 0801B7C4
+.pool                           ; 0801B7C6
+
+ObjInit41:
+; object 41 init
+push  {lr}                      ; 0801B7C8
+lsl   r1,r1,0x10                ; 0801B7CA
+lsr   r1,r1,0x10                ; 0801B7CC
+lsl   r2,r2,0x18                ; 0801B7CE
+lsr   r2,r2,0x18                ; 0801B7D0
+bl    Sub0801A070               ; 0801B7D2  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801B7D6
+bx    r0                        ; 0801B7D8
+.pool                           ; 0801B7DA
+
+ObjInit3F_40:
+; object 3F-40 init
+push  {lr}                      ; 0801B7DC
+lsl   r1,r1,0x10                ; 0801B7DE
+lsr   r1,r1,0x10                ; 0801B7E0
+lsl   r2,r2,0x18                ; 0801B7E2
+lsr   r2,r2,0x18                ; 0801B7E4
+bl    Sub0801A070               ; 0801B7E6  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801B7EA
+bx    r0                        ; 0801B7EC
+.pool                           ; 0801B7EE
+
+ObjInit3E:
+; object 3E init
+push  {lr}                      ; 0801B7F0
+lsl   r1,r1,0x10                ; 0801B7F2
+lsr   r1,r1,0x10                ; 0801B7F4
+lsl   r2,r2,0x18                ; 0801B7F6
+lsr   r2,r2,0x18                ; 0801B7F8
+bl    Sub0801A070               ; 0801B7FA  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801B7FE
+bx    r0                        ; 0801B800
+.pool                           ; 0801B802
+
+ObjInit3D:
+; object 3D init
+push  {r4,lr}                   ; 0801B804
+lsl   r1,r1,0x10                ; 0801B806
+lsr   r1,r1,0x10                ; 0801B808
+lsl   r2,r2,0x18                ; 0801B80A
+lsr   r2,r2,0x18                ; 0801B80C
+mov   r3,0x52                   ; 0801B80E
+add   r3,r3,r0                  ; 0801B810
+mov   r12,r3                    ; 0801B812
+mov   r3,0x3                    ; 0801B814
+mov   r4,r12                    ; 0801B816
+strh  r3,[r4]                   ; 0801B818  set height to 3
+bl    Sub0801A070               ; 0801B81A  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801B81E
+pop   {r0}                      ; 0801B820
+bx    r0                        ; 0801B822
+
+ObjInit3C_F4:
+; object 3C/F4 init
+push  {r4,lr}                   ; 0801B824
+lsl   r1,r1,0x10                ; 0801B826
+lsr   r1,r1,0x10                ; 0801B828
+lsl   r2,r2,0x18                ; 0801B82A
+lsr   r2,r2,0x18                ; 0801B82C
+mov   r3,0x42                   ; 0801B82E
+add   r3,r3,r0                  ; 0801B830  r3 = [03007240]+42 (0300224E)
+mov   r12,r3                    ; 0801B832
+ldrh  r3,[r3]                   ; 0801B834  r3 = object ID
+mov   r4,0x80                   ; 0801B836
+and   r3,r4                     ; 0801B838  r3 = high bit of object ID
+lsl   r3,r3,0x10                ; 0801B83A
+lsr   r3,r3,0x10                ; 0801B83C
+mov   r4,r12                    ; 0801B83E
+strh  r3,[r4]                   ; 0801B840  0300224E = 00 if 3C, 80 if F4
+mov   r4,r0                     ; 0801B842
+add   r4,0x4E                   ; 0801B844  r4 = [03007240]+4E (0300225A)
+mov   r3,0x2                    ; 0801B846
+strh  r3,[r4]                   ; 0801B848  set width to 2
+bl    Sub0801A070               ; 0801B84A  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801B84E
+pop   {r0}                      ; 0801B850
+bx    r0                        ; 0801B852
+
+ObjInit3B:
+; object 3B init
+push  {r4-r5,lr}                ; 0801B854
+mov   r4,r0                     ; 0801B856
+lsl   r1,r1,0x10                ; 0801B858
+lsr   r1,r1,0x10                ; 0801B85A
+lsl   r2,r2,0x18                ; 0801B85C
+lsr   r2,r2,0x18                ; 0801B85E
+add   r0,0x4E                   ; 0801B860
+ldrh  r0,[r0]                   ; 0801B862
+lsl   r0,r0,0x11                ; 0801B864
+lsr   r0,r0,0x10                ; 0801B866
+mov   r3,0x52                   ; 0801B868
+add   r3,r3,r4                  ; 0801B86A
+mov   r12,r3                    ; 0801B86C
+ldrh  r3,[r3]                   ; 0801B86E
+sub   r0,r3,r0                  ; 0801B870
+lsl   r0,r0,0x10                ; 0801B872
+lsr   r3,r0,0x10                ; 0801B874
+cmp   r3,0x0                    ; 0801B876
+bne   @@Code0801B87C            ; 0801B878
+mov   r3,0x1                    ; 0801B87A
+@@Code0801B87C:
+lsl   r0,r3,0x10                ; 0801B87C
+cmp   r0,0x0                    ; 0801B87E
+bge   @@Code0801B884            ; 0801B880
+mov   r3,0x1                    ; 0801B882
+@@Code0801B884:
+mov   r5,r12                    ; 0801B884
+strh  r3,[r5]                   ; 0801B886
+mov   r0,r4                     ; 0801B888
+bl    Sub0801A070               ; 0801B88A  Object processing main, slope=0, no relative Y threshold
+pop   {r4-r5}                   ; 0801B88E
+pop   {r0}                      ; 0801B890
+bx    r0                        ; 0801B892
+
+ObjInit3A:
+; object 3A init
+push  {lr}                      ; 0801B894
+lsl   r1,r1,0x10                ; 0801B896
+lsr   r1,r1,0x10                ; 0801B898
+lsl   r2,r2,0x18                ; 0801B89A
+lsr   r2,r2,0x18                ; 0801B89C
+bl    Sub0801A070               ; 0801B89E  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801B8A2
+bx    r0                        ; 0801B8A4
+.pool                           ; 0801B8A6
+
+ObjInit39:
+; object 39 init
+push  {r4-r5,lr}                ; 0801B8A8
+lsl   r1,r1,0x10                ; 0801B8AA
+lsr   r1,r1,0x10                ; 0801B8AC
+lsl   r2,r2,0x18                ; 0801B8AE
+lsr   r2,r2,0x18                ; 0801B8B0
+mov   r3,0x4E                   ; 0801B8B2
+add   r3,r3,r0                  ; 0801B8B4
+mov   r12,r3                    ; 0801B8B6
+ldrh  r3,[r3]                   ; 0801B8B8  width
+add   r3,0x1                    ; 0801B8BA  add 1
+ldr   r4,=0xFFFE                ; 0801B8BC
+and   r3,r4                     ; 0801B8BE  force width to even
+mov   r5,r12                    ; 0801B8C0
+strh  r3,[r5]                   ; 0801B8C2  if width is odd, add 1
+mov   r3,0x52                   ; 0801B8C4
+add   r3,r3,r0                  ; 0801B8C6
+mov   r12,r3                    ; 0801B8C8
+ldrh  r3,[r3]                   ; 0801B8CA  height
+add   r3,0x1                    ; 0801B8CC  add 1
+and   r3,r4                     ; 0801B8CE  force height to even
+mov   r4,r12                    ; 0801B8D0
+strh  r3,[r4]                   ; 0801B8D2  height
+bl    Sub0801A070               ; 0801B8D4  Object processing main, slope=0, no relative Y threshold
+pop   {r4-r5}                   ; 0801B8D8
+pop   {r0}                      ; 0801B8DA
+bx    r0                        ; 0801B8DC
+.pool                           ; 0801B8DE
+
+ObjInit38:
+; object 38 init
+push  {r4-r6,lr}                ; 0801B8E4
+mov   r6,r0                     ; 0801B8E6
+mov   r4,r1                     ; 0801B8E8
+mov   r5,r2                     ; 0801B8EA
+lsl   r4,r4,0x10                ; 0801B8EC
+lsr   r4,r4,0x10                ; 0801B8EE
+lsl   r5,r5,0x18                ; 0801B8F0
+lsr   r5,r5,0x18                ; 0801B8F2
+bl    GenRandomByte             ; 0801B8F4  Generate pseudo-random byte
+lsl   r0,r0,0x10                ; 0801B8F8
+lsr   r0,r0,0x10                ; 0801B8FA
+mov   r1,0x2                    ; 0801B8FC
+and   r0,r1                     ; 0801B8FE  random 0 or 2
+lsl   r0,r0,0x10                ; 0801B900
+lsr   r0,r0,0x10                ; 0801B902
+mov   r1,r6                     ; 0801B904
+add   r1,0x42                   ; 0801B906
+strh  r0,[r1]                   ; 0801B908  [0300224E] = random 0 or 2
+mov   r0,r6                     ; 0801B90A
+mov   r1,r4                     ; 0801B90C
+mov   r2,r5                     ; 0801B90E
+bl    Sub0801A070               ; 0801B910  Object processing main, slope=0, no relative Y threshold
+pop   {r4-r6}                   ; 0801B914
+pop   {r0}                      ; 0801B916
+bx    r0                        ; 0801B918
+.pool                           ; 0801B91A
+
+ObjInit37:
+; object 37 init
+push  {lr}                      ; 0801B91C
+lsl   r1,r1,0x10                ; 0801B91E
+lsr   r1,r1,0x10                ; 0801B920
+lsl   r2,r2,0x18                ; 0801B922
+lsr   r2,r2,0x18                ; 0801B924
+bl    Sub0801A070               ; 0801B926  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801B92A
+bx    r0                        ; 0801B92C
+.pool                           ; 0801B92E
+
+ObjInit36:
+; object 36 init
+push  {lr}                      ; 0801B930
+lsl   r1,r1,0x10                ; 0801B932
+lsr   r1,r1,0x10                ; 0801B934
+lsl   r2,r2,0x18                ; 0801B936
+lsr   r2,r2,0x18                ; 0801B938
+mov   r3,0xB                    ; 0801B93A
+strh  r3,[r0,0x3A]              ; 0801B93C
+bl    Sub0801A070               ; 0801B93E  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801B942
+bx    r0                        ; 0801B944
+.pool                           ; 0801B946
+
+ObjInit35:
+; object 35 init
+push  {r4,lr}                   ; 0801B948
+lsl   r1,r1,0x10                ; 0801B94A
+lsr   r1,r1,0x10                ; 0801B94C
+lsl   r2,r2,0x18                ; 0801B94E
+lsr   r2,r2,0x18                ; 0801B950
+mov   r3,0x42                   ; 0801B952
+add   r3,r3,r0                  ; 0801B954
+mov   r12,r3                    ; 0801B956
+mov   r3,0x0                    ; 0801B958
+mov   r4,r12                    ; 0801B95A
+strh  r3,[r4]                   ; 0801B95C  set 0300244E to 0
+bl    Sub0801A070               ; 0801B95E  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801B962
+pop   {r0}                      ; 0801B964
+bx    r0                        ; 0801B966
+
+ObjInit34:
+; object 34 init
+push  {r4-r5,lr}                ; 0801B968
+lsl   r1,r1,0x10                ; 0801B96A
+lsr   r1,r1,0x10                ; 0801B96C
+lsl   r2,r2,0x18                ; 0801B96E
+lsr   r2,r2,0x18                ; 0801B970
+mov   r3,0x52                   ; 0801B972
+add   r3,r3,r0                  ; 0801B974
+mov   r12,r3                    ; 0801B976
+ldrh  r3,[r3]                   ; 0801B978
+add   r3,0x1                    ; 0801B97A
+mov   r4,0x0                    ; 0801B97C
+mov   r5,r12                    ; 0801B97E
+strh  r3,[r5]                   ; 0801B980  add 1 to height (set height to 2)
+strh  r4,[r0,0x3A]              ; 0801B982  clear scratch RAM
+bl    Sub0801A070               ; 0801B984  Object processing main, slope=0, no relative Y threshold
+pop   {r4-r5}                   ; 0801B988
+pop   {r0}                      ; 0801B98A
+bx    r0                        ; 0801B98C
+.pool                           ; 0801B98E
+
+ObjInit32_33:
+; object 32-33 init
+push  {lr}                      ; 0801B990
+lsl   r1,r1,0x10                ; 0801B992
+lsr   r1,r1,0x10                ; 0801B994
+lsl   r2,r2,0x18                ; 0801B996
+lsr   r2,r2,0x18                ; 0801B998
+bl    Sub0801A070               ; 0801B99A  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801B99E
+bx    r0                        ; 0801B9A0
+.pool                           ; 0801B9A2
+
+ObjInit30_31:
+; object 30-31 init
+push  {r4-r6,lr}                ; 0801B9A4
+mov   r4,r0                     ; 0801B9A6
+lsl   r1,r1,0x10                ; 0801B9A8
+lsr   r6,r1,0x10                ; 0801B9AA
+lsl   r2,r2,0x18                ; 0801B9AC
+lsr   r5,r2,0x18                ; 0801B9AE
+mov   r0,0x0                    ; 0801B9B0
+strh  r0,[r4,0x3A]              ; 0801B9B2  clear 03002246
+bl    GenRandomByte             ; 0801B9B4  Generate pseudo-random byte
+mov   r1,0x2                    ; 0801B9B8
+and   r1,r0                     ; 0801B9BA  random 0,2
+cmp   r1,0x0                    ; 0801B9BC
+beq   @@Code0801B9C4            ; 0801B9BE
+mov   r0,0xB                    ; 0801B9C0 \
+strh  r0,[r4,0x3A]              ; 0801B9C2 / if random 2, set 03002246 to B
+@@Code0801B9C4:
+mov   r0,r4                     ; 0801B9C4
+mov   r1,r6                     ; 0801B9C6
+mov   r2,r5                     ; 0801B9C8
+bl    Sub0801A070               ; 0801B9CA  Object processing main, slope=0, no relative Y threshold
+pop   {r4-r6}                   ; 0801B9CE
+pop   {r0}                      ; 0801B9D0
+bx    r0                        ; 0801B9D2
+
+ObjInit2F:
+; object 2F init
+push  {lr}                      ; 0801B9D4
+lsl   r1,r1,0x10                ; 0801B9D6
+lsr   r1,r1,0x10                ; 0801B9D8
+lsl   r2,r2,0x18                ; 0801B9DA
+lsr   r2,r2,0x18                ; 0801B9DC
+bl    Sub0801A070               ; 0801B9DE  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801B9E2
+bx    r0                        ; 0801B9E4
+.pool                           ; 0801B9E6
+
+ObjInit2D_2E:
+; object 2D-2E init
+push  {r4-r6,lr}                ; 0801B9E8
+mov   r6,r0                     ; 0801B9EA
+mov   r4,r1                     ; 0801B9EC
+mov   r5,r2                     ; 0801B9EE
+lsl   r4,r4,0x10                ; 0801B9F0
+lsr   r4,r4,0x10                ; 0801B9F2
+lsl   r5,r5,0x18                ; 0801B9F4
+lsr   r5,r5,0x18                ; 0801B9F6
+bl    GenRandomByte             ; 0801B9F8  Generate pseudo-random byte
+lsl   r0,r0,0x10                ; 0801B9FC
+lsr   r0,r0,0x10                ; 0801B9FE
+mov   r1,0x2                    ; 0801BA00
+and   r0,r1                     ; 0801BA02  random 0,2
+lsl   r0,r0,0x10                ; 0801BA04
+lsr   r0,r0,0x10                ; 0801BA06
+strh  r0,[r6,0x3A]              ; 0801BA08  set scratch RAM to random 0,2
+mov   r0,r6                     ; 0801BA0A
+mov   r1,r4                     ; 0801BA0C
+mov   r2,r5                     ; 0801BA0E
+bl    Sub0801A070               ; 0801BA10  Object processing main, slope=0, no relative Y threshold
+pop   {r4-r6}                   ; 0801BA14
+pop   {r0}                      ; 0801BA16
+bx    r0                        ; 0801BA18
+.pool                           ; 0801BA1A
+
+ObjInit2C:
+; object 2C init
+push  {r4,lr}                   ; 0801BA1C
+lsl   r1,r1,0x10                ; 0801BA1E
+lsr   r1,r1,0x10                ; 0801BA20
+lsl   r2,r2,0x18                ; 0801BA22
+lsr   r2,r2,0x18                ; 0801BA24
+mov   r3,0x4E                   ; 0801BA26
+add   r3,r3,r0                  ; 0801BA28
+mov   r12,r3                    ; 0801BA2A
+ldrh  r3,[r3]                   ; 0801BA2C
+add   r3,0x1                    ; 0801BA2E
+mov   r4,r12                    ; 0801BA30
+strh  r3,[r4]                   ; 0801BA32  add 1 to width (set width to 2)
+bl    Sub0801A070               ; 0801BA34  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801BA38
+pop   {r0}                      ; 0801BA3A
+bx    r0                        ; 0801BA3C
+.pool                           ; 0801BA3E
+
+ObjInit2B:
+; object 2B init
+push  {lr}                      ; 0801BA40
+lsl   r1,r1,0x10                ; 0801BA42
+lsr   r1,r1,0x10                ; 0801BA44
+lsl   r2,r2,0x18                ; 0801BA46
+lsr   r2,r2,0x18                ; 0801BA48
+bl    Sub0801A070               ; 0801BA4A  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801BA4E
+bx    r0                        ; 0801BA50
+.pool                           ; 0801BA52
+
+ObjInit29_2A:
+; object 29-2A init
+push  {r4-r6,lr}                ; 0801BA54
+lsl   r1,r1,0x10                ; 0801BA56
+lsr   r1,r1,0x10                ; 0801BA58
+lsl   r2,r2,0x18                ; 0801BA5A
+lsr   r2,r2,0x18                ; 0801BA5C
+mov   r3,0x42                   ; 0801BA5E
+add   r3,r3,r0                  ; 0801BA60
+mov   r12,r3                    ; 0801BA62
+ldrh  r4,[r3]                   ; 0801BA64  object ID
+mov   r5,0x2                    ; 0801BA66
+mov   r3,r5                     ; 0801BA68
+and   r3,r4                     ; 0801BA6A  0,2 for 29,2A
+lsl   r3,r3,0x10                ; 0801BA6C
+lsr   r3,r3,0x10                ; 0801BA6E
+lsl   r3,r3,0x11                ; 0801BA70
+lsr   r3,r3,0x10                ; 0801BA72  0,4 for 29,2A
+mov   r4,0x0                    ; 0801BA74
+mov   r6,r12                    ; 0801BA76
+strh  r3,[r6]                   ; 0801BA78  [0300224E] = 0,4 for 29,2A
+strh  r4,[r0,0x3A]              ; 0801BA7A  clear scratch RAM
+mov   r3,r0                     ; 0801BA7C
+add   r3,0x44                   ; 0801BA7E
+strh  r5,[r3]                   ; 0801BA80  set slope to 2
+bl    Sub0801A04C               ; 0801BA82  Object processing main, no relative Y threshold
+pop   {r4-r6}                   ; 0801BA86
+pop   {r0}                      ; 0801BA88
+bx    r0                        ; 0801BA8A
+
+ObjInit27_28:
+; object 27-28 init
+push  {r4,lr}                   ; 0801BA8C
+lsl   r1,r1,0x10                ; 0801BA8E
+lsr   r1,r1,0x10                ; 0801BA90
+lsl   r2,r2,0x18                ; 0801BA92
+lsr   r2,r2,0x18                ; 0801BA94
+mov   r3,0x42                   ; 0801BA96
+add   r3,r3,r0                  ; 0801BA98
+mov   r12,r3                    ; 0801BA9A
+ldrh  r4,[r3]                   ; 0801BA9C  object ID
+mov   r3,0x8                    ; 0801BA9E
+and   r3,r4                     ; 0801BAA0  0,8 for object 27,28
+lsl   r3,r3,0x10                ; 0801BAA2
+lsr   r3,r3,0x12                ; 0801BAA4
+lsl   r3,r3,0x10                ; 0801BAA6
+lsr   r3,r3,0x10                ; 0801BAA8
+mov   r4,r12                    ; 0801BAAA
+strh  r3,[r4]                   ; 0801BAAC  [0300224E] = (objID-27)*2
+mov   r4,r0                     ; 0801BAAE
+add   r4,0x44                   ; 0801BAB0
+ldr   r3,=0xFFFF                ; 0801BAB2
+strh  r3,[r4]                   ; 0801BAB4  set slope to -1
+bl    Sub0801A04C               ; 0801BAB6  Object processing main, no relative Y threshold
+pop   {r4}                      ; 0801BABA
+pop   {r0}                      ; 0801BABC
+bx    r0                        ; 0801BABE
+.pool                           ; 0801BAC0
+
+ObjInit25_26:
+; object 25-26 init
+push  {r4,lr}                   ; 0801BAC4
+lsl   r1,r1,0x10                ; 0801BAC6
+lsr   r1,r1,0x10                ; 0801BAC8
+lsl   r2,r2,0x18                ; 0801BACA
+lsr   r2,r2,0x18                ; 0801BACC
+mov   r3,0x42                   ; 0801BACE
+add   r3,r3,r0                  ; 0801BAD0
+mov   r12,r3                    ; 0801BAD2
+ldrh  r4,[r3]                   ; 0801BAD4  object ID
+mov   r3,0x2                    ; 0801BAD6
+and   r3,r4                     ; 0801BAD8  0,2 for object 25,26
+lsl   r3,r3,0x10                ; 0801BADA
+lsr   r3,r3,0x10                ; 0801BADC
+mov   r4,r12                    ; 0801BADE
+strh  r3,[r4]                   ; 0801BAE0  [0300224E] = (objID-25)*2
+bl    Sub0801A070               ; 0801BAE2  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801BAE6
+pop   {r0}                      ; 0801BAE8
+bx    r0                        ; 0801BAEA
+
+ObjInit24:
+; object 24 init
+push  {lr}                      ; 0801BAEC
+lsl   r1,r1,0x10                ; 0801BAEE
+lsr   r1,r1,0x10                ; 0801BAF0
+lsl   r2,r2,0x18                ; 0801BAF2
+lsr   r2,r2,0x18                ; 0801BAF4
+bl    Sub0801A070               ; 0801BAF6  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801BAFA
+bx    r0                        ; 0801BAFC
+.pool                           ; 0801BAFE
+
+ObjInit23:
+; object 23 init
+push  {r4,lr}                   ; 0801BB00
+lsl   r1,r1,0x10                ; 0801BB02
+lsr   r1,r1,0x10                ; 0801BB04
+lsl   r2,r2,0x18                ; 0801BB06
+lsr   r2,r2,0x18                ; 0801BB08
+mov   r3,0x4E                   ; 0801BB0A
+add   r3,r3,r0                  ; 0801BB0C
+mov   r12,r3                    ; 0801BB0E
+ldrh  r3,[r3]                   ; 0801BB10
+add   r3,0x1                    ; 0801BB12
+mov   r4,r12                    ; 0801BB14
+strh  r3,[r4]                   ; 0801BB16  add 1 to width
+bl    Sub0801A070               ; 0801BB18  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801BB1C
+pop   {r0}                      ; 0801BB1E
+bx    r0                        ; 0801BB20
+.pool                           ; 0801BB22
+
+ObjInit22:
+; object 22 init
+push  {r4,lr}                   ; 0801BB24
+lsl   r1,r1,0x10                ; 0801BB26
+lsr   r1,r1,0x10                ; 0801BB28
+lsl   r2,r2,0x18                ; 0801BB2A
+lsr   r2,r2,0x18                ; 0801BB2C
+mov   r3,0x4E                   ; 0801BB2E
+add   r3,r3,r0                  ; 0801BB30
+mov   r12,r3                    ; 0801BB32
+ldrh  r3,[r3]                   ; 0801BB34
+add   r3,0x1                    ; 0801BB36
+mov   r4,r12                    ; 0801BB38
+strh  r3,[r4]                   ; 0801BB3A  add 1 to width
+bl    Sub0801A070               ; 0801BB3C  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801BB40
+pop   {r0}                      ; 0801BB42
+bx    r0                        ; 0801BB44
+.pool                           ; 0801BB46
+
+ObjInit21:
+; object 21 init
+push  {lr}                      ; 0801BB48
+lsl   r1,r1,0x10                ; 0801BB4A
+lsr   r1,r1,0x10                ; 0801BB4C
+lsl   r2,r2,0x18                ; 0801BB4E
+lsr   r2,r2,0x18                ; 0801BB50
+mov   r3,0x0                    ; 0801BB52
+strh  r3,[r0,0x3A]              ; 0801BB54  clear scratch RAM
+bl    Sub0801A070               ; 0801BB56  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801BB5A
+bx    r0                        ; 0801BB5C
+.pool                           ; 0801BB5E
+
+ObjInit1F_20:
+; object 1F-20 init
+push  {r4-r7,lr}                ; 0801BB60
+mov   r7,r10                    ; 0801BB62
+mov   r6,r9                     ; 0801BB64
+mov   r5,r8                     ; 0801BB66
+push  {r5-r7}                   ; 0801BB68
+add   sp,-0x8                   ; 0801BB6A
+mov   r12,r0                    ; 0801BB6C
+lsl   r1,r1,0x10                ; 0801BB6E
+lsr   r1,r1,0x10                ; 0801BB70
+str   r1,[sp]                   ; 0801BB72  [sp] = object ID
+lsl   r2,r2,0x18                ; 0801BB74
+lsr   r2,r2,0x18                ; 0801BB76
+str   r2,[sp,0x4]               ; 0801BB78  [sp+4] = 1
+mov   r2,r12                    ; 0801BB7A
+add   r2,0x48                   ; 0801BB7C
+ldrh  r0,[r2]                   ; 0801BB7E  tile YXyx
+lsr   r3,r0,0x4                 ; 0801BB80
+eor   r3,r0                     ; 0801BB82
+mov   r0,0x1                    ; 0801BB84
+and   r3,r0                     ; 0801BB86  object Y^X parity
+mov   r0,r12                    ; 0801BB88
+strh  r3,[r0,0x3A]              ; 0801BB8A  store to scratch RAM
+add   r0,0x42                   ; 0801BB8C
+ldrh  r1,[r0]                   ; 0801BB8E  object ID
+mov   r0,0x2                    ; 0801BB90
+and   r0,r1                     ; 0801BB92  2,0 for 1F,20
+lsl   r0,r0,0x10                ; 0801BB94
+lsr   r0,r0,0x10                ; 0801BB96
+mov   r9,r0                     ; 0801BB98
+ldr   r0,=Data081BEFEC          ; 0801BB9A
+mov   r10,r0                    ; 0801BB9C
+mov   r0,r9                     ; 0801BB9E  2,0 for 1F,20
+cmp   r0,0x0                    ; 0801BBA0
+beq   @@Code0801BC10            ; 0801BBA2
+                                ;          \ runs if object 1F
+ldrh  r1,[r2]                   ; 0801BBA4  tile YXyx
+ldrb  r0,[r2]                   ; 0801BBA6  tile yx
+lsr   r5,r0,0x4                 ; 0801BBA8  r5 = tile y, low digit
+mov   r6,0xF                    ; 0801BBAA
+and   r6,r1                     ; 0801BBAC  r6 = tile x, low digit
+lsr   r3,r1,0x8                 ; 0801BBAE  r3 = tile YX
+mov   r0,r3                     ; 0801BBB0  r0 = tile YX
+mov   r1,0xF0                   ; 0801BBB2
+and   r3,r1                     ; 0801BBB4  r3 = tile Y0
+orr   r5,r3                     ; 0801BBB6  r5 = tile Y
+lsl   r0,r0,0x14                ; 0801BBB8
+lsr   r0,r0,0x10                ; 0801BBBA  r0 = tile YX0
+orr   r6,r0                     ; 0801BBBC  r6 = tile YXx
+mov   r2,0x0                    ; 0801BBBE
+mov   r0,r12                    ; 0801BBC0
+add   r0,0xF6                   ; 0801BBC2  r0 = [03007240]+F6 (03002302)
+ldrb  r3,[r0]                   ; 0801BBC4  ?
+mov   r4,r12                    ; 0801BBC6
+add   r4,0xF4                   ; 0801BBC8  r4 = [03007240]+F4 (03002300)
+mov   r7,r12                    ; 0801BBCA
+add   r7,0x4E                   ; 0801BBCC  r7 = pointer to width
+mov   r0,0x52                   ; 0801BBCE
+add   r0,r12                    ; 0801BBD0
+mov   r8,r0                     ; 0801BBD2  r8 = pointer to height
+cmp   r3,0x0                    ; 0801BBD4
+beq   @@Code0801BBEE            ; 0801BBD6
+mov   r1,r4                     ; 0801BBD8
+@@Code0801BBDA:
+add   r0,r2,0x4                 ; 0801BBDA
+lsl   r0,r0,0x10                ; 0801BBDC
+lsr   r2,r0,0x10                ; 0801BBDE
+cmp   r2,0x4F                   ; 0801BBE0
+bhi   @@Code0801BBEE            ; 0801BBE2
+add   r0,r2,0x2                 ; 0801BBE4
+add   r0,r1,r0                  ; 0801BBE6
+ldrb  r3,[r0]                   ; 0801BBE8
+cmp   r3,0x0                    ; 0801BBEA
+bne   @@Code0801BBDA            ; 0801BBEC
+@@Code0801BBEE:
+add   r0,r4,r2                  ; 0801BBEE
+strb  r6,[r0]                   ; 0801BBF0
+sub   r1,r5,0x2                 ; 0801BBF2
+add   r0,r2,0x1                 ; 0801BBF4
+add   r0,r4,r0                  ; 0801BBF6
+strb  r1,[r0]                   ; 0801BBF8
+ldrh  r1,[r7]                   ; 0801BBFA
+sub   r1,0x1                    ; 0801BBFC
+add   r0,r2,0x2                 ; 0801BBFE
+add   r0,r4,r0                  ; 0801BC00
+strb  r1,[r0]                   ; 0801BC02
+mov   r0,r8                     ; 0801BC04
+ldrh  r1,[r0]                   ; 0801BC06
+sub   r1,0x1                    ; 0801BC08
+add   r0,r2,0x3                 ; 0801BC0A
+add   r0,r4,r0                  ; 0801BC0C
+strb  r1,[r0]                   ; 0801BC0E /
+@@Code0801BC10:
+mov   r0,r12                    ; 0801BC10
+add   r0,0x42                   ; 0801BC12
+mov   r1,0x0                    ; 0801BC14
+strh  r1,[r0]                   ; 0801BC16  clear 0300224E
+mov   r2,r9                     ; 0801BC18  2,0 for 1F,20
+lsr   r0,r2,0x1                 ; 0801BC1A
+lsl   r0,r0,0x1                 ; 0801BC1C
+add   r0,r10                    ; 0801BC1E  index 081BEFEC with 2,0 for 1F,20
+ldrh  r0,[r0]                   ; 0801BC20  5,2 for 1F,20
+mov   r3,r12                    ; 0801BC22
+add   r3,0x46                   ; 0801BC24
+strh  r0,[r3]                   ; 0801BC26  set relative Y threshold
+mov   r0,r12                    ; 0801BC28
+add   r0,0x44                   ; 0801BC2A
+strh  r1,[r0]                   ; 0801BC2C  clear slope
+mov   r0,r12                    ; 0801BC2E
+ldr   r1,[sp]                   ; 0801BC30  object ID
+ldr   r2,[sp,0x4]               ; 0801BC32  r2 = 1
+bl    Sub08019DA8               ; 0801BC34  Object processing main
+add   sp,0x8                    ; 0801BC38
+pop   {r3-r5}                   ; 0801BC3A
+mov   r8,r3                     ; 0801BC3C
+mov   r9,r4                     ; 0801BC3E
+mov   r10,r5                    ; 0801BC40
+pop   {r4-r7}                   ; 0801BC42
+pop   {r0}                      ; 0801BC44
+bx    r0                        ; 0801BC46
+.pool                           ; 0801BC48
+
+ObjInit1D_1E:
+; object 1D-1E init
+push  {lr}                      ; 0801BC4C
+lsl   r1,r1,0x10                ; 0801BC4E
+lsr   r1,r1,0x10                ; 0801BC50
+lsl   r2,r2,0x18                ; 0801BC52
+lsr   r2,r2,0x18                ; 0801BC54
+bl    Sub0801A070               ; 0801BC56  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801BC5A
+bx    r0                        ; 0801BC5C
+.pool                           ; 0801BC5E
+
+ObjInit1C:
+; object 1C init
+push  {r4,lr}                   ; 0801BC60
+lsl   r1,r1,0x10                ; 0801BC62
+lsr   r1,r1,0x10                ; 0801BC64
+lsl   r2,r2,0x18                ; 0801BC66
+lsr   r2,r2,0x18                ; 0801BC68
+mov   r3,0x4E                   ; 0801BC6A
+add   r3,r3,r0                  ; 0801BC6C
+mov   r12,r3                    ; 0801BC6E
+mov   r3,0x2                    ; 0801BC70
+mov   r4,r12                    ; 0801BC72
+strh  r3,[r4]                   ; 0801BC74  set width to 2
+bl    Sub0801A070               ; 0801BC76  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801BC7A
+pop   {r0}                      ; 0801BC7C
+bx    r0                        ; 0801BC7E
+
+ObjInit1A_1B:
+; object 1A-1B init
+push  {lr}                      ; 0801BC80
+lsl   r1,r1,0x10                ; 0801BC82
+lsr   r1,r1,0x10                ; 0801BC84
+lsl   r2,r2,0x18                ; 0801BC86
+lsr   r2,r2,0x18                ; 0801BC88
+bl    Sub0801A070               ; 0801BC8A  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801BC8E
+bx    r0                        ; 0801BC90
+.pool                           ; 0801BC92
+
+ObjInit18_19:
+; object 18-19 init
+push  {lr}                      ; 0801BC94
+lsl   r1,r1,0x10                ; 0801BC96
+lsr   r1,r1,0x10                ; 0801BC98
+lsl   r2,r2,0x18                ; 0801BC9A
+lsr   r2,r2,0x18                ; 0801BC9C
+bl    Sub0801A070               ; 0801BC9E  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801BCA2
+bx    r0                        ; 0801BCA4
+.pool                           ; 0801BCA6
+
+ObjInit17:
+; object 17 init
+push  {r4-r6,lr}                ; 0801BCA8
+lsl   r1,r1,0x10                ; 0801BCAA
+lsr   r1,r1,0x10                ; 0801BCAC
+lsl   r2,r2,0x18                ; 0801BCAE
+lsr   r2,r2,0x18                ; 0801BCB0
+mov   r6,r0                     ; 0801BCB2
+add   r6,0x48                   ; 0801BCB4
+ldrh  r5,[r6]                   ; 0801BCB6  tile YXyx
+ldr   r4,=0xF0F0                ; 0801BCB8
+mov   r3,r4                     ; 0801BCBA
+and   r3,r5                     ; 0801BCBC
+sub   r3,0x10                   ; 0801BCBE  subtract 1 from y
+and   r3,r4                     ; 0801BCC0
+ldr   r4,=0x0F0F                ; 0801BCC2
+and   r4,r5                     ; 0801BCC4
+orr   r4,r3                     ; 0801BCC6
+strh  r4,[r6]                   ; 0801BCC8  adjusted YXyx
+mov   r4,r0                     ; 0801BCCA
+add   r4,0x52                   ; 0801BCCC
+ldrh  r3,[r4]                   ; 0801BCCE
+add   r3,0x1                    ; 0801BCD0
+strh  r3,[r4]                   ; 0801BCD2  add 1 to height
+bl    Sub0801A070               ; 0801BCD4  Object processing main, slope=0, no relative Y threshold
+pop   {r4-r6}                   ; 0801BCD8
+pop   {r0}                      ; 0801BCDA
+bx    r0                        ; 0801BCDC
+.pool                           ; 0801BCDE
+
+ObjInit16:
+; object 16 init
+push  {lr}                      ; 0801BCE8
+lsl   r1,r1,0x10                ; 0801BCEA
+lsr   r1,r1,0x10                ; 0801BCEC
+lsl   r2,r2,0x18                ; 0801BCEE
+lsr   r2,r2,0x18                ; 0801BCF0
+bl    Sub0801A070               ; 0801BCF2  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801BCF6
+bx    r0                        ; 0801BCF8
+.pool                           ; 0801BCFA
+
+ObjInit15:
+; object 15 init
+push  {r4,lr}                   ; 0801BCFC
+lsl   r1,r1,0x10                ; 0801BCFE
+lsr   r1,r1,0x10                ; 0801BD00
+lsl   r2,r2,0x18                ; 0801BD02
+lsr   r2,r2,0x18                ; 0801BD04
+mov   r3,0x52                   ; 0801BD06
+add   r3,r3,r0                  ; 0801BD08  r3 = [03007240]+52 (0300225E)
+mov   r12,r3                    ; 0801BD0A
+mov   r3,0x2                    ; 0801BD0C
+mov   r4,r12                    ; 0801BD0E
+strh  r3,[r4]                   ; 0801BD10  set height to 2
+bl    Sub0801A070               ; 0801BD12  Object processing main, slope=0, no relative Y threshold
+pop   {r4}                      ; 0801BD16
+pop   {r0}                      ; 0801BD18
+bx    r0                        ; 0801BD1A
+
+ObjInit14:
+; object 14 init
+push  {lr}                      ; 0801BD1C
+lsl   r1,r1,0x10                ; 0801BD1E
+lsr   r1,r1,0x10                ; 0801BD20
+lsl   r2,r2,0x18                ; 0801BD22
+lsr   r2,r2,0x18                ; 0801BD24
+bl    Sub0801A070               ; 0801BD26  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801BD2A
+bx    r0                        ; 0801BD2C
+.pool                           ; 0801BD2E
+
+ObjInit13:
+; object 13 init
+push  {lr}                      ; 0801BD30
+lsl   r1,r1,0x10                ; 0801BD32
+lsr   r1,r1,0x10                ; 0801BD34
+lsl   r2,r2,0x18                ; 0801BD36
+lsr   r2,r2,0x18                ; 0801BD38
+bl    Sub0801A070               ; 0801BD3A  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801BD3E
+bx    r0                        ; 0801BD40
+.pool                           ; 0801BD42
+
+ObjInit11_12:
+; object 11-12 init
+push  {r4-r5,lr}                ; 0801BD44
+mov   r4,r0                     ; 0801BD46
+lsl   r1,r1,0x10                ; 0801BD48
+lsr   r1,r1,0x10                ; 0801BD4A
+lsl   r2,r2,0x18                ; 0801BD4C
+lsr   r2,r2,0x18                ; 0801BD4E
+add   r0,0x42                   ; 0801BD50
+ldrh  r3,[r0]                   ; 0801BD52  object ID
+mov   r0,0x2                    ; 0801BD54
+and   r0,r3                     ; 0801BD56
+lsl   r0,r0,0x10                ; 0801BD58
+ldr   r3,=Data081C19B4          ; 0801BD5A
+lsr   r0,r0,0x11                ; 0801BD5C
+lsl   r0,r0,0x1                 ; 0801BD5E
+add   r3,r0,r3                  ; 0801BD60  index with objID-11
+ldrh  r3,[r3]                   ; 0801BD62  r3 = 02,03 for 11,12
+mov   r5,0x52                   ; 0801BD64
+strh  r3,[r5,r4]                ; 0801BD66  set height
+ldr   r3,=Data081C19B8          ; 0801BD68
+add   r0,r0,r3                  ; 0801BD6A
+ldrh  r3,[r0]                   ; 0801BD6C  -1,-2 for 11,12
+mov   r0,r4                     ; 0801BD6E
+add   r0,0x44                   ; 0801BD70
+strh  r3,[r0]                   ; 0801BD72  set slope
+mov   r0,r4                     ; 0801BD74
+bl    Sub0801A04C               ; 0801BD76  Object processing main, no relative Y threshold
+pop   {r4-r5}                   ; 0801BD7A
+pop   {r0}                      ; 0801BD7C
+bx    r0                        ; 0801BD7E
+.pool                           ; 0801BD80
+
+ObjInit10:
+; object 10 init
+push  {r4,lr}                   ; 0801BD88
+lsl   r1,r1,0x10                ; 0801BD8A
+lsr   r1,r1,0x10                ; 0801BD8C
+lsl   r2,r2,0x18                ; 0801BD8E
+lsr   r2,r2,0x18                ; 0801BD90
+mov   r4,r0                     ; 0801BD92
+add   r4,0x52                   ; 0801BD94
+mov   r3,0x2                    ; 0801BD96
+strh  r3,[r4]                   ; 0801BD98  set height to 2
+sub   r4,0xE                    ; 0801BD9A  +44
+ldr   r3,=0xFFFF                ; 0801BD9C
+strh  r3,[r4]                   ; 0801BD9E  set slope to -1
+bl    Sub0801A04C               ; 0801BDA0  Object processing main, no relative Y threshold
+pop   {r4}                      ; 0801BDA4
+pop   {r0}                      ; 0801BDA6
+bx    r0                        ; 0801BDA8
+.pool                           ; 0801BDAA
+
+ObjInit0D:
+; object 0D init
+push  {lr}                      ; 0801BDB0
+lsl   r1,r1,0x10                ; 0801BDB2
+lsr   r1,r1,0x10                ; 0801BDB4
+lsl   r2,r2,0x18                ; 0801BDB6
+lsr   r2,r2,0x18                ; 0801BDB8
+bl    Sub0801A070               ; 0801BDBA  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801BDBE
+bx    r0                        ; 0801BDC0
+.pool                           ; 0801BDC2
+
+ObjInit0C_0E_0F:
+; object 0C,0E-0F init
+push  {lr}                      ; 0801BDC4
+lsl   r1,r1,0x10                ; 0801BDC6
+lsr   r1,r1,0x10                ; 0801BDC8
+lsl   r2,r2,0x18                ; 0801BDCA
+lsr   r2,r2,0x18                ; 0801BDCC
+bl    Sub0801A070               ; 0801BDCE  Object processing main, slope=0, no relative Y threshold
+pop   {r0}                      ; 0801BDD2
+bx    r0                        ; 0801BDD4
+.pool                           ; 0801BDD6
+
+Sub0801BDD8:
+; y -= 1, height += 1 (called twice each by objects 04-09 init)
+push  {r4-r5,lr}                ; 0801BDD8
+mov   r5,r0                     ; 0801BDDA
+add   r5,0x48                   ; 0801BDDC
+ldrh  r4,[r5]                   ; 0801BDDE  tile YXyx
+ldr   r2,=0x0F0F                ; 0801BDE0
+and   r2,r4                     ; 0801BDE2  0X0x
+ldr   r3,=0xF0F0                ; 0801BDE4
+mov   r1,r3                     ; 0801BDE6
+and   r1,r4                     ; 0801BDE8  Y0y0
+sub   r1,0x10                   ; 0801BDEA
+and   r1,r3                     ; 0801BDEC  Y?y0 with y-1
+orr   r1,r2                     ; 0801BDEE  YXyx
+strh  r1,[r5]                   ; 0801BDF0  start with y-1
+add   r0,0x52                   ; 0801BDF2
+ldrh  r1,[r0]                   ; 0801BDF4
+add   r1,0x1                    ; 0801BDF6  add 1 to height
+strh  r1,[r0]                   ; 0801BDF8
+pop   {r4-r5}                   ; 0801BDFA
+pop   {r0}                      ; 0801BDFC
+bx    r0                        ; 0801BDFE
+.pool                           ; 0801BE00
+
+ObjInit06_09:
+; object 06-09 init
+push  {r4-r6,lr}                ; 0801BE08
+mov   r4,r0                     ; 0801BE0A
+lsl   r1,r1,0x10                ; 0801BE0C
+lsr   r6,r1,0x10                ; 0801BE0E
+lsl   r2,r2,0x18                ; 0801BE10
+lsr   r5,r2,0x18                ; 0801BE12
+bl    Sub0801BDD8               ; 0801BE14  y -= 1, height += 1
+mov   r0,r4                     ; 0801BE18
+add   r0,0x42                   ; 0801BE1A
+ldrh  r0,[r0]                   ; 0801BE1C  object ID
+cmp   r0,0x7                    ; 0801BE1E
+beq   @@Code0801BE26            ; 0801BE20
+cmp   r0,0x9                    ; 0801BE22
+bne   @@Code0801BE2C            ; 0801BE24
+@@Code0801BE26:
+mov   r0,r4                     ; 0801BE26 \ runs if object 07/09
+bl    Sub0801BDD8               ; 0801BE28 / y -= 1, height += 1 (again)
+@@Code0801BE2C:
+mov   r0,r4                     ; 0801BE2C
+add   r0,0x42                   ; 0801BE2E
+ldrh  r0,[r0]                   ; 0801BE30  r0 = object ID again
+sub   r0,0x4                    ; 0801BE32
+lsl   r0,r0,0x11                ; 0801BE34
+ldr   r1,=Data081C199C          ; 0801BE36  relative Y threshold table
+lsr   r0,r0,0x10                ; 0801BE38  r0 = (objID-4)*2
+add   r1,r0,r1                  ; 0801BE3A  index with objID-4
+ldrh  r1,[r1]                   ; 0801BE3C  r1 = 4 for 06/07, 5 for 08/09
+mov   r2,r4                     ; 0801BE3E
+add   r2,0x46                   ; 0801BE40
+strh  r1,[r2]                   ; 0801BE42  set relative Y threshold
+ldr   r1,=Data081C19A8          ; 0801BE44  slope table
+add   r0,r0,r1                  ; 0801BE46  index with objID-4
+ldrh  r1,[r0]                   ; 0801BE48  -1,1,-2,2 for 06-09
+mov   r0,r4                     ; 0801BE4A
+add   r0,0x44                   ; 0801BE4C
+strh  r1,[r0]                   ; 0801BE4E  set slope
+mov   r0,r4                     ; 0801BE50
+mov   r1,r6                     ; 0801BE52
+mov   r2,r5                     ; 0801BE54
+bl    Sub08019DA8               ; 0801BE56  Object processing main
+pop   {r4-r6}                   ; 0801BE5A
+pop   {r0}                      ; 0801BE5C
+bx    r0                        ; 0801BE5E
+.pool                           ; 0801BE60
+
+ObjInit04_05:
+; object 04-05 init
+push  {r4-r6,lr}                ; 0801BE68
+mov   r4,r0                     ; 0801BE6A
+lsl   r1,r1,0x10                ; 0801BE6C
+lsr   r6,r1,0x10                ; 0801BE6E
+lsl   r2,r2,0x18                ; 0801BE70
+lsr   r5,r2,0x18                ; 0801BE72
+bl    Sub0801BDD8               ; 0801BE74  y -= 1, height += 1
+mov   r3,r4                     ; 0801BE78
+add   r3,0x42                   ; 0801BE7A
+ldrh  r1,[r3]                   ; 0801BE7C  object ID
+mov   r0,0x1                    ; 0801BE7E
+and   r0,r1                     ; 0801BE80  0,1 for 04,05
+lsl   r0,r0,0x11                ; 0801BE82
+lsr   r2,r0,0x10                ; 0801BE84
+strh  r2,[r3]                   ; 0801BE86  set 0300224E to 0,2 for 04,05
+ldr   r1,=Data081C1998          ; 0801BE88
+lsr   r0,r0,0x11                ; 0801BE8A
+lsl   r0,r0,0x1                 ; 0801BE8C
+add   r0,r0,r1                  ; 0801BE8E
+ldrh  r1,[r0]                   ; 0801BE90  -1,1 for 04,05
+mov   r0,r4                     ; 0801BE92
+add   r0,0x44                   ; 0801BE94
+strh  r1,[r0]                   ; 0801BE96  set slope
+cmp   r2,0x0                    ; 0801BE98
+beq   @@Code0801BEA2            ; 0801BE9A
+mov   r0,r4                     ; 0801BE9C \ runs if object 05
+bl    Sub0801BDD8               ; 0801BE9E / y -= 1, height += 1 (again)
+@@Code0801BEA2:
+mov   r0,r4                     ; 0801BEA2
+mov   r1,r6                     ; 0801BEA4
+mov   r2,r5                     ; 0801BEA6
+bl    Sub0801A04C               ; 0801BEA8  Object processing main, no relative Y threshold
+pop   {r4-r6}                   ; 0801BEAC
+pop   {r0}                      ; 0801BEAE
+bx    r0                        ; 0801BEB0
+.pool                           ; 0801BEB2
+
+ObjInit02_03_0A_0B:
+; object 02-03,0A-0B init
+push  {r4-r7,lr}                ; 0801BEB8
+mov   r7,r9                     ; 0801BEBA
+mov   r6,r8                     ; 0801BEBC
+push  {r6-r7}                   ; 0801BEBE
+mov   r3,r0                     ; 0801BEC0
+lsl   r1,r1,0x10                ; 0801BEC2
+lsr   r1,r1,0x10                ; 0801BEC4
+mov   r9,r1                     ; 0801BEC6  r9 = object ID
+lsl   r2,r2,0x18                ; 0801BEC8
+lsr   r2,r2,0x18                ; 0801BECA
+mov   r8,r2                     ; 0801BECC  r8 = 1
+add   r0,0x42                   ; 0801BECE
+ldrh  r0,[r0]                   ; 0801BED0  r0 = object ID
+lsl   r0,r0,0x11                ; 0801BED2
+lsr   r5,r0,0x10                ; 0801BED4  r5 = object ID *2
+ldr   r1,=Data081C1984          ; 0801BED6
+sub   r0,r5,0x4                 ; 0801BED8  index with: 02,03,0A,0B -> 00,02,10,12
+add   r0,r0,r1                  ; 0801BEDA
+ldrh  r0,[r0]                   ; 0801BEDC  02,03,0A,0B -> 03,03,01,01
+mov   r2,r3                     ; 0801BEDE
+add   r2,0x46                   ; 0801BEE0
+mov   r1,0x0                    ; 0801BEE2
+strh  r0,[r2]                   ; 0801BEE4  set relative Y threshold to 03,03,01,01
+mov   r0,r3                     ; 0801BEE6
+add   r0,0x44                   ; 0801BEE8
+strh  r1,[r0]                   ; 0801BEEA  clear slope
+strh  r1,[r3,0x3A]              ; 0801BEEC  clear 03002246
+cmp   r5,0x7                    ; 0801BEEE  if object ID *2 <= 7...
+bhi   @@Code0801BF36            ; 0801BEF0
+
+mov   r7,r3                     ; 0801BEF2 \ runs if object 02-03
+add   r7,0x48                   ; 0801BEF4
+ldrh  r2,[r7]                   ; 0801BEF6  r2 = tile YXyx
+ldr   r1,=0xF0F0                ; 0801BEF8
+mov   r0,r1                     ; 0801BEFA
+and   r0,r2                     ; 0801BEFC  Y0y0
+mov   r4,r0                     ; 0801BEFE
+sub   r4,0x10                   ; 0801BF00  subtract 1 from y
+and   r4,r1                     ; 0801BF02  r4 = Y0y0 with y-1
+ldr   r0,=0x0F0F                ; 0801BF04
+mov   r12,r0                    ; 0801BF06
+mov   r1,r12                    ; 0801BF08
+and   r1,r2                     ; 0801BF0A  r1 = 0X0x
+mov   r2,r3                     ; 0801BF0C
+add   r2,0x4E                   ; 0801BF0E
+ldrh  r0,[r2]                   ; 0801BF10
+add   r0,0x1                    ; 0801BF12  add 1 to width
+strh  r0,[r2]                   ; 0801BF14
+add   r2,0x4                    ; 0801BF16
+ldrh  r0,[r2]                   ; 0801BF18
+add   r0,0x1                    ; 0801BF1A  add 1 to height
+strh  r0,[r2]                   ; 0801BF1C
+mov   r6,0x2                    ; 0801BF1E
+strh  r6,[r3,0x3A]              ; 0801BF20  set 03002246 to 2
+cmp   r5,0x5                    ; 0801BF22  if object ID *2 <= 5...
+bhi   @@Code0801BF32            ; 0801BF24 /
+
+                                ;          \ runs if object 02
+sub   r1,0x1                    ; 0801BF26  0X?x with x-1
+mov   r0,r12                    ; 0801BF28
+and   r1,r0                     ; 0801BF2A  0X0x with x-1
+ldrh  r0,[r2]                   ; 0801BF2C
+strh  r0,[r3,0x3A]              ; 0801BF2E  set 03002246 to new height
+strh  r6,[r2]                   ; 0801BF30 /
+@@Code0801BF32:
+orr   r4,r1                     ; 0801BF32  YXyx with y-1 and possibly x-1
+strh  r4,[r7]                   ; 0801BF34  set new YXyx
+@@Code0801BF36:
+mov   r0,r3                     ; 0801BF36
+mov   r1,r9                     ; 0801BF38
+mov   r2,r8                     ; 0801BF3A
+bl    Sub08019DA8               ; 0801BF3C  Object processing main
+pop   {r3-r4}                   ; 0801BF40
+mov   r8,r3                     ; 0801BF42
+mov   r9,r4                     ; 0801BF44
+pop   {r4-r7}                   ; 0801BF46
+pop   {r0}                      ; 0801BF48
+bx    r0                        ; 0801BF4A
+.pool                           ; 0801BF4C
+
+ObjInit01:
+; object 01 init
+push  {r4-r6,lr}                ; 0801BF58
+mov   r12,r0                    ; 0801BF5A
+lsl   r1,r1,0x10                ; 0801BF5C
+lsr   r1,r1,0x10                ; 0801BF5E
+lsl   r2,r2,0x18                ; 0801BF60
+lsr   r2,r2,0x18                ; 0801BF62
+mov   r6,r12                    ; 0801BF64
+add   r6,0x48                   ; 0801BF66  [03007240]+48 (03002254)
+ldrh  r5,[r6]                   ; 0801BF68  r5 = tile YXyx
+ldr   r3,=0x0F0F                ; 0801BF6A
+and   r3,r5                     ; 0801BF6C
+ldr   r4,=0xF0F0                ; 0801BF6E
+mov   r0,r4                     ; 0801BF70
+and   r0,r5                     ; 0801BF72
+sub   r0,0x10                   ; 0801BF74  subtract 1 from initial Y
+and   r0,r4                     ; 0801BF76
+orr   r0,r3                     ; 0801BF78
+mov   r3,0x0                    ; 0801BF7A
+strh  r0,[r6]                   ; 0801BF7C
+mov   r4,r12                    ; 0801BF7E
+add   r4,0x52                   ; 0801BF80  [03007240]+52 (0300225E)
+ldrh  r0,[r4]                   ; 0801BF82
+add   r0,0x1                    ; 0801BF84  increment object's height
+strh  r0,[r4]                   ; 0801BF86
+sub   r4,0xC                    ; 0801BF88  [03007240]+46 (03002252)
+mov   r0,0x3                    ; 0801BF8A
+strh  r0,[r4]                   ; 0801BF8C  set relative Y threshold to 3
+mov   r0,r12                    ; 0801BF8E
+add   r0,0x44                   ; 0801BF90  [03007240]+44 (03002250)
+strh  r3,[r0]                   ; 0801BF92  clear slope
+mov   r0,r12                    ; 0801BF94
+bl    Sub08019DA8               ; 0801BF96  Object processing main
+pop   {r4-r6}                   ; 0801BF9A
+pop   {r0}                      ; 0801BF9C
+bx    r0                        ; 0801BF9E
+.pool                           ; 0801BFA0
