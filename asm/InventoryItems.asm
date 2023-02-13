@@ -241,29 +241,31 @@ bx    r0                        ; 080E5FDE
 
 Sub080E5FF4:
 push  {lr}                      ; 080E5FF4
-mov   r0,0xC8                   ; 080E5FF6
+mov   r0,0xC8                   ; 080E5FF6  20.0 stars
 bl    Sub080E6000               ; 080E5FF8
 pop   {r0}                      ; 080E5FFC
 bx    r0                        ; 080E5FFE
 
 Sub080E6000:
+; runs when using either star+ item
+; r0: stars to add
 push  {r4,lr}                   ; 080E6000
 lsl   r0,r0,0x10                ; 080E6002
 lsr   r2,r0,0x10                ; 080E6004
 ldr   r0,=0x03007240            ; 080E6006  Normal gameplay IWRAM (0300220C)
 ldr   r3,[r0]                   ; 080E6008
 ldr   r0,=0x29BC                ; 080E600A
-add   r4,r3,r0                  ; 080E600C
+add   r4,r3,r0                  ; 080E600C  [03007240]+29BC (03004BC8)
 ldrh  r0,[r4]                   ; 080E600E
 cmp   r0,0x0                    ; 080E6010
 bne   @@Code080E6044            ; 080E6012
 ldr   r0,=0x29B6                ; 080E6014
-add   r1,r3,r0                  ; 080E6016
-ldrh  r0,[r1]                   ; 080E6018
-add   r0,r2,r0                  ; 080E601A
-lsl   r0,r0,0x10                ; 080E601C
-lsr   r2,r0,0x10                ; 080E601E
-strh  r2,[r1]                   ; 080E6020
+add   r1,r3,r0                  ; 080E6016  [03007240]+29B6 (03004BC2)
+ldrh  r0,[r1]                   ; 080E6018 \
+add   r0,r2,r0                  ; 080E601A |
+lsl   r0,r0,0x10                ; 080E601C | increase stars to add by subroutine's argument
+lsr   r2,r0,0x10                ; 080E601E |
+strh  r2,[r1]                   ; 080E6020 /
 mov   r1,r2                     ; 080E6022
 add   r1,0x78                   ; 080E6024
 ldr   r2,=0x2A6E                ; 080E6026
@@ -292,7 +294,7 @@ bx    r0                        ; 080E6058
 
 Sub080E6060:
 push  {lr}                      ; 080E6060
-mov   r0,0x64                   ; 080E6062
+mov   r0,0x64                   ; 080E6062  10.0 stars
 bl    Sub080E6000               ; 080E6064
 pop   {r0}                      ; 080E6068
 bx    r0                        ; 080E606A

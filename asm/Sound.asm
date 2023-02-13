@@ -836,7 +836,6 @@ pop   {r1}                      ; 0812C890
 bx    r1                        ; 0812C892
 
 PlayYISound:
-;
 push  {r4-r7,lr}                ; 0812C894
 mov   r7,r10                    ; 0812C896
 mov   r6,r9                     ; 0812C898

@@ -804,6 +804,13 @@ bx    r1                        ; 080E68D0
 .pool                           ; 080E68D2
 
 Sub080E68D4:
+; Display 2-digit decimal number to inventory screen, hiding leading zero
+; r0: ones digit
+; r1: tens digit
+; (for "100" graphic, r0=A, r1=B)
+; r2: ones digit upper tile index
+; r3: ones digit lower tile index
+; Both indexes are from start of buffer, measured in tiles, *2 for RAM offset
 push  {r4-r7,lr}                ; 080E68D4
 mov   r7,r9                     ; 080E68D6
 mov   r6,r8                     ; 080E68D8
@@ -812,12 +819,12 @@ ldr   r4,[sp,0x1C]              ; 080E68DC
 lsl   r0,r0,0x10                ; 080E68DE
 lsl   r1,r1,0x10                ; 080E68E0
 lsr   r1,r1,0x10                ; 080E68E2
-mov   r12,r1                    ; 080E68E4
+mov   r12,r1                    ; 080E68E4  r12 = tens digit
 lsl   r2,r2,0x10                ; 080E68E6
 lsl   r3,r3,0x10                ; 080E68E8
 lsl   r4,r4,0x10                ; 080E68EA
 lsr   r5,r4,0x10                ; 080E68EC
-ldr   r1,=Data081943DA          ; 080E68EE
+ldr   r1,=ScoreDigitTilesUpper  ; 080E68EE
 mov   r9,r1                     ; 080E68F0
 lsr   r0,r0,0xF                 ; 080E68F2
 add   r1,r0,r1                  ; 080E68F4
@@ -827,8 +834,8 @@ lsr   r7,r2,0xF                 ; 080E68FA
 ldr   r4,=0x02015400            ; 080E68FC
 add   r2,r7,r4                  ; 080E68FE
 add   r1,0x80                   ; 080E6900
-strh  r1,[r2]                   ; 080E6902  store ones digit? to pause screen tilemap buffer
-ldr   r2,=Data0819446A          ; 080E6904
+strh  r1,[r2]                   ; 080E6902  store ones digit to pause screen tilemap buffer
+ldr   r2,=ScoreDigitTilesLower  ; 080E6904
 mov   r8,r2                     ; 080E6906
 add   r0,r8                     ; 080E6908
 ldrh  r0,[r0]                   ; 080E690A
@@ -838,8 +845,8 @@ add   r4,r6,r4                  ; 080E6910
 add   r0,0x80                   ; 080E6912
 strh  r0,[r4]                   ; 080E6914
 mov   r4,r12                    ; 080E6916
-cmp   r4,0x0                    ; 080E6918
-beq   @@Code080E693A            ; 080E691A
+cmp   r4,0x0                    ; 080E6918  if tens digit is 0, don't display anything
+beq   @@Return                  ; 080E691A
 lsl   r1,r4,0x1                 ; 080E691C
 mov   r2,r9                     ; 080E691E
 add   r0,r1,r2                  ; 080E6920
@@ -848,14 +855,14 @@ orr   r0,r5                     ; 080E6924
 ldr   r2,=0x020153FE            ; 080E6926
 add   r3,r7,r2                  ; 080E6928
 add   r0,0x80                   ; 080E692A
-strh  r0,[r3]                   ; 080E692C  store tens digit? to pause screen tilemap buffer  
+strh  r0,[r3]                   ; 080E692C  store tens digit to pause screen tilemap buffer  
 add   r1,r8                     ; 080E692E
 ldrh  r0,[r1]                   ; 080E6930
 orr   r0,r5                     ; 080E6932
 add   r2,r6,r2                  ; 080E6934
 add   r0,0x80                   ; 080E6936
 strh  r0,[r2]                   ; 080E6938
-@@Code080E693A:
+@@Return:
 pop   {r3-r4}                   ; 080E693A
 mov   r8,r3                     ; 080E693C
 mov   r9,r4                     ; 080E693E
@@ -1231,10 +1238,10 @@ add   r0,r0,r4                  ; 080E6C72
 ldrh  r1,[r1]                   ; 080E6C74
 add   r0,r0,r1                  ; 080E6C76
 ldrb  r1,[r0]                   ; 080E6C78
-cmp   r1,0x63                   ; 080E6C7A
+cmp   r1,0x63                   ; 080E6C7A  99dec
 bls   @@Code080E6C9E            ; 080E6C7C
-mov   r1,0xA                    ; 080E6C7E
-mov   r2,0xB                    ; 080E6C80
+mov   r1,0xA                    ; 080E6C7E \ for 100, use special tiles
+mov   r2,0xB                    ; 080E6C80 /
 b     @@Code080E6CA2            ; 080E6C82
 .pool                           ; 080E6C84
 
@@ -1252,9 +1259,9 @@ bhi   @@Code080E6C90            ; 080E6CA0
 @@Code080E6CA2:
 ldr   r6,=0x03002200            ; 080E6CA2
 ldr   r7,=0x4088                ; 080E6CA4
-add   r5,r6,r7                  ; 080E6CA6
-ldrh  r0,[r5]                   ; 080E6CA8
-cmp   r0,0xB                    ; 080E6CAA
+add   r5,r6,r7                  ; 080E6CA6  03006288
+ldrh  r0,[r5]                   ; 080E6CA8  level ID
+cmp   r0,0xB                    ; 080E6CAA  0B: Intro level
 bne   @@Code080E6CB2            ; 080E6CAC
 mov   r2,0x0                    ; 080E6CAE
 mov   r1,0x0                    ; 080E6CB0
@@ -1265,15 +1272,15 @@ mov   r0,r1                     ; 080E6CB6
 mov   r1,r2                     ; 080E6CB8
 mov   r2,0x98                   ; 080E6CBA
 mov   r3,0xB8                   ; 080E6CBC
-bl    Sub080E68D4               ; 080E6CBE
+bl    Sub080E68D4               ; 080E6CBE  write high score tiles
 ldr   r1,=0x413C                ; 080E6CC2
-add   r0,r6,r1                  ; 080E6CC4
-ldrh  r2,[r0]                   ; 080E6CC6
+add   r0,r6,r1                  ; 080E6CC4  0300633C
+ldrh  r2,[r0]                   ; 080E6CC6  world index
 lsr   r2,r2,0x1                 ; 080E6CC8
 add   r1,r2,0x1                 ; 080E6CCA
 ldr   r3,=0x02015508            ; 080E6CCC
 mov   r12,r3                    ; 080E6CCE
-ldr   r3,=Data081943DA          ; 080E6CD0
+ldr   r3,=ScoreDigitTilesUpper  ; 080E6CD0
 lsl   r1,r1,0x1                 ; 080E6CD2
 add   r0,r1,r3                  ; 080E6CD4
 ldrh  r0,[r0]                   ; 080E6CD6
@@ -1282,7 +1289,7 @@ mov   r4,r12                    ; 080E6CDA
 strh  r0,[r4]                   ; 080E6CDC
 ldr   r7,=0x02015548            ; 080E6CDE
 mov   r8,r7                     ; 080E6CE0
-ldr   r4,=Data0819446A          ; 080E6CE2
+ldr   r4,=ScoreDigitTilesLower  ; 080E6CE2
 add   r1,r1,r4                  ; 080E6CE4
 ldrh  r0,[r1]                   ; 080E6CE6
 add   r0,0x80                   ; 080E6CE8
@@ -1382,14 +1389,14 @@ ldrh  r0,[r0]                   ; 080E6DE8
 lsr   r5,r0,0x1                 ; 080E6DEA
 add   r1,r5,0x1                 ; 080E6DEC
 ldr   r7,=0x02015452            ; 080E6DEE
-ldr   r4,=Data081943DA          ; 080E6DF0
+ldr   r4,=ScoreDigitTilesUpper  ; 080E6DF0
 lsl   r1,r1,0x1                 ; 080E6DF2
 add   r0,r1,r4                  ; 080E6DF4
 ldrh  r0,[r0]                   ; 080E6DF6
 add   r0,0x80                   ; 080E6DF8
 strh  r0,[r7]                   ; 080E6DFA
 ldr   r6,=0x02015492            ; 080E6DFC
-ldr   r3,=Data0819446A          ; 080E6DFE
+ldr   r3,=ScoreDigitTilesLower  ; 080E6DFE
 add   r1,r1,r3                  ; 080E6E00
 ldrh  r0,[r1]                   ; 080E6E02
 add   r0,0x80                   ; 080E6E04
@@ -1481,10 +1488,10 @@ add   r0,r3,0x1                 ; 080E6EEC
 lsl   r0,r0,0x10                ; 080E6EEE
 lsr   r3,r0,0x10                ; 080E6EF0
 @@Code080E6EF2:
-cmp   r2,0x63                   ; 080E6EF2
+cmp   r2,0x63                   ; 080E6EF2  99dec
 bhi   @@Code080E6EE4            ; 080E6EF4
-lsl   r1,r3,0x1                 ; 080E6EF6
-cmp   r2,0x9                    ; 080E6EF8
+lsl   r1,r3,0x1                 ; 080E6EF6 \ for 100, use special tiles
+cmp   r2,0x9                    ; 080E6EF8 /
 bls   @@Code080E6F0E            ; 080E6EFA
 @@Code080E6EFC:
 mov   r0,r2                     ; 080E6EFC
@@ -1569,9 +1576,9 @@ lsl   r1,r1,0x10                ; 080E6FA8
 lsr   r3,r1,0x10                ; 080E6FAA
 ldr   r2,=0x03002200            ; 080E6FAC
 ldr   r1,=0x4088                ; 080E6FAE
-add   r0,r2,r1                  ; 080E6FB0
-ldrh  r0,[r0]                   ; 080E6FB2
-cmp   r0,0xB                    ; 080E6FB4
+add   r0,r2,r1                  ; 080E6FB0  03006288
+ldrh  r0,[r0]                   ; 080E6FB2  level ID
+cmp   r0,0xB                    ; 080E6FB4  0B: Intro level
 bne   @@Code080E6FE8            ; 080E6FB6
 ldr   r0,=0x0201576E            ; 080E6FB8
 ldr   r2,=0x01FF                ; 080E6FBA
@@ -1592,12 +1599,12 @@ b     @@Code080E7050            ; 080E6FD2
 @@Code080E6FE8:
 mov   r5,0x0                    ; 080E6FE8
 ldr   r1,=0x489A                ; 080E6FEA
-add   r0,r2,r1                  ; 080E6FEC
-ldrh  r1,[r0]                   ; 080E6FEE
-lsl   r0,r1,0x2                 ; 080E6FF0
-add   r0,r0,r1                  ; 080E6FF2
-lsl   r0,r0,0x11                ; 080E6FF4
-lsr   r1,r0,0x10                ; 080E6FF6
+add   r0,r2,r1                  ; 080E6FEC  03006A9A
+ldrh  r1,[r0]                   ; 080E6FEE  flowers
+lsl   r0,r1,0x2                 ; 080E6FF0 \
+add   r0,r0,r1                  ; 080E6FF2 | multiply flowers by 10
+lsl   r0,r0,0x11                ; 080E6FF4 |
+lsr   r1,r0,0x10                ; 080E6FF6 /
 add   r0,r1,r4                  ; 080E6FF8
 lsl   r0,r0,0x10                ; 080E6FFA
 lsr   r1,r0,0x10                ; 080E6FFC
@@ -1606,10 +1613,10 @@ lsl   r0,r0,0x10                ; 080E7000
 lsr   r4,r0,0x10                ; 080E7002
 mov   r1,r4                     ; 080E7004
 mov   r6,r4                     ; 080E7006
-cmp   r4,0x63                   ; 080E7008
+cmp   r4,0x63                   ; 080E7008  99dec
 bls   @@Code080E7018            ; 080E700A
-mov   r1,0xA                    ; 080E700C
-mov   r5,0xB                    ; 080E700E
+mov   r1,0xA                    ; 080E700C \ for 100, use special tiles
+mov   r5,0xB                    ; 080E700E /
 b     @@Code080E702E            ; 080E7010
 .pool                           ; 080E7012
 
@@ -1628,14 +1635,14 @@ cmp   r1,0x9                    ; 080E702A
 bhi   @@Code080E701C            ; 080E702C
 @@Code080E702E:
 mov   r2,0xDC                   ; 080E702E
-lsl   r2,r2,0x1                 ; 080E7030
+lsl   r2,r2,0x1                 ; 080E7030  01B8
 mov   r3,0xEC                   ; 080E7032
-lsl   r3,r3,0x1                 ; 080E7034
+lsl   r3,r3,0x1                 ; 080E7034  01D8
 mov   r0,0x0                    ; 080E7036
 str   r0,[sp]                   ; 080E7038
 mov   r0,r1                     ; 080E703A
 mov   r1,r5                     ; 080E703C
-bl    Sub080E68D4               ; 080E703E
+bl    Sub080E68D4               ; 080E703E  write total score tiles
 cmp   r6,0x1                    ; 080E7042
 bls   @@Code080E704E            ; 080E7044
 ldr   r1,=0x020157B4            ; 080E7046
@@ -1662,30 +1669,30 @@ mov   r3,r2                     ; 080E706C
 cmp   r3,0x4                    ; 080E706E
 bls   @@Code080E7078            ; 080E7070
 mov   r5,0x80                   ; 080E7072 \ runs if flowers > 4
-lsl   r5,r5,0x6                 ; 080E7074  2000
+lsl   r5,r5,0x6                 ; 080E7074  2000: use palette 2
 mov   r3,0x5                    ; 080E7076 / display 5
 @@Code080E7078:
-ldr   r7,=Data081943DA          ; 080E7078
+ldr   r7,=ScoreDigitTilesUpper  ; 080E7078
 lsl   r4,r3,0x1                 ; 080E707A
 add   r0,r4,r7                  ; 080E707C
 ldrh  r2,[r0]                   ; 080E707E
 cmp   r3,0x0                    ; 080E7080
 bne   @@Code080E7086            ; 080E7082
-ldr   r2,=0x017F                ; 080E7084
+ldr   r2,=0x017F                ; 080E7084  if 0 flowers, display blank tens digit
 @@Code080E7086:
-orr   r2,r5                     ; 080E7086
+orr   r2,r5                     ; 080E7086  apply palette
 ldr   r0,=0x020156AE            ; 080E7088
 mov   r1,r2                     ; 080E708A
 add   r1,0x80                   ; 080E708C
 strh  r1,[r0]                   ; 080E708E
-ldr   r6,=Data0819446A          ; 080E7090
+ldr   r6,=ScoreDigitTilesLower  ; 080E7090
 add   r0,r4,r6                  ; 080E7092
 ldrh  r2,[r0]                   ; 080E7094
 cmp   r3,0x0                    ; 080E7096
 bne   @@Code080E709C            ; 080E7098
-ldr   r2,=0x017F                ; 080E709A
+ldr   r2,=0x017F                ; 080E709A  if 0 flowers, display blank tens digit
 @@Code080E709C:
-orr   r2,r5                     ; 080E709C
+orr   r2,r5                     ; 080E709C  apply palette
 lsl   r0,r2,0x10                ; 080E709E
 lsr   r2,r0,0x10                ; 080E70A0
 ldr   r1,=0x020156EE            ; 080E70A2
@@ -1725,14 +1732,14 @@ ldrh  r1,[r0]                   ; 080E70FA  red coins
 cmp   r1,0x13                   ; 080E70FC  19dec
 bls   @@Code080E7106            ; 080E70FE
 mov   r6,0x80                   ; 080E7100 \ runs if red coins > 19dec
-lsl   r6,r6,0x6                 ; 080E7102  2000
+lsl   r6,r6,0x6                 ; 080E7102  2000: use palette 2
 mov   r1,0x14                   ; 080E7104 / display 20dec
 @@Code080E7106:
 mov   r5,r1                     ; 080E7106
 cmp   r5,0x9                    ; 080E7108
 bls   @@Code080E711E            ; 080E710A
 @@Code080E710C:
-mov   r0,r1                     ; 080E710C \ loop: convert to decimal?
+mov   r0,r1                     ; 080E710C \ loop: convert to decimal
 sub   r0,0xA                    ; 080E710E
 lsl   r0,r0,0x10                ; 080E7110
 lsr   r1,r0,0x10                ; 080E7112
@@ -1743,13 +1750,13 @@ cmp   r1,0x9                    ; 080E711A
 bhi   @@Code080E710C            ; 080E711C /
 @@Code080E711E:
 mov   r2,0xA7                   ; 080E711E
-lsl   r2,r2,0x1                 ; 080E7120
+lsl   r2,r2,0x1                 ; 080E7120  014E
 mov   r3,0xB7                   ; 080E7122
-lsl   r3,r3,0x1                 ; 080E7124
+lsl   r3,r3,0x1                 ; 080E7124  016E
 str   r6,[sp]                   ; 080E7126
 mov   r0,r1                     ; 080E7128
 mov   r1,r4                     ; 080E712A
-bl    Sub080E68D4               ; 080E712C
+bl    Sub080E68D4               ; 080E712C  write red coin count tiles
 mov   r0,r5                     ; 080E7130
 add   sp,0x4                    ; 080E7132
 pop   {r4-r6}                   ; 080E7134
@@ -1785,14 +1792,14 @@ bhi   @@Code080E715E            ; 080E716E /
 cmp   r4,0x1D                   ; 080E7170  29dec
 bls   @@Code080E7178            ; 080E7172
 mov   r6,0x80                   ; 080E7174 \ runs if stars > 29dec
-lsl   r6,r6,0x6                 ; 080E7176 / 2000
+lsl   r6,r6,0x6                 ; 080E7176 / 2000: use palette 2
 @@Code080E7178:
                                 ;           unlike red coins/flowers, star count is not capped in pause screen
 mov   r1,r4                     ; 080E7178
 cmp   r4,0x9                    ; 080E717A
 bls   @@Code080E7190            ; 080E717C
 @@Code080E717E:
-mov   r0,r1                     ; 080E717E
+mov   r0,r1                     ; 080E717E \ loop: convert to decimal
 sub   r0,0xA                    ; 080E7180
 lsl   r0,r0,0x10                ; 080E7182
 lsr   r1,r0,0x10                ; 080E7184
@@ -1800,14 +1807,14 @@ add   r0,r5,0x1                 ; 080E7186
 lsl   r0,r0,0x10                ; 080E7188
 lsr   r5,r0,0x10                ; 080E718A
 cmp   r1,0x9                    ; 080E718C
-bhi   @@Code080E717E            ; 080E718E
+bhi   @@Code080E717E            ; 080E718E /
 @@Code080E7190:
 ldr   r2,=0x0145                ; 080E7190
 ldr   r3,=0x0165                ; 080E7192
 str   r6,[sp]                   ; 080E7194
 mov   r0,r1                     ; 080E7196
 mov   r1,r5                     ; 080E7198
-bl    Sub080E68D4               ; 080E719A
+bl    Sub080E68D4               ; 080E719A  write star count tiles
 mov   r0,r4                     ; 080E719E
 add   sp,0x4                    ; 080E71A0
 pop   {r4-r6}                   ; 080E71A2

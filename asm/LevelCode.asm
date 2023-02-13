@@ -15111,19 +15111,20 @@ beq   @@Code0802D4DC            ; 0802D448
 ldr   r3,=0x48CE                ; 0802D44A
 add   r0,r5,r3                  ; 0802D44C
 ldrh  r0,[r0]                   ; 0802D44E
-cmp   r0,0x6D                   ; 0802D450
+cmp   r0,0x6D                   ; 0802D450  6D: 10.9
 bhi   @@Code0802D49C            ; 0802D452
+                                ;           Runs if 10 or less stars
 ldr   r4,=0x4058                ; 0802D454
 add   r1,r5,r4                  ; 0802D456
-mov   r0,0x43                   ; 0802D458
+mov   r0,0x43                   ; 0802D458  43: Star timer ticks down while red
 bl    PlayYISound               ; 0802D45A
 b     @@Code0802D4A6            ; 0802D45E
 .pool                           ; 0802D460
 
-@@Code0802D49C:
+@@Code0802D49C:                 ;           Runs if 11 or more stars
 ldr   r0,=0x4058                ; 0802D49C
 add   r1,r5,r0                  ; 0802D49E
-mov   r0,0x42                   ; 0802D4A0
+mov   r0,0x42                   ; 0802D4A0  42: Star timer ticks down
 bl    PlayYISound               ; 0802D4A2
 @@Code0802D4A6:
 ldr   r0,=0x03002200            ; 0802D4A6

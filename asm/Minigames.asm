@@ -11621,7 +11621,7 @@ add   r0,r0,r1                  ; 080EFFBA
 mov   r1,0x0                    ; 080EFFBC
 strb  r1,[r0]                   ; 080EFFBE
 mov   r0,r4                     ; 080EFFC0
-bl    Sub080E1C08               ; 080EFFC2
+bl    BabyMario_main               ; 080EFFC2
 bl    Sub08049E80               ; 080EFFC6
 pop   {r4}                      ; 080EFFCA
 pop   {r0}                      ; 080EFFCC

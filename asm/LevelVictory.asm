@@ -882,7 +882,7 @@ bx    lr                        ; 080E3D58
 .pool                           ; 080E3D5A
 
 Sub080E3D5C:
-; Goal/score substate 29
+; Level victory substate 29
 push  {r4-r5,lr}                ; 080E3D5C
 mov   r5,r1                     ; 080E3D5E
 ldr   r4,=0x03002200            ; 080E3D60
@@ -935,7 +935,7 @@ bx    r0                        ; 080E3DC2
 .pool                           ; 080E3DC4
 
 Sub080E3DD8:
-; Goal/score substate 28
+; Level victory substate 28
 push  {r4-r5,lr}                ; 080E3DD8
 mov   r4,r0                     ; 080E3DDA
 bl    Sub080E4A08               ; 080E3DDC
@@ -1002,7 +1002,7 @@ bx    r0                        ; 080E3E58
 .pool                           ; 080E3E5A
 
 Sub080E3E80:
-; Goal/score substate 27
+; Level victory substate 27
 push  {r4,lr}                   ; 080E3E80
 mov   r4,r0                     ; 080E3E82
 mov   r1,r4                     ; 080E3E84
@@ -1046,7 +1046,7 @@ bx    r0                        ; 080E3ECC
 .pool                           ; 080E3ECE
 
 Sub080E3ED8:
-; Goal/score substate 26
+; Level victory substate 26
 push  {r4-r5,lr}                ; 080E3ED8
 mov   r4,r0                     ; 080E3EDA
 ldr   r5,=0x03002200            ; 080E3EDC
@@ -1209,8 +1209,8 @@ b     @@Code080E4110            ; 080E4012
 @@Code080E4024:
 ldr   r0,=0x030021A0            ; 080E4024  Score calc layer 3 buffer (02009758)
 mov   r8,r0                     ; 080E4026
-ldr   r7,=Data081943DA          ; 080E4028
-ldr   r2,=Data0819446A          ; 080E402A
+ldr   r7,=ScoreDigitTilesUpper  ; 080E4028
+ldr   r2,=ScoreDigitTilesLower  ; 080E402A
 mov   r12,r2                    ; 080E402C
 cmp   r6,0x63                   ; 080E402E
 bls   @@Code080E4062            ; 080E4030
@@ -1328,7 +1328,7 @@ bx    r0                        ; 080E411A
 .pool                           ; 080E411C
 
 Sub080E4130:
-; Goal/score substate 25
+; Level victory substate 25
 push  {r4-r6,lr}                ; 080E4130
 mov   r4,r0                     ; 080E4132
 ldr   r5,=0x03002200            ; 080E4134
@@ -1603,7 +1603,7 @@ bx    r0                        ; 080E4362
 .pool                           ; 080E4364
 
 Sub080E4384:
-; Goal/score substate 24
+; Level victory substate 24
 push  {r4-r6,lr}                ; 080E4384
 mov   r4,r0                     ; 080E4386
 mov   r5,0x0                    ; 080E4388
@@ -1675,7 +1675,7 @@ pop   {r0}                      ; 080E441C
 bx    r0                        ; 080E441E
 
 Sub080E4420:
-; Goal/score substate 23
+; Level victory substate 23
 push  {lr}                      ; 080E4420
 mov   r2,r0                     ; 080E4422
 ldrb  r0,[r1,0xA]               ; 080E4424
@@ -1693,7 +1693,7 @@ bx    r0                        ; 080E4438
 .pool                           ; 080E443A
 
 Sub080E443C:
-; Goal/score substate 22
+; Level victory substate 22
 push  {r4,lr}                   ; 080E443C
 mov   r3,r0                     ; 080E443E
 mov   r4,r1                     ; 080E4440
@@ -2004,7 +2004,7 @@ add   r0,r0,r1                  ; 080E46DA
 ldrh  r4,[r0]                   ; 080E46DC
 lsl   r0,r4,0x1                 ; 080E46DE
 add   r3,r2,r0                  ; 080E46E0
-ldr   r1,=Data081943DA          ; 080E46E2
+ldr   r1,=ScoreDigitTilesUpper  ; 080E46E2
 mov   r12,r1                    ; 080E46E4
 lsl   r1,r5,0x1                 ; 080E46E6
 mov   r7,r12                    ; 080E46E8
@@ -2015,7 +2015,7 @@ mov   r0,r4                     ; 080E46F0
 add   r0,0x20                   ; 080E46F2
 lsl   r0,r0,0x1                 ; 080E46F4
 add   r2,r2,r0                  ; 080E46F6
-ldr   r0,=Data0819446A          ; 080E46F8
+ldr   r0,=ScoreDigitTilesLower  ; 080E46F8
 mov   r9,r0                     ; 080E46FA
 add   r1,r9                     ; 080E46FC
 ldrh  r0,[r1]                   ; 080E46FE
@@ -2064,7 +2064,7 @@ bx    r0                        ; 080E474C
 .pool                           ; 080E474E
 
 Sub080E4768:
-; Goal/score substate 21
+; Level victory substate 21
 push  {r4-r7,lr}                ; 080E4768
 mov   r7,r10                    ; 080E476A
 mov   r6,r9                     ; 080E476C
@@ -2079,14 +2079,14 @@ lsr   r0,r0,0x1                 ; 080E477C
 add   r2,r0,0x1                 ; 080E477E
 ldr   r0,=0x030021A0            ; 080E4780  Score calc layer 3 buffer (02009758)
 ldr   r3,[r0]                   ; 080E4782  r3 = 02009758
-ldr   r0,=Data0819446A          ; 080E4784
+ldr   r0,=ScoreDigitTilesLower  ; 080E4784
 lsl   r1,r2,0x1                 ; 080E4786
 add   r0,r1,r0                  ; 080E4788
 ldrh  r2,[r0]                   ; 080E478A
 mov   r0,r3                     ; 080E478C
 add   r0,0xE8                   ; 080E478E
 strh  r2,[r0]                   ; 080E4790
-ldr   r0,=Data081943DA          ; 080E4792
+ldr   r0,=ScoreDigitTilesUpper  ; 080E4792
 add   r1,r1,r0                  ; 080E4794
 ldrh  r0,[r1]                   ; 080E4796
 add   r3,0xA8                   ; 080E4798
@@ -2211,7 +2211,7 @@ bx    r0                        ; 080E487A
 .pool                           ; 080E487C
 
 Sub080E48A4:
-; Goal/score substate 20
+; Level victory substate 20
 push  {r4-r5,lr}                ; 080E48A4
 mov   r5,r0                     ; 080E48A6
 ldr   r2,=0x03002200            ; 080E48A8
@@ -2261,7 +2261,7 @@ bx    r0                        ; 080E490A
 .pool                           ; 080E490C
 
 Sub080E4918:
-; Goal/score substate 1F
+; Level victory substate 1F
 push  {r4-r5,lr}                ; 080E4918
 add   sp,-0x4                   ; 080E491A
 mov   r5,r0                     ; 080E491C
@@ -2497,7 +2497,7 @@ cmp   r3,0x0                    ; 080E4B48
 beq   @@Code080E4B8A            ; 080E4B4A
 lsl   r1,r3,0x11                ; 080E4B4C
 lsr   r1,r1,0x10                ; 080E4B4E
-ldr   r2,=Data081943DA          ; 080E4B50
+ldr   r2,=ScoreDigitTilesUpper  ; 080E4B50
 add   r0,r1,r2                  ; 080E4B52
 ldrh  r3,[r0]                   ; 080E4B54
 mov   r0,r12                    ; 080E4B56
@@ -2512,7 +2512,7 @@ lsr   r0,r5,0x11                ; 080E4B66
 lsl   r0,r0,0x1                 ; 080E4B68
 add   r0,r2,r0                  ; 080E4B6A
 strh  r3,[r0]                   ; 080E4B6C
-ldr   r5,=Data0819446A          ; 080E4B6E
+ldr   r5,=ScoreDigitTilesLower  ; 080E4B6E
 add   r1,r1,r5                  ; 080E4B70
 ldrh  r3,[r1]                   ; 080E4B72
 mov   r6,r12                    ; 080E4B74
@@ -2533,7 +2533,7 @@ cmp   r0,0x0                    ; 080E4B8E
 blt   @@Code080E4BDC            ; 080E4B90
 lsl   r1,r3,0x11                ; 080E4B92
 lsr   r1,r1,0x10                ; 080E4B94
-ldr   r2,=Data081943DA          ; 080E4B96
+ldr   r2,=ScoreDigitTilesUpper  ; 080E4B96
 add   r0,r1,r2                  ; 080E4B98
 ldrh  r3,[r0]                   ; 080E4B9A
 mov   r4,r12                    ; 080E4B9C
@@ -2552,7 +2552,7 @@ asr   r0,r0,0x1                 ; 080E4BB4
 lsl   r0,r0,0x1                 ; 080E4BB6
 add   r0,r2,r0                  ; 080E4BB8
 strh  r3,[r0]                   ; 080E4BBA
-ldr   r6,=Data0819446A          ; 080E4BBC
+ldr   r6,=ScoreDigitTilesLower  ; 080E4BBC
 add   r1,r1,r6                  ; 080E4BBE
 ldrh  r3,[r1]                   ; 080E4BC0
 orr   r3,r4                     ; 080E4BC2
@@ -2608,7 +2608,7 @@ cmp   r3,0x9                    ; 080E4C2E
 bhi   @@Code080E4C20            ; 080E4C30
 @@Code080E4C32:
 lsl   r1,r3,0x11                ; 080E4C32
-ldr   r5,=Data081943DA          ; 080E4C34
+ldr   r5,=ScoreDigitTilesUpper  ; 080E4C34
 lsr   r1,r1,0x10                ; 080E4C36
 add   r0,r1,r5                  ; 080E4C38
 ldrh  r3,[r0]                   ; 080E4C3A
@@ -2618,7 +2618,7 @@ mov   r4,0xEC                   ; 080E4C40
 lsl   r4,r4,0x2                 ; 080E4C42
 add   r0,r2,r4                  ; 080E4C44
 strh  r3,[r0]                   ; 080E4C46
-ldr   r4,=Data0819446A          ; 080E4C48
+ldr   r4,=ScoreDigitTilesLower  ; 080E4C48
 add   r1,r1,r4                  ; 080E4C4A
 ldrh  r3,[r1]                   ; 080E4C4C
 mov   r1,0xFC                   ; 080E4C4E
@@ -2646,7 +2646,7 @@ lsl   r1,r3,0x11                ; 080E4C76
 cmp   r3,0x0                    ; 080E4C78
 beq   @@Code080E4C9C            ; 080E4C7A
 lsr   r1,r1,0x10                ; 080E4C7C
-ldr   r2,=Data081943DA          ; 080E4C7E
+ldr   r2,=ScoreDigitTilesUpper  ; 080E4C7E
 add   r0,r1,r2                  ; 080E4C80
 ldrh  r3,[r0]                   ; 080E4C82
 ldr   r2,[r6]                   ; 080E4C84
@@ -2654,7 +2654,7 @@ mov   r4,0xEB                   ; 080E4C86
 lsl   r4,r4,0x2                 ; 080E4C88
 add   r0,r2,r4                  ; 080E4C8A
 strh  r3,[r0]                   ; 080E4C8C
-ldr   r5,=Data0819446A          ; 080E4C8E
+ldr   r5,=ScoreDigitTilesLower  ; 080E4C8E
 add   r1,r1,r5                  ; 080E4C90
 ldrh  r3,[r1]                   ; 080E4C92
 mov   r6,0xFB                   ; 080E4C94
@@ -2717,7 +2717,7 @@ bx    r0                        ; 080E4D18
 .pool                           ; 080E4D1A
 
 Sub080E4D38:
-; Goal/score substate 1E
+; Level victory substate 1E
 push  {r4-r6,lr}                ; 080E4D38
 mov   r4,r0                     ; 080E4D3A
 bl    Sub080E4A08               ; 080E4D3C
@@ -2784,14 +2784,14 @@ bx    r0                        ; 080E4DB2
 .pool                           ; 080E4DB4
 
 Sub080E4DDC:
-; Goal/score substate 1D
+; Level victory substate 1D
 ldrh  r1,[r0,0x4]               ; 080E4DDC
 add   r1,0x2                    ; 080E4DDE
 strh  r1,[r0,0x4]               ; 080E4DE0
 bx    lr                        ; 080E4DE2
 
 Sub080E4DE4:
-; Goal/score substate 1C
+; Level victory substate 1C
 push  {r4-r7,lr}                ; 080E4DE4
 mov   r5,r0                     ; 080E4DE6
 mov   r4,r1                     ; 080E4DE8
@@ -2815,17 +2815,17 @@ bls   @@Code080E4E2C            ; 080E4E0E
 mov   r3,0xB                    ; 080E4E10
 mov   r1,0xA                    ; 080E4E12
 mov   r12,r0                    ; 080E4E14
-ldr   r6,=Data081943DA          ; 080E4E16
+ldr   r6,=ScoreDigitTilesUpper  ; 080E4E16
 ldr   r7,=0x030021A0            ; 080E4E18  Score calc layer 3 buffer (02009758)
-ldr   r4,=Data0819446A          ; 080E4E1A
+ldr   r4,=ScoreDigitTilesLower  ; 080E4E1A
 b     @@Code080E4E4A            ; 080E4E1C
 .pool                           ; 080E4E1E
 
 @@Code080E4E2C:
 mov   r12,r0                    ; 080E4E2C
-ldr   r6,=Data081943DA          ; 080E4E2E
+ldr   r6,=ScoreDigitTilesUpper  ; 080E4E2E
 ldr   r7,=0x030021A0            ; 080E4E30  Score calc layer 3 buffer (02009758)
-ldr   r4,=Data0819446A          ; 080E4E32
+ldr   r4,=ScoreDigitTilesLower  ; 080E4E32
 cmp   r1,0x9                    ; 080E4E34
 bls   @@Code080E4E4A            ; 080E4E36
 @@Code080E4E38:
@@ -2884,7 +2884,7 @@ bx    r0                        ; 080E4E98
 .pool                           ; 080E4E9A
 
 Sub080E4EB0:
-; Goal/score substate 1A
+; Level victory substate 1A
 push  {r4-r5,lr}                ; 080E4EB0
 mov   r4,r0                     ; 080E4EB2
 mov   r5,r1                     ; 080E4EB4
@@ -2930,7 +2930,7 @@ bx    r0                        ; 080E4F08
 .pool                           ; 080E4F0A
 
 Sub080E4F18:
-; Goal/score substate 19
+; Level victory substate 19
 push  {r4-r5,lr}                ; 080E4F18
 mov   r4,r0                     ; 080E4F1A
 mov   r5,r1                     ; 080E4F1C
@@ -2949,7 +2949,7 @@ bx    r0                        ; 080E4F38
 .pool                           ; 080E4F3A
 
 Sub080E4F40:
-; Goal/score substate 17
+; Level victory substate 17
 push  {r4-r5,lr}                ; 080E4F40
 mov   r5,r0                     ; 080E4F42
 mov   r4,r1                     ; 080E4F44
@@ -3002,7 +3002,7 @@ bx    r0                        ; 080E4FA4
 .pool                           ; 080E4FA6
 
 Sub080E4FB4:
-; Goal/score substate 15
+; Level victory substate 15
 push  {r4,lr}                   ; 080E4FB4
 mov   r4,r0                     ; 080E4FB6
 bl    Sub080E4A08               ; 080E4FB8
@@ -3045,7 +3045,7 @@ bx    r0                        ; 080E5004
 .pool                           ; 080E5006
 
 Sub080E5014:
-; Goal/score substate 13
+; Level victory substate 13
 push  {r4-r6,lr}                ; 080E5014
 mov   r5,r0                     ; 080E5016
 mov   r4,r1                     ; 080E5018
@@ -3077,7 +3077,7 @@ bx    r0                        ; 080E504A
 .pool                           ; 080E504C
 
 Sub080E5058:
-; Goal/score substate 11
+; Level victory substate 11
 push  {r4-r7,lr}                ; 080E5058
 mov   r7,r8                     ; 080E505A
 push  {r7}                      ; 080E505C
@@ -3183,7 +3183,7 @@ bx    r0                        ; 080E5120
 .pool                           ; 080E5122
 
 Sub080E5130:
-; Goal/score substate 0F
+; Level victory substate 0F
 push  {r4-r7,lr}                ; 080E5130
 mov   r7,r9                     ; 080E5132
 mov   r6,r8                     ; 080E5134
@@ -3307,7 +3307,7 @@ bx    r0                        ; 080E5222
 .pool                           ; 080E5224
 
 Sub080E522C:
-; Goal/score substate 0D
+; Level victory substate 0D
 push  {r4-r7,lr}                ; 080E522C
 mov   r7,r9                     ; 080E522E
 mov   r6,r8                     ; 080E5230
@@ -3348,7 +3348,7 @@ beq   @@Code080E528C            ; 080E5276  if 0 red coins, skip adding red coin
 ldrh  r0,[r5,0x4]               ; 080E5278 \
 add   r0,0x2                    ; 080E527A  increment ? by 2
 strh  r0,[r5,0x4]               ; 080E527C
-b     @@Code080E5346            ; 080E527E /
+b     @@Return                  ; 080E527E /
 .pool                           ; 080E5280
 
 @@Code080E528C:
@@ -3367,13 +3367,13 @@ cmp   r0,0x0                    ; 080E52A2
 beq   @@Code080E52B0            ; 080E52A4
 add   r0,r1,0x2                 ; 080E52A6
 strh  r0,[r5,0x4]               ; 080E52A8
-b     @@Code080E5346            ; 080E52AA
+b     @@Return                  ; 080E52AA
 .pool                           ; 080E52AC
 
 @@Code080E52B0:
 add   r0,r1,0x6                 ; 080E52B0
 strh  r0,[r5,0x4]               ; 080E52B2
-b     @@Code080E5346            ; 080E52B4
+b     @@Return                  ; 080E52B4
 @@Code080E52B6:
 mov   r6,0x0                    ; 080E52B6
 ldr   r1,=0x4898                ; 080E52B8
@@ -3384,11 +3384,11 @@ add   r0,r4,0x1                 ; 080E52C0
 lsl   r0,r0,0x10                ; 080E52C2
 lsr   r4,r0,0x10                ; 080E52C4
 cmp   r4,0x1D                   ; 080E52C6
-bls   @@Code080E52DC            ; 080E52C8  if stars so far > 1D, stop processing stars?
+bls   @@Code080E52DC            ; 080E52C8  if stars so far > 29dec, stop processing stars?
 mov   r6,r3                     ; 080E52CA
 mov   r0,r6                     ; 080E52CC
 bl    Sub080E5584               ; 080E52CE
-mov   r4,0x1E                   ; 080E52D2
+mov   r4,0x1E                   ; 080E52D2  30dec
 b     @@Code080E52E2            ; 080E52D4
 .pool                           ; 080E52D6
 
@@ -3448,7 +3448,7 @@ mov   r1,r3                     ; 080E533C
 mov   r2,r8                     ; 080E533E
 mov   r3,r6                     ; 080E5340
 bl    Sub080E4AFC               ; 080E5342
-@@Code080E5346:
+@@Return:
 add   sp,0x10                   ; 080E5346
 pop   {r3-r4}                   ; 080E5348
 mov   r8,r3                     ; 080E534A
@@ -3484,7 +3484,7 @@ bx    r0                        ; 080E5384
 .pool                           ; 080E5386
 
 Sub080E538C:
-; Goal/score substate 0C,0E,10,12,14,16,18,1B
+; Level victory substate 0C,0E,10,12,14,16,18,1B
 push  {r4-r5,lr}                ; 080E538C
 mov   r5,r0                     ; 080E538E
 mov   r4,r1                     ; 080E5390
@@ -3507,7 +3507,7 @@ bx    r0                        ; 080E53B0
 .pool                           ; 080E53B2
 
 Sub080E53B4:
-; Goal/score substate 0B
+; Level victory substate 0B
 push  {r4-r5,lr}                ; 080E53B4
 mov   r4,r0                     ; 080E53B6
 mov   r5,r1                     ; 080E53B8
@@ -3551,7 +3551,7 @@ bx    r0                        ; 080E5402
 .pool                           ; 080E5404
 
 Sub080E541C:
-; Goal/score substate 0A
+; Level victory substate 0A
 push  {r4,lr}                   ; 080E541C
 mov   r4,r0                     ; 080E541E
 bl    Sub080E49D4               ; 080E5420
@@ -3581,7 +3581,7 @@ bx    r0                        ; 080E5450
 .pool                           ; 080E5452
 
 Sub080E5460:
-; Goal/score substate 09
+; Level victory substate 09
 push  {r4-r5,lr}                ; 080E5460
 ldr   r3,=0x03002200            ; 080E5462
 ldr   r2,=0x4961                ; 080E5464
@@ -3740,7 +3740,7 @@ bx    r0                        ; 080E55B2
 .pool                           ; 080E55B4
 
 Sub080E55B8:
-; Goal/score substate 08
+; Level victory substate 08
 push  {r4-r7,lr}                ; 080E55B8
 mov   r7,r10                    ; 080E55BA
 mov   r6,r9                     ; 080E55BC
@@ -3831,21 +3831,21 @@ cmp   r4,0x63                   ; 080E566A
 bls   @@Code080E56B0            ; 080E566C
 mov   r7,0xB                    ; 080E566E
 mov   r4,0xA                    ; 080E5670
-ldr   r3,=Data081943DA          ; 080E5672
+ldr   r3,=ScoreDigitTilesUpper  ; 080E5672
 mov   r10,r3                    ; 080E5674
 ldr   r0,=0x030021A0            ; 080E5676  Score calc layer 3 buffer (02009758)
 mov   r8,r0                     ; 080E5678
-ldr   r1,=Data0819446A          ; 080E567A
+ldr   r1,=ScoreDigitTilesLower  ; 080E567A
 mov   r9,r1                     ; 080E567C
 b     @@Code080E56D2            ; 080E567E
 .pool                           ; 080E5680
 
 @@Code080E56B0:
-ldr   r2,=Data081943DA          ; 080E56B0
+ldr   r2,=ScoreDigitTilesUpper  ; 080E56B0
 mov   r10,r2                    ; 080E56B2
 ldr   r3,=0x030021A0            ; 080E56B4  Score calc layer 3 buffer (02009758)
 mov   r8,r3                     ; 080E56B6
-ldr   r0,=Data0819446A          ; 080E56B8
+ldr   r0,=ScoreDigitTilesLower  ; 080E56B8
 mov   r9,r0                     ; 080E56BA
 cmp   r4,0x9                    ; 080E56BC
 bls   @@Code080E56D2            ; 080E56BE
@@ -4074,7 +4074,7 @@ bx    r0                        ; 080E5870
 .pool                           ; 080E5872
 
 Sub080E5900:
-; Goal/score substate 07
+; Level victory substate 07
 push  {r4-r6,lr}                ; 080E5900
 mov   r4,r0                     ; 080E5902
 ldr   r2,=0x03002200            ; 080E5904
@@ -4119,7 +4119,7 @@ bx    r0                        ; 080E594E
 .pool                           ; 080E5950
 
 Sub080E5968:
-; Goal/score substate 06
+; Level victory substate 06
 push  {r4-r7,lr}                ; 080E5968
 mov   r4,r0                     ; 080E596A
 mov   r1,r4                     ; 080E596C
@@ -4182,14 +4182,14 @@ bx    r0                        ; 080E59D2
 .pool                           ; 080E59D4
 
 Sub080E59F4:
-; Goal/score substate 05
+; Level victory substate 05
 ldrh  r1,[r0,0x4]               ; 080E59F4
 add   r1,0x2                    ; 080E59F6
 strh  r1,[r0,0x4]               ; 080E59F8
 bx    lr                        ; 080E59FA
 
 Sub080E59FC:
-; Goal/score substate 04
+; Level victory substate 04
 push  {r4,lr}                   ; 080E59FC
 mov   r4,r0                     ; 080E59FE
 bl    Sub080FC228               ; 080E5A00
@@ -4207,7 +4207,7 @@ bx    r0                        ; 080E5A18
 .pool                           ; 080E5A1A
 
 Sub080E5A1C:
-; Goal/score substate 03
+; Level victory substate 03
 push  {r4-r5,lr}                ; 080E5A1C
 mov   r4,r0                     ; 080E5A1E
 ldr   r0,=0x03007240            ; 080E5A20  Normal gameplay IWRAM (0300220C)
@@ -4274,12 +4274,12 @@ bx    r0                        ; 080E5AAC
 .pool                           ; 080E5AAE
 
 Return080E5AD0:
-; Goal/score substate 01-02
+; Level victory substate 01-02
 bx    lr                        ; 080E5AD0
 .pool                           ; 080E5AD2
 
 Sub080E5AD4:
-; Goal/score substate 00
+; Level victory substate 00
 ldrh  r1,[r0,0x4]               ; 080E5AD4
 add   r1,0x2                    ; 080E5AD6
 strh  r1,[r0,0x4]               ; 080E5AD8
