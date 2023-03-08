@@ -4164,7 +4164,7 @@ ldr   r0,=0x03007010            ; 0802B874  Layer 1 tilemap EWRAM (0200000C)
 ldr   r1,[r0]                   ; 0802B876
 ldr   r3,=0x841E                ; 0802B878
 add   r0,r1,r3                  ; 0802B87A  r0 = [03007010]+841E (0200842A)
-ldrh  r0,[r0]                   ; 0802B87C
+ldrh  r0,[r0]                   ; 0802B87C  A300/04/08/0C/10
 orr   r2,r0                     ; 0802B87E
 lsr   r0,r5,0x1                 ; 0802B880
 lsl   r0,r0,0x1                 ; 0802B882

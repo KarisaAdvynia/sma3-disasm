@@ -4432,34 +4432,37 @@ pop   {r0}                      ; 080376C8
 bx    r0                        ; 080376CA
 .pool                           ; 080376CC
 
-Sub080376D8:
+SkiEnableCheck:
+; subroutine: Check if skiing should be enabled
+; output r0: 0 if skiing should be enabled, 1 if not
+; specifically, returns 0 if in 5-3 or 5-Extra, snow tileset, and item memory index 3 
 push  {lr}                      ; 080376D8
 ldr   r0,=0x03007240            ; 080376DA  Normal gameplay IWRAM (0300220C)
 ldr   r1,[r0]                   ; 080376DC
 ldr   r2,=0x2992                ; 080376DE
-add   r0,r1,r2                  ; 080376E0
-ldrh  r0,[r0]                   ; 080376E2
-cmp   r0,0x4                    ; 080376E4
-bne   @@Code08037702            ; 080376E6
+add   r0,r1,r2                  ; 080376E0  [0300220C]+2992 (03004B8E)
+ldrh  r0,[r0]                   ; 080376E2  Layer 1 tileset ID
+cmp   r0,0x4                    ; 080376E4  04: snow
+bne   @@Return1                 ; 080376E6
 ldr   r2,=0x29AC                ; 080376E8
-add   r0,r1,r2                  ; 080376EA
-ldrh  r0,[r0]                   ; 080376EC
+add   r0,r1,r2                  ; 080376EA  [0300220C]+29AC (03004BB8)
+ldrh  r0,[r0]                   ; 080376EC  Item memory index
 cmp   r0,0x3                    ; 080376EE
-bne   @@Code08037702            ; 080376F0
+bne   @@Return1                 ; 080376F0
 ldr   r0,=0x03002200            ; 080376F2
 ldr   r1,=0x4088                ; 080376F4
-add   r0,r0,r1                  ; 080376F6
-ldrh  r0,[r0]                   ; 080376F8
-cmp   r0,0x32                   ; 080376FA
-beq   @@Code0803771C            ; 080376FC
-cmp   r0,0x39                   ; 080376FE
-beq   @@Code0803771C            ; 08037700
-@@Code08037702:
+add   r0,r0,r1                  ; 080376F6  03006288
+ldrh  r0,[r0]                   ; 080376F8  level ID
+cmp   r0,0x32                   ; 080376FA  32: 5-3
+beq   @@Return0                 ; 080376FC
+cmp   r0,0x39                   ; 080376FE  39: 5-Extra
+beq   @@Return0                 ; 08037700
+@@Return1:
 mov   r0,0x1                    ; 08037702
 b     @@Code0803771E            ; 08037704
 .pool                           ; 08037706
 
-@@Code0803771C:
+@@Return0:
 mov   r0,0x0                    ; 0803771C
 @@Code0803771E:
 pop   {r1}                      ; 0803771E
@@ -4499,18 +4502,18 @@ strh  r0,[r3]                   ; 0803775C
 ldr   r4,=0x03006D80            ; 0803775E
 ldrh  r0,[r4,0x30]              ; 08037760
 cmp   r0,0xC                    ; 08037762
-beq   @@Code0803777C            ; 08037764
-bl    Sub080376D8               ; 08037766
+beq   @@Return                  ; 08037764
+bl    SkiEnableCheck            ; 08037766
 lsl   r0,r0,0x18                ; 0803776A
 cmp   r0,0x0                    ; 0803776C
-bne   @@Code0803777C            ; 0803776E
+bne   @@Return                  ; 0803776E
 mov   r0,0x8F                   ; 08037770
-lsl   r0,r0,0x2                 ; 08037772
-add   r1,r4,r0                  ; 08037774
-ldrh  r0,[r1]                   ; 08037776
-add   r0,0x1                    ; 08037778
-strh  r0,[r1]                   ; 0803777A
-@@Code0803777C:
+lsl   r0,r0,0x2                 ; 08037772  023C
+add   r1,r4,r0                  ; 08037774  03006FBC
+ldrh  r0,[r1]                   ; 08037776 \
+add   r0,0x1                    ; 08037778 | increment ski check state?
+strh  r0,[r1]                   ; 0803777A /
+@@Return:
 pop   {r4}                      ; 0803777C
 pop   {r0}                      ; 0803777E
 bx    r0                        ; 08037780
@@ -18570,10 +18573,10 @@ ldr   r2,=0x020106A0            ; 0803EAF4
 mov   r3,0x10                   ; 0803EAF6
 bl    Sub080DC5AC               ; 0803EAF8
 mov   r3,0x91                   ; 0803EAFC
-lsl   r3,r3,0x7                 ; 0803EAFE
+lsl   r3,r3,0x7                 ; 0803EAFE  4880
 add   r1,r5,r3                  ; 0803EB00
 mov   r0,0xA8                   ; 0803EB02
-lsl   r0,r0,0x1                 ; 0803EB04
+lsl   r0,r0,0x1                 ; 0803EB04  0150
 strh  r0,[r1]                   ; 0803EB06
 ldr   r0,=0x4882                ; 0803EB08
 add   r1,r5,r0                  ; 0803EB0A
@@ -18592,10 +18595,10 @@ mov   r7,r6                     ; 0803EB2E
 add   r7,0x82                   ; 0803EB30
 ldrh  r1,[r7]                   ; 0803EB32
 mov   r0,0x80                   ; 0803EB34
-lsl   r0,r0,0x1                 ; 0803EB36
+lsl   r0,r0,0x1                 ; 0803EB36  0100
 cmp   r1,r0                     ; 0803EB38
 beq   @@Code0803EB4E            ; 0803EB3A
-bl    Sub080376D8               ; 0803EB3C
+bl    SkiEnableCheck            ; 0803EB3C
 lsl   r0,r0,0x18                ; 0803EB40
 lsr   r5,r0,0x18                ; 0803EB42
 cmp   r5,0x0                    ; 0803EB44
@@ -18607,20 +18610,21 @@ b     @@Code0803EC4C            ; 0803EB4C
 bl    Sub08041924               ; 0803EB4E
 b     @@Code0803EC4C            ; 0803EB52
 @@Code0803EB54:
+                                ;           runs if ski check returned 0 (enable skis)
 mov   r0,0x80                   ; 0803EB54
-lsl   r0,r0,0x2                 ; 0803EB56
+lsl   r0,r0,0x2                 ; 0803EB56  0200
 strh  r0,[r7]                   ; 0803EB58
 str   r5,[r6,0x28]              ; 0803EB5A
-ldrh  r0,[r6,0x32]              ; 0803EB5C
-cmp   r0,0x0                    ; 0803EB5E
+ldrh  r0,[r6,0x32]              ; 0803EB5C  Yoshi transformation
+cmp   r0,0x0                    ; 0803EB5E  00: normal
 bne   @@Code0803EC1C            ; 0803EB60
 ldr   r0,=0x023A                ; 0803EB62
-add   r7,r6,r0                  ; 0803EB64
+add   r7,r6,r0                  ; 0803EB64  03006FBA
 ldrh  r0,[r7]                   ; 0803EB66
 cmp   r0,0x0                    ; 0803EB68
 beq   @@Code0803EC4C            ; 0803EB6A
-mov   r0,0xE                    ; 0803EB6C
-strh  r0,[r6,0x32]              ; 0803EB6E
+mov   r0,0xE                    ; 0803EB6C  0E: skis
+strh  r0,[r6,0x32]              ; 0803EB6E  set Yoshi transformation
 bl    Sub0804197C               ; 0803EB70
 mov   r1,r6                     ; 0803EB74
 add   r1,0xA2                   ; 0803EB76

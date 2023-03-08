@@ -3539,7 +3539,7 @@ pop   {r0}                      ; 080E1BEC
 bx    r0                        ; 080E1BEE
 .pool                           ; 080E1BF0
 
-BabyMario_main:
+BabyMario_Main:
 ; sprite 061 main
 push  {r4-r7,lr}                ; 080E1C08
 mov   r7,r8                     ; 080E1C0A

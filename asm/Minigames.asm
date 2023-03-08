@@ -7353,7 +7353,7 @@ cmp   r0,0x0                    ; 080ED910
 beq   @@Code080ED91C            ; 080ED912
 ldr   r1,=Data0829E224          ; 080ED914
 mov   r0,r4                     ; 080ED916
-bl    Sub0804B4C4               ; 080ED918  Load 32x32 dynamic graphics
+bl    LoadDynGfx_32x32          ; 080ED918
 @@Code080ED91C:
 pop   {r4}                      ; 080ED91C
 pop   {r0}                      ; 080ED91E
@@ -8811,7 +8811,7 @@ Sub080EE5DC:
 push  {lr}                      ; 080EE5DC
 mov   r0,r1                     ; 080EE5DE
 ldr   r1,=Data0829E224          ; 080EE5E0
-bl    Sub0804B4C4               ; 080EE5E2  Load 32x32 dynamic graphics
+bl    LoadDynGfx_32x32          ; 080EE5E2
 ldr   r1,=0x03002200            ; 080EE5E6
 ldr   r0,=0x4876                ; 080EE5E8
 add   r1,r1,r0                  ; 080EE5EA
@@ -11621,7 +11621,7 @@ add   r0,r0,r1                  ; 080EFFBA
 mov   r1,0x0                    ; 080EFFBC
 strb  r1,[r0]                   ; 080EFFBE
 mov   r0,r4                     ; 080EFFC0
-bl    BabyMario_main               ; 080EFFC2
+bl    BabyMario_Main            ; 080EFFC2
 bl    Sub08049E80               ; 080EFFC6
 pop   {r4}                      ; 080EFFCA
 pop   {r0}                      ; 080EFFCC

@@ -2455,7 +2455,7 @@ cmp   r0,0x0                    ; 081037CE
 beq   @@Code081037E4            ; 081037D0
 ldr   r1,=Data0829A024          ; 081037D2
 mov   r0,r4                     ; 081037D4
-bl    Sub0804B4C4               ; 081037D6  Load 32x32 dynamic graphics
+bl    LoadDynGfx_32x32          ; 081037D6
 mov   r0,0x1                    ; 081037DA
 b     @@Code081037E6            ; 081037DC
 .pool                           ; 081037DE
@@ -5406,7 +5406,7 @@ lsl   r0,r0,0x1                 ; 0810520E
 strh  r0,[r1]                   ; 08105210
 ldr   r1,=Data082AA1A4          ; 08105212
 mov   r0,r5                     ; 08105214
-bl    Sub0804B4C4               ; 08105216  Load 32x32 dynamic graphics
+bl    LoadDynGfx_32x32          ; 08105216
 mov   r0,0x2                    ; 0810521A
 strh  r0,[r5,0x36]              ; 0810521C
 ldr   r0,[r5]                   ; 0810521E
