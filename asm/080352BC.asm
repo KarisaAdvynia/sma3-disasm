@@ -4636,101 +4636,105 @@ add   r0,r3,r1                  ; 08037880
 strh  r2,[r0]                   ; 08037882
 ldr   r6,=0x03002200            ; 08037884
 ldr   r2,=0x4852                ; 08037886
-add   r0,r6,r2                  ; 08037888
-ldrh  r2,[r0]                   ; 0803788A
-cmp   r2,0x2                    ; 0803788C
+add   r0,r6,r2                  ; 08037888  03006A52
+ldrh  r2,[r0]                   ; 0803788A  Sublevel load entrance type
+cmp   r2,0x2                    ; 0803788C  2: midway entrance
 bne   @@Code080378C4            ; 0803788E
+
+                                ;          \ runs if midway entrance
 ldr   r0,=0x0202BE8C            ; 08037890
-ldrh  r1,[r0]                   ; 08037892
+ldrh  r1,[r0]                   ; 08037892  most recent checkpoint's max camera Y position
 ldr   r6,=0x020E                ; 08037894
-add   r0,r3,r6                  ; 08037896
-strh  r1,[r0]                   ; 08037898
-b     @@Code08037974            ; 0803789A
+add   r0,r3,r6                  ; 08037896  03006F8E
+strh  r1,[r0]                   ; 08037898  restore max camera Y position
+b     @@Return                  ; 0803789A /
 .pool                           ; 0803789C
 
 @@Code080378C4:
 ldr   r0,=0x03007240            ; 080378C4  Normal gameplay IWRAM (0300220C)
 ldr   r0,[r0]                   ; 080378C6
 ldr   r1,=0x2AAC                ; 080378C8
-add   r0,r0,r1                  ; 080378CA
-ldrh  r0,[r0]                   ; 080378CC
-cmp   r0,0x43                   ; 080378CE
+add   r0,r0,r1                  ; 080378CA  [03007240]+2AAC (03004CB8)
+ldrh  r0,[r0]                   ; 080378CC  sublevel ID
+cmp   r0,0x43                   ; 080378CE  43: 2-3 second half
 bne   @@Code080378E8            ; 080378D0
 ldr   r2,=0x020E                ; 080378D2
-add   r1,r3,r2                  ; 080378D4
+add   r1,r3,r2                  ; 080378D4  03006F8E
 mov   r0,0xE7                   ; 080378D6
-lsl   r0,r0,0x3                 ; 080378D8
+lsl   r0,r0,0x3                 ; 080378D8  0738
 b     @@Code08037972            ; 080378DA
 .pool                           ; 080378DC
 
 @@Code080378E8:
-cmp   r0,0xDD                   ; 080378E8
+cmp   r0,0xDD                   ; 080378E8  DD: 6-8 Bowser battle
 bne   @@Code080378FC            ; 080378EA
 ldr   r6,=0x020E                ; 080378EC
-add   r1,r3,r6                  ; 080378EE
+add   r1,r3,r6                  ; 080378EE  03006F8E
 ldr   r0,=0x0734                ; 080378F0
 b     @@Code08037972            ; 080378F2
 .pool                           ; 080378F4
 
 @@Code080378FC:
-cmp   r0,0xC7                   ; 080378FC
+cmp   r0,0xC7                   ; 080378FC  C7: 2-4 lava room
 bne   @@Code08037910            ; 080378FE
 ldr   r0,=0x020E                ; 08037900
-add   r1,r3,r0                  ; 08037902
+add   r1,r3,r0                  ; 08037902  03006F8E
 ldr   r0,=0x06F4                ; 08037904
 b     @@Code08037972            ; 08037906
 .pool                           ; 08037908
 
 @@Code08037910:
-cmp   r0,0xE6                   ; 08037910
+cmp   r0,0xE6                   ; 08037910  E6: 3-Secret 4/4 (mole tank/helicopter/car)
 bne   @@Code08037924            ; 08037912
 ldr   r2,=0x020E                ; 08037914
-add   r1,r3,r2                  ; 08037916
+add   r1,r3,r2                  ; 08037916  03006F8E
 ldr   r0,=0x044F                ; 08037918
 b     @@Code08037972            ; 0803791A
 .pool                           ; 0803791C
 
 @@Code08037924:
 mov   r0,r3                     ; 08037924
-add   r0,0xC6                   ; 08037926
-ldrh  r1,[r0]                   ; 08037928
+add   r0,0xC6                   ; 08037926  03006E46
+ldrh  r1,[r0]                   ; 08037928  entrance scrolling flags
 mov   r0,0x4                    ; 0803792A
-and   r0,r1                     ; 0803792C
+and   r0,r1                     ; 0803792C  test flag 2
 cmp   r0,0x0                    ; 0803792E
-beq   @@Code0803796C            ; 08037930
-cmp   r2,0x0                    ; 08037932
+beq   @@Code0803796C            ; 08037930  if flag 2 is clear, set 03006F8E to 0744 and return
+cmp   r2,0x0                    ; 08037932  entrance type 0: main entrance
 bne   @@Code0803794C            ; 08037934
+
+                                ;          \ runs if main entrance and flag 2 is set
 ldr   r1,=0x47DC                ; 08037936
-add   r0,r6,r1                  ; 08037938
-ldrh  r1,[r0]                   ; 0803793A
+add   r0,r6,r1                  ; 08037938  030069DC
+ldrh  r1,[r0]                   ; 0803793A  Layer 1 Y position buffer
 ldr   r2,=0x020E                ; 0803793C
-add   r0,r3,r2                  ; 0803793E
-strh  r1,[r0]                   ; 08037940
-b     @@Code08037974            ; 08037942
+add   r0,r3,r2                  ; 0803793E  03006F8E
+strh  r1,[r0]                   ; 08037940  set 03006F8E to layer 1 Y position
+b     @@Return                  ; 08037942 /
 .pool                           ; 08037944
 
 @@Code0803794C:
-asr   r0,r5,0x8                 ; 0803794C
+asr   r0,r5,0x8                 ; 0803794C  Yoshi Y position in pixels
 ldr   r6,=0xFFFFFF00            ; 0803794E
 mov   r1,r6                     ; 08037950
 mov   r2,r3                     ; 08037952
-add   r2,0xCC                   ; 08037954
-and   r0,r1                     ; 08037956
-ldrh  r2,[r2]                   ; 08037958
+add   r2,0xCC                   ; 08037954  03006E4C
+and   r0,r1                     ; 08037956  Yoshi Y position in pixels, rounded down to the nearest screen boundary
+ldrh  r2,[r2]                   ; 08037958  (high digit of entrance byte 4) * 8 - 10
 add   r0,r0,r2                  ; 0803795A
-add   r0,0x10                   ; 0803795C
+add   r0,0x10                   ; 0803795C  screen boundary + high digit*8
 ldr   r2,=0x020E                ; 0803795E
-add   r1,r3,r2                  ; 08037960
+add   r1,r3,r2                  ; 08037960  03006F8E
 b     @@Code08037972            ; 08037962
 .pool                           ; 08037964
 
 @@Code0803796C:
 ldr   r1,=0x020E                ; 0803796C
 add   r1,r12                    ; 0803796E
-ldr   r0,=0x0744                ; 08037970
+ldr   r0,=0x0744                ; 08037970  default 03006F8E to 0744
 @@Code08037972:
 strh  r0,[r1]                   ; 08037972
-@@Code08037974:
+@@Return:
 bl    Sub08037724               ; 08037974
 pop   {r4-r7}                   ; 08037978
 pop   {r0}                      ; 0803797A

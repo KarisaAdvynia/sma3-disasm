@@ -6235,26 +6235,26 @@ add   r0,r5,r2                  ; 081128EA  03006C4C
 ldr   r0,[r0]                   ; 081128EC  0300220C Mario Bros.
 ldr   r1,=0x043F                ; 081128EE
 add   r0,r0,r1                  ; 081128F0
-ldrb  r0,[r0]                   ; 081128F2
+ldrb  r0,[r0]                   ; 081128F2  number of players -1
 mov   r2,0x3                    ; 081128F4
 and   r2,r0                     ; 081128F6
 cmp   r2,0x0                    ; 081128F8
 bne   @@Code08112920            ; 081128FA
-ldr   r0,=Data082F1968          ; 081128FC
+ldr   r0,=Data082F1968          ; 081128FC  Bonus game results tilemap, 1 player
 b     @@Code08112932            ; 081128FE
 .pool                           ; 08112900
 
 @@Code08112920:
 cmp   r2,0x1                    ; 08112920
 bne   @@Code0811292C            ; 08112922
-ldr   r0,=Data082F1B24          ; 08112924
+ldr   r0,=Data082F1B24          ; 08112924  Bonus game results tilemap, 2 players
 b     @@Code08112932            ; 08112926
 .pool                           ; 08112928
 
 @@Code0811292C:
 cmp   r2,0x2                    ; 0811292C
 bne   @@Code08112944            ; 0811292E
-ldr   r0,=Data082F1D0C          ; 08112930
+ldr   r0,=Data082F1D0C          ; 08112930  Bonus game results tilemap, 3 players
 @@Code08112932:
 ldr   r1,=0x06009000            ; 08112932
 bl    swi_Huffman               ; 08112934  Huffman decompress
@@ -6262,7 +6262,7 @@ b     @@Code0811294C            ; 08112938
 .pool                           ; 0811293A
 
 @@Code08112944:
-ldr   r0,=Data082F1F20          ; 08112944
+ldr   r0,=Data082F1F20          ; 08112944  Bonus game results tilemap, 4 players
 ldr   r1,=0x06009000            ; 08112946
 bl    swi_Huffman               ; 08112948  Huffman decompress
 @@Code0811294C:
@@ -16956,7 +16956,7 @@ bl    swi_Huffman               ; 081186B4  Huffman decompress
 ldr   r0,=Data082F1768          ; 081186B8
 ldr   r1,=0x02010600            ; 081186BA
 mov   r2,0x80                   ; 081186BC
-lsl   r2,r2,0x1                 ; 081186BE
+lsl   r2,r2,0x1                 ; 081186BE  0100
 bl    swi_MemoryCopy4or2        ; 081186C0  Memory copy/fill, 4- or 2-byte blocks
 ldr   r1,=0x4967                ; 081186C4
 add   r2,r4,r1                  ; 081186C6
@@ -17715,7 +17715,7 @@ bl    Sub08003810               ; 08118E3A
 ldr   r0,=Data082F1768          ; 08118E3E
 ldr   r1,=0x02010600            ; 08118E40
 mov   r2,0x80                   ; 08118E42
-lsl   r2,r2,0x1                 ; 08118E44
+lsl   r2,r2,0x1                 ; 08118E44  0100
 bl    swi_MemoryCopy4or2        ; 08118E46  Memory copy/fill, 4- or 2-byte blocks
 mov   r0,0xCF                   ; 08118E4A
 strh  r0,[r5]                   ; 08118E4C

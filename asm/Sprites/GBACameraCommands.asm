@@ -5,13 +5,13 @@ mov   r4,r0                     ; 080A5502
 ldr   r0,=0x03007240            ; 080A5504  Normal gameplay IWRAM (0300220C)
 ldr   r0,[r0]                   ; 080A5506
 ldr   r1,=0x2AAC                ; 080A5508
-add   r0,r0,r1                  ; 080A550A
-ldrh  r0,[r0]                   ; 080A550C
-cmp   r0,0x6C                   ; 080A550E
+add   r0,r0,r1                  ; 080A550A  [03007240]+2AAC (03004CB8)
+ldrh  r0,[r0]                   ; 080A550C  sublevel ID
+cmp   r0,0x6C                   ; 080A550E  6C: 6-Extra spinning prisms
 bne   @@Code080A5524            ; 080A5510
 ldr   r0,=0x03002200            ; 080A5512
 ldr   r1,=0x4A06                ; 080A5514
-add   r0,r0,r1                  ; 080A5516
+add   r0,r0,r1                  ; 080A5516  03006C06
 ldrb  r0,[r0]                   ; 080A5518
 cmp   r0,0x0                    ; 080A551A
 beq   @@Code080A5524            ; 080A551C
@@ -20,32 +20,33 @@ bl    Sub0804A6F8               ; 080A5520
 @@Code080A5524:
 ldr   r0,=0x03002200            ; 080A5524
 ldr   r1,=0x4905                ; 080A5526
-add   r0,r0,r1                  ; 080A5528
-ldrb  r0,[r0]                   ; 080A552A
-cmp   r0,0xB                    ; 080A552C
+add   r0,r0,r1                  ; 080A5528  03006B05
+ldrb  r0,[r0]                   ; 080A552A  Game state
+cmp   r0,0xB                    ; 080A552C  0B: Transition effect to new sublevel
 bne   @@Code080A55A0            ; 080A552E
 ldr   r0,=0x03007240            ; 080A5530  Normal gameplay IWRAM (0300220C)
 ldr   r0,[r0]                   ; 080A5532
 ldr   r1,=0x2AAC                ; 080A5534
-add   r0,r0,r1                  ; 080A5536
-ldrh  r0,[r0]                   ; 080A5538
-cmp   r0,0x23                   ; 080A553A
+add   r0,r0,r1                  ; 080A5536  [03007240]+2AAC (03004CB8)
+ldrh  r0,[r0]                   ; 080A5538  sublevel ID
+cmp   r0,0x23                   ; 080A553A  23: 4-Extra light half
 bne   @@Code080A55A0            ; 080A553C
-ldrh  r1,[r4,0x32]              ; 080A553E
+                                ;          \ runs if transitioning into sublevel 23
+ldrh  r1,[r4,0x32]              ; 080A553E  sprite ID
 mov   r0,0xDD                   ; 080A5540
-lsl   r0,r0,0x1                 ; 080A5542
+lsl   r0,r0,0x1                 ; 080A5542  1BA
 cmp   r1,r0                     ; 080A5544
 bne   @@Code080A5570            ; 080A5546
 ldr   r0,=0x03006D80            ; 080A5548
 ldr   r1,=0x0212                ; 080A554A
-add   r0,r0,r1                  ; 080A554C
+add   r0,r0,r1                  ; 080A554C  03006F92
 mov   r1,0x70                   ; 080A554E
 b     @@Code080A5580            ; 080A5550
 .pool                           ; 080A5552
 
 @@Code080A5570:
 mov   r0,0xDE                   ; 080A5570
-lsl   r0,r0,0x1                 ; 080A5572
+lsl   r0,r0,0x1                 ; 080A5572  1BC
 cmp   r1,r0                     ; 080A5574
 bne   @@Code080A5582            ; 080A5576
 ldr   r0,=0x03006D80            ; 080A5578
@@ -58,10 +59,10 @@ strh  r1,[r0]                   ; 080A5580
 ldr   r0,=0x0300702C            ; 080A5582  Sprite RAM structs (03002460)
 ldr   r2,[r0]                   ; 080A5584
 ldr   r0,=0x15E8                ; 080A5586
-add   r2,r2,r0                  ; 080A5588
+add   r2,r2,r0                  ; 080A5588  [0300702C]+15E8 (03003A48)
 ldrb  r1,[r2]                   ; 080A558A
 mov   r0,0x10                   ; 080A558C
-neg   r0,r0                     ; 080A558E
+neg   r0,r0                     ; 080A558E  FFFFFFF0
 and   r0,r1                     ; 080A5590
 mov   r1,0x1                    ; 080A5592
 orr   r0,r1                     ; 080A5594
@@ -69,7 +70,8 @@ strb  r0,[r2]                   ; 080A5596
 mov   r1,r4                     ; 080A5598
 add   r1,0x6A                   ; 080A559A
 mov   r0,0x1                    ; 080A559C
-strh  r0,[r1]                   ; 080A559E
+strh  r0,[r1]                   ; 080A559E / set sprite+6A to 1
+
 @@Code080A55A0:
 mov   r0,r4                     ; 080A55A0
 add   r0,0x6C                   ; 080A55A2
@@ -77,17 +79,17 @@ ldrh  r0,[r0]                   ; 080A55A4
 lsr   r0,r0,0x1                 ; 080A55A6
 mov   r1,r4                     ; 080A55A8
 add   r1,0x4E                   ; 080A55AA
-strh  r0,[r1]                   ; 080A55AC
-sub   r1,0x4                    ; 080A55AE
-strh  r0,[r1]                   ; 080A55B0
+strh  r0,[r1]                   ; 080A55AC  [sprite+4E] = [sprite+6C] / 2
+sub   r1,0x4                    ; 080A55AE  sprite+4A
+strh  r0,[r1]                   ; 080A55B0  [sprite+4A] = [sprite+6C] / 2 - 4
 mov   r0,r4                     ; 080A55B2
-add   r0,0x6E                   ; 080A55B4
+add   r0,0x6E                   ; 080A55B4  sprite+6E
 ldrh  r0,[r0]                   ; 080A55B6
 lsr   r0,r0,0x1                 ; 080A55B8
-add   r1,0x6                    ; 080A55BA
-strh  r0,[r1]                   ; 080A55BC
-sub   r1,0x4                    ; 080A55BE
-strh  r0,[r1]                   ; 080A55C0
+add   r1,0x6                    ; 080A55BA  sprite+50
+strh  r0,[r1]                   ; 080A55BC  [sprite+50] = [sprite+6E] / 2
+sub   r1,0x4                    ; 080A55BE  sprite+4C
+strh  r0,[r1]                   ; 080A55C0  [sprite+4C] = [sprite+6E] / 2 - 4
 pop   {r4}                      ; 080A55C2
 pop   {r0}                      ; 080A55C4
 bx    r0                        ; 080A55C6
@@ -96,43 +98,43 @@ bx    r0                        ; 080A55C6
 Camera1BA_1BD_Main:
 ; sprite 1BA-1BD main
 push  {r4-r7,lr}                ; 080A55D8
-mov   r12,r0                    ; 080A55DA
+mov   r12,r0                    ; 080A55DA  r12 = pointer to sprite struct
 ldr   r0,=0x03006D80            ; 080A55DC
-ldrh  r4,[r0,0x30]              ; 080A55DE
-mov   r5,r0                     ; 080A55E0
-cmp   r4,0x18                   ; 080A55E2
+ldrh  r4,[r0,0x30]              ; 080A55DE  Yoshi cutscene animation
+mov   r5,r0                     ; 080A55E0  r5 = 03006D80
+cmp   r4,0x18                   ; 080A55E2  18: unmorphing at Yoshi block
 beq   @@Code080A5608            ; 080A55E4
 mov   r0,0xD4                   ; 080A55E6
-lsl   r0,r0,0x1                 ; 080A55E8
-add   r3,r5,r0                  ; 080A55EA
+lsl   r0,r0,0x1                 ; 080A55E8  01A8
+add   r3,r5,r0                  ; 080A55EA  r3 = 03006F28
 ldr   r0,=0x03007240            ; 080A55EC  Normal gameplay IWRAM (0300220C)
 ldr   r2,[r0]                   ; 080A55EE
 ldr   r0,=0x29B0                ; 080A55F0
-add   r1,r2,r0                  ; 080A55F2
+add   r1,r2,r0                  ; 080A55F2  r1 = [03007240]+29B0 (03004BBC)
 ldrh  r0,[r3]                   ; 080A55F4
 ldrh  r1,[r1]                   ; 080A55F6
 orr   r0,r1                     ; 080A55F8
 ldr   r1,=0x29BA                ; 080A55FA
-add   r2,r2,r1                  ; 080A55FC
-ldrh  r1,[r2]                   ; 080A55FE
+add   r2,r2,r1                  ; 080A55FC  [03007240]+29BA (03004BC6) 
+ldrh  r1,[r2]                   ; 080A55FE  inventory item being used
 orr   r0,r1                     ; 080A5600
-cmp   r0,0x0                    ; 080A5602
+cmp   r0,0x0                    ; 080A5602  if any of these values are nonzero, return
 beq   @@Code080A5608            ; 080A5604
 b     @@Return                  ; 080A5606
 @@Code080A5608:
-ldrh  r0,[r5,0x32]              ; 080A5608
-cmp   r0,0x6                    ; 080A560A
-bne   @@Code080A5610            ; 080A560C
-b     @@Return                  ; 080A560E
-@@Code080A5610:
-cmp   r4,0x18                   ; 080A5610
-bne   @@Code080A5616            ; 080A5612
-b     @@Return                  ; 080A5614
+ldrh  r0,[r5,0x32]              ; 080A5608  Yoshi transformation [03006DB2]
+cmp   r0,0x6                    ; 080A560A  06: helicopter
+bne   @@Code080A5610            ; 080A560C  
+b     @@Return                  ; 080A560E  return if helicopter
+@@Code080A5610:                             
+cmp   r4,0x18                   ; 080A5610  18: unmorphing at Yoshi block
+bne   @@Code080A5616            ; 080A5612  
+b     @@Return                  ; 080A5614  return if unmorphing
 @@Code080A5616:
 ldr   r2,=0x0300702C            ; 080A5616  Sprite RAM structs (03002460)
 ldr   r0,[r2]                   ; 080A5618
 ldr   r1,=0x15E8                ; 080A561A
-add   r3,r0,r1                  ; 080A561C
+add   r3,r0,r1                  ; 080A561C  [0300702C]+15E8 (03003A48)
 ldrb  r1,[r3]                   ; 080A561E
 mov   r0,0xF                    ; 080A5620
 and   r0,r1                     ; 080A5622
@@ -141,8 +143,8 @@ cmp   r0,0x0                    ; 080A5626
 beq   @@Code080A562C            ; 080A5628
 b     @@Code080A576C            ; 080A562A
 @@Code080A562C:
-mov   r0,r12                    ; 080A562C
-add   r0,0xA3                   ; 080A562E
+mov   r0,r12                    ; 080A562C  pointer to sprite struct
+add   r0,0xA3                   ; 080A562E  sprite+A3
 ldrb  r0,[r0]                   ; 080A5630
 lsl   r0,r0,0x18                ; 080A5632
 asr   r0,r0,0x18                ; 080A5634
@@ -153,135 +155,148 @@ b     @@Return                  ; 080A563A
 ldr   r0,=0x03007240            ; 080A563C  Normal gameplay IWRAM (0300220C)
 ldr   r0,[r0]                   ; 080A563E
 mov   r2,0xC1                   ; 080A5640
-lsl   r2,r2,0x2                 ; 080A5642
-add   r1,r0,r2                  ; 080A5644
+lsl   r2,r2,0x2                 ; 080A5642  304
+add   r1,r0,r2                  ; 080A5644  r1 = start of sprite slot 1 [03007240]+304 (03002510)
 ldr   r2,=0x12D4                ; 080A5646
-add   r3,r0,r2                  ; 080A5648
-mov   r7,r12                    ; 080A564A
-add   r7,0x6A                   ; 080A564C
+add   r3,r0,r2                  ; 080A5648  r3 = end of sprite structs [03007240]+12D4 (030034E0)
+mov   r7,r12                    ; 080A564A  r7 = pointer to this sprite's struct
+add   r7,0x6A                   ; 080A564C  sprite+6A
 cmp   r1,r3                     ; 080A564E
-bhs   @@Code080A5678            ; 080A5650
-ldr   r0,=0xFFFFFE46            ; 080A5652
-mov   r4,r0                     ; 080A5654
-@@Code080A5656:
-ldrh  r0,[r1,0x24]              ; 080A5656
+bhs   @@EndLoop080A5678         ; 080A5650
+ldr   r0,=0xFFFFFE46            ; 080A5652  -1BA
+mov   r4,r0                     ; 080A5654  r4 = -1BA
+
+; iterate over sprite structs, checking for sprites 1BA-1BB
+; r1: pointer to current struct
+; r3: end of sprite struct array
+@@Loop080A5656:
+ldrh  r0,[r1,0x24]              ; 080A5656  checked sprite's status
 cmp   r0,0x0                    ; 080A5658
-beq   @@Code080A5672            ; 080A565A
-ldrh  r2,[r1,0x32]              ; 080A565C
-add   r0,r4,r2                  ; 080A565E
+beq   @@Code080A5672            ; 080A565A  if empty slot, skip to next iteration
+ldrh  r2,[r1,0x32]              ; 080A565C  checked sprite's ID
+add   r0,r4,r2                  ; 080A565E  checked sprite's ID - 1BA
 lsl   r0,r0,0x10                ; 080A5660
 lsr   r0,r0,0x10                ; 080A5662
 cmp   r0,0x1                    ; 080A5664
 bhi   @@Code080A5672            ; 080A5666
 mov   r2,r1                     ; 080A5668
 add   r2,0x6A                   ; 080A566A
-ldrh  r0,[r2]                   ; 080A566C
+ldrh  r0,[r2]                   ; 080A566C  if checked sprite+6A is nonzero...
 cmp   r0,0x0                    ; 080A566E
-bne   @@Code080A56B4            ; 080A5670
+bne   @@Code080A56B4            ; 080A5670  ...set it to 0 and end loop
 @@Code080A5672:
 add   r1,0xB0                   ; 080A5672
 cmp   r1,r3                     ; 080A5674
-blo   @@Code080A5656            ; 080A5676
-@@Code080A5678:
-mov   r3,r12                    ; 080A5678
-ldrh  r1,[r3,0x32]              ; 080A567A
+blo   @@Loop080A5656            ; 080A5676
+
+@@EndLoop080A5678:
+mov   r3,r12                    ; 080A5678  pointer to this sprite's struct
+ldrh  r1,[r3,0x32]              ; 080A567A  this sprite's ID
 ldr   r0,=0x01BB                ; 080A567C
 cmp   r1,r0                     ; 080A567E
-beq   @@Code080A56EC            ; 080A5680
+beq   @@Sprite1BB               ; 080A5680
 cmp   r1,r0                     ; 080A5682
-bgt   @@Code080A56BA            ; 080A5684
-sub   r0,0x1                    ; 080A5686
+bgt   @@Sprite1BC_1BD           ; 080A5684
+sub   r0,0x1                    ; 080A5686  1BA
 cmp   r1,r0                     ; 080A5688
-beq   @@Code080A56CA            ; 080A568A
+beq   @@Sprite1BA               ; 080A568A
 b     @@Code080A5742            ; 080A568C
 .pool                           ; 080A568E
 
-@@Code080A56B4:
+@@Code080A56B4:                 ;           part of previous loop, split for unknown reason
 mov   r0,0x0                    ; 080A56B4
 strh  r0,[r2]                   ; 080A56B6
-b     @@Code080A5678            ; 080A56B8
-@@Code080A56BA:
+b     @@EndLoop080A5678         ; 080A56B8
+
+@@Sprite1BC_1BD:
 mov   r0,0xDE                   ; 080A56BA
-lsl   r0,r0,0x1                 ; 080A56BC
+lsl   r0,r0,0x1                 ; 080A56BC  1BC
 cmp   r1,r0                     ; 080A56BE
-beq   @@Code080A5708            ; 080A56C0
-add   r0,0x1                    ; 080A56C2
+beq   @@Sprite1BC               ; 080A56C0
+add   r0,0x1                    ; 080A56C2  1BD
 cmp   r1,r0                     ; 080A56C4
-beq   @@Code080A5728            ; 080A56C6
+beq   @@Sprite1BD               ; 080A56C6
 b     @@Code080A5742            ; 080A56C8
-@@Code080A56CA:
+
+@@Sprite1BA:
 ldr   r0,=0x0212                ; 080A56CA
-add   r1,r5,r0                  ; 080A56CC
+add   r1,r5,r0                  ; 080A56CC  03006F92
 mov   r0,0x70                   ; 080A56CE
-strh  r0,[r1]                   ; 080A56D0
+strh  r0,[r1]                   ; 080A56D0  [03006F92] = 70
 ldr   r2,[r6]                   ; 080A56D2
 ldr   r1,=0x15E8                ; 080A56D4
-add   r2,r2,r1                  ; 080A56D6
+add   r2,r2,r1                  ; 080A56D6  [0300702C]+15E8 (03003A48)
 ldrb  r1,[r2]                   ; 080A56D8
-sub   r0,0x80                   ; 080A56DA
+sub   r0,0x80                   ; 080A56DA  FFFFFFF0
 and   r0,r1                     ; 080A56DC
 mov   r1,0x1                    ; 080A56DE
 b     @@Code080A573E            ; 080A56E0
 .pool                           ; 080A56E2
 
-@@Code080A56EC:
+@@Sprite1BB:
 ldr   r2,=0x0212                ; 080A56EC
-add   r1,r5,r2                  ; 080A56EE
+add   r1,r5,r2                  ; 080A56EE  03006F92
 mov   r0,0x20                   ; 080A56F0
-strh  r0,[r1]                   ; 080A56F2
+strh  r0,[r1]                   ; 080A56F2  [03006F92] = 20
 ldr   r2,[r6]                   ; 080A56F4
 ldr   r3,=0x15E8                ; 080A56F6
-add   r2,r2,r3                  ; 080A56F8
+add   r2,r2,r3                  ; 080A56F8  [0300702C]+15E8 (03003A48)
 ldrb  r1,[r2]                   ; 080A56FA
-sub   r0,0x30                   ; 080A56FC
+sub   r0,0x30                   ; 080A56FC  FFFFFFF0
 b     @@Code080A573A            ; 080A56FE
 .pool                           ; 080A5700
 
-@@Code080A5708:
+@@Sprite1BC:
 ldr   r0,=0x0212                ; 080A5708
-add   r1,r5,r0                  ; 080A570A
+add   r1,r5,r0                  ; 080A570A  03006F92
 mov   r0,0x58                   ; 080A570C
-strh  r0,[r1]                   ; 080A570E
+strh  r0,[r1]                   ; 080A570E  [03006F92] = 58
 ldr   r2,[r6]                   ; 080A5710
 ldr   r1,=0x15E8                ; 080A5712
-add   r2,r2,r1                  ; 080A5714
+add   r2,r2,r1                  ; 080A5714  [0300702C]+15E8 (03003A48)
 ldrb  r1,[r2]                   ; 080A5716
-sub   r0,0x68                   ; 080A5718
+sub   r0,0x68                   ; 080A5718  FFFFFFF0
 and   r0,r1                     ; 080A571A
 mov   r1,0x1                    ; 080A571C
 b     @@Code080A573E            ; 080A571E
 .pool                           ; 080A5720
 
-@@Code080A5728:
+@@Sprite1BD:
 ldr   r2,=0x0212                ; 080A5728
-add   r1,r5,r2                  ; 080A572A
+add   r1,r5,r2                  ; 080A572A  03006F92
 mov   r0,0x8                    ; 080A572C
-strh  r0,[r1]                   ; 080A572E
+strh  r0,[r1]                   ; 080A572E  [03006F92] = 08
 ldr   r2,[r6]                   ; 080A5730
 ldr   r3,=0x15E8                ; 080A5732
-add   r2,r2,r3                  ; 080A5734
+add   r2,r2,r3                  ; 080A5734  [0300702C]+15E8 (03003A48)
 ldrb  r1,[r2]                   ; 080A5736
-sub   r0,0x18                   ; 080A5738
+sub   r0,0x18                   ; 080A5738  FFFFFFF0
 @@Code080A573A:
-and   r0,r1                     ; 080A573A
-mov   r1,0x2                    ; 080A573C
-@@Code080A573E:
+and   r0,r1                     ; 080A573A \ runs if 1BB/1BD
+mov   r1,0x2                    ; 080A573C /
+
+; after ID-specific code:
+; [03006F92]: 70/20/58/08 by sprite ID, negative pixel offset to sprite Y
+; r0: [03003A48] with bits 0-3 cleared
+; r1: 1 if 1BA/1BC, 2 if 1BB/1BD
+
+@@Code080A573E:                 ;           shared code
 orr   r0,r1                     ; 080A573E
-strb  r0,[r2]                   ; 080A5740
+strb  r0,[r2]                   ; 080A5740  set a bit in [03003A48]
 @@Code080A5742:
 mov   r0,0x1                    ; 080A5742
-strh  r0,[r7]                   ; 080A5744
-ldr   r2,[r6]                   ; 080A5746
-mov   r1,r12                    ; 080A5748
-ldr   r0,[r1,0x4]               ; 080A574A
-asr   r0,r0,0x8                 ; 080A574C
+strh  r0,[r7]                   ; 080A5744  [sprite+6A] = 1
+ldr   r2,[r6]                   ; 080A5746  [0300702C] (03002460)
+mov   r1,r12                    ; 080A5748  pointer to current sprite's struct
+ldr   r0,[r1,0x4]               ; 080A574A  sprite Y position, in pixels*0x100
+asr   r0,r0,0x8                 ; 080A574C  sprite Y position, in pixels
 ldr   r3,=0x0212                ; 080A574E
-add   r1,r5,r3                  ; 080A5750
+add   r1,r5,r3                  ; 080A5750  03006F92
 ldrh  r1,[r1]                   ; 080A5752
-sub   r0,r0,r1                  ; 080A5754
-sub   r0,0x10                   ; 080A5756
+sub   r0,r0,r1                  ; 080A5754  sprite Y - (sprite-dependent pixel offset)
+sub   r0,0x10                   ; 080A5756  sprite Y - 10 - (sprite-dependent pixel offset)
 ldr   r1,=0x15EA                ; 080A5758
-add   r2,r2,r1                  ; 080A575A
+add   r2,r2,r1                  ; 080A575A  [0300702C]+15EA (03003A4A)
 strh  r0,[r2]                   ; 080A575C
 b     @@Return                  ; 080A575E
 .pool                           ; 080A5760
@@ -305,6 +320,7 @@ ldrb  r1,[r3]                   ; 080A5788
 sub   r0,0x10                   ; 080A578A
 and   r0,r1                     ; 080A578C
 strb  r0,[r3]                   ; 080A578E
+
 @@Return:
 pop   {r4-r7}                   ; 080A5790
 pop   {r0}                      ; 080A5792
@@ -321,74 +337,74 @@ push  {r5-r7}                   ; 080A57A0
 add   sp,-0xC                   ; 080A57A2
 mov   r5,r0                     ; 080A57A4
 ldr   r0,=0x03006D80            ; 080A57A6
-ldrh  r4,[r0,0x30]              ; 080A57A8
-mov   r12,r0                    ; 080A57AA
-cmp   r4,0x18                   ; 080A57AC
+ldrh  r4,[r0,0x30]              ; 080A57A8  Yoshi cutscene animation
+mov   r12,r0                    ; 080A57AA  r12 = 03006D80
+cmp   r4,0x18                   ; 080A57AC  18: unmorphing at Yoshi block
 beq   @@Code080A57D2            ; 080A57AE
 mov   r3,0xD4                   ; 080A57B0
-lsl   r3,r3,0x1                 ; 080A57B2
-add   r3,r12                    ; 080A57B4
+lsl   r3,r3,0x1                 ; 080A57B2  01A8
+add   r3,r12                    ; 080A57B4  03006F28
 ldr   r0,=0x03007240            ; 080A57B6  Normal gameplay IWRAM (0300220C)
 ldr   r2,[r0]                   ; 080A57B8
 ldr   r0,=0x29B0                ; 080A57BA
-add   r1,r2,r0                  ; 080A57BC
+add   r1,r2,r0                  ; 080A57BC  [03007240]+29B0 (03004BBC)
 ldrh  r0,[r3]                   ; 080A57BE
 ldrh  r1,[r1]                   ; 080A57C0
 orr   r0,r1                     ; 080A57C2
 ldr   r1,=0x29BA                ; 080A57C4
-add   r2,r2,r1                  ; 080A57C6
-ldrh  r1,[r2]                   ; 080A57C8
+add   r2,r2,r1                  ; 080A57C6  [03007240]+29BA (03004BC6)
+ldrh  r1,[r2]                   ; 080A57C8  inventory item being used
 orr   r0,r1                     ; 080A57CA
-cmp   r0,0x0                    ; 080A57CC
+cmp   r0,0x0                    ; 080A57CC  if any of these values are nonzero, return
 beq   @@Code080A57D2            ; 080A57CE
 b     @@Return                  ; 080A57D0
 @@Code080A57D2:
 mov   r2,r12                    ; 080A57D2
-ldrh  r0,[r2,0x32]              ; 080A57D4
-cmp   r0,0x6                    ; 080A57D6
+ldrh  r0,[r2,0x32]              ; 080A57D4  Yoshi transformation [03006DB2]
+cmp   r0,0x6                    ; 080A57D6  06: helicopter
 bne   @@Code080A57DC            ; 080A57D8
-b     @@Return                  ; 080A57DA
+b     @@Return                  ; 080A57DA  return if helicopter
 @@Code080A57DC:
-cmp   r4,0x18                   ; 080A57DC
+cmp   r4,0x18                   ; 080A57DC  18: unmorphing at Yoshi block
 bne   @@Code080A57E2            ; 080A57DE
-b     @@Return                  ; 080A57E0
+b     @@Return                  ; 080A57E0  return if unmorphing
 @@Code080A57E2:
-ldrh  r3,[r5,0x32]              ; 080A57E2
-str   r3,[sp]                   ; 080A57E4
-ldr   r6,=0xFFFFFE42            ; 080A57E6
+ldrh  r3,[r5,0x32]              ; 080A57E2  sprite ID
+str   r3,[sp]                   ; 080A57E4  [sp] = sprite ID
+ldr   r6,=0xFFFFFE42            ; 080A57E6  -1BE
 add   r0,r3,r6                  ; 080A57E8
 lsl   r0,r0,0x10                ; 080A57EA
-lsr   r0,r0,0x10                ; 080A57EC
+lsr   r0,r0,0x10                ; 080A57EC  sprite ID -1BE
 cmp   r0,0x1                    ; 080A57EE
 bhi   @@Code080A580C            ; 080A57F0
-add   r3,0x42                   ; 080A57F2
+add   r3,0x42                   ; 080A57F2  if sprite 1BE or 1BF, r3 = 200 or 201
 b     @@Code080A5810            ; 080A57F4
 .pool                           ; 080A57F6
 
-@@Code080A580C:
+@@Code080A580C:                 ;          \ runs if sprite 1C0 or 1C1
 ldr   r3,[sp]                   ; 080A580C
-add   r3,0x40                   ; 080A580E
+add   r3,0x40                   ; 080A580E / r3 = 200 or 201
 @@Code080A5810:
 mov   r0,0x1                    ; 080A5810
-and   r3,r0                     ; 080A5812
+and   r3,r0                     ; 080A5812  r3 = sprite ID parity
 ldr   r0,=0x03007240            ; 080A5814  Normal gameplay IWRAM (0300220C)
 ldr   r4,[r0]                   ; 080A5816
 mov   r7,0xC1                   ; 080A5818
-lsl   r7,r7,0x2                 ; 080A581A
+lsl   r7,r7,0x2                 ; 080A581A  304
 add   r7,r7,r4                  ; 080A581C
-mov   r10,r7                    ; 080A581E
+mov   r10,r7                    ; 080A581E  r10 = start of sprite slot 1 [03007240]+304 (03002510)
 ldr   r0,=0x12D4                ; 080A5820
-add   r7,r4,r0                  ; 080A5822
+add   r7,r4,r0                  ; 080A5822  r7 = end of sprite structs [03007240]+12D4 (030034E0)
 ldr   r1,=0x0300702C            ; 080A5824  Sprite RAM structs (03002460)
-ldr   r2,[r1]                   ; 080A5826
+ldr   r2,[r1]                   ; 080A5826  [0300702C] (03002460)
 str   r2,[sp,0x4]               ; 080A5828
 ldr   r6,=0x15E8                ; 080A582A
-add   r6,r6,r2                  ; 080A582C
-mov   r8,r6                     ; 080A582E
+add   r6,r6,r2                  ; 080A582C  [0300702C]+15E8 (03003A48)
+mov   r8,r6                     ; 080A582E  r8 = [0300702C]+15E8 (03003A48)
 ldrb  r2,[r6]                   ; 080A5830
 mov   r0,0xF                    ; 080A5832
 and   r0,r2                     ; 080A5834
-mov   r9,r1                     ; 080A5836
+mov   r9,r1                     ; 080A5836  r9 = 0300702C
 cmp   r0,0x0                    ; 080A5838
 beq   @@Code080A583E            ; 080A583A
 b     @@Code080A5AD8            ; 080A583C
@@ -401,9 +417,9 @@ blt   @@Code080A584A            ; 080A5846
 b     @@Return                  ; 080A5848
 @@Code080A584A:
 ldr   r2,=0x2AAC                ; 080A584A
-add   r0,r4,r2                  ; 080A584C
-ldrh  r0,[r0]                   ; 080A584E
-cmp   r0,0x27                   ; 080A5850
+add   r0,r4,r2                  ; 080A584C  [03007240]+2AAC (03004CB8)
+ldrh  r0,[r0]                   ; 080A584E  sublevel ID
+cmp   r0,0x27                   ; 080A5850  27: 5-4 various
 bne   @@Code080A585C            ; 080A5852
 ldr   r0,=0x0003FFFF            ; 080A5854
 cmp   r1,r0                     ; 080A5856
@@ -412,169 +428,183 @@ b     @@Return                  ; 080A585A
 @@Code080A585C:
 cmp   r3,0x0                    ; 080A585C
 bne   @@Code080A5884            ; 080A585E
+                                ;          \ runs if sprite ID even (1BE/1C0)
 mov   r6,r12                    ; 080A5860
-ldr   r0,[r6]                   ; 080A5862
-ldr   r1,[r5]                   ; 080A5864
+ldr   r0,[r6]                   ; 080A5862  Yoshi X position
+ldr   r1,[r5]                   ; 080A5864  sprite X position
 cmp   r0,r1                     ; 080A5866
 bge   @@Code080A5890            ; 080A5868
-b     @@Return                  ; 080A586A
-.pool                           ; 080A586C
+b     @@Return                  ; 080A586A  return if Yoshi X < sprite X
+.pool                           ; 080A586C /
 
-@@Code080A5884:
+@@Code080A5884:                 ;          \ runs if sprite ID odd (1BF/1C1)
 mov   r1,r12                    ; 080A5884
-ldr   r0,[r1]                   ; 080A5886
-ldr   r1,[r5]                   ; 080A5888
+ldr   r0,[r1]                   ; 080A5886  Yoshi X position
+ldr   r1,[r5]                   ; 080A5888  sprite X position
 cmp   r0,r1                     ; 080A588A
 ble   @@Code080A5890            ; 080A588C
-b     @@Return                  ; 080A588E
+b     @@Return                  ; 080A588E / return if Yoshi X > sprite X
+
 @@Code080A5890:
 mov   r2,r10                    ; 080A5890
-cmp   r3,0x0                    ; 080A5892
+cmp   r3,0x0                    ; 080A5892  check sprite ID parity
 bne   @@Code080A58D0            ; 080A5894
+
+; iterate over sprite structs, checking for either counterpart
+; r10: start of sprite slot 1 [03007240]+304 (03002510)
+; r2: pointer to current struct
+; r7: end of sprite struct array
+                                ;          \ runs if sprite ID even (1BE/1C0)
 cmp   r2,r7                     ; 080A5896
-bhs   @@Code080A58FE            ; 080A5898
+bhs   @@EndLoop080A58FE         ; 080A5898
 ldr   r3,=0x01BF                ; 080A589A
-mov   r8,r3                     ; 080A589C
-ldr   r6,=0x01C1                ; 080A589E
+mov   r8,r3                     ; 080A589C  r8 = 1BF
+ldr   r6,=0x01C1                ; 080A589E  r6 = 1C1
 ldr   r4,=0x03006D80            ; 080A58A0
-mov   r3,r1                     ; 080A58A2
-@@Code080A58A4:
-ldrh  r0,[r2,0x32]              ; 080A58A4
+mov   r3,r1                     ; 080A58A2  r3 = this sprite's X position
+@@Loop080A58A4:
+ldrh  r0,[r2,0x32]              ; 080A58A4  checked sprite's ID
 cmp   r0,r8                     ; 080A58A6
 beq   @@Code080A58AE            ; 080A58A8
 cmp   r0,r6                     ; 080A58AA
 bne   @@Code080A58BC            ; 080A58AC
-@@Code080A58AE:
-ldr   r0,[r4]                   ; 080A58AE
-ldr   r1,[r2]                   ; 080A58B0
+@@Code080A58AE:                 ;           \ runs if counterpart detected
+ldr   r0,[r4]                   ; 080A58AE    r0 = Yoshi X position
+ldr   r1,[r2]                   ; 080A58B0    r1 = checked sprite's X position
 cmp   r0,r1                     ; 080A58B2
 ble   @@Code080A58BC            ; 080A58B4
 cmp   r1,r3                     ; 080A58B6
 ble   @@Code080A58BC            ; 080A58B8
-b     @@Return                  ; 080A58BA
+b     @@Return                  ; 080A58BA  / return if Yoshi X > any 1BE/1C0's X > this sprite's X
 @@Code080A58BC:
 add   r2,0xB0                   ; 080A58BC
 cmp   r2,r7                     ; 080A58BE
-blo   @@Code080A58A4            ; 080A58C0
-b     @@Code080A58FE            ; 080A58C2
+blo   @@Loop080A58A4            ; 080A58C0
+b     @@EndLoop080A58FE         ; 080A58C2 /
 .pool                           ; 080A58C4
 
-@@Code080A58D0:
+@@Code080A58D0:                 ;          \ runs if sprite ID odd (1BF/1C1)
 cmp   r2,r7                     ; 080A58D0
-bhs   @@Code080A58FE            ; 080A58D2
+bhs   @@EndLoop080A58FE         ; 080A58D2
 mov   r6,0xDF                   ; 080A58D4
-lsl   r6,r6,0x1                 ; 080A58D6
-mov   r8,r6                     ; 080A58D8
-add   r6,0x2                    ; 080A58DA
+lsl   r6,r6,0x1                 ; 080A58D6  1BE
+mov   r8,r6                     ; 080A58D8  r8 = 1BE
+add   r6,0x2                    ; 080A58DA  r6 = 1C0
 ldr   r4,=0x03006D80            ; 080A58DC
-mov   r3,r1                     ; 080A58DE
+mov   r3,r1                     ; 080A58DE  r3 = this sprite's X position
 @@Code080A58E0:
-ldrh  r0,[r2,0x32]              ; 080A58E0
+ldrh  r0,[r2,0x32]              ; 080A58E0  checked sprite's ID
 cmp   r0,r8                     ; 080A58E2
 beq   @@Code080A58EA            ; 080A58E4
 cmp   r0,r6                     ; 080A58E6
 bne   @@Code080A58F8            ; 080A58E8
-@@Code080A58EA:
-ldr   r0,[r4]                   ; 080A58EA
-ldr   r1,[r2]                   ; 080A58EC
+@@Code080A58EA:                 ;           \ runs if counterpart detected
+ldr   r0,[r4]                   ; 080A58EA    r0 = Yoshi X position
+ldr   r1,[r2]                   ; 080A58EC    r1 = checked sprite's X position
 cmp   r0,r1                     ; 080A58EE
 bge   @@Code080A58F8            ; 080A58F0
 cmp   r1,r3                     ; 080A58F2
 bge   @@Code080A58F8            ; 080A58F4
-b     @@Return                  ; 080A58F6
+b     @@Return                  ; 080A58F6  / return if Yoshi X < any 1BF/1C1's X < this sprite's X
 @@Code080A58F8:
 add   r2,0xB0                   ; 080A58F8
 cmp   r2,r7                     ; 080A58FA
-blo   @@Code080A58E0            ; 080A58FC
-@@Code080A58FE:
-mov   r2,r10                    ; 080A58FE
+blo   @@Code080A58E0            ; 080A58FC /
+
+@@EndLoop080A58FE:
+mov   r2,r10                    ; 080A58FE  r2 = start of sprite slot 1
 ldr   r4,=0x03002200            ; 080A5900
 mov   r6,r5                     ; 080A5902
-add   r6,0x6A                   ; 080A5904
+add   r6,0x6A                   ; 080A5904  r6 = pointer to sprite+6A
 b     @@Code080A5912            ; 080A5906
 .pool                           ; 080A5908
 
-@@Code080A5910:
+; iterate over sprite structs, checking for sprites 1BA-1BD
+; r2: pointer to current struct
+; r7: end of sprite struct array
+@@Loop080A5910:
 add   r2,0xB0                   ; 080A5910
 @@Code080A5912:
 cmp   r2,r7                     ; 080A5912
-bhs   @@Code080A5934            ; 080A5914
-ldr   r1,=0xFFFFFE46            ; 080A5916
+bhs   @@EndLoop080A5934         ; 080A5914
+ldr   r1,=0xFFFFFE46            ; 080A5916  -1BA
 mov   r0,r1                     ; 080A5918
-ldrh  r3,[r2,0x32]              ; 080A591A
+ldrh  r3,[r2,0x32]              ; 080A591A  checked sprite's ID
 add   r0,r0,r3                  ; 080A591C
 lsl   r0,r0,0x10                ; 080A591E
 lsr   r0,r0,0x10                ; 080A5920
 cmp   r0,0x3                    ; 080A5922
-bhi   @@Code080A5910            ; 080A5924
-mov   r1,r2                     ; 080A5926
+bhi   @@Loop080A5910            ; 080A5924
+mov   r1,r2                     ; 080A5926  runs if checked sprite ID in 1BA-1BD
 add   r1,0x6A                   ; 080A5928
 ldrh  r0,[r1]                   ; 080A592A
-cmp   r0,0x0                    ; 080A592C
-beq   @@Code080A5910            ; 080A592E
-mov   r0,0x0                    ; 080A5930
-strh  r0,[r1]                   ; 080A5932
-@@Code080A5934:
+cmp   r0,0x0                    ; 080A592C \
+beq   @@Loop080A5910            ; 080A592E | if checked sprite +6A is nonzero,
+mov   r0,0x0                    ; 080A5930 | clear it and end loop
+strh  r0,[r1]                   ; 080A5932 /
+
+@@EndLoop080A5934:
 mov   r7,r9                     ; 080A5934
 ldr   r2,[r7]                   ; 080A5936
 ldr   r1,=0x156E                ; 080A5938
-add   r0,r2,r1                  ; 080A593A
+add   r0,r2,r1                  ; 080A593A  [0300702C]+156E (030039CE)
 ldrb  r1,[r0]                   ; 080A593C
 ldr   r3,=0x15F0                ; 080A593E
-add   r0,r2,r3                  ; 080A5940
+add   r0,r2,r3                  ; 080A5940  [0300702C]+15F0 (03003A50)
 strh  r1,[r0]                   ; 080A5942
 mov   r7,r12                    ; 080A5944
-ldrh  r0,[r7,0x3E]              ; 080A5946
+ldrh  r0,[r7,0x3E]              ; 080A5946  ??? from Yoshi struct [03006DBE]
 cmp   r0,0x0                    ; 080A5948
 beq   @@Code080A595E            ; 080A594A
 ldr   r0,=0x15E8                ; 080A594C
-add   r2,r2,r0                  ; 080A594E
-ldrb  r1,[r2]                   ; 080A5950
+add   r2,r2,r0                  ; 080A594E  [0300702C]+15E8 (03003A48)
+ldrb  r1,[r2]                   ; 080A5950 \ modify value
 mov   r0,0x31                   ; 080A5952
-neg   r0,r0                     ; 080A5954
-and   r0,r1                     ; 080A5956
+neg   r0,r0                     ; 080A5954  FFFFFFCF
+and   r0,r1                     ; 080A5956  clear bits 4-5
 mov   r1,0x10                   ; 080A5958
-orr   r0,r1                     ; 080A595A
-strb  r0,[r2]                   ; 080A595C
+orr   r0,r1                     ; 080A595A  set bit 4
+strb  r0,[r2]                   ; 080A595C /
+
 @@Code080A595E:
-mov   r1,r9                     ; 080A595E
-ldr   r2,[r1]                   ; 080A5960
+mov   r1,r9                     ; 080A595E  0300702C
+ldr   r2,[r1]                   ; 080A5960  r2 = 03002460 (start of sprite structs)
 ldr   r3,=0x47DC                ; 080A5962
-add   r0,r4,r3                  ; 080A5964
-ldrh  r1,[r0]                   ; 080A5966
+add   r0,r4,r3                  ; 080A5964  030069DC
+ldrh  r1,[r0]                   ; 080A5966  layer 1 Y position buffer
 ldr   r7,=0x15EC                ; 080A5968
-add   r0,r2,r7                  ; 080A596A
-strh  r1,[r0]                   ; 080A596C
-ldr   r0,[r5]                   ; 080A596E
-asr   r0,r0,0x8                 ; 080A5970
+add   r0,r2,r7                  ; 080A596A  [0300702C]+15EC (03003A4C)
+strh  r1,[r0]                   ; 080A596C  copy layer 1 Y position to 03003A4C
+ldr   r0,[r5]                   ; 080A596E  sprite X position, in pixels*0x100
+asr   r0,r0,0x8                 ; 080A5970  sprite X position, in pixels
 ldr   r3,=0x15EE                ; 080A5972
-add   r1,r2,r3                  ; 080A5974
-strh  r0,[r1]                   ; 080A5976
-ldr   r0,[r5,0x4]               ; 080A5978
-asr   r0,r0,0x8                 ; 080A597A
-add   r7,0x8                    ; 080A597C
-add   r1,r2,r7                  ; 080A597E
-strh  r0,[r1]                   ; 080A5980
-ldr   r0,[r5,0x4]               ; 080A5982
-lsl   r0,r0,0x8                 ; 080A5984
-lsr   r3,r0,0x10                ; 080A5986
-ldr   r1,[sp]                   ; 080A5988
-ldr   r5,=0xFFFFFE42            ; 080A598A
-add   r0,r1,r5                  ; 080A598C
+add   r1,r2,r3                  ; 080A5974  [0300702C]+15EE (03003A4E)
+strh  r0,[r1]                   ; 080A5976  copy sprite X position to 03003A4E
+ldr   r0,[r5,0x4]               ; 080A5978  sprite Y position, in pixels*0x100
+asr   r0,r0,0x8                 ; 080A597A  sprite Y position, in pixels
+add   r7,0x8                    ; 080A597C  15F4
+add   r1,r2,r7                  ; 080A597E  [0300702C]+15F4 (03003A54)
+strh  r0,[r1]                   ; 080A5980  copy sprite Y position to 03003A54
+ldr   r0,[r5,0x4]               ; 080A5982  sprite Y position, in pixels*0x100
+lsl   r0,r0,0x8                 ; 080A5984  sprite Y position, in pixels*0x10000
+lsr   r3,r0,0x10                ; 080A5986  r3 = sprite Y position, in pixels
+ldr   r1,[sp]                   ; 080A5988  sprite ID
+ldr   r5,=0xFFFFFE42            ; 080A598A  -1BE
+add   r0,r1,r5                  ; 080A598C  r0 = sprite ID - 1BE
 lsl   r0,r0,0x10                ; 080A598E
 lsr   r0,r0,0x10                ; 080A5990
-mov   r1,0x70                   ; 080A5992
+mov   r1,0x70                   ; 080A5992  r1 = 70 if sprite ID 1C0-1C1
 cmp   r0,0x1                    ; 080A5994
 bhi   @@Code080A599A            ; 080A5996
-mov   r1,0x78                   ; 080A5998
+mov   r1,0x78                   ; 080A5998  r1 = 78 if sprite ID 1BE-1BF
 @@Code080A599A:
 lsl   r0,r3,0x10                ; 080A599A
-asr   r0,r0,0x10                ; 080A599C
+asr   r0,r0,0x10                ; 080A599C  r0 = sprite Y position, in pixels
 sub   r1,r0,r1                  ; 080A599E
 cmp   r1,0x0                    ; 080A59A0
 bge   @@Code080A59D4            ; 080A59A2
 ldr   r7,=0x15EA                ; 080A59A4
-add   r1,r2,r7                  ; 080A59A6
+add   r1,r2,r7                  ; 080A59A6  [0300702C]+15EA (03003A4A)
 mov   r0,0x0                    ; 080A59A8
 strh  r0,[r1]                   ; 080A59AA
 b     @@Code080A59F2            ; 080A59AC
@@ -585,7 +615,7 @@ ldr   r3,=0x0744                ; 080A59D4
 cmp   r1,r3                     ; 080A59D6
 ble   @@Code080A59EC            ; 080A59D8
 ldr   r1,=0x15EA                ; 080A59DA
-add   r0,r2,r1                  ; 080A59DC
+add   r0,r2,r1                  ; 080A59DC  [0300702C]+15EA (03003A4A)
 strh  r3,[r0]                   ; 080A59DE
 b     @@Code080A59F2            ; 080A59E0
 .pool                           ; 080A59E2
@@ -600,7 +630,7 @@ add   r4,r4,r5                  ; 080A59F4
 mov   r7,r9                     ; 080A59F6
 ldr   r2,[r7]                   ; 080A59F8
 ldr   r0,=0x15EA                ; 080A59FA
-add   r3,r2,r0                  ; 080A59FC
+add   r3,r2,r0                  ; 080A59FC  [0300702C]+15EA (03003A4A)
 ldrh  r1,[r4]                   ; 080A59FE
 ldrh  r0,[r3]                   ; 080A5A00
 cmp   r1,r0                     ; 080A5A02
@@ -720,9 +750,9 @@ beq   @@Code080A5AEC            ; 080A5AE8
 b     @@Return                  ; 080A5AEA
 @@Code080A5AEC:
 ldr   r1,=0x2AAC                ; 080A5AEC
-add   r0,r4,r1                  ; 080A5AEE
-ldrh  r0,[r0]                   ; 080A5AF0
-cmp   r0,0x80                   ; 080A5AF2
+add   r0,r4,r1                  ; 080A5AEE  [03007240]+2AAC (03004CB8)
+ldrh  r0,[r0]                   ; 080A5AF0  sublevel ID
+cmp   r0,0x80                   ; 080A5AF2  80: 4-1 3/3 (Super Baby)
 bne   @@Code080A5B18            ; 080A5AF4
 mov   r6,r12                    ; 080A5AF6
 ldr   r1,[r6,0x4]               ; 080A5AF8
@@ -788,7 +818,7 @@ ldr   r7,=0x15EC                ; 080A5B6E
 add   r0,r2,r7                  ; 080A5B70
 strh  r1,[r0]                   ; 080A5B72
 ldr   r3,=0x15EA                ; 080A5B74
-add   r0,r2,r3                  ; 080A5B76
+add   r0,r2,r3                  ; 080A5B76  [0300702C]+15EA (03003A4A)
 ldrh  r0,[r0]                   ; 080A5B78
 lsl   r1,r1,0x10                ; 080A5B7A
 lsr   r1,r1,0x10                ; 080A5B7C
@@ -1096,46 +1126,48 @@ ldrh  r1,[r2,0x32]              ; 080A5DF2
 ldr   r0,=0x01C3                ; 080A5DF4
 cmp   r1,r0                     ; 080A5DF6
 bne   @@Code080A5E34            ; 080A5DF8
+
+                                ;          \ runs if sprite 1C3
 ldr   r0,=0x03007240            ; 080A5DFA  Normal gameplay IWRAM (0300220C)
 ldr   r0,[r0]                   ; 080A5DFC
 ldr   r3,=0x2AAC                ; 080A5DFE
-add   r0,r0,r3                  ; 080A5E00
-ldrh  r0,[r0]                   ; 080A5E02
-cmp   r0,0xEF                   ; 080A5E04
+add   r0,r0,r3                  ; 080A5E00  [03007240]+2AAC (03004CB8)
+ldrh  r0,[r0]                   ; 080A5E02  sublevel ID
+cmp   r0,0xEF                   ; 080A5E04  EF: 6-Secret castle rooms
 bne   @@Return                  ; 080A5E06
 ldr   r0,=0x03006D80            ; 080A5E08
 ldr   r0,[r0]                   ; 080A5E0A
 asr   r0,r0,0x8                 ; 080A5E0C
 mov   r1,0x8B                   ; 080A5E0E
-lsl   r1,r1,0x4                 ; 080A5E10
+lsl   r1,r1,0x4                 ; 080A5E10  08B0
 cmp   r0,r1                     ; 080A5E12
 bne   @@Return                  ; 080A5E14
 mov   r1,0x87                   ; 080A5E16
-lsl   r1,r1,0x3                 ; 080A5E18
-b     @@Code080A5EB8            ; 080A5E1A
+lsl   r1,r1,0x3                 ; 080A5E18  0438
+b     @@Code080A5EB8            ; 080A5E1A /
 .pool                           ; 080A5E1C
 
-@@Code080A5E34:
+@@Code080A5E34:                 ;          \ runs if sprite 1C2
 ldr   r1,=0x03007240            ; 080A5E34  Normal gameplay IWRAM (0300220C)
 ldr   r0,[r1]                   ; 080A5E36
 ldr   r3,=0x2AAC                ; 080A5E38
-add   r0,r0,r3                  ; 080A5E3A
-ldrh  r0,[r0]                   ; 080A5E3C
+add   r0,r0,r3                  ; 080A5E3A  [03007240]+2AAC (03004CB8)
+ldrh  r0,[r0]                   ; 080A5E3C  sublevel ID
 mov   r3,r1                     ; 080A5E3E
-cmp   r0,0x4E                   ; 080A5E40
+cmp   r0,0x4E                   ; 080A5E40  4E: 3-5 2/3
 bne   @@Code080A5E54            ; 080A5E42
 mov   r1,0xD1                   ; 080A5E44
-lsl   r1,r1,0x3                 ; 080A5E46
+lsl   r1,r1,0x3                 ; 080A5E46  0688
 b     @@Code080A5EB8            ; 080A5E48
 .pool                           ; 080A5E4A
 
 @@Code080A5E54:
-cmp   r0,0x2A                   ; 080A5E54
+cmp   r0,0x2A                   ; 080A5E54  2A: 5-7 first half
 bne   @@Code080A5E74            ; 080A5E56
 ldr   r0,[r2]                   ; 080A5E58
 asr   r0,r0,0x8                 ; 080A5E5A
 mov   r1,0x80                   ; 080A5E5C
-lsl   r1,r1,0x1                 ; 080A5E5E
+lsl   r1,r1,0x1                 ; 080A5E5E  0100
 cmp   r0,r1                     ; 080A5E60
 bne   @@Return                  ; 080A5E62
 ldr   r0,=0x03006D80            ; 080A5E64
@@ -1147,7 +1179,7 @@ b     @@Code080A5EB8            ; 080A5E6E
 .pool                           ; 080A5E70
 
 @@Code080A5E74:
-cmp   r0,0x56                   ; 080A5E74
+cmp   r0,0x56                   ; 080A5E74  56: 4-5 2/2
 bne   @@Code080A5E90            ; 080A5E76
 ldr   r0,=0x03006D80            ; 080A5E78
 ldr   r0,[r0]                   ; 080A5E7A
@@ -1162,7 +1194,7 @@ b     @@Code080A5EB8            ; 080A5E8A
 .pool                           ; 080A5E8C
 
 @@Code080A5E90:
-cmp   r0,0x69                   ; 080A5E90
+cmp   r0,0x69                   ; 080A5E90  69: 6-6 maze dark half
 bne   @@Code080A5EC0            ; 080A5E92
 ldr   r0,[r2,0x4]               ; 080A5E94
 asr   r0,r0,0x8                 ; 080A5E96
@@ -1183,6 +1215,7 @@ b     @@Code080A5EB8            ; 080A5EAE
 @@Code080A5EB4:
 mov   r1,0x8B                   ; 080A5EB4
 lsl   r1,r1,0x3                 ; 080A5EB6
+                                ;          /
 @@Code080A5EB8:
 mov   r0,r2                     ; 080A5EB8
 bl    Sub080A5D64               ; 080A5EBA
@@ -1190,9 +1223,9 @@ b     @@Return                  ; 080A5EBE
 @@Code080A5EC0:
 ldr   r0,[r3]                   ; 080A5EC0
 ldr   r1,=0x2AAC                ; 080A5EC2
-add   r0,r0,r1                  ; 080A5EC4
-ldrh  r0,[r0]                   ; 080A5EC6
-cmp   r0,0xEF                   ; 080A5EC8
+add   r0,r0,r1                  ; 080A5EC4  [03007240]+2AAC (03004CB8)
+ldrh  r0,[r0]                   ; 080A5EC6  sublevel ID
+cmp   r0,0xEF                   ; 080A5EC8  EF: 6-Secret castle rooms
 bne   @@Return                  ; 080A5ECA
 ldr   r0,=0x03006D80            ; 080A5ECC
 ldr   r0,[r0]                   ; 080A5ECE
@@ -1221,7 +1254,7 @@ ldrh  r4,[r7,0x30]              ; 080A5EFA  Yoshi cutscene animation
 cmp   r4,0x18                   ; 080A5EFC  18: unmorphing at Yoshi block
 beq   @@Code080A5F22            ; 080A5EFE
 mov   r0,0xD4                   ; 080A5F00
-lsl   r0,r0,0x1                 ; 080A5F02  1A8
+lsl   r0,r0,0x1                 ; 080A5F02  01A8
 add   r3,r7,r0                  ; 080A5F04  03006F28
 ldr   r0,=0x03007240            ; 080A5F06  Normal gameplay IWRAM (0300220C)
 ldr   r2,[r0]                   ; 080A5F08
@@ -1238,7 +1271,7 @@ cmp   r0,0x0                    ; 080A5F1C  if any of these values are nonzero, 
 beq   @@Code080A5F22            ; 080A5F1E
 b     @@Return                  ; 080A5F20
 @@Code080A5F22:
-ldrh  r0,[r7,0x32]              ; 080A5F22  Yoshi transformation state (03006DB2)
+ldrh  r0,[r7,0x32]              ; 080A5F22  Yoshi transformation [03006DB2]
 cmp   r0,0x6                    ; 080A5F24  06: helicopter
 bne   @@Code080A5F2A            ; 080A5F26
 b     @@Return                  ; 080A5F28  return if helicopter
@@ -1303,7 +1336,7 @@ bne   @@Code080A5FD8            ; 080A5FA6
 ; iterate over sprite structs, checking for the sprite's counterpart
 ; r2: pointer to current struct
 ; r12: end of sprite struct array
-                                ; runs if sprite ID even (1C2)
+                                ;          \ runs if sprite ID even (1C2)
 cmp   r2,r12                    ; 080A5FA8
 bhs   @@Code080A5FFE            ; 080A5FAA
 ldr   r7,=0x01C3                ; 080A5FAC
@@ -1325,9 +1358,9 @@ add   r2,0xB0                   ; 080A5FC6
 cmp   r2,r12                    ; 080A5FC8
 blo   @@Loop080A5FB2            ; 080A5FCA
 b     @@Code080A5FFE            ; 080A5FCC
-.pool                           ; 080A5FCE
+.pool                           ; 080A5FCE /
 
-@@Code080A5FD8:                 ; runs if sprite ID odd (1C3)
+@@Code080A5FD8:                 ;          \ runs if sprite ID odd (1C3)
 cmp   r2,r12                    ; 080A5FD8
 bhs   @@Code080A5FFE            ; 080A5FDA
 mov   r7,0xE1                   ; 080A5FDC
@@ -1348,7 +1381,7 @@ b     @@Return                  ; 080A5FF6  return if Yoshi X < any 1C2's X < th
 @@Code080A5FF8:
 add   r2,0xB0                   ; 080A5FF8
 cmp   r2,r12                    ; 080A5FFA
-blo   @@Loop080A5FE4            ; 080A5FFC
+blo   @@Loop080A5FE4            ; 080A5FFC /
 
 ; if specific pair of sprites surrounding 5-1's key crate, don't activate if Yoshi's not in crate room
 @@Code080A5FFE:
@@ -1380,7 +1413,7 @@ mov   r9,r0                     ; 080A602A  r9 = pointer to sprite struct +6A
 b     @@Code080A6042            ; 080A602C
 .pool                           ; 080A602E
 
-; iterate over sprite slots, checking for sprites 1BA-1BD
+; iterate over sprite structs, checking for sprites 1BA-1BD
 ; r2: pointer to current struct
 ; r12: end of sprite struct array
 @@Loop080A6040:
@@ -1426,6 +1459,7 @@ and   r0,r1                     ; 080A6086  clear bits 4-5
 mov   r1,0x10                   ; 080A6088
 orr   r0,r1                     ; 080A608A  set bit 4
 strb  r0,[r2]                   ; 080A608C /
+
 @@Code080A608E:
 ldr   r0,=0x0300702C            ; 080A608E  Sprite RAM structs (03002460)
 ldr   r2,[r0]                   ; 080A6090  03002460
@@ -1440,38 +1474,40 @@ asr   r0,r0,0x8                 ; 080A60A0  sprite X position, in pixels
 add   r3,0x2                    ; 080A60A2  15EE
 add   r1,r2,r3                  ; 080A60A4  [0300702C]+15EE (03003A4E)
 strh  r0,[r1]                   ; 080A60A6  copy sprite X position to 03003A4E
-ldr   r0,[r6,0x4]               ; 080A60A8
-asr   r0,r0,0x8                 ; 080A60AA
-add   r3,0x6                    ; 080A60AC
-add   r1,r2,r3                  ; 080A60AE
-strh  r0,[r1]                   ; 080A60B0
+ldr   r0,[r6,0x4]               ; 080A60A8  sprite Y position, in pixels*0x100
+asr   r0,r0,0x8                 ; 080A60AA  sprite Y position, in pixels
+add   r3,0x6                    ; 080A60AC  15F4
+add   r1,r2,r3                  ; 080A60AE  [0300702C]+15F4 (03003A54)
+strh  r0,[r1]                   ; 080A60B0  copy sprite Y position to 03003A54
 ldr   r0,[r6,0x4]               ; 080A60B2
-asr   r0,r0,0x8                 ; 080A60B4
-sub   r0,0x78                   ; 080A60B6
+asr   r0,r0,0x8                 ; 080A60B4  sprite Y position, in pixels
+sub   r0,0x78                   ; 080A60B6  sprite Y in pixels -78
 ldr   r5,=0x15EA                ; 080A60B8
-add   r1,r2,r5                  ; 080A60BA
-strh  r0,[r1]                   ; 080A60BC
+add   r1,r2,r5                  ; 080A60BA  [0300702C]+15EA (03003A4A)
+strh  r0,[r1]                   ; 080A60BC  copy sprite Y -78 to 03003A4A
 ldr   r0,=0x03006D80            ; 080A60BE
 ldr   r1,=0x020E                ; 080A60C0
-add   r4,r0,r1                  ; 080A60C2
-ldrh  r0,[r4]                   ; 080A60C4
-sub   r3,0x2                    ; 080A60C6
-add   r2,r2,r3                  ; 080A60C8
-strh  r0,[r2]                   ; 080A60CA
+add   r4,r0,r1                  ; 080A60C2  03006F8E
+ldrh  r0,[r4]                   ; 080A60C4  ??? (camera-related Y in pixels)
+sub   r3,0x2                    ; 080A60C6  15F2
+add   r2,r2,r3                  ; 080A60C8  [0300702C]+15F2 (03003A52)
+strh  r0,[r2]                   ; 080A60CA  copy ??? to 03003A52
 ldr   r0,=0x03006D80            ; 080A60CC
-add   r0,0xC8                   ; 080A60CE
-ldrh  r1,[r0]                   ; 080A60D0
+add   r0,0xC8                   ; 080A60CE  03006E48
+ldrh  r1,[r0]                   ; 080A60D0  entrance byte 5 <<3
 ldr   r2,=0x03006D80            ; 080A60D2
 ldr   r3,=0x0212                ; 080A60D4
-add   r0,r2,r3                  ; 080A60D6
-strh  r1,[r0]                   ; 080A60D8
+add   r0,r2,r3                  ; 080A60D6  03006F92
+strh  r1,[r0]                   ; 080A60D8  copy 03006E48 to 03006F92
 ldr   r0,=0x0300702C            ; 080A60DA  Sprite RAM structs (03002460)
 ldr   r1,[r0]                   ; 080A60DC
-add   r3,r1,r5                  ; 080A60DE
-ldrh  r2,[r4]                   ; 080A60E0
-ldrh  r0,[r3]                   ; 080A60E2
+add   r3,r1,r5                  ; 080A60DE  [0300702C]+15EA (03003A4A)
+ldrh  r2,[r4]                   ; 080A60E0  ??? (camera-related Y in pixels) [03006F8E]
+ldrh  r0,[r3]                   ; 080A60E2  sprite Y in pixels -78
 cmp   r2,r0                     ; 080A60E4
 bls   @@Code080A617C            ; 080A60E6
+
+                                ;          \ runs if ??? > sprite Y -78
 ldrh  r1,[r7]                   ; 080A60E8
 cmp   r1,r0                     ; 080A60EA
 bls   @@Code080A61C4            ; 080A60EC
@@ -1499,14 +1535,14 @@ strb  r0,[r1]                   ; 080A613A
 ldr   r1,=0x0300702C            ; 080A613C  Sprite RAM structs (03002460)
 ldr   r2,[r1]                   ; 080A613E
 ldr   r3,=0x15E8                ; 080A6140
-add   r2,r2,r3                  ; 080A6142
-ldrb  r1,[r2]                   ; 080A6144
-mov   r0,0x10                   ; 080A6146
-neg   r0,r0                     ; 080A6148
-and   r0,r1                     ; 080A614A
-mov   r1,0x9                    ; 080A614C
-orr   r0,r1                     ; 080A614E
-strb  r0,[r2]                   ; 080A6150
+add   r2,r2,r3                  ; 080A6142  [0300702C]+15E8 (03003A48)
+ldrb  r1,[r2]                   ; 080A6144  \
+mov   r0,0x10                   ; 080A6146  |
+neg   r0,r0                     ; 080A6148  | FFFFFFF0
+and   r0,r1                     ; 080A614A  |
+mov   r1,0x9                    ; 080A614C  | clear bits 1-2, set bits 0,3
+orr   r0,r1                     ; 080A614E  |
+strb  r0,[r2]                   ; 080A6150  /
 ldr   r0,=0x47DC                ; 080A6152
 add   r0,r8                     ; 080A6154
 ldrh  r1,[r0]                   ; 080A6156
@@ -1514,10 +1550,10 @@ ldr   r2,=0x03006D80            ; 080A6158
 ldr   r3,=0x020E                ; 080A615A
 add   r0,r2,r3                  ; 080A615C
 strh  r1,[r0]                   ; 080A615E
-b     @@Code080A6206            ; 080A6160
+b     @@Code080A6206            ; 080A6160 /
 .pool                           ; 080A6162
 
-@@Code080A617C:
+@@Code080A617C:                 ;          \ runs if ??? <= sprite Y -78
 cmp   r2,r0                     ; 080A617C
 bhs   @@Code080A61C4            ; 080A617E
 ldrh  r0,[r3]                   ; 080A6180
@@ -1584,7 +1620,8 @@ ldrb  r2,[r1]                   ; 080A61FC
 mov   r0,0x31                   ; 080A61FE
 neg   r0,r0                     ; 080A6200
 and   r0,r2                     ; 080A6202
-strb  r0,[r1]                   ; 080A6204
+strb  r0,[r1]                   ; 080A6204 /
+
 @@Code080A6206:
 mov   r0,0x1                    ; 080A6206
 mov   r3,r9                     ; 080A6208
@@ -1635,9 +1672,9 @@ b     @@Code080A628A            ; 080A626A
 mov   r2,r10                    ; 080A626C
 ldr   r0,[r2]                   ; 080A626E
 ldr   r1,=0x2AAC                ; 080A6270
-add   r0,r0,r1                  ; 080A6272
-ldrh  r0,[r0]                   ; 080A6274
-cmp   r0,0x62                   ; 080A6276
+add   r0,r0,r1                  ; 080A6272  [03007240]+2AAC (03004CB8)
+ldrh  r0,[r0]                   ; 080A6274  sublevel ID
+cmp   r0,0x62                   ; 080A6276  62: 5-8 main castle 1
 bne   @@Code080A62A0            ; 080A6278
 ldr   r2,=0x03006D80            ; 080A627A
 ldr   r1,[r2]                   ; 080A627C
@@ -1674,7 +1711,7 @@ beq   @@Code080A62C4            ; 080A62C0
 b     @@Return                  ; 080A62C2
 @@Code080A62C4:
 ldr   r0,=0x15E9                ; 080A62C4
-add   r2,r3,r0                  ; 080A62C6
+add   r2,r3,r0                  ; 080A62C6  [0300702C]+15E9 (03003A49)
 mov   r0,0x0                    ; 080A62C8
 ldsb  r0,[r2,r0]                ; 080A62CA
 cmp   r0,0x0                    ; 080A62CC
@@ -1827,3 +1864,49 @@ pop   {r4-r7}                   ; 080A63F2
 pop   {r0}                      ; 080A63F4
 bx    r0                        ; 080A63F6
 .pool                           ; 080A63F8
+
+Sub080A63FC:
+push  {r4-r5,lr}                ; 080A63FC
+ldr   r5,=0x0300702C            ; 080A63FE  Sprite RAM structs (03002460)
+ldr   r2,[r5]                   ; 080A6400
+ldr   r4,=0x15E8                ; 080A6402
+add   r2,r2,r4                  ; 080A6404
+ldrb  r3,[r2]                   ; 080A6406
+mov   r1,0x10                   ; 080A6408
+neg   r1,r1                     ; 080A640A
+and   r1,r3                     ; 080A640C
+strb  r1,[r2]                   ; 080A640E
+ldr   r2,[r5]                   ; 080A6410
+add   r2,r2,r4                  ; 080A6412
+ldrb  r3,[r2]                   ; 080A6414
+mov   r1,0x31                   ; 080A6416
+neg   r1,r1                     ; 080A6418
+and   r1,r3                     ; 080A641A
+strb  r1,[r2]                   ; 080A641C
+ldr   r3,=0x03006D80            ; 080A641E
+mov   r1,r3                     ; 080A6420
+add   r1,0xC8                   ; 080A6422
+ldrh  r2,[r1]                   ; 080A6424
+ldr   r4,=0x0212                ; 080A6426
+add   r1,r3,r4                  ; 080A6428
+strh  r2,[r1]                   ; 080A642A
+ldr   r2,=0xFFFFFE3E            ; 080A642C
+mov   r1,r2                     ; 080A642E
+ldrh  r0,[r0,0x32]              ; 080A6430
+add   r1,r1,r0                  ; 080A6432
+lsl   r1,r1,0x10                ; 080A6434
+lsr   r1,r1,0x10                ; 080A6436
+cmp   r1,0x1                    ; 080A6438
+bhi   @@Code080A644A            ; 080A643A
+ldr   r0,[r5]                   ; 080A643C
+ldr   r4,=0x15F2                ; 080A643E
+add   r0,r0,r4                  ; 080A6440  [0300702C]+15F2 (03003A52)
+ldrh  r1,[r0]                   ; 080A6442  backup of max camera Y position
+ldr   r2,=0x020E                ; 080A6444
+add   r0,r3,r2                  ; 080A6446  03006F8E
+strh  r1,[r0]                   ; 080A6448  restore max camera Y position from backup
+@@Code080A644A:
+pop   {r4-r5}                   ; 080A644A
+pop   {r0}                      ; 080A644C
+bx    r0                        ; 080A644E
+.pool                           ; 080A6450
