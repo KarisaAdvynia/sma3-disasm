@@ -150,8 +150,8 @@ Sub08000BE0:
 push  {r4-r6,lr}                ; 08000BE0
 ldr   r4,=0x03002200            ; 08000BE2
 mov   r1,0x92                   ; 08000BE4
-lsl   r1,r1,0x7                 ; 08000BE6
-add   r0,r4,r1                  ; 08000BE8
+lsl   r1,r1,0x7                 ; 08000BE6  4900  
+add   r0,r4,r1                  ; 08000BE8  03006B00
 ldrb  r0,[r0]                   ; 08000BEA
 cmp   r0,0x0                    ; 08000BEC
 beq   @@Code08000BF2            ; 08000BEE
@@ -190,54 +190,54 @@ ldrh  r0,[r0]                   ; 08000C2C
 strh  r0,[r1]                   ; 08000C2E
 ldr   r2,=0x04000010            ; 08000C30
 ldr   r1,=0x47E4                ; 08000C32
-add   r0,r4,r1                  ; 08000C34
+add   r0,r4,r1                  ; 08000C34  030069E4
 ldrh  r1,[r0]                   ; 08000C36
-strh  r1,[r2]                   ; 08000C38
+strh  r1,[r2]                   ; 08000C38  set layer 0 X
 ldr   r0,=0x04000014            ; 08000C3A
-strh  r1,[r0]                   ; 08000C3C
+strh  r1,[r0]                   ; 08000C3C  set layer 1 X
 ldr   r1,=0x04000018            ; 08000C3E
 ldr   r2,=0x47E6                ; 08000C40
 add   r0,r4,r2                  ; 08000C42
 ldrh  r0,[r0]                   ; 08000C44
-strh  r0,[r1]                   ; 08000C46
-add   r1,0x2                    ; 08000C48
-add   r3,0x22                   ; 08000C4A
-add   r0,r4,r3                  ; 08000C4C
+strh  r0,[r1]                   ; 08000C46  set layer 2 X
+add   r1,0x2                    ; 08000C48  0400001A
+add   r3,0x22                   ; 08000C4A  47EE
+add   r0,r4,r3                  ; 08000C4C  030069EE
 ldrh  r0,[r0]                   ; 08000C4E
-strh  r0,[r1]                   ; 08000C50
-add   r1,0x2                    ; 08000C52
-add   r5,0x1A                   ; 08000C54
-add   r0,r4,r5                  ; 08000C56
+strh  r0,[r1]                   ; 08000C50  set layer 2 Y
+add   r1,0x2                    ; 08000C52  0400001C
+add   r5,0x1A                   ; 08000C54  47E8
+add   r0,r4,r5                  ; 08000C56  030069E8
 ldrh  r0,[r0]                   ; 08000C58
-strh  r0,[r1]                   ; 08000C5A
-add   r1,0x2                    ; 08000C5C
-add   r2,0xA                    ; 08000C5E
-add   r0,r4,r2                  ; 08000C60
+strh  r0,[r1]                   ; 08000C5A  set layer 3 X
+add   r1,0x2                    ; 08000C5C  0400001E
+add   r2,0xA                    ; 08000C5E  47F0
+add   r0,r4,r2                  ; 08000C60  030069F0
 ldrh  r0,[r0]                   ; 08000C62
-strh  r0,[r1]                   ; 08000C64
-add   r1,0x2E                   ; 08000C66
-add   r3,0xCA                   ; 08000C68
-add   r0,r4,r3                  ; 08000C6A
+strh  r0,[r1]                   ; 08000C64  set layer 3 Y
+add   r1,0x2E                   ; 08000C66  0400004C
+add   r3,0xCA                   ; 08000C68  48B8
+add   r0,r4,r3                  ; 08000C6A  03006AB8
 ldrh  r0,[r0]                   ; 08000C6C
-strh  r0,[r1]                   ; 08000C6E
+strh  r0,[r1]                   ; 08000C6E  
 ldr   r0,=0x04000020            ; 08000C70
 mov   r5,0x80                   ; 08000C72
-lsl   r5,r5,0x7                 ; 08000C74
-add   r1,r4,r5                  ; 08000C76
+lsl   r5,r5,0x7                 ; 08000C74  4000
+add   r1,r4,r5                  ; 08000C76  03006200
 mov   r2,0x10                   ; 08000C78
 bl    Sub0812FD60               ; 08000C7A
 ldr   r2,=0x04000012            ; 08000C7E
 ldr   r0,=0x47EC                ; 08000C80
-add   r1,r4,r0                  ; 08000C82
+add   r1,r4,r0                  ; 08000C82  030069EC
 ldr   r0,=0x03006D80            ; 08000C84
 ldr   r3,=0x0256                ; 08000C86
-add   r0,r0,r3                  ; 08000C88
+add   r0,r0,r3                  ; 08000C88  03006FD6
 ldrh  r0,[r0]                   ; 08000C8A
 ldrh  r1,[r1]                   ; 08000C8C
 add   r0,r0,r1                  ; 08000C8E
-strh  r0,[r2]                   ; 08000C90
+strh  r0,[r2]                   ; 08000C90  set layer 0 Y
 ldr   r1,=0x04000016            ; 08000C92
-strh  r0,[r1]                   ; 08000C94
+strh  r0,[r1]                   ; 08000C94  set layer 1 Y
 bl    Sub08014680               ; 08000C96
 bl    Sub08014860               ; 08000C9A
 bl    Sub0802EF48               ; 08000C9E
@@ -2067,7 +2067,7 @@ strh  r2,[r0,0xA]               ; 08001E94
 ldrh  r0,[r0,0xA]               ; 08001E96
 ldr   r1,=CodePtrs08163FC8      ; 08001E98
 ldr   r2,=0x48F6                ; 08001E9A
-add   r0,r5,r2                  ; 08001E9C
+add   r0,r5,r2                  ; 08001E9C  03006AF6
 ldrb  r0,[r0]                   ; 08001E9E
 lsl   r0,r0,0x2                 ; 08001EA0
 add   r0,r0,r1                  ; 08001EA2

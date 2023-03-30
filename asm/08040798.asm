@@ -467,11 +467,11 @@ ldrb  r0,[r0]                   ; 08040B64
 cmp   r0,0x0                    ; 08040B66
 bne   @@Code08040BBC            ; 08040B68
 ldr   r0,=CodePtrs0816E58C      ; 08040B6A
-ldrh  r1,[r6,0x30]              ; 08040B6C
+ldrh  r1,[r6,0x30]              ; 08040B6C  Yoshi cutscene animation
 lsr   r1,r1,0x1                 ; 08040B6E
 lsl   r1,r1,0x2                 ; 08040B70
-add   r1,r1,r0                  ; 08040B72
-ldr   r0,[r1]                   ; 08040B74
+add   r1,r1,r0                  ; 08040B72  offset table by animID*2
+ldr   r0,[r1]                   ; 08040B74  code pointer
 bl    Sub_bx_r0                 ; 08040B76  bx r0
 b     @@Code08040BCA            ; 08040B7A
 .pool                           ; 08040B7C

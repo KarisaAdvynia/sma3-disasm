@@ -553,58 +553,60 @@ bx    r0                        ; 08035768
 .pool                           ; 0803576A
 
 Sub0803576C:
+; processing header index C
+; called with 6 16-bit values indexed by header index C, in ported GSU registers 03006A04-0E
 push  {r4-r7,lr}                ; 0803576C
 ldr   r5,=0x030069F4            ; 0803576E
 mov   r0,0x20                   ; 08035770
-neg   r0,r0                     ; 08035772
-add   r0,r0,r5                  ; 08035774
-mov   r12,r0                    ; 08035776
-ldrh  r4,[r0]                   ; 08035778
+neg   r0,r0                     ; 08035772  FFFFFFE0
+add   r0,r0,r5                  ; 08035774  r0 = 030069D4
+mov   r12,r0                    ; 08035776  r12 = 030069D4
+ldrh  r4,[r0]                   ; 08035778  layer 0/1 X buffer
 ldr   r7,=0x03006D80            ; 0803577A
 mov   r1,0x81                   ; 0803577C
-lsl   r1,r1,0x2                 ; 0803577E
-add   r0,r7,r1                  ; 08035780
+lsl   r1,r1,0x2                 ; 0803577E  204
+add   r0,r7,r1                  ; 08035780  03006F84
 mov   r6,0xFF                   ; 08035782
 ldrb  r3,[r0]                   ; 08035784
-ldrh  r1,[r5,0x10]              ; 08035786
+ldrh  r1,[r5,0x10]              ; 08035786  layer 2 X scroll multiplier from 081ABABE
 cmp   r1,0x0                    ; 08035788
-beq   @@Code0803579E            ; 0803578A
-mov   r0,r3                     ; 0803578C
-mul   r0,r1                     ; 0803578E
-lsr   r2,r0,0x8                 ; 08035790
-mov   r0,r4                     ; 08035792
-mul   r0,r1                     ; 08035794
-add   r0,r0,r2                  ; 08035796
-asr   r0,r0,0x8                 ; 08035798
-mov   r2,r12                    ; 0803579A
-strh  r0,[r2,0x2]               ; 0803579C
-@@Code0803579E:
-ldrh  r1,[r5,0x14]              ; 0803579E
+beq   @@SkipLayer2X             ; 0803578A
+mov   r0,r3                     ; 0803578C \
+mul   r0,r1                     ; 0803578E |
+lsr   r2,r0,0x8                 ; 08035790 | set layer 2 X [030069D4] to:
+mov   r0,r4                     ; 08035792 |  layer 0/1 X * stored value / 0x100
+mul   r0,r1                     ; 08035794 |  + [03006F84] * stored value / 0x10000
+add   r0,r0,r2                  ; 08035796 |
+asr   r0,r0,0x8                 ; 08035798 |
+mov   r2,r12                    ; 0803579A |
+strh  r0,[r2,0x2]               ; 0803579C /
+@@SkipLayer2X:
+ldrh  r1,[r5,0x14]              ; 0803579E  layer 3 X scroll multiplier from 081ABB3E
 cmp   r1,0x0                    ; 080357A0
-beq   @@Code080357B6            ; 080357A2
-mov   r0,r3                     ; 080357A4
-mul   r0,r1                     ; 080357A6
-lsr   r2,r0,0x8                 ; 080357A8
-mov   r0,r4                     ; 080357AA
-mul   r0,r1                     ; 080357AC
-add   r0,r0,r2                  ; 080357AE
-asr   r0,r0,0x8                 ; 080357B0
-mov   r1,r12                    ; 080357B2
-strh  r0,[r1,0x4]               ; 080357B4
-@@Code080357B6:
-ldrh  r1,[r5,0x18]              ; 080357B6
+beq   @@SkipLayer3X             ; 080357A2
+mov   r0,r3                     ; 080357A4 \
+mul   r0,r1                     ; 080357A6 |
+lsr   r2,r0,0x8                 ; 080357A8 | set layer 3 X [030069D8] to:
+mov   r0,r4                     ; 080357AA |  layer 0/1 X * stored value / 0x100
+mul   r0,r1                     ; 080357AC |  + [03006F84] * stored value / 0x10000
+add   r0,r0,r2                  ; 080357AE |
+asr   r0,r0,0x8                 ; 080357B0 |
+mov   r1,r12                    ; 080357B2 |
+strh  r0,[r1,0x4]               ; 080357B4 /
+@@SkipLayer3X:
+ldrh  r1,[r5,0x18]              ; 080357B6  ??? X scroll multiplier from 081ABBBE
 cmp   r1,0x0                    ; 080357B8
-beq   @@Code080357CE            ; 080357BA
-mov   r0,r3                     ; 080357BC
-mul   r0,r1                     ; 080357BE
-lsr   r2,r0,0x8                 ; 080357C0
-mov   r0,r4                     ; 080357C2
-mul   r0,r1                     ; 080357C4
-add   r0,r0,r2                  ; 080357C6
-asr   r0,r0,0x8                 ; 080357C8
-mov   r2,r12                    ; 080357CA
-strh  r0,[r2,0x6]               ; 080357CC
-@@Code080357CE:
+beq   @@SkipUnknownX            ; 080357BA
+mov   r0,r3                     ; 080357BC \
+mul   r0,r1                     ; 080357BE |
+lsr   r2,r0,0x8                 ; 080357C0 | set ??? X [030069DC] to:
+mov   r0,r4                     ; 080357C2 |  layer 0/1 X * stored value / 0x100
+mul   r0,r1                     ; 080357C4 |  + [03006F84] * stored value / 0x10000
+add   r0,r0,r2                  ; 080357C6 |
+asr   r0,r0,0x8                 ; 080357C8 |
+mov   r2,r12                    ; 080357CA |
+strh  r0,[r2,0x6]               ; 080357CC /
+@@SkipUnknownX:
 ldr   r1,=0x0744                ; 080357CE
 mov   r2,r12                    ; 080357D0
 ldrh  r0,[r2,0x8]               ; 080357D2
@@ -617,15 +619,15 @@ add   r0,r7,r1                  ; 080357DE
 ldrh  r0,[r0]                   ; 080357E0
 mov   r3,r0                     ; 080357E2
 and   r3,r6                     ; 080357E4
-ldrh  r1,[r5,0x12]              ; 080357E6
+ldrh  r1,[r5,0x12]              ; 080357E6  layer 2 Y scroll multiplier from 081ABAFE
 cmp   r1,0x0                    ; 080357E8
-beq   @@Code0803583E            ; 080357EA
+beq   @@SkipLayer2Y             ; 080357EA
 lsl   r0,r1,0x10                ; 080357EC
 asr   r1,r0,0x10                ; 080357EE
 cmp   r1,0x0                    ; 080357F0
 bge   @@Code08035808            ; 080357F2
 ldrh  r1,[r5,0xA]               ; 080357F4
-b     @@Code0803583A            ; 080357F6
+b     @@SetLayer2Y              ; 080357F6
 .pool                           ; 080357F8
 
 @@Code08035808:
@@ -643,30 +645,30 @@ ldr   r1,=Data081ABC3E          ; 0803581C
 ldr   r0,=0x03007240            ; 0803581E  Normal gameplay IWRAM (0300220C)
 ldr   r0,[r0]                   ; 08035820
 ldr   r6,=0x2AAC                ; 08035822
-add   r0,r0,r6                  ; 08035824
-ldrh  r0,[r0]                   ; 08035826
+add   r0,r0,r6                  ; 08035824  [03007240]+2AAC (03004CB8)
+ldrh  r0,[r0]                   ; 08035826  sublevel ID
 lsl   r0,r0,0x2                 ; 08035828
-add   r0,r0,r1                  ; 0803582A
-ldrh  r0,[r0]                   ; 0803582C
+add   r0,r0,r1                  ; 0803582A  offset by sublevelID *4
+ldrh  r0,[r0]                   ; 0803582C  layer 2 Y offset
 sub   r0,r0,r2                  ; 0803582E
 lsl   r0,r0,0x10                ; 08035830
 lsr   r1,r0,0x10                ; 08035832
 cmp   r0,0x0                    ; 08035834
-bge   @@Code0803583A            ; 08035836
+bge   @@SetLayer2Y              ; 08035836
 mov   r1,0x0                    ; 08035838
-@@Code0803583A:
+@@SetLayer2Y:
 mov   r0,r12                    ; 0803583A
-strh  r1,[r0,0xA]               ; 0803583C
-@@Code0803583E:
-ldrh  r1,[r5,0x16]              ; 0803583E
+strh  r1,[r0,0xA]               ; 0803583C  set layer 2 Y [030069DE]
+@@SkipLayer2Y:
+ldrh  r1,[r5,0x16]              ; 0803583E  layer 3 Y scroll multiplier from 081ABB7E
 cmp   r1,0x0                    ; 08035840
-beq   @@Code08035896            ; 08035842
+beq   @@SkipLayer3Y             ; 08035842
 lsl   r0,r1,0x10                ; 08035844
 asr   r1,r0,0x10                ; 08035846
 cmp   r1,0x0                    ; 08035848
 bge   @@Code0803585C            ; 0803584A
 ldrh  r1,[r5,0xA]               ; 0803584C
-b     @@Code08035892            ; 0803584E
+b     @@SetLayer3Y              ; 0803584E
 .pool                           ; 08035850
 
 @@Code0803585C:
@@ -684,31 +686,31 @@ ldr   r1,=Data081ABC3E          ; 08035870
 ldr   r0,=0x03007240            ; 08035872  Normal gameplay IWRAM (0300220C)
 ldr   r0,[r0]                   ; 08035874
 ldr   r6,=0x2AAC                ; 08035876
-add   r0,r0,r6                  ; 08035878
-ldrh  r0,[r0]                   ; 0803587A
+add   r0,r0,r6                  ; 08035878  [03007240]+2AAC (03004CB8)
+ldrh  r0,[r0]                   ; 0803587A  sublevel ID
 lsl   r0,r0,0x1                 ; 0803587C
 add   r0,0x1                    ; 0803587E
 lsl   r0,r0,0x1                 ; 08035880
-add   r0,r0,r1                  ; 08035882
-ldrh  r0,[r0]                   ; 08035884
+add   r0,r0,r1                  ; 08035882  offset by sublevelID *4 + 2
+ldrh  r0,[r0]                   ; 08035884  layer 3 Y offset
 sub   r0,r0,r2                  ; 08035886
 lsl   r0,r0,0x10                ; 08035888
 lsr   r1,r0,0x10                ; 0803588A
 cmp   r0,0x0                    ; 0803588C
-bge   @@Code08035892            ; 0803588E
+bge   @@SetLayer3Y              ; 0803588E
 mov   r1,0x0                    ; 08035890
-@@Code08035892:
+@@SetLayer3Y:
 mov   r0,r12                    ; 08035892
-strh  r1,[r0,0xC]               ; 08035894
-@@Code08035896:
-ldrh  r1,[r5,0x1A]              ; 08035896
+strh  r1,[r0,0xC]               ; 08035894  set layer 3 Y [030069E0]
+@@SkipLayer3Y:
+ldrh  r1,[r5,0x1A]              ; 08035896  ??? Y scroll multiplier from 081ABBFE
 cmp   r1,0x0                    ; 08035898
-beq   @@Code080358DA            ; 0803589A
+beq   @@Return                  ; 0803589A
 lsl   r0,r1,0x10                ; 0803589C
 cmp   r0,0x0                    ; 0803589E
 bge   @@Code080358B4            ; 080358A0
 ldrh  r1,[r5,0xA]               ; 080358A2
-b     @@Code080358D6            ; 080358A4
+b     @@SetUnknownY             ; 080358A4
 .pool                           ; 080358A6
 
 @@Code080358B4:
@@ -727,12 +729,12 @@ sub   r0,r0,r2                  ; 080358CA
 lsl   r0,r0,0x10                ; 080358CC
 lsr   r1,r0,0x10                ; 080358CE
 cmp   r0,0x0                    ; 080358D0
-bge   @@Code080358D6            ; 080358D2
+bge   @@SetUnknownY             ; 080358D2
 mov   r1,0x0                    ; 080358D4
-@@Code080358D6:
+@@SetUnknownY:
 mov   r2,r12                    ; 080358D6
-strh  r1,[r2,0xE]               ; 080358D8
-@@Code080358DA:
+strh  r1,[r2,0xE]               ; 080358D8  set ??? Y [030069E2]
+@@Return:
 pop   {r4-r7}                   ; 080358DA
 pop   {r0}                      ; 080358DC
 bx    r0                        ; 080358DE
@@ -3228,17 +3230,17 @@ strh  r2,[r0,r3]                ; 08036C18
 ldr   r2,=0x0216                ; 08036C1A
 add   r0,r3,r2                  ; 08036C1C
 strh  r1,[r0]                   ; 08036C1E
-ldrh  r1,[r3,0x30]              ; 08036C20
+ldrh  r1,[r3,0x30]              ; 08036C20  Yoshi cutscene animation
 ldr   r0,=0x03007240            ; 08036C22  Normal gameplay IWRAM (0300220C)
 mov   r9,r0                     ; 08036C24
-cmp   r1,0x16                   ; 08036C26
+cmp   r1,0x16                   ; 08036C26  16: level intro jump
 bne   @@Code08036C2C            ; 08036C28
 b     @@Code08036D74            ; 08036C2A
-@@Code08036C2C:
+@@Code08036C2C:                 ;          \ runs if level intro jump
 ldr   r0,[r0]                   ; 08036C2C
 ldr   r2,=0x29A8                ; 08036C2E
-add   r0,r0,r2                  ; 08036C30
-ldrh  r0,[r0]                   ; 08036C32
+add   r0,r0,r2                  ; 08036C30  [03007240]+29A8 (03004BB4)
+ldrh  r0,[r0]                   ; 08036C32  header index C
 cmp   r0,0xD                    ; 08036C34
 bne   @@Code08036CB0            ; 08036C36
 cmp   r1,0x8                    ; 08036C38
@@ -3286,16 +3288,16 @@ strh  r0,[r5,0x14]              ; 08036CAE
 bl    Sub080362D0               ; 08036CB0
 ldr   r0,=0x03002200            ; 08036CB4
 ldr   r3,=0x48E4                ; 08036CB6
-add   r0,r0,r3                  ; 08036CB8
+add   r0,r0,r3                  ; 08036CB8  03006AE4
 ldrh  r0,[r0]                   ; 08036CBA
 cmp   r0,0x0                    ; 08036CBC
 beq   @@Code08036CDA            ; 08036CBE
 ldr   r0,=0x03006D80            ; 08036CC0
 ldr   r1,=0x020E                ; 08036CC2
-add   r0,r0,r1                  ; 08036CC4
-ldrh  r2,[r0]                   ; 08036CC6
+add   r0,r0,r1                  ; 08036CC4  03006F8E
+ldrh  r2,[r0]                   ; 08036CC6  max layer 1 Y position
 mov   r0,0xFF                   ; 08036CC8
-lsl   r0,r0,0x8                 ; 08036CCA
+lsl   r0,r0,0x8                 ; 08036CCA  FF00
 ldrh  r1,[r4,0x8]               ; 08036CCC
 and   r0,r2                     ; 08036CCE
 cmp   r1,r0                     ; 08036CD0
@@ -3457,79 +3459,79 @@ ldr   r1,=Data081ABABE          ; 08036E2A
 mov   r6,r9                     ; 08036E2C
 ldr   r3,[r6]                   ; 08036E2E
 ldr   r5,=0x29A8                ; 08036E30
-add   r2,r3,r5                  ; 08036E32
-ldrh  r0,[r2]                   ; 08036E34
+add   r2,r3,r5                  ; 08036E32  r2 = [03007240]+29A8 (03004BB4)
+ldrh  r0,[r2]                   ; 08036E34  header index C
 lsl   r0,r0,0x1                 ; 08036E36
-add   r0,r0,r1                  ; 08036E38
+add   r0,r0,r1                  ; 08036E38  index 16-bit table with header index C
 ldrh  r0,[r0]                   ; 08036E3A
 mov   r1,r8                     ; 08036E3C
-strh  r0,[r1,0x10]              ; 08036E3E
+strh  r0,[r1,0x10]              ; 08036E3E  store to 03006A04
 ldr   r1,=Data081ABAFE          ; 08036E40
-ldrh  r0,[r2]                   ; 08036E42
+ldrh  r0,[r2]                   ; 08036E42  header index C
 lsl   r0,r0,0x1                 ; 08036E44
-add   r0,r0,r1                  ; 08036E46
+add   r0,r0,r1                  ; 08036E46  index 16-bit table with header index C
 ldrh  r0,[r0]                   ; 08036E48
 mov   r1,r8                     ; 08036E4A
-strh  r0,[r1,0x12]              ; 08036E4C
+strh  r0,[r1,0x12]              ; 08036E4C  store to 03006A06
 ldr   r1,=Data081ABB3E          ; 08036E4E
-ldrh  r0,[r2]                   ; 08036E50
+ldrh  r0,[r2]                   ; 08036E50  header index C
 lsl   r0,r0,0x1                 ; 08036E52
 add   r0,r0,r1                  ; 08036E54
 ldrh  r0,[r0]                   ; 08036E56
 mov   r2,r8                     ; 08036E58
-strh  r0,[r2,0x14]              ; 08036E5A
+strh  r0,[r2,0x14]              ; 08036E5A  store to 03006A08
 ldr   r0,=0x2992                ; 08036E5C
-add   r3,r3,r0                  ; 08036E5E
-ldrh  r0,[r3]                   ; 08036E60
-cmp   r0,0x3                    ; 08036E62
+add   r3,r3,r0                  ; 08036E5E  [03007240]+2992 (03004B9E)
+ldrh  r0,[r3]                   ; 08036E60  layer 1 tileset ID
+cmp   r0,0x3                    ; 08036E62  03: 2.5D
 bne   @@Code08036E6A            ; 08036E64
 mov   r0,0x0                    ; 08036E66
-strh  r0,[r2,0x14]              ; 08036E68
+strh  r0,[r2,0x14]              ; 08036E68  if 2.5D, clear 03006A08
 @@Code08036E6A:
 ldr   r2,=Data081ABB7E          ; 08036E6A
 ldr   r1,[r6]                   ; 08036E6C
-add   r0,r1,r5                  ; 08036E6E
-ldrh  r0,[r0]                   ; 08036E70
+add   r0,r1,r5                  ; 08036E6E  [03007240]+29A8 (03004BB4)
+ldrh  r0,[r0]                   ; 08036E70  header index C
 lsl   r0,r0,0x1                 ; 08036E72
-add   r0,r0,r2                  ; 08036E74
+add   r0,r0,r2                  ; 08036E74  index 16-bit table with header index C
 ldrh  r0,[r0]                   ; 08036E76
 mov   r2,r8                     ; 08036E78
-strh  r0,[r2,0x16]              ; 08036E7A
+strh  r0,[r2,0x16]              ; 08036E7A  store to 03006A0A
 ldr   r7,=0x299A                ; 08036E7C
-add   r1,r1,r7                  ; 08036E7E
-ldrh  r0,[r1]                   ; 08036E80
-cmp   r0,0x1C                   ; 08036E82
+add   r1,r1,r7                  ; 08036E7E  [03007240]+299A (03004BA6)
+ldrh  r0,[r1]                   ; 08036E80  layer 3 image ID
+cmp   r0,0x1C                   ; 08036E82  1C: dark room with light circle
 bne   @@Code08036E90            ; 08036E84
 bl    Sub08036B48               ; 08036E86
 mov   r0,0x0                    ; 08036E8A
 mov   r3,r8                     ; 08036E8C
-strh  r0,[r3,0x16]              ; 08036E8E
+strh  r0,[r3,0x16]              ; 08036E8E  if dark room, clear 03006A0A
 @@Code08036E90:
 ldr   r2,=Data081ABBBE          ; 08036E90
 ldr   r1,[r6]                   ; 08036E92
-add   r3,r1,r5                  ; 08036E94
-ldrh  r0,[r3]                   ; 08036E96
+add   r3,r1,r5                  ; 08036E94  [03007240]+29A8 (03004BB4)
+ldrh  r0,[r3]                   ; 08036E96  header index C
 lsl   r0,r0,0x1                 ; 08036E98
-add   r0,r0,r2                  ; 08036E9A
+add   r0,r0,r2                  ; 08036E9A  index 16-bit table with header index C
 ldrh  r0,[r0]                   ; 08036E9C
 mov   r5,r8                     ; 08036E9E
-strh  r0,[r5,0x18]              ; 08036EA0
+strh  r0,[r5,0x18]              ; 08036EA0  store to 03006A0C
 ldr   r2,=Data081ABBFE          ; 08036EA2
-ldrh  r0,[r3]                   ; 08036EA4
+ldrh  r0,[r3]                   ; 08036EA4  header index C
 lsl   r0,r0,0x1                 ; 08036EA6
-add   r0,r0,r2                  ; 08036EA8
+add   r0,r0,r2                  ; 08036EA8  index 16-bit table with header index C
 ldrh  r0,[r0]                   ; 08036EAA
-strh  r0,[r5,0x1A]              ; 08036EAC
+strh  r0,[r5,0x1A]              ; 08036EAC  store to 03006A0E
 ldr   r0,=0x2AAC                ; 08036EAE
-add   r1,r1,r0                  ; 08036EB0
+add   r1,r1,r0                  ; 08036EB0  [03007240]+2AAC (03004CB8)
 ldrh  r0,[r1]                   ; 08036EB2
-cmp   r0,0x6B                   ; 08036EB4
+cmp   r0,0x6B                   ; 08036EB4  6B: 6-8 Kamek block room
 bne   @@Code08036EC2            ; 08036EB6
-ldr   r1,=0xFFFF                ; 08036EB8
-mov   r0,r1                     ; 08036EBA
-strh  r0,[r5,0x1A]              ; 08036EBC
-strh  r0,[r5,0x16]              ; 08036EBE
-strh  r0,[r5,0x12]              ; 08036EC0
+ldr   r1,=0xFFFF                ; 08036EB8 \
+mov   r0,r1                     ; 08036EBA |
+strh  r0,[r5,0x1A]              ; 08036EBC | if Kamek room, set half the addresses to FFFF
+strh  r0,[r5,0x16]              ; 08036EBE |
+strh  r0,[r5,0x12]              ; 08036EC0 /
 @@Code08036EC2:
 bl    Sub0803576C               ; 08036EC2
 ldrh  r0,[r4,0x2]               ; 08036EC6
@@ -3674,7 +3676,7 @@ ldr   r1,=Data081ABABE          ; 08037010
 mov   r7,r9                     ; 08037012
 ldr   r3,[r7]                   ; 08037014
 ldr   r6,=0x29A8                ; 08037016
-add   r2,r3,r6                  ; 08037018
+add   r2,r3,r6                  ; 08037018  [03007240]+29A8 (03004BB4)
 ldrh  r0,[r2]                   ; 0803701A
 lsl   r0,r0,0x1                 ; 0803701C
 add   r0,r0,r1                  ; 0803701E
@@ -4092,22 +4094,22 @@ beq   @@Code08037410            ; 080373D4
 ldr   r1,[r2,0x4]               ; 080373D6
 asr   r1,r1,0x8                 ; 080373D8
 mov   r0,0xFF                   ; 080373DA
-lsl   r0,r0,0x8                 ; 080373DC
+lsl   r0,r0,0x8                 ; 080373DC  FF00
 mov   r4,r0                     ; 080373DE
 ldr   r3,=Data081AC016          ; 080373E0
 mov   r0,r2                     ; 080373E2
-add   r0,0xC4                   ; 080373E4
-ldrh  r2,[r0]                   ; 080373E6
+add   r0,0xC4                   ; 080373E4  03006E44
+ldrh  r2,[r0]                   ; 080373E6  entrance byte 4
 mov   r0,0xF0                   ; 080373E8
-and   r0,r2                     ; 080373EA
-lsr   r0,r0,0x3                 ; 080373EC
-add   r0,r0,r3                  ; 080373EE
-and   r1,r4                     ; 080373F0
-ldrh  r0,[r0]                   ; 080373F2
+and   r0,r2                     ; 080373EA  entrance byte 4, high digit filtered
+lsr   r0,r0,0x3                 ; 080373EC  
+add   r0,r0,r3                  ; 080373EE  use high digit to index 16-bit table at 081AC016
+and   r1,r4                     ; 080373F0  entrance screen, top edge Y coordinate
+ldrh  r0,[r0]                   ; 080373F2  camera pixel offset
 add   r1,r1,r0                  ; 080373F4
 ldr   r0,=0x47DC                ; 080373F6
-add   r0,r8                     ; 080373F8
-b     @@Code080374D0            ; 080373FA
+add   r0,r8                     ; 080373F8  030069DC (pointer to layer 1 Y position buffer)
+b     @@Code080374D0            ; 080373FA  strh r1,[r0] and return
 .pool                           ; 080373FC
 
 @@Code08037410:
@@ -4158,26 +4160,26 @@ ldr   r3,=0x2AAC                ; 08037464
 add   r0,r0,r3                  ; 08037466
 ldrh  r0,[r0]                   ; 08037468
 cmp   r0,0x2C                   ; 0803746A
-bne   @@Code080374D2            ; 0803746C
+bne   @@Return                  ; 0803746C
 ldr   r1,=0x47DC                ; 0803746E
 add   r1,r8                     ; 08037470
 ldr   r0,=0x0414                ; 08037472
 strh  r0,[r1]                   ; 08037474
-b     @@Code080374D2            ; 08037476
+b     @@Return                  ; 08037476
 .pool                           ; 08037478
 
 @@Code08037490:
 lsl   r0,r4,0x10                ; 08037490
 cmp   r0,0x0                    ; 08037492
-bne   @@Code080374D2            ; 08037494
+bne   @@Return                  ; 08037494
 mov   r1,0xFF                   ; 08037496
 lsl   r1,r1,0x8                 ; 08037498
 and   r1,r3                     ; 0803749A
 cmp   r1,0x7                    ; 0803749C
-beq   @@Code080374D2            ; 0803749E
+beq   @@Return                  ; 0803749E
 mov   r4,r9                     ; 080374A0
 cmp   r4,0x9                    ; 080374A2
-bne   @@Code080374D2            ; 080374A4
+bne   @@Return                  ; 080374A4
 ldr   r0,=0x03007240            ; 080374A6  Normal gameplay IWRAM (0300220C)
 ldr   r0,[r0]                   ; 080374A8
 ldr   r3,=0x2AAC                ; 080374AA
@@ -4200,7 +4202,7 @@ add   r0,r2,r4                  ; 080374CC
 mov   r1,r9                     ; 080374CE
 @@Code080374D0:
 strh  r1,[r0]                   ; 080374D0
-@@Code080374D2:
+@@Return:
 pop   {r3-r4}                   ; 080374D2
 mov   r8,r3                     ; 080374D4
 mov   r9,r4                     ; 080374D6
@@ -4755,19 +4757,19 @@ bx    r0                        ; 08037998
 Sub080379A0:
 push  {r4-r6,lr}                ; 080379A0
 ldr   r3,=0x03006D80            ; 080379A2
-ldrh  r0,[r3,0x30]              ; 080379A4
+ldrh  r0,[r3,0x30]              ; 080379A4  entrance animation
 lsl   r0,r0,0x11                ; 080379A6
-lsr   r4,r0,0x10                ; 080379A8
+lsr   r4,r0,0x10                ; 080379A8  entr anim *2
 mov   r5,0x20                   ; 080379AA
 ldr   r1,=Data0816DDB0          ; 080379AC
 mov   r0,r4                     ; 080379AE
-add   r0,r0,r1                  ; 080379B0
+add   r0,r0,r1                  ; 080379B0  index with entr anim
 ldrh  r1,[r0]                   ; 080379B2
 mov   r2,0x0                    ; 080379B4
 strh  r1,[r3,0x30]              ; 080379B6
 mov   r6,0xD4                   ; 080379B8
-lsl   r6,r6,0x1                 ; 080379BA
-add   r0,r3,r6                  ; 080379BC
+lsl   r6,r6,0x1                 ; 080379BA  1A8
+add   r0,r3,r6                  ; 080379BC  03006F28
 strh  r1,[r0]                   ; 080379BE
 cmp   r1,0xC                    ; 080379C0
 bne   @@Code080379F0            ; 080379C2
@@ -17230,11 +17232,11 @@ add   r1,0x4C                   ; 0803DF76
 mov   r0,0x0                    ; 0803DF78
 strh  r0,[r1]                   ; 0803DF7A
 ldr   r1,=CodePtrs0816DDDC      ; 0803DF7C
-ldrh  r0,[r2,0x32]              ; 0803DF7E
+ldrh  r0,[r2,0x32]              ; 0803DF7E  Yoshi transformation
 lsr   r0,r0,0x1                 ; 0803DF80
 lsl   r0,r0,0x2                 ; 0803DF82
-add   r0,r0,r1                  ; 0803DF84
-ldr   r0,[r0]                   ; 0803DF86
+add   r0,r0,r1                  ; 0803DF84  offset table by Yoshi transformation *2
+ldr   r0,[r0]                   ; 0803DF86  code pointer
 bl    Sub_bx_r0                 ; 0803DF88  bx r0
 pop   {r4}                      ; 0803DF8C
 pop   {r0}                      ; 0803DF8E
@@ -19431,7 +19433,7 @@ ldrh  r0,[r0]                   ; 0803F2A0
 strh  r0,[r4,0x3C]              ; 0803F2A2
 bl    Sub0804197C               ; 0803F2A4
 ldr   r1,=CodePtrs0816DF40      ; 0803F2A8
-ldrh  r0,[r4,0x32]              ; 0803F2AA
+ldrh  r0,[r4,0x32]              ; 0803F2AA  Yoshi transformation
 lsr   r0,r0,0x1                 ; 0803F2AC
 lsl   r0,r0,0x2                 ; 0803F2AE
 add   r0,r0,r1                  ; 0803F2B0

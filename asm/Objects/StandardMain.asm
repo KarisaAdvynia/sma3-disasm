@@ -1,4 +1,4 @@
-ObjMainFE:
+ObjFE_Main:
 ; object FE main
 mov   r2,r0                     ; 0801D254
 add   r0,0x4C                   ; 0801D256
@@ -27,7 +27,7 @@ strh  r0,[r2]                   ; 0801D282
 bx    lr                        ; 0801D284
 .pool                           ; 0801D286
 
-ObjMainF7_FC:
+ObjF7_FC_Main:
 ; object F7-FD main
 push  {lr}                      ; 0801D290
 mov   r12,r0                    ; 0801D292
@@ -76,7 +76,7 @@ pop   {r0}                      ; 0801D2E4
 bx    r0                        ; 0801D2E6
 .pool                           ; 0801D2E8
 
-ObjMainF6:
+ObjF6_Main:
 ; object F6 main
 push  {lr}                      ; 0801D2F0
 add   r0,0x4A                   ; 0801D2F2
@@ -96,7 +96,7 @@ pop   {r0}                      ; 0801D30A
 bx    r0                        ; 0801D30C
 .pool                           ; 0801D30E
 
-ObjMainF5:
+ObjF5_Main:
 ; object F5 main
 push  {lr}                      ; 0801D318
 mov   r1,r0                     ; 0801D31A
@@ -124,18 +124,18 @@ pop   {r0}                      ; 0801D340
 bx    r0                        ; 0801D342
 .pool                           ; 0801D344
 
-ObjMainF0_F3:
+ObjF0_F3_Main:
 ; object F0-F3 main, wrapper
 push  {lr}                      ; 0801D34C
-bl    Sub08028168               ; 0801D34E
+bl    ObjEE_F3_Main             ; 0801D34E
 pop   {r0}                      ; 0801D352
 bx    r0                        ; 0801D354
 .pool                           ; 0801D356
 
-ObjMainEE_EF:
+ObjEE_EF_Main:
 ; object EE-EF main, wrapper
 push  {lr}                      ; 0801D358
-bl    Sub08028168               ; 0801D35A
+bl    ObjEE_F3_Main             ; 0801D35A
 pop   {r0}                      ; 0801D35E
 bx    r0                        ; 0801D360
 .pool                           ; 0801D362
@@ -205,7 +205,7 @@ pop   {r1}                      ; 0801D3EC
 bx    r1                        ; 0801D3EE
 .pool                           ; 0801D3F0
 
-ObjMainED:
+ObjED_Main:
 ; object ED main
 push  {r4-r7,lr}                ; 0801D3F8
 mov   r7,r8                     ; 0801D3FA
@@ -507,7 +507,7 @@ b     @@Code0801D67E            ; 0801D66C
 
 @@Code0801D678:
 mov   r0,r6                     ; 0801D678
-bl    ObjMainEA                 ; 0801D67A  defer to object EA's code
+bl    ObjEA_Main                ; 0801D67A  defer to object EA's code
 @@Code0801D67E:
 pop   {r3-r5}                   ; 0801D67E
 mov   r8,r3                     ; 0801D680
@@ -657,7 +657,7 @@ b     @@Code0801D7B2            ; 0801D7A0
 
 @@Code0801D7AC:
 mov   r0,r6                     ; 0801D7AC
-bl    ObjMainE7                 ; 0801D7AE  defer to object E7's code
+bl    ObjE7_Main                ; 0801D7AE  defer to object E7's code
 @@Code0801D7B2:
 pop   {r3-r5}                   ; 0801D7B2
 mov   r8,r3                     ; 0801D7B4
@@ -667,7 +667,7 @@ pop   {r4-r7}                   ; 0801D7BA
 pop   {r0}                      ; 0801D7BC
 bx    r0                        ; 0801D7BE
 
-ObjMainEB_EC:
+ObjEB_EC_Main:
 ; object EB-EC main
 ; 0300224E (object ID): 0 for EB, 2 for EC
 push  {lr}                      ; 0801D7C0
@@ -824,7 +824,7 @@ pop   {r0}                      ; 0801D8CE
 bx    r0                        ; 0801D8D0
 .pool                           ; 0801D8D2
 
-ObjMainEA:
+ObjEA_Main:
 ; object EA main
 push  {r4,lr}                   ; 0801D8D4
 mov   r4,r0                     ; 0801D8D6
@@ -850,7 +850,7 @@ pop   {r0}                      ; 0801D8FE
 bx    r0                        ; 0801D900
 .pool                           ; 0801D902
 
-ObjMainE9:
+ObjE9_Main:
 ; object E9 main
 push  {r4,lr}                   ; 0801D904
 mov   r4,r0                     ; 0801D906
@@ -892,7 +892,7 @@ pop   {r4}                      ; 0801D94E
 pop   {r0}                      ; 0801D950
 bx    r0                        ; 0801D952
 
-ObjMainE8:
+ObjE8_Main:
 ; object E8 main
 push  {r4-r5,lr}                ; 0801D954
 mov   r4,r0                     ; 0801D956
@@ -994,7 +994,7 @@ pop   {r0}                      ; 0801DA12
 bx    r0                        ; 0801DA14
 .pool                           ; 0801DA16
 
-ObjMainE7:
+ObjE7_Main:
 ; object E7 main
 push  {r4,lr}                   ; 0801DA1C
 mov   r4,r0                     ; 0801DA1E
@@ -1023,7 +1023,7 @@ pop   {r0}                      ; 0801DA4A
 bx    r0                        ; 0801DA4C
 .pool                           ; 0801DA4E
 
-ObjMainE6:
+ObjE6_Main:
 ; object E6 main
 push  {r4,lr}                   ; 0801DA50
 mov   r4,r0                     ; 0801DA52
@@ -1071,7 +1071,7 @@ pop   {r0}                      ; 0801DAA2
 bx    r0                        ; 0801DAA4
 .pool                           ; 0801DAA6
 
-ObjMainE5:
+ObjE5_Main:
 ; object E5 main
 push  {r4-r5,lr}                ; 0801DAA8
 mov   r4,r0                     ; 0801DAAA
@@ -1220,7 +1220,7 @@ pop   {r0}                      ; 0801DBB0
 bx    r0                        ; 0801DBB2
 .pool                           ; 0801DBB4
 
-ObjMainE4:
+ObjE4_Main:
 ; object E4 main
 push  {r4-r5,lr}                ; 0801DBBC
 mov   r4,r0                     ; 0801DBBE
@@ -1288,7 +1288,7 @@ pop   {r4-r5}                   ; 0801DC32
 pop   {r0}                      ; 0801DC34
 bx    r0                        ; 0801DC36
 
-ObjMainE3:
+ObjE3_Main:
 ; object E3 main
 push  {r4-r5,lr}                ; 0801DC38
 mov   r2,r0                     ; 0801DC3A
@@ -1363,7 +1363,7 @@ pop   {r0}                      ; 0801DCBC
 bx    r0                        ; 0801DCBE
 .pool                           ; 0801DCC0
 
-ObjMainE2:
+ObjE2_Main:
 ; object E2 main
 ; width: 4
 push  {lr}                      ; 0801DCC8
@@ -1412,7 +1412,7 @@ pop   {r0}                      ; 0801DD16
 bx    r0                        ; 0801DD18
 .pool                           ; 0801DD1A
 
-ObjMainE1:
+ObjE1_Main:
 ; object E1 main
 ; 0300224E: random 00,00,08,10
 ; scratch RAM: relX % 3
@@ -1560,7 +1560,7 @@ pop   {r0}                      ; 0801DE32
 bx    r0                        ; 0801DE34
 .pool                           ; 0801DE36
 
-ObjMainE0:
+ObjE0_Main:
 ; object E0 main
 push  {lr}                      ; 0801DE48
 mov   r1,r0                     ; 0801DE4A
@@ -1584,7 +1584,7 @@ pop   {r0}                      ; 0801DE6A
 bx    r0                        ; 0801DE6C
 .pool                           ; 0801DE6E
 
-ObjMainDF:
+ObjDF_Main:
 ; object DF main
 ; height: 2
 push  {r4,lr}                   ; 0801DE78
@@ -1648,7 +1648,7 @@ pop   {r0}                      ; 0801DEE4
 bx    r0                        ; 0801DEE6
 .pool                           ; 0801DEE8
 
-ObjMainDE:
+ObjDE_Main:
 ; object DE main
 ; width: 2
 push  {r4,lr}                   ; 0801DEF4
@@ -1756,7 +1756,7 @@ pop   {r4-r5}                   ; 0801DFB2
 pop   {r1}                      ; 0801DFB4
 bx    r1                        ; 0801DFB6
 
-ObjMainDD:
+ObjDD_Main:
 ; object DD main
 ; 0300224E: random 3-bit value
 push  {r4-r6,lr}                ; 0801DFB8
@@ -1859,7 +1859,7 @@ pop   {r0}                      ; 0801E07A
 bx    r0                        ; 0801E07C
 .pool                           ; 0801E07E
 
-ObjMainDC:
+ObjDC_Main:
 ; object DC main
 push  {r4-r5,lr}                ; 0801E088
 mov   r5,r0                     ; 0801E08A
@@ -1968,7 +1968,7 @@ pop   {r0}                      ; 0801E148
 bx    r0                        ; 0801E14A
 .pool                           ; 0801E14C
 
-ObjMainDB:
+ObjDB_Main:
 ; object DB main
 push  {r4,lr}                   ; 0801E158
 mov   r4,r0                     ; 0801E15A
@@ -2031,7 +2031,7 @@ pop   {r0}                      ; 0801E1C2
 bx    r0                        ; 0801E1C4
 .pool                           ; 0801E1C6
 
-ObjMainDA:
+ObjDA_Main:
 ; object DA main
 mov   r2,0x8A                   ; 0801E1D0
 lsl   r2,r2,0x8                 ; 0801E1D2  tile ID: 8A00
@@ -2046,7 +2046,7 @@ strh  r2,[r1]                   ; 0801E1E2
 bx    lr                        ; 0801E1E4
 .pool                           ; 0801E1E6
 
-ObjMainD8_D9:
+ObjD8_D9_Main:
 ; object D8-D9 main
 ; 0300224E: 00,10
 ; height: 4,3
@@ -3033,7 +3033,7 @@ pop   {r4-r7}                   ; 0801EA6E
 pop   {r0}                      ; 0801EA70
 bx    r0                        ; 0801EA72
 
-ObjMainD4_D7:
+ObjD4_D7_Main:
 ; object D4-D7 main
 push  {lr}                      ; 0801EA74
 mov   r1,r0                     ; 0801EA76
@@ -3067,7 +3067,7 @@ add   r0,r0,r1                  ; 0801EAAA  Y parity *2 + absolute X &3
 and   r0,r3                     ; 0801EAAC  Y parity *2 ^ absolute X &3
 bx    lr                        ; 0801EAAE
 
-ObjMainD3:
+ObjD3_Main:
 ; object D3 main
 push  {r4,lr}                   ; 0801EAB0
 mov   r4,r0                     ; 0801EAB2
@@ -3102,7 +3102,7 @@ strh  r1,[r2]                   ; 0801EAEE
 bx    lr                        ; 0801EAF0
 .pool                           ; 0801EAF2
 
-ObjMainD2:
+ObjD2_Main:
 ; object D2 main
 push  {lr}                      ; 0801EAF8
 ldr   r1,=0x870E                ; 0801EAFA  tile ID
@@ -3111,7 +3111,7 @@ pop   {r0}                      ; 0801EB00
 bx    r0                        ; 0801EB02
 .pool                           ; 0801EB04
 
-ObjMainD1:
+ObjD1_Main:
 ; object D1 main
 push  {lr}                      ; 0801EB08
 ldr   r1,=0x870F                ; 0801EB0A  tile ID
@@ -3120,7 +3120,7 @@ pop   {r0}                      ; 0801EB10
 bx    r0                        ; 0801EB12
 .pool                           ; 0801EB14
 
-ObjMainD0:
+ObjD0_Main:
 ; object D0 main
 ; 0300224E: 2 if positive width, 0 if negative width
 push  {r4-r5,lr}                ; 0801EB18
@@ -3168,7 +3168,7 @@ pop   {r0}                      ; 0801EB62
 bx    r0                        ; 0801EB64
 .pool                           ; 0801EB66
 
-ObjMainCF:
+ObjCF_Main:
 ; object CF main
 ; 0300224E: 2 if positive width, 0 if negative width
 push  {lr}                      ; 0801EB6C
@@ -3203,7 +3203,7 @@ pop   {r0}                      ; 0801EBA4
 bx    r0                        ; 0801EBA6
 .pool                           ; 0801EBA8
 
-ObjMainCE:
+ObjCE_Main:
 ; object CE main
 ; 0300224E: 1 if positive width, 0 if negative width
 ldr   r1,=0xFFFF                ; 0801EBAC
@@ -3584,7 +3584,7 @@ pop   {r0}                      ; 0801EEC2
 bx    r0                        ; 0801EEC4
 .pool                           ; 0801EEC6
 
-ObjMainCC_CD:
+ObjCC_CD_Main:
 ; object CC-CD main
 ; slope: 1
 push  {lr}                      ; 0801EEDC
@@ -3606,7 +3606,7 @@ pop   {r0}                      ; 0801EEFA
 bx    r0                        ; 0801EEFC
 .pool                           ; 0801EEFE
 
-ObjMainCB:
+ObjCB_Main:
 ; object CB main
 push  {r4-r7,lr}                ; 0801EF00
 mov   r4,r0                     ; 0801EF02
@@ -3687,7 +3687,7 @@ pop   {r0}                      ; 0801EF9E
 bx    r0                        ; 0801EFA0
 .pool                           ; 0801EFA2
 
-ObjMainCA:
+ObjCA_Main:
 ; object CA main
 push  {r4-r7,lr}                ; 0801EFA8
 mov   r7,r8                     ; 0801EFAA
@@ -3886,7 +3886,7 @@ pop   {r0}                      ; 0801F122
 bx    r0                        ; 0801F124
 .pool                           ; 0801F126
 
-ObjMainC4_C9:
+ObjC4_C9_Main:
 ; object C4-C9 main
 ; 0300224E (object ID): 0 for C4-C6, 2 for C7-C9
 ; 03002250: FFFF for C6/C9, 0 for C4/C5/C7/C8
@@ -4362,7 +4362,7 @@ pop   {r0}                      ; 0801F4CE
 bx    r0                        ; 0801F4D0
 .pool                           ; 0801F4D2
 
-ObjMainC0_C3:
+ObjC0_C3_Main:
 ; object C0-C3 main
 ; height: 2, slope: 0 for C0-C1, -1 for C2-C3
 push  {lr}                      ; 0801F4D8
@@ -4763,7 +4763,7 @@ pop   {r0}                      ; 0801F7F6
 bx    r0                        ; 0801F7F8
 .pool                           ; 0801F7FA
 
-ObjMainBE_BF:
+ObjBE_BF_Main:
 ; object BE-BF main
 push  {lr}                      ; 0801F808
 mov   r2,r0                     ; 0801F80A
@@ -4969,7 +4969,7 @@ pop   {r0}                      ; 0801F98E
 bx    r0                        ; 0801F990
 .pool                           ; 0801F992
 
-ObjMainBA_BD:
+ObjBA_BD_Main:
 ; object BA-BD main
 push  {lr}                      ; 0801F99C
 mov   r1,r0                     ; 0801F99E
@@ -5157,7 +5157,7 @@ pop   {r0}                      ; 0801FB24
 bx    r0                        ; 0801FB26
 .pool                           ; 0801FB28
 
-ObjMainB8_B9:
+ObjB8_B9_Main:
 ; object B8-B9 main
 ; height: 4, slope: -1
 push  {lr}                      ; 0801FB44
@@ -5179,7 +5179,7 @@ pop   {r0}                      ; 0801FB62
 bx    r0                        ; 0801FB64
 .pool                           ; 0801FB66
 
-ObjMainB6_B7:
+ObjB6_B7_Main:
 ; object B6-B7 main
 ; height: 3, slope: -1
 push  {lr}                      ; 0801FB68
@@ -5297,7 +5297,7 @@ pop   {r0}                      ; 0801FC3C
 bx    r0                        ; 0801FC3E
 .pool                           ; 0801FC40
 
-ObjMainB4_B5:
+ObjB4_B5_Main:
 ; object B4-B5 main
 ; height: 4, slope: -1
 push  {lr}                      ; 0801FC4C
@@ -5319,7 +5319,7 @@ pop   {r0}                      ; 0801FC6A
 bx    r0                        ; 0801FC6C
 .pool                           ; 0801FC6E
 
-ObjMainB2_B3:
+ObjB2_B3_Main:
 ; object B2-B3 main
 ; height: 3, slope: -1
 push  {lr}                      ; 0801FC70
@@ -5341,7 +5341,7 @@ pop   {r0}                      ; 0801FC8E
 bx    r0                        ; 0801FC90
 .pool                           ; 0801FC92
 
-ObjMainB1:
+ObjB1_Main:
 ; object B1 main
 push  {r4-r5,lr}                ; 0801FC94
 mov   r12,r0                    ; 0801FC96
@@ -5407,7 +5407,7 @@ pop   {r0}                      ; 0801FD10
 bx    r0                        ; 0801FD12
 .pool                           ; 0801FD14
 
-ObjMainB0:
+ObjB0_Main:
 ; object B0 main
 push  {r4-r5,lr}                ; 0801FD20
 mov   r3,r0                     ; 0801FD22
@@ -5546,7 +5546,7 @@ strh  r2,[r0]                   ; 0801FE20
 bx    lr                        ; 0801FE22
 .pool                           ; 0801FE24
 
-ObjMainAE_AF:
+ObjAE_AF_Main:
 ; object AE-AF main
 push  {lr}                      ; 0801FE2C
 mov   r2,r0                     ; 0801FE2E
@@ -5803,7 +5803,7 @@ ldrh  r3,[r0]                   ; 0801FFA0  layer 1 tileset ID
 cmp   r3,0xB                    ; 0801FFA2  0B: sewer
 beq   @@Code0801FFB8            ; 0801FFA4
 mov   r0,r5                     ; 0801FFA6
-bl    ExtObjMain46              ; 0801FFA8  if not sewer, run 00.46 code instead??
+bl    ExtObj46_Main             ; 0801FFA8  if not sewer, run 00.46 code instead??
 b     @@Code08020014            ; 0801FFAC
 .pool                           ; 0801FFAE
 
@@ -5861,7 +5861,7 @@ pop   {r0}                      ; 08020016
 bx    r0                        ; 08020018
 .pool                           ; 0802001A
 
-ObjMainAC_AD:
+ObjAC_AD_Main:
 ; object AC-AD main
 ; height: 2
 push  {lr}                      ; 08020024
@@ -5993,7 +5993,7 @@ pop   {r0}                      ; 0802011A
 bx    r0                        ; 0802011C
 .pool                           ; 0802011E
 
-ObjMainAA_AB:
+ObjAA_AB_Main:
 ; object AA-AB main
 ; width: 2
 push  {lr}                      ; 08020128
@@ -6129,7 +6129,7 @@ pop   {r0}                      ; 08020222
 bx    r0                        ; 08020224
 .pool                           ; 08020226
 
-ObjMainA9:
+ObjA9_Main:
 ; object A9 main
 ; if tileset 3, width: 2
 push  {r4-r5,lr}                ; 08020234
@@ -6518,7 +6518,7 @@ pop   {r0}                      ; 08020528
 bx    r0                        ; 0802052A
 .pool                           ; 0802052C
 
-ObjMainA7_A8:
+ObjA7_A8_Main:
 ; object A7-A8 main
 push  {lr}                      ; 08020538
 mov   r2,r0                     ; 0802053A
@@ -6920,7 +6920,7 @@ pop   {r1}                      ; 08020806
 bx    r1                        ; 08020808
 .pool                           ; 0802080A
 
-ObjMainA5_A6:
+ObjA5_A6_Main:
 ; object A5-A6 main
 ; 0300224E (object ID): bit 1 is A6 flag, bit 2 is tileset 3 flag
 ; A5 width is 2
@@ -6955,7 +6955,7 @@ pop   {r0}                      ; 08020840
 bx    r0                        ; 08020842
 .pool                           ; 08020844
 
-ObjMainA3_A4:
+ObjA3_A4_Main:
 ; object A3-A4 main
 ; 0300224E (object ID): 00,04 if A3,A4
 mov   r12,r0                    ; 0802084C
@@ -6989,7 +6989,7 @@ strh  r1,[r0]                   ; 08020882
 bx    lr                        ; 08020884
 .pool                           ; 08020886
 
-ObjMainA0_A2:
+ObjA0_A2_Main:
 ; object A0-A2 main
 ; 0300224E (object ID): (objID-A0)*2
 mov   r12,r0                    ; 08020890
@@ -7016,7 +7016,7 @@ strh  r1,[r0]                   ; 080208B8
 bx    lr                        ; 080208BA
 .pool                           ; 080208BC
 
-ObjMain9F:
+Obj9F_Main:
 ; object 9F main
 push  {lr}                      ; 080208C4
 mov   r1,r0                     ; 080208C6
@@ -7051,7 +7051,7 @@ pop   {r0}                      ; 080208FC
 bx    r0                        ; 080208FE
 .pool                           ; 08020900
 
-ObjMain9E:
+Obj9E_Main:
 ; object 9E main
 add   r0,0x4A                   ; 08020908
 ldrh  r0,[r0]                   ; 0802090A
@@ -7130,7 +7130,7 @@ ldrh  r0,[r2]                   ; 0802099C
 bx    lr                        ; 0802099E
 .pool                           ; 080209A0
 
-ObjMain9D:
+Obj9D_Main:
 ; object 9D main
 push  {r4-r5,lr}                ; 080209A8
 mov   r4,r0                     ; 080209AA
@@ -7419,7 +7419,7 @@ pop   {r0}                      ; 08020BE6
 bx    r0                        ; 08020BE8
 .pool                           ; 08020BEA
 
-ObjMain9B_9C:
+Obj9B_9C_Main:
 ; object 9B-9C main
 ; 0300224E: random 2-bit value
 ; 03002246(+3A): same random 2-bit value with bits inverted, << 1
@@ -7648,7 +7648,7 @@ pop   {r1}                      ; 08020D84
 bx    r1                        ; 08020D86
 .pool                           ; 08020D88
 
-ObjMain9A:
+Obj9A_Main:
 ; object 9A main
 ; 0300224E: random 2-bit value
 ; 03002246(+3A): same random 2-bit value, << 1
@@ -7714,7 +7714,7 @@ pop   {r0}                      ; 08020E00
 bx    r0                        ; 08020E02
 .pool                           ; 08020E04
 
-ObjMain99:
+Obj99_Main:
 ; object 99 main
 push  {lr}                      ; 08020E0C
 mov   r3,r0                     ; 08020E0E
@@ -7837,7 +7837,7 @@ ldrh  r0,[r2]                   ; 08020EE4
 bx    lr                        ; 08020EE6
 .pool                           ; 08020EE8
 
-ObjMain98:
+Obj98_Main:
 ; object 98 main
 push  {r4-r5,lr}                ; 08020EF0
 mov   r4,r0                     ; 08020EF2
@@ -7879,7 +7879,7 @@ pop   {r0}                      ; 08020F38
 bx    r0                        ; 08020F3A
 .pool                           ; 08020F3C
 
-ObjMain94_97:
+Obj94_97_Main:
 ; object 94-97 main
 mov   r12,r0                    ; 08020F44
 add   r0,0x42                   ; 08020F46  [03007240]+42 (0300224E)
@@ -7916,7 +7916,7 @@ strh  r2,[r1]                   ; 08020F82  update tilemap
 bx    lr                        ; 08020F84
 .pool                           ; 08020F86
 
-ObjMain93:
+Obj93_Main:
 ; object 93 main
 ; width: 4, x-=1
 push  {r4,lr}                   ; 08020F90
@@ -8166,7 +8166,7 @@ pop   {r0}                      ; 08021178
 bx    r0                        ; 0802117A
 .pool                           ; 0802117C
 
-ObjMain91_92:
+Obj91_92_Main:
 ; object 91-92 main
 push  {lr}                      ; 08021184
 mov   r2,r0                     ; 08021186
@@ -8305,7 +8305,7 @@ pop   {r1}                      ; 0802126E
 bx    r1                        ; 08021270
 .pool                           ; 08021272
 
-ObjMain90:
+Obj90_Main:
 ; object 90 main
 ; slope: -1
 push  {r4-r5,lr}                ; 0802127C
@@ -8601,7 +8601,7 @@ pop   {r1}                      ; 0802147E
 bx    r1                        ; 08021480
 .pool                           ; 08021482
 
-ObjMain8F:
+Obj8F_Main:
 ; object 8F main
 ; slope: -1
 push  {r4-r6,lr}                ; 08021484
@@ -8719,7 +8719,7 @@ pop   {r0}                      ; 08021554
 bx    r0                        ; 08021556
 .pool                           ; 08021558
 
-ObjMain8E:
+Obj8E_Main:
 ; object 8E main
 mov   r3,r0                     ; 08021564
 add   r0,0x4A                   ; 08021566
@@ -8747,7 +8747,7 @@ strh  r1,[r0]                   ; 08021590
 bx    lr                        ; 08021592
 .pool                           ; 08021594
 
-ObjMain8D:
+Obj8D_Main:
 ; object 8D main
 push  {r4,lr}                   ; 0802159C
 mov   r1,r0                     ; 0802159E
@@ -8786,7 +8786,7 @@ pop   {r0}                      ; 080215DC
 bx    r0                        ; 080215DE
 .pool                           ; 080215E0
 
-ObjMain8C:
+Obj8C_Main:
 ; object 8C main
 ; height: 3
 push  {r4,lr}                   ; 080215E8
@@ -8983,7 +8983,7 @@ ldr   r0,=0x720D                ; 08021744
 bx    lr                        ; 08021746
 .pool                           ; 08021748
 
-ObjMain89:
+Obj89_Main:
 ; object 89 main
 push  {r4,lr}                   ; 0802174C
 mov   r4,r0                     ; 0802174E
@@ -9226,7 +9226,7 @@ pop   {r0}                      ; 0802193A
 bx    r0                        ; 0802193C
 .pool                           ; 0802193E
 
-ObjMain87_88:
+Obj87_88_Main:
 ; object 87-88 main
 ; relative Y threshold: 2
 push  {lr}                      ; 08021940
@@ -9292,7 +9292,7 @@ pop   {r0}                      ; 080219C2
 bx    r0                        ; 080219C4
 .pool                           ; 080219C6
 
-ObjMain86:
+Obj86_Main:
 ; object 86 main
 push  {r4-r7,lr}                ; 080219D8
 mov   r7,r8                     ; 080219DA
@@ -9407,7 +9407,7 @@ pop   {r4-r7}                   ; 08021AC6
 pop   {r0}                      ; 08021AC8
 bx    r0                        ; 08021ACA
 
-ObjMain85:
+Obj85_Main:
 ; object 85 main
 push  {r4-r7,lr}                ; 08021ACC
 mov   r6,r0                     ; 08021ACE
@@ -9540,7 +9540,7 @@ pop   {r4-r7}                   ; 08021BE6
 pop   {r0}                      ; 08021BE8
 bx    r0                        ; 08021BEA
 
-ObjMain84:
+Obj84_Main:
 ; object 84 main
 ; slope: -1
 push  {r4-r5,lr}                ; 08021BEC
@@ -9576,7 +9576,7 @@ pop   {r0}                      ; 08021C26
 bx    r0                        ; 08021C28
 .pool                           ; 08021C2A
 
-ObjMain82_83:
+Obj82_83_Main:
 ; object 82-83 main
 push  {r4-r5,lr}                ; 08021C38
 mov   r4,r0                     ; 08021C3A
@@ -9671,7 +9671,7 @@ pop   {r1}                      ; 08021CEE
 bx    r1                        ; 08021CF0
 .pool                           ; 08021CF2
 
-ObjMain81:
+Obj81_Main:
 ; object 81 main
 push  {lr}                      ; 08021D04
 mov   r1,r0                     ; 08021D06
@@ -9808,7 +9808,7 @@ pop   {r1}                      ; 08021E02
 bx    r1                        ; 08021E04
 .pool                           ; 08021E06
 
-ObjMain80:
+Obj80_Main:
 ; object 80 main
 push  {r4,lr}                   ; 08021E18
 mov   r4,r0                     ; 08021E1A
@@ -9974,7 +9974,7 @@ pop   {r0}                      ; 08021F4E
 bx    r0                        ; 08021F50
 .pool                           ; 08021F52
 
-ObjMain7F:
+Obj7F_Main:
 ; object 7F main
 push  {r4-r5,lr}                ; 08021F58
 mov   r12,r0                    ; 08021F5A
@@ -10083,7 +10083,7 @@ pop   {r4-r5}                   ; 08022026
 pop   {r0}                      ; 08022028
 bx    r0                        ; 0802202A
 
-ObjMain7D:
+Obj7D_Main:
 ; object 7D main
 push  {r4-r6,lr}                ; 0802202C
 mov   r12,r0                    ; 0802202E
@@ -10202,7 +10202,7 @@ pop   {r0}                      ; 08022110
 bx    r0                        ; 08022112
 .pool                           ; 08022114
 
-ObjMain7C:
+Obj7C_Main:
 ; object 7C main
 push  {r4-r5,lr}                ; 08022118
 mov   r12,r0                    ; 0802211A
@@ -10636,7 +10636,7 @@ pop   {r1}                      ; 08022470
 bx    r1                        ; 08022472
 .pool                           ; 08022474
 
-ObjMain7B:
+Obj7B_Main:
 ; object 7B main
 ; slope: -1
 push  {r4-r6,lr}                ; 08022480
@@ -11160,7 +11160,7 @@ pop   {r1}                      ; 080228B4
 bx    r1                        ; 080228B6
 .pool                           ; 080228B8
 
-ObjMain7A:
+Obj7A_Main:
 ; object 7A main
 push  {r4-r6,lr}                ; 080228C4
 mov   r4,r0                     ; 080228C6
@@ -11353,7 +11353,7 @@ pop   {r0}                      ; 08022A14
 bx    r0                        ; 08022A16
 .pool                           ; 08022A18
 
-ObjMain79:
+Obj79_Main:
 ; object 79 main
 push  {lr}                      ; 08022A20
 mov   r1,0x1                    ; 08022A22
@@ -11361,7 +11361,7 @@ bl    Sub08022964               ; 08022A24
 pop   {r0}                      ; 08022A28
 bx    r0                        ; 08022A2A
 
-ObjMain78:
+Obj78_Main:
 ; object 78 main
 push  {lr}                      ; 08022A2C
 mov   r1,0x0                    ; 08022A2E
@@ -11369,7 +11369,7 @@ bl    Sub08022964               ; 08022A30
 pop   {r0}                      ; 08022A34
 bx    r0                        ; 08022A36
 
-ObjMain77:
+Obj77_Main:
 ; object 77 main
 add   r0,0x4A                   ; 08022A38
 ldrh  r0,[r0]                   ; 08022A3A
@@ -11383,7 +11383,7 @@ strh  r2,[r1]                   ; 08022A48
 bx    lr                        ; 08022A4A
 .pool                           ; 08022A4C
 
-ObjMain76:
+Obj76_Main:
 ; object 76 main
 ; width: 2
 mov   r1,r0                     ; 08022A54
@@ -11405,7 +11405,7 @@ strh  r1,[r0]                   ; 08022A72
 bx    lr                        ; 08022A74
 .pool                           ; 08022A76
 
-ObjMain75:
+Obj75_Main:
 ; object 75 main
 ; width: 2
 mov   r1,r0                     ; 08022A80
@@ -11427,7 +11427,7 @@ strh  r1,[r0]                   ; 08022A9E
 bx    lr                        ; 08022AA0
 .pool                           ; 08022AA2
 
-ObjMain74:
+Obj74_Main:
 ; object 74 main
 ; width: 3
 mov   r1,r0                     ; 08022AAC
@@ -11449,7 +11449,7 @@ strh  r1,[r0]                   ; 08022ACA
 bx    lr                        ; 08022ACC
 .pool                           ; 08022ACE
 
-ObjMain73:
+Obj73_Main:
 ; object 73 main
 ; width: 3, height: rounded up to even
 push  {lr}                      ; 08022AD8
@@ -11523,7 +11523,7 @@ strh  r1,[r0]                   ; 08022B5A
 bx    lr                        ; 08022B5C
 .pool                           ; 08022B5E
 
-ObjMain72:
+Obj72_Main:
 ; object 72 main
 push  {lr}                      ; 08022B68
 mov   r1,0x2                    ; 08022B6A
@@ -11531,7 +11531,7 @@ bl    Sub08022B1C               ; 08022B6C
 pop   {r0}                      ; 08022B70
 bx    r0                        ; 08022B72
 
-ObjMain71:
+Obj71_Main:
 ; object 71 main
 push  {lr}                      ; 08022B74
 mov   r1,0x1                    ; 08022B76
@@ -11539,7 +11539,7 @@ bl    Sub08022B1C               ; 08022B78
 pop   {r0}                      ; 08022B7C
 bx    r0                        ; 08022B7E
 
-ObjMain70:
+Obj70_Main:
 ; object 70 main
 push  {lr}                      ; 08022B80
 mov   r1,0x0                    ; 08022B82
@@ -11611,7 +11611,7 @@ pop   {r4}                      ; 08022C0A
 pop   {r0}                      ; 08022C0C
 bx    r0                        ; 08022C0E
 
-ObjMain6F:
+Obj6F_Main:
 ; object 6F main
 push  {lr}                      ; 08022C10
 mov   r2,r0                     ; 08022C12
@@ -11641,7 +11641,7 @@ pop   {r0}                      ; 08022C3E
 bx    r0                        ; 08022C40
 .pool                           ; 08022C42
 
-ObjMain6E_8B:
+Obj6E_8B_Main:
 ; object 6E/8B main
 push  {r4,lr}                   ; 08022C44
 mov   r4,r0                     ; 08022C46
@@ -11675,7 +11675,7 @@ pop   {r0}                      ; 08022C7C
 bx    r0                        ; 08022C7E
 .pool                           ; 08022C80
 
-ObjMain6D:
+Obj6D_Main:
 ; object 6D main
 push  {r4,lr}                   ; 08022C88
 mov   r1,r0                     ; 08022C8A
@@ -11718,7 +11718,7 @@ pop   {r0}                      ; 08022CD0
 bx    r0                        ; 08022CD2
 .pool                           ; 08022CD4
 
-ObjMain6C:
+Obj6C_Main:
 ; object 6C main
 push  {lr}                      ; 08022CDC
 mov   r1,r0                     ; 08022CDE
@@ -11737,7 +11737,7 @@ pop   {r0}                      ; 08022CF8
 bx    r0                        ; 08022CFA
 .pool                           ; 08022CFC
 
-ObjMain6B:
+Obj6B_Main:
 ; object 6B main
 push  {r4-r6,lr}                ; 08022D00
 mov   r4,r0                     ; 08022D02
@@ -11876,7 +11876,7 @@ pop   {r0}                      ; 08022E02
 bx    r0                        ; 08022E04
 .pool                           ; 08022E06
 
-ObjMain6A:
+Obj6A_Main:
 ; object 6A main
 push  {r4,lr}                   ; 08022E18
 mov   r1,r0                     ; 08022E1A
@@ -11910,7 +11910,7 @@ pop   {r0}                      ; 08022E4E
 bx    r0                        ; 08022E50
 .pool                           ; 08022E52
 
-ObjMain69:
+Obj69_Main:
 ; object 69 main
 push  {r4,lr}                   ; 08022E58
 mov   r1,r0                     ; 08022E5A
@@ -11970,7 +11970,7 @@ pop   {r0}                      ; 08022EBC
 bx    r0                        ; 08022EBE
 .pool                           ; 08022EC0
 
-ObjMain68_8A:
+Obj68_8A_Main:
 ; object 68/8A main
 push  {r4-r5,lr}                ; 08022EC8
 mov   r4,r0                     ; 08022ECA
@@ -12391,7 +12391,7 @@ pop   {r0}                      ; 0802326E
 bx    r0                        ; 08023270
 .pool                           ; 08023272
 
-ObjMain67:
+Obj67_Main:
 ; object 67 main
 push  {r4-r7,lr}                ; 0802327C
 mov   r7,r8                     ; 0802327E
@@ -12520,7 +12520,7 @@ pop   {r4-r7}                   ; 0802336E
 pop   {r0}                      ; 08023370
 bx    r0                        ; 08023372
 
-ObjMain66:
+Obj66_Main:
 ; object 66 main
 mov   r3,r0                     ; 08023374
 add   r0,0x4C                   ; 08023376  r0 = [03007240]+4C (03002258)
@@ -12550,7 +12550,7 @@ strh  r1,[r2]                   ; 080233A4  update tilemap
 bx    lr                        ; 080233A6
 .pool                           ; 080233A8
 
-ObjMain63_65:
+Obj63_65_Main:
 ; object 63-65 main
 push  {lr}                      ; 080233AC
 mov   r1,r0                     ; 080233AE  r1 = [03007240] (0300220C)
@@ -12586,7 +12586,7 @@ pop   {r0}                      ; 080233E6
 bx    r0                        ; 080233E8
 .pool                           ; 080233EA
 
-ObjMain61_62:
+Obj61_62_Main:
 ; object 61-62 main
 push  {r4-r6,lr}                ; 080233F4
 mov   r4,r0                     ; 080233F6
@@ -13050,7 +13050,7 @@ pop   {r0}                      ; 0802378E
 bx    r0                        ; 08023790
 .pool                           ; 08023792
 
-ObjMain5F_60:
+Obj5F_60_Main:
 ; object 5F-60 main
 push  {r4-r6,lr}                ; 080237A0
 mov   r4,r0                     ; 080237A2
@@ -13625,7 +13625,7 @@ pop   {r0}                      ; 08023C1E
 bx    r0                        ; 08023C20
 .pool                           ; 08023C22
 
-ObjMain59_5E:
+Obj59_5E_Main:
 ; object 59-5E main
 push  {lr}                      ; 08023C24
 mov   r2,r0                     ; 08023C26
@@ -14164,7 +14164,7 @@ pop   {r4-r7}                   ; 08024056
 pop   {r0}                      ; 08024058
 bx    r0                        ; 0802405A
 
-ObjMain58:
+Obj58_Main:
 ; object 58 main
 push  {r4,lr}                   ; 0802405C
 mov   r3,r0                     ; 0802405E
@@ -14198,7 +14198,7 @@ pop   {r0}                      ; 08024094
 bx    r0                        ; 08024096
 .pool                           ; 08024098
 
-ObjMain57_7E:
+Obj57_7E_Main:
 ; object 57/7E main
 push  {r4,lr}                   ; 0802409C
 mov   r12,r0                    ; 0802409E
@@ -14428,7 +14428,7 @@ pop   {r0}                      ; 0802425A
 bx    r0                        ; 0802425C
 .pool                           ; 0802425E
 
-ObjMain54_56:
+Obj54_56_Main:
 ; object 54-56 main
 push  {r4-r6,lr}                ; 08024268
 mov   r12,r0                    ; 0802426A
@@ -14551,7 +14551,7 @@ pop   {r0}                      ; 08024352
 bx    r0                        ; 08024354
 .pool                           ; 08024356
 
-ObjMain53:
+Obj53_Main:
 ; object 53 main
 push  {r4-r7,lr}                ; 0802435C
 mov   r3,r0                     ; 0802435E
@@ -14709,7 +14709,7 @@ pop   {r0}                      ; 08024482
 bx    r0                        ; 08024484
 .pool                           ; 08024486
 
-ObjMain52:
+Obj52_Main:
 ; object 52 main
 push  {r4,lr}                   ; 08024494
 mov   r3,r0                     ; 08024496
@@ -14759,7 +14759,7 @@ pop   {r0}                      ; 080244E8
 bx    r0                        ; 080244EA
 .pool                           ; 080244EC
 
-ObjMain50_51:
+Obj50_51_Main:
 ; object 50-51 main
 push  {r4-r5,lr}                ; 080244F8
 mov   r12,r0                    ; 080244FA
@@ -14860,7 +14860,7 @@ pop   {r0}                      ; 080245BC
 bx    r0                        ; 080245BE
 .pool                           ; 080245C0
 
-ObjMain4F:
+Obj4F_Main:
 ; object 4F main
 push  {r4-r5,lr}                ; 080245D0
 mov   r5,r0                     ; 080245D2
@@ -15693,7 +15693,7 @@ pop   {r0}                      ; 08024C88
 bx    r0                        ; 08024C8A
 .pool                           ; 08024C8C
 
-ObjMain4E:
+Obj4E_Main:
 ; object 4E main
 push  {r4-r7,lr}                ; 08024C90
 mov   r4,r0                     ; 08024C92
@@ -15758,7 +15758,7 @@ pop   {r0}                      ; 08024D06
 bx    r0                        ; 08024D08
 .pool                           ; 08024D0A
 
-ObjMain4B_4D:
+Obj4B_4D_Main:
 ; object 4B-4D main
 ; width: 4,6,8 for 4B-4D
 push  {r4,lr}                   ; 08024D0C
@@ -15821,7 +15821,7 @@ pop   {r0}                      ; 08024D7C
 bx    r0                        ; 08024D7E
 .pool                           ; 08024D80
 
-ObjMain49_4A:
+Obj49_4A_Main:
 ; object 49-4A main
 ; width: 2
 push  {r4,lr}                   ; 08024D88
@@ -16399,7 +16399,7 @@ pop   {r0}                      ; 0802520A
 bx    r0                        ; 0802520C
 .pool                           ; 0802520E
 
-ObjMain48:
+Obj48_Main:
 ; object 48 main
 ; r1: X parity
 push  {lr}                      ; 08025210
@@ -16536,7 +16536,7 @@ pop   {r4-r7}                   ; 0802532A
 pop   {r0}                      ; 0802532C
 bx    r0                        ; 0802532E
 
-ObjMain47:
+Obj47_Main:
 ; object 47 main
 push  {r4-r5,lr}                ; 08025330
 mov   r4,r0                     ; 08025332
@@ -16901,7 +16901,7 @@ pop   {r0}                      ; 080255FE
 bx    r0                        ; 08025600
 .pool                           ; 08025602
 
-ObjMain45_46:
+Obj45_46_Main:
 ; object 45-46 main
 push  {r4,lr}                   ; 08025608
 lsl   r1,r1,0x18                ; 0802560A
@@ -17175,7 +17175,7 @@ pop   {r0}                      ; 08025852
 bx    r0                        ; 08025854
 .pool                           ; 08025856
 
-ObjMain44:
+Obj44_Main:
 ; object 44 main
 push  {r4,lr}                   ; 08025858
 mov   r4,r0                     ; 0802585A
@@ -17673,7 +17673,7 @@ pop   {r0}                      ; 08025C2E
 bx    r0                        ; 08025C30
 .pool                           ; 08025C32
 
-ObjMain42_43:
+Obj42_43_Main:
 ; object 42-43 main
 push  {lr}                      ; 08025C38
 mov   r2,r0                     ; 08025C3A
@@ -17694,7 +17694,7 @@ pop   {r0}                      ; 08025C56
 bx    r0                        ; 08025C58
 .pool                           ; 08025C5A
 
-ObjMain41:
+Obj41_Main:
 ; object 41 main
 push  {r4-r6,lr}                ; 08025C5C
 mov   r4,r0                     ; 08025C5E
@@ -17786,7 +17786,7 @@ pop   {r4-r6}                   ; 08025D0E
 pop   {r0}                      ; 08025D10
 bx    r0                        ; 08025D12
 
-ObjMain3F_40:
+Obj3F_40_Main:
 ; object 3F-40 main
 push  {lr}                      ; 08025D14
 mov   r1,r0                     ; 08025D16
@@ -17828,7 +17828,7 @@ pop   {r0}                      ; 08025D58
 bx    r0                        ; 08025D5A
 .pool                           ; 08025D5C
 
-ObjMain3E:
+Obj3E_Main:
 ; object 3E main
 push  {r4-r5,lr}                ; 08025D64
 mov   r1,r0                     ; 08025D66
@@ -17892,7 +17892,7 @@ pop   {r0}                      ; 08025DD2
 bx    r0                        ; 08025DD4
 .pool                           ; 08025DD6
 
-ObjMain3D:
+Obj3D_Main:
 ; object 3D main
 ; height: 3
 push  {r4,lr}                   ; 08025DE0
@@ -17982,7 +17982,7 @@ pop   {r0}                      ; 08025E7E
 bx    r0                        ; 08025E80
 .pool                           ; 08025E82
 
-ObjMain3C_F4:
+Obj3C_F4_Main:
 ; object 3C/F4 main
 ; 0300224E (object ID) is 00 for 3C, 80 for F4
 push  {r4-r5,lr}                ; 08025E8C
@@ -18065,7 +18065,7 @@ pop   {r0}                      ; 08025F18
 bx    r0                        ; 08025F1A
 .pool                           ; 08025F1C
 
-ObjMain3B:
+Obj3B_Main:
 ; object 3B main
 push  {r4,lr}                   ; 08025F24
 mov   r3,r0                     ; 08025F26
@@ -18158,7 +18158,7 @@ pop   {r0}                      ; 08025FD2
 bx    r0                        ; 08025FD4
 .pool                           ; 08025FD6
 
-ObjMain3A:
+Obj3A_Main:
 ; object 3A main
 push  {r4,lr}                   ; 08025FE0
 mov   r3,r0                     ; 08025FE2
@@ -18226,7 +18226,7 @@ pop   {r4}                      ; 08026066
 pop   {r0}                      ; 08026068
 bx    r0                        ; 0802606A
 
-ObjMain39:
+Obj39_Main:
 ; object 39 main
 ; width, height rounded up to even
 push  {lr}                      ; 0802606C
@@ -19204,7 +19204,7 @@ pop   {r0}                      ; 080268A2
 bx    r0                        ; 080268A4
 .pool                           ; 080268A6
 
-ObjMain38:
+Obj38_Main:
 ; object 38 main
 ; 0300224E: random 0 or 2
 push  {r4,lr}                   ; 080268B4
@@ -19289,7 +19289,7 @@ pop   {r0}                      ; 08026946
 bx    r0                        ; 08026948
 .pool                           ; 0802694A
 
-ObjMain37:
+Obj37_Main:
 ; object 37 main
 push  {lr}                      ; 08026958
 mov   r1,r0                     ; 0802695A
@@ -19312,7 +19312,7 @@ pop   {r0}                      ; 08026978
 bx    r0                        ; 0802697A
 .pool                           ; 0802697C
 
-ObjMain36:
+Obj36_Main:
 ; object 36 main (wrapper)
 push  {lr}                      ; 08026984
 bl    Sub0802706C               ; 08026986
@@ -19320,7 +19320,7 @@ pop   {r0}                      ; 0802698A
 bx    r0                        ; 0802698C
 .pool                           ; 0802698E
 
-ObjMain35:
+Obj35_Main:
 ; object 35 main
 ; 0300224E: 0
 push  {r4-r7,lr}                ; 08026990
@@ -19485,7 +19485,7 @@ pop   {r0}                      ; 08026AB4
 bx    r0                        ; 08026AB6
 .pool                           ; 08026AB8
 
-ObjMain34:
+Obj34_Main:
 ; object 34 main
 ; height: 2
 push  {r4-r6,lr}                ; 08026ABC
@@ -19911,7 +19911,7 @@ pop   {r0}                      ; 08026E24
 bx    r0                        ; 08026E26
 .pool                           ; 08026E28
 
-ObjMain32_33:
+Obj32_33_Main:
 ; object 32-33 main
 push  {lr}                      ; 08026E2C
 mov   r2,r0                     ; 08026E2E
@@ -20266,7 +20266,7 @@ pop   {r4-r5}                   ; 080270F2
 pop   {r0}                      ; 080270F4
 bx    r0                        ; 080270F6
 
-ObjMain30_31:
+Obj30_31_Main:
 ; object 30-31 main
 ; 03002246: random 00,0B
 push  {lr}                      ; 080270F8
@@ -20288,7 +20288,7 @@ pop   {r0}                      ; 08027116
 bx    r0                        ; 08027118
 .pool                           ; 0802711A
 
-ObjMain2F:
+Obj2F_Main:
 ; object 2F main
 push  {r4-r7,lr}                ; 0802711C
 mov   r7,r0                     ; 0802711E
@@ -20604,7 +20604,7 @@ pop   {r0}                      ; 0802739A
 bx    r0                        ; 0802739C
 .pool                           ; 0802739E
 
-ObjMain2D_2E:
+Obj2D_2E_Main:
 ; object 2D-2E main
 ; scratch RAM: random 0,2
 push  {lr}                      ; 080273AC
@@ -20626,7 +20626,7 @@ pop   {r0}                      ; 080273CA
 bx    r0                        ; 080273CC
 .pool                           ; 080273CE
 
-ObjMain2C:
+Obj2C_Main:
 ; object 2C main
 ; width: 2
 push  {r4,lr}                   ; 080273D0
@@ -20688,7 +20688,7 @@ pop   {r0}                      ; 08027438
 bx    r0                        ; 0802743A
 .pool                           ; 0802743C
 
-ObjMain2B:
+Obj2B_Main:
 ; object 2B main
 push  {r4,lr}                   ; 08027440
 mov   r3,r0                     ; 08027442
@@ -20736,7 +20736,7 @@ pop   {r0}                      ; 08027490
 bx    r0                        ; 08027492
 .pool                           ; 08027494
 
-ObjMain29_2A:
+Obj29_2A_Main:
 ; object 29-2A main
 ; 0300224E: 0,4 for 29,2A
 ; slope: 2
@@ -21194,7 +21194,7 @@ pop   {r0}                      ; 08027820
 bx    r0                        ; 08027822
 .pool                           ; 08027824
 
-ObjMain27_28:
+Obj27_28_Main:
 ; object 27-28 main
 ; 0300224E: (objID-27)*2
 ; slope: -1
@@ -21372,7 +21372,7 @@ pop   {r0}                      ; 0802799E
 bx    r0                        ; 080279A0
 .pool                           ; 080279A2
 
-ObjMain25_26:
+Obj25_26_Main:
 ; object 25-26 main
 ; 0300224E: (objID-25)*2
 push  {r4-r7,lr}                ; 080279C8
@@ -21482,7 +21482,7 @@ pop   {r0}                      ; 08027A90
 bx    r0                        ; 08027A92
 .pool                           ; 08027A94
 
-ObjMain24:
+Obj24_Main:
 ; object 24 main
 push  {r4-r5,lr}                ; 08027AA0
 mov   r5,r0                     ; 08027AA2
@@ -21538,7 +21538,7 @@ pop   {r0}                      ; 08027B00
 bx    r0                        ; 08027B02
 .pool                           ; 08027B04
 
-ObjMain23:
+Obj23_Main:
 ; object 23 main
 ; width: 2
 push  {r4-r5,lr}                ; 08027B0C
@@ -21611,7 +21611,7 @@ pop   {r0}                      ; 08027B8A
 bx    r0                        ; 08027B8C
 .pool                           ; 08027B8E
 
-ObjMain22:
+Obj22_Main:
 ; object 22 main
 ; width: 2
 push  {r4-r5,lr}                ; 08027B98
@@ -21915,7 +21915,7 @@ pop   {r1}                      ; 08027E10
 bx    r1                        ; 08027E12
 .pool                           ; 08027E14
 
-ObjMain21:
+Obj21_Main:
 ; object 21 main
 push  {r4-r6,lr}                ; 08027E1C
 mov   r5,r0                     ; 08027E1E
@@ -22356,7 +22356,7 @@ pop   {r1}                      ; 0802815E
 bx    r1                        ; 08028160
 .pool                           ; 08028162
 
-Sub08028168:
+ObjEE_F3_Main:
 ; object EE-F3 main; called by 1F-20
 push  {r4-r5,lr}                ; 08028168
 mov   r4,r0                     ; 0802816A
@@ -22391,14 +22391,14 @@ cmp   r0,r1                     ; 080281A2
 bne   @@Code080281C4            ; 080281A4
 mov   r1,r3                     ; 080281A6
 ldr   r0,=CodePtrs08168A44      ; 080281A8
-ldr   r2,[r0,0x4]               ; 080281AA
+ldr   r2,[r0,0x4]               ; 080281AA  r2 = 08028024
 b     @@Code080281BA            ; 080281AC
 .pool                           ; 080281AE
 
 @@Code080281B4:
 mov   r1,r3                     ; 080281B4
 ldr   r0,=CodePtrs08168A44      ; 080281B6
-ldr   r2,[r0]                   ; 080281B8
+ldr   r2,[r0]                   ; 080281B8  r2 = 08028058
 @@Code080281BA:
 mov   r0,r4                     ; 080281BA
 bl    Sub_bx_r2                 ; 080281BC  bx r2
@@ -22521,7 +22521,7 @@ and   r1,r0                     ; 0802829E
 cmp   r1,0x0                    ; 080282A0
 bne   @@Code080282AC            ; 080282A2
 mov   r0,r2                     ; 080282A4
-bl    Sub08028168               ; 080282A6
+bl    ObjEE_F3_Main             ; 080282A6
 b     @@Code080282B2            ; 080282AA
 @@Code080282AC:
 mov   r0,r2                     ; 080282AC
@@ -22542,7 +22542,7 @@ and   r1,r0                     ; 080282C2
 cmp   r1,0x0                    ; 080282C4
 bne   @@Code080282D0            ; 080282C6
 mov   r0,r2                     ; 080282C8
-bl    Sub08028168               ; 080282CA
+bl    ObjEE_F3_Main             ; 080282CA
 b     @@Code080282D6            ; 080282CE
 @@Code080282D0:
 mov   r0,r2                     ; 080282D0
@@ -22552,7 +22552,7 @@ pop   {r0}                      ; 080282D6
 bx    r0                        ; 080282D8
 .pool                           ; 080282DA
 
-ObjMain1F_20:
+Obj1F_20_Main:
 ; object 1F-20 main
 ; relative Y threshold: 5,2 for 1F,20
 ; scratch RAM: object's Y^X parity
@@ -22570,7 +22570,7 @@ pop   {r0}                      ; 080282F2
 bx    r0                        ; 080282F4
 .pool                           ; 080282F6
 
-ObjMain1D_1E:
+Obj1D_1E_Main:
 ; object 1D-1E main
 mov   r1,r0                     ; 080282FC
 add   r1,0x4A                   ; 080282FE
@@ -22594,7 +22594,7 @@ strh  r1,[r0]                   ; 08028320
 bx    lr                        ; 08028322
 .pool                           ; 08028324
 
-ObjMain1C:
+Obj1C_Main:
 ; object 1C main
 ; width: 2
 push  {r4-r5,lr}                ; 0802832C
@@ -22648,7 +22648,7 @@ pop   {r0}                      ; 08028382
 bx    r0                        ; 08028384
 .pool                           ; 08028386
 
-ObjMain1B:
+Obj1B_Main:
 ; object 1B main
 push  {r4,lr}                   ; 08028390
 mov   r12,r0                    ; 08028392
@@ -22710,7 +22710,7 @@ pop   {r0}                      ; 080283FA
 bx    r0                        ; 080283FC
 .pool                           ; 080283FE
 
-ObjMain1A:
+Obj1A_Main:
 ; object 1A main
 push  {lr}                      ; 0802840C
 mov   r1,r0                     ; 0802840E
@@ -22767,7 +22767,7 @@ pop   {r0}                      ; 0802846C
 bx    r0                        ; 0802846E
 .pool                           ; 08028470
 
-ObjMain19:
+Obj19_Main:
 ; object 19 main
 push  {r4,lr}                   ; 08028478
 mov   r1,r0                     ; 0802847A
@@ -22821,7 +22821,7 @@ pop   {r0}                      ; 080284D8
 bx    r0                        ; 080284DA
 .pool                           ; 080284DC
 
-ObjMain18:
+Obj18_Main:
 ; object 18 main
 push  {r4,lr}                   ; 080284E4
 mov   r3,r0                     ; 080284E6
@@ -23030,7 +23030,7 @@ pop   {r0}                      ; 0802866E
 bx    r0                        ; 08028670
 .pool                           ; 08028672
 
-ObjMain17:
+Obj17_Main:
 ; object 17 main
 ; y-=1, height+=1
 push  {r4-r5,lr}                ; 0802867C
@@ -23130,7 +23130,7 @@ pop   {r0}                      ; 0802873E
 bx    r0                        ; 08028740
 .pool                           ; 08028742
 
-ObjMain16:
+Obj16_Main:
 ; object 16 main
 push  {lr}                      ; 08028744
 mov   r1,r0                     ; 08028746
@@ -23154,7 +23154,7 @@ pop   {r0}                      ; 08028766
 bx    r0                        ; 08028768
 .pool                           ; 0802876A
 
-ObjMain15:
+Obj15_Main:
 ; object 15 main
 push  {lr}                      ; 08028770
 mov   r3,r0                     ; 08028772
@@ -23535,7 +23535,7 @@ pop   {r1}                      ; 08028A5C
 bx    r1                        ; 08028A5E
 .pool                           ; 08028A60
 
-ObjMain14:
+Obj14_Main:
 ; object 14 main
 push  {r4,lr}                   ; 08028A68
 mov   r4,r0                     ; 08028A6A
@@ -23616,7 +23616,7 @@ pop   {r0}                      ; 08028AFC
 bx    r0                        ; 08028AFE
 .pool                           ; 08028B00
 
-ObjMain13:
+Obj13_Main:
 ; object 13 main
 push  {lr}                      ; 08028B04
 mov   r1,r0                     ; 08028B06
@@ -23663,7 +23663,7 @@ pop   {r0}                      ; 08028B4C
 bx    r0                        ; 08028B4E
 .pool                           ; 08028B50
 
-ObjMain11_12:
+Obj11_12_Main:
 ; object 11-12 main
 ; height: 2,3 for 11,12
 ; slope: -1,-2 for 11,12
@@ -23880,7 +23880,7 @@ pop   {r0}                      ; 08028CDC
 bx    r0                        ; 08028CDE
 .pool                           ; 08028CE0
 
-ObjMain10:
+Obj10_Main:
 ; object 10 main
 ; height: 2, slope: -1
 push  {r4-r7,lr}                ; 08028CE4
@@ -23932,7 +23932,7 @@ pop   {r0}                      ; 08028D3C
 bx    r0                        ; 08028D3E
 .pool                           ; 08028D40
 
-ObjMain0D:
+Obj0D_Main:
 ; object 0D main
 push  {r4-r5,lr}                ; 08028D44
 mov   r12,r0                    ; 08028D46
@@ -24030,7 +24030,7 @@ pop   {r0}                      ; 08028DFA
 bx    r0                        ; 08028DFC
 .pool                           ; 08028DFE
 
-ObjMain0C_0E_0F:
+Obj0C_0E_0F_Main:
 ; object 0C,0E-0F main
 ; r0 = [03007240]+42 (0300224E)
 push  {r4,lr}                   ; 08028E04
@@ -24206,7 +24206,7 @@ pop   {r0}                      ; 08028F40
 bx    r0                        ; 08028F42
 .pool                           ; 08028F44
 
-ObjMain06_09:
+Obj06_09_Main:
 ; object 06-09 main
 ; relative Y threshold 4,4,5,5
 ; initial y-1 height+1 for 04/06, y-2 height+2 for 05/07
@@ -24271,7 +24271,7 @@ pop   {r1}                      ; 08028FB2
 bx    r1                        ; 08028FB4
 .pool                           ; 08028FB6
 
-ObjMain04_05:
+Obj04_05_Main:
 ; object 04-05 main
 ; 0300224E: 0,2 for 04,05
 ; initial y-1 height+1 for 04, y-2 height+2 for 05
@@ -24800,7 +24800,7 @@ pop   {r0}                      ; 080293F0
 bx    r0                        ; 080293F2
 .pool                           ; 080293F4
 
-ObjMain02_03_0A_0B:
+Obj02_03_0A_0B_Main:
 ; object 02-03,0A-0B main
 ; relative Y threshold: 03,03,01,01 for 02,03,0A,0B
 ; initial y-1, height+1, width=2 if 02,03
@@ -25288,7 +25288,7 @@ pop   {r0}                      ; 080297F2
 bx    r0                        ; 080297F4
 .pool                           ; 080297F6
 
-ObjMain01:
+Obj01_Main:
 ; object 01 main
 ; 03002252: 03
 ; r1: if relY >= 3: r1 = 2; else: r1 = X parity

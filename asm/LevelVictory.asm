@@ -4167,7 +4167,7 @@ ldr   r0,=0x29A2                ; 080E59B4
 add   r2,r1,r0                  ; 080E59B6  [03007240]+29A2 (03004BAE)
 mov   r3,0x0                    ; 080E59B8
 mov   r0,0x4                    ; 080E59BA
-strh  r0,[r2]                   ; 080E59BC  *set* header value 9 to 4
+strh  r0,[r2]                   ; 080E59BC  *set* header index 9 to 4
 ldr   r0,=0x29A6                ; 080E59BE
 add   r1,r1,r0                  ; 080E59C0  [03007240]+29A6 (03004BB2)
 strh  r3,[r1]                   ; 080E59C2  clear palette animation

@@ -1,4 +1,4 @@
-ExtObjInitFF:
+ExtObjFF_Init:
 ; object 00.FF init
 push  {r4-r6,lr}                ; 0801BFA8
 mov   r3,r0                     ; 0801BFAA
@@ -48,7 +48,7 @@ pop   {r0}                      ; 0801BFF8
 bx    r0                        ; 0801BFFA
 .pool                           ; 0801BFFC
 
-ExtObjInitFE:
+ExtObjFE_Init:
 ; object 00.FE init
 add   r0,0x48                   ; 0801C004
 ldrh  r1,[r0]                   ; 0801C006  tile YXyx
@@ -62,13 +62,13 @@ strb  r0,[r1]                   ; 0801C014  set high bit of screen memory index
 bx    lr                        ; 0801C016
 .pool                           ; 0801C018
 
-ExtObjInitFD:
+ExtObjFD_Init:
 ; object 00.FD init
 push  {r4,lr}                   ; 0801C01C
 mov   r4,r0                     ; 0801C01E
 bl    Sub08019D64               ; 0801C020  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801C024
-bl    ExtObjMainFD              ; 0801C026
+bl    ExtObjFD_Main             ; 0801C026
 pop   {r4}                      ; 0801C02A
 pop   {r0}                      ; 0801C02C
 bx    r0                        ; 0801C02E
@@ -78,7 +78,7 @@ Return0801C030:
 bx    lr                        ; 0801C030
 .pool                           ; 0801C032
 
-ExtObjInitFB:
+ExtObjFB_Init:
 ; object 00.FB init
 add   r0,0x48                   ; 0801C034
 ldrh  r0,[r0]                   ; 0801C036  tile YXyx
@@ -98,7 +98,7 @@ Return0801C050:
 bx    lr                        ; 0801C050
 .pool                           ; 0801C052
 
-ExtObjInitE0:
+ExtObjE0_Init:
 ; object 00.E0 init
 push  {r4,lr}                   ; 0801C054
 lsl   r1,r1,0x10                ; 0801C056
@@ -113,12 +113,12 @@ mov   r4,r12                    ; 0801C066
 strh  r3,[r4]                   ; 0801C068  set width to 2
 mov   r4,0x52                   ; 0801C06A
 strh  r3,[r4,r0]                ; 0801C06C  set height to 2
-bl    Sub0801A070               ; 0801C06E  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C06E  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801C072
 pop   {r0}                      ; 0801C074
 bx    r0                        ; 0801C076
 
-ExtObjInitD4_DF:
+ExtObjD4_DF_Init:
 ; object 00.D4-DF init
 push  {r4-r5,lr}                ; 0801C078
 mov   r4,r0                     ; 0801C07A
@@ -150,13 +150,13 @@ mov   r3,r4                     ; 0801C0AC
 add   r3,0x52                   ; 0801C0AE  r0 = [03007240]+52 (0300225E)
 strh  r0,[r3]                   ; 0801C0B0  set height
 mov   r0,r4                     ; 0801C0B2
-bl    Sub0801A070               ; 0801C0B4  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C0B4  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r5}                   ; 0801C0B8
 pop   {r0}                      ; 0801C0BA
 bx    r0                        ; 0801C0BC
 .pool                           ; 0801C0BE
 
-ExtObjInitCA_D3:
+ExtObjCA_D3_Init:
 ; object 00.CA-D3 init
 push  {r4,lr}                   ; 0801C0C8
 mov   r4,r0                     ; 0801C0CA
@@ -167,13 +167,13 @@ ldrh  r0,[r1]                   ; 0801C0D4  extended object ID
 sub   r0,0xCA                   ; 0801C0D6
 strh  r0,[r1]                   ; 0801C0D8  [0300224E] = (extID-CA)
 mov   r0,r4                     ; 0801C0DA
-bl    ExtObjMainCA_D3           ; 0801C0DC
+bl    ExtObjCA_D3_Main          ; 0801C0DC
 pop   {r4}                      ; 0801C0E0
 pop   {r0}                      ; 0801C0E2
 bx    r0                        ; 0801C0E4
 .pool                           ; 0801C0E6
 
-ExtObjInitC5_C9:
+ExtObjC5_C9_Init:
 ; object 00.C5-C9 init
 push  {r4-r5,lr}                ; 0801C0E8
 mov   r4,r0                     ; 0801C0EA
@@ -203,24 +203,24 @@ mov   r3,r4                     ; 0801C118
 add   r3,0x52                   ; 0801C11A
 strh  r0,[r3]                   ; 0801C11C  set height
 mov   r0,r4                     ; 0801C11E
-bl    Sub0801A070               ; 0801C120  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C120  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r5}                   ; 0801C124
 pop   {r0}                      ; 0801C126
 bx    r0                        ; 0801C128
 .pool                           ; 0801C12A
 
-ExtObjInitC4:
+ExtObjC4_Init:
 ; object 00.C4 init
 push  {r4,lr}                   ; 0801C134
 mov   r4,r0                     ; 0801C136
 bl    Sub08019D64               ; 0801C138  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801C13C
-bl    ExtObjMainC4              ; 0801C13E
+bl    ExtObjC4_Main             ; 0801C13E
 pop   {r4}                      ; 0801C142
 pop   {r0}                      ; 0801C144
 bx    r0                        ; 0801C146
 
-ExtObjInitC2_C3:
+ExtObjC2_C3_Init:
 ; object 00.C2-C3 init
 push  {r4,lr}                   ; 0801C148
 mov   r12,r0                    ; 0801C14A
@@ -242,13 +242,13 @@ and   r0,r3                     ; 0801C168
 lsl   r0,r0,0x4                 ; 0801C16A
 strh  r0,[r4]                   ; 0801C16C  [0300224E] = 00,10 for C2,C3
 mov   r0,r12                    ; 0801C16E
-bl    Sub0801A070               ; 0801C170  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C170  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801C174
 pop   {r0}                      ; 0801C176
 bx    r0                        ; 0801C178
 .pool                           ; 0801C17A
 
-ExtObjInitC1:
+ExtObjC1_Init:
 ; object 00.C1 init
 push  {r4,lr}                   ; 0801C17C
 lsl   r1,r1,0x10                ; 0801C17E
@@ -267,12 +267,12 @@ mov   r12,r3                    ; 0801C196
 mov   r3,0x1                    ; 0801C198
 mov   r4,r12                    ; 0801C19A
 strh  r3,[r4]                   ; 0801C19C  set height to 1
-bl    Sub0801A070               ; 0801C19E  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C19E  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801C1A2
 pop   {r0}                      ; 0801C1A4
 bx    r0                        ; 0801C1A6
 
-ExtObjInitC0:
+ExtObjC0_Init:
 ; object 00.C0 init
 push  {r4,lr}                   ; 0801C1A8
 lsl   r1,r1,0x10                ; 0801C1AA
@@ -287,12 +287,12 @@ mov   r4,r12                    ; 0801C1BA  set width to 2
 strh  r3,[r4]                   ; 0801C1BC
 mov   r4,0x52                   ; 0801C1BE
 strh  r3,[r4,r0]                ; 0801C1C0  set height to 2
-bl    Sub0801A070               ; 0801C1C2  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C1C2  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801C1C6
 pop   {r0}                      ; 0801C1C8
 bx    r0                        ; 0801C1CA
 
-ExtObjInitBA_BF:
+ExtObjBA_BF_Init:
 ; object 00.BA-BF init
 push  {r4-r6,lr}                ; 0801C1CC
 mov   r4,r0                     ; 0801C1CE
@@ -329,13 +329,13 @@ strh  r1,[r4,0x3A]              ; 0801C20A  store random 0,0,1,2 to scratch RAM
 mov   r0,r4                     ; 0801C20C
 mov   r1,r6                     ; 0801C20E
 mov   r2,r5                     ; 0801C210
-bl    Sub0801A070               ; 0801C212  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C212  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r6}                   ; 0801C216
 pop   {r0}                      ; 0801C218
 bx    r0                        ; 0801C21A
 .pool                           ; 0801C21C
 
-ExtObjInitB8_B9:
+ExtObjB8_B9_Init:
 ; object 00.B8-B9 init
 push  {r4-r5,lr}                ; 0801C220
 mov   r4,r0                     ; 0801C222
@@ -367,13 +367,13 @@ mov   r3,r4                     ; 0801C254
 add   r3,0x52                   ; 0801C256
 strh  r0,[r3]                   ; 0801C258  set height
 mov   r0,r4                     ; 0801C25A
-bl    Sub0801A070               ; 0801C25C  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C25C  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r5}                   ; 0801C260
 pop   {r0}                      ; 0801C262
 bx    r0                        ; 0801C264
 .pool                           ; 0801C266
 
-ExtObjInitB6_B7:
+ExtObjB6_B7_Init:
 ; object 00.B6-B7 init
 push  {r4-r6,lr}                ; 0801C270
 mov   r6,r0                     ; 0801C272
@@ -405,12 +405,12 @@ strh  r1,[r3]                   ; 0801C2A6  [0300224E] = (extID-B6)*4 + random b
 mov   r0,r6                     ; 0801C2A8
 mov   r1,r4                     ; 0801C2AA
 mov   r2,r5                     ; 0801C2AC
-bl    Sub0801A070               ; 0801C2AE  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C2AE  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r6}                   ; 0801C2B2
 pop   {r0}                      ; 0801C2B4
 bx    r0                        ; 0801C2B6
 
-ExtObjInitB4_B5:
+ExtObjB4_B5_Init:
 ; object 00.B4-B5 init
 push  {r4-r6,lr}                ; 0801C2B8
 mov   r6,r0                     ; 0801C2BA
@@ -443,24 +443,24 @@ strh  r0,[r2]                   ; 0801C2F0  [0300224E] = extID&1
 mov   r0,r6                     ; 0801C2F2
 mov   r1,r4                     ; 0801C2F4
 mov   r2,r5                     ; 0801C2F6
-bl    Sub0801A070               ; 0801C2F8  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C2F8  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r6}                   ; 0801C2FC
 pop   {r0}                      ; 0801C2FE
 bx    r0                        ; 0801C300
 .pool                           ; 0801C302
 
-ExtObjInitB3:
+ExtObjB3_Init:
 ; object 00.B3 init
 push  {r4,lr}                   ; 0801C304
 mov   r4,r0                     ; 0801C306
 bl    Sub08019D64               ; 0801C308  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801C30C
-bl    ExtObjMainB3              ; 0801C30E
+bl    ExtObjB3_Main             ; 0801C30E
 pop   {r4}                      ; 0801C312
 pop   {r0}                      ; 0801C314
 bx    r0                        ; 0801C316
 
-ExtObjInitAD_B2:
+ExtObjAD_B2_Init:
 ; object 00.AD-B2 init
 push  {r4-r6,lr}                ; 0801C318
 mov   r6,r0                     ; 0801C31A
@@ -501,13 +501,13 @@ strh  r0,[r1]                   ; 0801C360  set height
 mov   r0,r6                     ; 0801C362
 mov   r1,r4                     ; 0801C364
 mov   r2,r5                     ; 0801C366
-bl    Sub0801A070               ; 0801C368  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C368  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r6}                   ; 0801C36C
 pop   {r0}                      ; 0801C36E
 bx    r0                        ; 0801C370
 .pool                           ; 0801C372
 
-ExtObjInitA9_AC:
+ExtObjA9_AC_Init:
 ; object 00.A9-AC init
 push  {r4-r5,lr}                ; 0801C37C
 lsl   r1,r1,0x10                ; 0801C37E
@@ -532,24 +532,24 @@ ldrh  r3,[r3]                   ; 0801C3A2
 mov   r4,r0                     ; 0801C3A4
 add   r4,0x52                   ; 0801C3A6
 strh  r3,[r4]                   ; 0801C3A8  set height
-bl    Sub0801A070               ; 0801C3AA  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C3AA  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r5}                   ; 0801C3AE
 pop   {r0}                      ; 0801C3B0
 bx    r0                        ; 0801C3B2
 .pool                           ; 0801C3B4
 
-ExtObjInitA7:
+ExtObjA7_Init:
 ; object 00.A7 init
 push  {r4,lr}                   ; 0801C3B8
 mov   r4,r0                     ; 0801C3BA
 bl    Sub08019D64               ; 0801C3BC  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801C3C0
-bl    ExtObjMainA7              ; 0801C3C2
+bl    ExtObjA7_Main             ; 0801C3C2
 pop   {r4}                      ; 0801C3C6
 pop   {r0}                      ; 0801C3C8
 bx    r0                        ; 0801C3CA
 
-ExtObjInitA5_A6:
+ExtObjA5_A6_Init:
 ; object 00.A5-A6 init
 push  {r4-r6,lr}                ; 0801C3CC
 mov   r6,r9                     ; 0801C3CE
@@ -605,7 +605,7 @@ ldrh  r0,[r5]                   ; 0801C430  9,5 if A5,A6
 add   r3,0x4                    ; 0801C432
 strh  r0,[r3]                   ; 0801C434  set height
 mov   r0,r12                    ; 0801C436
-bl    Sub0801A070               ; 0801C438  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C438  Object processing main, slope=0, no relative Y threshold
 pop   {r3-r4}                   ; 0801C43C
 mov   r8,r3                     ; 0801C43E
 mov   r9,r4                     ; 0801C440
@@ -614,7 +614,7 @@ pop   {r0}                      ; 0801C444
 bx    r0                        ; 0801C446
 .pool                           ; 0801C448
 
-ExtObjInitA4:
+ExtObjA4_Init:
 ; object 00.A4 init
 push  {r4,lr}                   ; 0801C460
 lsl   r1,r1,0x10                ; 0801C462
@@ -629,12 +629,12 @@ mov   r4,r12                    ; 0801C472
 strh  r3,[r4]                   ; 0801C474  set width to 2
 mov   r4,0x52                   ; 0801C476
 strh  r3,[r4,r0]                ; 0801C478  set height to 2
-bl    Sub0801A070               ; 0801C47A  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C47A  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801C47E
 pop   {r0}                      ; 0801C480
 bx    r0                        ; 0801C482
 
-ExtObjInitA0_A3:
+ExtObjA0_A3_Init:
 ; object 00.A0-A3 init
 push  {r4-r6,lr}                ; 0801C484
 mov   r6,r8                     ; 0801C486
@@ -678,7 +678,7 @@ add   r3,0x4                    ; 0801C4D0
 strh  r0,[r3]                   ; 0801C4D2  set height to 4
 add   r1,0xA0                   ; 0801C4D4
 mov   r0,r12                    ; 0801C4D6
-bl    Sub0801A070               ; 0801C4D8  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C4D8  Object processing main, slope=0, no relative Y threshold
 pop   {r3}                      ; 0801C4DC
 mov   r8,r3                     ; 0801C4DE
 pop   {r4-r6}                   ; 0801C4E0
@@ -686,7 +686,7 @@ pop   {r0}                      ; 0801C4E2
 bx    r0                        ; 0801C4E4
 .pool                           ; 0801C4E6
 
-ExtObjInit9E_9F:
+ExtObj9E_9F_Init:
 ; object 00.9E-9F init
 push  {r4,lr}                   ; 0801C4F8
 mov   r4,r0                     ; 0801C4FA
@@ -699,13 +699,13 @@ and   r0,r1                     ; 0801C508
 lsl   r0,r0,0x1                 ; 0801C50A
 strh  r0,[r2]                   ; 0801C50C  (extID&1)*2
 mov   r0,r4                     ; 0801C50E
-bl    ExtObjMain9E_9F           ; 0801C510
+bl    ExtObj9E_9F_Main          ; 0801C510
 pop   {r4}                      ; 0801C514
 pop   {r0}                      ; 0801C516
 bx    r0                        ; 0801C518
 .pool                           ; 0801C51A
 
-ExtObjInit9A_9D:
+ExtObj9A_9D_Init:
 ; object 00.9A-9D init
 push  {r4,lr}                   ; 0801C51C
 mov   r4,r0                     ; 0801C51E
@@ -721,12 +721,12 @@ and   r0,r1                     ; 0801C532
 lsr   r0,r0,0xF                 ; 0801C534  (extID&3)<<1
 strh  r0,[r2]                   ; 0801C536  set to (extID-9A)*2
 mov   r0,r4                     ; 0801C538
-bl    ExtObjMain9A_9D           ; 0801C53A
+bl    ExtObj9A_9D_Main          ; 0801C53A
 pop   {r4}                      ; 0801C53E
 pop   {r0}                      ; 0801C540
 bx    r0                        ; 0801C542
 
-ExtObjInit96_99:
+ExtObj96_99_Init:
 ; object 00.96-99 init
 push  {r4,lr}                   ; 0801C544
 mov   r12,r0                    ; 0801C546
@@ -751,12 +751,12 @@ strh  r0,[r3]                   ; 0801C56A  set width to 8
 add   r3,0x4                    ; 0801C56C
 strh  r0,[r3]                   ; 0801C56E  set height to 8
 mov   r0,r12                    ; 0801C570
-bl    Sub0801A070               ; 0801C572  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C572  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801C576
 pop   {r0}                      ; 0801C578
 bx    r0                        ; 0801C57A
 
-ExtObjInit92_95:
+ExtObj92_95_Init:
 ; object 00.92-95 init
 push  {r4,lr}                   ; 0801C57C
 mov   r12,r0                    ; 0801C57E
@@ -781,12 +781,12 @@ strh  r0,[r3]                   ; 0801C5A2  set width to 2
 add   r3,0x4                    ; 0801C5A4
 strh  r0,[r3]                   ; 0801C5A6  set height to 2
 mov   r0,r12                    ; 0801C5A8
-bl    Sub0801A070               ; 0801C5AA  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C5AA  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801C5AE
 pop   {r0}                      ; 0801C5B0
 bx    r0                        ; 0801C5B2
 
-ExtObjInit8E_91:
+ExtObj8E_91_Init:
 ; object 00.8E-91 init
 push  {r4,lr}                   ; 0801C5B4
 mov   r4,r0                     ; 0801C5B6
@@ -801,24 +801,24 @@ mov   r1,0x3                    ; 0801C5C8
 and   r0,r1                     ; 0801C5CA
 strh  r0,[r2]                   ; 0801C5CC  set to extID-8E
 mov   r0,r4                     ; 0801C5CE
-bl    ExtObjMain8E_91           ; 0801C5D0
+bl    ExtObj8E_91_Main          ; 0801C5D0
 pop   {r4}                      ; 0801C5D4
 pop   {r0}                      ; 0801C5D6
 bx    r0                        ; 0801C5D8
 .pool                           ; 0801C5DA
 
-ExtObjInit8D:
+ExtObj8D_Init:
 ; object 00.8D init
 push  {r4,lr}                   ; 0801C5DC
 mov   r4,r0                     ; 0801C5DE
 bl    Sub08019D64               ; 0801C5E0  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801C5E4
-bl    ExtObjMain8D              ; 0801C5E6
+bl    ExtObj8D_Main             ; 0801C5E6
 pop   {r4}                      ; 0801C5EA
 pop   {r0}                      ; 0801C5EC
 bx    r0                        ; 0801C5EE
 
-ExtObjInit89_8C:
+ExtObj89_8C_Init:
 ; object 00.89-8C init
 push  {r4,lr}                   ; 0801C5F0
 mov   r12,r0                    ; 0801C5F2
@@ -856,13 +856,13 @@ lsl   r0,r0,0x1                 ; 0801C630  r0 = 0,2,0,2
 strh  r0,[r4]                   ; 0801C632  [0300224E] = 0,2,0,2
 add   r1,0x89                   ; 0801C634  r1 = 89,89,8B,8B
 mov   r0,r12                    ; 0801C636
-bl    Sub0801A070               ; 0801C638  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C638  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801C63C
 pop   {r0}                      ; 0801C63E
 bx    r0                        ; 0801C640
 .pool                           ; 0801C642
 
-ExtObjInit88:
+ExtObj88_Init:
 ; object 00.88 init
 push  {r4,lr}                   ; 0801C64C
 lsl   r1,r1,0x10                ; 0801C64E
@@ -877,12 +877,12 @@ mov   r4,r12                    ; 0801C65E
 strh  r3,[r4]                   ; 0801C660  set width to 4
 mov   r4,0x52                   ; 0801C662
 strh  r3,[r4,r0]                ; 0801C664  set height to 4
-bl    Sub0801A070               ; 0801C666  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C666  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801C66A
 pop   {r0}                      ; 0801C66C
 bx    r0                        ; 0801C66E
 
-ExtObjInit83_87:
+ExtObj83_87_Init:
 ; object 00.83-87 init
 push  {r4-r6,lr}                ; 0801C670
 mov   r6,r9                     ; 0801C672
@@ -935,7 +935,7 @@ mov   r0,r9                     ; 0801C6CE
 mov   r5,r12                    ; 0801C6D0
 strh  r0,[r5,0x3A]              ; 0801C6D2  clear scratch RAM
 mov   r0,r12                    ; 0801C6D4
-bl    Sub0801A070               ; 0801C6D6  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C6D6  Object processing main, slope=0, no relative Y threshold
 pop   {r3-r4}                   ; 0801C6DA
 mov   r8,r3                     ; 0801C6DC
 mov   r9,r4                     ; 0801C6DE
@@ -944,7 +944,7 @@ pop   {r0}                      ; 0801C6E2
 bx    r0                        ; 0801C6E4
 .pool                           ; 0801C6E6
 
-ExtObjInit82:
+ExtObj82_Init:
 ; object 00.82 init
 push  {r4-r6,lr}                ; 0801C6FC
 mov   r12,r0                    ; 0801C6FE
@@ -972,13 +972,13 @@ add   r3,0x4                    ; 0801C728  [03007240]+52 (0300225E)
 mov   r0,0x5                    ; 0801C72A
 strh  r0,[r3]                   ; 0801C72C  height = 5
 mov   r0,r12                    ; 0801C72E
-bl    Sub0801A070               ; 0801C730  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C730  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r6}                   ; 0801C734
 pop   {r0}                      ; 0801C736
 bx    r0                        ; 0801C738
 .pool                           ; 0801C73A
 
-ExtObjInit81:
+ExtObj81_Init:
 ; object 00.81 init
 push  {r4,lr}                   ; 0801C744
 lsl   r1,r1,0x10                ; 0801C746
@@ -991,23 +991,23 @@ mov   r12,r3                    ; 0801C752
 mov   r3,0x4                    ; 0801C754
 mov   r4,r12                    ; 0801C756
 strh  r3,[r4]                   ; 0801C758  set width to 4
-bl    Sub0801A070               ; 0801C75A  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C75A  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801C75E
 pop   {r0}                      ; 0801C760
 bx    r0                        ; 0801C762
 
-ExtObjInit80:
+ExtObj80_Init:
 ; object 00.80 init
 push  {r4,lr}                   ; 0801C764
 mov   r4,r0                     ; 0801C766
 bl    Sub08019D64               ; 0801C768  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801C76C
-bl    ExtObjMain80              ; 0801C76E
+bl    ExtObj80_Main             ; 0801C76E
 pop   {r4}                      ; 0801C772
 pop   {r0}                      ; 0801C774
 bx    r0                        ; 0801C776
 
-ExtObjInit7E_7F:
+ExtObj7E_7F_Init:
 ; object 00.7E-7F init
 push  {r4,lr}                   ; 0801C778
 lsl   r1,r1,0x10                ; 0801C77A
@@ -1023,13 +1023,13 @@ and   r3,r4                     ; 0801C78C
 lsl   r3,r3,0x1                 ; 0801C78E
 mov   r4,r12                    ; 0801C790
 strh  r3,[r4]                   ; 0801C792  [0300224E] = extID-7E
-bl    Sub0801A070               ; 0801C794  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C794  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801C798
 pop   {r0}                      ; 0801C79A
 bx    r0                        ; 0801C79C
 .pool                           ; 0801C79E
 
-ExtObjInit71_7D:
+ExtObj71_7D_Init:
 ; object 00.71-7D init
 push  {r4-r5,lr}                ; 0801C7A0
 mov   r4,r0                     ; 0801C7A2
@@ -1053,13 +1053,13 @@ mov   r3,r4                     ; 0801C7C4
 add   r3,0x52                   ; 0801C7C6
 strh  r0,[r3]                   ; 0801C7C8  set height
 mov   r0,r4                     ; 0801C7CA
-bl    Sub0801A070               ; 0801C7CC  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C7CC  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r5}                   ; 0801C7D0
 pop   {r0}                      ; 0801C7D2
 bx    r0                        ; 0801C7D4
 .pool                           ; 0801C7D6
 
-ExtObjInit6D_70:
+ExtObj6D_70_Init:
 ; object 00.6D-70 init
 push  {r4,lr}                   ; 0801C7E0
 mov   r12,r0                    ; 0801C7E2
@@ -1084,7 +1084,7 @@ strh  r0,[r3]                   ; 0801C806  set width to 2
 add   r3,0x4                    ; 0801C808  +52
 strh  r0,[r3]                   ; 0801C80A  set height to 2
 mov   r0,r12                    ; 0801C80C
-bl    Sub0801A070               ; 0801C80E  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C80E  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801C812
 pop   {r0}                      ; 0801C814
 bx    r0                        ; 0801C816
@@ -1108,12 +1108,12 @@ mov   r1,r0                     ; 0801C82A
 add   r1,0x52                   ; 0801C82C
 strh  r4,[r1]                   ; 0801C82E  set height to input r2
 mov   r1,r3                     ; 0801C830
-bl    Sub0801A070               ; 0801C832  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C832  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r5}                   ; 0801C836
 pop   {r0}                      ; 0801C838
 bx    r0                        ; 0801C83A
 
-ExtObjInit6C:
+ExtObj6C_Init:
 ; object 00.6C init
 push  {r4,lr}                   ; 0801C83C
 add   sp,-0x4                   ; 0801C83E
@@ -1137,7 +1137,7 @@ pop   {r4}                      ; 0801C862
 pop   {r0}                      ; 0801C864
 bx    r0                        ; 0801C866
 
-ExtObjInit6B:
+ExtObj6B_Init:
 ; object 00.6B init
 push  {r4,lr}                   ; 0801C868
 add   sp,-0x4                   ; 0801C86A
@@ -1161,7 +1161,7 @@ pop   {r4}                      ; 0801C88E
 pop   {r0}                      ; 0801C890
 bx    r0                        ; 0801C892
 
-ExtObjInit6A:
+ExtObj6A_Init:
 ; object 00.6A init
 push  {r4,lr}                   ; 0801C894
 add   sp,-0x4                   ; 0801C896
@@ -1185,24 +1185,24 @@ pop   {r4}                      ; 0801C8BA
 pop   {r0}                      ; 0801C8BC
 bx    r0                        ; 0801C8BE
 
-ExtObjInit68_69:
+ExtObj68_69_Init:
 ; object 00.68-69 init
 push  {r4,lr}                   ; 0801C8C0
 mov   r4,r0                     ; 0801C8C2
 bl    Sub08019D64               ; 0801C8C4  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801C8C8
-bl    ExtObjMain68_69           ; 0801C8CA
+bl    ExtObj68_69_Main          ; 0801C8CA
 pop   {r4}                      ; 0801C8CE
 pop   {r0}                      ; 0801C8D0
 bx    r0                        ; 0801C8D2
 
-ExtObjInit67:
+ExtObj67_Init:
 ; object 00.67 init
 push  {r4,lr}                   ; 0801C8D4
 mov   r4,r0                     ; 0801C8D6
 bl    Sub08019D64               ; 0801C8D8  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801C8DC
-bl    ExtObjMain67              ; 0801C8DE
+bl    ExtObj67_Main             ; 0801C8DE
 pop   {r4}                      ; 0801C8E2
 pop   {r0}                      ; 0801C8E4
 bx    r0                        ; 0801C8E6
@@ -1235,13 +1235,13 @@ strh  r4,[r0]                   ; 0801C904  width = r2 input
 add   r0,0x4                    ; 0801C906
 strh  r3,[r0]                   ; 0801C908  height = r3 input
 mov   r0,r5                     ; 0801C90A
-bl    Sub0801A070               ; 0801C90C  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801C90C  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r6}                   ; 0801C910
 pop   {r0}                      ; 0801C912
 bx    r0                        ; 0801C914
 .pool                           ; 0801C916
 
-ExtObjInit66:
+ExtObj66_Init:
 ; object 00.66 init
 push  {lr}                      ; 0801C918
 add   sp,-0x8                   ; 0801C91A
@@ -1259,7 +1259,7 @@ add   sp,0x8                    ; 0801C932
 pop   {r0}                      ; 0801C934
 bx    r0                        ; 0801C936
 
-ExtObjInit65:
+ExtObj65_Init:
 ; object 00.65 init
 push  {lr}                      ; 0801C938
 add   sp,-0x8                   ; 0801C93A
@@ -1302,7 +1302,7 @@ pop   {r0}                      ; 0801C97E
 bx    r0                        ; 0801C980
 .pool                           ; 0801C982
 
-ExtObjInit64:
+ExtObj64_Init:
 ; object 00.64 init
 push  {r4-r5,lr}                ; 0801C984
 mov   r4,r0                     ; 0801C986
@@ -1320,7 +1320,7 @@ pop   {r4-r5}                   ; 0801C99E
 pop   {r0}                      ; 0801C9A0
 bx    r0                        ; 0801C9A2
 
-ExtObjInit63:
+ExtObj63_Init:
 ; object 00.63 init
 push  {r4-r5,lr}                ; 0801C9A4
 mov   r4,r0                     ; 0801C9A6
@@ -1363,7 +1363,7 @@ pop   {r0}                      ; 0801C9EA
 bx    r0                        ; 0801C9EC
 .pool                           ; 0801C9EE
 
-ExtObjInit62:
+ExtObj62_Init:
 ; object 00.62 init
 push  {r4-r5,lr}                ; 0801C9F0
 mov   r4,r0                     ; 0801C9F2
@@ -1381,7 +1381,7 @@ pop   {r4-r5}                   ; 0801CA0A
 pop   {r0}                      ; 0801CA0C
 bx    r0                        ; 0801CA0E
 
-ExtObjInit61:
+ExtObj61_Init:
 ; object 00.61 init
 push  {r4-r5,lr}                ; 0801CA10
 mov   r4,r0                     ; 0801CA12
@@ -1399,7 +1399,7 @@ pop   {r4-r5}                   ; 0801CA2A
 pop   {r0}                      ; 0801CA2C
 bx    r0                        ; 0801CA2E
 
-ExtObjInit60:
+ExtObj60_Init:
 ; object 00.60 init
 push  {lr}                      ; 0801CA30
 add   sp,-0x8                   ; 0801CA32
@@ -1417,7 +1417,7 @@ add   sp,0x8                    ; 0801CA4A
 pop   {r0}                      ; 0801CA4C
 bx    r0                        ; 0801CA4E
 
-ExtObjInit5F:
+ExtObj5F_Init:
 ; object 00.5F init
 push  {lr}                      ; 0801CA50
 add   sp,-0x8                   ; 0801CA52
@@ -1435,18 +1435,18 @@ add   sp,0x8                    ; 0801CA6A
 pop   {r0}                      ; 0801CA6C
 bx    r0                        ; 0801CA6E
 
-ExtObjInit5E:
+ExtObj5E_Init:
 ; object 00.5E init
 push  {r4,lr}                   ; 0801CA70
 mov   r4,r0                     ; 0801CA72
 bl    Sub08019D64               ; 0801CA74  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801CA78
-bl    ExtObjMain5E              ; 0801CA7A
+bl    ExtObj5E_Main             ; 0801CA7A
 pop   {r4}                      ; 0801CA7E
 pop   {r0}                      ; 0801CA80
 bx    r0                        ; 0801CA82
 
-ExtObjInit5B_5D:
+ExtObj5B_5D_Init:
 ; object 00.5B-5D init
 push  {r4,lr}                   ; 0801CA84
 mov   r12,r0                    ; 0801CA86
@@ -1470,13 +1470,13 @@ add   r3,0x52                   ; 0801CAA8
 mov   r0,0x2                    ; 0801CAAA
 strh  r0,[r3]                   ; 0801CAAC  set height to 2
 mov   r0,r12                    ; 0801CAAE
-bl    Sub0801A070               ; 0801CAB0  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801CAB0  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801CAB4
 pop   {r0}                      ; 0801CAB6
 bx    r0                        ; 0801CAB8
 .pool                           ; 0801CABA
 
-ExtObjInit58_5A:
+ExtObj58_5A_Init:
 ; object 00.58-5A init
 push  {r4-r5,lr}                ; 0801CABC
 mov   r12,r0                    ; 0801CABE
@@ -1500,13 +1500,13 @@ add   r3,0x52                   ; 0801CAE0
 mov   r0,0x2                    ; 0801CAE2
 strh  r0,[r3]                   ; 0801CAE4  set height to 2
 mov   r0,r12                    ; 0801CAE6
-bl    Sub0801A070               ; 0801CAE8  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801CAE8  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r5}                   ; 0801CAEC
 pop   {r0}                      ; 0801CAEE
 bx    r0                        ; 0801CAF0
 .pool                           ; 0801CAF2
 
-ExtObjInit56_57:
+ExtObj56_57_Init:
 ; object 00.56-57 init
 push  {r4,lr}                   ; 0801CAF4
 mov   r12,r0                    ; 0801CAF6
@@ -1529,12 +1529,12 @@ add   r3,0x4                    ; 0801CB16
 mov   r0,0x3                    ; 0801CB18
 strh  r0,[r3]                   ; 0801CB1A  set height to 3
 mov   r0,r12                    ; 0801CB1C
-bl    Sub0801A070               ; 0801CB1E  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801CB1E  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801CB22
 pop   {r0}                      ; 0801CB24
 bx    r0                        ; 0801CB26
 
-ExtObjInit54_55:
+ExtObj54_55_Init:
 ; object 00.54-55 init
 push  {r4,lr}                   ; 0801CB28
 mov   r12,r0                    ; 0801CB2A
@@ -1556,13 +1556,13 @@ strh  r0,[r3]                   ; 0801CB48  set width to 3
 add   r3,0x4                    ; 0801CB4A  +52
 strh  r0,[r3]                   ; 0801CB4C  set height to 3
 mov   r0,r12                    ; 0801CB4E
-bl    Sub0801A070               ; 0801CB50  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801CB50  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801CB54
 pop   {r0}                      ; 0801CB56
 bx    r0                        ; 0801CB58
 .pool                           ; 0801CB5A
 
-ExtObjInit53:
+ExtObj53_Init:
 ; object 00.53 init
 push  {r4-r5,lr}                ; 0801CB5C
 mov   r12,r0                    ; 0801CB5E
@@ -1590,13 +1590,13 @@ add   r3,0x4                    ; 0801CB88  +52
 mov   r0,0x3                    ; 0801CB8A
 strh  r0,[r3]                   ; 0801CB8C  set height to 3
 mov   r0,r12                    ; 0801CB8E
-bl    Sub0801A070               ; 0801CB90  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801CB90  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r5}                   ; 0801CB94
 pop   {r0}                      ; 0801CB96
 bx    r0                        ; 0801CB98
 .pool                           ; 0801CB9A
 
-ExtObjInit52:
+ExtObj52_Init:
 ; object 00.52 init
 push  {r4-r5,lr}                ; 0801CBA4
 mov   r12,r0                    ; 0801CBA6
@@ -1624,24 +1624,24 @@ add   r3,0x4                    ; 0801CBD0  +52
 mov   r0,0x2                    ; 0801CBD2
 strh  r0,[r3]                   ; 0801CBD4  set height to 2
 mov   r0,r12                    ; 0801CBD6
-bl    Sub0801A070               ; 0801CBD8  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801CBD8  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r5}                   ; 0801CBDC
 pop   {r0}                      ; 0801CBDE
 bx    r0                        ; 0801CBE0
 .pool                           ; 0801CBE2
 
-ExtObjInit51:
+ExtObj51_Init:
 ; object 00.51 init
 push  {r4,lr}                   ; 0801CBEC
 mov   r4,r0                     ; 0801CBEE
 bl    Sub08019D64               ; 0801CBF0  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801CBF4
-bl    ExtObjMain51              ; 0801CBF6
+bl    ExtObj51_Main             ; 0801CBF6
 pop   {r4}                      ; 0801CBFA
 pop   {r0}                      ; 0801CBFC
 bx    r0                        ; 0801CBFE
 
-ExtObjInit50_A8:
+ExtObj50_A8_Init:
 ; object 00.50,00.A8 init
 push  {r4,lr}                   ; 0801CC00
 mov   r12,r0                    ; 0801CC02
@@ -1666,23 +1666,23 @@ strh  r0,[r3]                   ; 0801CC26  set width to 2
 add   r3,0x4                    ; 0801CC28  r3 = [03007240]+52 (0300225E)
 strh  r0,[r3]                   ; 0801CC2A  set height to 2
 mov   r0,r12                    ; 0801CC2C
-bl    Sub0801A070               ; 0801CC2E  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801CC2E  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801CC32
 pop   {r0}                      ; 0801CC34
 bx    r0                        ; 0801CC36
 
-ExtObjInit4F:
+ExtObj4F_Init:
 ; object 00.4F init
 push  {r4,lr}                   ; 0801CC38
 mov   r4,r0                     ; 0801CC3A
 bl    Sub08019D64               ; 0801CC3C  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801CC40
-bl    ExtObjMain4F              ; 0801CC42
+bl    ExtObj4F_Main             ; 0801CC42
 pop   {r4}                      ; 0801CC46
 pop   {r0}                      ; 0801CC48
 bx    r0                        ; 0801CC4A
 
-ExtObjInit4E:
+ExtObj4E_Init:
 ; object 00.4E init
 push  {r4,lr}                   ; 0801CC4C
 lsl   r1,r1,0x10                ; 0801CC4E
@@ -1701,12 +1701,12 @@ mov   r12,r3                    ; 0801CC66
 mov   r3,0x2                    ; 0801CC68
 mov   r4,r12                    ; 0801CC6A
 strh  r3,[r4]                   ; 0801CC6C  set height to 2
-bl    Sub0801A070               ; 0801CC6E  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801CC6E  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801CC72
 pop   {r0}                      ; 0801CC74
 bx    r0                        ; 0801CC76
 
-ExtObjInit4D:
+ExtObj4D_Init:
 ; object 00.4D init
 push  {r4,lr}                   ; 0801CC78
 lsl   r1,r1,0x10                ; 0801CC7A
@@ -1721,45 +1721,45 @@ mov   r4,r12                    ; 0801CC8A
 strh  r3,[r4]                   ; 0801CC8C  set width to 2
 mov   r4,0x52                   ; 0801CC8E
 strh  r3,[r4,r0]                ; 0801CC90  set height to 2
-bl    Sub0801A070               ; 0801CC92  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801CC92  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801CC96
 pop   {r0}                      ; 0801CC98
 bx    r0                        ; 0801CC9A
 
-ExtObjInit4C:
+ExtObj4C_Init:
 ; object 00.4C init
 push  {r4,lr}                   ; 0801CC9C
 mov   r4,r0                     ; 0801CC9E
 bl    Sub08019D64               ; 0801CCA0  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801CCA4
-bl    ExtObjMain4C              ; 0801CCA6
+bl    ExtObj4C_Main             ; 0801CCA6
 pop   {r4}                      ; 0801CCAA
 pop   {r0}                      ; 0801CCAC
 bx    r0                        ; 0801CCAE
 
-ExtObjInit4B:
+ExtObj4B_Init:
 ; object 00.4B init
 push  {r4,lr}                   ; 0801CCB0
 mov   r4,r0                     ; 0801CCB2
 bl    Sub08019D64               ; 0801CCB4  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801CCB8
-bl    ExtObjMain4B              ; 0801CCBA
+bl    ExtObj4B_Main             ; 0801CCBA
 pop   {r4}                      ; 0801CCBE
 pop   {r0}                      ; 0801CCC0
 bx    r0                        ; 0801CCC2
 
-ExtObjInit4A:
+ExtObj4A_Init:
 ; object 00.4A init
 push  {r4,lr}                   ; 0801CCC4
 mov   r4,r0                     ; 0801CCC6
 bl    Sub08019D64               ; 0801CCC8  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801CCCC
-bl    ExtObjMain4A              ; 0801CCCE
+bl    ExtObj4A_Main             ; 0801CCCE
 pop   {r4}                      ; 0801CCD2
 pop   {r0}                      ; 0801CCD4
 bx    r0                        ; 0801CCD6
 
-ExtObjInit49_4A:
+ExtObj49_4A_Init:
 ; object 00.49 init
 push  {r4-r5,lr}                ; 0801CCD8
 mov   r12,r0                    ; 0801CCDA
@@ -1787,13 +1787,13 @@ add   r3,0x4                    ; 0801CD04  +52
 mov   r0,0x1                    ; 0801CD06
 strh  r0,[r3]                   ; 0801CD08  set height to 1
 mov   r0,r12                    ; 0801CD0A
-bl    Sub0801A070               ; 0801CD0C  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801CD0C  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r5}                   ; 0801CD10
 pop   {r0}                      ; 0801CD12
 bx    r0                        ; 0801CD14
 .pool                           ; 0801CD16
 
-ExtObjInit48:
+ExtObj48_Init:
 ; object 00.48 init
 push  {r4-r6,lr}                ; 0801CD20
 mov   r12,r0                    ; 0801CD22
@@ -1822,13 +1822,13 @@ add   r3,0x4                    ; 0801CD4E
 mov   r0,0x14                   ; 0801CD50
 strh  r0,[r3]                   ; 0801CD52  set height to 0x14
 mov   r0,r12                    ; 0801CD54
-bl    Sub0801A070               ; 0801CD56  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801CD56  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r6}                   ; 0801CD5A
 pop   {r0}                      ; 0801CD5C
 bx    r0                        ; 0801CD5E
 .pool                           ; 0801CD60
 
-ExtObjInit47:
+ExtObj47_Init:
 ; object 00.47 init
 push  {r4-r6,lr}                ; 0801CD6C
 mov   r12,r0                    ; 0801CD6E
@@ -1855,24 +1855,24 @@ strh  r0,[r3]                   ; 0801CD96  set width to 4
 add   r3,0x4                    ; 0801CD98  r1 = [03007240]+52 (0300225E)
 strh  r0,[r3]                   ; 0801CD9A  set height to 4
 mov   r0,r12                    ; 0801CD9C
-bl    Sub0801A070               ; 0801CD9E  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801CD9E  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r6}                   ; 0801CDA2
 pop   {r0}                      ; 0801CDA4
 bx    r0                        ; 0801CDA6
 .pool                           ; 0801CDA8
 
-ExtObjInit46:
+ExtObj46_Init:
 ; object 00.46 init
 push  {r4,lr}                   ; 0801CDB0
 mov   r4,r0                     ; 0801CDB2
 bl    Sub08019D64               ; 0801CDB4  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801CDB8
-bl    ExtObjMain46              ; 0801CDBA
+bl    ExtObj46_Main             ; 0801CDBA
 pop   {r4}                      ; 0801CDBE
 pop   {r0}                      ; 0801CDC0
 bx    r0                        ; 0801CDC2
 
-ExtObjInit32_45:
+ExtObj32_45_Init:
 ; object 00.32-45 init
 push  {r4,lr}                   ; 0801CDC4
 mov   r4,r0                     ; 0801CDC6
@@ -1883,13 +1883,13 @@ ldrh  r0,[r1]                   ; 0801CDD0  extended object ID
 sub   r0,0x32                   ; 0801CDD2
 strh  r0,[r1]                   ; 0801CDD4  extID-32
 mov   r0,r4                     ; 0801CDD6
-bl    ExtObjMain32_45           ; 0801CDD8
+bl    ExtObj32_45_Main          ; 0801CDD8
 pop   {r4}                      ; 0801CDDC
 pop   {r0}                      ; 0801CDDE
 bx    r0                        ; 0801CDE0
 .pool                           ; 0801CDE2
 
-ExtObjInit31:
+ExtObj31_Init:
 ; object 00.31 init
 push  {r4,lr}                   ; 0801CDE4
 lsl   r1,r1,0x10                ; 0801CDE6
@@ -1908,12 +1908,12 @@ mov   r12,r3                    ; 0801CDFE
 mov   r3,0x7                    ; 0801CE00
 mov   r4,r12                    ; 0801CE02
 strh  r3,[r4]                   ; 0801CE04  set height to 7
-bl    Sub0801A070               ; 0801CE06  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801CE06  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801CE0A
 pop   {r0}                      ; 0801CE0C
 bx    r0                        ; 0801CE0E
 
-ExtObjInit30:
+ExtObj30_Init:
 ; object 00.30 init
 push  {r4-r5,lr}                ; 0801CE10
 mov   r12,r0                    ; 0801CE12
@@ -1941,13 +1941,13 @@ add   r3,0x4                    ; 0801CE3C  +52
 mov   r0,0x2                    ; 0801CE3E
 strh  r0,[r3]                   ; 0801CE40  set height to 4
 mov   r0,r12                    ; 0801CE42
-bl    Sub0801A070               ; 0801CE44  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801CE44  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r5}                   ; 0801CE48
 pop   {r0}                      ; 0801CE4A
 bx    r0                        ; 0801CE4C
 .pool                           ; 0801CE4E
 
-ExtObjInit20_2F:
+ExtObj20_2F_Init:
 ; object 00.20-2F init
 push  {r4,lr}                   ; 0801CE58
 mov   r4,r0                     ; 0801CE5A
@@ -1964,7 +1964,7 @@ pop   {r0}                      ; 0801CE72
 bx    r0                        ; 0801CE74
 .pool                           ; 0801CE76
 
-ExtObjInit1F:
+ExtObj1F_Init:
 ; object 00.1F init
 push  {r4,lr}                   ; 0801CE78
 lsl   r1,r1,0x10                ; 0801CE7A
@@ -1979,12 +1979,12 @@ mov   r4,r12                    ; 0801CE8A
 strh  r3,[r4]                   ; 0801CE8C  set width to 4
 mov   r4,0x52                   ; 0801CE8E
 strh  r3,[r4,r0]                ; 0801CE90  set height to 4
-bl    Sub0801A070               ; 0801CE92  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801CE92  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801CE96
 pop   {r0}                      ; 0801CE98
 bx    r0                        ; 0801CE9A
 
-ExtObjInit1E:
+ExtObj1E_Init:
 ; object 00.1E init
 push  {r4,lr}                   ; 0801CE9C
 lsl   r1,r1,0x10                ; 0801CE9E
@@ -2003,7 +2003,7 @@ mov   r12,r3                    ; 0801CEB6
 mov   r3,0x4                    ; 0801CEB8
 mov   r4,r12                    ; 0801CEBA
 strh  r3,[r4]                   ; 0801CEBC  set height to 4
-bl    Sub0801A070               ; 0801CEBE  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801CEBE  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801CEC2
 pop   {r0}                      ; 0801CEC4
 bx    r0                        ; 0801CEC6
@@ -2023,12 +2023,12 @@ mov   r4,r12                    ; 0801CEDA
 strh  r3,[r4]                   ; 0801CEDC  set height to 2
 mov   r4,0x4E                   ; 0801CEDE
 strh  r3,[r4,r0]                ; 0801CEE0  set width to 2
-bl    Sub0801A070               ; 0801CEE2  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801CEE2  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801CEE6
 pop   {r0}                      ; 0801CEE8
 bx    r0                        ; 0801CEEA
 
-ExtObjInit1B:
+ExtObj1B_Init:
 ; object 00.1B init
 push  {r4,lr}                   ; 0801CEEC
 lsl   r1,r1,0x10                ; 0801CEEE
@@ -2046,7 +2046,7 @@ pop   {r4}                      ; 0801CF06
 pop   {r0}                      ; 0801CF08
 bx    r0                        ; 0801CF0A
 
-ExtObjInit1C:
+ExtObj1C_Init:
 ; object 00.1C init
 push  {r4,lr}                   ; 0801CF0C
 lsl   r1,r1,0x10                ; 0801CF0E
@@ -2064,7 +2064,7 @@ pop   {r4}                      ; 0801CF26
 pop   {r0}                      ; 0801CF28
 bx    r0                        ; 0801CF2A
 
-ExtObjInit1D:
+ExtObj1D_Init:
 ; object 00.1D init
 push  {r4,lr}                   ; 0801CF2C
 lsl   r1,r1,0x10                ; 0801CF2E
@@ -2082,7 +2082,7 @@ pop   {r4}                      ; 0801CF46
 pop   {r0}                      ; 0801CF48
 bx    r0                        ; 0801CF4A
 
-ExtObjInit19:
+ExtObj19_Init:
 ; object 00.19 init
 push  {r4-r5,lr}                ; 0801CF4C
 mov   r4,r0                     ; 0801CF4E
@@ -2107,12 +2107,12 @@ mov   r0,r4                     ; 0801CF72
 add   r0,0x42                   ; 0801CF74
 strh  r3,[r0]                   ; 0801CF76  [0300224E] = 0
 mov   r0,r4                     ; 0801CF78
-bl    Sub0801A070               ; 0801CF7A  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801CF7A  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r5}                   ; 0801CF7E
 pop   {r0}                      ; 0801CF80
 bx    r0                        ; 0801CF82
 
-ExtObjInit1A:
+ExtObj1A_Init:
 ; object 00.1A init
 push  {lr}                      ; 0801CF84
 mov   r12,r0                    ; 0801CF86
@@ -2131,12 +2131,12 @@ sub   r3,0x10                   ; 0801CF9E
 mov   r0,0x1                    ; 0801CFA0
 strh  r0,[r3]                   ; 0801CFA2  [0300224E] = 1
 mov   r0,r12                    ; 0801CFA4
-bl    Sub0801A070               ; 0801CFA6  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801CFA6  Object processing main, slope=0, no relative Y threshold
 pop   {r0}                      ; 0801CFAA
 bx    r0                        ; 0801CFAC
 .pool                           ; 0801CFAE
 
-ExtObjInit18:
+ExtObj18_Init:
 ; object 00.18 init
 push  {r4,lr}                   ; 0801CFB0
 lsl   r1,r1,0x10                ; 0801CFB2
@@ -2151,34 +2151,34 @@ mov   r4,r12                    ; 0801CFC2
 strh  r3,[r4]                   ; 0801CFC4  set width to 0x10
 mov   r4,0x4E                   ; 0801CFC6
 strh  r3,[r4,r0]                ; 0801CFC8  set height to 0x10
-bl    Sub0801A070               ; 0801CFCA  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801CFCA  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801CFCE
 pop   {r0}                      ; 0801CFD0
 bx    r0                        ; 0801CFD2
 
-ExtObjInit17:
+ExtObj17_Init:
 ; object 00.17 init
 push  {r4,lr}                   ; 0801CFD4
 mov   r4,r0                     ; 0801CFD6
 bl    Sub08019D64               ; 0801CFD8  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801CFDC
-bl    ExtObjMain17              ; 0801CFDE
+bl    ExtObj17_Main             ; 0801CFDE
 pop   {r4}                      ; 0801CFE2
 pop   {r0}                      ; 0801CFE4
 bx    r0                        ; 0801CFE6
 
-ExtObjInit16:
+ExtObj16_Init:
 ; object 00.16 init
 push  {r4,lr}                   ; 0801CFE8
 mov   r4,r0                     ; 0801CFEA
 bl    Sub08019D64               ; 0801CFEC  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801CFF0
-bl    ExtObjMain16              ; 0801CFF2
+bl    ExtObj16_Main             ; 0801CFF2
 pop   {r4}                      ; 0801CFF6
 pop   {r0}                      ; 0801CFF8
 bx    r0                        ; 0801CFFA
 
-ExtObjInit14:
+ExtObj14_Init:
 ; object 00.14 init
 push  {r4,lr}                   ; 0801CFFC
 mov   r12,r0                    ; 0801CFFE
@@ -2206,13 +2206,13 @@ mov   r0,r12                    ; 0801D028
 add   r0,0x44                   ; 0801D02A  r0 = [03007240]+44 (03002250)
 strh  r3,[r0]                   ; 0801D02C  set slope to +1
 mov   r0,r12                    ; 0801D02E
-bl    Sub0801A04C               ; 0801D030  Object processing main, no relative Y threshold
+bl    ObjMain_NoRelY            ; 0801D030  Object processing main, no relative Y threshold
 pop   {r4}                      ; 0801D034
 pop   {r0}                      ; 0801D036
 bx    r0                        ; 0801D038
 .pool                           ; 0801D03A
 
-ExtObjInit15:
+ExtObj15_Init:
 ; object 00.15 init
 push  {r4,lr}                   ; 0801D040
 mov   r12,r0                    ; 0801D042
@@ -2240,13 +2240,13 @@ mov   r0,r12                    ; 0801D06C
 add   r0,0x44                   ; 0801D06E  r0 = [03007240]+44 (03002250)
 strh  r3,[r0]                   ; 0801D070  set slope to -1
 mov   r0,r12                    ; 0801D072
-bl    Sub0801A04C               ; 0801D074  Object processing main, no relative Y threshold
+bl    ObjMain_NoRelY            ; 0801D074  Object processing main, no relative Y threshold
 pop   {r4}                      ; 0801D078
 pop   {r0}                      ; 0801D07A
 bx    r0                        ; 0801D07C
 .pool                           ; 0801D07E
 
-ExtObjInit12:
+ExtObj12_Init:
 ; object 00.12 init
 push  {r4,lr}                   ; 0801D084
 lsl   r1,r1,0x10                ; 0801D086
@@ -2265,12 +2265,12 @@ mov   r12,r3                    ; 0801D09E
 mov   r3,0x5                    ; 0801D0A0
 mov   r4,r12                    ; 0801D0A2
 strh  r3,[r4]                   ; 0801D0A4  set width to 5
-bl    Sub0801A070               ; 0801D0A6  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801D0A6  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801D0AA
 pop   {r0}                      ; 0801D0AC
 bx    r0                        ; 0801D0AE
 
-ExtObjInit13:
+ExtObj13_Init:
 ; object 00.13 init
 push  {r4,lr}                   ; 0801D0B0
 lsl   r1,r1,0x10                ; 0801D0B2
@@ -2289,12 +2289,12 @@ mov   r12,r3                    ; 0801D0CA
 mov   r3,0x5                    ; 0801D0CC
 mov   r4,r12                    ; 0801D0CE
 strh  r3,[r4]                   ; 0801D0D0  set width to 5
-bl    Sub0801A070               ; 0801D0D2  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801D0D2  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801D0D6
 pop   {r0}                      ; 0801D0D8
 bx    r0                        ; 0801D0DA
 
-ExtObjInit11:
+ExtObj11_Init:
 ; object 00.11 init
 push  {r4,lr}                   ; 0801D0DC
 lsl   r1,r1,0x10                ; 0801D0DE
@@ -2307,12 +2307,12 @@ strh  r3,[r4,r0]                ; 0801D0EA  set height to 1
 mov   r3,0x2                    ; 0801D0EC
 mov   r4,0x4E                   ; 0801D0EE
 strh  r3,[r4,r0]                ; 0801D0F0  set width to 2
-bl    Sub0801A070               ; 0801D0F2  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801D0F2  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801D0F6
 pop   {r0}                      ; 0801D0F8
 bx    r0                        ; 0801D0FA
 
-ExtObjInit10:
+ExtObj10_Init:
 ; object 00.10 init
 push  {r4,lr}                   ; 0801D0FC
 lsl   r1,r1,0x10                ; 0801D0FE
@@ -2325,23 +2325,23 @@ strh  r3,[r4,r0]                ; 0801D10A  set width to 0x10
 mov   r3,0x20                   ; 0801D10C
 mov   r4,0x52                   ; 0801D10E
 strh  r3,[r4,r0]                ; 0801D110  set height to 0x20
-bl    Sub0801A070               ; 0801D112  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801D112  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801D116
 pop   {r0}                      ; 0801D118
 bx    r0                        ; 0801D11A
 
-ExtObjInit0F:
+ExtObj0F_Init:
 ; object 00.0F init
 push  {r4,lr}                   ; 0801D11C
 mov   r4,r0                     ; 0801D11E
 bl    Sub08019D64               ; 0801D120  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801D124
-bl    ExtObjMain0F              ; 0801D126
+bl    ExtObj0F_Main             ; 0801D126
 pop   {r4}                      ; 0801D12A
 pop   {r0}                      ; 0801D12C
 bx    r0                        ; 0801D12E
 
-ExtObjInit0D_0E:
+ExtObj0D_0E_Init:
 ; object 00.0D-0E init
 push  {r4,lr}                   ; 0801D130
 mov   r12,r0                    ; 0801D132
@@ -2365,13 +2365,13 @@ add   r3,0x4                    ; 0801D154
 mov   r0,0x10                   ; 0801D156
 strh  r0,[r3]                   ; 0801D158  set height to 0x10
 mov   r0,r12                    ; 0801D15A
-bl    Sub0801A070               ; 0801D15C  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801D15C  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801D160
 pop   {r0}                      ; 0801D162
 bx    r0                        ; 0801D164
 .pool                           ; 0801D166
 
-ExtObjInit0C:
+ExtObj0C_Init:
 ; object 00.0C init
 push  {r4,lr}                   ; 0801D168
 lsl   r1,r1,0x10                ; 0801D16A
@@ -2391,13 +2391,13 @@ mov   r12,r3                    ; 0801D184
 mov   r3,0x4                    ; 0801D186
 mov   r4,r12                    ; 0801D188
 strh  r3,[r4]                   ; 0801D18A  set height to 4
-bl    Sub0801A070               ; 0801D18C  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801D18C  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801D190
 pop   {r0}                      ; 0801D192
 bx    r0                        ; 0801D194
 .pool                           ; 0801D196
 
-ExtObjInit0A_0B:
+ExtObj0A_0B_Init:
 ; object 00.0A-0B init
 push  {r4,lr}                   ; 0801D198
 mov   r12,r0                    ; 0801D19A
@@ -2422,12 +2422,12 @@ and   r0,r3                     ; 0801D1BE
 lsl   r0,r0,0x1                 ; 0801D1C0
 strh  r0,[r4]                   ; 0801D1C2  [0300224E] = (extID-0A)*2
 mov   r0,r12                    ; 0801D1C4
-bl    Sub0801A070               ; 0801D1C6  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801D1C6  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                      ; 0801D1CA
 pop   {r0}                      ; 0801D1CC
 bx    r0                        ; 0801D1CE
 
-ExtObjInit00_09:
+ExtObj00_09_Init:
 ; object 00.00-09 init
 push  {r4-r6,lr}                ; 0801D1D0
 mov   r4,r0                     ; 0801D1D2
@@ -2452,7 +2452,7 @@ strh  r0,[r6]                   ; 0801D1F6  set height to 3
 lsl   r3,r3,0x1                 ; 0801D1F8
 strh  r3,[r5]                   ; 0801D1FA  [0300224E] = extID*2
 mov   r0,r4                     ; 0801D1FC
-bl    Sub0801A070               ; 0801D1FE  Object processing main, slope=0, no relative Y threshold
+bl    ObjMain_Slope0_NoRelY     ; 0801D1FE  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r6}                   ; 0801D202
 pop   {r0}                      ; 0801D204
 bx    r0                        ; 0801D206
