@@ -66,7 +66,7 @@ ExtObjFD_Init:
 ; object 00.FD init
 push  {r4,lr}                   ; 0801C01C
 mov   r4,r0                     ; 0801C01E
-bl    Sub08019D64               ; 0801C020  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 0801C020  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801C024
 bl    ExtObjFD_Main             ; 0801C026
 pop   {r4}                      ; 0801C02A
@@ -160,7 +160,7 @@ ExtObjCA_D3_Init:
 ; object 00.CA-D3 init
 push  {r4,lr}                   ; 0801C0C8
 mov   r4,r0                     ; 0801C0CA
-bl    Sub08019D64               ; 0801C0CC  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 0801C0CC  set layer 1 tilemap index and pre-existing tile
 mov   r1,r4                     ; 0801C0D0
 add   r1,0x42                   ; 0801C0D2
 ldrh  r0,[r1]                   ; 0801C0D4  extended object ID
@@ -213,7 +213,7 @@ ExtObjC4_Init:
 ; object 00.C4 init
 push  {r4,lr}                   ; 0801C134
 mov   r4,r0                     ; 0801C136
-bl    Sub08019D64               ; 0801C138  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 0801C138  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801C13C
 bl    ExtObjC4_Main             ; 0801C13E
 pop   {r4}                      ; 0801C142
@@ -453,7 +453,7 @@ ExtObjB3_Init:
 ; object 00.B3 init
 push  {r4,lr}                   ; 0801C304
 mov   r4,r0                     ; 0801C306
-bl    Sub08019D64               ; 0801C308  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 0801C308  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801C30C
 bl    ExtObjB3_Main             ; 0801C30E
 pop   {r4}                      ; 0801C312
@@ -542,7 +542,7 @@ ExtObjA7_Init:
 ; object 00.A7 init
 push  {r4,lr}                   ; 0801C3B8
 mov   r4,r0                     ; 0801C3BA
-bl    Sub08019D64               ; 0801C3BC  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 0801C3BC  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801C3C0
 bl    ExtObjA7_Main             ; 0801C3C2
 pop   {r4}                      ; 0801C3C6
@@ -690,7 +690,7 @@ ExtObj9E_9F_Init:
 ; object 00.9E-9F init
 push  {r4,lr}                   ; 0801C4F8
 mov   r4,r0                     ; 0801C4FA
-bl    Sub08019D64               ; 0801C4FC  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 0801C4FC  set layer 1 tilemap index and pre-existing tile
 mov   r2,r4                     ; 0801C500
 add   r2,0x42                   ; 0801C502
 ldrh  r1,[r2]                   ; 0801C504  extended object ID
@@ -709,7 +709,7 @@ ExtObj9A_9D_Init:
 ; object 00.9A-9D init
 push  {r4,lr}                   ; 0801C51C
 mov   r4,r0                     ; 0801C51E
-bl    Sub08019D64               ; 0801C520  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 0801C520  set layer 1 tilemap index and pre-existing tile
 mov   r2,r4                     ; 0801C524
 add   r2,0x42                   ; 0801C526
 ldrh  r1,[r2]                   ; 0801C528  extended object ID
@@ -790,7 +790,7 @@ ExtObj8E_91_Init:
 ; object 00.8E-91 init
 push  {r4,lr}                   ; 0801C5B4
 mov   r4,r0                     ; 0801C5B6
-bl    Sub08019D64               ; 0801C5B8  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 0801C5B8  set layer 1 tilemap index and pre-existing tile
 mov   r2,r4                     ; 0801C5BC
 add   r2,0x42                   ; 0801C5BE  [03007240]+42 (0300224E)
 ldrh  r0,[r2]                   ; 0801C5C0  extended object ID
@@ -811,7 +811,7 @@ ExtObj8D_Init:
 ; object 00.8D init
 push  {r4,lr}                   ; 0801C5DC
 mov   r4,r0                     ; 0801C5DE
-bl    Sub08019D64               ; 0801C5E0  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 0801C5E0  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801C5E4
 bl    ExtObj8D_Main             ; 0801C5E6
 pop   {r4}                      ; 0801C5EA
@@ -1000,7 +1000,7 @@ ExtObj80_Init:
 ; object 00.80 init
 push  {r4,lr}                   ; 0801C764
 mov   r4,r0                     ; 0801C766
-bl    Sub08019D64               ; 0801C768  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 0801C768  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801C76C
 bl    ExtObj80_Main             ; 0801C76E
 pop   {r4}                      ; 0801C772
@@ -1189,7 +1189,7 @@ ExtObj68_69_Init:
 ; object 00.68-69 init
 push  {r4,lr}                   ; 0801C8C0
 mov   r4,r0                     ; 0801C8C2
-bl    Sub08019D64               ; 0801C8C4  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 0801C8C4  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801C8C8
 bl    ExtObj68_69_Main          ; 0801C8CA
 pop   {r4}                      ; 0801C8CE
@@ -1200,7 +1200,7 @@ ExtObj67_Init:
 ; object 00.67 init
 push  {r4,lr}                   ; 0801C8D4
 mov   r4,r0                     ; 0801C8D6
-bl    Sub08019D64               ; 0801C8D8  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 0801C8D8  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801C8DC
 bl    ExtObj67_Main             ; 0801C8DE
 pop   {r4}                      ; 0801C8E2
@@ -1439,7 +1439,7 @@ ExtObj5E_Init:
 ; object 00.5E init
 push  {r4,lr}                   ; 0801CA70
 mov   r4,r0                     ; 0801CA72
-bl    Sub08019D64               ; 0801CA74  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 0801CA74  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801CA78
 bl    ExtObj5E_Main             ; 0801CA7A
 pop   {r4}                      ; 0801CA7E
@@ -1634,7 +1634,7 @@ ExtObj51_Init:
 ; object 00.51 init
 push  {r4,lr}                   ; 0801CBEC
 mov   r4,r0                     ; 0801CBEE
-bl    Sub08019D64               ; 0801CBF0  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 0801CBF0  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801CBF4
 bl    ExtObj51_Main             ; 0801CBF6
 pop   {r4}                      ; 0801CBFA
@@ -1675,7 +1675,7 @@ ExtObj4F_Init:
 ; object 00.4F init
 push  {r4,lr}                   ; 0801CC38
 mov   r4,r0                     ; 0801CC3A
-bl    Sub08019D64               ; 0801CC3C  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 0801CC3C  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801CC40
 bl    ExtObj4F_Main             ; 0801CC42
 pop   {r4}                      ; 0801CC46
@@ -1730,7 +1730,7 @@ ExtObj4C_Init:
 ; object 00.4C init
 push  {r4,lr}                   ; 0801CC9C
 mov   r4,r0                     ; 0801CC9E
-bl    Sub08019D64               ; 0801CCA0  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 0801CCA0  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801CCA4
 bl    ExtObj4C_Main             ; 0801CCA6
 pop   {r4}                      ; 0801CCAA
@@ -1741,7 +1741,7 @@ ExtObj4B_Init:
 ; object 00.4B init
 push  {r4,lr}                   ; 0801CCB0
 mov   r4,r0                     ; 0801CCB2
-bl    Sub08019D64               ; 0801CCB4  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 0801CCB4  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801CCB8
 bl    ExtObj4B_Main             ; 0801CCBA
 pop   {r4}                      ; 0801CCBE
@@ -1752,7 +1752,7 @@ ExtObj4A_Init:
 ; object 00.4A init
 push  {r4,lr}                   ; 0801CCC4
 mov   r4,r0                     ; 0801CCC6
-bl    Sub08019D64               ; 0801CCC8  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 0801CCC8  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801CCCC
 bl    ExtObj4A_Main             ; 0801CCCE
 pop   {r4}                      ; 0801CCD2
@@ -1865,7 +1865,7 @@ ExtObj46_Init:
 ; object 00.46 init
 push  {r4,lr}                   ; 0801CDB0
 mov   r4,r0                     ; 0801CDB2
-bl    Sub08019D64               ; 0801CDB4  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 0801CDB4  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801CDB8
 bl    ExtObj46_Main             ; 0801CDBA
 pop   {r4}                      ; 0801CDBE
@@ -1876,7 +1876,7 @@ ExtObj32_45_Init:
 ; object 00.32-45 init
 push  {r4,lr}                   ; 0801CDC4
 mov   r4,r0                     ; 0801CDC6
-bl    Sub08019D64               ; 0801CDC8  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 0801CDC8  set layer 1 tilemap index and pre-existing tile
 mov   r1,r4                     ; 0801CDCC
 add   r1,0x42                   ; 0801CDCE
 ldrh  r0,[r1]                   ; 0801CDD0  extended object ID
@@ -1951,7 +1951,7 @@ ExtObj20_2F_Init:
 ; object 00.20-2F init
 push  {r4,lr}                   ; 0801CE58
 mov   r4,r0                     ; 0801CE5A
-bl    Sub08019D64               ; 0801CE5C  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 0801CE5C  set layer 1 tilemap index and pre-existing tile
 mov   r1,r4                     ; 0801CE60
 add   r1,0x42                   ; 0801CE62
 ldrh  r0,[r1]                   ; 0801CE64  object ID
@@ -2160,7 +2160,7 @@ ExtObj17_Init:
 ; object 00.17 init
 push  {r4,lr}                   ; 0801CFD4
 mov   r4,r0                     ; 0801CFD6
-bl    Sub08019D64               ; 0801CFD8  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 0801CFD8  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801CFDC
 bl    ExtObj17_Main             ; 0801CFDE
 pop   {r4}                      ; 0801CFE2
@@ -2171,7 +2171,7 @@ ExtObj16_Init:
 ; object 00.16 init
 push  {r4,lr}                   ; 0801CFE8
 mov   r4,r0                     ; 0801CFEA
-bl    Sub08019D64               ; 0801CFEC  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 0801CFEC  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801CFF0
 bl    ExtObj16_Main             ; 0801CFF2
 pop   {r4}                      ; 0801CFF6
@@ -2334,7 +2334,7 @@ ExtObj0F_Init:
 ; object 00.0F init
 push  {r4,lr}                   ; 0801D11C
 mov   r4,r0                     ; 0801D11E
-bl    Sub08019D64               ; 0801D120  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 0801D120  set layer 1 tilemap index and pre-existing tile
 mov   r0,r4                     ; 0801D124
 bl    ExtObj0F_Main             ; 0801D126
 pop   {r4}                      ; 0801D12A

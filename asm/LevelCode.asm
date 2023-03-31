@@ -11582,7 +11582,7 @@ pop   {r0}                      ; 08019A88
 bx    r0                        ; 08019A8A
 .pool                           ; 08019A8C
 
-Sub08019A94:
+L1TilemapOffsetYPlus1:
 ; subroutine: return offset to layer 1 tilemap for y+1
 ; r0: 0300220C, r1: tile YXyx
 lsl   r1,r1,0x10                ; 08019A94
@@ -11632,7 +11632,7 @@ orr   r0,r2                     ; 08019AEA
 bx    lr                        ; 08019AEC
 .pool                           ; 08019AEE
 
-Sub08019AFC:
+L1TilemapOffsetYMinus1:
 ; subroutine: return offset to layer 1 tilemap for y-1
 lsl   r1,r1,0x10                ; 08019AFC
 lsr   r1,r1,0x10                ; 08019AFE
@@ -11677,7 +11677,7 @@ lsl   r0,r0,0x1                 ; 08019B4A
 bx    lr                        ; 08019B4C
 .pool                           ; 08019B4E
 
-Sub08019B5C:
+L1TilemapOffsetXMinus1:
 ; subroutine: return offset to layer 1 tilemap for x-1
 ; r0: 0300220C, r1: tile YXyx
 lsl   r1,r1,0x10                ; 08019B5C
@@ -11725,7 +11725,7 @@ lsl   r0,r0,0x1                 ; 08019BAE  offset to layer 1 tilemap for y+relY
 bx    lr                        ; 08019BB0
 .pool                           ; 08019BB2
 
-Sub08019BC0:
+L1TilemapOffsetXPlus1:
 ; subroutine: return offset to layer 1 tilemap for x+1
 ; r0: 0300220C, r1: tile YXyx
 lsl   r1,r1,0x10                ; 08019BC0
@@ -11836,7 +11836,7 @@ pop   {r1}                      ; 08019C9A
 bx    r1                        ; 08019C9C
 .pool                           ; 08019C9E
 
-Sub08019CA4:
+L1TilemapCurrentOffset:
 ; subroutine: Calculate current tile's offset to layer 1 tilemap, assigning a new screen memory index if needed
 ; r0: current tile's screen number
 ; r1: current tile's yx *2
@@ -11916,7 +11916,7 @@ pop   {r1}                      ; 08019D22
 bx    r1                        ; 08019D24
 .pool                           ; 08019D26
 
-Sub08019D2C:
+ObjShared_AdjustSlope:
 ; subroutine: adjust Y for sloped objects
 push  {r4-r5,lr}                ; 08019D2C
 mov   r1,r0                     ; 08019D2E
@@ -11944,7 +11944,7 @@ pop   {r0}                      ; 08019D58
 bx    r0                        ; 08019D5A
 .pool                           ; 08019D5C
 
-Sub08019D64:
+ObjShared_SetL1Index:
 ; subroutine: Set layer 1 tilemap index and pre-existing tile, for current tile coordinates
 push  {r4,lr}                   ; 08019D64
 mov   r4,r0                     ; 08019D66  r4 = [03007240] (0300220C)
@@ -11955,7 +11955,7 @@ lsl   r1,r1,0x1                 ; 08019D6E  r1 = yx *2
 lsr   r2,r2,0x8                 ; 08019D70
 mov   r0,r2                     ; 08019D72  r0 = screen number
 mov   r2,r4                     ; 08019D74  r2 = [03007240] (0300220C)
-bl    Sub08019CA4               ; 08019D76  Calculate offset to layer 1 tilemap
+bl    L1TilemapCurrentOffset    ; 08019D76  Calculate offset to layer 1 tilemap
 lsl   r0,r0,0x10                ; 08019D7A
 lsr   r2,r0,0x10                ; 08019D7C
 cmp   r0,0x0                    ; 08019D7E
@@ -12011,7 +12011,7 @@ mov   r5,r6                     ; 08019DD4
 add   r5,0xB2                   ; 08019DD6  r5 = [03007240]+B2 (030022BE)
 strb  r2,[r5]                   ; 08019DD8  clear 030022BE
 mov   r0,r6                     ; 08019DDA
-bl    Sub08019D64               ; 08019DDC  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 08019DDC  set layer 1 tilemap index and pre-existing tile
 mov   r9,r4                     ; 08019DE0  r9 = [03007240]+50 (0300225C)
 ldr   r0,=StdObjMainPtrs        ; 08019DE2
 ldr   r2,[sp]                   ; 08019DE4  r2 = standard/extended object ID
@@ -12201,7 +12201,7 @@ b     @@Code08019F58            ; 08019F24
 @@Code08019F2C:
                                 ;           runs if 03002244 is nonzero
 mov   r0,r6                     ; 08019F2C
-bl    Sub08019D2C               ; 08019F2E  subtract slope from absolute Y, used for diagonal objects
+bl    ObjShared_AdjustSlope     ; 08019F2E  subtract slope from absolute Y, used for diagonal objects
 mov   r1,0x38                   ; 08019F32
 ldsh  r0,[r6,r1]                ; 08019F34  r0 = value of [03007240]+38 (03002244)
 cmp   r0,0x0                    ; 08019F36  check sign of 03002244
@@ -12226,7 +12226,7 @@ mov   r0,r8                     ; 08019F54  r2 = [03007240]+B2 (030022BE)
 strb  r4,[r0]                   ; 08019F56  clear 030022BE
 @@Code08019F58:
 mov   r0,r6                     ; 08019F58
-bl    Sub08019D64               ; 08019F5A  set layer 1 tilemap index and pre-existing tile
+bl    ObjShared_SetL1Index      ; 08019F5A  set layer 1 tilemap index and pre-existing tile
 b     @@Code08019DF4            ; 08019F5E  continue loop
 @@Code08019F60:
                                 ;           runs if not finished iterating over a column
@@ -12309,7 +12309,7 @@ mov   r0,r3                     ; 08019FFC
 mov   r1,r7                     ; 08019FFE
 @@Code0801A000:
 mov   r2,r6                     ; 0801A000
-bl    Sub08019CA4               ; 0801A002  Calculate offset to layer 1 tilemap
+bl    L1TilemapCurrentOffset    ; 0801A002  Calculate offset to layer 1 tilemap
 lsl   r0,r0,0x10                ; 0801A006
 lsr   r4,r0,0x10                ; 0801A008
 @@Code0801A00A:
@@ -12348,13 +12348,13 @@ bx    r0                        ; 0801A04A
 .include "Objects/StandardInit.asm"
 .include "Objects/ExtendedInit.asm"
 
-Sub0801D20C:
+Obj_GetTileXMinus1:
 ; subroutine: Return tile ID at x-1
 push  {lr}                      ; 0801D20C
 mov   r1,r0                     ; 0801D20E
 add   r1,0x48                   ; 0801D210  [03007240]+48 (03002254)
 ldrh  r1,[r1]                   ; 0801D212  tile YXyx
-bl    Sub08019B5C               ; 0801D214  r0 = L1 tilemap offset for x-1
+bl    L1TilemapOffsetXMinus1    ; 0801D214  r0 = L1 tilemap offset for x-1
 ldr   r1,=0x03007010            ; 0801D218  Layer 1 tilemap EWRAM (0200000C)
 ldr   r2,[r1]                   ; 0801D21A
 ldr   r1,=0xFFFE                ; 0801D21C
@@ -12365,13 +12365,13 @@ pop   {r1}                      ; 0801D224
 bx    r1                        ; 0801D226
 .pool                           ; 0801D228
 
-Sub0801D230:
+Obj_GetTileXPlus1:
 ; subroutine: Return tile ID at x+1
 push  {lr}                      ; 0801D230
 mov   r1,r0                     ; 0801D232
 add   r1,0x48                   ; 0801D234  [03007240]+48 (03002254)
 ldrh  r1,[r1]                   ; 0801D236  tile YXyx
-bl    Sub08019BC0               ; 0801D238  r0 = L1 tilemap offset for x+1
+bl    L1TilemapOffsetXPlus1     ; 0801D238  r0 = L1 tilemap offset for x+1
 ldr   r1,=0x03007010            ; 0801D23C  Layer 1 tilemap EWRAM (0200000C)
 ldr   r2,[r1]                   ; 0801D23E
 ldr   r1,=0xFFFE                ; 0801D240
