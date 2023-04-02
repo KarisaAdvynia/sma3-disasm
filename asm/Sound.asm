@@ -6306,195 +6306,195 @@ bx    r0                        ; 0812F3F4
 .arm
 
 Sub0812F3FC:
-stmfd   r13!,{r4,r5}            ; 0812F3FC
-mov     r4,0x7F                 ; 0812F400
-mov     r5,0xFF00               ; 0812F404
-orr     r5,r5,0x80              ; 0812F408
+stmfd  r13!,{r4,r5}             ; 0812F3FC
+mov    r4,0x7F                  ; 0812F400
+mov    r5,0xFF00                ; 0812F404
+orr    r5,r5,0x80               ; 0812F408
 @@Code0812F40C:
-.word   0xE0D030F2
-;ldrsh   r3,[r0],0x2              ; 0812F40C
-cmp     r3,0x0                  ; 0812F410
-addmi   r3,r3,0x7F              ; 0812F414
-mov     r3,r3,asr 0x7           ; 0812F418
-ands    r12,r3,r5               ; 0812F41C
-cmpne   r12,r5                  ; 0812F420
-addne   r3,r4,r3,lsr 0x1F       ; 0812F424
-strb    r3,[r1],0x1             ; 0812F428
-.word   0xE0D030F2
-;ldrsh   r3,[r0],0x2              ; 0812F42C
-cmp     r3,0x0                  ; 0812F430
-addmi   r3,r3,0x7F              ; 0812F434
-mov     r3,r3,asr 0x7           ; 0812F438
-ands    r12,r3,r5               ; 0812F43C
-cmpne   r12,r5                  ; 0812F440
-addne   r3,r4,r3,lsr 0x1F       ; 0812F444
-strb    r3,[r1],0x1             ; 0812F448
-.word   0xE0D030F2
-;ldrsh   r3,[r0],0x2              ; 0812F44C
-cmp     r3,0x0                  ; 0812F450
-addmi   r3,r3,0x7F              ; 0812F454
-mov     r3,r3,asr 0x7           ; 0812F458
-ands    r12,r3,r5               ; 0812F45C
-cmpne   r12,r5                  ; 0812F460
-addne   r3,r4,r3,lsr 0x1F       ; 0812F464
-strb    r3,[r1],0x1             ; 0812F468
-.word   0xE0D030F2
-;ldrsh   r3,[r0],0x2              ; 0812F46C
-cmp     r3,0x0                  ; 0812F470
-addmi   r3,r3,0x7F              ; 0812F474
-mov     r3,r3,asr 0x7           ; 0812F478
-ands    r12,r3,r5               ; 0812F47C
-cmpne   r12,r5                  ; 0812F480
-addne   r3,r4,r3,lsr 0x1F       ; 0812F484
-strb    r3,[r1],0x1             ; 0812F488
-.word   0xE0D030F2
-;ldrsh   r3,[r0],0x2              ; 0812F48C
-cmp     r3,0x0                  ; 0812F490
-addmi   r3,r3,0x7F              ; 0812F494
-mov     r3,r3,asr 0x7           ; 0812F498
-ands    r12,r3,r5               ; 0812F49C
-cmpne   r12,r5                  ; 0812F4A0
-addne   r3,r4,r3,lsr 0x1F       ; 0812F4A4
-strb    r3,[r1],0x1             ; 0812F4A8
-.word   0xE0D030F2
-;ldrsh   r3,[r0],0x2              ; 0812F4AC
-cmp     r3,0x0                  ; 0812F4B0
-addmi   r3,r3,0x7F              ; 0812F4B4
-mov     r3,r3,asr 0x7           ; 0812F4B8
-ands    r12,r3,r5               ; 0812F4BC
-cmpne   r12,r5                  ; 0812F4C0
-addne   r3,r4,r3,lsr 0x1F       ; 0812F4C4
-strb    r3,[r1],0x1             ; 0812F4C8
-.word   0xE0D030F2
-;ldrsh   r3,[r0],0x2              ; 0812F4CC
-cmp     r3,0x0                  ; 0812F4D0
-addmi   r3,r3,0x7F              ; 0812F4D4
-mov     r3,r3,asr 0x7           ; 0812F4D8
-ands    r12,r3,r5               ; 0812F4DC
-cmpne   r12,r5                  ; 0812F4E0
-addne   r3,r4,r3,lsr 0x1F       ; 0812F4E4
-strb    r3,[r1],0x1             ; 0812F4E8
-.word   0xE0D030F2
-;ldrsh   r3,[r0],0x2              ; 0812F4EC
-cmp     r3,0x0                  ; 0812F4F0
-addmi   r3,r3,0x7F              ; 0812F4F4
-mov     r3,r3,asr 0x7           ; 0812F4F8
-ands    r12,r3,r5               ; 0812F4FC
-cmpne   r12,r5                  ; 0812F500
-addne   r3,r4,r3,lsr 0x1F       ; 0812F504
-strb    r3,[r1],0x1             ; 0812F508
-cmp     r0,r2                   ; 0812F50C
-bne     @@Code0812F40C          ; 0812F510
-ldmfd   r13!,{r4,r5}            ; 0812F514
-bx      lr                      ; 0812F518
+.word  0xE0D030F2
+;ldrsh  r3,[r0],0x2              ; 0812F40C
+cmp    r3,0x0                   ; 0812F410
+addmi  r3,r3,0x7F               ; 0812F414
+mov    r3,r3,asr 0x7            ; 0812F418
+ands   r12,r3,r5                ; 0812F41C
+cmpne  r12,r5                   ; 0812F420
+addne  r3,r4,r3,lsr 0x1F        ; 0812F424
+strb   r3,[r1],0x1              ; 0812F428
+.word  0xE0D030F2
+;ldrsh  r3,[r0],0x2              ; 0812F42C
+cmp    r3,0x0                   ; 0812F430
+addmi  r3,r3,0x7F               ; 0812F434
+mov    r3,r3,asr 0x7            ; 0812F438
+ands   r12,r3,r5                ; 0812F43C
+cmpne  r12,r5                   ; 0812F440
+addne  r3,r4,r3,lsr 0x1F        ; 0812F444
+strb   r3,[r1],0x1              ; 0812F448
+.word  0xE0D030F2
+;ldrsh  r3,[r0],0x2              ; 0812F44C
+cmp    r3,0x0                   ; 0812F450
+addmi  r3,r3,0x7F               ; 0812F454
+mov    r3,r3,asr 0x7            ; 0812F458
+ands   r12,r3,r5                ; 0812F45C
+cmpne  r12,r5                   ; 0812F460
+addne  r3,r4,r3,lsr 0x1F        ; 0812F464
+strb   r3,[r1],0x1              ; 0812F468
+.word  0xE0D030F2
+;ldrsh  r3,[r0],0x2              ; 0812F46C
+cmp    r3,0x0                   ; 0812F470
+addmi  r3,r3,0x7F               ; 0812F474
+mov    r3,r3,asr 0x7            ; 0812F478
+ands   r12,r3,r5                ; 0812F47C
+cmpne  r12,r5                   ; 0812F480
+addne  r3,r4,r3,lsr 0x1F        ; 0812F484
+strb   r3,[r1],0x1              ; 0812F488
+.word  0xE0D030F2
+;ldrsh  r3,[r0],0x2              ; 0812F48C
+cmp    r3,0x0                   ; 0812F490
+addmi  r3,r3,0x7F               ; 0812F494
+mov    r3,r3,asr 0x7            ; 0812F498
+ands   r12,r3,r5                ; 0812F49C
+cmpne  r12,r5                   ; 0812F4A0
+addne  r3,r4,r3,lsr 0x1F        ; 0812F4A4
+strb   r3,[r1],0x1              ; 0812F4A8
+.word  0xE0D030F2
+;ldrsh  r3,[r0],0x2              ; 0812F4AC
+cmp    r3,0x0                   ; 0812F4B0
+addmi  r3,r3,0x7F               ; 0812F4B4
+mov    r3,r3,asr 0x7            ; 0812F4B8
+ands   r12,r3,r5                ; 0812F4BC
+cmpne  r12,r5                   ; 0812F4C0
+addne  r3,r4,r3,lsr 0x1F        ; 0812F4C4
+strb   r3,[r1],0x1              ; 0812F4C8
+.word  0xE0D030F2
+;ldrsh  r3,[r0],0x2              ; 0812F4CC
+cmp    r3,0x0                   ; 0812F4D0
+addmi  r3,r3,0x7F               ; 0812F4D4
+mov    r3,r3,asr 0x7            ; 0812F4D8
+ands   r12,r3,r5                ; 0812F4DC
+cmpne  r12,r5                   ; 0812F4E0
+addne  r3,r4,r3,lsr 0x1F        ; 0812F4E4
+strb   r3,[r1],0x1              ; 0812F4E8
+.word  0xE0D030F2
+;ldrsh  r3,[r0],0x2              ; 0812F4EC
+cmp    r3,0x0                   ; 0812F4F0
+addmi  r3,r3,0x7F               ; 0812F4F4
+mov    r3,r3,asr 0x7            ; 0812F4F8
+ands   r12,r3,r5                ; 0812F4FC
+cmpne  r12,r5                   ; 0812F500
+addne  r3,r4,r3,lsr 0x1F        ; 0812F504
+strb   r3,[r1],0x1              ; 0812F508
+cmp    r0,r2                    ; 0812F50C
+bne    @@Code0812F40C           ; 0812F510
+ldmfd  r13!,{r4,r5}             ; 0812F514
+bx     lr                       ; 0812F518
 
 Sub0812F51C:
-mov     r12,sp                  ; 0812F51C
-stmfd   r13!,{r4-r8}            ; 0812F520
-ldmia   r12,{r4-r7}             ; 0812F524
-sub     r12,r3,r1               ; 0812F528
-and     r12,r12,0x7             ; 0812F52C
-cmp     r12,0x0                 ; 0812F530
-bne     @@Code0812F5DC          ; 0812F534
+mov    r12,sp                   ; 0812F51C
+stmfd  r13!,{r4-r8}             ; 0812F520
+ldmia  r12,{r4-r7}              ; 0812F524
+sub    r12,r3,r1                ; 0812F528
+and    r12,r12,0x7              ; 0812F52C
+cmp    r12,0x0                  ; 0812F530
+bne    @@Code0812F5DC           ; 0812F534
 @@Code0812F538:
-add     r12,r0,r4,lsr 0x8       ; 0812F538
-ldrsb   r8,[r12]                ; 0812F53C
-ldrsh   r12,[r1]                ; 0812F540
-mla     r12,r6,r8,r12           ; 0812F544
-strh    r12,[r1],0x2            ; 0812F548
-ldrsh   r12,[r2]                ; 0812F54C
-mla     r12,r7,r8,r12           ; 0812F550
-strh    r12,[r2],0x2            ; 0812F554
-add     r4,r4,r5                ; 0812F558
-add     r12,r0,r4,lsr 0x8       ; 0812F55C
-ldrsb   r8,[r12]                ; 0812F560
-ldrsh   r12,[r1]                ; 0812F564
-mla     r12,r6,r8,r12           ; 0812F568
-strh    r12,[r1],0x2            ; 0812F56C
-ldrsh   r12,[r2]                ; 0812F570
-mla     r12,r7,r8,r12           ; 0812F574
-strh    r12,[r2],0x2            ; 0812F578
-add     r4,r4,r5                ; 0812F57C
-add     r12,r0,r4,lsr 0x8       ; 0812F580
-ldrsb   r8,[r12]                ; 0812F584
-ldrsh   r12,[r1]                ; 0812F588
-mla     r12,r6,r8,r12           ; 0812F58C
-strh    r12,[r1],0x2            ; 0812F590
-ldrsh   r12,[r2]                ; 0812F594
-mla     r12,r7,r8,r12           ; 0812F598
-strh    r12,[r2],0x2            ; 0812F59C
-add     r4,r4,r5                ; 0812F5A0
-add     r12,r0,r4,lsr 0x8       ; 0812F5A4
-ldrsb   r8,[r12]                ; 0812F5A8
-ldrsh   r12,[r1]                ; 0812F5AC
-mla     r12,r6,r8,r12           ; 0812F5B0
-strh    r12,[r1],0x2            ; 0812F5B4
-ldrsh   r12,[r2]                ; 0812F5B8
-mla     r12,r7,r8,r12           ; 0812F5BC
-strh    r12,[r2],0x2            ; 0812F5C0
-add     r4,r4,r5                ; 0812F5C4
-cmp     r1,r3                   ; 0812F5C8
-bcc     @@Code0812F538          ; 0812F5CC
-mov     r0,r4                   ; 0812F5D0
-ldmfd   r13!,{r4-r8}            ; 0812F5D4
-bx      lr                      ; 0812F5D8
+add    r12,r0,r4,lsr 0x8        ; 0812F538
+ldrsb  r8,[r12]                 ; 0812F53C
+ldrsh  r12,[r1]                 ; 0812F540
+mla    r12,r6,r8,r12            ; 0812F544
+strh   r12,[r1],0x2             ; 0812F548
+ldrsh  r12,[r2]                 ; 0812F54C
+mla    r12,r7,r8,r12            ; 0812F550
+strh   r12,[r2],0x2             ; 0812F554
+add    r4,r4,r5                 ; 0812F558
+add    r12,r0,r4,lsr 0x8        ; 0812F55C
+ldrsb  r8,[r12]                 ; 0812F560
+ldrsh  r12,[r1]                 ; 0812F564
+mla    r12,r6,r8,r12            ; 0812F568
+strh   r12,[r1],0x2             ; 0812F56C
+ldrsh  r12,[r2]                 ; 0812F570
+mla    r12,r7,r8,r12            ; 0812F574
+strh   r12,[r2],0x2             ; 0812F578
+add    r4,r4,r5                 ; 0812F57C
+add    r12,r0,r4,lsr 0x8        ; 0812F580
+ldrsb  r8,[r12]                 ; 0812F584
+ldrsh  r12,[r1]                 ; 0812F588
+mla    r12,r6,r8,r12            ; 0812F58C
+strh   r12,[r1],0x2             ; 0812F590
+ldrsh  r12,[r2]                 ; 0812F594
+mla    r12,r7,r8,r12            ; 0812F598
+strh   r12,[r2],0x2             ; 0812F59C
+add    r4,r4,r5                 ; 0812F5A0
+add    r12,r0,r4,lsr 0x8        ; 0812F5A4
+ldrsb  r8,[r12]                 ; 0812F5A8
+ldrsh  r12,[r1]                 ; 0812F5AC
+mla    r12,r6,r8,r12            ; 0812F5B0
+strh   r12,[r1],0x2             ; 0812F5B4
+ldrsh  r12,[r2]                 ; 0812F5B8
+mla    r12,r7,r8,r12            ; 0812F5BC
+strh   r12,[r2],0x2             ; 0812F5C0
+add    r4,r4,r5                 ; 0812F5C4
+cmp    r1,r3                    ; 0812F5C8
+bcc    @@Code0812F538           ; 0812F5CC
+mov    r0,r4                    ; 0812F5D0
+ldmfd  r13!,{r4-r8}             ; 0812F5D4
+bx     lr                       ; 0812F5D8
 @@Code0812F5DC:
-add     r12,r0,r4,lsr 0x8       ; 0812F5DC
-ldrsb   r8,[r12]                ; 0812F5E0
-ldrsh   r12,[r1]                ; 0812F5E4
-mla     r12,r6,r8,r12           ; 0812F5E8
-strh    r12,[r1],0x2            ; 0812F5EC
-ldrsh   r12,[r2]                ; 0812F5F0
-mla     r12,r7,r8,r12           ; 0812F5F4
-strh    r12,[r2],0x2            ; 0812F5F8
-add     r4,r4,r5                ; 0812F5FC
-cmp     r1,r3                   ; 0812F600
-bcc     @@Code0812F5DC          ; 0812F604
-mov     r0,r4                   ; 0812F608
-ldmfd   r13!,{r4-r8}            ; 0812F60C
-bx      lr                      ; 0812F610
+add    r12,r0,r4,lsr 0x8        ; 0812F5DC
+ldrsb  r8,[r12]                 ; 0812F5E0
+ldrsh  r12,[r1]                 ; 0812F5E4
+mla    r12,r6,r8,r12            ; 0812F5E8
+strh   r12,[r1],0x2             ; 0812F5EC
+ldrsh  r12,[r2]                 ; 0812F5F0
+mla    r12,r7,r8,r12            ; 0812F5F4
+strh   r12,[r2],0x2             ; 0812F5F8
+add    r4,r4,r5                 ; 0812F5FC
+cmp    r1,r3                    ; 0812F600
+bcc    @@Code0812F5DC           ; 0812F604
+mov    r0,r4                    ; 0812F608
+ldmfd  r13!,{r4-r8}             ; 0812F60C
+bx     lr                       ; 0812F610
 
 Sub0812F614:
-stmfd   r13!,{r4,r5}            ; 0812F614
-mov     r4,0x1                  ; 0812F618
-mov     r4,r4,lsl r3            ; 0812F61C
-sub     r4,r4,0x1               ; 0812F620
+stmfd  r13!,{r4,r5}             ; 0812F614
+mov    r4,0x1                   ; 0812F618
+mov    r4,r4,lsl r3             ; 0812F61C
+sub    r4,r4,0x1                ; 0812F620
 @@Code0812F624:
-ldrsh   r5,[r0]                 ; 0812F624
-ldrsh   r12,[r1]                ; 0812F628
-add     r5,r5,r12               ; 0812F62C
-strh    r5,[r0],0x2             ; 0812F630
-cmp     r12,0x0                 ; 0812F634
-addmi   r12,r12,r4              ; 0812F638
-mov     r12,r12,asr r3          ; 0812F63C
-strh    r12,[r1],0x2            ; 0812F640
-ldrsh   r5,[r0]                 ; 0812F644
-ldrsh   r12,[r1]                ; 0812F648
-add     r5,r5,r12               ; 0812F64C
-strh    r5,[r0],0x2             ; 0812F650
-cmp     r12,0x0                 ; 0812F654
-addmi   r12,r12,r4              ; 0812F658
-mov     r12,r12,asr r3          ; 0812F65C
-strh    r12,[r1],0x2            ; 0812F660
-ldrsh   r5,[r0]                 ; 0812F664
-ldrsh   r12,[r1]                ; 0812F668
-add     r5,r5,r12               ; 0812F66C
-strh    r5,[r0],0x2             ; 0812F670
-cmp     r12,0x0                 ; 0812F674
-addmi   r12,r12,r4              ; 0812F678
-mov     r12,r12,asr r3          ; 0812F67C
-strh    r12,[r1],0x2            ; 0812F680
-ldrsh   r5,[r0]                 ; 0812F684
-ldrsh   r12,[r1]                ; 0812F688
-add     r5,r5,r12               ; 0812F68C
-strh    r5,[r0],0x2             ; 0812F690
-cmp     r12,0x0                 ; 0812F694
-addmi   r12,r12,r4              ; 0812F698
-mov     r12,r12,asr r3          ; 0812F69C
-strh    r12,[r1],0x2            ; 0812F6A0
-cmp     r0,r2                   ; 0812F6A4
-bcc     @@Code0812F624          ; 0812F6A8
-ldmfd   r13!,{r4,r5}            ; 0812F6AC
-bx      lr                      ; 0812F6B0
+ldrsh  r5,[r0]                  ; 0812F624
+ldrsh  r12,[r1]                 ; 0812F628
+add    r5,r5,r12                ; 0812F62C
+strh   r5,[r0],0x2              ; 0812F630
+cmp    r12,0x0                  ; 0812F634
+addmi  r12,r12,r4               ; 0812F638
+mov    r12,r12,asr r3           ; 0812F63C
+strh   r12,[r1],0x2             ; 0812F640
+ldrsh  r5,[r0]                  ; 0812F644
+ldrsh  r12,[r1]                 ; 0812F648
+add    r5,r5,r12                ; 0812F64C
+strh   r5,[r0],0x2              ; 0812F650
+cmp    r12,0x0                  ; 0812F654
+addmi  r12,r12,r4               ; 0812F658
+mov    r12,r12,asr r3           ; 0812F65C
+strh   r12,[r1],0x2             ; 0812F660
+ldrsh  r5,[r0]                  ; 0812F664
+ldrsh  r12,[r1]                 ; 0812F668
+add    r5,r5,r12                ; 0812F66C
+strh   r5,[r0],0x2              ; 0812F670
+cmp    r12,0x0                  ; 0812F674
+addmi  r12,r12,r4               ; 0812F678
+mov    r12,r12,asr r3           ; 0812F67C
+strh   r12,[r1],0x2             ; 0812F680
+ldrsh  r5,[r0]                  ; 0812F684
+ldrsh  r12,[r1]                 ; 0812F688
+add    r5,r5,r12                ; 0812F68C
+strh   r5,[r0],0x2              ; 0812F690
+cmp    r12,0x0                  ; 0812F694
+addmi  r12,r12,r4               ; 0812F698
+mov    r12,r12,asr r3           ; 0812F69C
+strh   r12,[r1],0x2             ; 0812F6A0
+cmp    r0,r2                    ; 0812F6A4
+bcc    @@Code0812F624           ; 0812F6A8
+ldmfd  r13!,{r4,r5}             ; 0812F6AC
+bx     lr                       ; 0812F6B0
 
 .thumb

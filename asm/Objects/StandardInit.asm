@@ -1,38 +1,3 @@
-ObjMain_NoRelY:
-; subroutine: Disable relative Y threshold, then call object processing main
-push  {r4,lr}                   ; 0801A04C
-lsl   r1,r1,0x10                ; 0801A04E
-lsr   r1,r1,0x10                ; 0801A050
-lsl   r2,r2,0x18                ; 0801A052
-lsr   r2,r2,0x18                ; 0801A054
-mov   r3,0x46                   ; 0801A056
-add   r3,r3,r0                  ; 0801A058  r3 = [03007240]+46 (03002252)
-mov   r12,r3                    ; 0801A05A
-ldr   r3,=0x7FFF                ; 0801A05C
-mov   r4,r12                    ; 0801A05E  no relative Y threshold
-strh  r3,[r4]                   ; 0801A060
-bl    ObjMain_Shared            ; 0801A062  Object processing main
-pop   {r4}                      ; 0801A066
-pop   {r0}                      ; 0801A068
-bx    r0                        ; 0801A06A
-.pool                           ; 0801A06C
-
-ObjMain_Slope0_NoRelY:
-; subroutine: Clear object's slope, disable relative Y threshold, then call object processing main
-push  {r4,lr}                   ; 0801A070
-lsl   r1,r1,0x10                ; 0801A072
-lsr   r1,r1,0x10                ; 0801A074
-lsl   r2,r2,0x18                ; 0801A076
-lsr   r2,r2,0x18                ; 0801A078
-mov   r4,r0                     ; 0801A07A
-add   r4,0x44                   ; 0801A07C  r4 = [03007240]+44 (03002250)
-mov   r3,0x0                    ; 0801A07E
-strh  r3,[r4]                   ; 0801A080  clear slope
-bl    ObjMain_NoRelY            ; 0801A082  Object processing main, no relative Y threshold
-pop   {r4}                      ; 0801A086
-pop   {r0}                      ; 0801A088
-bx    r0                        ; 0801A08A
-
 ObjFE_Init:
 ; object FE init
 push  {lr}                      ; 0801A08C
@@ -113,7 +78,7 @@ mov   r0,0xA3                   ; 0801A110
 lsl   r0,r0,0x1                 ; 0801A112  0146  
 add   r0,r12                    ; 0801A114  [03007240]+146 (03002352)
 ldrb  r3,[r0]                   ; 0801A116  slot 0's width-1
-ldr   r7,=Data08167E74          ; 0801A118  pointer to 20 40 E0 C0
+ldr   r7,=ObjF0_F3_MaxYShift    ; 0801A118  pointer to max Y shifts by object (20 40 E0 C0)
 cmp   r3,0x0                    ; 0801A11A
 beq   @@LoopEnd                 ; 0801A11C  if slot 0 has no width, skip loop
 add   r1,0x54                   ; 0801A11E  144
@@ -161,7 +126,7 @@ add   r0,r0,r7                  ; 0801A16C  index 08167E74 with objID-F0
 ldrb  r3,[r0]                   ; 0801A16E  20 40 E0 C0 for F0-F3
 add   r0,r4,0x4                 ; 0801A170
 add   r2,r2,r0                  ; 0801A172
-strb  r3,[r2]                   ; 0801A174  byte 4 = value from table
+strb  r3,[r2]                   ; 0801A174  byte 4 = max Y shift, from table
 mov   r0,r12                    ; 0801A176
 add   r0,0x48                   ; 0801A178  [03007240]+48 (03002254)
 ldrh  r1,[r0]                   ; 0801A17A  tile YXyx
@@ -248,7 +213,7 @@ pop   {r4-r5}                   ; 0801A216
 pop   {r0}                      ; 0801A218
 bx    r0                        ; 0801A21A
 
-Sub0801A21C:
+ObjE4E5E6E8E9_AdjustHeight:
 ; called by E4-E6,E8-E9 init: subtract 2 from object Y, add 2 to object height
 push  {r4,lr}                   ; 0801A21C
 mov   r4,r0                     ; 0801A21E
@@ -359,7 +324,7 @@ lsl   r4,r4,0x10                ; 0801A2F8
 lsr   r4,r4,0x10                ; 0801A2FA
 lsl   r5,r5,0x18                ; 0801A2FC
 lsr   r5,r5,0x18                ; 0801A2FE
-bl    Sub0801A21C               ; 0801A300  objY -= 2, height += 2
+bl    ObjE4E5E6E8E9_AdjustHeight; 0801A300  objY -= 2, height += 2
 mov   r1,r6                     ; 0801A304
 add   r1,0x44                   ; 0801A306  r3 = [03007240]+44 (03002250)
 ldr   r0,=0xFFFF                ; 0801A308  diagonal object, slope -1
@@ -383,7 +348,7 @@ lsl   r4,r4,0x10                ; 0801A328
 lsr   r4,r4,0x10                ; 0801A32A
 lsl   r5,r5,0x18                ; 0801A32C
 lsr   r5,r5,0x18                ; 0801A32E
-bl    Sub0801A21C               ; 0801A330  objY -= 2, height += 2
+bl    ObjE4E5E6E8E9_AdjustHeight; 0801A330  objY -= 2, height += 2
 mov   r1,r6                     ; 0801A334
 add   r1,0x44                   ; 0801A336  r3 = [03007240]+44 (03002250)
 ldr   r0,=0xFFFF                ; 0801A338  diagonal object, slope -1
@@ -442,7 +407,7 @@ lsl   r4,r4,0x10                ; 0801A3A4
 lsr   r4,r4,0x10                ; 0801A3A6
 lsl   r5,r5,0x18                ; 0801A3A8
 lsr   r5,r5,0x18                ; 0801A3AA
-bl    Sub0801A21C               ; 0801A3AC  objY -= 2, height += 2
+bl    ObjE4E5E6E8E9_AdjustHeight; 0801A3AC  objY -= 2, height += 2
 mov   r1,r6                     ; 0801A3B0
 add   r1,0x44                   ; 0801A3B2  r1 = [03007240]+44 (03002250)
 ldr   r0,=0xFFFF                ; 0801A3B4  diagonal object, slope -1
@@ -466,7 +431,7 @@ lsl   r4,r4,0x10                ; 0801A3D4
 lsr   r4,r4,0x10                ; 0801A3D6
 lsl   r5,r5,0x18                ; 0801A3D8
 lsr   r5,r5,0x18                ; 0801A3DA
-bl    Sub0801A21C               ; 0801A3DC  objY -= 2, height += 2
+bl    ObjE4E5E6E8E9_AdjustHeight; 0801A3DC  objY -= 2, height += 2
 mov   r1,r6                     ; 0801A3E0
 add   r1,0x44                   ; 0801A3E2  r1 = [03007240]+44 (03002250)
 ldr   r0,=0xFFFF                ; 0801A3E4  diagonal object, slope -1
@@ -490,7 +455,7 @@ lsl   r5,r5,0x10                ; 0801A404
 lsr   r5,r5,0x10                ; 0801A406
 lsl   r6,r6,0x18                ; 0801A408
 lsr   r6,r6,0x18                ; 0801A40A
-bl    Sub0801A21C               ; 0801A40C  objY -= 2, height += 2
+bl    ObjE4E5E6E8E9_AdjustHeight; 0801A40C  objY -= 2, height += 2
 mov   r0,r4                     ; 0801A410
 mov   r1,r5                     ; 0801A412
 mov   r2,r6                     ; 0801A414
@@ -693,7 +658,7 @@ and   r3,r4                     ; 0801A570  objID&1
 lsl   r4,r3,0x4                 ; 0801A572
 mov   r5,r12                    ; 0801A574
 strh  r4,[r5]                   ; 0801A576  [0300224E] = 00,10 for D8,D9
-ldr   r4,=Data08167E78          ; 0801A578
+ldr   r4,=ObjD8_D9_Init_Data    ; 0801A578
 lsl   r3,r3,0x1                 ; 0801A57A
 add   r3,r3,r4                  ; 0801A57C
 ldrh  r3,[r3]                   ; 0801A57E  04,03 for D8,D9
@@ -1320,7 +1285,7 @@ mov   r1,0x4                    ; 0801A9FA
 mov   r0,r2                     ; 0801A9FC
 orr   r0,r1                     ; 0801A9FE
 strh  r0,[r3]                   ; 0801AA00  set bit 2 of 0300224E if tileset 3
-ldr   r1,=Data081C19D4          ; 0801AA02
+ldr   r1,=ObjA5_A6_Init_Data    ; 0801AA02
 ldr   r0,=0x0001FFFE            ; 0801AA04
 and   r0,r2                     ; 0801AA06
 add   r0,r0,r1                  ; 0801AA08  index with 00,02 for A5,A6
@@ -2696,7 +2661,7 @@ add   r0,0x42                   ; 0801B442
 ldrh  r3,[r0]                   ; 0801B444
 mov   r0,0x3                    ; 0801B446
 and   r0,r3                     ; 0801B448
-ldr   r3,=Data081C19CE          ; 0801B44A
+ldr   r3,=Obj5C_5E_Init_Data    ; 0801B44A
 lsl   r0,r0,0x1                 ; 0801B44C
 add   r0,r0,r3                  ; 0801B44E
 ldrh  r3,[r0]                   ; 0801B450
@@ -2746,7 +2711,7 @@ mov   r0,0x3                    ; 0801B4B2
 and   r0,r3                     ; 0801B4B4
 sub   r0,0x1                    ; 0801B4B6
 lsl   r0,r0,0x10                ; 0801B4B8
-ldr   r3,=Data081C19C8          ; 0801B4BA
+ldr   r3,=Obj59_5B_Init_Data    ; 0801B4BA
 lsr   r0,r0,0xF                 ; 0801B4BC
 add   r0,r0,r3                  ; 0801B4BE
 ldrh  r3,[r0]                   ; 0801B4C0
@@ -2848,7 +2813,7 @@ add   r0,0x42                   ; 0801B586
 ldrh  r3,[r0]                   ; 0801B588
 mov   r0,0x3                    ; 0801B58A
 and   r0,r3                     ; 0801B58C
-ldr   r3,=Data081C19C2          ; 0801B58E
+ldr   r3,=Obj54_56_Init_Data    ; 0801B58E
 lsl   r0,r0,0x1                 ; 0801B590
 add   r0,r0,r3                  ; 0801B592
 ldrh  r3,[r0]                   ; 0801B594
@@ -2984,7 +2949,7 @@ mov   r0,0x7                    ; 0801B694
 and   r0,r3                     ; 0801B696  3,4,5 for 4B-4D
 sub   r0,0x3                    ; 0801B698  0,1,2 for 4B-4D
 lsl   r0,r0,0x11                ; 0801B69A
-ldr   r3,=Data081C19BC          ; 0801B69C
+ldr   r3,=Obj4B_4D_Init_Data    ; 0801B69C
 lsr   r0,r0,0x10                ; 0801B69E  0,2,4 for 4B-4D
 add   r0,r0,r3                  ; 0801B6A0
 ldrh  r0,[r0]                   ; 0801B6A2  4,6,8 for 4B-4D
@@ -3076,7 +3041,7 @@ sub   r3,0x4                    ; 0801B748
 ldrh  r3,[r3]                   ; 0801B74A
 and   r0,r3                     ; 0801B74C
 lsl   r0,r0,0x10                ; 0801B74E
-ldr   r3,=Data08167E7C          ; 0801B750
+ldr   r3,=Obj45_46_Init_Data    ; 0801B750
 lsr   r0,r0,0x11                ; 0801B752
 lsl   r0,r0,0x1                 ; 0801B754
 add   r0,r0,r3                  ; 0801B756
@@ -3674,7 +3639,7 @@ and   r0,r1                     ; 0801BB92  2,0 for 1F,20
 lsl   r0,r0,0x10                ; 0801BB94
 lsr   r0,r0,0x10                ; 0801BB96
 mov   r9,r0                     ; 0801BB98
-ldr   r0,=Data081BEFEC          ; 0801BB9A
+ldr   r0,=Obj1F_20_Init_Data    ; 0801BB9A
 mov   r10,r0                    ; 0801BB9C
 mov   r0,r9                     ; 0801BB9E  2,0 for 1F,20
 cmp   r0,0x0                    ; 0801BBA0
@@ -3917,14 +3882,14 @@ ldrh  r3,[r0]                   ; 0801BD52  object ID
 mov   r0,0x2                    ; 0801BD54
 and   r0,r3                     ; 0801BD56
 lsl   r0,r0,0x10                ; 0801BD58
-ldr   r3,=Data081C19B4          ; 0801BD5A
+ldr   r3,=Obj11_12_Heights      ; 0801BD5A
 lsr   r0,r0,0x11                ; 0801BD5C
 lsl   r0,r0,0x1                 ; 0801BD5E
 add   r3,r0,r3                  ; 0801BD60  index with objID-11
 ldrh  r3,[r3]                   ; 0801BD62  r3 = 02,03 for 11,12
 mov   r5,0x52                   ; 0801BD64
 strh  r3,[r5,r4]                ; 0801BD66  set height
-ldr   r3,=Data081C19B8          ; 0801BD68
+ldr   r3,=Obj11_12_Slopes       ; 0801BD68
 add   r0,r0,r3                  ; 0801BD6A
 ldrh  r3,[r0]                   ; 0801BD6C  -1,-2 for 11,12
 mov   r0,r4                     ; 0801BD6E
@@ -4030,14 +3995,14 @@ add   r0,0x42                   ; 0801BE2E
 ldrh  r0,[r0]                   ; 0801BE30  r0 = object ID again
 sub   r0,0x4                    ; 0801BE32
 lsl   r0,r0,0x11                ; 0801BE34
-ldr   r1,=Data081C199C          ; 0801BE36  relative Y threshold table
+ldr   r1,=Obj06_09_YThresholds  ; 0801BE36  relative Y threshold table
 lsr   r0,r0,0x10                ; 0801BE38  r0 = (objID-4)*2
 add   r1,r0,r1                  ; 0801BE3A  index with objID-4
 ldrh  r1,[r1]                   ; 0801BE3C  r1 = 4 for 06/07, 5 for 08/09
 mov   r2,r4                     ; 0801BE3E
 add   r2,0x46                   ; 0801BE40
 strh  r1,[r2]                   ; 0801BE42  set relative Y threshold
-ldr   r1,=Data081C19A8          ; 0801BE44  slope table
+ldr   r1,=Obj06_09_Slopes       ; 0801BE44  slope table
 add   r0,r0,r1                  ; 0801BE46  index with objID-4
 ldrh  r1,[r0]                   ; 0801BE48  -1,1,-2,2 for 06-09
 mov   r0,r4                     ; 0801BE4A
@@ -4069,7 +4034,7 @@ and   r0,r1                     ; 0801BE80  0,1 for 04,05
 lsl   r0,r0,0x11                ; 0801BE82
 lsr   r2,r0,0x10                ; 0801BE84
 strh  r2,[r3]                   ; 0801BE86  set 0300224E to 0,2 for 04,05
-ldr   r1,=Data081C1998          ; 0801BE88
+ldr   r1,=Obj04_05_Init_Data    ; 0801BE88
 lsr   r0,r0,0x11                ; 0801BE8A
 lsl   r0,r0,0x1                 ; 0801BE8C
 add   r0,r0,r1                  ; 0801BE8E
@@ -4108,7 +4073,7 @@ add   r0,0x42                   ; 0801BECE
 ldrh  r0,[r0]                   ; 0801BED0  r0 = object ID
 lsl   r0,r0,0x11                ; 0801BED2
 lsr   r5,r0,0x10                ; 0801BED4  r5 = object ID *2
-ldr   r1,=Data081C1984          ; 0801BED6
+ldr   r1,=Obj02030A0B_YThresholds; 0801BED6
 sub   r0,r5,0x4                 ; 0801BED8  index with: 02,03,0A,0B -> 00,02,10,12
 add   r0,r0,r1                  ; 0801BEDA
 ldrh  r0,[r0]                   ; 0801BEDC  02,03,0A,0B -> 03,03,01,01

@@ -7007,7 +7007,7 @@ lsl   r1,r1,0x10                ; 08017324
 lsr   r1,r1,0x10                ; 08017326
 add   r0,0x42                   ; 08017328  [03007240]+42 (0300224E)
 ldrh  r4,[r0]                   ; 0801732A  r4 = object ID
-ldr   r0,=Data081C19D8          ; 0801732C  ? object-indexed table
+ldr   r0,=ObjLengthProp         ; 0801732C  ? object-indexed table
 add   r0,r4,r0                  ; 0801732E
 ldrb  r0,[r0]                   ; 08017330  value from table
 mov   r2,0x3                    ; 08017332
@@ -7430,7 +7430,7 @@ pop   {r4-r7}                   ; 0801769E
 pop   {r0}                      ; 080176A0
 bx    r0                        ; 080176A2
 
-Sub080176A4:
+ObjShared_TestItemMemory:
 ; subroutine: test item memory
 ; r0: 0300220C
 ; r1: offset to layer 1 tilemap
@@ -12344,6 +12344,41 @@ mov   r10,r5                    ; 0801A044
 pop   {r4-r7}                   ; 0801A046
 pop   {r0}                      ; 0801A048
 bx    r0                        ; 0801A04A
+
+ObjMain_NoRelY:
+; subroutine: Disable relative Y threshold, then call object processing main
+push  {r4,lr}                   ; 0801A04C
+lsl   r1,r1,0x10                ; 0801A04E
+lsr   r1,r1,0x10                ; 0801A050
+lsl   r2,r2,0x18                ; 0801A052
+lsr   r2,r2,0x18                ; 0801A054
+mov   r3,0x46                   ; 0801A056
+add   r3,r3,r0                  ; 0801A058  r3 = [03007240]+46 (03002252)
+mov   r12,r3                    ; 0801A05A
+ldr   r3,=0x7FFF                ; 0801A05C
+mov   r4,r12                    ; 0801A05E  no relative Y threshold
+strh  r3,[r4]                   ; 0801A060
+bl    ObjMain_Shared            ; 0801A062  Object processing main
+pop   {r4}                      ; 0801A066
+pop   {r0}                      ; 0801A068
+bx    r0                        ; 0801A06A
+.pool                           ; 0801A06C
+
+ObjMain_Slope0_NoRelY:
+; subroutine: Clear object's slope, disable relative Y threshold, then call object processing main
+push  {r4,lr}                   ; 0801A070
+lsl   r1,r1,0x10                ; 0801A072
+lsr   r1,r1,0x10                ; 0801A074
+lsl   r2,r2,0x18                ; 0801A076
+lsr   r2,r2,0x18                ; 0801A078
+mov   r4,r0                     ; 0801A07A
+add   r4,0x44                   ; 0801A07C  r4 = [03007240]+44 (03002250)
+mov   r3,0x0                    ; 0801A07E
+strh  r3,[r4]                   ; 0801A080  clear slope
+bl    ObjMain_NoRelY            ; 0801A082  Object processing main, no relative Y threshold
+pop   {r4}                      ; 0801A086
+pop   {r0}                      ; 0801A088
+bx    r0                        ; 0801A08A
 
 .include "Objects/StandardInit.asm"
 .include "Objects/ExtendedInit.asm"

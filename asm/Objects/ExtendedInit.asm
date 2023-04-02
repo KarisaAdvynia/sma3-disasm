@@ -136,12 +136,12 @@ lsr   r3,r3,0x10                ; 0801C090
 lsl   r0,r3,0x1                 ; 0801C092  index width/height tables with extID-D4
 mov   r5,r12                    ; 0801C094
 strh  r0,[r5]                   ; 0801C096  store extID-D4
-ldr   r0,=Data081C196C          ; 0801C098
+ldr   r0,=ExtObjD4_DF_Widths    ; 0801C098
 add   r0,r3,r0                  ; 0801C09A
 ldrb  r0,[r0]                   ; 0801C09C  load width
 mov   r5,0x4E                   ; 0801C09E
 strh  r0,[r5,r4]                ; 0801C0A0  set width
-ldr   r0,=Data081C1978          ; 0801C0A2
+ldr   r0,=ExtObjD4_DF_Heights   ; 0801C0A2
 add   r3,r3,r0                  ; 0801C0A4
 ldrb  r3,[r3]                   ; 0801C0A6  load height
 mov   r0,0xF                    ; 0801C0A8
@@ -190,13 +190,13 @@ lsl   r0,r0,0x11                ; 0801C0FE
 lsr   r3,r0,0x10                ; 0801C100
 mov   r5,r12                    ; 0801C102
 strh  r3,[r5]                   ; 0801C104  [0300224E] = (extID-C5)*2
-ldr   r3,=Data081C1958          ; 0801C106  table of widths
+ldr   r3,=ExtObjC5_C9_Widths    ; 0801C106
 lsr   r0,r0,0x10                ; 0801C108
 add   r3,r0,r3                  ; 0801C10A  index with extID-C5
 ldrh  r3,[r3]                   ; 0801C10C
 mov   r5,0x4E                   ; 0801C10E
 strh  r3,[r5,r4]                ; 0801C110  set width
-ldr   r3,=Data081C1962          ; 0801C112  table of heights
+ldr   r3,=ExtObjC5_C9_Heights   ; 0801C112
 add   r0,r0,r3                  ; 0801C114  index with extID-C5
 ldrh  r0,[r0]                   ; 0801C116
 mov   r3,r4                     ; 0801C118
@@ -307,7 +307,7 @@ sub   r0,0xBA                   ; 0801C1DE
 lsl   r0,r0,0x11                ; 0801C1E0
 lsr   r1,r0,0x10                ; 0801C1E2
 strh  r1,[r2]                   ; 0801C1E4  [0300224E] = (extID-BA)*2
-ldr   r1,=Data081C194C          ; 0801C1E6  height table
+ldr   r1,=ExtObjBA_BF_Heights   ; 0801C1E6
 lsr   r0,r0,0x10                ; 0801C1E8
 add   r0,r0,r1                  ; 0801C1EA  index with extID-BA
 ldrh  r0,[r0]                   ; 0801C1EC
@@ -353,14 +353,14 @@ lsl   r0,r0,0x11                ; 0801C238
 lsr   r3,r0,0x10                ; 0801C23A  [0300224E] = (extID-B8)*2
 mov   r5,r12                    ; 0801C23C
 strh  r3,[r5]                   ; 0801C23E
-ldr   r3,=Data081C1908          ; 0801C240  width table
+ldr   r3,=ExtObjB8_B9_Widths    ; 0801C240
 lsr   r0,r0,0x11                ; 0801C242
 lsl   r0,r0,0x1                 ; 0801C244
 add   r3,r0,r3                  ; 0801C246  index with extID-B8
 ldrh  r3,[r3]                   ; 0801C248
 mov   r5,0x4E                   ; 0801C24A
 strh  r3,[r5,r4]                ; 0801C24C  set width
-ldr   r3,=Data081C190C          ; 0801C24E  height table
+ldr   r3,=ExtObjB8_B9_Heights   ; 0801C24E
 add   r0,r0,r3                  ; 0801C250
 ldrh  r0,[r0]                   ; 0801C252
 mov   r3,r4                     ; 0801C254
@@ -475,7 +475,7 @@ lsl   r0,r0,0x10                ; 0801C32C
 mov   r1,0xC0                   ; 0801C32E
 lsl   r1,r1,0xB                 ; 0801C330  60000
 and   r1,r0                     ; 0801C332
-ldr   r0,=Data081C18F4          ; 0801C334
+ldr   r0,=ExtObjAD_B2_RandOffsets; 0801C334
 lsr   r1,r1,0x10                ; 0801C336  2-bit random number << 1
 add   r1,r1,r0                  ; 0801C338  index with 2-bit random number
 ldrh  r0,[r1]                   ; 0801C33A
@@ -491,7 +491,7 @@ sub   r0,0xAD                   ; 0801C34C
 lsl   r0,r0,0x11                ; 0801C34E
 lsr   r1,r0,0x10                ; 0801C350
 strh  r1,[r2]                   ; 0801C352  [0300224C] = (extID-AD)*2
-ldr   r1,=Data081C18FC          ; 0801C354
+ldr   r1,=ExtObjAD_B2_Heights   ; 0801C354
 lsr   r0,r0,0x10                ; 0801C356
 add   r0,r0,r1                  ; 0801C358  index with (extID-AD)*2
 ldrh  r0,[r0]                   ; 0801C35A
@@ -525,7 +525,7 @@ lsl   r3,r3,0x11                ; 0801C394
 lsr   r4,r3,0x10                ; 0801C396  (objID-A9)*2
 mov   r5,r12                    ; 0801C398
 strh  r4,[r5]                   ; 0801C39A  [0300224E] = (objID-A9)*2
-ldr   r4,=Data081C18EC          ; 0801C39C
+ldr   r4,=ExtObjA9_AC_Heights   ; 0801C39C
 lsr   r3,r3,0x10                ; 0801C39E
 add   r3,r3,r4                  ; 0801C3A0
 ldrh  r3,[r3]                   ; 0801C3A2
@@ -575,7 +575,7 @@ ldr   r3,=0x0F0F                ; 0801C3F4
 mov   r4,r3                     ; 0801C3F6
 mov   r0,r8                     ; 0801C3F8
 and   r4,r0                     ; 0801C3FA  0X0x
-ldr   r0,=Data081C18DC          ; 0801C3FC
+ldr   r0,=ExtObjA5_A6_InitXOffset; 0801C3FC
 lsl   r5,r5,0x1                 ; 0801C3FE
 add   r0,r5,r0                  ; 0801C400
 ldrh  r0,[r0]                   ; 0801C402  X adjustment: 2,1 if A5,A6
@@ -585,7 +585,7 @@ ldr   r6,=0xF0F0                ; 0801C408
 mov   r3,r6                     ; 0801C40A
 mov   r0,r8                     ; 0801C40C  YXyx
 and   r3,r0                     ; 0801C40E  Y0y0
-ldr   r0,=Data081C18E0          ; 0801C410
+ldr   r0,=ExtObjA5_A6_InitYOffset; 0801C410
 add   r0,r5,r0                  ; 0801C412
 ldrh  r0,[r0]                   ; 0801C414  Y adjustment: 80,40 if A5,A6
 sub   r3,r3,r0                  ; 0801C416
@@ -593,13 +593,13 @@ and   r3,r6                     ; 0801C418
 orr   r3,r4                     ; 0801C41A
 mov   r0,r9                     ; 0801C41C
 strh  r3,[r0]                   ; 0801C41E  set new YXyx
-ldr   r0,=Data081C18E4          ; 0801C420
+ldr   r0,=ExtObjA5_A6_Widths    ; 0801C420
 add   r0,r5,r0                  ; 0801C422
 ldrh  r0,[r0]                   ; 0801C424  5,3 if A5,A6
 mov   r3,r12                    ; 0801C426
 add   r3,0x4E                   ; 0801C428
 strh  r0,[r3]                   ; 0801C42A  set width
-ldr   r0,=Data081C18E8          ; 0801C42C
+ldr   r0,=ExtObjA5_A6_Heights   ; 0801C42C
 add   r5,r5,r0                  ; 0801C42E
 ldrh  r0,[r5]                   ; 0801C430  9,5 if A5,A6
 add   r3,0x4                    ; 0801C432
@@ -650,7 +650,7 @@ add   r0,r12                    ; 0801C498
 mov   r8,r0                     ; 0801C49A
 ldrh  r6,[r0]                   ; 0801C49C  tile YXyx
 ldr   r5,=0x0F0F                ; 0801C49E
-ldr   r0,=Data081C18CC          ; 0801C4A0
+ldr   r0,=ExtObjA0_A3_InitXOffset; 0801C4A0
 and   r1,r3                     ; 0801C4A2  extID-A0
 lsl   r4,r1,0x1                 ; 0801C4A4  (extID-A0)*2
 add   r0,r4,r0                  ; 0801C4A6  index with extID-A0
@@ -660,7 +660,7 @@ ldrh  r0,[r0]                   ; 0801C4AC  -1,0,-1,0 for A0-A3
 add   r3,r3,r0                  ; 0801C4AE
 and   r3,r5                     ; 0801C4B0  tile 0X0x, possibly with x-1
 ldr   r5,=0xF0F0                ; 0801C4B2
-ldr   r0,=Data081C18D4          ; 0801C4B4
+ldr   r0,=ExtObjA0_A3_InitYOffset; 0801C4B4
 add   r4,r4,r0                  ; 0801C4B6  index with extID-A0
 mov   r0,r5                     ; 0801C4B8
 and   r0,r6                     ; 0801C4BA  tile Y0y0
@@ -828,7 +828,7 @@ mov   r4,r12                    ; 0801C5F8
 add   r4,0x42                   ; 0801C5FA
 ldrh  r3,[r4]                   ; 0801C5FC  extended object ID
 mov   r0,0x7                    ; 0801C5FE
-ldr   r1,=Data081C18B8          ; 0801C600  width table
+ldr   r1,=ExtObj89_8C_Widths    ; 0801C600  width table
 and   r0,r3                     ; 0801C602  extID-88
 lsl   r0,r0,0x1                 ; 0801C604
 add   r1,r0,r1                  ; 0801C606  index with extID-88
@@ -836,7 +836,7 @@ ldrh  r1,[r1]                   ; 0801C608  2,2,1,1
 mov   r3,r12                    ; 0801C60A
 add   r3,0x4E                   ; 0801C60C
 strh  r1,[r3]                   ; 0801C60E  set width
-ldr   r1,=Data081C18C2          ; 0801C610  height table
+ldr   r1,=ExtObj89_8C_Heights   ; 0801C610  height table
 add   r0,r0,r1                  ; 0801C612
 ldrh  r0,[r0]                   ; 0801C614  1,1,2,2
 mov   r1,r12                    ; 0801C616
@@ -911,7 +911,7 @@ and   r5,r3                     ; 0801C69E  0X0x
 ldr   r6,=0x70F0                ; 0801C6A0
 mov   r0,r6                     ; 0801C6A2
 and   r0,r3                     ; 0801C6A4  Y0y0
-ldr   r3,=Data081C189A          ; 0801C6A6  table of Y offsets << 0x10
+ldr   r3,=ExtObj83_87_InitYOffset; 0801C6A6  table of Y offsets << 0x10
 lsr   r4,r4,0x10                ; 0801C6A8
 add   r3,r4,r3                  ; 0801C6AA  index with objID-83
 ldrh  r3,[r3]                   ; 0801C6AC
@@ -920,13 +920,13 @@ and   r0,r6                     ; 0801C6B0
 orr   r0,r5                     ; 0801C6B2
 mov   r3,r8                     ; 0801C6B4
 strh  r0,[r3]                   ; 0801C6B6  adjusted YXyx
-ldr   r0,=Data081C18A4          ; 0801C6B8  table of widths
+ldr   r0,=ExtObj83_87_Widths    ; 0801C6B8  table of widths
 add   r0,r4,r0                  ; 0801C6BA  index with objID-83
 ldrh  r0,[r0]                   ; 0801C6BC
 mov   r3,r12                    ; 0801C6BE
 add   r3,0x4E                   ; 0801C6C0
 strh  r0,[r3]                   ; 0801C6C2  set width
-ldr   r0,=Data081C18AE          ; 0801C6C4  table of heights
+ldr   r0,=ExtObj83_87_Heights   ; 0801C6C4  table of heights
 add   r4,r4,r0                  ; 0801C6C6
 ldrh  r0,[r4]                   ; 0801C6C8
 add   r3,0x4                    ; 0801C6CA
@@ -1041,12 +1041,12 @@ add   r0,0x42                   ; 0801C7AC
 ldrh  r0,[r0]                   ; 0801C7AE  extended object ID
 mov   r3,0xF                    ; 0801C7B0
 and   r3,r0                     ; 0801C7B2  r3 = extID&0F
-ldr   r0,=Data081C187E          ; 0801C7B4
+ldr   r0,=ExtObj71_7D_Widths    ; 0801C7B4
 add   r0,r3,r0                  ; 0801C7B6  index with extID&0F
 ldrb  r0,[r0]                   ; 0801C7B8
 mov   r5,0x4E                   ; 0801C7BA
 strh  r0,[r5,r4]                ; 0801C7BC  set width
-ldr   r0,=Data081C188C          ; 0801C7BE
+ldr   r0,=ExtObj71_7D_Heights   ; 0801C7BE
 add   r3,r3,r0                  ; 0801C7C0  extID&0F
 ldrb  r0,[r3]                   ; 0801C7C2
 mov   r3,r4                     ; 0801C7C4
@@ -1207,7 +1207,7 @@ pop   {r4}                      ; 0801C8E2
 pop   {r0}                      ; 0801C8E4
 bx    r0                        ; 0801C8E6
 
-Sub0801C8E8:
+ExtObj5F_66_SharedInit:
 ; called by 00.5F-60,65-66 init
 ; 5F: r1=0, r2=4, r3=2
 ; 60: r1=2, r2=5, r3=3
@@ -1254,7 +1254,7 @@ str   r2,[sp,0x4]               ; 0801C926
 mov   r1,0xE                    ; 0801C928
 mov   r2,0x2                    ; 0801C92A
 mov   r3,0x2                    ; 0801C92C
-bl    Sub0801C8E8               ; 0801C92E  00.5F-66 shared init
+bl    ExtObj5F_66_SharedInit    ; 0801C92E
 add   sp,0x8                    ; 0801C932
 pop   {r0}                      ; 0801C934
 bx    r0                        ; 0801C936
@@ -1272,7 +1272,7 @@ str   r2,[sp,0x4]               ; 0801C946
 mov   r1,0xC                    ; 0801C948
 mov   r2,0x4                    ; 0801C94A
 mov   r3,0x3                    ; 0801C94C
-bl    Sub0801C8E8               ; 0801C94E  00.5F-66 shared init
+bl    ExtObj5F_66_SharedInit    ; 0801C94E
 add   sp,0x8                    ; 0801C952
 pop   {r0}                      ; 0801C954
 bx    r0                        ; 0801C956
@@ -1295,7 +1295,7 @@ str   r3,[sp,0x4]               ; 0801C96E
 mov   r1,r4                     ; 0801C970
 mov   r2,0x5                    ; 0801C972
 mov   r3,0x4                    ; 0801C974
-bl    Sub0801C8E8               ; 0801C976  00.5F-66 shared init
+bl    ExtObj5F_66_SharedInit    ; 0801C976
 add   sp,0x8                    ; 0801C97A
 pop   {r4}                      ; 0801C97C
 pop   {r0}                      ; 0801C97E
@@ -1356,7 +1356,7 @@ str   r3,[sp,0x4]               ; 0801C9DA
 mov   r1,r4                     ; 0801C9DC
 mov   r2,0x3                    ; 0801C9DE
 mov   r3,0x2                    ; 0801C9E0
-bl    Sub0801C8E8               ; 0801C9E2  00.5F-66 shared init
+bl    ExtObj5F_66_SharedInit    ; 0801C9E2
 add   sp,0x8                    ; 0801C9E6
 pop   {r4}                      ; 0801C9E8
 pop   {r0}                      ; 0801C9EA
@@ -1412,7 +1412,7 @@ str   r2,[sp,0x4]               ; 0801CA3E
 mov   r1,0x2                    ; 0801CA40
 mov   r2,0x5                    ; 0801CA42
 mov   r3,0x3                    ; 0801CA44
-bl    Sub0801C8E8               ; 0801CA46  00.5F-66 shared init
+bl    ExtObj5F_66_SharedInit    ; 0801CA46
 add   sp,0x8                    ; 0801CA4A
 pop   {r0}                      ; 0801CA4C
 bx    r0                        ; 0801CA4E
@@ -1430,7 +1430,7 @@ str   r2,[sp,0x4]               ; 0801CA5E
 mov   r1,0x0                    ; 0801CA60
 mov   r2,0x4                    ; 0801CA62
 mov   r3,0x2                    ; 0801CA64
-bl    Sub0801C8E8               ; 0801CA66  00.5F-66 shared init
+bl    ExtObj5F_66_SharedInit    ; 0801CA66
 add   sp,0x8                    ; 0801CA6A
 pop   {r0}                      ; 0801CA6C
 bx    r0                        ; 0801CA6E
@@ -2197,7 +2197,7 @@ mov   r0,r12                    ; 0801D016
 add   r0,0x42                   ; 0801D018  r0 = [03007240]+42 (0300224E)
 ldrh  r3,[r0]                   ; 0801D01A  14
 mov   r0,0x1                    ; 0801D01C
-ldr   r4,=Data081C187A          ; 0801D01E
+ldr   r4,=ExtObj14_15_Slopes    ; 0801D01E
 and   r0,r3                     ; 0801D020  0
 lsl   r0,r0,0x1                 ; 0801D022  0
 add   r0,r0,r4                  ; 0801D024
@@ -2231,7 +2231,7 @@ mov   r0,r12                    ; 0801D05A
 add   r0,0x42                   ; 0801D05C  r0 = [03007240]+42 (0300224E)
 ldrh  r3,[r0]                   ; 0801D05E  15
 mov   r0,0x1                    ; 0801D060
-ldr   r4,=Data081C187A          ; 0801D062
+ldr   r4,=ExtObj14_15_Slopes    ; 0801D062
 and   r0,r3                     ; 0801D064  1
 lsl   r0,r0,0x1                 ; 0801D066  2
 add   r0,r0,r4                  ; 0801D068

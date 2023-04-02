@@ -1419,7 +1419,7 @@ strh  r1,[r0,0xE]               ; 080E8BE2
 ldr   r1,[r0,0x4]               ; 080E8BE4 \
 add   r1,0x1                    ; 080E8BE6 | add 1 to byte to read
 str   r1,[r0,0x4]               ; 080E8BE8 /
-bl    StdMsg_DispMsgChar               ; 080E8BEA  Display message character
+bl    StdMsg_DispMsgChar        ; 080E8BEA  Display message character
 pop   {r0}                      ; 080E8BEE
 bx    r0                        ; 080E8BF0
 .pool                           ; 080E8BF2
@@ -1983,7 +1983,7 @@ bl    StdMsg_CmdMain            ; 080E8FBC  process message command
 b     @@Code080E8FCA            ; 080E8FC0 /
 @@Code080E8FC2:
 mov   r0,r4                     ; 080E8FC2 \ runs if byte is not FF
-bl    StdMsg_DispMsgChar               ; 080E8FC4  Display message character
+bl    StdMsg_DispMsgChar        ; 080E8FC4  Display message character
 mov   r0,0x0                    ; 080E8FC8 /
 @@Code080E8FCA:
 cmp   r0,0x0                    ; 080E8FCA
@@ -2016,7 +2016,7 @@ str   r2,[sp,0x4]               ; 080E8FF2
 mov   r2,0x0                    ; 080E8FF4
 mov   r3,0x0                    ; 080E8FF6
 bl    Sub080FC9E0               ; 080E8FF8
-b     @@Return            ; 080E8FFC  return
+b     @@Return                  ; 080E8FFC  return
 .pool                           ; 080E8FFE
 
 @@Code080E9010:                 ; runs if game state 0D: copy message graphics to sprite graphics

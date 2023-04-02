@@ -19,7 +19,7 @@ ldr   r2,=0x03007010            ; 0801D272  Layer 1 tilemap EWRAM (0200000C)
 ldr   r2,[r2]                   ; 0801D274
 lsl   r1,r1,0x1                 ; 0801D276
 add   r2,r2,r1                  ; 0801D278
-ldr   r1,=Data081BD1C0          ; 0801D27A  tilemap
+ldr   r1,=ObjFE_Tilemap         ; 0801D27A  tilemap
 lsl   r0,r0,0x1                 ; 0801D27C
 add   r0,r0,r1                  ; 0801D27E  index with relY*8 + relX&7 (no overflow checking?!)
 ldrh  r0,[r0]                   ; 0801D280
@@ -3107,7 +3107,7 @@ ObjD2_Main:
 ; object D2 main
 push  {lr}                      ; 0801EAF8
 ldr   r1,=0x870E                ; 0801EAFA  tile ID
-bl    ObjCF_D2_SetTile               ; 0801EAFC
+bl    ObjCF_D2_SetTile          ; 0801EAFC
 pop   {r0}                      ; 0801EB00
 bx    r0                        ; 0801EB02
 .pool                           ; 0801EB04
@@ -3116,7 +3116,7 @@ ObjD1_Main:
 ; object D1 main
 push  {lr}                      ; 0801EB08
 ldr   r1,=0x870F                ; 0801EB0A  tile ID
-bl    ObjCF_D2_SetTile               ; 0801EB0C
+bl    ObjCF_D2_SetTile          ; 0801EB0C
 pop   {r0}                      ; 0801EB10
 bx    r0                        ; 0801EB12
 .pool                           ; 0801EB14
@@ -3163,7 +3163,7 @@ lsl   r0,r0,0x10                ; 0801EB54
 lsr   r2,r0,0x10                ; 0801EB56
 mov   r0,r3                     ; 0801EB58
 mov   r1,r2                     ; 0801EB5A
-bl    ObjCF_D2_SetTile               ; 0801EB5C
+bl    ObjCF_D2_SetTile          ; 0801EB5C
 pop   {r4-r5}                   ; 0801EB60
 pop   {r0}                      ; 0801EB62
 bx    r0                        ; 0801EB64
@@ -3199,7 +3199,7 @@ lsl   r0,r0,0x10                ; 0801EB98
 lsr   r3,r0,0x10                ; 0801EB9A
 mov   r0,r2                     ; 0801EB9C
 mov   r1,r3                     ; 0801EB9E
-bl    ObjCF_D2_SetTile               ; 0801EBA0
+bl    ObjCF_D2_SetTile          ; 0801EBA0
 pop   {r0}                      ; 0801EBA4
 bx    r0                        ; 0801EBA6
 .pool                           ; 0801EBA8
@@ -3806,7 +3806,7 @@ add   r0,0x4A                   ; 0801F088  [03007240]+4A (03002258)
 ldrh  r5,[r0]                   ; 0801F08A  r5 = offset to layer 1 tilemap
 mov   r0,r4                     ; 0801F08C
 mov   r1,r5                     ; 0801F08E
-bl    Sub080176A4               ; 0801F090  Test item memory
+bl    ObjShared_TestItemMemory  ; 0801F090
 lsl   r0,r0,0x10                ; 0801F094
 cmp   r0,0x0                    ; 0801F096
 bne   @@Code0801F0BC            ; 0801F098  return if item memory is set
@@ -3816,7 +3816,7 @@ ldrh  r1,[r0]                   ; 0801F09E  0 for C4-C6, 2 for C7-C9
 mov   r0,0x2                    ; 0801F0A0
 and   r0,r1                     ; 0801F0A2  still 0 for C4-C6, 2 for C7-C9
 lsl   r0,r0,0x10                ; 0801F0A4
-ldr   r1,=Data081C088E          ; 0801F0A6
+ldr   r1,=Obj_CoinTiles         ; 0801F0A6
 lsr   r0,r0,0x11                ; 0801F0A8
 lsl   r0,r0,0x1                 ; 0801F0AA  still 0 for C4-C6, 2 for C7-C9
 add   r0,r0,r1                  ; 0801F0AC  use as table index
@@ -9549,7 +9549,7 @@ mov   r4,r0                     ; 08021BEE
 mov   r5,r4                     ; 08021BF0
 add   r5,0x4A                   ; 08021BF2
 ldrh  r1,[r5]                   ; 08021BF4  offset to layer 1 tilemap
-bl    Sub080176A4               ; 08021BF6  Test item memory
+bl    ObjShared_TestItemMemory  ; 08021BF6
 lsl   r0,r0,0x10                ; 08021BFA
 cmp   r0,0x0                    ; 08021BFC
 bne   @@Code08021C24            ; 08021BFE  if item memory is set, return
@@ -9568,7 +9568,7 @@ ldr   r1,[r1]                   ; 08021C16
 lsr   r0,r0,0x1                 ; 08021C18
 lsl   r0,r0,0x1                 ; 08021C1A
 add   r1,r1,r0                  ; 08021C1C
-ldr   r0,=Data081C088E          ; 08021C1E
+ldr   r0,=Obj_CoinTiles         ; 08021C1E
 ldrh  r0,[r0,0x4]               ; 08021C20  tile ID 6001 (red coin)
 strh  r0,[r1]                   ; 08021C22
 @@Code08021C24:
@@ -9585,7 +9585,7 @@ mov   r5,r4                     ; 08021C3C
 add   r5,0x4A                   ; 08021C3E
 ldrh  r2,[r5]                   ; 08021C40  offset to layer 1 tilemap
 mov   r1,r2                     ; 08021C42
-bl    Sub080176A4               ; 08021C44  Test item memory
+bl    ObjShared_TestItemMemory  ; 08021C44
 lsl   r0,r0,0x10                ; 08021C48
 cmp   r0,0x0                    ; 08021C4A
 bne   @@Code08021C7E            ; 08021C4C  if item memory is set, return
@@ -9611,7 +9611,7 @@ ldr   r1,[r0]                   ; 08021C70
 lsr   r0,r2,0x1                 ; 08021C72
 lsl   r0,r0,0x1                 ; 08021C74
 add   r1,r1,r0                  ; 08021C76
-ldr   r0,=Data081C088E          ; 08021C78
+ldr   r0,=Obj_CoinTiles         ; 08021C78
 ldrh  r0,[r0,0x4]               ; 08021C7A  tile ID 6001 (red coin)
 strh  r0,[r1]                   ; 08021C7C
 @@Code08021C7E:
@@ -11979,7 +11979,7 @@ add   r0,0x4A                   ; 08022ECC
 ldrh  r5,[r0]                   ; 08022ECE  r5 = offset to layer 1 tilemap
 mov   r0,r4                     ; 08022ED0
 mov   r1,r5                     ; 08022ED2
-bl    Sub080176A4               ; 08022ED4  Test item memory
+bl    ObjShared_TestItemMemory  ; 08022ED4
 lsl   r0,r0,0x10                ; 08022ED8
 cmp   r0,0x0                    ; 08022EDA
 bne   @@Code08022F00            ; 08022EDC  if item memory is set, return
@@ -11989,7 +11989,7 @@ ldrh  r1,[r0]                   ; 08022EE2  r1 = object ID
 mov   r0,0x2                    ; 08022EE4
 and   r0,r1                     ; 08022EE6  bit 1 of object ID
 lsl   r0,r0,0x10                ; 08022EE8
-ldr   r1,=Data081C088E          ; 08022EEA  tilemap table
+ldr   r1,=Obj_CoinTiles         ; 08022EEA  tilemap table
 lsr   r0,r0,0x11                ; 08022EEC
 lsl   r0,r0,0x1                 ; 08022EEE
 add   r0,r0,r1                  ; 08022EF0  use as index to tilemap
@@ -22358,26 +22358,27 @@ bx    r1                        ; 08028160
 .pool                           ; 08028162
 
 ObjEE_F3_Main:
-; object EE-F3 main; called by 1F-20
-; 0300224E (obj ID): 1 for EE, FFFF for EF, 8000 for F0-F3
+; object EE-F3 main; called by 20
+; 0300224E (obj ID): 0 for 20, 1 for EE, FFFF for EF, 8000 for F0-F3
 ; 03002246 (scratch RAM): Object y^x parity
 push  {r4-r5,lr}                ; 08028168
 mov   r4,r0                     ; 0802816A
 mov   r2,r4                     ; 0802816C
 add   r2,0x50                   ; 0802816E
-ldrh  r0,[r2]                   ; 08028170
+ldrh  r0,[r2]                   ; 08028170  relative Y
 lsl   r0,r0,0x11                ; 08028172
-lsr   r1,r0,0x10                ; 08028174
+lsr   r1,r0,0x10                ; 08028174  relY *2
 cmp   r1,0x5                    ; 08028176
 bls   @@Code080281F0            ; 08028178
-ldrh  r1,[r2]                   ; 0802817A
+                                ;          \ runs if relY > 2
+ldrh  r1,[r2]                   ; 0802817A  relative Y
 ldrh  r0,[r4,0x3A]              ; 0802817C
 eor   r1,r0                     ; 0802817E
 mov   r0,0x1                    ; 08028180
 and   r1,r0                     ; 08028182
 mov   r2,0x84                   ; 08028184
-lsl   r2,r2,0x1                 ; 08028186
-mov   r0,r2                     ; 08028188
+lsl   r2,r2,0x1                 ; 08028186  108
+mov   r0,r2                     ; 08028188  r0 = 108
 orr   r1,r0                     ; 0802818A
 mov   r3,r1                     ; 0802818C
 mov   r2,r3                     ; 0802818E
@@ -22425,12 +22426,12 @@ blt   @@Code080281FA            ; 080281E0
 mov   r0,r4                     ; 080281E2
 mov   r1,r2                     ; 080281E4
 bl    Sub08027EE8               ; 080281E6
-b     @@Code080281F6            ; 080281EA
+b     @@Code080281F6            ; 080281EA /
 .pool                           ; 080281EC
 
-@@Code080281F0:
+@@Code080281F0:                 ;          \ runs if relY <= 2
 mov   r0,r4                     ; 080281F0
-bl    Sub0802808C               ; 080281F2
+bl    Sub0802808C               ; 080281F2 /
 @@Code080281F6:
 lsl   r0,r0,0x10                ; 080281F6
 lsr   r2,r0,0x10                ; 080281F8
@@ -22446,26 +22447,27 @@ add   r0,0x52                   ; 08028208
 ldrh  r0,[r0]                   ; 0802820A
 cmp   r1,r0                     ; 0802820C
 bne   @@Code08028218            ; 0802820E
-ldrh  r1,[r4,0x3A]              ; 08028210
+ldrh  r1,[r4,0x3A]              ; 08028210 \ toggle parity
 mov   r0,0x1                    ; 08028212
 eor   r1,r0                     ; 08028214
-strh  r1,[r4,0x3A]              ; 08028216
+strh  r1,[r4,0x3A]              ; 08028216 /
 @@Code08028218:
 mov   r0,r4                     ; 08028218
 add   r0,0x4A                   ; 0802821A
-ldrh  r0,[r0]                   ; 0802821C
+ldrh  r0,[r0]                   ; 0802821C  offset to layer 1 tilemap
 ldr   r1,=0x03007010            ; 0802821E  Layer 1 tilemap EWRAM (0200000C)
 ldr   r1,[r1]                   ; 08028220
 lsr   r0,r0,0x1                 ; 08028222
 lsl   r0,r0,0x1                 ; 08028224
 add   r1,r1,r0                  ; 08028226
-strh  r2,[r1]                   ; 08028228
+strh  r2,[r1]                   ; 08028228  set tile
 pop   {r4-r5}                   ; 0802822A
 pop   {r0}                      ; 0802822C
 bx    r0                        ; 0802822E
 .pool                           ; 08028230
 
-Sub08028234:
+Obj1F_Bottom:
+; runs if relY >= 5
 add   r0,0x4A                   ; 08028234
 ldrh  r0,[r0]                   ; 08028236
 ldr   r2,=0x7E04                ; 08028238
@@ -22478,7 +22480,8 @@ strh  r2,[r1]                   ; 08028244
 bx    lr                        ; 08028246
 .pool                           ; 08028248
 
-Sub08028250:
+Obj1F_Top:
+; runs if relY < 5
 push  {lr}                      ; 08028250
 mov   r1,r0                     ; 08028252
 add   r0,0x4A                   ; 08028254
@@ -22513,44 +22516,46 @@ pop   {r0}                      ; 08028288
 bx    r0                        ; 0802828A
 .pool                           ; 0802828C
 
-Sub08028294:
-; object 20 main?
+Obj1F_20_Bottom:
+; runs if relY >= threshold
+; r1: object ID
 push  {lr}                      ; 08028294
 mov   r2,r0                     ; 08028296
 lsl   r1,r1,0x10                ; 08028298
 lsr   r1,r1,0x10                ; 0802829A
 mov   r0,0x2                    ; 0802829C
-and   r1,r0                     ; 0802829E
+and   r1,r0                     ; 0802829E  2,0 for 1F,20
 cmp   r1,0x0                    ; 080282A0
-bne   @@Code080282AC            ; 080282A2
+bne   @@Obj1F                   ; 080282A2
 mov   r0,r2                     ; 080282A4
 bl    ObjEE_F3_Main             ; 080282A6
-b     @@Code080282B2            ; 080282AA
-@@Code080282AC:
+b     @@Return                  ; 080282AA
+@@Obj1F:
 mov   r0,r2                     ; 080282AC
-bl    Sub08028234               ; 080282AE
-@@Code080282B2:
+bl    Obj1F_Bottom              ; 080282AE
+@@Return:
 pop   {r0}                      ; 080282B2
 bx    r0                        ; 080282B4
 .pool                           ; 080282B6
 
-Sub080282B8:
-; object 1F main?
+Obj1F_20_Top:
+; runs if relY < threshold
+; r1: object ID
 push  {lr}                      ; 080282B8
 mov   r2,r0                     ; 080282BA
 lsl   r1,r1,0x10                ; 080282BC
 lsr   r1,r1,0x10                ; 080282BE
 mov   r0,0x2                    ; 080282C0
-and   r1,r0                     ; 080282C2
+and   r1,r0                     ; 080282C2  2,0 for 1F,20
 cmp   r1,0x0                    ; 080282C4
-bne   @@Code080282D0            ; 080282C6
+bne   @@Obj1F                   ; 080282C6
 mov   r0,r2                     ; 080282C8
 bl    ObjEE_F3_Main             ; 080282CA
-b     @@Code080282D6            ; 080282CE
-@@Code080282D0:
+b     @@Return                  ; 080282CE
+@@Obj1F:
 mov   r0,r2                     ; 080282D0
-bl    Sub08028250               ; 080282D2
-@@Code080282D6:
+bl    Obj1F_Top                 ; 080282D2
+@@Return:
 pop   {r0}                      ; 080282D6
 bx    r0                        ; 080282D8
 .pool                           ; 080282DA
@@ -22558,15 +22563,17 @@ bx    r0                        ; 080282D8
 Obj1F_20_Main:
 ; object 1F-20 main
 ; relative Y threshold: 5,2 for 1F,20
+; r1: 2 if relY >= threshold, else: X parity
+; 0300224E (obj ID): 0
 ; 03002246 (scratch RAM): Object y^x parity
 push  {lr}                      ; 080282DC
 lsl   r1,r1,0x18                ; 080282DE
 lsl   r2,r2,0x10                ; 080282E0
 lsr   r2,r2,0x10                ; 080282E2
 ldr   r3,=Obj1F_20_CodePtrs     ; 080282E4
-lsr   r1,r1,0x16                ; 080282E6  object ID >> 2 (1,2 for 1F,20) ?
-add   r1,r1,r3                  ; 080282E8
-ldr   r3,[r1]                   ; 080282EA
+lsr   r1,r1,0x16                ; 080282E6
+add   r1,r1,r3                  ; 080282E8  offset with input r1
+ldr   r3,[r1]                   ; 080282EA  code pointer
 mov   r1,r2                     ; 080282EC
 bl    Sub_bx_r3                 ; 080282EE
 pop   {r0}                      ; 080282F2
@@ -25272,8 +25279,7 @@ lsr   r1,r0,0x10                ; 080297CC
 b     @@Code080297EA            ; 080297CE
 .pool                           ; 080297D0
 
-@@Code080297D8:
-                                ; runs if pre-existing tile has different high byte
+@@Code080297D8:                 ; runs if pre-existing tile has different high byte
 mov   r0,r4                     ; 080297D8
 mov   r1,r2                     ; 080297DA
 bl    Sub08029020               ; 080297DC  if relY==2 and tile at relY-1 is ??07 or ??08, r0=6, else, r0=relY*2
