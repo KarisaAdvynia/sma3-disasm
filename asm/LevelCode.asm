@@ -6926,7 +6926,7 @@ mov   r6,r9                     ; 0801728C
 mov   r5,r8                     ; 0801728E
 push  {r5-r7}                   ; 08017290
 mov   r3,0x0                    ; 08017292
-ldr   r0,=Data081BC6E8          ; 08017294
+ldr   r0,=L1DynTileSourceData   ; 08017294
 mov   r8,r0                     ; 08017296  table: source data for 0200800C
 ldr   r1,=0x03007240            ; 08017298  Normal gameplay IWRAM (0300220C)
 mov   r10,r1                    ; 0801729A

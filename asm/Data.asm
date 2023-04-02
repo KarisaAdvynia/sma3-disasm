@@ -1765,7 +1765,7 @@ CodePtrs081687A4:               ; 081687A4
 Obj89_CodePtrs:                 ; 081687B0
 .word Sub08021744+1, Sub08021710+1, Sub080216D4+1, Sub0802166C+1
 Obj87_88_CodePtrs:              ; 081687C0
-.word Sub080217A8+1, Sub080217A8+1, Sub08029610+1
+.word Sub080217A8+1, Sub080217A8+1, Obj_LandInterior+1
 Obj7B_CodePtrs:                 ; 081687CC
 .word Sub08022444+1, Sub08022388+1, Sub080222CC+1, Sub080221FC+1
 Obj7A_CodePtrs:                 ; 081687DC
@@ -1835,17 +1835,17 @@ CodePtrs08168A44:               ; 08168A44
 Obj1F_20_CodePtrs:              ; 08168A4C
 .word Obj1F_20_Top+1, Obj1F_20_Top+1, Obj1F_20_Bottom+1
 Obj06_09_CodePtrs:              ; 08168A58
-.word Sub08028EEC+1, Sub08028E8C+1, Sub08029610+1
+.word Sub08028EEC+1, Sub08028E8C+1, Obj_LandInterior+1
 Obj04_05_CodePtrs:              ; 08168A64
-.word Sub08028F94+1, Sub08028F64+1
+.word Obj04_05_EvenX+1, Obj04_05_OddX+1
 CodePtrs08168A6C:               ; 08168A6C
 .word Sub0802931C+1, Sub0802931C+1, Return08029318+1, Return08029318+1
 .word Return08029318+1, Return08029318+1, Return08029318+1, Return08029318+1
 .word Sub080292D8+1, Sub080292D8+1
-Obj02_03_0A_0B_ThresholdPtrs:   ; 08168A94
-.word Sub080293D8+1, Sub080293D8+1, Sub080291C0+1
+Obj02030A0B_ThresholdPtrs:      ; 08168A94
+.word Obj02_03_0A_0B_Top+1, Obj02_03_0A_0B_Top+1, Obj_LandWall+1
 Obj01_CodePtrs:                 ; 08168AA0
-.word Sub0802979C+1, Sub08029738+1, Sub08029610+1
+.word Sub0802979C+1, Sub08029738+1, Obj_LandInterior+1
 StdObjMainPtrs:                 ; 08168AAC
 .word Return08029818+1, Obj01_Main+1, Obj02_03_0A_0B_Main+1, Obj02_03_0A_0B_Main+1
 .word Obj04_05_Main+1, Obj04_05_Main+1, Obj06_09_Main+1, Obj06_09_Main+1
@@ -34578,7 +34578,7 @@ L0_8x8FlagPtrs:                 ; 081BC444
 .word Data081BC390, Data081BC392, Data081BC394, Data081BC396
 .word Data081BC3AA, Data081BC3AB, Data081BC412, Data081BC419
 .word Data081BC421
-Data081BC6E8:                   ; 081BC6E8
+L1DynTileSourceData:            ; 081BC6E8
 .halfword 0x0004, 0x0000
 .halfword 0x0200, 0x0200, 0x0200, 0x0200, 0x0208, 0x0200, 0x0210, 0x020C
 .halfword 0x0204, 0x0200, 0x0210, 0x0200, 0x0208, 0x0200, 0x0210, 0x020C
