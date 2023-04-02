@@ -67,7 +67,7 @@ ldr   r2,[r2]                   ; 0801D2D2
 lsr   r0,r0,0x1                 ; 0801D2D4
 lsl   r0,r0,0x1                 ; 0801D2D6
 add   r2,r2,r0                  ; 0801D2D8
-ldr   r0,=Data08168688          ; 0801D2DA  tilemap
+ldr   r0,=ObjF7_FC_Tilemap      ; 0801D2DA
 lsr   r1,r1,0xF                 ; 0801D2DC
 add   r1,r1,r0                  ; 0801D2DE
 ldrh  r0,[r1]                   ; 0801D2E0  tile ID
@@ -207,6 +207,7 @@ bx    r1                        ; 0801D3EE
 
 ObjED_Main:
 ; object ED main
+; 0300224E (obj ID): object Y^X parity
 push  {r4-r7,lr}                ; 0801D3F8
 mov   r7,r8                     ; 0801D3FA
 push  {r7}                      ; 0801D3FC
@@ -285,7 +286,7 @@ ldr   r3,[r0]                   ; 0801D488
 mov   r0,r6                     ; 0801D48A
 mov   r1,r8                     ; 0801D48C
 mov   r2,r4                     ; 0801D48E
-bl    Sub_bx_r3                 ; 0801D490  bx r3
+bl    Sub_bx_r3                 ; 0801D490
 lsl   r0,r0,0x10                ; 0801D494
 lsr   r0,r0,0x10                ; 0801D496
 ldrh  r4,[r7]                   ; 0801D498
@@ -318,7 +319,7 @@ bx    r0                        ; 0801D4D0
 .pool                           ; 0801D4D2
 
 Sub0801D4D8:
-; called by objects E5,E8,E9
+; called by E5,E8,E9
 push  {lr}                      ; 0801D4D8
 mov   r1,r0                     ; 0801D4DA
 add   r1,0x48                   ; 0801D4DC  r1 = [03007240]+48 (03002254)
@@ -346,7 +347,7 @@ bx    r0                        ; 0801D504
 .pool                           ; 0801D506
 
 Sub0801D518:
-; called by objects E5,E6,E8
+; called by E5,E6,E8
 ; E5,E6: runs if relY is 2 and relX-1 == width
 push  {lr}                      ; 0801D518
 mov   r1,r0                     ; 0801D51A
@@ -693,7 +694,7 @@ bx    r0                        ; 0801D7E4
 .pool                           ; 0801D7E6
 
 Sub0801D7E8:
-; called by objects E5,E8
+; called by E5,E8
 ; r3: 0,1 for E5,E8
 push  {r4-r5,lr}                ; 0801D7E8
 mov   r5,r0                     ; 0801D7EA
@@ -751,7 +752,7 @@ bx    r0                        ; 0801D84A
 .pool                           ; 0801D84C
 
 Sub0801D854:
-; called by objects E6,E7,E9,EA: generate relY-dependent first 4 tiles. Fall back to random flower interior tile if relY>=4
+; called by E6,E7,E9,EA: generate relY-dependent first 4 tiles. Fall back to random flower interior tile if relY>=4
 ; r1: random 3-bit number
 ; r2: 0,1,2,3 for E6,E7,E9,EA
 push  {r4-r5,lr}                ; 0801D854
@@ -1180,7 +1181,7 @@ bx    r0                        ; 0801DB68
 .pool                           ; 0801DB6A
 
 Sub0801DB70:
-; called by objects E4-EA: shared subroutine for filling flower platform interior with random tiles
+; called by E4-EA: shared subroutine for filling flower platform interior with random tiles
 ; r1: depth below surface, roughly (0=first tile below, 2=second tile below, etc). Flower size and chance of a flower appearing decrease with depth.
 ; for E4, r1 is 2*(relY-3)
 ; for E5-EA, r1 is 2*(relY-4)
@@ -3045,7 +3046,7 @@ ldr   r2,=ObjD4_D7_CodePtrs     ; 0801EA80
 lsl   r1,r1,0x2                 ; 0801EA82
 add   r1,r1,r2                  ; 0801EA84  index with objID-D4
 ldr   r1,[r1]                   ; 0801EA86
-bl    Sub_bx_r1                 ; 0801EA88  bx r1
+bl    Sub_bx_r1                 ; 0801EA88
 pop   {r0}                      ; 0801EA8C
 bx    r0                        ; 0801EA8E
 .pool                           ; 0801EA90
@@ -3089,8 +3090,8 @@ pop   {r0}                      ; 0801EAD2
 bx    r0                        ; 0801EAD4
 .pool                           ; 0801EAD6
 
-Sub0801EAE0:
-; subroutine: set tile, called by objects CF-D2
+ObjCF_D2_SetTile:
+; subroutine: set tile, called by CF-D2
 add   r0,0x4A                   ; 0801EAE0
 ldrh  r0,[r0]                   ; 0801EAE2
 ldr   r2,=0x03007010            ; 0801EAE4  Layer 1 tilemap EWRAM (0200000C)
@@ -3106,7 +3107,7 @@ ObjD2_Main:
 ; object D2 main
 push  {lr}                      ; 0801EAF8
 ldr   r1,=0x870E                ; 0801EAFA  tile ID
-bl    Sub0801EAE0               ; 0801EAFC  set tile
+bl    ObjCF_D2_SetTile               ; 0801EAFC
 pop   {r0}                      ; 0801EB00
 bx    r0                        ; 0801EB02
 .pool                           ; 0801EB04
@@ -3115,7 +3116,7 @@ ObjD1_Main:
 ; object D1 main
 push  {lr}                      ; 0801EB08
 ldr   r1,=0x870F                ; 0801EB0A  tile ID
-bl    Sub0801EAE0               ; 0801EB0C  set tile
+bl    ObjCF_D2_SetTile               ; 0801EB0C
 pop   {r0}                      ; 0801EB10
 bx    r0                        ; 0801EB12
 .pool                           ; 0801EB14
@@ -3162,7 +3163,7 @@ lsl   r0,r0,0x10                ; 0801EB54
 lsr   r2,r0,0x10                ; 0801EB56
 mov   r0,r3                     ; 0801EB58
 mov   r1,r2                     ; 0801EB5A
-bl    Sub0801EAE0               ; 0801EB5C  set tile
+bl    ObjCF_D2_SetTile               ; 0801EB5C
 pop   {r4-r5}                   ; 0801EB60
 pop   {r0}                      ; 0801EB62
 bx    r0                        ; 0801EB64
@@ -3198,7 +3199,7 @@ lsl   r0,r0,0x10                ; 0801EB98
 lsr   r3,r0,0x10                ; 0801EB9A
 mov   r0,r2                     ; 0801EB9C
 mov   r1,r3                     ; 0801EB9E
-bl    Sub0801EAE0               ; 0801EBA0  set tile
+bl    ObjCF_D2_SetTile               ; 0801EBA0
 pop   {r0}                      ; 0801EBA4
 bx    r0                        ; 0801EBA6
 .pool                           ; 0801EBA8
@@ -3907,7 +3908,7 @@ lsl   r0,r2,0x2                 ; 0801F140  use as pointer table index
 add   r0,r0,r1                  ; 0801F142
 ldr   r1,[r0]                   ; 0801F144  r1 = code pointer
 mov   r0,r3                     ; 0801F146
-bl    Sub_bx_r1                 ; 0801F148  bx r1
+bl    Sub_bx_r1                 ; 0801F148
 pop   {r0}                      ; 0801F14C
 bx    r0                        ; 0801F14E
 .pool                           ; 0801F150
@@ -4375,7 +4376,7 @@ ldr   r2,=ObjC0_C3_CodePtrs     ; 0801F4E4
 lsl   r1,r1,0x2                 ; 0801F4E6
 add   r1,r1,r2                  ; 0801F4E8
 ldr   r1,[r1]                   ; 0801F4EA
-bl    Sub_bx_r1                 ; 0801F4EC  bx r1
+bl    Sub_bx_r1                 ; 0801F4EC
 pop   {r0}                      ; 0801F4F0
 bx    r0                        ; 0801F4F2
 .pool                           ; 0801F4F4
@@ -4984,7 +4985,7 @@ ldr   r2,=ObjBA_BD_CodePtrs     ; 0801F9AE
 lsr   r1,r1,0xE                 ; 0801F9B0  (objID-BA)*4
 add   r1,r1,r2                  ; 0801F9B2
 ldr   r1,[r1]                   ; 0801F9B4
-bl    Sub_bx_r1                 ; 0801F9B6  bx r1
+bl    Sub_bx_r1                 ; 0801F9B6
 pop   {r0}                      ; 0801F9BA
 bx    r0                        ; 0801F9BC
 .pool                           ; 0801F9BE
@@ -6114,7 +6115,7 @@ lsl   r0,r0,0x2                 ; 08020202
 add   r0,r0,r1                  ; 08020204
 ldr   r1,[r0]                   ; 08020206
 mov   r0,r4                     ; 08020208
-bl    Sub_bx_r1                 ; 0802020A  bx r1
+bl    Sub_bx_r1                 ; 0802020A
 mov   r1,r4                     ; 0802020E
 add   r1,0x4A                   ; 08020210
 ldrh  r3,[r1]                   ; 08020212
@@ -6935,7 +6936,7 @@ lsl   r0,r0,0x2                 ; 08020818
 add   r0,r0,r1                  ; 0802081A  index with object substate
 ldr   r1,[r0]                   ; 0802081C
 mov   r0,r4                     ; 0802081E
-bl    Sub_bx_r1                 ; 08020820  bx r1
+bl    Sub_bx_r1                 ; 08020820
 lsl   r0,r0,0x10                ; 08020824
 lsr   r2,r0,0x10                ; 08020826
 cmp   r2,0x0                    ; 08020828
@@ -7179,7 +7180,7 @@ add   r0,r0,r1                  ; 080209FA  use Y-based index
 ldr   r2,[r0]                   ; 080209FC
 mov   r0,r4                     ; 080209FE
 mov   r1,r5                     ; 08020A00  r1 = X-basd index
-bl    Sub_bx_r2                 ; 08020A02  bx r2
+bl    Sub_bx_r2                 ; 08020A02
 mov   r1,r4                     ; 08020A06
 add   r1,0x4A                   ; 08020A08
 ldrh  r3,[r1]                   ; 08020A0A
@@ -7330,7 +7331,7 @@ add   r0,r0,r1                  ; 08020B36
 ldr   r2,[r0]                   ; 08020B38
 mov   r0,r4                     ; 08020B3A
 mov   r1,r5                     ; 08020B3C
-bl    Sub_bx_r2                 ; 08020B3E  bx r2
+bl    Sub_bx_r2                 ; 08020B3E
 lsl   r0,r0,0x10                ; 08020B42
 lsr   r2,r0,0x10                ; 08020B44
 cmp   r2,0x0                    ; 08020B46
@@ -7399,7 +7400,7 @@ add   r0,r0,r1                  ; 08020BBE
 ldr   r2,[r0]                   ; 08020BC0
 mov   r0,r4                     ; 08020BC2
 mov   r1,r5                     ; 08020BC4
-bl    Sub_bx_r2                 ; 08020BC6  bx r2
+bl    Sub_bx_r2                 ; 08020BC6
 lsl   r0,r0,0x10                ; 08020BCA
 lsr   r2,r0,0x10                ; 08020BCC
 cmp   r2,0x0                    ; 08020BCE
@@ -7694,7 +7695,7 @@ lsl   r0,r0,0x2                 ; 08020DD8
 add   r0,r0,r1                  ; 08020DDA
 ldr   r1,[r0]                   ; 08020DDC
 mov   r0,r4                     ; 08020DDE
-bl    Sub_bx_r1                 ; 08020DE0  bx r1
+bl    Sub_bx_r1                 ; 08020DE0
 lsl   r0,r0,0x10                ; 08020DE4
 lsr   r2,r0,0x10                ; 08020DE6
 cmp   r2,0x0                    ; 08020DE8
@@ -7864,7 +7865,7 @@ add   r0,r0,r1                  ; 08020F18  index with relY 0,1,else
 ldr   r2,[r0]                   ; 08020F1A
 mov   r0,r4                     ; 08020F1C
 mov   r1,r5                     ; 08020F1E  r1 = X parity *2
-bl    Sub_bx_r2                 ; 08020F20  bx r2
+bl    Sub_bx_r2                 ; 08020F20
 mov   r1,r4                     ; 08020F24
 add   r1,0x4A                   ; 08020F26
 ldrh  r3,[r1]                   ; 08020F28
@@ -8471,7 +8472,7 @@ lsr   r1,r1,0xF                 ; 0802139A
 add   r1,r1,r3                  ; 0802139C  index with input r1
 ldr   r3,[r1]                   ; 0802139E  code pointer
 mov   r1,r2                     ; 080213A0
-bl    Sub_bx_r3                 ; 080213A2  bx r3
+bl    Sub_bx_r3                 ; 080213A2
 lsl   r0,r0,0x10                ; 080213A6
 lsr   r0,r0,0x10                ; 080213A8
 pop   {r1}                      ; 080213AA
@@ -8699,7 +8700,7 @@ ldr   r3,[r0]                   ; 0802152E
 mov   r0,r4                     ; 08021530  r0: 0300220C
 mov   r1,r5                     ; 08021532  r1: overlap result
                                 ;           r2: relY*4, +2 if negative width
-bl    Sub_bx_r3                 ; 08021534  bx r3
+bl    Sub_bx_r3                 ; 08021534
 lsl   r0,r0,0x10                ; 08021538
 lsr   r2,r0,0x10                ; 0802153A
 cmp   r2,0x0                    ; 0802153C
@@ -9008,13 +9009,13 @@ cmp   r0,0x1                    ; 08021770
 beq   @@Code08021776            ; 08021772  r3 = 0 if height 1 and width 1
 mov   r3,0x2                    ; 08021774 / r3 = 2 if height 1
 @@Code08021776:
-ldr   r1,=Obj89_CodePtrs        ; 08021776  code pointer table
+ldr   r1,=Obj89_CodePtrs        ; 08021776
 lsr   r0,r3,0x1                 ; 08021778
 lsl   r0,r0,0x2                 ; 0802177A
 add   r0,r0,r1                  ; 0802177C  index with returned r3
 ldr   r1,[r0]                   ; 0802177E
 mov   r0,r4                     ; 08021780
-bl    Sub_bx_r1                 ; 08021782  bx r1
+bl    Sub_bx_r1                 ; 08021782
 mov   r1,r4                     ; 08021786
 add   r1,0x4A                   ; 08021788
 ldrh  r3,[r1]                   ; 0802178A
@@ -9235,7 +9236,7 @@ ldr   r2,=Obj87_88_CodePtrs     ; 08021944
 lsr   r1,r1,0x16                ; 08021946
 add   r1,r1,r2                  ; 08021948
 ldr   r1,[r1]                   ; 0802194A
-bl    Sub_bx_r1                 ; 0802194C  bx r1
+bl    Sub_bx_r1                 ; 0802194C
 pop   {r0}                      ; 08021950
 bx    r0                        ; 08021952
 .pool                           ; 08021954
@@ -10682,7 +10683,7 @@ add   r0,r0,r1                  ; 080224CA
 ldr   r2,[r0]                   ; 080224CC
 mov   r0,r4                     ; 080224CE
 mov   r1,r5                     ; 080224D0
-bl    Sub_bx_r2                 ; 080224D2  bx r2
+bl    Sub_bx_r2                 ; 080224D2
 lsl   r0,r0,0x10                ; 080224D6
 cmp   r0,0x0                    ; 080224D8
 blt   @@Code08022518            ; 080224DA
@@ -11217,7 +11218,7 @@ ldr   r3,[r0]                   ; 08022924  code pointer
 mov   r0,r4                     ; 08022926
 mov   r1,r5                     ; 08022928
 mov   r2,r6                     ; 0802292A
-bl    Sub_bx_r3                 ; 0802292C  bx r3
+bl    Sub_bx_r3                 ; 0802292C
 lsl   r0,r0,0x10                ; 08022930
 lsr   r2,r0,0x10                ; 08022932
 cmp   r0,0x0                    ; 08022934
@@ -13644,7 +13645,7 @@ lsl   r1,r1,0x2                 ; 08023C3C
 add   r1,r1,r0                  ; 08023C3E
 ldr   r1,[r1]                   ; 08023C40
 mov   r0,r2                     ; 08023C42
-bl    Sub_bx_r1                 ; 08023C44  bx r1
+bl    Sub_bx_r1                 ; 08023C44
 pop   {r0}                      ; 08023C48
 bx    r0                        ; 08023C4A
 .pool                           ; 08023C4C
@@ -14192,7 +14193,7 @@ add   r1,r1,r0                  ; 08024086
 ldr   r2,[r1]                   ; 08024088
 mov   r0,r3                     ; 0802408A
 mov   r1,r4                     ; 0802408C
-bl    Sub_bx_r2                 ; 0802408E  bx r2
+bl    Sub_bx_r2                 ; 0802408E
 pop   {r4}                      ; 08024092
 pop   {r0}                      ; 08024094
 bx    r0                        ; 08024096
@@ -14465,7 +14466,7 @@ lsl   r0,r0,0x2                 ; 080242A4
 add   r0,r0,r1                  ; 080242A6
 ldr   r1,[r0]                   ; 080242A8
 mov   r0,r12                    ; 080242AA
-bl    Sub_bx_r1                 ; 080242AC  bx r1
+bl    Sub_bx_r1                 ; 080242AC
 b     @@Code08024350            ; 080242B0
 .pool                           ; 080242B2
 
@@ -15098,7 +15099,7 @@ bx    r1                        ; 080247BE
 .pool                           ; 080247C0
 
 Sub080247C8:
-; subroutine: ? (called by object 4E)
+; subroutine: ? (called by 4E)
 push  {r4-r5,lr}                ; 080247C8
 mov   r4,r0                     ; 080247CA
 lsl   r1,r1,0x10                ; 080247CC
@@ -15132,7 +15133,7 @@ add   r0,r0,r1                  ; 08024806
 ldr   r2,[r0]                   ; 08024808
 mov   r0,r4                     ; 0802480A
 mov   r1,r5                     ; 0802480C
-bl    Sub_bx_r2                 ; 0802480E  bx r2
+bl    Sub_bx_r2                 ; 0802480E
 b     @@Code08024A4E            ; 08024812
 .pool                           ; 08024814
 
@@ -15193,7 +15194,7 @@ add   r0,r0,r1                  ; 08024888
 ldr   r2,[r0]                   ; 0802488A
 mov   r0,r4                     ; 0802488C
 mov   r1,r5                     ; 0802488E
-bl    Sub_bx_r2                 ; 08024890  bx r2
+bl    Sub_bx_r2                 ; 08024890
 b     @@Code08024A4E            ; 08024894
 .pool                           ; 08024896
 
@@ -15245,7 +15246,7 @@ add   r0,r0,r1                  ; 080248F6
 ldr   r2,[r0]                   ; 080248F8
 mov   r0,r4                     ; 080248FA
 mov   r1,r5                     ; 080248FC
-bl    Sub_bx_r2                 ; 080248FE  bx r2
+bl    Sub_bx_r2                 ; 080248FE
 b     @@Code08024A4E            ; 08024902
 .pool                           ; 08024904
 
@@ -15298,7 +15299,7 @@ add   r0,r0,r1                  ; 08024968
 ldr   r2,[r0]                   ; 0802496A
 mov   r0,r4                     ; 0802496C
 mov   r1,r5                     ; 0802496E
-bl    Sub_bx_r2                 ; 08024970  bx r2
+bl    Sub_bx_r2                 ; 08024970
 b     @@Code08024A4E            ; 08024974
 .pool                           ; 08024976
 
@@ -15411,7 +15412,7 @@ pop   {r1}                      ; 08024A58
 bx    r1                        ; 08024A5A
 
 Sub08024A5C:
-; subroutine: ? (called by object 4E)
+; subroutine: ? (called by 4E)
 push  {r4-r5,lr}                ; 08024A5C
 mov   r4,r0                     ; 08024A5E
 lsl   r5,r1,0x10                ; 08024A60
@@ -15497,7 +15498,7 @@ add   r0,r0,r1                  ; 08024B06
 ldr   r2,[r0]                   ; 08024B08
 mov   r0,r4                     ; 08024B0A
 mov   r1,r3                     ; 08024B0C
-bl    Sub_bx_r2                 ; 08024B0E  bx r2
+bl    Sub_bx_r2                 ; 08024B0E
 lsl   r0,r0,0x10                ; 08024B12
 lsr   r1,r0,0x10                ; 08024B14
 b     @@Code08024B26            ; 08024B16
@@ -15519,7 +15520,7 @@ bx    r1                        ; 08024B2E
 .pool                           ; 08024B30
 
 Sub08024B34:
-; subroutine: ? (called by object 4E)
+; subroutine: ? (called by 4E)
 push  {r4-r5,lr}                ; 08024B34
 mov   r4,r0                     ; 08024B36
 lsl   r5,r1,0x10                ; 08024B38
@@ -15615,7 +15616,7 @@ add   r0,r0,r1                  ; 08024BF0
 ldr   r2,[r0]                   ; 08024BF2
 mov   r0,r4                     ; 08024BF4
 mov   r1,r3                     ; 08024BF6
-bl    Sub_bx_r2                 ; 08024BF8  bx r2
+bl    Sub_bx_r2                 ; 08024BF8
 lsl   r0,r0,0x10                ; 08024BFC
 lsr   r1,r0,0x10                ; 08024BFE
 @@Code08024C00:
@@ -15627,7 +15628,7 @@ bx    r1                        ; 08024C08
 .pool                           ; 08024C0A
 
 Sub08024C10:
-; subroutine: ? (called by object 4E)
+; subroutine: ? (called by 4E)
 push  {r4,lr}                   ; 08024C10
 mov   r4,r0                     ; 08024C12
 lsl   r2,r1,0x10                ; 08024C14
@@ -16408,7 +16409,7 @@ ldr   r2,=Obj48_CodePtrs        ; 08025214
 lsr   r1,r1,0x16                ; 08025216
 add   r1,r1,r2                  ; 08025218
 ldr   r1,[r1]                   ; 0802521A
-bl    Sub_bx_r1                 ; 0802521C  bx r1
+bl    Sub_bx_r1                 ; 0802521C
 pop   {r0}                      ; 08025220
 bx    r0                        ; 08025222
 .pool                           ; 08025224
@@ -16912,7 +16913,7 @@ ldr   r4,=Obj45_46_CodePtrs     ; 08025612
 lsl   r3,r1,0x2                 ; 08025614
 add   r3,r3,r4                  ; 08025616
 ldr   r3,[r3]                   ; 08025618
-bl    Sub_bx_r3                 ; 0802561A  bx r3
+bl    Sub_bx_r3                 ; 0802561A
 pop   {r4}                      ; 0802561E
 pop   {r0}                      ; 08025620
 bx    r0                        ; 08025622
@@ -18260,7 +18261,7 @@ lsl   r2,r2,0x2                 ; 080260A2
 add   r2,r2,r0                  ; 080260A4
 ldr   r1,[r2]                   ; 080260A6
 mov   r0,r12                    ; 080260A8
-bl    Sub_bx_r1                 ; 080260AA  bx r1
+bl    Sub_bx_r1                 ; 080260AA
 pop   {r0}                      ; 080260AE
 bx    r0                        ; 080260B0
 .pool                           ; 080260B2
@@ -19283,7 +19284,7 @@ lsl   r0,r4,0x1                 ; 08026938
 add   r0,r0,r1                  ; 0802693A
 ldr   r1,[r0]                   ; 0802693C
 mov   r0,r3                     ; 0802693E
-bl    Sub_bx_r1                 ; 08026940  bx r1
+bl    Sub_bx_r1                 ; 08026940
 pop   {r4}                      ; 08026944
 pop   {r0}                      ; 08026946
 bx    r0                        ; 08026948
@@ -22358,6 +22359,8 @@ bx    r1                        ; 08028160
 
 ObjEE_F3_Main:
 ; object EE-F3 main; called by 1F-20
+; 0300224E (obj ID): 1 for EE, FFFF for EF, 8000 for F0-F3
+; 03002246 (scratch RAM): Object y^x parity
 push  {r4-r5,lr}                ; 08028168
 mov   r4,r0                     ; 0802816A
 mov   r2,r4                     ; 0802816C
@@ -22401,7 +22404,7 @@ ldr   r0,=CodePtrs08168A44      ; 080281B6
 ldr   r2,[r0]                   ; 080281B8  r2 = 08028058
 @@Code080281BA:
 mov   r0,r4                     ; 080281BA
-bl    Sub_bx_r2                 ; 080281BC  bx r2
+bl    Sub_bx_r2                 ; 080281BC
 lsl   r0,r0,0x10                ; 080281C0
 lsr   r2,r0,0x10                ; 080281C2
 @@Code080281C4:
@@ -22555,7 +22558,7 @@ bx    r0                        ; 080282D8
 Obj1F_20_Main:
 ; object 1F-20 main
 ; relative Y threshold: 5,2 for 1F,20
-; scratch RAM: object's Y^X parity
+; 03002246 (scratch RAM): Object y^x parity
 push  {lr}                      ; 080282DC
 lsl   r1,r1,0x18                ; 080282DE
 lsl   r2,r2,0x10                ; 080282E0
@@ -22565,7 +22568,7 @@ lsr   r1,r1,0x16                ; 080282E6  object ID >> 2 (1,2 for 1F,20) ?
 add   r1,r1,r3                  ; 080282E8
 ldr   r3,[r1]                   ; 080282EA
 mov   r1,r2                     ; 080282EC
-bl    Sub_bx_r3                 ; 080282EE  bx r3
+bl    Sub_bx_r3                 ; 080282EE
 pop   {r0}                      ; 080282F2
 bx    r0                        ; 080282F4
 .pool                           ; 080282F6
@@ -24217,7 +24220,7 @@ ldr   r2,=Obj06_09_CodePtrs     ; 08028F50
 lsr   r1,r1,0x16                ; 08028F52
 add   r1,r1,r2                  ; 08028F54
 ldr   r1,[r1]                   ; 08028F56  code pointer
-bl    Sub_bx_r1                 ; 08028F58  bx r1
+bl    Sub_bx_r1                 ; 08028F58
 pop   {r0}                      ; 08028F5C
 bx    r0                        ; 08028F5E
 .pool                           ; 08028F60
@@ -24298,7 +24301,7 @@ add   r0,r0,r2                  ; 08028FDE  index with X parity
 ldr   r2,[r0]                   ; 08028FE0  code pointer
 mov   r0,r4                     ; 08028FE2
 mov   r1,r3                     ; 08028FE4  r1 = relY*2
-bl    Sub_bx_r2                 ; 08028FE6  bx r2
+bl    Sub_bx_r2                 ; 08028FE6
 lsl   r0,r0,0x10                ; 08028FEA
 ldr   r1,=0x03007010            ; 08028FEC  Layer 1 tilemap EWRAM (0200000C)
 ldr   r2,[r1]                   ; 08028FEE
@@ -24795,7 +24798,7 @@ ldr   r2,=CodePtrs08168A6C      ; 080293E4
 lsr   r1,r1,0xE                 ; 080293E6
 add   r1,r1,r2                  ; 080293E8
 ldr   r1,[r1]                   ; 080293EA
-bl    Sub_bx_r1                 ; 080293EC  bx r1
+bl    Sub_bx_r1                 ; 080293EC
 pop   {r0}                      ; 080293F0
 bx    r0                        ; 080293F2
 .pool                           ; 080293F4
@@ -24815,7 +24818,7 @@ lsr   r1,r1,0x16                ; 08029402
 add   r1,r1,r3                  ; 08029404  index with 2 if relY >= threshold, else X parity
 ldr   r3,[r1]                   ; 08029406
 mov   r1,r2                     ; 08029408
-bl    Sub_bx_r3                 ; 0802940A  bx r3
+bl    Sub_bx_r3                 ; 0802940A
 pop   {r0}                      ; 0802940E
 bx    r0                        ; 08029410
 .pool                           ; 08029412
@@ -25299,7 +25302,7 @@ ldr   r2,=Obj01_CodePtrs        ; 08029804
 lsr   r1,r1,0x16                ; 08029806
 add   r1,r1,r2                  ; 08029808
 ldr   r1,[r1]                   ; 0802980A
-bl    Sub_bx_r1                 ; 0802980C  bx r1
+bl    Sub_bx_r1                 ; 0802980C
 pop   {r0}                      ; 08029810
 bx    r0                        ; 08029812
 .pool                           ; 08029814

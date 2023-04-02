@@ -1148,7 +1148,7 @@ add   r1,0x98                   ; 080E34E0  r1 = [03007240]+98 (030022A4)
 ldrh  r0,[r1]                   ; 080E34E2
 add   r0,0x1                    ; 080E34E4
 strh  r0,[r1]                   ; 080E34E6  increment 030022A4
-ldr   r1,=GraphicsAnimPtrs      ; 080E34E8  code pointer table
+ldr   r1,=GraphicsAnimPtrs      ; 080E34E8
 ldr   r0,=0x03007240            ; 080E34EA  Normal gameplay IWRAM (0300220C)
 ldr   r0,[r0]                   ; 080E34EC
 ldr   r2,=0x29A4                ; 080E34EE
@@ -1158,7 +1158,7 @@ lsl   r0,r0,0x2                 ; 080E34F4
 add   r0,r0,r1                  ; 080E34F6  use ID as index to pointer table
 ldr   r1,[r0]                   ; 080E34F8  r1 = code pointer from table
 mov   r0,r5                     ; 080E34FA  r0 = [03007240] (0300220C)
-bl    Sub_bx_r1                 ; 080E34FC  bx r1
+bl    Sub_bx_r1                 ; 080E34FC
 
                                 ; process animation slot 0 (global graphics animations)
 mov   r0,r4                     ; 080E3500

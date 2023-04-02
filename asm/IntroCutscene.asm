@@ -1418,7 +1418,7 @@ ldrh  r0,[r0]                   ; 080F6726
 lsl   r0,r0,0x2                 ; 080F6728
 add   r0,r0,r1                  ; 080F672A
 ldr   r0,[r0]                   ; 080F672C
-bl    Sub_bx_r0                 ; 080F672E  bx r0
+bl    Sub_bx_r0                 ; 080F672E
 ldr   r0,=0x03006D80            ; 080F6732
 mov   r1,0x84                   ; 080F6734
 lsl   r1,r1,0x2                 ; 080F6736

@@ -626,7 +626,7 @@ ldrb  r0,[r7,0xD]               ; 081077C8
 str   r0,[sp]                   ; 081077CA
 mov   r0,r6                     ; 081077CC
 mov   r1,r8                     ; 081077CE
-bl    Sub_bx_r9                 ; 081077D0  bx r9
+bl    Sub_bx_r9                 ; 081077D0
 @@Code081077D4:
 add   sp,0x4                    ; 081077D4
 pop   {r3-r4}                   ; 081077D6
@@ -6209,7 +6209,7 @@ Sub0810A320:
 push  {r4,lr}                   ; 0810A320
 ldr   r4,=0x03007270            ; 0810A322
 ldr   r0,[r4,0x20]              ; 0810A324
-bl    Sub_bx_r0                 ; 0810A326  bx r0
+bl    Sub_bx_r0                 ; 0810A326
 ldr   r1,=0x03007308            ; 0810A32A
 ldr   r0,=Return0810A31C+1      ; 0810A32C
 str   r0,[r1]                   ; 0810A32E
@@ -6357,7 +6357,7 @@ Sub0810A484:
 push  {r4,lr}                   ; 0810A484
 ldr   r4,=0x03007270            ; 0810A486
 ldr   r0,[r4,0x1C]              ; 0810A488
-bl    Sub_bx_r0                 ; 0810A48A  bx r0
+bl    Sub_bx_r0                 ; 0810A48A
 ldr   r1,=0x03007308            ; 0810A48E
 ldr   r0,=Sub0810A348+1         ; 0810A490
 str   r0,[r1]                   ; 0810A492
@@ -6417,7 +6417,7 @@ ldr   r3,=0x47EC                ; 0810A532
 add   r1,r1,r3                  ; 0810A534
 ldrh  r1,[r1]                   ; 0810A536
 ldr   r2,[r2]                   ; 0810A538
-bl    Sub_bx_r2                 ; 0810A53A  bx r2
+bl    Sub_bx_r2                 ; 0810A53A
 ldr   r4,=0x03007350            ; 0810A53E
 ldrh  r0,[r4,0x10]              ; 0810A540
 lsl   r1,r0,0x10                ; 0810A542
@@ -6443,7 +6443,7 @@ ldrh  r1,[r0]                   ; 0810A56C
 lsr   r1,r1,0x3                 ; 0810A56E
 ldr   r2,[r2]                   ; 0810A570
 mov   r0,r4                     ; 0810A572
-bl    Sub_bx_r2                 ; 0810A574  bx r2
+bl    Sub_bx_r2                 ; 0810A574
 add   sp,0x8                    ; 0810A578
 pop   {r4-r5}                   ; 0810A57A
 pop   {r0}                      ; 0810A57C
@@ -8568,7 +8568,7 @@ lsl   r2,r2,0x8                 ; 0810B6F8
 lsr   r2,r2,0x8                 ; 0810B6FA
 ldr   r3,[r5,0x8]               ; 0810B6FC
 ldr   r4,[r4]                   ; 0810B6FE
-bl    Sub_bx_r4                 ; 0810B700  bx r4
+bl    Sub_bx_r4                 ; 0810B700
 cmp   r5,r7                     ; 0810B704
 bne   @@Code0810B6E4            ; 0810B706
 @@Code0810B708:
@@ -11476,7 +11476,7 @@ ldr   r0,[r0,0x18]              ; 0810D082
 lsl   r0,r0,0x2                 ; 0810D084
 add   r0,r0,r1                  ; 0810D086
 ldr   r0,[r0]                   ; 0810D088
-bl    Sub_bx_r0                 ; 0810D08A  bx r0
+bl    Sub_bx_r0                 ; 0810D08A
 mov   r1,sp                     ; 0810D08E
 @@Code0810D090:
 ldrb  r0,[r4]                   ; 0810D090

@@ -3664,7 +3664,7 @@ ldrb  r0,[r5]                   ; 08111206
 lsl   r0,r0,0x2                 ; 08111208
 add   r0,r0,r1                  ; 0811120A
 ldr   r0,[r0]                   ; 0811120C
-bl    Sub_bx_r0                 ; 0811120E  bx r0
+bl    Sub_bx_r0                 ; 0811120E
 ldr   r1,=0x47C0                ; 08111212
 add   r0,r4,r1                  ; 08111214
 ldrh  r1,[r0]                   ; 08111216
@@ -5025,7 +5025,7 @@ lsl   r5,r5,0x3                 ; 08111E5C
 add   r0,r0,r5                  ; 08111E5E
 ldr   r1,[r0]                   ; 08111E60
 mov   r0,sp                     ; 08111E62
-bl    Sub_bx_r1                 ; 08111E64  bx r1
+bl    Sub_bx_r1                 ; 08111E64
 ldr   r0,[sp]                   ; 08111E68
 add   r0,0x40                   ; 08111E6A
 str   r0,[sp]                   ; 08111E6C
@@ -5042,7 +5042,7 @@ ldr   r0,[r1]                   ; 08111E80
 add   r0,r0,r5                  ; 08111E82
 ldr   r1,[r0]                   ; 08111E84
 mov   r0,sp                     ; 08111E86
-bl    Sub_bx_r1                 ; 08111E88  bx r1
+bl    Sub_bx_r1                 ; 08111E88
 mov   r0,sp                     ; 08111E8C
 strb  r4,[r0,0x10]              ; 08111E8E
 ldr   r0,[sp]                   ; 08111E90
@@ -5057,7 +5057,7 @@ ldr   r0,[r1]                   ; 08111EA0
 add   r0,r0,r5                  ; 08111EA2
 ldr   r1,[r0]                   ; 08111EA4
 mov   r0,sp                     ; 08111EA6
-bl    Sub_bx_r1                 ; 08111EA8  bx r1
+bl    Sub_bx_r1                 ; 08111EA8
 ldrb  r0,[r6,0xC]               ; 08111EAC
 cmp   r0,0x0                    ; 08111EAE
 bne   @@Code08111EE4            ; 08111EB0
@@ -5339,7 +5339,7 @@ lsl   r4,r4,0x3                 ; 0811212A
 add   r0,r3,r4                  ; 0811212C
 ldr   r1,[r0]                   ; 0811212E
 mov   r0,sp                     ; 08112130
-bl    Sub_bx_r1                 ; 08112132  bx r1
+bl    Sub_bx_r1                 ; 08112132
 ldr   r0,[sp]                   ; 08112136
 add   r0,0x20                   ; 08112138
 str   r0,[sp]                   ; 0811213A
@@ -5351,7 +5351,7 @@ ldr   r0,[r6]                   ; 08112144
 add   r0,r0,r4                  ; 08112146
 ldr   r1,[r0]                   ; 08112148
 mov   r0,sp                     ; 0811214A
-bl    Sub_bx_r1                 ; 0811214C  bx r1
+bl    Sub_bx_r1                 ; 0811214C
 ldr   r0,[sp]                   ; 08112150
 add   r0,0x26                   ; 08112152
 str   r0,[sp]                   ; 08112154
@@ -5363,7 +5363,7 @@ ldr   r0,[r6]                   ; 0811215E
 add   r0,r0,r4                  ; 08112160
 ldr   r1,[r0]                   ; 08112162
 mov   r0,sp                     ; 08112164
-bl    Sub_bx_r1                 ; 08112166  bx r1
+bl    Sub_bx_r1                 ; 08112166
 ldr   r0,[sp]                   ; 0811216A
 add   r0,0x20                   ; 0811216C
 str   r0,[sp]                   ; 0811216E
@@ -5375,7 +5375,7 @@ ldr   r0,[r6]                   ; 08112178
 add   r0,r0,r4                  ; 0811217A
 ldr   r1,[r0]                   ; 0811217C
 mov   r0,sp                     ; 0811217E
-bl    Sub_bx_r1                 ; 08112180  bx r1
+bl    Sub_bx_r1                 ; 08112180
 @@Code08112184:
 ldr   r1,[r6]                   ; 08112184
 mov   r2,0x86                   ; 08112186
@@ -5448,7 +5448,7 @@ lsl   r1,r1,0x3                 ; 08112216
 add   r0,r0,r1                  ; 08112218
 ldr   r1,[r0]                   ; 0811221A
 mov   r0,sp                     ; 0811221C
-bl    Sub_bx_r1                 ; 0811221E  bx r1
+bl    Sub_bx_r1                 ; 0811221E
 ldr   r0,[sp]                   ; 08112222
 add   r0,0x8                    ; 08112224
 str   r0,[sp]                   ; 08112226
@@ -5478,7 +5478,7 @@ lsl   r2,r2,0x3                 ; 08112252
 add   r0,r0,r2                  ; 08112254
 ldr   r1,[r0]                   ; 08112256
 mov   r0,sp                     ; 08112258
-bl    Sub_bx_r1                 ; 0811225A  bx r1
+bl    Sub_bx_r1                 ; 0811225A
 ldr   r0,[sp]                   ; 0811225E
 add   r0,0x8                    ; 08112260
 str   r0,[sp]                   ; 08112262
@@ -5554,7 +5554,7 @@ lsl   r1,r1,0x3                 ; 081122F2
 add   r0,r2,r1                  ; 081122F4
 ldr   r1,[r0]                   ; 081122F6
 mov   r0,sp                     ; 081122F8
-bl    Sub_bx_r1                 ; 081122FA  bx r1
+bl    Sub_bx_r1                 ; 081122FA
 ldr   r0,[sp]                   ; 081122FE
 add   r0,0x28                   ; 08112300
 str   r0,[sp]                   ; 08112302
@@ -5578,7 +5578,7 @@ lsl   r2,r2,0x3                 ; 08112322
 add   r0,r0,r2                  ; 08112324
 ldr   r1,[r0]                   ; 08112326
 mov   r0,sp                     ; 08112328
-bl    Sub_bx_r1                 ; 0811232A  bx r1
+bl    Sub_bx_r1                 ; 0811232A
 ldr   r0,[sp]                   ; 0811232E
 add   r0,0x8                    ; 08112330
 str   r0,[sp]                   ; 08112332
@@ -5690,7 +5690,7 @@ lsl   r1,r1,0x3                 ; 0811240E
 add   r0,r0,r1                  ; 08112410
 ldr   r1,[r0]                   ; 08112412
 mov   r0,sp                     ; 08112414
-bl    Sub_bx_r1                 ; 08112416  bx r1
+bl    Sub_bx_r1                 ; 08112416
 ldr   r0,[sp]                   ; 0811241A
 add   r0,0x8                    ; 0811241C
 str   r0,[sp]                   ; 0811241E
@@ -5724,7 +5724,7 @@ lsl   r2,r2,0x3                 ; 08112452
 add   r0,r0,r2                  ; 08112454
 ldr   r1,[r0]                   ; 08112456
 mov   r0,sp                     ; 08112458
-bl    Sub_bx_r1                 ; 0811245A  bx r1
+bl    Sub_bx_r1                 ; 0811245A
 ldr   r0,[sp]                   ; 0811245E
 add   r0,0x8                    ; 08112460
 str   r0,[sp]                   ; 08112462
@@ -5755,7 +5755,7 @@ lsl   r1,r1,0x3                 ; 08112490
 add   r0,r0,r1                  ; 08112492
 ldr   r1,[r0]                   ; 08112494
 mov   r0,sp                     ; 08112496
-bl    Sub_bx_r1                 ; 08112498  bx r1
+bl    Sub_bx_r1                 ; 08112498
 ldr   r0,[sp]                   ; 0811249C
 add   r0,0x8                    ; 0811249E
 str   r0,[sp]                   ; 081124A0
@@ -5797,7 +5797,7 @@ lsl   r2,r2,0x3                 ; 081124E6
 add   r0,r0,r2                  ; 081124E8
 ldr   r1,[r0]                   ; 081124EA
 mov   r0,sp                     ; 081124EC
-bl    Sub_bx_r1                 ; 081124EE  bx r1
+bl    Sub_bx_r1                 ; 081124EE
 mov   r0,sp                     ; 081124F2
 strb  r4,[r0,0x11]              ; 081124F4
 @@Code081124F6:
@@ -5824,7 +5824,7 @@ lsl   r1,r1,0x3                 ; 0811251A
 add   r0,r0,r1                  ; 0811251C
 ldr   r1,[r0]                   ; 0811251E
 mov   r0,sp                     ; 08112520
-bl    Sub_bx_r1                 ; 08112522  bx r1
+bl    Sub_bx_r1                 ; 08112522
 ldr   r0,[sp]                   ; 08112526
 mov   r1,r0                     ; 08112528
 add   r1,0x8                    ; 0811252A
@@ -5856,7 +5856,7 @@ lsl   r5,r5,0x3                 ; 0811255C
 add   r1,r1,r5                  ; 0811255E
 ldr   r1,[r1]                   ; 08112560
 mov   r0,sp                     ; 08112562
-bl    Sub_bx_r1                 ; 08112564  bx r1
+bl    Sub_bx_r1                 ; 08112564
 mov   r1,sp                     ; 08112568
 mov   r0,0xA                    ; 0811256A
 strb  r0,[r1,0xA]               ; 0811256C
@@ -5880,7 +5880,7 @@ ldr   r0,[r4]                   ; 0811258E
 add   r0,r0,r5                  ; 08112590
 ldr   r1,[r0]                   ; 08112592
 mov   r0,sp                     ; 08112594
-bl    Sub_bx_r1                 ; 08112596  bx r1
+bl    Sub_bx_r1                 ; 08112596
 mov   r1,0x64                   ; 0811259A
 mov   r8,r1                     ; 0811259C
 str   r1,[sp,0x4]               ; 0811259E
@@ -5890,7 +5890,7 @@ ldr   r0,[r4]                   ; 081125A4
 add   r0,r0,r5                  ; 081125A6
 ldr   r1,[r0]                   ; 081125A8
 mov   r0,sp                     ; 081125AA
-bl    Sub_bx_r1                 ; 081125AC  bx r1
+bl    Sub_bx_r1                 ; 081125AC
 mov   r0,0x70                   ; 081125B0
 str   r0,[sp]                   ; 081125B2
 mov   r2,r9                     ; 081125B4
@@ -5901,7 +5901,7 @@ ldr   r0,[r4]                   ; 081125BC
 add   r0,r0,r5                  ; 081125BE
 ldr   r1,[r0]                   ; 081125C0
 mov   r0,sp                     ; 081125C2
-bl    Sub_bx_r1                 ; 081125C4  bx r1
+bl    Sub_bx_r1                 ; 081125C4
 mov   r0,r8                     ; 081125C8
 str   r0,[sp,0x4]               ; 081125CA
 mov   r0,sp                     ; 081125CC
@@ -5910,7 +5910,7 @@ ldr   r0,[r4]                   ; 081125D0
 add   r0,r0,r5                  ; 081125D2
 ldr   r1,[r0]                   ; 081125D4
 mov   r0,sp                     ; 081125D6
-bl    Sub_bx_r1                 ; 081125D8  bx r1
+bl    Sub_bx_r1                 ; 081125D8
 mov   r0,sp                     ; 081125DC
 mov   r1,r10                    ; 081125DE
 strb  r1,[r0,0x10]              ; 081125E0
@@ -5924,7 +5924,7 @@ ldr   r0,[r4]                   ; 081125EE
 add   r0,r0,r5                  ; 081125F0
 ldr   r1,[r0]                   ; 081125F2
 mov   r0,sp                     ; 081125F4
-bl    Sub_bx_r1                 ; 081125F6  bx r1
+bl    Sub_bx_r1                 ; 081125F6
 mov   r0,r8                     ; 081125FA
 str   r0,[sp,0x4]               ; 081125FC
 mov   r0,sp                     ; 081125FE
@@ -5933,7 +5933,7 @@ ldr   r0,[r4]                   ; 08112602
 add   r0,r0,r5                  ; 08112604
 ldr   r1,[r0]                   ; 08112606
 mov   r0,sp                     ; 08112608
-bl    Sub_bx_r1                 ; 0811260A  bx r1
+bl    Sub_bx_r1                 ; 0811260A
 @@Code0811260E:
 add   sp,0x18                   ; 0811260E
 pop   {r3-r5}                   ; 08112610
@@ -6480,7 +6480,7 @@ ldr   r1,=0x046C                ; 08112B32
 add   r0,r2,r1                  ; 08112B34
 ldr   r1,[r0]                   ; 08112B36
 mov   r0,r3                     ; 08112B38
-bl    Sub_bx_r1                 ; 08112B3A  bx r1
+bl    Sub_bx_r1                 ; 08112B3A
 @@Code08112B3E:
 add   r0,r4,0x1                 ; 08112B3E
 lsl   r0,r0,0x18                ; 08112B40
@@ -7241,7 +7241,7 @@ lsl   r0,r0,0x3                 ; 081131E4
 add   r1,r1,r0                  ; 081131E6
 ldr   r1,[r1]                   ; 081131E8
 mov   r0,sp                     ; 081131EA
-bl    Sub_bx_r1                 ; 081131EC  bx r1
+bl    Sub_bx_r1                 ; 081131EC
 @@Code081131F0:
 add   r0,r4,0x1                 ; 081131F0
 lsl   r0,r0,0x18                ; 081131F2
@@ -7489,7 +7489,7 @@ ldrb  r0,[r0]                   ; 0811342A
 lsl   r0,r0,0x2                 ; 0811342C
 add   r0,r0,r1                  ; 0811342E
 ldr   r0,[r0]                   ; 08113430
-bl    Sub_bx_r0                 ; 08113432  bx r0
+bl    Sub_bx_r0                 ; 08113432
 pop   {r0}                      ; 08113436
 bx    r0                        ; 08113438
 .pool                           ; 0811343A
@@ -8846,7 +8846,7 @@ ldrb  r0,[r0]                   ; 08114092
 lsl   r0,r0,0x2                 ; 08114094
 add   r0,r0,r1                  ; 08114096
 ldr   r0,[r0]                   ; 08114098
-bl    Sub_bx_r0                 ; 0811409A  bx r0
+bl    Sub_bx_r0                 ; 0811409A
 pop   {r0}                      ; 0811409E
 bx    r0                        ; 081140A0
 .pool                           ; 081140A2
@@ -8979,7 +8979,7 @@ lsl   r3,r3,0x3                 ; 08114196
 add   r0,r0,r3                  ; 08114198
 ldr   r1,[r0]                   ; 0811419A
 mov   r0,sp                     ; 0811419C
-bl    Sub_bx_r1                 ; 0811419E  bx r1
+bl    Sub_bx_r1                 ; 0811419E
 add   r0,r6,0x1                 ; 081141A2
 lsl   r0,r0,0x18                ; 081141A4
 lsr   r6,r0,0x18                ; 081141A6
@@ -9021,7 +9021,7 @@ lsl   r1,r1,0x3                 ; 081141EA
 add   r0,r0,r1                  ; 081141EC
 ldr   r1,[r0]                   ; 081141EE
 mov   r0,sp                     ; 081141F0
-bl    Sub_bx_r1                 ; 081141F2  bx r1
+bl    Sub_bx_r1                 ; 081141F2
 add   r0,r6,0x1                 ; 081141F6
 lsl   r0,r0,0x18                ; 081141F8
 lsr   r6,r0,0x18                ; 081141FA
@@ -9052,7 +9052,7 @@ lsl   r2,r2,0x3                 ; 08114248
 add   r0,r0,r2                  ; 0811424A
 ldr   r1,[r0]                   ; 0811424C
 mov   r0,sp                     ; 0811424E
-bl    Sub_bx_r1                 ; 08114250  bx r1
+bl    Sub_bx_r1                 ; 08114250
 add   r0,r6,0x1                 ; 08114254
 lsl   r0,r0,0x18                ; 08114256
 lsr   r6,r0,0x18                ; 08114258
@@ -9079,7 +9079,7 @@ lsl   r7,r7,0x3                 ; 0811427E
 add   r0,r0,r7                  ; 08114280
 ldr   r1,[r0]                   ; 08114282
 mov   r0,sp                     ; 08114284
-bl    Sub_bx_r1                 ; 08114286  bx r1
+bl    Sub_bx_r1                 ; 08114286
 ldr   r0,=0x030074D0            ; 0811428A
 ldrb  r0,[r0]                   ; 0811428C
 cmp   r0,0x1                    ; 0811428E
@@ -9133,7 +9133,7 @@ ldr   r0,[r5]                   ; 081142EC
 add   r0,r0,r7                  ; 081142EE
 ldr   r1,[r0]                   ; 081142F0
 mov   r0,sp                     ; 081142F2
-bl    Sub_bx_r1                 ; 081142F4  bx r1
+bl    Sub_bx_r1                 ; 081142F4
 ldr   r0,[sp]                   ; 081142F8
 add   r0,0x8                    ; 081142FA
 str   r0,[sp]                   ; 081142FC
@@ -9143,7 +9143,7 @@ ldr   r0,[r5]                   ; 08114302
 add   r0,r0,r7                  ; 08114304
 ldr   r1,[r0]                   ; 08114306
 mov   r0,sp                     ; 08114308
-bl    Sub_bx_r1                 ; 0811430A  bx r1
+bl    Sub_bx_r1                 ; 0811430A
 ldr   r0,[sp]                   ; 0811430E
 add   r0,0x8                    ; 08114310
 str   r0,[sp]                   ; 08114312
@@ -9153,7 +9153,7 @@ ldr   r0,[r5]                   ; 08114318
 add   r0,r0,r7                  ; 0811431A
 ldr   r1,[r0]                   ; 0811431C
 mov   r0,sp                     ; 0811431E
-bl    Sub_bx_r1                 ; 08114320  bx r1
+bl    Sub_bx_r1                 ; 08114320
 add   r0,r6,0x1                 ; 08114324
 lsl   r0,r0,0x18                ; 08114326
 lsr   r6,r0,0x18                ; 08114328
@@ -9215,7 +9215,7 @@ lsl   r2,r2,0x3                 ; 081143B6
 add   r0,r0,r2                  ; 081143B8
 ldr   r1,[r0]                   ; 081143BA
 mov   r0,sp                     ; 081143BC
-bl    Sub_bx_r1                 ; 081143BE  bx r1
+bl    Sub_bx_r1                 ; 081143BE
 add   r0,r4,0x1                 ; 081143C2
 lsl   r0,r0,0x18                ; 081143C4
 lsr   r4,r0,0x18                ; 081143C6
@@ -10394,7 +10394,7 @@ lsl   r1,r1,0x3                 ; 08114DFE
 add   r0,r0,r1                  ; 08114E00
 ldr   r1,[r0]                   ; 08114E02
 mov   r0,sp                     ; 08114E04
-bl    Sub_bx_r1                 ; 08114E06  bx r1
+bl    Sub_bx_r1                 ; 08114E06
 add   r5,0x8                    ; 08114E0A
 add   r0,r4,0x1                 ; 08114E0C
 lsl   r0,r0,0x18                ; 08114E0E
@@ -10426,7 +10426,7 @@ lsl   r1,r1,0x3                 ; 08114E3E
 add   r0,r0,r1                  ; 08114E40
 ldr   r1,[r0]                   ; 08114E42
 mov   r0,sp                     ; 08114E44
-bl    Sub_bx_r1                 ; 08114E46  bx r1
+bl    Sub_bx_r1                 ; 08114E46
 add   r5,0x8                    ; 08114E4A
 mov   r2,0x1                    ; 08114E4C
 str   r2,[sp,0x14]              ; 08114E4E
@@ -10460,7 +10460,7 @@ lsl   r2,r2,0x3                 ; 08114E7E
 add   r0,r0,r2                  ; 08114E80
 ldr   r1,[r0]                   ; 08114E82
 mov   r0,sp                     ; 08114E84
-bl    Sub_bx_r1                 ; 08114E86  bx r1
+bl    Sub_bx_r1                 ; 08114E86
 @@Code08114E8A:
 add   r5,0x8                    ; 08114E8A
 str   r5,[sp]                   ; 08114E8C
@@ -10484,7 +10484,7 @@ lsl   r1,r1,0x3                 ; 08114EAC
 add   r0,r0,r1                  ; 08114EAE
 ldr   r1,[r0]                   ; 08114EB0
 mov   r0,sp                     ; 08114EB2
-bl    Sub_bx_r1                 ; 08114EB4  bx r1
+bl    Sub_bx_r1                 ; 08114EB4
 @@Code08114EB8:
 add   sp,0x18                   ; 08114EB8
 pop   {r3-r5}                   ; 08114EBA
@@ -10537,7 +10537,7 @@ lsl   r1,r1,0x3                 ; 08114F26
 add   r0,r0,r1                  ; 08114F28
 ldr   r1,[r0]                   ; 08114F2A
 mov   r0,sp                     ; 08114F2C
-bl    Sub_bx_r1                 ; 08114F2E  bx r1
+bl    Sub_bx_r1                 ; 08114F2E
 add   r5,0x8                    ; 08114F32
 add   r0,r4,0x1                 ; 08114F34
 lsl   r0,r0,0x18                ; 08114F36
@@ -10814,7 +10814,7 @@ lsl   r5,r5,0x3                 ; 08115174
 add   r2,r2,r5                  ; 08115176
 ldr   r1,[r2]                   ; 08115178
 mov   r0,sp                     ; 0811517A
-bl    Sub_bx_r1                 ; 0811517C  bx r1
+bl    Sub_bx_r1                 ; 0811517C
 ldr   r0,=Data082EB5A2          ; 08115180
 mov   r2,r8                     ; 08115182
 lsl   r1,r2,0x1                 ; 08115184
@@ -10831,7 +10831,7 @@ ldr   r0,[r6]                   ; 08115198
 add   r0,r0,r5                  ; 0811519A
 ldr   r1,[r0]                   ; 0811519C
 mov   r0,sp                     ; 0811519E
-bl    Sub_bx_r1                 ; 081151A0  bx r1
+bl    Sub_bx_r1                 ; 081151A0
 mov   r0,sp                     ; 081151A4
 mov   r3,r8                     ; 081151A6
 strb  r3,[r0,0xA]               ; 081151A8
@@ -10850,7 +10850,7 @@ ldr   r0,[r6]                   ; 081151C0
 add   r0,r0,r5                  ; 081151C2
 ldr   r1,[r0]                   ; 081151C4
 mov   r0,sp                     ; 081151C6
-bl    Sub_bx_r1                 ; 081151C8  bx r1
+bl    Sub_bx_r1                 ; 081151C8
 ldr   r0,[sp]                   ; 081151CC
 add   r0,0x10                   ; 081151CE
 str   r0,[sp]                   ; 081151D0
@@ -10862,7 +10862,7 @@ ldr   r0,[r6]                   ; 081151DA
 add   r0,r0,r5                  ; 081151DC
 ldr   r1,[r0]                   ; 081151DE
 mov   r0,sp                     ; 081151E0
-bl    Sub_bx_r1                 ; 081151E2  bx r1
+bl    Sub_bx_r1                 ; 081151E2
 mov   r1,sp                     ; 081151E6
 mov   r0,0x2                    ; 081151E8
 strb  r0,[r1,0x10]              ; 081151EA
@@ -10878,7 +10878,7 @@ ldr   r0,[r6]                   ; 081151FC
 add   r0,r0,r5                  ; 081151FE
 ldr   r1,[r0]                   ; 08115200
 mov   r0,sp                     ; 08115202
-bl    Sub_bx_r1                 ; 08115204  bx r1
+bl    Sub_bx_r1                 ; 08115204
 ldr   r0,[sp]                   ; 08115208
 add   r0,0x8                    ; 0811520A
 str   r0,[sp]                   ; 0811520C
@@ -10890,7 +10890,7 @@ ldr   r0,[r6]                   ; 08115216
 add   r0,r0,r5                  ; 08115218
 ldr   r1,[r0]                   ; 0811521A
 mov   r0,sp                     ; 0811521C
-bl    Sub_bx_r1                 ; 0811521E  bx r1
+bl    Sub_bx_r1                 ; 0811521E
 ldr   r0,[sp]                   ; 08115222
 add   r0,0x7                    ; 08115224
 str   r0,[sp]                   ; 08115226
@@ -10902,7 +10902,7 @@ ldr   r0,[r6]                   ; 08115230
 add   r0,r0,r5                  ; 08115232
 ldr   r1,[r0]                   ; 08115234
 mov   r0,sp                     ; 08115236
-bl    Sub_bx_r1                 ; 08115238  bx r1
+bl    Sub_bx_r1                 ; 08115238
 add   sp,0x14                   ; 0811523C
 pop   {r3-r5}                   ; 0811523E
 mov   r8,r3                     ; 08115240
@@ -11130,7 +11130,7 @@ lsl   r6,r6,0x3                 ; 08115430
 add   r0,r0,r6                  ; 08115432
 ldr   r1,[r0]                   ; 08115434
 mov   r0,sp                     ; 08115436
-bl    Sub_bx_r1                 ; 08115438  bx r1
+bl    Sub_bx_r1                 ; 08115438
 mov   r7,r9                     ; 0811543C
 add   r7,0x8                    ; 0811543E
 str   r7,[sp,0x4]               ; 08115440
@@ -11143,7 +11143,7 @@ ldr   r0,[r4]                   ; 0811544C
 add   r0,r0,r6                  ; 0811544E
 ldr   r1,[r0]                   ; 08115450
 mov   r0,sp                     ; 08115452
-bl    Sub_bx_r1                 ; 08115454  bx r1
+bl    Sub_bx_r1                 ; 08115454
 mov   r0,r8                     ; 08115458
 add   r0,0x18                   ; 0811545A
 str   r0,[sp]                   ; 0811545C
@@ -11159,7 +11159,7 @@ ldr   r0,[r4]                   ; 0811546E
 add   r0,r0,r6                  ; 08115470
 ldr   r1,[r0]                   ; 08115472
 mov   r0,sp                     ; 08115474
-bl    Sub_bx_r1                 ; 08115476  bx r1
+bl    Sub_bx_r1                 ; 08115476
 str   r7,[sp,0x4]               ; 0811547A
 mov   r0,sp                     ; 0811547C
 mov   r1,r10                    ; 0811547E
@@ -11168,7 +11168,7 @@ ldr   r0,[r4]                   ; 08115482
 add   r0,r0,r6                  ; 08115484
 ldr   r1,[r0]                   ; 08115486
 mov   r0,sp                     ; 08115488
-bl    Sub_bx_r1                 ; 0811548A  bx r1
+bl    Sub_bx_r1                 ; 0811548A
 mov   r1,sp                     ; 0811548E
 mov   r0,0xB                    ; 08115490
 strb  r0,[r1,0xA]               ; 08115492
@@ -11189,7 +11189,7 @@ ldr   r0,[r4]                   ; 081154AE
 add   r0,r0,r6                  ; 081154B0
 ldr   r1,[r0]                   ; 081154B2
 mov   r0,sp                     ; 081154B4
-bl    Sub_bx_r1                 ; 081154B6  bx r1
+bl    Sub_bx_r1                 ; 081154B6
 mov   r1,0x10                   ; 081154BA
 add   r8,r1                     ; 081154BC
 mov   r0,r8                     ; 081154BE
@@ -11200,7 +11200,7 @@ ldr   r0,[r4]                   ; 081154C6
 add   r0,r0,r6                  ; 081154C8
 ldr   r1,[r0]                   ; 081154CA
 mov   r0,sp                     ; 081154CC
-bl    Sub_bx_r1                 ; 081154CE  bx r1
+bl    Sub_bx_r1                 ; 081154CE
 add   sp,0x14                   ; 081154D2
 pop   {r3-r5}                   ; 081154D4
 mov   r8,r3                     ; 081154D6
@@ -11471,7 +11471,7 @@ lsl   r1,r1,0x3                 ; 08115704
 add   r0,r0,r1                  ; 08115706
 ldr   r1,[r0]                   ; 08115708
 mov   r0,sp                     ; 0811570A
-bl    Sub_bx_r1                 ; 0811570C  bx r1
+bl    Sub_bx_r1                 ; 0811570C
 add   r5,0x8                    ; 08115710
 add   r0,r4,0x1                 ; 08115712
 lsl   r0,r0,0x18                ; 08115714
@@ -11498,7 +11498,7 @@ lsl   r1,r1,0x3                 ; 0811573A
 add   r0,r0,r1                  ; 0811573C
 ldr   r1,[r0]                   ; 0811573E
 mov   r0,sp                     ; 08115740
-bl    Sub_bx_r1                 ; 08115742  bx r1
+bl    Sub_bx_r1                 ; 08115742
 add   r5,0x8                    ; 08115746
 add   r0,r4,0x1                 ; 08115748
 lsl   r0,r0,0x18                ; 0811574A
@@ -11551,7 +11551,7 @@ lsl   r2,r2,0x3                 ; 081157AE
 add   r0,r0,r2                  ; 081157B0
 ldr   r1,[r0]                   ; 081157B2
 mov   r0,sp                     ; 081157B4
-bl    Sub_bx_r1                 ; 081157B6  bx r1
+bl    Sub_bx_r1                 ; 081157B6
 mov   r0,0x90                   ; 081157BA
 str   r0,[sp,0x4]               ; 081157BC
 mov   r6,0x1                    ; 081157BE
@@ -11571,7 +11571,7 @@ lsl   r2,r2,0x3                 ; 081157D6
 add   r0,r0,r2                  ; 081157D8
 ldr   r1,[r0]                   ; 081157DA
 mov   r0,sp                     ; 081157DC
-bl    Sub_bx_r1                 ; 081157DE  bx r1
+bl    Sub_bx_r1                 ; 081157DE
 add   r7,0x8                    ; 081157E2
 add   r0,r6,0x1                 ; 081157E4
 lsl   r0,r0,0x18                ; 081157E6
@@ -11629,7 +11629,7 @@ lsl   r1,r1,0x3                 ; 08115850
 add   r0,r0,r1                  ; 08115852
 ldr   r1,[r0]                   ; 08115854
 mov   r0,sp                     ; 08115856
-bl    Sub_bx_r1                 ; 08115858  bx r1
+bl    Sub_bx_r1                 ; 08115858
 add   r0,r4,0x1                 ; 0811585C
 lsl   r0,r0,0x18                ; 0811585E
 lsr   r4,r0,0x18                ; 08115860
@@ -11706,7 +11706,7 @@ lsl   r1,r1,0x3                 ; 081158F6
 add   r0,r0,r1                  ; 081158F8
 ldr   r1,[r0]                   ; 081158FA
 mov   r0,sp                     ; 081158FC
-bl    Sub_bx_r1                 ; 081158FE  bx r1
+bl    Sub_bx_r1                 ; 081158FE
 mov   r0,r9                     ; 08115902
 add   r0,0x10                   ; 08115904
 str   r0,[sp,0x14]              ; 08115906
@@ -11722,7 +11722,7 @@ lsl   r1,r1,0x3                 ; 08115918
 add   r0,r0,r1                  ; 0811591A
 ldr   r1,[r0]                   ; 0811591C
 mov   r0,sp                     ; 0811591E
-bl    Sub_bx_r1                 ; 08115920  bx r1
+bl    Sub_bx_r1                 ; 08115920
 mov   r0,sp                     ; 08115924
 mov   r1,0x1                    ; 08115926
 strb  r1,[r0,0x8]               ; 08115928
@@ -11741,7 +11741,7 @@ lsl   r1,r1,0x3                 ; 08115940
 add   r0,r0,r1                  ; 08115942
 ldr   r1,[r0]                   ; 08115944
 mov   r0,sp                     ; 08115946
-bl    Sub_bx_r1                 ; 08115948  bx r1
+bl    Sub_bx_r1                 ; 08115948
 ldr   r0,[sp,0x14]              ; 0811594C
 str   r0,[sp,0x4]               ; 0811594E
 mov   r0,sp                     ; 08115950
@@ -11753,7 +11753,7 @@ lsl   r1,r1,0x3                 ; 0811595A
 add   r0,r0,r1                  ; 0811595C
 ldr   r1,[r0]                   ; 0811595E
 mov   r0,sp                     ; 08115960
-bl    Sub_bx_r1                 ; 08115962  bx r1
+bl    Sub_bx_r1                 ; 08115962
 mov   r0,sp                     ; 08115966
 mov   r1,0x1                    ; 08115968
 strb  r1,[r0,0x10]              ; 0811596A
@@ -11776,7 +11776,7 @@ lsl   r1,r1,0x3                 ; 0811598A
 add   r0,r0,r1                  ; 0811598C
 ldr   r1,[r0]                   ; 0811598E
 mov   r0,sp                     ; 08115990
-bl    Sub_bx_r1                 ; 08115992  bx r1
+bl    Sub_bx_r1                 ; 08115992
 mov   r0,sp                     ; 08115996
 mov   r1,0x1                    ; 08115998
 strb  r1,[r0,0x8]               ; 0811599A
@@ -11797,7 +11797,7 @@ lsl   r1,r1,0x3                 ; 081159B6
 add   r0,r0,r1                  ; 081159B8
 ldr   r1,[r0]                   ; 081159BA
 mov   r0,sp                     ; 081159BC
-bl    Sub_bx_r1                 ; 081159BE  bx r1
+bl    Sub_bx_r1                 ; 081159BE
 mov   r0,sp                     ; 081159C2
 mov   r1,0x0                    ; 081159C4
 strb  r1,[r0,0x10]              ; 081159C6
@@ -11818,7 +11818,7 @@ lsl   r1,r1,0x3                 ; 081159E2
 add   r0,r0,r1                  ; 081159E4
 ldr   r1,[r0]                   ; 081159E6
 mov   r0,sp                     ; 081159E8
-bl    Sub_bx_r1                 ; 081159EA  bx r1
+bl    Sub_bx_r1                 ; 081159EA
 mov   r0,sp                     ; 081159EE
 mov   r1,0x0                    ; 081159F0
 strb  r1,[r0,0x8]               ; 081159F2
@@ -11834,7 +11834,7 @@ lsl   r1,r1,0x3                 ; 08115A04
 add   r0,r0,r1                  ; 08115A06
 ldr   r1,[r0]                   ; 08115A08
 mov   r0,sp                     ; 08115A0A
-bl    Sub_bx_r1                 ; 08115A0C  bx r1
+bl    Sub_bx_r1                 ; 08115A0C
 mov   r0,sp                     ; 08115A10
 mov   r1,0x0                    ; 08115A12
 strb  r1,[r0,0x10]              ; 08115A14
@@ -11855,7 +11855,7 @@ lsl   r1,r1,0x3                 ; 08115A30
 add   r0,r0,r1                  ; 08115A32
 ldr   r1,[r0]                   ; 08115A34
 mov   r0,sp                     ; 08115A36
-bl    Sub_bx_r1                 ; 08115A38  bx r1
+bl    Sub_bx_r1                 ; 08115A38
 mov   r0,r8                     ; 08115A3C
 str   r0,[sp]                   ; 08115A3E
 mov   r1,r9                     ; 08115A40
@@ -11866,7 +11866,7 @@ lsl   r1,r1,0x3                 ; 08115A48
 add   r0,r0,r1                  ; 08115A4A
 ldr   r1,[r0]                   ; 08115A4C
 mov   r0,sp                     ; 08115A4E
-bl    Sub_bx_r1                 ; 08115A50  bx r1
+bl    Sub_bx_r1                 ; 08115A50
 str   r7,[sp]                   ; 08115A54
 mov   r0,r9                     ; 08115A56
 str   r0,[sp,0x4]               ; 08115A58
@@ -11876,7 +11876,7 @@ lsl   r1,r1,0x3                 ; 08115A5E
 add   r0,r0,r1                  ; 08115A60
 ldr   r1,[r0]                   ; 08115A62
 mov   r0,sp                     ; 08115A64
-bl    Sub_bx_r1                 ; 08115A66  bx r1
+bl    Sub_bx_r1                 ; 08115A66
 str   r6,[sp]                   ; 08115A6A
 ldr   r0,[sp,0x14]              ; 08115A6C
 str   r0,[sp,0x4]               ; 08115A6E
@@ -11886,7 +11886,7 @@ lsl   r1,r1,0x3                 ; 08115A74
 add   r0,r0,r1                  ; 08115A76
 ldr   r1,[r0]                   ; 08115A78
 mov   r0,sp                     ; 08115A7A
-bl    Sub_bx_r1                 ; 08115A7C  bx r1
+bl    Sub_bx_r1                 ; 08115A7C
 mov   r0,r8                     ; 08115A80
 str   r0,[sp]                   ; 08115A82
 ldr   r1,[sp,0x14]              ; 08115A84
@@ -11897,7 +11897,7 @@ lsl   r1,r1,0x3                 ; 08115A8C
 add   r0,r0,r1                  ; 08115A8E
 ldr   r1,[r0]                   ; 08115A90
 mov   r0,sp                     ; 08115A92
-bl    Sub_bx_r1                 ; 08115A94  bx r1
+bl    Sub_bx_r1                 ; 08115A94
 str   r7,[sp]                   ; 08115A98
 ldr   r0,[sp,0x14]              ; 08115A9A
 str   r0,[sp,0x4]               ; 08115A9C
@@ -11907,7 +11907,7 @@ lsl   r1,r1,0x3                 ; 08115AA2
 add   r0,r0,r1                  ; 08115AA4
 ldr   r1,[r0]                   ; 08115AA6
 mov   r0,sp                     ; 08115AA8
-bl    Sub_bx_r1                 ; 08115AAA  bx r1
+bl    Sub_bx_r1                 ; 08115AAA
 add   sp,0x18                   ; 08115AAE
 pop   {r3-r5}                   ; 08115AB0
 mov   r8,r3                     ; 08115AB2
@@ -11953,7 +11953,7 @@ mov   r8,r1                     ; 08115B10
 add   r0,r8                     ; 08115B12
 ldr   r1,[r0]                   ; 08115B14
 mov   r0,sp                     ; 08115B16
-bl    Sub_bx_r1                 ; 08115B18  bx r1
+bl    Sub_bx_r1                 ; 08115B18
 add   r6,0x8                    ; 08115B1C
 str   r6,[sp]                   ; 08115B1E
 mov   r1,sp                     ; 08115B20
@@ -11966,7 +11966,7 @@ ldr   r0,[r5]                   ; 08115B2C
 add   r0,r8                     ; 08115B2E
 ldr   r1,[r0]                   ; 08115B30
 mov   r0,sp                     ; 08115B32
-bl    Sub_bx_r1                 ; 08115B34  bx r1
+bl    Sub_bx_r1                 ; 08115B34
 add   sp,0x14                   ; 08115B38
 pop   {r3}                      ; 08115B3A
 mov   r8,r3                     ; 08115B3C
@@ -12049,7 +12049,7 @@ lsl   r4,r4,0x3                 ; 08115BDC
 add   r0,r0,r4                  ; 08115BDE
 ldr   r1,[r0]                   ; 08115BE0
 mov   r0,sp                     ; 08115BE2
-bl    Sub_bx_r1                 ; 08115BE4  bx r1
+bl    Sub_bx_r1                 ; 08115BE4
 ldr   r0,[sp]                   ; 08115BE8
 add   r0,0x8                    ; 08115BEA
 str   r0,[sp]                   ; 08115BEC
@@ -12060,7 +12060,7 @@ ldr   r0,[r5]                   ; 08115BF4
 add   r0,r0,r4                  ; 08115BF6
 ldr   r1,[r0]                   ; 08115BF8
 mov   r0,sp                     ; 08115BFA
-bl    Sub_bx_r1                 ; 08115BFC  bx r1
+bl    Sub_bx_r1                 ; 08115BFC
 ldr   r0,[sp]                   ; 08115C00
 add   r0,0x8                    ; 08115C02
 str   r0,[sp]                   ; 08115C04
@@ -12071,7 +12071,7 @@ ldr   r0,[r5]                   ; 08115C0C
 add   r0,r0,r4                  ; 08115C0E
 ldr   r1,[r0]                   ; 08115C10
 mov   r0,sp                     ; 08115C12
-bl    Sub_bx_r1                 ; 08115C14  bx r1
+bl    Sub_bx_r1                 ; 08115C14
 b     @@Code08115C92            ; 08115C18
 .pool                           ; 08115C1A
 
@@ -12100,7 +12100,7 @@ lsl   r4,r4,0x3                 ; 08115C56
 add   r0,r0,r4                  ; 08115C58
 ldr   r1,[r0]                   ; 08115C5A
 mov   r0,sp                     ; 08115C5C
-bl    Sub_bx_r1                 ; 08115C5E  bx r1
+bl    Sub_bx_r1                 ; 08115C5E
 ldr   r0,[sp]                   ; 08115C62
 add   r0,0x8                    ; 08115C64
 str   r0,[sp]                   ; 08115C66
@@ -12111,7 +12111,7 @@ ldr   r0,[r5]                   ; 08115C6E
 add   r0,r0,r4                  ; 08115C70
 ldr   r1,[r0]                   ; 08115C72
 mov   r0,sp                     ; 08115C74
-bl    Sub_bx_r1                 ; 08115C76  bx r1
+bl    Sub_bx_r1                 ; 08115C76
 ldr   r0,[sp]                   ; 08115C7A
 add   r0,0x8                    ; 08115C7C
 str   r0,[sp]                   ; 08115C7E
@@ -12122,7 +12122,7 @@ ldr   r0,[r5]                   ; 08115C86
 add   r0,r0,r4                  ; 08115C88
 ldr   r1,[r0]                   ; 08115C8A
 mov   r0,sp                     ; 08115C8C
-bl    Sub_bx_r1                 ; 08115C8E  bx r1
+bl    Sub_bx_r1                 ; 08115C8E
 @@Code08115C92:
 add   sp,0x14                   ; 08115C92
 pop   {r4-r7}                   ; 08115C94
@@ -12649,7 +12649,7 @@ lsl   r2,r2,0x3                 ; 081160BE
 add   r0,r0,r2                  ; 081160C0
 ldr   r1,[r0]                   ; 081160C2
 mov   r0,r5                     ; 081160C4
-bl    Sub_bx_r1                 ; 081160C6  bx r1
+bl    Sub_bx_r1                 ; 081160C6
 ldr   r0,[sp,0x8]               ; 081160CA
 add   r0,0x10                   ; 081160CC
 str   r0,[sp,0x8]               ; 081160CE
@@ -12723,7 +12723,7 @@ lsl   r2,r2,0x3                 ; 0811615A
 add   r0,r0,r2                  ; 0811615C
 ldr   r1,[r0]                   ; 0811615E
 mov   r0,r5                     ; 08116160
-bl    Sub_bx_r1                 ; 08116162  bx r1
+bl    Sub_bx_r1                 ; 08116162
 ldr   r1,[sp,0x8]               ; 08116166
 mov   r0,r1                     ; 08116168
 add   r0,0x10                   ; 0811616A
@@ -12770,7 +12770,7 @@ lsl   r2,r2,0x3                 ; 081161BA
 add   r0,r0,r2                  ; 081161BC
 ldr   r1,[r0]                   ; 081161BE
 mov   r0,r5                     ; 081161C0
-bl    Sub_bx_r1                 ; 081161C2  bx r1
+bl    Sub_bx_r1                 ; 081161C2
 ldr   r1,[sp,0x8]               ; 081161C6
 mov   r0,r1                     ; 081161C8
 add   r0,0x10                   ; 081161CA
@@ -12862,7 +12862,7 @@ lsl   r5,r5,0x3                 ; 0811627C
 add   r0,r0,r5                  ; 0811627E
 ldr   r1,[r0]                   ; 08116280
 mov   r0,r7                     ; 08116282
-bl    Sub_bx_r1                 ; 08116284  bx r1
+bl    Sub_bx_r1                 ; 08116284
 mov   r1,r8                     ; 08116288
 strb  r1,[r7,0x10]              ; 0811628A
 mov   r0,0x1                    ; 0811628C
@@ -12876,7 +12876,7 @@ ldr   r0,[r4]                   ; 0811629A
 add   r0,r0,r5                  ; 0811629C
 ldr   r1,[r0]                   ; 0811629E
 mov   r0,r7                     ; 081162A0
-bl    Sub_bx_r1                 ; 081162A2  bx r1
+bl    Sub_bx_r1                 ; 081162A2
 ldr   r0,[sp,0x8]               ; 081162A6
 add   r0,0x10                   ; 081162A8
 str   r0,[sp,0x8]               ; 081162AA
@@ -12886,7 +12886,7 @@ ldr   r0,[r4]                   ; 081162B0
 add   r0,r0,r5                  ; 081162B2
 ldr   r1,[r0]                   ; 081162B4
 mov   r0,r7                     ; 081162B6
-bl    Sub_bx_r1                 ; 081162B8  bx r1
+bl    Sub_bx_r1                 ; 081162B8
 ldr   r0,[sp,0x8]               ; 081162BC
 add   r0,0x10                   ; 081162BE
 str   r0,[sp,0x8]               ; 081162C0
@@ -12896,7 +12896,7 @@ ldr   r0,[r4]                   ; 081162C6
 add   r0,r0,r5                  ; 081162C8
 ldr   r1,[r0]                   ; 081162CA
 mov   r0,r7                     ; 081162CC
-bl    Sub_bx_r1                 ; 081162CE  bx r1
+bl    Sub_bx_r1                 ; 081162CE
 ldr   r0,[sp,0x8]               ; 081162D2
 add   r0,0x10                   ; 081162D4
 str   r0,[sp,0x8]               ; 081162D6
@@ -12911,7 +12911,7 @@ ldr   r0,[r4]                   ; 081162E6
 add   r0,r0,r5                  ; 081162E8
 ldr   r1,[r0]                   ; 081162EA
 mov   r0,r7                     ; 081162EC
-bl    Sub_bx_r1                 ; 081162EE  bx r1
+bl    Sub_bx_r1                 ; 081162EE
 ldr   r0,[sp,0x8]               ; 081162F2
 add   r0,0x8                    ; 081162F4
 str   r0,[sp,0x8]               ; 081162F6
@@ -12921,7 +12921,7 @@ ldr   r0,[r4]                   ; 081162FC
 add   r0,r0,r5                  ; 081162FE
 ldr   r1,[r0]                   ; 08116300
 mov   r0,r7                     ; 08116302
-bl    Sub_bx_r1                 ; 08116304  bx r1
+bl    Sub_bx_r1                 ; 08116304
 ldr   r0,[sp,0x8]               ; 08116308
 add   r0,0x8                    ; 0811630A
 str   r0,[sp,0x8]               ; 0811630C
@@ -12931,7 +12931,7 @@ ldr   r0,[r4]                   ; 08116312
 add   r0,r0,r5                  ; 08116314
 ldr   r1,[r0]                   ; 08116316
 mov   r0,r7                     ; 08116318
-bl    Sub_bx_r1                 ; 0811631A  bx r1
+bl    Sub_bx_r1                 ; 0811631A
 b     @@Code0811644A            ; 0811631E
 .pool                           ; 08116320
 
@@ -13009,7 +13009,7 @@ lsl   r5,r5,0x3                 ; 081163C0
 add   r0,r0,r5                  ; 081163C2
 ldr   r1,[r0]                   ; 081163C4
 mov   r0,r7                     ; 081163C6
-bl    Sub_bx_r1                 ; 081163C8  bx r1
+bl    Sub_bx_r1                 ; 081163C8
 ldr   r0,[sp,0x8]               ; 081163CC
 add   r0,0xE                    ; 081163CE
 str   r0,[sp,0x8]               ; 081163D0
@@ -13019,7 +13019,7 @@ ldr   r0,[r4]                   ; 081163D6
 add   r0,r0,r5                  ; 081163D8
 ldr   r1,[r0]                   ; 081163DA
 mov   r0,r7                     ; 081163DC
-bl    Sub_bx_r1                 ; 081163DE  bx r1
+bl    Sub_bx_r1                 ; 081163DE
 ldr   r0,[sp,0x8]               ; 081163E2
 add   r0,0x8                    ; 081163E4
 str   r0,[sp,0x8]               ; 081163E6
@@ -13029,7 +13029,7 @@ ldr   r0,[r4]                   ; 081163EC
 add   r0,r0,r5                  ; 081163EE
 ldr   r1,[r0]                   ; 081163F0
 mov   r0,r7                     ; 081163F2
-bl    Sub_bx_r1                 ; 081163F4  bx r1
+bl    Sub_bx_r1                 ; 081163F4
 ldr   r0,[sp,0x8]               ; 081163F8
 add   r0,0x7                    ; 081163FA
 str   r0,[sp,0x8]               ; 081163FC
@@ -13043,7 +13043,7 @@ ldr   r0,[r4]                   ; 0811640A
 add   r0,r0,r5                  ; 0811640C
 ldr   r1,[r0]                   ; 0811640E
 mov   r0,r7                     ; 08116410
-bl    Sub_bx_r1                 ; 08116412  bx r1
+bl    Sub_bx_r1                 ; 08116412
 ldr   r0,[sp,0x8]               ; 08116416
 add   r0,0x10                   ; 08116418
 str   r0,[sp,0x8]               ; 0811641A
@@ -13057,7 +13057,7 @@ ldr   r0,[r4]                   ; 08116428
 add   r0,r0,r5                  ; 0811642A
 ldr   r1,[r0]                   ; 0811642C
 mov   r0,r7                     ; 0811642E
-bl    Sub_bx_r1                 ; 08116430  bx r1
+bl    Sub_bx_r1                 ; 08116430
 ldr   r0,[sp,0x8]               ; 08116434
 add   r0,0xD                    ; 08116436
 str   r0,[sp,0x8]               ; 08116438
@@ -13067,7 +13067,7 @@ ldr   r0,[r4]                   ; 0811643E
 add   r0,r0,r5                  ; 08116440
 ldr   r1,[r0]                   ; 08116442
 mov   r0,r7                     ; 08116444
-bl    Sub_bx_r1                 ; 08116446  bx r1
+bl    Sub_bx_r1                 ; 08116446
 @@Code0811644A:
 ldr   r2,=0x03002200            ; 0811644A
 mov   r10,r2                    ; 0811644C
@@ -13186,7 +13186,7 @@ lsl   r4,r4,0x3                 ; 08116522
 add   r2,r2,r4                  ; 08116524
 ldr   r1,[r2]                   ; 08116526
 mov   r0,r7                     ; 08116528
-bl    Sub_bx_r1                 ; 0811652A  bx r1
+bl    Sub_bx_r1                 ; 0811652A
 mov   r0,0x28                   ; 0811652E
 add   r0,0x8                    ; 08116530
 mov   r8,r0                     ; 08116532
@@ -13197,7 +13197,7 @@ ldr   r0,[r5]                   ; 0811653A
 add   r0,r0,r4                  ; 0811653C
 ldr   r1,[r0]                   ; 0811653E
 mov   r0,r7                     ; 08116540
-bl    Sub_bx_r1                 ; 08116542  bx r1
+bl    Sub_bx_r1                 ; 08116542
 ldr   r0,[sp,0x8]               ; 08116546
 add   r0,0x18                   ; 08116548
 str   r0,[sp,0x8]               ; 0811654A
@@ -13211,7 +13211,7 @@ ldr   r0,[r5]                   ; 08116558
 add   r0,r0,r4                  ; 0811655A
 ldr   r1,[r0]                   ; 0811655C
 mov   r0,r7                     ; 0811655E
-bl    Sub_bx_r1                 ; 08116560  bx r1
+bl    Sub_bx_r1                 ; 08116560
 mov   r3,r8                     ; 08116564
 str   r3,[r7,0x4]               ; 08116566
 strh  r6,[r7,0xC]               ; 08116568
@@ -13219,7 +13219,7 @@ ldr   r0,[r5]                   ; 0811656A
 add   r0,r0,r4                  ; 0811656C
 ldr   r1,[r0]                   ; 0811656E
 mov   r0,r7                     ; 08116570
-bl    Sub_bx_r1                 ; 08116572  bx r1
+bl    Sub_bx_r1                 ; 08116572
 @@Code08116576:
 add   sp,0x38                   ; 08116576
 pop   {r3-r5}                   ; 08116578
@@ -13286,7 +13286,7 @@ ldr   r2,=0x046C                ; 0811660A
 add   r0,r0,r2                  ; 0811660C
 ldr   r1,[r0]                   ; 0811660E
 mov   r0,r4                     ; 08116610
-bl    Sub_bx_r1                 ; 08116612  bx r1
+bl    Sub_bx_r1                 ; 08116612
 mov   r0,r4                     ; 08116616
 bl    Sub08129DD8               ; 08116618
 mov   r0,r4                     ; 0811661C
@@ -14913,7 +14913,7 @@ lsl   r5,r5,0x3                 ; 0811750A
 add   r0,r0,r5                  ; 0811750C
 ldr   r1,[r0]                   ; 0811750E
 mov   r0,r4                     ; 08117510
-bl    Sub_bx_r1                 ; 08117512  bx r1
+bl    Sub_bx_r1                 ; 08117512
 ldr   r0,[sp,0x8]               ; 08117516
 add   r0,0x8                    ; 08117518
 str   r0,[sp,0x8]               ; 0811751A
@@ -14926,7 +14926,7 @@ ldr   r0,[r6]                   ; 08117526
 add   r0,r0,r5                  ; 08117528
 ldr   r1,[r0]                   ; 0811752A
 mov   r0,r4                     ; 0811752C
-bl    Sub_bx_r1                 ; 0811752E  bx r1
+bl    Sub_bx_r1                 ; 0811752E
 ldr   r0,[sp,0x8]               ; 08117532
 sub   r0,0x4                    ; 08117534
 str   r0,[sp,0x8]               ; 08117536
@@ -14940,7 +14940,7 @@ ldr   r0,[r6]                   ; 08117544
 add   r0,r0,r5                  ; 08117546
 ldr   r1,[r0]                   ; 08117548
 mov   r0,r4                     ; 0811754A
-bl    Sub_bx_r1                 ; 0811754C  bx r1
+bl    Sub_bx_r1                 ; 0811754C
 add   sp,0x1C                   ; 08117550
 pop   {r3}                      ; 08117552
 mov   r8,r3                     ; 08117554
@@ -15246,7 +15246,7 @@ ldr   r3,=0x046C                ; 08117844
 add   r0,r0,r3                  ; 08117846
 ldr   r1,[r0]                   ; 08117848
 mov   r0,r4                     ; 0811784A
-bl    Sub_bx_r1                 ; 0811784C  bx r1
+bl    Sub_bx_r1                 ; 0811784C
 mov   r0,r4                     ; 08117850
 bl    Sub08129DD8               ; 08117852
 mov   r3,r4                     ; 08117856
@@ -17958,7 +17958,7 @@ mov   r0,r6                     ; 081190CA
 bl    DynamicDeallocate         ; 081190CC
 str   r4,[r5]                   ; 081190D0
 @@Code081190D2:
-bl    Sub_bx_r7                 ; 081190D2  bx r7
+bl    Sub_bx_r7                 ; 081190D2
 @@Code081190D6:
 pop   {r4-r7}                   ; 081190D6
 pop   {r0}                      ; 081190D8
@@ -19523,7 +19523,7 @@ ldrb  r0,[r4]                   ; 08119FF2
 lsl   r0,r0,0x2                 ; 08119FF4
 add   r0,r0,r1                  ; 08119FF6
 ldr   r0,[r0]                   ; 08119FF8
-bl    Sub_bx_r0                 ; 08119FFA  bx r0
+bl    Sub_bx_r0                 ; 08119FFA
 ldrb  r4,[r4]                   ; 08119FFE
 cmp   r4,0x5                    ; 0811A000
 bls   @@Code0811A01C            ; 0811A002
@@ -20180,7 +20180,7 @@ ldrb  r0,[r0]                   ; 0811A5E4
 lsl   r0,r0,0x2                 ; 0811A5E6
 add   r0,r0,r1                  ; 0811A5E8
 ldr   r0,[r0]                   ; 0811A5EA
-bl    Sub_bx_r0                 ; 0811A5EC  bx r0
+bl    Sub_bx_r0                 ; 0811A5EC
 mov   r0,0x9                    ; 0811A5F0
 and   r6,r0                     ; 0811A5F2
 cmp   r6,0x0                    ; 0811A5F4
@@ -20333,7 +20333,7 @@ ldrb  r0,[r0]                   ; 0811A77E
 lsl   r0,r0,0x2                 ; 0811A780
 add   r0,r0,r1                  ; 0811A782
 ldr   r0,[r0]                   ; 0811A784
-bl    Sub_bx_r0                 ; 0811A786  bx r0
+bl    Sub_bx_r0                 ; 0811A786
 @@Code0811A78A:
 ldr   r4,=0x03002200            ; 0811A78A
 ldr   r3,=0x47C0                ; 0811A78C
@@ -21176,7 +21176,7 @@ lsl   r1,r1,0x13                ; 0811AF52
 mov   r0,0x80                   ; 0811AF54
 strh  r0,[r1]                   ; 0811AF56
 ldr   r1,=0x02005800            ; 0811AF58
-bl    Sub_bx_r1                 ; 0811AF5A  bx r1
+bl    Sub_bx_r1                 ; 0811AF5A
 b     @@Code0811B32C            ; 0811AF5E
 .pool                           ; 0811AF60
 
@@ -21255,7 +21255,7 @@ ldrb  r0,[r0]                   ; 0811B018
 lsl   r0,r0,0x2                 ; 0811B01A
 add   r0,r0,r1                  ; 0811B01C
 ldr   r0,[r0]                   ; 0811B01E
-bl    Sub_bx_r0                 ; 0811B020  bx r0
+bl    Sub_bx_r0                 ; 0811B020
 mov   r0,r6                     ; 0811B024
 bl    Sub0811ABA4               ; 0811B026
 lsl   r0,r0,0x18                ; 0811B02A
@@ -21912,7 +21912,7 @@ ldrb  r0,[r0]                   ; 0811B646
 lsl   r0,r0,0x2                 ; 0811B648
 add   r0,r0,r1                  ; 0811B64A
 ldr   r0,[r0]                   ; 0811B64C
-bl    Sub_bx_r0                 ; 0811B64E  bx r0
+bl    Sub_bx_r0                 ; 0811B64E
 pop   {r0}                      ; 0811B652
 bx    r0                        ; 0811B654
 .pool                           ; 0811B656
@@ -22042,7 +22042,7 @@ lsl   r0,r4,0x2                 ; 0811B768
 add   r0,r0,r7                  ; 0811B76A
 ldr   r0,[r0]                   ; 0811B76C
 ldr   r1,[r1]                   ; 0811B76E
-bl    Sub_bx_r1                 ; 0811B770  bx r1
+bl    Sub_bx_r1                 ; 0811B770
 @@Code0811B774:
 add   r0,r4,0x1                 ; 0811B774
 lsl   r0,r0,0x18                ; 0811B776
@@ -22169,7 +22169,7 @@ asr   r7,r4,0x10                ; 0811B874
 ldr   r2,[r0]                   ; 0811B876
 mov   r0,r8                     ; 0811B878
 mov   r1,r7                     ; 0811B87A
-bl    Sub_bx_r2                 ; 0811B87C  bx r2
+bl    Sub_bx_r2                 ; 0811B87C
 mov   r5,r0                     ; 0811B880
 mov   r0,r5                     ; 0811B882
 sub   r0,0x11                   ; 0811B884
@@ -22216,7 +22216,7 @@ asr   r0,r0,0x10                ; 0811B8E0
 mov   r3,r10                    ; 0811B8E2
 asr   r1,r3,0x10                ; 0811B8E4
 ldr   r2,[r2]                   ; 0811B8E6
-bl    Sub_bx_r2                 ; 0811B8E8  bx r2
+bl    Sub_bx_r2                 ; 0811B8E8
 mov   r5,r0                     ; 0811B8EC
 cmp   r5,0x11                   ; 0811B8EE
 bne   @@Code0811B900            ; 0811B8F0
@@ -22249,7 +22249,7 @@ asr   r4,r4,0x10                ; 0811B928
 ldr   r2,[r0]                   ; 0811B92A
 mov   r0,r4                     ; 0811B92C
 mov   r1,r7                     ; 0811B92E
-bl    Sub_bx_r2                 ; 0811B930  bx r2
+bl    Sub_bx_r2                 ; 0811B930
 mov   r5,r0                     ; 0811B934
 mov   r0,r5                     ; 0811B936
 sub   r0,0x11                   ; 0811B938
@@ -22666,7 +22666,7 @@ lsl   r0,r7,0x10                ; 0811BC48
 asr   r0,r0,0x10                ; 0811BC4A
 ldr   r2,[r1]                   ; 0811BC4C
 mov   r1,r8                     ; 0811BC4E
-bl    Sub_bx_r2                 ; 0811BC50  bx r2
+bl    Sub_bx_r2                 ; 0811BC50
 lsl   r0,r0,0x18                ; 0811BC54
 lsr   r4,r0,0x18                ; 0811BC56
 mov   r1,r10                    ; 0811BC58
@@ -22695,7 +22695,7 @@ asr   r7,r0,0x10                ; 0811BC86
 ldr   r2,[r1]                   ; 0811BC88
 mov   r0,r7                     ; 0811BC8A
 mov   r1,r8                     ; 0811BC8C
-bl    Sub_bx_r2                 ; 0811BC8E  bx r2
+bl    Sub_bx_r2                 ; 0811BC8E
 lsl   r0,r0,0x18                ; 0811BC92
 lsr   r4,r0,0x18                ; 0811BC94
 mov   r1,r10                    ; 0811BC96
@@ -22727,7 +22727,7 @@ lsl   r0,r0,0x10                ; 0811BCCC
 asr   r0,r0,0x10                ; 0811BCCE
 ldr   r2,[r1]                   ; 0811BCD0
 mov   r1,r8                     ; 0811BCD2
-bl    Sub_bx_r2                 ; 0811BCD4  bx r2
+bl    Sub_bx_r2                 ; 0811BCD4
 lsl   r0,r0,0x18                ; 0811BCD8
 lsr   r4,r0,0x18                ; 0811BCDA
 mov   r1,r10                    ; 0811BCDC
@@ -22832,7 +22832,7 @@ asr   r0,r4,0x10                ; 0811BDB4
 ldr   r3,[sp,0x10]              ; 0811BDB6
 asr   r1,r3,0x10                ; 0811BDB8
 ldr   r2,[r2]                   ; 0811BDBA
-bl    Sub_bx_r2                 ; 0811BDBC  bx r2
+bl    Sub_bx_r2                 ; 0811BDBC
 lsl   r0,r0,0x18                ; 0811BDC0
 lsr   r4,r0,0x18                ; 0811BDC2
 cmp   r4,0x18                   ; 0811BDC4
@@ -22889,7 +22889,7 @@ lsr   r5,r0,0x10                ; 0811BE28
 asr   r0,r0,0x10                ; 0811BE2A
 ldr   r2,[r1]                   ; 0811BE2C
 mov   r1,r7                     ; 0811BE2E
-bl    Sub_bx_r2                 ; 0811BE30  bx r2
+bl    Sub_bx_r2                 ; 0811BE30
 lsl   r0,r0,0x18                ; 0811BE34
 lsr   r4,r0,0x18                ; 0811BE36
 cmp   r4,0x18                   ; 0811BE38
@@ -22968,7 +22968,7 @@ strb  r0,[r2,0x1]               ; 0811BEC8
 @@Code0811BECA:
 ldr   r1,[r5,0x2C]              ; 0811BECA
 mov   r0,r5                     ; 0811BECC
-bl    Sub_bx_r1                 ; 0811BECE  bx r1
+bl    Sub_bx_r1                 ; 0811BECE
 b     @@Code0811BF1E            ; 0811BED2
 .pool                           ; 0811BED4
 
@@ -23004,7 +23004,7 @@ strb  r6,[r0]                   ; 0811BF14
 @@Code0811BF16:
 ldr   r1,[r5,0x2C]              ; 0811BF16
 mov   r0,r5                     ; 0811BF18
-bl    Sub_bx_r1                 ; 0811BF1A  bx r1
+bl    Sub_bx_r1                 ; 0811BF1A
 @@Code0811BF1E:
 mov   r0,r8                     ; 0811BF1E
 add   r0,0x1                    ; 0811BF20
@@ -23157,7 +23157,7 @@ asr   r0,r4,0x10                ; 0811C046
 lsl   r1,r6,0x8                 ; 0811C048
 asr   r1,r1,0x10                ; 0811C04A
 ldr   r2,[r2]                   ; 0811C04C
-bl    Sub_bx_r2                 ; 0811C04E  bx r2
+bl    Sub_bx_r2                 ; 0811C04E
 lsl   r0,r0,0x18                ; 0811C052
 lsr   r1,r0,0x18                ; 0811C054
 mov   r8,r4                     ; 0811C056
@@ -23195,7 +23195,7 @@ lsl   r1,r6,0x8                 ; 0811C09A
 asr   r1,r1,0x10                ; 0811C09C
 mov   r2,r8                     ; 0811C09E
 asr   r0,r2,0x10                ; 0811C0A0
-bl    Sub_bx_r7                 ; 0811C0A2  bx r7
+bl    Sub_bx_r7                 ; 0811C0A2
 lsl   r0,r0,0x18                ; 0811C0A6
 lsr   r1,r0,0x18                ; 0811C0A8
 cmp   r1,r4                     ; 0811C0AA
@@ -23813,7 +23813,7 @@ add   r1,r1,r0                  ; 0811C5AE
 ldr   r2,[r1]                   ; 0811C5B0
 mov   r0,r7                     ; 0811C5B2
 mov   r1,r4                     ; 0811C5B4
-bl    Sub_bx_r2                 ; 0811C5B6  bx r2
+bl    Sub_bx_r2                 ; 0811C5B6
 @@Code0811C5BA:
 pop   {r4-r7}                   ; 0811C5BA
 pop   {r0}                      ; 0811C5BC
@@ -24300,7 +24300,7 @@ lsl   r0,r7,0x2                 ; 0811C972
 add   r0,r0,r1                  ; 0811C974
 ldr   r1,[r0]                   ; 0811C976
 mov   r0,r5                     ; 0811C978
-bl    Sub_bx_r1                 ; 0811C97A  bx r1
+bl    Sub_bx_r1                 ; 0811C97A
 lsl   r1,r6,0x2                 ; 0811C97E
 ldr   r3,=0x4B4C                ; 0811C980
 add   r0,r4,r3                  ; 0811C982
@@ -24325,7 +24325,7 @@ lsl   r1,r7,0x2                 ; 0811C9C2
 add   r1,r1,r0                  ; 0811C9C4
 ldr   r1,[r1]                   ; 0811C9C6
 mov   r0,r5                     ; 0811C9C8
-bl    Sub_bx_r1                 ; 0811C9CA  bx r1
+bl    Sub_bx_r1                 ; 0811C9CA
 @@Code0811C9CE:
 mov   r0,r5                     ; 0811C9CE
 bl    Sub0811C88C               ; 0811C9D0
@@ -24488,7 +24488,7 @@ asr   r0,r0,0x10                ; 0811CB1C
 lsl   r1,r5,0x10                ; 0811CB1E
 asr   r1,r1,0x10                ; 0811CB20
 ldr   r2,[r2]                   ; 0811CB22
-bl    Sub_bx_r2                 ; 0811CB24  bx r2
+bl    Sub_bx_r2                 ; 0811CB24
 lsl   r0,r0,0x18                ; 0811CB28
 lsr   r1,r0,0x18                ; 0811CB2A
 mov   r2,0xE9                   ; 0811CB2C
@@ -24642,7 +24642,7 @@ asr   r0,r6,0x10                ; 0811CC64
 lsl   r1,r1,0x10                ; 0811CC66
 asr   r1,r1,0x10                ; 0811CC68
 ldr   r2,[r2]                   ; 0811CC6A
-bl    Sub_bx_r2                 ; 0811CC6C  bx r2
+bl    Sub_bx_r2                 ; 0811CC6C
 lsl   r0,r0,0x18                ; 0811CC70
 lsr   r1,r0,0x18                ; 0811CC72
 cmp   r1,0x0                    ; 0811CC74
@@ -24675,7 +24675,7 @@ lsl   r1,r1,0x10                ; 0811CCAA
 asr   r1,r1,0x10                ; 0811CCAC
 ldr   r2,[r0]                   ; 0811CCAE
 asr   r0,r6,0x10                ; 0811CCB0
-bl    Sub_bx_r2                 ; 0811CCB2  bx r2
+bl    Sub_bx_r2                 ; 0811CCB2
 lsl   r0,r0,0x18                ; 0811CCB6
 lsr   r1,r0,0x18                ; 0811CCB8
 cmp   r1,0x1                    ; 0811CCBA
@@ -24942,7 +24942,7 @@ ldr   r1,=0x045C                ; 0811CEDC
 add   r0,r0,r1                  ; 0811CEDE
 ldr   r1,[r0]                   ; 0811CEE0
 mov   r0,r4                     ; 0811CEE2
-bl    Sub_bx_r1                 ; 0811CEE4  bx r1
+bl    Sub_bx_r1                 ; 0811CEE4
 lsl   r0,r0,0x18                ; 0811CEE8
 lsr   r0,r0,0x18                ; 0811CEEA
 cmp   r0,0xFF                   ; 0811CEEC
@@ -25343,7 +25343,7 @@ lsl   r1,r1,0x3                 ; 0811D226
 add   r0,r0,r1                  ; 0811D228
 ldr   r1,[r0]                   ; 0811D22A
 mov   r0,sp                     ; 0811D22C
-bl    Sub_bx_r1                 ; 0811D22E  bx r1
+bl    Sub_bx_r1                 ; 0811D22E
 add   sp,0x14                   ; 0811D232
 pop   {r3}                      ; 0811D234
 mov   r8,r3                     ; 0811D236
@@ -25376,14 +25376,14 @@ lsl   r0,r0,0x2                 ; 0811D26C
 add   r0,r0,r1                  ; 0811D26E
 ldr   r1,[r0]                   ; 0811D270
 mov   r0,r4                     ; 0811D272
-bl    Sub_bx_r1                 ; 0811D274  bx r1
+bl    Sub_bx_r1                 ; 0811D274
 ldr   r1,=CodePtrs082E9F64      ; 0811D278
 ldrb  r0,[r4,0x4]               ; 0811D27A
 lsl   r0,r0,0x2                 ; 0811D27C
 add   r0,r0,r1                  ; 0811D27E
 ldr   r1,[r0]                   ; 0811D280
 mov   r0,r4                     ; 0811D282
-bl    Sub_bx_r1                 ; 0811D284  bx r1
+bl    Sub_bx_r1                 ; 0811D284
 @@Code0811D288:
 ldrh  r0,[r4,0x6]               ; 0811D288
 cmp   r0,0x0                    ; 0811D28A
@@ -25763,7 +25763,7 @@ lsl   r1,r1,0x3                 ; 0811D5B2
 add   r0,r0,r1                  ; 0811D5B4
 ldr   r1,[r0]                   ; 0811D5B6
 mov   r0,sp                     ; 0811D5B8
-bl    Sub_bx_r1                 ; 0811D5BA  bx r1
+bl    Sub_bx_r1                 ; 0811D5BA
 add   sp,0x14                   ; 0811D5BE
 pop   {r4-r6}                   ; 0811D5C0
 pop   {r0}                      ; 0811D5C2
@@ -25821,7 +25821,7 @@ lsl   r1,r1,0x3                 ; 0811D632
 add   r0,r0,r1                  ; 0811D634
 ldr   r1,[r0]                   ; 0811D636
 mov   r0,sp                     ; 0811D638
-bl    Sub_bx_r1                 ; 0811D63A  bx r1
+bl    Sub_bx_r1                 ; 0811D63A
 add   sp,0x14                   ; 0811D63E
 pop   {r4-r6}                   ; 0811D640
 pop   {r0}                      ; 0811D642
@@ -26794,7 +26794,7 @@ sub   r4,0x10                   ; 0811DE1E
 lsl   r1,r4,0x8                 ; 0811DE20
 asr   r1,r1,0x10                ; 0811DE22
 asr   r0,r6,0x10                ; 0811DE24
-bl    Sub_bx_r8                 ; 0811DE26  bx r8
+bl    Sub_bx_r8                 ; 0811DE26
 lsl   r0,r0,0x18                ; 0811DE2A
 lsr   r2,r0,0x18                ; 0811DE2C
 cmp   r2,r5                     ; 0811DE2E
@@ -27436,7 +27436,7 @@ lsr   r0,r0,0xE                 ; 0811E318
 add   r0,r0,r5                  ; 0811E31A
 ldr   r1,[r0]                   ; 0811E31C
 mov   r0,r2                     ; 0811E31E
-bl    Sub_bx_r1                 ; 0811E320  bx r1
+bl    Sub_bx_r1                 ; 0811E320
 @@Code0811E324:
 add   r0,r4,0x1                 ; 0811E324
 lsl   r0,r0,0x18                ; 0811E326
@@ -27812,7 +27812,7 @@ lsl   r1,r6,0x8                 ; 0811E5F8
 asr   r1,r1,0x10                ; 0811E5FA
 ldr   r2,[r2]                   ; 0811E5FC
 mov   r0,r7                     ; 0811E5FE
-bl    Sub_bx_r2                 ; 0811E600  bx r2
+bl    Sub_bx_r2                 ; 0811E600
 lsl   r0,r0,0x18                ; 0811E604
 lsr   r1,r0,0x18                ; 0811E606
 mov   r3,r1                     ; 0811E608
@@ -28000,7 +28000,7 @@ ldrb  r1,[r0,0x4]               ; 0811E77C
 lsl   r1,r1,0x2                 ; 0811E77E
 add   r1,r1,r2                  ; 0811E780
 ldr   r1,[r1]                   ; 0811E782
-bl    Sub_bx_r1                 ; 0811E784  bx r1
+bl    Sub_bx_r1                 ; 0811E784
 pop   {r0}                      ; 0811E788
 bx    r0                        ; 0811E78A
 .pool                           ; 0811E78C
@@ -28295,7 +28295,7 @@ asr   r0,r0,0x10                ; 0811E9B0
 lsl   r1,r1,0x10                ; 0811E9B2
 asr   r1,r1,0x10                ; 0811E9B4
 ldr   r2,[r2]                   ; 0811E9B6
-bl    Sub_bx_r2                 ; 0811E9B8  bx r2
+bl    Sub_bx_r2                 ; 0811E9B8
 mov   r1,r0                     ; 0811E9BC
 lsl   r1,r1,0x18                ; 0811E9BE
 lsr   r1,r1,0x18                ; 0811E9C0
@@ -28430,7 +28430,7 @@ asr   r0,r0,0x10                ; 0811EAC0
 lsl   r1,r6,0x8                 ; 0811EAC2
 asr   r1,r1,0x10                ; 0811EAC4
 ldr   r2,[r2]                   ; 0811EAC6
-bl    Sub_bx_r2                 ; 0811EAC8  bx r2
+bl    Sub_bx_r2                 ; 0811EAC8
 lsl   r0,r0,0x18                ; 0811EACC
 lsr   r3,r0,0x18                ; 0811EACE
 mov   r1,0xE3                   ; 0811EAD0
@@ -28693,7 +28693,7 @@ ldr   r1,=0x045C                ; 0811ECCE
 add   r0,r0,r1                  ; 0811ECD0
 ldr   r1,[r0]                   ; 0811ECD2
 mov   r0,r4                     ; 0811ECD4
-bl    Sub_bx_r1                 ; 0811ECD6  bx r1
+bl    Sub_bx_r1                 ; 0811ECD6
 lsl   r0,r0,0x18                ; 0811ECDA
 lsr   r0,r0,0x18                ; 0811ECDC
 cmp   r0,0xFF                   ; 0811ECDE
@@ -29281,14 +29281,14 @@ lsl   r0,r0,0x2                 ; 0811F16A
 add   r0,r0,r1                  ; 0811F16C
 ldr   r1,[r0]                   ; 0811F16E
 mov   r0,r4                     ; 0811F170
-bl    Sub_bx_r1                 ; 0811F172  bx r1
+bl    Sub_bx_r1                 ; 0811F172
 ldr   r1,=CodePtrs082EA0A8      ; 0811F176
 ldrb  r0,[r4,0x4]               ; 0811F178
 lsl   r0,r0,0x2                 ; 0811F17A
 add   r0,r0,r1                  ; 0811F17C
 ldr   r1,[r0]                   ; 0811F17E
 mov   r0,r4                     ; 0811F180
-bl    Sub_bx_r1                 ; 0811F182  bx r1
+bl    Sub_bx_r1                 ; 0811F182
 @@Code0811F186:
 ldrh  r0,[r4,0x6]               ; 0811F186
 cmp   r0,0x0                    ; 0811F188
@@ -29598,7 +29598,7 @@ cmp   r0,0x1                    ; 0811F3CE
 bne   @@Code0811F3E4            ; 0811F3D0
 ldr   r1,[r4,0x34]              ; 0811F3D2
 mov   r0,r4                     ; 0811F3D4
-bl    Sub_bx_r1                 ; 0811F3D6  bx r1
+bl    Sub_bx_r1                 ; 0811F3D6
 b     @@Code0811F3EA            ; 0811F3DA
 .pool                           ; 0811F3DC
 
@@ -29648,7 +29648,7 @@ asr   r0,r0,0x10                ; 0811F438
 lsl   r1,r1,0x10                ; 0811F43A
 asr   r1,r1,0x10                ; 0811F43C
 ldr   r2,[r2]                   ; 0811F43E
-bl    Sub_bx_r2                 ; 0811F440  bx r2
+bl    Sub_bx_r2                 ; 0811F440
 mov   r1,r0                     ; 0811F444
 lsl   r1,r1,0x18                ; 0811F446
 lsr   r1,r1,0x18                ; 0811F448
@@ -29758,7 +29758,7 @@ cmp   r0,0x1                    ; 0811F518
 bne   @@Code0811F530            ; 0811F51A
 ldr   r1,[r4,0x34]              ; 0811F51C
 mov   r0,r4                     ; 0811F51E
-bl    Sub_bx_r1                 ; 0811F520  bx r1
+bl    Sub_bx_r1                 ; 0811F520
 b     @@Code0811F536            ; 0811F524
 .pool                           ; 0811F526
 
@@ -29813,7 +29813,7 @@ asr   r0,r0,0x10                ; 0811F588
 lsl   r1,r6,0x8                 ; 0811F58A
 asr   r1,r1,0x10                ; 0811F58C
 ldr   r2,[r2]                   ; 0811F58E
-bl    Sub_bx_r2                 ; 0811F590  bx r2
+bl    Sub_bx_r2                 ; 0811F590
 lsl   r0,r0,0x18                ; 0811F594
 lsr   r3,r0,0x18                ; 0811F596
 mov   r1,0xE3                   ; 0811F598
@@ -30135,7 +30135,7 @@ ldr   r1,=0x045C                ; 0811F80E
 add   r0,r0,r1                  ; 0811F810
 ldr   r1,[r0]                   ; 0811F812
 mov   r0,r5                     ; 0811F814
-bl    Sub_bx_r1                 ; 0811F816  bx r1
+bl    Sub_bx_r1                 ; 0811F816
 lsl   r0,r0,0x18                ; 0811F81A
 lsr   r0,r0,0x18                ; 0811F81C
 cmp   r0,0xFF                   ; 0811F81E
@@ -30353,7 +30353,7 @@ cmp   r0,0x1                    ; 0811F9D4
 bne   @@Code0811F9E0            ; 0811F9D6
 ldr   r1,[r5,0x34]              ; 0811F9D8
 mov   r0,r5                     ; 0811F9DA
-bl    Sub_bx_r1                 ; 0811F9DC  bx r1
+bl    Sub_bx_r1                 ; 0811F9DC
 @@Code0811F9E0:
 ldrb  r1,[r5,0xA]               ; 0811F9E0
 mov   r0,0x7F                   ; 0811F9E2
@@ -30480,7 +30480,7 @@ asr   r0,r0,0x10                ; 0811FAD2
 lsl   r1,r1,0x8                 ; 0811FAD4
 asr   r1,r1,0x10                ; 0811FAD6
 ldr   r2,[r2]                   ; 0811FAD8
-bl    Sub_bx_r2                 ; 0811FADA  bx r2
+bl    Sub_bx_r2                 ; 0811FADA
 lsl   r0,r0,0x18                ; 0811FADE
 lsr   r1,r0,0x18                ; 0811FAE0
 mov   r2,0xE9                   ; 0811FAE2
@@ -30754,14 +30754,14 @@ lsl   r0,r0,0x2                 ; 0811FD0E
 add   r0,r0,r1                  ; 0811FD10
 ldr   r1,[r0]                   ; 0811FD12
 mov   r0,r4                     ; 0811FD14
-bl    Sub_bx_r1                 ; 0811FD16  bx r1
+bl    Sub_bx_r1                 ; 0811FD16
 ldr   r1,=CodePtrs082EA178      ; 0811FD1A
 ldrb  r0,[r4,0x4]               ; 0811FD1C
 lsl   r0,r0,0x2                 ; 0811FD1E
 add   r0,r0,r1                  ; 0811FD20
 ldr   r1,[r0]                   ; 0811FD22
 mov   r0,r4                     ; 0811FD24
-bl    Sub_bx_r1                 ; 0811FD26  bx r1
+bl    Sub_bx_r1                 ; 0811FD26
 @@Code0811FD2A:
 ldrh  r0,[r4,0x6]               ; 0811FD2A
 cmp   r0,0x0                    ; 0811FD2C
@@ -31316,14 +31316,14 @@ b     @@Code081201B4            ; 08120176
 @@Code08120180:
 ldr   r1,[r4,0x30]              ; 08120180
 mov   r0,r4                     ; 08120182
-bl    Sub_bx_r1                 ; 08120184  bx r1
+bl    Sub_bx_r1                 ; 08120184
 ldr   r0,[r4,0x38]              ; 08120188
 strb  r5,[r0]                   ; 0812018A
 b     @@Code081201B4            ; 0812018C
 @@Code0812018E:
 ldr   r1,[r4,0x30]              ; 0812018E
 mov   r0,r4                     ; 08120190
-bl    Sub_bx_r1                 ; 08120192  bx r1
+bl    Sub_bx_r1                 ; 08120192
 ldrb  r1,[r4,0x8]               ; 08120196
 mov   r0,0x4                    ; 08120198
 neg   r0,r0                     ; 0812019A
@@ -31338,7 +31338,7 @@ cmp   r0,0x8                    ; 081201A8
 bne   @@Code081201B4            ; 081201AA
 ldr   r1,[r4,0x30]              ; 081201AC
 mov   r0,r4                     ; 081201AE
-bl    Sub_bx_r1                 ; 081201B0  bx r1
+bl    Sub_bx_r1                 ; 081201B0
 @@Code081201B4:
 pop   {r4-r5}                   ; 081201B4
 pop   {r0}                      ; 081201B6
@@ -31534,7 +31534,7 @@ b     @@Code081203B2            ; 08120312
 
 @@Code0812032C:
 mov   r0,r3                     ; 0812032C
-bl    Sub_bx_r1                 ; 0812032E  bx r1
+bl    Sub_bx_r1                 ; 0812032E
 b     @@Code081203B2            ; 08120332
 @@Code08120334:
 cmp   r1,0x0                    ; 08120334
@@ -31807,7 +31807,7 @@ lsl   r0,r2,0x10                ; 08120540
 asr   r0,r0,0x10                ; 08120542
 ldr   r2,[r1]                   ; 08120544
 mov   r1,r5                     ; 08120546
-bl    Sub_bx_r2                 ; 08120548  bx r2
+bl    Sub_bx_r2                 ; 08120548
 lsl   r0,r0,0x18                ; 0812054C
 lsr   r1,r0,0x18                ; 0812054E
 mov   r2,0xBD                   ; 08120550
@@ -32603,7 +32603,7 @@ asr   r0,r0,0x10                ; 08120BAE
 lsl   r1,r5,0x10                ; 08120BB0
 asr   r1,r1,0x10                ; 08120BB2
 ldr   r2,[r2]                   ; 08120BB4
-bl    Sub_bx_r2                 ; 08120BB6  bx r2
+bl    Sub_bx_r2                 ; 08120BB6
 mov   r1,r0                     ; 08120BBA
 lsl   r1,r1,0x18                ; 08120BBC
 lsr   r1,r1,0x18                ; 08120BBE
@@ -32704,7 +32704,7 @@ asr   r0,r0,0x10                ; 08120C7C
 lsl   r1,r6,0x8                 ; 08120C7E
 asr   r1,r1,0x10                ; 08120C80
 ldr   r2,[r2]                   ; 08120C82
-bl    Sub_bx_r2                 ; 08120C84  bx r2
+bl    Sub_bx_r2                 ; 08120C84
 lsl   r0,r0,0x18                ; 08120C88
 lsr   r3,r0,0x18                ; 08120C8A
 mov   r1,0xE3                   ; 08120C8C
@@ -32944,7 +32944,7 @@ ldr   r1,=0x045C                ; 08120E5E
 add   r0,r0,r1                  ; 08120E60
 ldr   r1,[r0]                   ; 08120E62
 mov   r0,r4                     ; 08120E64
-bl    Sub_bx_r1                 ; 08120E66  bx r1
+bl    Sub_bx_r1                 ; 08120E66
 lsl   r0,r0,0x18                ; 08120E6A
 lsr   r0,r0,0x18                ; 08120E6C
 cmp   r0,0xFF                   ; 08120E6E
@@ -33202,14 +33202,14 @@ lsl   r0,r0,0x2                 ; 0812105E
 add   r0,r0,r1                  ; 08121060
 ldr   r1,[r0]                   ; 08121062
 mov   r0,r5                     ; 08121064
-bl    Sub_bx_r1                 ; 08121066  bx r1
+bl    Sub_bx_r1                 ; 08121066
 ldr   r1,=CodePtrs082EA2D4      ; 0812106A
 ldrb  r0,[r5,0x4]               ; 0812106C
 lsl   r0,r0,0x2                 ; 0812106E
 add   r0,r0,r1                  ; 08121070
 ldr   r1,[r0]                   ; 08121072
 mov   r0,r5                     ; 08121074
-bl    Sub_bx_r1                 ; 08121076  bx r1
+bl    Sub_bx_r1                 ; 08121076
 @@Code0812107A:
 ldrh  r1,[r5,0x6]               ; 0812107A
 ldr   r2,=0xFFFFFD5A            ; 0812107C
@@ -33476,7 +33476,7 @@ cmp   r0,0x1                    ; 08121280
 bne   @@Code08121298            ; 08121282
 ldr   r1,[r4,0x34]              ; 08121284
 mov   r0,r4                     ; 08121286
-bl    Sub_bx_r1                 ; 08121288  bx r1
+bl    Sub_bx_r1                 ; 08121288
 b     @@Code0812129E            ; 0812128C
 .pool                           ; 0812128E
 
@@ -33531,7 +33531,7 @@ asr   r0,r0,0x10                ; 081212F6
 lsl   r1,r1,0x10                ; 081212F8
 asr   r1,r1,0x10                ; 081212FA
 ldr   r2,[r2]                   ; 081212FC
-bl    Sub_bx_r2                 ; 081212FE  bx r2
+bl    Sub_bx_r2                 ; 081212FE
 mov   r1,r0                     ; 08121302
 lsl   r1,r1,0x18                ; 08121304
 lsr   r1,r1,0x18                ; 08121306
@@ -33635,7 +33635,7 @@ cmp   r0,0x1                    ; 081213CA
 bne   @@Code081213E0            ; 081213CC
 ldr   r1,[r4,0x34]              ; 081213CE
 mov   r0,r4                     ; 081213D0
-bl    Sub_bx_r1                 ; 081213D2  bx r1
+bl    Sub_bx_r1                 ; 081213D2
 b     @@Code081213E6            ; 081213D6
 .pool                           ; 081213D8
 
@@ -33694,7 +33694,7 @@ asr   r0,r0,0x10                ; 08121440
 lsl   r1,r6,0x8                 ; 08121442
 asr   r1,r1,0x10                ; 08121444
 ldr   r2,[r2]                   ; 08121446
-bl    Sub_bx_r2                 ; 08121448  bx r2
+bl    Sub_bx_r2                 ; 08121448
 lsl   r0,r0,0x18                ; 0812144C
 lsr   r3,r0,0x18                ; 0812144E
 mov   r1,0xE3                   ; 08121450
@@ -34006,7 +34006,7 @@ ldr   r1,=0x045C                ; 081216B2
 add   r0,r0,r1                  ; 081216B4
 ldr   r1,[r0]                   ; 081216B6
 mov   r0,r5                     ; 081216B8
-bl    Sub_bx_r1                 ; 081216BA  bx r1
+bl    Sub_bx_r1                 ; 081216BA
 lsl   r0,r0,0x18                ; 081216BE
 lsr   r0,r0,0x18                ; 081216C0
 cmp   r0,0xFF                   ; 081216C2
@@ -34234,7 +34234,7 @@ cmp   r0,0x1                    ; 0812188C
 bne   @@Code08121898            ; 0812188E
 ldr   r1,[r5,0x34]              ; 08121890
 mov   r0,r5                     ; 08121892
-bl    Sub_bx_r1                 ; 08121894  bx r1
+bl    Sub_bx_r1                 ; 08121894
 @@Code08121898:
 pop   {r4-r6}                   ; 08121898
 pop   {r0}                      ; 0812189A
@@ -34320,7 +34320,7 @@ add   r1,0x1                    ; 0812193A
 lsl   r1,r1,0x10                ; 0812193C
 asr   r1,r1,0x10                ; 0812193E
 ldr   r2,[r2]                   ; 08121940
-bl    Sub_bx_r2                 ; 08121942  bx r2
+bl    Sub_bx_r2                 ; 08121942
 lsl   r0,r0,0x18                ; 08121946
 lsr   r1,r0,0x18                ; 08121948
 mov   r2,0xE9                   ; 0812194A
@@ -34610,14 +34610,14 @@ lsl   r0,r0,0x2                 ; 08121B72
 add   r0,r0,r1                  ; 08121B74
 ldr   r1,[r0]                   ; 08121B76
 mov   r0,r4                     ; 08121B78
-bl    Sub_bx_r1                 ; 08121B7A  bx r1
+bl    Sub_bx_r1                 ; 08121B7A
 ldr   r1,=CodePtrs082EA374      ; 08121B7E
 ldrb  r0,[r4,0x4]               ; 08121B80
 lsl   r0,r0,0x2                 ; 08121B82
 add   r0,r0,r1                  ; 08121B84
 ldr   r1,[r0]                   ; 08121B86
 mov   r0,r4                     ; 08121B88
-bl    Sub_bx_r1                 ; 08121B8A  bx r1
+bl    Sub_bx_r1                 ; 08121B8A
 @@Code08121B8E:
 ldrh  r0,[r4,0x6]               ; 08121B8E
 cmp   r0,0x0                    ; 08121B90
@@ -34776,7 +34776,7 @@ lsl   r1,r2,0x10                ; 08121CCC
 asr   r1,r1,0x10                ; 08121CCE
 ldr   r2,[r0]                   ; 08121CD0
 mov   r0,r4                     ; 08121CD2
-bl    Sub_bx_r2                 ; 08121CD4  bx r2
+bl    Sub_bx_r2                 ; 08121CD4
 lsl   r0,r0,0x18                ; 08121CD8
 lsr   r0,r0,0x18                ; 08121CDA
 str   r0,[sp,0x1C]              ; 08121CDC
@@ -34789,7 +34789,7 @@ lsl   r1,r1,0x10                ; 08121CE8
 asr   r1,r1,0x10                ; 08121CEA
 ldr   r2,[r0]                   ; 08121CEC
 mov   r0,r4                     ; 08121CEE
-bl    Sub_bx_r2                 ; 08121CF0  bx r2
+bl    Sub_bx_r2                 ; 08121CF0
 lsl   r0,r0,0x18                ; 08121CF4
 lsr   r0,r0,0x18                ; 08121CF6
 str   r0,[sp,0x4]               ; 08121CF8
@@ -34805,7 +34805,7 @@ lsl   r4,r4,0x10                ; 08121D0A
 asr   r4,r4,0x10                ; 08121D0C
 ldr   r2,[r1]                   ; 08121D0E
 mov   r1,r4                     ; 08121D10
-bl    Sub_bx_r2                 ; 08121D12  bx r2
+bl    Sub_bx_r2                 ; 08121D12
 lsl   r0,r0,0x18                ; 08121D16
 lsr   r0,r0,0x18                ; 08121D18
 str   r0,[sp,0x8]               ; 08121D1A
@@ -34818,7 +34818,7 @@ lsl   r0,r0,0x10                ; 08121D26
 asr   r0,r0,0x10                ; 08121D28
 ldr   r2,[r1]                   ; 08121D2A
 mov   r1,r4                     ; 08121D2C
-bl    Sub_bx_r2                 ; 08121D2E  bx r2
+bl    Sub_bx_r2                 ; 08121D2E
 lsl   r0,r0,0x18                ; 08121D32
 lsr   r0,r0,0x18                ; 08121D34
 str   r0,[sp,0xC]               ; 08121D36
@@ -34836,7 +34836,7 @@ asr   r4,r4,0x10                ; 08121D4C
 ldr   r2,[r0]                   ; 08121D4E
 mov   r0,r6                     ; 08121D50
 mov   r1,r4                     ; 08121D52
-bl    Sub_bx_r2                 ; 08121D54  bx r2
+bl    Sub_bx_r2                 ; 08121D54
 lsl   r0,r0,0x18                ; 08121D58
 lsr   r0,r0,0x18                ; 08121D5A
 str   r0,[sp,0x10]              ; 08121D5C
@@ -34850,7 +34850,7 @@ asr   r5,r5,0x10                ; 08121D6A
 ldr   r2,[r0]                   ; 08121D6C
 mov   r0,r5                     ; 08121D6E
 mov   r1,r4                     ; 08121D70
-bl    Sub_bx_r2                 ; 08121D72  bx r2
+bl    Sub_bx_r2                 ; 08121D72
 lsl   r0,r0,0x18                ; 08121D76
 lsr   r0,r0,0x18                ; 08121D78
 str   r0,[sp,0x14]              ; 08121D7A
@@ -34864,7 +34864,7 @@ asr   r4,r4,0x10                ; 08121D88
 ldr   r2,[r0]                   ; 08121D8A
 mov   r0,r6                     ; 08121D8C
 mov   r1,r4                     ; 08121D8E
-bl    Sub_bx_r2                 ; 08121D90  bx r2
+bl    Sub_bx_r2                 ; 08121D90
 lsl   r0,r0,0x18                ; 08121D94
 lsr   r6,r0,0x18                ; 08121D96
 mov   r2,r8                     ; 08121D98
@@ -34873,7 +34873,7 @@ add   r0,r9                     ; 08121D9C
 ldr   r2,[r0]                   ; 08121D9E
 mov   r0,r5                     ; 08121DA0
 mov   r1,r4                     ; 08121DA2
-bl    Sub_bx_r2                 ; 08121DA4  bx r2
+bl    Sub_bx_r2                 ; 08121DA4
 lsl   r0,r0,0x18                ; 08121DA8
 lsr   r2,r0,0x18                ; 08121DAA
 ldr   r0,[r7,0x1C]              ; 08121DAC
@@ -35060,7 +35060,7 @@ asr   r5,r1,0x10                ; 08121F00
 ldr   r2,[r0]                   ; 08121F02
 mov   r0,r6                     ; 08121F04
 mov   r1,r5                     ; 08121F06
-bl    Sub_bx_r2                 ; 08121F08  bx r2
+bl    Sub_bx_r2                 ; 08121F08
 lsl   r0,r0,0x18                ; 08121F0C
 mov   r1,0xE9                   ; 08121F0E
 lsl   r1,r1,0x18                ; 08121F10
@@ -35658,7 +35658,7 @@ mov   r10,r2                    ; 081223B6
 add   r0,r10                    ; 081223B8
 ldr   r1,[r0]                   ; 081223BA
 mov   r0,sp                     ; 081223BC
-bl    Sub_bx_r1                 ; 081223BE  bx r1
+bl    Sub_bx_r1                 ; 081223BE
 add   r5,0x8                    ; 081223C2
 str   r5,[sp]                   ; 081223C4
 str   r6,[sp,0x4]               ; 081223C6
@@ -35672,7 +35672,7 @@ ldr   r0,[r1]                   ; 081223D4
 add   r0,r10                    ; 081223D6
 ldr   r1,[r0]                   ; 081223D8
 mov   r0,sp                     ; 081223DA
-bl    Sub_bx_r1                 ; 081223DC  bx r1
+bl    Sub_bx_r1                 ; 081223DC
 ldr   r2,[sp,0x14]              ; 081223E0
 str   r2,[sp]                   ; 081223E2
 add   r4,0x8                    ; 081223E4
@@ -35687,7 +35687,7 @@ ldr   r0,[r1]                   ; 081223F4
 add   r0,r10                    ; 081223F6
 ldr   r1,[r0]                   ; 081223F8
 mov   r0,sp                     ; 081223FA
-bl    Sub_bx_r1                 ; 081223FC  bx r1
+bl    Sub_bx_r1                 ; 081223FC
 str   r5,[sp]                   ; 08122400
 str   r4,[sp,0x4]               ; 08122402
 mov   r0,sp                     ; 08122404
@@ -35699,7 +35699,7 @@ ldr   r0,[r4]                   ; 0812240E
 add   r0,r10                    ; 08122410
 ldr   r1,[r0]                   ; 08122412
 mov   r0,sp                     ; 08122414
-bl    Sub_bx_r1                 ; 08122416  bx r1
+bl    Sub_bx_r1                 ; 08122416
 b     @@Code08122498            ; 0812241A
 .pool                           ; 0812241C
 
@@ -35756,7 +35756,7 @@ lsl   r1,r1,0x3                 ; 0812248C
 add   r0,r0,r1                  ; 0812248E
 ldr   r1,[r0]                   ; 08122490
 mov   r0,sp                     ; 08122492
-bl    Sub_bx_r1                 ; 08122494  bx r1
+bl    Sub_bx_r1                 ; 08122494
 @@Code08122498:
 add   sp,0x18                   ; 08122498
 pop   {r3-r5}                   ; 0812249A
@@ -35788,14 +35788,14 @@ lsl   r0,r0,0x2                 ; 081224D6
 add   r0,r0,r1                  ; 081224D8
 ldr   r1,[r0]                   ; 081224DA
 mov   r0,r4                     ; 081224DC
-bl    Sub_bx_r1                 ; 081224DE  bx r1
+bl    Sub_bx_r1                 ; 081224DE
 ldr   r1,=CodePtrs082EA424      ; 081224E2
 ldrb  r0,[r4,0x4]               ; 081224E4
 lsl   r0,r0,0x2                 ; 081224E6
 add   r0,r0,r1                  ; 081224E8
 ldr   r1,[r0]                   ; 081224EA
 mov   r0,r4                     ; 081224EC
-bl    Sub_bx_r1                 ; 081224EE  bx r1
+bl    Sub_bx_r1                 ; 081224EE
 @@Code081224F2:
 ldrb  r0,[r4,0xC]               ; 081224F2
 cmp   r0,0x0                    ; 081224F4
@@ -36142,7 +36142,7 @@ ldrb  r1,[r0,0x4]               ; 081227C4
 lsl   r1,r1,0x2                 ; 081227C6
 add   r1,r1,r2                  ; 081227C8
 ldr   r1,[r1]                   ; 081227CA
-bl    Sub_bx_r1                 ; 081227CC  bx r1
+bl    Sub_bx_r1                 ; 081227CC
 pop   {r0}                      ; 081227D0
 bx    r0                        ; 081227D2
 .pool                           ; 081227D4
@@ -36511,7 +36511,7 @@ lsl   r1,r5,0x8                 ; 08122AB2
 asr   r1,r1,0x10                ; 08122AB4
 ldr   r2,[r2]                   ; 08122AB6
 mov   r0,r6                     ; 08122AB8
-bl    Sub_bx_r2                 ; 08122ABA  bx r2
+bl    Sub_bx_r2                 ; 08122ABA
 lsl   r0,r0,0x18                ; 08122ABE
 lsr   r1,r0,0x18                ; 08122AC0
 mov   r3,r1                     ; 08122AC2
@@ -36887,7 +36887,7 @@ ldr   r1,=0x045C                ; 08122DC8
 add   r0,r0,r1                  ; 08122DCA
 ldr   r1,[r0]                   ; 08122DCC
 mov   r0,r4                     ; 08122DCE
-bl    Sub_bx_r1                 ; 08122DD0  bx r1
+bl    Sub_bx_r1                 ; 08122DD0
 lsl   r0,r0,0x18                ; 08122DD4
 lsr   r0,r0,0x18                ; 08122DD6
 cmp   r0,0xFF                   ; 08122DD8
@@ -38079,14 +38079,14 @@ lsl   r0,r0,0x2                 ; 08123756
 add   r0,r0,r1                  ; 08123758
 ldr   r1,[r0]                   ; 0812375A
 mov   r0,r4                     ; 0812375C
-bl    Sub_bx_r1                 ; 0812375E  bx r1
+bl    Sub_bx_r1                 ; 0812375E
 ldr   r1,=CodePtrs082EA558      ; 08123762
 ldrb  r0,[r4,0x4]               ; 08123764
 lsl   r0,r0,0x2                 ; 08123766
 add   r0,r0,r1                  ; 08123768
 ldr   r1,[r0]                   ; 0812376A
 mov   r0,r4                     ; 0812376C
-bl    Sub_bx_r1                 ; 0812376E  bx r1
+bl    Sub_bx_r1                 ; 0812376E
 @@Code08123772:
 ldrh  r0,[r4,0x6]               ; 08123772
 cmp   r0,0x0                    ; 08123774
@@ -38480,7 +38480,7 @@ ldr   r2,=0x045C                ; 08123A88
 add   r0,r0,r2                  ; 08123A8A
 ldr   r1,[r0]                   ; 08123A8C
 mov   r0,r5                     ; 08123A8E
-bl    Sub_bx_r1                 ; 08123A90  bx r1
+bl    Sub_bx_r1                 ; 08123A90
 lsl   r0,r0,0x18                ; 08123A94
 lsr   r3,r0,0x18                ; 08123A96
 mov   r0,r5                     ; 08123A98
@@ -38666,7 +38666,7 @@ lsl   r1,r6,0x8                 ; 08123C04
 asr   r1,r1,0x10                ; 08123C06
 ldr   r2,[r0]                   ; 08123C08
 mov   r0,r4                     ; 08123C0A
-bl    Sub_bx_r2                 ; 08123C0C  bx r2
+bl    Sub_bx_r2                 ; 08123C0C
 lsl   r0,r0,0x18                ; 08123C10
 lsr   r1,r0,0x18                ; 08123C12
 mov   r3,r1                     ; 08123C14
@@ -38901,7 +38901,7 @@ lsl   r1,r1,0x2                 ; 08123DD8
 add   r1,r1,r0                  ; 08123DDA
 ldr   r1,[r1]                   ; 08123DDC
 mov   r0,r4                     ; 08123DDE
-bl    Sub_bx_r1                 ; 08123DE0  bx r1
+bl    Sub_bx_r1                 ; 08123DE0
 mov   r0,r4                     ; 08123DE4
 bl    Sub08123D44               ; 08123DE6
 @@Code08123DEA:
@@ -39012,7 +39012,7 @@ asr   r0,r0,0x10                ; 08123EB8
 lsl   r1,r3,0x10                ; 08123EBA
 asr   r1,r1,0x10                ; 08123EBC
 ldr   r2,[r2]                   ; 08123EBE
-bl    Sub_bx_r2                 ; 08123EC0  bx r2
+bl    Sub_bx_r2                 ; 08123EC0
 mov   r1,r0                     ; 08123EC4
 lsl   r1,r1,0x18                ; 08123EC6
 lsr   r1,r1,0x18                ; 08123EC8
@@ -39105,7 +39105,7 @@ lsl   r1,r5,0x8                 ; 08123F86
 asr   r1,r1,0x10                ; 08123F88
 ldr   r2,[r2]                   ; 08123F8A
 mov   r0,r6                     ; 08123F8C
-bl    Sub_bx_r2                 ; 08123F8E  bx r2
+bl    Sub_bx_r2                 ; 08123F8E
 lsl   r0,r0,0x18                ; 08123F92
 lsr   r1,r0,0x18                ; 08123F94
 mov   r8,r1                     ; 08123F96
@@ -39881,7 +39881,7 @@ lsl   r0,r0,0x2                 ; 081245A8
 add   r0,r0,r1                  ; 081245AA
 ldr   r1,[r0]                   ; 081245AC
 mov   r0,r4                     ; 081245AE
-bl    Sub_bx_r1                 ; 081245B0  bx r1
+bl    Sub_bx_r1                 ; 081245B0
 ldr   r1,[r4,0x10]              ; 081245B4
 ldr   r0,=0x43FF                ; 081245B6
 cmp   r1,r0                     ; 081245B8
@@ -39904,7 +39904,7 @@ lsl   r1,r1,0x2                 ; 081245D6
 add   r1,r1,r0                  ; 081245D8
 ldr   r1,[r1]                   ; 081245DA
 mov   r0,r4                     ; 081245DC
-bl    Sub_bx_r1                 ; 081245DE  bx r1
+bl    Sub_bx_r1                 ; 081245DE
 @@Code081245E2:
 ldrh  r0,[r4,0x6]               ; 081245E2
 cmp   r0,0x0                    ; 081245E4
@@ -40269,7 +40269,7 @@ lsl   r1,r1,0x2                 ; 081248BE
 add   r1,r1,r0                  ; 081248C0
 ldr   r1,[r1]                   ; 081248C2
 mov   r0,r4                     ; 081248C4
-bl    Sub_bx_r1                 ; 081248C6  bx r1
+bl    Sub_bx_r1                 ; 081248C6
 @@Code081248CA:
 ldrh  r0,[r4,0x6]               ; 081248CA
 cmp   r0,0x0                    ; 081248CC
@@ -40394,7 +40394,7 @@ mov   r8,r1                     ; 081249CE
 add   r0,r8                     ; 081249D0
 ldr   r1,[r0]                   ; 081249D2
 mov   r0,sp                     ; 081249D4
-bl    Sub_bx_r1                 ; 081249D6  bx r1
+bl    Sub_bx_r1                 ; 081249D6
 mov   r6,r5                     ; 081249DA
 add   r6,0x8                    ; 081249DC
 str   r6,[sp]                   ; 081249DE
@@ -40406,7 +40406,7 @@ ldr   r0,[r1]                   ; 081249E8
 add   r0,r8                     ; 081249EA
 ldr   r1,[r0]                   ; 081249EC
 mov   r0,sp                     ; 081249EE
-bl    Sub_bx_r1                 ; 081249F0  bx r1
+bl    Sub_bx_r1                 ; 081249F0
 str   r5,[sp]                   ; 081249F4
 add   r4,0x8                    ; 081249F6
 str   r4,[sp,0x4]               ; 081249F8
@@ -40420,7 +40420,7 @@ ldr   r0,[r2]                   ; 08124A06
 add   r0,r8                     ; 08124A08
 ldr   r1,[r0]                   ; 08124A0A
 mov   r0,sp                     ; 08124A0C
-bl    Sub_bx_r1                 ; 08124A0E  bx r1
+bl    Sub_bx_r1                 ; 08124A0E
 str   r6,[sp]                   ; 08124A12
 mov   r0,sp                     ; 08124A14
 mov   r6,0x1                    ; 08124A16
@@ -40430,7 +40430,7 @@ ldr   r0,[r1]                   ; 08124A1C
 add   r0,r8                     ; 08124A1E
 ldr   r1,[r0]                   ; 08124A20
 mov   r0,sp                     ; 08124A22
-bl    Sub_bx_r1                 ; 08124A24  bx r1
+bl    Sub_bx_r1                 ; 08124A24
 ldr   r2,=0x03006C4C            ; 08124A28
 ldr   r0,[r2]                   ; 08124A2A
 ldr   r6,=0x042E                ; 08124A2C
@@ -40970,7 +40970,7 @@ lsl   r1,r1,0x2                 ; 08124E4E
 add   r1,r1,r0                  ; 08124E50
 ldr   r1,[r1]                   ; 08124E52
 mov   r0,r2                     ; 08124E54
-bl    Sub_bx_r1                 ; 08124E56  bx r1
+bl    Sub_bx_r1                 ; 08124E56
 @@Code08124E5A:
 pop   {r0}                      ; 08124E5A
 bx    r0                        ; 08124E5C
@@ -42452,7 +42452,7 @@ asr   r5,r5,0x10                ; 08125A1A
 ldr   r2,[r0]                   ; 08125A1C
 mov   r0,r4                     ; 08125A1E
 mov   r1,r5                     ; 08125A20
-bl    Sub_bx_r2                 ; 08125A22  bx r2
+bl    Sub_bx_r2                 ; 08125A22
 lsl   r0,r0,0x18                ; 08125A26
 lsr   r7,r0,0x18                ; 08125A28
 mov   r0,r6                     ; 08125A2A
@@ -42751,7 +42751,7 @@ lsl   r1,r2,0x8                 ; 08125C68
 asr   r1,r1,0x10                ; 08125C6A
 mov   r2,r9                     ; 08125C6C
 asr   r0,r2,0x10                ; 08125C6E
-bl    Sub_bx_r5                 ; 08125C70  bx r5
+bl    Sub_bx_r5                 ; 08125C70
 lsl   r0,r0,0x18                ; 08125C74
 lsr   r7,r0,0x18                ; 08125C76
 cmp   r7,r4                     ; 08125C78
@@ -42813,7 +42813,7 @@ asr   r6,r1,0x10                ; 08125CFA
 ldr   r2,[r0]                   ; 08125CFC
 mov   r0,r7                     ; 08125CFE
 mov   r1,r6                     ; 08125D00
-bl    Sub_bx_r2                 ; 08125D02  bx r2
+bl    Sub_bx_r2                 ; 08125D02
 lsl   r0,r0,0x18                ; 08125D06
 lsr   r5,r0,0x18                ; 08125D08
 cmp   r5,0x0                    ; 08125D0A
@@ -42994,7 +42994,7 @@ mov   r8,r0                     ; 08125E60
 ldr   r2,[r1]                   ; 08125E62
 mov   r0,r9                     ; 08125E64
 mov   r1,r8                     ; 08125E66
-bl    Sub_bx_r2                 ; 08125E68  bx r2
+bl    Sub_bx_r2                 ; 08125E68
 lsl   r0,r0,0x18                ; 08125E6C
 lsr   r5,r0,0x18                ; 08125E6E
 mov   r10,r4                    ; 08125E70
@@ -43081,7 +43081,7 @@ asr   r4,r2,0x10                ; 08125F0E
 ldr   r2,[r0]                   ; 08125F10
 mov   r0,r5                     ; 08125F12
 mov   r1,r4                     ; 08125F14
-bl    Sub_bx_r2                 ; 08125F16  bx r2
+bl    Sub_bx_r2                 ; 08125F16
 lsl   r0,r0,0x18                ; 08125F1A
 lsr   r2,r0,0x18                ; 08125F1C
 mov   r3,r2                     ; 08125F1E
@@ -45035,14 +45035,14 @@ cmp   r0,0x1                    ; 08126E32
 bne   @@Code08126E3E            ; 08126E34
 ldr   r1,[r6,0x2C]              ; 08126E36
 mov   r0,r6                     ; 08126E38
-bl    Sub_bx_r1                 ; 08126E3A  bx r1
+bl    Sub_bx_r1                 ; 08126E3A
 @@Code08126E3E:
 ldrh  r0,[r6]                   ; 08126E3E
 cmp   r0,0xB                    ; 08126E40
 bne   @@Code08126E4C            ; 08126E42
 ldr   r1,[r6,0x30]              ; 08126E44
 mov   r0,r6                     ; 08126E46
-bl    Sub_bx_r1                 ; 08126E48  bx r1
+bl    Sub_bx_r1                 ; 08126E48
 @@Code08126E4C:
 ldr   r1,=Data082EB58E          ; 08126E4C
 lsl   r0,r4,0x1                 ; 08126E4E
@@ -46237,7 +46237,7 @@ ldr   r2,=0x0464                ; 08127768
 add   r0,r0,r2                  ; 0812776A
 ldr   r1,[r0]                   ; 0812776C
 mov   r0,r4                     ; 0812776E
-bl    Sub_bx_r1                 ; 08127770  bx r1
+bl    Sub_bx_r1                 ; 08127770
 lsl   r0,r0,0x18                ; 08127774
 lsr   r6,r0,0x18                ; 08127776
 cmp   r6,0xFF                   ; 08127778
@@ -46653,7 +46653,7 @@ ldr   r1,=0x0464                ; 08127AAE
 add   r0,r0,r1                  ; 08127AB0
 ldr   r1,[r0]                   ; 08127AB2
 mov   r0,r4                     ; 08127AB4
-bl    Sub_bx_r1                 ; 08127AB6  bx r1
+bl    Sub_bx_r1                 ; 08127AB6
 lsl   r0,r0,0x18                ; 08127ABA
 lsr   r6,r0,0x18                ; 08127ABC
 cmp   r6,0xFF                   ; 08127ABE
@@ -47072,7 +47072,7 @@ ldr   r2,=0x0464                ; 08127E18
 add   r0,r0,r2                  ; 08127E1A
 ldr   r1,[r0]                   ; 08127E1C
 mov   r0,r5                     ; 08127E1E
-bl    Sub_bx_r1                 ; 08127E20  bx r1
+bl    Sub_bx_r1                 ; 08127E20
 lsl   r0,r0,0x18                ; 08127E24
 lsr   r6,r0,0x18                ; 08127E26
 cmp   r6,0xFF                   ; 08127E28
@@ -47444,7 +47444,7 @@ ldr   r2,=0x0464                ; 08128138
 add   r0,r0,r2                  ; 0812813A
 ldr   r1,[r0]                   ; 0812813C
 mov   r0,r5                     ; 0812813E
-bl    Sub_bx_r1                 ; 08128140  bx r1
+bl    Sub_bx_r1                 ; 08128140
 lsl   r0,r0,0x18                ; 08128144
 lsr   r7,r0,0x18                ; 08128146
 cmp   r7,0xFF                   ; 08128148
@@ -47732,7 +47732,7 @@ asr   r4,r4,0x10                ; 08128372
 ldr   r2,[r1]                   ; 08128374
 mov   r0,r6                     ; 08128376
 mov   r1,r4                     ; 08128378
-bl    Sub_bx_r2                 ; 0812837A  bx r2
+bl    Sub_bx_r2                 ; 0812837A
 mov   r3,r0                     ; 0812837E
 lsl   r3,r3,0x18                ; 08128380
 lsr   r3,r3,0x18                ; 08128382
@@ -47757,7 +47757,7 @@ asr   r4,r4,0x10                ; 081283A8
 ldr   r2,[r0]                   ; 081283AA
 mov   r0,r6                     ; 081283AC
 mov   r1,r4                     ; 081283AE
-bl    Sub_bx_r2                 ; 081283B0  bx r2
+bl    Sub_bx_r2                 ; 081283B0
 mov   r3,r0                     ; 081283B4
 lsl   r3,r3,0x18                ; 081283B6
 lsr   r3,r3,0x18                ; 081283B8
@@ -48425,7 +48425,7 @@ lsl   r1,r1,0x3                 ; 08128950
 add   r0,r0,r1                  ; 08128952
 ldr   r1,[r0]                   ; 08128954
 mov   r0,sp                     ; 08128956
-bl    Sub_bx_r1                 ; 08128958  bx r1
+bl    Sub_bx_r1                 ; 08128958
 add   sp,0x14                   ; 0812895C
 pop   {r0}                      ; 0812895E
 bx    r0                        ; 08128960
@@ -50623,7 +50623,7 @@ mov   r8,r1                     ; 08129B5E
 add   r0,r8                     ; 08129B60
 ldr   r1,[r0]                   ; 08129B62
 mov   r0,r4                     ; 08129B64
-bl    Sub_bx_r1                 ; 08129B66  bx r1
+bl    Sub_bx_r1                 ; 08129B66
 ldr   r1,=Data082EB5A2          ; 08129B6A
 ldrb  r0,[r6]                   ; 08129B6C
 lsl   r0,r0,0x1                 ; 08129B6E
@@ -50641,7 +50641,7 @@ ldr   r0,[r5]                   ; 08129B84
 add   r0,r8                     ; 08129B86
 ldr   r1,[r0]                   ; 08129B88
 mov   r0,r4                     ; 08129B8A
-bl    Sub_bx_r1                 ; 08129B8C  bx r1
+bl    Sub_bx_r1                 ; 08129B8C
 pop   {r3}                      ; 08129B90
 mov   r8,r3                     ; 08129B92
 pop   {r4-r6}                   ; 08129B94
@@ -50673,7 +50673,7 @@ lsl   r6,r6,0x3                 ; 08129BD6
 add   r0,r0,r6                  ; 08129BD8
 ldr   r1,[r0]                   ; 08129BDA
 mov   r0,r4                     ; 08129BDC
-bl    Sub_bx_r1                 ; 08129BDE  bx r1
+bl    Sub_bx_r1                 ; 08129BDE
 mov   r0,r9                     ; 08129BE2
 strb  r0,[r4,0x10]              ; 08129BE4
 ldr   r0,[r4]                   ; 08129BE6
@@ -50690,7 +50690,7 @@ ldr   r0,[r5]                   ; 08129BFA
 add   r0,r0,r6                  ; 08129BFC
 ldr   r1,[r0]                   ; 08129BFE
 mov   r0,r4                     ; 08129C00
-bl    Sub_bx_r1                 ; 08129C02  bx r1
+bl    Sub_bx_r1                 ; 08129C02
 mov   r0,r9                     ; 08129C06
 strb  r0,[r4,0x10]              ; 08129C08
 ldr   r0,[r4]                   ; 08129C0A
@@ -50704,7 +50704,7 @@ ldr   r0,[r5]                   ; 08129C18
 add   r0,r0,r6                  ; 08129C1A
 ldr   r1,[r0]                   ; 08129C1C
 mov   r0,r4                     ; 08129C1E
-bl    Sub_bx_r1                 ; 08129C20  bx r1
+bl    Sub_bx_r1                 ; 08129C20
 pop   {r3-r4}                   ; 08129C24
 mov   r8,r3                     ; 08129C26
 mov   r9,r4                     ; 08129C28
@@ -50814,7 +50814,7 @@ lsl   r1,r1,0x3                 ; 08129D02
 add   r0,r0,r1                  ; 08129D04
 ldr   r1,[r0]                   ; 08129D06
 mov   r0,sp                     ; 08129D08
-bl    Sub_bx_r1                 ; 08129D0A  bx r1
+bl    Sub_bx_r1                 ; 08129D0A
 add   r0,r4,0x1                 ; 08129D0E
 lsl   r0,r0,0x18                ; 08129D10
 lsr   r4,r0,0x18                ; 08129D12
@@ -50994,7 +50994,7 @@ add   r3,r3,r7                  ; 08129E80
 str   r3,[sp,0x18]              ; 08129E82
 ldr   r1,[r3]                   ; 08129E84
 mov   r0,r5                     ; 08129E86
-bl    Sub_bx_r1                 ; 08129E88  bx r1
+bl    Sub_bx_r1                 ; 08129E88
 strb  r4,[r5,0x10]              ; 08129E8C
 ldr   r0,[sp,0x4]               ; 08129E8E
 add   r0,0x10                   ; 08129E90
@@ -51006,7 +51006,7 @@ ldr   r0,[r1]                   ; 08129E9A
 add   r0,r0,r7                  ; 08129E9C
 ldr   r1,[r0]                   ; 08129E9E
 mov   r0,r5                     ; 08129EA0
-bl    Sub_bx_r1                 ; 08129EA2  bx r1
+bl    Sub_bx_r1                 ; 08129EA2
 mov   r0,0xC                    ; 08129EA6
 strb  r0,[r5,0xA]               ; 08129EA8
 ldr   r0,[sp,0x4]               ; 08129EAA
@@ -51028,7 +51028,7 @@ mov   r1,r7                     ; 08129EC8
 add   r0,r0,r1                  ; 08129ECA
 ldr   r1,[r0]                   ; 08129ECC
 mov   r0,r5                     ; 08129ECE
-bl    Sub_bx_r1                 ; 08129ED0  bx r1
+bl    Sub_bx_r1                 ; 08129ED0
 @@Code08129ED4:
 ldr   r0,[sp,0x4]               ; 08129ED4
 add   r0,0x8                    ; 08129ED6
@@ -51045,7 +51045,7 @@ ldr   r0,[r3]                   ; 08129EEA
 add   r0,r0,r7                  ; 08129EEC
 ldr   r1,[r0]                   ; 08129EEE
 mov   r0,r5                     ; 08129EF0
-bl    Sub_bx_r1                 ; 08129EF2  bx r1
+bl    Sub_bx_r1                 ; 08129EF2
 @@Code08129EF6:
 add   sp,0x1C                   ; 08129EF6
 pop   {r3-r5}                   ; 08129EF8
@@ -51784,7 +51784,7 @@ lsl   r0,r0,0x2                 ; 0812A500
 add   r0,r0,r1                  ; 0812A502
 ldr   r1,[r0]                   ; 0812A504
 mov   r0,r5                     ; 0812A506
-bl    Sub_bx_r1                 ; 0812A508  bx r1
+bl    Sub_bx_r1                 ; 0812A508
 mov   r0,r5                     ; 0812A50C
 bl    Sub08126B90               ; 0812A50E
 ldrb  r0,[r5,0x1]               ; 0812A512
@@ -51868,7 +51868,7 @@ ldr   r3,=0x046C                ; 0812A5AC
 add   r0,r0,r3                  ; 0812A5AE
 ldr   r1,[r0]                   ; 0812A5B0
 mov   r0,r5                     ; 0812A5B2
-bl    Sub_bx_r1                 ; 0812A5B4  bx r1
+bl    Sub_bx_r1                 ; 0812A5B4
 mov   r0,r5                     ; 0812A5B8
 bl    Sub08129DD8               ; 0812A5BA
 mov   r3,r5                     ; 0812A5BE
@@ -51912,7 +51912,7 @@ lsl   r0,r0,0x2                 ; 0812A63E
 add   r0,r0,r1                  ; 0812A640
 ldr   r1,[r0]                   ; 0812A642
 mov   r0,r5                     ; 0812A644
-bl    Sub_bx_r1                 ; 0812A646  bx r1
+bl    Sub_bx_r1                 ; 0812A646
 mov   r0,r5                     ; 0812A64A
 bl    Sub08126B90               ; 0812A64C
 ldr   r0,[r5,0x10]              ; 0812A650
@@ -51952,7 +51952,7 @@ ldr   r3,=0x046C                ; 0812A694
 add   r0,r0,r3                  ; 0812A696
 ldr   r1,[r0]                   ; 0812A698
 mov   r0,r5                     ; 0812A69A
-bl    Sub_bx_r1                 ; 0812A69C  bx r1
+bl    Sub_bx_r1                 ; 0812A69C
 mov   r0,r5                     ; 0812A6A0
 bl    Sub08129DD8               ; 0812A6A2
 @@Code0812A6A6:
@@ -52091,7 +52091,7 @@ lsl   r4,r4,0x3                 ; 0812A7C6
 add   r0,r0,r4                  ; 0812A7C8
 ldr   r1,[r0]                   ; 0812A7CA
 mov   r0,sp                     ; 0812A7CC
-bl    Sub_bx_r1                 ; 0812A7CE  bx r1
+bl    Sub_bx_r1                 ; 0812A7CE
 mov   r0,r6                     ; 0812A7D2
 add   r0,0x8                    ; 0812A7D4
 str   r0,[sp]                   ; 0812A7D6
@@ -52103,7 +52103,7 @@ ldr   r0,[r5]                   ; 0812A7E0
 add   r0,r0,r4                  ; 0812A7E2
 ldr   r1,[r0]                   ; 0812A7E4
 mov   r0,sp                     ; 0812A7E6
-bl    Sub_bx_r1                 ; 0812A7E8  bx r1
+bl    Sub_bx_r1                 ; 0812A7E8
 b     @@Code0812A854            ; 0812A7EC
 .pool                           ; 0812A7EE
 
@@ -52150,7 +52150,7 @@ lsl   r2,r2,0x3                 ; 0812A848
 add   r0,r0,r2                  ; 0812A84A
 ldr   r1,[r0]                   ; 0812A84C
 mov   r0,sp                     ; 0812A84E
-bl    Sub_bx_r1                 ; 0812A850  bx r1
+bl    Sub_bx_r1                 ; 0812A850
 @@Code0812A854:
 add   sp,0x14                   ; 0812A854
 pop   {r4-r7}                   ; 0812A856
@@ -52165,7 +52165,7 @@ ldrb  r1,[r0,0x2]               ; 0812A868
 lsl   r1,r1,0x2                 ; 0812A86A
 add   r1,r1,r2                  ; 0812A86C
 ldr   r1,[r1]                   ; 0812A86E
-bl    Sub_bx_r1                 ; 0812A870  bx r1
+bl    Sub_bx_r1                 ; 0812A870
 pop   {r0}                      ; 0812A874
 bx    r0                        ; 0812A876
 .pool                           ; 0812A878
@@ -52824,7 +52824,7 @@ lsl   r5,r5,0x3                 ; 0812ADD0
 add   r0,r0,r5                  ; 0812ADD2
 ldr   r1,[r0]                   ; 0812ADD4
 mov   r0,sp                     ; 0812ADD6
-bl    Sub_bx_r1                 ; 0812ADD8  bx r1
+bl    Sub_bx_r1                 ; 0812ADD8
 add   sp,0x14                   ; 0812ADDC
 pop   {r4-r5}                   ; 0812ADDE
 pop   {r0}                      ; 0812ADE0
@@ -53151,7 +53151,7 @@ asr   r0,r0,0x10                ; 0812B082
 lsl   r1,r5,0x10                ; 0812B084
 asr   r1,r1,0x10                ; 0812B086
 ldr   r2,[r2]                   ; 0812B088
-bl    Sub_bx_r2                 ; 0812B08A  bx r2
+bl    Sub_bx_r2                 ; 0812B08A
 lsl   r0,r0,0x18                ; 0812B08E
 lsr   r0,r0,0x18                ; 0812B090
 cmp   r0,0x0                    ; 0812B092
@@ -53204,7 +53204,7 @@ ldrb  r1,[r0,0x4]               ; 0812B104
 lsl   r1,r1,0x2                 ; 0812B106
 add   r1,r1,r2                  ; 0812B108
 ldr   r1,[r1]                   ; 0812B10A
-bl    Sub_bx_r1                 ; 0812B10C  bx r1
+bl    Sub_bx_r1                 ; 0812B10C
 pop   {r0}                      ; 0812B110
 bx    r0                        ; 0812B112
 .pool                           ; 0812B114
@@ -53357,7 +53357,7 @@ lsl   r4,r4,0x3                 ; 0812B248
 add   r0,r0,r4                  ; 0812B24A
 ldr   r1,[r0]                   ; 0812B24C
 mov   r0,sp                     ; 0812B24E
-bl    Sub_bx_r1                 ; 0812B250  bx r1
+bl    Sub_bx_r1                 ; 0812B250
 ldr   r0,=Data082EB5A2          ; 0812B254
 mov   r2,r10                    ; 0812B256
 lsl   r1,r2,0x1                 ; 0812B258
@@ -53375,7 +53375,7 @@ ldr   r0,[r5]                   ; 0812B26E
 add   r0,r0,r4                  ; 0812B270
 ldr   r1,[r0]                   ; 0812B272
 mov   r0,sp                     ; 0812B274
-bl    Sub_bx_r1                 ; 0812B276  bx r1
+bl    Sub_bx_r1                 ; 0812B276
 ldr   r0,[sp]                   ; 0812B27A
 add   r0,0x14                   ; 0812B27C
 str   r0,[sp]                   ; 0812B27E
@@ -53391,7 +53391,7 @@ ldr   r0,[r5]                   ; 0812B290
 add   r0,r0,r4                  ; 0812B292
 ldr   r1,[r0]                   ; 0812B294
 mov   r0,sp                     ; 0812B296
-bl    Sub_bx_r1                 ; 0812B298  bx r1
+bl    Sub_bx_r1                 ; 0812B298
 ldr   r0,[sp]                   ; 0812B29C
 add   r0,0x10                   ; 0812B29E
 str   r0,[sp]                   ; 0812B2A0
@@ -53402,7 +53402,7 @@ ldr   r0,[r5]                   ; 0812B2A8
 add   r0,r0,r4                  ; 0812B2AA
 ldr   r1,[r0]                   ; 0812B2AC
 mov   r0,sp                     ; 0812B2AE
-bl    Sub_bx_r1                 ; 0812B2B0  bx r1
+bl    Sub_bx_r1                 ; 0812B2B0
 ldr   r0,[sp]                   ; 0812B2B4
 add   r0,0x10                   ; 0812B2B6
 str   r0,[sp]                   ; 0812B2B8
@@ -53418,7 +53418,7 @@ ldr   r0,[r5]                   ; 0812B2CA
 add   r0,r0,r4                  ; 0812B2CC
 ldr   r1,[r0]                   ; 0812B2CE
 mov   r0,sp                     ; 0812B2D0
-bl    Sub_bx_r1                 ; 0812B2D2  bx r1
+bl    Sub_bx_r1                 ; 0812B2D2
 ldr   r0,[sp]                   ; 0812B2D6
 add   r0,0x8                    ; 0812B2D8
 str   r0,[sp]                   ; 0812B2DA
@@ -53434,7 +53434,7 @@ ldr   r0,[r5]                   ; 0812B2EC
 add   r0,r0,r4                  ; 0812B2EE
 ldr   r1,[r0]                   ; 0812B2F0
 mov   r0,sp                     ; 0812B2F2
-bl    Sub_bx_r1                 ; 0812B2F4  bx r1
+bl    Sub_bx_r1                 ; 0812B2F4
 ldr   r0,[sp]                   ; 0812B2F8
 add   r0,0x10                   ; 0812B2FA
 str   r0,[sp]                   ; 0812B2FC
@@ -53451,7 +53451,7 @@ ldr   r0,[r5]                   ; 0812B310
 add   r0,r0,r4                  ; 0812B312
 ldr   r1,[r0]                   ; 0812B314
 mov   r0,sp                     ; 0812B316
-bl    Sub_bx_r1                 ; 0812B318  bx r1
+bl    Sub_bx_r1                 ; 0812B318
 ldr   r0,=0xFFFF9000            ; 0812B31C
 cmp   r6,r0                     ; 0812B31E
 bgt   @@Code0812B328            ; 0812B320
@@ -53518,7 +53518,7 @@ lsl   r1,r1,0x3                 ; 0812B3B6
 add   r0,r0,r1                  ; 0812B3B8
 ldr   r1,[r0]                   ; 0812B3BA
 mov   r0,sp                     ; 0812B3BC
-bl    Sub_bx_r1                 ; 0812B3BE  bx r1
+bl    Sub_bx_r1                 ; 0812B3BE
 ldr   r1,=0x03006C4C            ; 0812B3C2
 ldr   r0,[r1]                   ; 0812B3C4
 ldr   r1,=0x042E                ; 0812B3C6
@@ -53758,7 +53758,7 @@ lsl   r1,r1,0x3                 ; 0812B5C4
 add   r0,r0,r1                  ; 0812B5C6
 ldr   r1,[r0]                   ; 0812B5C8
 mov   r0,sp                     ; 0812B5CA
-bl    Sub_bx_r1                 ; 0812B5CC  bx r1
+bl    Sub_bx_r1                 ; 0812B5CC
 cmp   r6,0x1                    ; 0812B5D0
 bls   @@Code0812B5DA            ; 0812B5D2
 ldrb  r0,[r5,0x2]               ; 0812B5D4
@@ -53802,7 +53802,7 @@ lsl   r1,r1,0x3                 ; 0812B628
 add   r0,r0,r1                  ; 0812B62A
 ldr   r1,[r0]                   ; 0812B62C
 mov   r0,sp                     ; 0812B62E
-bl    Sub_bx_r1                 ; 0812B630  bx r1
+bl    Sub_bx_r1                 ; 0812B630
 add   sp,0x14                   ; 0812B634
 pop   {r0}                      ; 0812B636
 bx    r0                        ; 0812B638
@@ -54005,7 +54005,7 @@ ldrb  r1,[r0,0x2]               ; 0812B7D0
 lsl   r1,r1,0x2                 ; 0812B7D2
 add   r1,r1,r2                  ; 0812B7D4
 ldr   r1,[r1]                   ; 0812B7D6
-bl    Sub_bx_r1                 ; 0812B7D8  bx r1
+bl    Sub_bx_r1                 ; 0812B7D8
 pop   {r0}                      ; 0812B7DC
 bx    r0                        ; 0812B7DE
 .pool                           ; 0812B7E0
@@ -54183,7 +54183,7 @@ ldrb  r1,[r0,0x2]               ; 0812B960
 lsl   r1,r1,0x2                 ; 0812B962
 add   r1,r1,r2                  ; 0812B964
 ldr   r1,[r1]                   ; 0812B966
-bl    Sub_bx_r1                 ; 0812B968  bx r1
+bl    Sub_bx_r1                 ; 0812B968
 pop   {r0}                      ; 0812B96C
 bx    r0                        ; 0812B96E
 .pool                           ; 0812B970
@@ -54953,7 +54953,7 @@ lsl   r1,r1,0x2                 ; 0812BFAA
 add   r1,r1,r0                  ; 0812BFAC
 ldr   r1,[r1]                   ; 0812BFAE
 mov   r0,r4                     ; 0812BFB0
-bl    Sub_bx_r1                 ; 0812BFB2  bx r1
+bl    Sub_bx_r1                 ; 0812BFB2
 @@Code0812BFB6:
 ldrb  r0,[r4,0xC]               ; 0812BFB6
 cmp   r0,0x0                    ; 0812BFB8
@@ -55236,7 +55236,7 @@ ldrb  r1,[r0,0x2]               ; 0812C200
 lsl   r1,r1,0x2                 ; 0812C202
 add   r1,r1,r2                  ; 0812C204
 ldr   r1,[r1]                   ; 0812C206
-bl    Sub_bx_r1                 ; 0812C208  bx r1
+bl    Sub_bx_r1                 ; 0812C208
 pop   {r0}                      ; 0812C20C
 bx    r0                        ; 0812C20E
 .pool                           ; 0812C210

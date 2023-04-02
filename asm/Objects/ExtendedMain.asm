@@ -1215,11 +1215,11 @@ add   r1,0x42                   ; 0802A1B4
 ldrh  r2,[r1]                   ; 0802A1B6  extended object ID
 mov   r1,0x3                    ; 0802A1B8
 and   r1,r2                     ; 0802A1BA  extID-A0
-ldr   r2,=ExtObjA0_A3_CodePtrs  ; 0802A1BC  code pointer table
+ldr   r2,=ExtObjA0_A3_CodePtrs  ; 0802A1BC
 lsl   r1,r1,0x2                 ; 0802A1BE
 add   r1,r1,r2                  ; 0802A1C0  index with extID-A0
 ldr   r1,[r1]                   ; 0802A1C2
-bl    Sub_bx_r1                 ; 0802A1C4  bx r1
+bl    Sub_bx_r1                 ; 0802A1C4
 pop   {r0}                      ; 0802A1C8
 bx    r0                        ; 0802A1CA
 .pool                           ; 0802A1CC
@@ -1323,13 +1323,13 @@ lsl   r0,r0,0x10                ; 0802A28E
 mov   r1,r12                    ; 0802A290
 add   r1,0x48                   ; 0802A292
 ldrh  r1,[r1]                   ; 0802A294  YXyx
-ldr   r2,=ExtObj9A_9D_CodePtrs  ; 0802A296  code pointer table
+ldr   r2,=ExtObj9A_9D_CodePtrs  ; 0802A296
 lsr   r0,r0,0x11                ; 0802A298
 lsl   r0,r0,0x2                 ; 0802A29A  r0 = 4 for 9C-9D, 0 for 9A-9B
 add   r0,r0,r2                  ; 0802A29C
 ldr   r2,[r0]                   ; 0802A29E
 mov   r0,r12                    ; 0802A2A0
-bl    Sub_bx_r2                 ; 0802A2A2  bx r2
+bl    Sub_bx_r2                 ; 0802A2A2
                                 ; r0 = L1 tilemap offset for y-1 for 9A-9B, x-1 for 9C-9D
 ldr   r1,=Data081BE32C          ; 0802A2A6  tile ID table
 add   r4,r4,r1                  ; 0802A2A8  index with (extID-9A)*2
@@ -1597,11 +1597,11 @@ lsr   r4,r4,0x1                 ; 0802A4E0
 lsl   r4,r4,0x1                 ; 0802A4E2
 add   r3,r3,r4                  ; 0802A4E4  pointer to current layer 1 tile
 strh  r2,[r3]                   ; 0802A4E6  set tile
-ldr   r2,=ExtObj8D_CodePtrs     ; 0802A4E8  code pointer table
+ldr   r2,=ExtObj8D_CodePtrs     ; 0802A4E8
 lsl   r1,r1,0x2                 ; 0802A4EA
 add   r1,r1,r2                  ; 0802A4EC  index with prevtile inverse parity
 ldr   r1,[r1]                   ; 0802A4EE
-bl    Sub_bx_r1                 ; 0802A4F0  bx r1
+bl    Sub_bx_r1                 ; 0802A4F0
 pop   {r4-r5}                   ; 0802A4F4
 pop   {r0}                      ; 0802A4F6
 bx    r0                        ; 0802A4F8
@@ -2027,7 +2027,7 @@ add   r0,r0,r1                  ; 0802A826
 ldr   r4,[r0]                   ; 0802A828
 mov   r0,r5                     ; 0802A82A
 mov   r1,r6                     ; 0802A82C
-bl    Sub_bx_r4                 ; 0802A82E  bx r4
+bl    Sub_bx_r4                 ; 0802A82E
 lsl   r0,r0,0x10                ; 0802A832
 lsr   r2,r0,0x10                ; 0802A834
 cmp   r2,0x0                    ; 0802A836
@@ -2530,7 +2530,7 @@ ldr   r2,=ExtObj71_7D_CodePtrs  ; 0802ABF8
 lsl   r1,r1,0x2                 ; 0802ABFA
 add   r1,r1,r2                  ; 0802ABFC
 ldr   r1,[r1]                   ; 0802ABFE
-bl    Sub_bx_r1                 ; 0802AC00  bx r1
+bl    Sub_bx_r1                 ; 0802AC00
 pop   {r0}                      ; 0802AC04
 bx    r0                        ; 0802AC06
 .pool                           ; 0802AC08
@@ -2637,7 +2637,7 @@ lsl   r0,r0,0x2                 ; 0802ACC4
 add   r0,r0,r3                  ; 0802ACC6
 ldr   r3,[r0]                   ; 0802ACC8
 mov   r0,r4                     ; 0802ACCA
-bl    Sub_bx_r3                 ; 0802ACCC  bx r3
+bl    Sub_bx_r3                 ; 0802ACCC
 mov   r1,r4                     ; 0802ACD0
 add   r1,0x4A                   ; 0802ACD2
 ldrh  r1,[r1]                   ; 0802ACD4
@@ -3645,7 +3645,7 @@ lsr   r0,r0,0xF                 ; 0802B480
 add   r0,r0,r1                  ; 0802B482  index with relX
 ldr   r1,[r0]                   ; 0802B484
 mov   r0,r4                     ; 0802B486
-bl    Sub_bx_r1                 ; 0802B488  bx r1
+bl    Sub_bx_r1                 ; 0802B488
 add   r4,0x4A                   ; 0802B48C
 ldrh  r1,[r4]                   ; 0802B48E
 ldr   r2,=0x03007010            ; 0802B490  Layer 1 tilemap EWRAM (0200000C)

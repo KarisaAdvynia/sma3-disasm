@@ -7119,7 +7119,7 @@ ldr   r3,[r0]                   ; 080173FC  pointer to object code
 mov   r0,r12                    ; 080173FE
 mov   r1,r4                     ; 08017400
 mov   r2,0x1                    ; 08017402
-bl    Sub_bx_r3                 ; 08017404  bx r3
+bl    Sub_bx_r3                 ; 08017404
 pop   {r4-r6}                   ; 08017408
 pop   {r0}                      ; 0801740A
 bx    r0                        ; 0801740C
@@ -7152,7 +7152,7 @@ add   r1,r1,r2                  ; 08017440  index with object ID
 ldr   r3,[r1]                   ; 08017442  pointer to extended object code
 mov   r1,r4                     ; 08017444
 mov   r2,0x0                    ; 08017446
-bl    Sub_bx_r3                 ; 08017448  bx r3
+bl    Sub_bx_r3                 ; 08017448
 ldr   r3,=0x03007010            ; 0801744C  Layer 1 tilemap EWRAM (0200000C)
 ldr   r0,[r3]                   ; 0801744E  r0 = [03007010] (0200000C)
 ldr   r2,=0x8628                ; 08017450
@@ -9328,7 +9328,7 @@ add   r0,r0,r1                  ; 08018680
 ldr   r2,[r0]                   ; 08018682
 mov   r0,r4                     ; 08018684
 mov   r1,r5                     ; 08018686
-bl    Sub_bx_r2                 ; 08018688  bx r2
+bl    Sub_bx_r2                 ; 08018688
 pop   {r4-r5}                   ; 0801868C
 pop   {r0}                      ; 0801868E
 bx    r0                        ; 08018690
@@ -9845,7 +9845,7 @@ lsl   r0,r3,0x2                 ; 08018ABC
 add   r0,r0,r1                  ; 08018ABE
 ldr   r1,[r0]                   ; 08018AC0
 mov   r0,r5                     ; 08018AC2
-bl    Sub_bx_r1                 ; 08018AC4  bx r1
+bl    Sub_bx_r1                 ; 08018AC4
 b     @@Code08018B94            ; 08018AC8 /
 .pool                           ; 08018ACA
 
@@ -10927,7 +10927,7 @@ lsr   r0,r0,0x1                 ; 08019484
 lsl   r0,r0,0x2                 ; 08019486
 add   r0,r0,r4                  ; 08019488
 ldr   r0,[r0]                   ; 0801948A
-bl    Sub_bx_r0                 ; 0801948C  bx r0
+bl    Sub_bx_r0                 ; 0801948C
 lsl   r0,r0,0x10                ; 08019490
 cmp   r0,0x0                    ; 08019492
 beq   @@Code0801947A            ; 08019494
@@ -11576,7 +11576,7 @@ lsr   r0,r0,0x1                 ; 08019A7C
 lsl   r0,r0,0x2                 ; 08019A7E
 add   r0,r0,r1                  ; 08019A80
 ldr   r0,[r0]                   ; 08019A82
-bl    Sub_bx_r0                 ; 08019A84  bx r0
+bl    Sub_bx_r0                 ; 08019A84
 @@Code08019A88:
 pop   {r0}                      ; 08019A88
 bx    r0                        ; 08019A8A
@@ -12070,14 +12070,14 @@ mov   r0,r6                     ; 08019E40
 mov   r1,0x0                    ; 08019E42  call object-specific main with r1=0
 @@Code08019E44:
 ldr   r2,[sp]                   ; 08019E44  r2 = object ID
-bl    Sub_bx_r3                 ; 08019E46  bx r3
+bl    Sub_bx_r3                 ; 08019E46
 b     @@Code08019E7C            ; 08019E4A
 @@Code08019E4C:
 ldr   r2,[sp,0xC]               ; 08019E4C  if extended: 08168F2C + 4*objectID
 ldr   r1,[r2]                   ; 08019E4E
 @@Code08019E50:
 mov   r0,r6                     ; 08019E50
-bl    Sub_bx_r1                 ; 08019E52  bx r1
+bl    Sub_bx_r1                 ; 08019E52
 b     @@Code08019E7C            ; 08019E56
 @@Code08019E58:
                                 ;           runs if relY >= threshold
@@ -12089,13 +12089,13 @@ ldr   r3,[r0]                   ; 08019E60
 mov   r0,r6                     ; 08019E62
 mov   r1,0x2                    ; 08019E64  call object-specific main with r1=2
 ldr   r2,[sp]                   ; 08019E66  r2 = object ID
-bl    Sub_bx_r3                 ; 08019E68  bx r3
+bl    Sub_bx_r3                 ; 08019E68
 b     @@Code08019E78            ; 08019E6C
 @@Code08019E6E:
 ldr   r2,[sp,0xC]               ; 08019E6E  if extended: 08168F2C + 4*objectID
 ldr   r1,[r2]                   ; 08019E70
 mov   r0,r6                     ; 08019E72
-bl    Sub_bx_r1                 ; 08019E74  bx r1
+bl    Sub_bx_r1                 ; 08019E74
 @@Code08019E78:
                                 ;           if object subroutine was called with r1=2, return here
 mov   r7,r6                     ; 08019E78
@@ -14939,7 +14939,7 @@ asr   r1,r1,0x1                 ; 0802D294
 lsl   r1,r1,0x2                 ; 0802D296
 add   r1,r1,r0                  ; 0802D298
 ldr   r0,[r1]                   ; 0802D29A
-bl    Sub_bx_r0                 ; 0802D29C  bx r0
+bl    Sub_bx_r0                 ; 0802D29C
 @@Code0802D2A0:
 ldr   r3,=0x48BA                ; 0802D2A0
 add   r0,r5,r3                  ; 0802D2A2
@@ -16313,7 +16313,7 @@ str   r0,[r2]                   ; 0802DFFC /  set pointer to 802DF71
 ldr   r0,[r4]                   ; 0802DFFE
 add   r0,r0,r3                  ; 0802E000  r0 = [03007240]+28C4 (03004AD0)
 ldr   r0,[r0]                   ; 0802E002  execute pointer
-bl    Sub_bx_r0                 ; 0802E004  bx r0
+bl    Sub_bx_r0                 ; 0802E004
 pop   {r4}                      ; 0802E008
 pop   {r0}                      ; 0802E00A
 bx    r0                        ; 0802E00C

@@ -964,7 +964,7 @@ lsl   r0,r0,0x2                 ; 08050AF8
 add   r0,r0,r1                  ; 08050AFA
 ldr   r1,[r0]                   ; 08050AFC
 mov   r0,r4                     ; 08050AFE
-bl    Sub_bx_r1                 ; 08050B00  bx r1
+bl    Sub_bx_r1                 ; 08050B00
 @@Code08050B04:
 pop   {r4}                      ; 08050B04
 pop   {r0}                      ; 08050B06

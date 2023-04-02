@@ -2862,7 +2862,7 @@ ldrb  r0,[r0]                   ; 080FA9BA
 lsl   r0,r0,0x2                 ; 080FA9BC
 add   r0,r0,r1                  ; 080FA9BE
 ldr   r0,[r0]                   ; 080FA9C0
-bl    Sub_bx_r0                 ; 080FA9C2  bx r0
+bl    Sub_bx_r0                 ; 080FA9C2
 pop   {r0}                      ; 080FA9C6
 bx    r0                        ; 080FA9C8
 .pool                           ; 080FA9CA
@@ -2878,7 +2878,7 @@ ldrb  r0,[r0]                   ; 080FA9E2  game state
 lsl   r0,r0,0x2                 ; 080FA9E4
 add   r0,r0,r1                  ; 080FA9E6
 ldr   r0,[r0]                   ; 080FA9E8
-bl    Sub_bx_r0                 ; 080FA9EA  bx r0
+bl    Sub_bx_r0                 ; 080FA9EA
 pop   {r0}                      ; 080FA9EE
 bx    r0                        ; 080FA9F0
 .pool                           ; 080FA9F2

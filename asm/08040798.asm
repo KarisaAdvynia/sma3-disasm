@@ -472,7 +472,7 @@ lsr   r1,r1,0x1                 ; 08040B6E
 lsl   r1,r1,0x2                 ; 08040B70
 add   r1,r1,r0                  ; 08040B72  offset table by animID*2
 ldr   r0,[r1]                   ; 08040B74  code pointer
-bl    Sub_bx_r0                 ; 08040B76  bx r0
+bl    Sub_bx_r0                 ; 08040B76
 b     @@Code08040BCA            ; 08040B7A
 .pool                           ; 08040B7C
 
@@ -1378,7 +1378,7 @@ ldr   r0,[sp,0x4]               ; 080412D4
 ldr   r1,[sp,0x8]               ; 080412D6
 mov   r2,r5                     ; 080412D8
 mov   r3,r6                     ; 080412DA
-bl    Sub_bx_r4                 ; 080412DC  bx r4
+bl    Sub_bx_r4                 ; 080412DC
 @@Code080412E0:
 add   sp,0xC                    ; 080412E0
 pop   {r3-r5}                   ; 080412E2
@@ -1480,7 +1480,7 @@ ldr   r2,=CodePtrs0816E650      ; 0804139E
 lsr   r1,r1,0xE                 ; 080413A0
 add   r1,r1,r2                  ; 080413A2
 ldr   r1,[r1]                   ; 080413A4
-bl    Sub_bx_r1                 ; 080413A6  bx r1
+bl    Sub_bx_r1                 ; 080413A6
 b     @@Code08041370            ; 080413AA
 .pool                           ; 080413AC
 
@@ -2520,7 +2520,7 @@ lsr   r0,r0,0x1                 ; 08041CA4
 lsl   r0,r0,0x2                 ; 08041CA6
 add   r0,r0,r1                  ; 08041CA8
 ldr   r0,[r0]                   ; 08041CAA
-bl    Sub_bx_r0                 ; 08041CAC  bx r0
+bl    Sub_bx_r0                 ; 08041CAC
 pop   {r0}                      ; 08041CB0
 bx    r0                        ; 08041CB2
 .pool                           ; 08041CB4
@@ -4969,7 +4969,7 @@ lsr   r0,r0,0x1                 ; 0804312A
 lsl   r0,r0,0x2                 ; 0804312C
 add   r0,r0,r1                  ; 0804312E
 ldr   r0,[r0]                   ; 08043130
-bl    Sub_bx_r0                 ; 08043132  bx r0
+bl    Sub_bx_r0                 ; 08043132
 @@Code08043136:
 ldr   r1,=0x03006D80            ; 08043136
 ldrh  r0,[r1,0x30]              ; 08043138
@@ -5356,7 +5356,7 @@ ldr   r1,=0x03002200            ; 080434A2
 ldr   r2,=0x4198                ; 080434A4
 add   r1,r1,r2                  ; 080434A6  r1 = 03006398
 ldr   r1,[r1]                   ; 080434A8
-bl    Sub_bx_r1                 ; 080434AA  bx r1
+bl    Sub_bx_r1                 ; 080434AA
 pop   {r0}                      ; 080434AE
 bx    r0                        ; 080434B0
 .pool                           ; 080434B2
@@ -5392,7 +5392,7 @@ str   r1,[r3]                   ; 080434F0
 ldr   r1,=0x4198                ; 080434F2
 add   r4,r4,r1                  ; 080434F4  r4 = 03006398
 ldr   r1,[r4]                   ; 080434F6
-bl    Sub_bx_r1                 ; 080434F8  bx r1
+bl    Sub_bx_r1                 ; 080434F8
 pop   {r4-r5}                   ; 080434FC
 pop   {r0}                      ; 080434FE
 bx    r0                        ; 08043500
@@ -5406,7 +5406,7 @@ ldr   r1,=0x03002200            ; 08043522
 ldr   r2,=0x4198                ; 08043524
 add   r1,r1,r2                  ; 08043526  r1 = 03006398
 ldr   r1,[r1]                   ; 08043528
-bl    Sub_bx_r1                 ; 0804352A  bx r1
+bl    Sub_bx_r1                 ; 0804352A
 pop   {r0}                      ; 0804352E
 bx    r0                        ; 08043530
 .pool                           ; 08043532
@@ -5419,7 +5419,7 @@ ldr   r4,=0x03002200            ; 08043542
 ldr   r2,=0x4198                ; 08043544
 add   r1,r4,r2                  ; 08043546  r1 = 03006398
 ldr   r1,[r1]                   ; 08043548
-bl    Sub_bx_r1                 ; 0804354A  bx r1
+bl    Sub_bx_r1                 ; 0804354A
 ldr   r1,=0x47F4                ; 0804354E
 add   r0,r4,r1                  ; 08043550
 ldrh  r1,[r0]                   ; 08043552
@@ -7725,7 +7725,7 @@ ldr   r0,=CodePtrs0816E7F4      ; 080449C2
 lsr   r1,r1,0x19                ; 080449C4
 add   r1,r1,r0                  ; 080449C6
 ldr   r0,[r1]                   ; 080449C8
-bl    Sub_bx_r0                 ; 080449CA  bx r0
+bl    Sub_bx_r0                 ; 080449CA
 @@Code080449CE:
 pop   {r0}                      ; 080449CE
 bx    r0                        ; 080449D0
@@ -7742,7 +7742,7 @@ lsr   r0,r0,0xB                 ; 080449EC
 lsl   r0,r0,0x2                 ; 080449EE
 add   r0,r0,r1                  ; 080449F0
 ldr   r0,[r0]                   ; 080449F2
-bl    Sub_bx_r0                 ; 080449F4  bx r0
+bl    Sub_bx_r0                 ; 080449F4
 pop   {r0}                      ; 080449F8
 bx    r0                        ; 080449FA
 .pool                           ; 080449FC
@@ -7758,7 +7758,7 @@ lsr   r0,r0,0xB                 ; 08044A14
 lsl   r0,r0,0x2                 ; 08044A16
 add   r0,r0,r1                  ; 08044A18
 ldr   r0,[r0]                   ; 08044A1A
-bl    Sub_bx_r0                 ; 08044A1C  bx r0
+bl    Sub_bx_r0                 ; 08044A1C
 pop   {r0}                      ; 08044A20
 bx    r0                        ; 08044A22
 .pool                           ; 08044A24
@@ -7780,7 +7780,7 @@ ldr   r0,=CodePtrs0816E950      ; 08044A4A
 lsr   r1,r1,0x19                ; 08044A4C
 add   r1,r1,r0                  ; 08044A4E
 ldr   r0,[r1]                   ; 08044A50
-bl    Sub_bx_r0                 ; 08044A52  bx r0
+bl    Sub_bx_r0                 ; 08044A52
 @@Code08044A56:
 pop   {r0}                      ; 08044A56
 bx    r0                        ; 08044A58
@@ -7803,7 +7803,7 @@ ldr   r0,=CodePtrs0816E9C4      ; 08044A82
 lsr   r1,r1,0x19                ; 08044A84
 add   r1,r1,r0                  ; 08044A86
 ldr   r0,[r1]                   ; 08044A88
-bl    Sub_bx_r0                 ; 08044A8A  bx r0
+bl    Sub_bx_r0                 ; 08044A8A
 @@Code08044A8E:
 pop   {r0}                      ; 08044A8E
 bx    r0                        ; 08044A90
@@ -10654,7 +10654,7 @@ lsr   r0,r0,0xB                 ; 0804625A
 lsl   r0,r0,0x2                 ; 0804625C
 add   r0,r0,r1                  ; 0804625E
 ldr   r0,[r0]                   ; 08046260
-bl    Sub_bx_r0                 ; 08046262  bx r0
+bl    Sub_bx_r0                 ; 08046262
 pop   {r4-r5}                   ; 08046266
 pop   {r0}                      ; 08046268
 bx    r0                        ; 0804626A

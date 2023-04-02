@@ -3518,7 +3518,7 @@ lsl   r0,r0,0x2                 ; 080E1BBC
 add   r0,r0,r1                  ; 080E1BBE
 ldr   r1,[r0]                   ; 080E1BC0
 mov   r0,r6                     ; 080E1BC2
-bl    Sub_bx_r1                 ; 080E1BC4  bx r1
+bl    Sub_bx_r1                 ; 080E1BC4
 ldrh  r0,[r4]                   ; 080E1BC8
 cmp   r0,0x0                    ; 080E1BCA
 bne   @@Code080E1BEA            ; 080E1BCC
@@ -3651,7 +3651,7 @@ lsl   r0,r0,0x2                 ; 080E1CFE
 add   r0,r0,r1                  ; 080E1D00
 ldr   r1,[r0]                   ; 080E1D02
 mov   r0,r4                     ; 080E1D04
-bl    Sub_bx_r1                 ; 080E1D06  bx r1
+bl    Sub_bx_r1                 ; 080E1D06
 mov   r0,r4                     ; 080E1D0A
 bl    Sub080E0E1C               ; 080E1D0C
 mov   r0,r4                     ; 080E1D10

@@ -3479,7 +3479,7 @@ lsl   r0,r0,0x2                 ; 0810F22C
 add   r0,r0,r1                  ; 0810F22E
 ldr   r1,[r0]                   ; 0810F230
 mov   r0,r4                     ; 0810F232
-bl    Sub_bx_r1                 ; 0810F234  bx r1
+bl    Sub_bx_r1                 ; 0810F234
 pop   {r4}                      ; 0810F238
 pop   {r0}                      ; 0810F23A
 bx    r0                        ; 0810F23C

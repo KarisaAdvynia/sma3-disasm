@@ -131,7 +131,7 @@ lsr   r0,r0,0x1A                ; 080FB14E
 sub   r0,0x4                    ; 080FB150
 add   r0,r0,r1                  ; 080FB152
 ldr   r0,[r0]                   ; 080FB154
-bl    Sub_bx_r0                 ; 080FB156  bx r0
+bl    Sub_bx_r0                 ; 080FB156
 ldr   r0,=0x03002200            ; 080FB15A
 ldr   r3,=0x4905                ; 080FB15C
 add   r0,r0,r3                  ; 080FB15E
@@ -2088,7 +2088,7 @@ lsl   r0,r0,0x2                 ; 080FC230
 add   r0,r0,r1                  ; 080FC232
 ldr   r1,[r0]                   ; 080FC234
 mov   r0,r4                     ; 080FC236
-bl    Sub_bx_r1                 ; 080FC238  bx r1
+bl    Sub_bx_r1                 ; 080FC238
 ldrb  r0,[r4,0x1]               ; 080FC23C
 pop   {r4}                      ; 080FC23E
 pop   {r1}                      ; 080FC240

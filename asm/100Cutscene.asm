@@ -2143,7 +2143,7 @@ ldrh  r0,[r4]                   ; 080F7CA2
 lsl   r0,r0,0x2                 ; 080F7CA4
 add   r0,r0,r1                  ; 080F7CA6
 ldr   r0,[r0]                   ; 080F7CA8
-bl    Sub_bx_r0                 ; 080F7CAA  bx r0
+bl    Sub_bx_r0                 ; 080F7CAA
 ldrh  r0,[r4]                   ; 080F7CAE
 cmp   r0,0x5                    ; 080F7CB0
 bls   @@Code080F7D14            ; 080F7CB2
@@ -3072,7 +3072,7 @@ ldrb  r1,[r1]                   ; 080F84A0
 lsl   r1,r1,0x2                 ; 080F84A2
 add   r1,r1,r2                  ; 080F84A4
 ldr   r1,[r1]                   ; 080F84A6
-bl    Sub_bx_r1                 ; 080F84A8  bx r1
+bl    Sub_bx_r1                 ; 080F84A8
 pop   {r0}                      ; 080F84AC
 bx    r0                        ; 080F84AE
 .pool                           ; 080F84B0
@@ -3343,7 +3343,7 @@ ldrb  r1,[r1]                   ; 080F86DC
 lsl   r1,r1,0x2                 ; 080F86DE
 add   r1,r1,r2                  ; 080F86E0
 ldr   r1,[r1]                   ; 080F86E2
-bl    Sub_bx_r1                 ; 080F86E4  bx r1
+bl    Sub_bx_r1                 ; 080F86E4
 pop   {r0}                      ; 080F86E8
 bx    r0                        ; 080F86EA
 .pool                           ; 080F86EC
@@ -3364,7 +3364,7 @@ ldrb  r1,[r1]                   ; 080F8704
 lsl   r1,r1,0x2                 ; 080F8706
 add   r1,r1,r2                  ; 080F8708
 ldr   r1,[r1]                   ; 080F870A
-bl    Sub_bx_r1                 ; 080F870C  bx r1
+bl    Sub_bx_r1                 ; 080F870C
 pop   {r0}                      ; 080F8710
 bx    r0                        ; 080F8712
 .pool                           ; 080F8714
@@ -3378,7 +3378,7 @@ ldrb  r1,[r1]                   ; 080F8720
 lsl   r1,r1,0x2                 ; 080F8722
 add   r1,r1,r2                  ; 080F8724
 ldr   r1,[r1]                   ; 080F8726
-bl    Sub_bx_r1                 ; 080F8728  bx r1
+bl    Sub_bx_r1                 ; 080F8728
 pop   {r0}                      ; 080F872C
 bx    r0                        ; 080F872E
 .pool                           ; 080F8730
@@ -3392,7 +3392,7 @@ ldrb  r1,[r1]                   ; 080F873C
 lsl   r1,r1,0x2                 ; 080F873E
 add   r1,r1,r2                  ; 080F8740
 ldr   r1,[r1]                   ; 080F8742
-bl    Sub_bx_r1                 ; 080F8744  bx r1
+bl    Sub_bx_r1                 ; 080F8744
 pop   {r0}                      ; 080F8748
 bx    r0                        ; 080F874A
 .pool                           ; 080F874C
@@ -3406,7 +3406,7 @@ ldrb  r1,[r1]                   ; 080F8758
 lsl   r1,r1,0x2                 ; 080F875A
 add   r1,r1,r2                  ; 080F875C
 ldr   r1,[r1]                   ; 080F875E
-bl    Sub_bx_r1                 ; 080F8760  bx r1
+bl    Sub_bx_r1                 ; 080F8760
 pop   {r0}                      ; 080F8764
 bx    r0                        ; 080F8766
 .pool                           ; 080F8768
@@ -3420,7 +3420,7 @@ ldrb  r1,[r1]                   ; 080F8774
 lsl   r1,r1,0x2                 ; 080F8776
 add   r1,r1,r2                  ; 080F8778
 ldr   r1,[r1]                   ; 080F877A
-bl    Sub_bx_r1                 ; 080F877C  bx r1
+bl    Sub_bx_r1                 ; 080F877C
 pop   {r0}                      ; 080F8780
 bx    r0                        ; 080F8782
 .pool                           ; 080F8784
@@ -3434,7 +3434,7 @@ ldrb  r1,[r1]                   ; 080F8790
 lsl   r1,r1,0x2                 ; 080F8792
 add   r1,r1,r2                  ; 080F8794
 ldr   r1,[r1]                   ; 080F8796
-bl    Sub_bx_r1                 ; 080F8798  bx r1
+bl    Sub_bx_r1                 ; 080F8798
 pop   {r0}                      ; 080F879C
 bx    r0                        ; 080F879E
 .pool                           ; 080F87A0
@@ -3456,7 +3456,7 @@ add   r0,r0,r1                  ; 080F87BA
 strb  r5,[r0]                   ; 080F87BC
 ldmia r7!,{r1}                  ; 080F87BE
 mov   r0,r4                     ; 080F87C0
-bl    Sub_bx_r1                 ; 080F87C2  bx r1
+bl    Sub_bx_r1                 ; 080F87C2
 mov   r0,r4                     ; 080F87C6
 bl    Sub080F6A14               ; 080F87C8
 mov   r0,r4                     ; 080F87CC
@@ -3475,7 +3475,7 @@ ldrh  r0,[r0]                   ; 080F87E8
 lsl   r0,r0,0x2                 ; 080F87EA
 add   r0,r0,r1                  ; 080F87EC
 ldr   r0,[r0]                   ; 080F87EE
-bl    Sub_bx_r0                 ; 080F87F0  bx r0
+bl    Sub_bx_r0                 ; 080F87F0
 pop   {r4-r7}                   ; 080F87F4
 pop   {r0}                      ; 080F87F6
 bx    r0                        ; 080F87F8
@@ -4242,7 +4242,7 @@ ldrh  r0,[r0]                   ; 080F8F50
 lsl   r0,r0,0x2                 ; 080F8F52
 add   r0,r0,r1                  ; 080F8F54
 ldr   r0,[r0]                   ; 080F8F56
-bl    Sub_bx_r0                 ; 080F8F58  bx r0
+bl    Sub_bx_r0                 ; 080F8F58
 @@Code080F8F5C:
 pop   {r0}                      ; 080F8F5C
 bx    r0                        ; 080F8F5E
@@ -4265,7 +4265,7 @@ ldrh  r0,[r1]                   ; 080F8F86
 lsl   r0,r0,0x2                 ; 080F8F88
 add   r0,r0,r2                  ; 080F8F8A
 ldr   r0,[r0]                   ; 080F8F8C
-bl    Sub_bx_r0                 ; 080F8F8E  bx r0
+bl    Sub_bx_r0                 ; 080F8F8E
 pop   {r0}                      ; 080F8F92
 bx    r0                        ; 080F8F94
 .pool                           ; 080F8F96

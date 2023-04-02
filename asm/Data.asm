@@ -1584,13 +1584,14 @@ CodePtrs08167E34:               ; 08167E34
 .word Sub0801976C+1, Sub0801974C+1, Sub08019700+1, Sub080196F4+1
 .word Return080196F0+1, Sub08019A14+1, Return080196F0+1, Sub08019700+1
 Data08167E74:                   ; 08167E74
-.word 0xC0E04020
+.byte 0x20, 0x40, 0xE0, 0xC0
 Data08167E78:                   ; 08167E78
-.word 0x00030004
+.halfword 0x0004, 0x0003
 Data08167E7C:                   ; 08167E7C
-.word 0x0001FFFF
-Data08167E80:                   ; 08167E80
-.word 0x02020202, 0x01010101, 0x00000203
+.halfword 0xFFFF, 0x0001
+ExtObj00_09_Widths:             ; 08167E80
+.byte 0x02, 0x02, 0x02, 0x02, 0x01, 0x01, 0x01, 0x01, 0x03, 0x02
+.align 4
 ExtObjInitPtrs:                 ; 08167E8C
 .word ExtObj00_09_Init+1, ExtObj00_09_Init+1, ExtObj00_09_Init+1, ExtObj00_09_Init+1
 .word ExtObj00_09_Init+1, ExtObj00_09_Init+1, ExtObj00_09_Init+1, ExtObj00_09_Init+1
@@ -1721,10 +1722,10 @@ StdObjInitPtrs:                 ; 0816828C
 .word Obj3C_F4_Init+1, ObjF5_Init+1, ObjF6_Init+1, ObjF7_FC_Init+1
 .word ObjF7_FC_Init+1, ObjF7_FC_Init+1, ObjF7_FC_Init+1, ObjF7_FC_Init+1
 .word ObjF7_FC_Init+1, ObjF7_FC_Init+1, ObjFE_Init+1
-Data08168688:                   ; 08168688
-.word 0x01D201D1, 0x01D401D3, 0x01D601D5, 0x01D801D7
-.word 0x01DA01D9, 0x01DC01DB, 0x01DE01DD, 0x01E001DF
-.word 0x01E201E1
+ObjF7_FC_Tilemap:               ; 08168688
+.halfword 0x01D1, 0x01D2, 0x01D3, 0x01D4, 0x01D5, 0x01D6, 0x01D7, 0x01D8
+.halfword 0x01D9, 0x01DA, 0x01DB, 0x01DC, 0x01DD, 0x01DE, 0x01DF, 0x01E0
+.halfword 0x01E1, 0x01E2
 ObjED_CodePtrs:                 ; 081686AC
 .word Sub0801D3D4+1, Sub0801D39C+1, Sub0801D364+1
 ObjD4_D7_CodePtrs:              ; 081686B8
@@ -22718,10 +22719,10 @@ DataPtrs081954DC:               ; 081954DC
 Data08195558:                   ; 08195558
 .word 0x10204080, 0x01020408
 CodePtrs08195560:               ; 08195560
-.word Sub080E8244+1, Sub080E8134+1, Sub080E8134+1, Sub080E8134+1
-.word Sub080E8134+1, Sub080E8134+1, Sub080E8134+1, Sub080E8134+1
-.word Sub080E8134+1, Sub080E8134+1, Sub080E8134+1, Sub080E8134+1
-.word Sub080E8134+1, Sub080E8134+1, Sub080E8134+1, Sub080E8134+1
+.word StdMsg_DispMsgChar1x+1, StdMsg_DispMsgCharScaled+1, StdMsg_DispMsgCharScaled+1, StdMsg_DispMsgCharScaled+1
+.word StdMsg_DispMsgCharScaled+1, StdMsg_DispMsgCharScaled+1, StdMsg_DispMsgCharScaled+1, StdMsg_DispMsgCharScaled+1
+.word StdMsg_DispMsgCharScaled+1, StdMsg_DispMsgCharScaled+1, StdMsg_DispMsgCharScaled+1, StdMsg_DispMsgCharScaled+1
+.word StdMsg_DispMsgCharScaled+1, StdMsg_DispMsgCharScaled+1, StdMsg_DispMsgCharScaled+1, StdMsg_DispMsgCharScaled+1
 CodePtrs081955A0:               ; 081955A0
 .word Sub080E83C8+1, Return080E83C4+1, Return080E83C0+1, Return080E83BC+1
 .word Return080E83B8+1, Return080E83B4+1, Return080E83B0+1, Return080E83AC+1
@@ -22740,72 +22741,72 @@ Data081955F0:                   ; 081955F0
 Data081955F2:                   ; 081955F2
 .halfword 0x0401
 CodePtrs081955F4:               ; 081955F4
-.word Sub080E8F5C+1, Sub080E8F4C+1, Sub080E8F3C+1, Sub080E8F2C+1
-.word Sub080E8F1C+1, Sub080E8F08+1, Sub080E8EF4+1, Sub080E8EE0+1
-.word Sub080E8ECC+1, Sub080E8EA8+1, Sub080E8E80+1, Sub080E8E48+1
-.word Sub080E8E48+1, Sub080E8E48+1, Sub080E8E48+1, Sub080E8E64+1
-.word Sub080E8E1C+1, Sub080E8E0C+1, Sub080E8DFC+1, Sub080E8DEC+1
-.word Sub080E8DDC+1, Sub080E8DCC+1, Sub080E8DCC+1, Sub080E8DCC+1
-.word Sub080E8DCC+1, Sub080E8DCC+1, Sub080E8DCC+1, Sub080E8DCC+1
-.word Sub080E8DCC+1, Sub080E8DCC+1, Sub080E8DCC+1, Sub080E8DCC+1
-.word Sub080E8D94+1, Sub080E8D94+1, Sub080E8D94+1, Sub080E8D94+1
-.word Sub080E8D94+1, Sub080E8D94+1, Sub080E8D94+1, Sub080E8D94+1
-.word Sub080E8D94+1, Sub080E8D94+1, Sub080E8D94+1, Sub080E8D94+1
-.word Sub080E8D94+1, Sub080E8D94+1, Sub080E8D94+1, Sub080E8D94+1
-.word Sub080E8D94+1, Sub080E8D80+1, Sub080E8D6C+1, Sub080E8D58+1
-.word Sub080E8D48+1, Sub080E8D38+1, Sub080E8D28+1, Sub080E8D18+1
-.word Sub080E8D08+1, Sub080E8CF8+1, Sub080E8CE8+1, Sub080E8CD8+1
-.word Sub080E8C5C+1, Sub080E8C5C+1, Sub080E8C20+1, Sub080E8BFC+1
-.word Sub080E8BD4+1, Sub080E8BD4+1, Sub080E8BD4+1, Sub080E8BD4+1
-.word Sub080E8BD4+1, Sub080E8BD4+1, Sub080E8BD4+1, Sub080E8BD4+1
-.word Sub080E8BD4+1, Sub080E8BD4+1, Sub080E8BD4+1, Sub080E8BD4+1
-.word Sub080E8BD4+1, Sub080E8BD4+1, Sub080E8BD4+1, Sub080E8BD4+1
-.word Sub080E87B0+1, Sub080E8928+1, Sub080E8B90+1, Sub080E87AC+1
-.word Sub080E87AC+1, Sub080E87AC+1, Sub080E87AC+1, Sub080E87AC+1
-.word Sub080E87AC+1, Sub080E87AC+1, Sub080E87AC+1, Sub080E87AC+1
-.word Sub080E87AC+1, Sub080E87AC+1, Sub080E87AC+1, Sub080E87AC+1
-.word Sub080E8610+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
-.word Sub080E8608+1, Sub080E8608+1, Sub080E8608+1, Sub080E8608+1
+.word StdMsg_Cmd00+1, StdMsg_Erase_y00+1, StdMsg_Erase_y10+1, StdMsg_Erase_y20+1
+.word StdMsg_Erase_y30+1, StdMsg_NewLine_y00+1, StdMsg_NewLine_y10+1, StdMsg_NewLine_y20+1
+.word StdMsg_NewLine_y30+1, StdMsg_Cmd09+1, StdMsg_WaitWithArrow+1, StdMsg_NewLineBuffered+1
+.word StdMsg_NewLineBuffered+1, StdMsg_NewLineBuffered+1, StdMsg_NewLineBuffered+1, StdMsg_WaitWithoutArrow+1
+.word StdMsg_Cmd10+1, StdMsg_Scroll1px+1, StdMsg_Scroll2px+1, StdMsg_Scroll3px+1
+.word StdMsg_Scroll4px+1, StdMsg_Cmd15_1F+1, StdMsg_Cmd15_1F+1, StdMsg_Cmd15_1F+1
+.word StdMsg_Cmd15_1F+1, StdMsg_Cmd15_1F+1, StdMsg_Cmd15_1F+1, StdMsg_Cmd15_1F+1
+.word StdMsg_Cmd15_1F+1, StdMsg_Cmd15_1F+1, StdMsg_Cmd15_1F+1, StdMsg_Cmd15_1F+1
+.word StdMsg_ScaleReset+1, StdMsg_ScaleReset+1, StdMsg_ScaleReset+1, StdMsg_ScaleReset+1
+.word StdMsg_ScaleReset+1, StdMsg_ScaleReset+1, StdMsg_ScaleReset+1, StdMsg_ScaleReset+1
+.word StdMsg_ScaleReset+1, StdMsg_ScaleReset+1, StdMsg_ScaleReset+1, StdMsg_ScaleReset+1
+.word StdMsg_ScaleReset+1, StdMsg_ScaleReset+1, StdMsg_ScaleReset+1, StdMsg_ScaleReset+1
+.word StdMsg_ScaleReset+1, StdMsg_Scale2x+1, StdMsg_Scale3x+1, StdMsg_Scale4x+1
+.word StdMsg_ScaleVert1x+1, StdMsg_ScaleVert2x+1, StdMsg_ScaleVert3x+1, StdMsg_ScaleVert4x+1
+.word StdMsg_ScaleHoriz1x+1, StdMsg_ScaleHoriz2x+1, StdMsg_ScaleHoriz3x+1, StdMsg_ScaleHoriz4x+1
+.word StdMsg_LivesHundreds+1, StdMsg_LivesHundreds+1, StdMsg_LivesTens+1, StdMsg_LivesOnes+1
+.word StdMsg_Cmd40_4F+1, StdMsg_Cmd40_4F+1, StdMsg_Cmd40_4F+1, StdMsg_Cmd40_4F+1
+.word StdMsg_Cmd40_4F+1, StdMsg_Cmd40_4F+1, StdMsg_Cmd40_4F+1, StdMsg_Cmd40_4F+1
+.word StdMsg_Cmd40_4F+1, StdMsg_Cmd40_4F+1, StdMsg_Cmd40_4F+1, StdMsg_Cmd40_4F+1
+.word StdMsg_Cmd40_4F+1, StdMsg_Cmd40_4F+1, StdMsg_Cmd40_4F+1, StdMsg_Cmd40_4F+1
+.word StdMsg_DeathMenu+1, StdMsg_FlipCardsExit+1, StdMsg_EggConfig+1, StdMsg_Cmd53_5F+1
+.word StdMsg_Cmd53_5F+1, StdMsg_Cmd53_5F+1, StdMsg_Cmd53_5F+1, StdMsg_Cmd53_5F+1
+.word StdMsg_Cmd53_5F+1, StdMsg_Cmd53_5F+1, StdMsg_Cmd53_5F+1, StdMsg_Cmd53_5F+1
+.word StdMsg_Cmd53_5F+1, StdMsg_Cmd53_5F+1, StdMsg_Cmd53_5F+1, StdMsg_Cmd53_5F+1
+.word StdMsg_LargeImage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
+.word StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1, StdMsg_CloseMessage+1
 CodePtrs081959F4:               ; 081959F4
-.word Sub080E90C4+1, Sub080E8F90+1, Sub080E8118+1
+.word Sub080E90C4+1, StdMsg_ProcessNext+1, Sub080E8118+1
 Data08195A00:                   ; 08195A00
 .word 0x36090000, 0x7FFF5B32, 0x36090000, 0x192C29F4
 Data08195A10:                   ; 08195A10

@@ -312,7 +312,7 @@ str   r0,[sp]                   ; 08033C7A
 ldr   r0,=0x03006390            ; 08033C7C
 ldr   r4,[r0]                   ; 08033C7E
 mov   r0,r9                     ; 08033C80
-bl    Sub_bx_r4                 ; 08033C82  bx r4
+bl    Sub_bx_r4                 ; 08033C82
 @@Code08033C86:
 mov   r0,r8                     ; 08033C86
 add   r0,0x1                    ; 08033C88
@@ -603,7 +603,7 @@ lsl   r0,r1,0x2                 ; 08033EBA
 add   r0,r0,r5                  ; 08033EBC  index 0816DBA0 with command ID
 ldr   r1,[r0]                   ; 08033EBE
 mov   r0,r4                     ; 08033EC0  r0 = character or command index
-bl    Sub_bx_r1                 ; 08033EC2  bx r1
+bl    Sub_bx_r1                 ; 08033EC2
 b     @@Code08033E9A            ; 08033EC6  loop
 @@Code08033EC8:
 pop   {r4-r5}                   ; 08033EC8
@@ -1179,7 +1179,7 @@ ldr   r2,=0x05002000            ; 08034430
 ldr   r0,[sp,0x24]              ; 08034432
 bl    swi_MemoryCopy4or2        ; 08034434  Memory copy/fill, 4- or 2-byte blocks
 mov   r0,r6                     ; 08034438
-bl    Sub_bx_r8                 ; 0803443A  bx r8
+bl    Sub_bx_r8                 ; 0803443A
 ldr   r2,=0x093E                ; 0803443E
 add   r1,r6,r2                  ; 08034440
 mov   r0,0x1                    ; 08034442
@@ -2607,7 +2607,7 @@ lsl   r0,r0,0x2                 ; 0803519A
 add   r0,r0,r1                  ; 0803519C
 ldr   r1,[r0]                   ; 0803519E
 mov   r0,r4                     ; 080351A0
-bl    Sub_bx_r1                 ; 080351A2  bx r1
+bl    Sub_bx_r1                 ; 080351A2
 ldrh  r0,[r5]                   ; 080351A6
 cmp   r0,0x10                   ; 080351A8
 bhi   @@Code080351E8            ; 080351AA

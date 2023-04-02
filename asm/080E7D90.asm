@@ -156,7 +156,7 @@ add   r0,r0,r7                  ; 080E7EDC
 ldr   r2,[r0]                   ; 080E7EDE
 mov   r0,r5                     ; 080E7EE0
 mov   r1,r4                     ; 080E7EE2
-bl    Sub_bx_r2                 ; 080E7EE4  bx r2
+bl    Sub_bx_r2                 ; 080E7EE4
 lsl   r0,r0,0x10                ; 080E7EE8
 lsr   r4,r0,0x10                ; 080E7EEA
 ldrb  r0,[r6]                   ; 080E7EEC

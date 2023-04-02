@@ -143,7 +143,7 @@ bx     r0                       ; 08000274
 
 Sub08000288:
 mov    r12,r13                  ; 08000288
-stmfd  r13!,{r4-r12,lr,pc}      ; 0800028C
+stmdb  r13!,{r4-r12,lr,pc}      ; 0800028C
 sub    r11,r12,0x4              ; 08000290
 sub    r13,r13,0x10             ; 08000294
 mov    r4,r0                    ; 08000298
@@ -1007,8 +1007,9 @@ bx    r0                        ; 08000914
 .arm
 
 Sub0800091C:
+; copied to dynamic RAM, referenced as [03007264], during vertical tile shift effect
 mov   r12,r13                   ; 0800091C
-stmfd r13!,{r4-r7,r11,r12,lr,pc}; 08000920
+stmdb r13!,{r4-r7,r11,r12,lr,pc}; 08000920
 sub   r11,r12,0x4               ; 08000924
 mov   r5,r0                     ; 08000928
 and   r4,r1,0x3F                ; 0800092C
@@ -1068,14 +1069,15 @@ bx    lr                        ; 080009F0
 
 Sub080009F4:
 mov   r12,r13                   ; 080009F4
-stmfd r13!,{r11,r12,lr,pc}      ; 080009F8
+stmdb r13!,{r11,r12,lr,pc}      ; 080009F8
 sub   r11,r12,0x4               ; 080009FC
 ldmdb r11,{r11,r13,lr}          ; 08000A00
 bx    lr                        ; 08000A04
 
 Sub08000A08:
+; copied to dynamic RAM, referenced as [03007260], during vertical tile shift effect
 mov   r12,r13                   ; 08000A08
-stmfd r13!,{r4,r5,r11,r12,lr,pc}; 08000A0C
+stmdb r13!,{r4,r5,r11,r12,lr,pc}; 08000A0C
 sub   r11,r12,0x4               ; 08000A10
 mov   r4,r0                     ; 08000A14
 ldr   lr,=0x030072A0            ; 08000A18
@@ -1094,7 +1096,7 @@ cmp   lr,r2                     ; 08000A48
 bcs   @@Code08000A78            ; 08000A4C
 @@Code08000A50:
 cmp   r12,r5                    ; 08000A50
-ldrb  r3,[r14]                  ; 08000A54
+ldrb  r3,[lr]                   ; 08000A54
 moveq r12,r4                    ; 08000A58
 add   lr,lr,0x2                 ; 08000A5C
 rsb   r3,r1,r3                  ; 08000A60
@@ -1111,7 +1113,7 @@ bx    lr                        ; 08000A7C
 
 Sub08000A80:
 mov   r12,r13                   ; 08000A80
-stmfd r13!,{r11,r12,lr,pc}      ; 08000A84
+stmdb r13!,{r11,r12,lr,pc}      ; 08000A84
 sub   r11,r12,0x4               ; 08000A88
 ldmdb r11,{r11,r13,lr}          ; 08000A8C
 bx    lr                        ; 08000A90

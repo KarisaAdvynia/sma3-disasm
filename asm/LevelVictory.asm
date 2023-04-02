@@ -443,7 +443,7 @@ ldr   r2,=CodePtrs08193C34      ; 080E39B8
 lsl   r1,r1,0x2                 ; 080E39BA
 add   r1,r1,r2                  ; 080E39BC
 ldr   r1,[r1]                   ; 080E39BE
-bl    Sub_bx_r1                 ; 080E39C0  bx r1
+bl    Sub_bx_r1                 ; 080E39C0
 pop   {r0}                      ; 080E39C4
 bx    r0                        ; 080E39C6
 .pool                           ; 080E39C8
@@ -633,7 +633,7 @@ ldr   r2,=CodePtrs08194090      ; 080E3B48
 lsl   r1,r1,0x2                 ; 080E3B4A
 add   r1,r1,r2                  ; 080E3B4C
 ldr   r1,[r1]                   ; 080E3B4E
-bl    Sub_bx_r1                 ; 080E3B50  bx r1
+bl    Sub_bx_r1                 ; 080E3B50
 pop   {r0}                      ; 080E3B54
 bx    r0                        ; 080E3B56
 .pool                           ; 080E3B58
@@ -952,7 +952,7 @@ lsl   r0,r0,0x2                 ; 080E3DF2
 add   r0,r0,r1                  ; 080E3DF4
 ldr   r1,[r0]                   ; 080E3DF6
 mov   r0,r4                     ; 080E3DF8
-bl    Sub_bx_r1                 ; 080E3DFA  bx r1
+bl    Sub_bx_r1                 ; 080E3DFA
 @@Code080E3DFE:
 mov   r1,r4                     ; 080E3DFE
 add   r1,0x27                   ; 080E3E00
@@ -965,7 +965,7 @@ lsl   r1,r1,0x2                 ; 080E3E0C
 add   r1,r1,r0                  ; 080E3E0E
 ldr   r1,[r1]                   ; 080E3E10
 mov   r0,r4                     ; 080E3E12
-bl    Sub_bx_r1                 ; 080E3E14  bx r1
+bl    Sub_bx_r1                 ; 080E3E14
 @@Code080E3E18:
 ldr   r5,=0x03002200            ; 080E3E18
 ldr   r1,=0x47C0                ; 080E3E1A
@@ -1016,7 +1016,7 @@ lsl   r1,r1,0x2                 ; 080E3E92
 add   r1,r1,r0                  ; 080E3E94
 ldr   r1,[r1]                   ; 080E3E96
 mov   r0,r4                     ; 080E3E98
-bl    Sub_bx_r1                 ; 080E3E9A  bx r1
+bl    Sub_bx_r1                 ; 080E3E9A
 @@Code080E3E9E:
 mov   r1,r4                     ; 080E3E9E
 add   r1,0x27                   ; 080E3EA0
@@ -1029,7 +1029,7 @@ lsl   r1,r1,0x2                 ; 080E3EAC
 add   r1,r1,r0                  ; 080E3EAE
 ldr   r1,[r1]                   ; 080E3EB0
 mov   r0,r4                     ; 080E3EB2
-bl    Sub_bx_r1                 ; 080E3EB4  bx r1
+bl    Sub_bx_r1                 ; 080E3EB4
 @@Code080E3EB8:
 mov   r0,r4                     ; 080E3EB8
 add   r0,0x29                   ; 080E3EBA
@@ -4337,7 +4337,7 @@ add   r1,r1,r0                  ; 080E5B38
 ldr   r2,[r1]                   ; 080E5B3A
 mov   r0,r5                     ; 080E5B3C
 mov   r1,r6                     ; 080E5B3E
-bl    Sub_bx_r2                 ; 080E5B40  bx r2
+bl    Sub_bx_r2                 ; 080E5B40
 pop   {r4-r6}                   ; 080E5B44
 pop   {r0}                      ; 080E5B46
 bx    r0                        ; 080E5B48
@@ -4556,7 +4556,7 @@ lsl   r0,r0,0x2                 ; 080E5D6A
 add   r0,r0,r2                  ; 080E5D6C
 ldr   r2,[r0]                   ; 080E5D6E
 mov   r0,r4                     ; 080E5D70
-bl    Sub_bx_r2                 ; 080E5D72  bx r2
+bl    Sub_bx_r2                 ; 080E5D72
 cmp   r5,0x15                   ; 080E5D76
 bls   @@Code080E5D88            ; 080E5D78
 mov   r0,0x19                   ; 080E5D7A

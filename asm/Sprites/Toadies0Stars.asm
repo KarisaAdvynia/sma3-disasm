@@ -1231,7 +1231,7 @@ mov   r0,r8                     ; 0804FD72
 mov   r1,r10                    ; 0804FD74
 mov   r2,r5                     ; 0804FD76
 mov   r3,r7                     ; 0804FD78
-bl    Sub_bx_r4                 ; 0804FD7A  bx r4
+bl    Sub_bx_r4                 ; 0804FD7A
 ldrh  r0,[r5,0x24]              ; 0804FD7E
 cmp   r0,0x0                    ; 0804FD80
 bne   @@Code0804FD92            ; 0804FD82

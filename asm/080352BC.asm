@@ -2022,7 +2022,7 @@ ldrh  r0,[r0]                   ; 08036264
 lsl   r0,r0,0x2                 ; 08036266
 add   r0,r0,r1                  ; 08036268
 ldr   r0,[r0]                   ; 0803626A
-bl    Sub_bx_r0                 ; 0803626C  bx r0
+bl    Sub_bx_r0                 ; 0803626C
 ldrh  r0,[r4,0x2]               ; 08036270
 mov   r1,r4                     ; 08036272
 sub   r1,0x20                   ; 08036274
@@ -2047,7 +2047,7 @@ ldrh  r0,[r0]                   ; 080362A2
 lsl   r0,r0,0x2                 ; 080362A4
 add   r0,r0,r1                  ; 080362A6
 ldr   r0,[r0]                   ; 080362A8
-bl    Sub_bx_r0                 ; 080362AA  bx r0
+bl    Sub_bx_r0                 ; 080362AA
 ldrh  r0,[r4,0x2]               ; 080362AE
 mov   r1,r4                     ; 080362B0
 sub   r1,0x20                   ; 080362B2
@@ -6857,7 +6857,7 @@ sub   r1,0x1                    ; 08038A98
 lsl   r1,r1,0x2                 ; 08038A9A
 add   r1,r1,r0                  ; 08038A9C
 ldr   r0,[r1]                   ; 08038A9E
-bl    Sub_bx_r0                 ; 08038AA0  bx r0
+bl    Sub_bx_r0                 ; 08038AA0
 @@Code08038AA4:
 pop   {r0}                      ; 08038AA4
 bx    r0                        ; 08038AA6
@@ -17237,7 +17237,7 @@ lsr   r0,r0,0x1                 ; 0803DF80
 lsl   r0,r0,0x2                 ; 0803DF82
 add   r0,r0,r1                  ; 0803DF84  offset table by Yoshi transformation *2
 ldr   r0,[r0]                   ; 0803DF86  code pointer
-bl    Sub_bx_r0                 ; 0803DF88  bx r0
+bl    Sub_bx_r0                 ; 0803DF88
 pop   {r4}                      ; 0803DF8C
 pop   {r0}                      ; 0803DF8E
 bx    r0                        ; 0803DF90
@@ -19438,7 +19438,7 @@ lsr   r0,r0,0x1                 ; 0803F2AC
 lsl   r0,r0,0x2                 ; 0803F2AE
 add   r0,r0,r1                  ; 0803F2B0
 ldr   r0,[r0]                   ; 0803F2B2
-bl    Sub_bx_r0                 ; 0803F2B4  bx r0
+bl    Sub_bx_r0                 ; 0803F2B4
 @@Code0803F2B8:
 pop   {r3-r4}                   ; 0803F2B8
 mov   r8,r3                     ; 0803F2BA

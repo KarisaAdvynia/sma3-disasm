@@ -1301,7 +1301,7 @@ add   r0,r0,r1                  ; 0802EF14  use ID as index to pointer table
 ldr   r2,[r0]                   ; 0802EF16  r2 = pointer from table
 mov   r0,r6                     ; 0802EF18  r0 = [03007240] (0300220C)
 mov   r1,0x0                    ; 0802EF1A
-bl    Sub_bx_r2                 ; 0802EF1C  bx r2
+bl    Sub_bx_r2                 ; 0802EF1C
 @@Code0802EF20:
 pop   {r4-r6}                   ; 0802EF20
 pop   {r0}                      ; 0802EF22

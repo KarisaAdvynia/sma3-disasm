@@ -94,86 +94,86 @@ mov   r9,r1                     ; 0801A0EA
 lsl   r2,r2,0x18                ; 0801A0EC
 lsr   r2,r2,0x18                ; 0801A0EE
 mov   r8,r2                     ; 0801A0F0
-add   r0,0x48                   ; 0801A0F2
-ldrh  r1,[r0]                   ; 0801A0F4
-ldrb  r0,[r0]                   ; 0801A0F6
-lsr   r5,r0,0x4                 ; 0801A0F8
+add   r0,0x48                   ; 0801A0F2  [03007240]+48 (03002254)
+ldrh  r1,[r0]                   ; 0801A0F4  r1 = tile YXyx
+ldrb  r0,[r0]                   ; 0801A0F6  tile yx
+lsr   r5,r0,0x4                 ; 0801A0F8  tile y
 mov   r6,0xF                    ; 0801A0FA
-and   r6,r1                     ; 0801A0FC
-lsr   r3,r1,0x8                 ; 0801A0FE
-mov   r0,r3                     ; 0801A100
-mov   r1,0xF0                   ; 0801A102
-and   r3,r1                     ; 0801A104
-orr   r5,r3                     ; 0801A106
+and   r6,r1                     ; 0801A0FC  tile x
+lsr   r3,r1,0x8                 ; 0801A0FE  tile YX
+mov   r0,r3                     ; 0801A100  tile YX
+mov   r1,0xF0                   ; 0801A102  r1 = F0
+and   r3,r1                     ; 0801A104  tile Y0
+orr   r5,r3                     ; 0801A106  r5 = object Y position
 lsl   r0,r0,0x1C                ; 0801A108
-lsr   r0,r0,0x18                ; 0801A10A
-orr   r6,r0                     ; 0801A10C
-mov   r4,0x0                    ; 0801A10E
+lsr   r0,r0,0x18                ; 0801A10A  tile X0
+orr   r6,r0                     ; 0801A10C  r6 = object X position
+mov   r4,0x0                    ; 0801A10E  r4 = 0
 mov   r0,0xA3                   ; 0801A110
-lsl   r0,r0,0x1                 ; 0801A112
-add   r0,r12                    ; 0801A114
-ldrb  r3,[r0]                   ; 0801A116
-ldr   r7,=Data08167E74          ; 0801A118
+lsl   r0,r0,0x1                 ; 0801A112  0146  
+add   r0,r12                    ; 0801A114  [03007240]+146 (03002352)
+ldrb  r3,[r0]                   ; 0801A116  slot 0's width-1
+ldr   r7,=Data08167E74          ; 0801A118  pointer to 20 40 E0 C0
 cmp   r3,0x0                    ; 0801A11A
-beq   @@Code0801A136            ; 0801A11C
-add   r1,0x54                   ; 0801A11E
-add   r1,r12                    ; 0801A120
-@@Code0801A122:
-add   r0,r4,0x6                 ; 0801A122
+beq   @@LoopEnd                 ; 0801A11C  if slot 0 has no width, skip loop
+add   r1,0x54                   ; 0801A11E  144
+add   r1,r12                    ; 0801A120  r1 = [03007240]+144 (03002350)
+@@Loop:                         ;          \ loop: calculate table index
+add   r0,r4,0x6                 ; 0801A122  iterate over 0x13 6-byte slots
 lsl   r0,r0,0x18                ; 0801A124
 lsr   r4,r0,0x18                ; 0801A126
 cmp   r4,0x71                   ; 0801A128
-bhi   @@Code0801A136            ; 0801A12A
+bhi   @@LoopEnd                 ; 0801A12A
 add   r0,r4,0x2                 ; 0801A12C
 add   r0,r1,r0                  ; 0801A12E
 ldrb  r3,[r0]                   ; 0801A130
-cmp   r3,0x0                    ; 0801A132
-bne   @@Code0801A122            ; 0801A134
-@@Code0801A136:
+cmp   r3,0x0                    ; 0801A132  if this slot has no width-1, exit loop
+bne   @@Loop                    ; 0801A134 /
+@@LoopEnd:
 mov   r2,0xA2                   ; 0801A136
-lsl   r2,r2,0x1                 ; 0801A138
-add   r2,r12                    ; 0801A13A
-add   r0,r2,r4                  ; 0801A13C
-strb  r6,[r0]                   ; 0801A13E
+lsl   r2,r2,0x1                 ; 0801A138  144
+add   r2,r12                    ; 0801A13A  [03007240]+144 (03002350)
+add   r0,r2,r4                  ; 0801A13C  pointer to first unused 6-byte slot?
+strb  r6,[r0]                   ; 0801A13E  byte 0 = object X position
 add   r0,r4,0x1                 ; 0801A140
 add   r0,r2,r0                  ; 0801A142
-strb  r5,[r0]                   ; 0801A144
+strb  r5,[r0]                   ; 0801A144  byte 1 = object Y position
 add   r1,r4,0x2                 ; 0801A146
 add   r1,r2,r1                  ; 0801A148
 mov   r0,r12                    ; 0801A14A
-add   r0,0x4E                   ; 0801A14C
-ldrb  r0,[r0]                   ; 0801A14E
+add   r0,0x4E                   ; 0801A14C  [03007240]+4E (0300225A)
+ldrb  r0,[r0]                   ; 0801A14E  object width
 sub   r0,0x1                    ; 0801A150
-strb  r0,[r1]                   ; 0801A152
+strb  r0,[r1]                   ; 0801A152  byte 2 = obj width -1
 add   r1,r4,0x3                 ; 0801A154
 add   r1,r2,r1                  ; 0801A156
 mov   r0,r12                    ; 0801A158
-add   r0,0x52                   ; 0801A15A
-ldrb  r0,[r0]                   ; 0801A15C
+add   r0,0x52                   ; 0801A15A  [03007240]+52 (0300225E)
+ldrb  r0,[r0]                   ; 0801A15C  object height
 sub   r0,0x1                    ; 0801A15E
-strb  r0,[r1]                   ; 0801A160
+strb  r0,[r1]                   ; 0801A160  byte 3 = obj height -1
 mov   r5,r12                    ; 0801A162
-add   r5,0x42                   ; 0801A164
-ldrb  r1,[r5]                   ; 0801A166
+add   r5,0x42                   ; 0801A164  [03007240]+42 (0300224E)
+ldrb  r1,[r5]                   ; 0801A166  object ID
 mov   r0,0xF                    ; 0801A168
-and   r0,r1                     ; 0801A16A
-add   r0,r0,r7                  ; 0801A16C
-ldrb  r3,[r0]                   ; 0801A16E
+and   r0,r1                     ; 0801A16A  objID-F0
+add   r0,r0,r7                  ; 0801A16C  index 08167E74 with objID-F0
+ldrb  r3,[r0]                   ; 0801A16E  20 40 E0 C0 for F0-F3
 add   r0,r4,0x4                 ; 0801A170
 add   r2,r2,r0                  ; 0801A172
-strb  r3,[r2]                   ; 0801A174
+strb  r3,[r2]                   ; 0801A174  byte 4 = value from table
 mov   r0,r12                    ; 0801A176
-add   r0,0x48                   ; 0801A178
-ldrh  r1,[r0]                   ; 0801A17A
+add   r0,0x48                   ; 0801A178  [03007240]+48 (03002254)
+ldrh  r1,[r0]                   ; 0801A17A  tile YXyx
 lsr   r0,r1,0x4                 ; 0801A17C
 eor   r0,r1                     ; 0801A17E
 mov   r1,0x1                    ; 0801A180
-and   r0,r1                     ; 0801A182
+and   r0,r1                     ; 0801A182  tile Y^X parity
 mov   r1,r12                    ; 0801A184
-strh  r0,[r1,0x3A]              ; 0801A186
+strh  r0,[r1,0x3A]              ; 0801A186  [03002246] = tile Y^X parity
 mov   r0,0x80                   ; 0801A188
-lsl   r0,r0,0x8                 ; 0801A18A
-strh  r0,[r5]                   ; 0801A18C
+lsl   r0,r0,0x8                 ; 0801A18A  8000
+strh  r0,[r5]                   ; 0801A18C  [0300224E] = 8000  
 mov   r0,r12                    ; 0801A18E
 mov   r1,r9                     ; 0801A190
 mov   r2,r8                     ; 0801A192
@@ -195,20 +195,20 @@ lsr   r6,r1,0x10                ; 0801A1AE
 lsl   r2,r2,0x18                ; 0801A1B0
 lsr   r5,r2,0x18                ; 0801A1B2
 add   r0,0x48                   ; 0801A1B4
-ldrh  r0,[r0]                   ; 0801A1B6
+ldrh  r0,[r0]                   ; 0801A1B6  tile YXyx
 lsr   r3,r0,0x4                 ; 0801A1B8
 eor   r3,r0                     ; 0801A1BA
 mov   r2,0x1                    ; 0801A1BC
 mov   r1,0x1                    ; 0801A1BE
-and   r3,r1                     ; 0801A1C0
-strh  r3,[r4,0x3A]              ; 0801A1C2
+and   r3,r1                     ; 0801A1C0  tile Y parity ^ X parity
+strh  r3,[r4,0x3A]              ; 0801A1C2  [03002246] = tile Y^X parity
 mov   r0,0x42                   ; 0801A1C4
-add   r0,r0,r4                  ; 0801A1C6
+add   r0,r0,r4                  ; 0801A1C6  0300224E
 mov   r12,r0                    ; 0801A1C8
 ldrh  r0,[r0]                   ; 0801A1CA  object ID
-mov   r3,r1                     ; 0801A1CC
-and   r3,r0                     ; 0801A1CE
-eor   r3,r2                     ; 0801A1D0
+mov   r3,r1                     ; 0801A1CC  r3 = 1
+and   r3,r0                     ; 0801A1CE  0 for EE, 1 for EF
+eor   r3,r2                     ; 0801A1D0  1 for EE, 0 for EF
 lsl   r0,r3,0x10                ; 0801A1D2
 lsr   r3,r0,0x10                ; 0801A1D4
 cmp   r3,0x0                    ; 0801A1D6
@@ -216,7 +216,7 @@ bne   @@Code0801A1DC            ; 0801A1D8
 ldr   r3,=0xFFFF                ; 0801A1DA
 @@Code0801A1DC:
 mov   r0,r12                    ; 0801A1DC
-strh  r3,[r0]                   ; 0801A1DE
+strh  r3,[r0]                   ; 0801A1DE  [0300224E] = 1 for EE, FFFF for EF
 mov   r0,r4                     ; 0801A1E0
 mov   r1,r6                     ; 0801A1E2
 mov   r2,r5                     ; 0801A1E4
@@ -235,21 +235,21 @@ lsl   r2,r2,0x18                ; 0801A1FA
 lsr   r2,r2,0x18                ; 0801A1FC
 mov   r3,r0                     ; 0801A1FE
 add   r3,0x48                   ; 0801A200
-ldrh  r4,[r3]                   ; 0801A202
+ldrh  r4,[r3]                   ; 0801A202  tile YXyx
 mov   r5,0x1                    ; 0801A204
 lsr   r3,r4,0x4                 ; 0801A206
 eor   r3,r4                     ; 0801A208
-and   r3,r5                     ; 0801A20A
+and   r3,r5                     ; 0801A20A  tile Y parity ^ X parity
 mov   r4,r0                     ; 0801A20C
 add   r4,0x42                   ; 0801A20E
-strh  r3,[r4]                   ; 0801A210
+strh  r3,[r4]                   ; 0801A210  [0300224E] = tile Y^X parity
 bl    ObjMain_Slope0_NoRelY     ; 0801A212  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r5}                   ; 0801A216
 pop   {r0}                      ; 0801A218
 bx    r0                        ; 0801A21A
 
 Sub0801A21C:
-; called by objects E4-E6,E8-E9 init: subtract 2 from object Y, add 2 to object height
+; called by E4-E6,E8-E9 init: subtract 2 from object Y, add 2 to object height
 push  {r4,lr}                   ; 0801A21C
 mov   r4,r0                     ; 0801A21E
 add   r4,0x48                   ; 0801A220  r4 = [03007240]+48 (03002254)

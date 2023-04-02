@@ -621,7 +621,7 @@ ldr   r0,=CodePtrs081946C4      ; 080E670A
 lsl   r1,r1,0x2                 ; 080E670C
 add   r1,r1,r0                  ; 080E670E
 ldr   r0,[r1]                   ; 080E6710
-bl    Sub_bx_r0                 ; 080E6712  bx r0
+bl    Sub_bx_r0                 ; 080E6712
 @@Code080E6716:
 ldr   r4,=0x03007240            ; 080E6716  Normal gameplay IWRAM (0300220C)
 ldr   r0,[r4]                   ; 080E6718

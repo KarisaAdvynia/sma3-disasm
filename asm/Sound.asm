@@ -1916,7 +1916,7 @@ ldr   r0,[sp,0x20]              ; 0812D1D8
 ldr   r1,[sp,0x14]              ; 0812D1DA
 mov   r2,r8                     ; 0812D1DC
 mov   r3,r5                     ; 0812D1DE
-bl    Sub_bx_r4                 ; 0812D1E0  bx r4
+bl    Sub_bx_r4                 ; 0812D1E0
 mov   r4,r0                     ; 0812D1E4
 mov   r0,r9                     ; 0812D1E6
 cmp   r0,0x0                    ; 0812D1E8
@@ -1942,7 +1942,7 @@ ldr   r0,[sp,0x20]              ; 0812D20C
 ldr   r1,[sp,0x14]              ; 0812D20E
 mov   r2,r8                     ; 0812D210
 mov   r3,r5                     ; 0812D212
-bl    Sub_bx_r4                 ; 0812D214  bx r4
+bl    Sub_bx_r4                 ; 0812D214
 mov   r4,r0                     ; 0812D218
 ldr   r1,[sp,0x24]              ; 0812D21A
 sub   r4,r4,r1                  ; 0812D21C
@@ -1998,7 +1998,7 @@ ldr   r0,[sp,0x20]              ; 0812D27A
 ldr   r1,[sp,0x14]              ; 0812D27C
 mov   r2,r8                     ; 0812D27E
 mov   r3,r5                     ; 0812D280
-bl    Sub_bx_r4                 ; 0812D282  bx r4
+bl    Sub_bx_r4                 ; 0812D282
 mov   r4,r0                     ; 0812D286
 mov   r1,r9                     ; 0812D288
 cmp   r1,0x0                    ; 0812D28A
@@ -3258,7 +3258,7 @@ add   r2,r0,r3                  ; 0812DC32
 ldrb  r3,[r6]                   ; 0812DC34
 ldr   r4,[r1]                   ; 0812DC36
 mov   r1,r5                     ; 0812DC38
-bl    Sub_bx_r4                 ; 0812DC3A  bx r4
+bl    Sub_bx_r4                 ; 0812DC3A
 ldr   r2,=0x03000B84            ; 0812DC3E
 ldr   r0,=0x030000DD            ; 0812DC40
 ldrb  r1,[r0]                   ; 0812DC42
@@ -3298,7 +3298,7 @@ mov   r4,0xB0                   ; 0812DC82
 lsl   r4,r4,0x2                 ; 0812DC84
 add   r2,r0,r4                  ; 0812DC86
 ldr   r3,[r3]                   ; 0812DC88
-bl    Sub_bx_r3                 ; 0812DC8A  bx r3
+bl    Sub_bx_r3                 ; 0812DC8A
 add   sp,0x4                    ; 0812DC8E
 pop   {r3}                      ; 0812DC90
 mov   r8,r3                     ; 0812DC92
@@ -4589,7 +4589,7 @@ beq   @@Code0812E6A0            ; 0812E68E
 mov   r0,r5                     ; 0812E690
 mov   r1,r6                     ; 0812E692
 mov   r3,r4                     ; 0812E694
-bl    Sub_bx_r7                 ; 0812E696  bx r7
+bl    Sub_bx_r7                 ; 0812E696
 b     @@Code0812E6AA            ; 0812E69A
 .pool                           ; 0812E69C
 
@@ -4901,7 +4901,7 @@ ldrb  r1,[r0]                   ; 0812E940
 add   r0,0x1                    ; 0812E942
 str   r0,[r5]                   ; 0812E944
 mov   r0,r5                     ; 0812E946
-bl    Sub_bx_r2                 ; 0812E948  bx r2
+bl    Sub_bx_r2                 ; 0812E948
 b     @@Code0812EA42            ; 0812E94C
 .pool                           ; 0812E94E
 
@@ -5931,7 +5931,7 @@ ldrh  r0,[r3]                   ; 0812F150  first buffer value
 cmp   r0,0x6                    ; 0812F152
 bhi   @@Code0812F1CE            ; 0812F154  if low digit >6, return
 lsl   r0,r0,0x2                 ; 0812F156  use as code pointer table index
-ldr   r1,=@@CodePtrs0812F168    ; 0812F158  code pointer table
+ldr   r1,=@@CodePtrs0812F168    ; 0812F158
 add   r0,r0,r1                  ; 0812F15A
 ldr   r0,[r0]                   ; 0812F15C
 mov   pc,r0                     ; 0812F15E
@@ -6246,7 +6246,7 @@ mov   pc,r0                     ; 0812F376
 ; runs if first buffer value is 0301
 ldr   r0,[r2,0x8]               ; 0812F394
 ldr   r1,[r2,0x4]               ; 0812F396
-bl    Sub_bx_r1                 ; 0812F398  bx r1
+bl    Sub_bx_r1                 ; 0812F398
 b     @@Code0812F3C2            ; 0812F39C
 @@Code0812F39E:
 ; runs if first buffer value is 0302
@@ -6292,7 +6292,7 @@ lsl   r0,r0,0x2                 ; 0812F3DA  high byte of first value, << 2
 add   r0,r0,r4                  ; 0812F3DC  use as code pointer table index
 ldr   r1,[r0]                   ; 0812F3DE
 mov   r0,r2                     ; 0812F3E0  r0 = pointer to buffer
-bl    Sub_bx_r1                 ; 0812F3E2  bx r1
+bl    Sub_bx_r1                 ; 0812F3E2
 bl    Sub0812EE6C               ; 0812F3E6  compare 03000324/032C; if different, increment 03000324 by 0C and return its old value
 mov   r2,r0                     ; 0812F3EA
 cmp   r2,0x0                    ; 0812F3EC

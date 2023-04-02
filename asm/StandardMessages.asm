@@ -10,7 +10,7 @@ strb  r1,[r0]                   ; 080E8126
 bx    lr                        ; 080E8128
 .pool                           ; 080E812A
 
-Sub080E8134:
+StdMsg_DispMsgCharScaled:
 ; subroutine: Display message character, scaled
 push  {r4-r7,lr}                ; 080E8134
 mov   r7,r10                    ; 080E8136
@@ -148,7 +148,7 @@ pop   {r0}                      ; 080E8230
 bx    r0                        ; 080E8232
 .pool                           ; 080E8234
 
-Sub080E8244:
+StdMsg_DispMsgChar1x:
 ; subroutine: Display message character, unscaled
 push  {r4-r7,lr}                ; 080E8244
 mov   r7,r10                    ; 080E8246
@@ -296,7 +296,7 @@ pop   {r0}                      ; 080E835A
 bx    r0                        ; 080E835C
 .pool                           ; 080E835E
 
-Sub080E836C:
+StdMsg_DispMsgChar:
 ; subroutine: Display message character
 push  {lr}                      ; 080E836C
 ldrh  r1,[r0,0x1E]              ; 080E836E  text vertical scale
@@ -308,7 +308,7 @@ ldr   r2,=CodePtrs08195560      ; 080E8378
 lsl   r1,r1,0x2                 ; 080E837A  use as code pointer table index
 add   r1,r1,r2                  ; 080E837C
 ldr   r1,[r1]                   ; 080E837E  080E8245 if text is unscaled, 080E8135 if text is scaled at all
-bl    Sub_bx_r1                 ; 080E8380  bx r1
+bl    Sub_bx_r1                 ; 080E8380
 pop   {r0}                      ; 080E8384
 bx    r0                        ; 080E8386
 .pool                           ; 080E8388
@@ -569,7 +569,7 @@ bx    r0                        ; 080E8540
 .pool                           ; 080E8542
 
 Sub080E8554:
-; Called by 50-52
+; called by 50-52
 push  {r4-r7,lr}                ; 080E8554
 mov   r7,r10                    ; 080E8556
 mov   r6,r9                     ; 080E8558
@@ -645,7 +645,7 @@ lsl   r0,r0,0x2                 ; 080E85DC
 add   r0,r0,r1                  ; 080E85DE
 ldr   r1,[r0]                   ; 080E85E0
 mov   r0,r8                     ; 080E85E2
-bl    Sub_bx_r1                 ; 080E85E4  bx r1
+bl    Sub_bx_r1                 ; 080E85E4
 add   sp,0x8                    ; 080E85E8
 pop   {r3-r5}                   ; 080E85EA
 mov   r8,r3                     ; 080E85EC
@@ -656,22 +656,22 @@ pop   {r0}                      ; 080E85F4
 bx    r0                        ; 080E85F6
 .pool                           ; 080E85F8
 
-Sub080E8600:
+StdMsg_Advance2Bytes:
 ; subroutine: add 2 to current message's byte to read
-; Called by FF 00-09, 0B-0E, 20-3B, possibly others
+; called by FF 00-09, 0B-0E, 20-3B, possibly others
 ldr   r1,[r0,0x4]               ; 080E8600
 add   r1,0x2                    ; 080E8602
 str   r1,[r0,0x4]               ; 080E8604
 bx    lr                        ; 080E8606
 
-Sub080E8608:
+StdMsg_CloseMessage:
 ; Message command FF 61-FF: close message
 mov   r1,0x2                    ; 080E8608
 strh  r1,[r0,0xA]               ; 080E860A  set message closing animation
 mov   r0,0x1                    ; 080E860C
 bx    lr                        ; 080E860E
 
-Sub080E8610:
+StdMsg_LargeImage:
 ; Message command FF 60: large image
 ; r0: 030023CC
 ; vanilla byte sequence: FF 60 00 {00/30/80} 00 80 30 00 10
@@ -896,12 +896,12 @@ pop   {r1}                      ; 080E879E
 bx    r1                        ; 080E87A0
 .pool                           ; 080E87A2
 
-Sub080E87AC:
+StdMsg_Cmd53_5F:
 ; Message command FF 53-5F
 mov   r0,0x1                    ; 080E87AC
 bx    lr                        ; 080E87AE
 
-Sub080E87B0:
+StdMsg_DeathMenu:
 ; Message command FF 50
 push  {r4-r7,lr}                ; 080E87B0
 mov   r7,r8                     ; 080E87B2
@@ -1074,7 +1074,7 @@ pop   {r1}                      ; 080E891A
 bx    r1                        ; 080E891C
 .pool                           ; 080E891E
 
-Sub080E8928:
+StdMsg_FlipCardsExit:
 ; Message command FF 51; called by FF 52
 push  {r4-r7,lr}                ; 080E8928
 mov   r7,r10                    ; 080E892A
@@ -1371,7 +1371,7 @@ pop   {r1}                      ; 080E8B88
 bx    r1                        ; 080E8B8A
 .pool                           ; 080E8B8C
 
-Sub080E8B90:
+StdMsg_EggConfig:
 ; Message command FF 52
 push  {lr}                      ; 080E8B90
 mov   r3,r0                     ; 080E8B92
@@ -1396,20 +1396,20 @@ eor   r1,r2                     ; 080E8BB6
 strh  r1,[r0]                   ; 080E8BB8
 @@Code080E8BBA:
 mov   r0,r3                     ; 080E8BBA
-bl    Sub080E8928               ; 080E8BBC
+bl    StdMsg_FlipCardsExit      ; 080E8BBC
 lsl   r0,r0,0x18                ; 080E8BC0
 lsr   r0,r0,0x18                ; 080E8BC2
 pop   {r1}                      ; 080E8BC4
 bx    r1                        ; 080E8BC6
 .pool                           ; 080E8BC8
 
-Sub080E8BD4:
+StdMsg_Cmd40_4F:
 ; Message command FF 40-4F
 mov   r0,0x1                    ; 080E8BD4
 bx    lr                        ; 080E8BD6
 
 Sub080E8BD8:
-; Called by FF 3C-3F
+; called by FF 3C-3F
 push  {lr}                      ; 080E8BD8
 ldr   r1,=0x03002200            ; 080E8BDA
 ldr   r2,=0x47FE                ; 080E8BDC
@@ -1419,12 +1419,12 @@ strh  r1,[r0,0xE]               ; 080E8BE2
 ldr   r1,[r0,0x4]               ; 080E8BE4 \
 add   r1,0x1                    ; 080E8BE6 | add 1 to byte to read
 str   r1,[r0,0x4]               ; 080E8BE8 /
-bl    Sub080E836C               ; 080E8BEA  Display message character
+bl    StdMsg_DispMsgChar               ; 080E8BEA  Display message character
 pop   {r0}                      ; 080E8BEE
 bx    r0                        ; 080E8BF0
 .pool                           ; 080E8BF2
 
-Sub080E8BFC:
+StdMsg_LivesOnes:
 ; Message command FF 3F
 push  {lr}                      ; 080E8BFC
 ldr   r2,=0x03002200            ; 080E8BFE
@@ -1441,7 +1441,7 @@ pop   {r1}                      ; 080E8C14
 bx    r1                        ; 080E8C16
 .pool                           ; 080E8C18
 
-Sub080E8C20:
+StdMsg_LivesTens:
 ; Message command FF 3E
 push  {r4,lr}                   ; 080E8C20
 mov   r1,r0                     ; 080E8C22
@@ -1470,7 +1470,7 @@ pop   {r1}                      ; 080E8C4E
 bx    r1                        ; 080E8C50
 .pool                           ; 080E8C52
 
-Sub080E8C5C:
+StdMsg_LivesHundreds:
 ; Message command FF 3C-3D
 push  {r4-r5,lr}                ; 080E8C5C
 mov   r4,r0                     ; 080E8C5E
@@ -1538,136 +1538,136 @@ pop   {r1}                      ; 080E8CCE
 bx    r1                        ; 080E8CD0
 .pool                           ; 080E8CD2
 
-Sub080E8CD8:
+StdMsg_ScaleHoriz4x:
 ; Message command FF 3B: set horizontal scale to 4x
 push  {lr}                      ; 080E8CD8
 mov   r1,0x3                    ; 080E8CDA
 strh  r1,[r0,0x1C]              ; 080E8CDC
-bl    Sub080E8600               ; 080E8CDE  add 2 to byte to read (030023D0)
+bl    StdMsg_Advance2Bytes      ; 080E8CDE  add 2 to byte to read (030023D0)
 mov   r0,0x0                    ; 080E8CE2
 pop   {r1}                      ; 080E8CE4
 bx    r1                        ; 080E8CE6
 
-Sub080E8CE8:
+StdMsg_ScaleHoriz3x:
 ; Message command FF 3A: set horizontal scale to 3x
 push  {lr}                      ; 080E8CE8
 mov   r1,0x2                    ; 080E8CEA
 strh  r1,[r0,0x1C]              ; 080E8CEC
-bl    Sub080E8600               ; 080E8CEE  add 2 to byte to read (030023D0)
+bl    StdMsg_Advance2Bytes      ; 080E8CEE  add 2 to byte to read (030023D0)
 mov   r0,0x0                    ; 080E8CF2
 pop   {r1}                      ; 080E8CF4
 bx    r1                        ; 080E8CF6
 
-Sub080E8CF8:
+StdMsg_ScaleHoriz2x:
 ; Message command FF 39: set horizontal scale to 2x
 push  {lr}                      ; 080E8CF8
 mov   r1,0x1                    ; 080E8CFA
 strh  r1,[r0,0x1C]              ; 080E8CFC
-bl    Sub080E8600               ; 080E8CFE  add 2 to byte to read (030023D0)
+bl    StdMsg_Advance2Bytes      ; 080E8CFE  add 2 to byte to read (030023D0)
 mov   r0,0x0                    ; 080E8D02
 pop   {r1}                      ; 080E8D04
 bx    r1                        ; 080E8D06
 
-Sub080E8D08:
+StdMsg_ScaleHoriz1x:
 ; Message command FF 38: set horizontal scale to 1x
 push  {lr}                      ; 080E8D08
 mov   r1,0x0                    ; 080E8D0A
 strh  r1,[r0,0x1C]              ; 080E8D0C
-bl    Sub080E8600               ; 080E8D0E  add 2 to byte to read (030023D0)
+bl    StdMsg_Advance2Bytes      ; 080E8D0E  add 2 to byte to read (030023D0)
 mov   r0,0x0                    ; 080E8D12
 pop   {r1}                      ; 080E8D14
 bx    r1                        ; 080E8D16
 
-Sub080E8D18:
+StdMsg_ScaleVert4x:
 ; Message command FF 37: set vertical scale to 4x
 push  {lr}                      ; 080E8D18
 mov   r1,0x3                    ; 080E8D1A
 strh  r1,[r0,0x1E]              ; 080E8D1C
-bl    Sub080E8600               ; 080E8D1E  add 2 to byte to read (030023D0)
+bl    StdMsg_Advance2Bytes      ; 080E8D1E  add 2 to byte to read (030023D0)
 mov   r0,0x0                    ; 080E8D22
 pop   {r1}                      ; 080E8D24
 bx    r1                        ; 080E8D26
 
-Sub080E8D28:
+StdMsg_ScaleVert3x:
 ; Message command FF 36: set vertical scale to 3x
 push  {lr}                      ; 080E8D28
 mov   r1,0x2                    ; 080E8D2A
 strh  r1,[r0,0x1E]              ; 080E8D2C
-bl    Sub080E8600               ; 080E8D2E  add 2 to byte to read (030023D0)
+bl    StdMsg_Advance2Bytes      ; 080E8D2E  add 2 to byte to read (030023D0)
 mov   r0,0x0                    ; 080E8D32
 pop   {r1}                      ; 080E8D34
 bx    r1                        ; 080E8D36
 
-Sub080E8D38:
+StdMsg_ScaleVert2x:
 ; Message command FF 35: set vertical scale to 2x
 push  {lr}                      ; 080E8D38
 mov   r1,0x1                    ; 080E8D3A
 strh  r1,[r0,0x1E]              ; 080E8D3C
-bl    Sub080E8600               ; 080E8D3E  add 2 to byte to read (030023D0)
+bl    StdMsg_Advance2Bytes      ; 080E8D3E  add 2 to byte to read (030023D0)
 mov   r0,0x0                    ; 080E8D42
 pop   {r1}                      ; 080E8D44
 bx    r1                        ; 080E8D46
 
-Sub080E8D48:
+StdMsg_ScaleVert1x:
 ; Message command FF 34: set vertical scale to 1x
 push  {lr}                      ; 080E8D48
 mov   r1,0x0                    ; 080E8D4A
 strh  r1,[r0,0x1E]              ; 080E8D4C
-bl    Sub080E8600               ; 080E8D4E  add 2 to byte to read (030023D0)
+bl    StdMsg_Advance2Bytes      ; 080E8D4E  add 2 to byte to read (030023D0)
 mov   r0,0x0                    ; 080E8D52
 pop   {r1}                      ; 080E8D54
 bx    r1                        ; 080E8D56
 
-Sub080E8D58:
+StdMsg_Scale4x:
 ; Message command FF 33: set scale to 4x
 push  {lr}                      ; 080E8D58
 mov   r1,0x3                    ; 080E8D5A
 strh  r1,[r0,0x1C]              ; 080E8D5C
 strh  r1,[r0,0x1E]              ; 080E8D5E
-bl    Sub080E8600               ; 080E8D60  add 2 to byte to read (030023D0)
+bl    StdMsg_Advance2Bytes      ; 080E8D60  add 2 to byte to read (030023D0)
 mov   r0,0x0                    ; 080E8D64
 pop   {r1}                      ; 080E8D66
 bx    r1                        ; 080E8D68
 .pool                           ; 080E8D6A
 
-Sub080E8D6C:
+StdMsg_Scale3x:
 ; Message command FF 32: set scale to 3x
 push  {lr}                      ; 080E8D6C
 mov   r1,0x2                    ; 080E8D6E
 strh  r1,[r0,0x1C]              ; 080E8D70
 strh  r1,[r0,0x1E]              ; 080E8D72
-bl    Sub080E8600               ; 080E8D74  add 2 to byte to read (030023D0)
+bl    StdMsg_Advance2Bytes      ; 080E8D74  add 2 to byte to read (030023D0)
 mov   r0,0x0                    ; 080E8D78
 pop   {r1}                      ; 080E8D7A
 bx    r1                        ; 080E8D7C
 .pool                           ; 080E8D7E
 
-Sub080E8D80:
+StdMsg_Scale2x:
 ; Message command FF 31: set scale to 2x
 push  {lr}                      ; 080E8D80
 mov   r1,0x1                    ; 080E8D82
 strh  r1,[r0,0x1C]              ; 080E8D84
 strh  r1,[r0,0x1E]              ; 080E8D86
-bl    Sub080E8600               ; 080E8D88  add 2 to byte to read (030023D0)
+bl    StdMsg_Advance2Bytes      ; 080E8D88  add 2 to byte to read (030023D0)
 mov   r0,0x0                    ; 080E8D8C
 pop   {r1}                      ; 080E8D8E
 bx    r1                        ; 080E8D90
 .pool                           ; 080E8D92
 
-Sub080E8D94:
+StdMsg_ScaleReset:
 ; Message command FF 20-30: set scale to 1x (reset scale)
 push  {lr}                      ; 080E8D94
 mov   r1,0x0                    ; 080E8D96
 strh  r1,[r0,0x1C]              ; 080E8D98
 strh  r1,[r0,0x1E]              ; 080E8D9A
-bl    Sub080E8600               ; 080E8D9C  add 2 to byte to read (030023D0)
+bl    StdMsg_Advance2Bytes      ; 080E8D9C  add 2 to byte to read (030023D0)
 mov   r0,0x0                    ; 080E8DA0
 pop   {r1}                      ; 080E8DA2
 bx    r1                        ; 080E8DA4
 .pool                           ; 080E8DA6
 
-Sub080E8DA8:
-; Called by FF 10-1F
+StdMsg_ScrollDown:
+; called by FF 10-1F
 ; r1: pixel offset to shift message upward?
 push  {r4,lr}                   ; 080E8DA8
 mov   r4,r0                     ; 080E8DAA
@@ -1686,63 +1686,63 @@ pop   {r0}                      ; 080E8DC4
 bx    r0                        ; 080E8DC6
 .pool                           ; 080E8DC8
 
-Sub080E8DCC:
+StdMsg_Cmd15_1F:
 ; Message command FF 15-1F
 push  {lr}                      ; 080E8DCC
 mov   r1,0x0                    ; 080E8DCE
-bl    Sub080E8DA8               ; 080E8DD0
+bl    StdMsg_ScrollDown         ; 080E8DD0
 mov   r0,0x1                    ; 080E8DD4
 pop   {r1}                      ; 080E8DD6
 bx    r1                        ; 080E8DD8
 .pool                           ; 080E8DDA
 
-Sub080E8DDC:
+StdMsg_Scroll4px:
 ; Message command FF 14
 push  {lr}                      ; 080E8DDC
 mov   r1,0x4                    ; 080E8DDE
-bl    Sub080E8DA8               ; 080E8DE0
+bl    StdMsg_ScrollDown         ; 080E8DE0
 mov   r0,0x1                    ; 080E8DE4
 pop   {r1}                      ; 080E8DE6
 bx    r1                        ; 080E8DE8
 .pool                           ; 080E8DEA
 
-Sub080E8DEC:
+StdMsg_Scroll3px:
 ; Message command FF 13
 push  {lr}                      ; 080E8DEC
 mov   r1,0x3                    ; 080E8DEE
-bl    Sub080E8DA8               ; 080E8DF0
+bl    StdMsg_ScrollDown         ; 080E8DF0
 mov   r0,0x1                    ; 080E8DF4
 pop   {r1}                      ; 080E8DF6
 bx    r1                        ; 080E8DF8
 .pool                           ; 080E8DFA
 
-Sub080E8DFC:
+StdMsg_Scroll2px:
 ; Message command FF 12
 push  {lr}                      ; 080E8DFC
 mov   r1,0x2                    ; 080E8DFE
-bl    Sub080E8DA8               ; 080E8E00
+bl    StdMsg_ScrollDown         ; 080E8E00
 mov   r0,0x1                    ; 080E8E04
 pop   {r1}                      ; 080E8E06
 bx    r1                        ; 080E8E08
 .pool                           ; 080E8E0A
 
-Sub080E8E0C:
+StdMsg_Scroll1px:
 ; Message command FF 11
 push  {lr}                      ; 080E8E0C
 mov   r1,0x1                    ; 080E8E0E
-bl    Sub080E8DA8               ; 080E8E10
+bl    StdMsg_ScrollDown         ; 080E8E10
 mov   r0,0x1                    ; 080E8E14
 pop   {r1}                      ; 080E8E16
 bx    r1                        ; 080E8E18
 .pool                           ; 080E8E1A
 
-Sub080E8E1C:
+StdMsg_Cmd10:
 ; Message command FF 10
 mov   r0,0x0                    ; 080E8E1C
 bx    lr                        ; 080E8E1E
 
-Sub080E8E20:
-; Called by FF 00-04, 0B-0E: erase r2 pixel rows, starting at y=r1
+StdMsg_EraseRows:
+; called by FF 00-04, 0B-0E: erase r2 pixel rows, starting at y=r1
 push  {r4,lr}                   ; 080E8E20
 mov   r4,r0                     ; 080E8E22
 lsl   r1,r1,0x10                ; 080E8E24
@@ -1754,20 +1754,20 @@ ldr   r0,[r0]                   ; 080E8E2E
 mov   r3,0xD                    ; 080E8E30
 bl    Sub080FCA88               ; 080E8E32  fill message buffer rows with single color
 mov   r0,r4                     ; 080E8E36
-bl    Sub080E8600               ; 080E8E38  add 2 to byte to read (030023D0)
+bl    StdMsg_Advance2Bytes      ; 080E8E38  add 2 to byte to read (030023D0)
 pop   {r4}                      ; 080E8E3C
 pop   {r0}                      ; 080E8E3E
 bx    r0                        ; 080E8E40
 .pool                           ; 080E8E42
 
-Sub080E8E48:
+StdMsg_NewLineBuffered:
 ; Message command FF 0B-0E: x=0 y=40, fill next 0x10 pixels with color D
 push  {r4-r5,lr}                ; 080E8E48
 mov   r4,r0                     ; 080E8E4A
 mov   r5,0x40                   ; 080E8E4C
 mov   r1,0x40                   ; 080E8E4E
 mov   r2,0x10                   ; 080E8E50
-bl    Sub080E8E20               ; 080E8E52  erase r2 pixel rows, starting at y=r1
+bl    StdMsg_EraseRows          ; 080E8E52  erase r2 pixel rows, starting at y=r1
 mov   r0,0x0                    ; 080E8E56
 strh  r0,[r4,0x20]              ; 080E8E58
 strh  r5,[r4,0x22]              ; 080E8E5A
@@ -1776,7 +1776,7 @@ pop   {r1}                      ; 080E8E5E
 bx    r1                        ; 080E8E60
 .pool                           ; 080E8E62
 
-Sub080E8E64:
+StdMsg_WaitWithoutArrow:
 ; Message command FF 0F; called by FF 0A
 push  {lr}                      ; 080E8E64
 mov   r2,r0                     ; 080E8E66
@@ -1794,7 +1794,7 @@ mov   r0,0x1                    ; 080E8E7A
 pop   {r1}                      ; 080E8E7C
 bx    r1                        ; 080E8E7E
 
-Sub080E8E80:
+StdMsg_WaitWithArrow:
 ; Message command FF 0A
 push  {r4,lr}                   ; 080E8E80
 mov   r4,r0                     ; 080E8E82
@@ -1810,14 +1810,14 @@ mov   r1,0x0                    ; 080E8E92
 bl    PlayYISound               ; 080E8E94 /
 @@Code080E8E98:
 mov   r0,r4                     ; 080E8E98
-bl    Sub080E8E64               ; 080E8E9A  Message command FF 0F
+bl    StdMsg_WaitWithoutArrow   ; 080E8E9A  Message command FF 0F
 mov   r0,0x1                    ; 080E8E9E
 pop   {r4}                      ; 080E8EA0
 pop   {r1}                      ; 080E8EA2
 bx    r1                        ; 080E8EA4
 .pool                           ; 080E8EA6
 
-Sub080E8EA8:
+StdMsg_Cmd09:
 ; Message command FF 09
 push  {lr}                      ; 080E8EA8
 mov   r1,r0                     ; 080E8EAA
@@ -1833,112 +1833,112 @@ mov   r0,0x10                   ; 080E8EBC  if Y position >3F, set it to 10
 @@Code080E8EBE:
 strh  r0,[r1,0x22]              ; 080E8EBE
 mov   r0,r1                     ; 080E8EC0
-bl    Sub080E8600               ; 080E8EC2  add 2 to byte to read (030023D0)
+bl    StdMsg_Advance2Bytes      ; 080E8EC2  add 2 to byte to read (030023D0)
 mov   r0,0x0                    ; 080E8EC6
 pop   {r1}                      ; 080E8EC8
 bx    r1                        ; 080E8ECA
 
-Sub080E8ECC:
+StdMsg_NewLine_y30:
 ; Message command FF 08: x=0 y=30
 push  {lr}                      ; 080E8ECC
 mov   r1,0x0                    ; 080E8ECE
 strh  r1,[r0,0x20]              ; 080E8ED0  030023EC: character X position
 mov   r1,0x30                   ; 080E8ED2
 strh  r1,[r0,0x22]              ; 080E8ED4  030023EE: character Y position
-bl    Sub080E8600               ; 080E8ED6  add 2 to byte to read (030023D0)
+bl    StdMsg_Advance2Bytes      ; 080E8ED6  add 2 to byte to read (030023D0)
 mov   r0,0x0                    ; 080E8EDA
 pop   {r1}                      ; 080E8EDC
 bx    r1                        ; 080E8EDE
 
-Sub080E8EE0:
+StdMsg_NewLine_y20:
 ; Message command FF 07: x=0 y=20
 push  {lr}                      ; 080E8EE0
 mov   r1,0x0                    ; 080E8EE2
 strh  r1,[r0,0x20]              ; 080E8EE4  030023EC: character X position
 mov   r1,0x20                   ; 080E8EE6
 strh  r1,[r0,0x22]              ; 080E8EE8  030023EE: character Y position
-bl    Sub080E8600               ; 080E8EEA  add 2 to byte to read (030023D0)
+bl    StdMsg_Advance2Bytes      ; 080E8EEA  add 2 to byte to read (030023D0)
 mov   r0,0x0                    ; 080E8EEE
 pop   {r1}                      ; 080E8EF0
 bx    r1                        ; 080E8EF2
 
-Sub080E8EF4:
+StdMsg_NewLine_y10:
 ; Message command FF 06: x=0 y=10
 push  {lr}                      ; 080E8EF4
 mov   r1,0x0                    ; 080E8EF6
 strh  r1,[r0,0x20]              ; 080E8EF8  030023EC: character X position
 mov   r1,0x10                   ; 080E8EFA
 strh  r1,[r0,0x22]              ; 080E8EFC  030023EE: character Y position
-bl    Sub080E8600               ; 080E8EFE  add 2 to byte to read (030023D0)
+bl    StdMsg_Advance2Bytes      ; 080E8EFE  add 2 to byte to read (030023D0)
 mov   r0,0x0                    ; 080E8F02
 pop   {r1}                      ; 080E8F04
 bx    r1                        ; 080E8F06
 
-Sub080E8F08:
+StdMsg_NewLine_y00:
 ; Message command FF 05: x=0 y=0
 push  {lr}                      ; 080E8F08
 mov   r1,0x0                    ; 080E8F0A
 strh  r1,[r0,0x20]              ; 080E8F0C  030023EC: character X position
 strh  r1,[r0,0x22]              ; 080E8F0E  030023EE: character Y position
-bl    Sub080E8600               ; 080E8F10  add 2 to byte to read (030023D0)
+bl    StdMsg_Advance2Bytes      ; 080E8F10  add 2 to byte to read (030023D0)
 mov   r0,0x0                    ; 080E8F14
 pop   {r1}                      ; 080E8F16
 bx    r1                        ; 080E8F18
 .pool                           ; 080E8F1A
 
-Sub080E8F1C:
+StdMsg_Erase_y30:
 ; Message command FF 04: erase line at y=30
 push  {lr}                      ; 080E8F1C
 mov   r1,0x30                   ; 080E8F1E
 mov   r2,0x10                   ; 080E8F20
-bl    Sub080E8E20               ; 080E8F22  erase r2 pixel rows, starting at y=r1
+bl    StdMsg_EraseRows          ; 080E8F22  erase r2 pixel rows, starting at y=r1
 mov   r0,0x0                    ; 080E8F26
 pop   {r1}                      ; 080E8F28
 bx    r1                        ; 080E8F2A
 
-Sub080E8F2C:
+StdMsg_Erase_y20:
 ; Message command FF 03: erase line at y=20
 push  {lr}                      ; 080E8F2C
 mov   r1,0x20                   ; 080E8F2E
 mov   r2,0x10                   ; 080E8F30
-bl    Sub080E8E20               ; 080E8F32  erase r2 pixel rows, starting at y=r1
+bl    StdMsg_EraseRows          ; 080E8F32  erase r2 pixel rows, starting at y=r1
 mov   r0,0x0                    ; 080E8F36
 pop   {r1}                      ; 080E8F38
 bx    r1                        ; 080E8F3A
 
-Sub080E8F3C:
+StdMsg_Erase_y10:
 ; Message command FF 02: erase line at y=10
 push  {lr}                      ; 080E8F3C
 mov   r1,0x10                   ; 080E8F3E
 mov   r2,0x10                   ; 080E8F40
-bl    Sub080E8E20               ; 080E8F42  erase r2 pixel rows, starting at y=r1
+bl    StdMsg_EraseRows          ; 080E8F42  erase r2 pixel rows, starting at y=r1
 mov   r0,0x0                    ; 080E8F46
 pop   {r1}                      ; 080E8F48
 bx    r1                        ; 080E8F4A
 
-Sub080E8F4C:
+StdMsg_Erase_y00:
 ; Message command FF 01: erase line at y=0
 push  {lr}                      ; 080E8F4C
 mov   r1,0x0                    ; 080E8F4E
 mov   r2,0x10                   ; 080E8F50
-bl    Sub080E8E20               ; 080E8F52  erase r2 pixel rows, starting at y=r1
+bl    StdMsg_EraseRows          ; 080E8F52  erase r2 pixel rows, starting at y=r1
 mov   r0,0x0                    ; 080E8F56
 pop   {r1}                      ; 080E8F58
 bx    r1                        ; 080E8F5A
 
-Sub080E8F5C:
+StdMsg_Cmd00:
 ; Message command FF 00
 push  {lr}                      ; 080E8F5C
 mov   r2,0xA0                   ; 080E8F5E
 lsl   r2,r2,0x3                 ; 080E8F60  r2 = 500
 mov   r1,0x0                    ; 080E8F62
-bl    Sub080E8E20               ; 080E8F64  erase r2 pixel rows, starting at y=r1
+bl    StdMsg_EraseRows          ; 080E8F64  erase r2 pixel rows, starting at y=r1
 mov   r0,0x0                    ; 080E8F68
 pop   {r1}                      ; 080E8F6A
 bx    r1                        ; 080E8F6C
 .pool                           ; 080E8F6E
 
-Sub080E8F70:
+StdMsg_CmdMain:
 ; Call message command subroutine
 push  {lr}                      ; 080E8F70
 ldrh  r1,[r0,0xE]               ; 080E8F72
@@ -1947,14 +1947,14 @@ ldr   r2,=CodePtrs081955F4      ; 080E8F76
 lsl   r1,r1,0x2                 ; 080E8F78  use as pointer table index
 add   r1,r1,r2                  ; 080E8F7A
 ldr   r1,[r1]                   ; 080E8F7C  pointer to message command code
-bl    Sub_bx_r1                 ; 080E8F7E  bx r1
+bl    Sub_bx_r1                 ; 080E8F7E
 lsl   r0,r0,0x18                ; 080E8F82
 lsr   r0,r0,0x18                ; 080E8F84
 pop   {r1}                      ; 080E8F86
 bx    r1                        ; 080E8F88
 .pool                           ; 080E8F8A
 
-Sub080E8F90:
+StdMsg_ProcessNext:
 ; Process message character or command
 push  {r4-r6,lr}                ; 080E8F90
 add   sp,-0x8                   ; 080E8F92
@@ -1979,11 +1979,11 @@ and   r0,r1                     ; 080E8FB4
 cmp   r0,0x0                    ; 080E8FB6 /
 bne   @@Code080E8FC2            ; 080E8FB8
 mov   r0,r4                     ; 080E8FBA \ runs if byte is FF
-bl    Sub080E8F70               ; 080E8FBC  process message command
+bl    StdMsg_CmdMain            ; 080E8FBC  process message command
 b     @@Code080E8FCA            ; 080E8FC0 /
 @@Code080E8FC2:
 mov   r0,r4                     ; 080E8FC2 \ runs if byte is not FF
-bl    Sub080E836C               ; 080E8FC4  Display message character
+bl    StdMsg_DispMsgChar               ; 080E8FC4  Display message character
 mov   r0,0x0                    ; 080E8FC8 /
 @@Code080E8FCA:
 cmp   r0,0x0                    ; 080E8FCA
@@ -2016,11 +2016,10 @@ str   r2,[sp,0x4]               ; 080E8FF2
 mov   r2,0x0                    ; 080E8FF4
 mov   r3,0x0                    ; 080E8FF6
 bl    Sub080FC9E0               ; 080E8FF8
-b     @@Code080E9096            ; 080E8FFC  return
+b     @@Return            ; 080E8FFC  return
 .pool                           ; 080E8FFE
 
-@@Code080E9010:
-                                ; runs if game state 0D: copy message graphics to sprite graphics
+@@Code080E9010:                 ; runs if game state 0D: copy message graphics to sprite graphics
 ldr   r6,=0x03007248            ; 080E9010  pointer to message buffer
 ldr   r0,[r6]                   ; 080E9012
 ldr   r1,=0x06015840            ; 080E9014
@@ -2080,7 +2079,7 @@ str   r4,[sp,0x4]               ; 080E908C
 mov   r2,0x0                    ; 080E908E
 mov   r3,0x38                   ; 080E9090
 bl    Sub080FC9E0               ; 080E9092
-@@Code080E9096:
+@@Return:
 add   sp,0x8                    ; 080E9096
 pop   {r4-r6}                   ; 080E9098
 pop   {r0}                      ; 080E909A
@@ -2110,7 +2109,7 @@ ldr   r0,[r0]                   ; 080E90E8
 mov   r1,0xD                    ; 080E90EA
 bl    Sub080FCA60               ; 080E90EC
 mov   r0,r4                     ; 080E90F0
-bl    Sub080E8F90               ; 080E90F2
+bl    StdMsg_ProcessNext        ; 080E90F2
 pop   {r4}                      ; 080E90F6
 pop   {r0}                      ; 080E90F8
 bx    r0                        ; 080E90FA
@@ -2123,7 +2122,7 @@ ldr   r2,=CodePtrs081959F4      ; 080E9104
 lsl   r1,r1,0x2                 ; 080E9106
 add   r1,r1,r2                  ; 080E9108
 ldr   r1,[r1]                   ; 080E910A
-bl    Sub_bx_r1                 ; 080E910C  bx r1
+bl    Sub_bx_r1                 ; 080E910C
 pop   {r0}                      ; 080E9110
 bx    r0                        ; 080E9112
 .pool                           ; 080E9114

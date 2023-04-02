@@ -2438,7 +2438,7 @@ lsr   r2,r2,0x18                ; 0801D1DA
 mov   r5,r4                     ; 0801D1DC
 add   r5,0x42                   ; 0801D1DE
 ldrh  r3,[r5]                   ; 0801D1E0  extended object ID
-ldr   r0,=Data08167E80          ; 0801D1E2  width table
+ldr   r0,=ExtObj00_09_Widths    ; 0801D1E2  width table
 add   r0,r3,r0                  ; 0801D1E4  index with extID
 ldrb  r0,[r0]                   ; 0801D1E6
 mov   r6,0x4E                   ; 0801D1E8

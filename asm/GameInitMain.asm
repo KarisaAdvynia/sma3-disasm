@@ -427,7 +427,7 @@ add   r1,r1,r3                  ; 08000E82
 ldrh  r1,[r1]                   ; 08000E84
 add   r0,r0,r1                  ; 08000E86
 ldr   r1,[r2]                   ; 08000E88
-bl    Sub_bx_r1                 ; 08000E8A  bx r1
+bl    Sub_bx_r1                 ; 08000E8A
 ldr   r5,=0x4B65                ; 08000E8E
 add   r4,r4,r5                  ; 08000E90
 ldrb  r0,[r4]                   ; 08000E92
@@ -2072,7 +2072,7 @@ ldrb  r0,[r0]                   ; 08001E9E
 lsl   r0,r0,0x2                 ; 08001EA0
 add   r0,r0,r1                  ; 08001EA2
 ldr   r0,[r0]                   ; 08001EA4
-bl    Sub_bx_r0                 ; 08001EA6  bx r0
+bl    Sub_bx_r0                 ; 08001EA6
 mov   r1,0x92                   ; 08001EAA
 lsl   r1,r1,0x7                 ; 08001EAC
 add   r0,r5,r1                  ; 08001EAE
@@ -2205,7 +2205,7 @@ ldr   r1,=0x48F8                ; 0800201E
 add   r0,r0,r1                  ; 08002020  r0 = 03006AF8
 strb  r4,[r0]                   ; 08002022
 ldr   r2,=0x030021C0            ; 08002024
-ldr   r1,=CodePtrs08163FF8      ; 08002026  code pointer table
+ldr   r1,=CodePtrs08163FF8      ; 08002026
 lsl   r0,r4,0x2                 ; 08002028
 add   r0,r0,r1                  ; 0800202A  index with input r4
 ldr   r0,[r0]                   ; 0800202C
@@ -3054,7 +3054,7 @@ ldrb  r0,[r4]                   ; 08002892  r0 = game state
 lsl   r0,r0,0x2                 ; 08002894
 add   r0,r0,r1                  ; 08002896
 ldr   r0,[r0]                   ; 08002898
-bl    Sub_bx_r0                 ; 0800289A  bx r0
+bl    Sub_bx_r0                 ; 0800289A
 ldrb  r0,[r4]                   ; 0800289E
 cmp   r0,0x1                    ; 080028A0
 bne   @@Code080028BA            ; 080028A2
@@ -3328,7 +3328,7 @@ ldrb  r0,[r0]                   ; 08002B26
 lsl   r0,r0,0x2                 ; 08002B28
 add   r0,r0,r1                  ; 08002B2A
 ldr   r0,[r0]                   ; 08002B2C  load game state code pointer from table at 08164044
-bl    Sub_bx_r0                 ; 08002B2E  bx r0
+bl    Sub_bx_r0                 ; 08002B2E
 @@Code08002B32:
 ldr   r0,=0x03007270            ; 08002B32
 ldr   r0,[r0,0x24]              ; 08002B34

@@ -2170,7 +2170,7 @@ ldrb  r0,[r0]                   ; 080055AC
 lsl   r0,r0,0x2                 ; 080055AE
 add   r0,r0,r1                  ; 080055B0
 ldr   r0,[r0]                   ; 080055B2
-bl    Sub_bx_r0                 ; 080055B4  bx r0
+bl    Sub_bx_r0                 ; 080055B4
 pop   {r0}                      ; 080055B8
 bx    r0                        ; 080055BA
 .pool                           ; 080055BC
@@ -2814,7 +2814,7 @@ ldrb  r0,[r0]                   ; 08005BB0
 lsl   r0,r0,0x2                 ; 08005BB2
 add   r0,r0,r1                  ; 08005BB4
 ldr   r0,[r0]                   ; 08005BB6
-bl    Sub_bx_r0                 ; 08005BB8  bx r0
+bl    Sub_bx_r0                 ; 08005BB8
 bl    Sub08004CE0               ; 08005BBC
 bl    Sub080041E0               ; 08005BC0
 bl    Sub08005AC0               ; 08005BC4
@@ -2856,7 +2856,7 @@ ldrb  r0,[r0]                   ; 08005C28
 lsl   r0,r0,0x2                 ; 08005C2A
 add   r0,r0,r1                  ; 08005C2C
 ldr   r0,[r0]                   ; 08005C2E
-bl    Sub_bx_r0                 ; 08005C30  bx r0
+bl    Sub_bx_r0                 ; 08005C30
 bl    Sub08004CE0               ; 08005C34
 bl    Sub080041E0               ; 08005C38
 bl    Sub08005AC0               ; 08005C3C
@@ -3792,7 +3792,7 @@ ldrb  r0,[r0]                   ; 08006520
 lsl   r0,r0,0x2                 ; 08006522
 add   r0,r0,r1                  ; 08006524
 ldr   r0,[r0]                   ; 08006526
-bl    Sub_bx_r0                 ; 08006528  bx r0
+bl    Sub_bx_r0                 ; 08006528
 pop   {r0}                      ; 0800652C
 bx    r0                        ; 0800652E
 .pool                           ; 08006530
@@ -4576,7 +4576,7 @@ ldrb  r0,[r0]                   ; 08006C82
 lsl   r0,r0,0x2                 ; 08006C84
 add   r0,r0,r1                  ; 08006C86
 ldr   r0,[r0]                   ; 08006C88
-bl    Sub_bx_r0                 ; 08006C8A  bx r0
+bl    Sub_bx_r0                 ; 08006C8A
 ldr   r2,[r4]                   ; 08006C8E
 cmp   r2,0x0                    ; 08006C90
 beq   @@Code08006CE8            ; 08006C92
@@ -5993,7 +5993,7 @@ ldrb  r0,[r1]                   ; 0800796A
 lsl   r0,r0,0x2                 ; 0800796C
 add   r0,r0,r2                  ; 0800796E
 ldr   r0,[r0]                   ; 08007970
-bl    Sub_bx_r0                 ; 08007972  bx r0
+bl    Sub_bx_r0                 ; 08007972
 ldr   r3,[r4]                   ; 08007976
 add   r0,r3,r7                  ; 08007978
 ldrb  r0,[r0]                   ; 0800797A
@@ -6560,15 +6560,15 @@ ldrh  r2,[r2]                   ; 08007E80
 ldr   r3,=0x47E8                ; 08007E82
 add   r0,r5,r3                  ; 08007E84
 strh  r2,[r0]                   ; 08007E86
-ldr   r2,=CodePtrs08164AAC      ; 08007E88  pointer table
+ldr   r2,=CodePtrs08164AAC      ; 08007E88
 ldr   r7,=0x0C82                ; 08007E8A
 add   r1,r1,r7                  ; 08007E8C  r0 = [03006D70]+C82 (03002E8E)
 ldrh  r0,[r1]                   ; 08007E8E
 lsl   r0,r0,0x2                 ; 08007E90
 add   r0,r0,r2                  ; 08007E92
 ldr   r0,[r0]                   ; 08007E94
-bl    Sub_bx_r0                 ; 08007E96  bx r0
-ldr   r1,=CodePtrs08164A64      ; 08007E9A  pointer table
+bl    Sub_bx_r0                 ; 08007E96
+ldr   r1,=CodePtrs08164A64      ; 08007E9A
 ldr   r0,[r6]                   ; 08007E9C
 ldr   r4,=0x0CBD                ; 08007E9E
 add   r0,r0,r4                  ; 08007EA0  r0 = [03006D70]+CBD (03002EC9)
@@ -6576,7 +6576,7 @@ ldrb  r0,[r0]                   ; 08007EA2
 lsl   r0,r0,0x2                 ; 08007EA4
 add   r0,r0,r1                  ; 08007EA6
 ldr   r0,[r0]                   ; 08007EA8
-bl    Sub_bx_r0                 ; 08007EAA  bx r0
+bl    Sub_bx_r0                 ; 08007EAA
 ldr   r0,[r6]                   ; 08007EAE
 cmp   r0,0x0                    ; 08007EB0
 beq   @@Code08007EF6            ; 08007EB2
@@ -8778,7 +8778,7 @@ ldrb  r0,[r0]                   ; 08009418
 lsl   r0,r0,0x2                 ; 0800941A
 add   r0,r0,r1                  ; 0800941C
 ldr   r0,[r0]                   ; 0800941E
-bl    Sub_bx_r0                 ; 08009420  bx r0
+bl    Sub_bx_r0                 ; 08009420
 pop   {r0}                      ; 08009424
 bx    r0                        ; 08009426
 .pool                           ; 08009428
@@ -9251,7 +9251,7 @@ ldrb  r0,[r0]                   ; 08009832
 lsl   r0,r0,0x2                 ; 08009834
 add   r0,r0,r1                  ; 08009836
 ldr   r0,[r0]                   ; 08009838
-bl    Sub_bx_r0                 ; 0800983A  bx r0
+bl    Sub_bx_r0                 ; 0800983A
 bl    Sub080095C8               ; 0800983E
 b     @@Code08009864            ; 08009842
 .pool                           ; 08009844
@@ -12564,7 +12564,7 @@ ldrh  r0,[r0]                   ; 0800B400
 lsl   r0,r0,0x2                 ; 0800B402
 add   r0,r0,r1                  ; 0800B404
 ldr   r0,[r0]                   ; 0800B406
-bl    Sub_bx_r0                 ; 0800B408  bx r0
+bl    Sub_bx_r0                 ; 0800B408
 pop   {r0}                      ; 0800B40C
 bx    r0                        ; 0800B40E
 .pool                           ; 0800B410
@@ -14324,7 +14324,7 @@ ldrb  r0,[r0]                   ; 0800C440
 lsl   r0,r0,0x2                 ; 0800C442
 add   r0,r0,r1                  ; 0800C444
 ldr   r0,[r0]                   ; 0800C446
-bl    Sub_bx_r0                 ; 0800C448  bx r0
+bl    Sub_bx_r0                 ; 0800C448
 bl    Sub0800B3F4               ; 0800C44C
 pop   {r0}                      ; 0800C450
 bx    r0                        ; 0800C452
@@ -14946,7 +14946,7 @@ ldrb  r0,[r0]                   ; 0800CA34
 lsl   r0,r0,0x2                 ; 0800CA36
 add   r0,r0,r1                  ; 0800CA38
 ldr   r0,[r0]                   ; 0800CA3A
-bl    Sub_bx_r0                 ; 0800CA3C  bx r0
+bl    Sub_bx_r0                 ; 0800CA3C
 ldr   r0,[r4]                   ; 0800CA40
 cmp   r0,0x0                    ; 0800CA42
 beq   @@Code0800CA50            ; 0800CA44
@@ -18168,7 +18168,7 @@ ldrb  r0,[r0]                   ; 0800E85C
 lsl   r0,r0,0x2                 ; 0800E85E
 add   r0,r0,r1                  ; 0800E860
 ldr   r0,[r0]                   ; 0800E862
-bl    Sub_bx_r0                 ; 0800E864  bx r0
+bl    Sub_bx_r0                 ; 0800E864
 ldr   r0,[r4]                   ; 0800E868
 cmp   r0,0x0                    ; 0800E86A
 beq   @@Code0800E872            ; 0800E86C
@@ -18733,7 +18733,7 @@ ldrb  r0,[r0]                   ; 0800EDD8
 lsl   r0,r0,0x2                 ; 0800EDDA
 add   r0,r0,r1                  ; 0800EDDC
 ldr   r0,[r0]                   ; 0800EDDE
-bl    Sub_bx_r0                 ; 0800EDE0  bx r0
+bl    Sub_bx_r0                 ; 0800EDE0
 ldr   r0,[r4]                   ; 0800EDE4
 cmp   r0,0x0                    ; 0800EDE6
 beq   @@Code0800EDF4            ; 0800EDE8
@@ -20151,7 +20151,7 @@ ldrb  r0,[r0]                   ; 0800FAE4
 lsl   r0,r0,0x2                 ; 0800FAE6
 add   r0,r0,r1                  ; 0800FAE8
 ldr   r0,[r0]                   ; 0800FAEA
-bl    Sub_bx_r0                 ; 0800FAEC  bx r0
+bl    Sub_bx_r0                 ; 0800FAEC
 pop   {r0}                      ; 0800FAF0
 bx    r0                        ; 0800FAF2
 .pool                           ; 0800FAF4
@@ -21827,7 +21827,7 @@ ldrb  r0,[r0]                   ; 08010A34
 lsl   r0,r0,0x2                 ; 08010A36
 add   r0,r0,r1                  ; 08010A38
 ldr   r0,[r0]                   ; 08010A3A
-bl    Sub_bx_r0                 ; 08010A3C  bx r0
+bl    Sub_bx_r0                 ; 08010A3C
 pop   {r0}                      ; 08010A40
 bx    r0                        ; 08010A42
 .pool                           ; 08010A44
@@ -22326,7 +22326,7 @@ ldrb  r0,[r0]                   ; 08010EE4
 lsl   r0,r0,0x2                 ; 08010EE6
 add   r0,r0,r1                  ; 08010EE8
 ldr   r0,[r0]                   ; 08010EEA
-bl    Sub_bx_r0                 ; 08010EEC  bx r0
+bl    Sub_bx_r0                 ; 08010EEC
 pop   {r0}                      ; 08010EF0
 bx    r0                        ; 08010EF2
 .pool                           ; 08010EF4
@@ -23635,7 +23635,7 @@ ldrb  r0,[r0]                   ; 08011AF0
 lsl   r0,r0,0x2                 ; 08011AF2
 add   r0,r0,r1                  ; 08011AF4
 ldr   r0,[r0]                   ; 08011AF6
-bl    Sub_bx_r0                 ; 08011AF8  bx r0
+bl    Sub_bx_r0                 ; 08011AF8
 ldr   r4,[r4]                   ; 08011AFC
 cmp   r4,0x0                    ; 08011AFE
 beq   @@Code08011BDC            ; 08011B00
@@ -26278,7 +26278,7 @@ ldrb  r0,[r0]                   ; 080133FC
 lsl   r0,r0,0x2                 ; 080133FE
 add   r0,r0,r1                  ; 08013400
 ldr   r0,[r0]                   ; 08013402
-bl    Sub_bx_r0                 ; 08013404  bx r0
+bl    Sub_bx_r0                 ; 08013404
 pop   {r0}                      ; 08013408
 bx    r0                        ; 0801340A
 .pool                           ; 0801340C

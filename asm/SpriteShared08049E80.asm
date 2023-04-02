@@ -40,7 +40,7 @@ lsl   r0,r0,0x2                 ; 08049EC8
 add   r0,r0,r6                  ; 08049ECA
 ldr   r1,[r0]                   ; 08049ECC
 mov   r0,r4                     ; 08049ECE
-bl    Sub_bx_r1                 ; 08049ED0  bx r1
+bl    Sub_bx_r1                 ; 08049ED0
 @@Code08049ED4:
 ldr   r0,=0x03007240            ; 08049ED4  Normal gameplay IWRAM (0300220C)
 ldr   r0,[r0]                   ; 08049ED6
@@ -65,7 +65,7 @@ lsl   r0,r0,0x2                 ; 08049F1E
 add   r0,r0,r6                  ; 08049F20
 ldr   r1,[r0]                   ; 08049F22
 mov   r0,r4                     ; 08049F24
-bl    Sub_bx_r1                 ; 08049F26  bx r1
+bl    Sub_bx_r1                 ; 08049F26
 @@Code08049F2A:
 sub   r4,0xB0                   ; 08049F2A
 cmp   r4,r5                     ; 08049F2C
@@ -2913,7 +2913,7 @@ lsl   r1,r2,0x2                 ; 0804B6C8
 add   r1,r1,r0                  ; 0804B6CA
 ldr   r1,[r1]                   ; 0804B6CC
 mov   r0,r5                     ; 0804B6CE
-bl    Sub_bx_r1                 ; 0804B6D0  bx r1
+bl    Sub_bx_r1                 ; 0804B6D0
 pop   {r4-r6}                   ; 0804B6D4
 pop   {r0}                      ; 0804B6D6
 bx    r0                        ; 0804B6D8
@@ -6661,7 +6661,7 @@ lsl   r0,r0,0x2                 ; 0804D59E
 add   r0,r0,r2                  ; 0804D5A0
 ldr   r1,[r0]                   ; 0804D5A2
 mov   r0,r3                     ; 0804D5A4
-bl    Sub_bx_r1                 ; 0804D5A6  bx r1
+bl    Sub_bx_r1                 ; 0804D5A6
 @@Code0804D5AA:
 pop   {r4-r6}                   ; 0804D5AA
 pop   {r0}                      ; 0804D5AC
@@ -7066,7 +7066,7 @@ ldrh  r1,[r0,0x32]              ; 0804D8FC
 lsl   r1,r1,0x2                 ; 0804D8FE
 add   r1,r1,r2                  ; 0804D900
 ldr   r1,[r1]                   ; 0804D902
-bl    Sub_bx_r1                 ; 0804D904  bx r1
+bl    Sub_bx_r1                 ; 0804D904
 pop   {r0}                      ; 0804D908
 bx    r0                        ; 0804D90A
 .pool                           ; 0804D90C
@@ -7079,7 +7079,7 @@ ldrh  r1,[r0,0x32]              ; 0804D914  sprite ID
 lsl   r1,r1,0x2                 ; 0804D916
 add   r1,r1,r2                  ; 0804D918  index with sprite ID
 ldr   r1,[r1]                   ; 0804D91A
-bl    Sub_bx_r1                 ; 0804D91C  bx r1
+bl    Sub_bx_r1                 ; 0804D91C
 pop   {r0}                      ; 0804D920
 bx    r0                        ; 0804D922
 .pool                           ; 0804D924
@@ -8491,7 +8491,7 @@ lsl   r0,r0,0x2                 ; 0804E4E8
 add   r0,r0,r1                  ; 0804E4EA
 ldr   r1,[r0]                   ; 0804E4EC
 mov   r0,r4                     ; 0804E4EE
-bl    Sub_bx_r1                 ; 0804E4F0  bx r1
+bl    Sub_bx_r1                 ; 0804E4F0
 pop   {r4-r5}                   ; 0804E4F4
 pop   {r0}                      ; 0804E4F6
 bx    r0                        ; 0804E4F8
@@ -8528,7 +8528,7 @@ ldrh  r1,[r0,0x32]              ; 0804E544
 lsl   r1,r1,0x2                 ; 0804E546
 add   r1,r1,r2                  ; 0804E548
 ldr   r1,[r1]                   ; 0804E54A
-bl    Sub_bx_r1                 ; 0804E54C  bx r1
+bl    Sub_bx_r1                 ; 0804E54C
 pop   {r0}                      ; 0804E550
 bx    r0                        ; 0804E552
 .pool                           ; 0804E554
@@ -8833,7 +8833,7 @@ lsl   r0,r0,0x2                 ; 0804E7D6
 add   r0,r12                    ; 0804E7D8
 ldr   r1,[r0]                   ; 0804E7DA
 mov   r0,r4                     ; 0804E7DC
-bl    Sub_bx_r1                 ; 0804E7DE  bx r1
+bl    Sub_bx_r1                 ; 0804E7DE
 mov   r0,0xFF                   ; 0804E7E2
 strh  r0,[r4,0x2]               ; 0804E7E4
 b     @@Code0804E820            ; 0804E7E6
@@ -8899,7 +8899,7 @@ lsl   r0,r0,0x2                 ; 0804E87C
 add   r0,r0,r1                  ; 0804E87E
 ldr   r1,[r0]                   ; 0804E880
 mov   r0,r3                     ; 0804E882
-bl    Sub_bx_r1                 ; 0804E884  bx r1
+bl    Sub_bx_r1                 ; 0804E884
 mov   r0,0x0                    ; 0804E888
 @@Code0804E88A:
 pop   {r4-r6}                   ; 0804E88A
@@ -9378,7 +9378,7 @@ lsl   r0,r0,0x2                 ; 0804EC74
 add   r0,r0,r4                  ; 0804EC76
 ldr   r1,[r0]                   ; 0804EC78
 mov   r0,r3                     ; 0804EC7A
-bl    Sub_bx_r1                 ; 0804EC7C  bx r1
+bl    Sub_bx_r1                 ; 0804EC7C
 pop   {r4}                      ; 0804EC80
 pop   {r0}                      ; 0804EC82
 bx    r0                        ; 0804EC84
@@ -9410,7 +9410,7 @@ sub   r1,0x1                    ; 0804ECCA
 lsl   r1,r1,0x2                 ; 0804ECCC
 add   r1,r1,r2                  ; 0804ECCE
 ldr   r1,[r1]                   ; 0804ECD0
-bl    Sub_bx_r1                 ; 0804ECD2  bx r1
+bl    Sub_bx_r1                 ; 0804ECD2
 pop   {r0}                      ; 0804ECD6
 bx    r0                        ; 0804ECD8
 .pool                           ; 0804ECDA
@@ -9744,7 +9744,7 @@ lsl   r0,r0,0x2                 ; 0804EF94
 add   r0,r0,r6                  ; 0804EF96
 ldr   r1,[r0]                   ; 0804EF98
 mov   r0,r4                     ; 0804EF9A
-bl    Sub_bx_r1                 ; 0804EF9C  bx r1
+bl    Sub_bx_r1                 ; 0804EF9C
 @@Code0804EFA0:
 sub   r4,0x8                    ; 0804EFA0
 cmp   r4,r5                     ; 0804EFA2

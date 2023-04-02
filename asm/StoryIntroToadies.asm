@@ -114,7 +114,7 @@ ldr   r2,=0x1B5C                ; 0802F376
 add   r4,r5,r2                  ; 0802F378  [0300637C]+1B5C (03003D68)
 ldrh  r2,[r4]                   ; 0802F37A  r2 = Y position
 ldr   r3,[r3]                   ; 0802F37C  dynamic code pointer
-bl    Sub_bx_r3                 ; 0802F37E  bx r3
+bl    Sub_bx_r3                 ; 0802F37E
 ldrh  r2,[r6]                   ; 0802F382
 ldr   r1,=Data082F62CC          ; 0802F384
 ldr   r0,[r5]                   ; 0802F386
@@ -369,7 +369,7 @@ lsl   r1,r1,0x2                 ; 0802F578
 add   r1,r1,r0                  ; 0802F57A  index with r1 (command ID for 00-03, 04 for command 31, 05 for character)
 ldr   r1,[r1]                   ; 0802F57C
 mov   r0,r4                     ; 0802F57E
-bl    Sub_bx_r1                 ; 0802F580  bx r1
+bl    Sub_bx_r1                 ; 0802F580
 b     @@Code0802F534            ; 0802F584
 .pool                           ; 0802F586
 
@@ -3749,7 +3749,7 @@ ldrh  r2,[r2]                   ; 080313B8
 lsl   r2,r2,0x2                 ; 080313BA
 add   r2,r2,r3                  ; 080313BC
 ldr   r2,[r2]                   ; 080313BE
-bl    Sub_bx_r2                 ; 080313C0  bx r2
+bl    Sub_bx_r2                 ; 080313C0
 pop   {r0}                      ; 080313C4
 bx    r0                        ; 080313C6
 .pool                           ; 080313C8
@@ -4754,7 +4754,7 @@ add   r0,r0,r1                  ; 08031B8A
 ldr   r2,[r0]                   ; 08031B8C
 mov   r0,r5                     ; 08031B8E
 mov   r1,r4                     ; 08031B90
-bl    Sub_bx_r2                 ; 08031B92  bx r2
+bl    Sub_bx_r2                 ; 08031B92
 mov   r0,r5                     ; 08031B96
 mov   r1,r4                     ; 08031B98
 bl    Sub08031B54               ; 08031B9A
@@ -5307,7 +5307,7 @@ ldrh  r2,[r2]                   ; 08031FE2
 lsl   r2,r2,0x2                 ; 08031FE4
 add   r2,r2,r3                  ; 08031FE6
 ldr   r2,[r2]                   ; 08031FE8
-bl    Sub_bx_r2                 ; 08031FEA  bx r2
+bl    Sub_bx_r2                 ; 08031FEA
 mov   r0,0x7E                   ; 08031FEE
 add   r0,r0,r4                  ; 08031FF0
 mov   r12,r0                    ; 08031FF2
@@ -5410,7 +5410,7 @@ ldrh  r2,[r2]                   ; 080320B8
 lsl   r2,r2,0x2                 ; 080320BA
 add   r2,r2,r3                  ; 080320BC
 ldr   r2,[r2]                   ; 080320BE
-bl    Sub_bx_r2                 ; 080320C0  bx r2
+bl    Sub_bx_r2                 ; 080320C0
 add   r4,0x9C                   ; 080320C4
 ldrb  r1,[r4]                   ; 080320C6
 mov   r0,0xF0                   ; 080320C8
@@ -5792,7 +5792,7 @@ ldrh  r2,[r2]                   ; 080323AC
 lsl   r2,r2,0x2                 ; 080323AE
 add   r2,r2,r3                  ; 080323B0
 ldr   r2,[r2]                   ; 080323B2
-bl    Sub_bx_r2                 ; 080323B4  bx r2
+bl    Sub_bx_r2                 ; 080323B4
 pop   {r0}                      ; 080323B8
 bx    r0                        ; 080323BA
 .pool                           ; 080323BC
@@ -6400,7 +6400,7 @@ add   r0,r0,r1                  ; 08032850
 ldr   r2,[r0]                   ; 08032852
 mov   r0,r5                     ; 08032854
 mov   r1,r6                     ; 08032856
-bl    Sub_bx_r2                 ; 08032858  bx r2
+bl    Sub_bx_r2                 ; 08032858
 mov   r0,r5                     ; 0803285C
 add   r0,0x8                    ; 0803285E
 add   r0,r0,r4                  ; 08032860
@@ -6822,7 +6822,7 @@ ldrh  r2,[r2,0x3A]              ; 08032B7A
 lsl   r2,r2,0x2                 ; 08032B7C
 add   r2,r2,r3                  ; 08032B7E
 ldr   r2,[r2]                   ; 08032B80
-bl    Sub_bx_r2                 ; 08032B82  bx r2
+bl    Sub_bx_r2                 ; 08032B82
 pop   {r0}                      ; 08032B86
 bx    r0                        ; 08032B88
 .pool                           ; 08032B8A
@@ -6839,7 +6839,7 @@ ldrh  r2,[r2,0x3A]              ; 08032B9E
 lsl   r2,r2,0x2                 ; 08032BA0
 add   r2,r2,r3                  ; 08032BA2
 ldr   r2,[r2]                   ; 08032BA4
-bl    Sub_bx_r2                 ; 08032BA6  bx r2
+bl    Sub_bx_r2                 ; 08032BA6
 pop   {r0}                      ; 08032BAA
 bx    r0                        ; 08032BAC
 .pool                           ; 08032BAE
@@ -7079,7 +7079,7 @@ ldr   r1,[r0]                   ; 08032D88
 ldr   r3,[r7]                   ; 08032D8A
 mov   r0,r5                     ; 08032D8C
 mov   r2,r4                     ; 08032D8E
-bl    Sub_bx_r3                 ; 08032D90  bx r3
+bl    Sub_bx_r3                 ; 08032D90
 @@Code08032D94:
 sub   r0,r4,0x1                 ; 08032D94
 lsl   r0,r0,0x10                ; 08032D96
@@ -7092,7 +7092,7 @@ lsl   r1,r1,0x7                 ; 08032DA2
 add   r0,r0,r1                  ; 08032DA4
 ldr   r1,[r0]                   ; 08032DA6
 mov   r0,r5                     ; 08032DA8
-bl    Sub_bx_r1                 ; 08032DAA  bx r1
+bl    Sub_bx_r1                 ; 08032DAA
 pop   {r4-r7}                   ; 08032DAE
 pop   {r0}                      ; 08032DB0
 bx    r0                        ; 08032DB2
@@ -7538,7 +7538,7 @@ lsl   r0,r0,0x2                 ; 080331CA
 add   r0,r0,r1                  ; 080331CC
 ldr   r1,[r0]                   ; 080331CE
 mov   r0,r4                     ; 080331D0
-bl    Sub_bx_r1                 ; 080331D2  bx r1
+bl    Sub_bx_r1                 ; 080331D2
 b     @@Code080331E8            ; 080331D6
 .pool                           ; 080331D8
 

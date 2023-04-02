@@ -857,7 +857,7 @@ lsr   r0,r0,0xE                 ; 080E2A5E
 add   r0,r0,r2                  ; 080E2A60
 ldr   r2,[r0]                   ; 080E2A62
 mov   r0,r1                     ; 080E2A64
-bl    Sub_bx_r2                 ; 080E2A66  bx r2
+bl    Sub_bx_r2                 ; 080E2A66
 pop   {r0}                      ; 080E2A6A
 bx    r0                        ; 080E2A6C
 .pool                           ; 080E2A6E
