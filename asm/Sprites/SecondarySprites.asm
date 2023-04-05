@@ -226,7 +226,7 @@ pop   {r1}                      ; 08047AF8
 bx    r1                        ; 08047AFA
 .pool                           ; 08047AFC
 
-Sub08047B04:
+SpawnSecondarySprite:
 push  {r4-r7,lr}                ; 08047B04
 mov   r7,r10                    ; 08047B06
 mov   r6,r9                     ; 08047B08
@@ -327,8 +327,8 @@ add   r2,0xA1                   ; 08047BBC
 mov   r0,0xFF                   ; 08047BBE
 strb  r0,[r2]                   ; 08047BC0
 strh  r6,[r3,0x32]              ; 08047BC2
-ldr   r4,=0xFFFFFE3C            ; 08047BC4
-add   r0,r6,r4                  ; 08047BC6
+ldr   r4,=0xFFFFFE3C            ; 08047BC4  -1C4
+add   r0,r6,r4                  ; 08047BC6  sprite ID -1C4
 lsl   r0,r0,0x10                ; 08047BC8
 lsr   r6,r0,0x10                ; 08047BCA
 lsl   r0,r6,0x1                 ; 08047BCC
@@ -1599,7 +1599,7 @@ cmp   r0,0x1                    ; 0804863C
 bne   @@Code0804866A            ; 0804863E
 mov   r0,0xF7                   ; 08048640
 lsl   r0,r0,0x1                 ; 08048642
-bl    Sub08047B04               ; 08048644
+bl    SpawnSecondarySprite      ; 08048644
 lsl   r0,r0,0x18                ; 08048648
 lsr   r0,r0,0x18                ; 0804864A
 mov   r1,0xB0                   ; 0804864C
@@ -1820,7 +1820,7 @@ ldrh  r0,[r0]                   ; 08048822
 cmp   r0,0x1                    ; 08048824
 bne   @@Code0804885E            ; 08048826
 ldr   r0,=0x01D7                ; 08048828
-bl    Sub08047B04               ; 0804882A
+bl    SpawnSecondarySprite      ; 0804882A
 ldr   r2,=0x03007240            ; 0804882E  Normal gameplay IWRAM (0300220C)
 lsl   r0,r0,0x18                ; 08048830
 lsr   r0,r0,0x18                ; 08048832
@@ -3727,7 +3727,7 @@ Sub080496CC:
 push  {r4,lr}                   ; 080496CC
 mov   r4,r0                     ; 080496CE
 ldr   r0,=0x0237                ; 080496D0
-bl    Sub08047B04               ; 080496D2
+bl    SpawnSecondarySprite      ; 080496D2
 lsl   r0,r0,0x18                ; 080496D6
 lsr   r0,r0,0x18                ; 080496D8
 ldr   r2,=0x03007240            ; 080496DA  Normal gameplay IWRAM (0300220C)
@@ -3898,7 +3898,7 @@ add   r0,0x1                    ; 08049832
 strh  r0,[r1]                   ; 08049834
 mov   r0,0x8E                   ; 08049836
 lsl   r0,r0,0x2                 ; 08049838
-bl    Sub08047B04               ; 0804983A
+bl    SpawnSecondarySprite      ; 0804983A
 lsl   r0,r0,0x18                ; 0804983E
 lsr   r0,r0,0x18                ; 08049840
 ldr   r2,=0x03007240            ; 08049842  Normal gameplay IWRAM (0300220C)

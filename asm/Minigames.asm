@@ -14682,7 +14682,7 @@ and   r0,r1                     ; 080F1A5A
 cmp   r0,0x0                    ; 080F1A5C
 bne   @@Code080F1AA2            ; 080F1A5E
 ldr   r0,=0x01E9                ; 080F1A60
-bl    Sub08047B04               ; 080F1A62
+bl    SpawnSecondarySprite      ; 080F1A62
 lsl   r0,r0,0x18                ; 080F1A66
 lsr   r0,r0,0x18                ; 080F1A68
 ldr   r2,=0x03007240            ; 080F1A6A  Normal gameplay IWRAM (0300220C)

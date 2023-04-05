@@ -28,7 +28,7 @@ mov   r0,0x10                   ; 080DC54A
 strh  r0,[r4]                   ; 080DC54C
 mov   r0,0xE4                   ; 080DC54E
 lsl   r0,r0,0x1                 ; 080DC550
-bl    Sub08047B04               ; 080DC552
+bl    SpawnSecondarySprite      ; 080DC552
 lsl   r0,r0,0x18                ; 080DC556
 lsr   r0,r0,0x18                ; 080DC558
 mov   r1,0xB0                   ; 080DC55A
@@ -475,7 +475,7 @@ strh  r0,[r1]                   ; 080DC8BE
 mov   r0,0x9C                   ; 080DC8C0
 bl    PlayYISound               ; 080DC8C2
 ldr   r0,=0x021E                ; 080DC8C6
-bl    Sub08047B04               ; 080DC8C8
+bl    SpawnSecondarySprite      ; 080DC8C8
 lsl   r0,r0,0x18                ; 080DC8CC
 lsr   r0,r0,0x18                ; 080DC8CE
 mov   r1,0xB0                   ; 080DC8D0
@@ -669,7 +669,7 @@ b     @@Code080DCABA            ; 080DCA5A
 @@Code080DCA78:
 mov   r0,0x85                   ; 080DCA78
 lsl   r0,r0,0x2                 ; 080DCA7A
-bl    Sub08047B04               ; 080DCA7C
+bl    SpawnSecondarySprite      ; 080DCA7C
 lsl   r0,r0,0x18                ; 080DCA80
 lsr   r0,r0,0x18                ; 080DCA82
 mov   r1,0xB0                   ; 080DCA84
@@ -713,7 +713,7 @@ Sub080DCAD4:
 push  {r4,lr}                   ; 080DCAD4
 ldr   r4,=0x030069F4            ; 080DCAD6
 ldr   r0,=0x0216                ; 080DCAD8
-bl    Sub08047B04               ; 080DCADA
+bl    SpawnSecondarySprite      ; 080DCADA
 lsl   r0,r0,0x18                ; 080DCADE
 lsr   r0,r0,0x18                ; 080DCAE0
 ldr   r2,=0x03007240            ; 080DCAE2  Normal gameplay IWRAM (0300220C)
@@ -882,7 +882,7 @@ strh  r0,[r2,0x8]               ; 080DCC50
 ldrh  r0,[r3,0xC]               ; 080DCC52
 strh  r0,[r2,0xC]               ; 080DCC54
 ldr   r0,=0x0215                ; 080DCC56
-bl    Sub08047B04               ; 080DCC58
+bl    SpawnSecondarySprite      ; 080DCC58
 lsl   r0,r0,0x18                ; 080DCC5C
 lsr   r0,r0,0x18                ; 080DCC5E
 mov   r1,0xB0                   ; 080DCC60
@@ -1124,7 +1124,7 @@ strh  r0,[r6,0x8]               ; 080DCE66
 ldrh  r0,[r7,0xC]               ; 080DCE68
 strh  r0,[r6,0xC]               ; 080DCE6A
 ldr   r0,=0x01CD                ; 080DCE6C
-bl    Sub08047B04               ; 080DCE6E
+bl    SpawnSecondarySprite      ; 080DCE6E
 lsl   r0,r0,0x18                ; 080DCE72
 lsr   r1,r0,0x18                ; 080DCE74
 mov   r0,0xB0                   ; 080DCE76
@@ -1349,7 +1349,7 @@ b     @@Code080DD166            ; 080DD034
 @@Code080DD036:
 mov   r0,0xE3                   ; 080DD036
 lsl   r0,r0,0x1                 ; 080DD038
-bl    Sub08047B04               ; 080DD03A
+bl    SpawnSecondarySprite      ; 080DD03A
 lsl   r0,r0,0x18                ; 080DD03E
 lsr   r1,r0,0x18                ; 080DD040
 mov   r0,0xB0                   ; 080DD042
@@ -1403,7 +1403,7 @@ mov   r0,0x14                   ; 080DD0B2
 bl    PlayYISound               ; 080DD0B4
 mov   r0,0xE2                   ; 080DD0B8
 lsl   r0,r0,0x1                 ; 080DD0BA
-bl    Sub08047B04               ; 080DD0BC
+bl    SpawnSecondarySprite      ; 080DD0BC
 lsl   r0,r0,0x18                ; 080DD0C0
 lsr   r1,r0,0x18                ; 080DD0C2
 mov   r0,0xB0                   ; 080DD0C4
@@ -1434,7 +1434,7 @@ b     @@Code080DD164            ; 080DD0F2
 
 @@Code080DD100:
 ldr   r0,=0x01D1                ; 080DD100
-bl    Sub08047B04               ; 080DD102
+bl    SpawnSecondarySprite      ; 080DD102
 lsl   r0,r0,0x18                ; 080DD106
 lsr   r1,r0,0x18                ; 080DD108
 mov   r0,0xB0                   ; 080DD10A
@@ -1932,7 +1932,7 @@ ldr   r4,[r5]                   ; 080DD4CA
 ldr   r0,=0x2A32                ; 080DD4CC
 add   r4,r4,r0                  ; 080DD4CE
 ldr   r0,=0x020B                ; 080DD4D0
-bl    Sub08047B04               ; 080DD4D2
+bl    SpawnSecondarySprite      ; 080DD4D2
 lsl   r0,r0,0x18                ; 080DD4D6
 lsr   r0,r0,0x18                ; 080DD4D8
 mov   r1,0xB0                   ; 080DD4DA
@@ -4085,7 +4085,7 @@ sub   r0,0x1                    ; 080DE686
 cmp   r0,0x0                    ; 080DE688
 bge   @@Code080DE73C            ; 080DE68A
 ldr   r0,=0x020B                ; 080DE68C
-bl    Sub08047B04               ; 080DE68E
+bl    SpawnSecondarySprite      ; 080DE68E
 lsl   r0,r0,0x18                ; 080DE692
 lsr   r0,r0,0x18                ; 080DE694
 ldr   r2,=0x03007240            ; 080DE696  Normal gameplay IWRAM (0300220C)
@@ -6492,7 +6492,7 @@ ldr   r4,[r5,0x4]               ; 080DFA76
 add   r4,r4,r0                  ; 080DFA78
 mov   r0,0xFD                   ; 080DFA7A
 lsl   r0,r0,0x1                 ; 080DFA7C
-bl    Sub08047B04               ; 080DFA7E
+bl    SpawnSecondarySprite      ; 080DFA7E
 lsl   r0,r0,0x18                ; 080DFA82
 lsr   r0,r0,0x18                ; 080DFA84
 mov   r1,0xB0                   ; 080DFA86

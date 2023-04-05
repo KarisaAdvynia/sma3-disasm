@@ -8815,7 +8815,7 @@ ldrh  r2,[r0]                   ; 0801823C
 mov   r0,r4                     ; 0801823E
 mov   r1,r5                     ; 08018240
 bl    Sub08017DC4               ; 08018242
-bl    Sub080E25CC               ; 08018246
+bl    TileInteract_RedCoin      ; 08018246
 @@Code0801824A:
 ldrh  r1,[r4,0x6]               ; 0801824A
 mov   r0,r5                     ; 0801824C

@@ -373,8 +373,8 @@ pop   {r0}                      ; 080E25B8
 bx    r0                        ; 080E25BA
 .pool                           ; 080E25BC
 
-Sub080E25CC:
-; tile 6001 (red coin) interaction code
+TileInteract_RedCoin:
+; tile 6001 (red coin) and A400 (green coin: unused discolored red coin) interaction code
 push  {r4,lr}                   ; 080E25CC
 ldr   r3,=0x03002200            ; 080E25CE
 ldr   r0,=0x48D6                ; 080E25D0
@@ -456,14 +456,14 @@ lsl   r1,r1,0x7                 ; 080E2680
 add   r0,r4,r1                  ; 080E2682
 ldrh  r1,[r0]                   ; 080E2684
 mov   r0,0xA4                   ; 080E2686
-lsl   r0,r0,0x8                 ; 080E2688
+lsl   r0,r0,0x8                 ; 080E2688  A400: green coin that acts like a red coin
 cmp   r1,r0                     ; 080E268A
-beq   @@Code080E2694            ; 080E268C
-ldr   r0,=0x6001                ; 080E268E
+beq   @@RedCoin                 ; 080E268C
+ldr   r0,=0x6001                ; 080E268E  6001: red coin tile
 cmp   r1,r0                     ; 080E2690
 bne   @@Code080E26BC            ; 080E2692
-@@Code080E2694:
-bl    Sub080E25CC               ; 080E2694
+@@RedCoin:
+bl    TileInteract_RedCoin      ; 080E2694
 b     @@Code080E26DA            ; 080E2698
 .pool                           ; 080E269A
 
@@ -479,12 +479,12 @@ sub   r0,r0,r1                  ; 080E26CC
 ldr   r3,=0x4058                ; 080E26CE
 add   r1,r4,r3                  ; 080E26D0
 strh  r0,[r1]                   ; 080E26D2
-mov   r0,0x6B                   ; 080E26D4
+mov   r0,0x6B                   ; 080E26D4  6B: collect coin
 bl    PlayYISound               ; 080E26D6
 @@Code080E26DA:
 mov   r0,0xF7                   ; 080E26DA
-lsl   r0,r0,0x1                 ; 080E26DC
-bl    Sub08047B04               ; 080E26DE
+lsl   r0,r0,0x1                 ; 080E26DC  1EE: coin collection sparkles
+bl    SpawnSecondarySprite      ; 080E26DE
 lsl   r0,r0,0x18                ; 080E26E2
 lsr   r0,r0,0x18                ; 080E26E4
 ldr   r2,=0x03007240            ; 080E26E6  Normal gameplay IWRAM (0300220C)

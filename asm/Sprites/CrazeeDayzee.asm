@@ -135,7 +135,7 @@ push  {r4,lr}                   ; 0804FF18
 mov   r4,r0                     ; 0804FF1A
 mov   r0,0x87                   ; 0804FF1C
 lsl   r0,r0,0x2                 ; 0804FF1E
-bl    Sub08047B04               ; 0804FF20
+bl    SpawnSecondarySprite      ; 0804FF20
 lsl   r0,r0,0x18                ; 0804FF24
 lsr   r0,r0,0x18                ; 0804FF26
 ldr   r2,=0x03007240            ; 0804FF28  Normal gameplay IWRAM (0300220C)
@@ -557,7 +557,7 @@ push  {r4,lr}                   ; 08050290
 mov   r4,r0                     ; 08050292
 lsl   r0,r1,0x10                ; 08050294
 lsr   r0,r0,0x10                ; 08050296
-bl    Sub08047B04               ; 08050298
+bl    SpawnSecondarySprite      ; 08050298
 lsl   r0,r0,0x18                ; 0805029C
 lsr   r0,r0,0x18                ; 0805029E
 ldr   r3,=0x03007240            ; 080502A0  Normal gameplay IWRAM (0300220C)

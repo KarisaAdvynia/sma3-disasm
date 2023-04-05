@@ -229,7 +229,7 @@ Sub080E0058:
 push  {r4,lr}                   ; 080E0058
 mov   r4,r0                     ; 080E005A
 ldr   r0,=0x01EB                ; 080E005C
-bl    Sub08047B04               ; 080E005E
+bl    SpawnSecondarySprite      ; 080E005E
 lsl   r0,r0,0x18                ; 080E0062
 lsr   r0,r0,0x18                ; 080E0064
 ldr   r2,=0x03007240            ; 080E0066  Normal gameplay IWRAM (0300220C)

@@ -573,7 +573,8 @@ Sub_bx_r0:
 bx    r0                        ; 0812FB38
 nop                             ; 0812FB3A
 
-Sub_bx_r1:bx    r1              ; 0812FB3C
+Sub_bx_r1:
+bx    r1                        ; 0812FB3C
 nop                             ; 0812FB3E
 
 Sub_bx_r2:
@@ -607,7 +608,8 @@ Sub_bx_r9:
 bx    r9                        ; 0812FB5C
 nop                             ; 0812FB5E
 
-Sub_bx_r10:bx    r10            ; 0812FB60
+Sub_bx_r10:
+bx    r10                       ; 0812FB60
 nop                             ; 0812FB62
 
 bx    r11                       ; 0812FB64

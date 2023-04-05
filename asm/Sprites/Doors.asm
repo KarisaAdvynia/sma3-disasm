@@ -251,7 +251,7 @@ Sub080D56DC:
 push  {r4,lr}                   ; 080D56DC
 mov   r4,r0                     ; 080D56DE
 ldr   r0,=0x01D7                ; 080D56E0
-bl    Sub08047B04               ; 080D56E2
+bl    SpawnSecondarySprite      ; 080D56E2
 lsl   r0,r0,0x18                ; 080D56E6
 lsr   r0,r0,0x18                ; 080D56E8
 ldr   r2,=0x03007240            ; 080D56EA  Normal gameplay IWRAM (0300220C)

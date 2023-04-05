@@ -7094,7 +7094,7 @@ push  {r4,lr}                   ; 08038C7C
 ldr   r4,=0x030069F4            ; 08038C7E
 mov   r0,0xF6                   ; 08038C80
 lsl   r0,r0,0x1                 ; 08038C82
-bl    Sub08047B04               ; 08038C84
+bl    SpawnSecondarySprite      ; 08038C84
 lsl   r0,r0,0x18                ; 08038C88
 lsr   r0,r0,0x18                ; 08038C8A
 ldr   r2,=0x03007240            ; 08038C8C  Normal gameplay IWRAM (0300220C)
@@ -9788,7 +9788,7 @@ mov   r0,0x14                   ; 0803A20A
 bl    PlayYISound               ; 0803A20C
 mov   r0,0xE2                   ; 0803A210
 lsl   r0,r0,0x1                 ; 0803A212
-bl    Sub08047B04               ; 0803A214
+bl    SpawnSecondarySprite      ; 0803A214
 lsl   r0,r0,0x18                ; 0803A218
 lsr   r0,r0,0x18                ; 0803A21A
 ldr   r2,=0x03007240            ; 0803A21C  Normal gameplay IWRAM (0300220C)
@@ -9872,7 +9872,7 @@ and   r2,r0                     ; 0803A2CC
 cmp   r2,0x0                    ; 0803A2CE
 bne   @@Code0803A372            ; 0803A2D0
 ldr   r0,=0x01C5                ; 0803A2D2
-bl    Sub08047B04               ; 0803A2D4
+bl    SpawnSecondarySprite      ; 0803A2D4
 lsl   r0,r0,0x18                ; 0803A2D8
 lsr   r0,r0,0x18                ; 0803A2DA
 ldr   r2,=0x03007240            ; 0803A2DC  Normal gameplay IWRAM (0300220C)
@@ -9964,7 +9964,7 @@ cmp   r0,0x0                    ; 0803A3BE
 bne   @@Code0803A43C            ; 0803A3C0
 mov   r0,0xE3                   ; 0803A3C2
 lsl   r0,r0,0x1                 ; 0803A3C4
-bl    Sub08047B04               ; 0803A3C6
+bl    SpawnSecondarySprite      ; 0803A3C6
 lsl   r0,r0,0x18                ; 0803A3CA
 lsr   r0,r0,0x18                ; 0803A3CC
 ldr   r2,=0x03007240            ; 0803A3CE  Normal gameplay IWRAM (0300220C)
@@ -10539,7 +10539,7 @@ bx    r0                        ; 0803A888
 Sub0803A88C:
 push  {r4-r5,lr}                ; 0803A88C
 ldr   r0,=0x01E7                ; 0803A88E
-bl    Sub08047B04               ; 0803A890
+bl    SpawnSecondarySprite      ; 0803A890
 lsl   r0,r0,0x18                ; 0803A894
 lsr   r0,r0,0x18                ; 0803A896
 ldr   r2,=0x03007240            ; 0803A898  Normal gameplay IWRAM (0300220C)
@@ -13783,7 +13783,7 @@ bx    r0                        ; 0803C306
 Sub0803C308:
 push  {r4-r5,lr}                ; 0803C308
 ldr   r0,=0x01CF                ; 0803C30A
-bl    Sub08047B04               ; 0803C30C
+bl    SpawnSecondarySprite      ; 0803C30C
 lsl   r0,r0,0x18                ; 0803C310
 lsr   r0,r0,0x18                ; 0803C312
 ldr   r2,=0x03007240            ; 0803C314  Normal gameplay IWRAM (0300220C)
@@ -14834,7 +14834,7 @@ add   r0,0xE                    ; 0803CBC0
 strh  r0,[r6,0x8]               ; 0803CBC2
 mov   r0,0xE8                   ; 0803CBC4
 lsl   r0,r0,0x1                 ; 0803CBC6
-bl    Sub08047B04               ; 0803CBC8
+bl    SpawnSecondarySprite      ; 0803CBC8
 lsl   r0,r0,0x18                ; 0803CBCC
 lsr   r0,r0,0x18                ; 0803CBCE
 ldr   r2,=0x03007240            ; 0803CBD0  Normal gameplay IWRAM (0300220C)
@@ -15125,7 +15125,7 @@ add   r0,0x10                   ; 0803CE2C
 strh  r0,[r7]                   ; 0803CE2E
 mov   r0,0xE7                   ; 0803CE30
 lsl   r0,r0,0x1                 ; 0803CE32
-bl    Sub08047B04               ; 0803CE34
+bl    SpawnSecondarySprite      ; 0803CE34
 lsl   r0,r0,0x18                ; 0803CE38
 lsr   r0,r0,0x18                ; 0803CE3A
 mov   r1,0xB0                   ; 0803CE3C
@@ -15357,7 +15357,7 @@ bx    r0                        ; 0803D03A
 Sub0803D06C:
 push  {lr}                      ; 0803D06C
 ldr   r0,=0x01D5                ; 0803D06E
-bl    Sub08047B04               ; 0803D070
+bl    SpawnSecondarySprite      ; 0803D070
 lsl   r0,r0,0x18                ; 0803D074
 lsr   r0,r0,0x18                ; 0803D076
 ldr   r2,=0x03007240            ; 0803D078  Normal gameplay IWRAM (0300220C)
@@ -17110,7 +17110,7 @@ ldr   r2,=0x0232                ; 0803DE6E
 add   r0,r5,r2                  ; 0803DE70
 strh  r4,[r0]                   ; 0803DE72
 ldr   r0,=0x01EB                ; 0803DE74
-bl    Sub08047B04               ; 0803DE76
+bl    SpawnSecondarySprite      ; 0803DE76
 ldr   r2,=0x03007240            ; 0803DE7A  Normal gameplay IWRAM (0300220C)
 lsl   r0,r0,0x18                ; 0803DE7C
 lsr   r0,r0,0x18                ; 0803DE7E
@@ -17191,7 +17191,7 @@ and   r0,r1                     ; 0803DF24
 cmp   r0,0x0                    ; 0803DF26
 bne   @@Code0803DF72            ; 0803DF28
 ldr   r0,=0x01E7                ; 0803DF2A
-bl    Sub08047B04               ; 0803DF2C
+bl    SpawnSecondarySprite      ; 0803DF2C
 lsl   r0,r0,0x18                ; 0803DF30
 lsr   r0,r0,0x18                ; 0803DF32
 ldr   r3,=0x03007240            ; 0803DF34  Normal gameplay IWRAM (0300220C)
@@ -18387,7 +18387,7 @@ push  {r4-r5,lr}                ; 0803E92C
 mov   r5,0x0                    ; 0803E92E
 @@Code0803E930:
 ldr   r0,=0x01C7                ; 0803E930
-bl    Sub08047B04               ; 0803E932
+bl    SpawnSecondarySprite      ; 0803E932
 lsl   r0,r0,0x18                ; 0803E936
 lsr   r0,r0,0x18                ; 0803E938
 ldr   r2,=0x03007240            ; 0803E93A  Normal gameplay IWRAM (0300220C)
@@ -19214,7 +19214,7 @@ mov   r0,0x1                    ; 0803F092
 bl    Sub0812C4C4               ; 0803F094
 mov   r0,0xE6                   ; 0803F098
 lsl   r0,r0,0x1                 ; 0803F09A
-bl    Sub08047B04               ; 0803F09C
+bl    SpawnSecondarySprite      ; 0803F09C
 lsl   r0,r0,0x18                ; 0803F0A0
 lsr   r0,r0,0x18                ; 0803F0A2
 ldr   r2,=0x03007240            ; 0803F0A4  Normal gameplay IWRAM (0300220C)
@@ -21758,7 +21758,7 @@ and   r0,r1                     ; 080406A0
 cmp   r0,0x0                    ; 080406A2
 bne   @@Code08040728            ; 080406A4
 ldr   r0,=0x01E9                ; 080406A6
-bl    Sub08047B04               ; 080406A8
+bl    SpawnSecondarySprite      ; 080406A8
 ldr   r2,=0x03007240            ; 080406AC  Normal gameplay IWRAM (0300220C)
 lsl   r0,r0,0x18                ; 080406AE
 lsr   r0,r0,0x18                ; 080406B0

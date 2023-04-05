@@ -4092,7 +4092,7 @@ push  {r4-r6,lr}                ; 08104644
 mov   r5,r0                     ; 08104646
 mov   r4,r1                     ; 08104648
 ldr   r0,=0x01DD                ; 0810464A
-bl    Sub08047B04               ; 0810464C
+bl    SpawnSecondarySprite      ; 0810464C
 lsl   r0,r0,0x18                ; 08104650
 lsr   r0,r0,0x18                ; 08104652
 ldr   r2,=0x03007240            ; 08104654  Normal gameplay IWRAM (0300220C)
@@ -5276,7 +5276,7 @@ bne   @@Code0810514E            ; 081050F0
 mov   r0,0x4                    ; 081050F2
 strh  r0,[r1]                   ; 081050F4
 ldr   r0,=0x0231                ; 081050F6
-bl    Sub08047B04               ; 081050F8
+bl    SpawnSecondarySprite      ; 081050F8
 lsl   r0,r0,0x18                ; 081050FC
 lsr   r0,r0,0x18                ; 081050FE
 mov   r1,r0                     ; 08105100
@@ -6353,7 +6353,7 @@ sub   r5,0x80                   ; 0810599E
 @@Code081059A0:
 mov   r0,0xF1                   ; 081059A0
 lsl   r0,r0,0x1                 ; 081059A2
-bl    Sub08047B04               ; 081059A4
+bl    SpawnSecondarySprite      ; 081059A4
 lsl   r0,r0,0x18                ; 081059A8
 lsr   r0,r0,0x18                ; 081059AA
 ldr   r2,=0x03007240            ; 081059AC  Normal gameplay IWRAM (0300220C)
@@ -6781,7 +6781,7 @@ and   r0,r1                     ; 08105D3C
 cmp   r0,0x0                    ; 08105D3E
 bne   @@Code08105E18            ; 08105D40
 ldr   r0,=0x01E7                ; 08105D42
-bl    Sub08047B04               ; 08105D44
+bl    SpawnSecondarySprite      ; 08105D44
 lsl   r0,r0,0x18                ; 08105D48
 lsr   r0,r0,0x18                ; 08105D4A
 ldr   r3,=0x03007240            ; 08105D4C  Normal gameplay IWRAM (0300220C)
@@ -6831,7 +6831,7 @@ add   r0,r0,r1                  ; 08105DB4
 mov   r1,0x40                   ; 08105DB6
 strh  r1,[r0]                   ; 08105DB8
 ldr   r0,=0x01E7                ; 08105DBA
-bl    Sub08047B04               ; 08105DBC
+bl    SpawnSecondarySprite      ; 08105DBC
 lsl   r0,r0,0x18                ; 08105DC0
 lsr   r0,r0,0x18                ; 08105DC2
 ldr   r2,=0x03007240            ; 08105DC4  Normal gameplay IWRAM (0300220C)

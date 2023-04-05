@@ -3284,7 +3284,7 @@ add   r2,r2,r6                  ; 08002AB6
 mov   r8,r2                     ; 08002AB8  r8 = 03006C47
 ldr   r0,=0xFFFE                ; 08002ABA
 mov   r7,r0                     ; 08002ABC
-@MainLoop:
+@@MainLoop:
 bl    Sub08002300               ; 08002ABE  process buttons pressed
 ldr   r1,=0x4903                ; 08002AC2
 add   r0,r6,r1                  ; 08002AC4  r0 = 03006B03
@@ -3392,10 +3392,10 @@ mov   r1,r8                     ; 08002BAE
 ldrb  r0,[r1]                   ; 08002BB0
 cmp   r0,0x0                    ; 08002BB2
 beq   @@Code08002BB8            ; 08002BB4
-b     @MainLoop                 ; 08002BB6  loop, don't return
+b     @@MainLoop                ; 08002BB6  loop, don't return
 @@Code08002BB8:
 bl    Sub0812C230               ; 08002BB8
-b     @MainLoop                 ; 08002BBC  loop, don't return
+b     @@MainLoop                ; 08002BBC  loop, don't return
 .pool                           ; 08002BBE
 
 @@Code08002BCC:

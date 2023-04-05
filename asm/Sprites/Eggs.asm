@@ -1235,7 +1235,7 @@ and   r0,r1                     ; 08050D30
 cmp   r0,0x0                    ; 08050D32
 bne   @@Code08050DAC            ; 08050D34
 ldr   r0,=0x01E9                ; 08050D36
-bl    Sub08047B04               ; 08050D38
+bl    SpawnSecondarySprite      ; 08050D38
 lsl   r0,r0,0x18                ; 08050D3C
 lsr   r0,r0,0x18                ; 08050D3E
 ldr   r2,=0x03007240            ; 08050D40  Normal gameplay IWRAM (0300220C)
