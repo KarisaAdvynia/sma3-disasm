@@ -951,7 +951,7 @@ add   r2,0x44                   ; 080F70BC
 add   r1,r4,r2                  ; 080F70BE
 mov   r0,0x7                    ; 080F70C0
 strb  r0,[r1]                   ; 080F70C2
-ldr   r6,=0x03007240            ; 080F70C4  Normal gameplay IWRAM (0300220C)
+ldr   r6,=0x03007240            ; 080F70C4  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r6]                   ; 080F70C6
 cmp   r0,0x0                    ; 080F70C8
 bne   @@Code080F70E4            ; 080F70CA
@@ -1186,7 +1186,7 @@ mov   r0,0xB0                   ; 080F72AA
 lsl   r0,r0,0x1                 ; 080F72AC
 strh  r0,[r1]                   ; 080F72AE
 strh  r0,[r2]                   ; 080F72B0
-ldr   r4,=0x03007240            ; 080F72B2  Normal gameplay IWRAM (0300220C)
+ldr   r4,=0x03007240            ; 080F72B2  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r4]                   ; 080F72B4
 ldr   r2,=0x29CC                ; 080F72B6
 add   r0,r0,r2                  ; 080F72B8
@@ -2122,7 +2122,7 @@ mov   r0,r6                     ; 080F7C6A
 mov   r1,r4                     ; 080F7C6C
 bl    DynamicDeallocate         ; 080F7C6E
 str   r5,[r7]                   ; 080F7C72
-ldr   r4,=0x03007240            ; 080F7C74  Normal gameplay IWRAM (0300220C)
+ldr   r4,=0x03007240            ; 080F7C74  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r4]                   ; 080F7C76
 mov   r0,r6                     ; 080F7C78
 bl    DynamicDeallocate         ; 080F7C7A
@@ -3024,7 +3024,7 @@ lsl   r0,r0,0x18                ; 080F8426
 cmp   r0,0x0                    ; 080F8428
 beq   @@Code080F8486            ; 080F842A
 bl    Sub08035648               ; 080F842C
-ldr   r0,=0x03007240            ; 080F8430  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080F8430  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080F8432
 ldr   r1,=0x29CC                ; 080F8434
 add   r0,r0,r1                  ; 080F8436

@@ -2275,7 +2275,7 @@ lsl   r0,r0,0x4                 ; 080E9248
 and   r5,r0                     ; 080E924A
 lsr   r6,r1,0x10                ; 080E924C
 and   r6,r2                     ; 080E924E
-ldr   r0,=0x03007240            ; 080E9250  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080E9250  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080E9252
 mov   r1,0xDE                   ; 080E9254
 lsl   r1,r1,0x1                 ; 080E9256
@@ -2553,7 +2553,7 @@ cmp   r0,0xD                    ; 080E94AC  0D: Normal gameplay
 bne   @@Code080E94B2            ; 080E94AE
 b     @@Code080E960A            ; 080E94B0
 @@Code080E94B2:                 ;           Runs if game state != 0D
-ldr   r0,=0x03007240            ; 080E94B2  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080E94B2  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080E94B4
 mov   r3,0xDE                   ; 080E94B6
 lsl   r3,r3,0x1                 ; 080E94B8

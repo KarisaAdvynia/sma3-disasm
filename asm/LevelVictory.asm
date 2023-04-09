@@ -2299,7 +2299,7 @@ Sub080E496C:
 ; subroutine: Determine goal minigame
 push  {r4-r5,lr}                ; 080E496C
 bl    Sub08035648               ; 080E496E
-ldr   r0,=0x03007240            ; 080E4972  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080E4972  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080E4974
 ldr   r1,=0x29CC                ; 080E4976
 add   r0,r0,r1                  ; 080E4978
@@ -2487,7 +2487,7 @@ lsl   r2,r2,0x10                ; 080E4B34
 mov   r9,r2                     ; 080E4B36
 lsr   r2,r2,0x10                ; 080E4B38
 str   r2,[sp,0x8]               ; 080E4B3A
-ldr   r0,=0x03007240            ; 080E4B3C  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080E4B3C  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080E4B3E
 ldr   r2,=0x266C                ; 080E4B40
 add   r2,r0,r2                  ; 080E4B42
@@ -4127,7 +4127,7 @@ add   r1,0x26                   ; 080E596E
 mov   r0,0x1                    ; 080E5970
 strb  r0,[r1]                   ; 080E5972
 mov   r2,0x0                    ; 080E5974
-ldr   r7,=0x03007240            ; 080E5976  Normal gameplay IWRAM (0300220C)
+ldr   r7,=0x03007240            ; 080E5976  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,=0x0300700C            ; 080E5978
 mov   r12,r0                    ; 080E597A
 ldr   r6,=0x030021A0            ; 080E597C  Score calc layer 3 buffer (02009758)
@@ -4210,7 +4210,7 @@ Sub080E5A1C:
 ; Level victory substate 03
 push  {r4-r5,lr}                ; 080E5A1C
 mov   r4,r0                     ; 080E5A1E
-ldr   r0,=0x03007240            ; 080E5A20  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080E5A20  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080E5A22
 ldr   r1,=0x299A                ; 080E5A24
 add   r0,r0,r1                  ; 080E5A26
@@ -4297,7 +4297,7 @@ strh  r1,[r0]                   ; 080E5AEA
 ldr   r3,=0x47D2                ; 080E5AEC
 add   r0,r2,r3                  ; 080E5AEE
 strh  r1,[r0]                   ; 080E5AF0
-ldr   r0,=0x03007240            ; 080E5AF2  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080E5AF2  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080E5AF4
 ldr   r1,=0x266C                ; 080E5AF6
 add   r6,r0,r1                  ; 080E5AF8
@@ -4346,7 +4346,7 @@ bx    r0                        ; 080E5B48
 Sub080E5B6C:
 push  {lr}                      ; 080E5B6C
 add   sp,-0x4                   ; 080E5B6E
-ldr   r0,=0x03007240            ; 080E5B70  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080E5B70  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080E5B72
 ldr   r1,=0x263E                ; 080E5B74
 add   r0,r0,r1                  ; 080E5B76
@@ -4457,7 +4457,7 @@ add   r1,r4,r0                  ; 080E5C72
 mov   r0,0x4                    ; 080E5C74
 strb  r0,[r1]                   ; 080E5C76
 bl    Sub08001EFC               ; 080E5C78
-ldr   r0,=0x03007240            ; 080E5C7C  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080E5C7C  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080E5C7E
 ldr   r1,=0x29A2                ; 080E5C80
 add   r0,r0,r1                  ; 080E5C82
@@ -4542,7 +4542,7 @@ lsl   r0,r0,0x10                ; 080E5D4E
 lsr   r2,r0,0x10                ; 080E5D50
 cmp   r2,0x2                    ; 080E5D52
 bls   @@Code080E5D44            ; 080E5D54
-ldr   r0,=0x03007240            ; 080E5D56  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080E5D56  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                   ; 080E5D58
 ldr   r2,=0x2618                ; 080E5D5A
 add   r4,r1,r2                  ; 080E5D5C

@@ -10,7 +10,7 @@ push  {r4-r6,lr}                ; 080DC524
 mov   r5,r0                     ; 080DC526
 lsl   r1,r1,0x10                ; 080DC528
 lsr   r2,r1,0x10                ; 080DC52A
-ldr   r6,=0x03007240            ; 080DC52C  Normal gameplay IWRAM (0300220C)
+ldr   r6,=0x03007240            ; 080DC52C  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r6]                   ; 080DC52E
 ldr   r1,=0x2AA2                ; 080DC530
 add   r4,r0,r1                  ; 080DC532
@@ -440,7 +440,7 @@ bx    r0                        ; 080DC876
 Sub080DC87C:
 push  {r4-r6,lr}                ; 080DC87C
 mov   r1,r0                     ; 080DC87E
-ldr   r6,=0x03007240            ; 080DC880  Normal gameplay IWRAM (0300220C)
+ldr   r6,=0x03007240            ; 080DC880  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r3,[r6]                   ; 080DC882
 ldr   r0,=0x2A32                ; 080DC884
 add   r4,r3,r0                  ; 080DC886
@@ -525,7 +525,7 @@ mov   r7,r8                     ; 080DC936
 push  {r7}                      ; 080DC938
 mov   r4,r0                     ; 080DC93A
 ldr   r6,=0x030069F4            ; 080DC93C
-ldr   r7,=0x03007240            ; 080DC93E  Normal gameplay IWRAM (0300220C)
+ldr   r7,=0x03007240            ; 080DC93E  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r7]                   ; 080DC940
 ldr   r0,=0x2A32                ; 080DC942
 add   r5,r1,r0                  ; 080DC944
@@ -607,7 +607,7 @@ mov   r7,r8                     ; 080DC9E2
 push  {r7}                      ; 080DC9E4
 mov   r5,r0                     ; 080DC9E6
 ldr   r7,=0x030069F4            ; 080DC9E8
-ldr   r0,=0x03007240            ; 080DC9EA  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DC9EA  Normal gameplay IWRAM (Ptr to 0300220C)
 mov   r8,r0                     ; 080DC9EC
 ldr   r1,[r0]                   ; 080DC9EE
 ldr   r2,=0x2A32                ; 080DC9F0
@@ -716,7 +716,7 @@ ldr   r0,=0x0216                ; 080DCAD8
 bl    SpawnSecondarySprite      ; 080DCADA
 lsl   r0,r0,0x18                ; 080DCADE
 lsr   r0,r0,0x18                ; 080DCAE0
-ldr   r2,=0x03007240            ; 080DCAE2  Normal gameplay IWRAM (0300220C)
+ldr   r2,=0x03007240            ; 080DCAE2  Normal gameplay IWRAM (Ptr to 0300220C)
 mov   r1,0xB0                   ; 080DCAE4
 mul   r0,r1                     ; 080DCAE6
 ldr   r1,=0x1AF4                ; 080DCAE8
@@ -751,7 +751,7 @@ mov   r7,r8                     ; 080DCB2E
 push  {r7}                      ; 080DCB30
 mov   r7,r0                     ; 080DCB32
 ldr   r4,=0x030069F4            ; 080DCB34
-ldr   r0,=0x03007240            ; 080DCB36  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DCB36  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                   ; 080DCB38
 ldr   r0,=0x2A32                ; 080DCB3A
 add   r5,r1,r0                  ; 080DCB3C
@@ -868,7 +868,7 @@ bx    r0                        ; 080DCC32
 Sub080DCC38:
 push  {r4-r5,lr}                ; 080DCC38
 ldr   r3,=0x030069F4            ; 080DCC3A
-ldr   r4,=0x03007240            ; 080DCC3C  Normal gameplay IWRAM (0300220C)
+ldr   r4,=0x03007240            ; 080DCC3C  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r2,[r4]                   ; 080DCC3E
 ldr   r1,=0x2A32                ; 080DCC40
 add   r5,r2,r1                  ; 080DCC42
@@ -918,7 +918,7 @@ push  {r4-r7,lr}                ; 080DCCB0
 mov   r7,r8                     ; 080DCCB2
 push  {r7}                      ; 080DCCB4
 mov   r7,r0                     ; 080DCCB6
-ldr   r0,=0x03007240            ; 080DCCB8  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DCCB8  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080DCCBA
 ldr   r1,=0x2A44                ; 080DCCBC
 add   r1,r1,r0                  ; 080DCCBE
@@ -1019,7 +1019,7 @@ mov   r6,r8                     ; 080DCD88
 push  {r6-r7}                   ; 080DCD8A
 mov   r5,r0                     ; 080DCD8C
 ldr   r7,=0x030069F4            ; 080DCD8E
-ldr   r0,=0x03007240            ; 080DCD90  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DCD90  Normal gameplay IWRAM (Ptr to 0300220C)
 mov   r8,r0                     ; 080DCD92
 ldr   r0,[r0]                   ; 080DCD94
 ldr   r1,=0x2A44                ; 080DCD96
@@ -1295,7 +1295,7 @@ mov   r7,r8                     ; 080DCFCE
 push  {r7}                      ; 080DCFD0
 mov   r6,r0                     ; 080DCFD2
 ldr   r7,=0x030069F4            ; 080DCFD4
-ldr   r0,=0x03007240            ; 080DCFD6  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DCFD6  Normal gameplay IWRAM (Ptr to 0300220C)
 mov   r8,r0                     ; 080DCFD8
 ldr   r0,[r0]                   ; 080DCFDA
 ldr   r1,=0x2A32                ; 080DCFDC
@@ -1683,7 +1683,7 @@ mov   r5,r8                     ; 080DD2E2
 push  {r5-r7}                   ; 080DD2E4
 mov   r7,r0                     ; 080DD2E6
 ldr   r4,=0x030069F4            ; 080DD2E8
-ldr   r0,=0x03007240            ; 080DD2EA  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DD2EA  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                   ; 080DD2EC
 ldr   r2,=0x29D2                ; 080DD2EE
 add   r5,r1,r2                  ; 080DD2F0
@@ -1927,7 +1927,7 @@ bx    r0                        ; 080DD4BC
 Sub080DD4C4:
 push  {r4-r6,lr}                ; 080DD4C4
 ldr   r6,=0x030069F4            ; 080DD4C6
-ldr   r5,=0x03007240            ; 080DD4C8  Normal gameplay IWRAM (0300220C)
+ldr   r5,=0x03007240            ; 080DD4C8  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r4,[r5]                   ; 080DD4CA
 ldr   r0,=0x2A32                ; 080DD4CC
 add   r4,r4,r0                  ; 080DD4CE
@@ -1964,7 +1964,7 @@ mov   r6,r8                     ; 080DD51C
 push  {r6-r7}                   ; 080DD51E
 mov   r7,r0                     ; 080DD520
 ldr   r4,=0x030069F4            ; 080DD522
-ldr   r0,=0x03007240            ; 080DD524  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DD524  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080DD526
 ldr   r1,=0x2A32                ; 080DD528
 add   r5,r0,r1                  ; 080DD52A
@@ -2265,7 +2265,7 @@ Sub080DD774:
 push  {r4,lr}                   ; 080DD774
 mov   r4,r0                     ; 080DD776
 ldr   r1,=0x030069F4            ; 080DD778
-ldr   r0,=0x03007240            ; 080DD77A  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DD77A  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r2,[r0]                   ; 080DD77C
 ldr   r0,=0x2A32                ; 080DD77E
 add   r2,r2,r0                  ; 080DD780
@@ -2294,7 +2294,7 @@ eor   r0,r1                     ; 080DD7B6
 lsl   r0,r0,0x10                ; 080DD7B8
 cmp   r0,0x0                    ; 080DD7BA
 blt   @@Code080DD7E0            ; 080DD7BC
-ldr   r0,=0x03007240            ; 080DD7BE  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DD7BE  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                   ; 080DD7C0
 ldr   r0,=0x2A68                ; 080DD7C2
 add   r1,r1,r0                  ; 080DD7C4
@@ -2318,7 +2318,7 @@ Sub080DD7EC:
 push  {r4,lr}                   ; 080DD7EC
 mov   r4,r0                     ; 080DD7EE
 ldr   r2,=0x030069F4            ; 080DD7F0
-ldr   r0,=0x03007240            ; 080DD7F2  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DD7F2  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080DD7F4
 ldr   r1,=0x2A32                ; 080DD7F6
 add   r3,r0,r1                  ; 080DD7F8
@@ -2369,7 +2369,7 @@ mov   r6,r8                     ; 080DD858
 push  {r6-r7}                   ; 080DD85A
 mov   r8,r0                     ; 080DD85C
 ldr   r4,=0x030069F4            ; 080DD85E
-ldr   r0,=0x03007240            ; 080DD860  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DD860  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080DD862
 ldr   r1,=0x2A32                ; 080DD864
 add   r5,r0,r1                  ; 080DD866
@@ -2658,7 +2658,7 @@ Sub080DDA94:
 push  {r4,lr}                   ; 080DDA94
 mov   r4,r0                     ; 080DDA96
 ldr   r1,=0x030069F4            ; 080DDA98
-ldr   r0,=0x03007240            ; 080DDA9A  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DDA9A  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r2,[r0]                   ; 080DDA9C
 ldr   r0,=0x2A32                ; 080DDA9E
 add   r2,r2,r0                  ; 080DDAA0
@@ -2687,7 +2687,7 @@ eor   r0,r1                     ; 080DDAD6
 lsl   r0,r0,0x10                ; 080DDAD8
 cmp   r0,0x0                    ; 080DDADA
 blt   @@Code080DDB00            ; 080DDADC
-ldr   r0,=0x03007240            ; 080DDADE  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DDADE  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                   ; 080DDAE0
 ldr   r0,=0x2A68                ; 080DDAE2
 add   r1,r1,r0                  ; 080DDAE4
@@ -2720,7 +2720,7 @@ mov   r7,r8                     ; 080DDB1A
 push  {r7}                      ; 080DDB1C
 mov   r3,r0                     ; 080DDB1E
 ldr   r5,=0x030069F4            ; 080DDB20
-ldr   r0,=0x03007240            ; 080DDB22  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DDB22  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080DDB24
 ldr   r1,=0x2A42                ; 080DDB26
 add   r1,r1,r0                  ; 080DDB28
@@ -2874,7 +2874,7 @@ beq   @@Code080DDC7E            ; 080DDC4A
 ldrh  r0,[r4,0x4]               ; 080DDC4C
 lsl   r0,r0,0x1                 ; 080DDC4E
 strh  r0,[r4,0x4]               ; 080DDC50
-ldr   r0,=0x03007240            ; 080DDC52  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DDC52  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                   ; 080DDC54
 ldr   r0,=0x2A68                ; 080DDC56
 add   r1,r1,r0                  ; 080DDC58
@@ -2885,7 +2885,7 @@ b     @@Code080DDC90            ; 080DDC60
 .pool                           ; 080DDC62
 
 @@Code080DDC70:
-ldr   r0,=0x03007240            ; 080DDC70  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DDC70  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                   ; 080DDC72
 ldr   r0,=0x2A68                ; 080DDC74
 add   r1,r1,r0                  ; 080DDC76
@@ -3013,7 +3013,7 @@ add   sp,-0x4                   ; 080DDD86
 mov   r4,r0                     ; 080DDD88
 mov   r5,r1                     ; 080DDD8A
 ldr   r6,=0x030069F4            ; 080DDD8C
-ldr   r0,=0x03007240            ; 080DDD8E  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DDD8E  Normal gameplay IWRAM (Ptr to 0300220C)
 mov   r8,r0                     ; 080DDD90
 ldr   r0,[r0]                   ; 080DDD92
 ldr   r1,=0x2A32                ; 080DDD94
@@ -3197,7 +3197,7 @@ mov   r4,r8                     ; 080DDEFA
 push  {r4-r6}                   ; 080DDEFC
 mov   r10,r0                    ; 080DDEFE
 ldr   r5,=0x030069F4            ; 080DDF00
-ldr   r0,=0x03007240            ; 080DDF02  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DDF02  Normal gameplay IWRAM (Ptr to 0300220C)
 mov   r9,r0                     ; 080DDF04
 ldr   r0,[r0]                   ; 080DDF06
 ldr   r1,=0x2A32                ; 080DDF08
@@ -3286,7 +3286,7 @@ mov   r4,r8                     ; 080DDFC2
 push  {r4-r6}                   ; 080DDFC4
 mov   r5,r0                     ; 080DDFC6
 ldr   r6,=0x030069F4            ; 080DDFC8
-ldr   r0,=0x03007240            ; 080DDFCA  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DDFCA  Normal gameplay IWRAM (Ptr to 0300220C)
 mov   r9,r0                     ; 080DDFCC
 ldr   r0,[r0]                   ; 080DDFCE
 ldr   r1,=0x2A32                ; 080DDFD0
@@ -3341,7 +3341,7 @@ push  {r5-r6}                   ; 080DE042
 mov   r8,r0                     ; 080DE044
 mov   r4,r1                     ; 080DE046
 ldr   r5,=0x030069F4            ; 080DE048
-ldr   r0,=0x03007240            ; 080DE04A  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DE04A  Normal gameplay IWRAM (Ptr to 0300220C)
 mov   r9,r0                     ; 080DE04C
 ldr   r6,[r0]                   ; 080DE04E
 ldr   r0,=0x2A32                ; 080DE050
@@ -3414,7 +3414,7 @@ mov   r6,r8                     ; 080DE0E6
 push  {r6}                      ; 080DE0E8
 mov   r5,r0                     ; 080DE0EA
 ldr   r2,=0x03006D6C            ; 080DE0EC
-ldr   r0,=0x03007240            ; 080DE0EE  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DE0EE  Normal gameplay IWRAM (Ptr to 0300220C)
 mov   r8,r0                     ; 080DE0F0
 ldr   r0,[r0]                   ; 080DE0F2
 ldr   r6,=0x2A72                ; 080DE0F4
@@ -3453,7 +3453,7 @@ Sub080DE148:
 push  {r4-r5,lr}                ; 080DE148
 mov   r4,r0                     ; 080DE14A
 ldr   r2,=0x030069F4            ; 080DE14C
-ldr   r0,=0x03007240            ; 080DE14E  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DE14E  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080DE150
 ldr   r1,=0x29D2                ; 080DE152
 add   r3,r0,r1                  ; 080DE154
@@ -3520,7 +3520,7 @@ mov   r6,r8                     ; 080DE1D0
 push  {r6-r7}                   ; 080DE1D2
 mov   r4,r0                     ; 080DE1D4
 ldr   r5,=0x030069F4            ; 080DE1D6
-ldr   r6,=0x03007240            ; 080DE1D8  Normal gameplay IWRAM (0300220C)
+ldr   r6,=0x03007240            ; 080DE1D8  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r6]                   ; 080DE1DA
 ldr   r1,=0x29D2                ; 080DE1DC
 add   r7,r0,r1                  ; 080DE1DE
@@ -3590,7 +3590,7 @@ ldr   r0,[r4,0xC]               ; 080DE272
 strh  r0,[r7,0x3E]              ; 080DE274
 mov   r0,0x10                   ; 080DE276
 strh  r0,[r5,0x6]               ; 080DE278
-ldr   r0,=0x03007240            ; 080DE27A  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DE27A  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080DE27C
 ldr   r1,=0x2AAC                ; 080DE27E
 add   r0,r0,r1                  ; 080DE280
@@ -3632,7 +3632,7 @@ ldrh  r7,[r5,0x8]               ; 080DE2D0
 ldr   r0,[r4,0xC]               ; 080DE2D2
 cmp   r0,0x0                    ; 080DE2D4
 blt   @@Code080DE2EC            ; 080DE2D6
-ldr   r0,=0x03007240            ; 080DE2D8  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DE2D8  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                   ; 080DE2DA
 ldr   r0,=0x2A68                ; 080DE2DC
 add   r1,r1,r0                  ; 080DE2DE
@@ -3805,7 +3805,7 @@ beq   @@Code080DE45E            ; 080DE42C
 ldrh  r0,[r5,0x4]               ; 080DE42E
 lsl   r0,r0,0x1                 ; 080DE430
 strh  r0,[r5,0x4]               ; 080DE432
-ldr   r0,=0x03007240            ; 080DE434  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DE434  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                   ; 080DE436
 ldr   r0,=0x2A68                ; 080DE438
 add   r1,r1,r0                  ; 080DE43A
@@ -3816,7 +3816,7 @@ b     @@Code080DE470            ; 080DE442
 .pool                           ; 080DE444
 
 @@Code080DE450:
-ldr   r0,=0x03007240            ; 080DE450  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DE450  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                   ; 080DE452
 ldr   r0,=0x2A68                ; 080DE454
 add   r1,r1,r0                  ; 080DE456
@@ -3905,7 +3905,7 @@ mov   r7,r8                     ; 080DE50A
 push  {r7}                      ; 080DE50C
 mov   r4,r0                     ; 080DE50E
 ldr   r5,=0x030069F4            ; 080DE510
-ldr   r6,=0x03007240            ; 080DE512  Normal gameplay IWRAM (0300220C)
+ldr   r6,=0x03007240            ; 080DE512  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r6]                   ; 080DE514
 ldr   r1,=0x2A32                ; 080DE516
 add   r7,r0,r1                  ; 080DE518
@@ -4088,7 +4088,7 @@ ldr   r0,=0x020B                ; 080DE68C
 bl    SpawnSecondarySprite      ; 080DE68E
 lsl   r0,r0,0x18                ; 080DE692
 lsr   r0,r0,0x18                ; 080DE694
-ldr   r2,=0x03007240            ; 080DE696  Normal gameplay IWRAM (0300220C)
+ldr   r2,=0x03007240            ; 080DE696  Normal gameplay IWRAM (Ptr to 0300220C)
 mov   r1,0xB0                   ; 080DE698
 mul   r0,r1                     ; 080DE69A
 ldr   r1,=0x1AF4                ; 080DE69C
@@ -4219,7 +4219,7 @@ mov   r4,r8                     ; 080DE7A2
 push  {r4-r6}                   ; 080DE7A4
 mov   r6,r0                     ; 080DE7A6
 ldr   r5,=0x030069F4            ; 080DE7A8
-ldr   r0,=0x03007240            ; 080DE7AA  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DE7AA  Normal gameplay IWRAM (Ptr to 0300220C)
 mov   r9,r0                     ; 080DE7AC
 ldr   r0,[r0]                   ; 080DE7AE
 ldr   r1,=0x2A32                ; 080DE7B0
@@ -4281,7 +4281,7 @@ push  {r7}                      ; 080DE834
 add   sp,-0x4                   ; 080DE836
 mov   r6,r0                     ; 080DE838
 ldr   r7,=0x030069F4            ; 080DE83A
-ldr   r0,=0x03007240            ; 080DE83C  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DE83C  Normal gameplay IWRAM (Ptr to 0300220C)
 mov   r8,r0                     ; 080DE83E
 ldr   r0,[r0]                   ; 080DE840
 ldr   r1,=0x2A32                ; 080DE842
@@ -4437,7 +4437,7 @@ Sub080DE97C:
 push  {r4-r6,lr}                ; 080DE97C
 mov   r4,r0                     ; 080DE97E
 ldr   r5,=0x030069F4            ; 080DE980
-ldr   r0,=0x03007240            ; 080DE982  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DE982  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080DE984
 ldr   r1,=0x2A32                ; 080DE986
 add   r6,r0,r1                  ; 080DE988
@@ -4541,7 +4541,7 @@ asr   r0,r0,0x8                 ; 080DEA56
 ldrh  r1,[r5,0x3A]              ; 080DEA58
 add   r0,r0,r1                  ; 080DEA5A
 strh  r0,[r4,0x14]              ; 080DEA5C
-ldr   r7,=0x03007240            ; 080DEA5E  Normal gameplay IWRAM (0300220C)
+ldr   r7,=0x03007240            ; 080DEA5E  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r3,[r7]                   ; 080DEA60
 ldr   r6,=0x2A68                ; 080DEA62
 add   r2,r3,r6                  ; 080DEA64
@@ -4592,7 +4592,7 @@ mov   r0,r5                     ; 080DEAC6
 bl    Sub080DD268               ; 080DEAC8
 @@Code080DEACC:
 ldrh  r2,[r4,0x4]               ; 080DEACC
-ldr   r0,=0x03007240            ; 080DEACE  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DEACE  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                   ; 080DEAD0
 ldr   r0,=0x2A68                ; 080DEAD2
 add   r1,r1,r0                  ; 080DEAD4
@@ -4657,7 +4657,7 @@ ldr   r0,=Data0817D6A8          ; 080DEB54
 sub   r1,0x1                    ; 080DEB56
 add   r0,r1,r0                  ; 080DEB58
 ldrb  r3,[r0]                   ; 080DEB5A
-ldr   r0,=0x03007240            ; 080DEB5C  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DEB5C  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r2,[r0]                   ; 080DEB5E
 ldr   r0,=0x2A68                ; 080DEB60
 add   r2,r2,r0                  ; 080DEB62
@@ -4686,7 +4686,7 @@ mov   r7,r9                     ; 080DEBA6
 mov   r6,r8                     ; 080DEBA8
 push  {r6-r7}                   ; 080DEBAA
 ldr   r7,=0x030069F6            ; 080DEBAC
-ldr   r0,=0x03007240            ; 080DEBAE  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DEBAE  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                   ; 080DEBB0
 mov   r0,0x95                   ; 080DEBB2
 lsl   r0,r0,0x2                 ; 080DEBB4
@@ -5071,7 +5071,7 @@ bx    r0                        ; 080DEEC8
 Sub080DEED4:
 push  {r4-r7,lr}                ; 080DEED4
 mov   r7,r0                     ; 080DEED6
-ldr   r0,=0x03007240            ; 080DEED8  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DEED8  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080DEEDA
 ldr   r1,=0x2A12                ; 080DEEDC
 add   r0,r0,r1                  ; 080DEEDE
@@ -5154,7 +5154,7 @@ bx    r0                        ; 080DEF70
 
 Sub080DEF74:
 push  {r4,lr}                   ; 080DEF74
-ldr   r1,=0x03007240            ; 080DEF76  Normal gameplay IWRAM (0300220C)
+ldr   r1,=0x03007240            ; 080DEF76  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r4,[r1]                   ; 080DEF78
 ldr   r1,=0x2A12                ; 080DEF7A
 add   r4,r4,r1                  ; 080DEF7C
@@ -5168,7 +5168,7 @@ bx    r0                        ; 080DEF8A
 
 Sub080DEF94:
 push  {r4,lr}                   ; 080DEF94
-ldr   r1,=0x03007240            ; 080DEF96  Normal gameplay IWRAM (0300220C)
+ldr   r1,=0x03007240            ; 080DEF96  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r4,[r1]                   ; 080DEF98
 ldr   r1,=0x2A12                ; 080DEF9A
 add   r4,r4,r1                  ; 080DEF9C
@@ -5181,7 +5181,7 @@ bx    r0                        ; 080DEFAA
 .pool                           ; 080DEFAC
 
 Sub080DEFB4:
-ldr   r0,=0x03007240            ; 080DEFB4  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DEFB4  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080DEFB6
 ldr   r1,=0x2A12                ; 080DEFB8
 add   r0,r0,r1                  ; 080DEFBA
@@ -5192,7 +5192,7 @@ bx    lr                        ; 080DEFC0
 
 Sub080DEFCC:
 push  {r4,lr}                   ; 080DEFCC
-ldr   r1,=0x03007240            ; 080DEFCE  Normal gameplay IWRAM (0300220C)
+ldr   r1,=0x03007240            ; 080DEFCE  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r4,[r1]                   ; 080DEFD0
 ldr   r1,=0x2A12                ; 080DEFD2
 add   r4,r4,r1                  ; 080DEFD4
@@ -5207,7 +5207,7 @@ bx    r0                        ; 080DEFE2
 Sub080DEFEC:
 push  {r4-r7,lr}                ; 080DEFEC
 mov   r4,r0                     ; 080DEFEE
-ldr   r7,=0x03007240            ; 080DEFF0  Normal gameplay IWRAM (0300220C)
+ldr   r7,=0x03007240            ; 080DEFF0  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r7]                   ; 080DEFF2
 ldr   r1,=0x2A12                ; 080DEFF4
 add   r6,r0,r1                  ; 080DEFF6
@@ -5274,7 +5274,7 @@ bx    r0                        ; 080DF072
 Sub080DF08C:
 push  {r4-r5,lr}                ; 080DF08C
 mov   r4,r0                     ; 080DF08E
-ldr   r0,=0x03007240            ; 080DF090  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DF090  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r5,[r0]                   ; 080DF092
 ldr   r0,=0x2A12                ; 080DF094
 add   r5,r5,r0                  ; 080DF096
@@ -5301,7 +5301,7 @@ bx    r0                        ; 080DF0BC
 Sub080DF0D4:
 push  {r4-r6,lr}                ; 080DF0D4
 mov   r4,r0                     ; 080DF0D6
-ldr   r0,=0x03007240            ; 080DF0D8  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DF0D8  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r5,[r0]                   ; 080DF0DA
 ldr   r0,=0x2A12                ; 080DF0DC
 add   r5,r5,r0                  ; 080DF0DE
@@ -5331,7 +5331,7 @@ bx    r0                        ; 080DF110
 
 Sub080DF130:
 push  {r4,lr}                   ; 080DF130
-ldr   r1,=0x03007240            ; 080DF132  Normal gameplay IWRAM (0300220C)
+ldr   r1,=0x03007240            ; 080DF132  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r4,[r1]                   ; 080DF134
 ldr   r1,=0x2A12                ; 080DF136
 add   r4,r4,r1                  ; 080DF138
@@ -5355,7 +5355,7 @@ mov   r7,r9                     ; 080DF16A
 mov   r6,r8                     ; 080DF16C
 push  {r6-r7}                   ; 080DF16E
 mov   r5,r0                     ; 080DF170
-ldr   r0,=0x03007240            ; 080DF172  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DF172  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080DF174
 ldr   r1,=0x2A12                ; 080DF176
 add   r6,r0,r1                  ; 080DF178
@@ -5526,7 +5526,7 @@ bx    r0                        ; 080DF2BE
 Sub080DF2CC:
 push  {r4-r6,lr}                ; 080DF2CC
 mov   r4,r0                     ; 080DF2CE
-ldr   r0,=0x03007240            ; 080DF2D0  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DF2D0  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080DF2D2
 ldr   r1,=0x2A12                ; 080DF2D4
 add   r6,r0,r1                  ; 080DF2D6
@@ -5662,7 +5662,7 @@ bx    r1                        ; 080DF3D6
 Sub080DF3E4:
 push  {r4-r6,lr}                ; 080DF3E4
 mov   r4,r0                     ; 080DF3E6
-ldr   r0,=0x03007240            ; 080DF3E8  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DF3E8  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080DF3EA
 ldr   r1,=0x2A12                ; 080DF3EC
 add   r6,r0,r1                  ; 080DF3EE
@@ -5773,7 +5773,7 @@ bx    r1                        ; 080DF4C2
 Sub080DF4C4:
 push  {r4-r7,lr}                ; 080DF4C4
 mov   r12,r0                    ; 080DF4C6
-ldr   r0,=0x03007240            ; 080DF4C8  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DF4C8  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r4,[r0]                   ; 080DF4CA
 ldr   r0,=0x2A12                ; 080DF4CC
 add   r3,r4,r0                  ; 080DF4CE
@@ -5946,7 +5946,7 @@ bx    r1                        ; 080DF618
 Sub080DF620:
 push  {r4-r7,lr}                ; 080DF620
 mov   r6,r0                     ; 080DF622
-ldr   r0,=0x03007240            ; 080DF624  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DF624  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080DF626
 ldr   r1,=0x2A12                ; 080DF628
 add   r4,r0,r1                  ; 080DF62A
@@ -6174,7 +6174,7 @@ bx    r1                        ; 080DF7E0
 
 Sub080DF7E4:
 push  {lr}                      ; 080DF7E4
-ldr   r1,=0x03007240            ; 080DF7E6  Normal gameplay IWRAM (0300220C)
+ldr   r1,=0x03007240            ; 080DF7E6  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r1]                   ; 080DF7E8
 ldr   r2,=0x2A2E                ; 080DF7EA
 add   r1,r1,r2                  ; 080DF7EC
@@ -6284,7 +6284,7 @@ bx    r0                        ; 080DF8B8
 Sub080DF8CC:
 push  {r4,lr}                   ; 080DF8CC
 ldr   r2,=0x030069F4            ; 080DF8CE
-ldr   r0,=0x03007240            ; 080DF8D0  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DF8D0  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r3,[r0]                   ; 080DF8D2
 ldr   r0,=0x29D2                ; 080DF8D4
 add   r3,r3,r0                  ; 080DF8D6
@@ -6327,7 +6327,7 @@ Sub080DF928:
 push  {r4,lr}                   ; 080DF928
 lsl   r0,r0,0x10                ; 080DF92A
 lsr   r4,r0,0x10                ; 080DF92C
-ldr   r0,=0x03007240            ; 080DF92E  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DF92E  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080DF930
 mov   r2,0x95                   ; 080DF932
 lsl   r2,r2,0x2                 ; 080DF934
@@ -6358,7 +6358,7 @@ bx    r0                        ; 080DF95E
 
 Sub080DF96C:
 push  {r4,lr}                   ; 080DF96C
-ldr   r0,=0x03007240            ; 080DF96E  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DF96E  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080DF970
 mov   r2,0x95                   ; 080DF972
 lsl   r2,r2,0x2                 ; 080DF974
@@ -6393,7 +6393,7 @@ bx    r0                        ; 080DF9A6
 
 Sub080DF9B4:
 push  {r4,lr}                   ; 080DF9B4
-ldr   r0,=0x03007240            ; 080DF9B6  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DF9B6  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080DF9B8
 mov   r1,0x95                   ; 080DF9BA
 lsl   r1,r1,0x2                 ; 080DF9BC
@@ -6440,7 +6440,7 @@ mov   r7,r9                     ; 080DFA0E
 mov   r6,r8                     ; 080DFA10
 push  {r6-r7}                   ; 080DFA12
 mov   r5,r0                     ; 080DFA14
-ldr   r0,=0x03007240            ; 080DFA16  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080DFA16  Normal gameplay IWRAM (Ptr to 0300220C)
 mov   r9,r0                     ; 080DFA18
 ldr   r0,[r0]                   ; 080DFA1A
 ldr   r1,=0x29CC                ; 080DFA1C
@@ -6754,7 +6754,7 @@ push  {r4-r7,lr}                ; 080DFC8C
 mov   r7,r9                     ; 080DFC8E
 mov   r6,r8                     ; 080DFC90
 push  {r6-r7}                   ; 080DFC92
-ldr   r1,=0x03007240            ; 080DFC94  Normal gameplay IWRAM (0300220C)
+ldr   r1,=0x03007240            ; 080DFC94  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r4,[r1]                   ; 080DFC96
 mov   r2,0x95                   ; 080DFC98
 lsl   r2,r2,0x2                 ; 080DFC9A

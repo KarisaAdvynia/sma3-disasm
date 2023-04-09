@@ -466,7 +466,7 @@ ldr   r3,=0x04000004            ; 08000F24
 mov   r0,0x8                    ; 08000F26
 strh  r0,[r3]                   ; 08000F28
 ldr   r1,=0x03002200            ; 08000F2A
-ldr   r0,=0x03007240            ; 08000F2C  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 08000F2C  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 08000F2E
 mov   r2,0x9A                   ; 08000F30
 lsl   r2,r2,0x6                 ; 08000F32
@@ -508,7 +508,7 @@ ldr   r1,=0x04000004            ; 08000F90
 mov   r0,0x18                   ; 08000F92
 strh  r0,[r1]                   ; 08000F94
 @@Code08000F96:
-ldr   r0,=0x03007240            ; 08000F96  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 08000F96  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                   ; 08000F98
 ldr   r2,=0x299A                ; 08000F9A
 add   r1,r1,r2                  ; 08000F9C
@@ -3418,7 +3418,7 @@ mov   r7,r9                     ; 08002BE2
 mov   r6,r8                     ; 08002BE4
 push  {r6-r7}                   ; 08002BE6
 add   sp,-0x10                  ; 08002BE8
-ldr   r7,=0x03007240            ; 08002BEA  Normal gameplay IWRAM (0300220C)
+ldr   r7,=0x03007240            ; 08002BEA  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r4,=0x03002200            ; 08002BEC
 ldr   r0,=0x48F6                ; 08002BEE
 add   r1,r4,r0                  ; 08002BF0
@@ -3622,7 +3622,7 @@ add   r5,r4,r0                  ; 08002E04
 ldrh  r1,[r5]                   ; 08002E06
 mov   r8,r1                     ; 08002E08
 bl    Sub08002BE0               ; 08002E0A
-ldr   r0,=0x03007240            ; 08002E0E  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 08002E0E  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 08002E10
 mov   r1,0xE0                   ; 08002E12
 lsl   r1,r1,0x1                 ; 08002E14  1C0
@@ -3666,7 +3666,7 @@ add   r5,r4,r0                  ; 08002E68
 ldrh  r1,[r5]                   ; 08002E6A
 mov   r8,r1                     ; 08002E6C
 bl    Sub08002BE0               ; 08002E6E
-ldr   r0,=0x03007240            ; 08002E72  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 08002E72  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 08002E74
 mov   r1,0xE0                   ; 08002E76
 lsl   r1,r1,0x1                 ; 08002E78  1C0
@@ -3854,7 +3854,7 @@ bx    r0                        ; 08002FDE
 MidwayRestartMain:
 ; Game state 26: "Restart from the Middle Ring?" menu
 push  {r4-r5,lr}                ; 08003050
-ldr   r5,=0x03007240            ; 08003052  Normal gameplay IWRAM (0300220C)
+ldr   r5,=0x03007240            ; 08003052  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r5]                   ; 08003054
 mov   r1,0xE0                   ; 08003056
 lsl   r1,r1,0x1                 ; 08003058
@@ -3914,7 +3914,7 @@ bx    r0                        ; 080030DC
 TryAgainMain:
 ; Game state 2A: "Try this stage again?" menu
 push  {r4-r5,lr}                ; 080030E0
-ldr   r5,=0x03007240            ; 080030E2  Normal gameplay IWRAM (0300220C)
+ldr   r5,=0x03007240            ; 080030E2  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r5]                   ; 080030E4
 mov   r1,0xE0                   ; 080030E6
 lsl   r1,r1,0x1                 ; 080030E8
@@ -3997,7 +3997,7 @@ bl    FadeToNextState           ; 0800319C
 ldrb  r1,[r4]                   ; 080031A0
 cmp   r5,r1                     ; 080031A2
 beq   @@Code0800321C            ; 080031A4
-ldr   r0,=0x03007240            ; 080031A6  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080031A6  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080031A8
 ldr   r1,=0x0216                ; 080031AA
 add   r0,r0,r1                  ; 080031AC

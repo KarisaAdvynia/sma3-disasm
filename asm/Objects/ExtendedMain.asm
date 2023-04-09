@@ -3255,7 +3255,7 @@ lsl   r0,r0,0x1                 ; 0802B170  r0 = <00,10 if 50,A8> + YX*2
 @@Code0802B172:
 add   r0,r0,r1                  ; 0802B172  r0 = pointer to tile ID: somewhere in 0200800C table if pre-existing match detected, or 081BD902 + (<00,10 if 50,A8> + YX parity)*2 otherwise
 ldrh  r4,[r0]                   ; 0802B174  r4 = tile ID
-ldr   r0,=0x03007240            ; 0802B176  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 0802B176  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 0802B178
 ldr   r7,=0x2992                ; 0802B17A
 add   r0,r0,r7                  ; 0802B17C

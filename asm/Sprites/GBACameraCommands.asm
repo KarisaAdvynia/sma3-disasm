@@ -2,7 +2,7 @@ Camera1BA_1BD_Init:
 ; sprite 1BA-1BD init
 push  {r4,lr}                   ; 080A5500
 mov   r4,r0                     ; 080A5502
-ldr   r0,=0x03007240            ; 080A5504  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080A5504  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080A5506
 ldr   r1,=0x2AAC                ; 080A5508
 add   r0,r0,r1                  ; 080A550A  [03007240]+2AAC (03004CB8)
@@ -24,7 +24,7 @@ add   r0,r0,r1                  ; 080A5528  03006B05
 ldrb  r0,[r0]                   ; 080A552A  Game state
 cmp   r0,0xB                    ; 080A552C  0B: Transition effect to new sublevel
 bne   @@Code080A55A0            ; 080A552E
-ldr   r0,=0x03007240            ; 080A5530  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080A5530  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080A5532
 ldr   r1,=0x2AAC                ; 080A5534
 add   r0,r0,r1                  ; 080A5536  [03007240]+2AAC (03004CB8)
@@ -107,7 +107,7 @@ beq   @@Code080A5608            ; 080A55E4
 mov   r0,0xD4                   ; 080A55E6
 lsl   r0,r0,0x1                 ; 080A55E8  01A8
 add   r3,r5,r0                  ; 080A55EA  r3 = 03006F28
-ldr   r0,=0x03007240            ; 080A55EC  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080A55EC  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r2,[r0]                   ; 080A55EE
 ldr   r0,=0x29B0                ; 080A55F0
 add   r1,r2,r0                  ; 080A55F2  r1 = [03007240]+29B0 (03004BBC)
@@ -152,7 +152,7 @@ cmp   r0,0x0                    ; 080A5636
 blt   @@Code080A563C            ; 080A5638
 b     @@Return                  ; 080A563A
 @@Code080A563C:
-ldr   r0,=0x03007240            ; 080A563C  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080A563C  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080A563E
 mov   r2,0xC1                   ; 080A5640
 lsl   r2,r2,0x2                 ; 080A5642  304
@@ -344,7 +344,7 @@ beq   @@Code080A57D2            ; 080A57AE
 mov   r3,0xD4                   ; 080A57B0
 lsl   r3,r3,0x1                 ; 080A57B2  01A8
 add   r3,r12                    ; 080A57B4  03006F28
-ldr   r0,=0x03007240            ; 080A57B6  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080A57B6  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r2,[r0]                   ; 080A57B8
 ldr   r0,=0x29B0                ; 080A57BA
 add   r1,r2,r0                  ; 080A57BC  [03007240]+29B0 (03004BBC)
@@ -387,7 +387,7 @@ add   r3,0x40                   ; 080A580E / r3 = 200 or 201
 @@Code080A5810:
 mov   r0,0x1                    ; 080A5810
 and   r3,r0                     ; 080A5812  r3 = sprite ID parity
-ldr   r0,=0x03007240            ; 080A5814  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080A5814  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r4,[r0]                   ; 080A5816
 mov   r7,0xC1                   ; 080A5818
 lsl   r7,r7,0x2                 ; 080A581A  304
@@ -1128,7 +1128,7 @@ cmp   r1,r0                     ; 080A5DF6
 bne   @@Code080A5E34            ; 080A5DF8
 
                                 ;          \ runs if sprite 1C3
-ldr   r0,=0x03007240            ; 080A5DFA  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080A5DFA  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080A5DFC
 ldr   r3,=0x2AAC                ; 080A5DFE
 add   r0,r0,r3                  ; 080A5E00  [03007240]+2AAC (03004CB8)
@@ -1148,7 +1148,7 @@ b     @@Code080A5EB8            ; 080A5E1A /
 .pool                           ; 080A5E1C
 
 @@Code080A5E34:                 ;          \ runs if sprite 1C2
-ldr   r1,=0x03007240            ; 080A5E34  Normal gameplay IWRAM (0300220C)
+ldr   r1,=0x03007240            ; 080A5E34  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r1]                   ; 080A5E36
 ldr   r3,=0x2AAC                ; 080A5E38
 add   r0,r0,r3                  ; 080A5E3A  [03007240]+2AAC (03004CB8)
@@ -1256,7 +1256,7 @@ beq   @@Code080A5F22            ; 080A5EFE
 mov   r0,0xD4                   ; 080A5F00
 lsl   r0,r0,0x1                 ; 080A5F02  01A8
 add   r3,r7,r0                  ; 080A5F04  03006F28
-ldr   r0,=0x03007240            ; 080A5F06  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080A5F06  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r2,[r0]                   ; 080A5F08
 ldr   r0,=0x29B0                ; 080A5F0A
 add   r1,r2,r0                  ; 080A5F0C  [03007240]+29B0 (03004BBC)
@@ -1285,7 +1285,7 @@ mov   r4,r0                     ; 080A5F32
 add   r4,0x3E                   ; 080A5F34
 mov   r0,0x1                    ; 080A5F36
 and   r4,r0                     ; 080A5F38  r4 = sprite ID parity
-ldr   r3,=0x03007240            ; 080A5F3A  Normal gameplay IWRAM (0300220C)
+ldr   r3,=0x03007240            ; 080A5F3A  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r3]                   ; 080A5F3C  [03007240] (0300220C)
 mov   r2,0xC1                   ; 080A5F3E
 lsl   r2,r2,0x2                 ; 080A5F40  304

@@ -663,7 +663,7 @@ neg   r0,r0                     ; 0800068A
 mov   r8,r0                     ; 0800068C
 mov   r9,r0                     ; 0800068E
 mov   r5,0x17                   ; 08000690
-ldr   r0,=0x03007240            ; 08000692  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 08000692  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 08000694
 mov   r1,0x95                   ; 08000696
 lsl   r1,r1,0x2                 ; 08000698

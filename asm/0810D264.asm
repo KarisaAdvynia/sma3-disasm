@@ -130,7 +130,7 @@ mov   r7,r10                    ; 0810D366
 mov   r6,r9                     ; 0810D368
 mov   r5,r8                     ; 0810D36A
 push  {r5-r7}                   ; 0810D36C
-ldr   r0,=0x03007240            ; 0810D36E  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 0810D36E  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 0810D370
 ldr   r1,=0x2AAC                ; 0810D372
 add   r0,r0,r1                  ; 0810D374

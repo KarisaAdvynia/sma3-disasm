@@ -1,7 +1,7 @@
 TrainShyGuy_Init:
 ; sprite 072 init
 ldr   r3,=Data08176794          ; 0809789C
-ldr   r1,=0x03007240            ; 0809789E  Normal gameplay IWRAM (0300220C)
+ldr   r1,=0x03007240            ; 0809789E  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r1]                   ; 080978A0
 ldr   r2,=0x29CC                ; 080978A2
 add   r1,r1,r2                  ; 080978A4
@@ -256,7 +256,7 @@ mov   r0,0x0                    ; 08097A92
 ldsb  r0,[r4,r0]                ; 08097A94
 cmp   r0,0x0                    ; 08097A96
 ble   @@Return                  ; 08097A98
-ldr   r1,=0x03007240            ; 08097A9A  Normal gameplay IWRAM (0300220C)
+ldr   r1,=0x03007240            ; 08097A9A  Normal gameplay IWRAM (Ptr to 0300220C)
 mov   r0,0xB0                   ; 08097A9C
 mul   r0,r2                     ; 08097A9E
 mov   r2,0x95                   ; 08097AA0

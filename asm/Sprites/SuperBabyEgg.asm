@@ -32,7 +32,7 @@ push  {r4-r7,lr}                ; 08051154
 mov   r7,r8                     ; 08051156
 push  {r7}                      ; 08051158
 mov   r7,r0                     ; 0805115A
-ldr   r0,=0x03007240            ; 0805115C  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 0805115C  Normal gameplay IWRAM (Ptr to 0300220C)
 mov   r8,r0                     ; 0805115E
 ldr   r4,[r0]                   ; 08051160
 mov   r0,r7                     ; 08051162

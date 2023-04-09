@@ -718,7 +718,7 @@ strb  r0,[r2,0x5]               ; 080FCECA
 ldrh  r0,[r6]                   ; 080FCECC
 add   r0,0x4                    ; 080FCECE
 strh  r0,[r6]                   ; 080FCED0
-ldr   r0,=0x03007240            ; 080FCED2  Normal gameplay IWRAM (0300220C)
+ldr   r0,=0x03007240            ; 080FCED2  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                   ; 080FCED4
 ldr   r0,=0x29CE                ; 080FCED6
 add   r1,r1,r0                  ; 080FCED8

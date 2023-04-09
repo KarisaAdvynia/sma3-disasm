@@ -22372,7 +22372,7 @@ ldr   r1,[r4]                   ; 08010F4A
 mov   r0,r5                     ; 08010F4C
 bl    DynamicDeallocate         ; 08010F4E
 str   r7,[r4]                   ; 08010F52
-ldr   r6,=0x03007240            ; 08010F54  Normal gameplay IWRAM (0300220C)
+ldr   r6,=0x03007240            ; 08010F54  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r6]                   ; 08010F56
 cmp   r0,0x0                    ; 08010F58
 bne   @@Code08010FAC            ; 08010F5A

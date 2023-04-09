@@ -1,12 +1,12 @@
 import os
 
-def bytecompare(source, dest, regions=None):
-    mismatch = False
-    if regions is None:
-        regions = [(0, min(os.path.getsize(source), os.path.getsize(dest)))]
+def bytecompare(source, dest, searchregions=None):
+    mismatchregions = []
+    if searchregions is None:
+        searchregions = [(0, min(os.path.getsize(source), os.path.getsize(dest)))]
 
     with open(source, "rb") as f0, open(dest, "rb") as f1:
-        for start, end in regions:
+        for start, end in searchregions:
             f0.seek(start)
             f1.seek(start)
 
@@ -14,22 +14,41 @@ def bytecompare(source, dest, regions=None):
                 nextbyte0 = f0.read(1)
                 nextbyte1 = f1.read(1)
                 if nextbyte0 != nextbyte1:
-                    print("".join((
-                        "Mismatch at ", hex(i),
-                        ": source ", format(nextbyte0[0], "02X"),
-                        ", dest ", format(nextbyte1[0], "02X")
-                        )))
-                    mismatch = True
+                    if mismatchregions and mismatchregions[-1][1] > i - 8:
+                        mismatchregions[-1][1] = i
+                    else:
+                        mismatchregions.append([i, i])
 
-    if mismatch is False:
-        print("The byte regions",
-              ", ".join(hex(start) + "-" + hex(end) for start, end in regions),
-              "are identical.")
+        if mismatchregions:
+            for start, end in mismatchregions:
+                length = end - start + 1
+                f0.seek(start)
+                f1.seek(start)
+
+                text = ["Mismatch at ", hex(start)]
+                if length > 1:
+                    text += [" to ", hex(end)]
+                if length > 8:
+                    text += [" (", hex(length), " bytes)"]
+                text += [": source ",
+                    " ".join(format(i, "02X") for i in f0.read(min(length, 8)))]
+                if length > 8: text.append("...")
+                text += [", dest ",
+                    " ".join(format(i, "02X") for i in f1.read(min(length, 8)))]
+                if length > 8: text.append("...")
+                print("".join(text))
+        else:
+            print("The byte regions",
+                  ", ".join(hex(start) + "-" + hex(end)
+                            for start, end in searchregions),
+                  "are identical.")
 
 if __name__ == "__main__":
     bytecompare(
         "../../sma3.gba",
         "../../sma3-disasm.gba",
-        regions=[(0, 0x12FDC0),
-                 (0x163F90, 0x1C1D54)])
+        searchregions=[
+            (0, 0x12FDC0),
+            (0x163F90, 0x1C1D54),
+            ])
     input()  # wait for Enter, if run on a shell that closes at end of program

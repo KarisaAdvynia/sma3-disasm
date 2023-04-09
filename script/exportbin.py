@@ -26,6 +26,6 @@ def exportbin(sourcefile, outputdir, binptrs):
                 output.write(data)
 
 if __name__ == "__main__":
-    exportbin("C:/Users/Karisa/Desktop/118/Advynia/sma3.gba",
+    exportbin("../../sma3.gba",
               "../asm/data/",
               "../binptrs.txt")

@@ -1727,7 +1727,7 @@ ObjF7_FC_Tilemap:               ; 08168688
 .halfword 0x01D9, 0x01DA, 0x01DB, 0x01DC, 0x01DD, 0x01DE, 0x01DF, 0x01E0
 .halfword 0x01E1, 0x01E2
 ObjED_CodePtrs:                 ; 081686AC
-.word Sub0801D3D4+1, Sub0801D39C+1, Sub0801D364+1
+.word ObjED_Left+1, ObjED_Mid+1, ObjED_Right+1
 ObjD4_D7_CodePtrs:              ; 081686B8
 .word ObjD4_Main+1, ObjD5_Main+1, ObjD6_Main+1, ObjD7_Main+1
 ObjC4_C9_CodePtrs:              ; 081686C8
@@ -1736,10 +1736,10 @@ ObjC0_C3_CodePtrs:              ; 081686D4
 .word ObjC0_Main+1, ObjC1_Main+1, ObjC2_Main+1, ObjC3_Main+1
 ObjBA_BD_CodePtrs:              ; 081686E4
 .word ObjBA_Main+1, ObjBB_Main+1, ObjBC_Main+1, ObjBD_Main+1
-CodePtrs081686F4:               ; 081686F4
-.word Sub080201B0+1, Sub0802017C+1, Sub0802014C+1
+ObjA9_CodePtrs:                 ; 081686F4
+.word ObjA9_PipeTop+1, ObjA9_PipeMid+1, ObjA9_PipeBottom+1
 ObjA5_A6_CodePtrs:              ; 08168700
-.word Sub080207A8+1, Sub080206C4+1, Sub080205FC+1, Sub080205A8+1
+.word ObjA5_Castle+1, ObjA6_Castle+1, ObjA5_T3+1, ObjA6_T3+1
 Obj9D_CodePtrs:                 ; 08168710
 .word Obj9D_FirstY+1, Obj9D_LastY+1, Obj9D_OddY+1, Obj9D_EvenY+1
 CodePtrs08168720:               ; 08168720
@@ -1830,8 +1830,8 @@ Obj38_CodePtrs:                 ; 08168A14
 .word Sub080267AC+1, Sub080266C8+1, Sub080266C8+1, Sub080265BC+1
 .word Sub080264DC+1, Return080264D8+1, Return080264D8+1, Sub080263E4+1
 .word Sub080262DC+1, Sub080261F8+1, Sub080261F8+1, Sub080260EC+1
-CodePtrs08168A44:               ; 08168A44
-.word Sub08028058+1, Sub08028024+1
+Obj20_EE_F3_CodePtrs:           ; 08168A44
+.word Obj20_EE_F3_BottomLeft+1, Obj20_EE_F3_Unused+1
 Obj1F_20_CodePtrs:              ; 08168A4C
 .word Obj1F_20_Top+1, Obj1F_20_Top+1, Obj1F_20_Bottom+1
 Obj06_09_CodePtrs:              ; 08168A58
@@ -35983,27 +35983,27 @@ Data081BEFE8:                   ; 081BEFE8
 .word 0x001E001D
 Obj1F_20_Init_Data:             ; 081BEFEC
 .word 0x00050002
-Data081BEFF0:                   ; 081BEFF0
+ObjEE_F3_Shaded_2wide:          ; 081BEFF0
 .halfword 0x0000, 0x0000, 0x0000, 0x0108, 0x0108, 0x0108, 0x79E2, 0x79E2
 .halfword 0x79E5, 0x79E5, 0x79E7
-Data081BF006:                   ; 081BF006
+ObjEE_F3_Shaded_1wide:          ; 081BF006
 .halfword 0x0106, 0x79E1, 0x79E4, 0x79E7
 Data081BF00E:                   ; 081BF00E
 .halfword 0x7792, 0x7793, 0x0000
-Data081BF014:                   ; 081BF014
+Obj20EEEF_X012_2wide:           ; 081BF014
 .halfword 0x0028, 0x0100, 0x0103
-Data081BF01A:                   ; 081BF01A
+Obj20EEEF_X012_1wide:           ; 081BF01A
 .halfword 0x002D, 0x010A, 0x0105
-Data081BF020:                   ; 081BF020
+ObjF0_F3_X012_2wide:            ; 081BF020
 .halfword 0x0028, 0x9C00, 0x0103
-Data081BF026:                   ; 081BF026
+ObjF0_F3_X012_1wide:            ; 081BF026
 .halfword 0x002D, 0x9C03, 0x0105
-Data081BF02C:                   ; 081BF02C
+Obj1F_LavaTilesX0:              ; 081BF02C
 .halfword 0x002B, 0x0027, 0x9100, 0x7E02, 0x7E05
-Data081BF036:                   ; 081BF036
+Obj1F_LavaTilesX1:              ; 081BF036
 .halfword 0x002C, 0x0027, 0x9101, 0x7E03, 0x7E05
 Data081BF040:                   ; 081BF040
-.word 0x90739072, 0x908F907F, 0x90A390A2
+.halfword 0x9072, 0x9073, 0x907F, 0x908F, 0x90A2, 0x90A3
 Data081BF04C:                   ; 081BF04C
 .halfword 0x9200, 0x9080, 0x9090
 Data081BF052:                   ; 081BF052
@@ -36829,34 +36829,34 @@ ObjA0_A2_Tilemap:               ; 081C0D08
 .halfword 0x7A00, 0x7A01
 ObjA3_A4_Tilemap:               ; 081C0D0C
 .halfword 0x7B00, 0x7B01, 0x7B02, 0x7B03
-Data081C0D14:                   ; 081C0D14
+ObjA5_Castle_TopTilemap:        ; 081C0D14
 .halfword 0x7D02, 0x7D03
-Data081C0D18:                   ; 081C0D18
+ObjA5_Castle_MidTilemap:        ; 081C0D18
 .halfword 0x01C9, 0x01CA, 0x01C7, 0x01C8
-Data081C0D20:                   ; 081C0D20
+ObjA5_Castle_BottomTilemap:     ; 081C0D20
 .halfword 0x7D06, 0x7D07
-Data081C0D24:                   ; 081C0D24
+ObjA6_Castle_LeftTilemap:       ; 081C0D24
 .halfword 0x7D00, 0x7D01
-Data081C0D28:                   ; 081C0D28
-.word 0x01C301C4, 0x01C601C5
-Data081C0D30:                   ; 081C0D30
-.word 0x7D057D04
-Data081C0D34:                   ; 081C0D34
-.word 0x3D29905A, 0x90507D1C
-Data081C0D3C:                   ; 081C0D3C
-.word 0x7D1E3D2B, 0x90567D1F
-Data081C0D44:                   ; 081C0D44
-.word 0x3D2D3D2C, 0x90539052, 0x90559054, 0x90589057
-Data081C0D54:                   ; 081C0D54
-.word 0x7D203D2E, 0x90597D21
+ObjA6_Castle_MidTilemap:        ; 081C0D28
+.halfword 0x01C4, 0x01C3, 0x01C5, 0x01C6
+ObjA6_Castle_RightTilemap:      ; 081C0D30
+.halfword 0x7D04, 0x7D05
+ObjA5_T3_Tilemap:               ; 081C0D34
+.halfword 0x905A, 0x3D29, 0x7D1C, 0x9050
+ObjA6_T3_LeftTilemap:           ; 081C0D3C
+.halfword 0x3D2B, 0x7D1E, 0x7D1F, 0x9056
+ObjA6_T3_MidTilemap:            ; 081C0D44
+.halfword 0x3D2C, 0x3D2D, 0x9052, 0x9053, 0x9054, 0x9055, 0x9057, 0x9058
+ObjA6_T3_RightTilemap:          ; 081C0D54
+.halfword 0x3D2E, 0x7D20, 0x7D21, 0x9059
 Data081C0D5C:                   ; 081C0D5C
 .halfword 0x0000, 0x7780, 0x0000, 0x777E, 0x7C00, 0x777D, 0x0000, 0x7784
 .halfword 0x0000
-Data081C0D6E:                   ; 081C0D6E
+ObjA9_PipeTopTilemap:           ; 081C0D6E
 .halfword 0x3D2F, 0x7D22, 0x0110, 0x0112
-Data081C0D76:                   ; 081C0D76
+ObjA9_PipeMidTilemap:           ; 081C0D76
 .halfword 0x3D31, 0x3D16, 0x3D33
-Data081C0D7C:                   ; 081C0D7C
+ObjA9_PipeBottomTilemap:        ; 081C0D7C
 .halfword 0x0110, 0x7D22, 0x3D35
 Data081C0D82:                   ; 081C0D82
 .halfword 0x790F, 0x7799, 0x791F, 0x779A
@@ -37139,93 +37139,93 @@ DataPtrs081C15F0:               ; 081C15F0
 .word Data081C1582, Data081C1576, Data081C15D6, Data081C15BE
 .word Data081C15A6, Data081C158E, Data081C1582, Data081C1576
 Data081C1630:                   ; 081C1630
-.word 0x79BC79BB, 0x79BE79BD, 0x79C079BF, 0x79C279C1
-.word 0x79C479C3, 0x79E079E0, 0x79E079E0, 0x79E079E0
+.halfword 0x79BB, 0x79BC, 0x79BD, 0x79BE, 0x79BF, 0x79C0, 0x79C1, 0x79C2
+.halfword 0x79C3, 0x79C4, 0x79E0, 0x79E0, 0x79E0, 0x79E0, 0x79E0, 0x79E0
 Data081C1650:                   ; 081C1650
-.word 0x00000000, 0x85A785A8, 0x0C0C0D0D, 0x79AC79AD
+.halfword 0x0000, 0x0000, 0x85A8, 0x85A7, 0x0D0D, 0x0C0C, 0x79AD, 0x79AC
 Data081C1660:                   ; 081C1660
-.word 0x00000000, 0x85A785A8, 0x0C0C0D0E, 0x79AE79B6
+.halfword 0x0000, 0x0000, 0x85A8, 0x85A7, 0x0D0E, 0x0C0C, 0x79B6, 0x79AE
 Data081C1670:                   ; 081C1670
-.word 0x00000000, 0x85A685A8, 0x0C0B0D0E, 0x79AE79BD
+.halfword 0x0000, 0x0000, 0x85A8, 0x85A6, 0x0D0E, 0x0C0B, 0x79BD, 0x79AE
 Data081C1680:                   ; 081C1680
-.word 0x000085C2, 0x85A685A9, 0x0C0C0D0E, 0x79AF79AD
+.halfword 0x85C2, 0x0000, 0x85A9, 0x85A6, 0x0D0E, 0x0C0C, 0x79AD, 0x79AF
 Data081C1690:                   ; 081C1690
-.word 0x85C185C3, 0x85A585AA, 0x0C0C0D0E, 0x79B079B1
+.halfword 0x85C3, 0x85C1, 0x85AA, 0x85A5, 0x0D0E, 0x0C0C, 0x79B1, 0x79B0
 DataPtrs081C16A0:               ; 081C16A0
 .word Data081C1650, Data081C1660, Data081C1670, Data081C1680
 .word Data081C1690, Data081C1690, Data081C1680, Data081C1650
 Data081C16C0:                   ; 081C16C0
-.word 0x85B90000, 0x79AA0814
+.halfword 0x0000, 0x85B9, 0x0814, 0x79AA
 Data081C16C8:                   ; 081C16C8
-.word 0x85BA0000, 0x79AA0815
+.halfword 0x0000, 0x85BA, 0x0815, 0x79AA
 Data081C16D0:                   ; 081C16D0
-.word 0x85B90000, 0x79AB0816
+.halfword 0x0000, 0x85B9, 0x0816, 0x79AB
 Data081C16D8:                   ; 081C16D8
-.word 0x85BB85C1, 0x79AB0816
+.halfword 0x85C1, 0x85BB, 0x0816, 0x79AB
 Data081C16E0:                   ; 081C16E0
-.word 0x85BC85C2, 0x79B60814
+.halfword 0x85C2, 0x85BC, 0x0814, 0x79B6
 DataPtrs081C16E8:               ; 081C16E8
 .word Data081C16C0, Data081C16C8, Data081C16D0, Data081C16D8
 .word Data081C16E0, Data081C16E0, Data081C16D8, Data081C16C0
 Data081C1708:                   ; 081C1708
-.word 0x020A85A7, 0x79B9030D
+.halfword 0x85A7, 0x020A, 0x030D, 0x79B9
 Data081C1710:                   ; 081C1710
-.word 0x020A85A7, 0x79AC030D
+.halfword 0x85A7, 0x020A, 0x030D, 0x79AC
 Data081C1718:                   ; 081C1718
-.word 0x020B85A6, 0x79B9030D
+.halfword 0x85A6, 0x020B, 0x030D, 0x79B9
 Data081C1720:                   ; 081C1720
-.word 0x020A85A7, 0x79B6030D
+.halfword 0x85A7, 0x020A, 0x030D, 0x79B6
 Data081C1728:                   ; 081C1728
-.word 0x020A85B3, 0x79B9030D
+.halfword 0x85B3, 0x020A, 0x030D, 0x79B9
 DataPtrs081C1730:               ; 081C1730
 .word Data081C1728, Data081C1720, Data081C1718, Data081C1710
 .word Data081C1708, Data081C1720, Data081C1710, Data081C1708
 Data081C1750:                   ; 081C1750
-.word 0x00000000, 0x85B185AD, 0x100E0F11, 0x79BE79B2
+.halfword 0x0000, 0x0000, 0x85AD, 0x85B1, 0x0F11, 0x100E, 0x79B2, 0x79BE
 Data081C1760:                   ; 081C1760
-.word 0x00000000, 0x85B185AD, 0x100E0F10, 0x79B779AF
+.halfword 0x0000, 0x0000, 0x85AD, 0x85B1, 0x0F10, 0x100E, 0x79AF, 0x79B7
 Data081C1770:                   ; 081C1770
-.word 0x00000000, 0x85B285AD, 0x100F0F10, 0x79B479B3
+.halfword 0x0000, 0x0000, 0x85AD, 0x85B2, 0x0F10, 0x100F, 0x79B3, 0x79B4
 Data081C1780:                   ; 081C1780
-.word 0x000085C3, 0x85B185AE, 0x100E0F10, 0x79B679C2
+.halfword 0x85C3, 0x0000, 0x85AE, 0x85B1, 0x0F10, 0x100E, 0x79C2, 0x79B6
 Data081C1790:                   ; 081C1790
-.word 0x85C385C2, 0x85B085AF, 0x100E0F11, 0x79BE79B2
+.halfword 0x85C2, 0x85C3, 0x85AF, 0x85B0, 0x0F11, 0x100E, 0x79B2, 0x79BE
 DataPtrs081C17A0:               ; 081C17A0
 .word Data081C1750, Data081C1760, Data081C1770, Data081C1780
 .word Data081C1790, Data081C1790, Data081C1780, Data081C1750
 Data081C17C0:                   ; 081C17C0
-.word 0x85BD0000, 0x79B70A15
+.halfword 0x0000, 0x85BD, 0x0A15, 0x79B7
 Data081C17C8:                   ; 081C17C8
-.word 0x85BF0000, 0x79B70A16
+.halfword 0x0000, 0x85BF, 0x0A16, 0x79B7
 Data081C17D0:                   ; 081C17D0
-.word 0x85BD0000, 0x79B80A17
+.halfword 0x0000, 0x85BD, 0x0A17, 0x79B8
 Data081C17D8:                   ; 081C17D8
-.word 0x85BE85C3, 0x79B80A17
+.halfword 0x85C3, 0x85BE, 0x0A17, 0x79B8
 Data081C17E0:                   ; 081C17E0
-.word 0x85C085C4, 0x79AF0A15
+.halfword 0x85C4, 0x85C0, 0x0A15, 0x79AF
 DataPtrs081C17E8:               ; 081C17E8
 .word Data081C17C0, Data081C17C8, Data081C17D0, Data081C17D8
 .word Data081C17E0, Data081C17E0, Data081C17D8, Data081C17C0
 Data081C1808:                   ; 081C1808
-.word 0x050B85B8, 0x79BA060D
+.halfword 0x85B8, 0x050B, 0x060D, 0x79BA
 Data081C1810:                   ; 081C1810
-.word 0x050B85B8, 0x79AC060D
+.halfword 0x85B8, 0x050B, 0x060D, 0x79AC
 Data081C1818:                   ; 081C1818
-.word 0x050A85B7, 0x79BA060D
+.halfword 0x85B7, 0x050A, 0x060D, 0x79BA
 Data081C1820:                   ; 081C1820
-.word 0x050B85B6, 0x79AF060D
+.halfword 0x85B6, 0x050B, 0x060D, 0x79AF
 Data081C1828:                   ; 081C1828
-.word 0x050B85B6, 0x79BA060D
+.halfword 0x85B6, 0x050B, 0x060D, 0x79BA
 DataPtrs081C1830:               ; 081C1830
 .word Data081C1828, Data081C1820, Data081C1818, Data081C1810
 .word Data081C1808, Data081C1820, Data081C1810, Data081C1808
 Data081C1850:                   ; 081C1850
-.word 0x79AE79AD, 0x79DD79B5
+.halfword 0x79AD, 0x79AE, 0x79B5, 0x79DD
 Data081C1858:                   ; 081C1858
-.word 0x06000300, 0x0A000800, 0x10000C00
-Data081C1864:                   ; 081C1864
+.halfword 0x0300, 0x0600, 0x0800, 0x0A00, 0x0C00, 0x1000
+ObjED_Multiples03:              ; 081C1864
 .halfword 0x0000, 0x0003, 0x0006
-Data081C186A:                   ; 081C186A
+ObjED_LeftTiles:                ; 081C186A
 .halfword 0x79E9, 0x79E8
 Data081C186E:                   ; 081C186E
 .halfword 0x0020, 0xFFE0

@@ -18,7 +18,7 @@ def formatdata(filepath, start, end, bytewidth=1, linebreak=None):
 
     nextline = "\n" + prefixes[bytewidth]
     output = ["Data", format(start, "08X"),
-              ":           ; ", format(start, "08X"),
+              ":                   ; ", format(start, "08X"),
               nextline]
 
     with open(filepath, "rb") as f:
