@@ -3639,7 +3639,7 @@ and   r0,r1                     ; 0801BB92  2,0 for 1F,20
 lsl   r0,r0,0x10                ; 0801BB94
 lsr   r0,r0,0x10                ; 0801BB96
 mov   r9,r0                     ; 0801BB98
-ldr   r0,=Obj1F_20_Init_Data    ; 0801BB9A
+ldr   r0,=Obj1F_20_YThresholds  ; 0801BB9A
 mov   r10,r0                    ; 0801BB9C
 mov   r0,r9                     ; 0801BB9E  2,0 for 1F,20
 cmp   r0,0x0                    ; 0801BBA0
