@@ -11052,6 +11052,7 @@ bx    r0                        ; 0810CC58
 .pool                           ; 0810CC5A
 
 Sub0810CC64:
+; Game over substate 0
 push  {lr}                      ; 0810CC64
 bl    Sub0812C2A0               ; 0810CC66
 lsl   r0,r0,0x18                ; 0810CC6A
@@ -11072,6 +11073,7 @@ bx    r0                        ; 0810CC88
 .pool                           ; 0810CC8A
 
 Sub0810CC90:
+; Game over substate 1
 push  {lr}                      ; 0810CC90
 ldr   r2,=0x03007374            ; 0810CC92
 ldr   r1,[r2]                   ; 0810CC94
@@ -11091,6 +11093,7 @@ bx    r0                        ; 0810CCAE
 .pool                           ; 0810CCB0
 
 Sub0810CCB4:
+; Game over substate 2
 push  {r4,lr}                   ; 0810CCB4
 ldr   r4,=0x03007374            ; 0810CCB6
 ldr   r0,[r4]                   ; 0810CCB8
@@ -11145,6 +11148,7 @@ bx    r0                        ; 0810CD1C
 .pool                           ; 0810CD1E
 
 Sub0810CD4C:
+; Game over substate 3
 push  {r4-r5,lr}                ; 0810CD4C
 ldr   r4,=0x03002200            ; 0810CD4E
 ldr   r0,=0x488C                ; 0810CD50
@@ -11173,6 +11177,7 @@ bx    r0                        ; 0810CD7E
 .pool                           ; 0810CD80
 
 Sub0810CD90:
+; Game over substate 4
 push  {r4,lr}                   ; 0810CD90
 ldr   r4,=0x03002200            ; 0810CD92
 ldr   r1,=0x47C0                ; 0810CD94
@@ -11240,6 +11245,7 @@ bx    r0                        ; 0810CE24
 .pool                           ; 0810CE26
 
 Sub0810CE2C:
+; Game over substate 5
 push  {r4,lr}                   ; 0810CE2C
 ldr   r4,=0x03007374            ; 0810CE2E
 ldr   r0,[r4]                   ; 0810CE30
@@ -11266,6 +11272,7 @@ bx    r0                        ; 0810CE58
 .pool                           ; 0810CE5A
 
 Sub0810CE5C:
+; Game over substate 7
 push  {r4-r5,lr}                ; 0810CE5C
 ldr   r0,=0x03007374            ; 0810CE5E
 ldr   r2,[r0]                   ; 0810CE60
@@ -11366,6 +11373,7 @@ bx    r0                        ; 0810CF46
 .pool                           ; 0810CF48
 
 Sub0810CF68:
+; Game over substate 6
 push  {r4-r6,lr}                ; 0810CF68
 ldr   r4,=0x03007374            ; 0810CF6A
 ldr   r0,[r4]                   ; 0810CF6C
@@ -11469,7 +11477,7 @@ add   r4,r4,r0                  ; 0810D074
 ldrb  r0,[r4]                   ; 0810D076
 mov   r0,0x0                    ; 0810D078
 strb  r0,[r4]                   ; 0810D07A
-ldr   r1,=CodePtrs081A88F4      ; 0810D07C
+ldr   r1,=GameOver_SubstatePtrs ; 0810D07C
 ldr   r0,=0x03007374            ; 0810D07E
 ldr   r0,[r0]                   ; 0810D080
 ldr   r0,[r0,0x18]              ; 0810D082

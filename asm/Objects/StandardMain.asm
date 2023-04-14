@@ -22084,7 +22084,7 @@ mov   r0,0x84                   ; 08027F12
 lsl   r0,r0,0x1                 ; 08027F14  0108
 cmp   r1,r0                     ; 08027F16
 bne   @@Code08027F24            ; 08027F18
-ldr   r0,=Data081BF00E          ; 08027F1A
+ldr   r0,=ObjEE_ReplacementTiles; 08027F1A
 ldrh  r1,[r0]                   ; 08027F1C  7792
 b     @@Return_r1               ; 08027F1E  if 0108, return 7792
 .pool                           ; 08027F20
@@ -22093,7 +22093,7 @@ b     @@Return_r1               ; 08027F1E  if 0108, return 7792
 ldr   r0,=0x0109                ; 08027F24
 cmp   r1,r0                     ; 08027F26
 bne   @@Code08027F38            ; 08027F28
-ldr   r0,=Data081BF00E          ; 08027F2A
+ldr   r0,=ObjEE_ReplacementTiles; 08027F2A
 ldrh  r1,[r0,0x2]               ; 08027F2C  7793
 b     @@Return_r1               ; 08027F2E  if 0109, return 7793
 .pool                           ; 08027F30
@@ -22110,7 +22110,7 @@ b     @@Return_r1               ; 08027F46  return tile-255
 .pool                           ; 08027F48
 
 @@Code08027F50:
-ldr   r0,=Data081BF00E          ; 08027F50
+ldr   r0,=ObjEE_ReplacementTiles; 08027F50
 ldrh  r1,[r0,0x4]               ; 08027F52  0000
 @@Return_r1:
 mov   r0,r1                     ; 08027F54
@@ -22647,7 +22647,7 @@ ldrh  r1,[r0]                   ; 08028304  object ID
 mov   r0,0x2                    ; 08028306
 and   r0,r1                     ; 08028308  0,2 for 1D,1E
 lsl   r0,r0,0x10                ; 0802830A
-ldr   r1,=Data081BEFE8          ; 0802830C
+ldr   r1,=Obj1D_1E_Tiles        ; 0802830C
 lsr   r0,r0,0x11                ; 0802830E
 lsl   r0,r0,0x1                 ; 08028310
 add   r0,r0,r1                  ; 08028312  offset with 0,2 for 1D,1E
@@ -22677,7 +22677,7 @@ add   r0,0x50                   ; 0802833E
 ldrh  r2,[r0]                   ; 08028340  relative Y
 cmp   r2,0x0                    ; 08028342
 bne   @@Code08028350            ; 08028344
-ldr   r1,=Data081BEFDC          ; 08028346 \ tilemap
+ldr   r1,=Obj1C_Tilemap         ; 08028346 \ tilemap
 mov   r0,r4                     ; 08028348  if first Y, offset with relX*2
 b     @@Code08028370            ; 0802834A /
 .pool                           ; 0802834C
@@ -22698,7 +22698,7 @@ mov   r0,0x4                    ; 08028364  r0 = 4 if mid Y
 @@Code08028366:
 mov   r2,r4                     ; 08028366
 orr   r2,r0                     ; 08028368  r0 += relX*2
-ldr   r1,=Data081BEFDC          ; 0802836A
+ldr   r1,=Obj1C_Tilemap         ; 0802836A
 lsr   r0,r2,0x1                 ; 0802836C
 lsl   r0,r0,0x1                 ; 0802836E /
 @@Code08028370:
@@ -22759,7 +22759,7 @@ cmp   r2,r0                     ; 080283D8
 bne   @@Code080283DE            ; 080283DA
 mov   r3,0x4                    ; 080283DC  r3 = 4 if last Y
 @@Code080283DE:
-ldr   r1,=Data081BEFCC          ; 080283DE
+ldr   r1,=Obj1B_Tiles           ; 080283DE
 add   r0,r3,r4                  ; 080283E0
 add   r0,r0,r1                  ; 080283E2  offset with water/1501/1502-dependent and Y-dependent values
 ldrh  r2,[r0]                   ; 080283E4
@@ -22856,7 +22856,7 @@ mov   r2,0x3                    ; 08028498
 and   r2,r0                     ; 0802849A  relX&3
 lsl   r2,r2,0x1                 ; 0802849C  relX&3 << 2
 orr   r2,r3                     ; 0802849E
-ldr   r0,=Data081BEFBC          ; 080284A0
+ldr   r0,=Obj19_TilemapY34      ; 080284A0
 ldr   r1,=0xFFFE                ; 080284A2
 and   r2,r1                     ; 080284A4
 add   r0,r2,r0                  ; 080284A6  offset with: (Yparity^1) << 3 | (relX&3) << 2
@@ -22871,7 +22871,7 @@ ldrh  r2,[r1]                   ; 080284B8  relative X
 mov   r1,0x3                    ; 080284BA
 and   r1,r2                     ; 080284BC  relX&3
 lsr   r0,r0,0x11                ; 080284BE  relY<<2
-ldr   r2,=Data081BEFA4          ; 080284C0
+ldr   r2,=Obj19_TilemapY012     ; 080284C0
 orr   r0,r1                     ; 080284C2  relY<<2 | relX&3
 lsl   r0,r0,0x1                 ; 080284C4
 add   r0,r0,r2                  ; 080284C6 /

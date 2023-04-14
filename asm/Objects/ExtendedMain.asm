@@ -4324,7 +4324,7 @@ add   r1,0x4C                   ; 0802B9C0
 ldrh  r1,[r1]                   ; 0802B9C2  relative X
 and   r0,r1                     ; 0802B9C4  relX&3
 orr   r0,r2                     ; 0802B9C6
-ldr   r1,=ExtObj10_Tilemap      ; 0802B9C8
+ldr   r1,=ExtObj10_TileIDOffsets; 0802B9C8
 add   r0,r0,r1                  ; 0802B9CA  index with (relY&3)*4 + (relX&3)
 ldr   r1,=0x84C2                ; 0802B9CC
 mov   r2,r1                     ; 0802B9CE

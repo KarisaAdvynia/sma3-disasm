@@ -5739,8 +5739,8 @@ ldr   r3,=0x4058                ; 0803815A
 add   r2,r2,r3                  ; 0803815C
 strh  r0,[r2]                   ; 0803815E
 ldr   r0,=0x8002                ; 08038160
-mov   r1,0x2                    ; 08038162
-bl    Sub0812CC20               ; 08038164
+mov   r1,0x2                    ; 08038162  02: Yoshi pushing voice
+bl    PlayYIContinuousSound     ; 08038164
 b     @@Code080381D8            ; 08038168
 .pool                           ; 0803816A
 
@@ -9458,8 +9458,8 @@ ldr   r1,=0x4058                ; 08039F68
 add   r2,r2,r1                  ; 08039F6A
 strh  r0,[r2]                   ; 08039F6C
 ldr   r0,=0x8001                ; 08039F6E
-mov   r1,0x1                    ; 08039F70
-bl    Sub0812CC20               ; 08039F72
+mov   r1,0x1                    ; 08039F70  01: Yoshi flutter
+bl    PlayYIContinuousSound     ; 08039F72
 cmp   r4,0x0                    ; 08039F76
 bne   @@Code08039F9E            ; 08039F78
 mov   r0,0x2                    ; 08039F7A
@@ -11969,8 +11969,8 @@ add   r0,r7,r1                  ; 0803B464
 strh  r5,[r0]                   ; 0803B466
 mov   r0,0x80                   ; 0803B468
 lsl   r0,r0,0x8                 ; 0803B46A
-mov   r1,0x6                    ; 0803B46C
-bl    Sub0812CC20               ; 0803B46E
+mov   r1,0x6                    ; 0803B46C  06: Car morph
+bl    PlayYIContinuousSound     ; 0803B46E
 mov   r5,r6                     ; 0803B472
 add   r5,0x7A                   ; 0803B474
 ldrh  r1,[r5]                   ; 0803B476
@@ -12597,8 +12597,8 @@ add   r0,r0,r1                  ; 0803B974
 strh  r3,[r0]                   ; 0803B976
 mov   r0,0x80                   ; 0803B978
 lsl   r0,r0,0x8                 ; 0803B97A
-mov   r1,0x4                    ; 0803B97C
-bl    Sub0812CC20               ; 0803B97E
+mov   r1,0x4                    ; 0803B97C  04: Mole tank morph
+bl    PlayYIContinuousSound     ; 0803B97E
 pop   {r4}                      ; 0803B982
 pop   {r0}                      ; 0803B984
 bx    r0                        ; 0803B986
@@ -13049,8 +13049,8 @@ add   r0,r0,r1                  ; 0803BD2C
 strh  r3,[r0]                   ; 0803BD2E
 mov   r0,0x80                   ; 0803BD30
 lsl   r0,r0,0x8                 ; 0803BD32
-mov   r1,0x3                    ; 0803BD34
-bl    Sub0812CC20               ; 0803BD36
+mov   r1,0x3                    ; 0803BD34  03: Helicopter morph
+bl    PlayYIContinuousSound     ; 0803BD36
 pop   {r4}                      ; 0803BD3A
 pop   {r0}                      ; 0803BD3C
 bx    r0                        ; 0803BD3E
@@ -14006,7 +14006,7 @@ mov   r0,0x80                   ; 0803C4EE
 lsl   r0,r0,0x8                 ; 0803C4F0
 mov   r1,0x5                    ; 0803C4F2
 mov   r2,r9                     ; 0803C4F4
-bl    Sub0812CC20               ; 0803C4F6
+bl    PlayYIContinuousSound     ; 0803C4F6  05: Train morph
 ldrh  r0,[r4,0x3E]              ; 0803C4FA
 sub   r0,0x1                    ; 0803C4FC
 lsl   r0,r0,0x10                ; 0803C4FE
@@ -14599,8 +14599,8 @@ add   r2,r1,r3                  ; 0803C9E2
 strh  r0,[r2]                   ; 0803C9E4
 mov   r0,0x80                   ; 0803C9E6
 lsl   r0,r0,0x8                 ; 0803C9E8
-mov   r1,0x5                    ; 0803C9EA
-bl    Sub0812CC20               ; 0803C9EC
+mov   r1,0x5                    ; 0803C9EA  05: Train morph
+bl    PlayYIContinuousSound     ; 0803C9EC
 mov   r0,0x10                   ; 0803C9F0
 strh  r0,[r6,0xA]               ; 0803C9F2
 bl    Sub0803AC08               ; 0803C9F4
@@ -15006,7 +15006,7 @@ mov   r0,0x80                   ; 0803CD24
 lsl   r0,r0,0x8                 ; 0803CD26
 mov   r1,0x7                    ; 0803CD28
 ldr   r2,=0x03006258            ; 0803CD2A
-bl    Sub0812CC20               ; 0803CD2C
+bl    PlayYIContinuousSound     ; 0803CD2C  07: Submarine morph
 bl    Sub0803CC70               ; 0803CD30
 mov   r3,0xE9                   ; 0803CD34
 lsl   r3,r3,0x1                 ; 0803CD36

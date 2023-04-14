@@ -836,6 +836,8 @@ pop   {r1}                      ; 0812C890
 bx    r1                        ; 0812C892
 
 PlayYISound:
+; r0: standard sound effect ID
+; r1: 03006258
 push  {r4-r7,lr}                ; 0812C894
 mov   r7,r10                    ; 0812C896
 mov   r6,r9                     ; 0812C898
@@ -1277,7 +1279,10 @@ pop   {r1}                      ; 0812CC1A
 bx    r1                        ; 0812CC1C
 .pool                           ; 0812CC1E
 
-Sub0812CC20:
+PlayYIContinuousSound:
+; r0: ?
+; r1: continuous sound effect ID
+; r2: 03006258
 push  {r4-r7,lr}                ; 0812CC20
 mov   r7,r10                    ; 0812CC22
 mov   r6,r9                     ; 0812CC24

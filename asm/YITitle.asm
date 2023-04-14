@@ -3153,7 +3153,7 @@ beq   @@Code080FE9E4            ; 080FE9D8
 mov   r0,0x0                    ; 080FE9DA
 mov   r1,0x8                    ; 080FE9DC
 mov   r2,0x0                    ; 080FE9DE
-bl    Sub0812CC20               ; 080FE9E0
+bl    PlayYIContinuousSound     ; 080FE9E0  08: ghost lift movement / castle enlarging
 @@Code080FE9E4:
 pop   {r0}                      ; 080FE9E4
 bx    r0                        ; 080FE9E6
