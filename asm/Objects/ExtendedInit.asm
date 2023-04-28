@@ -674,8 +674,8 @@ mov   r3,r12                    ; 0801C4C8
 add   r3,0x4E                   ; 0801C4CA
 mov   r0,0x2                    ; 0801C4CC
 strh  r0,[r3]                   ; 0801C4CE  set width to 2
-add   r3,0x4                    ; 0801C4D0
-strh  r0,[r3]                   ; 0801C4D2  set height to 4
+add   r3,0x4                    ; 0801C4D0  52
+strh  r0,[r3]                   ; 0801C4D2  set height to 2
 add   r1,0xA0                   ; 0801C4D4
 mov   r0,r12                    ; 0801C4D6
 bl    ObjMain_Slope0_NoRelY     ; 0801C4D8  Object processing main, slope=0, no relative Y threshold
@@ -920,7 +920,7 @@ and   r0,r6                     ; 0801C6B0
 orr   r0,r5                     ; 0801C6B2
 mov   r3,r8                     ; 0801C6B4
 strh  r0,[r3]                   ; 0801C6B6  adjusted YXyx
-ldr   r0,=ExtObj83_87_Widths    ; 0801C6B8  table of widths
+ldr   r0,=ExtObj83_87_Widths_16bit; 0801C6B8  table of widths
 add   r0,r4,r0                  ; 0801C6BA  index with objID-83
 ldrh  r0,[r0]                   ; 0801C6BC
 mov   r3,r12                    ; 0801C6BE

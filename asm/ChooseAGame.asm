@@ -298,7 +298,7 @@ mov   r0,0x1F                   ; 0810D738
 mov   r1,0x0                    ; 0810D73A
 bl    PlayYISound               ; 0810D73C
 mov   r0,0x2                    ; 0810D740  02: Choose a game
-bl    Sub0812C3B4               ; 0810D742  Change music (YI)
+bl    PlayYIMusic               ; 0810D742
 ldr   r0,=0x4905                ; 0810D746
 add   r5,r5,r0                  ; 0810D748
 ldrb  r0,[r5]                   ; 0810D74A

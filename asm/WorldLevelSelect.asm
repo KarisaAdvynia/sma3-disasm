@@ -2583,7 +2583,7 @@ cmp   r1,r0                     ; 08005974
 bne   @@Code080059BE            ; 08005976
 mov   r3,0x0                    ; 08005978
 mov   r2,0x0                    ; 0800597A
-ldr   r6,=Data08164720          ; 0800597C
+ldr   r6,=WorldSelectMusicIDs   ; 0800597C
 ldr   r0,=0x496D                ; 0800597E
 add   r4,r4,r0                  ; 08005980
 mov   r5,0xF                    ; 08005982
@@ -2616,7 +2616,7 @@ strb  r1,[r0]                   ; 080059B2
 lsl   r0,r3,0x1                 ; 080059B4
 add   r0,r0,r6                  ; 080059B6
 ldrh  r0,[r0]                   ; 080059B8
-bl    Sub0812C3B4               ; 080059BA  Change music (YI)
+bl    PlayYIMusic               ; 080059BA
 @@Code080059BE:
 ldr   r3,=0x03006D70            ; 080059BE
 ldr   r0,[r3]                   ; 080059C0
@@ -6728,7 +6728,7 @@ ldr   r5,=0x03002200            ; 08008030
 ldr   r0,=0x413C                ; 08008032
 add   r5,r5,r0                  ; 08008034
 ldrh  r4,[r5]                   ; 08008036
-ldr   r0,=DataPtrs08164778      ; 08008038
+ldr   r0,=LevelSelectL2TilemapPtrs; 08008038
 lsr   r4,r4,0x1                 ; 0800803A
 lsl   r4,r4,0x2                 ; 0800803C
 add   r0,r4,r0                  ; 0800803E
@@ -6749,7 +6749,7 @@ mov   r8,r0                     ; 0800805E
 mov   r0,r6                     ; 08008060
 mov   r2,r8                     ; 08008062
 bl    swi_MemoryCopy4or2        ; 08008064  Memory copy/fill, 4- or 2-byte blocks
-ldr   r0,=DataPtrs08164790      ; 08008068
+ldr   r0,=LevelSelectL3TilemapPtrs; 08008068
 add   r4,r4,r0                  ; 0800806A
 ldr   r0,[r4]                   ; 0800806C
 mov   r1,r6                     ; 0800806E
@@ -7438,11 +7438,11 @@ mov   r1,0x1                    ; 0800876A
 mov   r8,r1                     ; 0800876C
 mov   r2,r8                     ; 0800876E
 strb  r2,[r0]                   ; 08008770  set to 1
-ldr   r1,=Data08164B94          ; 08008772  level select music IDs
+ldr   r1,=LevelSelectMusicIDs   ; 08008772
 lsl   r0,r3,0x1                 ; 08008774
 add   r0,r0,r1                  ; 08008776
 ldrh  r0,[r0]                   ; 08008778
-bl    Sub0812C3B4               ; 0800877A  Change music (YI)
+bl    PlayYIMusic               ; 0800877A
 mov   r0,0x0                    ; 0800877E
 bl    Sub0812C248               ; 08008780
 ldr   r0,[r5]                   ; 08008784
@@ -19682,7 +19682,7 @@ bx    r0                        ; 0800F604
 Sub0800F628:
 ; subroutine: Load level select layer 2 tilemap
 push  {r4-r6,lr}                ; 0800F628
-ldr   r1,=DataPtrs08164778      ; 0800F62A
+ldr   r1,=LevelSelectL2TilemapPtrs; 0800F62A
 ldr   r6,=0x03002200            ; 0800F62C
 ldr   r2,=0x413C                ; 0800F62E
 add   r0,r6,r2                  ; 0800F630  r0 = 0300633C
@@ -19743,7 +19743,7 @@ bx    r0                        ; 0800F6A0
 Sub0800F6E0:
 ; subroutine: load level select layer 3 tilemap
 push  {r4-r5,lr}                ; 0800F6E0
-ldr   r1,=DataPtrs08164790      ; 0800F6E2  pointer table to layer 3 tilemaps
+ldr   r1,=LevelSelectL3TilemapPtrs; 0800F6E2  pointer table to layer 3 tilemaps
 ldr   r0,=0x03002200            ; 0800F6E4
 ldr   r2,=0x413C                ; 0800F6E6
 add   r0,r0,r2                  ; 0800F6E8  r0 = 0300633C
@@ -24119,7 +24119,7 @@ ldr   r1,=0x02010E00            ; 08011F9E
 mov   r2,0x80                   ; 08011FA0
 lsl   r2,r2,0x1                 ; 08011FA2
 bl    swi_MemoryCopy4or2        ; 08011FA4  Memory copy/fill, 4- or 2-byte blocks
-ldr   r1,=DataPtrs08164778      ; 08011FA8
+ldr   r1,=LevelSelectL2TilemapPtrs; 08011FA8
 ldrh  r0,[r5]                   ; 08011FAA
 lsr   r0,r0,0x1                 ; 08011FAC
 lsl   r0,r0,0x2                 ; 08011FAE
@@ -24134,7 +24134,7 @@ lsl   r6,r6,0x5                 ; 08011FC0
 mov   r0,r4                     ; 08011FC2
 mov   r2,r6                     ; 08011FC4
 bl    swi_MemoryCopy4or2        ; 08011FC6  Memory copy/fill, 4- or 2-byte blocks
-ldr   r1,=DataPtrs08164790      ; 08011FCA
+ldr   r1,=LevelSelectL3TilemapPtrs; 08011FCA
 ldrh  r0,[r5]                   ; 08011FCC
 lsr   r0,r0,0x1                 ; 08011FCE
 lsl   r0,r0,0x2                 ; 08011FD0
@@ -24184,7 +24184,7 @@ lsl   r0,r0,0x10                ; 0801205A
 lsr   r4,r0,0x10                ; 0801205C
 cmp   r4,0x7                    ; 0801205E
 bls   @@Code08012042            ; 08012060
-ldr   r1,=DataPtrs08164778      ; 08012062
+ldr   r1,=LevelSelectL2TilemapPtrs; 08012062
 ldr   r6,=0x03002200            ; 08012064
 ldr   r3,=0x413C                ; 08012066
 add   r0,r6,r3                  ; 08012068
@@ -24268,7 +24268,7 @@ add   r0,r0,r1                  ; 0801214E
 ldr   r1,=0x06006340            ; 08012150
 mov   r2,0xE0                   ; 08012152
 bl    swi_MemoryCopy4or2        ; 08012154  Memory copy/fill, 4- or 2-byte blocks
-ldr   r1,=DataPtrs08164790      ; 08012158
+ldr   r1,=LevelSelectL3TilemapPtrs; 08012158
 ldr   r0,=0x413C                ; 0801215A
 add   r4,r4,r0                  ; 0801215C
 ldrh  r0,[r4]                   ; 0801215E

@@ -3423,7 +3423,7 @@ mov   r0,0x2                    ; 080FEC6C
 strb  r0,[r1]                   ; 080FEC6E
 ldr   r3,=0x03007250            ; 080FEC70
 ldr   r1,[r3]                   ; 080FEC72
-ldr   r2,=Data08199128          ; 080FEC74
+ldr   r2,=YITitleMusicIDs       ; 080FEC74
 mov   r0,r1                     ; 080FEC76
 add   r0,0x5A                   ; 080FEC78
 ldrb  r0,[r0]                   ; 080FEC7A
@@ -3445,7 +3445,7 @@ lsl   r0,r0,0x18                ; 080FEC98
 asr   r0,r0,0x18                ; 080FEC9A
 lsl   r0,r0,0x10                ; 080FEC9C
 lsr   r0,r0,0x10                ; 080FEC9E
-bl    Sub0812C3B4               ; 080FECA0  Change music (YI)
+bl    PlayYIMusic               ; 080FECA0
 b     @@Code080FECC2            ; 080FECA4
 .pool                           ; 080FECA6
 

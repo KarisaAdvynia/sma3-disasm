@@ -1248,7 +1248,7 @@ neg   r1,r1                     ; 080EA2DA
 cmp   r0,r1                     ; 080EA2DC
 bne   @@Code080EA2E6            ; 080EA2DE
 mov   r0,0x21                   ; 080EA2E0  21: Course clear
-bl    Sub0812C3B4               ; 080EA2E2  Change music (YI)
+bl    PlayYIMusic               ; 080EA2E2
 @@Code080EA2E6:
 ldrh  r0,[r4,0x24]              ; 080EA2E6
 cmp   r0,0x0                    ; 080EA2E8
@@ -1472,13 +1472,13 @@ ldrh  r0,[r4,0x10]              ; 080EA4C8
 cmp   r0,0x0                    ; 080EA4CA
 bne   @@Code080EA504            ; 080EA4CC
 mov   r0,0x20                   ; 080EA4CE  20: Goal/x-4 victory
-bl    Sub0812C3B4               ; 080EA4D0  Change music (YI)
+bl    PlayYIMusic               ; 080EA4D0
 b     @@Code080EA50A            ; 080EA4D4
 .pool                           ; 080EA4D6
 
 @@Code080EA504:
 mov   r0,0x23                   ; 080EA504  23: Death (Yoshi died)
-bl    Sub0812C3B4               ; 080EA506  Change music (YI)
+bl    PlayYIMusic               ; 080EA506
 @@Code080EA50A:
 ldrh  r0,[r4,0xC]               ; 080EA50A
 add   r0,0x1                    ; 080EA50C
@@ -2082,7 +2082,7 @@ strh  r0,[r1]                   ; 080EAAE4
 @@Code080EAAE6:
 bl    Sub08054074               ; 080EAAE6
 mov   r0,0x1F                   ; 080EAAEA  1F: Bonus room/Super Baby
-bl    Sub0812C3B4               ; 080EAAEC  Change music (YI)
+bl    PlayYIMusic               ; 080EAAEC
 ldr   r5,=0x03007240            ; 080EAAF0  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r5]                   ; 080EAAF2
 ldr   r4,=0x29C2                ; 080EAAF4
@@ -9145,13 +9145,13 @@ mov   r5,0x0                    ; 080EE898
 lsr   r4,r5,0x1                 ; 080EE89A
 mov   r7,0x0                    ; 080EE89C
 strh  r4,[r6,0x10]              ; 080EE89E
-ldr   r0,=Data08196628          ; 080EE8A0
+ldr   r0,=BanditMinigame_ResultsMusic; 080EE8A0
 lsl   r4,r4,0x10                ; 080EE8A2
 lsr   r4,r4,0xF                 ; 080EE8A4
 add   r0,r4,r0                  ; 080EE8A6
 ldrh  r1,[r0]                   ; 080EE8A8
 mov   r0,r1                     ; 080EE8AA
-bl    Sub0812C3B4               ; 080EE8AC  Change music (YI)
+bl    PlayYIMusic               ; 080EE8AC
 ldr   r0,=Data081966F0          ; 080EE8B0
 add   r4,r4,r0                  ; 080EE8B2
 ldrh  r0,[r4]                   ; 080EE8B4
@@ -11216,7 +11216,7 @@ mov   r0,r8                     ; 080EFACE
 bl    Sub_bx_r1                 ; 080EFAD0
 bl    Sub080EF43C               ; 080EFAD4
 mov   r0,0x22                   ; 080EFAD8  22: Goal minigame
-bl    Sub0812C3B4               ; 080EFADA  Change music (YI)
+bl    PlayYIMusic               ; 080EFADA
 mov   r3,0x1                    ; 080EFADE
 ldr   r2,=0x0400000A            ; 080EFAE0
 ldr   r0,=0x47CA                ; 080EFAE2
@@ -13485,7 +13485,7 @@ lsl   r0,r0,0x10                ; 080F0F9A
 cmp   r0,0x0                    ; 080F0F9C
 bge   @@Code080F0FF6            ; 080F0F9E
 mov   r0,0x21                   ; 080F0FA0  21: Course clear
-bl    Sub0812C3B4               ; 080F0FA2  Change music (YI)
+bl    PlayYIMusic               ; 080F0FA2
 mov   r1,0x0                    ; 080F0FA6
 mov   r2,r4                     ; 080F0FA8
 add   r2,0x8E                   ; 080F0FAA
@@ -13632,7 +13632,7 @@ ldrb  r0,[r0]                   ; 080F10C2
 cmp   r0,0x0                    ; 080F10C4
 beq   @@Code080F10FC            ; 080F10C6
 mov   r0,0x20                   ; 080F10C8  20: Goal/x-4 victory
-bl    Sub0812C3B4               ; 080F10CA  Change music (YI)
+bl    PlayYIMusic               ; 080F10CA
 mov   r0,0x90                   ; 080F10CE
 strh  r0,[r4,0x12]              ; 080F10D0
 mov   r0,0x2                    ; 080F10D2
@@ -16222,7 +16222,7 @@ b     @@Code080F272E            ; 080F2712
 
 @@Code080F2728:
 mov   r0,0x20                   ; 080F2728  20: Goal/x-4 victory
-bl    Sub0812C3B4               ; 080F272A  Change music (YI)
+bl    PlayYIMusic               ; 080F272A
 @@Code080F272E:
 ldrh  r0,[r4,0x10]              ; 080F272E
 add   r0,0x1                    ; 080F2730
@@ -17502,7 +17502,7 @@ mov   r2,0x4                    ; 080F323E
 orr   r0,r2                     ; 080F3240
 strb  r0,[r1]                   ; 080F3242
 mov   r0,0x20                   ; 080F3244  20: Goal/x-4 victory
-bl    Sub0812C3B4               ; 080F3246  Change music (YI)
+bl    PlayYIMusic               ; 080F3246
 mov   r2,0x2                    ; 080F324A
 b     @@Code080F3266            ; 080F324C
 .pool                           ; 080F324E
@@ -19174,7 +19174,7 @@ mov   r2,0x4                    ; 080F4080
 orr   r0,r2                     ; 080F4082
 strb  r0,[r1]                   ; 080F4084
 mov   r0,0x20                   ; 080F4086  20: Goal/x-4 victory
-bl    Sub0812C3B4               ; 080F4088  Change music (YI)
+bl    PlayYIMusic               ; 080F4088
 mov   r0,0x90                   ; 080F408C
 strh  r0,[r5,0x12]              ; 080F408E
 ldrh  r0,[r5,0x30]              ; 080F4090
@@ -20549,7 +20549,7 @@ cmp   r4,r0                     ; 080F4C1C
 bhs   @@Code080F4C30            ; 080F4C1E
 @@Code080F4C20:
 mov   r0,0x20                   ; 080F4C20  20: Goal/x-4 victory
-bl    Sub0812C3B4               ; 080F4C22  Change music (YI)
+bl    PlayYIMusic               ; 080F4C22
 b     @@Code080F4C30            ; 080F4C26
 @@Code080F4C28:
 mov   r0,0x11                   ; 080F4C28
@@ -21902,7 +21902,7 @@ beq   @@Code080F574C            ; 080F5726
 mov   r0,0x90                   ; 080F5728
 strh  r0,[r4,0x3E]              ; 080F572A
 mov   r0,0x20                   ; 080F572C  20: Goal/x-4 victory
-bl    Sub0812C3B4               ; 080F572E  Change music (YI)
+bl    PlayYIMusic               ; 080F572E
 ldr   r1,=0x03002200            ; 080F5732
 ldr   r0,=0x4A48                ; 080F5734
 add   r1,r1,r0                  ; 080F5736

@@ -869,7 +869,7 @@ bx    lr                        ; 08029EBE
 
 ExtObjA3_Main:
 ; object 00.A3 main
-; width: 2, height: 4, no x/y adjustment
+; width: 2, height: 2, no x/y adjustment
 push  {r4-r6,lr}                ; 08029EC8
 mov   r4,r0                     ; 08029ECA
 mov   r5,r4                     ; 08029ECC
@@ -881,15 +881,15 @@ ldr   r2,[r6]                   ; 08029ED8
 ldr   r1,=0xFFFE                ; 08029EDA
 and   r1,r0                     ; 08029EDC
 add   r2,r2,r1                  ; 08029EDE
-ldrh  r1,[r2]                   ; 08029EE0
-ldr   r3,=0xFFFF86B1            ; 08029EE2
+ldrh  r1,[r2]                   ; 08029EE0  tile at y+1
+ldr   r3,=0xFFFF86B1            ; 08029EE2  -794F
 add   r0,r1,r3                  ; 08029EE4
 lsl   r0,r0,0x10                ; 08029EE6
 lsr   r0,r0,0x10                ; 08029EE8
 cmp   r0,0x1                    ; 08029EEA
 bhi   @@Code08029EF2            ; 08029EEC
-add   r0,r1,0x2                 ; 08029EEE
-strh  r0,[r2]                   ; 08029EF0
+add   r0,r1,0x2                 ; 08029EEE \ if the tile at y+1 is 794F/7950...
+strh  r0,[r2]                   ; 08029EF0 / replace it with 7951/7952
 @@Code08029EF2:
 ldrh  r1,[r5]                   ; 08029EF2
 mov   r0,r4                     ; 08029EF4
@@ -898,19 +898,19 @@ ldr   r2,[r6]                   ; 08029EFA
 ldr   r1,=0xFFFE                ; 08029EFC
 and   r1,r0                     ; 08029EFE
 add   r2,r2,r1                  ; 08029F00
-ldrh  r1,[r2]                   ; 08029F02
+ldrh  r1,[r2]                   ; 08029F02  tile at x+1
 ldr   r0,=0x7963                ; 08029F04
 cmp   r1,r0                     ; 08029F06
-beq   @@Code08029F36            ; 08029F08
+beq   @@Tile7963_796A           ; 08029F08
 ldr   r0,=0x7965                ; 08029F0A
 cmp   r1,r0                     ; 08029F0C
-beq   @@Code08029F16            ; 08029F0E
-add   r0,0x7                    ; 08029F10
+beq   @@Tile7965_796C           ; 08029F0E
+add   r0,0x7                    ; 08029F10  796C
 cmp   r1,r0                     ; 08029F12
 bne   @@Code08029F30            ; 08029F14
-@@Code08029F16:
-add   r0,r1,0x2                 ; 08029F16
-strh  r0,[r2]                   ; 08029F18
+@@Tile7965_796C:                ;          \ if the tile at x+1 is 7965/796C...
+add   r0,r1,0x2                 ; 08029F16   replace it with 7967/796E
+strh  r0,[r2]                   ; 08029F18 /
 b     @@Code08029F3A            ; 08029F1A
 .pool                           ; 08029F1C
 
@@ -918,20 +918,21 @@ b     @@Code08029F3A            ; 08029F1A
 ldr   r0,=0x796A                ; 08029F30
 cmp   r1,r0                     ; 08029F32
 bne   @@Code08029F3A            ; 08029F34
-@@Code08029F36:
-add   r1,0x3                    ; 08029F36
-strh  r1,[r2]                   ; 08029F38
+@@Tile7963_796A:                ;          \ if the tile at x+1 is 7963/796C...
+add   r1,0x3                    ; 08029F36   replace it with 7966/796F
+strh  r1,[r2]                   ; 08029F38 /
+
 @@Code08029F3A:
 mov   r0,r4                     ; 08029F3A
 add   r0,0x50                   ; 08029F3C
-ldrh  r1,[r0]                   ; 08029F3E
+ldrh  r1,[r0]                   ; 08029F3E  relative Y
 lsl   r1,r1,0x11                ; 08029F40
-sub   r0,0x4                    ; 08029F42
-ldrh  r0,[r0]                   ; 08029F44
+sub   r0,0x4                    ; 08029F42  4C
+ldrh  r0,[r0]                   ; 08029F44  relative X
 lsr   r1,r1,0x10                ; 08029F46
-orr   r1,r0                     ; 08029F48
+orr   r1,r0                     ; 08029F48  YX parity
 ldr   r0,=0x797C                ; 08029F4A
-add   r1,r1,r0                  ; 08029F4C
+add   r1,r1,r0                  ; 08029F4C  tile ID 797C + YX parity
 mov   r0,r4                     ; 08029F4E
 add   r0,0x4A                   ; 08029F50
 ldrh  r0,[r0]                   ; 08029F52
@@ -948,7 +949,7 @@ bx    r0                        ; 08029F64
 
 ExtObjA2_Main:
 ; object 00.A2 main
-; width: 2, height: 4, x-=1
+; width: 2, height: 2, x-=1
 push  {r4,lr}                   ; 08029F74
 mov   r4,r0                     ; 08029F76
 add   r0,0x48                   ; 08029F78
@@ -960,16 +961,16 @@ ldr   r2,[r1]                   ; 08029F84
 ldr   r1,=0xFFFE                ; 08029F86
 and   r1,r0                     ; 08029F88
 add   r2,r2,r1                  ; 08029F8A
-ldrh  r1,[r2]                   ; 08029F8C
+ldrh  r1,[r2]                   ; 08029F8C  tile at y+1
 ldr   r0,=0x793D                ; 08029F8E
 cmp   r1,r0                     ; 08029F90
-beq   @@Code08029F9A            ; 08029F92
+beq   @@Tile793D_793E           ; 08029F92
 ldr   r0,=0x793E                ; 08029F94
 cmp   r1,r0                     ; 08029F96
 bne   @@Code08029F9E            ; 08029F98
-@@Code08029F9A:
-add   r1,0x3                    ; 08029F9A
-strh  r1,[r2]                   ; 08029F9C
+@@Tile793D_793E:                ;          \ if the tile at y+1 is 793D/793E...
+add   r1,0x3                    ; 08029F9A   replace it with 7940/7941
+strh  r1,[r2]                   ; 08029F9C /
 @@Code08029F9E:
 mov   r0,r4                     ; 08029F9E
 add   r0,0x48                   ; 08029FA0
@@ -981,19 +982,19 @@ ldr   r2,[r1]                   ; 08029FAC
 ldr   r1,=0xFFFE                ; 08029FAE
 and   r1,r0                     ; 08029FB0
 add   r2,r2,r1                  ; 08029FB2
-ldrh  r1,[r2]                   ; 08029FB4
+ldrh  r1,[r2]                   ; 08029FB4  tile at x-1
 ldr   r0,=0x7962                ; 08029FB6
 cmp   r1,r0                     ; 08029FB8
-beq   @@Code08029FEE            ; 08029FBA
+beq   @@Tile7962_7969           ; 08029FBA
 ldr   r0,=0x7964                ; 08029FBC
 cmp   r1,r0                     ; 08029FBE
-beq   @@Code08029FC8            ; 08029FC0
-add   r0,0x7                    ; 08029FC2
+beq   @@Tile7964_796B           ; 08029FC0
+add   r0,0x7                    ; 08029FC2  796B
 cmp   r1,r0                     ; 08029FC4
 bne   @@Code08029FE8            ; 08029FC6
-@@Code08029FC8:
-add   r0,r1,0x3                 ; 08029FC8
-strh  r0,[r2]                   ; 08029FCA
+@@Tile7964_796B:                ;          \ if the tile at x-1 is 7964/796B...
+add   r0,r1,0x3                 ; 08029FC8   replace it with 7967/796E
+strh  r0,[r2]                   ; 08029FCA /
 b     @@Code08029FF2            ; 08029FCC
 .pool                           ; 08029FCE
 
@@ -1001,20 +1002,21 @@ b     @@Code08029FF2            ; 08029FCC
 ldr   r0,=0x7969                ; 08029FE8
 cmp   r1,r0                     ; 08029FEA
 bne   @@Code08029FF2            ; 08029FEC
-@@Code08029FEE:
-add   r1,0x4                    ; 08029FEE
-strh  r1,[r2]                   ; 08029FF0
+@@Tile7962_7969:                ;          \ if the tile at x-1 is 7962/7969...
+add   r1,0x4                    ; 08029FEE   replace it with 7966/796D
+strh  r1,[r2]                   ; 08029FF0 /
+
 @@Code08029FF2:
 mov   r0,r4                     ; 08029FF2
 add   r0,0x50                   ; 08029FF4
-ldrh  r1,[r0]                   ; 08029FF6
+ldrh  r1,[r0]                   ; 08029FF6  relative Y
 lsl   r1,r1,0x11                ; 08029FF8
-sub   r0,0x4                    ; 08029FFA
-ldrh  r0,[r0]                   ; 08029FFC
+sub   r0,0x4                    ; 08029FFA  4C
+ldrh  r0,[r0]                   ; 08029FFC  relative X
 lsr   r1,r1,0x10                ; 08029FFE
-orr   r1,r0                     ; 0802A000
+orr   r1,r0                     ; 0802A000  YX parity
 ldr   r0,=0x7978                ; 0802A002
-add   r1,r1,r0                  ; 0802A004
+add   r1,r1,r0                  ; 0802A004  tile ID 7978 + YX parity
 mov   r0,r4                     ; 0802A006
 add   r0,0x4A                   ; 0802A008
 ldrh  r0,[r0]                   ; 0802A00A
@@ -1031,7 +1033,7 @@ bx    r0                        ; 0802A01C
 
 ExtObjA1_Main:
 ; object 00.A1 main
-; width: 2, height: 4, y-=1
+; width: 2, height: 2, y-=1
 push  {r4-r5,lr}                ; 0802A02C
 mov   r5,r0                     ; 0802A02E
 add   r0,0x48                   ; 0802A030
@@ -1045,12 +1047,12 @@ ldr   r1,[r1]                   ; 0802A040
 lsr   r0,r0,0x11                ; 0802A042
 lsl   r0,r0,0x1                 ; 0802A044
 add   r2,r1,r0                  ; 0802A046
-ldrh  r3,[r2]                   ; 0802A048
+ldrh  r3,[r2]                   ; 0802A048  tile at y+1  (shouldn't this check for y-1?)
 ldr   r0,=0x7948                ; 0802A04A
 cmp   r3,r0                     ; 0802A04C
 bne   @@Code0802A060            ; 0802A04E
-add   r3,0x3                    ; 0802A050
-strh  r3,[r2]                   ; 0802A052
+add   r3,0x3                    ; 0802A050 \ if tile at y+1 is 7948, replace it with 794B
+strh  r3,[r2]                   ; 0802A052 /
 b     @@Code0802A070            ; 0802A054
 .pool                           ; 0802A056
 
@@ -1058,11 +1060,12 @@ b     @@Code0802A070            ; 0802A054
 ldr   r0,=0x7949                ; 0802A060
 cmp   r3,r0                     ; 0802A062
 bne   @@Code0802A070            ; 0802A064
-add   r3,0x3                    ; 0802A066
-asr   r4,r3                     ; 0802A068
+                                ;          \ if tile at y+1 is 7949, run glitched code
+add   r3,0x3                    ; 0802A066  r3 = 794C
+asr   r4,r3                     ; 0802A068  right-shift by 4C (becomes 0)
 lsl   r0,r4,0x1                 ; 0802A06A
 add   r0,r1,r0                  ; 0802A06C
-strh  r3,[r0]                   ; 0802A06E
+strh  r3,[r0]                   ; 0802A06E / store 794C to 0200000C+0 (does nothing since this is the unused screen memory index 0)
 @@Code0802A070:
 mov   r0,r5                     ; 0802A070
 add   r0,0x48                   ; 0802A072
@@ -1074,19 +1077,19 @@ ldr   r2,[r1]                   ; 0802A07E
 ldr   r1,=0xFFFE                ; 0802A080
 and   r1,r0                     ; 0802A082
 add   r2,r2,r1                  ; 0802A084
-ldrh  r3,[r2]                   ; 0802A086
+ldrh  r3,[r2]                   ; 0802A086  tile at x+1
 ldr   r0,=0x7955                ; 0802A088
 cmp   r3,r0                     ; 0802A08A
-beq   @@Code0802A0BA            ; 0802A08C
+beq   @@Tile7955_795C           ; 0802A08C
 ldr   r0,=0x7957                ; 0802A08E
 cmp   r3,r0                     ; 0802A090
-beq   @@Code0802A09A            ; 0802A092
-add   r0,0x7                    ; 0802A094
+beq   @@Tile7957_795E           ; 0802A092
+add   r0,0x7                    ; 0802A094  795E
 cmp   r3,r0                     ; 0802A096
 bne   @@Code0802A0B4            ; 0802A098
-@@Code0802A09A:
-add   r0,r3,0x2                 ; 0802A09A
-strh  r0,[r2]                   ; 0802A09C
+@@Tile7957_795E:                ;          \ if the tile at x+1 is 7957/795E...
+add   r0,r3,0x2                 ; 0802A09A   replace it with 7959/7960
+strh  r0,[r2]                   ; 0802A09C /
 b     @@Code0802A0BE            ; 0802A09E
 .pool                           ; 0802A0A0
 
@@ -1094,20 +1097,21 @@ b     @@Code0802A0BE            ; 0802A09E
 ldr   r0,=0x795C                ; 0802A0B4
 cmp   r3,r0                     ; 0802A0B6
 bne   @@Code0802A0BE            ; 0802A0B8
-@@Code0802A0BA:
-add   r3,0x3                    ; 0802A0BA
-strh  r3,[r2]                   ; 0802A0BC
+@@Tile7955_795C:                ;          \ if the tile at x+1 is 7955/795C...
+add   r3,0x3                    ; 0802A0BA   replace it with 7958/795F
+strh  r3,[r2]                   ; 0802A0BC /
+
 @@Code0802A0BE:
 mov   r0,r5                     ; 0802A0BE
 add   r0,0x50                   ; 0802A0C0
-ldrh  r1,[r0]                   ; 0802A0C2
+ldrh  r1,[r0]                   ; 0802A0C2  relative Y
 lsl   r1,r1,0x11                ; 0802A0C4
-sub   r0,0x4                    ; 0802A0C6
-ldrh  r0,[r0]                   ; 0802A0C8
+sub   r0,0x4                    ; 0802A0C6  4C
+ldrh  r0,[r0]                   ; 0802A0C8  relative X
 lsr   r1,r1,0x10                ; 0802A0CA
-orr   r1,r0                     ; 0802A0CC
+orr   r1,r0                     ; 0802A0CC  YX parity
 ldr   r0,=0x7974                ; 0802A0CE
-add   r1,r1,r0                  ; 0802A0D0
+add   r1,r1,r0                  ; 0802A0D0  tile ID 7974 + YX parity
 mov   r0,r5                     ; 0802A0D2
 add   r0,0x4A                   ; 0802A0D4
 ldrh  r4,[r0]                   ; 0802A0D6
@@ -1124,11 +1128,11 @@ bx    r0                        ; 0802A0E8
 
 ExtObjA0_Main:
 ; object 00.A0 main
-; width: 2, height: 4, y-=1, x-=1
+; width: 2, height: 2, y-=1, x-=1
 push  {r4,lr}                   ; 0802A0F8
 mov   r4,r0                     ; 0802A0FA
 add   r0,0x48                   ; 0802A0FC
-ldrh  r1,[r0]                   ; 0802A0FE
+ldrh  r1,[r0]                   ; 0802A0FE  tile YXyx
 mov   r0,r4                     ; 0802A100
 bl    L1TilemapOffsetYMinus1    ; 0802A102  r0 = L1 tilemap offset for y-1
 ldr   r1,=0x03007010            ; 0802A106  Layer 1 tilemap EWRAM (0200000C)
@@ -1136,20 +1140,20 @@ ldr   r2,[r1]                   ; 0802A108
 ldr   r1,=0xFFFE                ; 0802A10A
 and   r1,r0                     ; 0802A10C
 add   r2,r2,r1                  ; 0802A10E
-ldrh  r1,[r2]                   ; 0802A110
+ldrh  r1,[r2]                   ; 0802A110  tile at y-1
 ldr   r0,=0x7942                ; 0802A112
 cmp   r1,r0                     ; 0802A114
-beq   @@Code0802A11E            ; 0802A116
+beq   @@Tile7942_7943           ; 0802A116
 ldr   r0,=0x7943                ; 0802A118
 cmp   r1,r0                     ; 0802A11A
 bne   @@Code0802A122            ; 0802A11C
-@@Code0802A11E:
-add   r1,0x3                    ; 0802A11E
-strh  r1,[r2]                   ; 0802A120
+@@Tile7942_7943:                ;          \ if tile at y-1 is 7942/7943...
+add   r1,0x3                    ; 0802A11E   replace it with 7945/7946
+strh  r1,[r2]                   ; 0802A120 /
 @@Code0802A122:
 mov   r0,r4                     ; 0802A122
 add   r0,0x48                   ; 0802A124
-ldrh  r1,[r0]                   ; 0802A126
+ldrh  r1,[r0]                   ; 0802A126  tile YXyx
 mov   r0,r4                     ; 0802A128
 bl    L1TilemapOffsetXMinus1    ; 0802A12A  r0 = L1 tilemap offset for x-1
 ldr   r1,=0x03007010            ; 0802A12E  Layer 1 tilemap EWRAM (0200000C)
@@ -1157,19 +1161,19 @@ ldr   r2,[r1]                   ; 0802A130
 ldr   r1,=0xFFFE                ; 0802A132
 and   r1,r0                     ; 0802A134
 add   r2,r2,r1                  ; 0802A136
-ldrh  r1,[r2]                   ; 0802A138
+ldrh  r1,[r2]                   ; 0802A138  tile at x-1
 ldr   r0,=0x7944                ; 0802A13A
 cmp   r1,r0                     ; 0802A13C
-beq   @@Code0802A172            ; 0802A13E
+beq   @@Tile7944_794B           ; 0802A13E
 ldr   r0,=0x7946                ; 0802A140
 cmp   r1,r0                     ; 0802A142
-beq   @@Code0802A14C            ; 0802A144
-add   r0,0x7                    ; 0802A146
+beq   @@Tile7946_794D           ; 0802A144
+add   r0,0x7                    ; 0802A146  794D
 cmp   r1,r0                     ; 0802A148
 bne   @@Code0802A16C            ; 0802A14A
-@@Code0802A14C:
-add   r0,r1,0x3                 ; 0802A14C
-strh  r0,[r2]                   ; 0802A14E
+@@Tile7946_794D:                ;          \ if tile at x-1 is 7946/794D...
+add   r0,r1,0x3                 ; 0802A14C   replace it with 7949/7950
+strh  r0,[r2]                   ; 0802A14E /
 b     @@Code0802A176            ; 0802A150
 .pool                           ; 0802A152
 
@@ -1177,20 +1181,21 @@ b     @@Code0802A176            ; 0802A150
 ldr   r0,=0x794B                ; 0802A16C
 cmp   r1,r0                     ; 0802A16E
 bne   @@Code0802A176            ; 0802A170
-@@Code0802A172:
-add   r1,0x4                    ; 0802A172
-strh  r1,[r2]                   ; 0802A174
+@@Tile7944_794B:                ;          \ if tile at x-1 is 7944/794B...
+add   r1,0x4                    ; 0802A172   replace it with 7948/7951
+strh  r1,[r2]                   ; 0802A174 /
+
 @@Code0802A176:
 mov   r0,r4                     ; 0802A176
 add   r0,0x50                   ; 0802A178
-ldrh  r1,[r0]                   ; 0802A17A
+ldrh  r1,[r0]                   ; 0802A17A  relative Y
 lsl   r1,r1,0x11                ; 0802A17C
-sub   r0,0x4                    ; 0802A17E
-ldrh  r0,[r0]                   ; 0802A180
+sub   r0,0x4                    ; 0802A17E  4C
+ldrh  r0,[r0]                   ; 0802A180  relative X
 lsr   r1,r1,0x10                ; 0802A182
-orr   r1,r0                     ; 0802A184
+orr   r1,r0                     ; 0802A184  YX parity
 ldr   r0,=0x7970                ; 0802A186
-add   r1,r1,r0                  ; 0802A188
+add   r1,r1,r0                  ; 0802A188  tile ID 7970 + YX parity
 mov   r0,r4                     ; 0802A18A
 add   r0,0x4A                   ; 0802A18C
 ldrh  r0,[r0]                   ; 0802A18E
@@ -1247,6 +1252,8 @@ add   r0,r0,r2                  ; 0802A1F2  index with extID-9E
 lsr   r1,r1,0x10                ; 0802A1F4  pre-existing tile -854B
 ldrh  r0,[r0]                   ; 0802A1F6  tile ID
 add   r1,r1,r0                  ; 0802A1F8  tile ID + pre-existing tile -854B (doesn't check for overflow?!)
+                                ;           9E: tileID+8562-854B = tileID+17
+                                ;           9F: tileID+8566-854B = tileID+1B
 ldr   r4,=0x03007010            ; 0802A1FA  Layer 1 tilemap EWRAM (0200000C)
 ldr   r0,[r4]                   ; 0802A1FC
 lsr   r3,r3,0x1                 ; 0802A1FE
@@ -1272,7 +1279,7 @@ pop   {r0}                      ; 0802A226
 bx    r0                        ; 0802A228
 .pool                           ; 0802A22A
 
-Sub0802A240:
+ExtObj9C_9D_YMinus1Wrapper:
 ; runs for 00.9C-9D
 push  {lr}                      ; 0802A240
 lsl   r1,r1,0x10                ; 0802A242
@@ -1284,7 +1291,7 @@ pop   {r1}                      ; 0802A24E
 bx    r1                        ; 0802A250
 .pool                           ; 0802A252
 
-Sub0802A254:
+ExtObj9A_9B_YMinus1Wrapper:
 ; runs for 00.9A-9B
 push  {lr}                      ; 0802A254
 lsl   r1,r1,0x10                ; 0802A256
@@ -1402,11 +1409,11 @@ ldrh  r0,[r0]                   ; 0802A336  relative X
 add   r1,r1,r0                  ; 0802A338  YX parity
 lsl   r1,r1,0x10                ; 0802A33A
 lsr   r1,r1,0x10                ; 0802A33C
-ldr   r0,=ExtObj92_95_TilemapPtrs; 0802A33E  pointer table to tilemap
+ldr   r0,=ExtObj92_95_TileLowBytePtrs; 0802A33E  pointer table to tilemap low bytes
 lsr   r2,r2,0x1                 ; 0802A340
 lsl   r2,r2,0x2                 ; 0802A342  index with modified object ID
 add   r2,r2,r0                  ; 0802A344
-ldr   r0,[r2]                   ; 0802A346  pointer to tilemap
+ldr   r0,[r2]                   ; 0802A346  pointer to tilemap low bytes
 add   r0,r0,r1                  ; 0802A348  index with YX parity
 ldrb  r2,[r0]                   ; 0802A34A  tile number, low byte
 cmp   r2,0x0                    ; 0802A34C
@@ -1627,7 +1634,7 @@ mov   r3,0xE0                   ; 0802A522
 lsl   r3,r3,0xC                 ; 0802A524  E0000
 and   r3,r0                     ; 0802A526
 lsr   r3,r3,0x10                ; 0802A528  (pre-existing tile -9) & 0E
-ldr   r0,=Data081BE1EA          ; 0802A52A
+ldr   r0,=ExtObj8B_8C_TileBaseX0; 0802A52A
 lsr   r2,r2,0x1                 ; 0802A52C
 lsl   r6,r2,0x1                 ; 0802A52E  0,2 for 8B,8C
 add   r0,r6,r0                  ; 0802A530
@@ -1653,7 +1660,7 @@ add   r0,0x48                   ; 0802A554
 ldrh  r1,[r0]                   ; 0802A556
 mov   r0,r12                    ; 0802A558
 bl    L1TilemapOffsetXPlus1     ; 0802A55A  r0 = L1 tilemap offset for x+1
-ldr   r1,=Data081BE1EE          ; 0802A55E
+ldr   r1,=ExtObj8B_8C_TileBaseX1; 0802A55E
 add   r1,r6,r1                  ; 0802A560
 ldrh  r3,[r5]                   ; 0802A562  relative Y
 ldrh  r1,[r1]                   ; 0802A564  8531,8539
@@ -1689,8 +1696,8 @@ lsl   r0,r0,0x10                ; 0802A5A4
 mov   r3,0xE0                   ; 0802A5A6
 lsl   r3,r3,0xC                 ; 0802A5A8  E0000
 and   r3,r0                     ; 0802A5AA
-lsr   r3,r3,0x10                ; 0802A5AC  (pre-existing tile -9) & 0E
-ldr   r0,=Data081BE1E2          ; 0802A5AE
+lsr   r3,r3,0x10                ; 0802A5AC  r3 = (pre-existing tile -9) & 0E
+ldr   r0,=ExtObj89_8A_TileBaseY0; 0802A5AE
 lsr   r2,r2,0x1                 ; 0802A5B0
 lsl   r6,r2,0x1                 ; 0802A5B2  0,2 for 89,8A
 add   r0,r6,r0                  ; 0802A5B4
@@ -1716,7 +1723,7 @@ add   r0,0x48                   ; 0802A5D8
 ldrh  r1,[r0]                   ; 0802A5DA
 mov   r0,r12                    ; 0802A5DC
 bl    L1TilemapOffsetYPlus1     ; 0802A5DE  r0 = L1 tilemap offset for y+1
-ldr   r1,=Data081BE1E6          ; 0802A5E2
+ldr   r1,=ExtObj89_8A_TileBaseY1; 0802A5E2
 add   r1,r6,r1                  ; 0802A5E4  offset with 0,2 for 89,8A
 ldrh  r3,[r5]                   ; 0802A5E6  relative X
 ldrh  r1,[r1]                   ; 0802A5E8  8521,8529
@@ -1733,6 +1740,7 @@ bx    r0                        ; 0802A5FA
 .pool                           ; 0802A5FC
 
 Sub0802A610:
+; called by 00.88
 push  {r4-r5,lr}                ; 0802A610
 mov   r5,r0                     ; 0802A612
 lsl   r1,r1,0x10                ; 0802A614
@@ -1741,7 +1749,7 @@ lsl   r4,r3,0x10                ; 0802A618
 lsr   r3,r4,0x10                ; 0802A61A
 cmp   r1,0x0                    ; 0802A61C
 bne   @@Code0802A66C            ; 0802A61E
-ldr   r1,=Data081BE1D2          ; 0802A620
+ldr   r1,=ExtObj88_Data081BE1D2 ; 0802A620
 lsr   r0,r0,0x11                ; 0802A622
 lsl   r0,r0,0x1                 ; 0802A624
 add   r0,r0,r1                  ; 0802A626
@@ -1768,7 +1776,7 @@ mov   r0,0xF2                   ; 0802A64C
 lsl   r0,r0,0x7                 ; 0802A64E
 cmp   r2,r0                     ; 0802A650
 beq   @@Code0802A62E            ; 0802A652
-ldr   r0,=Data081BE182          ; 0802A654
+ldr   r0,=ExtObj88_Data081BE182 ; 0802A654
 lsr   r1,r4,0x11                ; 0802A656
 lsl   r1,r1,0x1                 ; 0802A658
 add   r1,r1,r0                  ; 0802A65A
@@ -1780,7 +1788,7 @@ b     @@Code0802A682            ; 0802A664
 .pool                           ; 0802A666
 
 @@Code0802A66C:
-ldr   r1,=Data081BE1DA          ; 0802A66C
+ldr   r1,=ExtObj88_Data081BE1DA ; 0802A66C
 lsr   r0,r0,0x11                ; 0802A66E
 lsl   r0,r0,0x1                 ; 0802A670
 add   r0,r0,r1                  ; 0802A672
@@ -1801,6 +1809,7 @@ bx    r1                        ; 0802A688
 .pool                           ; 0802A68A
 
 Sub0802A690:
+; called by 00.88
 push  {r4,lr}                   ; 0802A690
 lsl   r1,r1,0x10                ; 0802A692
 lsl   r0,r2,0x10                ; 0802A694
@@ -1810,7 +1819,7 @@ lsl   r3,r3,0x10                ; 0802A69A
 lsr   r3,r3,0x10                ; 0802A69C
 cmp   r1,0x0                    ; 0802A69E
 bne   @@Code0802A6D8            ; 0802A6A0
-ldr   r1,=Data081BE1C2          ; 0802A6A2
+ldr   r1,=ExtObj88_Data081BE1C2 ; 0802A6A2
 lsr   r0,r0,0x11                ; 0802A6A4
 lsl   r0,r0,0x1                 ; 0802A6A6
 add   r0,r0,r1                  ; 0802A6A8
@@ -1825,7 +1834,7 @@ b     @@Return                  ; 0802A6B8
 .pool                           ; 0802A6BA
 
 @@Code0802A6C0:
-ldr   r0,=Data081BE1AA          ; 0802A6C0
+ldr   r0,=ExtObj88_Data081BE1AA ; 0802A6C0
 lsr   r1,r3,0x1                 ; 0802A6C2
 lsl   r1,r1,0x1                 ; 0802A6C4
 add   r1,r1,r0                  ; 0802A6C6
@@ -1838,7 +1847,7 @@ b     @@Return                  ; 0802A6D2
 .pool                           ; 0802A6D4
 
 @@Code0802A6D8:
-ldr   r1,=Data081BE1CA          ; 0802A6D8
+ldr   r1,=ExtObj88_Data081BE1CA ; 0802A6D8
 lsr   r0,r0,0x11                ; 0802A6DA
 lsl   r0,r0,0x1                 ; 0802A6DC
 add   r0,r0,r1                  ; 0802A6DE
@@ -1859,6 +1868,7 @@ bx    r1                        ; 0802A6F6
 .pool                           ; 0802A6F8
 
 Sub0802A6FC:
+; called by 00.88
 push  {r4,lr}                   ; 0802A6FC
 lsl   r1,r1,0x10                ; 0802A6FE
 lsl   r0,r2,0x10                ; 0802A700
@@ -1868,7 +1878,7 @@ lsl   r3,r3,0x10                ; 0802A706
 lsr   r3,r3,0x10                ; 0802A708
 cmp   r1,0x0                    ; 0802A70A
 bne   @@Code0802A744            ; 0802A70C
-ldr   r1,=Data081BE19A          ; 0802A70E
+ldr   r1,=ExtObj88_Data081BE19A ; 0802A70E
 lsr   r0,r0,0x11                ; 0802A710
 lsl   r0,r0,0x1                 ; 0802A712
 add   r0,r0,r1                  ; 0802A714
@@ -1883,7 +1893,7 @@ b     @@Return                  ; 0802A724
 .pool                           ; 0802A726
 
 @@Code0802A72C:
-ldr   r0,=Data081BE1AA          ; 0802A72C
+ldr   r0,=ExtObj88_Data081BE1AA ; 0802A72C
 lsr   r1,r3,0x1                 ; 0802A72E
 lsl   r1,r1,0x1                 ; 0802A730
 add   r1,r1,r0                  ; 0802A732
@@ -1896,7 +1906,7 @@ b     @@Return                  ; 0802A73E
 .pool                           ; 0802A740
 
 @@Code0802A744:
-ldr   r1,=Data081BE1A2          ; 0802A744
+ldr   r1,=ExtObj88_Data081BE1A2 ; 0802A744
 lsr   r0,r0,0x11                ; 0802A746
 lsl   r0,r0,0x1                 ; 0802A748
 add   r0,r0,r1                  ; 0802A74A
@@ -1917,6 +1927,7 @@ bx    r1                        ; 0802A762
 .pool                           ; 0802A764
 
 Sub0802A768:
+; called by 00.88
 push  {r4,lr}                   ; 0802A768
 mov   r4,r0                     ; 0802A76A
 lsl   r1,r1,0x10                ; 0802A76C
@@ -1925,7 +1936,7 @@ lsl   r3,r3,0x10                ; 0802A770
 lsr   r2,r3,0x10                ; 0802A772
 cmp   r1,0x0                    ; 0802A774
 bne   @@Code0802A7BC            ; 0802A776
-ldr   r1,=Data081BE172          ; 0802A778
+ldr   r1,=ExtObj88_Data081BE172 ; 0802A778
 lsr   r0,r0,0x11                ; 0802A77A
 lsl   r0,r0,0x1                 ; 0802A77C
 add   r0,r0,r1                  ; 0802A77E
@@ -1948,7 +1959,7 @@ mov   r1,0xF2                   ; 0802A79C
 lsl   r1,r1,0x7                 ; 0802A79E
 cmp   r0,r1                     ; 0802A7A0
 beq   @@Code0802A786            ; 0802A7A2
-ldr   r0,=Data081BE182          ; 0802A7A4
+ldr   r0,=ExtObj88_Data081BE182 ; 0802A7A4
 lsr   r1,r3,0x11                ; 0802A7A6
 lsl   r1,r1,0x1                 ; 0802A7A8
 add   r1,r1,r0                  ; 0802A7AA
@@ -1961,7 +1972,7 @@ b     @@Return                  ; 0802A7B6
 .pool                           ; 0802A7B8
 
 @@Code0802A7BC:
-ldr   r1,=Data081BE17A          ; 0802A7BC
+ldr   r1,=ExtObj88_Data081BE17A ; 0802A7BC
 lsr   r0,r0,0x11                ; 0802A7BE
 lsl   r0,r0,0x1                 ; 0802A7C0
 add   r0,r0,r1                  ; 0802A7C2
@@ -1993,19 +2004,19 @@ and   r0,r2                     ; 0802A7EA  pre-existing tile, high byte filtere
 mov   r1,0x85                   ; 0802A7EC
 lsl   r1,r1,0x8                 ; 0802A7EE  8500
 cmp   r0,r1                     ; 0802A7F0
-beq   @@Code0802A808            ; 0802A7F2
+beq   @@HighByte85              ; 0802A7F2
 
-ldr   r0,=0xFFFF8867            ; 0802A7F4
+ldr   r0,=0xFFFF8867            ; 0802A7F4  -7799
 add   r1,r2,r0                  ; 0802A7F6
 lsl   r1,r1,0x10                ; 0802A7F8
 mov   r0,0xFE                   ; 0802A7FA
-lsl   r0,r0,0x10                ; 0802A7FC
+lsl   r0,r0,0x10                ; 0802A7FC  FE0000
 and   r0,r1                     ; 0802A7FE
 lsr   r3,r0,0x10                ; 0802A800
 b     @@Code0802A812            ; 0802A802
 .pool                           ; 0802A804
 
-@@Code0802A808:
+@@HighByte85:
 ldr   r1,=0x7AB5                ; 0802A808 \ runs if previous tile high byte is 85
 add   r0,r2,r1                  ; 0802A80A
 lsl   r0,r0,0x10                ; 0802A80C
@@ -2014,11 +2025,11 @@ mov   r6,0x1                    ; 0802A810 /
 @@Code0802A812:
 mov   r0,r5                     ; 0802A812
 add   r0,0x4C                   ; 0802A814
-ldrh  r2,[r0]                   ; 0802A816
+ldrh  r2,[r0]                   ; 0802A816  relative X
 lsl   r2,r2,0x11                ; 0802A818
 lsr   r2,r2,0x10                ; 0802A81A
-add   r0,0x4                    ; 0802A81C
-ldrh  r0,[r0]                   ; 0802A81E
+add   r0,0x4                    ; 0802A81C  50
+ldrh  r0,[r0]                   ; 0802A81E  relative Y
 lsl   r0,r0,0x11                ; 0802A820
 ldr   r1,=ExtObj88_CodePtrs     ; 0802A822
 lsr   r0,r0,0xF                 ; 0802A824
@@ -2039,7 +2050,7 @@ ldr   r1,[r1]                   ; 0802A842
 lsr   r0,r0,0x1                 ; 0802A844
 lsl   r0,r0,0x1                 ; 0802A846
 add   r1,r1,r0                  ; 0802A848
-strh  r2,[r1]                   ; 0802A84A
+strh  r2,[r1]                   ; 0802A84A  set tile
 @@Return:
 pop   {r4-r6}                   ; 0802A84C
 pop   {r0}                      ; 0802A84E
@@ -2055,7 +2066,7 @@ add   r0,0x42                   ; 0802A864
 ldrh  r1,[r0]                   ; 0802A866  (objID-83)*2
 add   r0,0xE                    ; 0802A868
 ldrh  r2,[r0]                   ; 0802A86A  r2 = relative Y
-ldr   r0,=Data081BE13C          ; 0802A86C  table of widths
+ldr   r0,=ExtObj83_87_Widths_8bit; 0802A86C  table of widths
 lsr   r1,r1,0x1                 ; 0802A86E  objID-83
 add   r0,r1,r0                  ; 0802A870
 ldrb  r0,[r0]                   ; 0802A872  r0 = width
@@ -2068,7 +2079,7 @@ ldrh  r2,[r2]                   ; 0802A87E  r2 = relative X
 add   r0,r0,r2                  ; 0802A880  r0 = relY*width + relX
 lsl   r0,r0,0x10                ; 0802A882
 lsr   r2,r0,0x10                ; 0802A884
-ldr   r0,=ExtObj83_87_TilemapPtrs; 0802A886  table of pointers to tilemaps
+ldr   r0,=ExtObj83_87_TileIndexPtrs; 0802A886  table of pointers to tilemaps
 lsl   r1,r1,0x2                 ; 0802A888
 add   r1,r1,r0                  ; 0802A88A  index with objID-83
 ldr   r0,[r1]                   ; 0802A88C
@@ -2091,7 +2102,7 @@ b     @@Code0802A8D8            ; 0802A8A4
 mov   r0,r3                     ; 0802A8B8  runs if tile special ID >= D0
 sub   r0,0xD0                   ; 0802A8BA  specialID-D0
 lsl   r0,r0,0x11                ; 0802A8BC
-ldr   r1,=Data081BE142          ; 0802A8BE
+ldr   r1,=ExtObj83_87_DynIndexes; 0802A8BE
 lsr   r0,r0,0x10                ; 0802A8C0
 add   r0,r0,r1                  ; 0802A8C2  index with specialID-D0
 ldrh  r1,[r0]                   ; 0802A8C4  tile dynamic index
@@ -4011,12 +4022,12 @@ add   r0,0x42                   ; 0802B74A
 ldrh  r3,[r0]                   ; 0802B74C  extID-19
 cmp   r3,0x0                    ; 0802B74E
 beq   @@Code0802B75C            ; 0802B750
-ldr   r0,=ExtObj1A_Tilemap      ; 0802B752
+ldr   r0,=ExtObj1A_TileIndexes  ; 0802B752
 b     @@Code0802B75E            ; 0802B754
 .pool                           ; 0802B756
 
 @@Code0802B75C:
-ldr   r0,=ExtObj19_Tilemap      ; 0802B75C
+ldr   r0,=ExtObj19_TileIndexes  ; 0802B75C
 @@Code0802B75E:
 add   r0,r1,r0                  ; 0802B75E  index with relY*0x20 + relX
 ldrb  r3,[r0]                   ; 0802B760  tile custom index

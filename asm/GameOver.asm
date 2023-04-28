@@ -11061,7 +11061,7 @@ bne   @@Code0810CC86            ; 0810CC6E
 mov   r0,0x0                    ; 0810CC70
 bl    Sub0812C248               ; 0810CC72
 mov   r0,0x25                   ; 0810CC76  25: Game over
-bl    Sub0812C3B4               ; 0810CC78  Change music (YI)
+bl    PlayYIMusic               ; 0810CC78
 ldr   r0,=0x03007374            ; 0810CC7C
 ldr   r1,[r0]                   ; 0810CC7E
 ldr   r0,[r1,0x18]              ; 0810CC80

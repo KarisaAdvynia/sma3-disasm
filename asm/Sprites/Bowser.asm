@@ -1170,7 +1170,7 @@ mov   r1,0x8C                   ; 08102C88
 lsl   r1,r1,0x2                 ; 08102C8A
 add   r4,r0,r1                  ; 08102C8C
 mov   r0,0x1A                   ; 08102C8E  1A: Bowser battle
-bl    Sub0812C3B4               ; 08102C90  Change music (YI)
+bl    PlayYIMusic               ; 08102C90
 ldr   r2,=0x03006D80            ; 08102C94
 mov   r0,0x1A                   ; 08102C96
 strh  r0,[r2,0x30]              ; 08102C98
@@ -3366,7 +3366,7 @@ ldsh  r0,[r0,r1]                ; 0810400A
 cmp   r0,0x0                    ; 0810400C
 bge   @@Code0810401C            ; 0810400E
 mov   r0,0x15                   ; 08104010  15: Kamek enlarge to Bowser
-bl    Sub0812C3B4               ; 08104012  Change music (YI)
+bl    PlayYIMusic               ; 08104012
 mov   r0,r4                     ; 08104016
 bl    Sub08105940               ; 08104018
 @@Code0810401C:
@@ -4897,7 +4897,7 @@ cmp   r4,0x0                    ; 08104D44
 bne   @@Code08104D50            ; 08104D46
 mov   r4,0x48                   ; 08104D48
 mov   r0,0x14                   ; 08104D4A  14: Kamek encounter
-bl    Sub0812C3B4               ; 08104D4C  Change music (YI)
+bl    PlayYIMusic               ; 08104D4C
 @@Code08104D50:
 cmp   r4,0xFF                   ; 08104D50
 bgt   @@Code08104E18            ; 08104D52
@@ -6073,7 +6073,7 @@ strh  r4,[r0,0x12]              ; 08105740
 ldr   r0,=0x03006D80            ; 08105742
 strh  r4,[r0,0x30]              ; 08105744
 mov   r0,0x18                   ; 08105746  18: x-8 boss
-bl    Sub0812C3B4               ; 08105748  Change music (YI)
+bl    PlayYIMusic               ; 08105748
 mov   r0,0x80                   ; 0810574C
 lsl   r0,r0,0x3                 ; 0810574E
 str   r0,[r5,0x1C]              ; 08105750
@@ -8310,7 +8310,7 @@ mov   r0,0xFD                   ; 08106A3E
 and   r0,r4                     ; 08106A40
 strb  r0,[r5]                   ; 08106A42
 mov   r0,0x1B                   ; 08106A44  1B: Bowser battle victory
-bl    Sub0812C3B4               ; 08106A46  Change music (YI)
+bl    PlayYIMusic               ; 08106A46
 @@Code08106A4A:
 lsr   r1,r6,0x1                 ; 08106A4A
 cmp   r1,0x0                    ; 08106A4C

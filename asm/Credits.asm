@@ -1191,7 +1191,7 @@ mov   r0,0xFD                   ; 0803444C
 and   r0,r1                     ; 0803444E
 strb  r0,[r2]                   ; 08034450
 mov   r0,0x1D                   ; 08034452  1D: Credits
-bl    Sub0812C3B4               ; 08034454  Change music (YI)
+bl    PlayYIMusic               ; 08034454
 ldr   r0,=0x4905                ; 08034458
 add   r5,r5,r0                  ; 0803445A
 ldrb  r0,[r5]                   ; 0803445C
@@ -2037,7 +2037,7 @@ strh  r6,[r0]                   ; 08034BEE
 mov   r0,r5                     ; 08034BF0
 bl    Sub080349C8               ; 08034BF2
 mov   r0,0x1E                   ; 08034BF6  1E: Credits end (Our heroes are born!)
-bl    Sub0812C3B4               ; 08034BF8  Change music (YI)
+bl    PlayYIMusic               ; 08034BF8
 add   sp,0x10                   ; 08034BFC
 pop   {r3-r5}                   ; 08034BFE
 mov   r8,r3                     ; 08034C00

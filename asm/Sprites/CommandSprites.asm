@@ -53,7 +53,7 @@ lsl   r0,r6,0x1                 ; 080D6A76
 add   r0,r0,r6                  ; 080D6A78  tileset*3
 lsl   r0,r0,0x10                ; 080D6A7A
 lsr   r6,r0,0x10                ; 080D6A7C
-ldr   r5,=L1TilesetGraphics     ; 080D6A7E  layer 1 tileset graphics pointers
+ldr   r5,=L1TilesetGraphicsPtrs ; 080D6A7E  layer 1 tileset graphics pointers
 add   r0,r6,0x2                 ; 080D6A80
 lsl   r0,r0,0x2                 ; 080D6A82  index by tileset*3 +2
 add   r0,r0,r5                  ; 080D6A84

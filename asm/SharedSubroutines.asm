@@ -44,7 +44,7 @@ swi_01:
 swi   0x1                       ; 0812F6E0 RegisterRamReset
 bx    lr                        ; 0812F6E2
 
-SoftReset1Player:
+SoftResetSinglePlayer:
 ; Soft reset (single-player)
 ldr   r3,=0x04000208            ; 0812F6E4
 mov   r2,0x0                    ; 0812F6E6

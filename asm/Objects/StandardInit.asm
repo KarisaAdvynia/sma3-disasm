@@ -658,7 +658,7 @@ and   r3,r4                     ; 0801A570  objID&1
 lsl   r4,r3,0x4                 ; 0801A572
 mov   r5,r12                    ; 0801A574
 strh  r4,[r5]                   ; 0801A576  [0300224E] = 00,10 for D8,D9
-ldr   r4,=ObjD8_D9_Init_Data    ; 0801A578
+ldr   r4,=ObjD8_D9_Heights      ; 0801A578
 lsl   r3,r3,0x1                 ; 0801A57A
 add   r3,r3,r4                  ; 0801A57C
 ldrh  r3,[r3]                   ; 0801A57E  04,03 for D8,D9
@@ -1148,13 +1148,12 @@ ldr   r0,[r0]                   ; 0801A8EE
 ldr   r3,=0x2992                ; 0801A8F0
 add   r0,r0,r3                  ; 0801A8F2  [03007240]+2992 (03004B9E)
 ldrh  r0,[r0]                   ; 0801A8F4  r0 = layer 1 tileset ID
-cmp   r0,0xB                    ; 0801A8F6
+cmp   r0,0xB                    ; 0801A8F6  0B: sewer
 bne   @@Code0801A902            ; 0801A8F8
-
-mov   r3,r4                     ; 0801A8FA
+mov   r3,r4                     ; 0801A8FA \
 add   r3,0x52                   ; 0801A8FC
 mov   r0,0x2                    ; 0801A8FE
-strh  r0,[r3]                   ; 0801A900  if tileset B, set height to 2
+strh  r0,[r3]                   ; 0801A900 / if sewer tileset, set height to 2
 @@Code0801A902:
 mov   r0,r4                     ; 0801A902
 bl    ObjMain_Slope0_NoRelY     ; 0801A904  Object processing main, slope=0, no relative Y threshold
@@ -3041,14 +3040,14 @@ sub   r3,0x4                    ; 0801B748
 ldrh  r3,[r3]                   ; 0801B74A
 and   r0,r3                     ; 0801B74C
 lsl   r0,r0,0x10                ; 0801B74E
-ldr   r3,=Obj45_46_Init_Data    ; 0801B750
+ldr   r3,=Obj45_46_Slopes       ; 0801B750
 lsr   r0,r0,0x11                ; 0801B752
 lsl   r0,r0,0x1                 ; 0801B754
 add   r0,r0,r3                  ; 0801B756
 ldrh  r3,[r0]                   ; 0801B758
 mov   r0,r12                    ; 0801B75A
 add   r0,0x44                   ; 0801B75C
-strh  r3,[r0]                   ; 0801B75E
+strh  r3,[r0]                   ; 0801B75E  set slope
 mov   r5,r12                    ; 0801B760
 add   r5,0x48                   ; 0801B762
 ldrh  r4,[r5]                   ; 0801B764

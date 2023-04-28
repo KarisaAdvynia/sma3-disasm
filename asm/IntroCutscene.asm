@@ -688,7 +688,7 @@ mov   r0,0xF8                   ; 080F5F82
 lsl   r0,r0,0x1                 ; 080F5F84
 strh  r0,[r1]                   ; 080F5F86
 mov   r0,0x5                    ; 080F5F88  05: Intro cutscene
-bl    Sub0812C3B4               ; 080F5F8A  Change music (YI)
+bl    PlayYIMusic               ; 080F5F8A
 ldr   r3,=0x030069E4            ; 080F5F8E
 ldrh  r0,[r3]                   ; 080F5F90
 ldr   r1,[sp,0x10]              ; 080F5F92

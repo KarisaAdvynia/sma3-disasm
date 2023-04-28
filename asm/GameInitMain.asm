@@ -3400,7 +3400,7 @@ b     @@MainLoop                ; 08002BBC  loop, don't return
 
 @@Code08002BCC:
 mov   r0,0xFF                   ; 08002BCC
-bl    SoftReset1Player          ; 08002BCE  soft reset
+bl    SoftResetSinglePlayer     ; 08002BCE  soft reset
 
 ; unused return code, never executed
 pop   {r3-r4}                   ; 08002BD2
@@ -4792,7 +4792,7 @@ add   r1,r1,r0                  ; 08003858
 ldr   r2,=0x01000400            ; 0800385A
 mov   r0,sp                     ; 0800385C
 bl    swi_MemoryCopy4or2        ; 0800385E  Memory copy/fill, 4- or 2-byte blocks
-ldr   r0,=Data081644D4          ; 08003862  build-date graphics
+ldr   r0,=LZ77_SMA3Title_buildtext; 08003862  build-date graphics
 ldrh  r2,[r5]                   ; 08003864
 mov   r1,0xC                    ; 08003866
 and   r1,r2                     ; 08003868
@@ -5041,7 +5041,7 @@ lsr   r4,r0,0x10                ; 08003AC4
 cmp   r4,0xFF                   ; 08003AC6
 bls   @@Code08003AB2            ; 08003AC8
 mov   r0,0x1                    ; 08003ACA  01: SMA3 title screen
-bl    Sub0812C3B4               ; 08003ACC  Change music (YI)
+bl    PlayYIMusic               ; 08003ACC
 add   sp,0x8                    ; 08003AD0
 pop   {r3}                      ; 08003AD2
 mov   r8,r3                     ; 08003AD4

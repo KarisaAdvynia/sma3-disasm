@@ -1485,7 +1485,7 @@ str   r0,[r1,0x10]              ; 0802FF2E
 ldr   r0,=Sub0803387C+1         ; 0802FF30
 str   r0,[r1,0x14]              ; 0802FF32
 mov   r0,0x0                    ; 0802FF34  00: Story intro
-bl    Sub0812C3B4               ; 0802FF36  Change music (YI)
+bl    PlayYIMusic               ; 0802FF36
 ldr   r1,=0x03002200            ; 0802FF3A
 ldr   r3,=0x47C4                ; 0802FF3C
 add   r2,r1,r3                  ; 0802FF3E
@@ -1897,7 +1897,7 @@ ldrh  r0,[r5]                   ; 08030362
 cmp   r0,0x0                    ; 08030364
 bne   @@Code08030448            ; 08030366
 mov   r0,0x24                   ; 08030368  24: Death (Toadies grab Baby Mario)
-bl    Sub0812C3B4               ; 0803036A  Change music (YI)
+bl    PlayYIMusic               ; 0803036A
 ldrh  r6,[r4]                   ; 0803036E
 add   r0,r6,0x1                 ; 08030370
 strh  r0,[r4]                   ; 08030372

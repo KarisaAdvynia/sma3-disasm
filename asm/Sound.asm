@@ -190,7 +190,7 @@ pop   {r0}                      ; 0812C3AE
 bx    r0                        ; 0812C3B0
 .pool                           ; 0812C3B2
 
-Sub0812C3B4:
+PlayYIMusic:
 ; subroutine: Change music (YI)
 ; r0: new music ID
 push  {r4-r5,lr}                ; 0812C3B4

@@ -510,7 +510,7 @@ strh  r0,[r1]                   ; 080356F8
 mov   r0,0x4                    ; 080356FA
 bl    PlayYISound               ; 080356FC
 mov   r0,0x23                   ; 08035700  23: Death (Yoshi died)
-bl    Sub0812C3B4               ; 08035702  Change music (YI)
+bl    PlayYIMusic               ; 08035702
 bl    Sub08035690               ; 08035706
 pop   {r4}                      ; 0803570A
 pop   {r0}                      ; 0803570C

@@ -3644,7 +3644,7 @@ str   r1,[r0,0x8]               ; 080F896C
 mov   r1,0x2                    ; 080F896E
 bl    Sub080F683C               ; 080F8970
 mov   r0,0x27                   ; 080F8974  27: 100% cutscene part 2
-bl    Sub0812C3B4               ; 080F8976  Change music (YI)
+bl    PlayYIMusic               ; 080F8976
 bl    Sub080F6ED0               ; 080F897A
 @@Code080F897E:
 ldr   r3,=0x03002200            ; 080F897E
@@ -4215,7 +4215,7 @@ add   r0,r0,r1                  ; 080F8F0E
 mov   r1,0x6                    ; 080F8F10
 strh  r1,[r0]                   ; 080F8F12
 mov   r0,0x26                   ; 080F8F14  26: 100% cutscene part 1
-bl    Sub0812C3B4               ; 080F8F16  Change music (YI)
+bl    PlayYIMusic               ; 080F8F16
 bl    Sub080F6E70               ; 080F8F1A
 @@Code080F8F1E:
 mov   r0,r4                     ; 080F8F1E

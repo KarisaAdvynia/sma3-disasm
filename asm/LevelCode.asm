@@ -67,7 +67,7 @@ ldrh  r4,[r0]                   ; 08013498  r4 = world number ID
 cmp   r4,0xA                    ; 0801349A
 bne   @@Code080134D4            ; 0801349C
                                 ;          \ run only if in world 6
-ldr   r0,=L1TilesetW6Graphics   ; 0801349E  use alternate pointer table
+ldr   r0,=L1TilesetW6GraphicsPtrs; 0801349E  use alternate pointer table
 add   r1,r6,0x2                 ; 080134A0
 lsl   r2,r1,0x2                 ; 080134A2
 add   r0,r2,r0                  ; 080134A4
@@ -77,14 +77,14 @@ add   r0,r3,r5                  ; 080134AA  r0 = 0300633E
 ldrh  r0,[r0]                   ; 080134AC  r0 = cursor position within current world
 cmp   r0,0x10                   ; 080134AE  check if Secret 6
 bne   @@Code080134DE            ; 080134B0
-ldr   r0,=L1TilesetGraphics     ; 080134B2  if Secret 6, use regular pointer table
+ldr   r0,=L1TilesetGraphicsPtrs ; 080134B2  if Secret 6, use regular pointer table
 add   r0,r2,r0                  ; 080134B4
 b     @@Code080134DC            ; 080134B6 /
 .pool                           ; 080134B8
 
 @@Code080134D4:
                                 ;          \ run if not in world 6
-ldr   r1,=L1TilesetGraphics     ; 080134D4
+ldr   r1,=L1TilesetGraphicsPtrs ; 080134D4
 add   r0,r6,0x2                 ; 080134D6  r0 = 3*hv01+2
 lsl   r0,r0,0x2                 ; 080134D8  r0 = 0C*hv01+8
 add   r0,r0,r1                  ; 080134DA / r0 = 08165C44 + 0C*hv01+8
@@ -116,7 +116,7 @@ bl    swi_LZ77_VRAM             ; 0801350C  LZ77 decompress (VRAM)
 cmp   r4,0xA                    ; 08013510
 bne   @@Code0801355C            ; 08013512
                                 ;          \ run only if in world 6
-ldr   r0,=L1TilesetW6Graphics   ; 08013514  use alternate pointer table
+ldr   r0,=L1TilesetW6GraphicsPtrs; 08013514  use alternate pointer table
 lsl   r2,r6,0x2                 ; 08013516
 add   r0,r2,r0                  ; 08013518
 ldr   r1,[r0]                   ; 0801351A
@@ -126,14 +126,14 @@ add   r0,r0,r3                  ; 08013520
 ldrh  r0,[r0]                   ; 08013522
 cmp   r0,0x10                   ; 08013524  check if Secret 6
 bne   @@Code08013564            ; 08013526
-ldr   r0,=L1TilesetGraphics     ; 08013528  if Secret 6, use regular pointer table
+ldr   r0,=L1TilesetGraphicsPtrs ; 08013528  if Secret 6, use regular pointer table
 add   r0,r2,r0                  ; 0801352A
 b     @@Code08013562            ; 0801352C /
 .pool                           ; 0801352E
 
 @@Code0801355C:
                                 ;          \ run if not in world 6
-ldr   r1,=L1TilesetGraphics     ; 0801355C
+ldr   r1,=L1TilesetGraphicsPtrs ; 0801355C
 lsl   r0,r6,0x2                 ; 0801355E  r0 = 0C*hv01
 add   r0,r0,r1                  ; 08013560 / r0 = 08165C44 + 0C*hv01
 @@Code08013562:
@@ -145,7 +145,7 @@ bl    swi_LZ77_VRAM             ; 08013568  LZ77 decompress (VRAM)
 cmp   r4,0xA                    ; 0801356C
 bne   @@Code080135A0            ; 0801356E
                                 ;          \ run only if in world 6
-ldr   r0,=L1TilesetW6Graphics   ; 08013570  use alternate pointer table
+ldr   r0,=L1TilesetW6GraphicsPtrs; 08013570  use alternate pointer table
 add   r1,r6,0x1                 ; 08013572
 lsl   r2,r1,0x2                 ; 08013574
 add   r0,r2,r0                  ; 08013576
@@ -156,14 +156,14 @@ add   r0,r0,r5                  ; 0801357E
 ldrh  r0,[r0]                   ; 08013580
 cmp   r0,0x10                   ; 08013582  check if Secret 6
 bne   @@Code080135AA            ; 08013584
-ldr   r0,=L1TilesetGraphics     ; 08013586  if Secret 6, use regular pointer table
+ldr   r0,=L1TilesetGraphicsPtrs ; 08013586  if Secret 6, use regular pointer table
 add   r0,r2,r0                  ; 08013588
 b     @@Code080135A8            ; 0801358A /
 .pool                           ; 0801358C
 
 @@Code080135A0:
                                 ;          \ run if not in world 6
-ldr   r1,=L1TilesetGraphics     ; 080135A0
+ldr   r1,=L1TilesetGraphicsPtrs ; 080135A0
 add   r0,r6,0x1                 ; 080135A2  r0=3*hv01+1
 lsl   r0,r0,0x2                 ; 080135A4  r0=0C*hv01+4
 add   r0,r0,r1                  ; 080135A6 / r0=08165C44 + 0C*hv01+4
@@ -180,7 +180,7 @@ add   r0,r0,r6                  ; 080135B8  r0 = [03007240]+2996 (03004BA2)
 ldrh  r0,[r0]                   ; 080135BA  r0 = layer 2 image ID
 lsl   r0,r0,0x19                ; 080135BC
 lsr   r6,r0,0x18                ; 080135BE  r6 = 2*hv03, capped to 8 bits
-ldr   r4,=L2ImageGraphics       ; 080135C0
+ldr   r4,=L2ImageGraphicsPtrs   ; 080135C0
 lsl   r0,r6,0x2                 ; 080135C2  r0 = 8*hv03
 add   r0,r0,r4                  ; 080135C4  r0 = 08165DC4 + 8*hv03
 ldr   r1,[r0]                   ; 080135C6  load from pointer
@@ -200,7 +200,7 @@ add   r0,r0,r7                  ; 080135E4  r0 = [03007240]+299A (03004BA6)
 ldrh  r0,[r0]                   ; 080135E6  r0 = layer 3 image
 lsl   r0,r0,0x19                ; 080135E8
 lsr   r6,r0,0x18                ; 080135EA  r6 = 2*hv05, capped to 8 bits
-ldr   r4,=L3ImageGraphics       ; 080135EC
+ldr   r4,=L3ImageGraphicsPtrs   ; 080135EC
 lsl   r0,r6,0x2                 ; 080135EE  r0 = 8*hv05
 add   r0,r0,r4                  ; 080135F0  r0 = 08165EC4 + 8*hv05
 ldr   r1,[r0]                   ; 080135F2  load from pointer
@@ -621,7 +621,7 @@ add   r1,r2,r5                  ; 08013A0A  r1 = 03006ABE
 mov   r0,0x0                    ; 08013A0C
 strh  r0,[r1]                   ; 08013A0E  [03006ABE] = 0
 mov   r5,0x0                    ; 08013A10  r5 = loop index
-ldr   r6,=L3ImagePalPtrs        ; 08013A12
+ldr   r6,=L3ImagePalettePtrs    ; 08013A12
 mov   r9,r6                     ; 08013A14  r9 = 08167434
 @@Code08013A16:
                                 ; loop: check if layer 3 image is one of 8 specific values
@@ -6521,7 +6521,7 @@ mov   r0,sp                     ; 08016E90  constant 0
 mov   r1,r4                     ; 08016E92  At 0201BC00...
 mov   r2,r5                     ; 08016E94  ...clear 800 words (2000 bytes)
 bl    swi_MemoryCopy4or2        ; 08016E96  Memory copy/fill, 4- or 2-byte blocks
-ldr   r1,=DataPtrs081675E4      ; 08016E9A  layer 2 tilemap pointer table
+ldr   r1,=L2ImageTilemapPtrs    ; 08016E9A  layer 2 tilemap pointer table
 ldr   r6,=0x03007240            ; 08016E9C  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r6]                   ; 08016E9E
 ldr   r3,=0x2996                ; 08016EA0
@@ -6538,7 +6538,7 @@ mov   r0,r9                     ; 08016EB6  constant 0 (r9 was set at 08016CBC)
 mov   r1,r4                     ; 08016EB8  At 0201DC00...
 mov   r2,r5                     ; 08016EBA  ...clear 800 words (2000 bytes)
 bl    swi_MemoryCopy4or2        ; 08016EBC  Memory copy/fill, 4- or 2-byte blocks
-ldr   r1,=DataPtrs0816766C      ; 08016EC0
+ldr   r1,=L3ImageTilemapPtrs    ; 08016EC0
 ldr   r0,[r6]                   ; 08016EC2
 ldr   r5,=0x299A                ; 08016EC4
 add   r0,r0,r5                  ; 08016EC6  r0 = [03007240]+299A (03004BA6)
@@ -13379,7 +13379,7 @@ ldrh  r0,[r0]                   ; 0802C348
 cmp   r0,0xC9                   ; 0802C34A
 bne   @@Code0802C37C            ; 0802C34C
 mov   r0,0x16                   ; 0802C34E  16: x-4 boss
-bl    Sub0812C3B4               ; 0802C350  Change music (YI)
+bl    PlayYIMusic               ; 0802C350
 mov   r1,r4                     ; 0802C354
 add   r1,0x24                   ; 0802C356
 mov   r0,0x1                    ; 0802C358
@@ -13394,13 +13394,13 @@ cmp   r0,0xF2                   ; 0802C380  F2: 6-Secret dark forest
 bne   @@Code0802C38C            ; 0802C382
 @@Code0802C384:
 mov   r0,0x6                    ; 0802C384  06: intro level music
-bl    Sub0812C3B4               ; 0802C386  Change music (YI)
+bl    PlayYIMusic               ; 0802C386
 b     @@Code0802C3AC            ; 0802C38A
 @@Code0802C38C:
 cmp   r0,0xDD                   ; 0802C38C
 bne   @@Code0802C398            ; 0802C38E
 mov   r0,0x17                   ; 0802C390  17: pre-boss
-bl    Sub0812C3B4               ; 0802C392  Change music (YI)
+bl    PlayYIMusic               ; 0802C392
 b     @@Code0802C3AC            ; 0802C396
 @@Code0802C398:
 ldr   r1,=HeaderMusicIDs        ; 0802C398
@@ -13411,7 +13411,7 @@ lsl   r0,r0,0x1                 ; 0802C3A0
 add   r0,r0,r1                  ; 0802C3A2
 ldrh  r1,[r0]                   ; 0802C3A4  music ID (maybe, if not overwritten by hardcoding)
 mov   r0,r1                     ; 0802C3A6
-bl    Sub0812C3B4               ; 0802C3A8  Change music (YI)
+bl    PlayYIMusic               ; 0802C3A8
 @@Code0802C3AC:
 ldr   r4,=0x03007240            ; 0802C3AC  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r4]                   ; 0802C3AE
@@ -13501,7 +13501,7 @@ b     @@Code0802C476            ; 0802C45E
 @@Code0802C460:
                                 ; runs if music is 07 and sublevel is one of 1-8 to 5-8 Kamek cutscene
 mov   r0,0x17                   ; 0802C460  17: pre-boss
-bl    Sub0812C3B4               ; 0802C462  Change music (YI)
+bl    PlayYIMusic               ; 0802C462
 @@Code0802C466:
 mov   r1,r4                     ; 0802C466  r1 = [03007240]+2688 (03004894)
 add   r1,0x24                   ; 0802C468  r1 = [03007240]+26AC (030048B8)
@@ -14309,7 +14309,7 @@ lsl   r3,r3,0x6                 ; 0802CC48
 add   r0,r0,r3                  ; 0802CC4A
 bl    Sub080FCD98               ; 0802CC4C
 mov   r0,0xE                    ; 0802CC50  0E: Level intro drums
-bl    Sub0812C3B4               ; 0802CC52  Change music (YI)
+bl    PlayYIMusic               ; 0802CC52
 ldr   r5,=0x08F5                ; 0802CC56
 add   r1,r4,r5                  ; 0802CC58
 mov   r0,0xC                    ; 0802CC5A
