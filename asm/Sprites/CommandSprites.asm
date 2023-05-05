@@ -3108,7 +3108,7 @@ mov   r2,r8                     ; 080D8554
 ldr   r1,[r2]                   ; 080D8556
 add   r1,r1,r0                  ; 080D8558
 mov   r0,r1                     ; 080D855A
-bl    Sub0804A6F8               ; 080D855C
+bl    DespawnSprite             ; 080D855C
 ldr   r0,[r7]                   ; 080D8560
 add   r0,r0,r6                  ; 080D8562
 add   r0,r0,r4                  ; 080D8564

@@ -22408,7 +22408,7 @@ ldr   r1,[r6]                   ; 08010F9E
 ldr   r2,=0x05000AD0            ; 08010FA0
 mov   r0,sp                     ; 08010FA2
 bl    swi_MemoryCopy4or2        ; 08010FA4  Memory copy/fill, 4- or 2-byte blocks
-bl    Sub080FCBC4               ; 08010FA8 for text
+bl    DynamicAllocate_Text      ; 08010FA8
 @@Code08010FAC:
 ldr   r5,=0x0300702C            ; 08010FAC  Sprite RAM structs (03002460)
 ldr   r4,[r6]                   ; 08010FAE

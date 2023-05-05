@@ -7,12 +7,12 @@ ldrh  r0,[r0]                   ; 0805035E
 cmp   r0,0x0                    ; 08050360
 bne   @@Code0805037E            ; 08050362
 mov   r0,r4                     ; 08050364
-bl    Sub080D5B48               ; 08050366  Test item memory + ?
+bl    SprShared_TestItemMemory  ; 08050366  Test item memory + ?
 lsl   r0,r0,0x10                ; 0805036A
 cmp   r0,0x0                    ; 0805036C
 beq   @@Code08050378            ; 0805036E
 mov   r0,r4                     ; 08050370
-bl    Sub0804A6E8               ; 08050372
+bl    ClearSpriteSlot           ; 08050372
 b     @@Code0805037E            ; 08050376
 @@Code08050378:
 mov   r0,r4                     ; 08050378
@@ -1329,7 +1329,7 @@ cmp   r0,r1                     ; 08050E06
 bhi   @@Code08050E18            ; 08050E08
 @@Code08050E0A:
 mov   r0,r2                     ; 08050E0A
-bl    Sub0804A6F8               ; 08050E0C
+bl    DespawnSprite             ; 08050E0C
 mov   r0,0x1                    ; 08050E10
 b     @@Code08050E1A            ; 08050E12
 .pool                           ; 08050E14
@@ -1454,7 +1454,7 @@ bne   @@Code08050F00            ; 08050EF0
 mov   r0,r4                     ; 08050EF2
 bl    Sub0804A900               ; 08050EF4
 mov   r0,r4                     ; 08050EF8
-bl    Sub0804A6F8               ; 08050EFA
+bl    DespawnSprite             ; 08050EFA
 b     @@Code08051096            ; 08050EFE
 @@Code08050F00:
 cmp   r2,0x40                   ; 08050F00

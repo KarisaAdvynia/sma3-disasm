@@ -88,7 +88,7 @@ strh  r5,[r0]                   ; 080511C8
 mov   r0,r7                     ; 080511CA
 bl    RemoveFromEggSlotsIfPresent; 080511CC
 mov   r0,r7                     ; 080511D0
-bl    Sub0804A6E8               ; 080511D2
+bl    ClearSpriteSlot           ; 080511D2
 mov   r0,r7                     ; 080511D6
 mov   r1,0x61                   ; 080511D8
 bl    Sub0804A250               ; 080511DA

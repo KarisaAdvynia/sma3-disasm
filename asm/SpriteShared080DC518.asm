@@ -5322,7 +5322,7 @@ ldrb  r1,[r0]                   ; 080DF0FC
 mov   r0,r4                     ; 080DF0FE
 bl    Sub0804B784               ; 080DF100
 mov   r0,r4                     ; 080DF104
-bl    Sub0804A6F8               ; 080DF106
+bl    DespawnSprite             ; 080DF106
 strh  r6,[r5]                   ; 080DF10A
 pop   {r4-r6}                   ; 080DF10C
 pop   {r0}                      ; 080DF10E

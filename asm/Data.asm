@@ -1813,7 +1813,7 @@ CodePtrs08168794:               ; 08168794
 CodePtrs081687A4:               ; 081687A4
 .word Sub0802142C+1, Sub080213B4+1, Sub0802138C+1
 Obj89_CodePtrs:                 ; 081687B0
-.word Sub08021744+1, Sub08021710+1, Sub080216D4+1, Sub0802166C+1
+.word Obj89_Single+1, Obj89_Height1+1, Obj89_Width1+1, Obj89_Rect+1
 Obj87_88_CodePtrs:              ; 081687C0
 .word Sub080217A8+1, Sub080217A8+1, Obj_LandInterior+1
 Obj7B_CodePtrs:                 ; 081687CC
@@ -1969,7 +1969,7 @@ ExtObj9A_9D_CodePtrs:           ; 08168EB8
 ExtObj8D_CodePtrs:              ; 08168EC0
 .word ExtObj8D_OddTile+1, ExtObj8D_EvenTile+1
 ExtObj88_CodePtrs:              ; 08168EC8
-.word Sub0802A768+1, Sub0802A6FC+1, Sub0802A690+1, Sub0802A610+1
+.word ExtObj88_Y0+1, ExtObj88_Y1+1, ExtObj88_Y2+1, ExtObj88_Y3+1
 ExtObj71_7D_CodePtrs:           ; 08168ED8
 .word Return0802ABE8+1, ExtObj71_Main+1, ExtObj72_Main+1, ExtObj73_Main+1
 .word ExtObj74_Main+1, ExtObj75_Main+1, ExtObj76_Main+1, ExtObj77_Main+1
@@ -1992,7 +1992,7 @@ ExtObjMainPtrs:                 ; 08168F2C
 .word Return0802B63C+1, Return0802B63C+1, Return0802B63C+1, Return0802B63C+1
 .word Return0802B63C+1, Return0802B63C+1, Return0802B63C+1, Return0802B63C+1
 .word Return0802B63C+1, Return0802B63C+1, Return0802B63C+1, Return0802B63C+1
-.word ExtObj30_Main+1, ExtObj31_Main+1, ExtObj32_45_Main+1, ExtObj32_45_Main+1
+.word ExtObj30_Main+1, ExtObj31_36_Main+1, ExtObj32_45_Main+1, ExtObj32_45_Main+1
 .word ExtObj32_45_Main+1, ExtObj32_45_Main+1, ExtObj32_45_Main+1, ExtObj32_45_Main+1
 .word ExtObj32_45_Main+1, ExtObj32_45_Main+1, ExtObj32_45_Main+1, ExtObj32_45_Main+1
 .word ExtObj32_45_Main+1, ExtObj32_45_Main+1, ExtObj32_45_Main+1, ExtObj32_45_Main+1
@@ -5183,7 +5183,7 @@ StdSprInitPtrs:                 ; 08170248
 .word Sub0808A2AC+1, Sub08060E4C+1, Return080D85F8+1, Sub0808AAF8+1
 .word Sub0808A2AC+1, Return08049F40+1, Sub080B9D80+1, Sub080B9D80+1
 .word Sub08096C90+1, BabyMario_init+1, Sub080A8060+1, Sub08085AF8+1
-.word Sub0808D7D0+1, Sub08051F38+1, Sub08061AE8+1, Sub08081FAC+1
+.word Sub0808D7D0+1, RedCoinSpr_Init+1, Sub08061AE8+1, Sub08081FAC+1
 .word Sub080D9A44+1, Sub080D9A44+1, Sub080D9A44+1, Sub080D9798+1
 .word Sub08063894+1, Sub080773AC+1, Sub080773C0+1, Sub08063940+1
 .word Sub08087A20+1, Sub0807C054+1, TrainShyGuy_Init+1, Sub080B5160+1
@@ -5223,7 +5223,7 @@ StdSprInitPtrs:                 ; 08170248
 .word Sub0806BFB8+1, Return080D85F8+1, Sub080529F4+1, Sub08091C1C+1
 .word Sub08091C34+1, Sub080AC644+1, Sub080AD908+1, Sub080AD9DC+1
 .word Return08053378+1, Sub0809E934+1, Sub0809E934+1, Sub0809E9F8+1
-.word Sub0809B108+1, Sub080962E4+1, Sub080962F0+1, Return08051A1C+1
+.word Sub0809B108+1, RelayBooGuy105_Init+1, RelayBooGuy106_Init+1, Return08051A1C+1
 .word Sub080CAD40+1, Sub080763D0+1, Sub080763D0+1, Sub080763D0+1
 .word Sub08078788+1, Sub080693AC+1, Sub08074B88+1, Sub08085310+1
 .word Sub08052E88+1, Sub08068B38+1, Return080D85F8+1, Sub0808C718+1
@@ -5265,7 +5265,7 @@ StdSprInitPtrs:                 ; 08170248
 .word Sub0807AAF4+1, Sub0807AAF4+1, Sub08052FA0+1, Return080D85F8+1
 .word Sub08073E8C+1, Sub080B0398+1, Sub080B0484+1, Sub080B04C8+1
 .word Sub080B0584+1, Sub080B05F8+1, Sub080B2D0C+1, Sub08080290+1
-.word Sub080A4E28+1, Sub080810B0+1, Return080D85F8+1, Sub080520EC+1
+.word Sub080A4E28+1, Sub080810B0+1, Return080D85F8+1, CoinStationary_Init+1
 .word Sub080B8E98+1, Sub080592A8+1, Sub0805957C+1, Sub08059D3C+1
 .word Sub0805B26C+1, Sub0805CC50+1, Sub0805BE3C+1, Sub0805B144+1
 .word Sub08059EC8+1, Return08049F40+1, Camera1BA_1BD_Init+1, Camera1BA_1BD_Init+1
@@ -5297,7 +5297,7 @@ StdSprMainPtrs:                 ; 08170958
 .word Sub0808AA5C+1, Sub08060F18+1, Sub080D1658+1, Sub0808AEE8+1
 .word Sub0808AA5C+1, Return08049F40+1, Sub080B9DA0+1, Sub080B9DA0+1
 .word Sub08096EB8+1, BabyMario_Main+1, Sub080A8074+1, Sub08085B20+1
-.word Sub0808E34C+1, Sub08052030+1, Sub08061E20+1, Sub08082008+1
+.word Sub0808E34C+1, RedCoinSpr_Main+1, Sub08061E20+1, Sub08082008+1
 .word Sub080D9E10+1, Sub080D9D84+1, Sub080D9D84+1, Sub080D9854+1
 .word Sub08063E0C+1, Sub08077404+1, Sub08077404+1, Sub08063E2C+1
 .word Sub08087A94+1, Sub0807C114+1, TrainShyGuy_Main+1, Sub080B51EC+1
@@ -5337,7 +5337,7 @@ StdSprMainPtrs:                 ; 08170958
 .word Sub0806BFE4+1, Sub0806CD18+1, Sub08052E4C+1, Sub0809206C+1
 .word Sub0809206C+1, Sub080AC66C+1, Sub080AD938+1, Sub080ADA08+1
 .word Sub0805337C+1, Sub0809E984+1, Sub0809E984+1, Sub0809EA08+1
-.word Sub0809B57C+1, Sub08096C2C+1, Sub08096C2C+1, Sub08051A7C+1
+.word Sub0809B57C+1, RelayBooGuy_Main+1, RelayBooGuy_Main+1, Sub08051A7C+1
 .word Sub080CB128+1, Sub08076438+1, Sub08076438+1, Sub08076438+1
 .word Sub0807891C+1, Sub080693C4+1, Sub08074C54+1, Sub08085380+1
 .word Sub08052F70+1, Sub08068B68+1, Sub08069338+1, Sub0808C9E8+1
@@ -5379,7 +5379,7 @@ StdSprMainPtrs:                 ; 08170958
 .word Sub0807AB3C+1, Sub0807AB3C+1, Sub08052FF4+1, Sub0807F984+1
 .word Sub08073EC4+1, Sub080B0668+1, Sub080B0668+1, Sub080B0668+1
 .word Sub080B0668+1, Sub080B0668+1, Sub080B2D7C+1, Sub080802D4+1
-.word Sub080A4FCC+1, Sub08081154+1, Sub08080E48+1, Sub080521C8+1
+.word Sub080A4FCC+1, Sub08081154+1, Sub08080E48+1, CoinStationary_Main+1
 .word Sub080B9008+1, Sub08059010+1, Sub080593B8+1, Sub08059C98+1
 .word Sub0805B200+1, Sub0805CB18+1, Sub0805BDCC+1, Sub0805AF40+1
 .word Sub08059EAC+1, Return08049F40+1, Camera1BA_1BD_Main+1, Camera1BA_1BD_Main+1
@@ -5771,7 +5771,7 @@ Data08172288:                   ; 08172288
 Data081722A8:                   ; 081722A8
 .word 0x00020001, 0x00020000, 0x0200FE00
 Data081722B4:                   ; 081722B4
-.word 0x00020004, 0x000C000E
+.halfword 0x0004, 0x0002, 0x000E, 0x000C
 Data081722BC:                   ; 081722BC
 .word 0x80400000, 0x00C08000, 0x00408080, 0x80C00080
 Data081722CC:                   ; 081722CC
@@ -8469,11 +8469,11 @@ Data08176618:                   ; 08176618
 Data08176620:                   ; 08176620
 .word 0x10183080, 0x0808080C, 0x00000008
 Data0817662C:                   ; 0817662C
-.word 0x0020FFE0
+.halfword 0xFFE0, 0x0020
 Data08176630:                   ; 08176630
-.word 0x0020FFF0, 0x0010FFE0
+.halfword 0xFFF0, 0x0020, 0xFFE0, 0x0010
 Data08176638:                   ; 08176638
-.word 0x0010FFF0
+.halfword 0xFFF0, 0x0010
 Data0817663C:                   ; 0817663C
 .halfword 0x00D0, 0x00D0, 0x00D2, 0x00D2, 0x00D2, 0x00D4, 0x00D4, 0x00D4
 .halfword 0x00D4, 0x00D4, 0x00D4, 0x00D2, 0x00D2, 0x00D2, 0x00D2, 0x00D0
@@ -8495,8 +8495,9 @@ Data081766EA:                   ; 081766EA
 .halfword 0x0100, 0xFFF9, 0xFFF6, 0xFFF4, 0xFFF3, 0xFFF2, 0x0100, 0x0100
 .halfword 0x0100, 0x0100, 0x0100, 0x0100, 0x0100
 Data08176724:                   ; 08176724
-.word 0x03030202, 0x02020202, 0x02020202, 0x02030302
-.word 0x02020202, 0x10080202
+.byte 0x02, 0x02, 0x03, 0x03, 0x02, 0x02, 0x02, 0x02
+.byte 0x02, 0x02, 0x02, 0x02, 0x02, 0x03, 0x03, 0x02
+.byte 0x02, 0x02, 0x02, 0x02, 0x02, 0x02, 0x08, 0x10
 CodePtrs0817673C:               ; 0817673C
 .word Sub08096908+1, Sub08096A3C+1, Sub08096B58+1
 Data08176748:                   ; 08176748
@@ -35534,27 +35535,27 @@ ExtObj83_87_DynIndexes:         ; 081BE142
 .halfword 0x0014, 0x0015, 0x0016, 0x001E, 0x001F, 0x0020, 0x0021, 0x0022
 .halfword 0x0150, 0x0151, 0x0152, 0x0153, 0x0028, 0x0029, 0x002A, 0x002D
 .halfword 0x002E, 0x0034, 0x0035, 0x003B, 0x003C, 0x003D, 0x003E, 0x003F
-ExtObj88_Data081BE172:          ; 081BE172
+Ext88_Y0PipeTileBase:           ; 081BE172
 .halfword 0x0000, 0x8500, 0x8503, 0x0000
-ExtObj88_Data081BE17A:          ; 081BE17A
+Ext88_Y0RoomTileBase:           ; 081BE17A
 .halfword 0x0000, 0x857A, 0x857E, 0x0000
-ExtObj88_Data081BE182:          ; 081BE182
+Ext88_Y0Y3PipeOffsets:          ; 081BE182
 .halfword 0x0002, 0x0001, 0x0000, 0x0002, 0x0000, 0x0000, 0x0000, 0x0000
 .halfword 0x0000, 0x0001, 0x0000, 0x0000
-ExtObj88_Data081BE19A:          ; 081BE19A
+Ext88_Y1PipeTileBase:           ; 081BE19A
 .halfword 0x8506, 0x77EC, 0x77ED, 0x850A
-ExtObj88_Data081BE1A2:          ; 081BE1A2
+Ext88_Y1RoomTileBase:           ; 081BE1A2
 .halfword 0x8582, 0x77EC, 0x77ED, 0x8586
-ExtObj88_Data081BE1AA:          ; 081BE1AA
+Ext88_Y1Y2PipeOffsets:          ; 081BE1AA
 .halfword 0x0002, 0x0001, 0x0000, 0x0002, 0x0000, 0x0000, 0x0000, 0x0000
 .halfword 0x0003, 0x0001, 0x0000, 0x0003
-ExtObj88_Data081BE1C2:          ; 081BE1C2
+Ext88_Y2PipeTileBase:           ; 081BE1C2
 .halfword 0x850E, 0x1800, 0x77EE, 0x8512
-ExtObj88_Data081BE1CA:          ; 081BE1CA
+Ext88_Y2RoomTileBase:           ; 081BE1CA
 .halfword 0x858A, 0x1800, 0x77EE, 0x858E
-ExtObj88_Data081BE1D2:          ; 081BE1D2
+Ext88_Y3PipeTileBase:           ; 081BE1D2
 .halfword 0x0000, 0x8516, 0x8519, 0x0000
-ExtObj88_Data081BE1DA:          ; 081BE1DA
+Ext88_Y3RoomTileBase:           ; 081BE1DA
 .halfword 0x0000, 0x8592, 0x8596, 0x0000
 ExtObj89_8A_TileBaseY0:         ; 081BE1E2
 .halfword 0x851B, 0x8523
@@ -36047,7 +36048,7 @@ Data081BF040:                   ; 081BF040
 .halfword 0x9072, 0x9073, 0x907F, 0x908F, 0x90A2, 0x90A3
 Data081BF04C:                   ; 081BF04C
 .halfword 0x9200, 0x9080, 0x9090
-Data081BF052:                   ; 081BF052
+Obj21242728_RandMudInterior:    ; 081BF052
 .halfword 0x9068, 0x9069, 0x906A, 0x906D, 0x906B, 0x906B, 0x906C, 0x906D
 .halfword 0x906E, 0x906F, 0x9070, 0x906D, 0x9071, 0x906D, 0x906D, 0x906D
 Data081BF072:                   ; 081BF072
@@ -36064,25 +36065,25 @@ Data081BF086:                   ; 081BF086
 .halfword 0x90A3, 0x90A2
 Data081BF08A:                   ; 081BF08A
 .halfword 0x9073, 0x9072
-Data081BF08E:                   ; 081BF08E
+Obj22_X1First3Rows:             ; 081BF08E
 .halfword 0x9204, 0x330D, 0x909C
-Data081BF094:                   ; 081BF094
+Obj2225_ReplacementTiles:       ; 081BF094
 .halfword 0x90A0, 0x90A2, 0x9072
-Data081BF09A:                   ; 081BF09A
+Obj23_X0First3Rows:             ; 081BF09A
 .halfword 0x9205, 0x3512, 0x909D
-Data081BF0A0:                   ; 081BF0A0
+Obj2326_ReplacementTiles:       ; 081BF0A0
 .halfword 0x90A1, 0x90A3, 0x9073
-Data081BF0A6:                   ; 081BF0A6
+Obj24_Y0Y1Tiles:                ; 081BF0A6
 .halfword 0x9608, 0x9300
-Data081BF0AA:                   ; 081BF0AA
+Obj25_26_Y0Tiles:               ; 081BF0AA
 .halfword 0x9400, 0x9502
-Data081BF0AE:                   ; 081BF0AE
+Obj27_SlopeTiles:               ; 081BF0AE
 .halfword 0x9400, 0x905C
-Data081BF0B2:                   ; 081BF0B2
+Obj27_ReplacementTiles:         ; 081BF0B2
 .halfword 0x9402, 0x90A2, 0x9072
-Data081BF0B8:                   ; 081BF0B8
+Obj28_SlopeTiles:               ; 081BF0B8
 .halfword 0x9501, 0x905E
-Data081BF0BC:                   ; 081BF0BC
+Obj28_ReplacementTiles:         ; 081BF0BC
 .halfword 0x9500, 0x90A3, 0x9073
 Data081BF0C2:                   ; 081BF0C2
 .halfword 0x9B01, 0x9B00, 0x9639, 0x9638, 0x9629, 0x9628, 0x9631, 0x9630
@@ -36806,11 +36807,11 @@ Obj89_TilemapRect:              ; 081C0B8A
 .halfword 0x7203, 0x7204, 0x7205
 .halfword 0x7210, 0x7211, 0x7212
 .halfword 0x7206, 0x7207, 0x7208
-Data081C0BA2:                   ; 081C0BA2
+Obj8C_TilemapY0Y1:              ; 081C0BA2
 .halfword 0x016F, 0x0170, 0x0171, 0x0172
 Obj8D_Tilemap:                  ; 081C0BAA
 .halfword 0x3D70, 0x3DA7, 0x3D6F
-Data081C0BB0:                   ; 081C0BB0
+Obj8E_Tilemap:                  ; 081C0BB0
 .halfword 0x7500, 0x7501, 0x3DAA, 0x3DAB
 Data081C0BB8:                   ; 081C0BB8
 .halfword 0x001A, 0x0024, 0x3DBF, 0x3DBE, 0x3DDB, 0x3DDA
@@ -36830,9 +36831,9 @@ Data081C0C10:                   ; 081C0C10
 .halfword 0x3DC2, 0x3DC3, 0x3DC4, 0x0000, 0x3DC8, 0x3DC9, 0x3DCA
 Data081C0C1E:                   ; 081C0C1E
 .halfword 0x3DC5, 0x3DC6, 0x3DC7, 0x0000, 0x3DCB, 0x3DAE, 0x3DAF
-Data081C0C2C:                   ; 081C0C2C
+Obj83_TopTiles:                 ; 081C0C2C
 .halfword 0x3DCE, 0x3DCF, 0x3DD0, 0x0000, 0x3DD1, 0x3DD2, 0x3DD3, 0x3DD4
-Data081C0C3C:                   ; 081C0C3C
+Obj94_97_Tilemap:               ; 081C0C3C
 .halfword 0x7600, 0x7601, 0x7775, 0x7776, 0x7602, 0x7603, 0x7777, 0x7778
 .halfword 0x7604, 0x7605, 0x7779, 0x777A, 0x7606, 0x7607, 0x777B, 0x777C
 Obj98_TilemapY0:                ; 081C0C5C
@@ -36998,50 +36999,52 @@ ObjBC_Tilemap:                  ; 081C0FD8
 .halfword 0x7930, 0x7910, 0x7920, 0x7933
 ObjBD_Tilemap:                  ; 081C0FE0
 .halfword 0x792F, 0x790F, 0x791F, 0x7932
-ObjBE_BF_Data081C0FE8:          ; 081C0FE8
+ObjBE_BF_FloorCheckTiles2:      ; 081C0FE8
 .halfword 0x7925, 0x7926, 0x7927, 0x7928, 0x7929, 0x792A, 0x791B, 0x791C
 .halfword 0x082D, 0x082E, 0x0A2D, 0x0A2E, 0x0A2F, 0x0A30
-ObjBE_BF_Data081C1004:          ; 081C1004
+ObjBE_BF_FloorReplace2:         ; 081C1004
 .halfword 0x7805, 0x7806, 0x7807, 0x7808, 0x7809, 0x780A, 0x780B, 0x780C
 .halfword 0x7F01, 0x7F01, 0x8001, 0x8001, 0x8001, 0x8001
-ObjBE_CA_CheckTiles:            ; 081C1020
+ObjBECA_BGWallCheckTiles:       ; 081C1020
 .halfword 0x7799, 0x779A, 0x779B, 0x779C, 0x779D, 0x779E, 0x779F, 0x77A0
 .halfword 0x77A1, 0x77A2, 0x77A3, 0x77A4, 0x77A5, 0x77A6, 0x77A7, 0x77A8
 .halfword 0x77A9, 0x77AA, 0x77AB, 0x77AC, 0x77AD, 0x77AE, 0x77AF, 0x77B0
 .halfword 0x77B1, 0x77B2, 0x77B3, 0x77B4, 0x77B5, 0x77B6, 0x77B7, 0x77B8
-.halfword 0x77B9, 0x77BA, 0x77BB, 0x77BE, 0x77C9, 0x77CA, 0x77CC, 0x77CE
-.halfword 0x854B, 0x854C, 0x854D, 0x854E
-ObjBE_Data081C1078:             ; 081C1078
+.halfword 0x77B9, 0x77BA, 0x77BB, 0x77BE
+; last 8 tiles are only used by BE, not CA due to a looping error
+.halfword 0x77C9, 0x77CA, 0x77CC, 0x77CE, 0x854B, 0x854C, 0x854D, 0x854E
+ObjBE_Y0Replacement:            ; 081C1078
 .halfword 0x77CF, 0x77CF, 0x77CF, 0x77CF, 0x77C8, 0x77C8, 0x77C8, 0x77C8
 .halfword 0x77CF, 0x77CF, 0x77C8, 0x77C8, 0x77CF, 0x77CF, 0x77C8, 0x77C8
 .halfword 0x77CF, 0x77CF, 0x77CF, 0x77CF, 0x77C8, 0x77C8, 0x77C8, 0x77C8
 .halfword 0x77CF, 0x77CF, 0x77C8, 0x77C8, 0x77CF, 0x77CF, 0x77C8, 0x77C8
 .halfword 0x77CF, 0x77C8, 0x77CF, 0x77CF, 0x77CF, 0x77C8, 0x77CF, 0x77CF
 .halfword 0x854F, 0x854F, 0x854F, 0x854F
-ObjBE_C1_Data081C10D0:          ; 081C10D0
+ObjBE_C1_FloorCheckTiles1:      ; 081C10D0
 .halfword 0x7925, 0x7926, 0x7927, 0x7928, 0x7929, 0x792A, 0x791B, 0x791C
 .halfword 0x7962, 0x7963, 0x7966, 0x7968, 0x7969, 0x796A, 0x796D, 0x796F
 .halfword 0x7978, 0x7979, 0x797C, 0x797D, 0x7936, 0x7937, 0x7939, 0x793B
-ObjBE_BF_Data081C1100:          ; 081C1100
+ObjBE_BF_FloorReplace1:         ; 081C1100
+; This table is only 0x28 bytes, so the first 4 halfwords from ObjBE_BF_SemisolidCheckTiles are also included in practice
 .halfword 0x7805, 0x7806, 0x7807, 0x7808, 0x7809, 0x780A, 0x780B, 0x780C
 .halfword 0x780D, 0x780E, 0x780F, 0x7810, 0x7811, 0x7812, 0x7813, 0x7814
 .halfword 0x7815, 0x7816, 0x7817, 0x7818
-ObjBE_BF_Data081C1128:          ; 081C1128
+ObjBE_BF_SemisolidCheckTiles:   ; 081C1128
 .halfword 0x1513, 0x1514, 0x1515, 0x1516, 0x1518, 0x1519
-ObjC0_C1_Data081C1134:          ; 081C1134
+ObjC0_C1_BGWallCheckTiles:      ; 081C1134
 .halfword 0x77AF, 0x77B0, 0x77B4, 0x77B8, 0x77C6, 0x77C7, 0x082D, 0x0A2E
 .halfword 0x0A2F, 0x854B, 0x854C, 0x854D, 0x854E
-ObjC0_Data081C114E:             ; 081C114E
+ObjC0_BGWallReplacement:        ; 081C114E
 .halfword 0x77C2, 0x77C3, 0x77D2, 0x77D3, 0x77D6, 0x77D7, 0x082E, 0x0A2D
 .halfword 0x0A30, 0x855A, 0x855B, 0x855C, 0x855D
-ObjC0_Data081C1168:             ; 081C1168
+ObjC0_FloorReplacement:         ; 081C1168
 .halfword 0x8200, 0x8201, 0x8202, 0x8203, 0x8204, 0x8205, 0x8206, 0x8207
 .halfword 0x8208, 0x8209, 0x820A, 0x820B, 0x820C, 0x820D, 0x820E, 0x820F
 .halfword 0x8210, 0x8211, 0x8212, 0x8213, 0x8215, 0x8215, 0x8214, 0x8214
-ObjC1_Data081C1198:             ; 081C1198
+ObjC1_BGWallReplacement:        ; 081C1198
 .halfword 0x77C4, 0x77C5, 0x77D5, 0x77D4, 0x77D6, 0x77D7, 0x082E, 0x0A2D
 .halfword 0x0A30, 0x855E, 0x855F, 0x8560, 0x8561
-ObjC1_Data081C11B2:             ; 081C11B2
+ObjC1_FloorReplacement:         ; 081C11B2
 .halfword 0x8300, 0x8301, 0x8302, 0x8303, 0x8304, 0x8305, 0x8306, 0x8307
 .halfword 0x8308, 0x8309, 0x830A, 0x830B, 0x830C, 0x830D, 0x830E, 0x830F
 .halfword 0x8310, 0x8311, 0x8312, 0x8313, 0x8315, 0x8315, 0x8314, 0x8314
@@ -37054,15 +37057,17 @@ ObjCA_Replace_WaterfallOnRight: ; 081C11EE
 .halfword 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
 .halfword 0x0000, 0x0000, 0x77BC, 0x77BC, 0x77BD, 0x77BD, 0x0000, 0x0000
 .halfword 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
-.halfword 0x77BC, 0x77BD, 0x77BC, 0x77BC, 0x77BC, 0x77BD, 0x77BC, 0x77BC
-.halfword 0x8572, 0x8573, 0x8574, 0x8575
+.halfword 0x77BC, 0x77BD, 0x77BC, 0x77BC
+; last 8 tiles are unused due to a looping error
+.halfword 0x77BC, 0x77BD, 0x77BC, 0x77BC, 0x8572, 0x8573, 0x8574, 0x8575
 ObjCA_Replace_WaterfallOnLeft:  ; 081C1246
 .halfword 0x0000, 0x0000, 0x77CB, 0x77CB, 0x77CD, 0x77CD, 0x0000, 0x0000
 .halfword 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
 .halfword 0x0000, 0x0000, 0x77CB, 0x77CB, 0x77CD, 0x77CD, 0x0000, 0x0000
 .halfword 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
-.halfword 0x77CB, 0x77CD, 0x77CB, 0x77CB, 0x77CB, 0x77CD, 0x77CB, 0x77CB
-.halfword 0x8576, 0x8577, 0x8578, 0x8579
+.halfword 0x77CB, 0x77CD, 0x77CB, 0x77CB
+; last 8 tiles are unused due to a looping error
+.halfword 0x77CB, 0x77CD, 0x77CB, 0x77CB, 0x8576, 0x8577, 0x8578, 0x8579
 .align 4
 ObjCA_ReplaceTilePtrs:          ; 081C12A0
 .word ObjCA_Replace_WaterfallOnRight, ObjCA_Replace_WaterfallOnLeft
@@ -37133,16 +37138,16 @@ ObjD8_D9_Tilemap:               ; 081C1412
 .halfword 0x84BA, 0x84BB, 0x330C, 0x3510, 0x84BC, 0x84BD, 0x84BE, 0x84BF
 ; obj D9
 .halfword 0x84C0, 0x84C0, 0x8600, 0x8600, 0x84C1, 0x84C1
-Data081C142E:                   ; 081C142E
+ObjDB_RandSurfaceTiles:         ; 081C142E
 .halfword 0x0000, 0x0017, 0x0000, 0x0018
-Data081C1436:                   ; 081C1436
+ObjDB_InteriorTiles:            ; 081C1436
 .halfword 0x8C01, 0x8C05, 0x8C09
-Data081C143C:                   ; 081C143C
+ObjDC_SurfaceTiles:             ; 081C143C
 .halfword 0x8C03, 0x0000, 0x8C00
-Data081C1442:                   ; 081C1442
+ObjDC_EdgeTilemap:              ; 081C1442
 .halfword 0x0000, 0x0000, 0x8C07, 0x8C04, 0x8C0B, 0x8C08, 0x8C0E, 0x8C0C
 .halfword 0x8C0E, 0x8C0C
-Data081C1456:                   ; 081C1456
+ObjDC_WaterTilemap:             ; 081C1456
 .halfword 0x0000, 0x0000, 0x0015, 0x0016, 0x1621, 0x1622, 0x1623, 0x1624
 .halfword 0x1625, 0x1625
 Data081C146A:                   ; 081C146A
@@ -37173,7 +37178,7 @@ ObjE2_Y8_to_YF:                 ; 081C1530
 .halfword 0x8DB8, 0x8DBE, 0x8DBE, 0x8DB9, 0x8DC6, 0x8DCC, 0x8DCC, 0x8DC7
 .halfword 0x8DA1, 0x8DA2, 0x8DA3, 0x8DA4, 0x8DB0, 0x8DB1, 0x8DB2, 0x8DB3
 .halfword 0x8DBF, 0x8DC0, 0x8DC1, 0x8DC2, 0x8DCD, 0x8DCE, 0x8DCF, 0x8DD0
-Data081C1570:                   ; 081C1570
+ObjE3_EdgeTileBase:             ; 081C1570
 .halfword 0x8C00, 0x8C04, 0x8C08
 Data081C1576:                   ; 081C1576
 .halfword 0x0000, 0x0000, 0x859A, 0x859B, 0x79DA, 0x79DB
@@ -37306,7 +37311,7 @@ ExtObj71_7D_Heights:            ; 081C188C
 .byte 0x06, 0x02, 0x02, 0x02, 0x02, 0x01
 ExtObj83_87_InitYOffset:        ; 081C189A
 .halfword 0x0090, 0x0050, 0x0030, 0x0030, 0x0030
-ExtObj83_87_Widths_16bit:             ; 081C18A4
+ExtObj83_87_Widths_16bit:       ; 081C18A4
 .halfword 0x0020, 0x0013, 0x000A, 0x0008, 0x000D
 ExtObj83_87_Heights:            ; 081C18AE
 .halfword 0x0016, 0x000B, 0x0007, 0x0007, 0x0008

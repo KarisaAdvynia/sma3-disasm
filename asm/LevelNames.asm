@@ -309,7 +309,7 @@ str   r1,[r0]                   ; 080FCBB8
 bx    lr                        ; 080FCBBA
 .pool                           ; 080FCBBC
 
-Sub080FCBC4:
+DynamicAllocate_Text:
 ; subroutine: allocate dynamic memory for text graphics
 push  {r4,lr}                   ; 080FCBC4
 ldr   r4,=0x03007248            ; 080FCBC6  pointer to message buffer

@@ -13671,7 +13671,7 @@ lsl   r1,r1,0x6                 ; 0802C5BC  r1 = 3000
 mov   r0,r4                     ; 0802C5BE
 bl    DynamicAllocate           ; 0802C5C0
 str   r0,[r5]                   ; 0802C5C4
-bl    Sub080FCBC4               ; 0802C5C6 for text
+bl    DynamicAllocate_Text      ; 0802C5C6
 mov   r5,r9                     ; 0802C5CA  r5 = 0
 str   r5,[sp]                   ; 0802C5CC  top of stack = 0
 mov   r0,r8                     ; 0802C5CE

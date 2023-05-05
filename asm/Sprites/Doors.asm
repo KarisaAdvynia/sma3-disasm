@@ -639,7 +639,7 @@ ldrh  r0,[r0]                   ; 080D5A38
 cmp   r0,0x0                    ; 080D5A3A
 bne   @@Code080D5A44            ; 080D5A3C
 mov   r0,r7                     ; 080D5A3E
-bl    Sub0804A6E8               ; 080D5A40
+bl    ClearSpriteSlot           ; 080D5A40
 @@Code080D5A44:
 mov   r0,r6                     ; 080D5A44
 b     @@Code080D5AA0            ; 080D5A46
@@ -758,7 +758,7 @@ pop   {r1}                      ; 080D5B3A
 bx    r1                        ; 080D5B3C
 .pool                           ; 080D5B3E
 
-Sub080D5B48:
+SprShared_TestItemMemory:
 push  {lr}                      ; 080D5B48
 ldr   r1,=0x03007240            ; 080D5B4A  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r2,[r1]                   ; 080D5B4C
@@ -962,7 +962,7 @@ LockedDoor_Init:
 ; sprite 131 init
 push  {r4,lr}                   ; 080D5CE4
 mov   r4,r0                     ; 080D5CE6
-bl    Sub080D5B48               ; 080D5CE8  Test item memory + ?
+bl    SprShared_TestItemMemory  ; 080D5CE8  Test item memory + ?
 lsl   r0,r0,0x10                ; 080D5CEC
 cmp   r0,0x0                    ; 080D5CEE
 bne   @@Code080D5D04            ; 080D5CF0
@@ -1011,7 +1011,7 @@ LockedDoorMinigame_Init:
 ; sprite 04E init
 push  {r4,lr}                   ; 080D5D40
 mov   r4,r0                     ; 080D5D42
-bl    Sub080D5B48               ; 080D5D44  Test item memory + ?
+bl    SprShared_TestItemMemory  ; 080D5D44  Test item memory + ?
 lsl   r0,r0,0x10                ; 080D5D48
 cmp   r0,0x0                    ; 080D5D4A
 bne   @@Code080D5D56            ; 080D5D4C
@@ -1164,7 +1164,7 @@ b     @@Code080D625C            ; 080D5E58
 mov   r0,r4                     ; 080D5E70
 bl    RemoveFromEggSlotsIfPresent; 080D5E72
 mov   r0,r4                     ; 080D5E76
-bl    Sub0804A6F8               ; 080D5E78
+bl    DespawnSprite             ; 080D5E78
 ldr   r1,=0x03002200            ; 080D5E7C
 ldrh  r0,[r6,0x20]              ; 080D5E7E
 ldr   r3,=0x4058                ; 080D5E80

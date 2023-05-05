@@ -928,7 +928,7 @@ ldr   r3,=0x11BA                ; 0804FAA8
 add   r0,r2,r3                  ; 0804FAAA
 strh  r1,[r0]                   ; 0804FAAC
 mov   r0,r5                     ; 0804FAAE
-bl    Sub0804A6F8               ; 0804FAB0
+bl    DespawnSprite             ; 0804FAB0
 b     @@Code0804FB2A            ; 0804FAB4
 .pool                           ; 0804FAB6
 
@@ -1281,7 +1281,7 @@ ldsh  r0,[r2,r1]                ; 0804FDCE
 cmp   r0,0xEF                   ; 0804FDD0
 ble   @@Code0804FDDC            ; 0804FDD2
 mov   r0,r2                     ; 0804FDD4
-bl    Sub0804A6F8               ; 0804FDD6
+bl    DespawnSprite             ; 0804FDD6
 b     @@Code0804FE00            ; 0804FDDA
 @@Code0804FDDC:
 ldr   r0,[r2]                   ; 0804FDDC

@@ -3469,7 +3469,7 @@ str   r5,[sp]                   ; 08002C4A
 ldr   r2,=0x05000AD0            ; 08002C4C
 mov   r0,sp                     ; 08002C4E
 bl    swi_MemoryCopy4or2        ; 08002C50  Memory copy/fill, 4- or 2-byte blocks
-bl    Sub080FCBC4               ; 08002C54 for text
+bl    DynamicAllocate_Text      ; 08002C54 for text
 @@Code08002C58:
 bl    Sub08002338               ; 08002C58
 ldr   r2,=0x47C6                ; 08002C5C

@@ -16,7 +16,7 @@ ldrb  r0,[r0]                   ; 080A5518
 cmp   r0,0x0                    ; 080A551A
 beq   @@Code080A5524            ; 080A551C
 mov   r0,r4                     ; 080A551E
-bl    Sub0804A6F8               ; 080A5520
+bl    DespawnSprite             ; 080A5520
 @@Code080A5524:
 ldr   r0,=0x03002200            ; 080A5524
 ldr   r1,=0x4905                ; 080A5526

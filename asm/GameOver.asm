@@ -2101,7 +2101,7 @@ mov   r0,0x0                    ; 08108306
 b     @@Code08108312            ; 08108308
 @@Code0810830A:
 mov   r0,r2                     ; 0810830A
-bl    Sub0804A6F8               ; 0810830C
+bl    DespawnSprite             ; 0810830C
 mov   r0,0x1                    ; 08108310
 @@Code08108312:
 pop   {r1}                      ; 08108312
@@ -2279,7 +2279,7 @@ b     @@Code081084B0            ; 0810849E
 
 @@Code081084A8:
 mov   r0,r2                     ; 081084A8
-bl    Sub0804A6F8               ; 081084AA
+bl    DespawnSprite             ; 081084AA
 mov   r0,0x1                    ; 081084AE
 @@Code081084B0:
 pop   {r1}                      ; 081084B0
@@ -2306,7 +2306,7 @@ b     @@Code081084E4            ; 081084D2
 
 @@Code081084DC:
 mov   r0,r2                     ; 081084DC
-bl    Sub0804A6F8               ; 081084DE
+bl    DespawnSprite             ; 081084DE
 mov   r0,0x1                    ; 081084E2
 @@Code081084E4:
 pop   {r1}                      ; 081084E4
@@ -10910,7 +10910,7 @@ cmp   r0,0x0                    ; 0810CAA0
 bne   @@Code0810CAA6            ; 0810CAA2
 b     @@Code0810CBAA            ; 0810CAA4
 @@Code0810CAA6:
-bl    Sub080FCBC4               ; 0810CAA6 for text
+bl    DynamicAllocate_Text      ; 0810CAA6
 mov   r2,0x0                    ; 0810CAAA
 str   r2,[sp]                   ; 0810CAAC
 ldr   r1,[r4]                   ; 0810CAAE

@@ -1739,8 +1739,11 @@ pop   {r0}                      ; 0802A5F8
 bx    r0                        ; 0802A5FA
 .pool                           ; 0802A5FC
 
-Sub0802A610:
-; called by 00.88
+ExtObj88_Y3:
+; called by 00.88 if relY is 3
+; r1: 1 if prevtile high byte is 85, else 0
+; r2: relX*2
+; r3: (prevtile -854B) if prevtile high byte is 85, else (prevtile -99) & FE
 push  {r4-r5,lr}                ; 0802A610
 mov   r5,r0                     ; 0802A612
 lsl   r1,r1,0x10                ; 0802A614
@@ -1748,59 +1751,59 @@ lsl   r0,r2,0x10                ; 0802A616
 lsl   r4,r3,0x10                ; 0802A618
 lsr   r3,r4,0x10                ; 0802A61A
 cmp   r1,0x0                    ; 0802A61C
-bne   @@Code0802A66C            ; 0802A61E
-ldr   r1,=ExtObj88_Data081BE1D2 ; 0802A620
-lsr   r0,r0,0x11                ; 0802A622
-lsl   r0,r0,0x1                 ; 0802A624
-add   r0,r0,r1                  ; 0802A626
-ldrh  r3,[r0]                   ; 0802A628
-cmp   r3,0x0                    ; 0802A62A
-bne   @@Code0802A638            ; 0802A62C
-@@Code0802A62E:
-mov   r0,0x0                    ; 0802A62E
+bne   @@HighByte85              ; 0802A61E
+ldr   r1,=Ext88_Y3PipeTileBase  ; 0802A620 \ runs if prevtile high byte is not 85
+lsr   r0,r0,0x11                ; 0802A622 
+lsl   r0,r0,0x1                 ; 0802A624  relX*2
+add   r0,r0,r1                  ; 0802A626  index with relX
+ldrh  r3,[r0]                   ; 0802A628  tile ID
+cmp   r3,0x0                    ; 0802A62A 
+bne   @@Code0802A638            ; 0802A62C 
+@@Return0:                            
+mov   r0,0x0                    ; 0802A62E  if value is 0, don't change tile
 b     @@Return                  ; 0802A630
 .pool                           ; 0802A632
 
 @@Code0802A638:
 mov   r0,r5                     ; 0802A638
 add   r0,0x40                   ; 0802A63A
-ldrh  r0,[r0]                   ; 0802A63C
-mov   r2,0xFF                   ; 0802A63E
-lsl   r2,r2,0x8                 ; 0802A640
-and   r2,r0                     ; 0802A642
-mov   r0,0xA8                   ; 0802A644
-lsl   r0,r0,0x5                 ; 0802A646
-cmp   r2,r0                     ; 0802A648
-beq   @@Code0802A62E            ; 0802A64A
-mov   r0,0xF2                   ; 0802A64C
-lsl   r0,r0,0x7                 ; 0802A64E
-cmp   r2,r0                     ; 0802A650
-beq   @@Code0802A62E            ; 0802A652
-ldr   r0,=ExtObj88_Data081BE182 ; 0802A654
-lsr   r1,r4,0x11                ; 0802A656
+ldrh  r0,[r0]                   ; 0802A63C  prevtile
+mov   r2,0xFF                   ; 0802A63E  
+lsl   r2,r2,0x8                 ; 0802A640  FF00
+and   r2,r0                     ; 0802A642  
+mov   r0,0xA8                   ; 0802A644  
+lsl   r0,r0,0x5                 ; 0802A646  1500
+cmp   r2,r0                     ; 0802A648  
+beq   @@Return0                 ; 0802A64A  if prevtile high byte is 15, don't change tile
+mov   r0,0xF2                   ; 0802A64C  
+lsl   r0,r0,0x7                 ; 0802A64E  7900
+cmp   r2,r0                     ; 0802A650  
+beq   @@Return0                 ; 0802A652  if prevtile high byte is 79, don't change tile
+ldr   r0,=Ext88_Y0Y3PipeOffsets ; 0802A654
+lsr   r1,r4,0x11                ; 0802A656  
 lsl   r1,r1,0x1                 ; 0802A658
-add   r1,r1,r0                  ; 0802A65A
-ldrh  r0,[r1]                   ; 0802A65C
-add   r0,r3,r0                  ; 0802A65E
+add   r1,r1,r0                  ; 0802A65A  index with (prevtile -99) & FE
+ldrh  r0,[r1]                   ; 0802A65C  some 16-bit value
+add   r0,r3,r0                  ; 0802A65E  add to tile ID
 lsl   r0,r0,0x10                ; 0802A660
 lsr   r3,r0,0x10                ; 0802A662
-b     @@Code0802A682            ; 0802A664
+b     @@Return_r3               ; 0802A664
 .pool                           ; 0802A666
 
-@@Code0802A66C:
-ldr   r1,=ExtObj88_Data081BE1DA ; 0802A66C
+@@HighByte85:
+ldr   r1,=Ext88_Y3RoomTileBase  ; 0802A66C
 lsr   r0,r0,0x11                ; 0802A66E
-lsl   r0,r0,0x1                 ; 0802A670
-add   r0,r0,r1                  ; 0802A672
-ldrh  r2,[r0]                   ; 0802A674
+lsl   r0,r0,0x1                 ; 0802A670  relX*2
+add   r0,r0,r1                  ; 0802A672  index with relX
+ldrh  r2,[r0]                   ; 0802A674  tile ID
 cmp   r2,0x0                    ; 0802A676
-beq   @@Code0802A680            ; 0802A678
+beq   @@Return_r2               ; 0802A678  if value is 0, don't change tile
 add   r0,r2,r3                  ; 0802A67A
 lsl   r0,r0,0x10                ; 0802A67C
-lsr   r2,r0,0x10                ; 0802A67E
-@@Code0802A680:
+lsr   r2,r0,0x10                ; 0802A67E  return (value + prevtile -854B) & FFFF
+@@Return_r2:
 mov   r3,r2                     ; 0802A680
-@@Code0802A682:
+@@Return_r3:
 mov   r0,r3                     ; 0802A682
 @@Return:
 pop   {r4-r5}                   ; 0802A684
@@ -1808,8 +1811,11 @@ pop   {r1}                      ; 0802A686
 bx    r1                        ; 0802A688
 .pool                           ; 0802A68A
 
-Sub0802A690:
-; called by 00.88
+ExtObj88_Y2:
+; called by 00.88 if relY is 2
+; r1: 1 if prevtile high byte is 85, else 0
+; r2: relX*2
+; r3: (prevtile -854B) if prevtile high byte is 85, else (prevtile -99) & FE
 push  {r4,lr}                   ; 0802A690
 lsl   r1,r1,0x10                ; 0802A692
 lsl   r0,r2,0x10                ; 0802A694
@@ -1818,48 +1824,48 @@ mov   r2,r4                     ; 0802A698
 lsl   r3,r3,0x10                ; 0802A69A
 lsr   r3,r3,0x10                ; 0802A69C
 cmp   r1,0x0                    ; 0802A69E
-bne   @@Code0802A6D8            ; 0802A6A0
-ldr   r1,=ExtObj88_Data081BE1C2 ; 0802A6A2
-lsr   r0,r0,0x11                ; 0802A6A4
-lsl   r0,r0,0x1                 ; 0802A6A6
-add   r0,r0,r1                  ; 0802A6A8
-ldrh  r2,[r0]                   ; 0802A6AA
-mov   r0,r4                     ; 0802A6AC
-cmp   r0,0x0                    ; 0802A6AE
-beq   @@Code0802A6C0            ; 0802A6B0
-cmp   r0,0x6                    ; 0802A6B2
-beq   @@Code0802A6C0            ; 0802A6B4
-mov   r0,r2                     ; 0802A6B6
-b     @@Return                  ; 0802A6B8
+bne   @@HighByte85              ; 0802A6A0
+ldr   r1,=Ext88_Y2PipeTileBase  ; 0802A6A2 \ runs if prevtile high byte is not 85
+lsr   r0,r0,0x11                ; 0802A6A4 
+lsl   r0,r0,0x1                 ; 0802A6A6  relX*2
+add   r0,r0,r1                  ; 0802A6A8  index with relX
+ldrh  r2,[r0]                   ; 0802A6AA 
+mov   r0,r4                     ; 0802A6AC  relX*2
+cmp   r0,0x0                    ; 0802A6AE 
+beq   @@PipeEdges               ; 0802A6B0 
+cmp   r0,0x6                    ; 0802A6B2 
+beq   @@PipeEdges               ; 0802A6B4 
+mov   r0,r2                     ; 0802A6B6 
+b     @@Return                  ; 0802A6B8  if relX 1-2, return tile ID
 .pool                           ; 0802A6BA
 
-@@Code0802A6C0:
-ldr   r0,=ExtObj88_Data081BE1AA ; 0802A6C0
+@@PipeEdges:
+ldr   r0,=Ext88_Y1Y2PipeOffsets ; 0802A6C0
 lsr   r1,r3,0x1                 ; 0802A6C2
 lsl   r1,r1,0x1                 ; 0802A6C4
-add   r1,r1,r0                  ; 0802A6C6
-ldrh  r0,[r1]                   ; 0802A6C8
-add   r0,r2,r0                  ; 0802A6CA
+add   r1,r1,r0                  ; 0802A6C6  index with (prevtile -99) & FE
+ldrh  r0,[r1]                   ; 0802A6C8  some 16-bit value
+add   r0,r2,r0                  ; 0802A6CA  add to tile ID
 lsl   r0,r0,0x10                ; 0802A6CC
 lsr   r2,r0,0x10                ; 0802A6CE
 mov   r0,r2                     ; 0802A6D0
-b     @@Return                  ; 0802A6D2
+b     @@Return                  ; 0802A6D2 /
 .pool                           ; 0802A6D4
 
-@@Code0802A6D8:
-ldr   r1,=ExtObj88_Data081BE1CA ; 0802A6D8
+@@HighByte85:
+ldr   r1,=Ext88_Y2RoomTileBase  ; 0802A6D8
 lsr   r0,r0,0x11                ; 0802A6DA
 lsl   r0,r0,0x1                 ; 0802A6DC
 add   r0,r0,r1                  ; 0802A6DE
 ldrh  r0,[r0]                   ; 0802A6E0
 cmp   r2,0x2                    ; 0802A6E2
-beq   @@Code0802A6F0            ; 0802A6E4
+beq   @@ReturnAlt               ; 0802A6E4
 cmp   r2,0x4                    ; 0802A6E6
-beq   @@Code0802A6F0            ; 0802A6E8
-add   r0,r0,r3                  ; 0802A6EA
+beq   @@ReturnAlt               ; 0802A6E8  if relX 1-2, return tile ID
+add   r0,r0,r3                  ; 0802A6EA \ if relX 0 or 3...
 lsl   r0,r0,0x10                ; 0802A6EC
-lsr   r0,r0,0x10                ; 0802A6EE
-@@Code0802A6F0:
+lsr   r0,r0,0x10                ; 0802A6EE / return (value + prevtile -854B) & FFFF 
+@@ReturnAlt:
 mov   r2,r0                     ; 0802A6F0
 @@Return:
 pop   {r4}                      ; 0802A6F2
@@ -1867,8 +1873,11 @@ pop   {r1}                      ; 0802A6F4
 bx    r1                        ; 0802A6F6
 .pool                           ; 0802A6F8
 
-Sub0802A6FC:
-; called by 00.88
+ExtObj88_Y1:
+; called by 00.88 if relY is 1
+; r1: 1 if prevtile high byte is 85, else 0
+; r2: relX*2
+; r3: (prevtile -854B) if prevtile high byte is 85, else (prevtile -99) & FE
 push  {r4,lr}                   ; 0802A6FC
 lsl   r1,r1,0x10                ; 0802A6FE
 lsl   r0,r2,0x10                ; 0802A700
@@ -1877,48 +1886,48 @@ mov   r2,r4                     ; 0802A704
 lsl   r3,r3,0x10                ; 0802A706
 lsr   r3,r3,0x10                ; 0802A708
 cmp   r1,0x0                    ; 0802A70A
-bne   @@Code0802A744            ; 0802A70C
-ldr   r1,=ExtObj88_Data081BE19A ; 0802A70E
+bne   @@HighByte85              ; 0802A70C
+ldr   r1,=Ext88_Y1PipeTileBase  ; 0802A70E \ runs if prevtile high byte is not 85
 lsr   r0,r0,0x11                ; 0802A710
-lsl   r0,r0,0x1                 ; 0802A712
-add   r0,r0,r1                  ; 0802A714
+lsl   r0,r0,0x1                 ; 0802A712  relX*2
+add   r0,r0,r1                  ; 0802A714  index with relX
 ldrh  r2,[r0]                   ; 0802A716
-mov   r0,r4                     ; 0802A718
+mov   r0,r4                     ; 0802A718  relX*2
 cmp   r0,0x0                    ; 0802A71A
-beq   @@Code0802A72C            ; 0802A71C
+beq   @@PipeEdges               ; 0802A71C
 cmp   r0,0x6                    ; 0802A71E
-beq   @@Code0802A72C            ; 0802A720
+beq   @@PipeEdges               ; 0802A720
 mov   r0,r2                     ; 0802A722
-b     @@Return                  ; 0802A724
+b     @@Return                  ; 0802A724  if relX 1-2, return tile ID
 .pool                           ; 0802A726
 
-@@Code0802A72C:
-ldr   r0,=ExtObj88_Data081BE1AA ; 0802A72C
+@@PipeEdges:
+ldr   r0,=Ext88_Y1Y2PipeOffsets ; 0802A72C
 lsr   r1,r3,0x1                 ; 0802A72E
 lsl   r1,r1,0x1                 ; 0802A730
-add   r1,r1,r0                  ; 0802A732
-ldrh  r0,[r1]                   ; 0802A734
-add   r0,r2,r0                  ; 0802A736
+add   r1,r1,r0                  ; 0802A732  index with (prevtile -99) & FE
+ldrh  r0,[r1]                   ; 0802A734  some 16-bit value
+add   r0,r2,r0                  ; 0802A736  add to tile ID
 lsl   r0,r0,0x10                ; 0802A738
 lsr   r2,r0,0x10                ; 0802A73A
 mov   r0,r2                     ; 0802A73C
-b     @@Return                  ; 0802A73E
+b     @@Return                  ; 0802A73E /
 .pool                           ; 0802A740
 
-@@Code0802A744:
-ldr   r1,=ExtObj88_Data081BE1A2 ; 0802A744
+@@HighByte85:
+ldr   r1,=Ext88_Y1RoomTileBase  ; 0802A744
 lsr   r0,r0,0x11                ; 0802A746
 lsl   r0,r0,0x1                 ; 0802A748
-add   r0,r0,r1                  ; 0802A74A
+add   r0,r0,r1                  ; 0802A74A  index with relX
 ldrh  r0,[r0]                   ; 0802A74C
 cmp   r2,0x2                    ; 0802A74E
-beq   @@Code0802A75C            ; 0802A750
+beq   @@ReturnAlt               ; 0802A750
 cmp   r2,0x4                    ; 0802A752
-beq   @@Code0802A75C            ; 0802A754
-add   r0,r0,r3                  ; 0802A756
+beq   @@ReturnAlt               ; 0802A754  if relX 1-2, return tile ID
+add   r0,r0,r3                  ; 0802A756 \ if relX 0 or 3...
 lsl   r0,r0,0x10                ; 0802A758
-lsr   r0,r0,0x10                ; 0802A75A
-@@Code0802A75C:
+lsr   r0,r0,0x10                ; 0802A75A / return (value + prevtile -854B) & FFFF 
+@@ReturnAlt:
 mov   r2,r0                     ; 0802A75C
 @@Return:
 pop   {r4}                      ; 0802A75E
@@ -1926,8 +1935,11 @@ pop   {r1}                      ; 0802A760
 bx    r1                        ; 0802A762
 .pool                           ; 0802A764
 
-Sub0802A768:
-; called by 00.88
+ExtObj88_Y0:
+; called by 00.88 if relY is 0
+; r1: 1 if prevtile high byte is 85, else 0
+; r2: relX*2
+; r3: (prevtile -854B) if prevtile high byte is 85, else (prevtile -99) & FE
 push  {r4,lr}                   ; 0802A768
 mov   r4,r0                     ; 0802A76A
 lsl   r1,r1,0x10                ; 0802A76C
@@ -1935,54 +1947,54 @@ lsl   r0,r2,0x10                ; 0802A76E
 lsl   r3,r3,0x10                ; 0802A770
 lsr   r2,r3,0x10                ; 0802A772
 cmp   r1,0x0                    ; 0802A774
-bne   @@Code0802A7BC            ; 0802A776
-ldr   r1,=ExtObj88_Data081BE172 ; 0802A778
+bne   @@HighByte85              ; 0802A776
+ldr   r1,=Ext88_Y0PipeTileBase  ; 0802A778 \ runs if prevtile high byte is not 85
 lsr   r0,r0,0x11                ; 0802A77A
-lsl   r0,r0,0x1                 ; 0802A77C
-add   r0,r0,r1                  ; 0802A77E
-ldrh  r2,[r0]                   ; 0802A780
+lsl   r0,r0,0x1                 ; 0802A77C  relX*2
+add   r0,r0,r1                  ; 0802A77E  index with relX
+ldrh  r2,[r0]                   ; 0802A780  tile ID
 cmp   r2,0x0                    ; 0802A782
 bne   @@Code0802A790            ; 0802A784
-@@Code0802A786:
-mov   r0,0x0                    ; 0802A786
+@@Return0:
+mov   r0,0x0                    ; 0802A786  if value is 0, don't change tile
 b     @@Return                  ; 0802A788
 .pool                           ; 0802A78A
 
 @@Code0802A790:
 mov   r0,r4                     ; 0802A790
 add   r0,0x40                   ; 0802A792
-ldrh  r1,[r0]                   ; 0802A794
+ldrh  r1,[r0]                   ; 0802A794  prevtile
 mov   r0,0xFF                   ; 0802A796
-lsl   r0,r0,0x8                 ; 0802A798
+lsl   r0,r0,0x8                 ; 0802A798  FF00
 and   r0,r1                     ; 0802A79A
 mov   r1,0xF2                   ; 0802A79C
-lsl   r1,r1,0x7                 ; 0802A79E
+lsl   r1,r1,0x7                 ; 0802A79E  7900
 cmp   r0,r1                     ; 0802A7A0
-beq   @@Code0802A786            ; 0802A7A2
-ldr   r0,=ExtObj88_Data081BE182 ; 0802A7A4
+beq   @@Return0                 ; 0802A7A2  if prevtile high byte is 79, don't change tile
+ldr   r0,=Ext88_Y0Y3PipeOffsets ; 0802A7A4
 lsr   r1,r3,0x11                ; 0802A7A6
 lsl   r1,r1,0x1                 ; 0802A7A8
-add   r1,r1,r0                  ; 0802A7AA
-ldrh  r0,[r1]                   ; 0802A7AC
-add   r0,r2,r0                  ; 0802A7AE
+add   r1,r1,r0                  ; 0802A7AA  index with (prevtile -99) & FE
+ldrh  r0,[r1]                   ; 0802A7AC  some 16-bit value
+add   r0,r2,r0                  ; 0802A7AE  add to tile ID
 lsl   r0,r0,0x10                ; 0802A7B0
 lsr   r2,r0,0x10                ; 0802A7B2
 mov   r0,r2                     ; 0802A7B4
-b     @@Return                  ; 0802A7B6
+b     @@Return                  ; 0802A7B6 /
 .pool                           ; 0802A7B8
 
-@@Code0802A7BC:
-ldr   r1,=ExtObj88_Data081BE17A ; 0802A7BC
+@@HighByte85:
+ldr   r1,=Ext88_Y0RoomTileBase  ; 0802A7BC
 lsr   r0,r0,0x11                ; 0802A7BE
-lsl   r0,r0,0x1                 ; 0802A7C0
-add   r0,r0,r1                  ; 0802A7C2
-ldrh  r0,[r0]                   ; 0802A7C4
+lsl   r0,r0,0x1                 ; 0802A7C0  relX*2
+add   r0,r0,r1                  ; 0802A7C2  index with relX
+ldrh  r0,[r0]                   ; 0802A7C4  tile ID
 cmp   r0,0x0                    ; 0802A7C6
-beq   @@Code0802A7D0            ; 0802A7C8
+beq   @@ReturnAlt               ; 0802A7C8  if value is 0, don't change tile
 add   r0,r0,r2                  ; 0802A7CA
 lsl   r0,r0,0x10                ; 0802A7CC
-lsr   r0,r0,0x10                ; 0802A7CE
-@@Code0802A7D0:
+lsr   r0,r0,0x10                ; 0802A7CE  return (value + prevtile -854B) & FFFF
+@@ReturnAlt:
 mov   r2,r0                     ; 0802A7D0
 @@Return:
 pop   {r4}                      ; 0802A7D2
@@ -1995,54 +2007,54 @@ ExtObj88_Main:
 ; width: 4, height: 4
 push  {r4-r6,lr}                ; 0802A7DC
 mov   r5,r0                     ; 0802A7DE
-mov   r6,0x0                    ; 0802A7E0
+mov   r6,0x0                    ; 0802A7E0  r6 = 0 by default
 add   r0,0x40                   ; 0802A7E2
-ldrh  r2,[r0]                   ; 0802A7E4  pre-existing tile
+ldrh  r2,[r0]                   ; 0802A7E4  r2 = previous tile
 mov   r0,0xFF                   ; 0802A7E6
 lsl   r0,r0,0x8                 ; 0802A7E8  FF00
-and   r0,r2                     ; 0802A7EA  pre-existing tile, high byte filtered
+and   r0,r2                     ; 0802A7EA  prevtile, high byte filtered
 mov   r1,0x85                   ; 0802A7EC
 lsl   r1,r1,0x8                 ; 0802A7EE  8500
 cmp   r0,r1                     ; 0802A7F0
 beq   @@HighByte85              ; 0802A7F2
 
 ldr   r0,=0xFFFF8867            ; 0802A7F4  -7799
-add   r1,r2,r0                  ; 0802A7F6
+add   r1,r2,r0                  ; 0802A7F6  prevtile -7799
 lsl   r1,r1,0x10                ; 0802A7F8
 mov   r0,0xFE                   ; 0802A7FA
 lsl   r0,r0,0x10                ; 0802A7FC  FE0000
 and   r0,r1                     ; 0802A7FE
-lsr   r3,r0,0x10                ; 0802A800
+lsr   r3,r0,0x10                ; 0802A800  r3 = (prevtile -99) & FE
 b     @@Code0802A812            ; 0802A802
 .pool                           ; 0802A804
 
-@@HighByte85:
-ldr   r1,=0x7AB5                ; 0802A808 \ runs if previous tile high byte is 85
+@@HighByte85:                   ;          \ runs if prevtile high byte is 85
+ldr   r1,=0x7AB5                ; 0802A808  -854B
 add   r0,r2,r1                  ; 0802A80A
 lsl   r0,r0,0x10                ; 0802A80C
-lsr   r3,r0,0x10                ; 0802A80E
-mov   r6,0x1                    ; 0802A810 /
+lsr   r3,r0,0x10                ; 0802A80E  r3 = prevtile - 854B
+mov   r6,0x1                    ; 0802A810 / r6 = 1
 @@Code0802A812:
 mov   r0,r5                     ; 0802A812
 add   r0,0x4C                   ; 0802A814
 ldrh  r2,[r0]                   ; 0802A816  relative X
 lsl   r2,r2,0x11                ; 0802A818
-lsr   r2,r2,0x10                ; 0802A81A
+lsr   r2,r2,0x10                ; 0802A81A  r2 = relX*2
 add   r0,0x4                    ; 0802A81C  50
 ldrh  r0,[r0]                   ; 0802A81E  relative Y
 lsl   r0,r0,0x11                ; 0802A820
 ldr   r1,=ExtObj88_CodePtrs     ; 0802A822
-lsr   r0,r0,0xF                 ; 0802A824
-add   r0,r0,r1                  ; 0802A826
-ldr   r4,[r0]                   ; 0802A828
+lsr   r0,r0,0xF                 ; 0802A824  relY*4
+add   r0,r0,r1                  ; 0802A826  index with relY
+ldr   r4,[r0]                   ; 0802A828  code pointer
 mov   r0,r5                     ; 0802A82A
-mov   r1,r6                     ; 0802A82C
+mov   r1,r6                     ; 0802A82C  r1 = 1 if prevtile high byte is 85, else 0
 bl    Sub_bx_r4                 ; 0802A82E
 lsl   r0,r0,0x10                ; 0802A832
 lsr   r2,r0,0x10                ; 0802A834
 cmp   r2,0x0                    ; 0802A836
-beq   @@Return                  ; 0802A838
-mov   r0,r5                     ; 0802A83A
+beq   @@Return                  ; 0802A838  if subroutine returned 0, return
+mov   r0,r5                     ; 0802A83A \ if subroutine returned nonzero, set tile
 add   r0,0x4A                   ; 0802A83C
 ldrh  r0,[r0]                   ; 0802A83E
 ldr   r1,=0x03007010            ; 0802A840  Layer 1 tilemap EWRAM (0200000C)
@@ -2050,7 +2062,7 @@ ldr   r1,[r1]                   ; 0802A842
 lsr   r0,r0,0x1                 ; 0802A844
 lsl   r0,r0,0x1                 ; 0802A846
 add   r1,r1,r0                  ; 0802A848
-strh  r2,[r1]                   ; 0802A84A  set tile
+strh  r2,[r1]                   ; 0802A84A /
 @@Return:
 pop   {r4-r6}                   ; 0802A84C
 pop   {r0}                      ; 0802A84E
@@ -3759,7 +3771,7 @@ pop   {r0}                      ; 0802B556
 bx    r0                        ; 0802B558
 .pool                           ; 0802B55A
 
-ExtObj31_Main:
+ExtObj31_36_Main:
 ; object 00.31 main
 ; width: 6, height: 7
 push  {lr}                      ; 0802B564

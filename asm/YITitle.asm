@@ -3176,7 +3176,7 @@ str   r4,[sp]                   ; 080FEA0A
 ldr   r2,=0x050009BD            ; 080FEA0C
 mov   r0,sp                     ; 080FEA0E
 bl    swi_MemoryCopy4or2        ; 080FEA10  Memory copy/fill, 4- or 2-byte blocks
-bl    Sub080FCBC4               ; 080FEA14 for text
+bl    DynamicAllocate_Text      ; 080FEA14
 mov   r0,0x80                   ; 080FEA18
 lsl   r0,r0,0x12                ; 080FEA1A  02000000
 mov   r1,0x90                   ; 080FEA1C

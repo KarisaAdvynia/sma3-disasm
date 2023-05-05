@@ -2566,7 +2566,7 @@ lsl   r0,r0,0x2                 ; 080E1388
 add   r1,r1,r0                  ; 080E138A
 ldr   r0,[r2]                   ; 080E138C
 add   r0,r0,r1                  ; 080E138E
-bl    Sub0804A6F8               ; 080E1390
+bl    DespawnSprite             ; 080E1390
 bl    Sub08089160               ; 080E1394
 @@Code080E1398:
 mov   r1,r4                     ; 080E1398

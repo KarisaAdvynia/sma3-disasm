@@ -411,7 +411,7 @@ lsl   r1,r1,0x6                 ; 080F5D38
 mov   r0,r4                     ; 080F5D3A
 bl    DynamicAllocate           ; 080F5D3C
 str   r0,[r5]                   ; 080F5D40
-bl    Sub080FCBC4               ; 080F5D42 for text
+bl    DynamicAllocate_Text      ; 080F5D42
 mov   r2,r8                     ; 080F5D46
 str   r2,[sp]                   ; 080F5D48
 mov   r3,r9                     ; 080F5D4A

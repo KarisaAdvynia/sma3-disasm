@@ -511,8 +511,7 @@ cmp   r1,0x0                    ; 0801A46C
 beq   @@Code0801A474            ; 0801A46E
 mov   r0,0x3                    ; 0801A470
 eor   r1,r0                     ; 0801A472
-@@Code0801A474:
-                                ;           r1 = random 0,0,1,2
+@@Code0801A474:                 ;           r1 = random 0,0,1,2
 lsl   r0,r1,0x13                ; 0801A474
 lsr   r1,r0,0x10                ; 0801A476
 mov   r0,r4                     ; 0801A478
@@ -915,22 +914,22 @@ mov   r0,0x3                    ; 0801A744
 and   r2,r0                     ; 0801A746  bits 0-1 of adjusted object ID
 lsl   r0,r2,0x1                 ; 0801A748  (bits 0-1 of adjusted object ID) << 1
 cmp   r0,0x3                    ; 0801A74A
-bhi   @@Code0801A760            ; 0801A74C
+bhi   @@ObjC6C9                 ; 0801A74C
                                 ;           runs if object C4/C5/C7/C8
 mov   r0,r3                     ; 0801A74E  r0 = [03007240] (0300220C)
 mov   r1,r5                     ; 0801A750  r1 = (unadjusted) object ID
 mov   r2,r6                     ; 0801A752  r2 = 1
 bl    ObjMain_Slope0_NoRelY     ; 0801A754  Object processing main, slope=0, no relative Y threshold
-b     @@Code0801A76A            ; 0801A758
+b     @@Return                  ; 0801A758
 .pool                           ; 0801A75A
 
-@@Code0801A760:
+@@ObjC6C9:
                                 ;           runs if object C6 or C9
 mov   r0,r3                     ; 0801A760  r0 = [03007240] (0300220C)
 mov   r1,r5                     ; 0801A762  r1 = (unadjusted) object ID
 mov   r2,r6                     ; 0801A764  r2 = 1
 bl    ObjMain_NoRelY            ; 0801A766  Object processing main, no relative Y threshold
-@@Code0801A76A:
+@@Return:
 pop   {r4-r6}                   ; 0801A76A
 pop   {r0}                      ; 0801A76C
 bx    r0                        ; 0801A76E
@@ -957,19 +956,19 @@ mov   r0,0x3                    ; 0801A790
 and   r0,r1                     ; 0801A792
 lsl   r0,r0,0x1                 ; 0801A794  (objID-C0)*2
 cmp   r0,0x3                    ; 0801A796
-bhi   @@Code0801A7A8            ; 0801A798
+bhi   @@ObjC0_C1                ; 0801A798
 
 mov   r0,r3                     ; 0801A79A  runs if C0-C1
 mov   r1,r4                     ; 0801A79C
 bl    ObjMain_Slope0_NoRelY     ; 0801A79E  Object processing main, slope=0, no relative Y threshold
-b     @@Code0801A7B0            ; 0801A7A2
+b     @@Return                  ; 0801A7A2
 .pool                           ; 0801A7A4
 
-@@Code0801A7A8:
+@@ObjC0_C1:
 mov   r0,r3                     ; 0801A7A8  runs if C2-C3
 mov   r1,r4                     ; 0801A7AA
 bl    ObjMain_NoRelY            ; 0801A7AC  Object processing main, no relative Y threshold
-@@Code0801A7B0:
+@@Return:
 pop   {r4}                      ; 0801A7B0
 pop   {r0}                      ; 0801A7B2
 bx    r0                        ; 0801A7B4

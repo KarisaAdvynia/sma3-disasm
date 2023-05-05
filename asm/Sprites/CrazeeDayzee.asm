@@ -633,7 +633,7 @@ strh  r0,[r1]                   ; 08050334
 mov   r0,r4                     ; 08050336
 bl    Sub08050300               ; 08050338
 mov   r0,r4                     ; 0805033C
-bl    Sub0804A6E8               ; 0805033E
+bl    ClearSpriteSlot           ; 0805033E
 pop   {r4}                      ; 08050342
 pop   {r0}                      ; 08050344
 bx    r0                        ; 08050346

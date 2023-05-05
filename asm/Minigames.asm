@@ -8051,7 +8051,7 @@ lsl   r0,r0,0x1                 ; 080EDF5A
 cmp   r2,r0                     ; 080EDF5C
 bne   @@Code080EDF68            ; 080EDF5E
 mov   r0,r1                     ; 080EDF60
-bl    Sub0804A6F8               ; 080EDF62
+bl    DespawnSprite             ; 080EDF62
 b     @@Code080EDF86            ; 080EDF66
 @@Code080EDF68:
 ldr   r0,=0x01B3                ; 080EDF68
@@ -10925,7 +10925,7 @@ lsl   r1,r1,0x6                 ; 080EF876
 mov   r0,r4                     ; 080EF878
 bl    DynamicAllocate           ; 080EF87A
 str   r0,[r5]                   ; 080EF87E
-bl    Sub080FCBC4               ; 080EF880 for text
+bl    DynamicAllocate_Text      ; 080EF880
 mov   r0,r8                     ; 080EF884
 str   r0,[sp]                   ; 080EF886
 mov   r2,r9                     ; 080EF888

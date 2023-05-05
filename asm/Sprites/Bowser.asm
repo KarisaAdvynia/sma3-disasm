@@ -835,7 +835,7 @@ mov   r2,0xF                    ; 08102934
 bl    swi_MemoryCopy4or2        ; 08102936  Memory copy/fill, 4- or 2-byte blocks
 bl    Sub08105878               ; 0810293A
 mov   r0,r5                     ; 0810293E
-bl    Sub0804A6F8               ; 08102940
+bl    DespawnSprite             ; 08102940
 b     @@Code081029AA            ; 08102944
 .pool                           ; 08102946
 
@@ -2894,7 +2894,7 @@ cmp   r0,0x0                    ; 08103BCE
 beq   @@Code08103BDA            ; 08103BD0
 @@Code08103BD2:
 mov   r0,r5                     ; 08103BD2
-bl    Sub0804A6F8               ; 08103BD4
+bl    DespawnSprite             ; 08103BD4
 b     @@Code08103C26            ; 08103BD8
 @@Code08103BDA:
 ldr   r4,=Data081A71EA          ; 08103BDA
@@ -3695,7 +3695,7 @@ ldrh  r0,[r1]                   ; 081042DA
 sub   r0,0x1                    ; 081042DC
 strh  r0,[r1]                   ; 081042DE
 mov   r0,r4                     ; 081042E0
-bl    Sub0804A6F8               ; 081042E2
+bl    DespawnSprite             ; 081042E2
 @@Code081042E6:
 pop   {r4}                      ; 081042E6
 pop   {r0}                      ; 081042E8
@@ -3739,7 +3739,7 @@ ldrh  r0,[r0]                   ; 08104332
 cmp   r0,0x0                    ; 08104334
 bne   @@Code08104348            ; 08104336
 mov   r0,r4                     ; 08104338
-bl    Sub0804A6F8               ; 0810433A
+bl    DespawnSprite             ; 0810433A
 b     @@Code0810437A            ; 0810433E
 .pool                           ; 08104340
 
@@ -4790,7 +4790,7 @@ mov   r0,r7                     ; 08104C50
 bl    Sub080DEE74               ; 08104C52
 @@Code08104C56:
 mov   r0,r7                     ; 08104C56
-bl    Sub0804A6F8               ; 08104C58
+bl    DespawnSprite             ; 08104C58
 b     @@Code08104C9E            ; 08104C5C
 .pool                           ; 08104C5E
 
@@ -5582,7 +5582,7 @@ ldrh  r0,[r1]                   ; 08105382
 add   r0,0x1                    ; 08105384
 strh  r0,[r1]                   ; 08105386
 mov   r0,r4                     ; 08105388
-bl    Sub0804A6F8               ; 0810538A
+bl    DespawnSprite             ; 0810538A
 b     @@Code081053DE            ; 0810538E
 .pool                           ; 08105390
 
@@ -7210,7 +7210,7 @@ strh  r1,[r3]                   ; 081060B4
 cmp   r1,0x0                    ; 081060B6
 bge   @@Code081060D8            ; 081060B8
 mov   r0,r2                     ; 081060BA
-bl    Sub0804A6F8               ; 081060BC
+bl    DespawnSprite             ; 081060BC
 mov   r0,0x1                    ; 081060C0
 b     @@Code081060DA            ; 081060C2
 @@Code081060C4:
@@ -7512,7 +7512,7 @@ bl    Sub081062FC               ; 08106344
 cmp   r0,0x0                    ; 08106348
 beq   @@Code08106354            ; 0810634A
 mov   r0,r4                     ; 0810634C
-bl    Sub0804A6F8               ; 0810634E
+bl    DespawnSprite             ; 0810634E
 b     @@Code08106380            ; 08106352
 @@Code08106354:
 mov   r0,r4                     ; 08106354
@@ -8945,7 +8945,7 @@ add   r1,r5,r2                  ; 08107022
 mov   r0,0x23                   ; 08107024
 strb  r0,[r1]                   ; 08107026
 mov   r0,r6                     ; 08107028
-bl    Sub0804A6F8               ; 0810702A
+bl    DespawnSprite             ; 0810702A
 @@Code0810702E:
 pop   {r4-r6}                   ; 0810702E
 pop   {r0}                      ; 08107030

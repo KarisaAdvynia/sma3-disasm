@@ -1019,26 +1019,26 @@ pop   {r0}                      ; 0804A6D6
 bx    r0                        ; 0804A6D8
 .pool                           ; 0804A6DA
 
-Sub0804A6E8:
+ClearSpriteSlot:
 push  {lr}                      ; 0804A6E8
-mov   r1,0x0                    ; 0804A6EA
-strh  r1,[r0,0x24]              ; 0804A6EC
+mov   r1,0x0                    ; 0804A6EA  00: empty slot
+strh  r1,[r0,0x24]              ; 0804A6EC  clear sprite status
 bl    Sub0804A670               ; 0804A6EE
 pop   {r0}                      ; 0804A6F2
 bx    r0                        ; 0804A6F4
 .pool                           ; 0804A6F6
 
-Sub0804A6F8:
+DespawnSprite:
 push  {lr}                      ; 0804A6F8
 mov   r1,r0                     ; 0804A6FA
 add   r1,0x9B                   ; 0804A6FC
-ldrb  r1,[r1]                   ; 0804A6FE
+ldrb  r1,[r1]                   ; 0804A6FE  sprite index in sublevel data
 lsl   r1,r1,0x1                 ; 0804A700
-ldr   r2,=0x0201BA00            ; 0804A702
+ldr   r2,=0x0201BA00            ; 0804A702  sprite spawn flags
 add   r1,r1,r2                  ; 0804A704
 mov   r2,0x0                    ; 0804A706
-strh  r2,[r1]                   ; 0804A708
-bl    Sub0804A6E8               ; 0804A70A
+strh  r2,[r1]                   ; 0804A708  clear this sprite's spawn flag
+bl    ClearSpriteSlot           ; 0804A70A
 pop   {r0}                      ; 0804A70E
 bx    r0                        ; 0804A710
 .pool                           ; 0804A712
@@ -1068,7 +1068,7 @@ b     @@Code0804A758            ; 0804A73E
 
 @@Code0804A750:
 mov   r0,r2                     ; 0804A750
-bl    Sub0804A6F8               ; 0804A752
+bl    DespawnSprite             ; 0804A752
 mov   r0,0x1                    ; 0804A756
 @@Code0804A758:
 pop   {r1}                      ; 0804A758
@@ -1568,7 +1568,7 @@ ldrb  r1,[r0]                   ; 0804AB8C
 mov   r0,r4                     ; 0804AB8E
 bl    Sub0804B784               ; 0804AB90
 mov   r0,r4                     ; 0804AB94
-bl    Sub0804A6F8               ; 0804AB96
+bl    DespawnSprite             ; 0804AB96
 pop   {r4}                      ; 0804AB9A
 pop   {r0}                      ; 0804AB9C
 bx    r0                        ; 0804AB9E
@@ -1949,7 +1949,7 @@ cmp   r4,0x3                    ; 0804AE9C
 bls   @@Code0804AE84            ; 0804AE9E
 @@Code0804AEA0:
 mov   r0,r8                     ; 0804AEA0
-bl    Sub0804A6F8               ; 0804AEA2
+bl    DespawnSprite             ; 0804AEA2
 mov   r0,0x0                    ; 0804AEA6
 b     @@Code0804AECC            ; 0804AEA8
 .pool                           ; 0804AEAA
@@ -2111,7 +2111,7 @@ lsr   r2,r0,0x18                ; 0804AFF4
 cmp   r0,0x0                    ; 0804AFF6
 bge   @@Code0804AFB0            ; 0804AFF8
 mov   r0,r6                     ; 0804AFFA
-bl    Sub0804A6F8               ; 0804AFFC
+bl    DespawnSprite             ; 0804AFFC
 mov   r0,0x0                    ; 0804B000
 @@Code0804B002:
 pop   {r4-r7}                   ; 0804B002
@@ -2162,7 +2162,7 @@ lsr   r2,r0,0x18                ; 0804B060
 cmp   r0,0x0                    ; 0804B062
 bge   @@Code0804B014            ; 0804B064
 mov   r0,r6                     ; 0804B066
-bl    Sub0804A6F8               ; 0804B068
+bl    DespawnSprite             ; 0804B068
 mov   r0,0x0                    ; 0804B06C
 @@Code0804B06E:
 pop   {r4-r7}                   ; 0804B06E
@@ -2256,7 +2256,7 @@ lsr   r2,r0,0x18                ; 0804B124
 cmp   r0,0x0                    ; 0804B126
 bge   @@Code0804B0E0            ; 0804B128
 mov   r0,r6                     ; 0804B12A
-bl    Sub0804A6F8               ; 0804B12C
+bl    DespawnSprite             ; 0804B12C
 mov   r0,0x0                    ; 0804B130
 @@Code0804B132:
 pop   {r4-r7}                   ; 0804B132
@@ -2307,7 +2307,7 @@ lsr   r2,r0,0x18                ; 0804B190
 cmp   r0,0x0                    ; 0804B192
 bge   @@Code0804B144            ; 0804B194
 mov   r0,r6                     ; 0804B196
-bl    Sub0804A6F8               ; 0804B198
+bl    DespawnSprite             ; 0804B198
 mov   r0,0x0                    ; 0804B19C
 @@Code0804B19E:
 pop   {r4-r7}                   ; 0804B19E
@@ -2355,7 +2355,7 @@ lsr   r2,r0,0x18                ; 0804B1F4
 cmp   r0,0x0                    ; 0804B1F6
 bge   @@Code0804B1B0            ; 0804B1F8
 mov   r0,r6                     ; 0804B1FA
-bl    Sub0804A6F8               ; 0804B1FC
+bl    DespawnSprite             ; 0804B1FC
 mov   r0,0x0                    ; 0804B200
 @@Code0804B202:
 pop   {r4-r7}                   ; 0804B202
@@ -2386,7 +2386,7 @@ b     @@Code0804B244            ; 0804B22C
 
 @@Code0804B23C:
 mov   r0,r4                     ; 0804B23C
-bl    Sub0804A6F8               ; 0804B23E
+bl    DespawnSprite             ; 0804B23E
 mov   r0,0x0                    ; 0804B242
 @@Code0804B244:
 pop   {r4}                      ; 0804B244
@@ -2730,7 +2730,7 @@ add   r2,r2,r1                  ; 0804B53C
 ldrh  r1,[r2]                   ; 0804B53E
 add   r1,0x1                    ; 0804B540
 strh  r1,[r2]                   ; 0804B542
-bl    Sub0804A6F8               ; 0804B544
+bl    DespawnSprite             ; 0804B544
 pop   {r0}                      ; 0804B548
 bx    r0                        ; 0804B54A
 .pool                           ; 0804B54C
@@ -7180,7 +7180,7 @@ add   r0,0x1                    ; 0804D9F8
 strb  r0,[r1]                   ; 0804D9FA
 @@Code0804D9FC:
 mov   r0,r4                     ; 0804D9FC
-bl    Sub0804A6F8               ; 0804D9FE
+bl    DespawnSprite             ; 0804D9FE
 mov   r3,0x0                    ; 0804DA02
 ldsh  r0,[r5,r3]                ; 0804DA04  sprite ID to become (sprite+A6)
 cmp   r0,0x0                    ; 0804DA06
@@ -8093,7 +8093,7 @@ cmp   r6,0x0                    ; 0804E17A
 beq   @@Code0804E186            ; 0804E17C
 @@Code0804E17E:
 mov   r0,r7                     ; 0804E17E
-bl    Sub0804A6E8               ; 0804E180
+bl    ClearSpriteSlot           ; 0804E180
 b     @@Code0804E40E            ; 0804E184
 @@Code0804E186:
 mov   r0,r4                     ; 0804E186
@@ -8122,7 +8122,7 @@ mov   r2,r9                     ; 0804E1B4
 cmp   r2,0x8B                   ; 0804E1B6
 bne   @@Code0804E20C            ; 0804E1B8
 mov   r0,r7                     ; 0804E1BA
-bl    Sub0804A6E8               ; 0804E1BC
+bl    ClearSpriteSlot           ; 0804E1BC
 mov   r0,0x87                   ; 0804E1C0
 mov   r1,r10                    ; 0804E1C2
 bl    Sub0804A1A0               ; 0804E1C4  Spawn sprite in lowest slot (max r1)
@@ -8379,7 +8379,7 @@ mov   r0,r7                     ; 0804E402
 bl    Sub0804B784               ; 0804E404
 @@Code0804E408:
 mov   r0,r7                     ; 0804E408
-bl    Sub0804A6E8               ; 0804E40A
+bl    ClearSpriteSlot           ; 0804E40A
 @@Code0804E40E:
 add   sp,0x4                    ; 0804E40E
 pop   {r3-r5}                   ; 0804E410
@@ -8511,7 +8511,7 @@ ldrh  r0,[r4,0x28]              ; 0804E51E
 cmp   r0,0x0                    ; 0804E520
 bne   @@Code0804E530            ; 0804E522
 mov   r0,r5                     ; 0804E524
-bl    Sub0804A6F8               ; 0804E526
+bl    DespawnSprite             ; 0804E526
 mov   r0,r5                     ; 0804E52A
 bl    Sub0804A900               ; 0804E52C
 @@Code0804E530:
