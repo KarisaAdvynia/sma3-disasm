@@ -7049,13 +7049,13 @@ mov   r0,r12                    ; 08038C20
 ldrh  r1,[r0,0x32]              ; 08038C22
 lsl   r1,r1,0x11                ; 08038C24
 lsr   r0,r1,0x10                ; 08038C26
-ldr   r2,=Data08191C84          ; 08038C28
+ldr   r2,=StdSprData_94_2C      ; 08038C28
 add   r0,r0,r2                  ; 08038C2A
 ldrb  r2,[r0]                   ; 08038C2C
 mov   r0,r12                    ; 08038C2E
 add   r0,0x94                   ; 08038C30
 strb  r2,[r0]                   ; 08038C32
-ldr   r0,=Data081918FC          ; 08038C34
+ldr   r0,=StdSprData_2A         ; 08038C34
 lsr   r1,r1,0x10                ; 08038C36
 add   r1,r1,r0                  ; 08038C38
 ldrh  r1,[r1]                   ; 08038C3A

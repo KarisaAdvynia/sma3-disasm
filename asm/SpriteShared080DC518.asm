@@ -1224,7 +1224,7 @@ lsr   r3,r0,0x10                ; 080DCF40
 ldrh  r0,[r5,0x2C]              ; 080DCF42
 ldr   r1,=0xFFF1                ; 080DCF44
 and   r1,r0                     ; 080DCF46
-ldr   r2,=Data08191C84          ; 080DCF48
+ldr   r2,=StdSprData_94_2C      ; 080DCF48
 add   r0,r3,0x1                 ; 080DCF4A
 add   r0,r0,r2                  ; 080DCF4C
 ldrb  r0,[r0]                   ; 080DCF4E

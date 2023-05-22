@@ -246,11 +246,11 @@ mov   r4,0x0                    ; 0804A078
 mov   r2,0x5                    ; 0804A07A
 ldr   r0,=0x298A                ; 0804A07C
 add   r1,r1,r0                  ; 0804A07E
-ldr   r6,=Data08191C84          ; 0804A080
-ldr   r7,=Data0819200C          ; 0804A082
-ldr   r0,=Data081918FC          ; 0804A084
+ldr   r6,=StdSprData_94_2C      ; 0804A080
+ldr   r7,=StdSprData_14_1C      ; 0804A082
+ldr   r0,=StdSprData_2A         ; 0804A084
 mov   r8,r0                     ; 0804A086
-ldr   r0,=Data081910EC          ; 0804A088
+ldr   r0,=StdSprHitboxParam     ; 0804A088
 mov   r9,r0                     ; 0804A08A
 ldrh  r1,[r1]                   ; 0804A08C
 cmp   r3,r1                     ; 0804A08E
@@ -7308,7 +7308,7 @@ mov   r1,r3                     ; 0804DB2C
 add   r1,0xA1                   ; 0804DB2E
 mov   r0,0xFF                   ; 0804DB30
 strb  r0,[r1]                   ; 0804DB32
-ldr   r1,=Data08191C84          ; 0804DB34
+ldr   r1,=StdSprData_94_2C      ; 0804DB34
 ldrh  r0,[r3,0x32]              ; 0804DB36
 lsl   r0,r0,0x1                 ; 0804DB38
 add   r0,r0,r1                  ; 0804DB3A
@@ -7413,7 +7413,7 @@ b     @@Code0804DC38            ; 0804DBFC
 .pool                           ; 0804DBFE
 
 @@Code0804DC0C:
-ldr   r0,=Data081918FC          ; 0804DC0C
+ldr   r0,=StdSprData_2A         ; 0804DC0C
 lsl   r1,r2,0x1                 ; 0804DC0E
 b     @@Code0804DC34            ; 0804DC10
 .pool                           ; 0804DC12
@@ -7425,13 +7425,13 @@ mov   r0,0x7                    ; 0804DC1C
 strh  r0,[r3,0x24]              ; 0804DC1E
 mov   r0,0x40                   ; 0804DC20
 str   r0,[r3,0x14]              ; 0804DC22
-ldr   r0,=Data081918FC          ; 0804DC24
+ldr   r0,=StdSprData_2A         ; 0804DC24
 lsl   r1,r2,0x1                 ; 0804DC26
 b     @@Code0804DC34            ; 0804DC28
 .pool                           ; 0804DC2A
 
 @@Code0804DC30:
-ldr   r1,=Data081918FC          ; 0804DC30
+ldr   r1,=StdSprData_2A         ; 0804DC30
 lsl   r0,r2,0x1                 ; 0804DC32
 @@Code0804DC34:
 add   r0,r0,r1                  ; 0804DC34
@@ -7897,7 +7897,7 @@ add   r0,0x64                   ; 0804DFE8
 strh  r6,[r0]                   ; 0804DFEA
 b     @@Code0804E40E            ; 0804DFEC
 @@Code0804DFEE:
-ldr   r0,=Data08192806          ; 0804DFEE
+ldr   r0,=StdSprData08192806    ; 0804DFEE
 mov   r4,r9                     ; 0804DFF0
 lsl   r1,r4,0x1                 ; 0804DFF2
 add   r1,r1,r0                  ; 0804DFF4
@@ -8916,7 +8916,7 @@ mov   r2,0xC1                   ; 0804E8A4
 lsl   r2,r2,0x2                 ; 0804E8A6
 add   r1,r0,r2                  ; 0804E8A8
 mov   r2,0x1                    ; 0804E8AA
-ldr   r6,=Data08192B8E          ; 0804E8AC
+ldr   r6,=StdSprData08192B8E    ; 0804E8AC
 ldr   r5,=0x010F                ; 0804E8AE
 @@Code0804E8B0:
 ldrh  r0,[r1,0x32]              ; 0804E8B0  sprite ID
@@ -9008,7 +9008,7 @@ b     @@Code0804EBCE            ; 0804E952
 ldr   r0,[sp,0x4]               ; 0804E970
 cmp   r0,0x0                    ; 0804E972
 beq   @@Code0804E9BE            ; 0804E974
-ldr   r1,=Data08191574          ; 0804E976
+ldr   r1,=StdSprData_28         ; 0804E976
 ldrh  r0,[r7]                   ; 0804E978
 lsl   r0,r0,0x1                 ; 0804E97A
 add   r0,r0,r1                  ; 0804E97C
@@ -9156,26 +9156,26 @@ ldr   r0,=0x298A                ; 0804EAA0
 add   r2,r2,r0                  ; 0804EAA2  r2 = [03007240]+298A (03004B86)
 mov   r0,0x98                   ; 0804EAA4
 add   r0,r0,r5                  ; 0804EAA6
-mov   r12,r0                    ; 0804EAA8
+mov   r12,r0                    ; 0804EAA8  r12 = sprite+98
 mov   r0,0x94                   ; 0804EAAA
 add   r0,r0,r5                  ; 0804EAAC
-mov   r8,r0                     ; 0804EAAE
+mov   r8,r0                     ; 0804EAAE  r8 = sprite+94
 mov   r0,0x4A                   ; 0804EAB0
 add   r0,r0,r5                  ; 0804EAB2
-mov   r10,r0                    ; 0804EAB4
+mov   r10,r0                    ; 0804EAB4  r10 = sprite+4A
 mov   r0,r5                     ; 0804EAB6
 add   r0,0x4C                   ; 0804EAB8
-str   r0,[sp,0x10]              ; 0804EABA
+str   r0,[sp,0x10]              ; 0804EABA  [sp+10] = sprite+4C
 add   r0,0x2                    ; 0804EABC
-str   r0,[sp,0x14]              ; 0804EABE
+str   r0,[sp,0x14]              ; 0804EABE  [sp+14] = sprite+4E
 add   r0,0x2                    ; 0804EAC0
-str   r0,[sp,0x18]              ; 0804EAC2
+str   r0,[sp,0x18]              ; 0804EAC2  [sp+18] = sprite+50
 mov   r0,0x9B                   ; 0804EAC4
 add   r0,r0,r5                  ; 0804EAC6
-mov   r9,r0                     ; 0804EAC8
+mov   r9,r0                     ; 0804EAC8  r9 = sprite+9B (pointer to this sprite's index in sublevel sprite data)
 mov   r0,r5                     ; 0804EACA
 add   r0,0x9C                   ; 0804EACC
-str   r0,[sp,0x1C]              ; 0804EACE
+str   r0,[sp,0x1C]              ; 0804EACE  [sp+1C] = sprite+9C
 ldrh  r2,[r2]                   ; 0804EAD0
 cmp   r4,r2                     ; 0804EAD2
 bne   @@Code0804EAF0            ; 0804EAD4
@@ -9199,9 +9199,9 @@ lsl   r6,r0,0x2                 ; 0804EB04
 ldrh  r0,[r5,0x32]              ; 0804EB06
 lsl   r0,r0,0x11                ; 0804EB08
 lsr   r4,r0,0x10                ; 0804EB0A
-mov   r1,r12                    ; 0804EB0C
+mov   r1,r12                    ; 0804EB0C  sprite+98
 strb  r6,[r1]                   ; 0804EB0E
-ldr   r2,=Data08191C84          ; 0804EB10
+ldr   r2,=StdSprData_94_2C      ; 0804EB10
 add   r3,r4,0x1                 ; 0804EB12
 add   r0,r3,r2                  ; 0804EB14
 ldrb  r1,[r0]                   ; 0804EB16
@@ -9212,7 +9212,7 @@ add   r2,r4,r2                  ; 0804EB1E
 ldrb  r0,[r2]                   ; 0804EB20
 mov   r2,r8                     ; 0804EB22
 strb  r0,[r2]                   ; 0804EB24
-ldr   r1,=Data0819200C          ; 0804EB26
+ldr   r1,=StdSprData_14_1C      ; 0804EB26
 add   r0,r4,r1                  ; 0804EB28
 ldrb  r0,[r0]                   ; 0804EB2A
 lsl   r0,r0,0x18                ; 0804EB2C
@@ -9225,11 +9225,11 @@ lsl   r0,r0,0x4                 ; 0804EB38
 str   r0,[r5,0x1C]              ; 0804EB3A
 ldrh  r0,[r5,0x32]              ; 0804EB3C
 lsl   r0,r0,0x1                 ; 0804EB3E
-ldr   r1,=Data081918FC          ; 0804EB40
+ldr   r1,=StdSprData_2A         ; 0804EB40
 add   r3,r0,r1                  ; 0804EB42
 ldrh  r0,[r3]                   ; 0804EB44
 strh  r0,[r5,0x2A]              ; 0804EB46
-ldr   r1,=0xFFFFFC78            ; 0804EB48
+ldr   r1,=StdSprData_26-StdSprData_28; 0804EB48  also StdSprData_28-StdSprData_2A
 add   r3,r3,r1                  ; 0804EB4A
 ldrh  r0,[r3]                   ; 0804EB4C
 strh  r0,[r5,0x28]              ; 0804EB4E
@@ -9238,22 +9238,22 @@ ldrh  r0,[r3]                   ; 0804EB52
 strh  r0,[r5,0x26]              ; 0804EB54
 ldrh  r1,[r3]                   ; 0804EB56
 mov   r0,0x1F                   ; 0804EB58
-and   r0,r1                     ; 0804EB5A
+and   r0,r1                     ; 0804EB5A  filter lower 5 bits
 lsl   r0,r0,0x3                 ; 0804EB5C
-ldr   r1,=Data081910EC          ; 0804EB5E
-add   r3,r0,r1                  ; 0804EB60
+ldr   r1,=StdSprHitboxParam     ; 0804EB5E
+add   r3,r0,r1                  ; 0804EB60  offset with lower 5 bits of sprite+26, *8
 ldrh  r0,[r3]                   ; 0804EB62
-mov   r1,r10                    ; 0804EB64
-strh  r0,[r1]                   ; 0804EB66
+mov   r1,r10                    ; 0804EB64  sprite+4A
+strh  r0,[r1]                   ; 0804EB66  [sprite+4A] = halfword 0 from table
 ldrh  r0,[r3,0x2]               ; 0804EB68
-ldr   r2,[sp,0x10]              ; 0804EB6A
-strh  r0,[r2]                   ; 0804EB6C
+ldr   r2,[sp,0x10]              ; 0804EB6A  sprite+4C
+strh  r0,[r2]                   ; 0804EB6C  [sprite+4C] = halfword 1 from table
 ldrh  r0,[r3,0x4]               ; 0804EB6E
-ldr   r1,[sp,0x14]              ; 0804EB70
-strh  r0,[r1]                   ; 0804EB72
+ldr   r1,[sp,0x14]              ; 0804EB70  sprite+4E
+strh  r0,[r1]                   ; 0804EB72  [sprite+4E] = halfword 2 from table
 ldrh  r0,[r3,0x6]               ; 0804EB74
-ldr   r2,[sp,0x18]              ; 0804EB76
-strh  r0,[r2]                   ; 0804EB78
+ldr   r2,[sp,0x18]              ; 0804EB76  sprite+50
+strh  r0,[r2]                   ; 0804EB78  [sprite+50] = halfword 3 from table
 ldr   r1,[sp,0x8]               ; 0804EB7A
 ldrh  r0,[r1,0x1A]              ; 0804EB7C
 lsl   r0,r0,0x1                 ; 0804EB7E
@@ -9261,11 +9261,11 @@ strh  r0,[r5,0x36]              ; 0804EB80
 mov   r0,0x1                    ; 0804EB82
 strh  r0,[r5,0x24]              ; 0804EB84
 ldrh  r0,[r7,0x6]               ; 0804EB86
-mov   r2,r9                     ; 0804EB88
+mov   r2,r9                     ; 0804EB88  sprite+9B
 strb  r0,[r2]                   ; 0804EB8A
 ldrh  r0,[r7,0x6]               ; 0804EB8C
 lsr   r0,r0,0x8                 ; 0804EB8E
-ldr   r1,[sp,0x1C]              ; 0804EB90
+ldr   r1,[sp,0x1C]              ; 0804EB90  sprite+9C
 strb  r0,[r1]                   ; 0804EB92
 ldr   r2,=0xFFFFFE46            ; 0804EB94
 mov   r0,r2                     ; 0804EB96

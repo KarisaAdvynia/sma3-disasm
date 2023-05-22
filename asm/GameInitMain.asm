@@ -3151,7 +3151,7 @@ lsl   r1,r1,0x6                 ; 0800297A
 mov   r0,r1                     ; 0800297C
 strh  r0,[r4]                   ; 0800297E
 bl    swi_SoundBias_0           ; 08002980
-swi   0x3                       ; 08002984 Stop/Sleep
+swi   0x3                       ; 08002984  Sleep mode
 bl    swi_SoundBias_1           ; 08002986
 ldr   r0,=0x47BE                ; 0800298A
 add   r0,r8                     ; 0800298C
@@ -3469,7 +3469,7 @@ str   r5,[sp]                   ; 08002C4A
 ldr   r2,=0x05000AD0            ; 08002C4C
 mov   r0,sp                     ; 08002C4E
 bl    swi_MemoryCopy4or2        ; 08002C50  Memory copy/fill, 4- or 2-byte blocks
-bl    DynamicAllocate_Text      ; 08002C54 for text
+bl    DynamicAllocate_Text      ; 08002C54
 @@Code08002C58:
 bl    Sub08002338               ; 08002C58
 ldr   r2,=0x47C6                ; 08002C5C
@@ -4498,7 +4498,7 @@ pop   {r0}                      ; 0800357C
 bx    r0                        ; 0800357E
 .pool                           ; 08003580
 
-NintendoPresents:
+NintendoPresentsMain:
 ; Game state 01: Nintendo presents
 push  {r4,lr}                   ; 080035EC
 ldr   r4,=0x03002200            ; 080035EE

@@ -90,8 +90,7 @@ add    r1,r1,r2                 ; 080001C0
 ldr    r0,[r1]                  ; 080001C4
 bx     r0                       ; 080001C8
 
-Sub080001CC:
-; Alternate interrupt handler?
+InterruptHandlerAlt:
 mov    r12,0x04000000           ; 080001CC
 add    r3,r12,0x0200            ; 080001D0
 ldr    r2,[r3]                  ; 080001D4

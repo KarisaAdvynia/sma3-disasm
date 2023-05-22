@@ -19645,7 +19645,7 @@ ldr   r1,=0x04000204            ; 0811A116
 ldr   r2,=0x4014                ; 0811A118
 mov   r0,r2                     ; 0811A11A
 strh  r0,[r1]                   ; 0811A11C
-ldr   r0,=Sub080001CC           ; 0811A11E
+ldr   r0,=InterruptHandlerAlt   ; 0811A11E
 str   r0,[r4]                   ; 0811A120
 ldr   r5,=0x030065AC            ; 0811A122  Interrupt handler
 str   r5,[r4,0x4]               ; 0811A124
