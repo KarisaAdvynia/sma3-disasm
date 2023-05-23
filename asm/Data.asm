@@ -5405,7 +5405,7 @@ StdSprInitPtrs:                 ; 08170248
 .word Sub080C5590+1             ; 045
 .word Sub080C1198+1             ; 046
 .word Sub080AFD44+1             ; 047
-.word Sub080BF714+1             ; 048
+.word KamekEnlarge_Init+1       ; 048
 .word Return080D85F8+1          ; 049
 .word Return080D85F8+1          ; 04A
 .word Return080D85F8+1          ; 04B
@@ -5858,7 +5858,7 @@ StdSprMainPtrs:                 ; 08170958
 .word Sub080C62F8+1             ; 045
 .word Sub080C2478+1             ; 046
 .word Sub080AFE14+1             ; 047
-.word Sub080BF7A8+1             ; 048
+.word KamekEnlarge_Main+1       ; 048
 .word Sub08060320+1             ; 049
 .word Sub080603E8+1             ; 04A
 .word Sub080603E8+1             ; 04B
@@ -5869,7 +5869,7 @@ StdSprMainPtrs:                 ; 08170958
 .word Sub080574FC+1             ; 050
 .word Sub080570C0+1             ; 051
 .word Sub080A0690+1             ; 052
-.word Sub080BF52C+1             ; 053
+.word KamekOHMY_Main+1          ; 053
 .word Sub08061C9C+1             ; 054
 .word Sub0808E34C+1             ; 055
 .word Sub0808E34C+1             ; 056
@@ -11441,7 +11441,7 @@ Data081798C8:                   ; 081798C8
 Data081798CE:                   ; 081798CE
 .halfword 0x7978, 0x7979, 0x797A, 0x797B, 0x0000, 0x793C, 0x793D, 0x793E
 .halfword 0x793F, 0x7940, 0x7942, 0x7943, 0x0000, 0x793C, 0x0000
-CodePtrs081798EC:               ; 081798EC
+KamekOHMY_SubstatePtrs:         ; 081798EC
 .word Sub080BF58C+1, Sub080BF5DC+1, Sub080BF640+1, Sub080BF67C+1
 KamekMessageIDs:                ; 081798FC
 .halfword 0x0026, 0x0024, 0x0050, 0x0051, 0x0080, 0x0081
@@ -11456,15 +11456,15 @@ Data08179920:                   ; 08179920
 .byte 0x00, 0x7F, 0x13, 0x5C, 0x1F, 0x61, 0xDF, 0x22, 0x00, 0x7F, 0xEC, 0x23
 .byte 0xDF, 0x22, 0x00, 0x7F, 0xEC, 0x23, 0x00, 0x7F, 0x00, 0x7F, 0xEC, 0x23
 .byte 0x1F, 0x61, 0x20, 0x5D, 0xEC, 0x23, 0x1F, 0x61, 0xDF, 0x22, 0x1F, 0x61
-KamekBossMusicIDs:              ; 08179980
+KamekEnlarge_BossMusicIDs:      ; 08179980
 .halfword 0x0016, 0x0018, 0x0016, 0x0018, 0x0016, 0x0018
 .halfword 0x0016, 0x0018, 0x0016, 0x0018, 0x0016, 0x0018
-CodePtrs08179998:               ; 08179998
+KamekEnlarge_SubstatePtrs:      ; 08179998
 .word Sub080BF8FC+1, Sub080BFA5C+1, Sub080BFAD4+1, Sub080BFB48+1
 .word Sub080BFBE0+1, Sub080BFC40+1, Sub080BFCB0+1, Sub080BFCEC+1
 .word Sub080BFEE8+1, Sub080C0018+1, Sub080C00C4+1, Sub080C02B0+1
 .word Sub080C042C+1, Sub080C04B8+1, Sub080C04FC+1
-KamekBossPalettePtrs:           ; 081799D4
+KamekEnlarge_BossPalettePtrs:   ; 081799D4
 .word Data082D5D1E, 0x02010622, 0x02010622, 0x02010622
 .word 0x020106A2, 0x02010622, Data082D5D5E, 0x02010622
 .word 0x02010682, Data082D5CDE, Data082D5D9E, 0x020106C2
