@@ -5095,296 +5095,1149 @@ Data0816FE82:                   ; 0816FE82
 Data0816FE92:                   ; 0816FE92
 .halfword 0x0303, 0x0202, 0x0102, 0x0101, 0x0002
 SecondarySprPtrs:               ; 0816FE9C
-.word Sub080484E0+1, Sub08048538+1, Sub0804856C+1, Sub080485DC+1
-.word Sub08048608+1, Sub080487AC+1, Sub08048880+1, Sub080488F4+1
-.word Sub08048914+1, Sub0804894C+1, Sub08048984+1, Sub080489D0+1
-.word Sub08048A14+1, Sub08048AB4+1, Sub08048AD4+1, Sub08048AF4+1
-.word Sub08048B48+1, Sub08048B98+1, Sub08048BE4+1, Sub08048C30+1
-.word Sub08048CD0+1, Sub08048D1C+1, Sub08048DC8+1, Sub08048E14+1
-.word Sub08048E20+1, Sub0804810C+1, Sub08048E60+1, Sub08048EBC+1
-.word Sub08048F08+1, Sub08049434+1, Sub08048F54+1, Sub08048FA0+1
-.word Sub08048FEC+1, Sub08049074+1, Sub080490C4+1, Sub08049110+1
-.word Sub080491C8+1, Sub080492CC+1, Sub08049324+1, Sub08049368+1
-.word Sub08047F7C+1, Sub08049434+1, Sub080494A8+1, Sub080494DC+1
-.word Sub0804915C+1, Sub0804919C+1, Sub080494DC+1, Sub08049434+1
-.word Sub08049434+1, Sub08049434+1, Sub08049434+1, Sub080494A8+1
-.word Sub08049DFC+1, Sub08049474+1, Sub08049578+1, Sub08049474+1
-.word Sub080482A4+1, Sub080481FC+1, Sub08049474+1, Sub080495BC+1
-.word Sub080495BC+1, Sub08049434+1, Sub08049544+1, Sub080495BC+1
-.word Sub08049510+1, Sub08049510+1, Sub08049428+1, Sub080494A8+1
-.word Sub080493E4+1, Return08047A5C+1, Sub0804999C+1, Sub08049474+1
-.word Sub08049428+1, Sub08049474+1, Sub08049474+1, Sub080494DC+1
-.word Sub080499F8+1, Sub08049428+1, Sub08049A38+1, Sub08049A94+1
-.word Sub08049AD8+1, Sub08048384+1, Sub08048318+1, Sub08049434+1
-.word Sub08049434+1, Sub08049440+1, Sub080483F8+1, Sub080483F8+1
-.word Sub08049B24+1
-.word Sub08049B58+1, Sub0804846C+1, Sub08049930+1, Sub08049B98+1
-.word Sub08049BE0+1, Sub08047EB8+1, Sub08049B98+1, Sub08049C34+1
-.word Sub080499F8+1, Sub08049C9C+1, Sub08049CDC+1, Sub08049428+1
-.word Sub08049D14+1, Sub08049D4C+1, Sub08049E3C+1, Sub08049474+1
-.word Sub08049434+1, Sub08049E74+1, Sub08049428+1, Sub08048624+1
-.word Sub08049074+1, Sub08049428+1, Sub08049428+1, Sub080495FC+1
-.word Sub08049708+1, Sub080497B8+1, Sub08049878+1, Sub080498E4+1
+.word Sub080484E0+1             ; 1C4
+.word Sub08048538+1             ; 1C5
+.word Sub0804856C+1             ; 1C6
+.word Sub080485DC+1             ; 1C7
+.word Sub08048608+1             ; 1C8
+.word Sub080487AC+1             ; 1C9
+.word Sub08048880+1             ; 1CA
+.word Sub080488F4+1             ; 1CB
+.word Sub08048914+1             ; 1CC
+.word Sub0804894C+1             ; 1CD
+.word Sub08048984+1             ; 1CE
+.word Sub080489D0+1             ; 1CF
+.word Sub08048A14+1             ; 1D0
+.word Sub08048AB4+1             ; 1D1
+.word Sub08048AD4+1             ; 1D2
+.word Sub08048AF4+1             ; 1D3
+.word Sub08048B48+1             ; 1D4
+.word Sub08048B98+1             ; 1D5
+.word Sub08048BE4+1             ; 1D6
+.word Sub08048C30+1             ; 1D7
+.word Sub08048CD0+1             ; 1D8
+.word Sub08048D1C+1             ; 1D9
+.word Sub08048DC8+1             ; 1DA
+.word Sub08048E14+1             ; 1DB
+.word Sub08048E20+1             ; 1DC
+.word Sub0804810C+1             ; 1DD
+.word Sub08048E60+1             ; 1DE
+.word Sub08048EBC+1             ; 1DF
+.word Sub08048F08+1             ; 1E0
+.word Sub08049434+1             ; 1E1
+.word Sub08048F54+1             ; 1E2
+.word Sub08048FA0+1             ; 1E3
+.word Sub08048FEC+1             ; 1E4
+.word Sub08049074+1             ; 1E5
+.word Sub080490C4+1             ; 1E6
+.word Sub08049110+1             ; 1E7
+.word Sub080491C8+1             ; 1E8
+.word Sub080492CC+1             ; 1E9
+.word Sub08049324+1             ; 1EA
+.word Sub08049368+1             ; 1EB
+.word Sub08047F7C+1             ; 1EC
+.word Sub08049434+1             ; 1ED
+.word Sub080494A8+1             ; 1EE
+.word Sub080494DC+1             ; 1EF
+.word Sub0804915C+1             ; 1F0
+.word Sub0804919C+1             ; 1F1
+.word Sub080494DC+1             ; 1F2
+.word Sub08049434+1             ; 1F3
+.word Sub08049434+1             ; 1F4
+.word Sub08049434+1             ; 1F5
+.word Sub08049434+1             ; 1F6
+.word Sub080494A8+1             ; 1F7
+.word Sub08049DFC+1             ; 1F8
+.word Sub08049474+1             ; 1F9
+.word Sub08049578+1             ; 1FA
+.word Sub08049474+1             ; 1FB
+.word Sub080482A4+1             ; 1FC
+.word Sub080481FC+1             ; 1FD
+.word Sub08049474+1             ; 1FE
+.word Sub080495BC+1             ; 1FF
+.word Sub080495BC+1             ; 200
+.word Sub08049434+1             ; 201
+.word Sub08049544+1             ; 202
+.word Sub080495BC+1             ; 203
+.word Sub08049510+1             ; 204
+.word Sub08049510+1             ; 205
+.word Sub08049428+1             ; 206
+.word Sub080494A8+1             ; 207
+.word Sub080493E4+1             ; 208
+.word Return08047A5C+1          ; 209
+.word Sub0804999C+1             ; 20A
+.word Sub08049474+1             ; 20B
+.word Sub08049428+1             ; 20C
+.word Sub08049474+1             ; 20D
+.word Sub08049474+1             ; 20E
+.word Sub080494DC+1             ; 20F
+.word Sub080499F8+1             ; 210
+.word Sub08049428+1             ; 211
+.word Sub08049A38+1             ; 212
+.word Sub08049A94+1             ; 213
+.word Sub08049AD8+1             ; 214
+.word Sub08048384+1             ; 215
+.word Sub08048318+1             ; 216
+.word Sub08049434+1             ; 217
+.word Sub08049434+1             ; 218
+.word Sub08049440+1             ; 219
+.word Sub080483F8+1             ; 21A
+.word Sub080483F8+1             ; 21B
+.word Sub08049B24+1             ; 21C
+.word Sub08049B58+1             ; 21D
+.word Sub0804846C+1             ; 21E
+.word Sub08049930+1             ; 21F
+.word Sub08049B98+1             ; 220
+.word Sub08049BE0+1             ; 221
+.word Sub08047EB8+1             ; 222
+.word Sub08049B98+1             ; 223
+.word Sub08049C34+1             ; 224
+.word Sub080499F8+1             ; 225
+.word Sub08049C9C+1             ; 226
+.word Sub08049CDC+1             ; 227
+.word Sub08049428+1             ; 228
+.word Sub08049D14+1             ; 229
+.word Sub08049D4C+1             ; 22A
+.word Sub08049E3C+1             ; 22B
+.word Sub08049474+1             ; 22C
+.word Sub08049434+1             ; 22D
+.word Sub08049E74+1             ; 22E
+.word Sub08049428+1             ; 22F
+.word Sub08048624+1             ; 230
+.word Sub08049074+1             ; 231
+.word Sub08049428+1             ; 232
+.word Sub08049428+1             ; 233
+.word Sub080495FC+1             ; 234
+.word Sub08049708+1             ; 235
+.word Sub080497B8+1             ; 236
+.word Sub08049878+1             ; 237
+.word Sub080498E4+1             ; 238
 CmdSprInitPtrs:                 ; 08170070
-.word Sub080D6A04+1, Sub080D6A04+1, Sub080D6A04+1, Sub080D6A04+1
-.word Sub080D6A04+1, Sub080D6A04+1, Sub080D6A04+1, Sub080D6A04+1
-.word Sub080D6A04+1, Sub080D6A04+1, Sub080D6A04+1, Sub080D6A04+1
-.word Sub080D6A04+1, Sub080D6A04+1, Sub080D6A04+1, Sub080D6A04+1
-.word Sub080D6BA4+1, Sub080D6CB8+1, Sub080D6CB8+1, Sub080D6CB8+1
-.word Sub080D6CB8+1, Sub080D6CB8+1, Sub080D6CB8+1, Sub080D6CB8+1
-.word Sub080D6CB8+1, Sub080D6CB8+1, Sub080D6CB8+1, Sub080D7C9C+1
-.word Sub080D7014+1, Sub080D7CBC+1, Sub080D7DDC+1, Sub080D7DFC+1
-.word Sub080D7044+1, Sub080D7E1C+1, Sub080D7284+1, Sub080D7264+1
-.word Sub080D7284+1, Sub080D7264+1, Sub080D7E3C+1, Sub080D7FB8+1
-.word Sub080D7704+1, Sub080D7988+1, Sub080D7FD8+1, Sub080D7FF8+1
-.word Sub080D8130+1, Sub080D814C+1, Sub080D8264+1, Sub080D8284+1
-.word Sub080D83FC+1, Sub080D7B34+1, Sub080D7C7C+1, Sub080D79D8+1
-.word Sub080D7A28+1, Sub080D841C+1, Sub080D7500+1, Sub080D754C+1
-.word Sub080D85B0+1, Sub080D85D8+1, Sub080D7064+1
+.word TilesetChanger_Init+1     ; 1C4
+.word TilesetChanger_Init+1     ; 1C5
+.word TilesetChanger_Init+1     ; 1C6
+.word TilesetChanger_Init+1     ; 1C7
+.word TilesetChanger_Init+1     ; 1C8
+.word TilesetChanger_Init+1     ; 1C9
+.word TilesetChanger_Init+1     ; 1CA
+.word TilesetChanger_Init+1     ; 1CB
+.word TilesetChanger_Init+1     ; 1CC
+.word TilesetChanger_Init+1     ; 1CD
+.word TilesetChanger_Init+1     ; 1CE
+.word TilesetChanger_Init+1     ; 1CF
+.word TilesetChanger_Init+1     ; 1D0
+.word TilesetChanger_Init+1     ; 1D1
+.word TilesetChanger_Init+1     ; 1D2
+.word TilesetChanger_Init+1     ; 1D3
+.word Autoscroll1D4_Init+1      ; 1D4
+.word Autoscroll1D5_1DE_Init+1  ; 1D5
+.word Autoscroll1D5_1DE_Init+1  ; 1D6
+.word Autoscroll1D5_1DE_Init+1  ; 1D7
+.word Autoscroll1D5_1DE_Init+1  ; 1D8
+.word Autoscroll1D5_1DE_Init+1  ; 1D9
+.word Autoscroll1D5_1DE_Init+1  ; 1DA
+.word Autoscroll1D5_1DE_Init+1  ; 1DB
+.word Autoscroll1D5_1DE_Init+1  ; 1DC
+.word Autoscroll1D5_1DE_Init+1  ; 1DD
+.word Autoscroll1D5_1DE_Init+1  ; 1DE
+.word Sub080D7C9C+1             ; 1DF
+.word Sub080D7014+1             ; 1E0
+.word Sub080D7CBC+1             ; 1E1
+.word Sub080D7DDC+1             ; 1E2
+.word Sub080D7DFC+1             ; 1E3
+.word Sub080D7044+1             ; 1E4
+.word Sub080D7E1C+1             ; 1E5
+.word Sub080D7284+1             ; 1E6
+.word Sub080D7264+1             ; 1E7
+.word Sub080D7284+1             ; 1E8
+.word Sub080D7264+1             ; 1E9
+.word Sub080D7E3C+1             ; 1EA
+.word Sub080D7FB8+1             ; 1EB
+.word Sub080D7704+1             ; 1EC
+.word Sub080D7988+1             ; 1ED
+.word Sub080D7FD8+1             ; 1EE
+.word Sub080D7FF8+1             ; 1EF
+.word Sub080D8130+1             ; 1F0
+.word Sub080D814C+1             ; 1F1
+.word Sub080D8264+1             ; 1F2
+.word Sub080D8284+1             ; 1F3
+.word Sub080D83FC+1             ; 1F4
+.word Sub080D7B34+1             ; 1F5
+.word Sub080D7C7C+1             ; 1F6
+.word Sub080D79D8+1             ; 1F7
+.word Sub080D7A28+1             ; 1F8
+.word Sub080D841C+1             ; 1F9
+.word Sub080D7500+1             ; 1FA
+.word Sub080D754C+1             ; 1FB
+.word Sub080D85B0+1             ; 1FC
+.word Sub080D85D8+1             ; 1FD
+.word Sub080D7064+1             ; 1FE
 CmdSprMainPtrs:                 ; 0817015C
-.word Sub080D6AE0+1, Sub080D6AE0+1, Sub080D6AE0+1, Sub080D6AE0+1
-.word Sub080D6AE0+1, Sub080D6AE0+1, Sub080D6AE0+1, Sub080D6AE0+1
-.word Sub080D6AE0+1, Sub080D6AE0+1, Sub080D6AE0+1, Sub080D6AE0+1
-.word Sub080D6AE0+1, Sub080D6AE0+1, Sub080D6AE0+1, Sub080D6AE0+1
-.word Sub080D6DC0+1, Sub080D6F0C+1, Sub080D6F0C+1, Sub080D6F0C+1
-.word Sub080D6F0C+1, Sub080D6F0C+1, Sub080D6F0C+1, Sub080D6F0C+1
-.word Sub080D6F0C+1, Sub080D6F0C+1, Sub080D6F0C+1, Return08049F44+1
-.word Return08049F44+1, Sub080D7CE8+1, Return08049F44+1, Return08049F44+1
-.word Return08049F44+1, Return08049F44+1, Sub080D72D0+1, Return08049F44+1
-.word Sub080D73CC+1, Return08049F44+1, Sub080D7E68+1, Return08049F44+1
-.word Sub080D7784+1, Return08049F44+1, Return08049F44+1, Sub080D8020+1
-.word Return08049F44+1, Sub080D8178+1, Return08049F44+1, Sub080D82B0+1
-.word Return08049F44+1, Sub080D7B60+1, Return08049F44+1, Sub080D7A48+1
-.word Return08049F44+1, Sub080D84CC+1, Sub080D75F8+1, Return08049F44+1
-.word Return08049F44+1, Return08049F44+1, Sub080D70CC+1
+.word TilesetChanger_Main+1     ; 1C4
+.word TilesetChanger_Main+1     ; 1C5
+.word TilesetChanger_Main+1     ; 1C6
+.word TilesetChanger_Main+1     ; 1C7
+.word TilesetChanger_Main+1     ; 1C8
+.word TilesetChanger_Main+1     ; 1C9
+.word TilesetChanger_Main+1     ; 1CA
+.word TilesetChanger_Main+1     ; 1CB
+.word TilesetChanger_Main+1     ; 1CC
+.word TilesetChanger_Main+1     ; 1CD
+.word TilesetChanger_Main+1     ; 1CE
+.word TilesetChanger_Main+1     ; 1CF
+.word TilesetChanger_Main+1     ; 1D0
+.word TilesetChanger_Main+1     ; 1D1
+.word TilesetChanger_Main+1     ; 1D2
+.word TilesetChanger_Main+1     ; 1D3
+.word Autoscroll1D4_Main+1      ; 1D4
+.word Autoscroll1D5_1DE_Main+1  ; 1D5
+.word Autoscroll1D5_1DE_Main+1  ; 1D6
+.word Autoscroll1D5_1DE_Main+1  ; 1D7
+.word Autoscroll1D5_1DE_Main+1  ; 1D8
+.word Autoscroll1D5_1DE_Main+1  ; 1D9
+.word Autoscroll1D5_1DE_Main+1  ; 1DA
+.word Autoscroll1D5_1DE_Main+1  ; 1DB
+.word Autoscroll1D5_1DE_Main+1  ; 1DC
+.word Autoscroll1D5_1DE_Main+1  ; 1DD
+.word Autoscroll1D5_1DE_Main+1  ; 1DE
+.word Return08049F44+1          ; 1DF
+.word Return08049F44+1          ; 1E0
+.word Sub080D7CE8+1             ; 1E1
+.word Return08049F44+1          ; 1E2
+.word Return08049F44+1          ; 1E3
+.word Return08049F44+1          ; 1E4
+.word Return08049F44+1          ; 1E5
+.word Sub080D72D0+1             ; 1E6
+.word Return08049F44+1          ; 1E7
+.word Sub080D73CC+1             ; 1E8
+.word Return08049F44+1          ; 1E9
+.word Sub080D7E68+1             ; 1EA
+.word Return08049F44+1          ; 1EB
+.word Sub080D7784+1             ; 1EC
+.word Return08049F44+1          ; 1ED
+.word Return08049F44+1          ; 1EE
+.word Sub080D8020+1             ; 1EF
+.word Return08049F44+1          ; 1F0
+.word Sub080D8178+1             ; 1F1
+.word Return08049F44+1          ; 1F2
+.word Sub080D82B0+1             ; 1F3
+.word Return08049F44+1          ; 1F4
+.word Sub080D7B60+1             ; 1F5
+.word Return08049F44+1          ; 1F6
+.word Sub080D7A48+1             ; 1F7
+.word Return08049F44+1          ; 1F8
+.word Sub080D84CC+1             ; 1F9
+.word Sub080D75F8+1             ; 1FA
+.word Return08049F44+1          ; 1FB
+.word Return08049F44+1          ; 1FC
+.word Return08049F44+1          ; 1FD
+.word Sub080D70CC+1             ; 1FE
 StdSprInitPtrs:                 ; 08170248
-.word Sub08095C44+1, XDoor_Init+1, Return080D85F8+1, Sub08074C48+1
-.word StarBlockBounceSpr_Init+1, Sub08051648+1, Return08051B48+1, Sub08051628+1
-.word Return08104158+1, Sub080515D0+1, Sub08083070+1, Sub08096C90+1
-.word Sub080D17A4+1, GoalRing_Init+1, Sub08053C44+1, Sub080537F8+1
-.word Sub080B66B0+1, Sub08058CD8+1, BossDoor_Init+1, Sub080BAF1C+1
-.word Sub080BB4AC+1, Sub08052260+1, Sub080C2FF0+1, Sub080B33A4+1
-.word Return080517F4+1, Return080AF380+1, Return08049F40+1, Sub08094B14+1
-.word Sub080AEA68+1, Sub080AF6C0+1, Sub08090008+1, Sub080D6370+1
-.word Sub0808863C+1, Sub08084148+1, FlashingEgg_Init+1, RedEgg_Init+1
-.word YellowEgg_Init+1, Return080503A4+1, Return080B55C0+1, Key_Init+1
-.word Return080D85F8+1, Return080503B0+1, Return080503A8+1, Return080503AC+1
-.word Sub0805FB14+1, Sub080BC7C4+1, Return080D85F8+1, Sub0807E548+1
-.word Sub0807D7F8+1, Sub080A9434+1, Sub0807E55C+1, Sub0807E828+1
-.word Sub080C43C0+1, Return080D85F8+1, Sub08056BA8+1, Sub08060474+1
-.word Return080D85F8+1, Sub08058944+1, Sub0807855C+1, Sub0807855C+1
-.word Sub080D367C+1, Sub080575E4+1, Sub08092C8C+1, Sub080BCBF8+1
-.word Sub080821C4+1, Sub080824FC+1, Sub080D516C+1, Sub080921C4+1
-.word Sub080921C4+1, Sub080C5590+1, Sub080C1198+1, Sub080AFD44+1
-.word Sub080BF714+1, Return080D85F8+1, Return080D85F8+1, Return080D85F8+1
-.word Sub0806BFB8+1, Sub0805F968+1, LockedDoorMinigame_Init+1, Sub080A48B4+1
-.word Sub080572E8+1, Sub08056FD4+1, Sub0809FE28+1, Return080D85F8+1
-.word Sub08061C90+1, Sub0808D758+1, Sub0808D758+1, Sub080582C4+1
-.word Sub0808A2AC+1, Sub08060E4C+1, Return080D85F8+1, Sub0808AAF8+1
-.word Sub0808A2AC+1, Return08049F40+1, Sub080B9D80+1, Sub080B9D80+1
-.word Sub08096C90+1, BabyMario_init+1, Sub080A8060+1, Sub08085AF8+1
-.word Sub0808D7D0+1, RedCoinSpr_Init+1, Sub08061AE8+1, Sub08081FAC+1
-.word Sub080D9A44+1, Sub080D9A44+1, Sub080D9A44+1, Sub080D9798+1
-.word Sub08063894+1, Sub080773AC+1, Sub080773C0+1, Sub08063940+1
-.word Sub08087A20+1, Sub0807C054+1, TrainShyGuy_Init+1, Sub080B5160+1
-.word Sub080923D8+1, Sub080926E4+1, Sub08078144+1, Sub08078168+1
-.word Sub08065578+1, Sub08065578+1, Sub08065578+1, Sub0806647C+1
-.word Sub08066490+1, Return080D85F8+1, Sub08055C48+1, Sub080A06B0+1
-.word Sub08062DA8+1, Sub08062DA8+1, Sub08067764+1, Sub080569A4+1
-.word Return080D52E8+1, Sub0808CA58+1, Return08049F40+1, Return08049F40+1
-.word Sub08060E7C+1, Sub0808D548+1, Sub0808D3E8+1, Sub08082618+1
-.word Sub08054164+1, Sub0808BE54+1, Sub08102898+1, Sub080B2424+1
-.word Sub080B70E4+1, Return0804F314+1, Return080D85F8+1, DoorShared_Init+1
-.word Sub080D9010+1, Sub08094CC4+1, Sub08094CC4+1, Sub0808695C+1
-.word Sub080D867C+1, Return080D85F8+1, Sub0809559C+1, Sub080989A8+1
-.word Sub08098D6C+1, Sub0806D07C+1, Sub0806A42C+1, Sub08067114+1
-.word Sub0807B378+1, Return08049F40+1, Return080D85F8+1, Sub0808867C+1
-.word Sub0808867C+1, Sub08057ACC+1, Sub0806A60C+1, Sub0806A650+1
-.word Return080D85F8+1, Sub0806B804+1, Sub080A8D18+1, Return080512AC+1
-.word Return081042F8+1, Sub080D92A0+1, Sub080CC564+1, Sub080DBE3C+1
-.word Sub080DBE3C+1, Sub080DBE3C+1, Sub080DBE3C+1, Return08049F40+1
-.word Sub080DBE3C+1, Sub080DBA30+1, Sub080DBD2C+1, Sub080DBD2C+1
-.word Sub080DBD2C+1, Sub080DBD10+1, Sub080DBD10+1, Sub080DBD10+1
-.word Sub080DBD10+1, Sub080DBD2C+1, Sub080DBDFC+1, Sub080DBD2C+1
-.word Sub080DBD2C+1, Sub080DBD2C+1, Sub080DBD10+1, Sub080DBD10+1
-.word Sub080DBD10+1, Sub080DBD10+1, Sub080DBD10+1, Sub080DBD10+1
-.word Sub080DBD10+1, Sub080DBD10+1, BossDoorBowser_Init+1, Sub080DBC30+1
-.word Sub080DBDA0+1, Sub08072084+1, Sub08104A94+1, Sub08103888+1
-.word Sub080D5380+1, Sub080D5148+1, Sub080C9688+1, Sub080CB814+1
-.word Return08049F40+1, Return08056A04+1, Sub080B94C8+1, Sub080D0354+1
-.word Sub08060D54+1, Sub080A3358+1, Sub080747D8+1, Sub080B7E9C+1
-.word Sub08071B68+1, Return080D85F8+1, Sub0809FB44+1, Sub08099A48+1
-.word Sub08099DD8+1, Sub0809AA48+1, Sub0806F044+1, Sub0806F044+1
-.word Sub08084F10+1, Return080D85F8+1, Sub08068800+1, Sub0809D1B8+1
-.word Sub0806E3A8+1, Sub0806E2D0+1, Sub0805F42C+1, Sub0805F63C+1
-.word Sub08098384+1, Sub08098384+1, Sub08064A74+1, Sub08064B68+1
-.word Return080D85F8+1, Return08049F40+1, Sub08091244+1, Sub08090F8C+1
-.word Sub080A84FC+1, Sub0809C2D4+1, Sub08070500+1, Sub080713B8+1
-.word Sub0806BFB8+1, Return080D85F8+1, Sub080529F4+1, Sub08091C1C+1
-.word Sub08091C34+1, Sub080AC644+1, Sub080AD908+1, Sub080AD9DC+1
-.word Return08053378+1, Sub0809E934+1, Sub0809E934+1, Sub0809E9F8+1
-.word Sub0809B108+1, RelayBooGuy105_Init+1, RelayBooGuy106_Init+1, Return08051A1C+1
-.word Sub080CAD40+1, Sub080763D0+1, Sub080763D0+1, Sub080763D0+1
-.word Sub08078788+1, Sub080693AC+1, Sub08074B88+1, Sub08085310+1
-.word Sub08052E88+1, Sub08068B38+1, Return080D85F8+1, Sub0808C718+1
-.word Sub0808CA18+1, Sub080531A4+1, Sub080951CC+1, Sub08092AC4+1
-.word Sub08092AC4+1, Sub08086C94+1, Sub0809B5D0+1, Sub080A142C+1
-.word Sub080A1B60+1, Return080D85F8+1, Sub080942BC+1, Sub080942BC+1
-.word Sub08094674+1, Return08094A0C+1, Sub08084148+1, Sub08084148+1
-.word Sub08097140+1, Sub08083558+1, Sub08076A8C+1, Return080D85F8+1
-.word Return08106068+1, Sub08082D6C+1, Sub08090000+1, Sub08097E84+1
-.word Sub0808B468+1, Sub08056624+1, Return080D85F8+1, Sub080A9E10+1
-.word Sub080AA024+1, LockedDoor_Init+1, Sub080BC190+1, Sub08090008+1
-.word Return08102530+1, Sub08079068+1, Sub08079068+1, Sub0809ED44+1
-.word Sub0809ED44+1, Sub0809ED44+1, Sub0809ED44+1, Return08049F40+1
-.word Sub08075DE8+1, Sub08073314+1, Sub08073320+1, Sub08099EEC+1
-.word Sub08099EEC+1, Sub0809A710+1, Sub0809A710+1, Sub08099118+1
-.word Sub080754A4+1, Sub08073988+1, Sub080739A8+1, Sub080D53E0+1
-.word Sub08063934+1, Sub080A52B4+1, Sub080A52B4+1, Sub080A52B4+1
-.word Sub080A52B4+1, Sub080A52B4+1, Sub080A52B4+1, Sub080A52B4+1
-.word Sub080A52B4+1, Sub080A5300+1, Sub080741D4+1, Sub0806E444+1
-.word Sub080794C8+1, Sub0806D6FC+1, Sub0806F7F0+1, Sub080A0CD0+1
-.word Sub0806D724+1, Sub080A98B0+1, Sub080A9AC0+1, Sub080ABE60+1
-.word Sub08093C74+1, Sub08093C74+1, Sub0808D7F4+1, Sub08093328+1
-.word Sub08093328+1, Sub080820C4+1, Return08049F40+1, Return080D85F8+1
-.word Sub0808B134+1, Sub0808B0F0+1, Sub080A2804+1, Sub080A65B0+1
-.word Sub080A65B0+1, Sub080A6E8C+1, Sub080A6E8C+1, Sub080A7460+1
-.word Sub080A7460+1, Sub080A7968+1, Sub080A79BC+1, Sub080A7A48+1
-.word Sub080A22B8+1, Sub080C6374+1, Return080D85F8+1, Sub08072078+1
-.word Sub0807206C+1, Sub08072060+1, Sub08072054+1, Sub08072008+1
-.word Sub08071FEC+1, Sub08071FD0+1, Sub08071FC4+1, Sub08072048+1
-.word Sub0807203C+1, Sub08072030+1, Sub080720E0+1, Sub080737C4+1
-.word Sub080959E4+1, CrazeeDayzee_Init+1, Sub080A4D4C+1, Sub080A4C14+1
-.word Sub080AADA8+1, Sub0808F2F4+1, Sub0808F2F4+1, Sub0808F2F4+1
-.word Sub0808F2F4+1, Sub0808F26C+1, Sub0808F26C+1, Sub0808F26C+1
-.word Sub0808F26C+1, Sub0808F26C+1, Sub0808F26C+1, Sub080AF734+1
-.word Sub080A8E34+1, Sub080A4FF8+1, Sub080917B8+1, Return080D85F8+1
-.word Sub0807AE98+1, Sub08079EC0+1, Sub08079F48+1, Sub08051434+1
-.word Sub0805146C+1, Sub0807FCA4+1, Sub0807CC50+1, Sub080AB624+1
-.word Sub080ABA88+1, Sub080AA54C+1, Sub080AA814+1, Sub080AA8FC+1
-.word Sub0807AAF4+1, Sub0807AAF4+1, Sub08052FA0+1, Return080D85F8+1
-.word Sub08073E8C+1, Sub080B0398+1, Sub080B0484+1, Sub080B04C8+1
-.word Sub080B0584+1, Sub080B05F8+1, Sub080B2D0C+1, Sub08080290+1
-.word Sub080A4E28+1, Sub080810B0+1, Return080D85F8+1, CoinStationary_Init+1
-.word Sub080B8E98+1, Sub080592A8+1, Sub0805957C+1, Sub08059D3C+1
-.word Sub0805B26C+1, Sub0805CC50+1, Sub0805BE3C+1, Sub0805B144+1
-.word Sub08059EC8+1, Return08049F40+1, Camera1BA_1BD_Init+1, Camera1BA_1BD_Init+1
-.word Camera1BA_1BD_Init+1, Camera1BA_1BD_Init+1, Return08049F40+1, Return08049F40+1
-.word Return08049F40+1, Return08049F40+1, Camera1C2_1C3_Init+1, Camera1C2_1C3_Init+1
+.word Sub08095C44+1             ; 000
+.word XDoor_Init+1              ; 001
+.word Return080D85F8+1          ; 002
+.word Sub08074C48+1             ; 003
+.word StarBlockBounceSpr_Init+1 ; 004
+.word Sub08051648+1             ; 005
+.word Return08051B48+1          ; 006
+.word Sub08051628+1             ; 007
+.word Return08104158+1          ; 008
+.word Sub080515D0+1             ; 009
+.word Sub08083070+1             ; 00A
+.word Sub08096C90+1             ; 00B
+.word Sub080D17A4+1             ; 00C
+.word GoalRing_Init+1           ; 00D
+.word Sub08053C44+1             ; 00E
+.word Sub080537F8+1             ; 00F
+.word Sub080B66B0+1             ; 010
+.word Sub08058CD8+1             ; 011
+.word BossDoor_Init+1           ; 012
+.word Sub080BAF1C+1             ; 013
+.word Sub080BB4AC+1             ; 014
+.word Sub08052260+1             ; 015
+.word Sub080C2FF0+1             ; 016
+.word Sub080B33A4+1             ; 017
+.word Return080517F4+1          ; 018
+.word Return080AF380+1          ; 019
+.word Return08049F40+1          ; 01A
+.word Sub08094B14+1             ; 01B
+.word Sub080AEA68+1             ; 01C
+.word Sub080AF6C0+1             ; 01D
+.word Sub08090008+1             ; 01E
+.word Rotating4Doors_Init+1     ; 01F
+.word Sub0808863C+1             ; 020
+.word Sub08084148+1             ; 021
+.word FlashingEgg_Init+1        ; 022
+.word RedEgg_Init+1             ; 023
+.word YellowEgg_Init+1          ; 024
+.word Return080503A4+1          ; 025
+.word Return080B55C0+1          ; 026
+.word Key_Init+1                ; 027
+.word Return080D85F8+1          ; 028
+.word Return080503B0+1          ; 029
+.word Return080503A8+1          ; 02A
+.word Return080503AC+1          ; 02B
+.word Sub0805FB14+1             ; 02C
+.word Sub080BC7C4+1             ; 02D
+.word Return080D85F8+1          ; 02E
+.word Sub0807E548+1             ; 02F
+.word Sub0807D7F8+1             ; 030
+.word Sub080A9434+1             ; 031
+.word Sub0807E55C+1             ; 032
+.word Sub0807E828+1             ; 033
+.word Sub080C43C0+1             ; 034
+.word Return080D85F8+1          ; 035
+.word Sub08056BA8+1             ; 036
+.word Sub08060474+1             ; 037
+.word Return080D85F8+1          ; 038
+.word Sub08058944+1             ; 039
+.word Sub0807855C+1             ; 03A
+.word Sub0807855C+1             ; 03B
+.word Sub080D367C+1             ; 03C
+.word Sub080575E4+1             ; 03D
+.word Sub08092C8C+1             ; 03E
+.word Sub080BCBF8+1             ; 03F
+.word Sub080821C4+1             ; 040
+.word Sub080824FC+1             ; 041
+.word Sub080D516C+1             ; 042
+.word Sub080921C4+1             ; 043
+.word Sub080921C4+1             ; 044
+.word Sub080C5590+1             ; 045
+.word Sub080C1198+1             ; 046
+.word Sub080AFD44+1             ; 047
+.word Sub080BF714+1             ; 048
+.word Return080D85F8+1          ; 049
+.word Return080D85F8+1          ; 04A
+.word Return080D85F8+1          ; 04B
+.word Sub0806BFB8+1             ; 04C
+.word Sub0805F968+1             ; 04D
+.word LockedDoorMinigame_Init+1 ; 04E
+.word Sub080A48B4+1             ; 04F
+.word Sub080572E8+1             ; 050
+.word Sub08056FD4+1             ; 051
+.word Sub0809FE28+1             ; 052
+.word Return080D85F8+1          ; 053
+.word Sub08061C90+1             ; 054
+.word Sub0808D758+1             ; 055
+.word Sub0808D758+1             ; 056
+.word Sub080582C4+1             ; 057
+.word Sub0808A2AC+1             ; 058
+.word Sub08060E4C+1             ; 059
+.word Return080D85F8+1          ; 05A
+.word Sub0808AAF8+1             ; 05B
+.word Sub0808A2AC+1             ; 05C
+.word Return08049F40+1          ; 05D
+.word Sub080B9D80+1             ; 05E
+.word Sub080B9D80+1             ; 05F
+.word Sub08096C90+1             ; 060
+.word BabyMario_init+1          ; 061
+.word Sub080A8060+1             ; 062
+.word Sub08085AF8+1             ; 063
+.word Sub0808D7D0+1             ; 064
+.word RedCoinSpr_Init+1         ; 065
+.word Sub08061AE8+1             ; 066
+.word Sub08081FAC+1             ; 067
+.word Sub080D9A44+1             ; 068
+.word Sub080D9A44+1             ; 069
+.word Sub080D9A44+1             ; 06A
+.word Sub080D9798+1             ; 06B
+.word Sub08063894+1             ; 06C
+.word Sub080773AC+1             ; 06D
+.word Sub080773C0+1             ; 06E
+.word Sub08063940+1             ; 06F
+.word Sub08087A20+1             ; 070
+.word Sub0807C054+1             ; 071
+.word TrainShyGuy_Init+1        ; 072
+.word Sub080B5160+1             ; 073
+.word Sub080923D8+1             ; 074
+.word Sub080926E4+1             ; 075
+.word Sub08078144+1             ; 076
+.word Sub08078168+1             ; 077
+.word Sub08065578+1             ; 078
+.word Sub08065578+1             ; 079
+.word Sub08065578+1             ; 07A
+.word Sub0806647C+1             ; 07B
+.word Sub08066490+1             ; 07C
+.word Return080D85F8+1          ; 07D
+.word Sub08055C48+1             ; 07E
+.word Sub080A06B0+1             ; 07F
+.word Sub08062DA8+1             ; 080
+.word Sub08062DA8+1             ; 081
+.word Sub08067764+1             ; 082
+.word Sub080569A4+1             ; 083
+.word Return080D52E8+1          ; 084
+.word Sub0808CA58+1             ; 085
+.word Return08049F40+1          ; 086
+.word Return08049F40+1          ; 087
+.word Sub08060E7C+1             ; 088
+.word Sub0808D548+1             ; 089
+.word Sub0808D3E8+1             ; 08A
+.word Sub08082618+1             ; 08B
+.word Sub08054164+1             ; 08C
+.word Sub0808BE54+1             ; 08D
+.word Sub08102898+1             ; 08E
+.word Sub080B2424+1             ; 08F
+.word Sub080B70E4+1             ; 090
+.word Return0804F314+1          ; 091
+.word Return080D85F8+1          ; 092
+.word DoorShared_Init+1         ; 093
+.word Sub080D9010+1             ; 094
+.word Sub08094CC4+1             ; 095
+.word Sub08094CC4+1             ; 096
+.word Sub0808695C+1             ; 097
+.word Sub080D867C+1             ; 098
+.word Return080D85F8+1          ; 099
+.word Sub0809559C+1             ; 09A
+.word Sub080989A8+1             ; 09B
+.word Sub08098D6C+1             ; 09C
+.word Sub0806D07C+1             ; 09D
+.word Sub0806A42C+1             ; 09E
+.word Sub08067114+1             ; 09F
+.word Sub0807B378+1             ; 0A0
+.word Return08049F40+1          ; 0A1
+.word Return080D85F8+1          ; 0A2
+.word Sub0808867C+1             ; 0A3
+.word Sub0808867C+1             ; 0A4
+.word Sub08057ACC+1             ; 0A5
+.word Sub0806A60C+1             ; 0A6
+.word Sub0806A650+1             ; 0A7
+.word Return080D85F8+1          ; 0A8
+.word Sub0806B804+1             ; 0A9
+.word Sub080A8D18+1             ; 0AA
+.word Return080512AC+1          ; 0AB
+.word Return081042F8+1          ; 0AC
+.word Sub080D92A0+1             ; 0AD
+.word Sub080CC564+1             ; 0AE
+.word Sub080DBE3C+1             ; 0AF
+.word Sub080DBE3C+1             ; 0B0
+.word Sub080DBE3C+1             ; 0B1
+.word Sub080DBE3C+1             ; 0B2
+.word Return08049F40+1          ; 0B3
+.word Sub080DBE3C+1             ; 0B4
+.word Sub080DBA30+1             ; 0B5
+.word Sub080DBD2C+1             ; 0B6
+.word Sub080DBD2C+1             ; 0B7
+.word Sub080DBD2C+1             ; 0B8
+.word Sub080DBD10+1             ; 0B9
+.word Sub080DBD10+1             ; 0BA
+.word Sub080DBD10+1             ; 0BB
+.word Sub080DBD10+1             ; 0BC
+.word Sub080DBD2C+1             ; 0BD
+.word Sub080DBDFC+1             ; 0BE
+.word Sub080DBD2C+1             ; 0BF
+.word Sub080DBD2C+1             ; 0C0
+.word Sub080DBD2C+1             ; 0C1
+.word Sub080DBD10+1             ; 0C2
+.word Sub080DBD10+1             ; 0C3
+.word Sub080DBD10+1             ; 0C4
+.word Sub080DBD10+1             ; 0C5
+.word Sub080DBD10+1             ; 0C6
+.word Sub080DBD10+1             ; 0C7
+.word Sub080DBD10+1             ; 0C8
+.word Sub080DBD10+1             ; 0C9
+.word BossDoorBowser_Init+1     ; 0CA
+.word Sub080DBC30+1             ; 0CB
+.word Sub080DBDA0+1             ; 0CC
+.word Sub08072084+1             ; 0CD
+.word Sub08104A94+1             ; 0CE
+.word Sub08103888+1             ; 0CF
+.word Sub080D5380+1             ; 0D0
+.word Sub080D5148+1             ; 0D1
+.word Sub080C9688+1             ; 0D2
+.word Sub080CB814+1             ; 0D3
+.word Return08049F40+1          ; 0D4
+.word Return08056A04+1          ; 0D5
+.word Sub080B94C8+1             ; 0D6
+.word Sub080D0354+1             ; 0D7
+.word Sub08060D54+1             ; 0D8
+.word Sub080A3358+1             ; 0D9
+.word Sub080747D8+1             ; 0DA
+.word Sub080B7E9C+1             ; 0DB
+.word Sub08071B68+1             ; 0DC
+.word Return080D85F8+1          ; 0DD
+.word Sub0809FB44+1             ; 0DE
+.word Sub08099A48+1             ; 0DF
+.word Sub08099DD8+1             ; 0E0
+.word Sub0809AA48+1             ; 0E1
+.word Sub0806F044+1             ; 0E2
+.word Sub0806F044+1             ; 0E3
+.word Sub08084F10+1             ; 0E4
+.word Return080D85F8+1          ; 0E5
+.word Sub08068800+1             ; 0E6
+.word Sub0809D1B8+1             ; 0E7
+.word Sub0806E3A8+1             ; 0E8
+.word Sub0806E2D0+1             ; 0E9
+.word Sub0805F42C+1             ; 0EA
+.word Sub0805F63C+1             ; 0EB
+.word Sub08098384+1             ; 0EC
+.word Sub08098384+1             ; 0ED
+.word Sub08064A74+1             ; 0EE
+.word Sub08064B68+1             ; 0EF
+.word Return080D85F8+1          ; 0F0
+.word Return08049F40+1          ; 0F1
+.word Sub08091244+1             ; 0F2
+.word Sub08090F8C+1             ; 0F3
+.word Sub080A84FC+1             ; 0F4
+.word Sub0809C2D4+1             ; 0F5
+.word Sub08070500+1             ; 0F6
+.word Sub080713B8+1             ; 0F7
+.word Sub0806BFB8+1             ; 0F8
+.word Return080D85F8+1          ; 0F9
+.word Sub080529F4+1             ; 0FA
+.word Sub08091C1C+1             ; 0FB
+.word Sub08091C34+1             ; 0FC
+.word Sub080AC644+1             ; 0FD
+.word Sub080AD908+1             ; 0FE
+.word Sub080AD9DC+1             ; 0FF
+.word Return08053378+1          ; 100
+.word Sub0809E934+1             ; 101
+.word Sub0809E934+1             ; 102
+.word Sub0809E9F8+1             ; 103
+.word Sub0809B108+1             ; 104
+.word RelayBooGuy105_Init+1     ; 105
+.word RelayBooGuy106_Init+1     ; 106
+.word Return08051A1C+1          ; 107
+.word Sub080CAD40+1             ; 108
+.word Sub080763D0+1             ; 109
+.word Sub080763D0+1             ; 10A
+.word Sub080763D0+1             ; 10B
+.word Sub08078788+1             ; 10C
+.word Sub080693AC+1             ; 10D
+.word Sub08074B88+1             ; 10E
+.word Sub08085310+1             ; 10F
+.word Sub08052E88+1             ; 110
+.word Sub08068B38+1             ; 111
+.word Return080D85F8+1          ; 112
+.word Sub0808C718+1             ; 113
+.word Sub0808CA18+1             ; 114
+.word Sub080531A4+1             ; 115
+.word Sub080951CC+1             ; 116
+.word Sub08092AC4+1             ; 117
+.word Sub08092AC4+1             ; 118
+.word Sub08086C94+1             ; 119
+.word Sub0809B5D0+1             ; 11A
+.word Sub080A142C+1             ; 11B
+.word Sub080A1B60+1             ; 11C
+.word Return080D85F8+1          ; 11D
+.word Sub080942BC+1             ; 11E
+.word Sub080942BC+1             ; 11F
+.word Sub08094674+1             ; 120
+.word Return08094A0C+1          ; 121
+.word Sub08084148+1             ; 122
+.word Sub08084148+1             ; 123
+.word Sub08097140+1             ; 124
+.word Sub08083558+1             ; 125
+.word Sub08076A8C+1             ; 126
+.word Return080D85F8+1          ; 127
+.word Return08106068+1          ; 128
+.word Sub08082D6C+1             ; 129
+.word Sub08090000+1             ; 12A
+.word Sub08097E84+1             ; 12B
+.word Sub0808B468+1             ; 12C
+.word Sub08056624+1             ; 12D
+.word Return080D85F8+1          ; 12E
+.word Sub080A9E10+1             ; 12F
+.word Sub080AA024+1             ; 130
+.word LockedDoor_Init+1         ; 131
+.word Sub080BC190+1             ; 132
+.word Sub08090008+1             ; 133
+.word Return08102530+1          ; 134
+.word Sub08079068+1             ; 135
+.word Sub08079068+1             ; 136
+.word Sub0809ED44+1             ; 137
+.word Sub0809ED44+1             ; 138
+.word Sub0809ED44+1             ; 139
+.word Sub0809ED44+1             ; 13A
+.word Return08049F40+1          ; 13B
+.word Sub08075DE8+1             ; 13C
+.word Sub08073314+1             ; 13D
+.word Sub08073320+1             ; 13E
+.word Sub08099EEC+1             ; 13F
+.word Sub08099EEC+1             ; 140
+.word Sub0809A710+1             ; 141
+.word Sub0809A710+1             ; 142
+.word Sub08099118+1             ; 143
+.word Sub080754A4+1             ; 144
+.word Sub08073988+1             ; 145
+.word Sub080739A8+1             ; 146
+.word Sub080D53E0+1             ; 147
+.word Sub08063934+1             ; 148
+.word Sub080A52B4+1             ; 149
+.word Sub080A52B4+1             ; 14A
+.word Sub080A52B4+1             ; 14B
+.word Sub080A52B4+1             ; 14C
+.word Sub080A52B4+1             ; 14D
+.word Sub080A52B4+1             ; 14E
+.word Sub080A52B4+1             ; 14F
+.word Sub080A52B4+1             ; 150
+.word Sub080A5300+1             ; 151
+.word Sub080741D4+1             ; 152
+.word Sub0806E444+1             ; 153
+.word Sub080794C8+1             ; 154
+.word Sub0806D6FC+1             ; 155
+.word Sub0806F7F0+1             ; 156
+.word Sub080A0CD0+1             ; 157
+.word Sub0806D724+1             ; 158
+.word Sub080A98B0+1             ; 159
+.word Sub080A9AC0+1             ; 15A
+.word Sub080ABE60+1             ; 15B
+.word Sub08093C74+1             ; 15C
+.word Sub08093C74+1             ; 15D
+.word Sub0808D7F4+1             ; 15E
+.word Sub08093328+1             ; 15F
+.word Sub08093328+1             ; 160
+.word Sub080820C4+1             ; 161
+.word Return08049F40+1          ; 162
+.word Return080D85F8+1          ; 163
+.word Sub0808B134+1             ; 164
+.word Sub0808B0F0+1             ; 165
+.word Sub080A2804+1             ; 166
+.word Sub080A65B0+1             ; 167
+.word Sub080A65B0+1             ; 168
+.word Sub080A6E8C+1             ; 169
+.word Sub080A6E8C+1             ; 16A
+.word Sub080A7460+1             ; 16B
+.word Sub080A7460+1             ; 16C
+.word Sub080A7968+1             ; 16D
+.word Sub080A79BC+1             ; 16E
+.word Sub080A7A48+1             ; 16F
+.word Sub080A22B8+1             ; 170
+.word Sub080C6374+1             ; 171
+.word Return080D85F8+1          ; 172
+.word Sub08072078+1             ; 173
+.word Sub0807206C+1             ; 174
+.word Sub08072060+1             ; 175
+.word Sub08072054+1             ; 176
+.word Sub08072008+1             ; 177
+.word Sub08071FEC+1             ; 178
+.word Sub08071FD0+1             ; 179
+.word Sub08071FC4+1             ; 17A
+.word Sub08072048+1             ; 17B
+.word Sub0807203C+1             ; 17C
+.word Sub08072030+1             ; 17D
+.word Sub080720E0+1             ; 17E
+.word Sub080737C4+1             ; 17F
+.word Sub080959E4+1             ; 180
+.word CrazeeDayzee_Init+1       ; 181
+.word Sub080A4D4C+1             ; 182
+.word Sub080A4C14+1             ; 183
+.word Sub080AADA8+1             ; 184
+.word Sub0808F2F4+1             ; 185
+.word Sub0808F2F4+1             ; 186
+.word Sub0808F2F4+1             ; 187
+.word Sub0808F2F4+1             ; 188
+.word Sub0808F26C+1             ; 189
+.word Sub0808F26C+1             ; 18A
+.word Sub0808F26C+1             ; 18B
+.word Sub0808F26C+1             ; 18C
+.word Sub0808F26C+1             ; 18D
+.word Sub0808F26C+1             ; 18E
+.word Sub080AF734+1             ; 18F
+.word Sub080A8E34+1             ; 190
+.word Sub080A4FF8+1             ; 191
+.word Sub080917B8+1             ; 192
+.word Return080D85F8+1          ; 193
+.word Sub0807AE98+1             ; 194
+.word Sub08079EC0+1             ; 195
+.word Sub08079F48+1             ; 196
+.word Sub08051434+1             ; 197
+.word Sub0805146C+1             ; 198
+.word Sub0807FCA4+1             ; 199
+.word Sub0807CC50+1             ; 19A
+.word Sub080AB624+1             ; 19B
+.word Sub080ABA88+1             ; 19C
+.word Sub080AA54C+1             ; 19D
+.word Sub080AA814+1             ; 19E
+.word Sub080AA8FC+1             ; 19F
+.word Sub0807AAF4+1             ; 1A0
+.word Sub0807AAF4+1             ; 1A1
+.word Sub08052FA0+1             ; 1A2
+.word Return080D85F8+1          ; 1A3
+.word Sub08073E8C+1             ; 1A4
+.word Sub080B0398+1             ; 1A5
+.word Sub080B0484+1             ; 1A6
+.word Sub080B04C8+1             ; 1A7
+.word Sub080B0584+1             ; 1A8
+.word Sub080B05F8+1             ; 1A9
+.word Sub080B2D0C+1             ; 1AA
+.word Sub08080290+1             ; 1AB
+.word Sub080A4E28+1             ; 1AC
+.word Sub080810B0+1             ; 1AD
+.word Return080D85F8+1          ; 1AE
+.word CoinStationary_Init+1     ; 1AF
+.word Sub080B8E98+1             ; 1B0
+.word Sub080592A8+1             ; 1B1
+.word Sub0805957C+1             ; 1B2
+.word Sub08059D3C+1             ; 1B3
+.word Sub0805B26C+1             ; 1B4
+.word Sub0805CC50+1             ; 1B5
+.word Sub0805BE3C+1             ; 1B6
+.word Sub0805B144+1             ; 1B7
+.word Sub08059EC8+1             ; 1B8
+.word Return08049F40+1          ; 1B9
+.word CameraYLockContact_Init+1 ; 1BA
+.word CameraYLockContact_Init+1 ; 1BB
+.word CameraYLockContact_Init+1 ; 1BC
+.word CameraYLockContact_Init+1 ; 1BD
+.word Return08049F40+1          ; 1BE
+.word Return08049F40+1          ; 1BF
+.word Return08049F40+1          ; 1C0
+.word Return08049F40+1          ; 1C1
+.word CameraYDownLimiter_Init+1 ; 1C2
+.word CameraYDownLimiter_Init+1 ; 1C3
 StdSprMainPtrs:                 ; 08170958
-.word Sub08096074+1, XDoor_Main+1, Sub080C8E9C+1, Sub08074C9C+1
-.word StarBlockBounceSpr_Main+1, Sub080517E8+1, Sub08051B4C+1, Sub080517DC+1
-.word Sub08104278+1, Sub080516B4+1, Sub080830C4+1, Sub08096FD0+1
-.word Sub080D197C+1, GoalRing_Main+1, Sub08053FDC+1, Sub08053BEC+1
-.word Sub080B66D4+1, Sub08058F6C+1, BossDoor_Main+1, Sub080BAF80+1
-.word Sub080BB668+1, Sub080524E0+1, Sub080C3030+1, Sub080B33CC+1
-.word Sub080517F8+1, Sub08051DE4+1, Sub080AF384+1, Sub08094C28+1
-.word Sub080AEB24+1, Sub080AF384+1, Sub080907C0+1, Sub080D68A0+1
-.word Sub0808A224+1, Sub08084204+1, FlashingEgg_Main+1, RedEgg_Main+1
-.word SharedEgg_Main+1, GreenEgg_Main+1, GiantEggBowser_Main+1, Key_Main+1
-.word HuffinPuffinBaby_Main+1, SuperBabyEgg_Main+1, GiantEgg02A_Main+1, GiantEgg02B_Main+1
-.word Sub0805FB40+1, Sub080BCF2C+1, Sub080BC00C+1, Sub0807E550+1
-.word Sub0807D900+1, Sub080A94F0+1, Sub0807E618+1, Sub0807E8D0+1
-.word Sub080C44B8+1, Sub080C46A0+1, Sub08056D98+1, Sub08060484+1
-.word Sub08060C10+1, Sub08058B88+1, Sub080785F4+1, Sub080785F4+1
-.word Sub080D37D4+1, Sub08057A78+1, Sub0809325C+1, Sub080BCF2C+1
-.word Sub08082218+1, Sub08082504+1, Sub080D5278+1, Sub080922C8+1
-.word Sub080922C8+1, Sub080C62F8+1, Sub080C2478+1, Sub080AFE14+1
-.word Sub080BF7A8+1, Sub08060320+1, Sub080603E8+1, Sub080603E8+1
-.word Sub0806BFE4+1, Sub0805F9A8+1, DoorShared_Main+1, Sub080A4B70+1
-.word Sub080574FC+1, Sub080570C0+1, Sub080A0690+1, Sub080BF52C+1
-.word Sub08061C9C+1, Sub0808E34C+1, Sub0808E34C+1, Sub08058890+1
-.word Sub0808AA5C+1, Sub08060F18+1, Sub080D1658+1, Sub0808AEE8+1
-.word Sub0808AA5C+1, Return08049F40+1, Sub080B9DA0+1, Sub080B9DA0+1
-.word Sub08096EB8+1, BabyMario_Main+1, Sub080A8074+1, Sub08085B20+1
-.word Sub0808E34C+1, RedCoinSpr_Main+1, Sub08061E20+1, Sub08082008+1
-.word Sub080D9E10+1, Sub080D9D84+1, Sub080D9D84+1, Sub080D9854+1
-.word Sub08063E0C+1, Sub08077404+1, Sub08077404+1, Sub08063E2C+1
-.word Sub08087A94+1, Sub0807C114+1, TrainShyGuy_Main+1, Sub080B51EC+1
-.word Sub080925F8+1, Sub08092A1C+1, Sub0807817C+1, Sub0807817C+1
-.word Sub080656CC+1, Sub080656CC+1, Sub080656CC+1, Sub080664A4+1
-.word Sub080665D4+1, Sub08066808+1, Sub080561B0+1, Sub080A0B74+1
-.word Sub08062DC4+1, Sub080630F8+1, Sub08067814+1, Sub080569AC+1
-.word Sub080D52EC+1, Sub0808CD44+1, Return08049F40+1, Sub080AA2D8+1
-.word Sub08060F18+1, Sub0808D5B8+1, Sub0808D460+1, Sub080826A0+1
-.word Sub08054184+1, Sub0808C6F8+1, Sub081029B4+1, Sub080B2468+1
-.word Sub080B71AC+1, Toadies0Stars_Main+1, Sub08064280+1, NormalDoor_Main+1
-.word Sub080D9160+1, Sub08095160+1, Sub08095160+1, Sub080869B4+1
-.word Sub080D8B04+1, Sub0806CD18+1, Sub080959A0+1, Sub08098A74+1
-.word Sub08098FC0+1, Sub0806D0CC+1, Sub0806A544+1, Sub0806718C+1
-.word Sub0807B3D8+1, Sub080A96B8+1, Sub0806CD4C+1, Sub0808A224+1
-.word Sub0808A224+1, Sub08057FD0+1, Sub0806A7E4+1, Sub0806BA68+1
-.word Sub0806A7E4+1, Sub0806B820+1, Sub080A8D94+1, Sub080512E8+1
-.word Sub081042FC+1, Sub080D94E8+1, Sub080CE4B0+1, Sub080DC4F4+1
-.word Sub080DC4F4+1, Sub080DC4F4+1, Sub080DC4F4+1, Sub0805F8D4+1
-.word Sub080DC4F4+1, Sub080DBA3C+1, Sub080DC4F4+1, Sub080DC4F4+1
-.word Sub080DC4F4+1, Sub080DC4F4+1, Sub080DC4F4+1, Sub080DC4F4+1
-.word Sub080DC4F4+1, Sub080DC4F4+1, Sub080DC4F4+1, Sub080DC4F4+1
-.word Sub080DC4F4+1, Sub080DC4F4+1, Sub080DC4F4+1, Sub080DC4F4+1
-.word Sub080DC4F4+1, Sub080DC4F4+1, Sub080DC4F4+1, Sub080DC4F4+1
-.word Sub080DC4F4+1, Sub080DC4F4+1, BossDoorBowser_Main+1, Sub080DC4F4+1
-.word Sub080DC4F4+1, Sub0807245C+1, Sub08104B68+1, Sub08103C4C+1
-.word Sub080D5428+1, Sub080D52CC+1, Sub080CA44C+1, Sub080CBF00+1
-.word Sub080CB784+1, Sub08056B04+1, Sub080B94F8+1, Sub080D1090+1
-.word Sub08060DFC+1, Sub080A459C+1, Sub08074838+1, Sub080B8044+1
-.word Sub08071BF8+1, Sub080BE928+1, Sub0809FDCC+1, Sub08099D90+1
-.word Sub08099EBC+1, Sub0809B048+1, Sub0806F120+1, Sub0806F120+1
-.word Sub08084F90+1, Sub0806CD18+1, Sub08068904+1, Sub0809E25C+1
-.word Sub0806E5DC+1, Sub0806E5DC+1, Sub0805F494+1, Sub0805F6AC+1
-.word Sub0809893C+1, Sub0809893C+1, Sub08064AF8+1, Sub08064B7C+1
-.word Sub08064C40+1, Return08049F40+1, Sub08091664+1, Sub080911C4+1
-.word Sub080A8558+1, Sub0809D120+1, Sub08070610+1, Sub080713E0+1
-.word Sub0806BFE4+1, Sub0806CD18+1, Sub08052E4C+1, Sub0809206C+1
-.word Sub0809206C+1, Sub080AC66C+1, Sub080AD938+1, Sub080ADA08+1
-.word Sub0805337C+1, Sub0809E984+1, Sub0809E984+1, Sub0809EA08+1
-.word Sub0809B57C+1, RelayBooGuy_Main+1, RelayBooGuy_Main+1, Sub08051A7C+1
-.word Sub080CB128+1, Sub08076438+1, Sub08076438+1, Sub08076438+1
-.word Sub0807891C+1, Sub080693C4+1, Sub08074C54+1, Sub08085380+1
-.word Sub08052F70+1, Sub08068B68+1, Sub08069338+1, Sub0808C9E8+1
-.word Sub0808CA30+1, Sub0805323C+1, Sub08095538+1, Sub08092B48+1
-.word Sub08092B48+1, Sub08086CBC+1, Sub0809C15C+1, Sub080A1A68+1
-.word Sub080A21A0+1, Sub0806CD18+1, Sub08094584+1, Sub08094584+1
-.word Sub08094940+1, Sub08094A10+1, Sub08084198+1, Sub08084198+1
-.word Sub08097770+1, Sub080835FC+1, Sub08076BDC+1, Sub08077170+1
-.word Sub08106340+1, Sub08082D98+1, Sub080907C0+1, Sub0809804C+1
-.word Sub0808BC60+1, Sub08056738+1, Sub080C4270+1, Sub080A9EA4+1
-.word Sub080AA0E8+1, LockedDoor_Main+1, Sub080BC198+1, Sub080907C0+1
-.word Sub08102534+1, Sub080790D4+1, Sub080790D4+1, Sub0809F704+1
-.word Sub0809F704+1, Sub0809F704+1, Sub0809F704+1, Sub080C52D4+1
-.word Sub08075E18+1, Sub080733D0+1, Sub0807342C+1, Sub0809A4E0+1
-.word Sub0809A514+1, Sub0809A9FC+1, Sub0809A9FC+1, Sub08099A08+1
-.word Sub080754F0+1, Sub080739EC+1, Sub080739EC+1, Sub080D54AC+1
-.word Sub08063E20+1, Sub080A54A8+1, Sub080A54A8+1, Sub080A54A8+1
-.word Sub080A54A8+1, Sub080A54A8+1, Sub080A54A8+1, Sub080A54A8+1
-.word Sub080A54A8+1, Sub080A54CC+1, Sub08074244+1, Sub0806E5DC+1
-.word Sub080795AC+1, Sub0806D820+1, Sub0806F978+1, Sub080A1228+1
-.word Sub0806D820+1, Sub080A98E8+1, Sub080A9AF8+1, Sub080AC068+1
-.word Sub08093DCC+1, Sub08093DCC+1, Sub0808E34C+1, Sub08093C28+1
-.word Sub08093C28+1, Sub080820F8+1, Return08049F40+1, Sub08081EFC+1
-.word Sub0808B368+1, Sub0808B3A0+1, Sub080A30D4+1, Sub080A65B8+1
-.word Sub080A65B8+1, Sub080A6EC4+1, Sub080A6EC4+1, Sub080A749C+1
-.word Sub080A749C+1, Sub080A7AAC+1, Sub080A7C74+1, Sub080A7D4C+1
-.word Sub080A276C+1, Sub080C64FC+1, Sub080C83B8+1, Sub08072324+1
-.word Sub08072324+1, Sub08072324+1, Sub08072324+1, Sub08072374+1
-.word Sub080723B0+1, Sub080723B0+1, Sub080723B0+1, Sub0807245C+1
-.word Sub0807245C+1, Sub080724AC+1, Sub08072504+1, Sub08073800+1
-.word Sub08095C00+1, CrazeeDayzee_Main+1, Sub080A4DF8+1, Sub080A4CD0+1
-.word Sub080AAE14+1, Sub0808F388+1, Sub0808F388+1, Sub0808F388+1
-.word Sub0808F388+1, Sub0808F388+1, Sub0808F388+1, Sub0808F388+1
-.word Sub0808F388+1, Sub0808F388+1, Sub0808F388+1, Sub080AF76C+1
-.word Sub080A8E40+1, Sub080A5288+1, Sub08091B34+1, Sub080B5CBC+1
-.word Sub0807AED8+1, Sub0807A060+1, Sub0807A29C+1, Sub080514A4+1
-.word Sub08051538+1, Sub0807FCF0+1, Sub0807CCC8+1, Sub080AB648+1
-.word Sub080ABB2C+1, Sub080AA57C+1, Sub080AA81C+1, Sub080AA9F4+1
-.word Sub0807AB3C+1, Sub0807AB3C+1, Sub08052FF4+1, Sub0807F984+1
-.word Sub08073EC4+1, Sub080B0668+1, Sub080B0668+1, Sub080B0668+1
-.word Sub080B0668+1, Sub080B0668+1, Sub080B2D7C+1, Sub080802D4+1
-.word Sub080A4FCC+1, Sub08081154+1, Sub08080E48+1, CoinStationary_Main+1
-.word Sub080B9008+1, Sub08059010+1, Sub080593B8+1, Sub08059C98+1
-.word Sub0805B200+1, Sub0805CB18+1, Sub0805BDCC+1, Sub0805AF40+1
-.word Sub08059EAC+1, Return08049F40+1, Camera1BA_1BD_Main+1, Camera1BA_1BD_Main+1
-.word Camera1BA_1BD_Main+1, Camera1BA_1BD_Main+1, Camera1BE_1C1_Main+1, Camera1BE_1C1_Main+1
-.word Camera1BE_1C1_Main+1, Camera1BE_1C1_Main+1, Camera1C2_1C3_Main+1, Camera1C2_1C3_Main+1
+.word Sub08096074+1             ; 000
+.word XDoor_Main+1              ; 001
+.word Sub080C8E9C+1             ; 002
+.word Sub08074C9C+1             ; 003
+.word StarBlockBounceSpr_Main+1 ; 004
+.word Sub080517E8+1             ; 005
+.word Sub08051B4C+1             ; 006
+.word Sub080517DC+1             ; 007
+.word Sub08104278+1             ; 008
+.word Sub080516B4+1             ; 009
+.word Sub080830C4+1             ; 00A
+.word Sub08096FD0+1             ; 00B
+.word Sub080D197C+1             ; 00C
+.word GoalRing_Main+1           ; 00D
+.word Sub08053FDC+1             ; 00E
+.word Sub08053BEC+1             ; 00F
+.word Sub080B66D4+1             ; 010
+.word Sub08058F6C+1             ; 011
+.word BossDoor_Main+1           ; 012
+.word Sub080BAF80+1             ; 013
+.word Sub080BB668+1             ; 014
+.word Sub080524E0+1             ; 015
+.word Sub080C3030+1             ; 016
+.word Sub080B33CC+1             ; 017
+.word Sub080517F8+1             ; 018
+.word Sub08051DE4+1             ; 019
+.word Sub080AF384+1             ; 01A
+.word Sub08094C28+1             ; 01B
+.word Sub080AEB24+1             ; 01C
+.word Sub080AF384+1             ; 01D
+.word Sub080907C0+1             ; 01E
+.word Rotating4Doors_Main+1     ; 01F
+.word Sub0808A224+1             ; 020
+.word Sub08084204+1             ; 021
+.word FlashingEgg_Main+1        ; 022
+.word RedEgg_Main+1             ; 023
+.word SharedEgg_Main+1          ; 024
+.word GreenEgg_Main+1           ; 025
+.word GiantEggBowser_Main+1     ; 026
+.word Key_Main+1                ; 027
+.word HuffinPuffinBaby_Main+1   ; 028
+.word SuperBabyEgg_Main+1       ; 029
+.word GiantEgg02A_Main+1        ; 02A
+.word GiantEgg02B_Main+1        ; 02B
+.word Sub0805FB40+1             ; 02C
+.word Sub080BCF2C+1             ; 02D
+.word Sub080BC00C+1             ; 02E
+.word Sub0807E550+1             ; 02F
+.word Sub0807D900+1             ; 030
+.word Sub080A94F0+1             ; 031
+.word Sub0807E618+1             ; 032
+.word Sub0807E8D0+1             ; 033
+.word Sub080C44B8+1             ; 034
+.word Sub080C46A0+1             ; 035
+.word Sub08056D98+1             ; 036
+.word Sub08060484+1             ; 037
+.word Sub08060C10+1             ; 038
+.word Sub08058B88+1             ; 039
+.word Sub080785F4+1             ; 03A
+.word Sub080785F4+1             ; 03B
+.word Sub080D37D4+1             ; 03C
+.word Sub08057A78+1             ; 03D
+.word Sub0809325C+1             ; 03E
+.word Sub080BCF2C+1             ; 03F
+.word Sub08082218+1             ; 040
+.word Sub08082504+1             ; 041
+.word Sub080D5278+1             ; 042
+.word Sub080922C8+1             ; 043
+.word Sub080922C8+1             ; 044
+.word Sub080C62F8+1             ; 045
+.word Sub080C2478+1             ; 046
+.word Sub080AFE14+1             ; 047
+.word Sub080BF7A8+1             ; 048
+.word Sub08060320+1             ; 049
+.word Sub080603E8+1             ; 04A
+.word Sub080603E8+1             ; 04B
+.word Sub0806BFE4+1             ; 04C
+.word Sub0805F9A8+1             ; 04D
+.word DoorShared_Main+1         ; 04E
+.word Sub080A4B70+1             ; 04F
+.word Sub080574FC+1             ; 050
+.word Sub080570C0+1             ; 051
+.word Sub080A0690+1             ; 052
+.word Sub080BF52C+1             ; 053
+.word Sub08061C9C+1             ; 054
+.word Sub0808E34C+1             ; 055
+.word Sub0808E34C+1             ; 056
+.word Sub08058890+1             ; 057
+.word Sub0808AA5C+1             ; 058
+.word Sub08060F18+1             ; 059
+.word Sub080D1658+1             ; 05A
+.word Sub0808AEE8+1             ; 05B
+.word Sub0808AA5C+1             ; 05C
+.word Return08049F40+1          ; 05D
+.word Sub080B9DA0+1             ; 05E
+.word Sub080B9DA0+1             ; 05F
+.word Sub08096EB8+1             ; 060
+.word BabyMario_Main+1          ; 061
+.word Sub080A8074+1             ; 062
+.word Sub08085B20+1             ; 063
+.word Sub0808E34C+1             ; 064
+.word RedCoinSpr_Main+1         ; 065
+.word Sub08061E20+1             ; 066
+.word Sub08082008+1             ; 067
+.word Sub080D9E10+1             ; 068
+.word Sub080D9D84+1             ; 069
+.word Sub080D9D84+1             ; 06A
+.word Sub080D9854+1             ; 06B
+.word Sub08063E0C+1             ; 06C
+.word Sub08077404+1             ; 06D
+.word Sub08077404+1             ; 06E
+.word Sub08063E2C+1             ; 06F
+.word Sub08087A94+1             ; 070
+.word Sub0807C114+1             ; 071
+.word TrainShyGuy_Main+1        ; 072
+.word Sub080B51EC+1             ; 073
+.word Sub080925F8+1             ; 074
+.word Sub08092A1C+1             ; 075
+.word Sub0807817C+1             ; 076
+.word Sub0807817C+1             ; 077
+.word Sub080656CC+1             ; 078
+.word Sub080656CC+1             ; 079
+.word Sub080656CC+1             ; 07A
+.word Sub080664A4+1             ; 07B
+.word Sub080665D4+1             ; 07C
+.word Sub08066808+1             ; 07D
+.word Sub080561B0+1             ; 07E
+.word Sub080A0B74+1             ; 07F
+.word Sub08062DC4+1             ; 080
+.word Sub080630F8+1             ; 081
+.word Sub08067814+1             ; 082
+.word Sub080569AC+1             ; 083
+.word Sub080D52EC+1             ; 084
+.word Sub0808CD44+1             ; 085
+.word Return08049F40+1          ; 086
+.word Sub080AA2D8+1             ; 087
+.word Sub08060F18+1             ; 088
+.word Sub0808D5B8+1             ; 089
+.word Sub0808D460+1             ; 08A
+.word Sub080826A0+1             ; 08B
+.word Sub08054184+1             ; 08C
+.word Sub0808C6F8+1             ; 08D
+.word Sub081029B4+1             ; 08E
+.word Sub080B2468+1             ; 08F
+.word Sub080B71AC+1             ; 090
+.word Toadies0Stars_Main+1      ; 091
+.word Sub08064280+1             ; 092
+.word NormalDoor_Main+1         ; 093
+.word Sub080D9160+1             ; 094
+.word Sub08095160+1             ; 095
+.word Sub08095160+1             ; 096
+.word Sub080869B4+1             ; 097
+.word Sub080D8B04+1             ; 098
+.word Sub0806CD18+1             ; 099
+.word Sub080959A0+1             ; 09A
+.word Sub08098A74+1             ; 09B
+.word Sub08098FC0+1             ; 09C
+.word Sub0806D0CC+1             ; 09D
+.word Sub0806A544+1             ; 09E
+.word Sub0806718C+1             ; 09F
+.word Sub0807B3D8+1             ; 0A0
+.word Sub080A96B8+1             ; 0A1
+.word Sub0806CD4C+1             ; 0A2
+.word Sub0808A224+1             ; 0A3
+.word Sub0808A224+1             ; 0A4
+.word Sub08057FD0+1             ; 0A5
+.word Sub0806A7E4+1             ; 0A6
+.word Sub0806BA68+1             ; 0A7
+.word Sub0806A7E4+1             ; 0A8
+.word Sub0806B820+1             ; 0A9
+.word Sub080A8D94+1             ; 0AA
+.word Sub080512E8+1             ; 0AB
+.word Sub081042FC+1             ; 0AC
+.word Sub080D94E8+1             ; 0AD
+.word Sub080CE4B0+1             ; 0AE
+.word Sub080DC4F4+1             ; 0AF
+.word Sub080DC4F4+1             ; 0B0
+.word Sub080DC4F4+1             ; 0B1
+.word Sub080DC4F4+1             ; 0B2
+.word Sub0805F8D4+1             ; 0B3
+.word Sub080DC4F4+1             ; 0B4
+.word Sub080DBA3C+1             ; 0B5
+.word Sub080DC4F4+1             ; 0B6
+.word Sub080DC4F4+1             ; 0B7
+.word Sub080DC4F4+1             ; 0B8
+.word Sub080DC4F4+1             ; 0B9
+.word Sub080DC4F4+1             ; 0BA
+.word Sub080DC4F4+1             ; 0BB
+.word Sub080DC4F4+1             ; 0BC
+.word Sub080DC4F4+1             ; 0BD
+.word Sub080DC4F4+1             ; 0BE
+.word Sub080DC4F4+1             ; 0BF
+.word Sub080DC4F4+1             ; 0C0
+.word Sub080DC4F4+1             ; 0C1
+.word Sub080DC4F4+1             ; 0C2
+.word Sub080DC4F4+1             ; 0C3
+.word Sub080DC4F4+1             ; 0C4
+.word Sub080DC4F4+1             ; 0C5
+.word Sub080DC4F4+1             ; 0C6
+.word Sub080DC4F4+1             ; 0C7
+.word Sub080DC4F4+1             ; 0C8
+.word Sub080DC4F4+1             ; 0C9
+.word BossDoorBowser_Main+1     ; 0CA
+.word Sub080DC4F4+1             ; 0CB
+.word Sub080DC4F4+1             ; 0CC
+.word Sub0807245C+1             ; 0CD
+.word Sub08104B68+1             ; 0CE
+.word Sub08103C4C+1             ; 0CF
+.word Sub080D5428+1             ; 0D0
+.word Sub080D52CC+1             ; 0D1
+.word Sub080CA44C+1             ; 0D2
+.word Sub080CBF00+1             ; 0D3
+.word Sub080CB784+1             ; 0D4
+.word Sub08056B04+1             ; 0D5
+.word Sub080B94F8+1             ; 0D6
+.word Sub080D1090+1             ; 0D7
+.word Sub08060DFC+1             ; 0D8
+.word Sub080A459C+1             ; 0D9
+.word Sub08074838+1             ; 0DA
+.word Sub080B8044+1             ; 0DB
+.word Sub08071BF8+1             ; 0DC
+.word Sub080BE928+1             ; 0DD
+.word Sub0809FDCC+1             ; 0DE
+.word Sub08099D90+1             ; 0DF
+.word Sub08099EBC+1             ; 0E0
+.word Sub0809B048+1             ; 0E1
+.word Sub0806F120+1             ; 0E2
+.word Sub0806F120+1             ; 0E3
+.word Sub08084F90+1             ; 0E4
+.word Sub0806CD18+1             ; 0E5
+.word Sub08068904+1             ; 0E6
+.word Sub0809E25C+1             ; 0E7
+.word Sub0806E5DC+1             ; 0E8
+.word Sub0806E5DC+1             ; 0E9
+.word Sub0805F494+1             ; 0EA
+.word Sub0805F6AC+1             ; 0EB
+.word Sub0809893C+1             ; 0EC
+.word Sub0809893C+1             ; 0ED
+.word Sub08064AF8+1             ; 0EE
+.word Sub08064B7C+1             ; 0EF
+.word Sub08064C40+1             ; 0F0
+.word Return08049F40+1          ; 0F1
+.word Sub08091664+1             ; 0F2
+.word Sub080911C4+1             ; 0F3
+.word Sub080A8558+1             ; 0F4
+.word Sub0809D120+1             ; 0F5
+.word Sub08070610+1             ; 0F6
+.word Sub080713E0+1             ; 0F7
+.word Sub0806BFE4+1             ; 0F8
+.word Sub0806CD18+1             ; 0F9
+.word Sub08052E4C+1             ; 0FA
+.word Sub0809206C+1             ; 0FB
+.word Sub0809206C+1             ; 0FC
+.word Sub080AC66C+1             ; 0FD
+.word Sub080AD938+1             ; 0FE
+.word Sub080ADA08+1             ; 0FF
+.word Sub0805337C+1             ; 100
+.word Sub0809E984+1             ; 101
+.word Sub0809E984+1             ; 102
+.word Sub0809EA08+1             ; 103
+.word Sub0809B57C+1             ; 104
+.word RelayBooGuy_Main+1        ; 105
+.word RelayBooGuy_Main+1        ; 106
+.word Sub08051A7C+1             ; 107
+.word Sub080CB128+1             ; 108
+.word Sub08076438+1             ; 109
+.word Sub08076438+1             ; 10A
+.word Sub08076438+1             ; 10B
+.word Sub0807891C+1             ; 10C
+.word Sub080693C4+1             ; 10D
+.word Sub08074C54+1             ; 10E
+.word Sub08085380+1             ; 10F
+.word Sub08052F70+1             ; 110
+.word Sub08068B68+1             ; 111
+.word Sub08069338+1             ; 112
+.word Sub0808C9E8+1             ; 113
+.word Sub0808CA30+1             ; 114
+.word Sub0805323C+1             ; 115
+.word Sub08095538+1             ; 116
+.word Sub08092B48+1             ; 117
+.word Sub08092B48+1             ; 118
+.word Sub08086CBC+1             ; 119
+.word Sub0809C15C+1             ; 11A
+.word Sub080A1A68+1             ; 11B
+.word Sub080A21A0+1             ; 11C
+.word Sub0806CD18+1             ; 11D
+.word Sub08094584+1             ; 11E
+.word Sub08094584+1             ; 11F
+.word Sub08094940+1             ; 120
+.word Sub08094A10+1             ; 121
+.word Sub08084198+1             ; 122
+.word Sub08084198+1             ; 123
+.word Sub08097770+1             ; 124
+.word Sub080835FC+1             ; 125
+.word Sub08076BDC+1             ; 126
+.word Sub08077170+1             ; 127
+.word Sub08106340+1             ; 128
+.word Sub08082D98+1             ; 129
+.word Sub080907C0+1             ; 12A
+.word Sub0809804C+1             ; 12B
+.word Sub0808BC60+1             ; 12C
+.word Sub08056738+1             ; 12D
+.word Sub080C4270+1             ; 12E
+.word Sub080A9EA4+1             ; 12F
+.word Sub080AA0E8+1             ; 130
+.word LockedDoor_Main+1         ; 131
+.word Sub080BC198+1             ; 132
+.word Sub080907C0+1             ; 133
+.word Sub08102534+1             ; 134
+.word Sub080790D4+1             ; 135
+.word Sub080790D4+1             ; 136
+.word Sub0809F704+1             ; 137
+.word Sub0809F704+1             ; 138
+.word Sub0809F704+1             ; 139
+.word Sub0809F704+1             ; 13A
+.word Sub080C52D4+1             ; 13B
+.word Sub08075E18+1             ; 13C
+.word Sub080733D0+1             ; 13D
+.word Sub0807342C+1             ; 13E
+.word Sub0809A4E0+1             ; 13F
+.word Sub0809A514+1             ; 140
+.word Sub0809A9FC+1             ; 141
+.word Sub0809A9FC+1             ; 142
+.word Sub08099A08+1             ; 143
+.word Sub080754F0+1             ; 144
+.word Sub080739EC+1             ; 145
+.word Sub080739EC+1             ; 146
+.word Sub080D54AC+1             ; 147
+.word Sub08063E20+1             ; 148
+.word Sub080A54A8+1             ; 149
+.word Sub080A54A8+1             ; 14A
+.word Sub080A54A8+1             ; 14B
+.word Sub080A54A8+1             ; 14C
+.word Sub080A54A8+1             ; 14D
+.word Sub080A54A8+1             ; 14E
+.word Sub080A54A8+1             ; 14F
+.word Sub080A54A8+1             ; 150
+.word Sub080A54CC+1             ; 151
+.word Sub08074244+1             ; 152
+.word Sub0806E5DC+1             ; 153
+.word Sub080795AC+1             ; 154
+.word Sub0806D820+1             ; 155
+.word Sub0806F978+1             ; 156
+.word Sub080A1228+1             ; 157
+.word Sub0806D820+1             ; 158
+.word Sub080A98E8+1             ; 159
+.word Sub080A9AF8+1             ; 15A
+.word Sub080AC068+1             ; 15B
+.word Sub08093DCC+1             ; 15C
+.word Sub08093DCC+1             ; 15D
+.word Sub0808E34C+1             ; 15E
+.word Sub08093C28+1             ; 15F
+.word Sub08093C28+1             ; 160
+.word Sub080820F8+1             ; 161
+.word Return08049F40+1          ; 162
+.word Sub08081EFC+1             ; 163
+.word Sub0808B368+1             ; 164
+.word Sub0808B3A0+1             ; 165
+.word Sub080A30D4+1             ; 166
+.word Sub080A65B8+1             ; 167
+.word Sub080A65B8+1             ; 168
+.word Sub080A6EC4+1             ; 169
+.word Sub080A6EC4+1             ; 16A
+.word Sub080A749C+1             ; 16B
+.word Sub080A749C+1             ; 16C
+.word Sub080A7AAC+1             ; 16D
+.word Sub080A7C74+1             ; 16E
+.word Sub080A7D4C+1             ; 16F
+.word Sub080A276C+1             ; 170
+.word Sub080C64FC+1             ; 171
+.word Sub080C83B8+1             ; 172
+.word Sub08072324+1             ; 173
+.word Sub08072324+1             ; 174
+.word Sub08072324+1             ; 175
+.word Sub08072324+1             ; 176
+.word Sub08072374+1             ; 177
+.word Sub080723B0+1             ; 178
+.word Sub080723B0+1             ; 179
+.word Sub080723B0+1             ; 17A
+.word Sub0807245C+1             ; 17B
+.word Sub0807245C+1             ; 17C
+.word Sub080724AC+1             ; 17D
+.word Sub08072504+1             ; 17E
+.word Sub08073800+1             ; 17F
+.word Sub08095C00+1             ; 180
+.word CrazeeDayzee_Main+1       ; 181
+.word Sub080A4DF8+1             ; 182
+.word Sub080A4CD0+1             ; 183
+.word Sub080AAE14+1             ; 184
+.word Sub0808F388+1             ; 185
+.word Sub0808F388+1             ; 186
+.word Sub0808F388+1             ; 187
+.word Sub0808F388+1             ; 188
+.word Sub0808F388+1             ; 189
+.word Sub0808F388+1             ; 18A
+.word Sub0808F388+1             ; 18B
+.word Sub0808F388+1             ; 18C
+.word Sub0808F388+1             ; 18D
+.word Sub0808F388+1             ; 18E
+.word Sub080AF76C+1             ; 18F
+.word Sub080A8E40+1             ; 190
+.word Sub080A5288+1             ; 191
+.word Sub08091B34+1             ; 192
+.word Sub080B5CBC+1             ; 193
+.word Sub0807AED8+1             ; 194
+.word Sub0807A060+1             ; 195
+.word Sub0807A29C+1             ; 196
+.word Sub080514A4+1             ; 197
+.word Sub08051538+1             ; 198
+.word Sub0807FCF0+1             ; 199
+.word Sub0807CCC8+1             ; 19A
+.word Sub080AB648+1             ; 19B
+.word Sub080ABB2C+1             ; 19C
+.word Sub080AA57C+1             ; 19D
+.word Sub080AA81C+1             ; 19E
+.word Sub080AA9F4+1             ; 19F
+.word Sub0807AB3C+1             ; 1A0
+.word Sub0807AB3C+1             ; 1A1
+.word Sub08052FF4+1             ; 1A2
+.word Sub0807F984+1             ; 1A3
+.word Sub08073EC4+1             ; 1A4
+.word Sub080B0668+1             ; 1A5
+.word Sub080B0668+1             ; 1A6
+.word Sub080B0668+1             ; 1A7
+.word Sub080B0668+1             ; 1A8
+.word Sub080B0668+1             ; 1A9
+.word Sub080B2D7C+1             ; 1AA
+.word Sub080802D4+1             ; 1AB
+.word Sub080A4FCC+1             ; 1AC
+.word Sub08081154+1             ; 1AD
+.word Sub08080E48+1             ; 1AE
+.word CoinStationary_Main+1     ; 1AF
+.word Sub080B9008+1             ; 1B0
+.word Sub08059010+1             ; 1B1
+.word Sub080593B8+1             ; 1B2
+.word Sub08059C98+1             ; 1B3
+.word Sub0805B200+1             ; 1B4
+.word Sub0805CB18+1             ; 1B5
+.word Sub0805BDCC+1             ; 1B6
+.word Sub0805AF40+1             ; 1B7
+.word Sub08059EAC+1             ; 1B8
+.word Return08049F40+1          ; 1B9
+.word CameraYLockContact_Main+1 ; 1BA
+.word CameraYLockContact_Main+1 ; 1BB
+.word CameraYLockContact_Main+1 ; 1BC
+.word CameraYLockContact_Main+1 ; 1BD
+.word CameraYLockRange_Main+1   ; 1BE
+.word CameraYLockRange_Main+1   ; 1BF
+.word CameraYLockRange_Main+1   ; 1C0
+.word CameraYLockRange_Main+1   ; 1C1
+.word CameraYDownLimiter_Main+1 ; 1C2
+.word CameraYDownLimiter_Main+1 ; 1C3
 StdSprStatus7Ptrs:              ; 08171068
 .word Return08049F40+1, Return08049F40+1, Return08049F40+1, Return08049F40+1
 .word Return08049F40+1, Sub0804E660+1, Return08049F40+1, Sub0804E660+1
@@ -12118,26 +12971,29 @@ Data0817CC70:                   ; 0817CC70
 .byte 0x00, 0x00, 0x40, 0x80, 0xC0
 Data0817CC75:                   ; 0817CC75
 .byte 0x00, 0x00, 0x01, 0x02, 0x03
-Data0817CC7A:                   ; 0817CC7A
+Rotating4Doors_EntrBytes03:     ; 0817CC7A
 .byte 0xB8, 0x05, 0x77, 0x00
 .byte 0xC6, 0x07, 0x7A, 0x00
 .byte 0xCD, 0x05, 0x5A, 0x00
 .byte 0xD3, 0x00, 0x77, 0x06
-Data0817CC8A:                   ; 0817CC8A
-.byte 0x28, 0x00, 0x6A, 0x04, 0x6A, 0x05, 0x2A, 0x00
+Rotating4Doors_EntrBytes45:     ; 0817CC8A
+.byte 0x28, 0x00
+.byte 0x6A, 0x04
+.byte 0x6A, 0x05
+.byte 0x2A, 0x00
 .align 4
 CodePtrs0817CC94:               ; 0817CC94
 .word Sub080D65B8+1, Sub080D6620+1, Sub080D6688+1, Sub080D66E8+1
 CodePtrs0817CCA4:               ; 0817CCA4
 .word Sub080D6834+1, Return080D687C+1
-CodePtrs0817CCAC:               ; 0817CCAC
+Rotating4Doors_SubstatePtrs:    ; 0817CCAC
 .word Sub080D6880+1, Sub080D67E8+1, Sub080D67E8+1, Sub080D67E8+1
 .word Sub080D67E8+1
-Data0817CCC0:                   ; 0817CCC0
+TilesetChanger_SourceOffsets:   ; 0817CCC0
 .halfword 0x0000, 0x1000, 0x2000
-Data0817CCC6:                   ; 0817CCC6
-.byte 0x00, 0x00, 0x00, 0x20, 0x00, 0x30, 0x02, 0x00
-.byte 0x01
+TilesetChanger_DestOffsets:     ; 0817CCC6
+.halfword 0x0000, 0x2000, 0x3000
+.byte 0x02, 0x00, 0x01
 AutoscrollData1D4_6_8:          ; 0817CCCF
 .byte 0x20, 0x00, 0x04
 .byte 0x30, 0x00, 0x04
@@ -12201,7 +13057,8 @@ AutoscrollData1D9:              ; 0817CD23
 .byte 0xA1, 0x59, 0x08
 .byte 0xFF
 AutoscrollData1D7:              ; 0817CD75
-.byte 0xA1, 0x59, 0x08, 0xFF
+.byte 0xA1, 0x59, 0x08
+.byte 0xFF
 AutoscrollData1DA:              ; 0817CD79
 .byte 0x11, 0x5C, 0x10
 .byte 0x18, 0x5C, 0x18

@@ -1,4 +1,4 @@
-Camera1BA_1BD_Init:
+CameraYLockContact_Init:
 ; sprite 1BA-1BD init
 push  {r4,lr}                   ; 080A5500
 mov   r4,r0                     ; 080A5502
@@ -95,7 +95,7 @@ pop   {r0}                      ; 080A55C4
 bx    r0                        ; 080A55C6
 .pool                           ; 080A55C8
 
-Camera1BA_1BD_Main:
+CameraYLockContact_Main:
 ; sprite 1BA-1BD main
 push  {r4-r7,lr}                ; 080A55D8
 mov   r12,r0                    ; 080A55DA  r12 = pointer to sprite struct
@@ -327,7 +327,7 @@ pop   {r0}                      ; 080A5792
 bx    r0                        ; 080A5794
 .pool                           ; 080A5796
 
-Camera1BE_1C1_Main:
+CameraYLockRange_Main:
 ; sprite 1BE-1C1 main
 push  {r4-r7,lr}                ; 080A5798
 mov   r7,r10                    ; 080A579A
@@ -1110,7 +1110,7 @@ pop   {r0}                      ; 080A5DBE
 bx    r0                        ; 080A5DC0
 .pool                           ; 080A5DC2
 
-Camera1C2_1C3_Init:
+CameraYDownLimiter_Init:
 ; sprite 1C2-1C3 init
 push  {lr}                      ; 080A5DE0
 mov   r2,r0                     ; 080A5DE2
@@ -1241,7 +1241,7 @@ pop   {r0}                      ; 080A5EE0
 bx    r0                        ; 080A5EE2
 .pool                           ; 080A5EE4
 
-Camera1C2_1C3_Main:
+CameraYDownLimiter_Main:
 ; sprite 1C2-1C3 main
 push  {r4-r7,lr}                ; 080A5EEC
 mov   r7,r10                    ; 080A5EEE

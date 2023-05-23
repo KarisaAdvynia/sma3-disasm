@@ -7103,7 +7103,7 @@ mov   r0,r4                     ; 0804D942
 bl    Sub0804A3B8               ; 0804D944
 @@Code0804D948:
 mov   r0,r4                     ; 0804D948
-bl    SpriteStatus8Main         ; 0804D94A  Sprite status 8: main
+bl    SpriteStatus8Main         ; 0804D94A
 ldr   r1,=0x03002200            ; 0804D94E
 ldr   r0,[r4]                   ; 0804D950
 asr   r0,r0,0x8                 ; 0804D952
@@ -7448,7 +7448,7 @@ bx    r0                        ; 0804DC44
 .pool                           ; 0804DC46
 
 SpriteStatus4:
-; Sprite status 4: in Yoshi's mouth
+; Sprite status 4: in Yoshi's mouth / on Yoshi's tongue
 push  {r4-r7,lr}                ; 0804DC4C
 mov   r7,r10                    ; 0804DC4E
 mov   r6,r9                     ; 0804DC50
@@ -7468,7 +7468,7 @@ add   r0,r0,r2                  ; 0804DC6A
 ldrb  r0,[r0]                   ; 0804DC6C
 mov   r10,r0                    ; 0804DC6E
 mov   r0,r7                     ; 0804DC70
-bl    SpriteStatus8Main         ; 0804DC72  Sprite status 8: main
+bl    SpriteStatus8Main         ; 0804DC72
 ldr   r0,[r4]                   ; 0804DC76
 ldr   r3,=0x11B0                ; 0804DC78
 add   r0,r0,r3                  ; 0804DC7A
@@ -8395,7 +8395,7 @@ SpriteStatus5:
 ; Sprite status 5: on Yoshi's back
 push  {r4-r5,lr}                ; 0804E434
 mov   r4,r0                     ; 0804E436
-bl    SpriteStatus8Main         ; 0804E438  Sprite status 8: main
+bl    SpriteStatus8Main         ; 0804E438
 mov   r0,0x0                    ; 0804E43C
 str   r0,[r4,0xC]               ; 0804E43E
 str   r0,[r4,0x8]               ; 0804E440
@@ -8506,7 +8506,7 @@ ldr   r4,[r0]                   ; 0804E512
 ldr   r0,=0x2708                ; 0804E514
 add   r4,r4,r0                  ; 0804E516
 mov   r0,r5                     ; 0804E518
-bl    SpriteStatus8Main         ; 0804E51A  Sprite status 8: main
+bl    SpriteStatus8Main         ; 0804E51A
 ldrh  r0,[r4,0x28]              ; 0804E51E
 cmp   r0,0x0                    ; 0804E520
 bne   @@Code0804E530            ; 0804E522
@@ -8542,7 +8542,7 @@ ldr   r4,[r6]                   ; 0804E55E
 ldr   r0,=0x2708                ; 0804E560
 add   r4,r4,r0                  ; 0804E562
 mov   r0,r5                     ; 0804E564
-bl    SpriteStatus8Main         ; 0804E566  Sprite status 8: main
+bl    SpriteStatus8Main         ; 0804E566
 ldrh  r0,[r4,0x28]              ; 0804E56A
 cmp   r0,0x0                    ; 0804E56C
 bne   @@Code0804E5FC            ; 0804E56E
@@ -8659,7 +8659,7 @@ Sub0804E660:
 ; sprite 005,007,009,023-025,027-02B,107,1A5-1A9,1B7 status 7 code
 push  {r4,lr}                   ; 0804E660
 mov   r4,r0                     ; 0804E662
-bl    SpriteStatus8Main         ; 0804E664  Sprite status 8: main
+bl    SpriteStatus8Main         ; 0804E664
 ldrh  r1,[r4,0x2A]              ; 0804E668
 ldr   r0,=0xFFF3                ; 0804E66A
 and   r0,r1                     ; 0804E66C

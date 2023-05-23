@@ -1,31 +1,177 @@
-Sub080D6A04:
-; command sprite 1C4-1D3: tileset-changers init
+CommandSpr_ClearHalfword:
+; subroutine: clear halfword at [r0]
+mov   r1,0x0                    ; 080D68C0
+strh  r1,[r0]                   ; 080D68C2
+bx    lr                        ; 080D68C4
+.pool                           ; 080D68C6
+
+CommandSpr_Despawn:
+push  {lr}                      ; 080D68C8
+ldrh  r1,[r0,0x2]               ; 080D68CA  sprite's index in sublevel sprite data
+lsl   r1,r1,0x1                 ; 080D68CC
+ldr   r2,=0x0201BA00            ; 080D68CE  sprite spawn flags
+add   r1,r1,r2                  ; 080D68D0
+mov   r2,0x0                    ; 080D68D2
+strh  r2,[r1]                   ; 080D68D4  clear sprite spawn flag
+bl    CommandSpr_ClearHalfword  ; 080D68D6  clear halfword at [r0]
+pop   {r0}                      ; 080D68DA
+bx    r0                        ; 080D68DC
+.pool                           ; 080D68DE
+
+PaletteChanger:
+push  {r4-r7,lr}                ; 080D68E4
+mov   r7,r9                     ; 080D68E6
+mov   r6,r8                     ; 080D68E8
+push  {r6-r7}                   ; 080D68EA
+mov   r8,r0                     ; 080D68EC
+ldrh  r2,[r0]                   ; 080D68EE
+mov   r3,r2                     ; 080D68F0
+sub   r0,r2,0x1                 ; 080D68F2
+lsl   r0,r0,0x10                ; 080D68F4
+lsr   r4,r0,0x10                ; 080D68F6
+ldr   r1,=0x03002200            ; 080D68F8
+ldr   r5,=0x413E                ; 080D68FA
+add   r0,r1,r5                  ; 080D68FC
+ldrh  r0,[r0]                   ; 080D68FE
+mov   r9,r1                     ; 080D6900
+cmp   r0,0x10                   ; 080D6902
+bne   @@Code080D6912            ; 080D6904
+cmp   r2,0x2                    ; 080D6906
+bne   @@Code080D690C            ; 080D6908
+mov   r4,0x1                    ; 080D690A
+@@Code080D690C:
+cmp   r3,0x7                    ; 080D690C
+bne   @@Code080D6912            ; 080D690E
+mov   r4,0x1A                   ; 080D6910
+@@Code080D6912:
+ldr   r0,=0x03007240            ; 080D6912  Normal gameplay IWRAM (Ptr to 0300220C)
+ldr   r0,[r0]                   ; 080D6914
+ldr   r2,=0x2994                ; 080D6916
+add   r1,r0,r2                  ; 080D6918
+ldrh  r0,[r1]                   ; 080D691A
+cmp   r0,r4                     ; 080D691C
+bne   @@Code080D6938            ; 080D691E
+mov   r0,r8                     ; 080D6920
+bl    CommandSpr_Despawn        ; 080D6922
+b     @@Return                  ; 080D6926
+.pool                           ; 080D6928
+
+@@Code080D6938:
+strh  r4,[r1]                   ; 080D6938
+ldr   r3,=L1PaletteOffsets      ; 080D693A
+lsl   r4,r4,0x1                 ; 080D693C
+add   r0,r4,r3                  ; 080D693E
+ldrh  r0,[r0]                   ; 080D6940
+lsr   r0,r0,0x1                 ; 080D6942
+add   r0,0xE                    ; 080D6944
+ldr   r2,=0x02010482            ; 080D6946
+mov   r6,r2                     ; 080D6948
+add   r6,0x1C                   ; 080D694A
+ldr   r5,=0x0201089E            ; 080D694C
+mov   r12,r5                    ; 080D694E
+lsl   r0,r0,0x1                 ; 080D6950
+ldr   r1,=ColorTable            ; 080D6952
+add   r5,r0,r1                  ; 080D6954
+mov   r7,r2                     ; 080D6956
+mov   r2,r1                     ; 080D6958
+@@Code080D695A:
+ldrh  r0,[r5]                   ; 080D695A
+mov   r1,r12                    ; 080D695C
+strh  r0,[r1]                   ; 080D695E
+strh  r0,[r6]                   ; 080D6960
+ldrh  r0,[r5,0x1E]              ; 080D6962
+strh  r0,[r1,0x20]              ; 080D6964
+strh  r0,[r6,0x20]              ; 080D6966
+sub   r6,0x2                    ; 080D6968
+mov   r0,0x2                    ; 080D696A
+neg   r0,r0                     ; 080D696C
+add   r12,r0                    ; 080D696E
+sub   r5,0x2                    ; 080D6970
+cmp   r6,r7                     ; 080D6972
+bhs   @@Code080D695A            ; 080D6974
+add   r0,r4,r3                  ; 080D6976
+ldrh  r0,[r0]                   ; 080D6978
+lsr   r0,r0,0x1                 ; 080D697A
+add   r0,0x21                   ; 080D697C
+ldr   r1,=0x02010438            ; 080D697E
+add   r6,r1,0x6                 ; 080D6980
+ldr   r3,=0x0201083E            ; 080D6982
+mov   r12,r3                    ; 080D6984
+lsl   r0,r0,0x1                 ; 080D6986
+add   r5,r0,r2                  ; 080D6988
+mov   r7,r1                     ; 080D698A
+@@Code080D698C:
+ldrh  r0,[r5]                   ; 080D698C
+mov   r1,r12                    ; 080D698E
+strh  r0,[r1]                   ; 080D6990
+strh  r0,[r6]                   ; 080D6992
+ldrh  r0,[r5,0x8]               ; 080D6994
+strh  r0,[r1,0x20]              ; 080D6996
+strh  r0,[r6,0x20]              ; 080D6998
+mov   r2,r6                     ; 080D699A
+add   r2,0x40                   ; 080D699C
+add   r1,0x40                   ; 080D699E
+ldrh  r0,[r5,0x10]              ; 080D69A0
+strh  r0,[r1]                   ; 080D69A2
+strh  r0,[r2]                   ; 080D69A4
+sub   r6,0x2                    ; 080D69A6
+mov   r2,0x2                    ; 080D69A8
+neg   r2,r2                     ; 080D69AA
+add   r12,r2                    ; 080D69AC
+sub   r5,0x2                    ; 080D69AE
+cmp   r6,r7                     ; 080D69B0
+bhs   @@Code080D698C            ; 080D69B2
+ldr   r0,=0x487A                ; 080D69B4
+add   r0,r9                     ; 080D69B6
+mov   r1,0x0                    ; 080D69B8
+strh  r1,[r0]                   ; 080D69BA
+ldr   r0,=0x487C                ; 080D69BC
+add   r0,r9                     ; 080D69BE
+strh  r1,[r0]                   ; 080D69C0
+ldr   r1,=0x487E                ; 080D69C2
+add   r1,r9                     ; 080D69C4
+mov   r0,0x80                   ; 080D69C6
+lsl   r0,r0,0x2                 ; 080D69C8
+strh  r0,[r1]                   ; 080D69CA
+mov   r0,r8                     ; 080D69CC
+bl    CommandSpr_Despawn        ; 080D69CE
+@@Return:
+pop   {r3-r4}                   ; 080D69D2
+mov   r8,r3                     ; 080D69D4
+mov   r9,r4                     ; 080D69D6
+pop   {r4-r7}                   ; 080D69D8
+pop   {r0}                      ; 080D69DA
+bx    r0                        ; 080D69DC
+.pool                           ; 080D69DE
+
+TilesetChanger_Init:
+; command sprite 1C4-1D3
 push  {r4-r6,lr}                ; 080D6A04
 mov   r2,r0                     ; 080D6A06
 ldr   r0,=0x03007240            ; 080D6A08  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080D6A0A
 ldr   r1,=0x2A12                ; 080D6A0C
-add   r0,r0,r1                  ; 080D6A0E
+add   r0,r0,r1                  ; 080D6A0E  [03007240]+2A12 (03004C1E)
 ldrh  r1,[r0]                   ; 080D6A10
 mov   r0,0x1                    ; 080D6A12
 and   r0,r1                     ; 080D6A14
 cmp   r0,0x0                    ; 080D6A16
-beq   @@Code080D6A2C            ; 080D6A18
+beq   @@InitTilesetChange       ; 080D6A18  if parity 0, change tileset
 mov   r0,r2                     ; 080D6A1A
-bl    Sub080D68E4               ; 080D6A1C
-b     @@Code080D6ABC            ; 080D6A20
+bl    PaletteChanger            ; 080D6A1C  if parity 1, change palette
+b     @@InitCounterAndReturn    ; 080D6A20
 .pool                           ; 080D6A22
 
-@@Code080D6A2C:
-ldrh  r1,[r2]                   ; 080D6A2C
-sub   r0,r1,0x1                 ; 080D6A2E
+@@InitTilesetChange:
+ldrh  r1,[r2]                   ; 080D6A2C  command sprite ID (sublevel sprite ID -1C3)
+sub   r0,r1,0x1                 ; 080D6A2E  sublevel sprite ID -1C4 --> new tileset ID
 lsl   r0,r0,0x10                ; 080D6A30
-lsr   r6,r0,0x10                ; 080D6A32
+lsr   r6,r0,0x10                ; 080D6A32  r6 = new tileset ID
 ldr   r0,=0x03002200            ; 080D6A34
 ldr   r3,=0x413E                ; 080D6A36
-add   r0,r0,r3                  ; 080D6A38
-ldrh  r0,[r0]                   ; 080D6A3A
-cmp   r0,0x10                   ; 080D6A3C
+add   r0,r0,r3                  ; 080D6A38  0300633E
+ldrh  r0,[r0]                   ; 080D6A3A  Cursor position within current world
+cmp   r0,0x10                   ; 080D6A3C  10: Secret
 bne   @@Code080D6A4C            ; 080D6A3E
 cmp   r1,0x2                    ; 080D6A40
 bne   @@Code080D6A46            ; 080D6A42
@@ -38,13 +184,13 @@ mov   r6,0x6                    ; 080D6A4A
 ldr   r0,=0x03007240            ; 080D6A4C  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080D6A4E
 ldr   r3,=0x2992                ; 080D6A50
-add   r1,r0,r3                  ; 080D6A52
-ldrh  r0,[r1]                   ; 080D6A54
+add   r1,r0,r3                  ; 080D6A52  [03007240]+2992 (03004B9E)
+ldrh  r0,[r1]                   ; 080D6A54  Layer 1 tileset ID
 cmp   r0,r6                     ; 080D6A56
 bne   @@Code080D6A74            ; 080D6A58
-mov   r0,r2                     ; 080D6A5A
-bl    Sub080D68C8               ; 080D6A5C
-b     @@Code080D6ABC            ; 080D6A60
+mov   r0,r2                     ; 080D6A5A \ if new tileset is same as old tileset, despawn
+bl    CommandSpr_Despawn        ; 080D6A5C /
+b     @@InitCounterAndReturn    ; 080D6A60
 .pool                           ; 080D6A62
 
 @@Code080D6A74:
@@ -53,16 +199,16 @@ lsl   r0,r6,0x1                 ; 080D6A76
 add   r0,r0,r6                  ; 080D6A78  tileset*3
 lsl   r0,r0,0x10                ; 080D6A7A
 lsr   r6,r0,0x10                ; 080D6A7C
-ldr   r5,=L1TilesetGraphicsPtrs ; 080D6A7E  layer 1 tileset graphics pointers
+ldr   r5,=L1TilesetGraphicsPtrs ; 080D6A7E  Layer 1 tileset graphics pointers
 add   r0,r6,0x2                 ; 080D6A80
-lsl   r0,r0,0x2                 ; 080D6A82  index by tileset*3 +2
+lsl   r0,r0,0x2                 ; 080D6A82  index with tileset*3 +2
 add   r0,r0,r5                  ; 080D6A84
 ldr   r0,[r0]                   ; 080D6A86
 ldr   r0,[r0]                   ; 080D6A88
 ldr   r4,=0x030021B4            ; 080D6A8A  (02009BDC)
 ldr   r1,[r4]                   ; 080D6A8C  decompress to [030021B4] (02009BDC)
 bl    swi_LZ77_WRAM             ; 080D6A8E  LZ77 decompress (WRAM)
-lsl   r0,r6,0x2                 ; 080D6A92  index by tileset*3
+lsl   r0,r6,0x2                 ; 080D6A92  index with tileset*3
 add   r0,r0,r5                  ; 080D6A94
 ldr   r0,[r0]                   ; 080D6A96
 ldr   r0,[r0]                   ; 080D6A98
@@ -72,7 +218,7 @@ lsl   r2,r2,0x5                 ; 080D6A9E  1000
 add   r1,r1,r2                  ; 080D6AA0  decompress to [030021B4]+1000 (0200ABDC)
 bl    swi_LZ77_WRAM             ; 080D6AA2  LZ77 decompress (WRAM)
 add   r0,r6,0x1                 ; 080D6AA6
-lsl   r0,r0,0x2                 ; 080D6AA8  index by tileset*3 +1
+lsl   r0,r0,0x2                 ; 080D6AA8  index with tileset*3 +1
 add   r0,r0,r5                  ; 080D6AAA
 ldr   r0,[r0]                   ; 080D6AAC
 ldr   r0,[r0]                   ; 080D6AAE
@@ -81,73 +227,73 @@ mov   r3,0x80                   ; 080D6AB2
 lsl   r3,r3,0x6                 ; 080D6AB4  2000
 add   r1,r1,r3                  ; 080D6AB6  decompress to [030021B4]+2000 (0200BBDC)
 bl    swi_LZ77_WRAM             ; 080D6AB8  LZ77 decompress (WRAM)
-@@Code080D6ABC:
+@@InitCounterAndReturn:
 ldr   r0,=0x03007240            ; 080D6ABC  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080D6ABE
 ldr   r1,=0x2AA8                ; 080D6AC0
-add   r0,r0,r1                  ; 080D6AC2
+add   r0,r0,r1                  ; 080D6AC2  [03007240]+2AA8 (03004CB4)
 mov   r1,0x0                    ; 080D6AC4
-strh  r1,[r0]                   ; 080D6AC6
+strh  r1,[r0]                   ; 080D6AC6  initialize counter to 0
 pop   {r4-r6}                   ; 080D6AC8
 pop   {r0}                      ; 080D6ACA
 bx    r0                        ; 080D6ACC
 .pool                           ; 080D6ACE
 
-Sub080D6AE0:
-; command sprite 1C4-1D3: tileset-changers main
+TilesetChanger_Main:
+; command sprite 1C4-1D3
 push  {r4,lr}                   ; 080D6AE0
 mov   r1,r0                     ; 080D6AE2
 ldr   r4,=0x03007240            ; 080D6AE4  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r4]                   ; 080D6AE6
 ldr   r2,=0x2AA8                ; 080D6AE8
-add   r0,r0,r2                  ; 080D6AEA
+add   r0,r0,r2                  ; 080D6AEA  [03007240]+2AA8 (03004CB4)
 ldrb  r2,[r0]                   ; 080D6AEC
 cmp   r2,0x3                    ; 080D6AEE
-bne   @@Code080D6B04            ; 080D6AF0
-mov   r0,r1                     ; 080D6AF2
-bl    Sub080D68C8               ; 080D6AF4
-b     @@Code080D6B32            ; 080D6AF8
+bne   @@LoadGraphics            ; 080D6AF0
+mov   r0,r1                     ; 080D6AF2 \ if counter has reached 3, despawn and return
+bl    CommandSpr_Despawn        ; 080D6AF4 |
+b     @@Return                  ; 080D6AF8 /
 .pool                           ; 080D6AFA
 
-@@Code080D6B04:
+@@LoadGraphics:                 ;          \ load 1000 bytes of graphics from buffer to VRAM
 ldr   r3,=0x030021B4            ; 080D6B04  (02009BDC)
-ldr   r0,=Data0817CCC0          ; 080D6B06
+ldr   r0,=TilesetChanger_SourceOffsets; 080D6B06
 lsl   r2,r2,0x1                 ; 080D6B08
-add   r0,r2,r0                  ; 080D6B0A
-ldrh  r1,[r0]                   ; 080D6B0C
+add   r0,r2,r0                  ; 080D6B0A  index with counter
+ldrh  r1,[r0]                   ; 080D6B0C  source offset to [030021B4]
 ldr   r0,[r3]                   ; 080D6B0E
 add   r0,r0,r1                  ; 080D6B10
-ldr   r1,=Data0817CCC6          ; 080D6B12
-add   r2,r2,r1                  ; 080D6B14
-ldrh  r1,[r2]                   ; 080D6B16
+ldr   r1,=TilesetChanger_DestOffsets; 080D6B12
+add   r2,r2,r1                  ; 080D6B14  index with counter
+ldrh  r1,[r2]                   ; 080D6B16  dest offset to 06000000
 mov   r2,0xC0                   ; 080D6B18
-lsl   r2,r2,0x13                ; 080D6B1A
+lsl   r2,r2,0x13                ; 080D6B1A  06000000
 add   r1,r1,r2                  ; 080D6B1C
 mov   r2,0x80                   ; 080D6B1E
-lsl   r2,r2,0x3                 ; 080D6B20
-bl    swi_MemoryCopy32          ; 080D6B22  Memory copy/fill, 32-byte blocks
+lsl   r2,r2,0x3                 ; 080D6B20  400 words (1000 bytes)
+bl    swi_MemoryCopy32          ; 080D6B22 / Memory copy/fill, 32-byte blocks
 ldr   r1,[r4]                   ; 080D6B26
 ldr   r0,=0x2AA8                ; 080D6B28
-add   r1,r1,r0                  ; 080D6B2A
-ldrh  r0,[r1]                   ; 080D6B2C
-add   r0,0x1                    ; 080D6B2E
-strh  r0,[r1]                   ; 080D6B30
-@@Code080D6B32:
+add   r1,r1,r0                  ; 080D6B2A  [03007240]+2AA8 (03004CB4)
+ldrh  r0,[r1]                   ; 080D6B2C \
+add   r0,0x1                    ; 080D6B2E | increment counter
+strh  r0,[r1]                   ; 080D6B30 /
+@@Return:
 pop   {r4}                      ; 080D6B32
 pop   {r0}                      ; 080D6B34
 bx    r0                        ; 080D6B36
 .pool                           ; 080D6B38
 
-Sub080D6B48:
+Autoscroll_ProcessNextData:
 ; subroutine: Process next 3 bytes of autoscroll data. Runs each time an autoscroll destination is reached.
 ; r0: 0300243C
-; r1: [03002452], loaded as a single 16-bit input? High byte is autoscroll ID, low byte is current offset within autoscroll data
+; r1: [03002452], loaded as a single 16-bit input. High byte is autoscroll ID, low byte is current offset within autoscroll data
 push  {lr}                      ; 080D6B48
 mov   r3,r0                     ; 080D6B4A
 lsl   r1,r1,0x10                ; 080D6B4C
 ldr   r0,=AutoscrollDataPtrs    ; 080D6B4E  pointer table to autoscroll data
 lsr   r2,r1,0x18                ; 080D6B50
-lsl   r2,r2,0x2                 ; 080D6B52  index with input r1
+lsl   r2,r2,0x2                 ; 080D6B52  index with high byte of input r1
 add   r2,r2,r0                  ; 080D6B54
 mov   r0,0xFF                   ; 080D6B56
 lsl   r0,r0,0x10                ; 080D6B58
@@ -189,7 +335,7 @@ pop   {r0}                      ; 080D6B9C
 bx    r0                        ; 080D6B9E
 .pool                           ; 080D6BA0
 
-Sub080D6BA4:
+Autoscroll1D4_Init:
 ; command sprite 1D4 init
 push  {r4-r6,lr}                ; 080D6BA4
 mov   r5,r0                     ; 080D6BA6
@@ -242,7 +388,7 @@ ldrh  r0,[r4,0x10]              ; 080D6C18
 cmp   r0,0x0                    ; 080D6C1A
 beq   @@Code080D6C30            ; 080D6C1C
 mov   r0,r5                     ; 080D6C1E
-bl    Sub080D68C0               ; 080D6C20  clear halfword at [r0]
+bl    CommandSpr_ClearHalfword  ; 080D6C20  clear halfword at [r0]
 b     @@Code080D6CA4            ; 080D6C24
 .pool                           ; 080D6C26
 
@@ -290,7 +436,7 @@ lsl   r0,r0,0x4                 ; 080D6C76
 strh  r0,[r4,0x16]              ; 080D6C78
 @@Code080D6C7A:
 mov   r0,r5                     ; 080D6C7A
-bl    Sub080D68C0               ; 080D6C7C  clear halfword at [r0]
+bl    CommandSpr_ClearHalfword  ; 080D6C7C  clear halfword at [r0]
 ldr   r1,=0x03002200            ; 080D6C80
 ldr   r3,=0x47D4                ; 080D6C82
 add   r0,r1,r3                  ; 080D6C84
@@ -307,14 +453,14 @@ str   r0,[r4,0x8]               ; 080D6C98
 str   r0,[r4,0xC]               ; 080D6C9A
 ldrh  r1,[r4,0x16]              ; 080D6C9C
 mov   r0,r4                     ; 080D6C9E
-bl    Sub080D6B48               ; 080D6CA0
+bl    Autoscroll_ProcessNextData; 080D6CA0
 @@Code080D6CA4:
 pop   {r4-r6}                   ; 080D6CA4
 pop   {r0}                      ; 080D6CA6
 bx    r0                        ; 080D6CA8
 .pool                           ; 080D6CAA
 
-Sub080D6CB8:
+Autoscroll1D5_1DE_Init:
 ; command sprite 1D5-1DE init
 push  {r4-r5,lr}                ; 080D6CB8
 mov   r2,r0                     ; 080D6CBA
@@ -327,7 +473,7 @@ ldrh  r0,[r5,0x10]              ; 080D6CC6
 cmp   r0,0x0                    ; 080D6CC8
 beq   @@Code080D6CD8            ; 080D6CCA
 mov   r0,r2                     ; 080D6CCC
-bl    Sub080D68C0               ; 080D6CCE  clear halfword at [r0]
+bl    CommandSpr_ClearHalfword  ; 080D6CCE  clear halfword at [r0]
 b     @@Code080D6D1C            ; 080D6CD2
 .pool                           ; 080D6CD4
 
@@ -348,7 +494,7 @@ lsl   r0,r0,0x8                 ; 080D6CEE
 mov   r4,0x0                    ; 080D6CF0
 strh  r0,[r5,0x16]              ; 080D6CF2
 mov   r0,r2                     ; 080D6CF4
-bl    Sub080D68C0               ; 080D6CF6  clear halfword at [r0]
+bl    CommandSpr_ClearHalfword  ; 080D6CF6  clear halfword at [r0]
 ldr   r1,=0x03002200            ; 080D6CFA
 ldr   r2,=0x47D4                ; 080D6CFC
 add   r0,r1,r2                  ; 080D6CFE
@@ -364,7 +510,7 @@ str   r4,[r5,0x8]               ; 080D6D10
 str   r4,[r5,0xC]               ; 080D6D12
 ldrh  r1,[r5,0x16]              ; 080D6D14
 mov   r0,r5                     ; 080D6D16
-bl    Sub080D6B48               ; 080D6D18
+bl    Autoscroll_ProcessNextData; 080D6D18
 @@Code080D6D1C:
 pop   {r4-r5}                   ; 080D6D1C
 pop   {r0}                      ; 080D6D1E
@@ -442,7 +588,7 @@ pop   {r4-r5}                   ; 080D6DBA
 pop   {r0}                      ; 080D6DBC
 bx    r0                        ; 080D6DBE
 
-Sub080D6DC0:
+Autoscroll1D4_Main:
 ; command sprite 1D4 main
 push  {r4-r6,lr}                ; 080D6DC0
 mov   r6,r0                     ; 080D6DC2
@@ -499,7 +645,7 @@ str   r2,[r4,0x8]               ; 080D6E24
 str   r2,[r4,0xC]               ; 080D6E26
 ldrh  r1,[r4,0x16]              ; 080D6E28
 mov   r0,r4                     ; 080D6E2A
-bl    Sub080D6B48               ; 080D6E2C
+bl    Autoscroll_ProcessNextData; 080D6E2C
 @@Code080D6E30:
 mov   r0,r4                     ; 080D6E30
 bl    Sub080D6D30               ; 080D6E32
@@ -558,7 +704,7 @@ add   r0,r2,0x3                 ; 080D6E98
 strh  r0,[r4,0x16]              ; 080D6E9A
 ldrh  r1,[r4,0x16]              ; 080D6E9C
 mov   r0,r4                     ; 080D6E9E
-bl    Sub080D6B48               ; 080D6EA0
+bl    Autoscroll_ProcessNextData; 080D6EA0
 b     @@Code080D6EF8            ; 080D6EA4
 .pool                           ; 080D6EA6
 
@@ -595,7 +741,7 @@ pop   {r0}                      ; 080D6EFA
 bx    r0                        ; 080D6EFC
 .pool                           ; 080D6EFE
 
-Sub080D6F0C:
+Autoscroll1D5_1DE_Main:
 ; command sprite 1D5-1DE main
 push  {r4,lr}                   ; 080D6F0C
 ldr   r0,=0x03007240            ; 080D6F0E  Normal gameplay IWRAM (Ptr to 0300220C)
@@ -665,7 +811,7 @@ add   r0,r2,0x3                 ; 080D6F8A
 strh  r0,[r4,0x16]              ; 080D6F8C
 ldrh  r1,[r4,0x16]              ; 080D6F8E
 mov   r0,r4                     ; 080D6F90
-bl    Sub080D6B48               ; 080D6F92
+bl    Autoscroll_ProcessNextData; 080D6F92
 b     @@Code080D6FFC            ; 080D6F96
 .pool                           ; 080D6F98
 
@@ -733,7 +879,7 @@ sub   r1,0xF0                   ; 080D7024
 ldr   r3,=0x020A                ; 080D7026
 add   r2,r2,r3                  ; 080D7028  03006F8A
 strh  r1,[r2]                   ; 080D702A
-bl    Sub080D68C0               ; 080D702C  clear halfword at [r0]
+bl    CommandSpr_ClearHalfword  ; 080D702C  clear halfword at [r0]
 pop   {r0}                      ; 080D7030
 bx    r0                        ; 080D7032
 .pool                           ; 080D7034
@@ -747,7 +893,7 @@ ldr   r2,=0x16B4                ; 080D704A
 add   r1,r1,r2                  ; 080D704C  [0300702C]+16B4 (03003B14)
 mov   r2,0x0                    ; 080D704E
 strh  r2,[r1]                   ; 080D7050
-bl    Sub080D68C8               ; 080D7052
+bl    CommandSpr_Despawn        ; 080D7052
 pop   {r0}                      ; 080D7056
 bx    r0                        ; 080D7058
 .pool                           ; 080D705A
@@ -764,7 +910,7 @@ ldrh  r0,[r1]                   ; 080D7070
 cmp   r0,0x0                    ; 080D7072
 beq   @@Code080D7088            ; 080D7074
 mov   r0,r2                     ; 080D7076
-bl    Sub080D68C8               ; 080D7078
+bl    CommandSpr_Despawn        ; 080D7078
 b     @@Code080D70C4            ; 080D707C
 .pool                           ; 080D707E
 
@@ -815,7 +961,7 @@ ldrh  r0,[r0]                   ; 080D70E0
 cmp   r0,0x0                    ; 080D70E2
 bne   @@Code080D70F8            ; 080D70E4
 mov   r0,r2                     ; 080D70E6
-bl    Sub080D68C8               ; 080D70E8
+bl    CommandSpr_Despawn        ; 080D70E8
 b     @@Code080D7210            ; 080D70EC
 .pool                           ; 080D70EE
 
@@ -979,7 +1125,7 @@ ldr   r2,=0x16BE                ; 080D726A
 add   r1,r1,r2                  ; 080D726C  [0300702C]+16BE (03003B1E)
 mov   r2,0x0                    ; 080D726E
 strh  r2,[r1]                   ; 080D7270
-bl    Sub080D68C8               ; 080D7272
+bl    CommandSpr_Despawn        ; 080D7272
 pop   {r0}                      ; 080D7276
 bx    r0                        ; 080D7278
 .pool                           ; 080D727A
@@ -996,7 +1142,7 @@ ldrh  r0,[r1]                   ; 080D7290
 cmp   r0,0x0                    ; 080D7292
 beq   @@Code080D72A8            ; 080D7294
 mov   r0,r2                     ; 080D7296
-bl    Sub080D68C8               ; 080D7298
+bl    CommandSpr_Despawn        ; 080D7298
 b     @@Code080D72CC            ; 080D729C
 .pool                           ; 080D729E
 
@@ -1034,7 +1180,7 @@ ldrh  r0,[r0]                   ; 080D72DC
 cmp   r0,0x0                    ; 080D72DE
 bne   @@Code080D72F4            ; 080D72E0
 mov   r0,r3                     ; 080D72E2
-bl    Sub080D68C8               ; 080D72E4
+bl    CommandSpr_Despawn        ; 080D72E4
 b     @@Code080D73A0            ; 080D72E8
 .pool                           ; 080D72EA
 
@@ -1141,7 +1287,7 @@ ldrh  r0,[r0]                   ; 080D73D8
 cmp   r0,0x0                    ; 080D73DA
 bne   @@Code080D73F0            ; 080D73DC
 mov   r0,r1                     ; 080D73DE
-bl    Sub080D68C8               ; 080D73E0
+bl    CommandSpr_Despawn        ; 080D73E0
 b     @@Code080D74CC            ; 080D73E4
 .pool                           ; 080D73E6
 
@@ -1272,7 +1418,7 @@ ldrh  r0,[r2]                   ; 080D750C
 cmp   r0,0x0                    ; 080D750E
 beq   @@Code080D7524            ; 080D7510
 mov   r0,r3                     ; 080D7512
-bl    Sub080D68C8               ; 080D7514
+bl    CommandSpr_Despawn        ; 080D7514
 b     @@Code080D753A            ; 080D7518
 .pool                           ; 080D751A
 
@@ -1302,7 +1448,7 @@ ldr   r2,=0x16EE                ; 080D7552
 add   r1,r1,r2                  ; 080D7554  [0300702C]+16EE (03003B4E)
 mov   r2,0x0                    ; 080D7556
 strh  r2,[r1]                   ; 080D7558
-bl    Sub080D68C8               ; 080D755A
+bl    CommandSpr_Despawn        ; 080D755A
 pop   {r0}                      ; 080D755E
 bx    r0                        ; 080D7560
 .pool                           ; 080D7562
@@ -1393,7 +1539,7 @@ ldrh  r0,[r0]                   ; 080D7604
 cmp   r0,0x0                    ; 080D7606
 bne   @@Code080D761C            ; 080D7608
 mov   r0,r1                     ; 080D760A
-bl    Sub080D68C8               ; 080D760C
+bl    CommandSpr_Despawn        ; 080D760C
 b     @@Code080D76EC            ; 080D7610
 .pool                           ; 080D7612
 
@@ -1537,7 +1683,7 @@ cmp   r1,0x0                    ; 080D7740
 beq   @@Code080D7768            ; 080D7742
 @@Code080D7744:
 mov   r0,r5                     ; 080D7744
-bl    Sub080D68C8               ; 080D7746
+bl    CommandSpr_Despawn        ; 080D7746
 b     @@Code080D777A            ; 080D774A
 .pool                           ; 080D774C
 
@@ -1805,7 +1951,7 @@ strh  r3,[r2]                   ; 080D79AC
 ldr   r2,=0x16DC                ; 080D79AE
 add   r1,r1,r2                  ; 080D79B0  [0300702C]+16DC (03003B3C)
 strh  r3,[r1]                   ; 080D79B2
-bl    Sub080D68C8               ; 080D79B4
+bl    CommandSpr_Despawn        ; 080D79B4
 pop   {r4}                      ; 080D79B8
 pop   {r0}                      ; 080D79BA
 bx    r0                        ; 080D79BC
@@ -1823,7 +1969,7 @@ ldrh  r0,[r1]                   ; 080D79E4
 cmp   r0,0x0                    ; 080D79E6
 beq   @@Code080D79FC            ; 080D79E8
 mov   r0,r4                     ; 080D79EA
-bl    Sub080D68C8               ; 080D79EC
+bl    CommandSpr_Despawn        ; 080D79EC
 b     @@Code080D7A00            ; 080D79F0
 .pool                           ; 080D79F2
 
@@ -1860,7 +2006,7 @@ ldr   r2,=0x16EA                ; 080D7A2E
 add   r1,r1,r2                  ; 080D7A30  [0300702C]+16EA (03003B4A)
 mov   r2,0x0                    ; 080D7A32
 strh  r2,[r1]                   ; 080D7A34
-bl    Sub080D68C8               ; 080D7A36
+bl    CommandSpr_Despawn        ; 080D7A36
 pop   {r0}                      ; 080D7A3A
 bx    r0                        ; 080D7A3C
 .pool                           ; 080D7A3E
@@ -1877,7 +2023,7 @@ ldrh  r0,[r0]                   ; 080D7A54
 cmp   r0,0x0                    ; 080D7A56
 bne   @@Code080D7A6C            ; 080D7A58
 mov   r0,r3                     ; 080D7A5A
-bl    Sub080D68C8               ; 080D7A5C
+bl    CommandSpr_Despawn        ; 080D7A5C
 b     @@Code080D7B04            ; 080D7A60
 .pool                           ; 080D7A62
 
@@ -1977,7 +2123,7 @@ ldrh  r0,[r1]                   ; 080D7B40
 cmp   r0,0x0                    ; 080D7B42
 beq   @@Code080D7B58            ; 080D7B44
 mov   r0,r2                     ; 080D7B46
-bl    Sub080D68C8               ; 080D7B48
+bl    CommandSpr_Despawn        ; 080D7B48
 b     @@Code080D7B5C            ; 080D7B4C
 .pool                           ; 080D7B4E
 
@@ -2006,7 +2152,7 @@ ldrh  r0,[r0]                   ; 080D7B7A
 cmp   r0,0x0                    ; 080D7B7C
 bne   @@Code080D7B90            ; 080D7B7E
 mov   r0,r4                     ; 080D7B80
-bl    Sub080D68C8               ; 080D7B82
+bl    CommandSpr_Despawn        ; 080D7B82
 b     @@Code080D7C42            ; 080D7B86
 .pool                           ; 080D7B88
 
@@ -2115,7 +2261,7 @@ ldr   r2,=0x16E8                ; 080D7C82
 add   r1,r1,r2                  ; 080D7C84  [0300702C]+16E8 (03003B48)
 mov   r2,0x0                    ; 080D7C86
 strh  r2,[r1]                   ; 080D7C88
-bl    Sub080D68C8               ; 080D7C8A
+bl    CommandSpr_Despawn        ; 080D7C8A
 pop   {r0}                      ; 080D7C8E
 bx    r0                        ; 080D7C90
 .pool                           ; 080D7C92
@@ -2129,7 +2275,7 @@ ldr   r2,=0x16F6                ; 080D7CA2
 add   r1,r1,r2                  ; 080D7CA4  [0300702C]+16F6 (03003B56)
 mov   r2,0x0                    ; 080D7CA6
 strh  r2,[r1]                   ; 080D7CA8
-bl    Sub080D68C8               ; 080D7CAA
+bl    CommandSpr_Despawn        ; 080D7CAA
 pop   {r0}                      ; 080D7CAE
 bx    r0                        ; 080D7CB0
 .pool                           ; 080D7CB2
@@ -2146,7 +2292,7 @@ ldrh  r0,[r1]                   ; 080D7CC8
 cmp   r0,0x0                    ; 080D7CCA
 beq   @@Code080D7CE0            ; 080D7CCC
 mov   r0,r2                     ; 080D7CCE
-bl    Sub080D68C8               ; 080D7CD0
+bl    CommandSpr_Despawn        ; 080D7CD0
 b     @@Code080D7CE4            ; 080D7CD4
 .pool                           ; 080D7CD6
 
@@ -2169,7 +2315,7 @@ ldrh  r0,[r0]                   ; 080D7CF4
 cmp   r0,0x0                    ; 080D7CF6
 bne   @@Code080D7D0C            ; 080D7CF8
 mov   r0,r1                     ; 080D7CFA
-bl    Sub080D68C8               ; 080D7CFC
+bl    CommandSpr_Despawn        ; 080D7CFC
 b     @@Code080D7DAE            ; 080D7D00
 .pool                           ; 080D7D02
 
@@ -2269,7 +2415,7 @@ ldr   r2,=0x16B0                ; 080D7DE2
 add   r1,r1,r2                  ; 080D7DE4  [0300702C]+16B0 (03003B10)
 mov   r2,0x0                    ; 080D7DE6
 strh  r2,[r1]                   ; 080D7DE8
-bl    Sub080D68C8               ; 080D7DEA
+bl    CommandSpr_Despawn        ; 080D7DEA
 pop   {r0}                      ; 080D7DEE
 bx    r0                        ; 080D7DF0
 .pool                           ; 080D7DF2
@@ -2283,7 +2429,7 @@ ldr   r2,=0x16B2                ; 080D7E02
 add   r1,r1,r2                  ; 080D7E04  [0300702C]+16B2 (03003B10)
 mov   r2,0x0                    ; 080D7E06
 strh  r2,[r1]                   ; 080D7E08
-bl    Sub080D68C8               ; 080D7E0A
+bl    CommandSpr_Despawn        ; 080D7E0A
 pop   {r0}                      ; 080D7E0E
 bx    r0                        ; 080D7E10
 .pool                           ; 080D7E12
@@ -2297,7 +2443,7 @@ ldr   r2,=0x16BC                ; 080D7E22
 add   r1,r1,r2                  ; 080D7E24  [0300702C]+16BC (03003B10)
 mov   r2,0x0                    ; 080D7E26
 strh  r2,[r1]                   ; 080D7E28
-bl    Sub080D68C8               ; 080D7E2A
+bl    CommandSpr_Despawn        ; 080D7E2A
 pop   {r0}                      ; 080D7E2E
 bx    r0                        ; 080D7E30
 .pool                           ; 080D7E32
@@ -2314,7 +2460,7 @@ ldrh  r0,[r1]                   ; 080D7E48
 cmp   r0,0x0                    ; 080D7E4A
 beq   @@Code080D7E60            ; 080D7E4C
 mov   r0,r2                     ; 080D7E4E
-bl    Sub080D68C8               ; 080D7E50
+bl    CommandSpr_Despawn        ; 080D7E50
 b     @@Code080D7E64            ; 080D7E54
 .pool                           ; 080D7E56
 
@@ -2342,7 +2488,7 @@ ldrh  r0,[r0]                   ; 080D7E7E
 cmp   r0,0x0                    ; 080D7E80
 bne   @@Code080D7E94            ; 080D7E82
 mov   r0,r1                     ; 080D7E84
-bl    Sub080D68C8               ; 080D7E86
+bl    CommandSpr_Despawn        ; 080D7E86
 b     @@Code080D7F72            ; 080D7E8A
 .pool                           ; 080D7E8C
 
@@ -2476,7 +2622,7 @@ ldr   r2,=0x16C2                ; 080D7FBE
 add   r1,r1,r2                  ; 080D7FC0  [0300702C]+16C2 (03003B22)
 mov   r2,0x0                    ; 080D7FC2
 strh  r2,[r1]                   ; 080D7FC4
-bl    Sub080D68C8               ; 080D7FC6
+bl    CommandSpr_Despawn        ; 080D7FC6
 pop   {r0}                      ; 080D7FCA
 bx    r0                        ; 080D7FCC
 .pool                           ; 080D7FCE
@@ -2490,7 +2636,7 @@ ldr   r2,=0x16DE                ; 080D7FDE
 add   r1,r1,r2                  ; 080D7FE0  [0300702C]+16DE (03003B3E)
 mov   r2,0x0                    ; 080D7FE2
 strh  r2,[r1]                   ; 080D7FE4
-bl    Sub080D68C8               ; 080D7FE6
+bl    CommandSpr_Despawn        ; 080D7FE6
 pop   {r0}                      ; 080D7FEA
 bx    r0                        ; 080D7FEC
 .pool                           ; 080D7FEE
@@ -2508,7 +2654,7 @@ ldrh  r0,[r1]                   ; 080D8006
 cmp   r0,0x0                    ; 080D8008
 beq   @@Code080D8018            ; 080D800A
 mov   r0,r2                     ; 080D800C
-bl    Sub080D68C8               ; 080D800E
+bl    CommandSpr_Despawn        ; 080D800E
 b     @@Code080D801C            ; 080D8012
 .pool                           ; 080D8014
 
@@ -2535,7 +2681,7 @@ ldrh  r0,[r0]                   ; 080D8034
 cmp   r0,0x0                    ; 080D8036
 bne   @@Code080D8048            ; 080D8038
 mov   r0,r2                     ; 080D803A
-bl    Sub080D68C8               ; 080D803C
+bl    CommandSpr_Despawn        ; 080D803C
 b     @@Code080D80F8            ; 080D8040
 .pool                           ; 080D8042
 
@@ -2645,7 +2791,7 @@ lsl   r2,r2,0x5                 ; 080D8138  16E0
 add   r1,r1,r2                  ; 080D813A  [0300702C]+16E0 (03003B40)
 mov   r2,0x0                    ; 080D813C
 strh  r2,[r1]                   ; 080D813E
-bl    Sub080D68C8               ; 080D8140
+bl    CommandSpr_Despawn        ; 080D8140
 pop   {r0}                      ; 080D8144
 bx    r0                        ; 080D8146
 .pool                           ; 080D8148
@@ -2662,7 +2808,7 @@ ldrh  r0,[r1]                   ; 080D8158
 cmp   r0,0x0                    ; 080D815A
 beq   @@Code080D8170            ; 080D815C
 mov   r0,r2                     ; 080D815E
-bl    Sub080D68C8               ; 080D8160
+bl    CommandSpr_Despawn        ; 080D8160
 b     @@Code080D8174            ; 080D8164
 .pool                           ; 080D8166
 
@@ -2687,7 +2833,7 @@ ldrh  r0,[r0]                   ; 080D8188
 cmp   r0,0x0                    ; 080D818A
 bne   @@Code080D81A0            ; 080D818C
 mov   r0,r1                     ; 080D818E
-bl    Sub080D68C8               ; 080D8190
+bl    CommandSpr_Despawn        ; 080D8190
 b     @@Code080D8232            ; 080D8194
 .pool                           ; 080D8196
 
@@ -2779,7 +2925,7 @@ ldr   r2,=0x16E4                ; 080D826A
 add   r1,r1,r2                  ; 080D826C  [0300702C]+16E4 (03003B44)
 mov   r2,0x0                    ; 080D826E
 strh  r2,[r1]                   ; 080D8270
-bl    Sub080D68C8               ; 080D8272
+bl    CommandSpr_Despawn        ; 080D8272
 pop   {r0}                      ; 080D8276
 bx    r0                        ; 080D8278
 .pool                           ; 080D827A
@@ -2796,7 +2942,7 @@ ldrh  r0,[r1]                   ; 080D8290
 cmp   r0,0x0                    ; 080D8292
 beq   @@Code080D82A8            ; 080D8294
 mov   r0,r2                     ; 080D8296
-bl    Sub080D68C8               ; 080D8298
+bl    CommandSpr_Despawn        ; 080D8298
 b     @@Code080D82AC            ; 080D829C
 .pool                           ; 080D829E
 
@@ -2824,7 +2970,7 @@ ldrh  r0,[r0]                   ; 080D82C8
 cmp   r0,0x0                    ; 080D82CA
 bne   @@Code080D82E0            ; 080D82CC
 mov   r0,r4                     ; 080D82CE
-bl    Sub080D68C8               ; 080D82D0
+bl    CommandSpr_Despawn        ; 080D82D0
 b     @@Code080D83BA            ; 080D82D4
 .pool                           ; 080D82D6
 
@@ -2952,7 +3098,7 @@ ldr   r2,=0x16E6                ; 080D8402
 add   r1,r1,r2                  ; 080D8404  [0300702C]+16E6 (03003B46)
 mov   r2,0x0                    ; 080D8406
 strh  r2,[r1]                   ; 080D8408
-bl    Sub080D68C8               ; 080D840A
+bl    CommandSpr_Despawn        ; 080D840A
 pop   {r0}                      ; 080D840E
 bx    r0                        ; 080D8410
 .pool                           ; 080D8412
@@ -2969,7 +3115,7 @@ ldrh  r0,[r1]                   ; 080D8428
 cmp   r0,0x0                    ; 080D842A
 beq   @@Code080D8440            ; 080D842C
 mov   r0,r2                     ; 080D842E
-bl    Sub080D68C8               ; 080D8430
+bl    CommandSpr_Despawn        ; 080D8430
 b     @@Code080D84A4            ; 080D8434
 .pool                           ; 080D8436
 
@@ -3127,7 +3273,7 @@ ldr   r1,=0x1696                ; 080D857A
 add   r0,r0,r1                  ; 080D857C
 strh  r2,[r0]                   ; 080D857E
 mov   r0,r9                     ; 080D8580
-bl    Sub080D68C8               ; 080D8582
+bl    CommandSpr_Despawn        ; 080D8582
 @@Code080D8586:
 pop   {r3-r4}                   ; 080D8586
 mov   r8,r3                     ; 080D8588
@@ -3152,7 +3298,7 @@ mov   r0,0x1                    ; 080D85C2
 strh  r0,[r1]                   ; 080D85C4
 @@Code080D85C6:
 mov   r0,r2                     ; 080D85C6
-bl    Sub080D68C8               ; 080D85C8
+bl    CommandSpr_Despawn        ; 080D85C8
 pop   {r0}                      ; 080D85CC
 bx    r0                        ; 080D85CE
 .pool                           ; 080D85D0
@@ -3166,7 +3312,7 @@ ldr   r2,=0x16F4                ; 080D85DE
 add   r1,r1,r2                  ; 080D85E0  [0300702C]+16F4 (03003B54)
 mov   r2,0x0                    ; 080D85E2
 strh  r2,[r1]                   ; 080D85E4
-bl    Sub080D68C8               ; 080D85E6
+bl    CommandSpr_Despawn        ; 080D85E6
 pop   {r0}                      ; 080D85EA
 bx    r0                        ; 080D85EC
 .pool                           ; 080D85EE
