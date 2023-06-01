@@ -11539,9 +11539,9 @@ ldr   r0,[r3]                   ; 08019A28
 add   r0,r0,r2                  ; 08019A2A
 ldrb  r0,[r0]                   ; 08019A2C
 cmp   r0,0xF                    ; 08019A2E
-bls   @@Code08019A36            ; 08019A30
+bls   @@Return                  ; 08019A30
 bl    Sub080196DC               ; 08019A32
-@@Code08019A36:
+@@Return:
 pop   {r0}                      ; 08019A36
 bx    r0                        ; 08019A38
 .pool                           ; 08019A3A
@@ -11550,8 +11550,8 @@ Sub08019A44:
 push  {lr}                      ; 08019A44
 ldr   r1,=0x03006D80            ; 08019A46
 mov   r2,0x96                   ; 08019A48
-lsl   r2,r2,0x2                 ; 08019A4A
-add   r0,r1,r2                  ; 08019A4C
+lsl   r2,r2,0x2                 ; 08019A4A  258
+add   r0,r1,r2                  ; 08019A4C  03006FD9
 ldrh  r0,[r0]                   ; 08019A4E
 lsl   r0,r0,0x12                ; 08019A50
 lsr   r2,r0,0x10                ; 08019A52
@@ -11562,7 +11562,7 @@ ldr   r0,[r0]                   ; 08019A5A
 ldr   r3,=0x2B39                ; 08019A5C
 add   r0,r0,r3                  ; 08019A5E
 strb  r2,[r0]                   ; 08019A60
-b     @@Code08019A88            ; 08019A62
+b     @@Return                  ; 08019A62
 .pool                           ; 08019A64
 
 @@Code08019A70:
@@ -11577,7 +11577,7 @@ lsl   r0,r0,0x2                 ; 08019A7E
 add   r0,r0,r1                  ; 08019A80
 ldr   r0,[r0]                   ; 08019A82
 bl    Sub_bx_r0                 ; 08019A84
-@@Code08019A88:
+@@Return:
 pop   {r0}                      ; 08019A88
 bx    r0                        ; 08019A8A
 .pool                           ; 08019A8C
@@ -11788,7 +11788,7 @@ mov   r6,0x20                   ; 08019C36
 ldr   r2,=0x495C                ; 08019C38
 add   r2,r2,r7                  ; 08019C3A
 mov   r12,r2                    ; 08019C3C  r12 = 03006B5C
-@@Code08019C3E:
+@@Loop08019C3E:
 ldrb  r0,[r5]                   ; 08019C3E \ run this twice
 lsl   r1,r0,0x2                 ; 08019C40
 add   r0,r0,r1                  ; 08019C42  3*[03006B5E]
@@ -11827,7 +11827,7 @@ add   r0,r4,0x1                 ; 08019C88
 lsl   r0,r0,0x18                ; 08019C8A
 lsr   r4,r0,0x18                ; 08019C8C
 cmp   r4,0x1                    ; 08019C8E
-bls   @@Code08019C3E            ; 08019C90 /
+bls   @@Loop08019C3E            ; 08019C90 /
 ldr   r1,=0x495C                ; 08019C92
 add   r0,r7,r1                  ; 08019C94  r0 = 030006B5C
 ldrb  r0,[r0]                   ; 08019C96
@@ -11849,8 +11849,8 @@ lsr   r6,r1,0x10                ; 08019CAE  r6 = yx *2
 mov   r1,r0                     ; 08019CB0  r1 = screen number
 cmp   r1,0x7F                   ; 08019CB2
 bls   @@Code08019CB8            ; 08019CB4  assert screen number <= 7F
-@@Code08019CB6:
-b     @@Code08019CB6            ; 08019CB6  self-branch: intentional freeze?
+@@Freeze0:
+b     @@Freeze0                 ; 08019CB6  self-branch: intentional freeze?
 @@Code08019CB8:
 ldr   r2,=0x0201B800            ; 08019CB8  screen memory indexes
 add   r0,r0,r2                  ; 08019CBA
@@ -11863,16 +11863,16 @@ bne   @@Code08019D14            ; 08019CC6
                                 ;          \ runs if current screen's memory index % 0x40 == 0
 mov   r3,r12                    ; 08019CC8
 add   r3,0xB3                   ; 08019CCA  r3 = [03007240]+B3 (030022BF)
-ldrb  r0,[r3]                   ; 08019CCC \ increment highest screen memory
-add   r0,0x1                    ; 08019CCE |  index assigned so far
-strb  r0,[r3]                   ; 08019CD0 /
+ldrb  r0,[r3]                   ; 08019CCC  \ increment highest screen memory
+add   r0,0x1                    ; 08019CCE  |  index assigned so far
+strb  r0,[r3]                   ; 08019CD0  /
 mov   r2,r4                     ; 08019CD2  r2 = 3F
 and   r2,r0                     ; 08019CD4
 mov   r0,r2                     ; 08019CD6
 mov   r4,r12                    ; 08019CD8
 add   r4,0xB4                   ; 08019CDA  r4 = [03007240]+B4 (030022C0)
 cmp   r2,0x0                    ; 08019CDC
-beq   @@Code08019D00            ; 08019CDE  assert newly assigned screen memory index has not overflowed at 0x40
+beq   @@Freeze1                 ; 08019CDE  assert newly assigned screen memory index has not overflowed at 0x40
 mov   r5,r4                     ; 08019CE0  r5 = [03007240]+B4 (030022C0)
 mov   r7,0x3F                   ; 08019CE2
 mov   r4,r3                     ; 08019CE4  r4 = [03007240]+B3 (030022BF)
@@ -11887,29 +11887,28 @@ mov   r0,r2                     ; 08019CF2
 ldrb  r3,[r4]                   ; 08019CF4
 cmp   r2,r3                     ; 08019CF6
 bne   @@Code08019CE6            ; 08019CF8
-b     @@Code08019D1E            ; 08019CFA
+b     @@Return_r1               ; 08019CFA
 .pool                           ; 08019CFC
 
-@@Code08019D00:
-b     @@Code08019D00            ; 08019D00  self-branch: intentional freeze?
+@@Freeze1:
+b     @@Freeze1                 ; 08019D00  self-branch: intentional freeze?
 @@Code08019D02:
 mov   r2,r0                     ; 08019D02  r2 = new screen memory index
 mov   r4,r12                    ; 08019D04
-ldrh  r0,[r4,0x34]              ; 08019D06 \
-add   r0,0x1                    ; 08019D08 | increment [03007240]+34 (03002240)
-strh  r0,[r4,0x34]              ; 08019D0A /
+ldrh  r0,[r4,0x34]              ; 08019D06  \
+add   r0,0x1                    ; 08019D08  | increment [03007240]+34 (03002240)
+strh  r0,[r4,0x34]              ; 08019D0A  /
 ldr   r4,=0x0201B800            ; 08019D0C
 add   r0,r1,r4                  ; 08019D0E
 strb  r2,[r0]                   ; 08019D10  store new index to screen memory index by screen table
-strb  r2,[r3]                   ; 08019D12  increment another address for highest screen memory index assigned so far
+strb  r2,[r3]                   ; 08019D12 / increment another address for highest screen memory index assigned so far
 @@Code08019D14:
-                                ;          /
 lsl   r0,r2,0x19                ; 08019D14
 lsr   r2,r0,0x10                ; 08019D16  r2 = current screen's memory index *0x200
 add   r0,r2,r6                  ; 08019D18  return current screen's memory index *0x200 + object yx *2 (offset to layer 1 tilemap)
 lsl   r0,r0,0x10                ; 08019D1A
 lsr   r1,r0,0x10                ; 08019D1C
-@@Code08019D1E:
+@@Return_r1:
 mov   r0,r1                     ; 08019D1E
 pop   {r4-r7}                   ; 08019D20
 pop   {r1}                      ; 08019D22
@@ -11960,8 +11959,8 @@ lsl   r0,r0,0x10                ; 08019D7A
 lsr   r2,r0,0x10                ; 08019D7C
 cmp   r0,0x0                    ; 08019D7E
 bge   @@Code08019D84            ; 08019D80  assert index is nonzero
-@@Code08019D82:
-b     @@Code08019D82            ; 08019D82  self-branch: intentional freeze?
+@@Freeze:
+b     @@Freeze                  ; 08019D82  self-branch: intentional freeze?
 @@Code08019D84:
 mov   r0,r4                     ; 08019D84
 add   r0,0x4A                   ; 08019D86  r0 = [03007240]+4A (03002256)
@@ -12023,7 +12022,7 @@ add   r1,r1,r0                  ; 08019DEE
 str   r1,[sp,0xC]               ; 08019DF0  [sp+C] = 08168F2C + 4*objectID
 mov   r8,r5                     ; 08019DF2  r8 = [03007240]+B2 (030022BE)
 
-@@Code08019DF4:                 ; begin loop across all tiles in object's rectangular (or sometimes parallelogram/trapezoidal) region
+@@TileRectLoop:                 ; begin loop across all tiles in object's rectangular (or sometimes parallelogram/trapezoidal) region
 mov   r0,r9                     ; 08019DF4  r0 = [03007240]+50 (0300225C)
 ldrh  r3,[r0]                   ; 08019DF6  r3 = current tile relative Y
 mov   r0,r6                     ; 08019DF8
@@ -12059,8 +12058,7 @@ b     @@Code08019E44            ; 08019E26
 ldr   r3,[sp,0xC]               ; 08019E30  if extended: 08168F2C + 4*objectID
 ldr   r1,[r3]                   ; 08019E32
 b     @@Code08019E50            ; 08019E34
-@@Code08019E36:
-                                ;           runs if relX even and relY < threshold
+@@Code08019E36:                 ;           runs if relX even and relY < threshold
 ldr   r0,[sp,0x4]               ; 08019E36  1 if standard/0 if extended
 cmp   r0,0x0                    ; 08019E38
 beq   @@Code08019E4C            ; 08019E3A
@@ -12079,8 +12077,7 @@ ldr   r1,[r2]                   ; 08019E4E
 mov   r0,r6                     ; 08019E50
 bl    Sub_bx_r1                 ; 08019E52
 b     @@Code08019E7C            ; 08019E56
-@@Code08019E58:
-                                ;           runs if relY >= threshold
+@@Code08019E58:                 ;           runs if relY >= threshold
 ldr   r3,[sp,0x4]               ; 08019E58  1 if standard/0 if extended
 cmp   r3,0x0                    ; 08019E5A
 beq   @@Code08019E6E            ; 08019E5C
@@ -12096,8 +12093,7 @@ ldr   r2,[sp,0xC]               ; 08019E6E  if extended: 08168F2C + 4*objectID
 ldr   r1,[r2]                   ; 08019E70
 mov   r0,r6                     ; 08019E72
 bl    Sub_bx_r1                 ; 08019E74
-@@Code08019E78:
-                                ;           if object subroutine was called with r1=2, return here
+@@Code08019E78:                 ;           if object subroutine was called with r1=2, return here
 mov   r7,r6                     ; 08019E78
 add   r7,0x4C                   ; 08019E7A  r0 = [03007240]+4C (03002258)
 @@Code08019E7C:
@@ -12115,8 +12111,7 @@ ldrh  r0,[r1]                   ; 08019E8E \
 add   r0,0x1                    ; 08019E90 | increment current tile relative Y
 strh  r0,[r1]                   ; 08019E92 /
 b     @@Code08019EA0            ; 08019E94
-@@Code08019E96:
-                                ;           runs if height is negative
+@@Code08019E96:                 ;           runs if height is negative
 mov   r2,r9                     ; 08019E96  r2 = [03007240]+50 (0300225C)
 ldrh  r0,[r2]                   ; 08019E98 \
 sub   r0,0x1                    ; 08019E9A | decrement current tile relative Y
@@ -12227,9 +12222,9 @@ strb  r4,[r0]                   ; 08019F56  clear 030022BE
 @@Code08019F58:
 mov   r0,r6                     ; 08019F58
 bl    ObjShared_SetL1Index      ; 08019F5A  set layer 1 tilemap index and pre-existing tile
-b     @@Code08019DF4            ; 08019F5E  continue loop
-@@Code08019F60:
-                                ;           runs if not finished iterating over a column
+b     @@TileRectLoop            ; 08019F5E  continue loop
+
+@@Code08019F60:                 ;           runs if not finished iterating over a column
 mov   r2,r6                     ; 08019F60
 add   r2,0x4A                   ; 08019F62  r2 = [03007240]+4A (03002256)
 ldr   r1,=Data081C186E          ; 08019F64
@@ -12332,7 +12327,7 @@ ldrh  r3,[r1]                   ; 0801A02E
 mov   r0,r6                     ; 0801A030
 add   r0,0x40                   ; 0801A032
 strh  r3,[r0]                   ; 0801A034
-b     @@Code08019DF4            ; 0801A036
+b     @@TileRectLoop            ; 0801A036
 .pool                           ; 0801A038
 
 @@Code0801A03C:

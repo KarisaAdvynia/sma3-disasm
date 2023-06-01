@@ -11,7 +11,7 @@ ldrb  r2,[r4]                   ; 0801BFB6  screen memory index
 mov   r0,0x3F                   ; 0801BFB8
 and   r2,r0                     ; 0801BFBA
 cmp   r2,0x0                    ; 0801BFBC
-beq   @@Code0801BFF6            ; 0801BFBE  if screen is unused or clear, return
+beq   @@Return                  ; 0801BFBE  if screen is unused or clear, return
 mov   r0,r3                     ; 0801BFC0
 add   r0,0xB4                   ; 0801BFC2  [03007240]+B4 (030022C0)
 add   r0,r0,r2                  ; 0801BFC4  index with screen memory index
@@ -42,7 +42,7 @@ bls   @@Code0801BFDC            ; 0801BFEE /
 ldrb  r0,[r4]                   ; 0801BFF0 \
 sub   r0,0x1                    ; 0801BFF2  decrement number of screen memory indexes assigned
 strb  r0,[r4]                   ; 0801BFF4 /
-@@Code0801BFF6:
+@@Return:
 pop   {r4-r6}                   ; 0801BFF6
 pop   {r0}                      ; 0801BFF8
 bx    r0                        ; 0801BFFA

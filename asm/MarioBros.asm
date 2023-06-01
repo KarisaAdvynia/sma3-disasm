@@ -19469,7 +19469,7 @@ pop   {r0}                      ; 08119F86
 bx    r0                        ; 08119F88
 .pool                           ; 08119F8A
 
-Sub08119F94:
+GBALink_Main:
 ; Game mode 02: GBA link
 push  {r4-r6,lr}                ; 08119F94
 ldr   r4,=0x03002200            ; 08119F96

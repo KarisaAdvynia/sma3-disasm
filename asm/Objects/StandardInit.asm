@@ -923,8 +923,7 @@ bl    ObjMain_Slope0_NoRelY     ; 0801A754  Object processing main, slope=0, no 
 b     @@Return                  ; 0801A758
 .pool                           ; 0801A75A
 
-@@ObjC6C9:
-                                ;           runs if object C6 or C9
+@@ObjC6C9:                      ;           runs if object C6 or C9
 mov   r0,r3                     ; 0801A760  r0 = [03007240] (0300220C)
 mov   r1,r5                     ; 0801A762  r1 = (unadjusted) object ID
 mov   r2,r6                     ; 0801A764  r2 = 1
@@ -1193,7 +1192,7 @@ ldr   r3,=0x2992                ; 0801A948
 add   r0,r0,r3                  ; 0801A94A  [03007240]+2992
 ldrh  r0,[r0]                   ; 0801A94C  layer 1 tileset ID
 cmp   r0,0x3                    ; 0801A94E
-bne   @@Code0801A96C            ; 0801A950
+bne   @@NotTileset3             ; 0801A950
 
 mov   r0,0x2                    ; 0801A952  runs if tileset 3
 mov   r3,r4                     ; 0801A954
@@ -1201,13 +1200,13 @@ add   r3,0x4E                   ; 0801A956
 strh  r0,[r3]                   ; 0801A958  set width to 2
 mov   r0,r4                     ; 0801A95A
 bl    ObjMain_Slope0_NoRelY     ; 0801A95C  Object processing main, slope=0, no relative Y threshold
-b     @@Code0801A972            ; 0801A960
+b     @@Return                  ; 0801A960
 .pool                           ; 0801A962
 
-@@Code0801A96C:
-mov   r0,r4                     ; 0801A96C  runs if not tileset 3
+@@NotTileset3:                  ;           runs if not tileset 3
+mov   r0,r4                     ; 0801A96C
 bl    ObjMain_Slope0_NoRelY     ; 0801A96E  Object processing main, slope=0, no relative Y threshold
-@@Code0801A972:
+@@Return:
 pop   {r4}                      ; 0801A972
 pop   {r0}                      ; 0801A974
 bx    r0                        ; 0801A976
@@ -1894,7 +1893,7 @@ bge   @@Code0801AEB8            ; 0801AEAA
 mvn   r0,r1                     ; 0801AEAC
 lsl   r0,r0,0x10                ; 0801AEAE
 mov   r1,0x80                   ; 0801AEB0
-lsl   r1,r1,0x9                 ; 0801AEB2
+lsl   r1,r1,0x9                 ; 0801AEB2  10000
 add   r0,r0,r1                  ; 0801AEB4
 lsr   r1,r0,0x10                ; 0801AEB6
 @@Code0801AEB8:
@@ -1926,7 +1925,7 @@ bge   @@Code0801AEF8            ; 0801AEEA
 mvn   r0,r3                     ; 0801AEEC
 lsl   r0,r0,0x10                ; 0801AEEE
 mov   r3,0x80                   ; 0801AEF0
-lsl   r3,r3,0x9                 ; 0801AEF2
+lsl   r3,r3,0x9                 ; 0801AEF2  10000
 add   r0,r0,r3                  ; 0801AEF4
 lsr   r3,r0,0x10                ; 0801AEF6
 @@Code0801AEF8:
@@ -2005,7 +2004,7 @@ bge   @@Code0801AF84            ; 0801AF76
 mvn   r0,r3                     ; 0801AF78
 lsl   r0,r0,0x10                ; 0801AF7A
 mov   r3,0x80                   ; 0801AF7C
-lsl   r3,r3,0x9                 ; 0801AF7E
+lsl   r3,r3,0x9                 ; 0801AF7E  10000
 add   r0,r0,r3                  ; 0801AF80
 lsr   r3,r0,0x10                ; 0801AF82
 @@Code0801AF84:

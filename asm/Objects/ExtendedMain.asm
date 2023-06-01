@@ -84,7 +84,7 @@ ldr   r0,[r6]                   ; 080298AE
 lsr   r1,r1,0x1                 ; 080298B0
 lsl   r1,r1,0x1                 ; 080298B2
 add   r0,r0,r1                  ; 080298B4
-strh  r5,[r0]                   ; 080298B6  update tilemap
+strh  r5,[r0]                   ; 080298B6  set tile
 
 ldrh  r5,[r7]                   ; 080298B8  r5 = relative Y
 add   r0,r5,0x1                 ; 080298BA
@@ -110,8 +110,7 @@ add   r1,r1,r2                  ; 080298DE
 ldrh  r5,[r1]                   ; 080298E0  r5 = tile at y+1
 ldr   r7,=ExtObjD4_DF_CheckTiles; 080298E2
 ldr   r1,=ExtObjD4_DF_NewTiles  ; 080298E4
-@@Code080298E6:
-                                ; loop: if tile is 100F or 0C0B, replace with 100E or 0C0C
+@@Loop080298E6:                 ; loop: if tile is 100F or 0C0B, replace with 100E or 0C0C
 lsr   r0,r4,0x1                 ; 080298E6 \
 lsl   r3,r0,0x1                 ; 080298E8  r3 = loop index
 add   r0,r3,r7                  ; 080298EA
@@ -131,7 +130,7 @@ add   r0,r4,0x2                 ; 08029918
 lsl   r0,r0,0x10                ; 0802991A
 lsr   r4,r0,0x10                ; 0802991C
 cmp   r4,0x3                    ; 0802991E
-bls   @@Code080298E6            ; 08029920 /
+bls   @@Loop080298E6            ; 08029920 /
 @@Return:
 pop   {r4-r7}                   ; 08029922
 pop   {r0}                      ; 08029924
@@ -543,7 +542,7 @@ cmp   r3,0x0                    ; 08029C44
 bne   @@Code08029C64            ; 08029C46
 ldr   r5,=0x03007010            ; 08029C48  Layer 1 tilemap EWRAM (0200000C)
 cmp   r4,0x7                    ; 08029C4A
-bhi   @@Code08029CA0            ; 08029C4C  use tile index for first 4 tiles of B6,0
+bhi   @@SetTile_r2              ; 08029C4C  use tile index for first 4 tiles of B6,0
 ldr   r0,[r5]                   ; 08029C4E
 lsl   r1,r2,0x1                 ; 08029C50
 mov   r2,0x80                   ; 08029C52
@@ -557,7 +556,7 @@ cmp   r3,0x2                    ; 08029C64
 bne   @@Code08029C84            ; 08029C66
 ldr   r5,=0x03007010            ; 08029C68  Layer 1 tilemap EWRAM (0200000C)
 cmp   r4,0x7                    ; 08029C6A
-bhi   @@Code08029CA0            ; 08029C6C  use tile index for first 4 tiles of B6,1
+bhi   @@SetTile_r2              ; 08029C6C  use tile index for first 4 tiles of B6,1
 ldr   r0,[r5]                   ; 08029C6E
 lsl   r1,r2,0x1                 ; 08029C70
 mov   r3,0x80                   ; 08029C72
@@ -566,7 +565,7 @@ add   r0,r0,r3                  ; 08029C76
 @@Code08029C78:
 add   r0,r0,r1                  ; 08029C78
 ldrh  r2,[r0]                   ; 08029C7A
-b     @@Code08029CA0            ; 08029C7C  update tilemap and return
+b     @@SetTile_r2              ; 08029C7C
 .pool                           ; 08029C7E
 
 @@Code08029C84:
@@ -574,7 +573,7 @@ cmp   r4,0x5                    ; 08029C84
 bls   @@Code08029C8E            ; 08029C86
 ldr   r5,=0x03007010            ; 08029C88  Layer 1 tilemap EWRAM (0200000C)
 cmp   r4,0xA                    ; 08029C8A
-bne   @@Code08029CA0            ; 08029C8C  use tile index for indexes 0,1,2,5 of B7
+bne   @@SetTile_r2              ; 08029C8C  use tile index for indexes 0,1,2,5 of B7
 @@Code08029C8E:
 ldr   r0,=0x03007010            ; 08029C8E  Layer 1 tilemap EWRAM (0200000C)
 ldr   r1,[r0]                   ; 08029C90
@@ -585,7 +584,7 @@ add   r1,r1,r3                  ; 08029C98
 add   r1,r1,r2                  ; 08029C9A
 ldrh  r2,[r1]                   ; 08029C9C
 mov   r5,r0                     ; 08029C9E
-@@Code08029CA0:
+@@SetTile_r2:
 mov   r0,r12                    ; 08029CA0
 add   r0,0x4A                   ; 08029CA2
 ldrh  r3,[r0]                   ; 08029CA4
@@ -1219,7 +1218,7 @@ add   r1,0x42                   ; 0802A1B4
 ldrh  r2,[r1]                   ; 0802A1B6  extended object ID
 mov   r1,0x3                    ; 0802A1B8
 and   r1,r2                     ; 0802A1BA  extID-A0
-ldr   r2,=ExtObjA0_A3_CodePtrs  ; 0802A1BC
+ldr   r2,=ExtObjA0_A3_MainPtrs  ; 0802A1BC
 lsl   r1,r1,0x2                 ; 0802A1BE
 add   r1,r1,r2                  ; 0802A1C0  index with extID-A0
 ldr   r1,[r1]                   ; 0802A1C2
@@ -1322,7 +1321,7 @@ ldr   r1,[r5]                   ; 0802A280
 lsr   r2,r2,0x1                 ; 0802A282
 lsl   r2,r2,0x1                 ; 0802A284
 add   r1,r1,r2                  ; 0802A286
-strh  r3,[r1]                   ; 0802A288  update tilemap with line-guide tile
+strh  r3,[r1]                   ; 0802A288  set tile: line-guide
 mov   r1,0x2                    ; 0802A28A
 and   r0,r1                     ; 0802A28C  r0 = 2 for 9C-9D, 0 for 9A-9B
 lsl   r0,r0,0x10                ; 0802A28E
@@ -1344,7 +1343,7 @@ ldr   r2,[r5]                   ; 0802A2AC
 ldr   r1,=0xFFFE                ; 0802A2AE
 and   r1,r0                     ; 0802A2B0
 add   r2,r2,r1                  ; 0802A2B2
-strh  r3,[r2]                   ; 0802A2B4  update tilemap with other half of dot
+strh  r3,[r2]                   ; 0802A2B4  set tile: other half of dot
 pop   {r4-r5}                   ; 0802A2B6
 pop   {r0}                      ; 0802A2B8
 bx    r0                        ; 0802A2BA
@@ -2548,7 +2547,7 @@ add   r1,0x42                   ; 0802ABF0
 ldrh  r2,[r1]                   ; 0802ABF2  extended object ID
 mov   r1,0xF                    ; 0802ABF4
 and   r1,r2                     ; 0802ABF6  extID&0F
-ldr   r2,=ExtObj71_7D_CodePtrs  ; 0802ABF8
+ldr   r2,=ExtObj71_7D_MainPtrs  ; 0802ABF8
 lsl   r1,r1,0x2                 ; 0802ABFA
 add   r1,r1,r2                  ; 0802ABFC
 ldr   r1,[r1]                   ; 0802ABFE
@@ -2710,8 +2709,8 @@ mov   r7,0x80                   ; 0802AD2C
 lsl   r7,r7,0x8                 ; 0802AD2E  8000
 ldr   r1,=ExtObj67_NewTiles     ; 0802AD30
 mov   r8,r1                     ; 0802AD32  r8 = 081BDB1C
-@@Code0802AD34:
-lsr   r0,r5,0x1                 ; 0802AD34 \ loop: ?
+@@Loop0802AD34:
+lsr   r0,r5,0x1                 ; 0802AD34 \ loop: check for tiles to replace
 lsl   r4,r0,0x1                 ; 0802AD36
 mov   r1,r12                    ; 0802AD38
 add   r0,r4,r1                  ; 0802AD3A  081BDB10 + loop index
@@ -2758,7 +2757,7 @@ add   r0,r5,0x2                 ; 0802AD88  add 2 to loop index
 lsl   r0,r0,0x10                ; 0802AD8A
 lsr   r5,r0,0x10                ; 0802AD8C
 cmp   r5,0xB                    ; 0802AD8E  loop across indexes 0,2,4,6,8,A
-bls   @@Code0802AD34            ; 0802AD90 /
+bls   @@Loop0802AD34            ; 0802AD90 /
 @@Return:
 pop   {r3}                      ; 0802AD92
 mov   r8,r3                     ; 0802AD94
@@ -3059,7 +3058,7 @@ cmp   r2,0x2                    ; 0802AFBA
 beq   @@Return                  ; 0802AFBC  if relY is 2, return
 sub   r0,0x10                   ; 0802AFBE  +40
 ldrh  r2,[r0]                   ; 0802AFC0  pre-existing tile
-ldr   r0,=ExtObj30_CheckTiles   ; 0802AFC2
+ldr   r0,=ExtObj30_52_53_CheckTiles; 0802AFC2
 ldrh  r0,[r0]                   ; 0802AFC4  015A
 b     @@Code0802B022            ; 0802AFC6
 .pool                           ; 0802AFC8
@@ -3087,14 +3086,14 @@ ldrh  r2,[r0]                   ; 0802AFF0  tile ID
 mov   r1,0x0                    ; 0802AFF2
 ldsh  r0,[r0,r1]                ; 0802AFF4
 cmp   r0,0x0                    ; 0802AFF6
-bge   @@Code0802B02A            ; 0802AFF8  if signed tile > 0 (in practice if tile >= 0x8000), skip
+bge   @@SetTile_r2              ; 0802AFF8  if signed tile > 0 (in practice if tile >= 0x8000), skip
 mov   r0,r3                     ; 0802AFFA
 add   r0,0x40                   ; 0802AFFC
 ldrh  r2,[r0]                   ; 0802AFFE  pre-existing tile
 mov   r0,0xAD                   ; 0802B000
 lsl   r0,r0,0x1                 ; 0802B002  015A (left half of castle brick)
 cmp   r2,r0                     ; 0802B004
-bne   @@Code0802B02A            ; 0802B006  if tile doesn't match, use itself?
+bne   @@SetTile_r2              ; 0802B006  if tile doesn't match, use itself?
 b     @@Code0802B026            ; 0802B008  if tile matches, use 015C
 .pool                           ; 0802B00A
 
@@ -3106,7 +3105,7 @@ cmp   r2,0x2                    ; 0802B016
 beq   @@Return                  ; 0802B018  if relY is 2, return
 sub   r0,0x10                   ; 0802B01A  +40
 ldrh  r2,[r0]                   ; 0802B01C  pre-existing tile
-ldr   r0,=ExtObj30_CheckTiles   ; 0802B01E  015B (right half of castle brick)
+ldr   r0,=ExtObj30_52_53_CheckTiles; 0802B01E  015B (right half of castle brick)
 ldrh  r0,[r0,0x2]               ; 0802B020 /
 @@Code0802B022:
 cmp   r2,r0                     ; 0802B022
@@ -3114,7 +3113,7 @@ bne   @@Return                  ; 0802B024  if tile does not match, return
 @@Code0802B026:
 mov   r2,0xAE                   ; 0802B026
 lsl   r2,r2,0x1                 ; 0802B028  if tile matches, use 015C
-@@Code0802B02A:
+@@SetTile_r2:
 mov   r0,r3                     ; 0802B02A
 add   r0,0x4A                   ; 0802B02C
 ldrh  r3,[r0]                   ; 0802B02E
@@ -3163,7 +3162,7 @@ ldr   r1,=ExtObj52_Tilemap      ; 0802B080
 lsr   r0,r0,0x10                ; 0802B082
 add   r0,r0,r1                  ; 0802B084  index with relY*4 + relX-1
 ldrh  r2,[r0]                   ; 0802B086
-b     @@Code0802B0B0            ; 0802B088
+b     @@SetTile_r2              ; 0802B088
 .pool                           ; 0802B08A
 
 @@Code0802B090:
@@ -3172,7 +3171,7 @@ mov   r4,0x2                    ; 0802B090  r4 = 2 if last X
 mov   r0,r3                     ; 0802B092 \ runs if first or last X
 add   r0,0x40                   ; 0802B094
 ldrh  r2,[r0]                   ; 0802B096  pre-existing tile
-ldr   r1,=ExtObj30_CheckTiles   ; 0802B098
+ldr   r1,=ExtObj30_52_53_CheckTiles; 0802B098
 lsr   r0,r4,0x1                 ; 0802B09A
 lsl   r0,r0,0x1                 ; 0802B09C
 add   r0,r0,r1                  ; 0802B09E  index with 0 if first X, 2 if last X
@@ -3184,7 +3183,7 @@ add   r0,0x4A                   ; 0802B0A8
 ldrh  r3,[r0]                   ; 0802B0AA
 ldr   r0,=ExtObj52_Tilemap      ; 0802B0AC
 ldrh  r2,[r0,0xE]               ; 0802B0AE / if pre-existing tile matches, use tile 015C
-@@Code0802B0B0:
+@@SetTile_r2:
 ldr   r0,=0x03007010            ; 0802B0B0  Layer 1 tilemap EWRAM (0200000C)
 ldr   r1,[r0]                   ; 0802B0B2
 lsr   r0,r3,0x1                 ; 0802B0B4
@@ -3239,24 +3238,23 @@ add   r1,r3,r7                  ; 0802B116  r1 = [03007010+8282
 mov   r7,r0                     ; 0802B118
 ldrh  r1,[r1]                   ; 0802B11A  tile 2A00+n*0F
 cmp   r4,r1                     ; 0802B11C
-beq   @@Code0802B13E            ; 0802B11E
+beq   @@LandSurfaceTile         ; 0802B11E
 ldr   r1,=0x8284                ; 0802B120
 add   r0,r3,r1                  ; 0802B122
 ldrh  r0,[r0]                   ; 0802B124  tile 2A01+n*0F
 cmp   r4,r0                     ; 0802B126
-beq   @@Code0802B13E            ; 0802B128
+beq   @@LandSurfaceTile         ; 0802B128
 ldr   r1,=0x83DA                ; 0802B12A
 add   r0,r3,r1                  ; 0802B12C
 ldrh  r0,[r0]                   ; 0802B12E  tile 6A01+n*0E
 cmp   r4,r0                     ; 0802B130
-beq   @@Code0802B13E            ; 0802B132
+beq   @@LandSurfaceTile         ; 0802B132
 add   r1,0x2                    ; 0802B134
 add   r0,r3,r1                  ; 0802B136
 ldrh  r0,[r0]                   ; 0802B138  tile 6A02+n*0E
 cmp   r4,r0                     ; 0802B13A
 bne   @@Code0802B16C            ; 0802B13C
-@@Code0802B13E:
-                                ; runs if pre-existing tile is one of four land surface tiles
+@@LandSurfaceTile:              ; runs if pre-existing tile is one of four land surface tiles
 ldr   r1,=ExtObj50_A8_MainTiles ; 0802B13E
 lsr   r0,r2,0x1                 ; 0802B140  r0 = <0,8 if 50,A8> + YX
 add   r0,0x2                    ; 0802B142
@@ -3367,7 +3365,7 @@ ldr   r1,[r0]                   ; 0802B22E
 lsr   r0,r2,0x1                 ; 0802B230
 lsl   r0,r0,0x1                 ; 0802B232
 add   r1,r1,r0                  ; 0802B234
-strh  r4,[r1]                   ; 0802B236  update tilemap
+strh  r4,[r1]                   ; 0802B236  set tile
 @@Return:
 pop   {r4-r7}                   ; 0802B238
 pop   {r0}                      ; 0802B23A
@@ -3771,7 +3769,7 @@ pop   {r0}                      ; 0802B556
 bx    r0                        ; 0802B558
 .pool                           ; 0802B55A
 
-ExtObj31_36_Main:
+ExtObj31_Main:
 ; object 00.31 main
 ; width: 6, height: 7
 push  {lr}                      ; 0802B564
@@ -3783,7 +3781,7 @@ ldrh  r2,[r0]                   ; 0802B56E  relative X
 cmp   r2,0x0                    ; 0802B570
 bne   @@Code0802B578            ; 0802B572
 mov   r2,0xBB                   ; 0802B574  if relX is zero, use tile 00BB
-b     @@Code0802B584            ; 0802B576
+b     @@SetTile_r2              ; 0802B576
 @@Code0802B578:
 mov   r0,0x1                    ; 0802B578
 ldr   r1,=ExtObj31_Tiles        ; 0802B57A
@@ -3791,7 +3789,7 @@ and   r2,r0                     ; 0802B57C  X parity
 lsl   r0,r2,0x1                 ; 0802B57E
 add   r0,r0,r1                  ; 0802B580
 ldrh  r2,[r0]                   ; 0802B582  tile ID: 00BD/00BC
-@@Code0802B584:
+@@SetTile_r2:
 ldr   r0,=0x03007010            ; 0802B584  Layer 1 tilemap EWRAM (0200000C)
 ldr   r1,[r0]                   ; 0802B586
 lsr   r0,r3,0x1                 ; 0802B588
@@ -3818,7 +3816,7 @@ bne   @@Code0802B5D4            ; 0802B5AE
                                 ;          \ runs if first X
 sub   r0,0xC                    ; 0802B5B0  +40
 ldrh  r2,[r0]                   ; 0802B5B2  pre-existing tile
-ldr   r0,=ExtObj30_CheckTiles   ; 0802B5B4
+ldr   r0,=ExtObj30_52_53_CheckTiles; 0802B5B4
 ldrh  r0,[r0]                   ; 0802B5B6  015A
 cmp   r2,r0                     ; 0802B5B8
 beq   @@Return                  ; 0802B5BA  if pre-existing tile is 015A, return
@@ -3842,7 +3840,7 @@ bne   @@Code0802B60C            ; 0802B5E2
 mov   r0,r3                     ; 0802B5E4 \ runs if last X
 add   r0,0x40                   ; 0802B5E6
 ldrh  r2,[r0]                   ; 0802B5E8  pre-existing tile
-ldr   r0,=ExtObj30_CheckTiles   ; 0802B5EA
+ldr   r0,=ExtObj30_52_53_CheckTiles; 0802B5EA
 ldrh  r0,[r0,0x2]               ; 0802B5EC  015B
 cmp   r2,r0                     ; 0802B5EE
 beq   @@Return                  ; 0802B5F0  if pre-existing tile is 015B, return
@@ -3854,8 +3852,7 @@ lsr   r0,r4,0x1                 ; 0802B5FA
 b     @@Code0802B628            ; 0802B5FC /
 .pool                           ; 0802B5FE
 
-@@Code0802B60C:
-                                ;          \ runs if middle X
+@@Code0802B60C:                 ;          \ runs if middle X
 sub   r1,0x1                    ; 0802B60C  relX-1
 lsl   r1,r1,0x11                ; 0802B60E
 mov   r0,r3                     ; 0802B610
@@ -3943,8 +3940,8 @@ b     @@Code0802B6B8            ; 0802B6A4 /
 .pool                           ; 0802B6A6
 
 @@Code0802B6AC:
-mov   r2,0x0                    ; 0802B6AC  runs if middle X: write tile 0000
-b     @@Code0802B6C4            ; 0802B6AE
+mov   r2,0x0                    ; 0802B6AC  runs if middle X: set tile 0000
+b     @@SetTile_r2              ; 0802B6AE
 @@Code0802B6B0:
 mov   r0,r3                     ; 0802B6B0 \ runs if first X
 add   r0,0x50                   ; 0802B6B2
@@ -3957,7 +3954,7 @@ lsr   r2,r0,0x10                ; 0802B6BC
 add   r1,r2,r1                  ; 0802B6BE  add relY, twice
 lsl   r1,r1,0x10                ; 0802B6C0
 lsr   r2,r1,0x10                ; 0802B6C2
-@@Code0802B6C4:
+@@SetTile_r2:
 mov   r0,r3                     ; 0802B6C4
 add   r0,0x4A                   ; 0802B6C6
 ldrh  r0,[r0]                   ; 0802B6C8
@@ -4073,7 +4070,7 @@ lsl   r3,r3,0x8                 ; 0802B79A  8000
 add   r0,r0,r3                  ; 0802B79C
 add   r0,r0,r1                  ; 0802B79E
 ldrh  r3,[r0]                   ; 0802B7A0  tile ID
-b     @@Code0802B7B6            ; 0802B7A2
+b     @@SetTile_r3              ; 0802B7A2
 .pool                           ; 0802B7A4
 
 @@Code0802B7AC:
@@ -4084,7 +4081,7 @@ lsl   r0,r0,0x10                ; 0802B7B0 /
 @@Code0802B7B2:
 lsr   r3,r0,0x10                ; 0802B7B2
 ldr   r2,=0x03007010            ; 0802B7B4  Layer 1 tilemap EWRAM (0200000C)
-@@Code0802B7B6:
+@@SetTile_r3:
 mov   r0,r12                    ; 0802B7B6
 add   r0,0x4A                   ; 0802B7B8
 ldrh  r4,[r0]                   ; 0802B7BA
@@ -4160,7 +4157,7 @@ lsl   r0,r0,0x1                 ; 0802B83E
 add   r1,r1,r0                  ; 0802B840
 ldr   r0,=Obj_CoinTiles         ; 0802B842
 ldrh  r0,[r0,0x4]               ; 0802B844  red coin tile
-strh  r0,[r1]                   ; 0802B846  update tilemap
+strh  r0,[r1]                   ; 0802B846  set tile
 @@Return:
 pop   {r4}                      ; 0802B848
 pop   {r0}                      ; 0802B84A

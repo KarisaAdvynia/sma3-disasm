@@ -3283,7 +3283,8 @@ ldr   r2,=0x4A47                ; 08002AB4
 add   r2,r2,r6                  ; 08002AB6
 mov   r8,r2                     ; 08002AB8  r8 = 03006C47
 ldr   r0,=0xFFFE                ; 08002ABA
-mov   r7,r0                     ; 08002ABC
+mov   r7,r0                     ; 08002ABC  r7 = FFFE
+
 @@MainLoop:
 bl    Sub08002300               ; 08002ABE  process buttons pressed
 ldr   r1,=0x4903                ; 08002AC2
@@ -3291,13 +3292,13 @@ add   r0,r6,r1                  ; 08002AC4  r0 = 03006B03
 ldrb  r0,[r0]                   ; 08002AC6
 cmp   r0,0x0                    ; 08002AC8
 bne   @@Code08002ADA            ; 08002ACA
-mov   r2,r9                     ; 08002ACC
+mov   r2,r9                     ; 08002ACC  (r9: 030069BE)
 ldrh  r1,[r2]                   ; 08002ACE  button flags, currently pressed
 ldr   r2,=0x03FF                ; 08002AD0
 mov   r0,r2                     ; 08002AD2
 and   r0,r1                     ; 08002AD4
 cmp   r0,0xF                    ; 08002AD6  000F: A+B+Start+Select
-beq   @@Code08002BCC            ; 08002AD8  soft reset
+beq   @@SoftReset               ; 08002AD8
 @@Code08002ADA:
 mov   r4,r6                     ; 08002ADA  r4 = 03002200
 ldr   r1,=0x4B64                ; 08002ADC
@@ -3305,9 +3306,10 @@ add   r0,r4,r1                  ; 08002ADE  r0 = 03006D64
 ldrb  r0,[r0]                   ; 08002AE0  game mode: YI/Mario Bros./GBA link/game init
 cmp   r0,0x3                    ; 08002AE2
 bne   @@Code08002B0C            ; 08002AE4
-                                ;           runs if game mode 03: game init
-bl    Sub080FA9D8               ; 08002AE6
-b     @@Code08002B74            ; 08002AEA
+
+                                ;          \ runs if game mode 03: game init
+bl    GameMode03_GameInit       ; 08002AE6
+b     @@AfterGameMode           ; 08002AEA /
 .pool                           ; 08002AEC
 
 @@Code08002B0C:
@@ -3323,19 +3325,19 @@ cmp   r0,0x0                    ; 08002B1C
 bne   @@Code08002B32            ; 08002B1E
 ldr   r1,=YIGameStatePtrs       ; 08002B20
 add   r2,0x3D                   ; 08002B22
-add   r0,r4,r2                  ; 08002B24  r0 = 03006B05 (game state)
-ldrb  r0,[r0]                   ; 08002B26
+add   r0,r4,r2                  ; 08002B24  r0 = 03006B05
+ldrb  r0,[r0]                   ; 08002B26  game state
 lsl   r0,r0,0x2                 ; 08002B28
-add   r0,r0,r1                  ; 08002B2A
-ldr   r0,[r0]                   ; 08002B2C  load game state code pointer from table at 08164044
+add   r0,r0,r1                  ; 08002B2A  index with game state
+ldr   r0,[r0]                   ; 08002B2C  r0 = game state code pointer
 bl    Sub_bx_r0                 ; 08002B2E
 @@Code08002B32:
 ldr   r0,=0x03007270            ; 08002B32
 ldr   r0,[r0,0x24]              ; 08002B34
 cmp   r0,0x0                    ; 08002B36
-beq   @@Code08002B74            ; 08002B38
+beq   @@AfterGameMode           ; 08002B38
 bl    Sub0810A528               ; 08002B3A
-b     @@Code08002B74            ; 08002B3E /
+b     @@AfterGameMode           ; 08002B3E /
 .pool                           ; 08002B40
 
 @@Code08002B4C:
@@ -3348,16 +3350,17 @@ add   r0,r6,r1                  ; 08002B56  r0 = 03006AC8
 mov   r2,0x0                    ; 08002B58
 ldsh  r0,[r0,r2]                ; 08002B5A
 cmp   r0,0x0                    ; 08002B5C
-bne   @@Code08002B74            ; 08002B5E
+bne   @@AfterGameMode           ; 08002B5E
 bl    Sub08002750               ; 08002B60
-b     @@Code08002B74            ; 08002B64 /
+b     @@AfterGameMode           ; 08002B64 /
 .pool                           ; 08002B66
 
 @@Code08002B6C:
 cmp   r0,0x2                    ; 08002B6C
-bne   @@Code08002B74            ; 08002B6E
-bl    Sub08119F94               ; 08002B70  call if game mode 02: GBA link
-@@Code08002B74:
+bne   @@AfterGameMode           ; 08002B6E
+bl    GBALink_Main              ; 08002B70  call if game mode 02: GBA link
+
+@@AfterGameMode:
 ldr   r4,=0x03002200            ; 08002B74
 ldr   r1,=0x48F6                ; 08002B76
 add   r0,r4,r1                  ; 08002B78  r0 = 03006AF6
@@ -3367,28 +3370,28 @@ bhi   @@Code08002B84            ; 08002B7E
 bl    Sub0800265C               ; 08002B80
 @@Code08002B84:
 mov   r2,0x92                   ; 08002B84
-lsl   r2,r2,0x7                 ; 08002B86
-add   r1,r4,r2                  ; 08002B88
+lsl   r2,r2,0x7                 ; 08002B86  4900
+add   r1,r4,r2                  ; 08002B88  03006B00
 mov   r0,0x0                    ; 08002B8A
 strb  r0,[r1]                   ; 08002B8C
-ldrh  r0,[r5]                   ; 08002B8E
-and   r0,r7                     ; 08002B90
+ldrh  r0,[r5]                   ; 08002B8E \ (r5: 030069BC)
+and   r0,r7                     ; 08002B90 | (r7: FFFE)
 ldrh  r1,[r5]                   ; 08002B92
-strh  r0,[r5]                   ; 08002B94
+strh  r0,[r5]                   ; 08002B94 / clear bit 0 of 030069BC
 ldr   r0,=0x47BC                ; 08002B96
-add   r2,r4,r0                  ; 08002B98
+add   r2,r4,r0                  ; 08002B98  r2 = 030069BC
 mov   r3,0x1                    ; 08002B9A
-@@Code08002B9C:
-ldrh  r1,[r2]                   ; 08002B9C
-mov   r0,r3                     ; 08002B9E    
-and   r0,r1                     ; 08002BA0
-cmp   r0,0x0                    ; 08002BA2
-beq   @@Code08002B9C            ; 08002BA4
-ldrh  r0,[r5]                   ; 08002BA6
-and   r0,r7                     ; 08002BA8
+@@Code08002B9C:                 ;          \
+ldrh  r1,[r2]                   ; 08002B9C |
+mov   r0,r3                     ; 08002B9E |
+and   r0,r1                     ; 08002BA0 | test bit 0 of 030069BC  
+cmp   r0,0x0                    ; 08002BA2 | and loop infinitely as long as it's clear 
+beq   @@Code08002B9C            ; 08002BA4 /
+ldrh  r0,[r5]                   ; 08002BA6 \
+and   r0,r7                     ; 08002BA8 | clear bit 0 of 030069BC, again
 ldrh  r1,[r5]                   ; 08002BAA
-strh  r0,[r5]                   ; 08002BAC
-mov   r1,r8                     ; 08002BAE
+strh  r0,[r5]                   ; 08002BAC /
+mov   r1,r8                     ; 08002BAE  (r8: 03006C47)
 ldrb  r0,[r1]                   ; 08002BB0
 cmp   r0,0x0                    ; 08002BB2
 beq   @@Code08002BB8            ; 08002BB4
@@ -3398,7 +3401,7 @@ bl    Sub0812C230               ; 08002BB8
 b     @@MainLoop                ; 08002BBC  loop, don't return
 .pool                           ; 08002BBE
 
-@@Code08002BCC:
+@@SoftReset:
 mov   r0,0xFF                   ; 08002BCC
 bl    SoftResetSinglePlayer     ; 08002BCE  soft reset
 
@@ -3411,7 +3414,7 @@ pop   {r0}                      ; 08002BDA
 bx    r0                        ; 08002BDC
 .pool                           ; 08002BDE
 
-Sub08002BE0:
+DeathRestartMenu_Shared:
 ; subroutine: Shared code between game states 24/28 (death-restart menu inits)
 push  {r4-r7,lr}                ; 08002BE0
 mov   r7,r9                     ; 08002BE2
@@ -3621,7 +3624,7 @@ add   r0,0x2                    ; 08002E02
 add   r5,r4,r0                  ; 08002E04
 ldrh  r1,[r5]                   ; 08002E06
 mov   r8,r1                     ; 08002E08
-bl    Sub08002BE0               ; 08002E0A
+bl    DeathRestartMenu_Shared   ; 08002E0A
 ldr   r0,=0x03007240            ; 08002E0E  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 08002E10
 mov   r1,0xE0                   ; 08002E12
@@ -3665,7 +3668,7 @@ add   r0,0x2                    ; 08002E66
 add   r5,r4,r0                  ; 08002E68
 ldrh  r1,[r5]                   ; 08002E6A
 mov   r8,r1                     ; 08002E6C
-bl    Sub08002BE0               ; 08002E6E
+bl    DeathRestartMenu_Shared   ; 08002E6E
 ldr   r0,=0x03007240            ; 08002E72  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 08002E74
 mov   r1,0xE0                   ; 08002E76

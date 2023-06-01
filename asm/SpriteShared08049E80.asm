@@ -2943,16 +2943,15 @@ blt   @@Code0804B738            ; 0804B71E
 mov   r0,0x7A                   ; 0804B720  7A: final red coin
 mov   r1,r3                     ; 0804B722
 bl    PlayYISound               ; 0804B724
-b     @@Code0804B740            ; 0804B728 /
+b     @@Return                  ; 0804B728 /
 .pool                           ; 0804B72A
 
-@@Code0804B738:
-                                ;          \ runs if red coins < 20 (decimal)
+@@Code0804B738:                 ;          \ runs if red coins < 20 (decimal)
 mov   r0,0x79                   ; 0804B738  79: red coin
 mov   r1,r3                     ; 0804B73A
-bl    PlayYISound               ; 0804B73C
-@@Code0804B740:
-                                ;          /
+bl    PlayYISound               ; 0804B73C /
+
+@@Return:
 pop   {r4}                      ; 0804B740
 pop   {r0}                      ; 0804B742
 bx    r0                        ; 0804B744
@@ -3025,7 +3024,7 @@ add   r0,r0,r1                  ; 0804B7C8
 ldrh  r0,[r0]                   ; 0804B7CA
 cmp   r0,0x0                    ; 0804B7CC
 beq   @@Code0804B7D2            ; 0804B7CE
-b     @@Code0804B96E            ; 0804B7D0
+b     @@Return                  ; 0804B7D0
 @@Code0804B7D2:
 mov   r0,0x40                   ; 0804B7D2
 str   r0,[r4,0x14]              ; 0804B7D4
@@ -3041,17 +3040,17 @@ cmp   r2,r1                     ; 0804B7E8
 bne   @@Code0804B7F8            ; 0804B7EA
 mov   r0,r4                     ; 0804B7EC
 bl    Sub08051A20               ; 0804B7EE
-b     @@Code0804B96E            ; 0804B7F2
+b     @@Return                  ; 0804B7F2
 .pool                           ; 0804B7F4
 
 @@Code0804B7F8:
 mov   r0,0x40                   ; 0804B7F8
 str   r0,[r4,0x14]              ; 0804B7FA
 mov   r0,0xD2                   ; 0804B7FC
-lsl   r0,r0,0x1                 ; 0804B7FE
+lsl   r0,r0,0x1                 ; 0804B7FE  1A4
 cmp   r2,r0                     ; 0804B800
 bls   @@Code0804B8C8            ; 0804B802
-add   r0,0x5                    ; 0804B804
+add   r0,0x5                    ; 0804B804  1A9
 cmp   r2,r0                     ; 0804B806
 bhi   @@Code0804B8C8            ; 0804B808
 mov   r0,r4                     ; 0804B80A
@@ -3145,12 +3144,12 @@ b     @@Code0804B95C            ; 0804B8BC
 @@Code0804B8C8:
 lsl   r0,r3,0x10                ; 0804B8C8
 lsr   r1,r0,0x10                ; 0804B8CA
-ldr   r0,=0x0115                ; 0804B8CC
+ldr   r0,=0x0115                ; 0804B8CC  115: gravity-affected coin, can be red
 cmp   r1,r0                     ; 0804B8CE
 bne   @@Code0804B8E0            ; 0804B8D0
 mov   r0,r4                     ; 0804B8D2
 bl    Sub0804B748               ; 0804B8D4
-b     @@Code0804B96E            ; 0804B8D8
+b     @@Return                  ; 0804B8D8
 .pool                           ; 0804B8DA
 
 @@Code0804B8E0:
@@ -3213,10 +3212,10 @@ lsl   r2,r2,0x1                 ; 0804B960
 add   r1,r0,r2                  ; 0804B962
 ldrh  r3,[r1]                   ; 0804B964
 cmp   r5,r3                     ; 0804B966
-bne   @@Code0804B96E            ; 0804B968
+bne   @@Return                  ; 0804B968
 mov   r0,0x0                    ; 0804B96A
 strh  r0,[r1]                   ; 0804B96C
-@@Code0804B96E:
+@@Return:
 pop   {r4-r5}                   ; 0804B96E
 pop   {r0}                      ; 0804B970
 bx    r0                        ; 0804B972

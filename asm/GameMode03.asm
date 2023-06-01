@@ -2867,7 +2867,7 @@ pop   {r0}                      ; 080FA9C6
 bx    r0                        ; 080FA9C8
 .pool                           ; 080FA9CA
 
-Sub080FA9D8:
+GameMode03_GameInit:
 ; Game mode 03: Game init/soft reset
 push  {lr}                      ; 080FA9D8
 ldr   r1,=CodePtrs08197DA8      ; 080FA9DA
