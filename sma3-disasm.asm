@@ -2,12 +2,14 @@
 .create "sma3-disasm.gba", 0x08000000
 
 .relativeinclude on
+.table "sma3char.tbl"
 
 .include "asm/CodeStart.asm"
 .include "asm/GameInitMain.asm"
 .include "asm/SMA3Title.asm"
 .include "asm/WorldLevelSelect.asm"
 .include "asm/LevelCode.asm"
+.include "asm/LevelPaletteAnim.asm"
 .include "asm/StoryIntroToadies.asm"
 .include "asm/Credits.asm"
 .include "asm/080352BC.asm"
@@ -18,6 +20,7 @@
 .include "asm/SpriteShared080DC518.asm"
 .include "asm/Sprites/BabyMario.asm"
 .include "asm/080E2278.asm"
+.include "asm/LevelGraphicsAnim.asm"
 .include "asm/LevelVictory.asm"
 .include "asm/InventoryItems.asm"
 .include "asm/InventoryScreen.asm"

@@ -8729,7 +8729,7 @@ ldr   r0,=0x0300702C            ; 08106E0E  Sprite RAM structs (03002460)
 ldr   r0,[r0]                   ; 08106E10
 ldr   r1,=0x1130                ; 08106E12
 add   r6,r0,r1                  ; 08106E14  [0300702C]+1130 (03003590): ending message struct?
-ldr   r2,=Data082F5D11          ; 08106E16  Ending message pointer
+ldr   r2,=EndingText            ; 08106E16  Ending message pointer
 mov   r0,r6                     ; 08106E18
 mov   r1,r5                     ; 08106E1A
 bl    Sub081071AC               ; 08106E1C  Init ending message struct
@@ -9197,7 +9197,7 @@ ldr   r2,[sp,0x20]              ; 08107240
 lsl   r0,r2,0x1                 ; 08107242
 add   r0,r0,r2                  ; 08107244
 lsl   r0,r0,0x2                 ; 08107246
-ldr   r2,=Data082F63CC          ; 08107248
+ldr   r2,=Graphics_Font_main_1bpp; 08107248
 add   r5,r0,r2                  ; 0810724A
 add   r1,r1,r7                  ; 0810724C
 mov   r8,r1                     ; 0810724E
@@ -9270,7 +9270,7 @@ mov   r0,0xA                    ; 081072BC
 b     @@Code081072DC            ; 081072BE / return command ID
 @@Code081072C0:
                                 ;          \ runs if not FF: load character then loop
-ldr   r0,=Data082F62CC          ; 081072C0  character width table
+ldr   r0,=Text_CharWidths       ; 081072C0  character width table
 add   r0,r1,r0                  ; 081072C2
 ldrb  r4,[r0]                   ; 081072C4  character width
 ldrh  r3,[r5,0x8]               ; 081072C6

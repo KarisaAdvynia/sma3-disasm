@@ -4810,7 +4810,7 @@ ldr   r0,=0x0600009E            ; 0800387A
 add   r4,r4,r0                  ; 0800387C
 mov   r1,0x0                    ; 0800387E
 add   r6,sp,0x4                 ; 08003880
-ldr   r3,=Data083077B0          ; 08003882
+ldr   r3,=BuildDate             ; 08003882
 ldr   r0,=0xF280                ; 08003884
 mov   r2,r0                     ; 08003886
 @@Code08003888:

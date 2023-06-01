@@ -379,7 +379,7 @@ push  {r5-r7}                   ; 080FCC40
 mov   r9,r0                     ; 080FCC42  r9 = starting X position
 mov   r0,0xFF                   ; 080FCC44
 and   r2,r0                     ; 080FCC46
-ldr   r0,=Data082F63CC          ; 080FCC48  text graphics
+ldr   r0,=Graphics_Font_main_1bpp; 080FCC48  text graphics
 mov   r8,r0                     ; 080FCC4A
 lsl   r0,r2,0x1                 ; 080FCC4C \
 add   r0,r0,r2                  ; 080FCC4E | r0 = character ID *0C
@@ -539,7 +539,7 @@ mov   r0,r6                     ; 080FCD64  X position
 mov   r1,r7                     ; 080FCD66  Y position
 mov   r2,r5                     ; 080FCD68  character ID
 bl    Sub080FCC38               ; 080FCD6A  subroutine: Display one level name character
-ldr   r0,=Data082F62CC          ; 080FCD6E  character width table
+ldr   r0,=Text_CharWidths       ; 080FCD6E  character width table
 add   r0,r5,r0                  ; 080FCD70  index with character ID
 ldrb  r0,[r0]                   ; 080FCD72
 add   r6,r6,r0                  ; 080FCD74  increase X position by character width
@@ -563,7 +563,7 @@ bx    r0                        ; 080FCD90
 
 Sub080FCD98:
 push  {lr}                      ; 080FCD98
-ldr   r2,=DataPtrs082F9888      ; 080FCD9A  pointers to level name data
+ldr   r2,=LevelNamePtrs         ; 080FCD9A  pointers to level name data
 ldr   r1,=0x03002200            ; 080FCD9C
 ldr   r3,=0x4088                ; 080FCD9E
 add   r1,r1,r3                  ; 080FCDA0  r1 = 03006288

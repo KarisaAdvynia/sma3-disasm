@@ -45,7 +45,7 @@ lsl   r0,r0,0x2                 ; 080E816E
 str   r0,[sp,0xC]               ; 080E8170
 mov   r2,0xC                    ; 080E8172
 @@Code080E8174:
-ldr   r0,=Data082F63CC          ; 080E8174
+ldr   r0,=Graphics_Font_main_1bpp; 080E8174
 ldr   r1,[sp,0xC]               ; 080E8176
 add   r0,r1,r0                  ; 080E8178
 ldrb  r0,[r0]                   ; 080E817A
@@ -113,7 +113,7 @@ ldr   r0,[r1,0x4]               ; 080E81EE
 add   r0,0x1                    ; 080E81F0
 str   r0,[r1,0x4]               ; 080E81F2
 ldrb  r2,[r1,0xE]               ; 080E81F4
-ldr   r0,=Data082F62CC          ; 080E81F6
+ldr   r0,=Text_CharWidths       ; 080E81F6
 add   r0,r2,r0                  ; 080E81F8
 ldrb  r4,[r0]                   ; 080E81FA
 ldr   r0,[sp,0x4]               ; 080E81FC
@@ -160,7 +160,7 @@ ldrb  r4,[r0,0xE]               ; 080E8250
 lsl   r0,r4,0x1                 ; 080E8252
 add   r0,r0,r4                  ; 080E8254
 lsl   r1,r0,0x2                 ; 080E8256
-ldr   r0,=Data082F63CC          ; 080E8258
+ldr   r0,=Graphics_Font_main_1bpp; 080E8258
 add   r1,r1,r0                  ; 080E825A
 mov   r9,r1                     ; 080E825C
 mov   r0,r8                     ; 080E825E
@@ -263,7 +263,7 @@ ldr   r0,[r1,0x4]               ; 080E831C
 add   r0,0x1                    ; 080E831E
 str   r0,[r1,0x4]               ; 080E8320
 ldrb  r1,[r1,0xE]               ; 080E8322
-ldr   r0,=Data082F62CC          ; 080E8324
+ldr   r0,=Text_CharWidths       ; 080E8324
 add   r0,r1,r0                  ; 080E8326
 ldrb  r4,[r0]                   ; 080E8328
 add   r1,r4,r6                  ; 080E832A
@@ -400,7 +400,7 @@ str   r0,[sp]                   ; 080E83F4
 ldr   r7,=0x03007248            ; 080E83F6  pointer to message buffer
 @@Code080E83F8:
 mov   r4,r10                    ; 080E83F8
-ldr   r0,=Data082F63CC          ; 080E83FA
+ldr   r0,=Graphics_Font_main_1bpp; 080E83FA
 add   r0,r9                     ; 080E83FC
 ldrb  r6,[r0]                   ; 080E83FE
 mov   r0,r9                     ; 080E8400
@@ -523,7 +523,7 @@ mov   r2,r8                     ; 080E84E8
 ldrh  r1,[r2,0x2C]              ; 080E84EA
 mov   r0,0xFF                   ; 080E84EC
 and   r0,r1                     ; 080E84EE
-ldr   r1,=Data082F62CC          ; 080E84F0
+ldr   r1,=Text_CharWidths       ; 080E84F0
 add   r0,r0,r1                  ; 080E84F2
 ldrb  r6,[r0]                   ; 080E84F4
 mov   r1,r10                    ; 080E84F6
@@ -746,7 +746,7 @@ mov   r0,r9                     ; 080E867A
 add   r0,r8                     ; 080E867C
 lsl   r0,r0,0x10                ; 080E867E
 lsr   r0,r0,0x10                ; 080E8680
-ldr   r1,=Data082F6FCC          ; 080E8682
+ldr   r1,=Graphics_MessageImages_1bpp; 080E8682
 add   r0,r0,r1                  ; 080E8684
 ldrb  r5,[r0]                   ; 080E8686
 mov   r0,0x80                   ; 080E8688
@@ -2347,7 +2347,7 @@ mov   r6,r8                     ; 080E92E8
 push  {r6-r7}                   ; 080E92EA
 mov   r7,r0                     ; 080E92EC  r7 = 030023CC
 ldrh  r0,[r7,0xC]               ; 080E92EE  r0 = message ID [030023D8]
-ldr   r1,=DataPtrs082F5E18      ; 080E92F0
+ldr   r1,=StandardMessagePtrs   ; 080E92F0
 lsl   r0,r0,0x2                 ; 080E92F2  use as table index
 add   r0,r0,r1                  ; 080E92F4
 ldr   r0,[r0]                   ; 080E92F6  load pointer to message data
@@ -2594,7 +2594,7 @@ mov   r10,r0                    ; 080E94FA
 ldr   r2,[sp]                   ; 080E94FC
 mov   r3,r12                    ; 080E94FE
 lsl   r0,r3,0x1                 ; 080E9500
-ldr   r4,=Data082F8ECC          ; 080E9502
+ldr   r4,=Tilemaps_StandardMessage; 080E9502
 add   r5,r0,r4                  ; 080E9504
 @@Code080E9506:
 lsr   r3,r2,0x10                ; 080E9506
@@ -2684,7 +2684,7 @@ lsl   r6,r0,0x6                 ; 080E95C0
 mov   r4,r10                    ; 080E95C2
 mov   r1,r12                    ; 080E95C4
 lsl   r0,r1,0x1                 ; 080E95C6
-ldr   r2,=Data082F8ECC          ; 080E95C8
+ldr   r2,=Tilemaps_StandardMessage; 080E95C8
 add   r5,r0,r2                  ; 080E95CA
 @@Code080E95CC:
 lsr   r3,r4,0x10                ; 080E95CC

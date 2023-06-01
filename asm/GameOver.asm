@@ -10816,7 +10816,7 @@ ldr   r2,=0x0500001C            ; 0810C9D6
 mov   r0,sp                     ; 0810C9D8
 mov   r1,r4                     ; 0810C9DA
 bl    swi_MemoryCopy4or2        ; 0810C9DC  Memory copy/fill, 4- or 2-byte blocks
-ldr   r0,=DataPtrs082F5E18      ; 0810C9E0  pointers to standard messages
+ldr   r0,=StandardMessagePtrs   ; 0810C9E0  pointers to standard messages
 mov   r1,0x90                   ; 0810C9E2
 lsl   r1,r1,0x3                 ; 0810C9E4  480 (120*4) (120: "Would you like to continue?")
 add   r0,r0,r1                  ; 0810C9E6
@@ -11509,7 +11509,7 @@ str   r0,[sp]                   ; 0810D0C0
 mov   r7,r3                     ; 0810D0C2
 mov   r0,0xFF                   ; 0810D0C4
 and   r2,r0                     ; 0810D0C6
-ldr   r0,=Data082F63CC          ; 0810D0C8
+ldr   r0,=Graphics_Font_main_1bpp; 0810D0C8
 mov   r9,r0                     ; 0810D0CA
 lsl   r0,r2,0x1                 ; 0810D0CC
 add   r0,r0,r2                  ; 0810D0CE

@@ -3860,7 +3860,7 @@ mov   r6,r9                     ; 080FF08E
 mov   r5,r8                     ; 080FF090
 push  {r5-r6}                   ; 080FF092
 add   sp,-0x8                   ; 080FF094
-ldr   r0,=DataPtrs081995E0      ; 080FF096
+ldr   r0,=FileSelectTextPtrs    ; 080FF096
 ldr   r0,[r0]                   ; 080FF098
 mov   r1,0xC                    ; 080FF09A
 mov   r2,0x8                    ; 080FF09C
@@ -5376,7 +5376,7 @@ mov   r7,r0                     ; 080FFDB4
 mov   r6,r3                     ; 080FFDB6
 mov   r0,0xFF                   ; 080FFDB8
 and   r2,r0                     ; 080FFDBA
-ldr   r0,=Data082F63CC          ; 080FFDBC
+ldr   r0,=Graphics_Font_main_1bpp; 080FFDBC
 mov   r10,r0                    ; 080FFDBE
 lsl   r0,r2,0x1                 ; 080FFDC0
 add   r0,r0,r2                  ; 080FFDC2
@@ -5571,7 +5571,7 @@ mov   r0,r5                     ; 080FFF2C  r0 = X
 mov   r1,r6                     ; 080FFF2E  r1 = Y
 mov   r3,r7                     ; 080FFF30
 bl    Sub080FFDA8               ; 080FFF32
-ldr   r1,=Data082F62CC          ; 080FFF36  text width table
+ldr   r1,=Text_CharWidths       ; 080FFF36  text width table
 ldrb  r0,[r4]                   ; 080FFF38
 add   r0,r0,r1                  ; 080FFF3A
 ldrb  r0,[r0]                   ; 080FFF3C
@@ -6805,7 +6805,7 @@ bx    r0                        ; 08100A12
 .pool                           ; 08100A14
 
 Sub08100A20:
-ldr   r0,=DataPtrs081995E0      ; 08100A20
+ldr   r0,=FileSelectTextPtrs    ; 08100A20
 ldr   r0,[r0]                   ; 08100A22
 bx    lr                        ; 08100A24
 .pool                           ; 08100A26
@@ -6831,7 +6831,7 @@ cmp   r0,0x0                    ; 08100A48
 beq   @@Code08100A4E            ; 08100A4A
 add   r2,0x1                    ; 08100A4C
 @@Code08100A4E:
-ldr   r0,=DataPtrs081995E0      ; 08100A4E
+ldr   r0,=FileSelectTextPtrs    ; 08100A4E
 ldrb  r1,[r2]                   ; 08100A50
 lsl   r1,r1,0x2                 ; 08100A52
 add   r1,r1,r0                  ; 08100A54
@@ -6853,7 +6853,7 @@ cmp   r2,0x0                    ; 08100A74
 bne   @@Code08100A7A            ; 08100A76
 mov   r1,0x7                    ; 08100A78
 @@Code08100A7A:
-ldr   r0,=DataPtrs081995E0      ; 08100A7A
+ldr   r0,=FileSelectTextPtrs    ; 08100A7A
 lsl   r1,r1,0x2                 ; 08100A7C
 add   r1,r1,r0                  ; 08100A7E
 ldr   r0,[r1]                   ; 08100A80
@@ -7422,7 +7422,7 @@ bx    r0                        ; 08100F4C
 Sub08100F6C:
 push  {lr}                      ; 08100F6C
 mov   r1,r0                     ; 08100F6E
-ldr   r2,=DataPtrs081995E0      ; 08100F70
+ldr   r2,=FileSelectTextPtrs    ; 08100F70
 add   r2,0x10                   ; 08100F72
 ldrb  r0,[r1]                   ; 08100F74
 add   r1,0x1                    ; 08100F76
@@ -7447,7 +7447,7 @@ bx    r1                        ; 08100F98
 .pool                           ; 08100F9A
 
 Sub08100F9C:
-ldr   r0,=DataPtrs081995E0      ; 08100F9C
+ldr   r0,=FileSelectTextPtrs    ; 08100F9C
 ldr   r0,[r0,0x20]              ; 08100F9E
 bx    lr                        ; 08100FA0
 .pool                           ; 08100FA2
@@ -7951,7 +7951,7 @@ add   r1,r4,r0                  ; 081013FA
 mov   r0,0xA8                   ; 081013FC
 lsl   r0,r0,0x1                 ; 081013FE
 strh  r0,[r1]                   ; 08101400
-ldr   r0,=DataPtrs081995E0      ; 08101402
+ldr   r0,=FileSelectTextPtrs    ; 08101402
 ldr   r0,[r0,0xC]               ; 08101404
 str   r0,[r4]                   ; 08101406
 mov   r0,r4                     ; 08101408
@@ -8648,7 +8648,7 @@ bx    r0                        ; 08101A70
 Sub08101A80:
 push  {r4,lr}                   ; 08101A80
 mov   r4,r1                     ; 08101A82
-ldr   r1,=DataPtrs081995E0      ; 08101A84
+ldr   r1,=FileSelectTextPtrs    ; 08101A84
 ldr   r2,=0x0913                ; 08101A86
 add   r0,r4,r2                  ; 08101A88
 ldrb  r0,[r0]                   ; 08101A8A

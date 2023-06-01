@@ -369,7 +369,7 @@ mov   r3,0x0                    ; 08033D0A
 ldr   r0,[sp,0x4]               ; 08033D0C
 cmp   r0,0x0                    ; 08033D0E
 beq   @@Code08033D1C            ; 08033D10
-ldr   r0,=Data082F63CC          ; 08033D12
+ldr   r0,=Graphics_Font_main_1bpp; 08033D12
 add   r0,r6,r0                  ; 08033D14
 b     @@Code08033D24            ; 08033D16
 .pool                           ; 08033D18
@@ -501,7 +501,7 @@ ldrh  r2,[r5]                   ; 08033E06
 ldrh  r0,[r4]                   ; 08033E08
 cmp   r0,0x0                    ; 08033E0A
 beq   @@Code08033E20            ; 08033E0C
-ldr   r1,=Data082F62CC          ; 08033E0E
+ldr   r1,=Text_CharWidths       ; 08033E0E
 ldr   r0,[r6]                   ; 08033E10
 ldrb  r0,[r0]                   ; 08033E12
 b     @@Code08033E28            ; 08033E14
@@ -1608,7 +1608,7 @@ lsl   r7,r7,0x13                ; 0803481A
 add   r1,r1,r7                  ; 0803481C
 ldr   r2,=0x05001000            ; 0803481E
 bl    swi_MemoryCopy4or2        ; 08034820  Memory copy/fill, 4- or 2-byte blocks
-ldr   r0,=Data0816D3F6          ; 08034824
+ldr   r0,=CreditsText24         ; 08034824
 str   r0,[r5]                   ; 08034826
 mov   r2,0x95                   ; 08034828
 lsl   r2,r2,0x4                 ; 0803482A
@@ -2400,7 +2400,7 @@ ldr   r1,=0x06003000            ; 08034F78
 mov   r2,0x80                   ; 08034F7A
 lsl   r2,r2,0x3                 ; 08034F7C
 bl    swi_MemoryCopy32          ; 08034F7E  Memory copy/fill, 32-byte blocks
-ldr   r0,=Data0816D446          ; 08034F82
+ldr   r0,=CreditsText25         ; 08034F82
 str   r0,[r7]                   ; 08034F84
 mov   r0,0x95                   ; 08034F86
 lsl   r0,r0,0x4                 ; 08034F88
@@ -2539,7 +2539,7 @@ add   r1,r6,r0                  ; 080350F6
 ldrh  r0,[r1]                   ; 080350F8
 add   r0,0x1                    ; 080350FA
 strh  r0,[r1]                   ; 080350FC
-ldr   r0,=Data0816D46E          ; 080350FE
+ldr   r0,=CreditsText26         ; 080350FE
 str   r0,[r6]                   ; 08035100
 mov   r1,0x95                   ; 08035102
 lsl   r1,r1,0x4                 ; 08035104

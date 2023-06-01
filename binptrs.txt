@@ -515,7 +515,7 @@
 081FA17C          Graphics/LevelSelect_800.bin
 081FC17C          Graphics/LevelSelect_A00.bin
 081FE17C          Graphics/LevelSelect_stripe00_LZ77.bin
-081FE2B0          Graphics/LevelSelect_stripe08_LZ77.bin
+081FE2B0 081FE384 Graphics/LevelSelect_stripe08_LZ77.bin
 081FE38C          Graphics/LevelSelect_Perfect_LZ77.bin
 081FE754          Graphics/LevelSelect_400_LZ77.bin
 081FEBA8          Tilemaps/WorldSelect_L1_LZ77.bin
@@ -523,10 +523,10 @@
 081FF1D4          Tilemaps/WorldSelect_L3_LZ77.bin
 081FF38C          Graphics/WorldSelect_L12_0_LZ77.bin
 081FFF20          Graphics/WorldSelect_L12_1_LZ77.bin
-08200B70          Graphics/WorldSelect_L12_2_LZ77.bin
+08200B70 082010E4 Graphics/WorldSelect_L12_2_LZ77.bin
 082010F0          Graphics/WorldSelect_stripe02_LZ77.bin
 08201334          Graphics/WorldSelect_stripe0A_LZ77.bin
-08201550          Graphics/WorldSelect_BabyLuigi_LZ77.bin
+08201550 082016AC Graphics/WorldSelect_BabyLuigi_LZ77.bin
 08201AB8          Tilemaps/LevelSelect_Controls_Patient_LZ77.bin
 08201D30          Tilemaps/LevelSelect_Controls_Hasty_LZ77.bin
 08201F9C          Tilemaps/LevelSelect_L2_1_LZ77.bin
@@ -551,22 +551,22 @@
 08207E3C          Graphics/Gameplay_anim_12_LZ77.bin
 08208918          Data08208918_LZ77.bin
 08208D58          Tilemaps/Gameplay_Kamek_L2_LZ77.bin
-082091A0          Tilemaps/Gameplay_Kamek_L3_LZ77.bin
+082091A0 082095E4 Tilemaps/Gameplay_Kamek_L3_LZ77.bin
 082097E4          Graphics/Unused082097E4_LZ77.bin
 08209CC4          Graphics/Unused08209CC4_LZ77.bin
 0820A638          Graphics/Unused0820A638_LZ77.bin
 0820B0BC          Graphics/Unused0820B0BC_LZ77.bin
-0820BA04          Graphics/Unused0820BA04_LZ77.bin
-0820BBF0          Graphics/Unused0820BBF0_LZ77.bin
-0820BDDC          Graphics/Unused0820BDDC_LZ77.bin
-0820BFC8          Graphics/Unused0820BFC8_LZ77.bin
+0820BA04          Graphics/Empty0820BA04_LZ77.bin
+0820BBF0          Graphics/Empty0820BBF0_LZ77.bin
+0820BDDC          Graphics/Empty0820BDDC_LZ77.bin
+0820BFC8 0820C1B4 Graphics/Empty0820BFC8_LZ77.bin
 0820C1D4          Tilemaps/Gameplay_Raphael_L2_LZ77.bin
 0820C580          Graphics/Gameplay_Raphael_L2_8bpp_LZ77.bin
 0820DA48          Graphics/Gameplay_Hookbill_L2_8bpp_LZ77.bin
 0820E054          Tilemaps/Gameplay_Hookbill_L2_LZ77.bin
 0820E290          Graphics/100Cutscene_sprite_0_LZ77.bin
 0820F13C          Graphics/100Cutscene_sprite_1_LZ77.bin
-0820FFB8          Graphics/100Cutscene_layer_LZ77.bin
+0820FFB8 082135CC Graphics/100Cutscene_layer_LZ77.bin
 08213AB0          Tilemaps/100Cutscene_L1_LZ77.bin
 0821400C          Tilemaps/100Cutscene_L2_LZ77.bin
 08214A3C          Tilemaps/100Cutscene_L3_LZ77.bin
@@ -647,11 +647,11 @@
 082222BC          Tilemaps/Gameplay_L3_26_LZ77.bin
 08222464          Tilemaps/Gameplay_L3_2F_LZ77.bin
 082225D4          Tilemaps/IntroCutscene_L2_LZ77.bin
-08223004          Tilemaps/IntroCutscene_L3_LZ77.bin
+08223004 0822348C Tilemaps/IntroCutscene_L3_LZ77.bin
 082235CC          Graphics/LevelSelect.bin
 082255CC          Graphics/BanditMinigame_2_Nintendo_LZ77.bin
 08225ED0          Graphics/BanditMinigame_3_LZ77.bin
-08226908          Graphics/IntroCutscene_L1_LZ77.bin
+08226908 082272C0 Graphics/IntroCutscene_L1_LZ77.bin
 082272CC          Tilemaps/BanditMinigame_L1_LZ77.bin
 082278F0          Tilemaps/BanditMinigame_L2_BG_LZ77.bin
 08227A18          Tilemaps/BanditMinigame_L2_win_LZ77.bin
@@ -663,7 +663,7 @@
 0822A5D4          Graphics/Gameplay_L1_204_LZ77.bin
 0822AD94          Graphics/Gameplay_L1_304_LZ77.bin
 0822B4EC          Graphics/Gameplay_L1_205_LZ77.bin
-0822BEDC          Graphics/Gameplay_L1_305_LZ77.bin
+0822BEDC 0822C8E0 Graphics/Gameplay_L1_305_LZ77.bin
 0822C900          Graphics/Gameplay_L1_202_LZ77.bin
 0822D394          Graphics/Gameplay_L1_302_LZ77.bin
 0822DC68          Graphics/Gameplay_L1_203_LZ77.bin
@@ -671,7 +671,7 @@
 0822EBEC          Graphics/Gameplay_L1_206_LZ77.bin
 0822F6B4          Graphics/Gameplay_L1_306_LZ77.bin
 08230294          Graphics/Gameplay_L1_207_LZ77.bin
-08230CC8          Graphics/Gameplay_L1_307_LZ77.bin
+08230CC8 082315D4 Graphics/Gameplay_L1_307_LZ77.bin
 082315F4          Graphics/Gameplay_L1_208_LZ77.bin
 0823213C          Graphics/Gameplay_L1_308_LZ77.bin
 08232C80          Graphics/Gameplay_L1_209_LZ77.bin
@@ -679,7 +679,7 @@
 08234278          Graphics/Gameplay_L1_20C_LZ77.bin
 08234EB0          Graphics/Gameplay_L1_30C_LZ77.bin
 082355A0          Graphics/Gameplay_L1_20D_LZ77.bin
-08235EDC          Graphics/Gameplay_L1_30D_LZ77.bin
+08235EDC 08236630 Graphics/Gameplay_L1_30D_LZ77.bin
 08236650          Graphics/Gameplay_L1_20A_LZ77.bin
 08237050          Graphics/Gameplay_L1_30A_LZ77.bin
 08237AE0          Graphics/Gameplay_L1_20B_LZ77.bin
@@ -687,7 +687,7 @@
 08239234          Graphics/Gameplay_L1_20E_LZ77.bin
 08239E70          Graphics/Gameplay_L1_30E_LZ77.bin
 0823A8A8          Graphics/Gameplay_L1_20F_LZ77.bin
-0823B1B8          Graphics/Gameplay_L1_30F_LZ77.bin
+0823B1B8 0823BC34 Graphics/Gameplay_L1_30F_LZ77.bin
 0823BC54          Graphics/Gameplay_L1_000_LZ77.bin
 0823C774          Graphics/Gameplay_L1_001_LZ77.bin
 0823D378          Graphics/Gameplay_L1_004_LZ77.bin
@@ -695,7 +695,7 @@
 0823E734          Graphics/Gameplay_L1_002_LZ77.bin
 0823EC78          Graphics/Gameplay_L1_003_LZ77.bin
 0823F4C8          Graphics/Gameplay_L1_006_LZ77.bin
-0823FFAC          Graphics/Gameplay_L1_007_LZ77.bin
+0823FFAC 08240B24 Graphics/Gameplay_L1_007_LZ77.bin
 08240B44          Graphics/IntroCutscene_L2_5_LZ77.bin
 082414A0          Graphics/IntroCutscene_L2_6_LZ77.bin
 08241C9C          Graphics/Credits_L0_LZ77.bin
@@ -703,7 +703,7 @@
 0824300C          Graphics/Gameplay_L1_311_LZ77.bin
 08243CA4          Graphics/Gameplay_L1_011_LZ77.bin
 082448F0          Graphics/Credits_201_LZ77.bin
-08245430          Graphics/Unused08245430_LZ77.bin
+08245430 08245CB0 Graphics/Unused08245430_LZ77.bin
 08245CD0          Graphics/GoalMinigame_2_LZ77.bin
 08246EB8          Graphics/GoalMinigame_0_LZ77.bin
 08247760          Graphics/GoalMinigame_1_LZ77.bin
@@ -712,7 +712,7 @@
 08248E48          Graphics/Gameplay_L2_500_LZ77.bin
 08249700          Graphics/Gameplay_L2_600_LZ77.bin
 0824A070          Graphics/Gameplay_L1_100_LZ77.bin
-0824AABC          Graphics/Unused0824AABC_LZ77.bin
+0824AABC 0824ACB0 Graphics/Unused0824AABC_LZ77.bin
 0824ACD0          Tilemaps/GoalMinigame_L1_0_LZ77.bin
 0824AE74          Tilemaps/GoalMinigame_L1_2_LZ77.bin
 0824B098          Tilemaps/GoalMinigame_L2_1_LZ77.bin
@@ -721,7 +721,7 @@
 0824B6B0          Tilemaps/GoalMinigame_L3_LZ77.bin
 0824B84C          Tilemaps/GoalMinigame_L2_3_LZ77.bin
 0824B9E0          Tilemaps/GoalMinigame_L2_5_LZ77.bin
-0824BC50          Tilemaps/GoalMinigame_L2_6_LZ77.bin
+0824BC50 0824BE2C Tilemaps/GoalMinigame_L2_6_LZ77.bin
 0824BFAC          Tilemaps/Gameplay_BossKeyhole_LZ77.bin
 0824C2BC          Graphics/Gameplay_L1_4A0_LZ77.bin
 0824C578          Graphics/Gameplay_L2_503_LZ77.bin
@@ -731,7 +731,7 @@
 0824EEAC          Graphics/Gameplay_L2_50B_LZ77.bin
 0824F700          Graphics/Gameplay_L2_611_LZ77.bin
 0824FF94          Graphics/Gameplay_L2_508_LZ77.bin
-082507DC          Graphics/Gameplay_L2_608_LZ77.bin
+082507DC 08251260 Graphics/Gameplay_L2_608_LZ77.bin
 08251280          Graphics/Gameplay_L2_501_LZ77.bin
 08251B50          Graphics/Gameplay_L2_51C_LZ77.bin
 082524D8          Graphics/Gameplay_L2_507_LZ77.bin
@@ -739,7 +739,7 @@
 08253A9C          Graphics/Gameplay_L2_506_LZ77.bin
 082544B4          Graphics/Gameplay_L2_518_LZ77.bin
 08254CFC          Graphics/Gameplay_L2_519_LZ77.bin
-0825573C          Graphics/Unused0825573C_LZ77.bin
+0825573C 08255F58 Graphics/Unused0825573C_LZ77.bin
 08255F78          Graphics/Gameplay_L2_505_LZ77.bin
 0825665C          Graphics/Gameplay_L2_609_LZ77.bin
 082571B0          Graphics/Gameplay_L2_50A_LZ77.bin
@@ -747,7 +747,7 @@
 08258688          Graphics/Gameplay_L2_50C_LZ77.bin
 0825913C          Graphics/Gameplay_L2_60C_LZ77.bin
 08259D80          Graphics/Gameplay_L2_50D_LZ77.bin
-0825A250          Graphics/Gameplay_L2_605_LZ77.bin
+0825A250 0825A844 Graphics/Gameplay_L2_605_LZ77.bin
 0825A864          Graphics/Gameplay_L2_50E_LZ77.bin
 0825B3A4          Graphics/Gameplay_L2_514_LZ77.bin
 0825C070          Graphics/Gameplay_L2_50F_LZ77.bin
@@ -755,7 +755,7 @@
 0825D3B0          Graphics/Gameplay_L2_513_LZ77.bin
 0825DC50          Graphics/Gameplay_L2_613_LZ77.bin
 0825E690          Graphics/Gameplay_L2_515_LZ77.bin
-0825F038          Graphics/Gameplay_L2_615_LZ77.bin
+0825F038 0825FA20 Graphics/Gameplay_L2_615_LZ77.bin
 0825FA40          Graphics/LevelSelect_Yoshi_LZ77.bin
 082601E4          Graphics/Credits_200_LZ77.bin
 08260FB4          Graphics/Credits_300_LZ77.bin
@@ -763,7 +763,7 @@
 08261DAC          Graphics/Gameplay_L2_606_LZ77.bin
 08262668          Graphics/Gameplay_Bowser_stripe22_LZ77.bin
 08262F94          Graphics/Gameplay_Bowser_L1_LZ77.bin
-08263AB4          Graphics/Gameplay_Bowser_stripe02_LZ77.bin
+08263AB4 0826443C Graphics/Gameplay_Bowser_stripe02_LZ77.bin
 0826445C          Graphics/Gameplay_L2_516_LZ77.bin
 08264B68          Graphics/Gameplay_L2_616_LZ77.bin
 082650D8          Graphics/Gameplay_L2_601_LZ77.bin
@@ -771,7 +771,7 @@
 082660C0          Graphics/Gameplay_L2_51D_LZ77.bin
 08266A10          Graphics/Gameplay_L2_61D_LZ77.bin
 082672D0          Graphics/Gameplay_L2_51F_LZ77.bin
-08267CB8          Graphics/Gameplay_L2_61F_LZ77.bin
+08267CB8 082686EC Graphics/Gameplay_L2_61F_LZ77.bin
 0826870C          Graphics/Gameplay_L3_70D_LZ77.bin
 08268C3C          Graphics/Gameplay_L3_80C_LZ77.bin
 0826922C          Graphics/Gameplay_L3_70A_LZ77.bin
@@ -779,7 +779,7 @@
 0826982C          Graphics/Gameplay_L3_701_LZ77.bin
 08269E98          Graphics/Gameplay_L3_712_LZ77.bin
 0826A200          Graphics/Gameplay_L3_702_LZ77.bin
-0826A59C          Graphics/Gameplay_L3_812_LZ77.bin
+0826A59C 0826ABC4 Graphics/Gameplay_L3_812_LZ77.bin
 0826ABE4          Graphics/Gameplay_L3_703_LZ77.bin
 0826B328          Graphics/Gameplay_L3_71E_LZ77.bin
 0826B994          Graphics/Gameplay_L3_70C_LZ77.bin
@@ -787,7 +787,7 @@
 0826C380          Graphics/GoalMinigame_7_LZ77.bin
 0826CBA4          Graphics/GoalMinigame_8_LZ77.bin
 0826D1A4          Graphics/Gameplay_KamekRoom_LZ77.bin
-0826D854          Graphics/Unused0826D854_LZ77.bin
+0826D854 0826DC64 Graphics/Unused0826D854_LZ77.bin
 0826DC84          Graphics/ScoreCalc_L3anim_0_LZ77.bin
 0826E1C4          Graphics/ScoreCalc_L3anim_1_LZ77.bin
 0826E734          Graphics/ScoreCalc_L3anim_2_LZ77.bin
@@ -795,7 +795,7 @@
 0826F1BC          Graphics/Gameplay_L3_70E_LZ77.bin
 0826F84C          Graphics/Gameplay_L3_80E_LZ77.bin
 0826FF24          Graphics/Gameplay_L3_70F_LZ77.bin
-0827070C          Graphics/Gameplay_L3_80F_LZ77.bin
+0827070C 08270C38 Graphics/Gameplay_L3_80F_LZ77.bin
 08270C58          Graphics/Gameplay_L3_700_LZ77.bin
 082712F8          Graphics/Gameplay_L3_713_LZ77.bin
 082718B8          Graphics/082718B8_LZ77.bin
@@ -803,7 +803,7 @@
 082725DC          Graphics/Gameplay_L3_704_LZ77.bin
 08272CDC          Graphics/Gameplay_L3_804_LZ77.bin
 08273350          Graphics/Gameplay_L3_715_LZ77.bin
-0827380C          Graphics/Gameplay_L3_717_LZ77.bin
+0827380C 082741EC Graphics/Gameplay_L3_717_LZ77.bin
 0827420C          Graphics/Unused0827420C_LZ77.bin
 082747D8          Graphics/WorldSelect_L3_8_LZ77.bin
 08274DBC          Graphics/Gameplay_L3_729_LZ77.bin
@@ -811,7 +811,7 @@
 08275B74          Graphics/Gameplay_L3_72F_LZ77.bin
 082760C8          Graphics/Unused082760C8_LZ77.bin
 082762E4          Graphics/Gameplay_L3_716_LZ77.bin
-08276764          Graphics/Gameplay_L3_816_LZ77.bin
+08276764 08276C30 Graphics/Gameplay_L3_816_LZ77.bin
 08276C50          Graphics/Gameplay_L3_720_LZ77.bin
 08277254          Graphics/Gameplay_L3_722_LZ77.bin
 082776BC          Graphics/Gameplay_L3_811_LZ77.bin
@@ -819,7 +819,7 @@
 0827834C          Graphics/Gameplay_L3_725_LZ77.bin
 0827893C          Graphics/Gameplay_L3_726_LZ77.bin
 08278C58          Graphics/Gameplay_L3_727_LZ77.bin
-08279214          Graphics/Gameplay_L3_72C_LZ77.bin
+08279214 0827985C Graphics/Gameplay_L3_72C_LZ77.bin
 0827987C          Graphics/Data0827987C.bin
 0828F87C          Graphics/Gameplay_anim_09_LZ77.bin
 0828FEA4          Graphics/Data0828FEA4.bin
@@ -858,7 +858,7 @@
 082B74E0          Graphics/Gameplay_stripe_36_LZ77.bin
 082B77E0          Graphics/Gameplay_stripe_37_LZ77.bin
 082B79E0          Graphics/Gameplay_stripe_38_LZ77.bin
-082B7C80          Graphics/Gameplay_stripe_39_LZ77.bin
+082B7C80 082B7FC0 Graphics/Gameplay_stripe_39_LZ77.bin
 082B8040          Graphics/Gameplay_stripe_3A_LZ77.bin
 082B82F0          Graphics/Gameplay_stripe_3B_LZ77.bin
 082B8620          Graphics/Gameplay_stripe_3C_LZ77.bin
@@ -890,7 +890,7 @@
 082BC8F0          Graphics/Gameplay_stripe_56_LZ77.bin
 082BCBC4          Graphics/Gameplay_stripe_57_LZ77.bin
 082BCDF0          Graphics/Gameplay_stripe_58_LZ77.bin
-082BD034          Graphics/Gameplay_stripe_59_LZ77.bin
+082BD034 082BD2A8 Graphics/Gameplay_stripe_59_LZ77.bin
 082BD328          Graphics/Gameplay_stripe_6A_LZ77.bin
 082BD634          Graphics/Gameplay_stripe_6B_LZ77.bin
 082BD8FC          Graphics/Gameplay_stripe_6C_LZ77.bin
@@ -922,10 +922,10 @@
 082C1910          Graphics/Gameplay_stripe_AD_LZ77.bin
 082C1B9C          Graphics/Gameplay_stripe_AE_LZ77.bin
 082C1E74          Graphics/Gameplay_stripe_AF_LZ77.bin
-082C21C4          Graphics/Gameplay_stripe_B0_LZ77.bin
+082C21C4 082C24E0 Graphics/Gameplay_stripe_B0_LZ77.bin
 082C2560          Graphics/Credits_sprite_8bpp_LZ77.bin
 082C6CF8          Graphics/Gameplay_sprite_1400_LZ77.bin
-082C7008          Graphics/Data082C7008.bin
+082C7008 082CF008 Graphics/Data082C7008.bin
 082D5E5C          Tilemaps/StoryIntro_L2_LZ77.bin
 082D6078          Tilemaps/StoryIntro_L01_0_LZ77.bin
 082D6444          Tilemaps/StoryIntro_L01_1_LZ77.bin
@@ -934,33 +934,33 @@
 082D6D84          Tilemaps/StoryIntro_L01_4_LZ77.bin
 082D6FE0          Tilemaps/StoryIntro_L01_5_LZ77.bin
 082D71C8          Tilemaps/StoryIntro_L01_6_LZ77.bin
-082D7414          Tilemaps/StoryIntro_L01_7_LZ77.bin
-082D7FF8          Graphics/StoryIntro_L01_LZ77.bin
+082D7414 082D75F8 Tilemaps/StoryIntro_L01_7_LZ77.bin
+082D7FF8 082DCD30 Graphics/StoryIntro_L01_LZ77.bin
 082DCD70          Tilemaps/Credits_L0_LZ77.bin
 082DCF80          Tilemaps/Credits_L1_0_LZ77.bin
 082DD134          Tilemaps/Credits_L1_1_LZ77.bin
 082DD378          Tilemaps/Credits_L1_2_LZ77.bin
 082DD568          Tilemaps/Credits_L1_3_LZ77.bin
 082DD788          Tilemaps/Credits_L1_4_LZ77.bin
-082DDA18          Tilemaps/Credits_L2_LZ77.bin
-082DEFBC          Graphics/ChooseAGame_layer_LZ77.bin
+082DDA18 082DE31C Tilemaps/Credits_L2_LZ77.bin
+082DEFBC 082DFC50 Graphics/ChooseAGame_layer_LZ77.bin
 082DFCB0          Tilemaps/ChooseAGame_L0_LZ77.bin
 082DFF44          Tilemaps/ChooseAGame_L1_LZ77.bin
-082E00D8          Tilemaps/ChooseAGame_L2_LZ77.bin
+082E00D8 082E02CC Tilemaps/ChooseAGame_L2_LZ77.bin
 082E02FC          Graphics/ChooseAGame_sprite_LZ77.bin
-082E27D4          Graphics/ChooseAGame_sleep_LZ77.bin
+082E27D4 082E2E3C Graphics/ChooseAGame_sleep_LZ77.bin
 082E3EE4          Graphics/SMA3Title_L1_LZ77.bin
 082E3F50          Graphics/SMA3Title_L0_8bpp_LZ77.bin
-082E6870          Graphics/SMA3Title_sprite_LZ77.bin
+082E6870 082E6E00 Graphics/SMA3Title_sprite_LZ77.bin
 082E6FE0          Tilemaps/SMA3Title_L0_LZ77.bin
-082E72D0          Tilemaps/SMA3Title_L1_LZ77.bin
+082E72D0 082E7400 Tilemaps/SMA3Title_L1_LZ77.bin
 082E7740          Graphics/SaveDataCorruption_LZ77.bin
-082E8830          Tilemaps/SaveDataCorruption_LZ77.bin
+082E8830 082E8E84 Tilemaps/SaveDataCorruption_LZ77.bin
 082ED724          Tilemaps/MarioBros_L3_0_LZ77.bin
 082EDC60          Tilemaps/MarioBros_L3_1_LZ77.bin
 082EE204          Tilemaps/MarioBros_L3_2_LZ77.bin
 082EE764          Tilemaps/MarioBros_L3_3_LZ77.bin
-082EEC30          Graphics/MarioBros_L3anim.bin
+082EEC30 082F0830 Graphics/MarioBros_L3anim.bin
 082F11F8          Tilemaps/MarioBrosTitle_L2_LZ77.bin
 082F1508          Tilemaps/MarioBrosTitle_L1_LZ77.bin
 082F1640          Tilemaps/MarioBrosTitle_L0_LZ77.bin
@@ -969,11 +969,12 @@
 082F1D0C          Tilemaps/MarioBros_BonusResults3P_Huffman.bin
 082F1F20          Tilemaps/MarioBros_BonusResults4P_Huffman.bin
 082F63CC          Graphics/Font_main_1bpp.bin
-082F6FCC 082F8ECC Graphics/MessageImages.bin
+082F6FCC          Graphics/MessageImages_1bpp.bin
+082F8ECC 082F90AC Tilemaps/StandardMessage.bin
 082F99A8          Graphics/MessageBorder_0_LZ77.bin
 082F9A6C          Graphics/MessageBorder_1_LZ77.bin
 082F9B18          Graphics/MessageBorder_2_LZ77.bin
 082F9BF4          Graphics/MarioBros_layer_Huffman.bin
 082FDDB4          Graphics/MarioBros_sprite_Huffman.bin
 08303210          Graphics/MarioBrosTitle_layer_LZ77.bin
-08304838          Graphics/MarioBrosTitle_sprite_Huffman.bin
+08304838 083077B0 Graphics/MarioBrosTitle_sprite_Huffman.bin

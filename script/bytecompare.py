@@ -50,5 +50,6 @@ if __name__ == "__main__":
         searchregions=[
             (0, 0x12FDC0),
             (0x163F90, 0x1C1D54),
+            (0x2F215C, 0x3077E0)
             ])
     input()  # wait for Enter, if run on a shell that closes at end of program

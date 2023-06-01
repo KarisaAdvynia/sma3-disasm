@@ -7,14 +7,18 @@ def exportbin(sourcepath, outputdir, binptrs):
         rawdata = line.split()
         startptr = int(rawdata[0], 16)
         if fillnext:  # use startptr as previous line's end ptr
-            ptrmap[-1][1] = startptr - ptrmap[-1][0]
-
-        if startptr >= 0x081C1D54:
-            break  # debug: only export from Data.asm
+            length = startptr - ptrmap[-1][0]
+            if length <= 0:
+                raise ValueError("Error parsing line:\n" + line +
+                    "Length {length:X} is not a positive value.")
+            ptrmap[-1][1] = length
 
         if len(rawdata) == 3:
-            ptrmap.append([startptr, int(rawdata[1], 16) - startptr,
-                           rawdata[2]])
+            length = int(rawdata[1], 16) - startptr
+            if length <= 0:
+                raise ValueError("Error parsing line:\n" + line +
+                    "Length {length:X} is not a positive value.")
+            ptrmap.append([startptr, length, rawdata[2]])
             fillnext = False
         elif len(rawdata) == 2:
             ptrmap.append([startptr, None, rawdata[1]])
@@ -38,8 +42,9 @@ def exportbin(sourcepath, outputdir, binptrs):
                 nextdir.mkdir(parents=True)
 
             # create file
-            print(f"Creating file ({startptr:08X}, len {length:X}): {exportpath}")
+##            print(f"Creating file ({startptr:08X}, len {length:X}): {exportpath}")
             exportpath.open("wb").write(data)
+        print(f"Extracted {len(ptrmap)} files.")
 
 if __name__ == "__main__":
     # search for the source ROM outside the disassembly directory
