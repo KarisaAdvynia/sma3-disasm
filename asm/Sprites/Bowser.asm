@@ -1293,7 +1293,7 @@ ldr   r0,[r0]                   ; 08102D94
 mov   r1,0xC0                   ; 08102D96
 lsl   r1,r1,0x13                ; 08102D98
 bl    swi_LZ77_VRAM             ; 08102D9A  LZ77 decompress (VRAM)
-ldr   r0,=Data081A4A60          ; 08102D9E
+ldr   r0,=Graphics_Gameplay_Bowser_L2_8bpp_LZ77; 08102D9E
 ldr   r1,=0x0600C000            ; 08102DA0
 bl    swi_LZ77_VRAM             ; 08102DA2  LZ77 decompress (VRAM)
 bl    Sub08102BBC               ; 08102DA6

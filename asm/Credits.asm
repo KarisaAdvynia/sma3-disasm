@@ -375,7 +375,7 @@ b     @@Code08033D24            ; 08033D16
 .pool                           ; 08033D18
 
 @@Code08033D1C:
-ldr   r1,=Data0816D509          ; 08033D1C
+ldr   r1,=Graphics_Font_credits_1bpp; 08033D1C
 ldr   r4,=0xFFFFFA00            ; 08033D1E
 add   r0,r6,r4                  ; 08033D20
 add   r0,r0,r1                  ; 08033D22
@@ -508,7 +508,7 @@ b     @@Code08033E28            ; 08033E14
 .pool                           ; 08033E16
 
 @@Code08033E20:
-ldr   r1,=Data0816D489          ; 08033E20
+ldr   r1,=Credits_CharWidths    ; 08033E20
 ldr   r0,[r6]                   ; 08033E22
 ldrb  r0,[r0]                   ; 08033E24
 sub   r0,0x80                   ; 08033E26

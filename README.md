@@ -10,7 +10,13 @@ Currently produces an exact match for these regions of the vanilla ROM:
 
 Remaining regions:
 - 0812FDC0-08163F90: currently labeled as "single-cart pseudo-ROM", a ROM region copied into RAM (for all players) when playing Mario Bros. multiplayer from a single cartridge. This needs further research to determine the correct RAM pointers.
-- 081C1D54-end: larger data files (including levels, graphics, tilemaps, palettes, music, sound effects). These need to be exported to .bin files. Also, the music/sound region has relative pointers, which need to be included as labels.
+- 081C1D54-end: larger data files (including levels, graphics, tilemaps, palettes, music, sound effects). These need to be fully documented in binptrs.txt, and included with `.incbin`. Also, the music/sound region has relative pointers, which need to be included as labels.
+
+## About data files
+This repository does not include in-game data files (graphics, etc), which must be extracted from the vanilla game before assembling. A script is provided to do so:
+- Place the vanilla ROM in the directory containing the `sma3-disasm` directory
+    - Optionally: name the vanilla ROM `sma3.gba`. If the vanilla ROM is the only .gba file in the directory, it will be auto-detected, but if there are multiple .gba files, this is required.
+- Run `exportbin.py` (in `scripts`) to create the `data` folder.
 
 ## Vanilla ROM hashes
 - SHA1: `7352D2BD064D9EBAEC579E264228AA21C7345B80`
