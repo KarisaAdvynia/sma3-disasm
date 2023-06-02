@@ -9452,9 +9452,9 @@ ldr   r3,=0x2988                ; 080EEB5C
 add   r1,r4,r3                  ; 080EEB5E
 strh  r0,[r1]                   ; 080EEB60
 ldr   r6,=0x2B08                ; 080EEB62
-add   r1,r4,r6                  ; 080EEB64
+add   r1,r4,r6                  ; 080EEB64  [03007240]+2B08 (03004D14)
 ldr   r0,=Data081EC259          ; 080EEB66
-str   r0,[r1]                   ; 080EEB68
+str   r0,[r1]                   ; 080EEB68  Set pointer to sublevel main data
 ldr   r0,=0x2992                ; 080EEB6A
 add   r1,r4,r0                  ; 080EEB6C
 mov   r0,0x1                    ; 080EEB6E

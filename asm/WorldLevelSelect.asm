@@ -3321,7 +3321,7 @@ b     @@Code08006402            ; 080060B4
 
 @@Code080060C8:
 mov   r6,0xFF                   ; 080060C8
-ldr   r1,=DataPtrs081EF08C      ; 080060CA
+ldr   r1,=MainEntrancePtrs      ; 080060CA
 and   r5,r6                     ; 080060CC
 lsl   r0,r5,0x2                 ; 080060CE
 add   r0,r0,r1                  ; 080060D0

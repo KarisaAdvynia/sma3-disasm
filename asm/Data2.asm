@@ -1,1140 +1,1237 @@
 ; Large data
 
-Data081C1D54:                   ; 081C1D54
-.org 0x081C1DA4
-Data081C1DA4:                   ; 081C1DA4
-.org 0x081C1F29
-Data081C1F29:                   ; 081C1F29
-.org 0x081C2265
-Data081C2265:                   ; 081C2265
-.org 0x081C2320
-Data081C2320:                   ; 081C2320
-.org 0x081C2324
-Data081C2324:                   ; 081C2324
-.org 0x081C2354
-Data081C2354:                   ; 081C2354
-.org 0x081C2434
-Data081C2434:                   ; 081C2434
-.org 0x081C245C
-Data081C245C:                   ; 081C245C
-.org 0x081C264E
-Data081C264E:                   ; 081C264E
-.org 0x081C2D70
-Data081C2D70:                   ; 081C2D70
-.org 0x081C2E18
-Data081C2E18:                   ; 081C2E18
-.org 0x081C2F00
-Data081C2F00:                   ; 081C2F00
-.org 0x081C2FD1
-Data081C2FD1:                   ; 081C2FD1
-.org 0x081C3856
-Data081C3856:                   ; 081C3856
-.org 0x081C39B4
-Data081C39B4:                   ; 081C39B4
-.org 0x081C39E0
-Data081C39E0:                   ; 081C39E0
-.org 0x081C3AD8
-Data081C3AD8:                   ; 081C3AD8
-.org 0x081C3B04
-Data081C3B04:                   ; 081C3B04
-.org 0x081C4026
-Data081C4026:                   ; 081C4026
-.org 0x081C40DE
-Data081C40DE:                   ; 081C40DE
-.org 0x081C4194
-Data081C4194:                   ; 081C4194
-.org 0x081C4218
-Data081C4218:                   ; 081C4218
-.org 0x081C4320
-Data081C4320:                   ; 081C4320
-.org 0x081C4330
-Data081C4330:                   ; 081C4330
-.org 0x081C4368
-Data081C4368:                   ; 081C4368
-.org 0x081C4380
-Data081C4380:                   ; 081C4380
-.org 0x081C4660
-Data081C4660:                   ; 081C4660
-.org 0x081C46E8
-Data081C46E8:                   ; 081C46E8
-.org 0x081C4980
-Data081C4980:                   ; 081C4980
-.org 0x081C4B87
-Data081C4B87:                   ; 081C4B87
-.org 0x081C4CBB
-Data081C4CBB:                   ; 081C4CBB
-.org 0x081C4FFC
-Data081C4FFC:                   ; 081C4FFC
-.org 0x081C50B0
-Data081C50B0:                   ; 081C50B0
-.org 0x081C5100
-Data081C5100:                   ; 081C5100
-.org 0x081C511C
-Data081C511C:                   ; 081C511C
-.org 0x081C5168
-Data081C5168:                   ; 081C5168
-.org 0x081C58F0
-Data081C58F0:                   ; 081C58F0
-.org 0x081C59C4
-Data081C59C4:                   ; 081C59C4
-.org 0x081C5A9C
-Data081C5A9C:                   ; 081C5A9C
-.org 0x081C5AF4
-Data081C5AF4:                   ; 081C5AF4
-.org 0x081C5D60
-Data081C5D60:                   ; 081C5D60
-.org 0x081C5E78
-Data081C5E78:                   ; 081C5E78
-.org 0x081C5F39
-Data081C5F39:                   ; 081C5F39
-.org 0x081C6238
-Data081C6238:                   ; 081C6238
-.org 0x081C62A8
-Data081C62A8:                   ; 081C62A8
-.org 0x081C62CC
-Data081C62CC:                   ; 081C62CC
-.org 0x081C62D8
-Data081C62D8:                   ; 081C62D8
-.org 0x081C637C
-Data081C637C:                   ; 081C637C
-.org 0x081C66A0
-Data081C66A0:                   ; 081C66A0
-.org 0x081C6724
-Data081C6724:                   ; 081C6724
-.org 0x081C6A9E
-Data081C6A9E:                   ; 081C6A9E
-.org 0x081C6D62
-Data081C6D62:                   ; 081C6D62
-.org 0x081C70CC
-Data081C70CC:                   ; 081C70CC
-.org 0x081C7170
-Data081C7170:                   ; 081C7170
-.org 0x081C7238
-Data081C7238:                   ; 081C7238
-.org 0x081C72D0
-Data081C72D0:                   ; 081C72D0
-.org 0x081C7436
-Data081C7436:                   ; 081C7436
-.org 0x081C785B
-Data081C785B:                   ; 081C785B
-.org 0x081C7954
-Data081C7954:                   ; 081C7954
-.org 0x081C7BCF
-Data081C7BCF:                   ; 081C7BCF
-.org 0x081C7C18
-Data081C7C18:                   ; 081C7C18
-.org 0x081C7C5C
-Data081C7C5C:                   ; 081C7C5C
-.org 0x081C7D68
-Data081C7D68:                   ; 081C7D68
-.org 0x081C7D9C
-Data081C7D9C:                   ; 081C7D9C
-.org 0x081C7DEC
-Data081C7DEC:                   ; 081C7DEC
-.org 0x081C7E0C
-Data081C7E0C:                   ; 081C7E0C
-.org 0x081C8363
-Data081C8363:                   ; 081C8363
-.org 0x081C865C
-Data081C865C:                   ; 081C865C
-.org 0x081C8A4C
-Data081C8A4C:                   ; 081C8A4C
-.org 0x081C8B9C
-Data081C8B9C:                   ; 081C8B9C
-.org 0x081C8C20
-Data081C8C20:                   ; 081C8C20
-.org 0x081C8D68
-Data081C8D68:                   ; 081C8D68
-.org 0x081C8FF9
-Data081C8FF9:                   ; 081C8FF9
-.org 0x081C978E
-Data081C978E:                   ; 081C978E
-.org 0x081C988C
-Data081C988C:                   ; 081C988C
-.org 0x081C9918
-Data081C9918:                   ; 081C9918
-.org 0x081C9A6C
-Data081C9A6C:                   ; 081C9A6C
-.org 0x081C9A80
-Data081C9A80:                   ; 081C9A80
-.org 0x081C9BC4
-Data081C9BC4:                   ; 081C9BC4
-.org 0x081C9F7C
-Data081C9F7C:                   ; 081C9F7C
-.org 0x081C9FD6
-Data081C9FD6:                   ; 081C9FD6
-.org 0x081CA2EA
-Data081CA2EA:                   ; 081CA2EA
-.org 0x081CA356
-Data081CA356:                   ; 081CA356
-.org 0x081CA3FA
-Data081CA3FA:                   ; 081CA3FA
-.org 0x081CA498
-Data081CA498:                   ; 081CA498
-.org 0x081CA4C8
-Data081CA4C8:                   ; 081CA4C8
-.org 0x081CA558
-Data081CA558:                   ; 081CA558
-.org 0x081CA560
-Data081CA560:                   ; 081CA560
-.org 0x081CA5D8
-Data081CA5D8:                   ; 081CA5D8
-.org 0x081CA5F4
-Data081CA5F4:                   ; 081CA5F4
-.org 0x081CA644
-Data081CA644:                   ; 081CA644
-.org 0x081CA660
-Data081CA660:                   ; 081CA660
-.org 0x081CAA6B
-Data081CAA6B:                   ; 081CAA6B
-.org 0x081CAC9F
-Data081CAC9F:                   ; 081CAC9F
-.org 0x081CAF6A
-Data081CAF6A:                   ; 081CAF6A
-.org 0x081CB200
-Data081CB200:                   ; 081CB200
-.org 0x081CB318
-Data081CB318:                   ; 081CB318
-.org 0x081CB3F8
-Data081CB3F8:                   ; 081CB3F8
-.org 0x081CB4A4
-Data081CB4A4:                   ; 081CB4A4
-.org 0x081CB54C
-Data081CB54C:                   ; 081CB54C
-.org 0x081CB568
-Data081CB568:                   ; 081CB568
-.org 0x081CB5A8
-Data081CB5A8:                   ; 081CB5A8
-.org 0x081CB810
-Data081CB810:                   ; 081CB810
-.org 0x081CBEBE
-Data081CBEBE:                   ; 081CBEBE
-.org 0x081CC045
-Data081CC045:                   ; 081CC045
-.org 0x081CC0DE
-Data081CC0DE:                   ; 081CC0DE
-.org 0x081CC154
-Data081CC154:                   ; 081CC154
-.org 0x081CC1F4
-Data081CC1F4:                   ; 081CC1F4
-.org 0x081CC2AC
-Data081CC2AC:                   ; 081CC2AC
-.org 0x081CC2D0
-Data081CC2D0:                   ; 081CC2D0
-.org 0x081CC2F4
-Data081CC2F4:                   ; 081CC2F4
-.org 0x081CC318
-Data081CC318:                   ; 081CC318
-.org 0x081CCA82
-Data081CCA82:                   ; 081CCA82
-.org 0x081CCC6D
-Data081CCC6D:                   ; 081CCC6D
-.org 0x081CD06D
-Data081CD06D:                   ; 081CD06D
-.org 0x081CD0FC
-Data081CD0FC:                   ; 081CD0FC
-.org 0x081CD284
-Data081CD284:                   ; 081CD284
-.org 0x081CD320
-Data081CD320:                   ; 081CD320
-.org 0x081CD3D0
-Data081CD3D0:                   ; 081CD3D0
-.org 0x081CD3E8
-Data081CD3E8:                   ; 081CD3E8
-.org 0x081CD4C9
-Data081CD4C9:                   ; 081CD4C9
-.org 0x081CD684
-Data081CD684:                   ; 081CD684
-.org 0x081CD854
-Data081CD854:                   ; 081CD854
-.org 0x081CDB6A
-Data081CDB6A:                   ; 081CDB6A
-.org 0x081CDCC3
-Data081CDCC3:                   ; 081CDCC3
-.org 0x081CDDAA
-Data081CDDAA:                   ; 081CDDAA
-.org 0x081CDDC6
-Data081CDDC6:                   ; 081CDDC6
-.org 0x081CDED4
-Data081CDED4:                   ; 081CDED4
-.org 0x081CDEE0
-Data081CDEE0:                   ; 081CDEE0
-.org 0x081CDF38
-Data081CDF38:                   ; 081CDF38
-.org 0x081CDF88
-Data081CDF88:                   ; 081CDF88
-.org 0x081CE018
-Data081CE018:                   ; 081CE018
-.org 0x081CE04C
-Data081CE04C:                   ; 081CE04C
-.org 0x081CE07C
-Data081CE07C:                   ; 081CE07C
-.org 0x081CE088
-Data081CE088:                   ; 081CE088
-.org 0x081CE0C4
-Data081CE0C4:                   ; 081CE0C4
-.org 0x081CE2E9
-Data081CE2E9:                   ; 081CE2E9
-.org 0x081CE3F8
-Data081CE3F8:                   ; 081CE3F8
-.org 0x081CE45C
-Data081CE45C:                   ; 081CE45C
-.org 0x081CE47C
-Data081CE47C:                   ; 081CE47C
-.org 0x081CEB4F
-Data081CEB4F:                   ; 081CEB4F
-.org 0x081CEF16
-Data081CEF16:                   ; 081CEF16
-.org 0x081CF31F
-Data081CF31F:                   ; 081CF31F
-.org 0x081CF37C
-Data081CF37C:                   ; 081CF37C
-.org 0x081CF460
-Data081CF460:                   ; 081CF460
-.org 0x081CF538
-Data081CF538:                   ; 081CF538
-.org 0x081CF61C
-Data081CF61C:                   ; 081CF61C
-.org 0x081CF638
-Data081CF638:                   ; 081CF638
-.org 0x081CF7A4
-Data081CF7A4:                   ; 081CF7A4
-.org 0x081CFC27
-Data081CFC27:                   ; 081CFC27
-.org 0x081CFDD1
-Data081CFDD1:                   ; 081CFDD1
-.org 0x081CFE20
-Data081CFE20:                   ; 081CFE20
-.org 0x081CFE54
-Data081CFE54:                   ; 081CFE54
-.org 0x081CFF5C
-Data081CFF5C:                   ; 081CFF5C
-.org 0x081CFF90
-Data081CFF90:                   ; 081CFF90
-.org 0x081CFFEC
-Data081CFFEC:                   ; 081CFFEC
-.org 0x081D024E
-Data081D024E:                   ; 081D024E
-.org 0x081D02AC
-Data081D02AC:                   ; 081D02AC
-.org 0x081D03F8
-Data081D03F8:                   ; 081D03F8
-.org 0x081D0404
-Data081D0404:                   ; 081D0404
-.org 0x081D0756
-Data081D0756:                   ; 081D0756
-.org 0x081D0BC4
-Data081D0BC4:                   ; 081D0BC4
-.org 0x081D0D30
-Data081D0D30:                   ; 081D0D30
-.org 0x081D0DD0
-Data081D0DD0:                   ; 081D0DD0
-.org 0x081D0F20
-Data081D0F20:                   ; 081D0F20
-.org 0x081D1030
-Data081D1030:                   ; 081D1030
-.org 0x081D118C
-Data081D118C:                   ; 081D118C
-.org 0x081D1508
-Data081D1508:                   ; 081D1508
-.org 0x081D17A5
-Data081D17A5:                   ; 081D17A5
-.org 0x081D1888
-Data081D1888:                   ; 081D1888
-.org 0x081D1902
-Data081D1902:                   ; 081D1902
-.org 0x081D197C
-Data081D197C:                   ; 081D197C
-.org 0x081D1993
-Data081D1993:                   ; 081D1993
-.org 0x081D1AFF
-Data081D1AFF:                   ; 081D1AFF
-.org 0x081D1BA4
-Data081D1BA4:                   ; 081D1BA4
-.org 0x081D1BF8
-Data081D1BF8:                   ; 081D1BF8
-.org 0x081D1C94
-Data081D1C94:                   ; 081D1C94
-.org 0x081D1D2C
-Data081D1D2C:                   ; 081D1D2C
-.org 0x081D1D4C
-Data081D1D4C:                   ; 081D1D4C
-.org 0x081D1D54
-Data081D1D54:                   ; 081D1D54
-.org 0x081D1D5C
-Data081D1D5C:                   ; 081D1D5C
-.org 0x081D1D64
-Data081D1D64:                   ; 081D1D64
-.org 0x081D1D90
-Data081D1D90:                   ; 081D1D90
-.org 0x081D1DC8
-Data081D1DC8:                   ; 081D1DC8
-.org 0x081D1F5E
-Data081D1F5E:                   ; 081D1F5E
-.org 0x081D2246
-Data081D2246:                   ; 081D2246
-.org 0x081D24B6
-Data081D24B6:                   ; 081D24B6
-.org 0x081D2558
-Data081D2558:                   ; 081D2558
-.org 0x081D25C4
-Data081D25C4:                   ; 081D25C4
-.org 0x081D2640
-Data081D2640:                   ; 081D2640
-.org 0x081D26D0
-Data081D26D0:                   ; 081D26D0
-.org 0x081D2724
-Data081D2724:                   ; 081D2724
-.org 0x081D27D0
-Data081D27D0:                   ; 081D27D0
-.org 0x081D2F79
-Data081D2F79:                   ; 081D2F79
-.org 0x081D305B
-Data081D305B:                   ; 081D305B
-.org 0x081D30D0
-Data081D30D0:                   ; 081D30D0
-.org 0x081D30E8
-Data081D30E8:                   ; 081D30E8
-.org 0x081D31D0
-Data081D31D0:                   ; 081D31D0
-.org 0x081D31E8
-Data081D31E8:                   ; 081D31E8
-.org 0x081D31F8
-Data081D31F8:                   ; 081D31F8
-.org 0x081D33C5
-Data081D33C5:                   ; 081D33C5
-.org 0x081D368E
-Data081D368E:                   ; 081D368E
-.org 0x081D3884
-Data081D3884:                   ; 081D3884
-.org 0x081D3997
-Data081D3997:                   ; 081D3997
-.org 0x081D3AB4
-Data081D3AB4:                   ; 081D3AB4
-.org 0x081D3B18
-Data081D3B18:                   ; 081D3B18
-.org 0x081D3BD4
-Data081D3BD4:                   ; 081D3BD4
-.org 0x081D3C74
-Data081D3C74:                   ; 081D3C74
-.org 0x081D3CC8
-Data081D3CC8:                   ; 081D3CC8
-.org 0x081D3CFC
-Data081D3CFC:                   ; 081D3CFC
-.org 0x081D3D71
-Data081D3D71:                   ; 081D3D71
-.org 0x081D4455
-Data081D4455:                   ; 081D4455
-.org 0x081D4539
-Data081D4539:                   ; 081D4539
-.org 0x081D4620
-Data081D4620:                   ; 081D4620
-.org 0x081D4624
-Data081D4624:                   ; 081D4624
-.org 0x081D47A4
-Data081D47A4:                   ; 081D47A4
-.org 0x081D47AC
-Data081D47AC:                   ; 081D47AC
-.org 0x081D47D8
-Data081D47D8:                   ; 081D47D8
-.org 0x081D49F4
-Data081D49F4:                   ; 081D49F4
-.org 0x081D4AB4
-Data081D4AB4:                   ; 081D4AB4
-.org 0x081D4CB7
-Data081D4CB7:                   ; 081D4CB7
-.org 0x081D4FAF
-Data081D4FAF:                   ; 081D4FAF
-.org 0x081D568F
-Data081D568F:                   ; 081D568F
-.org 0x081D5EDC
-Data081D5EDC:                   ; 081D5EDC
-.org 0x081D5F4C
-Data081D5F4C:                   ; 081D5F4C
-.org 0x081D6048
-Data081D6048:                   ; 081D6048
-.org 0x081D6144
-Data081D6144:                   ; 081D6144
-.org 0x081D6274
-Data081D6274:                   ; 081D6274
-.org 0x081D65D9
-Data081D65D9:                   ; 081D65D9
-.org 0x081D68B3
-Data081D68B3:                   ; 081D68B3
-.org 0x081D6CAB
-Data081D6CAB:                   ; 081D6CAB
-.org 0x081D6E7C
-Data081D6E7C:                   ; 081D6E7C
-.org 0x081D6F74
-Data081D6F74:                   ; 081D6F74
-.org 0x081D6FCC
-Data081D6FCC:                   ; 081D6FCC
-.org 0x081D70A8
-Data081D70A8:                   ; 081D70A8
-.org 0x081D70C4
-Data081D70C4:                   ; 081D70C4
-.org 0x081D710A
-Data081D710A:                   ; 081D710A
-.org 0x081D75CA
-Data081D75CA:                   ; 081D75CA
-.org 0x081D79C6
-Data081D79C6:                   ; 081D79C6
-.org 0x081D7AF0
-Data081D7AF0:                   ; 081D7AF0
-.org 0x081D7B08
-Data081D7B08:                   ; 081D7B08
-.org 0x081D7C0C
-Data081D7C0C:                   ; 081D7C0C
-.org 0x081D7CF8
-Data081D7CF8:                   ; 081D7CF8
-.org 0x081D7D10
-Data081D7D10:                   ; 081D7D10
-.org 0x081D7FC4
-Data081D7FC4:                   ; 081D7FC4
-.org 0x081D8260
-Data081D8260:                   ; 081D8260
-.org 0x081D8378
-Data081D8378:                   ; 081D8378
-.org 0x081D8474
-Data081D8474:                   ; 081D8474
-.org 0x081D85FE
-Data081D85FE:                   ; 081D85FE
-.org 0x081D8A45
-Data081D8A45:                   ; 081D8A45
-.org 0x081D8AE0
-Data081D8AE0:                   ; 081D8AE0
-.org 0x081D8EE7
-Data081D8EE7:                   ; 081D8EE7
-.org 0x081D8FD4
-Data081D8FD4:                   ; 081D8FD4
-.org 0x081D9070
-Data081D9070:                   ; 081D9070
-.org 0x081D91F8
-Data081D91F8:                   ; 081D91F8
-.org 0x081D9204
-Data081D9204:                   ; 081D9204
-.org 0x081D936C
-Data081D936C:                   ; 081D936C
-.org 0x081D93DC
-Data081D93DC:                   ; 081D93DC
-.org 0x081D99B9
-Data081D99B9:                   ; 081D99B9
-.org 0x081D9B45
-Data081D9B45:                   ; 081D9B45
-.org 0x081D9B98
-Data081D9B98:                   ; 081D9B98
-.org 0x081D9CDC
-Data081D9CDC:                   ; 081D9CDC
-.org 0x081D9D68
-Data081D9D68:                   ; 081D9D68
-.org 0x081D9D88
-Data081D9D88:                   ; 081D9D88
-.org 0x081DA16E
-Data081DA16E:                   ; 081DA16E
-.org 0x081DA394
-Data081DA394:                   ; 081DA394
-.org 0x081DA6A2
-Data081DA6A2:                   ; 081DA6A2
-.org 0x081DA80C
-Data081DA80C:                   ; 081DA80C
-.org 0x081DA8F8
-Data081DA8F8:                   ; 081DA8F8
-.org 0x081DA998
-Data081DA998:                   ; 081DA998
-.org 0x081DAA34
-Data081DAA34:                   ; 081DAA34
-.org 0x081DAA58
-Data081DAA58:                   ; 081DAA58
-.org 0x081DAF78
-Data081DAF78:                   ; 081DAF78
-.org 0x081DB198
-Data081DB198:                   ; 081DB198
-.org 0x081DB20C
-Data081DB20C:                   ; 081DB20C
-.org 0x081DB2C8
-Data081DB2C8:                   ; 081DB2C8
-.org 0x081DB338
-Data081DB338:                   ; 081DB338
-.org 0x081DB388
-Data081DB388:                   ; 081DB388
-.org 0x081DB90B
-Data081DB90B:                   ; 081DB90B
-.org 0x081DBC69
-Data081DBC69:                   ; 081DBC69
-.org 0x081DBDF9
-Data081DBDF9:                   ; 081DBDF9
-.org 0x081DBE70
-Data081DBE70:                   ; 081DBE70
-.org 0x081DBF50
-Data081DBF50:                   ; 081DBF50
-.org 0x081DC030
-Data081DC030:                   ; 081DC030
-.org 0x081DC040
-Data081DC040:                   ; 081DC040
-.org 0x081DC050
-Data081DC050:                   ; 081DC050
-.org 0x081DC5E0
-Data081DC5E0:                   ; 081DC5E0
-.org 0x081DC988
-Data081DC988:                   ; 081DC988
-.org 0x081DCA4C
-Data081DCA4C:                   ; 081DCA4C
-.org 0x081DCB30
-Data081DCB30:                   ; 081DCB30
-.org 0x081DCE28
-Data081DCE28:                   ; 081DCE28
-.org 0x081DD352
-Data081DD352:                   ; 081DD352
-.org 0x081DD4D9
-Data081DD4D9:                   ; 081DD4D9
-.org 0x081DD690
-Data081DD690:                   ; 081DD690
-.org 0x081DD788
-Data081DD788:                   ; 081DD788
-.org 0x081DD88C
-Data081DD88C:                   ; 081DD88C
-.org 0x081DD8F8
-Data081DD8F8:                   ; 081DD8F8
-.org 0x081DD9A0
-Data081DD9A0:                   ; 081DD9A0
-.org 0x081DDE4D
-Data081DDE4D:                   ; 081DDE4D
-.org 0x081DE1AA
-Data081DE1AA:                   ; 081DE1AA
-.org 0x081DE3BB
-Data081DE3BB:                   ; 081DE3BB
-.org 0x081DE3E3
-Data081DE3E3:                   ; 081DE3E3
-.org 0x081DE474
-Data081DE474:                   ; 081DE474
-.org 0x081DE534
-Data081DE534:                   ; 081DE534
-.org 0x081DE5FC
-Data081DE5FC:                   ; 081DE5FC
-.org 0x081DE6A8
-Data081DE6A8:                   ; 081DE6A8
-.org 0x081DE6BC
-Data081DE6BC:                   ; 081DE6BC
-.org 0x081DE6DC
-Data081DE6DC:                   ; 081DE6DC
-.org 0x081DE85C
-Data081DE85C:                   ; 081DE85C
-.org 0x081DE9D8
-Data081DE9D8:                   ; 081DE9D8
-.org 0x081DECC8
-Data081DECC8:                   ; 081DECC8
-.org 0x081DEE14
-Data081DEE14:                   ; 081DEE14
-.org 0x081DEE50
-Data081DEE50:                   ; 081DEE50
-.org 0x081DEEC8
-Data081DEEC8:                   ; 081DEEC8
-.org 0x081DEF74
-Data081DEF74:                   ; 081DEF74
-.org 0x081DEF94
-Data081DEF94:                   ; 081DEF94
-.org 0x081DF18D
-Data081DF18D:                   ; 081DF18D
-.org 0x081DF44C
-Data081DF44C:                   ; 081DF44C
-.org 0x081DF6AA
-Data081DF6AA:                   ; 081DF6AA
-.org 0x081DF9AD
-Data081DF9AD:                   ; 081DF9AD
-.org 0x081DFB24
-Data081DFB24:                   ; 081DFB24
-.org 0x081DFD4C
-Data081DFD4C:                   ; 081DFD4C
-.org 0x081DFD74
-Data081DFD74:                   ; 081DFD74
-.org 0x081DFDFC
-Data081DFDFC:                   ; 081DFDFC
-.org 0x081DFED0
-Data081DFED0:                   ; 081DFED0
-.org 0x081DFF8C
-Data081DFF8C:                   ; 081DFF8C
-.org 0x081DFFD8
-Data081DFFD8:                   ; 081DFFD8
-.org 0x081E0004
-Data081E0004:                   ; 081E0004
-.org 0x081E0050
-Data081E0050:                   ; 081E0050
-.org 0x081E0058
-Data081E0058:                   ; 081E0058
-.org 0x081E0670
-Data081E0670:                   ; 081E0670
-.org 0x081E0A86
-Data081E0A86:                   ; 081E0A86
-.org 0x081E0B3E
-Data081E0B3E:                   ; 081E0B3E
-.org 0x081E0BB8
-Data081E0BB8:                   ; 081E0BB8
-.org 0x081E0D04
-Data081E0D04:                   ; 081E0D04
-.org 0x081E0E00
-Data081E0E00:                   ; 081E0E00
-.org 0x081E0E10
-Data081E0E10:                   ; 081E0E10
-.org 0x081E0E78
-Data081E0E78:                   ; 081E0E78
-.org 0x081E142B
-Data081E142B:                   ; 081E142B
-.org 0x081E1950
-Data081E1950:                   ; 081E1950
-.org 0x081E1D9A
-Data081E1D9A:                   ; 081E1D9A
-.org 0x081E1DCC
-Data081E1DCC:                   ; 081E1DCC
-.org 0x081E1E84
-Data081E1E84:                   ; 081E1E84
-.org 0x081E1FB0
-Data081E1FB0:                   ; 081E1FB0
-.org 0x081E20A8
-Data081E20A8:                   ; 081E20A8
-.org 0x081E20C8
-Data081E20C8:                   ; 081E20C8
-.org 0x081E2269
-Data081E2269:                   ; 081E2269
-.org 0x081E2461
-Data081E2461:                   ; 081E2461
-.org 0x081E24BC
-Data081E24BC:                   ; 081E24BC
-.org 0x081E25AC
-Data081E25AC:                   ; 081E25AC
-.org 0x081E2680
-Data081E2680:                   ; 081E2680
-.org 0x081E2690
-Data081E2690:                   ; 081E2690
-.org 0x081E2BD3
-Data081E2BD3:                   ; 081E2BD3
-.org 0x081E2C69
-Data081E2C69:                   ; 081E2C69
-.org 0x081E2E8F
-Data081E2E8F:                   ; 081E2E8F
-.org 0x081E2F48
-Data081E2F48:                   ; 081E2F48
-.org 0x081E30A0
-Data081E30A0:                   ; 081E30A0
-.org 0x081E30B0
-Data081E30B0:                   ; 081E30B0
-.org 0x081E3114
-Data081E3114:                   ; 081E3114
-.org 0x081E313C
-Data081E313C:                   ; 081E313C
-.org 0x081E327C
-Data081E327C:                   ; 081E327C
-.org 0x081E3951
-Data081E3951:                   ; 081E3951
-.org 0x081E3A3E
-Data081E3A3E:                   ; 081E3A3E
-.org 0x081E3DDF
-Data081E3DDF:                   ; 081E3DDF
-.org 0x081E3E49
-Data081E3E49:                   ; 081E3E49
-.org 0x081E3E73
-Data081E3E73:                   ; 081E3E73
-.org 0x081E4148
-Data081E4148:                   ; 081E4148
-.org 0x081E4198
-Data081E4198:                   ; 081E4198
-.org 0x081E426C
-Data081E426C:                   ; 081E426C
-.org 0x081E4290
-Data081E4290:                   ; 081E4290
-.org 0x081E4330
-Data081E4330:                   ; 081E4330
-.org 0x081E433C
-Data081E433C:                   ; 081E433C
-.org 0x081E4340
-Data081E4340:                   ; 081E4340
-.org 0x081E43CC
-Data081E43CC:                   ; 081E43CC
-.org 0x081E4557
-Data081E4557:                   ; 081E4557
-.org 0x081E478F
-Data081E478F:                   ; 081E478F
-.org 0x081E4887
-Data081E4887:                   ; 081E4887
-.org 0x081E4B4C
-Data081E4B4C:                   ; 081E4B4C
-.org 0x081E4BE0
-Data081E4BE0:                   ; 081E4BE0
-.org 0x081E4C10
-Data081E4C10:                   ; 081E4C10
-.org 0x081E4C18
-Data081E4C18:                   ; 081E4C18
-.org 0x081E4CD0
-Data081E4CD0:                   ; 081E4CD0
-.org 0x081E507A
-Data081E507A:                   ; 081E507A
-.org 0x081E55BD
-Data081E55BD:                   ; 081E55BD
-.org 0x081E5A68
-Data081E5A68:                   ; 081E5A68
-.org 0x081E5B64
-Data081E5B64:                   ; 081E5B64
-.org 0x081E5C18
-Data081E5C18:                   ; 081E5C18
-.org 0x081E5D14
-Data081E5D14:                   ; 081E5D14
-.org 0x081E5F05
-Data081E5F05:                   ; 081E5F05
-.org 0x081E618E
-Data081E618E:                   ; 081E618E
-.org 0x081E650A
-Data081E650A:                   ; 081E650A
-.org 0x081E66A8
-Data081E66A8:                   ; 081E66A8
-.org 0x081E678C
-Data081E678C:                   ; 081E678C
-.org 0x081E6834
-Data081E6834:                   ; 081E6834
-.org 0x081E68D8
-Data081E68D8:                   ; 081E68D8
-.org 0x081E6970
-Data081E6970:                   ; 081E6970
-.org 0x081E6BBE
-Data081E6BBE:                   ; 081E6BBE
-.org 0x081E6F5C
-Data081E6F5C:                   ; 081E6F5C
-.org 0x081E70F8
-Data081E70F8:                   ; 081E70F8
-.org 0x081E719C
-Data081E719C:                   ; 081E719C
-.org 0x081E7270
-Data081E7270:                   ; 081E7270
-.org 0x081E72F0
-Data081E72F0:                   ; 081E72F0
-.org 0x081E753F
-Data081E753F:                   ; 081E753F
-.org 0x081E770C
-Data081E770C:                   ; 081E770C
-.org 0x081E78D8
-Data081E78D8:                   ; 081E78D8
-.org 0x081E7980
-Data081E7980:                   ; 081E7980
-.org 0x081E7A18
-Data081E7A18:                   ; 081E7A18
-.org 0x081E7AA0
-Data081E7AA0:                   ; 081E7AA0
-.org 0x081E7C19
-Data081E7C19:                   ; 081E7C19
-.org 0x081E7E33
-Data081E7E33:                   ; 081E7E33
-.org 0x081E7F39
-Data081E7F39:                   ; 081E7F39
-.org 0x081E80FD
-Data081E80FD:                   ; 081E80FD
-.org 0x081E819A
-Data081E819A:                   ; 081E819A
-.org 0x081E8290
-Data081E8290:                   ; 081E8290
-.org 0x081E8360
-Data081E8360:                   ; 081E8360
-.org 0x081E8378
-Data081E8378:                   ; 081E8378
-.org 0x081E84C8
-Data081E84C8:                   ; 081E84C8
-.org 0x081E85A4
-Data081E85A4:                   ; 081E85A4
-.org 0x081E8620
-Data081E8620:                   ; 081E8620
-.org 0x081E863C
-Data081E863C:                   ; 081E863C
-.org 0x081E8E8A
-Data081E8E8A:                   ; 081E8E8A
-.org 0x081E91A7
-Data081E91A7:                   ; 081E91A7
-.org 0x081E9430
-Data081E9430:                   ; 081E9430
-.org 0x081E94E0
-Data081E94E0:                   ; 081E94E0
-.org 0x081E954C
-Data081E954C:                   ; 081E954C
-.org 0x081E95BC
-Data081E95BC:                   ; 081E95BC
-.org 0x081E9C4F
-Data081E9C4F:                   ; 081E9C4F
-.org 0x081EA134
-Data081EA134:                   ; 081EA134
-.org 0x081EA4D8
-Data081EA4D8:                   ; 081EA4D8
-.org 0x081EA638
-Data081EA638:                   ; 081EA638
-.org 0x081EA728
-Data081EA728:                   ; 081EA728
-.org 0x081EA7C0
-Data081EA7C0:                   ; 081EA7C0
-.org 0x081EAAAC
-Data081EAAAC:                   ; 081EAAAC
-.org 0x081EB097
-Data081EB097:                   ; 081EB097
-.org 0x081EB282
-Data081EB282:                   ; 081EB282
-.org 0x081EB380
-Data081EB380:                   ; 081EB380
-.org 0x081EB3F4
-Data081EB3F4:                   ; 081EB3F4
-.org 0x081EB50C
-Data081EB50C:                   ; 081EB50C
-.org 0x081EB5DC
-Data081EB5DC:                   ; 081EB5DC
-.org 0x081EB630
-Data081EB630:                   ; 081EB630
-.org 0x081EB6CA
-Data081EB6CA:                   ; 081EB6CA
-.org 0x081EB791
-Data081EB791:                   ; 081EB791
-.org 0x081EB850
-Data081EB850:                   ; 081EB850
-.org 0x081EB9FD
-Data081EB9FD:                   ; 081EB9FD
-.org 0x081EBBBD
-Data081EBBBD:                   ; 081EBBBD
-.org 0x081EBCFF
-Data081EBCFF:                   ; 081EBCFF
-.org 0x081EBD4F
-Data081EBD4F:                   ; 081EBD4F
-.org 0x081EBE14
-Data081EBE14:                   ; 081EBE14
-.org 0x081EBF01
-Data081EBF01:                   ; 081EBF01
-.org 0x081EC0F3
-Data081EC0F3:                   ; 081EC0F3
-.org 0x081EC211
-Data081EC211:                   ; 081EC211
-.org 0x081EC23E
-Data081EC23E:                   ; 081EC23E
-.org 0x081EC24B
-Data081EC24B:                   ; 081EC24B
-.org 0x081EC259
+Sublevel38_Main:                ; 081C1D54  
+.incbin "../data/Sublevels/Sublevel38_Main.bin"
+Sublevel39_Main:                ; 081C1DA4  
+.incbin "../data/Sublevels/Sublevel39_Main.bin"
+Sublevel00_Main:                ; 081C1F29  
+.incbin "../data/Sublevels/Sublevel00_Main.bin"
+Sublevel3A_Main:                ; 081C2265  
+.incbin "../data/Sublevels/Sublevel3A_Main.bin"
+Sublevel38_Sprites:             ; 081C2320  
+.incbin "../data/Sublevels/Sublevel38_Sprites.bin"
+Sublevel39_Sprites:             ; 081C2324  
+.incbin "../data/Sublevels/Sublevel39_Sprites.bin"
+Sublevel00_Sprites:             ; 081C2354  
+.incbin "../data/Sublevels/Sublevel00_Sprites.bin"
+Sublevel3A_Sprites:             ; 081C2434  
+.incbin "../data/Sublevels/Sublevel3A_Sprites.bin"
+Sublevel01_Main:                ; 081C245C  
+.incbin "../data/Sublevels/Sublevel01_Main.bin"
+Sublevel3B_Main:                ; 081C264E  
+.incbin "../data/Sublevels/Sublevel3B_Main.bin"
+Sublevel01_Sprites:             ; 081C2D70  
+.incbin "../data/Sublevels/Sublevel01_Sprites.bin"
+Sublevel3B_Sprites:             ; 081C2E18  
+.incbin "../data/Sublevels/Sublevel3B_Sprites.bin"
+Sublevel02_Main:                ; 081C2F00  
+.incbin "../data/Sublevels/Sublevel02_Main.bin"
+Sublevel3C_Main:                ; 081C2FD1  
+.incbin "../data/Sublevels/Sublevel3C_Main.bin"
+Sublevel6D_Main:                ; 081C3856  
+.incbin "../data/Sublevels/Sublevel6D_Main.bin"
+Sublevel02_Sprites:             ; 081C39B4  
+.incbin "../data/Sublevels/Sublevel02_Sprites.bin"
+Sublevel3C_Sprites:             ; 081C39E0  
+.incbin "../data/Sublevels/Sublevel3C_Sprites.bin"
+Sublevel6D_Sprites:             ; 081C3AD8  
+.incbin "../data/Sublevels/Sublevel6D_Sprites.bin"
+Sublevel03_Main:                ; 081C3B04  
+.incbin "../data/Sublevels/Sublevel03_Main.bin"
+Sublevel3D_Main:                ; 081C4026  
+.incbin "../data/Sublevels/Sublevel3D_Main.bin"
+Sublevel6E_Main:                ; 081C40DE  
+.incbin "../data/Sublevels/Sublevel6E_Main.bin"
+Sublevel99_Main:                ; 081C4194  
+.incbin "../data/Sublevels/Sublevel99_Main.bin"
+Sublevel03_Sprites:             ; 081C4218  
+.incbin "../data/Sublevels/Sublevel03_Sprites.bin"
+Sublevel3D_Sprites:             ; 081C4320  
+.incbin "../data/Sublevels/Sublevel3D_Sprites.bin"
+Sublevel6E_Sprites:             ; 081C4330  
+.incbin "../data/Sublevels/Sublevel6E_Sprites.bin"
+Sublevel99_Sprites:             ; 081C4368  
+.incbin "../data/Sublevels/Sublevel99_Sprites.bin"
+Sublevel04_Main:                ; 081C4380  
+.incbin "../data/Sublevels/Sublevel04_Main.bin"
+Sublevel04_Sprites:             ; 081C4660  
+.incbin "../data/Sublevels/Sublevel04_Sprites.bin"
+Sublevel05_Main:                ; 081C46E8  
+.incbin "../data/Sublevels/Sublevel05_Main.bin"
+Sublevel3E_Main:                ; 081C4980  
+.incbin "../data/Sublevels/Sublevel3E_Main.bin"
+Sublevel6F_Main:                ; 081C4B87  
+.incbin "../data/Sublevels/Sublevel6F_Main.bin"
+Sublevel9A_Main:                ; 081C4CBB  
+.incbin "../data/Sublevels/Sublevel9A_Main.bin"
+Sublevel05_Sprites:             ; 081C4FFC  
+.incbin "../data/Sublevels/Sublevel05_Sprites.bin"
+Sublevel3E_Sprites:             ; 081C50B0  
+.incbin "../data/Sublevels/Sublevel3E_Sprites.bin"
+Sublevel6F_Sprites:             ; 081C5100  
+.incbin "../data/Sublevels/Sublevel6F_Sprites.bin"
+Sublevel9A_Sprites:             ; 081C511C  
+.incbin "../data/Sublevels/Sublevel9A_Sprites.bin"
+Sublevel06_Main:                ; 081C5168  
+.incbin "../data/Sublevels/Sublevel06_Main.bin"
+Sublevel3F_Main:                ; 081C58F0  
+.incbin "../data/Sublevels/Sublevel3F_Main.bin"
+Sublevel06_Sprites:             ; 081C59C4  
+.incbin "../data/Sublevels/Sublevel06_Sprites.bin"
+Sublevel3F_Sprites:             ; 081C5A9C  
+.incbin "../data/Sublevels/Sublevel3F_Sprites.bin"
+Sublevel07_Main:                ; 081C5AF4  
+.incbin "../data/Sublevels/Sublevel07_Main.bin"
+Sublevel40_Main:                ; 081C5D60  
+.incbin "../data/Sublevels/Sublevel40_Main.bin"
+Sublevel70_Main:                ; 081C5E78  
+.incbin "../data/Sublevels/Sublevel70_Main.bin"
+Sublevel9B_Main:                ; 081C5F39  
+.incbin "../data/Sublevels/Sublevel9B_Main.bin"
+Sublevel07_Sprites:             ; 081C6238  
+.incbin "../data/Sublevels/Sublevel07_Sprites.bin"
+Sublevel40_Sprites:             ; 081C62A8  
+.incbin "../data/Sublevels/Sublevel40_Sprites.bin"
+Sublevel70_Sprites:             ; 081C62CC  
+.incbin "../data/Sublevels/Sublevel70_Sprites.bin"
+Sublevel9B_Sprites:             ; 081C62D8  
+.incbin "../data/Sublevels/Sublevel9B_Sprites.bin"
+Sublevel08_Main:                ; 081C637C  
+.incbin "../data/Sublevels/Sublevel08_Main.bin"
+Sublevel08_Sprites:             ; 081C66A0  
+.incbin "../data/Sublevels/Sublevel08_Sprites.bin"
+SublevelDE_Main:                ; 081C6724  
+.incbin "../data/Sublevels/SublevelDE_Main.bin"
+SublevelDF_Main:                ; 081C6A9E  
+.incbin "../data/Sublevels/SublevelDF_Main.bin"
+SublevelF3_Main:                ; 081C6D62  
+.incbin "../data/Sublevels/SublevelF3_Main.bin"
+SublevelDE_Sprites:             ; 081C70CC  
+.incbin "../data/Sublevels/SublevelDE_Sprites.bin"
+SublevelDF_Sprites:             ; 081C7170  
+.incbin "../data/Sublevels/SublevelDF_Sprites.bin"
+SublevelF3_Sprites:             ; 081C7238  
+.incbin "../data/Sublevels/SublevelF3_Sprites.bin"
+Sublevel09_Main:                ; 081C72D0  
+.incbin "../data/Sublevels/Sublevel09_Main.bin"
+Sublevel41_Main:                ; 081C7436  
+.incbin "../data/Sublevels/Sublevel41_Main.bin"
+Sublevel71_Main:                ; 081C785B  
+.incbin "../data/Sublevels/Sublevel71_Main.bin"
+Sublevel9C_Main:                ; 081C7954  
+.incbin "../data/Sublevels/Sublevel9C_Main.bin"
+SublevelBA_Main:                ; 081C7BCF  
+.incbin "../data/Sublevels/SublevelBA_Main.bin"
+Sublevel09_Sprites:             ; 081C7C18  
+.incbin "../data/Sublevels/Sublevel09_Sprites.bin"
+Sublevel41_Sprites:             ; 081C7C5C  
+.incbin "../data/Sublevels/Sublevel41_Sprites.bin"
+Sublevel71_Sprites:             ; 081C7D68  
+.incbin "../data/Sublevels/Sublevel71_Sprites.bin"
+Sublevel9C_Sprites:             ; 081C7D9C  
+.incbin "../data/Sublevels/Sublevel9C_Sprites.bin"
+SublevelBA_Sprites:             ; 081C7DEC  
+.incbin "../data/Sublevels/SublevelBA_Sprites.bin"
+Sublevel0A_Main:                ; 081C7E0C  
+.incbin "../data/Sublevels/Sublevel0A_Main.bin"
+Sublevel42_Main:                ; 081C8363  
+.incbin "../data/Sublevels/Sublevel42_Main.bin"
+Sublevel72_Main:                ; 081C865C  
+.incbin "../data/Sublevels/Sublevel72_Main.bin"
+Sublevel0A_Sprites:             ; 081C8A4C  
+.incbin "../data/Sublevels/Sublevel0A_Sprites.bin"
+Sublevel42_Sprites:             ; 081C8B9C  
+.incbin "../data/Sublevels/Sublevel42_Sprites.bin"
+Sublevel72_Sprites:             ; 081C8C20  
+.incbin "../data/Sublevels/Sublevel72_Sprites.bin"
+Sublevel0B_Main:                ; 081C8D68  
+.incbin "../data/Sublevels/Sublevel0B_Main.bin"
+Sublevel43_Main:                ; 081C8FF9  
+.incbin "../data/Sublevels/Sublevel43_Main.bin"
+Sublevel73_Main:                ; 081C978E  
+.incbin "../data/Sublevels/Sublevel73_Main.bin"
+Sublevel0B_Sprites:             ; 081C988C  
+.incbin "../data/Sublevels/Sublevel0B_Sprites.bin"
+Sublevel43_Sprites:             ; 081C9918  
+.incbin "../data/Sublevels/Sublevel43_Sprites.bin"
+Sublevel73_Sprites:             ; 081C9A6C  
+.incbin "../data/Sublevels/Sublevel73_Sprites.bin"
+Sublevel0C_Main:                ; 081C9A80  
+.incbin "../data/Sublevels/Sublevel0C_Main.bin"
+Sublevel44_Main:                ; 081C9BC4  
+.incbin "../data/Sublevels/Sublevel44_Main.bin"
+Sublevel74_Main:                ; 081C9F7C  
+.incbin "../data/Sublevels/Sublevel74_Main.bin"
+Sublevel9D_Main:                ; 081C9FD6  
+.incbin "../data/Sublevels/Sublevel9D_Main.bin"
+SublevelBB_Main:                ; 081CA2EA  
+.incbin "../data/Sublevels/SublevelBB_Main.bin"
+SublevelC7_Main:                ; 081CA356  
+.incbin "../data/Sublevels/SublevelC7_Main.bin"
+SublevelCE_Main:                ; 081CA3FA  
+.incbin "../data/Sublevels/SublevelCE_Main.bin"
+Sublevel0C_Sprites:             ; 081CA498  
+.incbin "../data/Sublevels/Sublevel0C_Sprites.bin"
+Sublevel44_Sprites:             ; 081CA4C8  
+.incbin "../data/Sublevels/Sublevel44_Sprites.bin"
+Sublevel74_Sprites:             ; 081CA558  
+.incbin "../data/Sublevels/Sublevel74_Sprites.bin"
+Sublevel9D_Sprites:             ; 081CA560  
+.incbin "../data/Sublevels/Sublevel9D_Sprites.bin"
+SublevelBB_Sprites:             ; 081CA5D8  
+.incbin "../data/Sublevels/SublevelBB_Sprites.bin"
+SublevelC7_Sprites:             ; 081CA5F4  
+.incbin "../data/Sublevels/SublevelC7_Sprites.bin"
+SublevelCE_Sprites:             ; 081CA644  
+.incbin "../data/Sublevels/SublevelCE_Sprites.bin"
+Sublevel0D_Main:                ; 081CA660  
+.incbin "../data/Sublevels/Sublevel0D_Main.bin"
+Sublevel45_Main:                ; 081CAA6B  
+.incbin "../data/Sublevels/Sublevel45_Main.bin"
+Sublevel75_Main:                ; 081CAC9F  
+.incbin "../data/Sublevels/Sublevel75_Main.bin"
+Sublevel9E_Main:                ; 081CAF6A  
+.incbin "../data/Sublevels/Sublevel9E_Main.bin"
+SublevelBC_Main:                ; 081CB200  
+.incbin "../data/Sublevels/SublevelBC_Main.bin"
+Sublevel0D_Sprites:             ; 081CB318  
+.incbin "../data/Sublevels/Sublevel0D_Sprites.bin"
+Sublevel45_Sprites:             ; 081CB3F8  
+.incbin "../data/Sublevels/Sublevel45_Sprites.bin"
+Sublevel75_Sprites:             ; 081CB4A4  
+.incbin "../data/Sublevels/Sublevel75_Sprites.bin"
+Sublevel9E_Sprites:             ; 081CB54C  
+.incbin "../data/Sublevels/Sublevel9E_Sprites.bin"
+SublevelBC_Sprites:             ; 081CB568  
+.incbin "../data/Sublevels/SublevelBC_Sprites.bin"
+Sublevel0E_Main:                ; 081CB5A8  
+.incbin "../data/Sublevels/Sublevel0E_Main.bin"
+Sublevel46_Main:                ; 081CB810  
+.incbin "../data/Sublevels/Sublevel46_Main.bin"
+Sublevel76_Main:                ; 081CBEBE  
+.incbin "../data/Sublevels/Sublevel76_Main.bin"
+Sublevel9F_Main:                ; 081CC045  
+.incbin "../data/Sublevels/Sublevel9F_Main.bin"
+SublevelBD_Main:                ; 081CC0DE  
+.incbin "../data/Sublevels/SublevelBD_Main.bin"
+Sublevel0E_Sprites:             ; 081CC154  
+.incbin "../data/Sublevels/Sublevel0E_Sprites.bin"
+Sublevel46_Sprites:             ; 081CC1F4  
+.incbin "../data/Sublevels/Sublevel46_Sprites.bin"
+Sublevel76_Sprites:             ; 081CC2AC  
+.incbin "../data/Sublevels/Sublevel76_Sprites.bin"
+Sublevel9F_Sprites:             ; 081CC2D0  
+.incbin "../data/Sublevels/Sublevel9F_Sprites.bin"
+SublevelBD_Sprites:             ; 081CC2F4  
+.incbin "../data/Sublevels/SublevelBD_Sprites.bin"
+Sublevel0F_Main:                ; 081CC318  
+.incbin "../data/Sublevels/Sublevel0F_Main.bin"
+Sublevel47_Main:                ; 081CCA82  
+.incbin "../data/Sublevels/Sublevel47_Main.bin"
+Sublevel77_Main:                ; 081CCC6D  
+.incbin "../data/Sublevels/Sublevel77_Main.bin"
+SublevelA0_Main:                ; 081CD06D  
+.incbin "../data/Sublevels/SublevelA0_Main.bin"
+Sublevel0F_Sprites:             ; 081CD0FC  
+.incbin "../data/Sublevels/Sublevel0F_Sprites.bin"
+Sublevel47_Sprites:             ; 081CD284  
+.incbin "../data/Sublevels/Sublevel47_Sprites.bin"
+Sublevel77_Sprites:             ; 081CD320  
+.incbin "../data/Sublevels/Sublevel77_Sprites.bin"
+SublevelA0_Sprites:             ; 081CD3D0  
+.incbin "../data/Sublevels/SublevelA0_Sprites.bin"
+Sublevel10_Main:                ; 081CD3E8  
+.incbin "../data/Sublevels/Sublevel10_Main.bin"
+Sublevel48_Main:                ; 081CD4C9  
+.incbin "../data/Sublevels/Sublevel48_Main.bin"
+Sublevel78_Main:                ; 081CD684  
+.incbin "../data/Sublevels/Sublevel78_Main.bin"
+SublevelA1_Main:                ; 081CD854  
+.incbin "../data/Sublevels/SublevelA1_Main.bin"
+SublevelBE_Main:                ; 081CDB6A  
+.incbin "../data/Sublevels/SublevelBE_Main.bin"
+SublevelC8_Main:                ; 081CDCC3  
+.incbin "../data/Sublevels/SublevelC8_Main.bin"
+SublevelCF_Main:                ; 081CDDAA  
+.incbin "../data/Sublevels/SublevelCF_Main.bin"
+SublevelD4_Main:                ; 081CDDC6  
+.incbin "../data/Sublevels/SublevelD4_Main.bin"
+Sublevel10_Sprites:             ; 081CDED4  
+.incbin "../data/Sublevels/Sublevel10_Sprites.bin"
+Sublevel48_Sprites:             ; 081CDEE0  
+.incbin "../data/Sublevels/Sublevel48_Sprites.bin"
+Sublevel78_Sprites:             ; 081CDF38  
+.incbin "../data/Sublevels/Sublevel78_Sprites.bin"
+SublevelA1_Sprites:             ; 081CDF88  
+.incbin "../data/Sublevels/SublevelA1_Sprites.bin"
+SublevelBE_Sprites:             ; 081CE018  
+.incbin "../data/Sublevels/SublevelBE_Sprites.bin"
+SublevelC8_Sprites:             ; 081CE04C  
+.incbin "../data/Sublevels/SublevelC8_Sprites.bin"
+SublevelCF_Sprites:             ; 081CE07C  
+.incbin "../data/Sublevels/SublevelCF_Sprites.bin"
+SublevelD4_Sprites:             ; 081CE088  
+.incbin "../data/Sublevels/SublevelD4_Sprites.bin"
+Sublevel11_Main:                ; 081CE0C4  
+.incbin "../data/Sublevels/Sublevel11_Main.bin"
+Sublevel49_Main:                ; 081CE2E9  
+.incbin "../data/Sublevels/Sublevel49_Main.bin"
+Sublevel11_Sprites:             ; 081CE3F8  
+.incbin "../data/Sublevels/Sublevel11_Sprites.bin"
+Sublevel49_Sprites:             ; 081CE45C  
+.incbin "../data/Sublevels/Sublevel49_Sprites.bin"
+SublevelE0_Main:                ; 081CE47C  
+.incbin "../data/Sublevels/SublevelE0_Main.bin"
+SublevelE1_Main:                ; 081CEB4F  
+.incbin "../data/Sublevels/SublevelE1_Main.bin"
+SublevelE2_Main:                ; 081CEF16  
+.incbin "../data/Sublevels/SublevelE2_Main.bin"
+SublevelF4_Main:                ; 081CF31F  
+.incbin "../data/Sublevels/SublevelF4_Main.bin"
+SublevelE0_Sprites:             ; 081CF37C  
+.incbin "../data/Sublevels/SublevelE0_Sprites.bin"
+SublevelE1_Sprites:             ; 081CF460  
+.incbin "../data/Sublevels/SublevelE1_Sprites.bin"
+SublevelE2_Sprites:             ; 081CF538  
+.incbin "../data/Sublevels/SublevelE2_Sprites.bin"
+SublevelF4_Sprites:             ; 081CF61C  
+.incbin "../data/Sublevels/SublevelF4_Sprites.bin"
+Sublevel12_Main:                ; 081CF638  
+.incbin "../data/Sublevels/Sublevel12_Main.bin"
+Sublevel4A_Main:                ; 081CF7A4  
+.incbin "../data/Sublevels/Sublevel4A_Main.bin"
+Sublevel79_Main:                ; 081CFC27  
+.incbin "../data/Sublevels/Sublevel79_Main.bin"
+SublevelA2_Main:                ; 081CFDD1  
+.incbin "../data/Sublevels/SublevelA2_Main.bin"
+Sublevel12_Sprites:             ; 081CFE20  
+.incbin "../data/Sublevels/Sublevel12_Sprites.bin"
+Sublevel4A_Sprites:             ; 081CFE54  
+.incbin "../data/Sublevels/Sublevel4A_Sprites.bin"
+Sublevel79_Sprites:             ; 081CFF5C  
+.incbin "../data/Sublevels/Sublevel79_Sprites.bin"
+SublevelA2_Sprites:             ; 081CFF90  
+.incbin "../data/Sublevels/SublevelA2_Sprites.bin"
+Sublevel13_Main:                ; 081CFFEC  
+.incbin "../data/Sublevels/Sublevel13_Main.bin"
+Sublevel4B_Main:                ; 081D024E  
+.incbin "../data/Sublevels/Sublevel4B_Main.bin"
+Sublevel13_Sprites:             ; 081D02AC  
+.incbin "../data/Sublevels/Sublevel13_Sprites.bin"
+Sublevel4B_Sprites:             ; 081D03F8  
+.incbin "../data/Sublevels/Sublevel4B_Sprites.bin"
+Sublevel14_Main:                ; 081D0404  
+.incbin "../data/Sublevels/Sublevel14_Main.bin"
+Sublevel4C_Main:                ; 081D0756  
+.incbin "../data/Sublevels/Sublevel4C_Main.bin"
+Sublevel7A_Main:                ; 081D0BC4  
+.incbin "../data/Sublevels/Sublevel7A_Main.bin"
+Sublevel14_Sprites:             ; 081D0D30  
+.incbin "../data/Sublevels/Sublevel14_Sprites.bin"
+Sublevel4C_Sprites:             ; 081D0DD0  
+.incbin "../data/Sublevels/Sublevel4C_Sprites.bin"
+Sublevel7A_Sprites:             ; 081D0F20  
+.incbin "../data/Sublevels/Sublevel7A_Sprites.bin"
+Sublevel15_Main:                ; 081D1030  
+.incbin "../data/Sublevels/Sublevel15_Main.bin"
+Sublevel4D_Main:                ; 081D118C  
+.incbin "../data/Sublevels/Sublevel4D_Main.bin"
+Sublevel7B_Main:                ; 081D1508  
+.incbin "../data/Sublevels/Sublevel7B_Main.bin"
+SublevelA3_Main:                ; 081D17A5  
+.incbin "../data/Sublevels/SublevelA3_Main.bin"
+SublevelBF_Main:                ; 081D1888  
+.incbin "../data/Sublevels/SublevelBF_Main.bin"
+SublevelD0_Main:                ; 081D1902  
+.incbin "../data/Sublevels/SublevelD0_Main.bin"
+SublevelC9_Main:                ; 081D197C  
+.incbin "../data/Sublevels/SublevelC9_Main.bin"
+SublevelD5_Main:                ; 081D1993  
+.incbin "../data/Sublevels/SublevelD5_Main.bin"
+SublevelD7_Main:                ; 081D1AFF  
+.incbin "../data/Sublevels/SublevelD7_Main.bin"
+Sublevel15_Sprites:             ; 081D1BA4  
+.incbin "../data/Sublevels/Sublevel15_Sprites.bin"
+Sublevel4D_Sprites:             ; 081D1BF8  
+.incbin "../data/Sublevels/Sublevel4D_Sprites.bin"
+Sublevel7B_Sprites:             ; 081D1C94  
+.incbin "../data/Sublevels/Sublevel7B_Sprites.bin"
+SublevelA3_Sprites:             ; 081D1D2C  
+.incbin "../data/Sublevels/SublevelA3_Sprites.bin"
+SublevelBF_Sprites:             ; 081D1D4C  
+.incbin "../data/Sublevels/SublevelBF_Sprites.bin"
+SublevelC9_Sprites:             ; 081D1D54  
+.incbin "../data/Sublevels/SublevelC9_Sprites.bin"
+SublevelD0_Sprites:             ; 081D1D5C  
+.incbin "../data/Sublevels/SublevelD0_Sprites.bin"
+SublevelD5_Sprites:             ; 081D1D64  
+.incbin "../data/Sublevels/SublevelD5_Sprites.bin"
+SublevelD7_Sprites:             ; 081D1D90  
+.incbin "../data/Sublevels/SublevelD7_Sprites.bin"
+Sublevel16_Main:                ; 081D1DC8  
+.incbin "../data/Sublevels/Sublevel16_Main.bin"
+Sublevel4E_Main:                ; 081D1F5E  
+.incbin "../data/Sublevels/Sublevel4E_Main.bin"
+Sublevel7C_Main:                ; 081D2246  
+.incbin "../data/Sublevels/Sublevel7C_Main.bin"
+SublevelA4_Main:                ; 081D24B6  
+.incbin "../data/Sublevels/SublevelA4_Main.bin"
+Sublevel16_Sprites:             ; 081D2558  
+.incbin "../data/Sublevels/Sublevel16_Sprites.bin"
+Sublevel4E_Sprites:             ; 081D25C4  
+.incbin "../data/Sublevels/Sublevel4E_Sprites.bin"
+Sublevel7C_Sprites:             ; 081D2640  
+.incbin "../data/Sublevels/Sublevel7C_Sprites.bin"
+SublevelA4_Sprites:             ; 081D26D0  
+.incbin "../data/Sublevels/SublevelA4_Sprites.bin"
+Sublevel17_Main:                ; 081D2724  
+.incbin "../data/Sublevels/Sublevel17_Main.bin"
+Sublevel4F_Main:                ; 081D27D0  
+.incbin "../data/Sublevels/Sublevel4F_Main.bin"
+Sublevel7D_Main:                ; 081D2F79  
+.incbin "../data/Sublevels/Sublevel7D_Main.bin"
+SublevelA5_Main:                ; 081D305B  
+.incbin "../data/Sublevels/SublevelA5_Main.bin"
+Sublevel17_Sprites:             ; 081D30D0  
+.incbin "../data/Sublevels/Sublevel17_Sprites.bin"
+Sublevel4F_Sprites:             ; 081D30E8  
+.incbin "../data/Sublevels/Sublevel4F_Sprites.bin"
+Sublevel7D_Sprites:             ; 081D31D0  
+.incbin "../data/Sublevels/Sublevel7D_Sprites.bin"
+SublevelA5_Sprites:             ; 081D31E8  
+.incbin "../data/Sublevels/SublevelA5_Sprites.bin"
+Sublevel18_Main:                ; 081D31F8  
+.incbin "../data/Sublevels/Sublevel18_Main.bin"
+Sublevel50_Main:                ; 081D33C5  
+.incbin "../data/Sublevels/Sublevel50_Main.bin"
+Sublevel7E_Main:                ; 081D368E  
+.incbin "../data/Sublevels/Sublevel7E_Main.bin"
+SublevelA6_Main:                ; 081D3884  
+.incbin "../data/Sublevels/SublevelA6_Main.bin"
+SublevelC0_Main:                ; 081D3997  
+.incbin "../data/Sublevels/SublevelC0_Main.bin"
+Sublevel18_Sprites:             ; 081D3AB4  
+.incbin "../data/Sublevels/Sublevel18_Sprites.bin"
+Sublevel50_Sprites:             ; 081D3B18  
+.incbin "../data/Sublevels/Sublevel50_Sprites.bin"
+Sublevel7E_Sprites:             ; 081D3BD4  
+.incbin "../data/Sublevels/Sublevel7E_Sprites.bin"
+SublevelA6_Sprites:             ; 081D3C74  
+.incbin "../data/Sublevels/SublevelA6_Sprites.bin"
+SublevelC0_Sprites:             ; 081D3CC8  
+.incbin "../data/Sublevels/SublevelC0_Sprites.bin"
+Sublevel19_Main:                ; 081D3CFC  
+.incbin "../data/Sublevels/Sublevel19_Main.bin"
+Sublevel51_Main:                ; 081D3D71  
+.incbin "../data/Sublevels/Sublevel51_Main.bin"
+Sublevel7F_Main:                ; 081D4455  
+.incbin "../data/Sublevels/Sublevel7F_Main.bin"
+SublevelA7_Main:                ; 081D4539  
+.incbin "../data/Sublevels/SublevelA7_Main.bin"
+Sublevel19_Sprites:             ; 081D4620  
+.incbin "../data/Sublevels/Sublevel19_Sprites.bin"
+Sublevel51_Sprites:             ; 081D4624  
+.incbin "../data/Sublevels/Sublevel51_Sprites.bin"
+Sublevel7F_Sprites:             ; 081D47A4  
+.incbin "../data/Sublevels/Sublevel7F_Sprites.bin"
+SublevelA7_Sprites:             ; 081D47AC  
+.incbin "../data/Sublevels/SublevelA7_Sprites.bin"
+Sublevel1A_Main:                ; 081D47D8  
+.incbin "../data/Sublevels/Sublevel1A_Main.bin"
+Sublevel1A_Sprites:             ; 081D49F4  
+.incbin "../data/Sublevels/Sublevel1A_Sprites.bin"
+SublevelE3_Main:                ; 081D4AB4  
+.incbin "../data/Sublevels/SublevelE3_Main.bin"
+SublevelE4_Main:                ; 081D4CB7  
+.incbin "../data/Sublevels/SublevelE4_Main.bin"
+SublevelE5_Main:                ; 081D4FAF  
+.incbin "../data/Sublevels/SublevelE5_Main.bin"
+SublevelE6_Main:                ; 081D568F  
+.incbin "../data/Sublevels/SublevelE6_Main.bin"
+SublevelE3_Sprites:             ; 081D5EDC  
+.incbin "../data/Sublevels/SublevelE3_Sprites.bin"
+SublevelE4_Sprites:             ; 081D5F4C  
+.incbin "../data/Sublevels/SublevelE4_Sprites.bin"
+SublevelE5_Sprites:             ; 081D6048  
+.incbin "../data/Sublevels/SublevelE5_Sprites.bin"
+SublevelE6_Sprites:             ; 081D6144  
+.incbin "../data/Sublevels/SublevelE6_Sprites.bin"
+Sublevel1B_Main:                ; 081D6274  
+.incbin "../data/Sublevels/Sublevel1B_Main.bin"
+Sublevel52_Main:                ; 081D65D9  
+.incbin "../data/Sublevels/Sublevel52_Main.bin"
+Sublevel80_Main:                ; 081D68B3  
+.incbin "../data/Sublevels/Sublevel80_Main.bin"
+SublevelA8_Main:                ; 081D6CAB  
+.incbin "../data/Sublevels/SublevelA8_Main.bin"
+Sublevel1B_Sprites:             ; 081D6E7C  
+.incbin "../data/Sublevels/Sublevel1B_Sprites.bin"
+Sublevel52_Sprites:             ; 081D6F74  
+.incbin "../data/Sublevels/Sublevel52_Sprites.bin"
+Sublevel80_Sprites:             ; 081D6FCC  
+.incbin "../data/Sublevels/Sublevel80_Sprites.bin"
+SublevelA8_Sprites:             ; 081D70A8  
+.incbin "../data/Sublevels/SublevelA8_Sprites.bin"
+Sublevel1C_Main:                ; 081D70C4  
+.incbin "../data/Sublevels/Sublevel1C_Main.bin"
+Sublevel53_Main:                ; 081D710A  
+.incbin "../data/Sublevels/Sublevel53_Main.bin"
+Sublevel81_Main:                ; 081D75CA  
+.incbin "../data/Sublevels/Sublevel81_Main.bin"
+SublevelA9_Main:                ; 081D79C6  
+.incbin "../data/Sublevels/SublevelA9_Main.bin"
+Sublevel1C_Sprites:             ; 081D7AF0  
+.incbin "../data/Sublevels/Sublevel1C_Sprites.bin"
+Sublevel53_Sprites:             ; 081D7B08  
+.incbin "../data/Sublevels/Sublevel53_Sprites.bin"
+Sublevel81_Sprites:             ; 081D7C0C  
+.incbin "../data/Sublevels/Sublevel81_Sprites.bin"
+SublevelA9_Sprites:             ; 081D7CF8  
+.incbin "../data/Sublevels/SublevelA9_Sprites.bin"
+Sublevel1D_Main:                ; 081D7D10  
+.incbin "../data/Sublevels/Sublevel1D_Main.bin"
+Sublevel54_Main:                ; 081D7FC4  
+.incbin "../data/Sublevels/Sublevel54_Main.bin"
+Sublevel1D_Sprites:             ; 081D8260  
+.incbin "../data/Sublevels/Sublevel1D_Sprites.bin"
+Sublevel54_Sprites:             ; 081D8378  
+.incbin "../data/Sublevels/Sublevel54_Sprites.bin"
+Sublevel1E_Main:                ; 081D8474  
+.incbin "../data/Sublevels/Sublevel1E_Main.bin"
+Sublevel55_Main:                ; 081D85FE  
+.incbin "../data/Sublevels/Sublevel55_Main.bin"
+Sublevel82_Main:                ; 081D8A45  
+.incbin "../data/Sublevels/Sublevel82_Main.bin"
+SublevelAA_Main:                ; 081D8AE0  
+.incbin "../data/Sublevels/SublevelAA_Main.bin"
+SublevelC1_Main:                ; 081D8EE7  
+.incbin "../data/Sublevels/SublevelC1_Main.bin"
+Sublevel1E_Sprites:             ; 081D8FD4  
+.incbin "../data/Sublevels/Sublevel1E_Sprites.bin"
+Sublevel55_Sprites:             ; 081D9070  
+.incbin "../data/Sublevels/Sublevel55_Sprites.bin"
+Sublevel82_Sprites:             ; 081D91F8  
+.incbin "../data/Sublevels/Sublevel82_Sprites.bin"
+SublevelAA_Sprites:             ; 081D9204  
+.incbin "../data/Sublevels/SublevelAA_Sprites.bin"
+SublevelC1_Sprites:             ; 081D936C  
+.incbin "../data/Sublevels/SublevelC1_Sprites.bin"
+Sublevel1F_Main:                ; 081D93DC  
+.incbin "../data/Sublevels/Sublevel1F_Main.bin"
+Sublevel56_Main:                ; 081D99B9  
+.incbin "../data/Sublevels/Sublevel56_Main.bin"
+Sublevel83_Main:                ; 081D9B45  
+.incbin "../data/Sublevels/Sublevel83_Main.bin"
+Sublevel1F_Sprites:             ; 081D9B98  
+.incbin "../data/Sublevels/Sublevel1F_Sprites.bin"
+Sublevel56_Sprites:             ; 081D9CDC  
+.incbin "../data/Sublevels/Sublevel56_Sprites.bin"
+Sublevel83_Sprites:             ; 081D9D68  
+.incbin "../data/Sublevels/Sublevel83_Sprites.bin"
+Sublevel20_Main:                ; 081D9D88  
+.incbin "../data/Sublevels/Sublevel20_Main.bin"
+Sublevel57_Main:                ; 081DA16E  
+.incbin "../data/Sublevels/Sublevel57_Main.bin"
+Sublevel84_Main:                ; 081DA394  
+.incbin "../data/Sublevels/Sublevel84_Main.bin"
+SublevelAB_Main:                ; 081DA6A2  
+.incbin "../data/Sublevels/SublevelAB_Main.bin"
+Sublevel20_Sprites:             ; 081DA80C  
+.incbin "../data/Sublevels/Sublevel20_Sprites.bin"
+Sublevel57_Sprites:             ; 081DA8F8  
+.incbin "../data/Sublevels/Sublevel57_Sprites.bin"
+Sublevel84_Sprites:             ; 081DA998  
+.incbin "../data/Sublevels/Sublevel84_Sprites.bin"
+SublevelAB_Sprites:             ; 081DAA34  
+.incbin "../data/Sublevels/SublevelAB_Sprites.bin"
+Sublevel21_Main:                ; 081DAA58  
+.incbin "../data/Sublevels/Sublevel21_Main.bin"
+Sublevel58_Main:                ; 081DAF78  
+.incbin "../data/Sublevels/Sublevel58_Main.bin"
+Sublevel85_Main:                ; 081DB198  
+.incbin "../data/Sublevels/Sublevel85_Main.bin"
+Sublevel21_Sprites:             ; 081DB20C  
+.incbin "../data/Sublevels/Sublevel21_Sprites.bin"
+Sublevel58_Sprites:             ; 081DB2C8  
+.incbin "../data/Sublevels/Sublevel58_Sprites.bin"
+Sublevel85_Sprites:             ; 081DB338  
+.incbin "../data/Sublevels/Sublevel85_Sprites.bin"
+Sublevel22_Main:                ; 081DB388  
+.incbin "../data/Sublevels/Sublevel22_Main.bin"
+Sublevel59_Main:                ; 081DB90B  
+.incbin "../data/Sublevels/Sublevel59_Main.bin"
+Sublevel86_Main:                ; 081DBC69  
+.incbin "../data/Sublevels/Sublevel86_Main.bin"
+SublevelAC_Main:                ; 081DBDF9  
+.incbin "../data/Sublevels/SublevelAC_Main.bin"
+Sublevel22_Sprites:             ; 081DBE70  
+.incbin "../data/Sublevels/Sublevel22_Sprites.bin"
+Sublevel59_Sprites:             ; 081DBF50  
+.incbin "../data/Sublevels/Sublevel59_Sprites.bin"
+Sublevel86_Sprites:             ; 081DC030  
+.incbin "../data/Sublevels/Sublevel86_Sprites.bin"
+SublevelAC_Sprites:             ; 081DC040  
+.incbin "../data/Sublevels/SublevelAC_Sprites.bin"
+Sublevel23_Main:                ; 081DC050  
+.incbin "../data/Sublevels/Sublevel23_Main.bin"
+Sublevel5A_Main:                ; 081DC5E0  
+.incbin "../data/Sublevels/Sublevel5A_Main.bin"
+Sublevel23_Sprites:             ; 081DC988  
+.incbin "../data/Sublevels/Sublevel23_Sprites.bin"
+Sublevel5A_Sprites:             ; 081DCA4C  
+.incbin "../data/Sublevels/Sublevel5A_Sprites.bin"
+SublevelE7_Main:                ; 081DCB30  
+.incbin "../data/Sublevels/SublevelE7_Main.bin"
+SublevelE8_Main:                ; 081DCE28  
+.incbin "../data/Sublevels/SublevelE8_Main.bin"
+SublevelE9_Main:                ; 081DD352  
+.incbin "../data/Sublevels/SublevelE9_Main.bin"
+SublevelEA_Main:                ; 081DD4D9  
+.incbin "../data/Sublevels/SublevelEA_Main.bin"
+SublevelE7_Sprites:             ; 081DD690  
+.incbin "../data/Sublevels/SublevelE7_Sprites.bin"
+SublevelE8_Sprites:             ; 081DD788  
+.incbin "../data/Sublevels/SublevelE8_Sprites.bin"
+SublevelE9_Sprites:             ; 081DD88C  
+.incbin "../data/Sublevels/SublevelE9_Sprites.bin"
+SublevelEA_Sprites:             ; 081DD8F8  
+.incbin "../data/Sublevels/SublevelEA_Sprites.bin"
+Sublevel24_Main:                ; 081DD9A0  
+.incbin "../data/Sublevels/Sublevel24_Main.bin"
+Sublevel5B_Main:                ; 081DDE4D  
+.incbin "../data/Sublevels/Sublevel5B_Main.bin"
+Sublevel87_Main:                ; 081DE1AA  
+.incbin "../data/Sublevels/Sublevel87_Main.bin"
+SublevelAD_Main:                ; 081DE3BB  
+.incbin "../data/Sublevels/SublevelAD_Main.bin"
+SublevelC2_Main:                ; 081DE3E3  
+.incbin "../data/Sublevels/SublevelC2_Main.bin"
+Sublevel24_Sprites:             ; 081DE474  
+.incbin "../data/Sublevels/Sublevel24_Sprites.bin"
+Sublevel5B_Sprites:             ; 081DE534  
+.incbin "../data/Sublevels/Sublevel5B_Sprites.bin"
+Sublevel87_Sprites:             ; 081DE5FC  
+.incbin "../data/Sublevels/Sublevel87_Sprites.bin"
+SublevelAD_Sprites:             ; 081DE6A8  
+.incbin "../data/Sublevels/SublevelAD_Sprites.bin"
+SublevelC2_Sprites:             ; 081DE6BC  
+.incbin "../data/Sublevels/SublevelC2_Sprites.bin"
+Sublevel25_Main:                ; 081DE6DC  
+.incbin "../data/Sublevels/Sublevel25_Main.bin"
+Sublevel5C_Main:                ; 081DE85C  
+.incbin "../data/Sublevels/Sublevel5C_Main.bin"
+Sublevel88_Main:                ; 081DE9D8  
+.incbin "../data/Sublevels/Sublevel88_Main.bin"
+SublevelAE_Main:                ; 081DECC8  
+.incbin "../data/Sublevels/SublevelAE_Main.bin"
+Sublevel25_Sprites:             ; 081DEE14  
+.incbin "../data/Sublevels/Sublevel25_Sprites.bin"
+Sublevel5C_Sprites:             ; 081DEE50  
+.incbin "../data/Sublevels/Sublevel5C_Sprites.bin"
+Sublevel88_Sprites:             ; 081DEEC8  
+.incbin "../data/Sublevels/Sublevel88_Sprites.bin"
+SublevelAE_Sprites:             ; 081DEF74  
+.incbin "../data/Sublevels/SublevelAE_Sprites.bin"
+Sublevel26_Main:                ; 081DEF94  
+.incbin "../data/Sublevels/Sublevel26_Main.bin"
+Sublevel5D_Main:                ; 081DF18D  
+.incbin "../data/Sublevels/Sublevel5D_Main.bin"
+Sublevel89_Main:                ; 081DF44C  
+.incbin "../data/Sublevels/Sublevel89_Main.bin"
+SublevelAF_Main:                ; 081DF6AA  
+.incbin "../data/Sublevels/SublevelAF_Main.bin"
+SublevelC3_Main:                ; 081DF9AD  
+.incbin "../data/Sublevels/SublevelC3_Main.bin"
+SublevelCA_Main:                ; 081DFB24  
+.incbin "../data/Sublevels/SublevelCA_Main.bin"
+SublevelD1_Main:                ; 081DFD4C  
+.incbin "../data/Sublevels/SublevelD1_Main.bin"
+Sublevel26_Sprites:             ; 081DFD74  
+.incbin "../data/Sublevels/Sublevel26_Sprites.bin"
+Sublevel5D_Sprites:             ; 081DFDFC  
+.incbin "../data/Sublevels/Sublevel5D_Sprites.bin"
+Sublevel89_Sprites:             ; 081DFED0  
+.incbin "../data/Sublevels/Sublevel89_Sprites.bin"
+SublevelAF_Sprites:             ; 081DFF8C  
+.incbin "../data/Sublevels/SublevelAF_Sprites.bin"
+SublevelC3_Sprites:             ; 081DFFD8  
+.incbin "../data/Sublevels/SublevelC3_Sprites.bin"
+SublevelCA_Sprites:             ; 081E0004  
+.incbin "../data/Sublevels/SublevelCA_Sprites.bin"
+SublevelD1_Sprites:             ; 081E0050  
+.incbin "../data/Sublevels/SublevelD1_Sprites.bin"
+Sublevel27_Main:                ; 081E0058  
+.incbin "../data/Sublevels/Sublevel27_Main.bin"
+Sublevel5E_Main:                ; 081E0670  
+.incbin "../data/Sublevels/Sublevel5E_Main.bin"
+Sublevel8A_Main:                ; 081E0A86  
+.incbin "../data/Sublevels/Sublevel8A_Main.bin"
+SublevelB0_Main:                ; 081E0B3E  
+.incbin "../data/Sublevels/SublevelB0_Main.bin"
+Sublevel27_Sprites:             ; 081E0BB8  
+.incbin "../data/Sublevels/Sublevel27_Sprites.bin"
+Sublevel5E_Sprites:             ; 081E0D04  
+.incbin "../data/Sublevels/Sublevel5E_Sprites.bin"
+Sublevel8A_Sprites:             ; 081E0E00  
+.incbin "../data/Sublevels/Sublevel8A_Sprites.bin"
+SublevelB0_Sprites:             ; 081E0E10  
+.incbin "../data/Sublevels/SublevelB0_Sprites.bin"
+Sublevel28_Main:                ; 081E0E78  
+.incbin "../data/Sublevels/Sublevel28_Main.bin"
+Sublevel5F_Main:                ; 081E142B  
+.incbin "../data/Sublevels/Sublevel5F_Main.bin"
+Sublevel8B_Main:                ; 081E1950  
+.incbin "../data/Sublevels/Sublevel8B_Main.bin"
+SublevelB1_Main:                ; 081E1D9A  
+.incbin "../data/Sublevels/SublevelB1_Main.bin"
+Sublevel28_Sprites:             ; 081E1DCC  
+.incbin "../data/Sublevels/Sublevel28_Sprites.bin"
+Sublevel5F_Sprites:             ; 081E1E84  
+.incbin "../data/Sublevels/Sublevel5F_Sprites.bin"
+Sublevel8B_Sprites:             ; 081E1FB0  
+.incbin "../data/Sublevels/Sublevel8B_Sprites.bin"
+SublevelB1_Sprites:             ; 081E20A8  
+.incbin "../data/Sublevels/SublevelB1_Sprites.bin"
+Sublevel29_Main:                ; 081E20C8  
+.incbin "../data/Sublevels/Sublevel29_Main.bin"
+Sublevel60_Main:                ; 081E2269  
+.incbin "../data/Sublevels/Sublevel60_Main.bin"
+Sublevel8C_Main:                ; 081E2461  
+.incbin "../data/Sublevels/Sublevel8C_Main.bin"
+Sublevel29_Sprites:             ; 081E24BC  
+.incbin "../data/Sublevels/Sublevel29_Sprites.bin"
+Sublevel60_Sprites:             ; 081E25AC  
+.incbin "../data/Sublevels/Sublevel60_Sprites.bin"
+Sublevel8C_Sprites:             ; 081E2680  
+.incbin "../data/Sublevels/Sublevel8C_Sprites.bin"
+Sublevel2A_Main:                ; 081E2690  
+.incbin "../data/Sublevels/Sublevel2A_Main.bin"
+Sublevel61_Main:                ; 081E2BD3  
+.incbin "../data/Sublevels/Sublevel61_Main.bin"
+Sublevel8D_Main:                ; 081E2C69  
+.incbin "../data/Sublevels/Sublevel8D_Main.bin"
+SublevelB2_Main:                ; 081E2E8F  
+.incbin "../data/Sublevels/SublevelB2_Main.bin"
+Sublevel2A_Sprites:             ; 081E2F48  
+.incbin "../data/Sublevels/Sublevel2A_Sprites.bin"
+Sublevel61_Sprites:             ; 081E30A0  
+.incbin "../data/Sublevels/Sublevel61_Sprites.bin"
+Sublevel8D_Sprites:             ; 081E30B0  
+.incbin "../data/Sublevels/Sublevel8D_Sprites.bin"
+SublevelB2_Sprites:             ; 081E3114  
+.incbin "../data/Sublevels/SublevelB2_Sprites.bin"
+Sublevel2B_Main:                ; 081E313C  
+.incbin "../data/Sublevels/Sublevel2B_Main.bin"
+Sublevel62_Main:                ; 081E327C  
+.incbin "../data/Sublevels/Sublevel62_Main.bin"
+Sublevel8E_Main:                ; 081E3951  
+.incbin "../data/Sublevels/Sublevel8E_Main.bin"
+SublevelB3_Main:                ; 081E3A3E  
+.incbin "../data/Sublevels/SublevelB3_Main.bin"
+SublevelC4_Main:                ; 081E3DDF  
+.incbin "../data/Sublevels/SublevelC4_Main.bin"
+SublevelCB_Main:                ; 081E3E49  
+.incbin "../data/Sublevels/SublevelCB_Main.bin"
+SublevelD2_Main:                ; 081E3E73  
+.incbin "../data/Sublevels/SublevelD2_Main.bin"
+Sublevel2B_Sprites:             ; 081E4148  
+.incbin "../data/Sublevels/Sublevel2B_Sprites.bin"
+Sublevel62_Sprites:             ; 081E4198  
+.incbin "../data/Sublevels/Sublevel62_Sprites.bin"
+Sublevel8E_Sprites:             ; 081E426C  
+.incbin "../data/Sublevels/Sublevel8E_Sprites.bin"
+SublevelB3_Sprites:             ; 081E4290  
+.incbin "../data/Sublevels/SublevelB3_Sprites.bin"
+SublevelC4_Sprites:             ; 081E4330  
+.incbin "../data/Sublevels/SublevelC4_Sprites.bin"
+SublevelCB_Sprites:             ; 081E433C  
+.incbin "../data/Sublevels/SublevelCB_Sprites.bin"
+SublevelD2_Sprites:             ; 081E4340  
+.incbin "../data/Sublevels/SublevelD2_Sprites.bin"
+Sublevel2C_Main:                ; 081E43CC  
+.incbin "../data/Sublevels/Sublevel2C_Main.bin"
+Sublevel63_Main:                ; 081E4557  
+.incbin "../data/Sublevels/Sublevel63_Main.bin"
+Sublevel8F_Main:                ; 081E478F  
+.incbin "../data/Sublevels/Sublevel8F_Main.bin"
+SublevelB4_Main:                ; 081E4887  
+.incbin "../data/Sublevels/SublevelB4_Main.bin"
+Sublevel2C_Sprites:             ; 081E4B4C  
+.incbin "../data/Sublevels/Sublevel2C_Sprites.bin"
+Sublevel63_Sprites:             ; 081E4BE0  
+.incbin "../data/Sublevels/Sublevel63_Sprites.bin"
+Sublevel8F_Sprites:             ; 081E4C10  
+.incbin "../data/Sublevels/Sublevel8F_Sprites.bin"
+SublevelB4_Sprites:             ; 081E4C18  
+.incbin "../data/Sublevels/SublevelB4_Sprites.bin"
+SublevelEB_Main:                ; 081E4CD0  
+.incbin "../data/Sublevels/SublevelEB_Main.bin"
+SublevelEC_Main:                ; 081E507A  
+.incbin "../data/Sublevels/SublevelEC_Main.bin"
+SublevelED_Main:                ; 081E55BD  
+.incbin "../data/Sublevels/SublevelED_Main.bin"
+SublevelEB_Sprites:             ; 081E5A68  
+.incbin "../data/Sublevels/SublevelEB_Sprites.bin"
+SublevelEC_Sprites:             ; 081E5B64  
+.incbin "../data/Sublevels/SublevelEC_Sprites.bin"
+SublevelED_Sprites:             ; 081E5C18  
+.incbin "../data/Sublevels/SublevelED_Sprites.bin"
+Sublevel2D_Main:                ; 081E5D14  
+.incbin "../data/Sublevels/Sublevel2D_Main.bin"
+Sublevel64_Main:                ; 081E5F05  
+.incbin "../data/Sublevels/Sublevel64_Main.bin"
+Sublevel90_Main:                ; 081E618E  
+.incbin "../data/Sublevels/Sublevel90_Main.bin"
+SublevelB5_Main:                ; 081E650A  
+.incbin "../data/Sublevels/SublevelB5_Main.bin"
+Sublevel2D_Sprites:             ; 081E66A8  
+.incbin "../data/Sublevels/Sublevel2D_Sprites.bin"
+Sublevel64_Sprites:             ; 081E678C  
+.incbin "../data/Sublevels/Sublevel64_Sprites.bin"
+Sublevel90_Sprites:             ; 081E6834  
+.incbin "../data/Sublevels/Sublevel90_Sprites.bin"
+SublevelB5_Sprites:             ; 081E68D8  
+.incbin "../data/Sublevels/SublevelB5_Sprites.bin"
+Sublevel2E_Main:                ; 081E6970  
+.incbin "../data/Sublevels/Sublevel2E_Main.bin"
+Sublevel65_Main:                ; 081E6BBE  
+.incbin "../data/Sublevels/Sublevel65_Main.bin"
+Sublevel91_Main:                ; 081E6F5C  
+.incbin "../data/Sublevels/Sublevel91_Main.bin"
+Sublevel2E_Sprites:             ; 081E70F8  
+.incbin "../data/Sublevels/Sublevel2E_Sprites.bin"
+Sublevel65_Sprites:             ; 081E719C  
+.incbin "../data/Sublevels/Sublevel65_Sprites.bin"
+Sublevel91_Sprites:             ; 081E7270  
+.incbin "../data/Sublevels/Sublevel91_Sprites.bin"
+Sublevel2F_Main:                ; 081E72F0  
+.incbin "../data/Sublevels/Sublevel2F_Main.bin"
+Sublevel66_Main:                ; 081E753F  
+.incbin "../data/Sublevels/Sublevel66_Main.bin"
+Sublevel92_Main:                ; 081E770C  
+.incbin "../data/Sublevels/Sublevel92_Main.bin"
+Sublevel2F_Sprites:             ; 081E78D8  
+.incbin "../data/Sublevels/Sublevel2F_Sprites.bin"
+Sublevel66_Sprites:             ; 081E7980  
+.incbin "../data/Sublevels/Sublevel66_Sprites.bin"
+Sublevel92_Sprites:             ; 081E7A18  
+.incbin "../data/Sublevels/Sublevel92_Sprites.bin"
+Sublevel30_Main:                ; 081E7AA0  
+.incbin "../data/Sublevels/Sublevel30_Main.bin"
+Sublevel67_Main:                ; 081E7C19  
+.incbin "../data/Sublevels/Sublevel67_Main.bin"
+Sublevel93_Main:                ; 081E7E33  
+.incbin "../data/Sublevels/Sublevel93_Main.bin"
+SublevelB6_Main:                ; 081E7F39  
+.incbin "../data/Sublevels/SublevelB6_Main.bin"
+SublevelC5_Main:                ; 081E80FD  
+.incbin "../data/Sublevels/SublevelC5_Main.bin"
+SublevelCC_Main:                ; 081E819A  
+.incbin "../data/Sublevels/SublevelCC_Main.bin"
+Sublevel30_Sprites:             ; 081E8290  
+.incbin "../data/Sublevels/Sublevel30_Sprites.bin"
+Sublevel67_Sprites:             ; 081E8360  
+.incbin "../data/Sublevels/Sublevel67_Sprites.bin"
+Sublevel93_Sprites:             ; 081E8378  
+.incbin "../data/Sublevels/Sublevel93_Sprites.bin"
+SublevelB6_Sprites:             ; 081E84C8  
+.incbin "../data/Sublevels/SublevelB6_Sprites.bin"
+SublevelC5_Sprites:             ; 081E85A4  
+.incbin "../data/Sublevels/SublevelC5_Sprites.bin"
+SublevelCC_Sprites:             ; 081E8620  
+.incbin "../data/Sublevels/SublevelCC_Sprites.bin"
+Sublevel31_Main:                ; 081E863C  
+.incbin "../data/Sublevels/Sublevel31_Main.bin"
+Sublevel68_Main:                ; 081E8E8A  
+.incbin "../data/Sublevels/Sublevel68_Main.bin"
+Sublevel94_Main:                ; 081E91A7  
+.incbin "../data/Sublevels/Sublevel94_Main.bin"
+Sublevel31_Sprites:             ; 081E9430  
+.incbin "../data/Sublevels/Sublevel31_Sprites.bin"
+Sublevel68_Sprites:             ; 081E94E0  
+.incbin "../data/Sublevels/Sublevel68_Sprites.bin"
+Sublevel94_Sprites:             ; 081E954C  
+.incbin "../data/Sublevels/Sublevel94_Sprites.bin"
+Sublevel32_Main:                ; 081E95BC  
+.incbin "../data/Sublevels/Sublevel32_Main.bin"
+Sublevel69_Main:                ; 081E9C4F  
+.incbin "../data/Sublevels/Sublevel69_Main.bin"
+Sublevel95_Main:                ; 081EA134  
+.incbin "../data/Sublevels/Sublevel95_Main.bin"
+Sublevel32_Sprites:             ; 081EA4D8  
+.incbin "../data/Sublevels/Sublevel32_Sprites.bin"
+Sublevel69_Sprites:             ; 081EA638  
+.incbin "../data/Sublevels/Sublevel69_Sprites.bin"
+Sublevel95_Sprites:             ; 081EA728  
+.incbin "../data/Sublevels/Sublevel95_Sprites.bin"
+Sublevel33_Main:                ; 081EA7C0  
+.incbin "../data/Sublevels/Sublevel33_Main.bin"
+Sublevel6A_Main:                ; 081EAAAC  
+.incbin "../data/Sublevels/Sublevel6A_Main.bin"
+Sublevel96_Main:                ; 081EB097  
+.incbin "../data/Sublevels/Sublevel96_Main.bin"
+SublevelB7_Main:                ; 081EB282  
+.incbin "../data/Sublevels/SublevelB7_Main.bin"
+Sublevel33_Sprites:             ; 081EB380  
+.incbin "../data/Sublevels/Sublevel33_Sprites.bin"
+Sublevel6A_Sprites:             ; 081EB3F4  
+.incbin "../data/Sublevels/Sublevel6A_Sprites.bin"
+Sublevel96_Sprites:             ; 081EB50C  
+.incbin "../data/Sublevels/Sublevel96_Sprites.bin"
+SublevelB7_Sprites:             ; 081EB5DC  
+.incbin "../data/Sublevels/SublevelB7_Sprites.bin"
+Sublevel34_Main:                ; 081EB630  
+.incbin "../data/Sublevels/Sublevel34_Main.bin"
+Sublevel6B_Main:                ; 081EB6CA  
+.incbin "../data/Sublevels/Sublevel6B_Main.bin"
+Sublevel97_Main:                ; 081EB791  
+.incbin "../data/Sublevels/Sublevel97_Main.bin"
+SublevelB8_Main:                ; 081EB850  
+.incbin "../data/Sublevels/SublevelB8_Main.bin"
+SublevelC6_Main:                ; 081EB9FD  
+.incbin "../data/Sublevels/SublevelC6_Main.bin"
+SublevelD8_Main:                ; 081EBBBD  
+.incbin "../data/Sublevels/SublevelD8_Main.bin"
+SublevelD9_Main:                ; 081EBCFF  
+.incbin "../data/Sublevels/SublevelD9_Main.bin"
+SublevelCD_Main:                ; 081EBD4F  
+.incbin "../data/Sublevels/SublevelCD_Main.bin"
+SublevelD3_Main:                ; 081EBE14  
+.incbin "../data/Sublevels/SublevelD3_Main.bin"
+SublevelD6_Main:                ; 081EBF01  
+.incbin "../data/Sublevels/SublevelD6_Main.bin"
+SublevelDC_Main:                ; 081EC0F3  
+.incbin "../data/Sublevels/SublevelDC_Main.bin"
+SublevelDD_Main:                ; 081EC211  
+.incbin "../data/Sublevels/SublevelDD_Main.bin"
+SublevelDA_Main:                ; 081EC23E  
+.incbin "../data/Sublevels/SublevelDA_Main.bin"
+SublevelDB_Main:                ; 081EC24B  
+.incbin "../data/Sublevels/SublevelDB_Main.bin"
 Data081EC259:                   ; 081EC259
-.org 0x081EC2B8
-Data081EC2B8:                   ; 081EC2B8
-.org 0x081EC324
-Data081EC324:                   ; 081EC324
-.org 0x081EC354
-Data081EC354:                   ; 081EC354
-.org 0x081EC364
-Data081EC364:                   ; 081EC364
-.org 0x081EC3CC
-Data081EC3CC:                   ; 081EC3CC
-.org 0x081EC43C
-Data081EC43C:                   ; 081EC43C
-.org 0x081EC498
-Data081EC498:                   ; 081EC498
-.org 0x081EC4A8
-Data081EC4A8:                   ; 081EC4A8
-.org 0x081EC4EC
-Data081EC4EC:                   ; 081EC4EC
-.org 0x081EC514
-Data081EC514:                   ; 081EC514
-.org 0x081EC538
-Data081EC538:                   ; 081EC538
-.org 0x081EC5A8
-Data081EC5A8:                   ; 081EC5A8
-.org 0x081EC5B0
-Data081EC5B0:                   ; 081EC5B0
-.org 0x081EC5B4
-Data081EC5B4:                   ; 081EC5B4
-.org 0x081EC5B8
-Data081EC5B8:                   ; 081EC5B8
-.org 0x081EC971
-Data081EC971:                   ; 081EC971
-.org 0x081ECB51
-Data081ECB51:                   ; 081ECB51
-.org 0x081ECCDB
-Data081ECCDB:                   ; 081ECCDB
-.org 0x081ECDE8
-Data081ECDE8:                   ; 081ECDE8
-.org 0x081ECE90
-Data081ECE90:                   ; 081ECE90
-.org 0x081ECF14
-Data081ECF14:                   ; 081ECF14
-.org 0x081ED03C
-Data081ED03C:                   ; 081ED03C
-.org 0x081ED058
-Data081ED058:                   ; 081ED058
-.org 0x081ED145
-Data081ED145:                   ; 081ED145
-.org 0x081ED77D
-Data081ED77D:                   ; 081ED77D
-.org 0x081EDBE7
-Data081EDBE7:                   ; 081EDBE7
-.org 0x081EE1D7
-Data081EE1D7:                   ; 081EE1D7
-.org 0x081EE595
-Data081EE595:                   ; 081EE595
-.org 0x081EE7D4
-Data081EE7D4:                   ; 081EE7D4
-.org 0x081EE864
-Data081EE864:                   ; 081EE864
-.org 0x081EEA28
-Data081EEA28:                   ; 081EEA28
-.org 0x081EEB2C
-Data081EEB2C:                   ; 081EEB2C
-.org 0x081EEC08
-Data081EEC08:                   ; 081EEC08
-.org 0x081EED08
-Data081EED08:                   ; 081EED08
-.org 0x081EED90
-Data081EED90:                   ; 081EED90
-.org 0x081EEDEF
-Data081EEDEF:                   ; 081EEDEF
-.org 0x081EEE5C
-Data081EEE5C:                   ; 081EEE5C
-.org 0x081EEE70
-Data081EEE70:                   ; 081EEE70
-.org 0x081EEE8C
-Data081EEE8C:                   ; 081EEE8C
-.org 0x081EEE92
-Data081EEE92:                   ; 081EEE92
-.org 0x081EEE98
-Data081EEE98:                   ; 081EEE98
-.org 0x081EEE9E
-Data081EEE9E:                   ; 081EEE9E
-.org 0x081EEEA4
-Data081EEEA4:                   ; 081EEEA4
-.org 0x081EEEAA
-Data081EEEAA:                   ; 081EEEAA
-.org 0x081EEEB0
-Data081EEEB0:                   ; 081EEEB0
-.org 0x081EEEB6
-Data081EEEB6:                   ; 081EEEB6
-.org 0x081EEEBC
-Data081EEEBC:                   ; 081EEEBC
-.org 0x081EEEC2
-Data081EEEC2:                   ; 081EEEC2
-.org 0x081EEEC8
-Data081EEEC8:                   ; 081EEEC8
-.org 0x081EEECE
-Data081EEECE:                   ; 081EEECE
-.org 0x081EEED4
-Data081EEED4:                   ; 081EEED4
-.org 0x081EEEDA
-Data081EEEDA:                   ; 081EEEDA
-.org 0x081EEEE0
-Data081EEEE0:                   ; 081EEEE0
-.org 0x081EEEE6
-Data081EEEE6:                   ; 081EEEE6
-.org 0x081EEEEC
-Data081EEEEC:                   ; 081EEEEC
-.org 0x081EEEF2
-Data081EEEF2:                   ; 081EEEF2
-.org 0x081EEEF8
-Data081EEEF8:                   ; 081EEEF8
-.org 0x081EEEFE
-Data081EEEFE:                   ; 081EEEFE
-.org 0x081EEF04
-Data081EEF04:                   ; 081EEF04
-.org 0x081EEF0A
-Data081EEF0A:                   ; 081EEF0A
-.org 0x081EEF10
-Data081EEF10:                   ; 081EEF10
-.org 0x081EEF16
-Data081EEF16:                   ; 081EEF16
-.org 0x081EEF1C
-Data081EEF1C:                   ; 081EEF1C
-.org 0x081EEF22
-Data081EEF22:                   ; 081EEF22
-.org 0x081EEF28
-Data081EEF28:                   ; 081EEF28
-.org 0x081EEF2E
-Data081EEF2E:                   ; 081EEF2E
-.org 0x081EEF34
-Data081EEF34:                   ; 081EEF34
-.org 0x081EEF3A
-Data081EEF3A:                   ; 081EEF3A
-.org 0x081EEF40
-Data081EEF40:                   ; 081EEF40
-.org 0x081EEF46
-Data081EEF46:                   ; 081EEF46
-.org 0x081EEF4C
-Data081EEF4C:                   ; 081EEF4C
-.org 0x081EEF52
-Data081EEF52:                   ; 081EEF52
-.org 0x081EEF58
-Data081EEF58:                   ; 081EEF58
-.org 0x081EEF5E
-Data081EEF5E:                   ; 081EEF5E
-.org 0x081EEF64
-Data081EEF64:                   ; 081EEF64
-.org 0x081EEF6A
-Data081EEF6A:                   ; 081EEF6A
-.org 0x081EEF70
-Data081EEF70:                   ; 081EEF70
-.org 0x081EEF76
-Data081EEF76:                   ; 081EEF76
-.org 0x081EEF7C
-Data081EEF7C:                   ; 081EEF7C
-.org 0x081EEF82
-Data081EEF82:                   ; 081EEF82
-.org 0x081EEF88
-Data081EEF88:                   ; 081EEF88
-.org 0x081EEF8E
-Data081EEF8E:                   ; 081EEF8E
-.org 0x081EEF94
-Data081EEF94:                   ; 081EEF94
-.org 0x081EEF9A
-Data081EEF9A:                   ; 081EEF9A
-.org 0x081EEFA0
-Data081EEFA0:                   ; 081EEFA0
-.org 0x081EEFA6
-Data081EEFA6:                   ; 081EEFA6
-.org 0x081EEFAC
-Data081EEFAC:                   ; 081EEFAC
-.org 0x081EEFB2
-Data081EEFB2:                   ; 081EEFB2
-.org 0x081EEFB8
-Data081EEFB8:                   ; 081EEFB8
-.org 0x081EEFBE
-Data081EEFBE:                   ; 081EEFBE
-.org 0x081EEFC4
-Data081EEFC4:                   ; 081EEFC4
-.org 0x081EEFCA
-Data081EEFCA:                   ; 081EEFCA
-.org 0x081EEFD0
-Data081EEFD0:                   ; 081EEFD0
-.org 0x081EEFD6
-Data081EEFD6:                   ; 081EEFD6
-.org 0x081EEFDC
-Data081EEFDC:                   ; 081EEFDC
-.org 0x081EEFE2
-Data081EEFE2:                   ; 081EEFE2
-.org 0x081EEFE8
-Data081EEFE8:                   ; 081EEFE8
-.org 0x081EEFEE
-Data081EEFEE:                   ; 081EEFEE
-.org 0x081EEFF4
-Data081EEFF4:                   ; 081EEFF4
-.org 0x081EEFFA
-Data081EEFFA:                   ; 081EEFFA
-.org 0x081EF046
+.byte 0x6E, 0x00, 0xD0, 0x0F, 0x02, 0x57, 0x00, 0xA0
+.byte 0x04, 0x57, 0x00, 0x7B, 0x03, 0x57, 0x00, 0x60
+.byte 0x04, 0x44, 0x00, 0x00, 0x02, 0x05, 0x44, 0x00
+.byte 0x08, 0x02, 0x04, 0x44, 0x00, 0x4D, 0x02, 0x02
+.byte 0x44, 0x00, 0xB2, 0x02, 0x01, 0x44, 0x00, 0x9B
+.byte 0x02, 0x03, 0x57, 0x00, 0x56, 0x04, 0x6E, 0x00
+.byte 0x53, 0x00, 0x00, 0x6E, 0x00, 0x4A, 0x00, 0x00
+.byte 0x6E, 0x00, 0x92, 0x00, 0x00, 0x6E, 0x00, 0xC8
+.byte 0x00, 0x00, 0x44, 0x00, 0x65, 0x02, 0x06, 0x44
+.byte 0x00, 0x68, 0x00, 0x02, 0x57, 0x00, 0x96, 0x04
+.byte 0x6E, 0x00, 0x89, 0x00, 0x00, 0x6E, 0x00, 0xCD
+.byte 0x00, 0x00, 0xFF, 0xFF
+.align 4
+Sublevel34_Sprites:             ; 081EC2B8  
+.incbin "../data/Sublevels/Sublevel34_Sprites.bin"
+Sublevel6B_Sprites:             ; 081EC324  
+.incbin "../data/Sublevels/Sublevel6B_Sprites.bin"
+Sublevel97_Sprites:             ; 081EC354  
+.incbin "../data/Sublevels/Sublevel97_Sprites.bin"
+SublevelB8_Sprites:             ; 081EC364  
+.incbin "../data/Sublevels/SublevelB8_Sprites.bin"
+SublevelC6_Sprites:             ; 081EC3CC  
+.incbin "../data/Sublevels/SublevelC6_Sprites.bin"
+SublevelD8_Sprites:             ; 081EC43C  
+.incbin "../data/Sublevels/SublevelD8_Sprites.bin"
+SublevelD9_Sprites:             ; 081EC498  
+.incbin "../data/Sublevels/SublevelD9_Sprites.bin"
+SublevelCD_Sprites:             ; 081EC4A8  
+.incbin "../data/Sublevels/SublevelCD_Sprites.bin"
+SublevelD3_Sprites:             ; 081EC4EC  
+.incbin "../data/Sublevels/SublevelD3_Sprites.bin"
+SublevelD6_Sprites:             ; 081EC514  
+.incbin "../data/Sublevels/SublevelD6_Sprites.bin"
+SublevelDC_Sprites:             ; 081EC538  
+.incbin "../data/Sublevels/SublevelDC_Sprites.bin"
+SublevelDD_Sprites:             ; 081EC5A8  
+.incbin "../data/Sublevels/SublevelDD_Sprites.bin"
+SublevelDA_Sprites:             ; 081EC5B0  
+.incbin "../data/Sublevels/SublevelDA_Sprites.bin"
+SublevelDB_Sprites:             ; 081EC5B4  
+.incbin "../data/Sublevels/SublevelDB_Sprites.bin"
+Sublevel35_Main:                ; 081EC5B8  
+.incbin "../data/Sublevels/Sublevel35_Main.bin"
+Sublevel6C_Main:                ; 081EC971  
+.incbin "../data/Sublevels/Sublevel6C_Main.bin"
+Sublevel98_Main:                ; 081ECB51  
+.incbin "../data/Sublevels/Sublevel98_Main.bin"
+SublevelB9_Main:                ; 081ECCDB  
+.incbin "../data/Sublevels/SublevelB9_Main.bin"
+Sublevel35_Sprites:             ; 081ECDE8  
+.incbin "../data/Sublevels/Sublevel35_Sprites.bin"
+Sublevel6C_Sprites:             ; 081ECE90  
+.incbin "../data/Sublevels/Sublevel6C_Sprites.bin"
+Sublevel98_Sprites:             ; 081ECF14  
+.incbin "../data/Sublevels/Sublevel98_Sprites.bin"
+SublevelB9_Sprites:             ; 081ED03C  
+.incbin "../data/Sublevels/SublevelB9_Sprites.bin"
+SublevelEE_Main:                ; 081ED058  
+.incbin "../data/Sublevels/SublevelEE_Main.bin"
+SublevelEF_Main:                ; 081ED145  
+.incbin "../data/Sublevels/SublevelEF_Main.bin"
+SublevelF0_Main:                ; 081ED77D  
+.incbin "../data/Sublevels/SublevelF0_Main.bin"
+SublevelF1_Main:                ; 081EDBE7  
+.incbin "../data/Sublevels/SublevelF1_Main.bin"
+SublevelF2_Main:                ; 081EE1D7  
+.incbin "../data/Sublevels/SublevelF2_Main.bin"
+SublevelF5_Main:                ; 081EE595  
+.incbin "../data/Sublevels/SublevelF5_Main.bin"
+SublevelEE_Sprites:             ; 081EE7D4  
+.incbin "../data/Sublevels/SublevelEE_Sprites.bin"
+SublevelEF_Sprites:             ; 081EE864  
+.incbin "../data/Sublevels/SublevelEF_Sprites.bin"
+SublevelF0_Sprites:             ; 081EEA28  
+.incbin "../data/Sublevels/SublevelF0_Sprites.bin"
+SublevelF1_Sprites:             ; 081EEB2C  
+.incbin "../data/Sublevels/SublevelF1_Sprites.bin"
+SublevelF2_Sprites:             ; 081EEC08  
+.incbin "../data/Sublevels/SublevelF2_Sprites.bin"
+SublevelF5_Sprites:             ; 081EED08  
+.incbin "../data/Sublevels/SublevelF5_Sprites.bin"
+Sublevel36_Main:                ; 081EED90  
+.incbin "../data/Sublevels/Sublevel36_Main.bin"
+Sublevel37_Main:                ; 081EEDEF  
+.incbin "../data/Sublevels/Sublevel37_Main.bin"
+Sublevel36_Sprites:             ; 081EEE5C  
+.incbin "../data/Sublevels/Sublevel36_Sprites.bin"
+Sublevel37_Sprites:             ; 081EEE70  
+.incbin "../data/Sublevels/Sublevel37_Sprites.bin"
+MainEntrances:                  ; 081EEE8C
+.byte 0x00, 0x07, 0x77, 0x01, 0x28, 0x00
+.byte 0x01, 0x07, 0x7A, 0x02, 0x77, 0x04
+.byte 0x02, 0x03, 0x7A, 0x03, 0x3C, 0x03
+.byte 0x03, 0x07, 0x79, 0x04, 0x69, 0x04
+.byte 0x04, 0x77, 0x6A, 0x05, 0x2C, 0x00
+.byte 0x05, 0x07, 0x7A, 0x06, 0x26, 0x00
+.byte 0x06, 0x07, 0x7A, 0x07, 0x27, 0x00
+.byte 0x9B, 0x68, 0x4A, 0x0C, 0x98, 0x04
+.byte 0x08, 0x09, 0x7A, 0x09, 0x26, 0x00
+.byte 0x09, 0x07, 0x5A, 0x0D, 0x28, 0x00
+.byte 0x0A, 0x07, 0x7A, 0x0E, 0x78, 0x04
+.byte 0x0B, 0x07, 0x7A, 0x0F, 0x97, 0x04
+.byte 0x0C, 0x07, 0x7A, 0x10, 0x79, 0x04
+.byte 0x0D, 0x07, 0x7A, 0x11, 0x98, 0x04
+.byte 0x0E, 0x07, 0x18, 0x12, 0x29, 0x00
+.byte 0x0F, 0xF8, 0x2A, 0x13, 0x2A, 0x00
+.byte 0x10, 0x04, 0x2A, 0x18, 0x3C, 0x03
+.byte 0x11, 0x0E, 0x7A, 0x14, 0x29, 0x00
+.byte 0x12, 0x07, 0x7A, 0x19, 0x73, 0x04
+.byte 0x13, 0x07, 0x7A, 0x1A, 0x88, 0x04
+.byte 0x14, 0x04, 0x6A, 0x1B, 0x29, 0x00
+.byte 0x15, 0x07, 0x3A, 0x1C, 0x86, 0x04
+.byte 0x16, 0x07, 0x7A, 0x1D, 0x27, 0x00
+.byte 0x17, 0x07, 0x4A, 0x1E, 0x2A, 0x00
+.byte 0x18, 0x48, 0x7A, 0x1F, 0x2A, 0x00
+.byte 0x19, 0x05, 0x7A, 0x24, 0x3C, 0x02
+.byte 0x1A, 0x07, 0x7A, 0x20, 0x7A, 0x04
+.byte 0x1B, 0x07, 0x7A, 0x25, 0x29, 0x00
+.byte 0x1C, 0x08, 0x7A, 0x26, 0x3C, 0x02
+.byte 0x1D, 0x07, 0x5A, 0x27, 0x9A, 0x04
+.byte 0x1E, 0x07, 0x7A, 0x28, 0x2A, 0x00
+.byte 0x1F, 0x06, 0x1A, 0x29, 0x26, 0x00
+.byte 0x20, 0x07, 0x6A, 0x2A, 0x28, 0x00
+.byte 0x21, 0x07, 0x6A, 0x2B, 0x2B, 0x00
+.byte 0x22, 0x07, 0x6C, 0x30, 0x26, 0x00
+.byte 0x5A, 0x7D, 0x1A, 0x2C, 0x2C, 0x00
+.byte 0x24, 0x07, 0x7A, 0x31, 0x29, 0x00
+.byte 0x25, 0x07, 0x6A, 0x32, 0x8A, 0x04
+.byte 0x26, 0x07, 0x3A, 0x33, 0x99, 0x04
+.byte 0x27, 0x07, 0x7A, 0x34, 0x2A, 0x00
+.byte 0x28, 0x07, 0x5A, 0x35, 0x29, 0x00
+.byte 0x29, 0x05, 0x59, 0x36, 0x2C, 0x00
+.byte 0x2A, 0x97, 0x6A, 0x37, 0x88, 0x04
+.byte 0x2B, 0x38, 0x5A, 0x3C, 0xAA, 0x04
+.byte 0x2C, 0x07, 0x4A, 0x38, 0x9A, 0x04
+.byte 0x2D, 0x07, 0x7A, 0x3D, 0x29, 0x00
+.byte 0x2E, 0x07, 0x5A, 0x3E, 0x77, 0x04
+.byte 0x2F, 0x07, 0x4A, 0x3F, 0x9A, 0x04
+.byte 0x30, 0x07, 0x7A, 0x40, 0x28, 0x00
+.byte 0x31, 0x07, 0x39, 0x41, 0x2C, 0x00
+.byte 0x32, 0x07, 0x4A, 0x42, 0x29, 0x00
+.byte 0x33, 0x05, 0x7A, 0x43, 0x28, 0x00
+.byte 0x34, 0x03, 0x7A, 0x42, 0x2C, 0x00
+.byte 0x35, 0x07, 0x7A, 0x44, 0x89, 0x04
+.byte 0x38, 0x08, 0x7A, 0x00, 0x2C, 0x00
+.byte 0x39, 0x08, 0x76, 0x00, 0x2C, 0x00
+.byte 0xDE, 0x13, 0x69, 0x00, 0x29, 0x00
+.byte 0xE0, 0x88, 0x78, 0x00, 0x6A, 0x04
+.byte 0xE3, 0x04, 0x2B, 0x00, 0x28, 0x00
+.byte 0xE7, 0x04, 0x79, 0x00, 0x2A, 0x00
+.byte 0xEB, 0x04, 0x4A, 0x00, 0x29, 0x00
+.byte 0xEE, 0x03, 0x5A, 0x14, 0x29, 0x02
+Data081EF000:                   ; 081EF000
+.byte 0x77, 0x7A, 0x7A, 0x78, 0x6A, 0x7A
+.byte 0x7A, 0x4A, 0x7A, 0x7A, 0x7A, 0x76
+.byte 0x5A, 0x7A, 0x7A, 0x7A, 0x7A, 0x18
+.byte 0x2A, 0x2A, 0x7A, 0x7A, 0x00, 0x00
+.byte 0x7A, 0x7A, 0x6A, 0x3A, 0x7A, 0x4A
+.byte 0x7A, 0x7A, 0x7A, 0x7A, 0x00, 0x00
+.byte 0x7A, 0x7A, 0x5A, 0x7A, 0x1A, 0x6A
+.byte 0x6A, 0x6A, 0x1A, 0x7A, 0x00, 0x00
+.byte 0x7A, 0x6A, 0x3A, 0x7A, 0x5A, 0x5A
+.byte 0x6A, 0x5A, 0x4A, 0x7A, 0x00, 0x00
+.byte 0x7A, 0x5A, 0x4A, 0x7A, 0x39, 0x4A
+.byte 0x7A, 0x7A, 0x7A, 0x7A
 Data081EF046:                   ; 081EF046
-.org 0x081EF08C
-DataPtrs081EF08C:               ; 081EF08C
-.word Data081EEE8C, Data081EEE92, Data081EEE98, Data081EEE9E
-.word Data081EEEA4, Data081EEEAA, Data081EEEB0, Data081EEEB6
-.word Data081EEFDC, Data081EEEBC, Data081EEFD0, Data081EEFD6
-.word Data081EEEC2, Data081EEEC8, Data081EEECE, Data081EEED4
-.word Data081EEEDA, Data081EEEE0, Data081EEEE6, Data081EEEEC
-.word Data081EEFE2, Data081EEEF2, 0x00000000, 0x00000000
-.word Data081EEEF8, Data081EEEFE, Data081EEF04, Data081EEF0A
-.word Data081EEF10, Data081EEF16, Data081EEF1C, Data081EEF22
-.word Data081EEFE8, Data081EEF28, 0x00000000, 0x00000000
-.word Data081EEF2E, Data081EEF34, Data081EEF3A, Data081EEF40
-.word Data081EEF46, Data081EEF4C, Data081EEF52, Data081EEF58
-.word Data081EEFEE, Data081EEF5E, 0x00000000, 0x00000000
-.word Data081EEF64, Data081EEF6A, Data081EEF70, Data081EEF76
-.word Data081EEF7C, Data081EEF82, Data081EEF88, Data081EEF8E
-.word Data081EEFF4, Data081EEF94, 0x00000000, 0x00000000
-.word Data081EEF9A, Data081EEFA0, Data081EEFA6, Data081EEFAC
-.word Data081EEFB2, Data081EEFB8, Data081EEFBE, Data081EEFC4
-.word Data081EEFFA, Data081EEFCA
-Data081EF1A4:                   ; 081EF1A4
-.org 0x081EF57C
-Data081EF57C:                   ; 081EF57C
-.org 0x081EF954
+.byte 0x77, 0x7A, 0x60, 0x78, 0x6A, 0x7A
+.byte 0x7A, 0x4A, 0x7A, 0x7A, 0x7A, 0x76
+.byte 0x5A, 0x7A, 0x7A, 0x7A, 0x7A, 0x18
+.byte 0x2A, 0x60, 0x7A, 0x7A, 0x00, 0x00
+.byte 0x7A, 0x7A, 0x6A, 0x3A, 0x7A, 0x4A
+.byte 0x7A, 0x60, 0x7A, 0x7A, 0x00, 0x00
+.byte 0x7A, 0x60, 0x5A, 0x7A, 0x1A, 0x6A
+.byte 0x6A, 0x6A, 0x1A, 0x7A, 0x00, 0x00
+.byte 0x7A, 0x6A, 0x3A, 0x7A, 0x5A, 0x5A
+.byte 0x6A, 0x5A, 0x4A, 0x7A, 0x00, 0x00
+.byte 0x7A, 0x5A, 0x4A, 0x7A, 0x39, 0x4A
+.byte 0x7A, 0x7A, 0x68, 0x6A
+MainEntrancePtrs:               ; 081EF08C
+.word MainEntrances, MainEntrances+0x6, MainEntrances+0xC, MainEntrances+0x12
+.word MainEntrances+0x18, MainEntrances+0x1E, MainEntrances+0x24, MainEntrances+0x2A
+.word MainEntrances+0x150, MainEntrances+0x30, MainEntrances+0x144, MainEntrances+0x14A
+.word MainEntrances+0x36, MainEntrances+0x3C, MainEntrances+0x42, MainEntrances+0x48
+.word MainEntrances+0x4E, MainEntrances+0x54, MainEntrances+0x5A, MainEntrances+0x60
+.word MainEntrances+0x156, MainEntrances+0x66, 0x00000000, 0x00000000
+.word MainEntrances+0x6C, MainEntrances+0x72, MainEntrances+0x78, MainEntrances+0x7E
+.word MainEntrances+0x84, MainEntrances+0x8A, MainEntrances+0x90, MainEntrances+0x96
+.word MainEntrances+0x15C, MainEntrances+0x9C, 0x00000000, 0x00000000
+.word MainEntrances+0xA2, MainEntrances+0xA8, MainEntrances+0xAE, MainEntrances+0xB4
+.word MainEntrances+0xBA, MainEntrances+0xC0, MainEntrances+0xC6, MainEntrances+0xCC
+.word MainEntrances+0x162, MainEntrances+0xD2, 0x00000000, 0x00000000
+.word MainEntrances+0xD8, MainEntrances+0xDE, MainEntrances+0xE4, MainEntrances+0xEA
+.word MainEntrances+0xF0, MainEntrances+0xF6, MainEntrances+0xFC, MainEntrances+0x102
+.word MainEntrances+0x168, MainEntrances+0x108, 0x00000000, 0x00000000
+.word MainEntrances+0x10E, MainEntrances+0x114, MainEntrances+0x11A, MainEntrances+0x120
+.word MainEntrances+0x126, MainEntrances+0x12C, MainEntrances+0x132, MainEntrances+0x138
+.word MainEntrances+0x16E, MainEntrances+0x13E
+SublevelMainPtrs:               ; 081EF1A4
+.word Sublevel00_Main, Sublevel01_Main, Sublevel02_Main, Sublevel03_Main
+.word Sublevel04_Main, Sublevel05_Main, Sublevel06_Main, Sublevel07_Main
+.word Sublevel08_Main, Sublevel09_Main, Sublevel0A_Main, Sublevel0B_Main
+.word Sublevel0C_Main, Sublevel0D_Main, Sublevel0E_Main, Sublevel0F_Main
+.word Sublevel10_Main, Sublevel11_Main, Sublevel12_Main, Sublevel13_Main
+.word Sublevel14_Main, Sublevel15_Main, Sublevel16_Main, Sublevel17_Main
+.word Sublevel18_Main, Sublevel19_Main, Sublevel1A_Main, Sublevel1B_Main
+.word Sublevel1C_Main, Sublevel1D_Main, Sublevel1E_Main, Sublevel1F_Main
+.word Sublevel20_Main, Sublevel21_Main, Sublevel22_Main, Sublevel23_Main
+.word Sublevel24_Main, Sublevel25_Main, Sublevel26_Main, Sublevel27_Main
+.word Sublevel28_Main, Sublevel29_Main, Sublevel2A_Main, Sublevel2B_Main
+.word Sublevel2C_Main, Sublevel2D_Main, Sublevel2E_Main, Sublevel2F_Main
+.word Sublevel30_Main, Sublevel31_Main, Sublevel32_Main, Sublevel33_Main
+.word Sublevel34_Main, Sublevel35_Main, Sublevel36_Main, Sublevel37_Main
+.word Sublevel38_Main, Sublevel39_Main, Sublevel3A_Main, Sublevel3B_Main
+.word Sublevel3C_Main, Sublevel3D_Main, Sublevel3E_Main, Sublevel3F_Main
+.word Sublevel40_Main, Sublevel41_Main, Sublevel42_Main, Sublevel43_Main
+.word Sublevel44_Main, Sublevel45_Main, Sublevel46_Main, Sublevel47_Main
+.word Sublevel48_Main, Sublevel49_Main, Sublevel4A_Main, Sublevel4B_Main
+.word Sublevel4C_Main, Sublevel4D_Main, Sublevel4E_Main, Sublevel4F_Main
+.word Sublevel50_Main, Sublevel51_Main, Sublevel52_Main, Sublevel53_Main
+.word Sublevel54_Main, Sublevel55_Main, Sublevel56_Main, Sublevel57_Main
+.word Sublevel58_Main, Sublevel59_Main, Sublevel5A_Main, Sublevel5B_Main
+.word Sublevel5C_Main, Sublevel5D_Main, Sublevel5E_Main, Sublevel5F_Main
+.word Sublevel60_Main, Sublevel61_Main, Sublevel62_Main, Sublevel63_Main
+.word Sublevel64_Main, Sublevel65_Main, Sublevel66_Main, Sublevel67_Main
+.word Sublevel68_Main, Sublevel69_Main, Sublevel6A_Main, Sublevel6B_Main
+.word Sublevel6C_Main, Sublevel6D_Main, Sublevel6E_Main, Sublevel6F_Main
+.word Sublevel70_Main, Sublevel71_Main, Sublevel72_Main, Sublevel73_Main
+.word Sublevel74_Main, Sublevel75_Main, Sublevel76_Main, Sublevel77_Main
+.word Sublevel78_Main, Sublevel79_Main, Sublevel7A_Main, Sublevel7B_Main
+.word Sublevel7C_Main, Sublevel7D_Main, Sublevel7E_Main, Sublevel7F_Main
+.word Sublevel80_Main, Sublevel81_Main, Sublevel82_Main, Sublevel83_Main
+.word Sublevel84_Main, Sublevel85_Main, Sublevel86_Main, Sublevel87_Main
+.word Sublevel88_Main, Sublevel89_Main, Sublevel8A_Main, Sublevel8B_Main
+.word Sublevel8C_Main, Sublevel8D_Main, Sublevel8E_Main, Sublevel8F_Main
+.word Sublevel90_Main, Sublevel91_Main, Sublevel92_Main, Sublevel93_Main
+.word Sublevel94_Main, Sublevel95_Main, Sublevel96_Main, Sublevel97_Main
+.word Sublevel98_Main, Sublevel99_Main, Sublevel9A_Main, Sublevel9B_Main
+.word Sublevel9C_Main, Sublevel9D_Main, Sublevel9E_Main, Sublevel9F_Main
+.word SublevelA0_Main, SublevelA1_Main, SublevelA2_Main, SublevelA3_Main
+.word SublevelA4_Main, SublevelA5_Main, SublevelA6_Main, SublevelA7_Main
+.word SublevelA8_Main, SublevelA9_Main, SublevelAA_Main, SublevelAB_Main
+.word SublevelAC_Main, SublevelAD_Main, SublevelAE_Main, SublevelAF_Main
+.word SublevelB0_Main, SublevelB1_Main, SublevelB2_Main, SublevelB3_Main
+.word SublevelB4_Main, SublevelB5_Main, SublevelB6_Main, SublevelB7_Main
+.word SublevelB8_Main, SublevelB9_Main, SublevelBA_Main, SublevelBB_Main
+.word SublevelBC_Main, SublevelBD_Main, SublevelBE_Main, SublevelBF_Main
+.word SublevelC0_Main, SublevelC1_Main, SublevelC2_Main, SublevelC3_Main
+.word SublevelC4_Main, SublevelC5_Main, SublevelC6_Main, SublevelC7_Main
+.word SublevelC8_Main, SublevelC9_Main, SublevelCA_Main, SublevelCB_Main
+.word SublevelCC_Main, SublevelCD_Main, SublevelCE_Main, SublevelCF_Main
+.word SublevelD0_Main, SublevelD1_Main, SublevelD2_Main, SublevelD3_Main
+.word SublevelD4_Main, SublevelD5_Main, SublevelD6_Main, SublevelD7_Main
+.word SublevelD8_Main, SublevelD9_Main, SublevelDA_Main, SublevelDB_Main
+.word SublevelDC_Main, SublevelDD_Main, SublevelDE_Main, SublevelDF_Main
+.word SublevelE0_Main, SublevelE1_Main, SublevelE2_Main, SublevelE3_Main
+.word SublevelE4_Main, SublevelE5_Main, SublevelE6_Main, SublevelE7_Main
+.word SublevelE8_Main, SublevelE9_Main, SublevelEA_Main, SublevelEB_Main
+.word SublevelEC_Main, SublevelED_Main, SublevelEE_Main, SublevelEF_Main
+.word SublevelF0_Main, SublevelF1_Main, SublevelF2_Main, SublevelF3_Main
+.word SublevelF4_Main, SublevelF5_Main
+SublevelSpritePtrs:             ; 081EF57C
+.word Sublevel00_Sprites, Sublevel01_Sprites, Sublevel02_Sprites, Sublevel03_Sprites
+.word Sublevel04_Sprites, Sublevel05_Sprites, Sublevel06_Sprites, Sublevel07_Sprites
+.word Sublevel08_Sprites, Sublevel09_Sprites, Sublevel0A_Sprites, Sublevel0B_Sprites
+.word Sublevel0C_Sprites, Sublevel0D_Sprites, Sublevel0E_Sprites, Sublevel0F_Sprites
+.word Sublevel10_Sprites, Sublevel11_Sprites, Sublevel12_Sprites, Sublevel13_Sprites
+.word Sublevel14_Sprites, Sublevel15_Sprites, Sublevel16_Sprites, Sublevel17_Sprites
+.word Sublevel18_Sprites, Sublevel19_Sprites, Sublevel1A_Sprites, Sublevel1B_Sprites
+.word Sublevel1C_Sprites, Sublevel1D_Sprites, Sublevel1E_Sprites, Sublevel1F_Sprites
+.word Sublevel20_Sprites, Sublevel21_Sprites, Sublevel22_Sprites, Sublevel23_Sprites
+.word Sublevel24_Sprites, Sublevel25_Sprites, Sublevel26_Sprites, Sublevel27_Sprites
+.word Sublevel28_Sprites, Sublevel29_Sprites, Sublevel2A_Sprites, Sublevel2B_Sprites
+.word Sublevel2C_Sprites, Sublevel2D_Sprites, Sublevel2E_Sprites, Sublevel2F_Sprites
+.word Sublevel30_Sprites, Sublevel31_Sprites, Sublevel32_Sprites, Sublevel33_Sprites
+.word Sublevel34_Sprites, Sublevel35_Sprites, Sublevel36_Sprites, Sublevel37_Sprites
+.word Sublevel38_Sprites, Sublevel39_Sprites, Sublevel3A_Sprites, Sublevel3B_Sprites
+.word Sublevel3C_Sprites, Sublevel3D_Sprites, Sublevel3E_Sprites, Sublevel3F_Sprites
+.word Sublevel40_Sprites, Sublevel41_Sprites, Sublevel42_Sprites, Sublevel43_Sprites
+.word Sublevel44_Sprites, Sublevel45_Sprites, Sublevel46_Sprites, Sublevel47_Sprites
+.word Sublevel48_Sprites, Sublevel49_Sprites, Sublevel4A_Sprites, Sublevel4B_Sprites
+.word Sublevel4C_Sprites, Sublevel4D_Sprites, Sublevel4E_Sprites, Sublevel4F_Sprites
+.word Sublevel50_Sprites, Sublevel51_Sprites, Sublevel52_Sprites, Sublevel53_Sprites
+.word Sublevel54_Sprites, Sublevel55_Sprites, Sublevel56_Sprites, Sublevel57_Sprites
+.word Sublevel58_Sprites, Sublevel59_Sprites, Sublevel5A_Sprites, Sublevel5B_Sprites
+.word Sublevel5C_Sprites, Sublevel5D_Sprites, Sublevel5E_Sprites, Sublevel5F_Sprites
+.word Sublevel60_Sprites, Sublevel61_Sprites, Sublevel62_Sprites, Sublevel63_Sprites
+.word Sublevel64_Sprites, Sublevel65_Sprites, Sublevel66_Sprites, Sublevel67_Sprites
+.word Sublevel68_Sprites, Sublevel69_Sprites, Sublevel6A_Sprites, Sublevel6B_Sprites
+.word Sublevel6C_Sprites, Sublevel6D_Sprites, Sublevel6E_Sprites, Sublevel6F_Sprites
+.word Sublevel70_Sprites, Sublevel71_Sprites, Sublevel72_Sprites, Sublevel73_Sprites
+.word Sublevel74_Sprites, Sublevel75_Sprites, Sublevel76_Sprites, Sublevel77_Sprites
+.word Sublevel78_Sprites, Sublevel79_Sprites, Sublevel7A_Sprites, Sublevel7B_Sprites
+.word Sublevel7C_Sprites, Sublevel7D_Sprites, Sublevel7E_Sprites, Sublevel7F_Sprites
+.word Sublevel80_Sprites, Sublevel81_Sprites, Sublevel82_Sprites, Sublevel83_Sprites
+.word Sublevel84_Sprites, Sublevel85_Sprites, Sublevel86_Sprites, Sublevel87_Sprites
+.word Sublevel88_Sprites, Sublevel89_Sprites, Sublevel8A_Sprites, Sublevel8B_Sprites
+.word Sublevel8C_Sprites, Sublevel8D_Sprites, Sublevel8E_Sprites, Sublevel8F_Sprites
+.word Sublevel90_Sprites, Sublevel91_Sprites, Sublevel92_Sprites, Sublevel93_Sprites
+.word Sublevel94_Sprites, Sublevel95_Sprites, Sublevel96_Sprites, Sublevel97_Sprites
+.word Sublevel98_Sprites, Sublevel99_Sprites, Sublevel9A_Sprites, Sublevel9B_Sprites
+.word Sublevel9C_Sprites, Sublevel9D_Sprites, Sublevel9E_Sprites, Sublevel9F_Sprites
+.word SublevelA0_Sprites, SublevelA1_Sprites, SublevelA2_Sprites, SublevelA3_Sprites
+.word SublevelA4_Sprites, SublevelA5_Sprites, SublevelA6_Sprites, SublevelA7_Sprites
+.word SublevelA8_Sprites, SublevelA9_Sprites, SublevelAA_Sprites, SublevelAB_Sprites
+.word SublevelAC_Sprites, SublevelAD_Sprites, SublevelAE_Sprites, SublevelAF_Sprites
+.word SublevelB0_Sprites, SublevelB1_Sprites, SublevelB2_Sprites, SublevelB3_Sprites
+.word SublevelB4_Sprites, SublevelB5_Sprites, SublevelB6_Sprites, SublevelB7_Sprites
+.word SublevelB8_Sprites, SublevelB9_Sprites, SublevelBA_Sprites, SublevelBB_Sprites
+.word SublevelBC_Sprites, SublevelBD_Sprites, SublevelBE_Sprites, SublevelBF_Sprites
+.word SublevelC0_Sprites, SublevelC1_Sprites, SublevelC2_Sprites, SublevelC3_Sprites
+.word SublevelC4_Sprites, SublevelC5_Sprites, SublevelC6_Sprites, SublevelC7_Sprites
+.word SublevelC8_Sprites, SublevelC9_Sprites, SublevelCA_Sprites, SublevelCB_Sprites
+.word SublevelCC_Sprites, SublevelCD_Sprites, SublevelCE_Sprites, SublevelCF_Sprites
+.word SublevelD0_Sprites, SublevelD1_Sprites, SublevelD2_Sprites, SublevelD3_Sprites
+.word SublevelD4_Sprites, SublevelD5_Sprites, SublevelD6_Sprites, SublevelD7_Sprites
+.word SublevelD8_Sprites, SublevelD9_Sprites, SublevelDA_Sprites, SublevelDB_Sprites
+.word SublevelDC_Sprites, SublevelDD_Sprites, SublevelDE_Sprites, SublevelDF_Sprites
+.word SublevelE0_Sprites, SublevelE1_Sprites, SublevelE2_Sprites, SublevelE3_Sprites
+.word SublevelE4_Sprites, SublevelE5_Sprites, SublevelE6_Sprites, SublevelE7_Sprites
+.word SublevelE8_Sprites, SublevelE9_Sprites, SublevelEA_Sprites, SublevelEB_Sprites
+.word SublevelEC_Sprites, SublevelED_Sprites, SublevelEE_Sprites, SublevelEF_Sprites
+.word SublevelF0_Sprites, SublevelF1_Sprites, SublevelF2_Sprites, SublevelF3_Sprites
+.word SublevelF4_Sprites, SublevelF5_Sprites
 Data081EF954:                   ; 081EF954
 .org 0x081F3398
 Data081F3398:                   ; 081F3398
@@ -5655,76 +5752,97 @@ Data082F1F20:                   ; 082F1F20
 
 .include "Text/StandardMessages.asm"
 
+EndingText:                     ; 082F5D11
+.strn "Thus\{, } due to the marvelous"
+.strn 0xFF,0x0A,"teamwork of the Yoshi clan\{, }"
+.strn 0xFF,0x0A,"the brothers are reunited\{. }"
+.strn 0xFF,0x0A
+.strn 0xFF,0x0A,"Yoshi frees the captured"
+.strn 0xFF,0x0A,"stork\{, } who sets about"
+.strn 0xFF,0x0A,"his duty and finally makes"
+.strn 0xFF,0x0A,"the long-awaited delivery!"
+.strn 0xFF,0x0A
+.strn 0xFF,0x0A
+.strn 0xFF,0x0A,"Thanks\{, } Yoshi!"
+.strn 0xFF,0x0A
+.strn 0xFF,0x0A,"The brothers will meet"
+.strn 0xFF,0x0A,"their parents soon!"
+.byte 0xFF,0xFF
+Message_Unused:                 ; 082F5E14
+.byte 0xFF,0xFF
+Message_BanditUnused:           ; 082F5E16
+.byte 0xFF,0xFF
+
 .align 4
 StandardMessagePtrs:            ; 082F5E18
 ; World 1
-.word Message1_1_0, Message1_1_1, Message1_1_2, Message1_1_3
-.word Message1_2_0, Message1_2_1, Message1_2_2, Message_Unused
-.word Message1_3_0, Message1_3_1, Message1_3_2, Message1_3_2
+.word Message_1_1_0, Message_1_1_1_Patient, Message_1_1_2, Message_1_1_3
+.word Message_1_2_0, Message_1_2_1, Message_1_2_2, Message_Unused
+.word Message_1_3_0, Message_1_3_1, Message_1_3_2, Message_1_3_2
 .word Message_Unused, Message_Unused, Message_Unused, Message_Unused
-.word Message1_3_2, Message1_3_2, Message1_5_2, Message1_5_2
-.word Message1_5_2, Message1_6_1, Message1_6_2, Message1_3_0
+.word Message_1_3_2, Message_1_3_2, Message_1_5_2, Message_1_5_2
+.word Message_1_5_2, Message_1_6_1, Message_1_6_2, Message_1_3_0
 .word Message_Unused, Message_Unused, Message_Unused, Message_Unused
-.word Message1_8_0, Message1_8_1, Message1_8_1, Message1_8_1
-.word Message1_2_2, Message_TryAgain, Message_IntroCutscene1, Message_IntroCutscene2
-.word Message1_8_Boss, Message_IntroLevel, Message1_4_Boss, Message1_2_FirstMiddleRing
-.word Message_FlipCards, Message_FlipCardsExit, Message1_1_0, Message1_1_0
-.word Message1_1_GrabBabyMario, Message1_1_FirstFlower, Message_RestartFromMiddleRing, Message1_C_3
+.word Message_1_8_0, Message_1_8_1, Message_1_8_1, Message_1_8_1
+.word Message_1_2_2, Message_TryAgain, Message_IntroCutscene1, Message_IntroCutscene2
+.word Message_1_8_Boss, Message_IntroLevel, Message_1_4_Boss, Message_1_2_FirstMiddleRing
+.word Message_FlipCards, Message_FlipCardsExit, Message_1_1_0, Message_1_1_0
+.word Message_1_1_GrabBabyMario, Message_1_1_FirstFlower, Message_RestartFromMiddleRing, Message_1_C_3
 
 ; World 2
-.word Message2_1_0, Message2_1_0, Message2_1_2, Message2_1_3
-.word Message2_1_3, Message2_2_1, Message2_2_2, Message2_2_3
-.word Message2_3_0, Message2_3_1, Message2_3_1, Message2_3_3
+.word Message_2_1_0, Message_2_1_0, Message_2_1_2, Message_2_1_3
+.word Message_2_1_3, Message_2_2_1, Message_2_2_2, Message_2_2_3
+.word Message_2_3_0, Message_2_3_1, Message_2_3_1, Message_2_3_3
 .word Message_Unused, Message_Unused, Message_Unused, Message_Unused
-.word Message2_5_0, Message2_5_0, Message2_5_2, Message2_5_2
+.word Message_2_5_0, Message_2_5_0, Message_2_5_2, Message_2_5_2
 .word Message_Unused, Message_Unused, Message_Unused, Message_Unused
-.word Message2_5_2, Message2_5_2, Message2_7_2, Message2_7_2
-.word Message2_7_2, Message2_8_1, Message2_8_2, Message2_8_2
-.word Message2_4_Boss, Message2_8_Boss, 0x00000000, 0x00000000
+.word Message_2_5_2, Message_2_5_2, Message_2_7_2, Message_2_7_2
+.word Message_2_7_2, Message_2_8_1, Message_2_8_2, Message_2_8_2
+.word Message_2_4_Boss, Message_2_8_Boss, 0x00000000, 0x00000000
 .word 0x00000000, 0x00000000, 0x00000000, 0x00000000
-.word Message_ScratchAndMatch, Message_FlipCardsExit, Message2_1_0, Message2_1_0
+.word Message_ScratchAndMatch, Message_FlipCardsExit, Message_2_1_0, Message_2_1_0
 .word 0x00000000, 0x00000000, 0x00000000, 0x00000000
 
 ; World 3
 .word Message_Unused, Message_Unused, Message_Unused, Message_Unused
-.word Message2_8_2, Message2_8_2, Message3_2_2, Message3_2_2
+.word Message_2_8_2, Message_2_8_2, Message_3_2_2, Message_3_2_2
 .word Message_Unused, Message_Unused, Message_Unused, Message_Unused
 .word Message_Unused, Message_Unused, Message_Unused, Message_Unused
 .word Message_Unused, Message_Unused, Message_Unused, Message_Unused
 .word Message_Unused, Message_Unused, Message_Unused, Message_Unused
 .word Message_Unused, Message_Unused, Message_Unused, Message_Unused
-.word Message3_2_2, Message3_8_1, Message3_8_2, Message3_8_3
-.word Message3_4_Boss, Message3_8_Boss, Message3_8_OHMY, 0x00000000
+.word Message_3_2_2, Message_3_8_1, Message_3_8_2, Message_3_8_3
+.word Message_3_4_Boss, Message_3_8_Boss, Message_3_8_OHMY, 0x00000000
 .word 0x00000000, 0x00000000, 0x00000000, 0x00000000
 .word Message_SlotMachine, Message_FlipCardsExit, Message_Unused, Message_Unused
 .word 0x00000000, 0x00000000, 0x00000000, 0x00000000
 
 ; World 4
-.word Message3_8_3, Message2_2_1, Message3_8_3, Message3_8_3
-.word Message3_8_3, Message4_2_1, Message4_2_1, Message4_2_1
-.word Message4_2_1, Message4_3_1, Message4_3_1, Message4_3_1
+.word Message_3_8_3, Message_2_2_1, Message_3_8_3, Message_3_8_3
+.word Message_3_8_3, Message_4_2_1, Message_4_2_1, Message_4_2_1
+.word Message_4_2_1, Message_4_3_1, Message_4_3_1, Message_4_3_1
 .word Message_Unused, Message_Unused, Message_Unused, Message_Unused
-.word Message4_3_1, Message4_5_1, Message4_5_1, Message4_5_1
+.word Message_4_3_1, Message_4_5_1, Message_4_5_1, Message_4_5_1
 .word Message_Unused, Message_Unused, Message_Unused, Message_Unused
 .word Message_Unused, Message_Unused, Message_Unused, Message_Unused
 .word Message_Unused, Message_Unused, Message_Unused, Message_Unused
-.word Message4_4_Boss, Message4_8_Boss, 0x00000000, 0x00000000
+.word Message_4_4_Boss, Message_4_8_Boss, 0x00000000, 0x00000000
 .word 0x00000000, 0x00000000, 0x00000000, 0x00000000
-.word Message_Roulette, Message_FlipCardsExit, Message3_8_3, Message3_8_3
+.word Message_Roulette, Message_FlipCardsExit, Message_3_8_3, Message_3_8_3
 .word 0x00000000, 0x00000000, 0x00000000, 0x00000000
 
 ; World 5
-.word Message4_5_1, Message5_1_1, Message5_1_1, Message5_1_1
+.word Message_4_5_1, Message_5_1_1, Message_5_1_1, Message_5_1_1
 .word Message_Unused, Message_Unused, Message_Unused, Message_Unused
-.word Message5_1_1, Message5_3_1, Message5_3_1, Message5_3_1
-.word Message5_3_1, Message5_4_1, Message5_4_1, Message5_4_1
+.word Message_5_1_1, Message_5_3_1, Message_5_3_1, Message_5_3_1
+.word Message_5_3_1, Message_5_4_1, Message_5_4_1, Message_5_4_1
 .word Message_Unused, Message_Unused, Message_Unused, Message_Unused
 .word Message_Unused, Message_Unused, Message_Unused, Message_Unused
 .word Message_Unused, Message_Unused, Message_Unused, Message_Unused
-.word Message5_4_1, Message5_8_1, Message5_8_1, Message5_8_1
-.word Message5_4_Boss, Message5_8_Boss, 0x00000000, 0x00000000
+.word Message_5_4_1, Message_5_8_1, Message_5_8_1, Message_5_8_1
+.word Message_5_4_Boss, Message_5_8_Boss, 0x00000000, 0x00000000
 .word 0x00000000, 0x00000000, 0x00000000, 0x00000000
-.word Message_DrawingLots, Message_FlipCardsExit, Message4_5_1, Message4_5_1
+.word Message_DrawingLots, Message_FlipCardsExit, Message_4_5_1, Message_4_5_1
 .word 0x00000000, 0x00000000, 0x00000000, 0x00000000
 
 ; World 6
@@ -5735,11 +5853,11 @@ StandardMessagePtrs:            ; 082F5E18
 .word Message_Unused, Message_Unused, Message_Unused, Message_Unused
 .word Message_Unused, Message_Unused, Message_Unused, Message_Unused
 .word Message_Unused, Message_Unused, Message_Unused, Message_Unused
-.word Message5_8_1, Message1_4_Boss, Message1_4_Boss, Message1_4_Boss
-.word Message6_4_Boss, Message6_8_PreBoss1, Message6_8_PreBoss2, Message6_8_PreBoss3
-.word Message6_8_PreBoss4, Message6_8_PostBoss, Message6_8_KamekEnlarge, 0x00000000
+.word Message_5_8_1, Message_1_4_Boss, Message_1_4_Boss, Message_1_4_Boss
+.word Message_6_4_Boss, Message_6_8_PreBoss1, Message_6_8_PreBoss2, Message_6_8_PreBoss3
+.word Message_6_8_PreBoss4, Message_6_8_PostBoss, Message_6_8_KamekEnlarge, 0x00000000
 .word Message_MatchCards, Message_FlipCardsExit, Message_Unused, Message_Unused
-.word Message6_C_0, 0x00000000, 0x00000000, 0x00000000
+.word Message_1_1_1_Hasty, 0x00000000, 0x00000000, 0x00000000
 
 ; Misc standard messages
 .word Message_GameOver, Message_ThrowingBalloons1up, Message_ThrowingBalloons2up, Message_ThrowingBalloons3up

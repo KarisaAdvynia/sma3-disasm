@@ -13740,7 +13740,7 @@ add   r0,r6,r1                  ; 0802C658  r0 = 03006AE6
 mov   r2,r9                     ; 0802C65A
 strh  r2,[r0]                   ; 0802C65C  clear 03006AE6
 mov   r2,0x0                    ; 0802C65E
-ldr   r3,=DataPtrs081EF08C      ; 0802C660  level entrance pointer table
+ldr   r3,=MainEntrancePtrs      ; 0802C660  level entrance pointer table
 mov   r10,r3                    ; 0802C662
 ldr   r5,=0x03006D80            ; 0802C664
 ldr   r4,=0x02017300            ; 0802C666
@@ -13982,13 +13982,13 @@ ldr   r2,[r6]                   ; 0802C910  r2 = [03007240]
 ldr   r0,=0x2B08                ; 0802C912
 add   r3,r2,r0                  ; 0802C914  r3 = [03007240]+2B08 (03004D14)
 lsl   r1,r4,0x2                 ; 0802C916  r1 = sublevel*4
-ldr   r5,=Data081EF1A4          ; 0802C918  r5 = start of object data pointer table
+ldr   r5,=SublevelMainPtrs      ; 0802C918  r5 = start of object data pointer table
 add   r0,r1,r5                  ; 0802C91A  r0 = pointer to pointer to object data
 ldr   r0,[r0]                   ; 0802C91C
 str   r0,[r3]                   ; 0802C91E  [r3] = pointer to object data
 ldr   r6,=0x2968                ; 0802C920
 add   r3,r2,r6                  ; 0802C922  r3 = [03007240]+2968 (03004B74)
-ldr   r0,=Data081EF57C          ; 0802C924  r0 = start of sprite data pointer table
+ldr   r0,=SublevelSpritePtrs    ; 0802C924  r0 = start of sprite data pointer table
 add   r1,r1,r0                  ; 0802C926
 ldr   r0,[r1]                   ; 0802C928
 str   r0,[r3]                   ; 0802C92A  [r3] = pointer to sprite data
@@ -14005,7 +14005,7 @@ ldr   r0,[r4]                   ; 0802C93E  r0 = [03007240] (0300220C)
 ldr   r2,=0x299A                ; 0802C940
 add   r0,r0,r2                  ; 0802C942  r0 = [03007240]+299A (03004BA6)
 ldrh  r0,[r0]                   ; 0802C944  r0 = layer 3 image ID
-cmp   r0,0x13                   ; 0802C946  13: ?
+cmp   r0,0x13                   ; 0802C946  13: Interactive water for anim=05
 bne   @@Code0802C958            ; 0802C948
 ldr   r0,=0x03006D80            ; 0802C94A \ runs if layer 3 image is 13
 mov   r3,0xDB                   ; 0802C94C 

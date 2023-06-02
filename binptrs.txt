@@ -468,7 +468,7 @@
 081EC0F3          Sublevels/SublevelDC_Main.bin
 081EC211          Sublevels/SublevelDD_Main.bin
 081EC23E          Sublevels/SublevelDA_Main.bin
-081EC24B          Sublevels/SublevelDB_Main.bin
+081EC24B 081EC259 Sublevels/SublevelDB_Main.bin
 081EC2B8          Sublevels/Sublevel34_Sprites.bin
 081EC324          Sublevels/Sublevel6B_Sprites.bin
 081EC354          Sublevels/Sublevel97_Sprites.bin

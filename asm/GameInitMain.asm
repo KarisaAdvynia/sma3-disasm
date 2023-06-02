@@ -3704,7 +3704,7 @@ ldr   r0,=0x4852                ; 08002EBC
 add   r1,r3,r0                  ; 08002EBE  03006A52
 mov   r0,0x2                    ; 08002EC0
 strh  r0,[r1]                   ; 08002EC2  set sublevel load entrance type to midway entrance
-ldr   r2,=MidwayEntrPtrs        ; 08002EC4  pointers to midway entrances
+ldr   r2,=MidwayEntrancePtrs    ; 08002EC4  pointers to midway entrances
 ldr   r1,=0x4088                ; 08002EC6
 add   r0,r3,r1                  ; 08002EC8  03006288
 ldrh  r1,[r0]                   ; 08002ECA  level ID

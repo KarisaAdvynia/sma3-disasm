@@ -440,19 +440,19 @@ ldr   r1,[r4]                   ; 080F5D7A
 ldr   r2,=0x05000628            ; 080F5D7C
 mov   r0,sp                     ; 080F5D7E
 bl    swi_MemoryCopy4or2        ; 080F5D80  Memory copy/fill, 4- or 2-byte blocks
-mov   r0,0x38                   ; 080F5D84
+mov   r0,0x38                   ; 080F5D84  38: Intro cutscene
 mov   r8,r0                     ; 080F5D86
 mov   r2,r9                     ; 080F5D88
 ldr   r1,[r2]                   ; 080F5D8A
 ldr   r3,=0x2B08                ; 080F5D8C
 add   r2,r1,r3                  ; 080F5D8E
-ldr   r0,=Data081EF1A4          ; 080F5D90
+ldr   r0,=SublevelMainPtrs      ; 080F5D90
 add   r0,0xE0                   ; 080F5D92
 ldr   r0,[r0]                   ; 080F5D94
 str   r0,[r2]                   ; 080F5D96
 ldr   r0,=0x2968                ; 080F5D98
 add   r2,r1,r0                  ; 080F5D9A
-ldr   r0,=Data081EF57C          ; 080F5D9C
+ldr   r0,=SublevelSpritePtrs    ; 080F5D9C
 add   r0,0xE0                   ; 080F5D9E
 ldr   r0,[r0]                   ; 080F5DA0
 str   r0,[r2]                   ; 080F5DA2

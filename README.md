@@ -7,11 +7,12 @@ All ROM pointers in the completed regions have been replaced by labels, to allow
 Currently produces an exact match for these regions of the vanilla ROM:
 - 08000000-0812FDC0 (code)
 - 08163F90-081C1D54 (in-line(?) data)
+- 081C1D54-081EF954 (level data)
 - 082F215C-083077E0 (text data/graphics)
 
 Remaining regions:
 - 0812FDC0-08163F90: Currently labeled as "single-cart pseudo-ROM", a ROM region copied into RAM (for all players) when playing Mario Bros. multiplayer from a single cartridge. This needs further research to determine the correct RAM pointers.
-- 081C1D54-082F215C: Larger data files (including levels, graphics, tilemaps, palettes, music, sound effects). These need to be fully documented in binptrs.txt, and included with `.incbin`
+- 081EF954-082F215C: Graphics data files (including graphics, tilemaps, palettes). These need to be fully documented in binptrs.txt, with the graphics/tilemaps included with `.incbin`
 - 083077E0-end: Music/sound region. These also need to be included with `.incbin`, but this sector uses relative instead of absolute pointers, so the pointer labels also need to be generated.
 
 ## About data files
