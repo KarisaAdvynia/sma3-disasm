@@ -5934,7 +5934,7 @@ ldr   r0,=0x03001BF0            ; 0812F14C
 add   r2,r1,r0                  ; 0812F14E  03001BF0 + 0x28*arg0
 ldrh  r0,[r3]                   ; 0812F150  first buffer value
 cmp   r0,0x6                    ; 0812F152
-bhi   @@Code0812F1CE            ; 0812F154  if low digit >6, return
+bhi   @@Return                  ; 0812F154  if low digit >6, return
 lsl   r0,r0,0x2                 ; 0812F156  use as code pointer table index
 ldr   r1,=@@CodePtrs0812F168    ; 0812F158
 add   r0,r0,r1                  ; 0812F15A
@@ -5942,21 +5942,22 @@ ldr   r0,[r0]                   ; 0812F15C
 mov   pc,r0                     ; 0812F15E
 .pool                           ; 0812F160
 @@CodePtrs0812F168:
-.word @@Code0812F184            ; 0812F168
-.word @@Code0812F18E            ; 0812F16C
-.word @@Code0812F1A4            ; 0812F170
-.word @@Code0812F1AE            ; 0812F174
-.word @@Code0812F1C0            ; 0812F178
-.word @@Code0812F1C6            ; 0812F17C
-.word @@Code0812F1B8            ; 0812F180
+.word @@Value0000               ; 0812F168
+.word @@Value0001               ; 0812F16C
+.word @@Value0002               ; 0812F170
+.word @@Value0003               ; 0812F174
+.word @@Value0004               ; 0812F178
+.word @@Value0005               ; 0812F17C
+.word @@Value0006               ; 0812F180
 
-@@Code0812F184:
+@@Value0000:
 ; runs if first buffer value is 0000
 ldr   r0,[r3,0x4]               ; 0812F184  r0 = first argument from buffer
 ldr   r1,[r3,0x8]               ; 0812F186  r1 = second argument from buffer
 bl    Sub0812EC10               ; 0812F188
-b     @@Code0812F1CE            ; 0812F18C
-@@Code0812F18E:
+b     @@Return                  ; 0812F18C
+
+@@Value0001:
 ; runs if first buffer value is 0001
 ldr   r1,[r3,0x4]               ; 0812F18E
 lsr   r0,r1,0x10                ; 0812F190
@@ -5964,40 +5965,45 @@ ldr   r2,=0xFFFF                ; 0812F192
 and   r1,r2                     ; 0812F194
 ldr   r2,[r3,0x8]               ; 0812F196
 bl    Sub0812EC38               ; 0812F198
-b     @@Code0812F1CE            ; 0812F19C
+b     @@Return                  ; 0812F19C
 .pool                           ; 0812F19E
 
-@@Code0812F1A4:
+@@Value0002:
 ; runs if first buffer value is 0002
 ldr   r0,[r3,0x4]               ; 0812F1A4
 ldr   r1,[r3,0x8]               ; 0812F1A6
 bl    Sub0812ED94               ; 0812F1A8
-b     @@Code0812F1CE            ; 0812F1AC
-@@Code0812F1AE:
+b     @@Return                  ; 0812F1AC
+
+@@Value0003:
 ; runs if first buffer value is 0003
 ldr   r0,[r3,0x4]               ; 0812F1AE
 ldrb  r1,[r3,0x8]               ; 0812F1B0
 bl    Sub0812EDCC               ; 0812F1B2
-b     @@Code0812F1CE            ; 0812F1B6
-@@Code0812F1B8:
+b     @@Return                  ; 0812F1B6
+
+@@Value0006:
 ; runs if first buffer value is 0006
 ldr   r1,[r3,0x8]               ; 0812F1B8
 mov   r0,r2                     ; 0812F1BA
 add   r0,0x44                   ; 0812F1BC
 b     @@Code0812F1CC            ; 0812F1BE
-@@Code0812F1C0:
+
+@@Value0004:
 ; runs if first buffer value is 0004
 ldr   r0,[r3,0x8]               ; 0812F1C0
 strh  r0,[r2,0x32]              ; 0812F1C2
-b     @@Code0812F1CE            ; 0812F1C4
-@@Code0812F1C6:
+b     @@Return                  ; 0812F1C4
+
+@@Value0005:
 ; runs if first buffer value is 0005
 ldr   r1,[r3,0x8]               ; 0812F1C6
 mov   r0,r2                     ; 0812F1C8
 add   r0,0x41                   ; 0812F1CA
 @@Code0812F1CC:
 strb  r1,[r0]                   ; 0812F1CC
-@@Code0812F1CE:
+
+@@Return:
 pop   {r0}                      ; 0812F1CE
 bx    r0                        ; 0812F1D0
 .pool                           ; 0812F1D2
@@ -6023,7 +6029,7 @@ bgt   @@Code0812F204            ; 0812F1F2
 sub   r0,0x1                    ; 0812F1F4
 cmp   r2,r0                     ; 0812F1F6
 beq   @@Code0812F214            ; 0812F1F8
-b     @@Code0812F2E8            ; 0812F1FA
+b     @@Return                  ; 0812F1FA
 .pool                           ; 0812F1FC
 
 @@Code0812F204:
@@ -6034,13 +6040,14 @@ beq   @@Code0812F246            ; 0812F20A
 add   r0,0x1                    ; 0812F20C
 cmp   r2,r0                     ; 0812F20E
 beq   @@Code0812F278            ; 0812F210
-b     @@Code0812F2E8            ; 0812F212
+b     @@Return                  ; 0812F212
+
 @@Code0812F214:
 lsl   r0,r4,0x18                ; 0812F214
 lsr   r2,r0,0x18                ; 0812F216
 ldr   r0,[r3,0x8]               ; 0812F218
 cmp   r0,0x0                    ; 0812F21A
-beq   @@Code0812F2E8            ; 0812F21C
+beq   @@Return                  ; 0812F21C
 mov   r4,0x1                    ; 0812F21E
 add   r1,0x8                    ; 0812F220
 @@Code0812F222:
@@ -6059,16 +6066,17 @@ ldr   r0,[r3,0x8]               ; 0812F236
 lsr   r0,r0,0x1                 ; 0812F238
 str   r0,[r3,0x8]               ; 0812F23A
 cmp   r0,0x0                    ; 0812F23C
-beq   @@Code0812F2E8            ; 0812F23E
+beq   @@Return                  ; 0812F23E
 cmp   r5,0x9                    ; 0812F240
 ble   @@Code0812F222            ; 0812F242
-b     @@Code0812F2E8            ; 0812F244
+b     @@Return                  ; 0812F244
+
 @@Code0812F246:
 lsl   r0,r4,0x18                ; 0812F246
 lsr   r2,r0,0x18                ; 0812F248
 ldr   r0,[r3,0x8]               ; 0812F24A
 cmp   r0,0x0                    ; 0812F24C
-beq   @@Code0812F2E8            ; 0812F24E
+beq   @@Return                  ; 0812F24E
 mov   r4,0x1                    ; 0812F250
 add   r1,0x8                    ; 0812F252
 @@Code0812F254:
@@ -6087,10 +6095,11 @@ ldr   r0,[r3,0x8]               ; 0812F268
 lsr   r0,r0,0x1                 ; 0812F26A
 str   r0,[r3,0x8]               ; 0812F26C
 cmp   r0,0x0                    ; 0812F26E
-beq   @@Code0812F2E8            ; 0812F270
+beq   @@Return                  ; 0812F270
 cmp   r5,0x9                    ; 0812F272
 ble   @@Code0812F254            ; 0812F274
-b     @@Code0812F2E8            ; 0812F276
+b     @@Return                  ; 0812F276
+
 @@Code0812F278:
 mov   r0,0xFF                   ; 0812F278
 lsl   r0,r0,0x8                 ; 0812F27A
@@ -6100,7 +6109,7 @@ lsl   r0,r4,0x18                ; 0812F280
 lsr   r4,r0,0x18                ; 0812F282
 ldr   r0,[r3,0x8]               ; 0812F284
 cmp   r0,0x0                    ; 0812F286
-beq   @@Code0812F2E8            ; 0812F288
+beq   @@Return                  ; 0812F288
 mov   r6,0x1                    ; 0812F28A
 add   r1,0x8                    ; 0812F28C
 @@Code0812F28E:
@@ -6122,16 +6131,17 @@ ldr   r0,[r3,0x8]               ; 0812F2A8
 lsr   r0,r0,0x1                 ; 0812F2AA
 str   r0,[r3,0x8]               ; 0812F2AC
 cmp   r0,0x0                    ; 0812F2AE
-beq   @@Code0812F2E8            ; 0812F2B0
+beq   @@Return                  ; 0812F2B0
 cmp   r5,0x9                    ; 0812F2B2
 ble   @@Code0812F28E            ; 0812F2B4
-b     @@Code0812F2E8            ; 0812F2B6
+b     @@Return                  ; 0812F2B6
+
 @@Code0812F2B8:
 lsl   r0,r4,0x18                ; 0812F2B8
 lsr   r2,r0,0x18                ; 0812F2BA
 ldr   r0,[r3,0x8]               ; 0812F2BC
 cmp   r0,0x0                    ; 0812F2BE
-beq   @@Code0812F2E8            ; 0812F2C0
+beq   @@Return                  ; 0812F2C0
 mov   r4,0x1                    ; 0812F2C2
 add   r1,0x8                    ; 0812F2C4
 @@Code0812F2C6:
@@ -6150,10 +6160,10 @@ ldr   r0,[r3,0x8]               ; 0812F2DA
 lsr   r0,r0,0x1                 ; 0812F2DC
 str   r0,[r3,0x8]               ; 0812F2DE
 cmp   r0,0x0                    ; 0812F2E0
-beq   @@Code0812F2E8            ; 0812F2E2
+beq   @@Return                  ; 0812F2E2
 cmp   r5,0x9                    ; 0812F2E4
 ble   @@Code0812F2C6            ; 0812F2E6
-@@Code0812F2E8:
+@@Return:
 pop   {r4-r6}                   ; 0812F2E8
 pop   {r0}                      ; 0812F2EA
 bx    r0                        ; 0812F2EC
@@ -6172,11 +6182,12 @@ beq   @@Code0812F308            ; 0812F2FE
 add   r0,0x1                    ; 0812F300
 cmp   r1,r0                     ; 0812F302
 beq   @@Code0812F332            ; 0812F304
-b     @@Code0812F35A            ; 0812F306
+b     @@Return                  ; 0812F306
+
 @@Code0812F308:
 ldr   r1,[r4,0x8]               ; 0812F308
 cmp   r1,0x0                    ; 0812F30A
-beq   @@Code0812F35A            ; 0812F30C
+beq   @@Return                  ; 0812F30C
 @@Code0812F30E:
 mov   r0,0x1                    ; 0812F30E
 and   r0,r1                     ; 0812F310
@@ -6192,14 +6203,15 @@ lsr   r0,r0,0x1                 ; 0812F322
 str   r0,[r4,0x8]               ; 0812F324
 mov   r1,r0                     ; 0812F326
 cmp   r1,0x0                    ; 0812F328
-beq   @@Code0812F35A            ; 0812F32A
+beq   @@Return                  ; 0812F32A
 cmp   r5,0x13                   ; 0812F32C
 ble   @@Code0812F30E            ; 0812F32E
-b     @@Code0812F35A            ; 0812F330
+b     @@Return                  ; 0812F330
+
 @@Code0812F332:
 ldr   r1,[r4,0x8]               ; 0812F332
 cmp   r1,0x0                    ; 0812F334
-beq   @@Code0812F35A            ; 0812F336
+beq   @@Return                  ; 0812F336
 @@Code0812F338:
 mov   r0,0x1                    ; 0812F338
 and   r0,r1                     ; 0812F33A
@@ -6215,16 +6227,16 @@ lsr   r0,r0,0x1                 ; 0812F34C
 str   r0,[r4,0x8]               ; 0812F34E
 mov   r1,r0                     ; 0812F350
 cmp   r1,0x0                    ; 0812F352
-beq   @@Code0812F35A            ; 0812F354
+beq   @@Return                  ; 0812F354
 cmp   r5,0x13                   ; 0812F356
 ble   @@Code0812F338            ; 0812F358
-@@Code0812F35A:
+@@Return:
 pop   {r4-r5}                   ; 0812F35A
 pop   {r0}                      ; 0812F35C
 bx    r0                        ; 0812F35E
 
 Sub0812F360:
-; runs if high byte of first buffer value is 3
+; runs if high byte of first buffer value is 03
 ; r0: pointer to buffer
 push  {lr}                      ; 0812F360
 mov   r2,r0                     ; 0812F362
@@ -6232,7 +6244,7 @@ ldrh  r0,[r2]                   ; 0812F364
 ldr   r1,=0xFFFFFD00            ; 0812F366
 add   r0,r0,r1                  ; 0812F368  subtract 0x300 (clear high digit)
 cmp   r0,0x4                    ; 0812F36A
-bhi   @@Code0812F3C2            ; 0812F36C  if low digit >4, return
+bhi   @@Return                  ; 0812F36C  if low digit >4, return
 lsl   r0,r0,0x2                 ; 0812F36E  use low digit as code pointer table index
 ldr   r1,=@@CodePtrs0812F380    ; 0812F370
 add   r0,r0,r1                  ; 0812F372
@@ -6241,43 +6253,45 @@ mov   pc,r0                     ; 0812F376
 .pool                           ; 0812F378
 @@CodePtrs0812F380:
 ; code pointer table
-.word @@Code0812F3B4            ; 0812F380
-.word @@Code0812F394            ; 0812F384
-.word @@Code0812F39E            ; 0812F388
-.word @@Code0812F3A8            ; 0812F38C
-.word @@Code0812F3BC            ; 0812F390
+.word @@Value0300               ; 0812F380
+.word @@Value0301               ; 0812F384
+.word @@Value0302               ; 0812F388
+.word @@Value0303               ; 0812F38C
+.word @@Value0304               ; 0812F390
 
-@@Code0812F394:
+@@Value0301:
 ; runs if first buffer value is 0301
 ldr   r0,[r2,0x8]               ; 0812F394
 ldr   r1,[r2,0x4]               ; 0812F396
 bl    Sub_bx_r1                 ; 0812F398
-b     @@Code0812F3C2            ; 0812F39C
-@@Code0812F39E:
+b     @@Return                  ; 0812F39C
+
+@@Value0302:
 ; runs if first buffer value is 0302
 ldr   r1,=0x030000EC            ; 0812F39E
 b     @@Code0812F3AA            ; 0812F3A0
 .pool                           ; 0812F3A2
 
-@@Code0812F3A8:
+@@Value0303:
 ; runs if first buffer value is 0303
 ldr   r1,=0x030000E8            ; 0812F3A8
 @@Code0812F3AA:
 ldr   r0,[r2,0x4]               ; 0812F3AA
 str   r0,[r1]                   ; 0812F3AC
-b     @@Code0812F3C2            ; 0812F3AE
+b     @@Return                  ; 0812F3AE
 .pool                           ; 0812F3B0
 
-@@Code0812F3B4:
+@@Value0300:
 ; runs if first buffer value is 0300
 ldrb  r0,[r2,0x4]               ; 0812F3B4
 bl    Sub0812D704               ; 0812F3B6
-b     @@Code0812F3C2            ; 0812F3BA
-@@Code0812F3BC:
+b     @@Return                  ; 0812F3BA
+
+@@Value0304:
 ; runs if first buffer value is 0304 (change music setup)
 ldrb  r0,[r2,0x4]               ; 0812F3BC  r0 = argument from buffer
 bl    Sub0812D714               ; 0812F3BE
-@@Code0812F3C2:
+@@Return:
 pop   {r0}                      ; 0812F3C2
 bx    r0                        ; 0812F3C4
 .pool                           ; 0812F3C6
@@ -6288,7 +6302,7 @@ push  {r4,lr}                   ; 0812F3C8
 bl    Sub0812EE6C               ; 0812F3CA  compare 03000324/032C; if different, increment 03000324 by 0C and return its old value
 mov   r2,r0                     ; 0812F3CE
 cmp   r2,0x0                    ; 0812F3D0
-beq   @@Code0812F3F0            ; 0812F3D2  if pointers are not different, return
+beq   @@Return                  ; 0812F3D2  if pointers are not different, return
 ldr   r4,=CodePtrs08307D4C      ; 0812F3D4
 @@Code0812F3D6:
 ldrh  r0,[r2]                   ; 0812F3D6  load first value from buffer
@@ -6302,7 +6316,7 @@ bl    Sub0812EE6C               ; 0812F3E6  compare 03000324/032C; if different,
 mov   r2,r0                     ; 0812F3EA
 cmp   r2,0x0                    ; 0812F3EC
 bne   @@Code0812F3D6            ; 0812F3EE  if pointers are still different, process another sound buffer entry
-@@Code0812F3F0:
+@@Return:
 pop   {r4}                      ; 0812F3F0
 pop   {r0}                      ; 0812F3F2
 bx    r0                        ; 0812F3F4
@@ -6311,195 +6325,198 @@ bx    r0                        ; 0812F3F4
 .arm
 
 Sub0812F3FC:
-stmfd  r13!,{r4,r5}             ; 0812F3FC
-mov    r4,0x7F                  ; 0812F400
-mov    r5,0xFF00                ; 0812F404
-orr    r5,r5,0x80               ; 0812F408
+; copied to 03001368 in 0812CE84
+stmfd  r13!,{r4,r5}             ; 0812F3FC/03001368
+mov    r4,0x7F                  ; 0812F400/0300136C
+mov    r5,0xFF00                ; 0812F404/03001370
+orr    r5,r5,0x80               ; 0812F408/03001374
 @@Code0812F40C:
 .word  0xE0D030F2
-;ldrsh  r3,[r0],0x2              ; 0812F40C
-cmp    r3,0x0                   ; 0812F410
-addmi  r3,r3,0x7F               ; 0812F414
-mov    r3,r3,asr 0x7            ; 0812F418
-ands   r12,r3,r5                ; 0812F41C
-cmpne  r12,r5                   ; 0812F420
-addne  r3,r4,r3,lsr 0x1F        ; 0812F424
-strb   r3,[r1],0x1              ; 0812F428
+;ldrsh  r3,[r0],0x2              ; 0812F40C/03001378
+cmp    r3,0x0                   ; 0812F410/0300137C
+addmi  r3,r3,0x7F               ; 0812F414/03001380
+mov    r3,r3,asr 0x7            ; 0812F418/03001384
+ands   r12,r3,r5                ; 0812F41C/03001388
+cmpne  r12,r5                   ; 0812F420/0300138C
+addne  r3,r4,r3,lsr 0x1F        ; 0812F424/03001390
+strb   r3,[r1],0x1              ; 0812F428/03001394
 .word  0xE0D030F2
-;ldrsh  r3,[r0],0x2              ; 0812F42C
-cmp    r3,0x0                   ; 0812F430
-addmi  r3,r3,0x7F               ; 0812F434
-mov    r3,r3,asr 0x7            ; 0812F438
-ands   r12,r3,r5                ; 0812F43C
-cmpne  r12,r5                   ; 0812F440
-addne  r3,r4,r3,lsr 0x1F        ; 0812F444
-strb   r3,[r1],0x1              ; 0812F448
+;ldrsh  r3,[r0],0x2              ; 0812F42C/03001398a
+cmp    r3,0x0                   ; 0812F430/0300139C
+addmi  r3,r3,0x7F               ; 0812F434/030013A0
+mov    r3,r3,asr 0x7            ; 0812F438/030013A4
+ands   r12,r3,r5                ; 0812F43C/030013A8
+cmpne  r12,r5                   ; 0812F440/030013AC
+addne  r3,r4,r3,lsr 0x1F        ; 0812F444/030013B0
+strb   r3,[r1],0x1              ; 0812F448/030013B4
 .word  0xE0D030F2
-;ldrsh  r3,[r0],0x2              ; 0812F44C
-cmp    r3,0x0                   ; 0812F450
-addmi  r3,r3,0x7F               ; 0812F454
-mov    r3,r3,asr 0x7            ; 0812F458
-ands   r12,r3,r5                ; 0812F45C
-cmpne  r12,r5                   ; 0812F460
-addne  r3,r4,r3,lsr 0x1F        ; 0812F464
-strb   r3,[r1],0x1              ; 0812F468
+;ldrsh  r3,[r0],0x2              ; 0812F44C/030013B8
+cmp    r3,0x0                   ; 0812F450/030013BC
+addmi  r3,r3,0x7F               ; 0812F454/030013C0
+mov    r3,r3,asr 0x7            ; 0812F458/030013C4
+ands   r12,r3,r5                ; 0812F45C/030013C8
+cmpne  r12,r5                   ; 0812F460/030013CC
+addne  r3,r4,r3,lsr 0x1F        ; 0812F464/030013D0
+strb   r3,[r1],0x1              ; 0812F468/030013D4
 .word  0xE0D030F2
-;ldrsh  r3,[r0],0x2              ; 0812F46C
-cmp    r3,0x0                   ; 0812F470
-addmi  r3,r3,0x7F               ; 0812F474
-mov    r3,r3,asr 0x7            ; 0812F478
-ands   r12,r3,r5                ; 0812F47C
-cmpne  r12,r5                   ; 0812F480
-addne  r3,r4,r3,lsr 0x1F        ; 0812F484
-strb   r3,[r1],0x1              ; 0812F488
+;ldrsh  r3,[r0],0x2              ; 0812F46C/030013D8
+cmp    r3,0x0                   ; 0812F470/030013DC
+addmi  r3,r3,0x7F               ; 0812F474/030013E0
+mov    r3,r3,asr 0x7            ; 0812F478/030013E4
+ands   r12,r3,r5                ; 0812F47C/030013E8
+cmpne  r12,r5                   ; 0812F480/030013EC
+addne  r3,r4,r3,lsr 0x1F        ; 0812F484/030013F0
+strb   r3,[r1],0x1              ; 0812F488/030013F4
 .word  0xE0D030F2
-;ldrsh  r3,[r0],0x2              ; 0812F48C
-cmp    r3,0x0                   ; 0812F490
-addmi  r3,r3,0x7F               ; 0812F494
-mov    r3,r3,asr 0x7            ; 0812F498
-ands   r12,r3,r5                ; 0812F49C
-cmpne  r12,r5                   ; 0812F4A0
-addne  r3,r4,r3,lsr 0x1F        ; 0812F4A4
-strb   r3,[r1],0x1              ; 0812F4A8
+;ldrsh  r3,[r0],0x2              ; 0812F48C/030013F8
+cmp    r3,0x0                   ; 0812F490/030013FC
+addmi  r3,r3,0x7F               ; 0812F494/03001400
+mov    r3,r3,asr 0x7            ; 0812F498/03001404
+ands   r12,r3,r5                ; 0812F49C/03001408
+cmpne  r12,r5                   ; 0812F4A0/0300140C
+addne  r3,r4,r3,lsr 0x1F        ; 0812F4A4/03001410
+strb   r3,[r1],0x1              ; 0812F4A8/03001414
 .word  0xE0D030F2
-;ldrsh  r3,[r0],0x2              ; 0812F4AC
-cmp    r3,0x0                   ; 0812F4B0
-addmi  r3,r3,0x7F               ; 0812F4B4
-mov    r3,r3,asr 0x7            ; 0812F4B8
-ands   r12,r3,r5                ; 0812F4BC
-cmpne  r12,r5                   ; 0812F4C0
-addne  r3,r4,r3,lsr 0x1F        ; 0812F4C4
-strb   r3,[r1],0x1              ; 0812F4C8
+;ldrsh  r3,[r0],0x2              ; 0812F4AC/03001418
+cmp    r3,0x0                   ; 0812F4B0/0300141C
+addmi  r3,r3,0x7F               ; 0812F4B4/03001420
+mov    r3,r3,asr 0x7            ; 0812F4B8/03001424
+ands   r12,r3,r5                ; 0812F4BC/03001428
+cmpne  r12,r5                   ; 0812F4C0/0300142C
+addne  r3,r4,r3,lsr 0x1F        ; 0812F4C4/03001430
+strb   r3,[r1],0x1              ; 0812F4C8/03001434
 .word  0xE0D030F2
-;ldrsh  r3,[r0],0x2              ; 0812F4CC
-cmp    r3,0x0                   ; 0812F4D0
-addmi  r3,r3,0x7F               ; 0812F4D4
-mov    r3,r3,asr 0x7            ; 0812F4D8
-ands   r12,r3,r5                ; 0812F4DC
-cmpne  r12,r5                   ; 0812F4E0
-addne  r3,r4,r3,lsr 0x1F        ; 0812F4E4
-strb   r3,[r1],0x1              ; 0812F4E8
+;ldrsh  r3,[r0],0x2              ; 0812F4CC/03001438
+cmp    r3,0x0                   ; 0812F4D0/0300143C
+addmi  r3,r3,0x7F               ; 0812F4D4/03001440
+mov    r3,r3,asr 0x7            ; 0812F4D8/03001444
+ands   r12,r3,r5                ; 0812F4DC/03001448
+cmpne  r12,r5                   ; 0812F4E0/0300144C
+addne  r3,r4,r3,lsr 0x1F        ; 0812F4E4/03001450
+strb   r3,[r1],0x1              ; 0812F4E8/03001454
 .word  0xE0D030F2
-;ldrsh  r3,[r0],0x2              ; 0812F4EC
-cmp    r3,0x0                   ; 0812F4F0
-addmi  r3,r3,0x7F               ; 0812F4F4
-mov    r3,r3,asr 0x7            ; 0812F4F8
-ands   r12,r3,r5                ; 0812F4FC
-cmpne  r12,r5                   ; 0812F500
-addne  r3,r4,r3,lsr 0x1F        ; 0812F504
-strb   r3,[r1],0x1              ; 0812F508
-cmp    r0,r2                    ; 0812F50C
-bne    @@Code0812F40C           ; 0812F510
-ldmfd  r13!,{r4,r5}             ; 0812F514
-bx     lr                       ; 0812F518
+;ldrsh  r3,[r0],0x2              ; 0812F4EC/03001458
+cmp    r3,0x0                   ; 0812F4F0/0300145C
+addmi  r3,r3,0x7F               ; 0812F4F4/03001460
+mov    r3,r3,asr 0x7            ; 0812F4F8/03001464
+ands   r12,r3,r5                ; 0812F4FC/03001468
+cmpne  r12,r5                   ; 0812F500/0300146C
+addne  r3,r4,r3,lsr 0x1F        ; 0812F504/03001470
+strb   r3,[r1],0x1              ; 0812F508/03001474
+cmp    r0,r2                    ; 0812F50C/03001478
+bne    @@Code0812F40C           ; 0812F510/0300147C
+ldmfd  r13!,{r4,r5}             ; 0812F514/03001480
+bx     lr                       ; 0812F518/03001484
 
 Sub0812F51C:
-mov    r12,sp                   ; 0812F51C
-stmfd  r13!,{r4-r8}             ; 0812F520
-ldmia  r12,{r4-r7}              ; 0812F524
-sub    r12,r3,r1                ; 0812F528
-and    r12,r12,0x7              ; 0812F52C
-cmp    r12,0x0                  ; 0812F530
-bne    @@Code0812F5DC           ; 0812F534
+; copied to 03001488 in 0812CE84
+mov    r12,sp                   ; 0812F51C/03001488
+stmfd  r13!,{r4-r8}             ; 0812F520/0300148C
+ldmia  r12,{r4-r7}              ; 0812F524/03001490
+sub    r12,r3,r1                ; 0812F528/03001494
+and    r12,r12,0x7              ; 0812F52C/03001498
+cmp    r12,0x0                  ; 0812F530/0300149C
+bne    @@Code0812F5DC           ; 0812F534/030014A0
 @@Code0812F538:
-add    r12,r0,r4,lsr 0x8        ; 0812F538
-ldrsb  r8,[r12]                 ; 0812F53C
-ldrsh  r12,[r1]                 ; 0812F540
-mla    r12,r6,r8,r12            ; 0812F544
-strh   r12,[r1],0x2             ; 0812F548
-ldrsh  r12,[r2]                 ; 0812F54C
-mla    r12,r7,r8,r12            ; 0812F550
-strh   r12,[r2],0x2             ; 0812F554
-add    r4,r4,r5                 ; 0812F558
-add    r12,r0,r4,lsr 0x8        ; 0812F55C
-ldrsb  r8,[r12]                 ; 0812F560
-ldrsh  r12,[r1]                 ; 0812F564
-mla    r12,r6,r8,r12            ; 0812F568
-strh   r12,[r1],0x2             ; 0812F56C
-ldrsh  r12,[r2]                 ; 0812F570
-mla    r12,r7,r8,r12            ; 0812F574
-strh   r12,[r2],0x2             ; 0812F578
-add    r4,r4,r5                 ; 0812F57C
-add    r12,r0,r4,lsr 0x8        ; 0812F580
-ldrsb  r8,[r12]                 ; 0812F584
-ldrsh  r12,[r1]                 ; 0812F588
-mla    r12,r6,r8,r12            ; 0812F58C
-strh   r12,[r1],0x2             ; 0812F590
-ldrsh  r12,[r2]                 ; 0812F594
-mla    r12,r7,r8,r12            ; 0812F598
-strh   r12,[r2],0x2             ; 0812F59C
-add    r4,r4,r5                 ; 0812F5A0
-add    r12,r0,r4,lsr 0x8        ; 0812F5A4
-ldrsb  r8,[r12]                 ; 0812F5A8
-ldrsh  r12,[r1]                 ; 0812F5AC
-mla    r12,r6,r8,r12            ; 0812F5B0
-strh   r12,[r1],0x2             ; 0812F5B4
-ldrsh  r12,[r2]                 ; 0812F5B8
-mla    r12,r7,r8,r12            ; 0812F5BC
-strh   r12,[r2],0x2             ; 0812F5C0
-add    r4,r4,r5                 ; 0812F5C4
-cmp    r1,r3                    ; 0812F5C8
-bcc    @@Code0812F538           ; 0812F5CC
-mov    r0,r4                    ; 0812F5D0
-ldmfd  r13!,{r4-r8}             ; 0812F5D4
-bx     lr                       ; 0812F5D8
+add    r12,r0,r4,lsr 0x8        ; 0812F538/030014A4
+ldrsb  r8,[r12]                 ; 0812F53C/030014A8
+ldrsh  r12,[r1]                 ; 0812F540/030014AC
+mla    r12,r6,r8,r12            ; 0812F544/030014B0
+strh   r12,[r1],0x2             ; 0812F548/030014B4
+ldrsh  r12,[r2]                 ; 0812F54C/030014B8
+mla    r12,r7,r8,r12            ; 0812F550/030014BC
+strh   r12,[r2],0x2             ; 0812F554/030014C0
+add    r4,r4,r5                 ; 0812F558/030014C4
+add    r12,r0,r4,lsr 0x8        ; 0812F55C/030014C8
+ldrsb  r8,[r12]                 ; 0812F560/030014CC
+ldrsh  r12,[r1]                 ; 0812F564/030014D0
+mla    r12,r6,r8,r12            ; 0812F568/030014D4
+strh   r12,[r1],0x2             ; 0812F56C/030014D8
+ldrsh  r12,[r2]                 ; 0812F570/030014DC
+mla    r12,r7,r8,r12            ; 0812F574/030014E0
+strh   r12,[r2],0x2             ; 0812F578/030014E4
+add    r4,r4,r5                 ; 0812F57C/030014E8
+add    r12,r0,r4,lsr 0x8        ; 0812F580/030014EC
+ldrsb  r8,[r12]                 ; 0812F584/030014F0
+ldrsh  r12,[r1]                 ; 0812F588/030014F4
+mla    r12,r6,r8,r12            ; 0812F58C/030014F8
+strh   r12,[r1],0x2             ; 0812F590/030014FC
+ldrsh  r12,[r2]                 ; 0812F594/03001500
+mla    r12,r7,r8,r12            ; 0812F598/03001504
+strh   r12,[r2],0x2             ; 0812F59C/03001508
+add    r4,r4,r5                 ; 0812F5A0/0300150C
+add    r12,r0,r4,lsr 0x8        ; 0812F5A4/03001510
+ldrsb  r8,[r12]                 ; 0812F5A8/03001514
+ldrsh  r12,[r1]                 ; 0812F5AC/03001518
+mla    r12,r6,r8,r12            ; 0812F5B0/0300151C
+strh   r12,[r1],0x2             ; 0812F5B4/03001520
+ldrsh  r12,[r2]                 ; 0812F5B8/03001524
+mla    r12,r7,r8,r12            ; 0812F5BC/03001528
+strh   r12,[r2],0x2             ; 0812F5C0/0300152C
+add    r4,r4,r5                 ; 0812F5C4/03001530
+cmp    r1,r3                    ; 0812F5C8/03001534
+bcc    @@Code0812F538           ; 0812F5CC/03001538
+mov    r0,r4                    ; 0812F5D0/0300153C
+ldmfd  r13!,{r4-r8}             ; 0812F5D4/03001540
+bx     lr                       ; 0812F5D8/03001544
 @@Code0812F5DC:
-add    r12,r0,r4,lsr 0x8        ; 0812F5DC
-ldrsb  r8,[r12]                 ; 0812F5E0
-ldrsh  r12,[r1]                 ; 0812F5E4
-mla    r12,r6,r8,r12            ; 0812F5E8
-strh   r12,[r1],0x2             ; 0812F5EC
-ldrsh  r12,[r2]                 ; 0812F5F0
-mla    r12,r7,r8,r12            ; 0812F5F4
-strh   r12,[r2],0x2             ; 0812F5F8
-add    r4,r4,r5                 ; 0812F5FC
-cmp    r1,r3                    ; 0812F600
-bcc    @@Code0812F5DC           ; 0812F604
-mov    r0,r4                    ; 0812F608
-ldmfd  r13!,{r4-r8}             ; 0812F60C
-bx     lr                       ; 0812F610
+add    r12,r0,r4,lsr 0x8        ; 0812F5DC/03001548
+ldrsb  r8,[r12]                 ; 0812F5E0/0300154C
+ldrsh  r12,[r1]                 ; 0812F5E4/03001550
+mla    r12,r6,r8,r12            ; 0812F5E8/03001554
+strh   r12,[r1],0x2             ; 0812F5EC/03001558
+ldrsh  r12,[r2]                 ; 0812F5F0/0300155C
+mla    r12,r7,r8,r12            ; 0812F5F4/03001560
+strh   r12,[r2],0x2             ; 0812F5F8/03001564
+add    r4,r4,r5                 ; 0812F5FC/03001568
+cmp    r1,r3                    ; 0812F600/0300156C
+bcc    @@Code0812F5DC           ; 0812F604/03001570
+mov    r0,r4                    ; 0812F608/03001574
+ldmfd  r13!,{r4-r8}             ; 0812F60C/03001578
+bx     lr                       ; 0812F610/0300157C
 
 Sub0812F614:
-stmfd  r13!,{r4,r5}             ; 0812F614
-mov    r4,0x1                   ; 0812F618
-mov    r4,r4,lsl r3             ; 0812F61C
-sub    r4,r4,0x1                ; 0812F620
+; copied to 03001580 in 0812CE84
+stmfd  r13!,{r4,r5}             ; 0812F614/03001580
+mov    r4,0x1                   ; 0812F618/03001584
+mov    r4,r4,lsl r3             ; 0812F61C/03001588
+sub    r4,r4,0x1                ; 0812F620/0300158C
 @@Code0812F624:
-ldrsh  r5,[r0]                  ; 0812F624
-ldrsh  r12,[r1]                 ; 0812F628
-add    r5,r5,r12                ; 0812F62C
-strh   r5,[r0],0x2              ; 0812F630
-cmp    r12,0x0                  ; 0812F634
-addmi  r12,r12,r4               ; 0812F638
-mov    r12,r12,asr r3           ; 0812F63C
-strh   r12,[r1],0x2             ; 0812F640
-ldrsh  r5,[r0]                  ; 0812F644
-ldrsh  r12,[r1]                 ; 0812F648
-add    r5,r5,r12                ; 0812F64C
-strh   r5,[r0],0x2              ; 0812F650
-cmp    r12,0x0                  ; 0812F654
-addmi  r12,r12,r4               ; 0812F658
-mov    r12,r12,asr r3           ; 0812F65C
-strh   r12,[r1],0x2             ; 0812F660
-ldrsh  r5,[r0]                  ; 0812F664
-ldrsh  r12,[r1]                 ; 0812F668
-add    r5,r5,r12                ; 0812F66C
-strh   r5,[r0],0x2              ; 0812F670
-cmp    r12,0x0                  ; 0812F674
-addmi  r12,r12,r4               ; 0812F678
-mov    r12,r12,asr r3           ; 0812F67C
-strh   r12,[r1],0x2             ; 0812F680
-ldrsh  r5,[r0]                  ; 0812F684
-ldrsh  r12,[r1]                 ; 0812F688
-add    r5,r5,r12                ; 0812F68C
-strh   r5,[r0],0x2              ; 0812F690
-cmp    r12,0x0                  ; 0812F694
-addmi  r12,r12,r4               ; 0812F698
-mov    r12,r12,asr r3           ; 0812F69C
-strh   r12,[r1],0x2             ; 0812F6A0
-cmp    r0,r2                    ; 0812F6A4
-bcc    @@Code0812F624           ; 0812F6A8
-ldmfd  r13!,{r4,r5}             ; 0812F6AC
-bx     lr                       ; 0812F6B0
+ldrsh  r5,[r0]                  ; 0812F624/03001590
+ldrsh  r12,[r1]                 ; 0812F628/03001594
+add    r5,r5,r12                ; 0812F62C/03001598
+strh   r5,[r0],0x2              ; 0812F630/0300159C
+cmp    r12,0x0                  ; 0812F634/030015A0
+addmi  r12,r12,r4               ; 0812F638/030015A4
+mov    r12,r12,asr r3           ; 0812F63C/030015A8
+strh   r12,[r1],0x2             ; 0812F640/030015AC
+ldrsh  r5,[r0]                  ; 0812F644/030015B0
+ldrsh  r12,[r1]                 ; 0812F648/030015B4
+add    r5,r5,r12                ; 0812F64C/030015B8
+strh   r5,[r0],0x2              ; 0812F650/030015BC
+cmp    r12,0x0                  ; 0812F654/030015C0
+addmi  r12,r12,r4               ; 0812F658/030015C4
+mov    r12,r12,asr r3           ; 0812F65C/030015C8
+strh   r12,[r1],0x2             ; 0812F660/030015CC
+ldrsh  r5,[r0]                  ; 0812F664/030015D0
+ldrsh  r12,[r1]                 ; 0812F668/030015D4
+add    r5,r5,r12                ; 0812F66C/030015D8
+strh   r5,[r0],0x2              ; 0812F670/030015DC
+cmp    r12,0x0                  ; 0812F674/030015E0
+addmi  r12,r12,r4               ; 0812F678/030015E4
+mov    r12,r12,asr r3           ; 0812F67C/030015E8
+strh   r12,[r1],0x2             ; 0812F680/030015EC
+ldrsh  r5,[r0]                  ; 0812F684/030015F0
+ldrsh  r12,[r1]                 ; 0812F688/030015F4
+add    r5,r5,r12                ; 0812F68C/030015F8
+strh   r5,[r0],0x2              ; 0812F690/030015FC
+cmp    r12,0x0                  ; 0812F694/03001600
+addmi  r12,r12,r4               ; 0812F698/03001604
+mov    r12,r12,asr r3           ; 0812F69C/03001608
+strh   r12,[r1],0x2             ; 0812F6A0/0300160C
+cmp    r0,r2                    ; 0812F6A4/03001610
+bcc    @@Code0812F624           ; 0812F6A8/03001614
+ldmfd  r13!,{r4,r5}             ; 0812F6AC/03001618
+bx     lr                       ; 0812F6B0/0300161C
 
 .thumb

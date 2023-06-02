@@ -48,7 +48,7 @@ if __name__ == "__main__":
         "../../sma3.gba",
         "../../sma3-disasm.gba",
         searchregions=[
-            (0, 0x12FDC0),
+            (0, 0x12FE80),
             (0x163F90, 0x1EF954),
             (0x2F215C, 0x3077E0)
             ])

@@ -6,7 +6,7 @@ import os
 def aligncomments(path, startstr=";", commentpos=32):
     print("Processing:", path)
     outputlines = []
-    for line in open(path, "r", newline=""):
+    for line in open(path, "r", newline="", encoding="UTF-8"):
         pos = line.find(startstr)
         if pos < 1 or pos == commentpos:
             outputlines.append(line)
@@ -14,7 +14,7 @@ def aligncomments(path, startstr=";", commentpos=32):
             left, right = line.split(startstr, maxsplit=1)
             outputlines.append(
                 left.rstrip(" ").ljust(commentpos) + startstr + right)
-    open(path, "w", newline="").writelines(outputlines)
+    open(path, "w", newline="", encoding="UTF-8").writelines(outputlines)
 
 def aligncomments_dir(directory, ext=".asm", *args, **kwargs):
     contents = sorted(os.listdir(directory), key=str.casefold)

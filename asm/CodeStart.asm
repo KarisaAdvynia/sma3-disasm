@@ -27,60 +27,60 @@ b      CodeStart                ; 080000F0
 .word  0x03007F80               ; 080000F8
 
 InterruptHandler:
-mov    r12,0x04000000           ; 080000FC
-add    r3,r12,0x0200            ; 08000100
-ldr    r2,[r3]                  ; 08000104
-and    r1,r2,r2,lsr 0x10        ; 08000108
-mov    r2,0x0                   ; 0800010C
-ands   r0,r1,0x2000             ; 08000110
-strneb r0,[r3,-0x017C]          ; 08000114
+mov    r12,0x04000000           ; 080000FC/030065AC
+add    r3,r12,0x0200            ; 08000100/030065B0
+ldr    r2,[r3]                  ; 08000104/030065B4
+and    r1,r2,r2,lsr 0x10        ; 08000108/030065B8
+mov    r2,0x0                   ; 0800010C/030065BC
+ands   r0,r1,0x2000             ; 08000110/030065C0
+strneb r0,[r3,-0x017C]          ; 08000114/030065C4
 @@Code08000118:
-bne    @@Code08000118           ; 08000118
-add    r2,r2,0x4                ; 0800011C
-ands   r0,r1,0x1                ; 08000120
-strneh r0,[r12,-0x8]            ; 08000124
-bne    @@Code080001B8           ; 08000128
-add    r2,r2,0x4                ; 0800012C
-ands   r0,r1,0x80               ; 08000130
-bne    @@Code080001B8           ; 08000134
-add    r2,r2,0x4                ; 08000138
-ands   r0,r1,0x40               ; 0800013C
-bne    @@Code080001B8           ; 08000140
-add    r2,r2,0x4                ; 08000144
-ands   r0,r1,0x2                ; 08000148
-bne    @@Code080001B8           ; 0800014C
-add    r2,r2,0x4                ; 08000150
-ands   r0,r1,0x4                ; 08000154
-bne    @@Code080001B8           ; 08000158
-add    r2,r2,0x4                ; 0800015C
-ands   r0,r1,0x8                ; 08000160
-bne    @@Code080001B8           ; 08000164
-add    r2,r2,0x4                ; 08000168
-ands   r0,r1,0x10               ; 0800016C
-bne    @@Code080001B8           ; 08000170
-add    r2,r2,0x4                ; 08000174
-ands   r0,r1,0x20               ; 08000178
-bne    @@Code080001B8           ; 0800017C
-add    r2,r2,0x4                ; 08000180
-ands   r0,r1,0x0100             ; 08000184
-bne    @@Code080001B8           ; 08000188
-add    r2,r2,0x4                ; 0800018C
-ands   r0,r1,0x0200             ; 08000190
-bne    @@Code080001B8           ; 08000194
-add    r2,r2,0x4                ; 08000198
-ands   r0,r1,0x0400             ; 0800019C
-bne    @@Code080001B8           ; 080001A0
-add    r2,r2,0x4                ; 080001A4
-ands   r0,r1,0x0800             ; 080001A8
-bne    @@Code080001B8           ; 080001AC
-add    r2,r2,0x4                ; 080001B0
-ands   r0,r1,0x1000             ; 080001B4
+bne    @@Code08000118           ; 08000118/030065C8
+add    r2,r2,0x4                ; 0800011C/030065CC
+ands   r0,r1,0x1                ; 08000120/030065D0
+strneh r0,[r12,-0x8]            ; 08000124/030065D4
+bne    @@Code080001B8           ; 08000128/030065D8
+add    r2,r2,0x4                ; 0800012C/030065DC
+ands   r0,r1,0x80               ; 08000130/030065E0
+bne    @@Code080001B8           ; 08000134/030065E4
+add    r2,r2,0x4                ; 08000138/030065E8
+ands   r0,r1,0x40               ; 0800013C/030065EC
+bne    @@Code080001B8           ; 08000140/030065F0
+add    r2,r2,0x4                ; 08000144/030065F4
+ands   r0,r1,0x2                ; 08000148/030065F8
+bne    @@Code080001B8           ; 0800014C/030065FC
+add    r2,r2,0x4                ; 08000150/03006600
+ands   r0,r1,0x4                ; 08000154/03006604
+bne    @@Code080001B8           ; 08000158/03006608
+add    r2,r2,0x4                ; 0800015C/0300660C
+ands   r0,r1,0x8                ; 08000160/03006610
+bne    @@Code080001B8           ; 08000164/03006614
+add    r2,r2,0x4                ; 08000168/03006618
+ands   r0,r1,0x10               ; 0800016C/0300661C
+bne    @@Code080001B8           ; 08000170/03006620
+add    r2,r2,0x4                ; 08000174/03006624
+ands   r0,r1,0x20               ; 08000178/03006628
+bne    @@Code080001B8           ; 0800017C/0300662C
+add    r2,r2,0x4                ; 08000180/03006630
+ands   r0,r1,0x0100             ; 08000184/03006634
+bne    @@Code080001B8           ; 08000188/03006638
+add    r2,r2,0x4                ; 0800018C/0300663C
+ands   r0,r1,0x0200             ; 08000190/03006640
+bne    @@Code080001B8           ; 08000194/03006644
+add    r2,r2,0x4                ; 08000198/03006648
+ands   r0,r1,0x0400             ; 0800019C/0300664C
+bne    @@Code080001B8           ; 080001A0/03006650
+add    r2,r2,0x4                ; 080001A4/03006654
+ands   r0,r1,0x0800             ; 080001A8/03006658
+bne    @@Code080001B8           ; 080001AC/0300665C
+add    r2,r2,0x4                ; 080001B0/03006660
+ands   r0,r1,0x1000             ; 080001B4/03006664
 @@Code080001B8:
-strh   r0,[r3,0x2]              ; 080001B8
-ldr    r1,=0x030021C0           ; 080001BC
-add    r1,r1,r2                 ; 080001C0
-ldr    r0,[r1]                  ; 080001C4
-bx     r0                       ; 080001C8
+strh   r0,[r3,0x2]              ; 080001B8/03006668
+ldr    r1,=0x030021C0           ; 080001BC/0300666C
+add    r1,r1,r2                 ; 080001C0/03006670
+ldr    r0,[r1]                  ; 080001C4/03006674
+bx     r0                       ; 080001C8/03006678
 
 InterruptHandlerAlt:
 mov    r12,0x04000000           ; 080001CC
@@ -452,7 +452,7 @@ cmp   r2,0x7F                   ; 0800052A
 bls   @@Code08000532            ; 0800052C
 @@Code0800052E:
 mov   r0,0x1                    ; 0800052E
-b     @@Code08000552            ; 08000530
+b     @@Return            ; 08000530
 @@Code08000532:
 lsl   r0,r2,0x6                 ; 08000532
 add   r4,r4,r0                  ; 08000534
@@ -470,7 +470,7 @@ lsl   r3,r1                     ; 0800054A
 orr   r2,r3                     ; 0800054C
 str   r2,[r4]                   ; 0800054E
 mov   r0,0x0                    ; 08000550
-@@Code08000552:
+@@Return:
 pop   {r4-r5}                   ; 08000552
 bx    lr                        ; 08000554
 .pool                           ; 08000556
@@ -486,7 +486,7 @@ mov   r5,r0                     ; 0800055A
 mov   r0,r1                     ; 0800055C
 orr   r0,r2                     ; 0800055E
 lsr   r0,r0,0x7                 ; 08000560  if either coordinate >= 0x80, return without writing anything
-bne   @@Code08000580            ; 08000562
+bne   @@Return                  ; 08000562
 lsl   r0,r2,0x6                 ; 08000564 \
 add   r5,r5,r0                  ; 08000566 | buffer + 40*Y + X/2
 lsr   r0,r1,0x1                 ; 08000568 |
@@ -501,7 +501,7 @@ lsl   r3,r1                     ; 08000578  shift new color into position
 orr   r2,r3                     ; 0800057A  update color
 strb  r2,[r5]                   ; 0800057C  update byte
 mov   r0,0x0                    ; 0800057E
-@@Code08000580:
+@@Return:
 mov   r5,r12                    ; 08000580  pseudo-pop r5
 bx    lr                        ; 08000582
 
@@ -999,64 +999,64 @@ bx    r0                        ; 08000914
 
 Sub0800091C:
 ; copied to dynamic RAM, referenced as [03007264], during vertical tile shift effect
-mov    r12,r13                  ; 0800091C
-stmdb  r13!,{r4-r7,r11,r12,lr,pc}; 08000920
-sub    r11,r12,0x4              ; 08000924
-mov    r5,r0                    ; 08000928
-and    r4,r1,0x3F               ; 0800092C
-add    r3,r4,0x1F               ; 08000930
-and    r7,r3,0x3F               ; 08000934
+mov    r12,r13                  ; 0800091C/03004D50
+stmdb  r13!,{r4-r7,r11,r12,lr,pc}; 08000920/03004D54
+sub    r11,r12,0x4              ; 08000924/03004D58
+mov    r5,r0                    ; 08000928/03004D5C
+and    r4,r1,0x3F               ; 0800092C/03004D60
+add    r3,r4,0x1F               ; 08000930/03004D64
+and    r7,r3,0x3F               ; 08000934/03004D68
 @@Code08000938:
-and    r12,r4,0x1F              ; 08000938
-add    r6,r4,0x1                ; 0800093C
-ldr    lr,[r5,0x4]              ; 08000940
-mov    r12,r12,lsl 0x1          ; 08000944
-ldr    r0,[r5,0x8]              ; 08000948
-and    r2,r4,0x20               ; 0800094C
-ldr    r1,[r5]                  ; 08000950
-mov    r2,r2,lsl 0x6            ; 08000954
-ldr    r3,[r5,0xC]              ; 08000958
-add    lr,lr,r12                ; 0800095C
-add    lr,lr,r2                 ; 08000960
-add    r0,r0,r12                ; 08000964
-str    lr,[r5,0x14]             ; 08000968
-add    r0,r0,r2                 ; 0800096C
-str    r0,[r5,0x18]             ; 08000970
-add    r1,r1,r12                ; 08000974
-ldrb   r12,[r3,r4]              ; 08000978
-add    r1,r1,r2                 ; 0800097C
-add    r4,r1,0x0800             ; 08000980
-add    r12,r12,0x2              ; 08000984
-mov    r3,r12,lsl 0x3           ; 08000988
-and    r3,r3,0x07C0             ; 0800098C
-add    r2,r1,r3                 ; 08000990
-tst    r12,0x4                  ; 08000994
-moveq  r3,lr                    ; 08000998
-movne  r3,r0                    ; 0800099C
-add    r0,r3,0x0800             ; 080009A0
+and    r12,r4,0x1F              ; 08000938/03004D6C
+add    r6,r4,0x1                ; 0800093C/03004D70
+ldr    lr,[r5,0x4]              ; 08000940/03004D74
+mov    r12,r12,lsl 0x1          ; 08000944/03004D78
+ldr    r0,[r5,0x8]              ; 08000948/03004D7C
+and    r2,r4,0x20               ; 0800094C/03004D80
+ldr    r1,[r5]                  ; 08000950/03004D84
+mov    r2,r2,lsl 0x6            ; 08000954/03004D88
+ldr    r3,[r5,0xC]              ; 08000958/03004D8C
+add    lr,lr,r12                ; 0800095C/03004D90
+add    lr,lr,r2                 ; 08000960/03004D94
+add    r0,r0,r12                ; 08000964/03004D98
+str    lr,[r5,0x14]             ; 08000968/03004D9C
+add    r0,r0,r2                 ; 0800096C/03004DA0
+str    r0,[r5,0x18]             ; 08000970/03004DA4
+add    r1,r1,r12                ; 08000974/03004DA8
+ldrb   r12,[r3,r4]              ; 08000978/03004DAC
+add    r1,r1,r2                 ; 0800097C/03004DB0
+add    r4,r1,0x0800             ; 08000980/03004DB4
+add    r12,r12,0x2              ; 08000984/03004DB8
+mov    r3,r12,lsl 0x3           ; 08000988/03004DBC
+and    r3,r3,0x07C0             ; 0800098C/03004DC0
+add    r2,r1,r3                 ; 08000990/03004DC4
+tst    r12,0x4                  ; 08000994/03004DC8
+moveq  r3,lr                    ; 08000998/03004DCC
+movne  r3,r0                    ; 0800099C/03004DD0
+add    r0,r3,0x0800             ; 080009A0/03004DD4
 @@Code080009A4:
-ldrh   r12,[r2]                 ; 080009A4
-strh   r12,[r3]                 ; 080009A8
-add    r3,r3,0x40               ; 080009AC
-add    r2,r2,0x40               ; 080009B0
-cmp    r2,r4                    ; 080009B4
-bcc    @@Code080009A4           ; 080009B8
-mov    r2,r1                    ; 080009BC
-cmp    r3,r0                    ; 080009C0
-bcs    @@Code080009E0           ; 080009C4
+ldrh   r12,[r2]                 ; 080009A4/03004DD8
+strh   r12,[r3]                 ; 080009A8/03004DDC
+add    r3,r3,0x40               ; 080009AC/03004DE0
+add    r2,r2,0x40               ; 080009B0/03004DE4
+cmp    r2,r4                    ; 080009B4/03004DE8
+bcc    @@Code080009A4           ; 080009B8/03004DEC
+mov    r2,r1                    ; 080009BC/03004DF0
+cmp    r3,r0                    ; 080009C0/03004DF4
+bcs    @@Code080009E0           ; 080009C4/03004DF8
 @@Code080009C8:
-ldrh   r1,[r2]                  ; 080009C8
-strh   r1,[r3]                  ; 080009CC
-add    r3,r3,0x40               ; 080009D0
-add    r2,r2,0x40               ; 080009D4
-cmp    r3,r0                    ; 080009D8
-bcc    @@Code080009C8           ; 080009DC
+ldrh   r1,[r2]                  ; 080009C8/03004DFC
+strh   r1,[r3]                  ; 080009CC/03004E00
+add    r3,r3,0x40               ; 080009D0/03004E04
+add    r2,r2,0x40               ; 080009D4/03004E08
+cmp    r3,r0                    ; 080009D8/03004E0C
+bcc    @@Code080009C8           ; 080009DC/03004E10
 @@Code080009E0:
-and    r4,r6,0x3F               ; 080009E0
-cmp    r4,r7                    ; 080009E4
-bne    @@Code08000938           ; 080009E8
-ldmdb  r11,{r4-r7,r11,r13,lr}   ; 080009EC
-bx     lr                       ; 080009F0
+and    r4,r6,0x3F               ; 080009E0/03004E14
+cmp    r4,r7                    ; 080009E4/03004E18
+bne    @@Code08000938           ; 080009E8/03004E1C
+ldmdb  r11,{r4-r7,r11,r13,lr}   ; 080009EC/03004E20
+bx     lr                       ; 080009F0/03004E24
 
 Sub080009F4:
 mov    r12,r13                  ; 080009F4
@@ -1067,40 +1067,40 @@ bx     lr                       ; 08000A04
 
 Sub08000A08:
 ; copied to dynamic RAM, referenced as [03007260], during vertical tile shift effect
-mov    r12,r13                  ; 08000A08
-stmdb  r13!,{r4,r5,r11,r12,lr,pc}; 08000A0C
-sub    r11,r12,0x4              ; 08000A10
-mov    r4,r0                    ; 08000A14
-ldr    lr,=0x030072A0           ; 08000A18
-mov    r12,r4                   ; 08000A1C
-sub    r3,lr,0x30               ; 08000A20
-ldrh   r2,[r3,0x92]             ; 08000A24
-add    r5,r12,0x40              ; 08000A28
-ldrb   r0,[r3,0x94]             ; 08000A2C
-mov    r2,r2,lsr 0x3            ; 08000A30
-and    r2,r2,0x3F               ; 08000A34
-add    r12,r12,r2               ; 08000A38
-rsb    r0,r1,r0                 ; 08000A3C
-add    r2,lr,0x40               ; 08000A40
-strb   r0,[r12],0x1             ; 08000A44
-cmp    lr,r2                    ; 08000A48
-bcs    @@Code08000A78           ; 08000A4C
+mov    r12,r13                  ; 08000A08/03004E2C
+stmdb  r13!,{r4,r5,r11,r12,lr,pc}; 08000A0C/03004E30
+sub    r11,r12,0x4              ; 08000A10/03004E34
+mov    r4,r0                    ; 08000A14/03004E38
+ldr    lr,=0x030072A0           ; 08000A18/03004E3C
+mov    r12,r4                   ; 08000A1C/03004E40
+sub    r3,lr,0x30               ; 08000A20/03004E44
+ldrh   r2,[r3,0x92]             ; 08000A24/03004E48
+add    r5,r12,0x40              ; 08000A28/03004E4C
+ldrb   r0,[r3,0x94]             ; 08000A2C/03004E50
+mov    r2,r2,lsr 0x3            ; 08000A30/03004E54
+and    r2,r2,0x3F               ; 08000A34/03004E58
+add    r12,r12,r2               ; 08000A38/03004E5C
+rsb    r0,r1,r0                 ; 08000A3C/03004E60
+add    r2,lr,0x40               ; 08000A40/03004E64
+strb   r0,[r12],0x1             ; 08000A44/03004E68
+cmp    lr,r2                    ; 08000A48/03004E6C
+bcs    @@Code08000A78           ; 08000A4C/03004E70
 @@Code08000A50:
-cmp    r12,r5                   ; 08000A50
-ldrb   r3,[lr]                  ; 08000A54
-moveq  r12,r4                   ; 08000A58
-add    lr,lr,0x2                ; 08000A5C
-rsb    r3,r1,r3                 ; 08000A60
-strb   r3,[r12],0x1             ; 08000A64
-cmp    lr,r2                    ; 08000A68
-b      @@Code08000A74           ; 08000A6C
-.pool                           ; 08000A70
+cmp    r12,r5                   ; 08000A50/03004E74
+ldrb   r3,[lr]                  ; 08000A54/03004E78
+moveq  r12,r4                   ; 08000A58/03004E7C
+add    lr,lr,0x2                ; 08000A5C/03004E80
+rsb    r3,r1,r3                 ; 08000A60/03004E84
+strb   r3,[r12],0x1             ; 08000A64/03004E88
+cmp    lr,r2                    ; 08000A68/03004E8C
+b      @@Code08000A74           ; 08000A6C/03004E90
+.pool                           ; 08000A70/03004E94
 
 @@Code08000A74:
-bcc    @@Code08000A50           ; 08000A74
+bcc    @@Code08000A50           ; 08000A74/03004E98
 @@Code08000A78:
-ldmdb  r11,{r4,r5,r11,r13,lr}   ; 08000A78
-bx     lr                       ; 08000A7C
+ldmdb  r11,{r4,r5,r11,r13,lr}   ; 08000A78/03004E9C
+bx     lr                       ; 08000A7C/03004EA0
 
 Sub08000A80:
 mov    r12,r13                  ; 08000A80
