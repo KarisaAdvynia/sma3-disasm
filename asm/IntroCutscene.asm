@@ -43,7 +43,7 @@ pop   {r0}                      ; 080F5958
 bx    r0                        ; 080F595A
 .pool                           ; 080F595C
 
-Sub080F597C:
+GameState_3C:
 ; Game state 3C
 push  {r4-r5,lr}                ; 080F597C
 ldr   r0,=0x03002200            ; 080F597E
@@ -53,12 +53,12 @@ ldrb  r4,[r5]                   ; 080F5984
 bl    FadeToNextState           ; 080F5986
 ldrb  r0,[r5]                   ; 080F598A
 cmp   r4,r0                     ; 080F598C
-beq   @@Code080F599C            ; 080F598E
+beq   @@Return                  ; 080F598E
 bl    Sub0802E020               ; 080F5990
 mov   r0,0x3E                   ; 080F5994
 strb  r0,[r5]                   ; 080F5996
 bl    Sub080FAA64               ; 080F5998
-@@Code080F599C:
+@@Return:
 pop   {r4-r5}                   ; 080F599C
 pop   {r0}                      ; 080F599E
 bx    r0                        ; 080F59A0

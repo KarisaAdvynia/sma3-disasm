@@ -1861,7 +1861,7 @@ pop   {r0}                      ; 0810E4CE
 bx    r0                        ; 0810E4D0
 .pool                           ; 0810E4D2
 
-Sub0810E4D8:
+GameState_30:
 ; Game state 30
 push  {r4-r7,lr}                ; 0810E4D8
 mov   r7,r10                    ; 0810E4DA
@@ -3466,15 +3466,15 @@ ChooseAGameMain:
 push  {r4,lr}                   ; 0810F210
 ldr   r0,=0x03002200            ; 0810F212
 ldr   r1,=0x4A50                ; 0810F214
-add   r0,r0,r1                  ; 0810F216
-ldr   r4,[r0]                   ; 0810F218
+add   r0,r0,r1                  ; 0810F216  03006C50
+ldr   r4,[r0]                   ; 0810F218  r4 = [03006C50]
 bl    GenRandomByte             ; 0810F21A  Generate pseudo-random byte
 mov   r0,r4                     ; 0810F21E
 bl    Sub0810E158               ; 0810F220
 ldr   r1,=CodePtrs082DEF80      ; 0810F224
 mov   r0,r4                     ; 0810F226
-add   r0,0xC4                   ; 0810F228
-ldrh  r0,[r0]                   ; 0810F22A
+add   r0,0xC4                   ; 0810F228  [03006C50]+C4 (030022D0)
+ldrh  r0,[r0]                   ; 0810F22A  Choose a game substate?
 lsl   r0,r0,0x2                 ; 0810F22C
 add   r0,r0,r1                  ; 0810F22E
 ldr   r1,[r0]                   ; 0810F230

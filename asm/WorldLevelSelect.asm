@@ -2832,7 +2832,7 @@ strb  r1,[r0]                   ; 08005BEE
 bx    lr                        ; 08005BF0
 .pool                           ; 08005BF2
 
-WorldSelect43:
+WorldSelect_State43:
 ; Game state 43: World select (B from level select)
 push  {lr}                      ; 08005BFC
 bl    Sub08002338               ; 08005BFE
@@ -2864,7 +2864,7 @@ pop   {r0}                      ; 08005C40
 bx    r0                        ; 08005C42
 .pool                           ; 08005C44
 
-Sub08005C5C:
+WorldSelect_State41:
 ; Game state 41
 push  {r4,lr}                   ; 08005C5C
 bl    WorldSelectInit           ; 08005C5E
@@ -3216,11 +3216,11 @@ ldr   r1,=0x48A6                ; 08005FB8
 add   r1,r8                     ; 08005FBA
 strh  r0,[r1]                   ; 08005FBC
 ldr   r1,=0x4905                ; 08005FBE
-add   r1,r8                     ; 08005FC0
-mov   r0,0x38                   ; 08005FC2
+add   r1,r8                     ; 08005FC0  03006B05 (game state)
+mov   r0,0x38                   ; 08005FC2  38: Level select, update level high score
 strb  r0,[r1]                   ; 08005FC4
 ldr   r0,=0x488C                ; 08005FC6
-add   r0,r8                     ; 08005FC8
+add   r0,r8                     ; 08005FC8  03006A8C
 strh  r6,[r0]                   ; 08005FCA
 b     @@Code08005FF4            ; 08005FCC
 .pool                           ; 08005FCE
@@ -3229,8 +3229,8 @@ b     @@Code08005FF4            ; 08005FCC
 cmp   r4,0x0                    ; 08005FE8
 beq   @@Code08005FF4            ; 08005FEA
 ldr   r1,=0x4905                ; 08005FEC
-add   r1,r8                     ; 08005FEE
-mov   r0,0x4C                   ; 08005FF0
+add   r1,r8                     ; 08005FEE  03006B05 (game state)
+mov   r0,0x4C                   ; 08005FF0  4C: Level select, start with with score flipped (Extra/Secret first clear)
 strb  r0,[r1]                   ; 08005FF2
 @@Code08005FF4:
 ldr   r0,=0x4850                ; 08005FF4
@@ -3781,7 +3781,8 @@ pop   {r0}                      ; 080064F8
 bx    r0                        ; 080064FA
 .pool                           ; 080064FC
 
-Sub08006514:
+LevelSelect_FadeToWorldSelect:
+; level select substate 06
 push  {lr}                      ; 08006514
 ldr   r1,=CodePtrs081647B0      ; 08006516
 ldr   r0,=0x03006D70            ; 08006518
@@ -4542,7 +4543,8 @@ pop   {r0}                      ; 08006C1A
 bx    r0                        ; 08006C1C
 .pool                           ; 08006C1E
 
-Sub08006C40:
+LevelSelect_EnterLevel:
+; level select substate 05
 push  {r4-r5,lr}                ; 08006C40
 ldr   r3,=0x03002200            ; 08006C42
 ldr   r1,=0x413E                ; 08006C44
@@ -4820,7 +4822,8 @@ pop   {r0}                      ; 08006EBE
 bx    r0                        ; 08006EC0
 .pool                           ; 08006EC2
 
-Sub08006ED4:
+LevelSelect_CursorOnTab:
+; level select substate 01
 push  {r4-r5,lr}                ; 08006ED4
 ldr   r3,=0x03006D70            ; 08006ED6
 ldr   r1,[r3]                   ; 08006ED8
@@ -5951,7 +5954,8 @@ pop   {r0}                      ; 08007906
 bx    r0                        ; 08007908
 .pool                           ; 0800790A
 
-Sub08007914:
+LevelSelect_CursorOnLevel:
+; level select substate 00
 push  {r4-r7,lr}                ; 08007914
 mov   r7,r10                    ; 08007916
 mov   r6,r9                     ; 08007918
@@ -6560,7 +6564,7 @@ ldrh  r2,[r2]                   ; 08007E80
 ldr   r3,=0x47E8                ; 08007E82
 add   r0,r5,r3                  ; 08007E84
 strh  r2,[r0]                   ; 08007E86
-ldr   r2,=CodePtrs08164AAC      ; 08007E88
+ldr   r2,=LevelSelect_ScrollPtrs; 08007E88
 ldr   r7,=0x0C82                ; 08007E8A
 add   r1,r1,r7                  ; 08007E8C  r0 = [03006D70]+C82 (03002E8E)
 ldrh  r0,[r1]                   ; 08007E8E
@@ -6568,7 +6572,7 @@ lsl   r0,r0,0x2                 ; 08007E90
 add   r0,r0,r2                  ; 08007E92
 ldr   r0,[r0]                   ; 08007E94
 bl    Sub_bx_r0                 ; 08007E96
-ldr   r1,=CodePtrs08164A64      ; 08007E9A
+ldr   r1,=LevelSelect_SubstatePtrs; 08007E9A
 ldr   r0,[r6]                   ; 08007E9C
 ldr   r4,=0x0CBD                ; 08007E9E
 add   r0,r0,r4                  ; 08007EA0  r0 = [03006D70]+CBD (03002EC9)
@@ -9225,28 +9229,28 @@ pop   {r0}                      ; 080097D2
 bx    r0                        ; 080097D4
 .pool                           ; 080097D6
 
-Sub08009808:
+LevelSelect_State37:
 ; Game state 37
 push  {lr}                      ; 08009808
 ldr   r0,=0x03002200            ; 0800980A
 ldr   r2,=0x47D0                ; 0800980C
-add   r1,r0,r2                  ; 0800980E
+add   r1,r0,r2                  ; 0800980E  030069D0
 mov   r2,0x0                    ; 08009810
 strh  r2,[r1]                   ; 08009812
 ldr   r3,=0x47D2                ; 08009814
-add   r0,r0,r3                  ; 08009816
+add   r0,r0,r3                  ; 08009816  030069D2
 strh  r2,[r0]                   ; 08009818
 bl    Sub08002338               ; 0800981A
 ldr   r0,=0x03006D70            ; 0800981E
 ldr   r2,[r0]                   ; 08009820
 ldr   r1,=0x0D24                ; 08009822
-add   r0,r2,r1                  ; 08009824
+add   r0,r2,r1                  ; 08009824  [03006D70]+D24 (03002F30)
 ldrh  r0,[r0]                   ; 08009826
 cmp   r0,0x0                    ; 08009828
 bne   @@Code08009860            ; 0800982A
 ldr   r1,=CodePtrs08164CF0      ; 0800982C
 ldr   r3,=0x0CBE                ; 0800982E
-add   r0,r2,r3                  ; 08009830
+add   r0,r2,r3                  ; 08009830  [03006D70]+CBE (03002ECA)
 ldrb  r0,[r0]                   ; 08009832
 lsl   r0,r0,0x2                 ; 08009834
 add   r0,r0,r1                  ; 08009836
@@ -14303,7 +14307,7 @@ pop   {r0}                      ; 0800C3F6
 bx    r0                        ; 0800C3F8
 .pool                           ; 0800C3FA
 
-Sub0800C420:
+LevelSelect_UpdateScore:
 ; Game state 38: Level select: score updating
 push  {lr}                      ; 0800C420
 ldr   r0,=0x03002200            ; 0800C422
@@ -14925,7 +14929,7 @@ pop   {r0}                      ; 0800C9F4
 bx    r0                        ; 0800C9F6
 .pool                           ; 0800C9F8
 
-Sub0800CA14:
+LevelSelect_UnlockLevel:
 ; Game state 39: Level select: flip to score after first clear
 push  {r4-r5,lr}                ; 0800CA14
 ldr   r0,=0x03002200            ; 0800CA16
@@ -18147,7 +18151,7 @@ pop   {r0}                      ; 0800E820
 bx    r0                        ; 0800E822
 .pool                           ; 0800E824
 
-Sub0800E83C:
+LevelSelect_FlipAllUnlock:
 ; Game state 4B: Level select cutscene: flip all levels (unlocking Bonus/Extra or perfect 1000)
 push  {r4,lr}                   ; 0800E83C
 ldr   r0,=0x03002200            ; 0800E83E
@@ -18712,7 +18716,7 @@ pop   {r0}                      ; 0800ED98
 bx    r0                        ; 0800ED9A
 .pool                           ; 0800ED9C
 
-Sub0800EDB8:
+LevelSelect_ExtraSecretFirstClear:
 ; Game state 4C
 push  {r4-r5,lr}                ; 0800EDB8
 ldr   r0,=0x03002200            ; 0800EDBA
@@ -20140,7 +20144,8 @@ pop   {r0}                      ; 0800FABA
 bx    r0                        ; 0800FABC
 .pool                           ; 0800FABE
 
-Sub0800FAD8:
+LevelSelect_ChangeWorld:
+; level select substate 02
 push  {lr}                      ; 0800FAD8
 ldr   r1,=CodePtrs081655C4      ; 0800FADA
 ldr   r0,=0x03006D70            ; 0800FADC
@@ -21816,7 +21821,8 @@ pop   {r0}                      ; 08010A00
 bx    r0                        ; 08010A02
 .pool                           ; 08010A04
 
-Sub08010A28:
+LevelSelect_ControlsMenu:
+; level select substate 04
 push  {lr}                      ; 08010A28
 ldr   r1,=CodePtrs08165698      ; 08010A2A
 ldr   r0,=0x03006D70            ; 08010A2C
@@ -22315,7 +22321,8 @@ pop   {r0}                      ; 08010EB6
 bx    r0                        ; 08010EB8
 .pool                           ; 08010EBA
 
-Sub08010ED8:
+LevelSelect_ToLLBARMenu:
+; level select substate 07
 push  {lr}                      ; 08010ED8
 ldr   r1,=CodePtrs08165708      ; 08010EDA
 ldr   r0,=0x03006D70            ; 08010EDC
@@ -23624,7 +23631,8 @@ pop   {r0}                      ; 08011AAC
 bx    r0                        ; 08011AAE
 .pool                           ; 08011AB0
 
-Sub08011AE4:
+LevelSelect_LLBARMenu:
+; level select substate 08
 push  {r4-r7,lr}                ; 08011AE4
 ldr   r1,=CodePtrs08165798      ; 08011AE6
 ldr   r4,=0x03006D70            ; 08011AE8
@@ -26267,7 +26275,8 @@ pop   {r0}                      ; 080133DA
 bx    r0                        ; 080133DC
 .pool                           ; 080133DE
 
-Sub080133F0:
+LevelSelect_DisplayScores:
+; level select substate 03
 push  {lr}                      ; 080133F0
 ldr   r1,=CodePtrs081659FC      ; 080133F2
 ldr   r0,=0x03006D70            ; 080133F4

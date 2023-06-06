@@ -39,14 +39,14 @@ YIGameStatePtrs:                ; 08164044
 .word ToadiesCutsceneInit+1     ; 11
 .word FadeToNextState+1         ; 12
 .word ToadiesCutsceneMain+1     ; 13
-.word Sub08004148+1             ; 14
+.word GameState_14+1            ; 14
 .word YITitleInit+1             ; 15
 .word YITitleMainWrapper+1      ; 16
 .word FadeToNextState+1         ; 17
 .word CreditsInit+1             ; 18
-.word Sub08035208+1             ; 19
-.word Sub08035248+1             ; 1A
-.word Sub08035294+1             ; 1B
+.word Credits_State19+1         ; 19
+.word Credits_State1A+1         ; 1A
+.word Credits_State1B+1         ; 1B
 .word GoalMinigameInit+1        ; 1C
 .word GoalMinigameMain+1        ; 1D
 .word GoalMinigameEnd+1         ; 1E
@@ -67,35 +67,35 @@ YIGameStatePtrs:                ; 08164044
 .word GameOverMain+1            ; 2D
 .word FadeToNextState+1         ; 2E
 .word ChooseAGameInit+1         ; 2F
-.word Sub0810E4D8+1             ; 30
+.word GameState_30+1            ; 30
 .word ChooseAGameMain+1         ; 31
 .word FadeToMarioBros+1         ; 32
 .word LevelSelectInit+1         ; 33
 .word FadeToNextState+1         ; 34
 .word LevelSelectMain+1         ; 35
 .word FadeToNextState+1         ; 36
-.word Sub08009808+1             ; 37
-.word Sub0800C420+1             ; 38
-.word Sub0800CA14+1             ; 39
+.word LevelSelect_State37+1     ; 37
+.word LevelSelect_UpdateScore+1 ; 38
+.word LevelSelect_UnlockLevel+1 ; 39
 .word IntroCutsceneInit+1       ; 3A
 .word IntroCutsceneMain+1       ; 3B
-.word Sub080F597C+1             ; 3C
-.word Sub0802E0CC+1             ; 3D
+.word GameState_3C+1            ; 3C
+.word GameState_3D+1            ; 3D
 .word WorldSelectInit+1         ; 3E
 .word FadeToNextState+1         ; 3F
 .word WorldSelectMain+1         ; 40
-.word Sub08005C5C+1             ; 41
+.word WorldSelect_State41+1     ; 41
 .word FadeToNextState+1         ; 42
-.word WorldSelect43+1           ; 43
+.word WorldSelect_State43+1     ; 43
 .word FadeToNextState+1         ; 44
 .word SMA3TitleInit+1           ; 45
 .word FadeToNextState+1         ; 46
 .word SMA3TitleMain+1           ; 47
-.word Sub0800411C+1             ; 48
+.word GameState_48+1            ; 48
 .word Cutscene100Init+1         ; 49
 .word Cutscene100Main+1         ; 4A
-.word Sub0800E83C+1             ; 4B
-.word Sub0800EDB8+1             ; 4C
+.word LevelSelect_FlipAllUnlock+1; 4B
+.word LevelSelect_ExtraSecretFirstClear+1; 4C
 MBGameStatePtrs:                ; 08164178
 .word MBTitle+1
 .word MBGameplay+1
@@ -434,10 +434,16 @@ Data08164A4C:                   ; 08164A4C
 .halfword 0x0000, 0x0200, 0x0200, 0x0002, 0x0001, 0x0100
 Data08164A58:                   ; 08164A58
 .halfword 0x0000, 0x0204, 0x0204, 0x0006, 0x0005, 0x0104
-CodePtrs08164A64:               ; 08164A64
-.word Sub08007914+1, Sub08006ED4+1, Sub0800FAD8+1, Sub080133F0+1
-.word Sub08010A28+1, Sub08006C40+1, Sub08006514+1, Sub08010ED8+1
-.word Sub08011AE4+1
+LevelSelect_SubstatePtrs:       ; 08164A64
+.word LevelSelect_CursorOnLevel+1
+.word LevelSelect_CursorOnTab+1
+.word LevelSelect_ChangeWorld+1
+.word LevelSelect_DisplayScores+1
+.word LevelSelect_ControlsMenu+1
+.word LevelSelect_EnterLevel+1
+.word LevelSelect_FadeToWorldSelect+1
+.word LevelSelect_ToLLBARMenu+1
+.word LevelSelect_LLBARMenu+1
 Data08164A88:                   ; 08164A88
 .word 0x00000000, 0x00600020, 0x00E000A0, 0x01080108
 .word 0x01880188, 0x01880188
@@ -445,10 +451,10 @@ Data08164AA0:                   ; 08164AA0
 .word 0x00040000, 0x0004FFFC
 Data08164AA8:                   ; 08164AA8
 .word 0x01880108
-CodePtrs08164AAC:               ; 08164AAC
+LevelSelect_ScrollPtrs:         ; 08164AAC
 .word Sub08007C6C+1, Sub08007B88+1, Sub08007AF8+1
 Data08164AB8:                   ; 08164AB8
-.word 0xFFFE0012
+.halfword 0x0012, 0xFFFE
 DataPtrs08164ABC:               ; 08164ABC
 .word Data081FA17C, Data081FA97C, Data081FB17C, Data081FB97C
 .word Data081FC17C, Data081FC97C, Data081FD17C, Data081FD97C
@@ -1390,7 +1396,7 @@ L3PaletteOffsets:               ; 08167384
 .halfword 0x1F0A, 0x1F28, 0x1F46, 0x1F64, 0x1F82, 0x1FA0, 0x1FBE, 0x1FDC
 .halfword 0x1FFA, 0x2018, 0x2036, 0x2054, 0x2072, 0x2090, 0x20AE, 0x20CC
 .halfword 0x20EA, 0x2108, 0x2126, 0x2144, 0x2162, 0x2180, 0x219E, 0x21BC
-PaletteDEOffsets:               ; 08167404
+Palette0D0EOffsets:             ; 08167404
 .halfword 0x0040, 0x0048, 0x0050, 0x0058, 0x0060, 0x0068, 0x0070, 0x0078
 Data08167414:                   ; 08167414
 .halfword 0x000D, 0x0018, 0x0023, 0x0020, 0x0013, 0x002A, 0x000C, 0x0005

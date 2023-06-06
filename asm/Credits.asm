@@ -2646,7 +2646,7 @@ pop   {r0}                      ; 080351EC
 bx    r0                        ; 080351EE
 .pool                           ; 080351F0
 
-Sub08035208:
+Credits_State19:
 ; Game state 19: Credits: ?
 push  {lr}                      ; 08035208
 ldr   r1,=0x03002200            ; 0803520A
@@ -2674,7 +2674,7 @@ pop   {r0}                      ; 08035232
 bx    r0                        ; 08035234
 .pool                           ; 08035236
 
-Sub08035248:
+Credits_State1A:
 ; Game state 1A: Credits: ?
 push  {r4-r6,lr}                ; 08035248
 ldr   r0,=0x03002200            ; 0803524A
@@ -2704,7 +2704,7 @@ pop   {r0}                      ; 0803527A
 bx    r0                        ; 0803527C
 .pool                           ; 0803527E
 
-Sub08035294:
+Credits_State1B:
 ; Game state 1B: Credits: ?
 push  {lr}                      ; 08035294
 ldr   r0,=0x03002200            ; 08035296

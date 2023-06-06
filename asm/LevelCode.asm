@@ -420,7 +420,7 @@ mov   r10,r0                    ; 08013844  r10 = 03007240 (pointer to 0300220C)
 ldr   r7,=L2PaletteOffsets      ; 08013846  r7 = 08167304 (layer 2 palette indexes)
 ldr   r1,=L3PaletteOffsets      ; 08013848
 mov   r8,r1                     ; 0801384A  r8 = 08167384 (layer 3 palette indexes)
-ldr   r3,=PaletteDEOffsets      ; 0801384C
+ldr   r3,=Palette0D0EOffsets    ; 0801384C
 mov   r9,r3                     ; 0801384E
 ldr   r4,[@@Pool]               ; 08013850
 mov   r12,r4                    ; 08013852  r9=r12 = 08167404 (unused SNES sprite palette indexes)
@@ -460,10 +460,10 @@ ldr   r1,[@@Pool+0x14]          ; 0801388E  if in world 6
 b     @@Code080138C2            ; 08013890
 .pool                           ; 08013892
 
-; This pool has a duplicate 08167404 (PaletteDEOffsets),
+; This pool has a duplicate 08167404 (Palette0D0EOffsets),
 ;  so the rest needs to be manually defined
 @@Pool:
-.word PaletteDEOffsets          ; 080138A8
+.word Palette0D0EOffsets        ; 080138A8
 .word 0x0000153E                ; 080138AC
 .word 0x00002990                ; 080138B0
 .word 0x03002200                ; 080138B4
@@ -832,7 +832,7 @@ ldr   r2,=0x4896                ; 08013BC0
 add   r0,r1,r2                  ; 08013BC2  r0 = 03006A96
 ldrh  r0,[r0]                   ; 08013BC4  Yoshi color
 lsl   r0,r0,0x1                 ; 08013BC6
-ldr   r3,=PaletteDEOffsets      ; 08013BC8
+ldr   r3,=Palette0D0EOffsets    ; 08013BC8
 add   r0,r0,r3                  ; 08013BCA
 ldrh  r4,[r0]                   ; 08013BCC
 mov   r5,0x0                    ; 08013BCE  loop index
@@ -1431,7 +1431,7 @@ mov   r6,r9                     ; 080141B8
 mov   r5,r8                     ; 080141BA
 push  {r5-r7}                   ; 080141BC
 mov   r4,0x0                    ; 080141BE
-ldr   r0,=PaletteDEOffsets      ; 080141C0
+ldr   r0,=Palette0D0EOffsets    ; 080141C0
 mov   r8,r0                     ; 080141C2
 ldr   r7,=0x03002200            ; 080141C4
 ldr   r1,=0x03007240            ; 080141C6  Normal gameplay IWRAM (Ptr to 0300220C)
@@ -13633,7 +13633,7 @@ ldr   r3,=0x03007240            ; 0802C576  Normal gameplay IWRAM (Ptr to 030022
 mov   r8,r3                     ; 0802C578
 ldr   r0,[r3]                   ; 0802C57A
 cmp   r0,0x0                    ; 0802C57C  check if pointer at 03007240 has already been set
-bne   @@Code0802C5DA            ; 0802C57E
+bne   @@SkipDynamicAllocate     ; 0802C57E
 
 ; set up various RAM pointers for dynamic memory
 mov   r1,0xAD                   ; 0802C580
@@ -13674,7 +13674,7 @@ ldr   r1,[r0]                   ; 0802C5D0  r1 = [03007240] (0300220C)
 ldr   r2,=0x05000AD0            ; 0802C5D2  clear 2B40 bytes (0300220C-4D4B)
 mov   r0,sp                     ; 0802C5D4
 bl    swi_MemoryCopy4or2        ; 0802C5D6  Memory copy/fill, 4- or 2-byte blocks
-@@Code0802C5DA:
+@@SkipDynamicAllocate:
 mov   r1,r8                     ; 0802C5DA
 ldr   r7,[r1]                   ; 0802C5DC  r7 = [03007240] (0300220C)
 ldr   r2,=0x266C                ; 0802C5DE
@@ -13708,12 +13708,12 @@ and   r0,r1                     ; 0802C61C
 strb  r0,[r2]                   ; 0802C61E  clear bit 1 of 03006C48
 ldr   r1,=0x4852                ; 0802C620
 add   r2,r6,r1                  ; 0802C622  r2 = 03006A52
-ldrh  r0,[r2]                   ; 0802C624  entrance type (00: level entrance, 01: screen exit, 02: midway entrance)
+ldrh  r0,[r2]                   ; 0802C624  entrance type (00: main entrance, 01: screen exit, 02: midway entrance)
 cmp   r0,0x0                    ; 0802C626
-beq   @@Code0802C62C            ; 0802C628
-b     @@Code0802C7E4            ; 0802C62A
-@@Code0802C62C:
-; runs if level entrance
+beq   @@MainEntrance            ; 0802C628
+b     @@NotMainEntrance         ; 0802C62A
+
+@@MainEntrance:                 ;           runs if main entrance
 ldr   r2,=0x4A06                ; 0802C62C
 add   r0,r6,r2                  ; 0802C62E  r0 = 03006C06
 mov   r3,r10                    ; 0802C630
@@ -13749,8 +13749,7 @@ mov   r3,0x0                    ; 0802C66A
 ldr   r6,=0x02017380            ; 0802C66C
 mov   r8,r6                     ; 0802C66E  r8 = item memory flags for index 1
 ldr   r4,=0x02017480            ; 0802C670  r4 = item memory flags for index 3
-@@Code0802C672:
-                                ;           loop: clear item memory flags at 02017300-74FF (in a strange order)
+@@ClearItemMemoryLoop:          ;           loop: clear item memory flags at 02017300-74FF (in a strange order)
 lsl   r1,r2,0x1                 ; 0802C672
 mov   r6,r12                    ; 0802C674
 add   r0,r1,r6                  ; 0802C676
@@ -13767,7 +13766,7 @@ add   r0,r2,0x1                 ; 0802C68A
 lsl   r0,r0,0x10                ; 0802C68C
 lsr   r2,r0,0x10                ; 0802C68E
 cmp   r2,0x3F                   ; 0802C690
-bls   @@Code0802C672            ; 0802C692 /
+bls   @@ClearItemMemoryLoop     ; 0802C692 /
 ldr   r3,=0x03002200            ; 0802C694
 ldr   r0,=0x48CE                ; 0802C696
 add   r1,r3,r0                  ; 0802C698  r1 = 03006ACE
@@ -13835,11 +13834,10 @@ ldr   r3,=0x28C4                ; 0802C712
 add   r0,r0,r3                  ; 0802C714  r2 = [03007240]+28C4 (03004AD0)
 ldr   r5,=Return0802C47C+1      ; 0802C716
 str   r5,[r0]                   ; 0802C718  [03004AD0] = 0802C47D (pointer to bx r14)
-b     @@Code0802C90E            ; 0802C71A  Sublevel load
+b     @@SublevelLoad            ; 0802C71A  Sublevel load
 .pool                           ; 0802C71C
 
-@@Code0802C7E4:
-; runs if midway entrance/screen exit
+@@NotMainEntrance:              ;           runs if midway entrance/screen exit
 mov   r0,r8                     ; 0802C7E4
 ldr   r3,[r0]                   ; 0802C7E6
 ldr   r1,=0x29B6                ; 0802C7E8
@@ -13856,6 +13854,7 @@ lsr   r2,r0,0x10                ; 0802C7FC  00=screen exit, 01=midway entrance
 cmp   r2,0x1                    ; 0802C7FE
 bls   @@Code0802C804            ; 0802C800
 b     @@Code0802C932            ; 0802C802  if at least 02, skip directly to loading sublevel header, without loading sublevel ID or coordinates?
+
 @@Code0802C804:
 ldrh  r0,[r7,0x3E]              ; 0802C804  load from [03007240]+3E (0300224A): screen YX *8
 lsr   r1,r0,0x1                 ; 0802C806
@@ -13920,7 +13919,7 @@ add   r1,r6,r2                  ; 0802C878
 mov   r0,0xFF                   ; 0802C87A
 strb  r0,[r1]                   ; 0802C87C
 bl    BanditMinigameInit        ; 0802C87E
-b     @@Code0802CEFC            ; 0802C882
+b     @@Return                  ; 0802C882
 .pool                           ; 0802C884
 
 @@Code0802C8B0:
@@ -13973,7 +13972,7 @@ add   r0,0xCC                   ; 0802C906  r0 = 03006E4C
 strh  r2,[r0]                   ; 0802C908
 mov   r5,r12                    ; 0802C90A
 ldrb  r4,[r5]                   ; 0802C90C  r4 = level ID
-@@Code0802C90E:
+@@SublevelLoad:
 ; Sublevel load (jumps straight here from a level entrance)
 ; starts with sublevel in r4
 ; starts with TBD on stack
@@ -13982,16 +13981,16 @@ ldr   r2,[r6]                   ; 0802C910  r2 = [03007240]
 ldr   r0,=0x2B08                ; 0802C912
 add   r3,r2,r0                  ; 0802C914  r3 = [03007240]+2B08 (03004D14)
 lsl   r1,r4,0x2                 ; 0802C916  r1 = sublevel*4
-ldr   r5,=SublevelMainPtrs      ; 0802C918  r5 = start of object data pointer table
-add   r0,r1,r5                  ; 0802C91A  r0 = pointer to pointer to object data
+ldr   r5,=SublevelMainPtrs      ; 0802C918
+add   r0,r1,r5                  ; 0802C91A  index with sublevel ID
 ldr   r0,[r0]                   ; 0802C91C
-str   r0,[r3]                   ; 0802C91E  [r3] = pointer to object data
+str   r0,[r3]                   ; 0802C91E  [03004D14] = pointer to object data
 ldr   r6,=0x2968                ; 0802C920
 add   r3,r2,r6                  ; 0802C922  r3 = [03007240]+2968 (03004B74)
-ldr   r0,=SublevelSpritePtrs    ; 0802C924  r0 = start of sprite data pointer table
-add   r1,r1,r0                  ; 0802C926
+ldr   r0,=SublevelSpritePtrs    ; 0802C924
+add   r1,r1,r0                  ; 0802C926  index with sublevel ID
 ldr   r0,[r1]                   ; 0802C928
-str   r0,[r3]                   ; 0802C92A  [r3] = pointer to sprite data
+str   r0,[r3]                   ; 0802C92A  [03004B74] = pointer to sprite data
 ldr   r1,=0x2AAC                ; 0802C92C
 add   r2,r2,r1                  ; 0802C92E  r2 = [03007240]+2AAC (03004CB8)
 strh  r4,[r2]                   ; 0802C930  [03004CB8] = sublevel ID
@@ -14018,7 +14017,7 @@ strh  r0,[r1]                   ; 0802C956 / set 03006F36 to 07B0
 ldr   r0,[r4]                   ; 0802C958  r0 = [03007240] (0300220C)
 add   r0,r0,r2                  ; 0802C95A  r0 = [03007240]+299A (03004BA6)
 ldrh  r0,[r0]                   ; 0802C95C  r0 = layer 3 image ID
-cmp   r0,0x1D                   ; 0802C95E  1D: ?
+cmp   r0,0x1D                   ; 0802C95E  1D: variant of 13?
 bne   @@Code0802C970            ; 0802C960
 ldr   r0,=0x03006D80            ; 0802C962 \ runs if layer 3 image is 1D
 mov   r5,0xDB                   ; 0802C964
@@ -14038,9 +14037,9 @@ ldr   r0,[r4]                   ; 0802C980
 ldr   r6,=0x29A2                ; 0802C982
 add   r0,r0,r6                  ; 0802C984  r0 = [03007240]+29A2 (03004BAE)
 ldrh  r0,[r0]                   ; 0802C986  r0 = header index 9
-cmp   r0,0xA                    ; 0802C988
+cmp   r0,0xA                    ; 0802C988  0A: Kamek block room
 bne   @@Code0802CA00            ; 0802C98A
-bl    Sub0801415C               ; 0802C98C \ runs if header index 9 is 0A
+bl    Sub0801415C               ; 0802C98C \ runs if Kamek block room
 bl    Sub080141B4               ; 0802C990
 mov   r0,r7                     ; 0802C994
 add   r0,0x66                   ; 0802C996
@@ -14060,13 +14059,13 @@ str   r4,[sp,0x20]              ; 0802C9B0
 mov   r5,r7                     ; 0802C9B2
 add   r5,0x6C                   ; 0802C9B4
 str   r5,[sp,0x1C]              ; 0802C9B6
-b     @@Code0802CAA2            ; 0802C9B8 /
+b     @@Code0802CAA2            ; 0802C9B8 / skip loading normal graphics
 .pool                           ; 0802C9BA
 
 @@Code0802CA00:
-cmp   r0,0x9                    ; 0802CA00
+cmp   r0,0x9                    ; 0802CA00  09: Raphael's moon
 bne   @@Code0802CA2E            ; 0802CA02
-bl    Sub080143DC               ; 0802CA04 \ runs if header index 9 is 09
+bl    Sub080143DC               ; 0802CA04 \ runs if Raphael's moon
 mov   r6,r7                     ; 0802CA08
 add   r6,0x66                   ; 0802CA0A
 str   r6,[sp,0x10]              ; 0802CA0C
@@ -14085,7 +14084,7 @@ str   r3,[sp,0x20]              ; 0802CA24
 mov   r4,r7                     ; 0802CA26
 add   r4,0x6C                   ; 0802CA28
 str   r4,[sp,0x1C]              ; 0802CA2A
-b     @@Code0802CAA2            ; 0802CA2C /
+b     @@Code0802CAA2            ; 0802CA2C / skip loading normal graphics
 @@Code0802CA2E:
 bl    Sub08013474               ; 0802CA2E  load tileset-specific graphics for layer 1, layer 2, layer 3, and sprites
 mov   r2,0x0                    ; 0802CA32  loop index
@@ -14112,8 +14111,7 @@ ldr   r3,=0x03006B60            ; 0802CA58  r3 = 03006B60
 mov   r1,0x0                    ; 0802CA5A
 add   r5,r3,0x3                 ; 0802CA5C  r5 = 03006B63
 add   r4,r3,0x6                 ; 0802CA5E  r6 = 03006B66
-@@Code0802CA60:
-                                ;          \ loop: clear 03006B60-68, awkwardly
+@@Loop0802CA60:                 ;          \ loop: clear 03006B60-68, awkwardly
 add   r0,r2,r3                  ; 0802CA60
 strb  r1,[r0]                   ; 0802CA62
 add   r0,r2,r5                  ; 0802CA64
@@ -14123,7 +14121,7 @@ add   r0,r2,0x1                 ; 0802CA6A
 lsl   r0,r0,0x10                ; 0802CA6C
 lsr   r2,r0,0x10                ; 0802CA6E
 cmp   r2,0x2                    ; 0802CA70
-bls   @@Code0802CA60            ; 0802CA72 /
+bls   @@Loop0802CA60            ; 0802CA72 /
 mov   r0,r7                     ; 0802CA74  r0 = [03007240] (0300220C)
 bl    GraphicsAnimInit          ; 0802CA76
 ldr   r4,=0x03007240            ; 0802CA7A  Normal gameplay IWRAM (Ptr to 0300220C)
@@ -14154,8 +14152,8 @@ add   r0,r0,r4                  ; 0802CAAE  r0 = [03007240]+29A2 (03004BAE)
 ldrh  r0,[r0]                   ; 0802CAB0  header index 9
 cmp   r0,0x9                    ; 0802CAB2  09: Raphael's moon
 beq   @@Code0802CABE            ; 0802CAB4  if Raphael's moon, skip next two subroutines
-bl    Sub0801870C               ; 0802CAB6  subroutine: ?
-bl    Sub08018A40               ; 0802CABA  subroutine: ?
+bl    Sub0801870C               ; 0802CAB6
+bl    Sub08018A40               ; 0802CABA
 @@Code0802CABE:
 ldr   r6,=0x03002200            ; 0802CABE
 ldr   r1,=0x4852                ; 0802CAC0
@@ -14165,8 +14163,8 @@ mov   r8,r0                     ; 0802CAC6
 cmp   r0,0x0                    ; 0802CAC8
 beq   @@Code0802CACE            ; 0802CACA
 b     @@Code0802CC90            ; 0802CACC
-@@Code0802CACE:
-                                ; runs if loading from level entrance
+
+@@Code0802CACE:                 ; runs if loading from level entrance
 ldr   r2,=0x48FA                ; 0802CACE
 add   r1,r6,r2                  ; 0802CAD0  r2 = [03007240]+48FA (03006AFA)
 mov   r0,0xF                    ; 0802CAD2
@@ -14318,8 +14316,7 @@ bl    Sub080FAF0C               ; 0802CC6A
 b     @@Code0802CE94            ; 0802CC6E
 .pool                           ; 0802CC70
 
-@@Code0802CC90:
-                                ; runs if loading from screen exit or midway entrance
+@@Code0802CC90:                 ; runs if loading from screen exit or midway entrance
 sub   r0,0x1                    ; 0802CC90
 lsl   r0,r0,0x10                ; 0802CC92
 lsr   r0,r0,0x10                ; 0802CC94
@@ -14574,7 +14571,7 @@ mov   r0,0x8                    ; 0802CEF4
 strh  r0,[r1]                   ; 0802CEF6
 ldr   r0,=0x04000208            ; 0802CEF8
 strh  r2,[r0]                   ; 0802CEFA
-@@Code0802CEFC:
+@@Return:
 add   sp,0x24                   ; 0802CEFC
 pop   {r3-r5}                   ; 0802CEFE
 mov   r8,r3                     ; 0802CF00
@@ -16416,7 +16413,7 @@ pop   {r0}                      ; 0802E0A6
 bx    r0                        ; 0802E0A8
 .pool                           ; 0802E0AA
 
-Sub0802E0CC:
+GameState_3D:
 ; Game state 3D
 push  {r4-r5,lr}                ; 0802E0CC
 ldr   r0,=0x03002200            ; 0802E0CE
@@ -16426,11 +16423,11 @@ ldrb  r4,[r5]                   ; 0802E0D4
 bl    SublevelFade              ; 0802E0D6
 ldrb  r0,[r5]                   ; 0802E0DA
 cmp   r4,r0                     ; 0802E0DC
-beq   @@Code0802E0E8            ; 0802E0DE
+beq   @@Return                  ; 0802E0DE
 bl    Sub0802E020               ; 0802E0E0
 mov   r0,0x3E                   ; 0802E0E4
 strb  r0,[r5]                   ; 0802E0E6
-@@Code0802E0E8:
+@@Return:
 pop   {r4-r5}                   ; 0802E0E8
 pop   {r0}                      ; 0802E0EA
 bx    r0                        ; 0802E0EC

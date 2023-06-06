@@ -664,7 +664,7 @@ pop   {r0}                      ; 0800410C
 bx    r0                        ; 0800410E
 .pool                           ; 08004110
 
-Sub0800411C:
+GameState_48:
 ; Game state 48
 push  {lr}                      ; 0800411C
 ldr   r2,=0x03002200            ; 0800411E
@@ -685,7 +685,7 @@ pop   {r0}                      ; 08004138
 bx    r0                        ; 0800413A
 .pool                           ; 0800413C
 
-Sub08004148:
+GameState_14:
 ; Game state 14
 push  {lr}                      ; 08004148
 bl    Sub0802E020               ; 0800414A
