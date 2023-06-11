@@ -74,9 +74,9 @@ YIGameStatePtrs:                ; 08164044
 .word FadeToNextState+1         ; 34
 .word LevelSelectMain+1         ; 35
 .word FadeToNextState+1         ; 36
-.word LevelSelect_State37+1     ; 37
+.word LevelSelect_UnlockLevel+1 ; 37
 .word LevelSelect_UpdateScore+1 ; 38
-.word LevelSelect_UnlockLevel+1 ; 39
+.word LevelSelect_ToCastleCutscene+1; 39
 .word IntroCutsceneInit+1       ; 3A
 .word IntroCutsceneMain+1       ; 3B
 .word GameState_3C+1            ; 3C
@@ -6753,9 +6753,10 @@ Data08172070:                   ; 08172070
 Data08172080:                   ; 08172080
 .word 0xFFFFFC00, 0xFFFFFC00, 0xFFFFFA00, 0xFFFFFA00
 Data08172090:                   ; 08172090
-.halfword 0xFF00, 0xFD02, 0xFC03, 0xFB04, 0xFB04
+.byte 0x00, 0xFF, 0x02, 0xFD, 0x03, 0xFC, 0x04, 0xFB
+.byte 0x04, 0xFB
 Data0817209A:                   ; 0817209A
-.halfword 0x0200, 0x0804
+.byte 0x00, 0x02, 0x04, 0x08
 Data0817209E:                   ; 0817209E
 .halfword 0x0120, 0xFFD0
 Data081720A2:                   ; 081720A2

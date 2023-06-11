@@ -5852,47 +5852,49 @@ pop   {r0}                      ; 08007804
 bx    r0                        ; 08007806
 .pool                           ; 08007808
 
-Sub0800780C:
+LevelSelect_ProcessLLBAR:
+; subroutine: Process LLBAR password input
 push  {r4-r7,lr}                ; 0800780C
 ldr   r5,=0x03002200            ; 0800780E
 ldr   r0,=0x47C0                ; 08007810
-add   r7,r5,r0                  ; 08007812
-ldrh  r1,[r7]                   ; 08007814
+add   r7,r5,r0                  ; 08007812  030069C0
+ldrh  r1,[r7]                   ; 08007814  button flags, pressed this frame
 ldr   r0,=0x03FB                ; 08007816
-and   r0,r1                     ; 08007818
+and   r0,r1                     ; 08007818  clear Select flag 
 cmp   r0,0x0                    ; 0800781A
-beq   @@Code08007904            ; 0800781C
+beq   @@Return                  ; 0800781C  if no non-Select buttons were pressed, return
 ldr   r4,=0x03006D70            ; 0800781E
 ldr   r6,[r4]                   ; 08007820
 ldr   r1,=0x0C9A                ; 08007822
 mov   r12,r1                    ; 08007824
-add   r1,r6,r1                  ; 08007826
-ldrh  r0,[r1]                   ; 08007828
-add   r0,0x1                    ; 0800782A
-strh  r0,[r1]                   ; 0800782C
+add   r1,r6,r1                  ; 08007826  [03006D70]+C9A (03002EA6)
+ldrh  r0,[r1]                   ; 08007828 \
+add   r0,0x1                    ; 0800782A | increment password index
+strh  r0,[r1]                   ; 0800782C /
 ldr   r0,=Data08164A4C          ; 0800782E
-ldrh  r3,[r1]                   ; 08007830
+ldrh  r3,[r1]                   ; 08007830  r3 = currently pressed buttons
 lsl   r2,r3,0x1                 ; 08007832
 add   r0,r2,r0                  ; 08007834
 ldrh  r1,[r7]                   ; 08007836
-ldrh  r0,[r0]                   ; 08007838
+ldrh  r0,[r0]                   ; 08007838  buttons to check for, excluding Select
 and   r0,r1                     ; 0800783A
 cmp   r0,0x0                    ; 0800783C
 beq   @@Code080078F0            ; 0800783E
 ldr   r7,=0x47BE                ; 08007840
-add   r1,r5,r7                  ; 08007842
+add   r1,r5,r7                  ; 08007842  button flags, held
 ldr   r0,=Data08164A58          ; 08007844
 add   r0,r2,r0                  ; 08007846
-ldrh  r2,[r0]                   ; 08007848
+ldrh  r2,[r0]                   ; 08007848  buttons to check for, including Select
 mov   r7,0xFC                   ; 0800784A
-lsl   r7,r7,0x8                 ; 0800784C
+lsl   r7,r7,0x8                 ; 0800784C  FC00
 mov   r0,r7                     ; 0800784E
 ldrh  r1,[r1]                   ; 08007850
 orr   r0,r2                     ; 08007852
 cmp   r1,r0                     ; 08007854
 bne   @@Code080078F0            ; 08007856
 cmp   r3,0x5                    ; 08007858
-bne   @@Code08007904            ; 0800785A
+bne   @@Return                  ; 0800785A
+                                ;           runs if all 5 buttons have been input
 ldr   r0,=0x16F4                ; 0800785C
 add   r2,r6,r0                  ; 0800785E
 ldrb  r0,[r2]                   ; 08007860
@@ -5915,7 +5917,7 @@ mov   r1,0x0                    ; 08007880
 strh  r1,[r0]                   ; 08007882
 ldr   r7,=0x4058                ; 08007884
 add   r1,r5,r7                  ; 08007886
-mov   r0,0x21                   ; 08007888
+mov   r0,0x21                   ; 08007888  21: Bonus fanfare
 bl    PlayYISound               ; 0800788A
 ldr   r1,=0x413E                ; 0800788E
 add   r0,r5,r1                  ; 08007890
@@ -5948,7 +5950,7 @@ add   r0,r0,r7                  ; 080078FE
 mov   r1,0x0                    ; 08007900
 @@Code08007902:
 strh  r1,[r0]                   ; 08007902
-@@Code08007904:
+@@Return:
 pop   {r4-r7}                   ; 08007904
 pop   {r0}                      ; 08007906
 bx    r0                        ; 08007908
@@ -5963,7 +5965,7 @@ mov   r5,r8                     ; 0800791A
 push  {r5-r7}                   ; 0800791C
 ldr   r0,=0x03002200            ; 0800791E
 ldr   r1,=0x47BE                ; 08007920
-add   r0,r0,r1                  ; 08007922
+add   r0,r0,r1                  ; 08007922  030069BE
 ldrh  r1,[r0]                   ; 08007924
 mov   r0,0x4                    ; 08007926
 and   r0,r1                     ; 08007928
@@ -5974,10 +5976,10 @@ beq   @@Code08007954            ; 08007930
 ldr   r0,[r1]                   ; 08007932
 ldr   r1,=0x0CBE                ; 08007934
 add   r0,r0,r1                  ; 08007936
-ldrb  r0,[r0]                   ; 08007938
-cmp   r0,0x0                    ; 0800793A
+ldrb  r0,[r0]                   ; 08007938  level select animation substate
+cmp   r0,0x0                    ; 0800793A  only process LLBAR inputs if no animation
 bne   @@Code08007954            ; 0800793C
-bl    Sub0800780C               ; 0800793E
+bl    LevelSelect_ProcessLLBAR  ; 0800793E
 b     @@Code08007AC6            ; 08007942
 .pool                           ; 08007944
 
@@ -9229,8 +9231,8 @@ pop   {r0}                      ; 080097D2
 bx    r0                        ; 080097D4
 .pool                           ; 080097D6
 
-LevelSelect_State37:
-; Game state 37
+LevelSelect_UnlockLevel:
+; Game state 37: Level select cutscene: start with score flipped, then Yoshi passes Baby Mario
 push  {lr}                      ; 08009808
 ldr   r0,=0x03002200            ; 0800980A
 ldr   r2,=0x47D0                ; 0800980C
@@ -14308,7 +14310,7 @@ bx    r0                        ; 0800C3F8
 .pool                           ; 0800C3FA
 
 LevelSelect_UpdateScore:
-; Game state 38: Level select: score updating
+; Game state 38: Level select: update level high score
 push  {lr}                      ; 0800C420
 ldr   r0,=0x03002200            ; 0800C422
 ldr   r2,=0x47D0                ; 0800C424
@@ -14929,8 +14931,8 @@ pop   {r0}                      ; 0800C9F4
 bx    r0                        ; 0800C9F6
 .pool                           ; 0800C9F8
 
-LevelSelect_UnlockLevel:
-; Game state 39: Level select: flip to score after first clear
+LevelSelect_ToCastleCutscene:
+; Game state 39: Level select: start with score flipped, then play castle cutscene
 push  {r4-r5,lr}                ; 0800CA14
 ldr   r0,=0x03002200            ; 0800CA16
 ldr   r2,=0x47D0                ; 0800CA18
@@ -18152,7 +18154,7 @@ bx    r0                        ; 0800E822
 .pool                           ; 0800E824
 
 LevelSelect_FlipAllUnlock:
-; Game state 4B: Level select cutscene: flip all levels (unlocking Bonus/Extra or perfect 1000)
+; Game state 4B: Level select cutscene: all levels flipped (unlocking Bonus/Extra, or perfect 1000)
 push  {r4,lr}                   ; 0800E83C
 ldr   r0,=0x03002200            ; 0800E83E
 ldr   r2,=0x47D0                ; 0800E840
@@ -18717,7 +18719,7 @@ bx    r0                        ; 0800ED9A
 .pool                           ; 0800ED9C
 
 LevelSelect_ExtraSecretFirstClear:
-; Game state 4C
+; Game state 4C: start with score flipped (after first clear of an Extra/Secret)
 push  {r4-r5,lr}                ; 0800EDB8
 ldr   r0,=0x03002200            ; 0800EDBA
 ldr   r2,=0x47D0                ; 0800EDBC

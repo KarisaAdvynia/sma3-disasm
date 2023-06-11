@@ -7474,10 +7474,10 @@ add   r0,r0,r3                  ; 0804DC7A
 ldrh  r0,[r0]                   ; 0804DC7C
 cmp   r0,0x0                    ; 0804DC7E
 beq   @@Code0804DC84            ; 0804DC80
-b     @@Code0804E40E            ; 0804DC82
+b     @@Return                  ; 0804DC82
 @@Code0804DC84:
-ldrh  r4,[r7,0x32]              ; 0804DC84
-mov   r9,r4                     ; 0804DC86
+ldrh  r4,[r7,0x32]              ; 0804DC84  sprite ID
+mov   r9,r4                     ; 0804DC86  r9 = sprite ID
 ldrh  r1,[r7,0x2A]              ; 0804DC88
 ldr   r0,=0xFFF3                ; 0804DC8A
 and   r0,r1                     ; 0804DC8C
@@ -7499,7 +7499,7 @@ orr   r2,r0                     ; 0804DCAA
 mov   r8,r3                     ; 0804DCAC
 cmp   r2,0x0                    ; 0804DCAE
 beq   @@Code0804DCB4            ; 0804DCB0
-b     @@Code0804E40E            ; 0804DCB2
+b     @@Return                  ; 0804DCB2
 @@Code0804DCB4:
 mov   r4,r8                     ; 0804DCB4
 add   r4,0xE4                   ; 0804DCB6
@@ -7573,7 +7573,7 @@ mov   r6,r0                     ; 0804DD38
 orr   r6,r1                     ; 0804DD3A
 cmp   r6,0x0                    ; 0804DD3C
 beq   @@Code0804DD42            ; 0804DD3E
-b     @@Code0804E40E            ; 0804DD40
+b     @@Return                  ; 0804DD40
 @@Code0804DD42:
 mov   r1,r7                     ; 0804DD42
 add   r1,0x94                   ; 0804DD44
@@ -7596,84 +7596,88 @@ cmp   r4,0x21                   ; 0804DD62
 bls   @@Code0804DD9C            ; 0804DD64
 cmp   r4,0x2B                   ; 0804DD66
 bhi   @@Code0804DD9C            ; 0804DD68
-mov   r0,r7                     ; 0804DD6A
+mov   r0,r7                     ; 0804DD6A \ runs if 022-02B (eggs and egg variants)
 bl    RemoveFromEggSlotsIfPresent; 0804DD6C
-b     @@Code0804E40E            ; 0804DD70
+b     @@Return                  ; 0804DD70 /
 .pool                           ; 0804DD72
 
 @@Code0804DD9C:
 mov   r5,0x1                    ; 0804DD9C
 mov   r0,r9                     ; 0804DD9E
-cmp   r0,0x9                    ; 0804DDA0
+cmp   r0,0x9                    ; 0804DDA0  009: fire melon
 beq   @@Code0804DDD4            ; 0804DDA2
-sub   r0,0xEC                   ; 0804DDA4
+sub   r0,0xEC                   ; 0804DDA4  sprite ID -0EC
 lsl   r0,r0,0x10                ; 0804DDA6
 lsr   r0,r0,0x10                ; 0804DDA8
-cmp   r0,0x1                    ; 0804DDAA
+cmp   r0,0x1                    ; 0804DDAA  0EC-0ED: Pyro Guys
 bls   @@Code0804DDB8            ; 0804DDAC
 mov   r1,r9                     ; 0804DDAE
-cmp   r1,0x80                   ; 0804DDB0
+cmp   r1,0x80                   ; 0804DDB0  080: Lava Bubble, vertical
 beq   @@Code0804DDB8            ; 0804DDB2
-cmp   r1,0x81                   ; 0804DDB4
+cmp   r1,0x81                   ; 0804DDB4  081: Lava Bubble, diagonal
 bne   @@Code0804DDBE            ; 0804DDB6
 @@Code0804DDB8:
-mov   r0,0x0                    ; 0804DDB8
+mov   r0,0x0                    ; 0804DDB8 \ runs if sprite gives fire breath
 strh  r0,[r7,0x38]              ; 0804DDBA
-b     @@Code0804DDD4            ; 0804DDBC
+b     @@Code0804DDD4            ; 0804DDBC /
+
 @@Code0804DDBE:
 mov   r5,0x2                    ; 0804DDBE
 mov   r2,r9                     ; 0804DDC0
-cmp   r2,0x19                   ; 0804DDC2
+cmp   r2,0x19                   ; 0804DDC2  019: bubble
 beq   @@Code0804DDD4            ; 0804DDC4
 mov   r5,0x3                    ; 0804DDC6
-cmp   r2,0x7                    ; 0804DDC8
+cmp   r2,0x7                    ; 0804DDC8  007: watermelon
 beq   @@Code0804DDD4            ; 0804DDCA
 mov   r5,0x4                    ; 0804DDCC
-cmp   r2,0x5                    ; 0804DDCE
+cmp   r2,0x5                    ; 0804DDCE  005: ice melon
 beq   @@Code0804DDD4            ; 0804DDD0
-b     @@Code0804E40E            ; 0804DDD2
+b     @@Return                  ; 0804DDD2
+
 @@Code0804DDD4:
-mov   r0,r8                     ; 0804DDD4
+mov   r0,r8                     ; 0804DDD4 \ runs if sprite gives any melon/bubble effect
 add   r0,0xEA                   ; 0804DDD6
 strh  r5,[r0]                   ; 0804DDD8
 ldrh  r0,[r7,0x38]              ; 0804DDDA
 cmp   r0,0x0                    ; 0804DDDC
 beq   @@Code0804DDE8            ; 0804DDDE
 mov   r1,r8                     ; 0804DDE0
-add   r1,0xF0                   ; 0804DDE2
+add   r1,0xF0                   ; 0804DDE2  03006E70
 mov   r0,0xA                    ; 0804DDE4
 b     @@Code0804DDEE            ; 0804DDE6
+
 @@Code0804DDE8:
 mov   r1,r8                     ; 0804DDE8
-add   r1,0xF0                   ; 0804DDEA
+add   r1,0xF0                   ; 0804DDEA  03006E70
 mov   r0,0x1E                   ; 0804DDEC
 @@Code0804DDEE:
-strh  r0,[r1]                   ; 0804DDEE
+strh  r0,[r1]                   ; 0804DDEE  set remaining melon/bubble uses
 mov   r1,r8                     ; 0804DDF0
-add   r1,0xEC                   ; 0804DDF2
+add   r1,0xEC                   ; 0804DDF2  03006E6C
 mov   r0,0x0                    ; 0804DDF4
-strh  r0,[r1]                   ; 0804DDF6
+strh  r0,[r1]                   ; 0804DDF6  clear melon/bubble spit cooldown
 mov   r0,r8                     ; 0804DDF8
-add   r0,0xEE                   ; 0804DDFA
+add   r0,0xEE                   ; 0804DDFA  03006E6E
 mov   r1,0x10                   ; 0804DDFC
 strh  r1,[r0]                   ; 0804DDFE
 mov   r0,0xD3                   ; 0804DE00
-lsl   r0,r0,0x1                 ; 0804DE02
-add   r0,r8                     ; 0804DE04
+lsl   r0,r0,0x1                 ; 0804DE02  1A6
+add   r0,r8                     ; 0804DE04  03006F26
 strh  r1,[r0]                   ; 0804DE06
 mov   r0,0xD4                   ; 0804DE08
-lsl   r0,r0,0x1                 ; 0804DE0A
-add   r0,r8                     ; 0804DE0C
+lsl   r0,r0,0x1                 ; 0804DE0A  1A8
+add   r0,r8                     ; 0804DE0C  03006F28
 strh  r1,[r0]                   ; 0804DE0E
 b     @@Code0804E17E            ; 0804DE10
+
 @@Code0804DE12:
 mov   r3,0xEE                   ; 0804DE12
-lsl   r3,r3,0x1                 ; 0804DE14
+lsl   r3,r3,0x1                 ; 0804DE14  1DC
 add   r0,r4,r3                  ; 0804DE16
 ldrh  r0,[r0]                   ; 0804DE18
 cmp   r0,0x3                    ; 0804DE1A
 bls   @@Code0804DE20            ; 0804DE1C
-b     @@Code0804E40E            ; 0804DE1E
+b     @@Return                  ; 0804DE1E
 @@Code0804DE20:
 mov   r0,r4                     ; 0804DE20
 add   r0,0xD0                   ; 0804DE22
@@ -7698,10 +7702,10 @@ ldr   r2,=0x03002200            ; 0804DE46
 asr   r1,r1,0x8                 ; 0804DE48
 add   r1,0x8                    ; 0804DE4A
 ldr   r3,=0x4804                ; 0804DE4C
-add   r0,r2,r3                  ; 0804DE4E
+add   r0,r2,r3                  ; 0804DE4E  03006A04
 strh  r1,[r0]                   ; 0804DE50
 ldr   r0,[r4,0x8]               ; 0804DE52
-mov   r10,r2                    ; 0804DE54
+mov   r10,r2                    ; 0804DE54  r10 = 03002200
 cmp   r0,0x0                    ; 0804DE56
 bge   @@Code0804DE5C            ; 0804DE58
 neg   r0,r0                     ; 0804DE5A
@@ -7722,7 +7726,7 @@ orr   r1,r0                     ; 0804DE72
 lsl   r1,r1,0x10                ; 0804DE74
 lsr   r6,r1,0x10                ; 0804DE76
 ldr   r1,=0x4804                ; 0804DE78
-add   r1,r10                    ; 0804DE7A
+add   r1,r10                    ; 0804DE7A  03006A04
 ldr   r0,=Data08172090          ; 0804DE7C
 add   r0,r6,r0                  ; 0804DE7E
 ldrb  r0,[r0]                   ; 0804DE80
@@ -7746,7 +7750,7 @@ lsl   r0,r0,0x10                ; 0804DEA2
 lsr   r6,r0,0x10                ; 0804DEA4
 mov   r0,r6                     ; 0804DEA6
 bl    Sub0804353C               ; 0804DEA8
-ldr   r0,=0x4802                ; 0804DEAC
+ldr   r0,=0x4802                ; 0804DEAC  03006A02
 add   r0,r10                    ; 0804DEAE
 ldrh  r0,[r0]                   ; 0804DEB0
 mov   r6,0x6                    ; 0804DEB2
@@ -7760,7 +7764,7 @@ add   r0,0x18                   ; 0804DEC0
 ldrh  r1,[r0]                   ; 0804DEC2
 sub   r0,0x6                    ; 0804DEC4
 strh  r1,[r0]                   ; 0804DEC6
-b     @@Code0804E40E            ; 0804DEC8
+b     @@Return                  ; 0804DEC8
 .pool                           ; 0804DECA
 
 @@Code0804DEE4:
@@ -7768,19 +7772,19 @@ mov   r0,r8                     ; 0804DEE4
 add   r0,0xE8                   ; 0804DEE6
 strh  r6,[r0]                   ; 0804DEE8
 mov   r0,r9                     ; 0804DEEA
-cmp   r0,0x1E                   ; 0804DEEC
+cmp   r0,0x1E                   ; 0804DEEC  01E: Shy Guy
 beq   @@Code0804DF02            ; 0804DEEE
-ldr   r0,=0x0133                ; 0804DEF0
+ldr   r0,=0x0133                ; 0804DEF0  133: Lantern Ghost
 cmp   r9,r0                     ; 0804DEF2
 beq   @@Code0804DF02            ; 0804DEF4
-sub   r0,0x9                    ; 0804DEF6
+sub   r0,0x9                    ; 0804DEF6  12A: Shy Guy, hiding behind terrain
 cmp   r9,r0                     ; 0804DEF8
 beq   @@Code0804DF02            ; 0804DEFA
 mov   r1,r9                     ; 0804DEFC
-cmp   r1,0x74                   ; 0804DEFE
+cmp   r1,0x74                   ; 0804DEFE  074: Spike (Mace Penguin)
 bne   @@Code0804DF54            ; 0804DF00
 @@Code0804DF02:
-mov   r1,r7                     ; 0804DF02
+mov   r1,r7                     ; 0804DF02 \ runs if any of the previous 4 sprites
 add   r1,0x48                   ; 0804DF04
 mov   r2,0x0                    ; 0804DF06
 mov   r0,0x8                    ; 0804DF08
@@ -7816,21 +7820,22 @@ add   r0,0x72                   ; 0804DF48
 strh  r2,[r0]                   ; 0804DF4A
 @@Code0804DF4C:
 strh  r2,[r1]                   ; 0804DF4C
-b     @@Code0804DFEE            ; 0804DF4E
+b     @@Code0804DFEE            ; 0804DF4E /
 .pool                           ; 0804DF50
 
 @@Code0804DF54:
 mov   r2,r9                     ; 0804DF54
-cmp   r2,0x17                   ; 0804DF56
+cmp   r2,0x17                   ; 0804DF56  017: Frog Pirate
 bne   @@Code0804DF62            ; 0804DF58
-mov   r0,r7                     ; 0804DF5A
+mov   r0,r7                     ; 0804DF5A \ runs if Frog Pirate
 bl    Sub080B4398               ; 0804DF5C
-b     @@Code0804E08C            ; 0804DF60
+b     @@Code0804E08C            ; 0804DF60 /
+
 @@Code0804DF62:
 mov   r3,r9                     ; 0804DF62
-cmp   r3,0x92                   ; 0804DF64
+cmp   r3,0x92                   ; 0804DF64  092: Melon Bug
 bne   @@Code0804DF7E            ; 0804DF66
-mov   r0,r7                     ; 0804DF68
+mov   r0,r7                     ; 0804DF68 \ runs if Melon Bug
 add   r0,0x5E                   ; 0804DF6A
 strh  r6,[r0]                   ; 0804DF6C
 mov   r1,r7                     ; 0804DF6E
@@ -7840,24 +7845,26 @@ strh  r0,[r1]                   ; 0804DF74
 mov   r0,0x2                    ; 0804DF76
 strh  r0,[r7,0x38]              ; 0804DF78
 add   r1,0x28                   ; 0804DF7A
-b     @@Code0804E08A            ; 0804DF7C
+b     @@Code0804E08A            ; 0804DF7C /
+
 @@Code0804DF7E:
 cmp   r5,0x3                    ; 0804DF7E
 bls   @@Code0804DF92            ; 0804DF80
 mov   r4,r9                     ; 0804DF82
-cmp   r4,0xF3                   ; 0804DF84
+cmp   r4,0xF3                   ; 0804DF84  0F3: Woozy Guy
 bne   @@Code0804DFEE            ; 0804DF86
-mov   r1,r7                     ; 0804DF88
+mov   r1,r7                     ; 0804DF88 \ runs if Woozy Guy
 add   r1,0x48                   ; 0804DF8A
 mov   r0,0x8                    ; 0804DF8C
 strh  r0,[r1]                   ; 0804DF8E
-b     @@Code0804DFEE            ; 0804DF90
+b     @@Code0804DFEE            ; 0804DF90 /
+
 @@Code0804DF92:
 mov   r0,0xCD                   ; 0804DF92
-lsl   r0,r0,0x1                 ; 0804DF94
+lsl   r0,r0,0x1                 ; 0804DF94  19A: Boo Guy
 cmp   r9,r0                     ; 0804DF96
 bne   @@Code0804DFD4            ; 0804DF98
-mov   r0,r7                     ; 0804DF9A
+mov   r0,r7                     ; 0804DF9A \ runs if Boo Guy
 bl    Sub0807D764               ; 0804DF9C
 mov   r0,r7                     ; 0804DFA0
 bl    Sub0804B29C               ; 0804DFA2
@@ -7880,26 +7887,27 @@ mov   r1,r7                     ; 0804DFC6
 add   r1,0x48                   ; 0804DFC8
 mov   r0,0x8                    ; 0804DFCA
 strh  r0,[r1]                   ; 0804DFCC
-b     @@Code0804E40E            ; 0804DFCE
+b     @@Return                  ; 0804DFCE / 
 .pool                           ; 0804DFD0
 
 @@Code0804DFD4:
 mov   r3,r9                     ; 0804DFD4
-cmp   r3,0xF3                   ; 0804DFD6
+cmp   r3,0xF3                   ; 0804DFD6  0F3: Woozy Guy
 bne   @@Code0804DFEE            ; 0804DFD8
-mov   r0,r7                     ; 0804DFDA
+mov   r0,r7                     ; 0804DFDA \ runs if Woozy Guy
 bl    Sub0807D764               ; 0804DFDC
 mov   r0,r7                     ; 0804DFE0
 bl    Sub08090BA4               ; 0804DFE2
 mov   r0,r7                     ; 0804DFE6
 add   r0,0x64                   ; 0804DFE8
 strh  r6,[r0]                   ; 0804DFEA
-b     @@Code0804E40E            ; 0804DFEC
-@@Code0804DFEE:
+b     @@Return                  ; 0804DFEC /
+
+@@Code0804DFEE:                 ;           runs if any basic Shy Guy variant, Spike (Mace Penguin), or sometimes Woozy Guy?
 ldr   r0,=StdSprData08192806    ; 0804DFEE
-mov   r4,r9                     ; 0804DFF0
+mov   r4,r9                     ; 0804DFF0  sprite ID
 lsl   r1,r4,0x1                 ; 0804DFF2
-add   r1,r1,r0                  ; 0804DFF4
+add   r1,r1,r0                  ; 0804DFF4  index with sprite ID
 ldrh  r0,[r1]                   ; 0804DFF6
 lsl   r4,r0,0x10                ; 0804DFF8
 cmp   r4,0x0                    ; 0804DFFA
@@ -8079,7 +8087,7 @@ mov   r0,0x62                   ; 0804E154
 bl    PlayYISound               ; 0804E156
 mov   r0,r7                     ; 0804E15A
 bl    Sub0804DB24               ; 0804E15C
-b     @@Code0804E40E            ; 0804E160
+b     @@Return                  ; 0804E160
 .pool                           ; 0804E162
 
 @@Code0804E170:
@@ -8093,7 +8101,8 @@ beq   @@Code0804E186            ; 0804E17C
 @@Code0804E17E:
 mov   r0,r7                     ; 0804E17E
 bl    ClearSpriteSlot           ; 0804E180
-b     @@Code0804E40E            ; 0804E184
+b     @@Return                  ; 0804E184
+
 @@Code0804E186:
 mov   r0,r4                     ; 0804E186
 add   r0,0xD0                   ; 0804E188
@@ -8102,7 +8111,7 @@ cmp   r0,0x0                    ; 0804E18C
 beq   @@Code0804E196            ; 0804E18E
 cmp   r0,0x43                   ; 0804E190
 bhi   @@Code0804E196            ; 0804E192
-b     @@Code0804E40E            ; 0804E194
+b     @@Return                  ; 0804E194
 @@Code0804E196:
 mov   r1,0x28                   ; 0804E196
 ldsh  r0,[r7,r1]                ; 0804E198
@@ -8130,7 +8139,7 @@ lsr   r0,r0,0x18                ; 0804E1CA
 mov   r10,r0                    ; 0804E1CC
 cmp   r0,0xFF                   ; 0804E1CE
 bne   @@Code0804E1D4            ; 0804E1D0
-b     @@Code0804E40E            ; 0804E1D2
+b     @@Return                  ; 0804E1D2
 @@Code0804E1D4:
 ldr   r1,=0x03007240            ; 0804E1D4  Normal gameplay IWRAM (Ptr to 0300220C)
 mov   r0,0xB0                   ; 0804E1D6
@@ -8162,7 +8171,7 @@ cmp   r9,r0                     ; 0804E20E
 bne   @@Code0804E220            ; 0804E210
 mov   r0,r7                     ; 0804E212
 bl    Sub0805F800               ; 0804E214
-b     @@Code0804E40E            ; 0804E218
+b     @@Return                  ; 0804E218
 .pool                           ; 0804E21A
 
 @@Code0804E220:
@@ -8215,7 +8224,7 @@ lsr   r0,r0,0x18                ; 0804E278
 mov   r10,r0                    ; 0804E27A
 cmp   r0,0xFF                   ; 0804E27C
 bne   @@Code0804E282            ; 0804E27E
-b     @@Code0804E40E            ; 0804E280
+b     @@Return                  ; 0804E280
 @@Code0804E282:
 ldr   r1,=0x03007240            ; 0804E282  Normal gameplay IWRAM (Ptr to 0300220C)
 mov   r0,0xB0                   ; 0804E284
@@ -8257,7 +8266,7 @@ str   r0,[r7,0x4]               ; 0804E2CA
 add   r1,0x42                   ; 0804E2CC
 ldrh  r0,[r1]                   ; 0804E2CE
 strh  r0,[r7,0x36]              ; 0804E2D0
-b     @@Code0804E40E            ; 0804E2D2
+b     @@Return                  ; 0804E2D2
 .pool                           ; 0804E2D4
 
 @@Code0804E2F4:
@@ -8379,7 +8388,7 @@ bl    Sub0804B784               ; 0804E404
 @@Code0804E408:
 mov   r0,r7                     ; 0804E408
 bl    ClearSpriteSlot           ; 0804E40A
-@@Code0804E40E:
+@@Return:
 add   sp,0x4                    ; 0804E40E
 pop   {r3-r5}                   ; 0804E410
 mov   r8,r3                     ; 0804E412
