@@ -227,6 +227,7 @@ bx    r1                        ; 08047AFA
 .pool                           ; 08047AFC
 
 SpawnSecondarySprite:
+; r0: sprite ID
 push  {r4-r7,lr}                ; 08047B04
 mov   r7,r10                    ; 08047B06
 mov   r6,r9                     ; 08047B08
@@ -244,7 +245,7 @@ add   r3,r0,r4                  ; 08047B1E
 mov   r4,r2                     ; 08047B20
 mov   r5,0xF                    ; 08047B22
 mov   r10,r1                    ; 08047B24
-ldr   r7,=Data0819271C          ; 08047B26
+ldr   r7,=SecSprStripeIDs       ; 08047B26
 @@Code08047B28:
 ldrh  r0,[r3,0x24]              ; 08047B28
 cmp   r0,0x0                    ; 08047B2A
@@ -326,41 +327,41 @@ mov   r2,r3                     ; 08047BBA
 add   r2,0xA1                   ; 08047BBC
 mov   r0,0xFF                   ; 08047BBE
 strb  r0,[r2]                   ; 08047BC0
-strh  r6,[r3,0x32]              ; 08047BC2
+strh  r6,[r3,0x32]              ; 08047BC2  sprite ID
 ldr   r4,=0xFFFFFE3C            ; 08047BC4  -1C4
 add   r0,r6,r4                  ; 08047BC6  sprite ID -1C4
 lsl   r0,r0,0x10                ; 08047BC8
 lsr   r6,r0,0x10                ; 08047BCA
-lsl   r0,r6,0x1                 ; 08047BCC
+lsl   r0,r6,0x1                 ; 08047BCC  index 16-bit table with sprite ID -1C4
 add   r0,r0,r7                  ; 08047BCE
 ldrh  r4,[r0]                   ; 08047BD0
 mov   r2,0x0                    ; 08047BD2
 mov   r7,r3                     ; 08047BD4
 add   r7,0x94                   ; 08047BD6
-str   r7,[sp]                   ; 08047BD8
+str   r7,[sp]                   ; 08047BD8  [sp] = sprite+94
 mov   r0,0x9C                   ; 08047BDA
 add   r0,r0,r3                  ; 08047BDC
-mov   r12,r0                    ; 08047BDE
+mov   r12,r0                    ; 08047BDE  r12 = sprite+9C
 mov   r7,0x9B                   ; 08047BE0
 add   r7,r7,r3                  ; 08047BE2
-mov   r8,r7                     ; 08047BE4
+mov   r8,r7                     ; 08047BE4  r8 = sprite+9B
 mov   r0,0xAC                   ; 08047BE6
 add   r0,r0,r3                  ; 08047BE8
-mov   r9,r0                     ; 08047BEA
+mov   r9,r0                     ; 08047BEA  r9 = sprite+AC
 lsl   r5,r5,0x18                ; 08047BEC
 ldr   r0,=0x03007240            ; 08047BEE  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 08047BF0
 mov   r7,0xA6                   ; 08047BF2
-lsl   r7,r7,0x6                 ; 08047BF4
-add   r0,r0,r7                  ; 08047BF6
-@@Code08047BF8:
+lsl   r7,r7,0x6                 ; 08047BF4  2980
+add   r0,r0,r7                  ; 08047BF6  [03007240]+2980 (03004B8C)
+@@Loop_CheckStripeIDs:          ;          \ iterate over currently loaded stripe IDs, checking for a match
 ldrh  r7,[r0]                   ; 08047BF8
 cmp   r4,r7                     ; 08047BFA
 beq   @@Code08047C28            ; 08047BFC
 add   r0,0x2                    ; 08047BFE
 add   r2,0x1                    ; 08047C00
 cmp   r2,0x5                    ; 08047C02
-ble   @@Code08047BF8            ; 08047C04
+ble   @@Loop_CheckStripeIDs     ; 08047C04 /
 mov   r4,0x0                    ; 08047C06
 b     @@Code08047C30            ; 08047C08
 .pool                           ; 08047C0A
@@ -373,8 +374,8 @@ lsr   r4,r0,0x10                ; 08047C2E
 @@Code08047C30:
 strb  r4,[r1]                   ; 08047C30
 lsl   r2,r6,0x1                 ; 08047C32
-add   r0,r2,0x1                 ; 08047C34
-ldr   r1,=Data08193010          ; 08047C36
+add   r0,r2,0x1                 ; 08047C34  (sprite ID -1C4) *2 + 1
+ldr   r1,=SecSprData_94_2C      ; 08047C36
 add   r0,r0,r1                  ; 08047C38
 ldrb  r1,[r0]                   ; 08047C3A
 mov   r0,0x30                   ; 08047C3C
@@ -396,12 +397,12 @@ mov   r0,0xCF                   ; 08047C5A
 and   r4,r0                     ; 08047C5C
 strh  r4,[r3,0x2C]              ; 08047C5E
 @@Code08047C60:
-ldr   r4,=Data08193010          ; 08047C60
+ldr   r4,=SecSprData_94_2C      ; 08047C60
 add   r0,r2,r4                  ; 08047C62
 ldrb  r0,[r0]                   ; 08047C64
-ldr   r7,[sp]                   ; 08047C66
+ldr   r7,[sp]                   ; 08047C66  sprite+94
 strb  r0,[r7]                   ; 08047C68
-ldr   r1,=Data081930FA          ; 08047C6A
+ldr   r1,=SecSprData_14         ; 08047C6A
 add   r0,r2,r1                  ; 08047C6C
 ldrb  r0,[r0]                   ; 08047C6E
 lsl   r0,r0,0x18                ; 08047C70
@@ -414,27 +415,27 @@ lsl   r0,r0,0x18                ; 08047C7C
 asr   r0,r0,0x18                ; 08047C7E
 lsl   r0,r0,0x4                 ; 08047C80
 str   r0,[r3,0x1C]              ; 08047C82
-ldr   r4,=Data08192D52          ; 08047C84
+ldr   r4,=SecSprData_26         ; 08047C84
 add   r0,r2,r4                  ; 08047C86
 ldrh  r0,[r0]                   ; 08047C88
 mov   r1,0x0                    ; 08047C8A
 strh  r0,[r3,0x26]              ; 08047C8C
-ldr   r7,=Data08192E3C          ; 08047C8E
+ldr   r7,=SecSprData_28         ; 08047C8E
 add   r0,r2,r7                  ; 08047C90
 ldrh  r0,[r0]                   ; 08047C92
 strh  r0,[r3,0x28]              ; 08047C94
-ldr   r4,=Data08192F26          ; 08047C96
+ldr   r4,=SecSprData_2A         ; 08047C96
 add   r0,r2,r4                  ; 08047C98
 ldrh  r0,[r0]                   ; 08047C9A
 strh  r0,[r3,0x2A]              ; 08047C9C
 mov   r0,0x7                    ; 08047C9E
 strh  r0,[r3,0x24]              ; 08047CA0
-mov   r7,r12                    ; 08047CA2
+mov   r7,r12                    ; 08047CA2  sprite+9C
 strb  r1,[r7]                   ; 08047CA4
 mov   r0,0xFF                   ; 08047CA6
-mov   r2,r8                     ; 08047CA8
+mov   r2,r8                     ; 08047CA8  sprite+9B
 strb  r0,[r2]                   ; 08047CAA
-mov   r3,r9                     ; 08047CAC
+mov   r3,r9                     ; 08047CAC  sprite+AC
 strb  r1,[r3]                   ; 08047CAE
 lsr   r0,r5,0x18                ; 08047CB0
 add   sp,0x4                    ; 08047CB2

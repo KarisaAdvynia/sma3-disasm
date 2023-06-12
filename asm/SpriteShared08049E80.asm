@@ -124,6 +124,8 @@ bx    r1                        ; 08049F84
 .pool                           ; 08049F86
 
 InitSpriteSlot:
+; r0: pointer to sprite slot
+; r1: sprite ID
 push  {r4-r7,lr}                ; 08049F8C
 mov   r7,r10                    ; 08049F8E
 mov   r6,r9                     ; 08049F90
@@ -145,96 +147,96 @@ strh  r0,[r1,0x22]              ; 08049FAE
 strh  r0,[r1,0x38]              ; 08049FB0
 strh  r0,[r1,0x3A]              ; 08049FB2
 strh  r0,[r1,0x3E]              ; 08049FB4
-add   r1,0x40                   ; 08049FB6
+add   r1,0x40                   ; 08049FB6  +40
 strh  r0,[r1]                   ; 08049FB8
-add   r1,0x2                    ; 08049FBA
+add   r1,0x2                    ; 08049FBA  +42
 strh  r0,[r1]                   ; 08049FBC
-add   r1,0x2                    ; 08049FBE
+add   r1,0x2                    ; 08049FBE  +44
 strh  r0,[r1]                   ; 08049FC0
-add   r1,0x2                    ; 08049FC2
+add   r1,0x2                    ; 08049FC2  +46
 strh  r0,[r1]                   ; 08049FC4
-add   r1,0x2                    ; 08049FC6
+add   r1,0x2                    ; 08049FC6  +48
 strh  r0,[r1]                   ; 08049FC8
-add   r1,0x16                   ; 08049FCA
+add   r1,0x16                   ; 08049FCA  +5E
 strh  r0,[r1]                   ; 08049FCC
-add   r1,0x6                    ; 08049FCE
+add   r1,0x6                    ; 08049FCE  +64
 strh  r0,[r1]                   ; 08049FD0
-add   r1,0x4                    ; 08049FD2
+add   r1,0x4                    ; 08049FD2  +68
 strh  r0,[r1]                   ; 08049FD4
-add   r1,0x2                    ; 08049FD6
+add   r1,0x2                    ; 08049FD6  +6A
 strh  r0,[r1]                   ; 08049FD8
-add   r1,0x2                    ; 08049FDA
+add   r1,0x2                    ; 08049FDA  +6C
 strh  r0,[r1]                   ; 08049FDC
-add   r1,0x2                    ; 08049FDE
+add   r1,0x2                    ; 08049FDE  +6E
 strh  r0,[r1]                   ; 08049FE0
-add   r1,0x2                    ; 08049FE2
+add   r1,0x2                    ; 08049FE2  +70
 strh  r0,[r1]                   ; 08049FE4
-add   r1,0x2                    ; 08049FE6
+add   r1,0x2                    ; 08049FE6  +72
 strh  r0,[r1]                   ; 08049FE8
-add   r1,0x2                    ; 08049FEA
+add   r1,0x2                    ; 08049FEA  +74
 strh  r0,[r1]                   ; 08049FEC
-add   r1,0x2                    ; 08049FEE
+add   r1,0x2                    ; 08049FEE  +76
 strh  r0,[r1]                   ; 08049FF0
-add   r1,0x2                    ; 08049FF2
+add   r1,0x2                    ; 08049FF2  +78
 strh  r0,[r1]                   ; 08049FF4
-add   r1,0x2                    ; 08049FF6
+add   r1,0x2                    ; 08049FF6  +7A
 strh  r0,[r1]                   ; 08049FF8
-add   r1,0x2                    ; 08049FFA
+add   r1,0x2                    ; 08049FFA  +7C
 strh  r0,[r1]                   ; 08049FFC
-add   r1,0xC                    ; 08049FFE
+add   r1,0xC                    ; 08049FFE  +88
 strh  r0,[r1]                   ; 0804A000
-add   r1,0x6                    ; 0804A002
+add   r1,0x6                    ; 0804A002  +8E
 strh  r0,[r1]                   ; 0804A004
-add   r1,0x2                    ; 0804A006
+add   r1,0x2                    ; 0804A006  +90
 strh  r0,[r1]                   ; 0804A008
-add   r1,0x2                    ; 0804A00A
+add   r1,0x2                    ; 0804A00A  +92
 strh  r0,[r1]                   ; 0804A00C
 mov   r0,r12                    ; 0804A00E
-add   r0,0x95                   ; 0804A010
+add   r0,0x95                   ; 0804A010  +95
 strb  r2,[r0]                   ; 0804A012
-add   r0,0x1                    ; 0804A014
+add   r0,0x1                    ; 0804A014  +96
 strb  r2,[r0]                   ; 0804A016
-add   r0,0x1                    ; 0804A018
+add   r0,0x1                    ; 0804A018  +97
 strb  r2,[r0]                   ; 0804A01A
-add   r0,0x6                    ; 0804A01C
+add   r0,0x6                    ; 0804A01C  +9D
 strb  r2,[r0]                   ; 0804A01E
-add   r0,0x1                    ; 0804A020
+add   r0,0x1                    ; 0804A020  +9E
 strb  r2,[r0]                   ; 0804A022
-add   r0,0x5                    ; 0804A024
+add   r0,0x5                    ; 0804A024  +A3
 strb  r2,[r0]                   ; 0804A026
-add   r0,0x1                    ; 0804A028
+add   r0,0x1                    ; 0804A028  +A4
 strb  r2,[r0]                   ; 0804A02A
-add   r0,0x7                    ; 0804A02C
+add   r0,0x7                    ; 0804A02C  +AB
 strb  r2,[r0]                   ; 0804A02E
-add   r0,0x1                    ; 0804A030
+add   r0,0x1                    ; 0804A030  +AC
 strb  r2,[r0]                   ; 0804A032
-add   r0,0x1                    ; 0804A034
+add   r0,0x1                    ; 0804A034  +AD
 strb  r2,[r0]                   ; 0804A036
-sub   r0,0x21                   ; 0804A038
+sub   r0,0x21                   ; 0804A038  +8C
 mov   r1,0x80                   ; 0804A03A
-lsl   r1,r1,0x1                 ; 0804A03C
+lsl   r1,r1,0x1                 ; 0804A03C  0100
 strh  r1,[r0]                   ; 0804A03E
-sub   r0,0x2                    ; 0804A040
+sub   r0,0x2                    ; 0804A040  +8A
 strh  r1,[r0]                   ; 0804A042
 ldr   r0,=0xFFFF                ; 0804A044
 mov   r2,r12                    ; 0804A046
 strh  r0,[r2,0x3C]              ; 0804A048
 mov   r0,0x1                    ; 0804A04A
-neg   r0,r0                     ; 0804A04C
+neg   r0,r0                     ; 0804A04C  FFFFFFFF
 strh  r0,[r2,0x34]              ; 0804A04E
 mov   r1,r12                    ; 0804A050
-add   r1,0xA1                   ; 0804A052
+add   r1,0xA1                   ; 0804A052  +A1
 mov   r0,0xFF                   ; 0804A054
 strb  r0,[r1]                   ; 0804A056
-add   r1,0x1                    ; 0804A058
+add   r1,0x1                    ; 0804A058  +A2
 mov   r0,0x1F                   ; 0804A05A
 strb  r0,[r1]                   ; 0804A05C
 mov   r3,r10                    ; 0804A05E
-strh  r3,[r2,0x32]              ; 0804A060
+strh  r3,[r2,0x32]              ; 0804A060  set sprite ID
 ldr   r0,=0x03007240            ; 0804A062  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                   ; 0804A064
 mov   r0,0xA6                   ; 0804A066
-lsl   r0,r0,0x6                 ; 0804A068
+lsl   r0,r0,0x6                 ; 0804A068  2980
 add   r5,r1,r0                  ; 0804A06A
 ldr   r2,=StdSprStripeIDs       ; 0804A06C
 mov   r3,r12                    ; 0804A06E
@@ -343,6 +345,9 @@ bx    r0                        ; 0804A154
 .pool                           ; 0804A156
 
 InitSpriteSlotWithStatus:
+; r0: sprite ID
+; r1: sprite status
+; r2: pointer to sprite slot
 push  {r4,lr}                   ; 0804A15C
 mov   r3,r0                     ; 0804A15E
 mov   r12,r2                    ; 0804A160
@@ -353,7 +358,7 @@ lsr   r1,r1,0x18                ; 0804A168
 mov   r4,0x0                    ; 0804A16A
 mov   r2,0x0                    ; 0804A16C
 mov   r0,r12                    ; 0804A16E
-strh  r1,[r0,0x24]              ; 0804A170
+strh  r1,[r0,0x24]              ; 0804A170  set sprite status
 mov   r1,r12                    ; 0804A172
 add   r1,0x9B                   ; 0804A174
 mov   r0,0xFF                   ; 0804A176
@@ -369,8 +374,8 @@ add   r0,0x66                   ; 0804A188
 strh  r2,[r0]                   ; 0804A18A
 sub   r0,0x4                    ; 0804A18C
 strh  r2,[r0]                   ; 0804A18E
-mov   r0,r12                    ; 0804A190
-mov   r1,r3                     ; 0804A192
+mov   r0,r12                    ; 0804A190  r0 = pointer to sprite slot
+mov   r1,r3                     ; 0804A192  r1 = sprite ID
 bl    InitSpriteSlot            ; 0804A194
 pop   {r4}                      ; 0804A198
 pop   {r0}                      ; 0804A19A
@@ -7685,8 +7690,8 @@ ldrb  r0,[r0]                   ; 0804DE24
 sub   r0,0x1                    ; 0804DE26
 lsl   r0,r0,0x1                 ; 0804DE28
 mov   r1,r4                     ; 0804DE2A
-add   r1,0x42                   ; 0804DE2C
-ldrb  r1,[r1]                   ; 0804DE2E
+add   r1,0x42                   ; 0804DE2C  03006DC2
+ldrb  r1,[r1]                   ; 0804DE2E  Yoshi facing direction (00=right, 02=left)
 orr   r0,r1                     ; 0804DE30
 lsl   r0,r0,0x18                ; 0804DE32
 lsr   r5,r0,0x18                ; 0804DE34
@@ -7903,7 +7908,7 @@ add   r0,0x64                   ; 0804DFE8
 strh  r6,[r0]                   ; 0804DFEA
 b     @@Return                  ; 0804DFEC /
 
-@@Code0804DFEE:                 ;           runs if any basic Shy Guy variant, Spike (Mace Penguin), or sometimes Woozy Guy?
+@@Code0804DFEE:
 ldr   r0,=StdSprData08192806    ; 0804DFEE
 mov   r4,r9                     ; 0804DFF0  sprite ID
 lsl   r1,r4,0x1                 ; 0804DFF2
