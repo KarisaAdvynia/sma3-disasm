@@ -991,7 +991,7 @@ bl    swi_MemoryCopy4or2        ; 080F7112  Memory copy/fill, 4- or 2-byte block
 ldr   r0,=Data082AF690          ; 080F7116  global sprite graphics
 ldr   r1,=0x06010000            ; 080F7118
 bl    swi_LZ77_VRAM             ; 080F711A  LZ77 decompress (VRAM)
-bl    Sub08013474               ; 080F711E
+bl    LoadTilesetGraphics       ; 080F711E
 bl    Sub080F6E38               ; 080F7122
 mov   r0,0x0                    ; 080F7126
 bl    Sub080F6F30               ; 080F7128

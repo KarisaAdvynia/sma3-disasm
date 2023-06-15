@@ -463,7 +463,7 @@ strh  r3,[r1]                   ; 080F5DAA
 ldr   r0,=Data082AF690          ; 080F5DAC  global sprite graphics
 ldr   r1,=0x06010000            ; 080F5DAE
 bl    swi_LZ77_VRAM             ; 080F5DB0  LZ77 decompress (VRAM)
-bl    Sub08013474               ; 080F5DB4
+bl    LoadTilesetGraphics       ; 080F5DB4
 bl    Sub080F5B10               ; 080F5DB8
 bl    Sub080F5B84               ; 080F5DBC
 mov   r2,0x0                    ; 080F5DC0

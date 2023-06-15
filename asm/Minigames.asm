@@ -2023,7 +2023,7 @@ strh  r7,[r0]                   ; 080EAA08
 ldr   r0,=Data082AF690          ; 080EAA0A  global sprite graphics
 ldr   r1,=0x06010000            ; 080EAA0C
 bl    swi_LZ77_VRAM             ; 080EAA0E  LZ77 decompress (VRAM)
-bl    Sub08013474               ; 080EAA12
+bl    LoadTilesetGraphics       ; 080EAA12
 bl    Sub080EA640               ; 080EAA16
 ldr   r5,=0x03006D80            ; 080EAA1A
 ldr   r2,=0x0246                ; 080EAA1C

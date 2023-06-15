@@ -43,7 +43,7 @@ pop   {r0}                      ; 0801346E
 bx    r0                        ; 08013470
 .pool                           ; 08013472
 
-Sub08013474:
+LoadTilesetGraphics:
 ; subroutine: Load tileset-specific graphics for layer 1, layer 2, layer 3, and sprites
 push  {r4-r7,lr}                ; 08013474
 mov   r7,r10                    ; 08013476
@@ -1623,23 +1623,23 @@ pop   {r0}                      ; 080143AA
 bx    r0                        ; 080143AC
 .pool                           ; 080143AE
 
-Sub080143DC:
+LoadRaphaelGraphics:
 push  {r4-r7,lr}                ; 080143DC
 ldr   r0,=0x03007240            ; 080143DE  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                   ; 080143E0
 mov   r1,0x8C                   ; 080143E2
-lsl   r1,r1,0x2                 ; 080143E4
-add   r7,r0,r1                  ; 080143E6
+lsl   r1,r1,0x2                 ; 080143E4  230
+add   r7,r0,r1                  ; 080143E6  [03007240]+230 (0300243C)
 bl    Sub08013834               ; 080143E8
-ldr   r0,=Data0820C580          ; 080143EC
+ldr   r0,=Graphics_Gameplay_Raphael_L2_8bpp_LZ77; 080143EC
 mov   r1,0xC0                   ; 080143EE
-lsl   r1,r1,0x13                ; 080143F0
+lsl   r1,r1,0x13                ; 080143F0  06000000
 bl    swi_LZ77_VRAM             ; 080143F2  LZ77 decompress (VRAM)
-mov   r3,0x0                    ; 080143F6
+mov   r3,0x0                    ; 080143F6  r3: color index
 ldr   r5,=0x02010400            ; 080143F8
 ldr   r4,=ColorTable            ; 080143FA
-@@Code080143FC:
-lsr   r1,r3,0x1                 ; 080143FC
+@@LoadPaletteLoop:              ;           loop: copy 50 colors from ColorTable+287E (082D1886) to palette buffer at 02010400?
+lsr   r1,r3,0x1                 ; 080143FC \ row 0 (offset 0)
 lsl   r1,r1,0x1                 ; 080143FE
 add   r1,r1,r5                  ; 08014400
 ldr   r2,=0x287E                ; 08014402
@@ -1648,8 +1648,8 @@ asr   r2,r0,0x1                 ; 08014406
 lsl   r0,r2,0x1                 ; 08014408
 add   r0,r0,r4                  ; 0801440A
 ldrh  r0,[r0]                   ; 0801440C
-strh  r0,[r1]                   ; 0801440E
-mov   r1,r3                     ; 08014410
+strh  r0,[r1]                   ; 0801440E /
+mov   r1,r3                     ; 08014410 \ row 1 (offset 20)
 add   r1,0x20                   ; 08014412
 asr   r1,r1,0x1                 ; 08014414
 lsl   r1,r1,0x1                 ; 08014416
@@ -1659,8 +1659,8 @@ add   r0,0x10                   ; 0801441C
 lsl   r0,r0,0x1                 ; 0801441E
 add   r0,r0,r4                  ; 08014420
 ldrh  r0,[r0]                   ; 08014422
-strh  r0,[r1]                   ; 08014424
-mov   r1,r3                     ; 08014426
+strh  r0,[r1]                   ; 08014424 /
+mov   r1,r3                     ; 08014426 \ row 2 (offset 40)
 add   r1,0x40                   ; 08014428
 asr   r1,r1,0x1                 ; 0801442A
 lsl   r1,r1,0x1                 ; 0801442C
@@ -1670,8 +1670,8 @@ add   r0,0x20                   ; 08014432
 lsl   r0,r0,0x1                 ; 08014434
 add   r0,r0,r4                  ; 08014436
 ldrh  r0,[r0]                   ; 08014438
-strh  r0,[r1]                   ; 0801443A
-mov   r1,r3                     ; 0801443C
+strh  r0,[r1]                   ; 0801443A /
+mov   r1,r3                     ; 0801443C \ row 3 (offset 60)
 add   r1,0x60                   ; 0801443E
 asr   r1,r1,0x1                 ; 08014440
 lsl   r1,r1,0x1                 ; 08014442
@@ -1682,8 +1682,8 @@ lsl   r0,r0,0x1                 ; 0801444A
 add   r0,r0,r4                  ; 0801444C
 ldrh  r0,[r0]                   ; 0801444E
 strh  r0,[r1]                   ; 08014450
-mov   r1,r3                     ; 08014452
-add   r1,0x80                   ; 08014454
+mov   r1,r3                     ; 08014452 /
+add   r1,0x80                   ; 08014454 \ row 4 (offset 80)
 asr   r1,r1,0x1                 ; 08014456
 lsl   r1,r1,0x1                 ; 08014458
 add   r1,r1,r5                  ; 0801445A
@@ -1692,28 +1692,29 @@ add   r0,0x40                   ; 0801445E
 lsl   r0,r0,0x1                 ; 08014460
 add   r0,r0,r4                  ; 08014462
 ldrh  r0,[r0]                   ; 08014464
-strh  r0,[r1]                   ; 08014466
-add   r0,r3,0x1                 ; 08014468
+strh  r0,[r1]                   ; 08014466 /
+add   r0,r3,0x1                 ; 08014468  increment color index
 lsl   r0,r0,0x10                ; 0801446A
 lsr   r3,r0,0x10                ; 0801446C
 cmp   r3,0x1F                   ; 0801446E
-bls   @@Code080143FC            ; 08014470
+bls   @@LoadPaletteLoop         ; 08014470
+
 ldr   r4,=0x02010400            ; 08014472
 mov   r1,0xA0                   ; 08014474
-lsl   r1,r1,0x13                ; 08014476
+lsl   r1,r1,0x13                ; 08014476  dest: 05000000
 mov   r5,0x80                   ; 08014478
-lsl   r5,r5,0x1                 ; 0801447A
-mov   r0,r4                     ; 0801447C
-mov   r2,r5                     ; 0801447E
+lsl   r5,r5,0x1                 ; 0801447A  0100
+mov   r0,r4                     ; 0801447C  source: 02010400
+mov   r2,r5                     ; 0801447E  halfwords: 0100
 bl    swi_MemoryCopy4or2        ; 08014480  Memory copy/fill, 4- or 2-byte blocks
-ldr   r1,=0x02010800            ; 08014484
-mov   r0,r4                     ; 08014486
-mov   r2,r5                     ; 08014488
+ldr   r1,=0x02010800            ; 08014484  dest: 02010800
+mov   r0,r4                     ; 08014486  source: 02010400
+mov   r2,r5                     ; 08014488  halfwords: 0100
 bl    swi_MemoryCopy4or2        ; 0801448A  Memory copy/fill, 4- or 2-byte blocks
 ldr   r0,=0x03007240            ; 0801448E  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                   ; 08014490
 mov   r3,0xA6                   ; 08014492
-lsl   r3,r3,0x6                 ; 08014494
+lsl   r3,r3,0x6                 ; 08014494  2980
 add   r2,r1,r3                  ; 08014496
 mov   r6,0x0                    ; 08014498
 mov   r0,0x2D                   ; 0801449A
@@ -1811,7 +1812,7 @@ ldr   r0,=0x47C6                ; 08014554
 add   r1,r4,r0                  ; 08014556
 ldr   r0,=0x1401                ; 08014558
 strh  r0,[r1]                   ; 0801455A
-ldr   r0,=Data0820C1D4          ; 0801455C
+ldr   r0,=Tilemaps_Gameplay_Raphael_L2_LZ77; 0801455C
 ldr   r1,=0x0600B000            ; 0801455E
 bl    swi_LZ77_VRAM             ; 08014560  LZ77 decompress (VRAM)
 ldr   r1,=0x47CC                ; 08014564
@@ -14065,7 +14066,7 @@ b     @@Code0802CAA2            ; 0802C9B8 / skip loading normal graphics
 @@Code0802CA00:
 cmp   r0,0x9                    ; 0802CA00  09: Raphael's moon
 bne   @@Code0802CA2E            ; 0802CA02
-bl    Sub080143DC               ; 0802CA04 \ runs if Raphael's moon
+bl    LoadRaphaelGraphics       ; 0802CA04 \ runs if Raphael's moon
 mov   r6,r7                     ; 0802CA08
 add   r6,0x66                   ; 0802CA0A
 str   r6,[sp,0x10]              ; 0802CA0C
@@ -14085,8 +14086,9 @@ mov   r4,r7                     ; 0802CA26
 add   r4,0x6C                   ; 0802CA28
 str   r4,[sp,0x1C]              ; 0802CA2A
 b     @@Code0802CAA2            ; 0802CA2C / skip loading normal graphics
+
 @@Code0802CA2E:
-bl    Sub08013474               ; 0802CA2E  load tileset-specific graphics for layer 1, layer 2, layer 3, and sprites
+bl    LoadTilesetGraphics       ; 0802CA2E  load tileset-specific graphics for layer 1, layer 2, layer 3, and sprites
 mov   r2,0x0                    ; 0802CA32  loop index
                                 ; the following lines set sp+0C to sp+20, to 03002270-227A
 mov   r5,r7                     ; 0802CA34

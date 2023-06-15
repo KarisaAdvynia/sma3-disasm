@@ -1348,10 +1348,10 @@ Data082091A0:                   ; 082091A0
 .org 0x082095E4
 Data082095E4:                   ; 082095E4
 .org 0x0820C1D4
-Data0820C1D4:                   ; 0820C1D4
-.org 0x0820C580
-Data0820C580:                   ; 0820C580
-.org 0x0820DA48
+Tilemaps_Gameplay_Raphael_L2_LZ77:; 0820C1D4
+.incbin "../data/Tilemaps/Gameplay_Raphael_L2_LZ77.bin"
+Graphics_Gameplay_Raphael_L2_8bpp_LZ77:; 0820C580
+.incbin "../data/Graphics/Gameplay_Raphael_L2_8bpp_LZ77.bin"
 Data0820DA48:                   ; 0820DA48
 .org 0x0820E054
 Data0820E054:                   ; 0820E054
