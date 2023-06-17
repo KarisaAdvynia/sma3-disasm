@@ -82,8 +82,7 @@ add   r0,r2,r0                  ; 080134B4
 b     @@Code080134DC            ; 080134B6 /
 .pool                           ; 080134B8
 
-@@Code080134D4:
-                                ;          \ run if not in world 6
+@@Code080134D4:                 ;          \ run if not in world 6
 ldr   r1,=L1TilesetGraphicsPtrs ; 080134D4
 add   r0,r6,0x2                 ; 080134D6  r0 = 3*hv01+2
 lsl   r0,r0,0x2                 ; 080134D8  r0 = 0C*hv01+8
@@ -131,8 +130,7 @@ add   r0,r2,r0                  ; 0801352A
 b     @@Code08013562            ; 0801352C /
 .pool                           ; 0801352E
 
-@@Code0801355C:
-                                ;          \ run if not in world 6
+@@Code0801355C:                 ;          \ run if not in world 6
 ldr   r1,=L1TilesetGraphicsPtrs ; 0801355C
 lsl   r0,r6,0x2                 ; 0801355E  r0 = 0C*hv01
 add   r0,r0,r1                  ; 08013560 / r0 = 08165C44 + 0C*hv01
@@ -161,8 +159,7 @@ add   r0,r2,r0                  ; 08013588
 b     @@Code080135A8            ; 0801358A /
 .pool                           ; 0801358C
 
-@@Code080135A0:
-                                ;          \ run if not in world 6
+@@Code080135A0:                 ;          \ run if not in world 6
 ldr   r1,=L1TilesetGraphicsPtrs ; 080135A0
 add   r0,r6,0x1                 ; 080135A2  r0=3*hv01+1
 lsl   r0,r0,0x2                 ; 080135A4  r0=0C*hv01+4
@@ -427,8 +424,7 @@ mov   r12,r4                    ; 08013852  r9=r12 = 08167404 (unused SNES sprit
 mov   r5,r6                     ; 08013854  r5 = pointer to 03002460
 ldr   r4,[@@Pool+0x4]           ; 08013856
 mov   r3,0x0                    ; 08013858
-@@Code0801385A:
-                                ; loop: clear first 8 values from buffer at 0300399E?
+@@Code0801385A:                 ; loop: clear first 8 values from buffer at 0300399E?
                                 ;  (original extraction of header indexs was here)
 ldr   r0,[r5]                   ; 0801385A  r0 = [0300702C] (03002460)
 lsl   r1,r2,0x1                 ; 0801385C
@@ -502,8 +498,7 @@ mov   r2,0xAA                   ; 080138F4
 lsl   r2,r2,0x5                 ; 080138F6  r2 = 1540
 add   r1,r1,r2                  ; 080138F8  r1 = [0300702C]+1540 (030039A0)
 strh  r0,[r1]                   ; 080138FA  color table offset 8002 = [world-specific table + 2*hv02]
-@@Code080138FC:
-                                ;          /
+@@Code080138FC:                 ;          /
 ldr   r2,[r6]                   ; 080138FC  r2 = [0300702C] (03002460)
 mov   r3,0xAA                   ; 080138FE
 lsl   r3,r3,0x5                 ; 08013900  r3 = 1540
@@ -551,14 +546,13 @@ ldrh  r0,[r0]                   ; 08013952  load from same table, but this time 
 ldr   r6,=0x154A                ; 08013954
 add   r2,r2,r6                  ; 08013956  r2 = [0300702C]+154A (030039AA)
 strh  r0,[r2]                   ; 08013958  color table offset 800C = [08167404 + 2*Yoshi color]
-mov   r0,0x0                    ; 0801395A 
+mov   r0,0x0                    ; 0801395A
 bl    Sub08013E3C               ; 0801395C  subroutine: load palettes, using color table offsets
 mov   r5,0x0                    ; 08013960  r5 = loop index
 mov   r10,r4                    ; 08013962
 ldr   r4,=0x020105E0            ; 08013964
 ldr   r3,=0x020109E0            ; 08013966
-@@Code08013968:
-                                ; loop: copy layer palette 2 (if magnifying glass is not active) or 1 (if magnifying glass is active) to layer palette F
+@@Code08013968:                 ; loop: copy layer palette 2 (if magnifying glass is not active) or 1 (if magnifying glass is active) to layer palette F
 ldr   r0,=0x03007240            ; 08013968 \
 ldr   r0,[r0]                   ; 0801396A
 ldr   r1,=0x2A74                ; 0801396C
@@ -623,8 +617,7 @@ strh  r0,[r1]                   ; 08013A0E  [03006ABE] = 0
 mov   r5,0x0                    ; 08013A10  r5 = loop index
 ldr   r6,=L3ImagePalettePtrs    ; 08013A12
 mov   r9,r6                     ; 08013A14  r9 = 08167434
-@@Code08013A16:
-                                ; loop: check if layer 3 image is one of 8 specific values
+@@Code08013A16:                 ; loop: check if layer 3 image is one of 8 specific values
                                 ;  if so, replace colors 80-8F. Layer 3 image 18 additionally replaces colors 90-9F
 mov   r0,r10                    ; 08013A16
 ldr   r4,[r0]                   ; 08013A18  r4 = [03007240] (0300220C)
@@ -685,8 +678,7 @@ bls   @@Code08013A4A            ; 08013AAC
 b     @@Code08013B0A            ; 08013AAE
 .pool                           ; 08013AB0
 
-@@Code08013AB4:
-                                ;          \ runs if layer 3 image is 0D/18/23/20/13/2A/0C/05, but not (layer 3 image is 23 and layer 3 palette is 1C)
+@@Code08013AB4:                 ;          \ runs if layer 3 image is 0D/18/23/20/13/2A/0C/05, but not (layer 3 image is 23 and layer 3 palette is 1C)
 mov   r4,0x0                    ; 08013AB4  r4 = inner loop index
 ldr   r0,=Data08167424          ; 08013AB6
 add   r0,r1,r0                  ; 08013AB8
@@ -842,8 +834,7 @@ ldr   r0,=Data082D2F1C          ; 08013BD4
 mov   r8,r0                     ; 08013BD6
 ldr   r7,=0x020106A0            ; 08013BD8
 add   r6,0x2                    ; 08013BDA
-@@Code08013BDC:
-                                ; loop: copy 10 colors from ROM at 082D2F1C + 4*(value from table at 08167404, indexed by 2*Yoshi color). In practice is this one of the 20-byte blocks 082D301C to 082D30EC?
+@@Code08013BDC:                 ; loop: copy 10 colors from ROM at 082D2F1C + 4*(value from table at 08167404, indexed by 2*Yoshi color). In practice is this one of the 20-byte blocks 082D301C to 082D30EC?
 lsl   r1,r5,0x2                 ; 08013BDC \
 mov   r2,r12                    ; 08013BDE
 add   r3,r1,r2                  ; 08013BE0
@@ -1099,8 +1090,7 @@ ldr   r0,=0xFFFF                ; 08013E54
 cmp   r2,r0                     ; 08013E56
 beq   @@Code08013F4E            ; 08013E58  if first halfword is FFFF, skip ahead
 mov   r7,sp                     ; 08013E5A
-@@Code08013E5C:
-                                ;          \ begin loop for every 6 bytes of data
+@@Code08013E5C:                 ;          \ begin loop for every 6 bytes of data
 strh  r2,[r7]                   ; 08013E5C  store first halfword to [sp+0]
 add   r6,0x2                    ; 08013E5E
 ldrh  r0,[r6]                   ; 08013E60
@@ -1162,8 +1152,7 @@ mov   r10,r1                    ; 08013ED8
 mov   r9,r8                     ; 08013EDA
 ldr   r3,=ColorTable            ; 08013EDC
 str   r3,[sp,0x8]               ; 08013EDE  [sp+8] = 082CF008
-@@Code08013EE0:
-                                ;          \ begin loop for number of palettes
+@@Code08013EE0:                 ;          \ begin loop for number of palettes
 mov   r1,r12                    ; 08013EE0
 ldr   r0,[r1]                   ; 08013EE2  r0 = [03007240] (0300220C)
 mov   r2,r10                    ; 08013EE4  r2 = 29E0
@@ -1178,8 +1167,7 @@ cmp   r3,r0                     ; 08013EF4
 bhs   @@Code08013F2A            ; 08013EF6  (skip loop if number of colors per palette is 0)
 ldr   r0,[sp,0x8]               ; 08013EF8
 mov   r8,r0                     ; 08013EFA  r8 = 082CF008
-@@Code08013EFC:
-                                ;          \ begin loop for colors per palette
+@@Code08013EFC:                 ;          \ begin loop for colors per palette
 lsl   r1,r2,0x1                 ; 08013EFC  r1 = bits 0-7 of second halfword, doubled
 ldr   r0,=0x02010400            ; 08013EFE
 add   r1,r1,r0                  ; 08013F00  r1 = 02010400 + bits 0-7 of second halfword, doubled
@@ -6295,8 +6283,7 @@ ldr   r5,=0x299A                ; 08016CAE
 add   r1,r1,r5                  ; 08016CB0  r0 = [03007240]+299A (03004BA6)
 mov   r0,0x30                   ; 08016CB2
 strh  r0,[r1]                   ; 08016CB4  set layer 3 image to 30
-@@Code08016CB6:
-                                ;          /
+@@Code08016CB6:                 ;          /
 mov   r5,0x0                    ; 08016CB6  r5 = loop index
 ldr   r3,=Data081678DA          ; 08016CB8
 add   r0,sp,0x4                 ; 08016CBA
@@ -6306,8 +6293,7 @@ ldr   r1,=0x2996                ; 08016CC0
 add   r0,r0,r1                  ; 08016CC2  r0 = [03007240]+2996 (03004BA2)
 ldr   r2,=Data081678D4          ; 08016CC4
 ldrh  r1,[r0]                   ; 08016CC6  r1 = layer 2 image ID
-@@Code08016CC8:
-                                ;          \ check if layer 2 image ID is 16/20/0F
+@@Code08016CC8:                 ;          \ check if layer 2 image ID is 16/20/0F
 lsl   r0,r5,0x1                 ; 08016CC8
 add   r0,r0,r2                  ; 08016CCA
 ldrh  r0,[r0]                   ; 08016CCC
@@ -6680,8 +6666,7 @@ strh  r4,[r0]                   ; 0801703A
 ldr   r1,=0x0201B400            ; 0801703C
 ldr   r2,=0x01000200            ; 0801703E
 bl    swi_MemoryCopy4or2        ; 08017040  Memory copy/fill, 4- or 2-byte blocks
-@@Code08017044:
-                                ;          /
+@@Code08017044:                 ;          /
 ldr   r0,=0x03007240            ; 08017044  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                   ; 08017046
 ldr   r5,=0x299A                ; 08017048
@@ -6744,8 +6729,7 @@ beq   @@Code0801716A            ; 080170FC /  so this branch never occurs
 ldr   r0,=0x1792                ; 080170FE
 add   r0,r10                    ; 08017100  r0 = [03007240]+1792 (0300399E)
 str   r0,[sp]                   ; 08017102  top of stack = [03007240]+1792 (0300399E)
-@@Code08017104:
-                                ;           begin loop
+@@Code08017104:                 ;           begin loop
 ; during loop:
 ; r3 = (byte) number of bits to retrieve
 ; r6 = r8 = (halfword) bit count table index. r8 is only used for calculating r7
@@ -6765,8 +6749,7 @@ mov   r0,0x1                    ; 08017110 | increment r6 and r8
 add   r8,r0                     ; 08017112 /
 cmp   r1,r3                     ; 08017114
 bhs   @@Code08017148            ; 08017116
-@@Code08017118:
-                                ;           begin inner loop
+@@Code08017118:                 ;           begin inner loop
 mov   r0,r12                    ; 08017118 \
 sub   r0,0x1                    ; 0801711A | decrement r12
 lsl   r0,r0,0x18                ; 0801711C |  and clear all but the lowest 8 bits
@@ -6806,7 +6789,7 @@ lsl   r0,r1,0x10                ; 0801715A | clear high 16 bits of r8
 lsr   r0,r0,0x10                ; 0801715C |
 mov   r8,r0                     ; 0801715E /
 ldr   r3,=SublevelHeaderBits    ; 08017160  r3 = pointer to table of number of bits to retrieve
-add   r0,r6,r3                  ; 08017162 
+add   r0,r6,r3                  ; 08017162
 ldrb  r0,[r0]                   ; 08017164  r0 = number of bits to retrieve
 cmp   r0,0x0                    ; 08017166  if 0, end of table, so exit loop
 bne   @@Code08017104            ; 08017168
@@ -6933,8 +6916,7 @@ ldr   r1,=0x03007240            ; 08017298  Normal gameplay IWRAM (Ptr to 030022
 mov   r10,r1                    ; 0801729A
 ldr   r0,=0x03007010            ; 0801729C  Layer 1 tilemap EWRAM (0200000C)
 mov   r9,r0                     ; 0801729E
-@@Code080172A0:
-                                ;          \ loop: generate tileset-specific RAM table at 0200800C, using data at 081BC6E8
+@@Code080172A0:                 ;          \ loop: generate tileset-specific RAM table at 0200800C, using data at 081BC6E8
 mov   r5,r3                     ; 080172A0  r5: index to 081BC6E8 (halved)
 lsl   r0,r3,0x1                 ; 080172A2
 add   r0,r8                     ; 080172A4
@@ -6962,8 +6944,7 @@ add   r5,0x12                   ; 080172CE  add 0x12 to 081BC6E8 index (advance 
 mov   r12,r9                    ; 080172D0  r12 = 03007010
 mov   r7,0x80                   ; 080172D2
 lsl   r7,r7,0x8                 ; 080172D4  r7 = 8000
-@@Code080172D6:
-                                ;          \ inner loop
+@@Code080172D6:                 ;          \ inner loop
                                 ; store r3 incrementing halfwords (first of which is r2),
                                 ; starting at 0200800C + r6
 mov   r1,r12                    ; 080172D6
@@ -7034,8 +7015,7 @@ lsl   r0,r0,0x10                ; 08017358
 b     @@Code080173E2            ; 0801735A /
 .pool                           ; 0801735C
 
-@@Code08017368:
-                                ; runs if parameter info is 0 (1 parameter: width) or 2 (2 parameters: width then height)
+@@Code08017368:                 ; runs if parameter info is 0 (1 parameter: width) or 2 (2 parameters: width then height)
 mov   r4,r2                     ; 08017368  r4 = parameter info
 add   r0,r1,0x1                 ; 0801736A
 lsl   r0,r0,0x10                ; 0801736C
@@ -7251,8 +7231,7 @@ mov   r2,0x0                    ; 08017514
 ldr   r6,=0x03007010            ; 08017516  Layer 1 tilemap EWRAM (0200000C)
 mov   r5,0x0                    ; 08017518
 ldr   r4,=0x3FFF                ; 0801751A
-@@Code0801751C:
-                                ;          \ loop: clear 0200000C-800B
+@@Code0801751C:                 ;          \ loop: clear 0200000C-800B
 ldr   r0,[r6]                   ; 0801751C  r0 = [03007010] (0200000C)
 lsl   r1,r2,0x1                 ; 0801751E
 add   r0,r0,r1                  ; 08017520
@@ -7295,8 +7274,7 @@ ldr   r4,=0x2B08                ; 08017564
 add   r0,r0,r4                  ; 08017566  r0 = [03007240]+2B08 (03004D14)
 ldr   r6,[r0]                   ; 08017568  r6 = pointer to sublevel main data
 mov   r7,r9                     ; 0801756A  r7 = [03007240]+42 (0300224E)
-@@Code0801756C:
-                                ;          \ loop: init object ID and position, then call standard/extended object-specific init
+@@Code0801756C:                 ;          \ loop: init object ID and position, then call standard/extended object-specific init
 mov   r1,0x0                    ; 0801756C
 mov   r0,0x1                    ; 0801756E
 ldr   r2,[sp]                   ; 08017570  [03007240]+4E (0300225A)
@@ -9821,8 +9799,7 @@ add   r0,r0,r2                  ; 08018A7C  r0 = 030069C6
 b     @@Code08018ADA            ; 08018A7E /
 .pool                           ; 08018A80
 
-@@Code08018A94:
-                                ; loop: ?
+@@Code08018A94:                 ; loop: ?
 mov   r0,0x80                   ; 08018A94 \
 and   r0,r3                     ; 08018A96
 cmp   r0,0x0                    ; 08018A98
@@ -12158,8 +12135,7 @@ add   r3,0x1                    ; 08019EE0 /
 b     @@Code08019F02            ; 08019EE2
 .pool                           ; 08019EE4
 
-@@Code08019EEC:
-                                ;           runs if width is negative
+@@Code08019EEC:                 ;           runs if width is negative
 ldrh  r0,[r7]                   ; 08019EEC \
 sub   r0,0x1                    ; 08019EEE | decrement current tile relative X
 strh  r0,[r7]                   ; 08019EF0 /
@@ -12194,8 +12170,7 @@ strb  r4,[r3]                   ; 08019F22  clear 030022BE
 b     @@Code08019F58            ; 08019F24
 .pool                           ; 08019F26
 
-@@Code08019F2C:
-                                ;           runs if 03002244 is nonzero
+@@Code08019F2C:                 ;           runs if 03002244 is nonzero
 mov   r0,r6                     ; 08019F2C
 bl    ObjShared_AdjustSlope     ; 08019F2E  subtract slope from absolute Y, used for diagonal objects
 mov   r1,0x38                   ; 08019F32
@@ -12206,8 +12181,7 @@ bge   @@Code08019F40            ; 08019F38
 mov   r2,r8                     ; 08019F3A  r2 = [03007240]+B2 (030022BE)
 strb  r4,[r2]                   ; 08019F3C  clear 030022BE
 b     @@Code08019F58            ; 08019F3E
-@@Code08019F40:
-                                ;           runs if 03002244 is positive
+@@Code08019F40:                 ;           runs if 03002244 is positive
 mov   r0,r6                     ; 08019F40
 add   r0,0x44                   ; 08019F42  r2 = [03007240]+44 (03002250)
 ldrh  r0,[r0]                   ; 08019F44  r0 = slope
@@ -13453,8 +13427,7 @@ bl    Sub0812C248               ; 0802C3F8
 b     @@Code0802C476            ; 0802C3FC
 .pool                           ; 0802C3FE
 
-@@Code0802C410:
-                                ;           check for various bonus-music sublevels
+@@Code0802C410:                 ;           check for various bonus-music sublevels
 cmp   r1,0x6D                   ; 0802C410
 beq   @@Code0802C446            ; 0802C412
 cmp   r1,0xBA                   ; 0802C414
@@ -13494,8 +13467,7 @@ bne   @@Code0802C470            ; 0802C456
 mov   r0,0x2                    ; 0802C458
 bl    Sub0812C248               ; 0802C45A
 b     @@Code0802C476            ; 0802C45E
-@@Code0802C460:
-                                ; runs if music is 07 and sublevel is one of 1-8 to 5-8 Kamek cutscene
+@@Code0802C460:                 ; runs if music is 07 and sublevel is one of 1-8 to 5-8 Kamek cutscene
 mov   r0,0x17                   ; 0802C460  17: pre-boss
 bl    PlayYIMusic               ; 0802C462
 @@Code0802C466:
@@ -14008,10 +13980,10 @@ ldrh  r0,[r0]                   ; 0802C944  r0 = layer 3 image ID
 cmp   r0,0x13                   ; 0802C946  13: Interactive water for anim=05
 bne   @@Code0802C958            ; 0802C948
 ldr   r0,=0x03006D80            ; 0802C94A \ runs if layer 3 image is 13
-mov   r3,0xDB                   ; 0802C94C 
+mov   r3,0xDB                   ; 0802C94C
 lsl   r3,r3,0x1                 ; 0802C94E  r3 = 1B6
 add   r1,r0,r3                  ; 0802C950  r1 = 03006F36
-mov   r0,0xF6                   ; 0802C952 
+mov   r0,0xF6                   ; 0802C952
 lsl   r0,r0,0x3                 ; 0802C954  r0 = 7B0
 strh  r0,[r1]                   ; 0802C956 / set 03006F36 to 07B0
 @@Code0802C958:
@@ -15171,8 +15143,7 @@ cmp   r0,0x0                    ; 0802D4BC  00: 1-1
 beq   @@Code0802D4C4            ; 0802D4BE
 cmp   r0,0xB                    ; 0802D4C0  0B: Intro level
 bne   @@Code0802D4DC            ; 0802D4C2
-@@Code0802D4C4:
-                                ;          \ runs if 1-1/intro and flag isn't set
+@@Code0802D4C4:                 ;          \ runs if 1-1/intro and flag isn't set
 mov   r0,0x80                   ; 0802D4C4  set flag to not show message again
 orr   r0,r1                     ; 0802D4C6
 strh  r0,[r2]                   ; 0802D4C8

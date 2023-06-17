@@ -150,7 +150,7 @@ Sub08000BE0:
 push  {r4-r6,lr}                ; 08000BE0
 ldr   r4,=0x03002200            ; 08000BE2
 mov   r1,0x92                   ; 08000BE4
-lsl   r1,r1,0x7                 ; 08000BE6  4900  
+lsl   r1,r1,0x7                 ; 08000BE6  4900
 add   r0,r4,r1                  ; 08000BE8  03006B00
 ldrb  r0,[r0]                   ; 08000BEA
 cmp   r0,0x0                    ; 08000BEC
@@ -219,7 +219,7 @@ add   r1,0x2E                   ; 08000C66  0400004C
 add   r3,0xCA                   ; 08000C68  48B8
 add   r0,r4,r3                  ; 08000C6A  03006AB8
 ldrh  r0,[r0]                   ; 08000C6C
-strh  r0,[r1]                   ; 08000C6E  
+strh  r0,[r1]                   ; 08000C6E
 ldr   r0,=0x04000020            ; 08000C70
 mov   r5,0x80                   ; 08000C72
 lsl   r5,r5,0x7                 ; 08000C74  4000
@@ -3384,8 +3384,8 @@ mov   r3,0x1                    ; 08002B9A
 @@Code08002B9C:                 ;          \
 ldrh  r1,[r2]                   ; 08002B9C |
 mov   r0,r3                     ; 08002B9E |
-and   r0,r1                     ; 08002BA0 | test bit 0 of 030069BC  
-cmp   r0,0x0                    ; 08002BA2 | and loop infinitely as long as it's clear 
+and   r0,r1                     ; 08002BA0 | test bit 0 of 030069BC
+cmp   r0,0x0                    ; 08002BA2 | and loop infinitely as long as it's clear
 beq   @@Code08002B9C            ; 08002BA4 /
 ldrh  r0,[r5]                   ; 08002BA6 \
 and   r0,r7                     ; 08002BA8 | clear bit 0 of 030069BC, again

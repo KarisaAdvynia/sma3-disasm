@@ -5550,8 +5550,7 @@ mov   r5,0x0                    ; 080FFF0A
 b     @@Code080FFF24            ; 080FFF0C
 .pool                           ; 080FFF0E
 
-@@Code080FFF14:
-                                ;           runs if command
+@@Code080FFF14:                 ;           runs if command
 add   r4,0x1                    ; 080FFF14
 ldrb  r0,[r4]                   ; 080FFF16  r0 = command param
 cmp   r0,0xFF                   ; 080FFF18
@@ -5561,8 +5560,7 @@ add   r4,0x1                    ; 080FFF1E
 ldrb  r6,[r4]                   ; 080FFF20  r6 = second param (Y)
 @@Code080FFF22:
 add   r4,0x1                    ; 080FFF22  loop to here
-@@Code080FFF24:
-                                ;           start processing byte here
+@@Code080FFF24:                 ;           start processing byte here
 ldrb  r0,[r4]                   ; 080FFF24  byte from message data
 cmp   r0,0xFF                   ; 080FFF26
 beq   @@Code080FFF14            ; 080FFF28

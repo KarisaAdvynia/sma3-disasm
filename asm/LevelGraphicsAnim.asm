@@ -297,16 +297,14 @@ strh  r0,[r2]                   ; 080E2D28  set bytes to copy for slot 1
 b     @@Code080E2D5A            ; 080E2D2A /
 .pool                           ; 080E2D2C
 
-@@Code080E2D4C:
-                                ;          \ runs if hv09 != 0A
+@@Code080E2D4C:                 ;          \ runs if hv09 != 0A
 ldr   r0,=Data08193370          ; 080E2D4C
 lsl   r1,r4,0x2                 ; 080E2D4E  r1 = [0300229E]*2
 add   r1,r1,r0                  ; 080E2D50
 ldr   r0,[r1]                   ; 080E2D52
 mov   r1,0x1                    ; 080E2D54
 bl    Sub080E2C44               ; 080E2D56  animate 0400 bytes at 06008C00
-@@Code080E2D5A:
-                                ;          /
+@@Code080E2D5A:                 ;          /
 pop   {r4}                      ; 080E2D5A
 pop   {r0}                      ; 080E2D5C
 bx    r0                        ; 080E2D5E
@@ -391,8 +389,7 @@ lsl   r0,r0,0x7                 ; 080E2DF0  4200
 b     @@Code080E2E5C            ; 080E2DF2 /
 .pool                           ; 080E2DF4
 
-@@Code080E2E20:
-                                ;          \ runs if frame counter is even
+@@Code080E2E20:                 ;          \ runs if frame counter is even
 ldr   r0,=Data081933E8          ; 080E2E20
 lsl   r2,r2,0x1                 ; 080E2E22
 add   r0,r2,r0                  ; 080E2E24
@@ -730,8 +727,7 @@ add   r1,r1,r0                  ; 080E312A
 ldr   r0,[r1]                   ; 080E312C
 mov   r1,0x1                    ; 080E312E
 bl    Sub080E2C44               ; 080E3130  animate 0400 bytes at 06008C00
-@@Code080E3134:
-                                ;          /
+@@Code080E3134:                 ;          /
 pop   {r4}                      ; 080E3134
 pop   {r0}                      ; 080E3136
 bx    r0                        ; 080E3138
@@ -809,8 +805,7 @@ lsl   r0,r0,0x7                 ; 080E31C2  4200
 b     @@Code080E3228            ; 080E31C4 /
 .pool                           ; 080E31C6
 
-@@Code080E31F0:
-                                ;          \ runs if frame counter &2 == 2
+@@Code080E31F0:                 ;          \ runs if frame counter &2 == 2
 ldr   r1,=0x4961                ; 080E31F0
 add   r0,r5,r1                  ; 080E31F2  03006B61
 mov   r3,0x1                    ; 080E31F4
@@ -967,8 +962,7 @@ add   r0,r0,r1                  ; 080E3338  offset with [030022A2]*2
 ldr   r0,[r0]                   ; 080E333A
 mov   r1,0x1                    ; 080E333C
 bl    Sub080E2C44               ; 080E333E  animate 0400 bytes at 06008C00
-@@Code080E3342:
-                                ;          /
+@@Code080E3342:                 ;          /
 pop   {r0}                      ; 080E3342
 bx    r0                        ; 080E3344
 .pool                           ; 080E3346
@@ -1218,7 +1212,7 @@ ldr   r0,=0x03007240            ; 080E3590  Normal gameplay IWRAM (Ptr to 030022
 ldr   r0,[r0]                   ; 080E3592  r0 = [03007240] (0300220C)
 ldr   r1,=0x29A4                ; 080E3594
 add   r0,r0,r1                  ; 080E3596  r0 = [03007240]+29A4 (030044B0)
-ldrh  r0,[r0]                   ; 080E3598 
+ldrh  r0,[r0]                   ; 080E3598
 cmp   r0,0x9                    ; 080E359A
 beq   @@Code080E35FC            ; 080E359C  if 030044B0 is 0009, return
 ldr   r5,=0x03002200            ; 080E359E
@@ -1227,8 +1221,7 @@ add   r7,r5,r2                  ; 080E35A2  r7 = 03006AA2
 ldr   r3,=0x485A                ; 080E35A4
 add   r3,r3,r5                  ; 080E35A6
 mov   r8,r3                     ; 080E35A8  r8 = 03006A5A
-@@Code080E35AA:
-                                ;           loop graphics animation for 0x20 (r6) frames, to ensure all VRAM tiles are initially loaded
+@@Code080E35AA:                 ;           loop graphics animation for 0x20 (r6) frames, to ensure all VRAM tiles are initially loaded
 ldrh  r0,[r7]                   ; 080E35AA \ increment frame counter (03006AA2)
 add   r0,0x1                    ; 080E35AC |  to process all frames of
 strh  r0,[r7]                   ; 080E35AE /  each animation?

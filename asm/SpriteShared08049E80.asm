@@ -4756,7 +4756,7 @@ ldrb  r0,[r0]                   ; 0804C5A8
 lsr   r0,r0,0x1                 ; 0804C5AA
 lsl   r0,r0,0x2                 ; 0804C5AC
 add   r0,r0,r1                  ; 0804C5AE  offset table with [sprite+9F]*2
-ldr   r0,[r0]                   ; 0804C5B0  
+ldr   r0,[r0]                   ; 0804C5B0
 str   r0,[r2,0x8]               ; 0804C5B2  set sprite X velocity
 ldr   r0,=0xFFFFFC00            ; 0804C5B4
 str   r0,[r2,0xC]               ; 0804C5B6  set sprite Y velocity
@@ -4767,8 +4767,7 @@ ldrh  r0,[r5]                   ; 0804C5BE  byte length of egg slots used
 cmp   r3,r0                     ; 0804C5C0
 bhs   @@Code0804C5F4            ; 0804C5C2
 mov   r7,r12                    ; 0804C5C4
-@@Code0804C5C6:
-                                ;           r6: pointer to egg slot table (03006FCA)
+@@Code0804C5C6:                 ;           r6: pointer to egg slot table (03006FCA)
 sub   r1,r3,0x2                 ; 0804C5C6  \
 asr   r1,r1,0x1                 ; 0804C5C8  |
 lsl   r1,r1,0x1                 ; 0804C5CA  |
@@ -4798,13 +4797,12 @@ mov   r2,r3                     ; 0804C5F4 /
 mov   r3,r2                     ; 0804C5F6
 ldr   r1,=0x03006D80            ; 0804C5F8
 mov   r2,0x92                   ; 0804C5FA
-lsl   r2,r2,0x2                 ; 0804C5FC  248  
+lsl   r2,r2,0x2                 ; 0804C5FC  248
 add   r0,r1,r2                  ; 0804C5FE  03006FC8
 strh  r3,[r0]                   ; 0804C600  set new length of egg table
 cmp   r3,0x3                    ; 0804C602
 bls   @@Code0804C644            ; 0804C604
-@@Loop0804C606:
-                                ;          \ check for sprite IDs that should be preserved in the later slots, and shift them back
+@@Loop0804C606:                 ;          \ check for sprite IDs that should be preserved in the later slots, and shift them back
 sub   r0,r3,0x4                 ; 0804C606  offset of new last egg slot(at most 5th slot of 6?)
 asr   r0,r0,0x1                 ; 0804C608
 lsl   r0,r0,0x1                 ; 0804C60A
@@ -7892,7 +7890,7 @@ mov   r1,r7                     ; 0804DFC6
 add   r1,0x48                   ; 0804DFC8
 mov   r0,0x8                    ; 0804DFCA
 strh  r0,[r1]                   ; 0804DFCC
-b     @@Return                  ; 0804DFCE / 
+b     @@Return                  ; 0804DFCE /
 .pool                           ; 0804DFD0
 
 @@Code0804DFD4:

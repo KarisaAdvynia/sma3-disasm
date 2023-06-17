@@ -1458,8 +1458,7 @@ mov   r2,0x0                    ; 0802F07A
 mov   r9,r2                     ; 0802F07C  r9 = color index for calculated gradient (stored from the end of table: 020293D0 + 2*(1B5-r9))
 mov   r3,0x0                    ; 0802F07E
 str   r3,[sp,0x10]              ; 0802F080  [sp+10] = outer loop index (color to process, 00-17)
-@@Code0802F082:
-                                ; loop across each pair of consecutive colors in ROM gradient
+@@Code0802F082:                 ; loop across each pair of consecutive colors in ROM gradient
 ldr   r0,[sp,0xC]               ; 0802F082  r0 = color table index for start of gradient /2
 ldr   r2,[sp,0x10]              ; 0802F084
 add   r1,r0,r2                  ; 0802F086  r1 = color table index for current color, /2
@@ -1571,8 +1570,7 @@ str   r1,[sp,0x14]              ; 0802F150  [sp+14] = color table index for next
 ldr   r3,[sp,0xC]               ; 0802F152
 add   r3,0x17                   ; 0802F154
 str   r3,[sp,0x18]              ; 0802F156  [sp+18] = color table index for final color, /2
-@@Code0802F158:
-                                ; loop: interpolate for a more detailed gradient, 0x10 colors per pair of colors in ROM gradient
+@@Code0802F158:                 ; loop: interpolate for a more detailed gradient, 0x10 colors per pair of colors in ROM gradient
 mov   r0,r7                     ; 0802F158  red component difference
 mul   r0,r2                     ; 0802F15A
 lsr   r0,r0,0x10                ; 0802F15C
@@ -1657,8 +1655,7 @@ ldr   r3,[sp,0x18]              ; 0802F1F6  r3 = color table index for final col
 lsl   r0,r3,0x1                 ; 0802F1F8
 add   r0,r0,r1                  ; 0802F1FA
 ldrh  r1,[r0]                   ; 0802F1FC  r1 = final color
-@@Code0802F1FE:
-                                ; loop: fill in remaining 46 colors in the gradient table with a copy of the final color
+@@Code0802F1FE:                 ; loop: fill in remaining 46 colors in the gradient table with a copy of the final color
 mov   r3,r9                     ; 0802F1FE \
 lsl   r0,r3,0x1                 ; 0802F200
 add   r0,r0,r2                  ; 0802F202

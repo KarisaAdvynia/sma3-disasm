@@ -393,8 +393,7 @@ cmp   r5,r10                    ; 080FCC5C
 bhs   @@Code080FCD14            ; 080FCC5E
 mov   r6,r9                     ; 080FCC60  r6 = starting X position
 ldr   r7,=0x03007248            ; 080FCC62  pointer to text buffer
-@@Code080FCC64:
-                                ; loop: generate character in WRAM buffer, one row at a time
+@@Code080FCC64:                 ; loop: generate character in WRAM buffer, one row at a time
 mov   r0,r8                     ; 080FCC64 \
 ldrb  r4,[r0]                   ; 080FCC66  1 row of text graphics
 mov   r0,0x1                    ; 080FCC68
@@ -523,18 +522,15 @@ b     @@Code080FCD64            ; 080FCD50
 cmp   r5,0xFF                   ; 080FCD52
 beq   @@Code080FCD5C            ; 080FCD54
 b     @@Code080FCD64            ; 080FCD56
-@@Code080FCD58:
-                                ;           jump here if byte is FE (set Y X)
+@@Code080FCD58:                 ;           jump here if byte is FE (set Y X)
 add   r4,0x1                    ; 080FCD58  increment byte to read
 ldrb  r7,[r4]                   ; 080FCD5A  r7 = next byte (new Y)
-@@Code080FCD5C:
-                                ;           jump here if byte is FF (set X only)
+@@Code080FCD5C:                 ;           jump here if byte is FF (set X only)
 add   r4,0x1                    ; 080FCD5C  increment byte to read
 ldrb  r6,[r4]                   ; 080FCD5E  r6 = next byte (new X)
 add   r4,0x1                    ; 080FCD60
 b     @@Code080FCD42            ; 080FCD62  proccess next byte immediately
-@@Code080FCD64:
-                                ;           runs if byte < FD
+@@Code080FCD64:                 ;           runs if byte < FD
 mov   r0,r6                     ; 080FCD64  X position
 mov   r1,r7                     ; 080FCD66  Y position
 mov   r2,r5                     ; 080FCD68  character ID
@@ -544,8 +540,7 @@ add   r0,r5,r0                  ; 080FCD70  index with character ID
 ldrb  r0,[r0]                   ; 080FCD72
 add   r6,r6,r0                  ; 080FCD74  increase X position by character width
 add   r4,0x1                    ; 080FCD76
-@@Code080FCD78:
-                                ;           jump here if byte is FD (end of data)
+@@Code080FCD78:                 ;           jump here if byte is FD (end of data)
 mov   r0,r8                     ; 080FCD78
 str   r4,[r0]                   ; 080FCD7A  save current position in message
 mov   r0,r9                     ; 080FCD7C

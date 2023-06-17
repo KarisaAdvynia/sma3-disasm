@@ -5860,7 +5860,7 @@ ldr   r0,=0x47C0                ; 08007810
 add   r7,r5,r0                  ; 08007812  030069C0
 ldrh  r1,[r7]                   ; 08007814  button flags, pressed this frame
 ldr   r0,=0x03FB                ; 08007816
-and   r0,r1                     ; 08007818  clear Select flag 
+and   r0,r1                     ; 08007818  clear Select flag
 cmp   r0,0x0                    ; 0800781A
 beq   @@Return                  ; 0800781C  if no non-Select buttons were pressed, return
 ldr   r4,=0x03006D70            ; 0800781E
@@ -7414,8 +7414,7 @@ mov   r3,0x0                    ; 08008734  initialize loop result
 mov   r2,0x0                    ; 08008736  loop index (world number -1)
 ldr   r4,=0x03006B6D            ; 08008738  Unlock/clear flags for each level ID
 mov   r5,0xF                    ; 0800873A
-@@Code0800873C:
-                                ;          \ loop: count number of x-8s cleared
+@@Code0800873C:                 ;          \ loop: count number of x-8s cleared
 lsl   r0,r2,0x1                 ; 0800873C \
 add   r0,r0,r2                  ; 0800873E | multiply world number by 0C
 lsl   r0,r0,0x2                 ; 08008740 /
@@ -19260,8 +19259,7 @@ add   r0,r6,r0                  ; 0800F20C
 ldrh  r4,[r0]                   ; 0800F20E
 ldr   r7,=0x03006D70            ; 0800F210
 ldr   r5,=0x015F                ; 0800F212
-@@Code0800F214:
-                                ; loop: load layer 0/1 tilemap
+@@Code0800F214:                 ; loop: load layer 0/1 tilemap
 ldr   r2,[r7]                   ; 0800F214
 mov   r0,r3                     ; 0800F216
 add   r0,0x40                   ; 0800F218
@@ -19276,7 +19274,7 @@ ldrh  r1,[r0]                   ; 0800F228
 mov   r0,r10                    ; 0800F22A
 and   r0,r1                     ; 0800F22C
 orr   r0,r4                     ; 0800F22E
-strh  r0,[r2]                   ; 0800F230 
+strh  r0,[r2]                   ; 0800F230
 add   r0,r3,0x1                 ; 0800F232
 lsl   r0,r0,0x10                ; 0800F234
 lsr   r3,r0,0x10                ; 0800F236
@@ -19290,8 +19288,7 @@ mov   r5,r12                    ; 0800F242
 mov   r1,r8                     ; 0800F244
 add   r0,r1,r2                  ; 0800F246
 ldrh  r4,[r0]                   ; 0800F248
-@@Code0800F24A:
-                                ; loop: replace tiles below world tab with borderless tiles
+@@Code0800F24A:                 ; loop: replace tiles below world tab with borderless tiles
 ldr   r1,[r7]                   ; 0800F24A
 add   r0,r3,r4                  ; 0800F24C
 lsl   r0,r0,0x1                 ; 0800F24E
@@ -19302,7 +19299,7 @@ add   r0,0x1                    ; 0800F256
 lsl   r0,r0,0x1                 ; 0800F258
 add   r0,r0,r2                  ; 0800F25A
 ldrh  r0,[r0]                   ; 0800F25C
-strh  r0,[r1]                   ; 0800F25E 
+strh  r0,[r1]                   ; 0800F25E
 add   r0,r3,0x1                 ; 0800F260
 lsl   r0,r0,0x10                ; 0800F262
 lsr   r3,r0,0x10                ; 0800F264

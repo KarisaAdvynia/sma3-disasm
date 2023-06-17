@@ -855,7 +855,7 @@ orr   r0,r5                     ; 080E6924
 ldr   r2,=0x020153FE            ; 080E6926
 add   r3,r7,r2                  ; 080E6928
 add   r0,0x80                   ; 080E692A
-strh  r0,[r3]                   ; 080E692C  store tens digit to pause screen tilemap buffer  
+strh  r0,[r3]                   ; 080E692C  store tens digit to pause screen tilemap buffer
 add   r1,r8                     ; 080E692E
 ldrh  r0,[r1]                   ; 080E6930
 orr   r0,r5                     ; 080E6932
@@ -1793,8 +1793,7 @@ cmp   r4,0x1D                   ; 080E7170  29dec
 bls   @@Code080E7178            ; 080E7172
 mov   r6,0x80                   ; 080E7174 \ runs if stars > 29dec
 lsl   r6,r6,0x6                 ; 080E7176 / 2000: use palette 2
-@@Code080E7178:
-                                ;           unlike red coins/flowers, star count is not capped in pause screen
+@@Code080E7178:                 ;           unlike red coins/flowers, star count is not capped in pause screen
 mov   r1,r4                     ; 080E7178
 cmp   r4,0x9                    ; 080E717A
 bls   @@Code080E7190            ; 080E717C
@@ -2069,8 +2068,7 @@ add   r1,r3,r0                  ; 080E7392
 mov   r0,r5                     ; 080E7394
 add   r0,0x80                   ; 080E7396
 strh  r0,[r1]                   ; 080E7398
-@@Code080E739A:
-                                ; load 5 rows for star/coin/flower score, and color yellow if 5 flowers
+@@Code080E739A:                 ; load 5 rows for star/coin/flower score, and color yellow if 5 flowers
 cmp   r7,0x1A                   ; 080E739A  copy 2 text rows up to tile 1A
 bhi   @@Code080E73BE            ; 080E739C
 ldr   r1,=0x020155C4            ; 080E739E \
@@ -2116,8 +2114,7 @@ ldrh  r1,[r0]                   ; 080E73EA
 mov   r0,r8                     ; 080E73EC
 orr   r0,r1                     ; 080E73EE  apply palette
 strh  r0,[r2]                   ; 080E73F0 /
-@@Code080E73F2:
-                                ; overwrite red coin text portion using white or yellow palette
+@@Code080E73F2:                 ; overwrite red coin text portion using white or yellow palette
 cmp   r7,0xF                    ; 080E73F2  copy 2 text rows up to tile 0F
 bhi   @@Code080E7416            ; 080E73F4
 ldr   r0,=0x020155C4            ; 080E73F6 \

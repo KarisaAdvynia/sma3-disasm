@@ -810,8 +810,7 @@ ldr   r2,=ExtObjA6_Tilemap      ; 08029E48
 b     @@Code08029E60            ; 08029E4A
 .pool                           ; 08029E4C
 
-@@Code08029E54:
-                                ;           runs if A5
+@@Code08029E54:                 ;           runs if A5
 ldr   r1,=ExtObjA5_RowOffsets   ; 08029E54
 lsr   r0,r0,0x10                ; 08029E56
 add   r0,r0,r1                  ; 08029E58  index with relY
@@ -1752,13 +1751,13 @@ lsr   r3,r4,0x10                ; 0802A61A
 cmp   r1,0x0                    ; 0802A61C
 bne   @@HighByte85              ; 0802A61E
 ldr   r1,=Ext88_Y3PipeTileBase  ; 0802A620 \ runs if prevtile high byte is not 85
-lsr   r0,r0,0x11                ; 0802A622 
+lsr   r0,r0,0x11                ; 0802A622
 lsl   r0,r0,0x1                 ; 0802A624  relX*2
 add   r0,r0,r1                  ; 0802A626  index with relX
 ldrh  r3,[r0]                   ; 0802A628  tile ID
-cmp   r3,0x0                    ; 0802A62A 
-bne   @@Code0802A638            ; 0802A62C 
-@@Return0:                            
+cmp   r3,0x0                    ; 0802A62A
+bne   @@Code0802A638            ; 0802A62C
+@@Return0:
 mov   r0,0x0                    ; 0802A62E  if value is 0, don't change tile
 b     @@Return                  ; 0802A630
 .pool                           ; 0802A632
@@ -1767,19 +1766,19 @@ b     @@Return                  ; 0802A630
 mov   r0,r5                     ; 0802A638
 add   r0,0x40                   ; 0802A63A
 ldrh  r0,[r0]                   ; 0802A63C  prevtile
-mov   r2,0xFF                   ; 0802A63E  
+mov   r2,0xFF                   ; 0802A63E
 lsl   r2,r2,0x8                 ; 0802A640  FF00
-and   r2,r0                     ; 0802A642  
-mov   r0,0xA8                   ; 0802A644  
+and   r2,r0                     ; 0802A642
+mov   r0,0xA8                   ; 0802A644
 lsl   r0,r0,0x5                 ; 0802A646  1500
-cmp   r2,r0                     ; 0802A648  
+cmp   r2,r0                     ; 0802A648
 beq   @@Return0                 ; 0802A64A  if prevtile high byte is 15, don't change tile
-mov   r0,0xF2                   ; 0802A64C  
+mov   r0,0xF2                   ; 0802A64C
 lsl   r0,r0,0x7                 ; 0802A64E  7900
-cmp   r2,r0                     ; 0802A650  
+cmp   r2,r0                     ; 0802A650
 beq   @@Return0                 ; 0802A652  if prevtile high byte is 79, don't change tile
 ldr   r0,=Ext88_Y0Y3PipeOffsets ; 0802A654
-lsr   r1,r4,0x11                ; 0802A656  
+lsr   r1,r4,0x11                ; 0802A656
 lsl   r1,r1,0x1                 ; 0802A658
 add   r1,r1,r0                  ; 0802A65A  index with (prevtile -99) & FE
 ldrh  r0,[r1]                   ; 0802A65C  some 16-bit value
@@ -1825,16 +1824,16 @@ lsr   r3,r3,0x10                ; 0802A69C
 cmp   r1,0x0                    ; 0802A69E
 bne   @@HighByte85              ; 0802A6A0
 ldr   r1,=Ext88_Y2PipeTileBase  ; 0802A6A2 \ runs if prevtile high byte is not 85
-lsr   r0,r0,0x11                ; 0802A6A4 
+lsr   r0,r0,0x11                ; 0802A6A4
 lsl   r0,r0,0x1                 ; 0802A6A6  relX*2
 add   r0,r0,r1                  ; 0802A6A8  index with relX
-ldrh  r2,[r0]                   ; 0802A6AA 
+ldrh  r2,[r0]                   ; 0802A6AA
 mov   r0,r4                     ; 0802A6AC  relX*2
-cmp   r0,0x0                    ; 0802A6AE 
-beq   @@PipeEdges               ; 0802A6B0 
-cmp   r0,0x6                    ; 0802A6B2 
-beq   @@PipeEdges               ; 0802A6B4 
-mov   r0,r2                     ; 0802A6B6 
+cmp   r0,0x0                    ; 0802A6AE
+beq   @@PipeEdges               ; 0802A6B0
+cmp   r0,0x6                    ; 0802A6B2
+beq   @@PipeEdges               ; 0802A6B4
+mov   r0,r2                     ; 0802A6B6
 b     @@Return                  ; 0802A6B8  if relX 1-2, return tile ID
 .pool                           ; 0802A6BA
 
@@ -1863,7 +1862,7 @@ cmp   r2,0x4                    ; 0802A6E6
 beq   @@ReturnAlt               ; 0802A6E8  if relX 1-2, return tile ID
 add   r0,r0,r3                  ; 0802A6EA \ if relX 0 or 3...
 lsl   r0,r0,0x10                ; 0802A6EC
-lsr   r0,r0,0x10                ; 0802A6EE / return (value + prevtile -854B) & FFFF 
+lsr   r0,r0,0x10                ; 0802A6EE / return (value + prevtile -854B) & FFFF
 @@ReturnAlt:
 mov   r2,r0                     ; 0802A6F0
 @@Return:
@@ -1925,7 +1924,7 @@ cmp   r2,0x4                    ; 0802A752
 beq   @@ReturnAlt               ; 0802A754  if relX 1-2, return tile ID
 add   r0,r0,r3                  ; 0802A756 \ if relX 0 or 3...
 lsl   r0,r0,0x10                ; 0802A758
-lsr   r0,r0,0x10                ; 0802A75A / return (value + prevtile -854B) & FFFF 
+lsr   r0,r0,0x10                ; 0802A75A / return (value + prevtile -854B) & FFFF
 @@ReturnAlt:
 mov   r2,r0                     ; 0802A75C
 @@Return:
@@ -3211,8 +3210,8 @@ bx    lr                        ; 0802B0E2
 .pool                           ; 0802B0E4
 
 ExtObj50_A8_Main:
-; object 00.50,00.A8 main
-; 0300224E: 00,10 for 50,A8
+; object 00.50,00.A8 main: arrow signs
+; 0300224E: 00 for 50, 10 for A8
 push  {r4-r7,lr}                ; 0802B0EC
 mov   r6,r0                     ; 0802B0EE
 add   r0,0x4C                   ; 0802B0F0  r0 = [03007240]+4C (03002258)
@@ -3254,7 +3253,7 @@ add   r0,r3,r1                  ; 0802B136
 ldrh  r0,[r0]                   ; 0802B138  tile 6A02+n*0E
 cmp   r4,r0                     ; 0802B13A
 bne   @@Code0802B16C            ; 0802B13C
-@@LandSurfaceTile:              ; runs if pre-existing tile is one of four land surface tiles
+@@LandSurfaceTile:              ;          \ runs if pre-existing tile is one of four land surface tiles
 ldr   r1,=ExtObj50_A8_MainTiles ; 0802B13E
 lsr   r0,r2,0x1                 ; 0802B140  r0 = <0,8 if 50,A8> + YX
 add   r0,0x2                    ; 0802B142
@@ -3266,7 +3265,7 @@ lsl   r1,r2,0x1                 ; 0802B14C  new offset to 0200800C
 mov   r2,0x80                   ; 0802B14E
 lsl   r2,r2,0x8                 ; 0802B150  8000
 add   r0,r0,r2                  ; 0802B152
-b     @@Code0802B172            ; 0802B154
+b     @@Code0802B172            ; 0802B154 /
 .pool                           ; 0802B156
 
 @@Code0802B16C:
@@ -3578,8 +3577,7 @@ cmp   r1,r0                     ; 0802B3EE
 bne   @@Code0802B3F6            ; 0802B3F0
 mov   r0,0xDE                   ; 0802B3F2  if last Y, return 00DE
 b     @@Return                  ; 0802B3F4
-@@Code0802B3F6:
-                                ;           runs if not last Y
+@@Code0802B3F6:                 ;           runs if not last Y
 mov   r0,r2                     ; 0802B3F6
 add   r0,0x4C                   ; 0802B3F8
 ldrh  r1,[r0]                   ; 0802B3FA  relative X
@@ -4073,8 +4071,7 @@ ldrh  r3,[r0]                   ; 0802B7A0  tile ID
 b     @@SetTile_r3              ; 0802B7A2
 .pool                           ; 0802B7A4
 
-@@Code0802B7AC:
-                                ;          \ runs if tile index <= 29:
+@@Code0802B7AC:                 ;          \ runs if tile index <= 29:
 ldr   r1,=0x9D65                ; 0802B7AC  use 9D65+index
 add   r0,r3,r1                  ; 0802B7AE
 lsl   r0,r0,0x10                ; 0802B7B0 /

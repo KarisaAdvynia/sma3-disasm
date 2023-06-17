@@ -105,7 +105,7 @@ bx    r0                        ; 0812C2EC
 Sub0812C2FC:
 push  {r4-r5,lr}                ; 0812C2FC
 ldr   r4,=0x0300000C            ; 0812C2FE  music state?
-ldrb  r0,[r4]                   ; 0812C300 
+ldrb  r0,[r4]                   ; 0812C300
 cmp   r0,0x1                    ; 0812C302
 bne   @@Code0812C31C            ; 0812C304
 mov   r0,0x13                   ; 0812C306
@@ -117,8 +117,7 @@ strb  r0,[r4]                   ; 0812C312
 b     @@Code0812C33A            ; 0812C314
 .pool                           ; 0812C316
 
-@@Code0812C31C:
-                                ;           runs if 0300000C is not 1
+@@Code0812C31C:                 ;           runs if 0300000C is not 1
 cmp   r0,0x1                    ; 0812C31C
 ble   @@Code0812C33A            ; 0812C31E
 cmp   r0,0x3                    ; 0812C320
@@ -202,8 +201,7 @@ cmp   r4,0x23                   ; 0812C3BE  music 23: death (Yoshi died)
 beq   @@Code0812C3C6            ; 0812C3C0
 cmp   r4,0x24                   ; 0812C3C2  music 24: death (Toadies grab Baby Mario)
 bne   @@Code0812C3D0            ; 0812C3C4
-@@Code0812C3C6:
-                                ;          \ runs if music is one of 0E, 23, 24:
+@@Code0812C3C6:                 ;          \ runs if music is one of 0E, 23, 24:
 ldr   r0,=0x0300000D            ; 0812C3C6 |  clear 0300000D-0E
 mov   r1,0x0                    ; 0812C3C8 |
 strb  r1,[r0]                   ; 0812C3CA |
@@ -5600,8 +5598,7 @@ mov   r0,0x0                    ; 0812EE7A  if the pointers are the same, return
 b     @@Code0812EE9C            ; 0812EE7C
 .pool                           ; 0812EE7E
 
-@@Code0812EE88:
-                                ;           runs if the pointers are different
+@@Code0812EE88:                 ;           runs if the pointers are different
 mov   r0,r2                     ; 0812EE88 \
 add   r0,0xC                    ; 0812EE8A | add 0C to 03000324
 str   r0,[r3]                   ; 0812EE8C /
@@ -5876,7 +5873,7 @@ Sub0812F0C8:
 push  {lr}                      ; 0812F0C8
 lsl   r0,r0,0x18                ; 0812F0CA
 lsr   r0,r0,0x18                ; 0812F0CC
-ldr   r1,=0x03000328            ; 0812F0CE 
+ldr   r1,=0x03000328            ; 0812F0CE
 ldr   r2,[r1]                   ; 0812F0D0
 mov   r1,0xC1                   ; 0812F0D2
 lsl   r1,r1,0x2                 ; 0812F0D4  r1 = 304

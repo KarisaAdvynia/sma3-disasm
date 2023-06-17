@@ -9255,21 +9255,18 @@ bne   @@Code081072AE            ; 081072A6
 ldrh  r0,[r5,0x8]               ; 081072A8  \
 add   r0,0x10                   ; 081072AA  | add 10 to Y position
 strh  r0,[r5,0x8]               ; 081072AC  /
-@@Code081072AE:
-                                ;          ; any other command jumps here
+@@Code081072AE:                 ;          ; any other command jumps here
 strh  r6,[r5,0xA]               ; 081072AE  [0300359A] = width
 mov   r0,r1                     ; 081072B0
 b     @@Code081072DC            ; 081072B2 / return command ID
-@@Code081072B4:
-                                ;          \ command 0A
+@@Code081072B4:                 ;          \ command 0A
 strh  r6,[r5,0xA]               ; 081072B4  [0300359A] = width
 ldrh  r0,[r5,0x8]               ; 081072B6  \
 add   r0,0x10                   ; 081072B8  | add 10 to Y position
 strh  r0,[r5,0x8]               ; 081072BA  /
 mov   r0,0xA                    ; 081072BC
 b     @@Code081072DC            ; 081072BE / return command ID
-@@Code081072C0:
-                                ;          \ runs if not FF: load character then loop
+@@Code081072C0:                 ;          \ runs if not FF: load character then loop
 ldr   r0,=Text_CharWidths       ; 081072C0  character width table
 add   r0,r1,r0                  ; 081072C2
 ldrb  r4,[r0]                   ; 081072C4  character width

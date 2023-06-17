@@ -3691,9 +3691,8 @@ lsr   r6,r0,0x10                ; 080E5554
 mov   r5,0xE3                   ; 080E5556
 lsl   r5,r5,0x1                 ; 080E5558  01C6
 mov   r4,0x0                    ; 080E555A
-@@Code080E555C:
-                                ;          \ loop: ?
-ldr   r0,=Data08194310          ; 080E555C 
+@@Code080E555C:                 ;          \ loop: ?
+ldr   r0,=Data08194310          ; 080E555C
 add   r0,r4,r0                  ; 080E555E
 ldrb  r0,[r0]                   ; 080E5560
 mov   r1,r5                     ; 080E5562
@@ -4133,8 +4132,7 @@ mov   r12,r0                    ; 080E597A
 ldr   r6,=0x030021A0            ; 080E597C  Score calc layer 3 buffer (02009758)
 ldr   r5,=0x017F                ; 080E597E
 ldr   r3,=0x023F                ; 080E5980
-@@Code080E5982:
-                                ; loop: fill all 240 halfwords of 02009758 with 017F
+@@Code080E5982:                 ; loop: fill all 240 halfwords of 02009758 with 017F
 ldr   r0,[r6]                   ; 080E5982 \
 lsl   r1,r2,0x1                 ; 080E5984
 add   r0,r0,r1                  ; 080E5986

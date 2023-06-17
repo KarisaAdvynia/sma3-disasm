@@ -354,8 +354,7 @@ str   r0,[r4]                   ; 0802F54E
 b     @@Code0802F576            ; 0802F550 /
 .pool                           ; 0802F552
 
-@@Code0802F568:
-                                ;          \ runs if byte is a character
+@@Code0802F568:                 ;          \ runs if byte is a character
 ldr   r2,=0x1B58                ; 0802F568
 add   r0,r4,r2                  ; 0802F56A  [0300637C]+1B58 (03003D64)
 ldrh  r0,[r0]                   ; 0802F56C  2x scale flag

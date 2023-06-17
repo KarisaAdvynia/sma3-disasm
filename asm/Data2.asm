@@ -1,912 +1,912 @@
 ; Large data
 
-Sublevel38_Main:                ; 081C1D54  
+Sublevel38_Main:                ; 081C1D54
 .incbin "../data/Sublevels/Sublevel38_Main.bin"
-Sublevel39_Main:                ; 081C1DA4  
+Sublevel39_Main:                ; 081C1DA4
 .incbin "../data/Sublevels/Sublevel39_Main.bin"
-Sublevel00_Main:                ; 081C1F29  
+Sublevel00_Main:                ; 081C1F29
 .incbin "../data/Sublevels/Sublevel00_Main.bin"
-Sublevel3A_Main:                ; 081C2265  
+Sublevel3A_Main:                ; 081C2265
 .incbin "../data/Sublevels/Sublevel3A_Main.bin"
-Sublevel38_Sprites:             ; 081C2320  
+Sublevel38_Sprites:             ; 081C2320
 .incbin "../data/Sublevels/Sublevel38_Sprites.bin"
-Sublevel39_Sprites:             ; 081C2324  
+Sublevel39_Sprites:             ; 081C2324
 .incbin "../data/Sublevels/Sublevel39_Sprites.bin"
-Sublevel00_Sprites:             ; 081C2354  
+Sublevel00_Sprites:             ; 081C2354
 .incbin "../data/Sublevels/Sublevel00_Sprites.bin"
-Sublevel3A_Sprites:             ; 081C2434  
+Sublevel3A_Sprites:             ; 081C2434
 .incbin "../data/Sublevels/Sublevel3A_Sprites.bin"
-Sublevel01_Main:                ; 081C245C  
+Sublevel01_Main:                ; 081C245C
 .incbin "../data/Sublevels/Sublevel01_Main.bin"
-Sublevel3B_Main:                ; 081C264E  
+Sublevel3B_Main:                ; 081C264E
 .incbin "../data/Sublevels/Sublevel3B_Main.bin"
-Sublevel01_Sprites:             ; 081C2D70  
+Sublevel01_Sprites:             ; 081C2D70
 .incbin "../data/Sublevels/Sublevel01_Sprites.bin"
-Sublevel3B_Sprites:             ; 081C2E18  
+Sublevel3B_Sprites:             ; 081C2E18
 .incbin "../data/Sublevels/Sublevel3B_Sprites.bin"
-Sublevel02_Main:                ; 081C2F00  
+Sublevel02_Main:                ; 081C2F00
 .incbin "../data/Sublevels/Sublevel02_Main.bin"
-Sublevel3C_Main:                ; 081C2FD1  
+Sublevel3C_Main:                ; 081C2FD1
 .incbin "../data/Sublevels/Sublevel3C_Main.bin"
-Sublevel6D_Main:                ; 081C3856  
+Sublevel6D_Main:                ; 081C3856
 .incbin "../data/Sublevels/Sublevel6D_Main.bin"
-Sublevel02_Sprites:             ; 081C39B4  
+Sublevel02_Sprites:             ; 081C39B4
 .incbin "../data/Sublevels/Sublevel02_Sprites.bin"
-Sublevel3C_Sprites:             ; 081C39E0  
+Sublevel3C_Sprites:             ; 081C39E0
 .incbin "../data/Sublevels/Sublevel3C_Sprites.bin"
-Sublevel6D_Sprites:             ; 081C3AD8  
+Sublevel6D_Sprites:             ; 081C3AD8
 .incbin "../data/Sublevels/Sublevel6D_Sprites.bin"
-Sublevel03_Main:                ; 081C3B04  
+Sublevel03_Main:                ; 081C3B04
 .incbin "../data/Sublevels/Sublevel03_Main.bin"
-Sublevel3D_Main:                ; 081C4026  
+Sublevel3D_Main:                ; 081C4026
 .incbin "../data/Sublevels/Sublevel3D_Main.bin"
-Sublevel6E_Main:                ; 081C40DE  
+Sublevel6E_Main:                ; 081C40DE
 .incbin "../data/Sublevels/Sublevel6E_Main.bin"
-Sublevel99_Main:                ; 081C4194  
+Sublevel99_Main:                ; 081C4194
 .incbin "../data/Sublevels/Sublevel99_Main.bin"
-Sublevel03_Sprites:             ; 081C4218  
+Sublevel03_Sprites:             ; 081C4218
 .incbin "../data/Sublevels/Sublevel03_Sprites.bin"
-Sublevel3D_Sprites:             ; 081C4320  
+Sublevel3D_Sprites:             ; 081C4320
 .incbin "../data/Sublevels/Sublevel3D_Sprites.bin"
-Sublevel6E_Sprites:             ; 081C4330  
+Sublevel6E_Sprites:             ; 081C4330
 .incbin "../data/Sublevels/Sublevel6E_Sprites.bin"
-Sublevel99_Sprites:             ; 081C4368  
+Sublevel99_Sprites:             ; 081C4368
 .incbin "../data/Sublevels/Sublevel99_Sprites.bin"
-Sublevel04_Main:                ; 081C4380  
+Sublevel04_Main:                ; 081C4380
 .incbin "../data/Sublevels/Sublevel04_Main.bin"
-Sublevel04_Sprites:             ; 081C4660  
+Sublevel04_Sprites:             ; 081C4660
 .incbin "../data/Sublevels/Sublevel04_Sprites.bin"
-Sublevel05_Main:                ; 081C46E8  
+Sublevel05_Main:                ; 081C46E8
 .incbin "../data/Sublevels/Sublevel05_Main.bin"
-Sublevel3E_Main:                ; 081C4980  
+Sublevel3E_Main:                ; 081C4980
 .incbin "../data/Sublevels/Sublevel3E_Main.bin"
-Sublevel6F_Main:                ; 081C4B87  
+Sublevel6F_Main:                ; 081C4B87
 .incbin "../data/Sublevels/Sublevel6F_Main.bin"
-Sublevel9A_Main:                ; 081C4CBB  
+Sublevel9A_Main:                ; 081C4CBB
 .incbin "../data/Sublevels/Sublevel9A_Main.bin"
-Sublevel05_Sprites:             ; 081C4FFC  
+Sublevel05_Sprites:             ; 081C4FFC
 .incbin "../data/Sublevels/Sublevel05_Sprites.bin"
-Sublevel3E_Sprites:             ; 081C50B0  
+Sublevel3E_Sprites:             ; 081C50B0
 .incbin "../data/Sublevels/Sublevel3E_Sprites.bin"
-Sublevel6F_Sprites:             ; 081C5100  
+Sublevel6F_Sprites:             ; 081C5100
 .incbin "../data/Sublevels/Sublevel6F_Sprites.bin"
-Sublevel9A_Sprites:             ; 081C511C  
+Sublevel9A_Sprites:             ; 081C511C
 .incbin "../data/Sublevels/Sublevel9A_Sprites.bin"
-Sublevel06_Main:                ; 081C5168  
+Sublevel06_Main:                ; 081C5168
 .incbin "../data/Sublevels/Sublevel06_Main.bin"
-Sublevel3F_Main:                ; 081C58F0  
+Sublevel3F_Main:                ; 081C58F0
 .incbin "../data/Sublevels/Sublevel3F_Main.bin"
-Sublevel06_Sprites:             ; 081C59C4  
+Sublevel06_Sprites:             ; 081C59C4
 .incbin "../data/Sublevels/Sublevel06_Sprites.bin"
-Sublevel3F_Sprites:             ; 081C5A9C  
+Sublevel3F_Sprites:             ; 081C5A9C
 .incbin "../data/Sublevels/Sublevel3F_Sprites.bin"
-Sublevel07_Main:                ; 081C5AF4  
+Sublevel07_Main:                ; 081C5AF4
 .incbin "../data/Sublevels/Sublevel07_Main.bin"
-Sublevel40_Main:                ; 081C5D60  
+Sublevel40_Main:                ; 081C5D60
 .incbin "../data/Sublevels/Sublevel40_Main.bin"
-Sublevel70_Main:                ; 081C5E78  
+Sublevel70_Main:                ; 081C5E78
 .incbin "../data/Sublevels/Sublevel70_Main.bin"
-Sublevel9B_Main:                ; 081C5F39  
+Sublevel9B_Main:                ; 081C5F39
 .incbin "../data/Sublevels/Sublevel9B_Main.bin"
-Sublevel07_Sprites:             ; 081C6238  
+Sublevel07_Sprites:             ; 081C6238
 .incbin "../data/Sublevels/Sublevel07_Sprites.bin"
-Sublevel40_Sprites:             ; 081C62A8  
+Sublevel40_Sprites:             ; 081C62A8
 .incbin "../data/Sublevels/Sublevel40_Sprites.bin"
-Sublevel70_Sprites:             ; 081C62CC  
+Sublevel70_Sprites:             ; 081C62CC
 .incbin "../data/Sublevels/Sublevel70_Sprites.bin"
-Sublevel9B_Sprites:             ; 081C62D8  
+Sublevel9B_Sprites:             ; 081C62D8
 .incbin "../data/Sublevels/Sublevel9B_Sprites.bin"
-Sublevel08_Main:                ; 081C637C  
+Sublevel08_Main:                ; 081C637C
 .incbin "../data/Sublevels/Sublevel08_Main.bin"
-Sublevel08_Sprites:             ; 081C66A0  
+Sublevel08_Sprites:             ; 081C66A0
 .incbin "../data/Sublevels/Sublevel08_Sprites.bin"
-SublevelDE_Main:                ; 081C6724  
+SublevelDE_Main:                ; 081C6724
 .incbin "../data/Sublevels/SublevelDE_Main.bin"
-SublevelDF_Main:                ; 081C6A9E  
+SublevelDF_Main:                ; 081C6A9E
 .incbin "../data/Sublevels/SublevelDF_Main.bin"
-SublevelF3_Main:                ; 081C6D62  
+SublevelF3_Main:                ; 081C6D62
 .incbin "../data/Sublevels/SublevelF3_Main.bin"
-SublevelDE_Sprites:             ; 081C70CC  
+SublevelDE_Sprites:             ; 081C70CC
 .incbin "../data/Sublevels/SublevelDE_Sprites.bin"
-SublevelDF_Sprites:             ; 081C7170  
+SublevelDF_Sprites:             ; 081C7170
 .incbin "../data/Sublevels/SublevelDF_Sprites.bin"
-SublevelF3_Sprites:             ; 081C7238  
+SublevelF3_Sprites:             ; 081C7238
 .incbin "../data/Sublevels/SublevelF3_Sprites.bin"
-Sublevel09_Main:                ; 081C72D0  
+Sublevel09_Main:                ; 081C72D0
 .incbin "../data/Sublevels/Sublevel09_Main.bin"
-Sublevel41_Main:                ; 081C7436  
+Sublevel41_Main:                ; 081C7436
 .incbin "../data/Sublevels/Sublevel41_Main.bin"
-Sublevel71_Main:                ; 081C785B  
+Sublevel71_Main:                ; 081C785B
 .incbin "../data/Sublevels/Sublevel71_Main.bin"
-Sublevel9C_Main:                ; 081C7954  
+Sublevel9C_Main:                ; 081C7954
 .incbin "../data/Sublevels/Sublevel9C_Main.bin"
-SublevelBA_Main:                ; 081C7BCF  
+SublevelBA_Main:                ; 081C7BCF
 .incbin "../data/Sublevels/SublevelBA_Main.bin"
-Sublevel09_Sprites:             ; 081C7C18  
+Sublevel09_Sprites:             ; 081C7C18
 .incbin "../data/Sublevels/Sublevel09_Sprites.bin"
-Sublevel41_Sprites:             ; 081C7C5C  
+Sublevel41_Sprites:             ; 081C7C5C
 .incbin "../data/Sublevels/Sublevel41_Sprites.bin"
-Sublevel71_Sprites:             ; 081C7D68  
+Sublevel71_Sprites:             ; 081C7D68
 .incbin "../data/Sublevels/Sublevel71_Sprites.bin"
-Sublevel9C_Sprites:             ; 081C7D9C  
+Sublevel9C_Sprites:             ; 081C7D9C
 .incbin "../data/Sublevels/Sublevel9C_Sprites.bin"
-SublevelBA_Sprites:             ; 081C7DEC  
+SublevelBA_Sprites:             ; 081C7DEC
 .incbin "../data/Sublevels/SublevelBA_Sprites.bin"
-Sublevel0A_Main:                ; 081C7E0C  
+Sublevel0A_Main:                ; 081C7E0C
 .incbin "../data/Sublevels/Sublevel0A_Main.bin"
-Sublevel42_Main:                ; 081C8363  
+Sublevel42_Main:                ; 081C8363
 .incbin "../data/Sublevels/Sublevel42_Main.bin"
-Sublevel72_Main:                ; 081C865C  
+Sublevel72_Main:                ; 081C865C
 .incbin "../data/Sublevels/Sublevel72_Main.bin"
-Sublevel0A_Sprites:             ; 081C8A4C  
+Sublevel0A_Sprites:             ; 081C8A4C
 .incbin "../data/Sublevels/Sublevel0A_Sprites.bin"
-Sublevel42_Sprites:             ; 081C8B9C  
+Sublevel42_Sprites:             ; 081C8B9C
 .incbin "../data/Sublevels/Sublevel42_Sprites.bin"
-Sublevel72_Sprites:             ; 081C8C20  
+Sublevel72_Sprites:             ; 081C8C20
 .incbin "../data/Sublevels/Sublevel72_Sprites.bin"
-Sublevel0B_Main:                ; 081C8D68  
+Sublevel0B_Main:                ; 081C8D68
 .incbin "../data/Sublevels/Sublevel0B_Main.bin"
-Sublevel43_Main:                ; 081C8FF9  
+Sublevel43_Main:                ; 081C8FF9
 .incbin "../data/Sublevels/Sublevel43_Main.bin"
-Sublevel73_Main:                ; 081C978E  
+Sublevel73_Main:                ; 081C978E
 .incbin "../data/Sublevels/Sublevel73_Main.bin"
-Sublevel0B_Sprites:             ; 081C988C  
+Sublevel0B_Sprites:             ; 081C988C
 .incbin "../data/Sublevels/Sublevel0B_Sprites.bin"
-Sublevel43_Sprites:             ; 081C9918  
+Sublevel43_Sprites:             ; 081C9918
 .incbin "../data/Sublevels/Sublevel43_Sprites.bin"
-Sublevel73_Sprites:             ; 081C9A6C  
+Sublevel73_Sprites:             ; 081C9A6C
 .incbin "../data/Sublevels/Sublevel73_Sprites.bin"
-Sublevel0C_Main:                ; 081C9A80  
+Sublevel0C_Main:                ; 081C9A80
 .incbin "../data/Sublevels/Sublevel0C_Main.bin"
-Sublevel44_Main:                ; 081C9BC4  
+Sublevel44_Main:                ; 081C9BC4
 .incbin "../data/Sublevels/Sublevel44_Main.bin"
-Sublevel74_Main:                ; 081C9F7C  
+Sublevel74_Main:                ; 081C9F7C
 .incbin "../data/Sublevels/Sublevel74_Main.bin"
-Sublevel9D_Main:                ; 081C9FD6  
+Sublevel9D_Main:                ; 081C9FD6
 .incbin "../data/Sublevels/Sublevel9D_Main.bin"
-SublevelBB_Main:                ; 081CA2EA  
+SublevelBB_Main:                ; 081CA2EA
 .incbin "../data/Sublevels/SublevelBB_Main.bin"
-SublevelC7_Main:                ; 081CA356  
+SublevelC7_Main:                ; 081CA356
 .incbin "../data/Sublevels/SublevelC7_Main.bin"
-SublevelCE_Main:                ; 081CA3FA  
+SublevelCE_Main:                ; 081CA3FA
 .incbin "../data/Sublevels/SublevelCE_Main.bin"
-Sublevel0C_Sprites:             ; 081CA498  
+Sublevel0C_Sprites:             ; 081CA498
 .incbin "../data/Sublevels/Sublevel0C_Sprites.bin"
-Sublevel44_Sprites:             ; 081CA4C8  
+Sublevel44_Sprites:             ; 081CA4C8
 .incbin "../data/Sublevels/Sublevel44_Sprites.bin"
-Sublevel74_Sprites:             ; 081CA558  
+Sublevel74_Sprites:             ; 081CA558
 .incbin "../data/Sublevels/Sublevel74_Sprites.bin"
-Sublevel9D_Sprites:             ; 081CA560  
+Sublevel9D_Sprites:             ; 081CA560
 .incbin "../data/Sublevels/Sublevel9D_Sprites.bin"
-SublevelBB_Sprites:             ; 081CA5D8  
+SublevelBB_Sprites:             ; 081CA5D8
 .incbin "../data/Sublevels/SublevelBB_Sprites.bin"
-SublevelC7_Sprites:             ; 081CA5F4  
+SublevelC7_Sprites:             ; 081CA5F4
 .incbin "../data/Sublevels/SublevelC7_Sprites.bin"
-SublevelCE_Sprites:             ; 081CA644  
+SublevelCE_Sprites:             ; 081CA644
 .incbin "../data/Sublevels/SublevelCE_Sprites.bin"
-Sublevel0D_Main:                ; 081CA660  
+Sublevel0D_Main:                ; 081CA660
 .incbin "../data/Sublevels/Sublevel0D_Main.bin"
-Sublevel45_Main:                ; 081CAA6B  
+Sublevel45_Main:                ; 081CAA6B
 .incbin "../data/Sublevels/Sublevel45_Main.bin"
-Sublevel75_Main:                ; 081CAC9F  
+Sublevel75_Main:                ; 081CAC9F
 .incbin "../data/Sublevels/Sublevel75_Main.bin"
-Sublevel9E_Main:                ; 081CAF6A  
+Sublevel9E_Main:                ; 081CAF6A
 .incbin "../data/Sublevels/Sublevel9E_Main.bin"
-SublevelBC_Main:                ; 081CB200  
+SublevelBC_Main:                ; 081CB200
 .incbin "../data/Sublevels/SublevelBC_Main.bin"
-Sublevel0D_Sprites:             ; 081CB318  
+Sublevel0D_Sprites:             ; 081CB318
 .incbin "../data/Sublevels/Sublevel0D_Sprites.bin"
-Sublevel45_Sprites:             ; 081CB3F8  
+Sublevel45_Sprites:             ; 081CB3F8
 .incbin "../data/Sublevels/Sublevel45_Sprites.bin"
-Sublevel75_Sprites:             ; 081CB4A4  
+Sublevel75_Sprites:             ; 081CB4A4
 .incbin "../data/Sublevels/Sublevel75_Sprites.bin"
-Sublevel9E_Sprites:             ; 081CB54C  
+Sublevel9E_Sprites:             ; 081CB54C
 .incbin "../data/Sublevels/Sublevel9E_Sprites.bin"
-SublevelBC_Sprites:             ; 081CB568  
+SublevelBC_Sprites:             ; 081CB568
 .incbin "../data/Sublevels/SublevelBC_Sprites.bin"
-Sublevel0E_Main:                ; 081CB5A8  
+Sublevel0E_Main:                ; 081CB5A8
 .incbin "../data/Sublevels/Sublevel0E_Main.bin"
-Sublevel46_Main:                ; 081CB810  
+Sublevel46_Main:                ; 081CB810
 .incbin "../data/Sublevels/Sublevel46_Main.bin"
-Sublevel76_Main:                ; 081CBEBE  
+Sublevel76_Main:                ; 081CBEBE
 .incbin "../data/Sublevels/Sublevel76_Main.bin"
-Sublevel9F_Main:                ; 081CC045  
+Sublevel9F_Main:                ; 081CC045
 .incbin "../data/Sublevels/Sublevel9F_Main.bin"
-SublevelBD_Main:                ; 081CC0DE  
+SublevelBD_Main:                ; 081CC0DE
 .incbin "../data/Sublevels/SublevelBD_Main.bin"
-Sublevel0E_Sprites:             ; 081CC154  
+Sublevel0E_Sprites:             ; 081CC154
 .incbin "../data/Sublevels/Sublevel0E_Sprites.bin"
-Sublevel46_Sprites:             ; 081CC1F4  
+Sublevel46_Sprites:             ; 081CC1F4
 .incbin "../data/Sublevels/Sublevel46_Sprites.bin"
-Sublevel76_Sprites:             ; 081CC2AC  
+Sublevel76_Sprites:             ; 081CC2AC
 .incbin "../data/Sublevels/Sublevel76_Sprites.bin"
-Sublevel9F_Sprites:             ; 081CC2D0  
+Sublevel9F_Sprites:             ; 081CC2D0
 .incbin "../data/Sublevels/Sublevel9F_Sprites.bin"
-SublevelBD_Sprites:             ; 081CC2F4  
+SublevelBD_Sprites:             ; 081CC2F4
 .incbin "../data/Sublevels/SublevelBD_Sprites.bin"
-Sublevel0F_Main:                ; 081CC318  
+Sublevel0F_Main:                ; 081CC318
 .incbin "../data/Sublevels/Sublevel0F_Main.bin"
-Sublevel47_Main:                ; 081CCA82  
+Sublevel47_Main:                ; 081CCA82
 .incbin "../data/Sublevels/Sublevel47_Main.bin"
-Sublevel77_Main:                ; 081CCC6D  
+Sublevel77_Main:                ; 081CCC6D
 .incbin "../data/Sublevels/Sublevel77_Main.bin"
-SublevelA0_Main:                ; 081CD06D  
+SublevelA0_Main:                ; 081CD06D
 .incbin "../data/Sublevels/SublevelA0_Main.bin"
-Sublevel0F_Sprites:             ; 081CD0FC  
+Sublevel0F_Sprites:             ; 081CD0FC
 .incbin "../data/Sublevels/Sublevel0F_Sprites.bin"
-Sublevel47_Sprites:             ; 081CD284  
+Sublevel47_Sprites:             ; 081CD284
 .incbin "../data/Sublevels/Sublevel47_Sprites.bin"
-Sublevel77_Sprites:             ; 081CD320  
+Sublevel77_Sprites:             ; 081CD320
 .incbin "../data/Sublevels/Sublevel77_Sprites.bin"
-SublevelA0_Sprites:             ; 081CD3D0  
+SublevelA0_Sprites:             ; 081CD3D0
 .incbin "../data/Sublevels/SublevelA0_Sprites.bin"
-Sublevel10_Main:                ; 081CD3E8  
+Sublevel10_Main:                ; 081CD3E8
 .incbin "../data/Sublevels/Sublevel10_Main.bin"
-Sublevel48_Main:                ; 081CD4C9  
+Sublevel48_Main:                ; 081CD4C9
 .incbin "../data/Sublevels/Sublevel48_Main.bin"
-Sublevel78_Main:                ; 081CD684  
+Sublevel78_Main:                ; 081CD684
 .incbin "../data/Sublevels/Sublevel78_Main.bin"
-SublevelA1_Main:                ; 081CD854  
+SublevelA1_Main:                ; 081CD854
 .incbin "../data/Sublevels/SublevelA1_Main.bin"
-SublevelBE_Main:                ; 081CDB6A  
+SublevelBE_Main:                ; 081CDB6A
 .incbin "../data/Sublevels/SublevelBE_Main.bin"
-SublevelC8_Main:                ; 081CDCC3  
+SublevelC8_Main:                ; 081CDCC3
 .incbin "../data/Sublevels/SublevelC8_Main.bin"
-SublevelCF_Main:                ; 081CDDAA  
+SublevelCF_Main:                ; 081CDDAA
 .incbin "../data/Sublevels/SublevelCF_Main.bin"
-SublevelD4_Main:                ; 081CDDC6  
+SublevelD4_Main:                ; 081CDDC6
 .incbin "../data/Sublevels/SublevelD4_Main.bin"
-Sublevel10_Sprites:             ; 081CDED4  
+Sublevel10_Sprites:             ; 081CDED4
 .incbin "../data/Sublevels/Sublevel10_Sprites.bin"
-Sublevel48_Sprites:             ; 081CDEE0  
+Sublevel48_Sprites:             ; 081CDEE0
 .incbin "../data/Sublevels/Sublevel48_Sprites.bin"
-Sublevel78_Sprites:             ; 081CDF38  
+Sublevel78_Sprites:             ; 081CDF38
 .incbin "../data/Sublevels/Sublevel78_Sprites.bin"
-SublevelA1_Sprites:             ; 081CDF88  
+SublevelA1_Sprites:             ; 081CDF88
 .incbin "../data/Sublevels/SublevelA1_Sprites.bin"
-SublevelBE_Sprites:             ; 081CE018  
+SublevelBE_Sprites:             ; 081CE018
 .incbin "../data/Sublevels/SublevelBE_Sprites.bin"
-SublevelC8_Sprites:             ; 081CE04C  
+SublevelC8_Sprites:             ; 081CE04C
 .incbin "../data/Sublevels/SublevelC8_Sprites.bin"
-SublevelCF_Sprites:             ; 081CE07C  
+SublevelCF_Sprites:             ; 081CE07C
 .incbin "../data/Sublevels/SublevelCF_Sprites.bin"
-SublevelD4_Sprites:             ; 081CE088  
+SublevelD4_Sprites:             ; 081CE088
 .incbin "../data/Sublevels/SublevelD4_Sprites.bin"
-Sublevel11_Main:                ; 081CE0C4  
+Sublevel11_Main:                ; 081CE0C4
 .incbin "../data/Sublevels/Sublevel11_Main.bin"
-Sublevel49_Main:                ; 081CE2E9  
+Sublevel49_Main:                ; 081CE2E9
 .incbin "../data/Sublevels/Sublevel49_Main.bin"
-Sublevel11_Sprites:             ; 081CE3F8  
+Sublevel11_Sprites:             ; 081CE3F8
 .incbin "../data/Sublevels/Sublevel11_Sprites.bin"
-Sublevel49_Sprites:             ; 081CE45C  
+Sublevel49_Sprites:             ; 081CE45C
 .incbin "../data/Sublevels/Sublevel49_Sprites.bin"
-SublevelE0_Main:                ; 081CE47C  
+SublevelE0_Main:                ; 081CE47C
 .incbin "../data/Sublevels/SublevelE0_Main.bin"
-SublevelE1_Main:                ; 081CEB4F  
+SublevelE1_Main:                ; 081CEB4F
 .incbin "../data/Sublevels/SublevelE1_Main.bin"
-SublevelE2_Main:                ; 081CEF16  
+SublevelE2_Main:                ; 081CEF16
 .incbin "../data/Sublevels/SublevelE2_Main.bin"
-SublevelF4_Main:                ; 081CF31F  
+SublevelF4_Main:                ; 081CF31F
 .incbin "../data/Sublevels/SublevelF4_Main.bin"
-SublevelE0_Sprites:             ; 081CF37C  
+SublevelE0_Sprites:             ; 081CF37C
 .incbin "../data/Sublevels/SublevelE0_Sprites.bin"
-SublevelE1_Sprites:             ; 081CF460  
+SublevelE1_Sprites:             ; 081CF460
 .incbin "../data/Sublevels/SublevelE1_Sprites.bin"
-SublevelE2_Sprites:             ; 081CF538  
+SublevelE2_Sprites:             ; 081CF538
 .incbin "../data/Sublevels/SublevelE2_Sprites.bin"
-SublevelF4_Sprites:             ; 081CF61C  
+SublevelF4_Sprites:             ; 081CF61C
 .incbin "../data/Sublevels/SublevelF4_Sprites.bin"
-Sublevel12_Main:                ; 081CF638  
+Sublevel12_Main:                ; 081CF638
 .incbin "../data/Sublevels/Sublevel12_Main.bin"
-Sublevel4A_Main:                ; 081CF7A4  
+Sublevel4A_Main:                ; 081CF7A4
 .incbin "../data/Sublevels/Sublevel4A_Main.bin"
-Sublevel79_Main:                ; 081CFC27  
+Sublevel79_Main:                ; 081CFC27
 .incbin "../data/Sublevels/Sublevel79_Main.bin"
-SublevelA2_Main:                ; 081CFDD1  
+SublevelA2_Main:                ; 081CFDD1
 .incbin "../data/Sublevels/SublevelA2_Main.bin"
-Sublevel12_Sprites:             ; 081CFE20  
+Sublevel12_Sprites:             ; 081CFE20
 .incbin "../data/Sublevels/Sublevel12_Sprites.bin"
-Sublevel4A_Sprites:             ; 081CFE54  
+Sublevel4A_Sprites:             ; 081CFE54
 .incbin "../data/Sublevels/Sublevel4A_Sprites.bin"
-Sublevel79_Sprites:             ; 081CFF5C  
+Sublevel79_Sprites:             ; 081CFF5C
 .incbin "../data/Sublevels/Sublevel79_Sprites.bin"
-SublevelA2_Sprites:             ; 081CFF90  
+SublevelA2_Sprites:             ; 081CFF90
 .incbin "../data/Sublevels/SublevelA2_Sprites.bin"
-Sublevel13_Main:                ; 081CFFEC  
+Sublevel13_Main:                ; 081CFFEC
 .incbin "../data/Sublevels/Sublevel13_Main.bin"
-Sublevel4B_Main:                ; 081D024E  
+Sublevel4B_Main:                ; 081D024E
 .incbin "../data/Sublevels/Sublevel4B_Main.bin"
-Sublevel13_Sprites:             ; 081D02AC  
+Sublevel13_Sprites:             ; 081D02AC
 .incbin "../data/Sublevels/Sublevel13_Sprites.bin"
-Sublevel4B_Sprites:             ; 081D03F8  
+Sublevel4B_Sprites:             ; 081D03F8
 .incbin "../data/Sublevels/Sublevel4B_Sprites.bin"
-Sublevel14_Main:                ; 081D0404  
+Sublevel14_Main:                ; 081D0404
 .incbin "../data/Sublevels/Sublevel14_Main.bin"
-Sublevel4C_Main:                ; 081D0756  
+Sublevel4C_Main:                ; 081D0756
 .incbin "../data/Sublevels/Sublevel4C_Main.bin"
-Sublevel7A_Main:                ; 081D0BC4  
+Sublevel7A_Main:                ; 081D0BC4
 .incbin "../data/Sublevels/Sublevel7A_Main.bin"
-Sublevel14_Sprites:             ; 081D0D30  
+Sublevel14_Sprites:             ; 081D0D30
 .incbin "../data/Sublevels/Sublevel14_Sprites.bin"
-Sublevel4C_Sprites:             ; 081D0DD0  
+Sublevel4C_Sprites:             ; 081D0DD0
 .incbin "../data/Sublevels/Sublevel4C_Sprites.bin"
-Sublevel7A_Sprites:             ; 081D0F20  
+Sublevel7A_Sprites:             ; 081D0F20
 .incbin "../data/Sublevels/Sublevel7A_Sprites.bin"
-Sublevel15_Main:                ; 081D1030  
+Sublevel15_Main:                ; 081D1030
 .incbin "../data/Sublevels/Sublevel15_Main.bin"
-Sublevel4D_Main:                ; 081D118C  
+Sublevel4D_Main:                ; 081D118C
 .incbin "../data/Sublevels/Sublevel4D_Main.bin"
-Sublevel7B_Main:                ; 081D1508  
+Sublevel7B_Main:                ; 081D1508
 .incbin "../data/Sublevels/Sublevel7B_Main.bin"
-SublevelA3_Main:                ; 081D17A5  
+SublevelA3_Main:                ; 081D17A5
 .incbin "../data/Sublevels/SublevelA3_Main.bin"
-SublevelBF_Main:                ; 081D1888  
+SublevelBF_Main:                ; 081D1888
 .incbin "../data/Sublevels/SublevelBF_Main.bin"
-SublevelD0_Main:                ; 081D1902  
+SublevelD0_Main:                ; 081D1902
 .incbin "../data/Sublevels/SublevelD0_Main.bin"
-SublevelC9_Main:                ; 081D197C  
+SublevelC9_Main:                ; 081D197C
 .incbin "../data/Sublevels/SublevelC9_Main.bin"
-SublevelD5_Main:                ; 081D1993  
+SublevelD5_Main:                ; 081D1993
 .incbin "../data/Sublevels/SublevelD5_Main.bin"
-SublevelD7_Main:                ; 081D1AFF  
+SublevelD7_Main:                ; 081D1AFF
 .incbin "../data/Sublevels/SublevelD7_Main.bin"
-Sublevel15_Sprites:             ; 081D1BA4  
+Sublevel15_Sprites:             ; 081D1BA4
 .incbin "../data/Sublevels/Sublevel15_Sprites.bin"
-Sublevel4D_Sprites:             ; 081D1BF8  
+Sublevel4D_Sprites:             ; 081D1BF8
 .incbin "../data/Sublevels/Sublevel4D_Sprites.bin"
-Sublevel7B_Sprites:             ; 081D1C94  
+Sublevel7B_Sprites:             ; 081D1C94
 .incbin "../data/Sublevels/Sublevel7B_Sprites.bin"
-SublevelA3_Sprites:             ; 081D1D2C  
+SublevelA3_Sprites:             ; 081D1D2C
 .incbin "../data/Sublevels/SublevelA3_Sprites.bin"
-SublevelBF_Sprites:             ; 081D1D4C  
+SublevelBF_Sprites:             ; 081D1D4C
 .incbin "../data/Sublevels/SublevelBF_Sprites.bin"
-SublevelC9_Sprites:             ; 081D1D54  
+SublevelC9_Sprites:             ; 081D1D54
 .incbin "../data/Sublevels/SublevelC9_Sprites.bin"
-SublevelD0_Sprites:             ; 081D1D5C  
+SublevelD0_Sprites:             ; 081D1D5C
 .incbin "../data/Sublevels/SublevelD0_Sprites.bin"
-SublevelD5_Sprites:             ; 081D1D64  
+SublevelD5_Sprites:             ; 081D1D64
 .incbin "../data/Sublevels/SublevelD5_Sprites.bin"
-SublevelD7_Sprites:             ; 081D1D90  
+SublevelD7_Sprites:             ; 081D1D90
 .incbin "../data/Sublevels/SublevelD7_Sprites.bin"
-Sublevel16_Main:                ; 081D1DC8  
+Sublevel16_Main:                ; 081D1DC8
 .incbin "../data/Sublevels/Sublevel16_Main.bin"
-Sublevel4E_Main:                ; 081D1F5E  
+Sublevel4E_Main:                ; 081D1F5E
 .incbin "../data/Sublevels/Sublevel4E_Main.bin"
-Sublevel7C_Main:                ; 081D2246  
+Sublevel7C_Main:                ; 081D2246
 .incbin "../data/Sublevels/Sublevel7C_Main.bin"
-SublevelA4_Main:                ; 081D24B6  
+SublevelA4_Main:                ; 081D24B6
 .incbin "../data/Sublevels/SublevelA4_Main.bin"
-Sublevel16_Sprites:             ; 081D2558  
+Sublevel16_Sprites:             ; 081D2558
 .incbin "../data/Sublevels/Sublevel16_Sprites.bin"
-Sublevel4E_Sprites:             ; 081D25C4  
+Sublevel4E_Sprites:             ; 081D25C4
 .incbin "../data/Sublevels/Sublevel4E_Sprites.bin"
-Sublevel7C_Sprites:             ; 081D2640  
+Sublevel7C_Sprites:             ; 081D2640
 .incbin "../data/Sublevels/Sublevel7C_Sprites.bin"
-SublevelA4_Sprites:             ; 081D26D0  
+SublevelA4_Sprites:             ; 081D26D0
 .incbin "../data/Sublevels/SublevelA4_Sprites.bin"
-Sublevel17_Main:                ; 081D2724  
+Sublevel17_Main:                ; 081D2724
 .incbin "../data/Sublevels/Sublevel17_Main.bin"
-Sublevel4F_Main:                ; 081D27D0  
+Sublevel4F_Main:                ; 081D27D0
 .incbin "../data/Sublevels/Sublevel4F_Main.bin"
-Sublevel7D_Main:                ; 081D2F79  
+Sublevel7D_Main:                ; 081D2F79
 .incbin "../data/Sublevels/Sublevel7D_Main.bin"
-SublevelA5_Main:                ; 081D305B  
+SublevelA5_Main:                ; 081D305B
 .incbin "../data/Sublevels/SublevelA5_Main.bin"
-Sublevel17_Sprites:             ; 081D30D0  
+Sublevel17_Sprites:             ; 081D30D0
 .incbin "../data/Sublevels/Sublevel17_Sprites.bin"
-Sublevel4F_Sprites:             ; 081D30E8  
+Sublevel4F_Sprites:             ; 081D30E8
 .incbin "../data/Sublevels/Sublevel4F_Sprites.bin"
-Sublevel7D_Sprites:             ; 081D31D0  
+Sublevel7D_Sprites:             ; 081D31D0
 .incbin "../data/Sublevels/Sublevel7D_Sprites.bin"
-SublevelA5_Sprites:             ; 081D31E8  
+SublevelA5_Sprites:             ; 081D31E8
 .incbin "../data/Sublevels/SublevelA5_Sprites.bin"
-Sublevel18_Main:                ; 081D31F8  
+Sublevel18_Main:                ; 081D31F8
 .incbin "../data/Sublevels/Sublevel18_Main.bin"
-Sublevel50_Main:                ; 081D33C5  
+Sublevel50_Main:                ; 081D33C5
 .incbin "../data/Sublevels/Sublevel50_Main.bin"
-Sublevel7E_Main:                ; 081D368E  
+Sublevel7E_Main:                ; 081D368E
 .incbin "../data/Sublevels/Sublevel7E_Main.bin"
-SublevelA6_Main:                ; 081D3884  
+SublevelA6_Main:                ; 081D3884
 .incbin "../data/Sublevels/SublevelA6_Main.bin"
-SublevelC0_Main:                ; 081D3997  
+SublevelC0_Main:                ; 081D3997
 .incbin "../data/Sublevels/SublevelC0_Main.bin"
-Sublevel18_Sprites:             ; 081D3AB4  
+Sublevel18_Sprites:             ; 081D3AB4
 .incbin "../data/Sublevels/Sublevel18_Sprites.bin"
-Sublevel50_Sprites:             ; 081D3B18  
+Sublevel50_Sprites:             ; 081D3B18
 .incbin "../data/Sublevels/Sublevel50_Sprites.bin"
-Sublevel7E_Sprites:             ; 081D3BD4  
+Sublevel7E_Sprites:             ; 081D3BD4
 .incbin "../data/Sublevels/Sublevel7E_Sprites.bin"
-SublevelA6_Sprites:             ; 081D3C74  
+SublevelA6_Sprites:             ; 081D3C74
 .incbin "../data/Sublevels/SublevelA6_Sprites.bin"
-SublevelC0_Sprites:             ; 081D3CC8  
+SublevelC0_Sprites:             ; 081D3CC8
 .incbin "../data/Sublevels/SublevelC0_Sprites.bin"
-Sublevel19_Main:                ; 081D3CFC  
+Sublevel19_Main:                ; 081D3CFC
 .incbin "../data/Sublevels/Sublevel19_Main.bin"
-Sublevel51_Main:                ; 081D3D71  
+Sublevel51_Main:                ; 081D3D71
 .incbin "../data/Sublevels/Sublevel51_Main.bin"
-Sublevel7F_Main:                ; 081D4455  
+Sublevel7F_Main:                ; 081D4455
 .incbin "../data/Sublevels/Sublevel7F_Main.bin"
-SublevelA7_Main:                ; 081D4539  
+SublevelA7_Main:                ; 081D4539
 .incbin "../data/Sublevels/SublevelA7_Main.bin"
-Sublevel19_Sprites:             ; 081D4620  
+Sublevel19_Sprites:             ; 081D4620
 .incbin "../data/Sublevels/Sublevel19_Sprites.bin"
-Sublevel51_Sprites:             ; 081D4624  
+Sublevel51_Sprites:             ; 081D4624
 .incbin "../data/Sublevels/Sublevel51_Sprites.bin"
-Sublevel7F_Sprites:             ; 081D47A4  
+Sublevel7F_Sprites:             ; 081D47A4
 .incbin "../data/Sublevels/Sublevel7F_Sprites.bin"
-SublevelA7_Sprites:             ; 081D47AC  
+SublevelA7_Sprites:             ; 081D47AC
 .incbin "../data/Sublevels/SublevelA7_Sprites.bin"
-Sublevel1A_Main:                ; 081D47D8  
+Sublevel1A_Main:                ; 081D47D8
 .incbin "../data/Sublevels/Sublevel1A_Main.bin"
-Sublevel1A_Sprites:             ; 081D49F4  
+Sublevel1A_Sprites:             ; 081D49F4
 .incbin "../data/Sublevels/Sublevel1A_Sprites.bin"
-SublevelE3_Main:                ; 081D4AB4  
+SublevelE3_Main:                ; 081D4AB4
 .incbin "../data/Sublevels/SublevelE3_Main.bin"
-SublevelE4_Main:                ; 081D4CB7  
+SublevelE4_Main:                ; 081D4CB7
 .incbin "../data/Sublevels/SublevelE4_Main.bin"
-SublevelE5_Main:                ; 081D4FAF  
+SublevelE5_Main:                ; 081D4FAF
 .incbin "../data/Sublevels/SublevelE5_Main.bin"
-SublevelE6_Main:                ; 081D568F  
+SublevelE6_Main:                ; 081D568F
 .incbin "../data/Sublevels/SublevelE6_Main.bin"
-SublevelE3_Sprites:             ; 081D5EDC  
+SublevelE3_Sprites:             ; 081D5EDC
 .incbin "../data/Sublevels/SublevelE3_Sprites.bin"
-SublevelE4_Sprites:             ; 081D5F4C  
+SublevelE4_Sprites:             ; 081D5F4C
 .incbin "../data/Sublevels/SublevelE4_Sprites.bin"
-SublevelE5_Sprites:             ; 081D6048  
+SublevelE5_Sprites:             ; 081D6048
 .incbin "../data/Sublevels/SublevelE5_Sprites.bin"
-SublevelE6_Sprites:             ; 081D6144  
+SublevelE6_Sprites:             ; 081D6144
 .incbin "../data/Sublevels/SublevelE6_Sprites.bin"
-Sublevel1B_Main:                ; 081D6274  
+Sublevel1B_Main:                ; 081D6274
 .incbin "../data/Sublevels/Sublevel1B_Main.bin"
-Sublevel52_Main:                ; 081D65D9  
+Sublevel52_Main:                ; 081D65D9
 .incbin "../data/Sublevels/Sublevel52_Main.bin"
-Sublevel80_Main:                ; 081D68B3  
+Sublevel80_Main:                ; 081D68B3
 .incbin "../data/Sublevels/Sublevel80_Main.bin"
-SublevelA8_Main:                ; 081D6CAB  
+SublevelA8_Main:                ; 081D6CAB
 .incbin "../data/Sublevels/SublevelA8_Main.bin"
-Sublevel1B_Sprites:             ; 081D6E7C  
+Sublevel1B_Sprites:             ; 081D6E7C
 .incbin "../data/Sublevels/Sublevel1B_Sprites.bin"
-Sublevel52_Sprites:             ; 081D6F74  
+Sublevel52_Sprites:             ; 081D6F74
 .incbin "../data/Sublevels/Sublevel52_Sprites.bin"
-Sublevel80_Sprites:             ; 081D6FCC  
+Sublevel80_Sprites:             ; 081D6FCC
 .incbin "../data/Sublevels/Sublevel80_Sprites.bin"
-SublevelA8_Sprites:             ; 081D70A8  
+SublevelA8_Sprites:             ; 081D70A8
 .incbin "../data/Sublevels/SublevelA8_Sprites.bin"
-Sublevel1C_Main:                ; 081D70C4  
+Sublevel1C_Main:                ; 081D70C4
 .incbin "../data/Sublevels/Sublevel1C_Main.bin"
-Sublevel53_Main:                ; 081D710A  
+Sublevel53_Main:                ; 081D710A
 .incbin "../data/Sublevels/Sublevel53_Main.bin"
-Sublevel81_Main:                ; 081D75CA  
+Sublevel81_Main:                ; 081D75CA
 .incbin "../data/Sublevels/Sublevel81_Main.bin"
-SublevelA9_Main:                ; 081D79C6  
+SublevelA9_Main:                ; 081D79C6
 .incbin "../data/Sublevels/SublevelA9_Main.bin"
-Sublevel1C_Sprites:             ; 081D7AF0  
+Sublevel1C_Sprites:             ; 081D7AF0
 .incbin "../data/Sublevels/Sublevel1C_Sprites.bin"
-Sublevel53_Sprites:             ; 081D7B08  
+Sublevel53_Sprites:             ; 081D7B08
 .incbin "../data/Sublevels/Sublevel53_Sprites.bin"
-Sublevel81_Sprites:             ; 081D7C0C  
+Sublevel81_Sprites:             ; 081D7C0C
 .incbin "../data/Sublevels/Sublevel81_Sprites.bin"
-SublevelA9_Sprites:             ; 081D7CF8  
+SublevelA9_Sprites:             ; 081D7CF8
 .incbin "../data/Sublevels/SublevelA9_Sprites.bin"
-Sublevel1D_Main:                ; 081D7D10  
+Sublevel1D_Main:                ; 081D7D10
 .incbin "../data/Sublevels/Sublevel1D_Main.bin"
-Sublevel54_Main:                ; 081D7FC4  
+Sublevel54_Main:                ; 081D7FC4
 .incbin "../data/Sublevels/Sublevel54_Main.bin"
-Sublevel1D_Sprites:             ; 081D8260  
+Sublevel1D_Sprites:             ; 081D8260
 .incbin "../data/Sublevels/Sublevel1D_Sprites.bin"
-Sublevel54_Sprites:             ; 081D8378  
+Sublevel54_Sprites:             ; 081D8378
 .incbin "../data/Sublevels/Sublevel54_Sprites.bin"
-Sublevel1E_Main:                ; 081D8474  
+Sublevel1E_Main:                ; 081D8474
 .incbin "../data/Sublevels/Sublevel1E_Main.bin"
-Sublevel55_Main:                ; 081D85FE  
+Sublevel55_Main:                ; 081D85FE
 .incbin "../data/Sublevels/Sublevel55_Main.bin"
-Sublevel82_Main:                ; 081D8A45  
+Sublevel82_Main:                ; 081D8A45
 .incbin "../data/Sublevels/Sublevel82_Main.bin"
-SublevelAA_Main:                ; 081D8AE0  
+SublevelAA_Main:                ; 081D8AE0
 .incbin "../data/Sublevels/SublevelAA_Main.bin"
-SublevelC1_Main:                ; 081D8EE7  
+SublevelC1_Main:                ; 081D8EE7
 .incbin "../data/Sublevels/SublevelC1_Main.bin"
-Sublevel1E_Sprites:             ; 081D8FD4  
+Sublevel1E_Sprites:             ; 081D8FD4
 .incbin "../data/Sublevels/Sublevel1E_Sprites.bin"
-Sublevel55_Sprites:             ; 081D9070  
+Sublevel55_Sprites:             ; 081D9070
 .incbin "../data/Sublevels/Sublevel55_Sprites.bin"
-Sublevel82_Sprites:             ; 081D91F8  
+Sublevel82_Sprites:             ; 081D91F8
 .incbin "../data/Sublevels/Sublevel82_Sprites.bin"
-SublevelAA_Sprites:             ; 081D9204  
+SublevelAA_Sprites:             ; 081D9204
 .incbin "../data/Sublevels/SublevelAA_Sprites.bin"
-SublevelC1_Sprites:             ; 081D936C  
+SublevelC1_Sprites:             ; 081D936C
 .incbin "../data/Sublevels/SublevelC1_Sprites.bin"
-Sublevel1F_Main:                ; 081D93DC  
+Sublevel1F_Main:                ; 081D93DC
 .incbin "../data/Sublevels/Sublevel1F_Main.bin"
-Sublevel56_Main:                ; 081D99B9  
+Sublevel56_Main:                ; 081D99B9
 .incbin "../data/Sublevels/Sublevel56_Main.bin"
-Sublevel83_Main:                ; 081D9B45  
+Sublevel83_Main:                ; 081D9B45
 .incbin "../data/Sublevels/Sublevel83_Main.bin"
-Sublevel1F_Sprites:             ; 081D9B98  
+Sublevel1F_Sprites:             ; 081D9B98
 .incbin "../data/Sublevels/Sublevel1F_Sprites.bin"
-Sublevel56_Sprites:             ; 081D9CDC  
+Sublevel56_Sprites:             ; 081D9CDC
 .incbin "../data/Sublevels/Sublevel56_Sprites.bin"
-Sublevel83_Sprites:             ; 081D9D68  
+Sublevel83_Sprites:             ; 081D9D68
 .incbin "../data/Sublevels/Sublevel83_Sprites.bin"
-Sublevel20_Main:                ; 081D9D88  
+Sublevel20_Main:                ; 081D9D88
 .incbin "../data/Sublevels/Sublevel20_Main.bin"
-Sublevel57_Main:                ; 081DA16E  
+Sublevel57_Main:                ; 081DA16E
 .incbin "../data/Sublevels/Sublevel57_Main.bin"
-Sublevel84_Main:                ; 081DA394  
+Sublevel84_Main:                ; 081DA394
 .incbin "../data/Sublevels/Sublevel84_Main.bin"
-SublevelAB_Main:                ; 081DA6A2  
+SublevelAB_Main:                ; 081DA6A2
 .incbin "../data/Sublevels/SublevelAB_Main.bin"
-Sublevel20_Sprites:             ; 081DA80C  
+Sublevel20_Sprites:             ; 081DA80C
 .incbin "../data/Sublevels/Sublevel20_Sprites.bin"
-Sublevel57_Sprites:             ; 081DA8F8  
+Sublevel57_Sprites:             ; 081DA8F8
 .incbin "../data/Sublevels/Sublevel57_Sprites.bin"
-Sublevel84_Sprites:             ; 081DA998  
+Sublevel84_Sprites:             ; 081DA998
 .incbin "../data/Sublevels/Sublevel84_Sprites.bin"
-SublevelAB_Sprites:             ; 081DAA34  
+SublevelAB_Sprites:             ; 081DAA34
 .incbin "../data/Sublevels/SublevelAB_Sprites.bin"
-Sublevel21_Main:                ; 081DAA58  
+Sublevel21_Main:                ; 081DAA58
 .incbin "../data/Sublevels/Sublevel21_Main.bin"
-Sublevel58_Main:                ; 081DAF78  
+Sublevel58_Main:                ; 081DAF78
 .incbin "../data/Sublevels/Sublevel58_Main.bin"
-Sublevel85_Main:                ; 081DB198  
+Sublevel85_Main:                ; 081DB198
 .incbin "../data/Sublevels/Sublevel85_Main.bin"
-Sublevel21_Sprites:             ; 081DB20C  
+Sublevel21_Sprites:             ; 081DB20C
 .incbin "../data/Sublevels/Sublevel21_Sprites.bin"
-Sublevel58_Sprites:             ; 081DB2C8  
+Sublevel58_Sprites:             ; 081DB2C8
 .incbin "../data/Sublevels/Sublevel58_Sprites.bin"
-Sublevel85_Sprites:             ; 081DB338  
+Sublevel85_Sprites:             ; 081DB338
 .incbin "../data/Sublevels/Sublevel85_Sprites.bin"
-Sublevel22_Main:                ; 081DB388  
+Sublevel22_Main:                ; 081DB388
 .incbin "../data/Sublevels/Sublevel22_Main.bin"
-Sublevel59_Main:                ; 081DB90B  
+Sublevel59_Main:                ; 081DB90B
 .incbin "../data/Sublevels/Sublevel59_Main.bin"
-Sublevel86_Main:                ; 081DBC69  
+Sublevel86_Main:                ; 081DBC69
 .incbin "../data/Sublevels/Sublevel86_Main.bin"
-SublevelAC_Main:                ; 081DBDF9  
+SublevelAC_Main:                ; 081DBDF9
 .incbin "../data/Sublevels/SublevelAC_Main.bin"
-Sublevel22_Sprites:             ; 081DBE70  
+Sublevel22_Sprites:             ; 081DBE70
 .incbin "../data/Sublevels/Sublevel22_Sprites.bin"
-Sublevel59_Sprites:             ; 081DBF50  
+Sublevel59_Sprites:             ; 081DBF50
 .incbin "../data/Sublevels/Sublevel59_Sprites.bin"
-Sublevel86_Sprites:             ; 081DC030  
+Sublevel86_Sprites:             ; 081DC030
 .incbin "../data/Sublevels/Sublevel86_Sprites.bin"
-SublevelAC_Sprites:             ; 081DC040  
+SublevelAC_Sprites:             ; 081DC040
 .incbin "../data/Sublevels/SublevelAC_Sprites.bin"
-Sublevel23_Main:                ; 081DC050  
+Sublevel23_Main:                ; 081DC050
 .incbin "../data/Sublevels/Sublevel23_Main.bin"
-Sublevel5A_Main:                ; 081DC5E0  
+Sublevel5A_Main:                ; 081DC5E0
 .incbin "../data/Sublevels/Sublevel5A_Main.bin"
-Sublevel23_Sprites:             ; 081DC988  
+Sublevel23_Sprites:             ; 081DC988
 .incbin "../data/Sublevels/Sublevel23_Sprites.bin"
-Sublevel5A_Sprites:             ; 081DCA4C  
+Sublevel5A_Sprites:             ; 081DCA4C
 .incbin "../data/Sublevels/Sublevel5A_Sprites.bin"
-SublevelE7_Main:                ; 081DCB30  
+SublevelE7_Main:                ; 081DCB30
 .incbin "../data/Sublevels/SublevelE7_Main.bin"
-SublevelE8_Main:                ; 081DCE28  
+SublevelE8_Main:                ; 081DCE28
 .incbin "../data/Sublevels/SublevelE8_Main.bin"
-SublevelE9_Main:                ; 081DD352  
+SublevelE9_Main:                ; 081DD352
 .incbin "../data/Sublevels/SublevelE9_Main.bin"
-SublevelEA_Main:                ; 081DD4D9  
+SublevelEA_Main:                ; 081DD4D9
 .incbin "../data/Sublevels/SublevelEA_Main.bin"
-SublevelE7_Sprites:             ; 081DD690  
+SublevelE7_Sprites:             ; 081DD690
 .incbin "../data/Sublevels/SublevelE7_Sprites.bin"
-SublevelE8_Sprites:             ; 081DD788  
+SublevelE8_Sprites:             ; 081DD788
 .incbin "../data/Sublevels/SublevelE8_Sprites.bin"
-SublevelE9_Sprites:             ; 081DD88C  
+SublevelE9_Sprites:             ; 081DD88C
 .incbin "../data/Sublevels/SublevelE9_Sprites.bin"
-SublevelEA_Sprites:             ; 081DD8F8  
+SublevelEA_Sprites:             ; 081DD8F8
 .incbin "../data/Sublevels/SublevelEA_Sprites.bin"
-Sublevel24_Main:                ; 081DD9A0  
+Sublevel24_Main:                ; 081DD9A0
 .incbin "../data/Sublevels/Sublevel24_Main.bin"
-Sublevel5B_Main:                ; 081DDE4D  
+Sublevel5B_Main:                ; 081DDE4D
 .incbin "../data/Sublevels/Sublevel5B_Main.bin"
-Sublevel87_Main:                ; 081DE1AA  
+Sublevel87_Main:                ; 081DE1AA
 .incbin "../data/Sublevels/Sublevel87_Main.bin"
-SublevelAD_Main:                ; 081DE3BB  
+SublevelAD_Main:                ; 081DE3BB
 .incbin "../data/Sublevels/SublevelAD_Main.bin"
-SublevelC2_Main:                ; 081DE3E3  
+SublevelC2_Main:                ; 081DE3E3
 .incbin "../data/Sublevels/SublevelC2_Main.bin"
-Sublevel24_Sprites:             ; 081DE474  
+Sublevel24_Sprites:             ; 081DE474
 .incbin "../data/Sublevels/Sublevel24_Sprites.bin"
-Sublevel5B_Sprites:             ; 081DE534  
+Sublevel5B_Sprites:             ; 081DE534
 .incbin "../data/Sublevels/Sublevel5B_Sprites.bin"
-Sublevel87_Sprites:             ; 081DE5FC  
+Sublevel87_Sprites:             ; 081DE5FC
 .incbin "../data/Sublevels/Sublevel87_Sprites.bin"
-SublevelAD_Sprites:             ; 081DE6A8  
+SublevelAD_Sprites:             ; 081DE6A8
 .incbin "../data/Sublevels/SublevelAD_Sprites.bin"
-SublevelC2_Sprites:             ; 081DE6BC  
+SublevelC2_Sprites:             ; 081DE6BC
 .incbin "../data/Sublevels/SublevelC2_Sprites.bin"
-Sublevel25_Main:                ; 081DE6DC  
+Sublevel25_Main:                ; 081DE6DC
 .incbin "../data/Sublevels/Sublevel25_Main.bin"
-Sublevel5C_Main:                ; 081DE85C  
+Sublevel5C_Main:                ; 081DE85C
 .incbin "../data/Sublevels/Sublevel5C_Main.bin"
-Sublevel88_Main:                ; 081DE9D8  
+Sublevel88_Main:                ; 081DE9D8
 .incbin "../data/Sublevels/Sublevel88_Main.bin"
-SublevelAE_Main:                ; 081DECC8  
+SublevelAE_Main:                ; 081DECC8
 .incbin "../data/Sublevels/SublevelAE_Main.bin"
-Sublevel25_Sprites:             ; 081DEE14  
+Sublevel25_Sprites:             ; 081DEE14
 .incbin "../data/Sublevels/Sublevel25_Sprites.bin"
-Sublevel5C_Sprites:             ; 081DEE50  
+Sublevel5C_Sprites:             ; 081DEE50
 .incbin "../data/Sublevels/Sublevel5C_Sprites.bin"
-Sublevel88_Sprites:             ; 081DEEC8  
+Sublevel88_Sprites:             ; 081DEEC8
 .incbin "../data/Sublevels/Sublevel88_Sprites.bin"
-SublevelAE_Sprites:             ; 081DEF74  
+SublevelAE_Sprites:             ; 081DEF74
 .incbin "../data/Sublevels/SublevelAE_Sprites.bin"
-Sublevel26_Main:                ; 081DEF94  
+Sublevel26_Main:                ; 081DEF94
 .incbin "../data/Sublevels/Sublevel26_Main.bin"
-Sublevel5D_Main:                ; 081DF18D  
+Sublevel5D_Main:                ; 081DF18D
 .incbin "../data/Sublevels/Sublevel5D_Main.bin"
-Sublevel89_Main:                ; 081DF44C  
+Sublevel89_Main:                ; 081DF44C
 .incbin "../data/Sublevels/Sublevel89_Main.bin"
-SublevelAF_Main:                ; 081DF6AA  
+SublevelAF_Main:                ; 081DF6AA
 .incbin "../data/Sublevels/SublevelAF_Main.bin"
-SublevelC3_Main:                ; 081DF9AD  
+SublevelC3_Main:                ; 081DF9AD
 .incbin "../data/Sublevels/SublevelC3_Main.bin"
-SublevelCA_Main:                ; 081DFB24  
+SublevelCA_Main:                ; 081DFB24
 .incbin "../data/Sublevels/SublevelCA_Main.bin"
-SublevelD1_Main:                ; 081DFD4C  
+SublevelD1_Main:                ; 081DFD4C
 .incbin "../data/Sublevels/SublevelD1_Main.bin"
-Sublevel26_Sprites:             ; 081DFD74  
+Sublevel26_Sprites:             ; 081DFD74
 .incbin "../data/Sublevels/Sublevel26_Sprites.bin"
-Sublevel5D_Sprites:             ; 081DFDFC  
+Sublevel5D_Sprites:             ; 081DFDFC
 .incbin "../data/Sublevels/Sublevel5D_Sprites.bin"
-Sublevel89_Sprites:             ; 081DFED0  
+Sublevel89_Sprites:             ; 081DFED0
 .incbin "../data/Sublevels/Sublevel89_Sprites.bin"
-SublevelAF_Sprites:             ; 081DFF8C  
+SublevelAF_Sprites:             ; 081DFF8C
 .incbin "../data/Sublevels/SublevelAF_Sprites.bin"
-SublevelC3_Sprites:             ; 081DFFD8  
+SublevelC3_Sprites:             ; 081DFFD8
 .incbin "../data/Sublevels/SublevelC3_Sprites.bin"
-SublevelCA_Sprites:             ; 081E0004  
+SublevelCA_Sprites:             ; 081E0004
 .incbin "../data/Sublevels/SublevelCA_Sprites.bin"
-SublevelD1_Sprites:             ; 081E0050  
+SublevelD1_Sprites:             ; 081E0050
 .incbin "../data/Sublevels/SublevelD1_Sprites.bin"
-Sublevel27_Main:                ; 081E0058  
+Sublevel27_Main:                ; 081E0058
 .incbin "../data/Sublevels/Sublevel27_Main.bin"
-Sublevel5E_Main:                ; 081E0670  
+Sublevel5E_Main:                ; 081E0670
 .incbin "../data/Sublevels/Sublevel5E_Main.bin"
-Sublevel8A_Main:                ; 081E0A86  
+Sublevel8A_Main:                ; 081E0A86
 .incbin "../data/Sublevels/Sublevel8A_Main.bin"
-SublevelB0_Main:                ; 081E0B3E  
+SublevelB0_Main:                ; 081E0B3E
 .incbin "../data/Sublevels/SublevelB0_Main.bin"
-Sublevel27_Sprites:             ; 081E0BB8  
+Sublevel27_Sprites:             ; 081E0BB8
 .incbin "../data/Sublevels/Sublevel27_Sprites.bin"
-Sublevel5E_Sprites:             ; 081E0D04  
+Sublevel5E_Sprites:             ; 081E0D04
 .incbin "../data/Sublevels/Sublevel5E_Sprites.bin"
-Sublevel8A_Sprites:             ; 081E0E00  
+Sublevel8A_Sprites:             ; 081E0E00
 .incbin "../data/Sublevels/Sublevel8A_Sprites.bin"
-SublevelB0_Sprites:             ; 081E0E10  
+SublevelB0_Sprites:             ; 081E0E10
 .incbin "../data/Sublevels/SublevelB0_Sprites.bin"
-Sublevel28_Main:                ; 081E0E78  
+Sublevel28_Main:                ; 081E0E78
 .incbin "../data/Sublevels/Sublevel28_Main.bin"
-Sublevel5F_Main:                ; 081E142B  
+Sublevel5F_Main:                ; 081E142B
 .incbin "../data/Sublevels/Sublevel5F_Main.bin"
-Sublevel8B_Main:                ; 081E1950  
+Sublevel8B_Main:                ; 081E1950
 .incbin "../data/Sublevels/Sublevel8B_Main.bin"
-SublevelB1_Main:                ; 081E1D9A  
+SublevelB1_Main:                ; 081E1D9A
 .incbin "../data/Sublevels/SublevelB1_Main.bin"
-Sublevel28_Sprites:             ; 081E1DCC  
+Sublevel28_Sprites:             ; 081E1DCC
 .incbin "../data/Sublevels/Sublevel28_Sprites.bin"
-Sublevel5F_Sprites:             ; 081E1E84  
+Sublevel5F_Sprites:             ; 081E1E84
 .incbin "../data/Sublevels/Sublevel5F_Sprites.bin"
-Sublevel8B_Sprites:             ; 081E1FB0  
+Sublevel8B_Sprites:             ; 081E1FB0
 .incbin "../data/Sublevels/Sublevel8B_Sprites.bin"
-SublevelB1_Sprites:             ; 081E20A8  
+SublevelB1_Sprites:             ; 081E20A8
 .incbin "../data/Sublevels/SublevelB1_Sprites.bin"
-Sublevel29_Main:                ; 081E20C8  
+Sublevel29_Main:                ; 081E20C8
 .incbin "../data/Sublevels/Sublevel29_Main.bin"
-Sublevel60_Main:                ; 081E2269  
+Sublevel60_Main:                ; 081E2269
 .incbin "../data/Sublevels/Sublevel60_Main.bin"
-Sublevel8C_Main:                ; 081E2461  
+Sublevel8C_Main:                ; 081E2461
 .incbin "../data/Sublevels/Sublevel8C_Main.bin"
-Sublevel29_Sprites:             ; 081E24BC  
+Sublevel29_Sprites:             ; 081E24BC
 .incbin "../data/Sublevels/Sublevel29_Sprites.bin"
-Sublevel60_Sprites:             ; 081E25AC  
+Sublevel60_Sprites:             ; 081E25AC
 .incbin "../data/Sublevels/Sublevel60_Sprites.bin"
-Sublevel8C_Sprites:             ; 081E2680  
+Sublevel8C_Sprites:             ; 081E2680
 .incbin "../data/Sublevels/Sublevel8C_Sprites.bin"
-Sublevel2A_Main:                ; 081E2690  
+Sublevel2A_Main:                ; 081E2690
 .incbin "../data/Sublevels/Sublevel2A_Main.bin"
-Sublevel61_Main:                ; 081E2BD3  
+Sublevel61_Main:                ; 081E2BD3
 .incbin "../data/Sublevels/Sublevel61_Main.bin"
-Sublevel8D_Main:                ; 081E2C69  
+Sublevel8D_Main:                ; 081E2C69
 .incbin "../data/Sublevels/Sublevel8D_Main.bin"
-SublevelB2_Main:                ; 081E2E8F  
+SublevelB2_Main:                ; 081E2E8F
 .incbin "../data/Sublevels/SublevelB2_Main.bin"
-Sublevel2A_Sprites:             ; 081E2F48  
+Sublevel2A_Sprites:             ; 081E2F48
 .incbin "../data/Sublevels/Sublevel2A_Sprites.bin"
-Sublevel61_Sprites:             ; 081E30A0  
+Sublevel61_Sprites:             ; 081E30A0
 .incbin "../data/Sublevels/Sublevel61_Sprites.bin"
-Sublevel8D_Sprites:             ; 081E30B0  
+Sublevel8D_Sprites:             ; 081E30B0
 .incbin "../data/Sublevels/Sublevel8D_Sprites.bin"
-SublevelB2_Sprites:             ; 081E3114  
+SublevelB2_Sprites:             ; 081E3114
 .incbin "../data/Sublevels/SublevelB2_Sprites.bin"
-Sublevel2B_Main:                ; 081E313C  
+Sublevel2B_Main:                ; 081E313C
 .incbin "../data/Sublevels/Sublevel2B_Main.bin"
-Sublevel62_Main:                ; 081E327C  
+Sublevel62_Main:                ; 081E327C
 .incbin "../data/Sublevels/Sublevel62_Main.bin"
-Sublevel8E_Main:                ; 081E3951  
+Sublevel8E_Main:                ; 081E3951
 .incbin "../data/Sublevels/Sublevel8E_Main.bin"
-SublevelB3_Main:                ; 081E3A3E  
+SublevelB3_Main:                ; 081E3A3E
 .incbin "../data/Sublevels/SublevelB3_Main.bin"
-SublevelC4_Main:                ; 081E3DDF  
+SublevelC4_Main:                ; 081E3DDF
 .incbin "../data/Sublevels/SublevelC4_Main.bin"
-SublevelCB_Main:                ; 081E3E49  
+SublevelCB_Main:                ; 081E3E49
 .incbin "../data/Sublevels/SublevelCB_Main.bin"
-SublevelD2_Main:                ; 081E3E73  
+SublevelD2_Main:                ; 081E3E73
 .incbin "../data/Sublevels/SublevelD2_Main.bin"
-Sublevel2B_Sprites:             ; 081E4148  
+Sublevel2B_Sprites:             ; 081E4148
 .incbin "../data/Sublevels/Sublevel2B_Sprites.bin"
-Sublevel62_Sprites:             ; 081E4198  
+Sublevel62_Sprites:             ; 081E4198
 .incbin "../data/Sublevels/Sublevel62_Sprites.bin"
-Sublevel8E_Sprites:             ; 081E426C  
+Sublevel8E_Sprites:             ; 081E426C
 .incbin "../data/Sublevels/Sublevel8E_Sprites.bin"
-SublevelB3_Sprites:             ; 081E4290  
+SublevelB3_Sprites:             ; 081E4290
 .incbin "../data/Sublevels/SublevelB3_Sprites.bin"
-SublevelC4_Sprites:             ; 081E4330  
+SublevelC4_Sprites:             ; 081E4330
 .incbin "../data/Sublevels/SublevelC4_Sprites.bin"
-SublevelCB_Sprites:             ; 081E433C  
+SublevelCB_Sprites:             ; 081E433C
 .incbin "../data/Sublevels/SublevelCB_Sprites.bin"
-SublevelD2_Sprites:             ; 081E4340  
+SublevelD2_Sprites:             ; 081E4340
 .incbin "../data/Sublevels/SublevelD2_Sprites.bin"
-Sublevel2C_Main:                ; 081E43CC  
+Sublevel2C_Main:                ; 081E43CC
 .incbin "../data/Sublevels/Sublevel2C_Main.bin"
-Sublevel63_Main:                ; 081E4557  
+Sublevel63_Main:                ; 081E4557
 .incbin "../data/Sublevels/Sublevel63_Main.bin"
-Sublevel8F_Main:                ; 081E478F  
+Sublevel8F_Main:                ; 081E478F
 .incbin "../data/Sublevels/Sublevel8F_Main.bin"
-SublevelB4_Main:                ; 081E4887  
+SublevelB4_Main:                ; 081E4887
 .incbin "../data/Sublevels/SublevelB4_Main.bin"
-Sublevel2C_Sprites:             ; 081E4B4C  
+Sublevel2C_Sprites:             ; 081E4B4C
 .incbin "../data/Sublevels/Sublevel2C_Sprites.bin"
-Sublevel63_Sprites:             ; 081E4BE0  
+Sublevel63_Sprites:             ; 081E4BE0
 .incbin "../data/Sublevels/Sublevel63_Sprites.bin"
-Sublevel8F_Sprites:             ; 081E4C10  
+Sublevel8F_Sprites:             ; 081E4C10
 .incbin "../data/Sublevels/Sublevel8F_Sprites.bin"
-SublevelB4_Sprites:             ; 081E4C18  
+SublevelB4_Sprites:             ; 081E4C18
 .incbin "../data/Sublevels/SublevelB4_Sprites.bin"
-SublevelEB_Main:                ; 081E4CD0  
+SublevelEB_Main:                ; 081E4CD0
 .incbin "../data/Sublevels/SublevelEB_Main.bin"
-SublevelEC_Main:                ; 081E507A  
+SublevelEC_Main:                ; 081E507A
 .incbin "../data/Sublevels/SublevelEC_Main.bin"
-SublevelED_Main:                ; 081E55BD  
+SublevelED_Main:                ; 081E55BD
 .incbin "../data/Sublevels/SublevelED_Main.bin"
-SublevelEB_Sprites:             ; 081E5A68  
+SublevelEB_Sprites:             ; 081E5A68
 .incbin "../data/Sublevels/SublevelEB_Sprites.bin"
-SublevelEC_Sprites:             ; 081E5B64  
+SublevelEC_Sprites:             ; 081E5B64
 .incbin "../data/Sublevels/SublevelEC_Sprites.bin"
-SublevelED_Sprites:             ; 081E5C18  
+SublevelED_Sprites:             ; 081E5C18
 .incbin "../data/Sublevels/SublevelED_Sprites.bin"
-Sublevel2D_Main:                ; 081E5D14  
+Sublevel2D_Main:                ; 081E5D14
 .incbin "../data/Sublevels/Sublevel2D_Main.bin"
-Sublevel64_Main:                ; 081E5F05  
+Sublevel64_Main:                ; 081E5F05
 .incbin "../data/Sublevels/Sublevel64_Main.bin"
-Sublevel90_Main:                ; 081E618E  
+Sublevel90_Main:                ; 081E618E
 .incbin "../data/Sublevels/Sublevel90_Main.bin"
-SublevelB5_Main:                ; 081E650A  
+SublevelB5_Main:                ; 081E650A
 .incbin "../data/Sublevels/SublevelB5_Main.bin"
-Sublevel2D_Sprites:             ; 081E66A8  
+Sublevel2D_Sprites:             ; 081E66A8
 .incbin "../data/Sublevels/Sublevel2D_Sprites.bin"
-Sublevel64_Sprites:             ; 081E678C  
+Sublevel64_Sprites:             ; 081E678C
 .incbin "../data/Sublevels/Sublevel64_Sprites.bin"
-Sublevel90_Sprites:             ; 081E6834  
+Sublevel90_Sprites:             ; 081E6834
 .incbin "../data/Sublevels/Sublevel90_Sprites.bin"
-SublevelB5_Sprites:             ; 081E68D8  
+SublevelB5_Sprites:             ; 081E68D8
 .incbin "../data/Sublevels/SublevelB5_Sprites.bin"
-Sublevel2E_Main:                ; 081E6970  
+Sublevel2E_Main:                ; 081E6970
 .incbin "../data/Sublevels/Sublevel2E_Main.bin"
-Sublevel65_Main:                ; 081E6BBE  
+Sublevel65_Main:                ; 081E6BBE
 .incbin "../data/Sublevels/Sublevel65_Main.bin"
-Sublevel91_Main:                ; 081E6F5C  
+Sublevel91_Main:                ; 081E6F5C
 .incbin "../data/Sublevels/Sublevel91_Main.bin"
-Sublevel2E_Sprites:             ; 081E70F8  
+Sublevel2E_Sprites:             ; 081E70F8
 .incbin "../data/Sublevels/Sublevel2E_Sprites.bin"
-Sublevel65_Sprites:             ; 081E719C  
+Sublevel65_Sprites:             ; 081E719C
 .incbin "../data/Sublevels/Sublevel65_Sprites.bin"
-Sublevel91_Sprites:             ; 081E7270  
+Sublevel91_Sprites:             ; 081E7270
 .incbin "../data/Sublevels/Sublevel91_Sprites.bin"
-Sublevel2F_Main:                ; 081E72F0  
+Sublevel2F_Main:                ; 081E72F0
 .incbin "../data/Sublevels/Sublevel2F_Main.bin"
-Sublevel66_Main:                ; 081E753F  
+Sublevel66_Main:                ; 081E753F
 .incbin "../data/Sublevels/Sublevel66_Main.bin"
-Sublevel92_Main:                ; 081E770C  
+Sublevel92_Main:                ; 081E770C
 .incbin "../data/Sublevels/Sublevel92_Main.bin"
-Sublevel2F_Sprites:             ; 081E78D8  
+Sublevel2F_Sprites:             ; 081E78D8
 .incbin "../data/Sublevels/Sublevel2F_Sprites.bin"
-Sublevel66_Sprites:             ; 081E7980  
+Sublevel66_Sprites:             ; 081E7980
 .incbin "../data/Sublevels/Sublevel66_Sprites.bin"
-Sublevel92_Sprites:             ; 081E7A18  
+Sublevel92_Sprites:             ; 081E7A18
 .incbin "../data/Sublevels/Sublevel92_Sprites.bin"
-Sublevel30_Main:                ; 081E7AA0  
+Sublevel30_Main:                ; 081E7AA0
 .incbin "../data/Sublevels/Sublevel30_Main.bin"
-Sublevel67_Main:                ; 081E7C19  
+Sublevel67_Main:                ; 081E7C19
 .incbin "../data/Sublevels/Sublevel67_Main.bin"
-Sublevel93_Main:                ; 081E7E33  
+Sublevel93_Main:                ; 081E7E33
 .incbin "../data/Sublevels/Sublevel93_Main.bin"
-SublevelB6_Main:                ; 081E7F39  
+SublevelB6_Main:                ; 081E7F39
 .incbin "../data/Sublevels/SublevelB6_Main.bin"
-SublevelC5_Main:                ; 081E80FD  
+SublevelC5_Main:                ; 081E80FD
 .incbin "../data/Sublevels/SublevelC5_Main.bin"
-SublevelCC_Main:                ; 081E819A  
+SublevelCC_Main:                ; 081E819A
 .incbin "../data/Sublevels/SublevelCC_Main.bin"
-Sublevel30_Sprites:             ; 081E8290  
+Sublevel30_Sprites:             ; 081E8290
 .incbin "../data/Sublevels/Sublevel30_Sprites.bin"
-Sublevel67_Sprites:             ; 081E8360  
+Sublevel67_Sprites:             ; 081E8360
 .incbin "../data/Sublevels/Sublevel67_Sprites.bin"
-Sublevel93_Sprites:             ; 081E8378  
+Sublevel93_Sprites:             ; 081E8378
 .incbin "../data/Sublevels/Sublevel93_Sprites.bin"
-SublevelB6_Sprites:             ; 081E84C8  
+SublevelB6_Sprites:             ; 081E84C8
 .incbin "../data/Sublevels/SublevelB6_Sprites.bin"
-SublevelC5_Sprites:             ; 081E85A4  
+SublevelC5_Sprites:             ; 081E85A4
 .incbin "../data/Sublevels/SublevelC5_Sprites.bin"
-SublevelCC_Sprites:             ; 081E8620  
+SublevelCC_Sprites:             ; 081E8620
 .incbin "../data/Sublevels/SublevelCC_Sprites.bin"
-Sublevel31_Main:                ; 081E863C  
+Sublevel31_Main:                ; 081E863C
 .incbin "../data/Sublevels/Sublevel31_Main.bin"
-Sublevel68_Main:                ; 081E8E8A  
+Sublevel68_Main:                ; 081E8E8A
 .incbin "../data/Sublevels/Sublevel68_Main.bin"
-Sublevel94_Main:                ; 081E91A7  
+Sublevel94_Main:                ; 081E91A7
 .incbin "../data/Sublevels/Sublevel94_Main.bin"
-Sublevel31_Sprites:             ; 081E9430  
+Sublevel31_Sprites:             ; 081E9430
 .incbin "../data/Sublevels/Sublevel31_Sprites.bin"
-Sublevel68_Sprites:             ; 081E94E0  
+Sublevel68_Sprites:             ; 081E94E0
 .incbin "../data/Sublevels/Sublevel68_Sprites.bin"
-Sublevel94_Sprites:             ; 081E954C  
+Sublevel94_Sprites:             ; 081E954C
 .incbin "../data/Sublevels/Sublevel94_Sprites.bin"
-Sublevel32_Main:                ; 081E95BC  
+Sublevel32_Main:                ; 081E95BC
 .incbin "../data/Sublevels/Sublevel32_Main.bin"
-Sublevel69_Main:                ; 081E9C4F  
+Sublevel69_Main:                ; 081E9C4F
 .incbin "../data/Sublevels/Sublevel69_Main.bin"
-Sublevel95_Main:                ; 081EA134  
+Sublevel95_Main:                ; 081EA134
 .incbin "../data/Sublevels/Sublevel95_Main.bin"
-Sublevel32_Sprites:             ; 081EA4D8  
+Sublevel32_Sprites:             ; 081EA4D8
 .incbin "../data/Sublevels/Sublevel32_Sprites.bin"
-Sublevel69_Sprites:             ; 081EA638  
+Sublevel69_Sprites:             ; 081EA638
 .incbin "../data/Sublevels/Sublevel69_Sprites.bin"
-Sublevel95_Sprites:             ; 081EA728  
+Sublevel95_Sprites:             ; 081EA728
 .incbin "../data/Sublevels/Sublevel95_Sprites.bin"
-Sublevel33_Main:                ; 081EA7C0  
+Sublevel33_Main:                ; 081EA7C0
 .incbin "../data/Sublevels/Sublevel33_Main.bin"
-Sublevel6A_Main:                ; 081EAAAC  
+Sublevel6A_Main:                ; 081EAAAC
 .incbin "../data/Sublevels/Sublevel6A_Main.bin"
-Sublevel96_Main:                ; 081EB097  
+Sublevel96_Main:                ; 081EB097
 .incbin "../data/Sublevels/Sublevel96_Main.bin"
-SublevelB7_Main:                ; 081EB282  
+SublevelB7_Main:                ; 081EB282
 .incbin "../data/Sublevels/SublevelB7_Main.bin"
-Sublevel33_Sprites:             ; 081EB380  
+Sublevel33_Sprites:             ; 081EB380
 .incbin "../data/Sublevels/Sublevel33_Sprites.bin"
-Sublevel6A_Sprites:             ; 081EB3F4  
+Sublevel6A_Sprites:             ; 081EB3F4
 .incbin "../data/Sublevels/Sublevel6A_Sprites.bin"
-Sublevel96_Sprites:             ; 081EB50C  
+Sublevel96_Sprites:             ; 081EB50C
 .incbin "../data/Sublevels/Sublevel96_Sprites.bin"
-SublevelB7_Sprites:             ; 081EB5DC  
+SublevelB7_Sprites:             ; 081EB5DC
 .incbin "../data/Sublevels/SublevelB7_Sprites.bin"
-Sublevel34_Main:                ; 081EB630  
+Sublevel34_Main:                ; 081EB630
 .incbin "../data/Sublevels/Sublevel34_Main.bin"
-Sublevel6B_Main:                ; 081EB6CA  
+Sublevel6B_Main:                ; 081EB6CA
 .incbin "../data/Sublevels/Sublevel6B_Main.bin"
-Sublevel97_Main:                ; 081EB791  
+Sublevel97_Main:                ; 081EB791
 .incbin "../data/Sublevels/Sublevel97_Main.bin"
-SublevelB8_Main:                ; 081EB850  
+SublevelB8_Main:                ; 081EB850
 .incbin "../data/Sublevels/SublevelB8_Main.bin"
-SublevelC6_Main:                ; 081EB9FD  
+SublevelC6_Main:                ; 081EB9FD
 .incbin "../data/Sublevels/SublevelC6_Main.bin"
-SublevelD8_Main:                ; 081EBBBD  
+SublevelD8_Main:                ; 081EBBBD
 .incbin "../data/Sublevels/SublevelD8_Main.bin"
-SublevelD9_Main:                ; 081EBCFF  
+SublevelD9_Main:                ; 081EBCFF
 .incbin "../data/Sublevels/SublevelD9_Main.bin"
-SublevelCD_Main:                ; 081EBD4F  
+SublevelCD_Main:                ; 081EBD4F
 .incbin "../data/Sublevels/SublevelCD_Main.bin"
-SublevelD3_Main:                ; 081EBE14  
+SublevelD3_Main:                ; 081EBE14
 .incbin "../data/Sublevels/SublevelD3_Main.bin"
-SublevelD6_Main:                ; 081EBF01  
+SublevelD6_Main:                ; 081EBF01
 .incbin "../data/Sublevels/SublevelD6_Main.bin"
-SublevelDC_Main:                ; 081EC0F3  
+SublevelDC_Main:                ; 081EC0F3
 .incbin "../data/Sublevels/SublevelDC_Main.bin"
-SublevelDD_Main:                ; 081EC211  
+SublevelDD_Main:                ; 081EC211
 .incbin "../data/Sublevels/SublevelDD_Main.bin"
-SublevelDA_Main:                ; 081EC23E  
+SublevelDA_Main:                ; 081EC23E
 .incbin "../data/Sublevels/SublevelDA_Main.bin"
-SublevelDB_Main:                ; 081EC24B  
+SublevelDB_Main:                ; 081EC24B
 .incbin "../data/Sublevels/SublevelDB_Main.bin"
 Data081EC259:                   ; 081EC259
 .byte 0x6E, 0x00, 0xD0, 0x0F, 0x02, 0x57, 0x00, 0xA0
@@ -922,81 +922,81 @@ Data081EC259:                   ; 081EC259
 .byte 0x6E, 0x00, 0x89, 0x00, 0x00, 0x6E, 0x00, 0xCD
 .byte 0x00, 0x00, 0xFF, 0xFF
 .align 4
-Sublevel34_Sprites:             ; 081EC2B8  
+Sublevel34_Sprites:             ; 081EC2B8
 .incbin "../data/Sublevels/Sublevel34_Sprites.bin"
-Sublevel6B_Sprites:             ; 081EC324  
+Sublevel6B_Sprites:             ; 081EC324
 .incbin "../data/Sublevels/Sublevel6B_Sprites.bin"
-Sublevel97_Sprites:             ; 081EC354  
+Sublevel97_Sprites:             ; 081EC354
 .incbin "../data/Sublevels/Sublevel97_Sprites.bin"
-SublevelB8_Sprites:             ; 081EC364  
+SublevelB8_Sprites:             ; 081EC364
 .incbin "../data/Sublevels/SublevelB8_Sprites.bin"
-SublevelC6_Sprites:             ; 081EC3CC  
+SublevelC6_Sprites:             ; 081EC3CC
 .incbin "../data/Sublevels/SublevelC6_Sprites.bin"
-SublevelD8_Sprites:             ; 081EC43C  
+SublevelD8_Sprites:             ; 081EC43C
 .incbin "../data/Sublevels/SublevelD8_Sprites.bin"
-SublevelD9_Sprites:             ; 081EC498  
+SublevelD9_Sprites:             ; 081EC498
 .incbin "../data/Sublevels/SublevelD9_Sprites.bin"
-SublevelCD_Sprites:             ; 081EC4A8  
+SublevelCD_Sprites:             ; 081EC4A8
 .incbin "../data/Sublevels/SublevelCD_Sprites.bin"
-SublevelD3_Sprites:             ; 081EC4EC  
+SublevelD3_Sprites:             ; 081EC4EC
 .incbin "../data/Sublevels/SublevelD3_Sprites.bin"
-SublevelD6_Sprites:             ; 081EC514  
+SublevelD6_Sprites:             ; 081EC514
 .incbin "../data/Sublevels/SublevelD6_Sprites.bin"
-SublevelDC_Sprites:             ; 081EC538  
+SublevelDC_Sprites:             ; 081EC538
 .incbin "../data/Sublevels/SublevelDC_Sprites.bin"
-SublevelDD_Sprites:             ; 081EC5A8  
+SublevelDD_Sprites:             ; 081EC5A8
 .incbin "../data/Sublevels/SublevelDD_Sprites.bin"
-SublevelDA_Sprites:             ; 081EC5B0  
+SublevelDA_Sprites:             ; 081EC5B0
 .incbin "../data/Sublevels/SublevelDA_Sprites.bin"
-SublevelDB_Sprites:             ; 081EC5B4  
+SublevelDB_Sprites:             ; 081EC5B4
 .incbin "../data/Sublevels/SublevelDB_Sprites.bin"
-Sublevel35_Main:                ; 081EC5B8  
+Sublevel35_Main:                ; 081EC5B8
 .incbin "../data/Sublevels/Sublevel35_Main.bin"
-Sublevel6C_Main:                ; 081EC971  
+Sublevel6C_Main:                ; 081EC971
 .incbin "../data/Sublevels/Sublevel6C_Main.bin"
-Sublevel98_Main:                ; 081ECB51  
+Sublevel98_Main:                ; 081ECB51
 .incbin "../data/Sublevels/Sublevel98_Main.bin"
-SublevelB9_Main:                ; 081ECCDB  
+SublevelB9_Main:                ; 081ECCDB
 .incbin "../data/Sublevels/SublevelB9_Main.bin"
-Sublevel35_Sprites:             ; 081ECDE8  
+Sublevel35_Sprites:             ; 081ECDE8
 .incbin "../data/Sublevels/Sublevel35_Sprites.bin"
-Sublevel6C_Sprites:             ; 081ECE90  
+Sublevel6C_Sprites:             ; 081ECE90
 .incbin "../data/Sublevels/Sublevel6C_Sprites.bin"
-Sublevel98_Sprites:             ; 081ECF14  
+Sublevel98_Sprites:             ; 081ECF14
 .incbin "../data/Sublevels/Sublevel98_Sprites.bin"
-SublevelB9_Sprites:             ; 081ED03C  
+SublevelB9_Sprites:             ; 081ED03C
 .incbin "../data/Sublevels/SublevelB9_Sprites.bin"
-SublevelEE_Main:                ; 081ED058  
+SublevelEE_Main:                ; 081ED058
 .incbin "../data/Sublevels/SublevelEE_Main.bin"
-SublevelEF_Main:                ; 081ED145  
+SublevelEF_Main:                ; 081ED145
 .incbin "../data/Sublevels/SublevelEF_Main.bin"
-SublevelF0_Main:                ; 081ED77D  
+SublevelF0_Main:                ; 081ED77D
 .incbin "../data/Sublevels/SublevelF0_Main.bin"
-SublevelF1_Main:                ; 081EDBE7  
+SublevelF1_Main:                ; 081EDBE7
 .incbin "../data/Sublevels/SublevelF1_Main.bin"
-SublevelF2_Main:                ; 081EE1D7  
+SublevelF2_Main:                ; 081EE1D7
 .incbin "../data/Sublevels/SublevelF2_Main.bin"
-SublevelF5_Main:                ; 081EE595  
+SublevelF5_Main:                ; 081EE595
 .incbin "../data/Sublevels/SublevelF5_Main.bin"
-SublevelEE_Sprites:             ; 081EE7D4  
+SublevelEE_Sprites:             ; 081EE7D4
 .incbin "../data/Sublevels/SublevelEE_Sprites.bin"
-SublevelEF_Sprites:             ; 081EE864  
+SublevelEF_Sprites:             ; 081EE864
 .incbin "../data/Sublevels/SublevelEF_Sprites.bin"
-SublevelF0_Sprites:             ; 081EEA28  
+SublevelF0_Sprites:             ; 081EEA28
 .incbin "../data/Sublevels/SublevelF0_Sprites.bin"
-SublevelF1_Sprites:             ; 081EEB2C  
+SublevelF1_Sprites:             ; 081EEB2C
 .incbin "../data/Sublevels/SublevelF1_Sprites.bin"
-SublevelF2_Sprites:             ; 081EEC08  
+SublevelF2_Sprites:             ; 081EEC08
 .incbin "../data/Sublevels/SublevelF2_Sprites.bin"
-SublevelF5_Sprites:             ; 081EED08  
+SublevelF5_Sprites:             ; 081EED08
 .incbin "../data/Sublevels/SublevelF5_Sprites.bin"
-Sublevel36_Main:                ; 081EED90  
+Sublevel36_Main:                ; 081EED90
 .incbin "../data/Sublevels/Sublevel36_Main.bin"
-Sublevel37_Main:                ; 081EEDEF  
+Sublevel37_Main:                ; 081EEDEF
 .incbin "../data/Sublevels/Sublevel37_Main.bin"
-Sublevel36_Sprites:             ; 081EEE5C  
+Sublevel36_Sprites:             ; 081EEE5C
 .incbin "../data/Sublevels/Sublevel36_Sprites.bin"
-Sublevel37_Sprites:             ; 081EEE70  
+Sublevel37_Sprites:             ; 081EEE70
 .incbin "../data/Sublevels/Sublevel37_Sprites.bin"
 MainEntrances:                  ; 081EEE8C
 .byte 0x00, 0x07, 0x77, 0x01, 0x28, 0x00

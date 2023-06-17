@@ -75,7 +75,7 @@ lsr   r0,r0,0x18                ; 0801A10A  tile X0
 orr   r6,r0                     ; 0801A10C  r6 = object X position
 mov   r4,0x0                    ; 0801A10E  r4 = 0
 mov   r0,0xA3                   ; 0801A110
-lsl   r0,r0,0x1                 ; 0801A112  0146  
+lsl   r0,r0,0x1                 ; 0801A112  0146
 add   r0,r12                    ; 0801A114  [03007240]+146 (03002352)
 ldrb  r3,[r0]                   ; 0801A116  slot 0's width-1
 ldr   r7,=ObjF0_F3_MaxYShift    ; 0801A118  pointer to max Y shifts by object (20 40 E0 C0)
@@ -138,7 +138,7 @@ mov   r1,r12                    ; 0801A184
 strh  r0,[r1,0x3A]              ; 0801A186  [03002246] = tile Y^X parity
 mov   r0,0x80                   ; 0801A188
 lsl   r0,r0,0x8                 ; 0801A18A  8000
-strh  r0,[r5]                   ; 0801A18C  [0300224E] = 8000  
+strh  r0,[r5]                   ; 0801A18C  [0300224E] = 8000
 mov   r0,r12                    ; 0801A18E
 mov   r1,r9                     ; 0801A190
 mov   r2,r8                     ; 0801A192
@@ -222,7 +222,7 @@ ldrh  r3,[r4]                   ; 0801A222  r3 = tile YXyx
 ldr   r2,=0xF0F0                ; 0801A224
 mov   r1,r2                     ; 0801A226
 and   r1,r3                     ; 0801A228
-sub   r1,0x20                   ; 0801A22A
+sub   r1,0x20                   ; 0801A22A  subtract 2 from initial Y
 and   r1,r2                     ; 0801A22C
 ldr   r2,=0x0F0F                ; 0801A22E
 and   r2,r3                     ; 0801A230
@@ -257,16 +257,16 @@ lsr   r0,r0,0x10                ; 0801A268
 strh  r0,[r4]                   ; 0801A26A  object ID = 0 for EB, 2 for EC
 mov   r5,r12                    ; 0801A26C
 add   r5,0x48                   ; 0801A26E  r0 = [03007240]+48 (03002254)
-ldrh  r4,[r5]                   ; 0801A270  r4 = tile YXyx
+ldrh  r4,[r5]                   ; 0801A270  tile YXyx
 ldr   r3,=0xF0F0                ; 0801A272
-mov   r0,r3                     ; 0801A274  Y0y0
+mov   r0,r3                     ; 0801A274
 and   r0,r4                     ; 0801A276
-sub   r0,0x10                   ; 0801A278  subtract 1 from y
-and   r0,r3                     ; 0801A27A  handle carry
+sub   r0,0x10                   ; 0801A278  subtract 1 from initial Y
+and   r0,r3                     ; 0801A27A
 ldr   r3,=0x0F0F                ; 0801A27C
-and   r3,r4                     ; 0801A27E  0X0x
-orr   r3,r0                     ; 0801A280  YXyx with y-1
-strh  r3,[r5]                   ; 0801A282  store position with y-1
+and   r3,r4                     ; 0801A27E
+orr   r3,r0                     ; 0801A280
+strh  r3,[r5]                   ; 0801A282
 mov   r3,r12                    ; 0801A284
 add   r3,0x52                   ; 0801A286  r0 = [03007240]+52 (0300225E)
 ldrh  r0,[r3]                   ; 0801A288 \
@@ -293,7 +293,7 @@ ldrh  r4,[r5]                   ; 0801A2B4  r4 = tile YXyx
 ldr   r3,=0xF0F0                ; 0801A2B6
 mov   r0,r3                     ; 0801A2B8
 and   r0,r4                     ; 0801A2BA
-sub   r0,0x10                   ; 0801A2BC
+sub   r0,0x10                   ; 0801A2BC  subtract 1 from initial Y
 and   r0,r3                     ; 0801A2BE
 ldr   r3,=0x0F0F                ; 0801A2C0
 and   r3,r4                     ; 0801A2C2
@@ -376,7 +376,7 @@ ldrh  r4,[r5]                   ; 0801A360  r4 = tile YXyx
 ldr   r3,=0xF0F0                ; 0801A362
 mov   r0,r3                     ; 0801A364
 and   r0,r4                     ; 0801A366
-sub   r0,0x10                   ; 0801A368
+sub   r0,0x10                   ; 0801A368  subtract 1 from initial Y
 and   r0,r3                     ; 0801A36A
 ldr   r3,=0x0F0F                ; 0801A36C
 and   r3,r4                     ; 0801A36E

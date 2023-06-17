@@ -4102,7 +4102,7 @@ add   r0,0xC4                   ; 080373E4  03006E44
 ldrh  r2,[r0]                   ; 080373E6  entrance byte 4
 mov   r0,0xF0                   ; 080373E8
 and   r0,r2                     ; 080373EA  entrance byte 4, high digit filtered
-lsr   r0,r0,0x3                 ; 080373EC  
+lsr   r0,r0,0x3                 ; 080373EC
 add   r0,r0,r3                  ; 080373EE  use high digit to index 16-bit table at 081AC016
 and   r1,r4                     ; 080373F0  entrance screen, top edge Y coordinate
 ldrh  r0,[r0]                   ; 080373F2  camera pixel offset
@@ -4437,7 +4437,7 @@ bx    r0                        ; 080376CA
 SkiEnableCheck:
 ; subroutine: Check if skiing should be enabled
 ; output r0: 0 if skiing should be enabled, 1 if not
-; specifically, returns 0 if in 5-3 or 5-Extra, snow tileset, and item memory index 3 
+; specifically, returns 0 if in 5-3 or 5-Extra, snow tileset, and item memory index 3
 push  {lr}                      ; 080376D8
 ldr   r0,=0x03007240            ; 080376DA  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                   ; 080376DC
@@ -18615,8 +18615,7 @@ b     @@Code0803EC4C            ; 0803EB4C
 @@Code0803EB4E:
 bl    Sub08041924               ; 0803EB4E
 b     @@Code0803EC4C            ; 0803EB52
-@@Code0803EB54:
-                                ;           runs if ski check returned 0 (enable skis)
+@@Code0803EB54:                 ;           runs if ski check returned 0 (enable skis)
 mov   r0,0x80                   ; 0803EB54
 lsl   r0,r0,0x2                 ; 0803EB56  0200
 strh  r0,[r7]                   ; 0803EB58

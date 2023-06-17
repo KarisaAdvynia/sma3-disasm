@@ -398,8 +398,7 @@ bl    PlayYISound               ; 080E25F0
 b     @@Code080E2610            ; 080E25F4 /
 .pool                           ; 080E25F6
 
-@@Code080E2608:
-                                ;          \ runs if red coins < 20 (decimal)
+@@Code080E2608:                 ;          \ runs if red coins < 20 (decimal)
 mov   r0,0x79                   ; 080E2608  79: red coin
 mov   r1,r3                     ; 080E260A
 bl    PlayYISound               ; 080E260C /

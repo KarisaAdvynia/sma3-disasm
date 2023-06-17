@@ -115,7 +115,7 @@ ldrh  r0,[r3]                   ; 080A55F4
 ldrh  r1,[r1]                   ; 080A55F6
 orr   r0,r1                     ; 080A55F8
 ldr   r1,=0x29BA                ; 080A55FA
-add   r2,r2,r1                  ; 080A55FC  [03007240]+29BA (03004BC6) 
+add   r2,r2,r1                  ; 080A55FC  [03007240]+29BA (03004BC6)
 ldrh  r1,[r2]                   ; 080A55FE  inventory item being used
 orr   r0,r1                     ; 080A5600
 cmp   r0,0x0                    ; 080A5602  if any of these values are nonzero, return
@@ -124,11 +124,11 @@ b     @@Return                  ; 080A5606
 @@Code080A5608:
 ldrh  r0,[r5,0x32]              ; 080A5608  Yoshi transformation [03006DB2]
 cmp   r0,0x6                    ; 080A560A  06: helicopter
-bne   @@Code080A5610            ; 080A560C  
+bne   @@Code080A5610            ; 080A560C
 b     @@Return                  ; 080A560E  return if helicopter
-@@Code080A5610:                             
+@@Code080A5610:
 cmp   r4,0x18                   ; 080A5610  18: unmorphing at Yoshi block
-bne   @@Code080A5616            ; 080A5612  
+bne   @@Code080A5616            ; 080A5612
 b     @@Return                  ; 080A5614  return if unmorphing
 @@Code080A5616:
 ldr   r2,=0x0300702C            ; 080A5616  Sprite RAM structs (03002460)

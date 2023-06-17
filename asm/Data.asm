@@ -2316,7 +2316,7 @@ CodePtrs081689D4:               ; 081689D4
 .word Sub08024700+1, Sub080246C4+1, Sub08024688+1, Sub08024700+1
 .word Sub08024700+1, Sub08024700+1
 Obj48_CodePtrs:                 ; 081689EC
-.word Sub08025158+1, Sub080250F0+1, Sub080250F0+1
+.word Obj48_EvenX+1, Obj48_OddX+1, Obj48_OddX+1
 Obj45_46_CodePtrs:              ; 081689F8
 .word Sub08025550+1, Sub08025550+1, Obj44_Main+1
 Obj39_CodePtrs:                 ; 08168A04
@@ -37136,13 +37136,14 @@ Obj34_RandColumnPtrs:           ; 081BF1AC
 .word Obj34_RandCol4, Obj34_RandCol5, Obj34_RandCol6, Obj34_RandCol7
 .word Obj34_RandCol8, Obj34_RandCol9, Obj34_RandColA, Obj34_RandColB
 .word Obj34_RandColC, Obj34_RandColD, Obj34_RandColE, Obj34_RandColF
-Data081BF1EC:                   ; 081BF1EC
+Obj35_Y0Y1LightWaterTiles:      ; 081BF1EC
 .halfword 0x1619, 0x161A, 0x1626, 0x1627
-Data081BF1F4:                   ; 081BF1F4
+Obj35_Y0Y1DefaultTiles:         ; 081BF1F4
 .halfword 0x161B, 0x161C, 0x1628, 0x1628
-DataPtrs081BF1FC:               ; 081BF1FC
-.word Data081BF1F4, Data081BF1EC, Data081BF1F4, Data081BF1F4
-Data081BF20C:                   ; 081BF20C
+Obj35_Y0Y1TilemapPtrs:          ; 081BF1FC
+.word Obj35_Y0Y1DefaultTiles, Obj35_Y0Y1LightWaterTiles
+.word Obj35_Y0Y1DefaultTiles, Obj35_Y0Y1DefaultTiles
+Obj35_Y1SolidWaterTiles:        ; 081BF20C
 .halfword 0x9098, 0x9099, 0x909A, 0x9098
 Obj38_DefaultTilesPal2:         ; 081BF214
 .halfword 0x9D00, 0x9D01, 0x9D02, 0x9D03, 0x9D0A, 0x9D0B, 0x9D0C, 0x9D0D
@@ -37170,7 +37171,7 @@ ObjF4_TilemapPos:               ; 081BF28C
 .halfword 0x79F1, 0x79F3, 0x79F5
 Obj3C_TilemapNeg:               ; 081BF292
 .halfword 0x7D0A, 0x9D32, 0x9D36
-ObjF4_TilemapNeg:               ; 081BF298 
+ObjF4_TilemapNeg:               ; 081BF298
 .halfword 0x79A8, 0x79F3, 0x79A0
 Obj3C_F4_Sign:                  ; 081BF29E
 .halfword 0x0001, 0xFFFF
@@ -38155,116 +38156,128 @@ ObjE2_Y8_to_YF:                 ; 081C1530
 .halfword 0x8DBF, 0x8DC0, 0x8DC1, 0x8DC2, 0x8DCD, 0x8DCE, 0x8DCF, 0x8DD0
 ObjE3_EdgeTileBase:             ; 081C1570
 .halfword 0x8C00, 0x8C04, 0x8C08
-Data081C1576:                   ; 081C1576
+ObjE4_RandSurface0:             ; 081C1576
 .halfword 0x0000, 0x0000, 0x859A, 0x859B, 0x79DA, 0x79DB
-Data081C1582:                   ; 081C1582
+ObjE4_RandSurface1:             ; 081C1582
 .halfword 0x0000, 0x0000, 0x859F, 0x85A0, 0x79DD, 0x79DE
-Data081C158E:                   ; 081C158E
+ObjE4_RandSurface2:             ; 081C158E
 .halfword 0x0000, 0x0000, 0x859A, 0x859C, 0x79DD, 0x79DE
-Data081C159A:                   ; 081C159A
+ObjE4_RandSurface3:             ; 081C159A
 .halfword 0x0000, 0x0000, 0x859F, 0x85A1, 0x79DD, 0x79DF
-Data081C15A6:                   ; 081C15A6
+ObjE4_RandSurface4:             ; 081C15A6
 .halfword 0x0000, 0x0000, 0x859A, 0x859B, 0x79DC, 0x79DB
-Data081C15B2:                   ; 081C15B2
+ObjE4_RandSurface5:             ; 081C15B2
 .halfword 0x0000, 0x0000, 0x85A2, 0x85A0, 0x79DD, 0x79DC
-Data081C15BE:                   ; 081C15BE
+ObjE4_RandSurface6:             ; 081C15BE
 .halfword 0x0000, 0x85C5, 0x85A2, 0x859D, 0x79DA, 0x79AC
-Data081C15CA:                   ; 081C15CA
+ObjE4_RandSurface7:             ; 081C15CA
 .halfword 0x85C8, 0x0000, 0x85A3, 0x85A4, 0x79AD, 0x79AF
-Data081C15D6:                   ; 081C15D6
+ObjE4_RandSurface8:             ; 081C15D6
 .halfword 0x85C6, 0x85C7, 0x859E, 0x859D, 0x79DC, 0x79DB
-Data081C15E2:                   ; 081C15E2
+ObjE4_RandSurface9:             ; 081C15E2
 .halfword 0x85C8, 0x85C5, 0x85A3, 0x85A4, 0x79DC, 0x79B6
 .align 4
-DataPtrs081C15F0:               ; 081C15F0
-.word Data081C15E2, Data081C15D6, Data081C15CA, Data081C15BE
-.word Data081C15B2, Data081C15A6, Data081C159A, Data081C158E
-.word Data081C1582, Data081C1576, Data081C15D6, Data081C15BE
-.word Data081C15A6, Data081C158E, Data081C1582, Data081C1576
-Data081C1630:                   ; 081C1630
+ObjE4_RandSurfacePtrs:          ; 081C15F0
+.word ObjE4_RandSurface9
+.word ObjE4_RandSurface8
+.word ObjE4_RandSurface7
+.word ObjE4_RandSurface6
+.word ObjE4_RandSurface5
+.word ObjE4_RandSurface4
+.word ObjE4_RandSurface3
+.word ObjE4_RandSurface2
+.word ObjE4_RandSurface1
+.word ObjE4_RandSurface0
+.word ObjE4_RandSurface8
+.word ObjE4_RandSurface6
+.word ObjE4_RandSurface4
+.word ObjE4_RandSurface2
+.word ObjE4_RandSurface1
+.word ObjE4_RandSurface0
+ObjE4_EA_FlowerInteriorTiles:   ; 081C1630
 .halfword 0x79BB, 0x79BC, 0x79BD, 0x79BE, 0x79BF, 0x79C0, 0x79C1, 0x79C2
 .halfword 0x79C3, 0x79C4, 0x79E0, 0x79E0, 0x79E0, 0x79E0, 0x79E0, 0x79E0
-Data081C1650:                   ; 081C1650
+ObjE5_RandSurface0:             ; 081C1650
 .halfword 0x0000, 0x0000, 0x85A8, 0x85A7, 0x0D0D, 0x0C0C, 0x79AD, 0x79AC
-Data081C1660:                   ; 081C1660
+ObjE5_RandSurface1:             ; 081C1660
 .halfword 0x0000, 0x0000, 0x85A8, 0x85A7, 0x0D0E, 0x0C0C, 0x79B6, 0x79AE
-Data081C1670:                   ; 081C1670
+ObjE5_RandSurface2:             ; 081C1670
 .halfword 0x0000, 0x0000, 0x85A8, 0x85A6, 0x0D0E, 0x0C0B, 0x79BD, 0x79AE
-Data081C1680:                   ; 081C1680
+ObjE5_RandSurface3:             ; 081C1680
 .halfword 0x85C2, 0x0000, 0x85A9, 0x85A6, 0x0D0E, 0x0C0C, 0x79AD, 0x79AF
-Data081C1690:                   ; 081C1690
+ObjE5_RandSurface4:             ; 081C1690
 .halfword 0x85C3, 0x85C1, 0x85AA, 0x85A5, 0x0D0E, 0x0C0C, 0x79B1, 0x79B0
-DataPtrs081C16A0:               ; 081C16A0
-.word Data081C1650, Data081C1660, Data081C1670, Data081C1680
-.word Data081C1690, Data081C1690, Data081C1680, Data081C1650
-Data081C16C0:                   ; 081C16C0
+ObjE5_RandSurfacePtrs:          ; 081C16A0
+.word ObjE5_RandSurface0, ObjE5_RandSurface1, ObjE5_RandSurface2, ObjE5_RandSurface3
+.word ObjE5_RandSurface4, ObjE5_RandSurface4, ObjE5_RandSurface3, ObjE5_RandSurface0
+ObjE6_RandSurface0:             ; 081C16C0
 .halfword 0x0000, 0x85B9, 0x0814, 0x79AA
-Data081C16C8:                   ; 081C16C8
+ObjE6_RandSurface1:             ; 081C16C8
 .halfword 0x0000, 0x85BA, 0x0815, 0x79AA
-Data081C16D0:                   ; 081C16D0
+ObjE6_RandSurface2:             ; 081C16D0
 .halfword 0x0000, 0x85B9, 0x0816, 0x79AB
-Data081C16D8:                   ; 081C16D8
+ObjE6_RandSurface3:             ; 081C16D8
 .halfword 0x85C1, 0x85BB, 0x0816, 0x79AB
-Data081C16E0:                   ; 081C16E0
+ObjE6_RandSurface4:             ; 081C16E0
 .halfword 0x85C2, 0x85BC, 0x0814, 0x79B6
-DataPtrs081C16E8:               ; 081C16E8
-.word Data081C16C0, Data081C16C8, Data081C16D0, Data081C16D8
-.word Data081C16E0, Data081C16E0, Data081C16D8, Data081C16C0
-Data081C1708:                   ; 081C1708
+ObjE6_RandSurfacePtrs:          ; 081C16E8
+.word ObjE6_RandSurface0, ObjE6_RandSurface1, ObjE6_RandSurface2, ObjE6_RandSurface3
+.word ObjE6_RandSurface4, ObjE6_RandSurface4, ObjE6_RandSurface3, ObjE6_RandSurface0
+ObjE7_RandSurface0:             ; 081C1708
 .halfword 0x85A7, 0x020A, 0x030D, 0x79B9
-Data081C1710:                   ; 081C1710
+ObjE7_RandSurface1:             ; 081C1710
 .halfword 0x85A7, 0x020A, 0x030D, 0x79AC
-Data081C1718:                   ; 081C1718
+ObjE7_RandSurface2:             ; 081C1718
 .halfword 0x85A6, 0x020B, 0x030D, 0x79B9
-Data081C1720:                   ; 081C1720
+ObjE7_RandSurface3:             ; 081C1720
 .halfword 0x85A7, 0x020A, 0x030D, 0x79B6
-Data081C1728:                   ; 081C1728
+ObjE7_RandSurface4:             ; 081C1728
 .halfword 0x85B3, 0x020A, 0x030D, 0x79B9
-DataPtrs081C1730:               ; 081C1730
-.word Data081C1728, Data081C1720, Data081C1718, Data081C1710
-.word Data081C1708, Data081C1720, Data081C1710, Data081C1708
-Data081C1750:                   ; 081C1750
+ObjE7_RandSurfacePtrs:          ; 081C1730
+.word ObjE7_RandSurface4, ObjE7_RandSurface3, ObjE7_RandSurface2, ObjE7_RandSurface1
+.word ObjE7_RandSurface0, ObjE7_RandSurface3, ObjE7_RandSurface1, ObjE7_RandSurface0
+ObjE8_RandSurface0:             ; 081C1750
 .halfword 0x0000, 0x0000, 0x85AD, 0x85B1, 0x0F11, 0x100E, 0x79B2, 0x79BE
-Data081C1760:                   ; 081C1760
+ObjE8_RandSurface1:             ; 081C1760
 .halfword 0x0000, 0x0000, 0x85AD, 0x85B1, 0x0F10, 0x100E, 0x79AF, 0x79B7
-Data081C1770:                   ; 081C1770
+ObjE8_RandSurface2:             ; 081C1770
 .halfword 0x0000, 0x0000, 0x85AD, 0x85B2, 0x0F10, 0x100F, 0x79B3, 0x79B4
-Data081C1780:                   ; 081C1780
+ObjE8_RandSurface3:             ; 081C1780
 .halfword 0x85C3, 0x0000, 0x85AE, 0x85B1, 0x0F10, 0x100E, 0x79C2, 0x79B6
-Data081C1790:                   ; 081C1790
+ObjE8_RandSurface4:             ; 081C1790
 .halfword 0x85C2, 0x85C3, 0x85AF, 0x85B0, 0x0F11, 0x100E, 0x79B2, 0x79BE
-DataPtrs081C17A0:               ; 081C17A0
-.word Data081C1750, Data081C1760, Data081C1770, Data081C1780
-.word Data081C1790, Data081C1790, Data081C1780, Data081C1750
-Data081C17C0:                   ; 081C17C0
+ObjE8_RandSurfacePtrs:          ; 081C17A0
+.word ObjE8_RandSurface0, ObjE8_RandSurface1, ObjE8_RandSurface2, ObjE8_RandSurface3
+.word ObjE8_RandSurface4, ObjE8_RandSurface4, ObjE8_RandSurface3, ObjE8_RandSurface0
+ObjE9_RandSurface0:             ; 081C17C0
 .halfword 0x0000, 0x85BD, 0x0A15, 0x79B7
-Data081C17C8:                   ; 081C17C8
+ObjE9_RandSurface1:             ; 081C17C8
 .halfword 0x0000, 0x85BF, 0x0A16, 0x79B7
-Data081C17D0:                   ; 081C17D0
+ObjE9_RandSurface2:             ; 081C17D0
 .halfword 0x0000, 0x85BD, 0x0A17, 0x79B8
-Data081C17D8:                   ; 081C17D8
+ObjE9_RandSurface3:             ; 081C17D8
 .halfword 0x85C3, 0x85BE, 0x0A17, 0x79B8
-Data081C17E0:                   ; 081C17E0
+ObjE9_RandSurface4:             ; 081C17E0
 .halfword 0x85C4, 0x85C0, 0x0A15, 0x79AF
-DataPtrs081C17E8:               ; 081C17E8
-.word Data081C17C0, Data081C17C8, Data081C17D0, Data081C17D8
-.word Data081C17E0, Data081C17E0, Data081C17D8, Data081C17C0
-Data081C1808:                   ; 081C1808
+ObjE9_RandSurfacePtrs:          ; 081C17E8
+.word ObjE9_RandSurface0, ObjE9_RandSurface1, ObjE9_RandSurface2, ObjE9_RandSurface3
+.word ObjE9_RandSurface4, ObjE9_RandSurface4, ObjE9_RandSurface3, ObjE9_RandSurface0
+ObjEA_RandSurface0:             ; 081C1808
 .halfword 0x85B8, 0x050B, 0x060D, 0x79BA
-Data081C1810:                   ; 081C1810
+ObjEA_RandSurface1:             ; 081C1810
 .halfword 0x85B8, 0x050B, 0x060D, 0x79AC
-Data081C1818:                   ; 081C1818
+ObjEA_RandSurface2:             ; 081C1818
 .halfword 0x85B7, 0x050A, 0x060D, 0x79BA
-Data081C1820:                   ; 081C1820
+ObjEA_RandSurface3:             ; 081C1820
 .halfword 0x85B6, 0x050B, 0x060D, 0x79AF
-Data081C1828:                   ; 081C1828
+ObjEA_RandSurface4:             ; 081C1828
 .halfword 0x85B6, 0x050B, 0x060D, 0x79BA
-DataPtrs081C1830:               ; 081C1830
-.word Data081C1828, Data081C1820, Data081C1818, Data081C1810
-.word Data081C1808, Data081C1820, Data081C1810, Data081C1808
-Data081C1850:                   ; 081C1850
+ObjEA_RandSurfacePtrs:          ; 081C1830
+.word ObjEA_RandSurface4, ObjEA_RandSurface3, ObjEA_RandSurface2, ObjEA_RandSurface1
+.word ObjEA_RandSurface0, ObjEA_RandSurface3, ObjEA_RandSurface1, ObjEA_RandSurface0
+ObjEB_EC_ReplacementTiles:      ; 081C1850
 .halfword 0x79AD, 0x79AE, 0x79B5, 0x79DD
-Data081C1858:                   ; 081C1858
+ObjEB_EC_SlopeHiChecks:         ; 081C1858
 .halfword 0x0300, 0x0600, 0x0800, 0x0A00, 0x0C00, 0x1000
 ObjED_Multiples03:              ; 081C1864
 .halfword 0x0000, 0x0003, 0x0006

@@ -680,8 +680,7 @@ mov   r1,0x0                    ; 080F9598  loop index
 ldr   r0,=0xFFFFBFA0            ; 080F959A
 add   r3,r4,r0                  ; 080F959C
 ldr   r5,=Data08197848          ; 080F959E
-@@Code080F95A0:
-                                ; loop: copy 8-byte ASCII "SMA3MWE0" from 08197848 to 03006260
+@@Code080F95A0:                 ; loop: copy 8-byte ASCII "SMA3MWE0" from 08197848 to 03006260
 lsl   r0,r1,0x10                ; 080F95A0 \
 asr   r0,r0,0x10                ; 080F95A2
 add   r2,r0,r4                  ; 080F95A4
@@ -1926,8 +1925,7 @@ mov   r3,r4                     ; 080FA0A6
 ldr   r0,=0xFFFFBF88            ; 080FA0A8
 add   r4,r3,r0                  ; 080FA0AA  r4 = 03002200
 ldr   r5,=Data08197860          ; 080FA0AC
-@@Code080FA0AE:
-                                ; loop: copy 4-byte ASCII "AYE0" from 08197860 to 03006278
+@@Code080FA0AE:                 ; loop: copy 4-byte ASCII "AYE0" from 08197860 to 03006278
 lsl   r0,r2,0x10                ; 080FA0AE \
 asr   r0,r0,0x10                ; 080FA0B0
 add   r2,r0,r3                  ; 080FA0B2

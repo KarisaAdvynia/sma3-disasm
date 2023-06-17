@@ -740,8 +740,7 @@ ldr   r0,[sp,0xC]               ; 080E8672  image width in 8px increments
 cmp   r10,r0                    ; 080E8674
 bhs   @@Code080E876C            ; 080E8676  if width == 0, skip inner loop
 ldr   r7,=0x03007248            ; 080E8678  pointer to message buffer
-@@Code080E867A:
-                                ;          \ inner loop: ?
+@@Code080E867A:                 ;          \ inner loop: ?
 mov   r0,r9                     ; 080E867A
 add   r0,r8                     ; 080E867C
 lsl   r0,r0,0x10                ; 080E867E
@@ -879,8 +878,7 @@ ldr   r1,[sp,0x8]               ; 080E8780  loop entry point
 cmp   r0,r1                     ; 080E8782
 bhs   @@Code080E8788            ; 080E8784  if all Y-values have been processed, end loop
 b     @@Code080E865A            ; 080E8786
-@@Code080E8788:
-                                ;          / end outer loop
+@@Code080E8788:                 ;          / end outer loop
 ldr   r0,[sp]                   ; 080E8788
 ldr   r2,[r0,0x4]               ; 080E878A
 add   r2,0x9                    ; 080E878C
@@ -1491,8 +1489,7 @@ lsl   r0,r0,0x10                ; 080E8C78
 lsr   r1,r0,0x10                ; 080E8C7A
 cmp   r2,0x63                   ; 080E8C7C
 bhi   @@Code080E8C6E            ; 080E8C7E /
-@@Code080E8C80:
-                                ;           r1=hundreds digit, r2=remainder
+@@Code080E8C80:                 ;           r1=hundreds digit, r2=remainder
 mov   r0,0x5A                   ; 080E8C80
 add   r0,r0,r4                  ; 080E8C82  r0 = 03002426
 mov   r12,r0                    ; 080E8C84
@@ -1508,8 +1505,7 @@ lsl   r0,r0,0x10                ; 080E8C94
 lsr   r3,r0,0x10                ; 080E8C96
 cmp   r2,0x9                    ; 080E8C98
 bhi   @@Code080E8C8A            ; 080E8C9A /
-@@Code080E8C9C:
-                                ;           r2=ones digit, r3=tens digit
+@@Code080E8C9C:                 ;           r2=ones digit, r3=tens digit
 lsl   r0,r3,0x8                 ; 080E8C9C
 orr   r2,r0                     ; 080E8C9E  r2 = tens digit * 0x100 + ones digit
 mov   r0,r12                    ; 080E8CA0
@@ -1988,9 +1984,7 @@ mov   r0,0x0                    ; 080E8FC8 /
 @@Code080E8FCA:
 cmp   r0,0x0                    ; 080E8FCA
 bne   @@Code080E8FDA            ; 080E8FCC
-@@Code080E8FCE:
-                                ;          \ runs if nonzero return value:
-                                ;           wait out multi-frame commands somehow
+@@Code080E8FCE:                 ;          \ runs if nonzero return value:                 ;           wait out multi-frame commands somehow
 mov   r1,0x24                   ; 080E8FCE
 ldsh  r0,[r4,r1]                ; 080E8FD0
 sub   r0,0x1                    ; 080E8FD2

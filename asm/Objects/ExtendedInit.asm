@@ -26,8 +26,7 @@ add   r4,0xB3                   ; 0801BFD4  [03007240]+B3 (030022BF)
 ldr   r6,=0x03007010            ; 0801BFD6  Layer 1 tilemap EWRAM (0200000C)
 lsr   r3,r0,0x11                ; 0801BFD8  r3 = screen memory index << 8
 mov   r5,0x0                    ; 0801BFDA
-@@Code0801BFDC:
-                                ;          \ loop: clear current screen's tilemap
+@@Code0801BFDC:                 ;          \ loop: clear current screen's tilemap
 ldr   r0,[r6]                   ; 0801BFDC  pointer to layer 1 tilemap
 add   r1,r3,r2                  ; 0801BFDE
 lsl   r1,r1,0x1                 ; 0801BFE0
