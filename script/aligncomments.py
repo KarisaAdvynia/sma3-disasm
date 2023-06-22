@@ -1,9 +1,9 @@
 """Align all in-line comments in each code file to a particular character
 position. Start-of-line comments are unaffected."""
 
-import os
+from _iterate_recursive import iterate_recursive
 
-def aligncomments(path, startstr=";", commentpos=32):
+def aligncomments(path, startstr=";", commentpos=36):
     print("Processing:", path)
     outputlines = []
     for line in open(path, "r", newline="", encoding="UTF-8"):
@@ -16,15 +16,5 @@ def aligncomments(path, startstr=";", commentpos=32):
                 left.rstrip(" ").ljust(commentpos) + startstr + right)
     open(path, "w", newline="", encoding="UTF-8").writelines(outputlines)
 
-def aligncomments_dir(directory, ext=".asm", *args, **kwargs):
-    contents = sorted(os.listdir(directory), key=str.casefold)
-    for name in contents:
-        path = os.path.join(directory, name)
-        if os.path.isdir(path):
-            # recursively iterate through subdirectories
-            aligncomments_dir(path, ext, *args, **kwargs)
-        elif path.endswith(ext):
-            aligncomments(path, *args, **kwargs)
-
 if __name__ == "__main__":
-    aligncomments_dir("../asm/")
+    iterate_recursive(aligncomments, "../asm/", ext=".asm")

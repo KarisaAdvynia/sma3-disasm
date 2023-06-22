@@ -1,247 +1,247 @@
-LevelName_Intro:                ; 082F90AC
+LevelName_Intro:                    ; 082F90AC
 .strn 0xFE,0x00,0x00,"Welcome To"
 .strn 0xFE,0x10,0x00,"Yoshi's Island"
 .byte 0xFD
-LevelName1_1:                   ; 082F90CB
+LevelName1_1:                       ; 082F90CB
 .strn 0xFE,0x00,0x00,"1-1: Make Eggs\{, }"
 .strn 0xFE,0x10,0x00,"Throw Eggs"
 .byte 0xFD
-LevelName1_2:                   ; 082F90EB
+LevelName1_2:                       ; 082F90EB
 .strn 0xFE,0x00,0x00,"1-2: Watch Out"
 .strn 0xFE,0x10,0x00,"Below!"
 .byte 0xFD
-LevelName1_3:                   ; 082F9106
+LevelName1_3:                       ; 082F9106
 .strn 0xFE,0x00,0x00,"1-3: The Cave Of"
 .strn 0xFE,0x10,0x00,"Chomp Rock"
 .byte 0xFD
-LevelName1_4:                   ; 082F9127
+LevelName1_4:                       ; 082F9127
 .strn 0xFE,0x00,0x00,"1-4: Burt The"
 .strn 0xFE,0x10,0x00,"Bashful's Fort"
 .byte 0xFD
-LevelName1_5:                   ; 082F9149
+LevelName1_5:                       ; 082F9149
 .strn 0xFE,0x00,0x00,"1-5: Hop! Hop!"
 .strn 0xFE,0x10,0x00,"Donut Lifts"
 .byte 0xFD
-LevelName1_6:                   ; 082F9169
+LevelName1_6:                       ; 082F9169
 .strn 0xFE,0x00,0x00,"1-6: Shy-Guys"
 .strn 0xFE,0x10,0x00,"On Stilts"
 .byte 0xFD
-LevelName1_7:                   ; 082F9186
+LevelName1_7:                       ; 082F9186
 .strn 0xFE,0x00,0x00,"1-7: Touch Fuzzy"
 .strn 0xFE,0x10,0x00,"Get Dizzy"
 .byte 0xFD
-LevelName1_8:                   ; 082F91A6
+LevelName1_8:                       ; 082F91A6
 .strn 0xFE,0x00,0x00,"1-8: Salvo The"
 .strn 0xFE,0x10,0x00,"Slime's Castle"
 .byte 0xFD
-LevelName1_E:                   ; 082F91C9
+LevelName1_E:                       ; 082F91C9
 .strn 0xFE,0x00,0x00,"Extra 1: Poochy"
 .strn 0xFE,0x10,0x00,"Ain't Stupid"
 .byte 0xFD
-LevelName1_S:                   ; 082F91EB
+LevelName1_S:                       ; 082F91EB
 .strn 0xFE,0x00,0x00,"Secret 1: Exercise"
 .strn 0xFE,0x10,0x00,"in the Skies"
 .byte 0xFD
-LevelName2_1:                   ; 082F9210
+LevelName2_1:                       ; 082F9210
 .strn 0xFE,0x00,0x00,"2-1: Visit Koopa"
 .strn 0xFE,0x10,0x00,"And Para-Koopa"
 .byte 0xFD
-LevelName2_2:                   ; 082F9235
+LevelName2_2:                       ; 082F9235
 .strn 0xFE,0x00,0x00,"2-2: The"
 .strn 0xFE,0x10,0x00,"Baseball Boys"
 .byte 0xFD
-LevelName2_3:                   ; 082F9251
+LevelName2_3:                       ; 082F9251
 .strn 0xFE,0x00,0x00,"2-3: What's"
 .strn 0xFE,0x10,0x00,"Gusty Taste Like?"
 .byte 0xFD
-LevelName2_4:                   ; 082F9274
+LevelName2_4:                       ; 082F9274
 .strn 0xFE,0x00,0x00,"2-4: Bigger"
 .strn 0xFE,0x10,0x00,"Boo's Fort"
 .byte 0xFD
-LevelName2_5:                   ; 082F9290
+LevelName2_5:                       ; 082F9290
 .strn 0xFE,0x00,0x00,"2-5: Watch Out"
 .strn 0xFE,0x10,0x00,"For Lakitu"
 .byte 0xFD
-LevelName2_6:                   ; 082F92AF
+LevelName2_6:                       ; 082F92AF
 .strn 0xFE,0x00,0x00,"2-6: The Cave Of"
 .strn 0xFE,0x10,0x00,"The Mystery Maze"
 .byte 0xFD
-LevelName2_7:                   ; 082F92D6
+LevelName2_7:                       ; 082F92D6
 .strn 0xFE,0x00,0x00,"2-7: Lakitu's"
 .strn 0xFE,0x10,0x00,"Wall"
 .byte 0xFD
-LevelName2_8:                   ; 082F92EE
+LevelName2_8:                       ; 082F92EE
 .strn 0xFE,0x00,0x00,"2-8: The Potted"
 .strn 0xFE,0x10,0x00,"Ghost's Castle"
 .byte 0xFD
-LevelName2_E:                   ; 082F9312
+LevelName2_E:                       ; 082F9312
 .strn 0xFE,0x00,0x00,"Extra 2: Hit"
 .strn 0xFE,0x10,0x00,"That Switch!!"
 .byte 0xFD
-LevelName2_S:                   ; 082F9332
+LevelName2_S:                       ; 082F9332
 .strn 0xFE,0x00,0x00,"Secret 2: Mystery"
 .strn 0xFE,0x10,0x00,"of the Castle?"
 .byte 0xFE,0x20,0x00
 .byte 0xFD
-LevelName3_1:                   ; 082F935B
+LevelName3_1:                       ; 082F935B
 .strn 0xFE,0x00,0x00,"3-1: Welcome To"
 .strn 0xFE,0x10,0x00,"Monkey World!"
 .byte 0xFD
-LevelName3_2:                   ; 082F937E
+LevelName3_2:                       ; 082F937E
 .strn 0xFE,0x00,0x00,"3-2: Jungle"
 .strn 0xFE,0x10,0x00,"Rhythm\{. }\{. }\{. }"
 .byte 0xFD
-LevelName3_3:                   ; 082F9399
+LevelName3_3:                       ; 082F9399
 .strn 0xFE,0x00,0x00,"3-3: Nep-Enuts'"
 .strn 0xFE,0x10,0x00,"Domain"
 .byte 0xFD
-LevelName3_4:                   ; 082F93B5
+LevelName3_4:                       ; 082F93B5
 .strn 0xFE,0x00,0x00,"3-4: Prince"
 .strn 0xFE,0x10,0x00,"Froggy's Fort"
 .byte 0xFD
-LevelName3_5:                   ; 082F93D4
+LevelName3_5:                       ; 082F93D4
 .strn 0xFE,0x00,0x00,"3-5: Jammin'"
 .strn 0xFE,0x10,0x00,"Through The Trees"
 .byte 0xFD
-LevelName3_6:                   ; 082F93F8
+LevelName3_6:                       ; 082F93F8
 .strn 0xFE,0x00,0x00,"3-6: The Cave"
 .strn 0xFE,0x10,0x00,"Of Harry Hedgehog"
 .byte 0xFD
-LevelName3_7:                   ; 082F941D
+LevelName3_7:                       ; 082F941D
 .strn 0xFE,0x00,0x00,"3-7: Monkeys'"
 .strn 0xFE,0x10,0x00,"Favorite Lake"
 .byte 0xFD
-LevelName3_8:                   ; 082F943E
+LevelName3_8:                       ; 082F943E
 .strn 0xFE,0x00,0x00,"3-8: Naval"
 .strn 0xFE,0x10,0x00,"Piranha's Castle"
 .byte 0xFD
-LevelName3_E:                   ; 082F945F
+LevelName3_E:                       ; 082F945F
 .strn 0xFE,0x00,0x00,"Extra 3: More"
 .strn 0xFE,0x10,0x00,"Monkey Madness"
 .byte 0xFD
-LevelName3_S:                   ; 082F9481
+LevelName3_S:                       ; 082F9481
 .strn 0xFE,0x00,0x00,"Secret 3:"
 .strn 0xFE,0x10,0x00,"Go! Go! Morphing!"
 .byte 0xFE,0x20,0x00
 .byte 0xFD
-LevelName4_1:                   ; 082F94A5
+LevelName4_1:                       ; 082F94A5
 .strn 0xFE,0x00,0x00,"4-1:  GO!"
 .strn 0xFE,0x10,0x00,"GO! MARIO!!"
 .byte 0xFD
-LevelName4_2:                   ; 082F94C0
+LevelName4_2:                       ; 082F94C0
 .strn 0xFE,0x00,0x00,"4-2: The Cave Of"
 .strn 0xFE,0x10,0x00,"The Lakitus"
 .byte 0xFD
-LevelName4_3:                   ; 082F94E2
+LevelName4_3:                       ; 082F94E2
 .strn 0xFE,0x00,0x00,"4-3: Don't"
 .strn 0xFE,0x10,0x00,"Look  Back!"
 .byte 0xFD
-LevelName4_4:                   ; 082F94FE
+LevelName4_4:                       ; 082F94FE
 .strn 0xFE,0x00,0x00,"4-4: Marching"
 .strn 0xFE,0x10,0x00,"Milde's Fort"
 .byte 0xFD
-LevelName4_5:                   ; 082F951E
+LevelName4_5:                       ; 082F951E
 .strn 0xFE,0x00,0x00,"4-5: Chomp Rock"
 .strn 0xFE,0x10,0x00,"Zone"
 .byte 0xFD
-LevelName4_6:                   ; 082F9538
+LevelName4_6:                       ; 082F9538
 .strn 0xFE,0x00,0x00,"4-6: Lake Shore"
 .strn 0xFE,0x10,0x00,"Paradise"
 .byte 0xFD
-LevelName4_7:                   ; 082F9556
+LevelName4_7:                       ; 082F9556
 .strn 0xFE,0x00,0x00,"4-7: Ride Like"
 .strn 0xFE,0x10,0x00,"The Wind"
 .byte 0xFD
-LevelName4_8:                   ; 082F9573
+LevelName4_8:                       ; 082F9573
 .strn 0xFE,0x00,0x00,"4-8: Hookbill The"
 .strn 0xFE,0x10,0x00,"Koopa's Castle"
 .byte 0xFD
-LevelName4_E:                   ; 082F9599
+LevelName4_E:                       ; 082F9599
 .strn 0xFE,0x00,0x00,"Extra 4: The"
 .strn 0xFE,0x10,0x00,"Impossible? Maze"
 .byte 0xFD
-LevelName4_S:                   ; 082F95BC
+LevelName4_S:                       ; 082F95BC
 .strn 0xFE,0x00,0x00,"Secret 4: Fight"
 .strn 0xFE,0x10,0x00,"Toadies w/ Toadies"
 .byte 0xFE,0x20,0x00
 .byte 0xFD
-LevelName5_1:                   ; 082F95E7
+LevelName5_1:                       ; 082F95E7
 .strn 0xFE,0x00,0x00,"5-1: BLIZZARD!!!"
 .strn 0xFE,0x10,0x00
 .byte 0xFD
-LevelName5_2:                   ; 082F95FE
+LevelName5_2:                       ; 082F95FE
 .strn 0xFE,0x00,0x00,"5-2: Ride The"
 .strn 0xFE,0x10,0x00,"Ski Lifts"
 .byte 0xFD
-LevelName5_3:                   ; 082F961B
+LevelName5_3:                       ; 082F961B
 .strn 0xFE,0x00,0x00,"5-3: Danger - Icy"
 .strn 0xFE,0x10,0x00,"Conditions Ahead"
 .byte 0xFD
-LevelName5_4:                   ; 082F9643
+LevelName5_4:                       ; 082F9643
 .strn 0xFE,0x00,0x00,"5-4: Sluggy The"
 .strn 0xFE,0x10,0x00,"Unshaven's Fort"
 .byte 0xFD
-LevelName5_5:                   ; 082F9668
+LevelName5_5:                       ; 082F9668
 .strn 0xFE,0x00,0x00,"5-5: Goonie"
 .strn 0xFE,0x10,0x00,"Rides!"
 .byte 0xFD
-LevelName5_6:                   ; 082F9680
+LevelName5_6:                       ; 082F9680
 .strn 0xFE,0x00,0x00,"5-6: Welcome To"
 .strn 0xFE,0x10,0x00,"Cloud World"
 .byte 0xFD
-LevelName5_7:                   ; 082F96A1
+LevelName5_7:                       ; 082F96A1
 .strn 0xFE,0x00,0x00,"5-7: Shifting"
 .strn 0xFE,0x10,0x00,"Platforms Ahead"
 .byte 0xFD
-LevelName5_8:                   ; 082F96C4
+LevelName5_8:                       ; 082F96C4
 .strn 0xFE,0x00,0x00,"5-8: Raphael The"
 .strn 0xFE,0x10,0x00,"Raven's Castle"
 .byte 0xFD
-LevelName5_E:                   ; 082F96E9
+LevelName5_E:                       ; 082F96E9
 .strn 0xFE,0x00,0x00,"Extra 5: Kamek's"
 .strn 0xFE,0x10,0x00,"Revenge"
 .byte 0xFD
-LevelName5_S:                   ; 082F9707
+LevelName5_S:                       ; 082F9707
 .strn 0xFE,0x00,0x00,"Secret 5:"
 .strn 0xFE,0x10,0x00,"Items are fun!"
 .byte 0xFD
-LevelName6_1:                   ; 082F9725
+LevelName6_1:                       ; 082F9725
 .strn 0xFE,0x00,0x00,"6-1: Scary"
 .strn 0xFE,0x10,0x00,"Skeleton Goonies!"
 .byte 0xFD
-LevelName6_2:                   ; 082F9747
+LevelName6_2:                       ; 082F9747
 .strn 0xFE,0x00,0x00,"6-2: The Cave Of"
 .strn 0xFE,0x10,0x00,"The Bandits"
 .byte 0xFD
-LevelName6_3:                   ; 082F9769
+LevelName6_3:                       ; 082F9769
 .strn 0xFE,0x00,0x00,"6-3: Beware The"
 .strn 0xFE,0x10,0x00,"Spinning Logs"
 .byte 0xFD
-LevelName6_4:                   ; 082F978C
+LevelName6_4:                       ; 082F978C
 .strn 0xFE,0x00,0x00,"6-4: Tap-Tap The"
 .strn 0xFE,0x10,0x00,"Red Nose's Fort"
 .byte 0xFD
-LevelName6_5:                   ; 082F97B2
+LevelName6_5:                       ; 082F97B2
 .strn 0xFE,0x00,0x00,"6-5: The Very"
 .strn 0xFE,0x10,0x00,"Loooooong Cave"
 .byte 0xFD
-LevelName6_6:                   ; 082F97D4
+LevelName6_6:                       ; 082F97D4
 .strn 0xFE,0x00,0x00,"6-6: The Deep\{, }"
 .strn 0xFE,0x10,0x00,"Underground Maze"
 .byte 0xFD
-LevelName6_7:                   ; 082F97F9
+LevelName6_7:                       ; 082F97F9
 .strn 0xFE,0x00,0x00,"6-7: KEEP"
 .strn 0xFE,0x10,0x00,"MOVING!!!!"
 .byte 0xFD
-LevelName6_8:                   ; 082F9813
+LevelName6_8:                       ; 082F9813
 .strn 0xFE,0x00,0x00,"6-8:  King"
 .strn 0xFE,0x10,0x00,"Bowser's Castle"
 .byte 0xFD
-LevelName6_E:                   ; 082F9833
+LevelName6_E:                       ; 082F9833
 .strn 0xFE,0x00,0x00,"Extra 6: Ultimate"
 .strn 0xFE,0x10,0x00,"Castle Challenge"
 .byte 0xFD
-LevelName6_S:                   ; 082F985B
+LevelName6_S:                       ; 082F985B
 .strn 0xFE,0x00,0x00,"Secret 6: Endless"
 .strn 0xFE,0x10,0x00,"World of Yoshis"
 .byte 0xFE,0x20,0x00
