@@ -3272,8 +3272,9 @@ strh  r2,[r0]                       ; 0801EBCC  set tile
 bx    lr                            ; 0801EBCE
 .pool                               ; 0801EBD0
 
-Sub0801EBD8:
-; called by CC-CD
+ObjCCCD_AddSlopeShadow:
+; called by CC-CD if relY is 0 or -1
+; r1: 0 for CD relY 0, 2 for CD relY -1, 4 for CC relY 0, 6 for CC relY -1
 push  {r4-r5,lr}                    ; 0801EBD8
 mov   r4,r0                         ; 0801EBDA
 lsl   r5,r1,0x10                    ; 0801EBDC
@@ -3286,35 +3287,35 @@ ldr   r2,[r1]                       ; 0801EBEA
 ldr   r1,=0xFFFE                    ; 0801EBEC
 and   r1,r0                         ; 0801EBEE
 add   r2,r2,r1                      ; 0801EBF0
-ldr   r1,=0xFFFFFEAD                ; 0801EBF2
+ldr   r1,=0xFFFFFEAD                ; 0801EBF2  -0153
 mov   r0,r1                         ; 0801EBF4
-ldrh  r2,[r2]                       ; 0801EBF6
+ldrh  r2,[r2]                       ; 0801EBF6  tile at y-1
 add   r0,r0,r2                      ; 0801EBF8
 lsl   r0,r0,0x10                    ; 0801EBFA
 lsr   r0,r0,0x10                    ; 0801EBFC
 cmp   r0,0xD                        ; 0801EBFE
-bls   @@Code0801EC30                ; 0801EC00
-mov   r0,r4                         ; 0801EC02
+bls   @@SolidAbove                  ; 0801EC00
+mov   r0,r4                         ; 0801EC02  runs if tile at y-1 is not 0153-0160
 bl    Obj_GetTileXMinus1            ; 0801EC04  r0 = tile ID at x-1
 lsl   r0,r0,0x10                    ; 0801EC08
 lsr   r2,r0,0x10                    ; 0801EC0A
 mov   r0,0xA9                       ; 0801EC0C
-lsl   r0,r0,0x1                     ; 0801EC0E
+lsl   r0,r0,0x1                     ; 0801EC0E  0152
 cmp   r2,r0                         ; 0801EC10
 bls   @@Return                      ; 0801EC12
-add   r0,0xE                        ; 0801EC14
+add   r0,0xE                        ; 0801EC14  0160
 cmp   r2,r0                         ; 0801EC16
-bhi   @@Return                      ; 0801EC18
-ldr   r1,=Data081C12C2              ; 0801EC1A
+bhi   @@Return                      ; 0801EC18  if neither tile is 0153-0160, return
+ldr   r1,=ObjCC_CD_SlopeTilesLeftShadow; 0801EC1A  runs if tile at x-1 is 0153-0160 (and tile at y-1 is not)
 b     @@Code0801EC32                ; 0801EC1C
 .pool                               ; 0801EC1E
 
-@@Code0801EC30:
-ldr   r1,=Data081C12BA              ; 0801EC30
+@@SolidAbove:
+ldr   r1,=ObjCC_CD_SlopeTilesTopShadow; 0801EC30
 @@Code0801EC32:
 lsr   r0,r5,0x11                    ; 0801EC32
 lsl   r0,r0,0x1                     ; 0801EC34
-add   r0,r0,r1                      ; 0801EC36
+add   r0,r0,r1                      ; 0801EC36  offset with input r1
 ldrh  r2,[r0]                       ; 0801EC38
 mov   r0,r4                         ; 0801EC3A
 add   r0,0x4A                       ; 0801EC3C
@@ -3324,28 +3325,28 @@ ldr   r1,[r1]                       ; 0801EC42
 lsr   r0,r0,0x1                     ; 0801EC44
 lsl   r0,r0,0x1                     ; 0801EC46
 add   r1,r1,r0                      ; 0801EC48
-strh  r2,[r1]                       ; 0801EC4A
+strh  r2,[r1]                       ; 0801EC4A  set new tile
 @@Return:
 pop   {r4-r5}                       ; 0801EC4C
 pop   {r0}                          ; 0801EC4E
 bx    r0                            ; 0801EC50
 .pool                               ; 0801EC52
 
-Sub0801EC5C:
-; called by CC-CD, if left edge (last X for CC, first X for CD)
+ObjCCCD_AddLeftShadow:
+; called by CC-CD, if left edge (last X for CC, first X for CD) and relY <= -2
 push  {r4-r5,lr}                    ; 0801EC5C
 mov   r4,r0                         ; 0801EC5E
 bl    Obj_GetTileXMinus1            ; 0801EC60  r0 = tile ID at x-1
 lsl   r0,r0,0x10                    ; 0801EC64
 lsr   r0,r0,0x10                    ; 0801EC66
-ldr   r1,=0xFFFFFEAD                ; 0801EC68
+ldr   r1,=0xFFFFFEAD                ; 0801EC68  -0153
 mov   r5,r1                         ; 0801EC6A
-add   r0,r0,r5                      ; 0801EC6C
+add   r0,r0,r5                      ; 0801EC6C  tile at x-1, -0153
 lsl   r0,r0,0x10                    ; 0801EC6E
 lsr   r0,r0,0x10                    ; 0801EC70
 cmp   r0,0xD                        ; 0801EC72
-bls   @@Code0801ECB8                ; 0801EC74
-mov   r0,r4                         ; 0801EC76
+bls   @@Default                     ; 0801EC74
+mov   r0,r4                         ; 0801EC76  runs only if tile at x-1 is 0153-0160
 add   r0,0x48                       ; 0801EC78
 ldrh  r2,[r0]                       ; 0801EC7A
 ldr   r1,=0x0F0F                    ; 0801EC7C
@@ -3363,23 +3364,23 @@ ldr   r2,[r1]                       ; 0801EC94
 ldr   r1,=0xFFFE                    ; 0801EC96
 and   r1,r0                         ; 0801EC98
 add   r1,r2,r1                      ; 0801EC9A
-ldrh  r1,[r1]                       ; 0801EC9C
-add   r0,r5,r1                      ; 0801EC9E
+ldrh  r1,[r1]                       ; 0801EC9C  tile at x-1 y-1
+add   r0,r5,r1                      ; 0801EC9E  tile at x-1 y-1, -0153
 lsl   r0,r0,0x10                    ; 0801ECA0
 lsr   r0,r0,0x10                    ; 0801ECA2
 cmp   r0,0xD                        ; 0801ECA4
-bhi   @@Code0801ECB8                ; 0801ECA6
-mov   r0,r4                         ; 0801ECA8
+bhi   @@Default                     ; 0801ECA6
+mov   r0,r4                         ; 0801ECA8  runs only if tiles at x-1 and x-1 y-1 are both 0153-0160
 add   r0,0x4A                       ; 0801ECAA
-ldrh  r0,[r0]                       ; 0801ECAC
-mov   r1,0xC7                       ; 0801ECAE
+ldrh  r0,[r0]                       ; 0801ECAC  L1 tilemap offset
+mov   r1,0xC7                       ; 0801ECAE  00C7: castle BG wall, top-left shadow
 lsr   r0,r0,0x1                     ; 0801ECB0
 lsl   r0,r0,0x1                     ; 0801ECB2
 add   r0,r2,r0                      ; 0801ECB4
-strh  r1,[r0]                       ; 0801ECB6
-@@Code0801ECB8:
+strh  r1,[r0]                       ; 0801ECB6  set tile at current location to 00C7
+@@Default:
 mov   r0,r4                         ; 0801ECB8
-bl    Obj444546CCCD_AddLeftShadow   ; 0801ECBA
+bl    Obj444546CCCD_AddLeftShadow   ; 0801ECBA  fall back to 44's code
 pop   {r4-r5}                       ; 0801ECBE
 pop   {r0}                          ; 0801ECC0
 bx    r0                            ; 0801ECC2
@@ -3406,11 +3407,11 @@ mov   r2,0x4                        ; 0801ECF2  r2 = 4 if relY <= -2
 @@YDone:
 cmp   r2,0x0                        ; 0801ECF4
 beq   @@Y0                          ; 0801ECF6
-ldr   r1,=ObjCC_DefaultTIles        ; 0801ECF8
+ldr   r1,=ObjCC_DefaultTiles        ; 0801ECF8
 lsr   r0,r2,0x1                     ; 0801ECFA
 lsl   r0,r0,0x1                     ; 0801ECFC
 add   r0,r0,r1                      ; 0801ECFE  index with -relY, up to 2
-b     @@Code0801ED18                ; 0801ED00
+b     @@SetTile                     ; 0801ED00
 .pool                               ; 0801ED02
 
 @@Y0:
@@ -3419,8 +3420,8 @@ add   r0,0x40                       ; 0801ED0E
 ldrh  r3,[r0]                       ; 0801ED10  pre-existing tile
 cmp   r3,0x0                        ; 0801ED12
 bne   @@Code0801ED26                ; 0801ED14  only replace blank tiles
-ldr   r0,=ObjCC_DefaultTIles        ; 0801ED16 /
-@@Code0801ED18:
+ldr   r0,=ObjCC_DefaultTiles        ; 0801ED16 /
+@@SetTile:
 ldrh  r3,[r0]                       ; 0801ED18
 ldr   r0,=0x03007010                ; 0801ED1A  Layer 1 tilemap EWRAM (0200000C)
 ldr   r1,[r0]                       ; 0801ED1C
@@ -3438,8 +3439,8 @@ bhi   @@Code0801ED48                ; 0801ED2E
 mov   r0,0x4                        ; 0801ED30 \ runs if relY is 0 or -1
 orr   r2,r0                         ; 0801ED32
 mov   r0,r4                         ; 0801ED34
-mov   r1,r2                         ; 0801ED36
-bl    Sub0801EBD8                   ; 0801ED38
+mov   r1,r2                         ; 0801ED36  r1 = 4 if relY == 0, 6 if relY == -1
+bl    ObjCCCD_AddSlopeShadow        ; 0801ED38
 b     @@Return                      ; 0801ED3C /
 .pool                               ; 0801ED3E
 
@@ -3456,7 +3457,7 @@ ldrh  r0,[r0]                       ; 0801ED58  width
 cmp   r3,r0                         ; 0801ED5A
 bne   @@Code0801ED64                ; 0801ED5C
 mov   r0,r4                         ; 0801ED5E \ runs if last X (left edge)
-bl    Sub0801EC5C                   ; 0801ED60 /
+bl    ObjCCCD_AddLeftShadow         ; 0801ED60 /
 @@Code0801ED64:
 mov   r0,r4                         ; 0801ED64
 add   r0,0x50                       ; 0801ED66
@@ -3468,7 +3469,7 @@ mov   r0,r4                         ; 0801ED70
 add   r0,0x52                       ; 0801ED72
 ldrh  r0,[r0]                       ; 0801ED74  height
 cmp   r3,r0                         ; 0801ED76
-bne   @@Return                      ; 0801ED78
+bne   @@Return                      ; 0801ED78  if not last Y, return
 
 mov   r0,r4                         ; 0801ED7A  runs if last Y (top edge)
 add   r0,0x40                       ; 0801ED7C
@@ -3501,16 +3502,16 @@ lsl   r0,r0,0x10                    ; 0801EDB2
 lsr   r0,r0,0x10                    ; 0801EDB4
 cmp   r0,0xD                        ; 0801EDB6
 bls   @@Code0801EDD8                ; 0801EDB8 /
-@@Code0801EDBA:
-strh  r5,[r4,0x3A]                  ; 0801EDBA \ runs if last Y, and either prevtile is 00D5, or x-1 y-1 is not 0153-0160
+@@Code0801EDBA:                     ;          \ runs if last Y, and either prevtile is 00D5, or x-1 y-1 is not 0153-0160
+strh  r5,[r4,0x3A]                  ; 0801EDBA  clear scratch RAM
 mov   r0,r4                         ; 0801EDBC
 bl    Obj44CBCCCD_AddTopShadow      ; 0801EDBE
 b     @@Return                      ; 0801EDC2 /
 .pool                               ; 0801EDC4
 
-@@Code0801EDD8:
-mov   r0,0x6                        ; 0801EDD8 \ runs if last Y and tile at x-1 y-1 is 0153-0160
-strh  r0,[r4,0x3A]                  ; 0801EDDA
+@@Code0801EDD8:                     ;          \ runs if last Y and tile at x-1 y-1 is 0153-0160
+mov   r0,0x6                        ; 0801EDD8
+strh  r0,[r4,0x3A]                  ; 0801EDDA  set scratch RAM to 6
 mov   r0,r4                         ; 0801EDDC
 bl    Obj44CBCCCD_AddTopShadow      ; 0801EDDE /
 @@Return:
@@ -3544,30 +3545,31 @@ add   r0,0x40                       ; 0801EE0A
 ldrh  r3,[r0]                       ; 0801EE0C  pre-existing tile
 cmp   r3,0x0                        ; 0801EE0E
 bne   @@Code0801EE32                ; 0801EE10  only replace blank tiles
-ldr   r0,=ObjCD_DefaultTIles        ; 0801EE12
-b     @@Code0801EE24                ; 0801EE14 /
+ldr   r0,=ObjCD_DefaultTiles        ; 0801EE12
+b     @@SetTile                     ; 0801EE14 /
 .pool                               ; 0801EE16
 
 @@NotY0:
-ldr   r0,=ObjCD_DefaultTIles        ; 0801EE20
+ldr   r0,=ObjCD_DefaultTiles        ; 0801EE20
 add   r0,r2,r0                      ; 0801EE22
-@@Code0801EE24:
+@@SetTile:
 ldrh  r3,[r0]                       ; 0801EE24
 ldr   r0,=0x03007010                ; 0801EE26  Layer 1 tilemap EWRAM (0200000C)
 ldr   r1,[r0]                       ; 0801EE28
 lsr   r0,r5,0x1                     ; 0801EE2A
 lsl   r0,r0,0x1                     ; 0801EE2C
 add   r1,r1,r0                      ; 0801EE2E
-strh  r3,[r1]                       ; 0801EE30
+strh  r3,[r1]                       ; 0801EE30  set tile
+
 @@Code0801EE32:
 mov   r0,0x1                        ; 0801EE32
-strh  r0,[r4,0x38]                  ; 0801EE34
+strh  r0,[r4,0x38]                  ; 0801EE34  enable slope: trapezoid
 cmp   r2,0x3                        ; 0801EE36
 bhi   @@Code0801EE4C                ; 0801EE38
-mov   r0,r4                         ; 0801EE3A
-mov   r1,r2                         ; 0801EE3C
-bl    Sub0801EBD8                   ; 0801EE3E
-b     @@Return                      ; 0801EE42
+mov   r0,r4                         ; 0801EE3A \ runs if relY is 0 or -1
+mov   r1,r2                         ; 0801EE3C  r1 = 0 if relY == 0, 2 if relY == -1
+bl    ObjCCCD_AddSlopeShadow        ; 0801EE3E
+b     @@Return                      ; 0801EE42 /
 .pool                               ; 0801EE44
 
 @@Code0801EE4C:
@@ -3577,38 +3579,39 @@ ldrh  r3,[r0]                       ; 0801EE50  relative X
 cmp   r3,0x0                        ; 0801EE52
 bne   @@Code0801EE5C                ; 0801EE54
 mov   r0,r4                         ; 0801EE56 \ runs if first X (left edge)
-bl    Sub0801EC5C                   ; 0801EE58 /
+bl    ObjCCCD_AddLeftShadow         ; 0801EE58 /
 @@Code0801EE5C:
 mov   r0,r4                         ; 0801EE5C
 add   r0,0x50                       ; 0801EE5E
-ldrh  r3,[r0]                       ; 0801EE60
+ldrh  r3,[r0]                       ; 0801EE60  relative Y
 sub   r0,r3,0x1                     ; 0801EE62
 lsl   r0,r0,0x10                    ; 0801EE64
-lsr   r3,r0,0x10                    ; 0801EE66
+lsr   r3,r0,0x10                    ; 0801EE66  relY-1
 mov   r0,r4                         ; 0801EE68
 add   r0,0x52                       ; 0801EE6A
-ldrh  r0,[r0]                       ; 0801EE6C
+ldrh  r0,[r0]                       ; 0801EE6C  height
 cmp   r3,r0                         ; 0801EE6E
-bne   @@Return                      ; 0801EE70
-mov   r0,r4                         ; 0801EE72
+bne   @@Return                      ; 0801EE70  if not last Y, return
+
+mov   r0,r4                         ; 0801EE72  runs if last Y (top edge)
 add   r0,0x40                       ; 0801EE74
-ldrh  r3,[r0]                       ; 0801EE76
+ldrh  r3,[r0]                       ; 0801EE76  pre-existing tile
 cmp   r3,0xD5                       ; 0801EE78
 bne   @@Code0801EE80                ; 0801EE7A
-mov   r0,0x0                        ; 0801EE7C
-b     @@Code0801EEB8                ; 0801EE7E
+mov   r0,0x0                        ; 0801EE7C  if prevtile is 00D5, clear scratch RAM
+b     @@SetScratchRAM               ; 0801EE7E
 @@Code0801EE80:
 mov   r0,r4                         ; 0801EE80
 add   r0,0x48                       ; 0801EE82
-ldrh  r2,[r0]                       ; 0801EE84
+ldrh  r2,[r0]                       ; 0801EE84  tile YXyx
 ldr   r1,=0x0F0F                    ; 0801EE86
 mov   r3,r1                         ; 0801EE88
-and   r3,r2                         ; 0801EE8A
-sub   r0,r3,0x1                     ; 0801EE8C
-and   r0,r1                         ; 0801EE8E
+and   r3,r2                         ; 0801EE8A  tile 0X0x
+sub   r0,r3,0x1                     ; 0801EE8C  tile 0X?x with x-1
+and   r0,r1                         ; 0801EE8E  tile 0X0x with x-1
 ldr   r1,=0xF0F0                    ; 0801EE90
-and   r1,r2                         ; 0801EE92
-orr   r1,r0                         ; 0801EE94
+and   r1,r2                         ; 0801EE92  tile Y0y0
+orr   r1,r0                         ; 0801EE94  tile YXyx with x-1
 mov   r0,r4                         ; 0801EE96
 bl    L1TilemapOffsetYMinus1        ; 0801EE98  r0 = L1 tilemap offset for y-1
 ldr   r1,=0x03007010                ; 0801EE9C  Layer 1 tilemap EWRAM (0200000C)
@@ -3616,18 +3619,18 @@ ldr   r2,[r1]                       ; 0801EE9E
 ldr   r1,=0xFFFE                    ; 0801EEA0
 and   r1,r0                         ; 0801EEA2
 add   r2,r2,r1                      ; 0801EEA4
-ldr   r1,=0xFFFFFEAD                ; 0801EEA6
+ldr   r1,=0xFFFFFEAD                ; 0801EEA6  -0153
 mov   r0,r1                         ; 0801EEA8
-ldrh  r2,[r2]                       ; 0801EEAA
+ldrh  r2,[r2]                       ; 0801EEAA  tile at x-1 y-1
 add   r0,r0,r2                      ; 0801EEAC
 lsl   r0,r0,0x10                    ; 0801EEAE
 lsr   r0,r0,0x10                    ; 0801EEB0
 cmp   r0,0xD                        ; 0801EEB2
 bhi   @@Code0801EEBA                ; 0801EEB4
-mov   r0,0x6                        ; 0801EEB6
-@@Code0801EEB8:
+mov   r0,0x6                        ; 0801EEB6  if last Y and tile at x-1 y-1 is 0153-0160, set scratch RAM to 6
+@@SetScratchRAM:
 strh  r0,[r4,0x3A]                  ; 0801EEB8
-@@Code0801EEBA:
+@@Code0801EEBA:                     ;           if tile at x-1 y-1 is not 0153-0160 (and prevtile is not 00D5), leave scratch RAM unchanged
 mov   r0,r4                         ; 0801EEBA
 bl    Obj44CBCCCD_AddTopShadow      ; 0801EEBC
 @@Return:
@@ -3716,12 +3719,12 @@ lsr   r0,r0,0x10                    ; 0801EF66  tile at y-1, -0153
 cmp   r0,0xD                        ; 0801EF68
 bls   @@Code0801EF84                ; 0801EF6A
 @@Code0801EF6C:
-mov   r0,r4                         ; 0801EF6C \ runs if tile at y-1 is not 0153-0160
+mov   r0,r4                         ; 0801EF6C \ runs if mid X, or first/last X and tile at y-1 is not 0153-0160: add shadow using 44's code
 bl    Obj44CBCCCD_AddTopShadow      ; 0801EF6E
 b     @@Return                      ; 0801EF72 /
 .pool                               ; 0801EF74
 
-@@Code0801EF84:                     ;          \ runs if tile at y-1 is 0153-0160: add shadow
+@@Code0801EF84:                     ;          \ runs if tile at y-1 is 0153-0160: add shadow using unique code
 mov   r0,r4                         ; 0801EF84
 add   r0,0x4A                       ; 0801EF86
 ldrh  r3,[r0]                       ; 0801EF88  L1 tilemap offset
@@ -14356,42 +14359,43 @@ pop   {r0}                          ; 08024138
 bx    r0                            ; 0802413A
 .pool                               ; 0802413C
 
-Sub08024140:
+Obj56_MidX:
 ; called by 56
+; slope: -2
 push  {r4,lr}                       ; 08024140
 mov   r1,r0                         ; 08024142
 mov   r0,0x1                        ; 08024144
-strh  r0,[r1,0x38]                  ; 08024146
+strh  r0,[r1,0x38]                  ; 08024146  enable slope (trapezoid)
 mov   r0,r1                         ; 08024148
 add   r0,0x50                       ; 0802414A
-ldrh  r0,[r0]                       ; 0802414C
+ldrh  r0,[r0]                       ; 0802414C  relative Y
 cmp   r0,0x2                        ; 0802414E
-bhi   @@Return                      ; 08024150
+bhi   @@Return                      ; 08024150  return if relY > 2
 lsl   r0,r0,0x11                    ; 08024152
-lsr   r2,r0,0x10                    ; 08024154
+lsr   r2,r0,0x10                    ; 08024154  r2 = relY*2
 mov   r0,r1                         ; 08024156
 add   r0,0x4E                       ; 08024158
 mov   r3,0x0                        ; 0802415A
-ldsh  r0,[r0,r3]                    ; 0802415C
+ldsh  r0,[r0,r3]                    ; 0802415C  width (signed)
 cmp   r0,0x0                        ; 0802415E
 bge   @@Code08024168                ; 08024160
-add   r0,r2,0x6                     ; 08024162
+add   r0,r2,0x6                     ; 08024162 \ if negative width, add 6 to r2
 lsl   r0,r0,0x10                    ; 08024164
-lsr   r2,r0,0x10                    ; 08024166
+lsr   r2,r0,0x10                    ; 08024166 /
 @@Code08024168:
 mov   r0,r1                         ; 08024168
 add   r0,0x4A                       ; 0802416A
 ldrh  r3,[r0]                       ; 0802416C
-ldr   r1,=Data081C04A8              ; 0802416E
+ldr   r1,=Obj56_SlopeDynIndex       ; 0802416E
 lsr   r0,r2,0x1                     ; 08024170
 lsl   r0,r0,0x1                     ; 08024172
-add   r0,r0,r1                      ; 08024174
+add   r0,r0,r1                      ; 08024174  offset with: relY*2, +6 if negative width
 ldrh  r2,[r0]                       ; 08024176
 ldr   r0,=0x03007010                ; 08024178  Layer 1 tilemap EWRAM (0200000C)
 ldr   r1,[r0]                       ; 0802417A
 lsl   r2,r2,0x1                     ; 0802417C
 mov   r4,0x80                       ; 0802417E
-lsl   r4,r4,0x8                     ; 08024180
+lsl   r4,r4,0x8                     ; 08024180  8000
 add   r0,r1,r4                      ; 08024182
 add   r0,r0,r2                      ; 08024184
 ldrh  r0,[r0]                       ; 08024186
@@ -14405,36 +14409,37 @@ pop   {r0}                          ; 08024192
 bx    r0                            ; 08024194
 .pool                               ; 08024196
 
-Sub080241A0:
+Obj55_MidX:
 ; called by 55
+; slope: -1
 push  {r4,lr}                       ; 080241A0
 mov   r1,r0                         ; 080241A2
 mov   r0,0x1                        ; 080241A4
-strh  r0,[r1,0x38]                  ; 080241A6
+strh  r0,[r1,0x38]                  ; 080241A6  enable slope (trapezoid)
 mov   r0,r1                         ; 080241A8
 add   r0,0x50                       ; 080241AA
-ldrh  r0,[r0]                       ; 080241AC
+ldrh  r0,[r0]                       ; 080241AC  relative Y
 cmp   r0,0x1                        ; 080241AE
-bhi   @@Return                      ; 080241B0
+bhi   @@Return                      ; 080241B0  return if relY > 1
 lsl   r0,r0,0x11                    ; 080241B2
-lsr   r2,r0,0x10                    ; 080241B4
+lsr   r2,r0,0x10                    ; 080241B4  r2 = relY*2
 mov   r0,r1                         ; 080241B6
 add   r0,0x4E                       ; 080241B8
 mov   r3,0x0                        ; 080241BA
-ldsh  r0,[r0,r3]                    ; 080241BC
+ldsh  r0,[r0,r3]                    ; 080241BC  width (signed)
 cmp   r0,0x0                        ; 080241BE
 bge   @@Code080241C6                ; 080241C0
-mov   r0,0x4                        ; 080241C2
-orr   r2,r0                         ; 080241C4
+mov   r0,0x4                        ; 080241C2 \ if negative width, set bit 2 of r2
+orr   r2,r0                         ; 080241C4 /
 @@Code080241C6:
 mov   r0,r1                         ; 080241C6
 add   r0,0x4A                       ; 080241C8
 ldrh  r3,[r0]                       ; 080241CA
-ldr   r1,=Data081C04A0              ; 080241CC
+ldr   r1,=Obj55_SlopeDynIndex       ; 080241CC
 lsr   r0,r2,0x1                     ; 080241CE
 lsl   r0,r0,0x1                     ; 080241D0
-add   r0,r0,r1                      ; 080241D2
-ldrh  r2,[r0]                       ; 080241D4
+add   r0,r0,r1                      ; 080241D2  offset with: bit 1 relY, bit 2 negative flag
+ldrh  r2,[r0]                       ; 080241D4  dynamic index
 ldr   r0,=0x03007010                ; 080241D6  Layer 1 tilemap EWRAM (0200000C)
 ldr   r1,[r0]                       ; 080241D8
 lsl   r2,r2,0x1                     ; 080241DA
@@ -14453,55 +14458,56 @@ pop   {r0}                          ; 080241F0
 bx    r0                            ; 080241F2
 .pool                               ; 080241F4
 
-Sub080241FC:
+Obj54_MidX:
 ; called by 54
+; slope: -1
 push  {r4,lr}                       ; 080241FC
 mov   r1,r0                         ; 080241FE
 add   r0,0x50                       ; 08024200
-ldrh  r2,[r0]                       ; 08024202
+ldrh  r2,[r0]                       ; 08024202  relative Y
 cmp   r2,0x1                        ; 08024204
-bhi   @@Return                      ; 08024206
+bhi   @@Return                      ; 08024206  return if relY > 1
 lsl   r0,r2,0x11                    ; 08024208
-lsr   r4,r0,0x10                    ; 0802420A
+lsr   r4,r0,0x10                    ; 0802420A  r4 = relY*2
 mov   r0,r1                         ; 0802420C
 add   r0,0x4C                       ; 0802420E
-ldrh  r2,[r0]                       ; 08024210
+ldrh  r2,[r0]                       ; 08024210  relative X
 mov   r0,0x1                        ; 08024212
 eor   r2,r0                         ; 08024214
 mov   r0,0x1                        ; 08024216
-and   r2,r0                         ; 08024218
-strh  r2,[r1,0x38]                  ; 0802421A
-lsl   r2,r2,0x2                     ; 0802421C
+and   r2,r0                         ; 08024218  inverted X parity
+strh  r2,[r1,0x38]                  ; 0802421A  enable slope if relX is even
+lsl   r2,r2,0x2                     ; 0802421C  r2 = inverted X parity, *4
 mov   r0,r1                         ; 0802421E
 add   r0,0x4E                       ; 08024220
 mov   r3,0x0                        ; 08024222
-ldsh  r0,[r0,r3]                    ; 08024224
+ldsh  r0,[r0,r3]                    ; 08024224  width (signed)
 cmp   r0,0x0                        ; 08024226
 bge   @@Code08024232                ; 08024228
-mov   r0,0x8                        ; 0802422A
+mov   r0,0x8                        ; 0802422A \ if negative width, set bit 3 of r2
 orr   r2,r0                         ; 0802422C
 lsl   r0,r2,0x10                    ; 0802422E
-lsr   r2,r0,0x10                    ; 08024230
+lsr   r2,r0,0x10                    ; 08024230 /
 @@Code08024232:
 mov   r0,r1                         ; 08024232
 add   r0,0x4A                       ; 08024234
-ldrh  r3,[r0]                       ; 08024236
-ldr   r0,=Data081C0490              ; 08024238
+ldrh  r3,[r0]                       ; 08024236  r3 = L1 timemap offset
+ldr   r0,=Obj54_SlopeDynIndex       ; 08024238
 orr   r2,r4                         ; 0802423A
-add   r0,r2,r0                      ; 0802423C
-ldrh  r2,[r0]                       ; 0802423E
+add   r0,r2,r0                      ; 0802423C  offset with: bit 1 relY, bit 2 inverted X parity, bit 3 negative flag
+ldrh  r2,[r0]                       ; 0802423E  dynamic index
 ldr   r0,=0x03007010                ; 08024240  Layer 1 tilemap EWRAM (0200000C)
 ldr   r1,[r0]                       ; 08024242
 lsl   r2,r2,0x1                     ; 08024244
 mov   r4,0x80                       ; 08024246
-lsl   r4,r4,0x8                     ; 08024248
+lsl   r4,r4,0x8                     ; 08024248  8000
 add   r0,r1,r4                      ; 0802424A
 add   r0,r0,r2                      ; 0802424C
-ldrh  r2,[r0]                       ; 0802424E
+ldrh  r2,[r0]                       ; 0802424E  tile ID
 lsr   r3,r3,0x1                     ; 08024250
 lsl   r3,r3,0x1                     ; 08024252
 add   r1,r1,r3                      ; 08024254
-strh  r2,[r1]                       ; 08024256
+strh  r2,[r1]                       ; 08024256  set tile
 @@Return:
 pop   {r4}                          ; 08024258
 pop   {r0}                          ; 0802425A
@@ -14513,30 +14519,30 @@ Obj54_56_Main:
 ; slope: -1 for 54-55, -2 for 56
 push  {r4-r6,lr}                    ; 08024268
 mov   r12,r0                        ; 0802426A
-mov   r4,0x0                        ; 0802426C
+mov   r4,0x0                        ; 0802426C  r4 = 0 if first X
 add   r0,0x4E                       ; 0802426E
-ldrh  r2,[r0]                       ; 08024270
+ldrh  r2,[r0]                       ; 08024270  width
 mov   r1,0x0                        ; 08024272
-ldsh  r0,[r0,r1]                    ; 08024274
+ldsh  r0,[r0,r1]                    ; 08024274  signed width
 cmp   r0,0x0                        ; 08024276
 bge   @@Code08024280                ; 08024278
 add   r0,r2,0x2                     ; 0802427A
 lsl   r0,r0,0x10                    ; 0802427C
-lsr   r2,r0,0x10                    ; 0802427E
+lsr   r2,r0,0x10                    ; 0802427E  if width is negative, add 2 to width
 @@Code08024280:
-mov   r1,r2                         ; 08024280
+mov   r1,r2                         ; 08024280  r1 = width (positive) or width+2 (negative)
 mov   r0,r12                        ; 08024282
 add   r0,0x4C                       ; 08024284
-ldrh  r2,[r0]                       ; 08024286
+ldrh  r2,[r0]                       ; 08024286  relative X
 cmp   r2,0x0                        ; 08024288
-beq   @@Code080242B8                ; 0802428A
-mov   r4,0x2                        ; 0802428C
+beq   @@FirstOrLastX                ; 0802428A
+mov   r4,0x2                        ; 0802428C  r4 = 2 if last X
 add   r0,r2,0x1                     ; 0802428E
 lsl   r0,r0,0x10                    ; 08024290
-lsr   r2,r0,0x10                    ; 08024292
+lsr   r2,r0,0x10                    ; 08024292  relX+1
 cmp   r2,r1                         ; 08024294
-beq   @@Code080242B8                ; 08024296
-mov   r0,r12                        ; 08024298
+beq   @@FirstOrLastX                ; 08024296  branch if relX+1 == width (positive) or relX-1 == width (negative)
+mov   r0,r12                        ; 08024298 \ runs if mid X
 add   r0,0x42                       ; 0802429A
 ldrh  r1,[r0]                       ; 0802429C  object ID
 mov   r0,0x3                        ; 0802429E
@@ -14547,77 +14553,77 @@ add   r0,r0,r1                      ; 080242A6  index with objID-54
 ldr   r1,[r0]                       ; 080242A8
 mov   r0,r12                        ; 080242AA
 bl    Sub_bx_r1                     ; 080242AC
-b     @@Return                      ; 080242B0
+b     @@Return                      ; 080242B0 /
 .pool                               ; 080242B2
 
-@@Code080242B8:
+@@FirstOrLastX:
 mov   r0,r12                        ; 080242B8
 add   r0,0x50                       ; 080242BA
-ldrh  r2,[r0]                       ; 080242BC
+ldrh  r2,[r0]                       ; 080242BC  relative Y
 cmp   r2,0x0                        ; 080242BE
-bne   @@Return                      ; 080242C0
-sub   r0,0x10                       ; 080242C2
-ldrh  r2,[r0]                       ; 080242C4
-mov   r5,r2                         ; 080242C6
+bne   @@Return                      ; 080242C0  if not first Y, return
+sub   r0,0x10                       ; 080242C2  +40
+ldrh  r2,[r0]                       ; 080242C4  r2 = pre-existing tile
+mov   r5,r2                         ; 080242C6  r5 = pre-existing tile
 ldr   r0,=0x03007010                ; 080242C8  Layer 1 tilemap EWRAM (0200000C)
 ldr   r3,[r0]                       ; 080242CA
 mov   r6,0x80                       ; 080242CC
-lsl   r6,r6,0x8                     ; 080242CE
+lsl   r6,r6,0x8                     ; 080242CE  8000
 add   r1,r3,r6                      ; 080242D0
-mov   r6,r0                         ; 080242D2
-ldrh  r1,[r1]                       ; 080242D4
+mov   r6,r0                         ; 080242D2  r6 = 0200000C
+ldrh  r1,[r1]                       ; 080242D4  dynamic tile 0200+4n
 cmp   r2,r1                         ; 080242D6
 blo   @@Code080242E4                ; 080242D8
 ldr   r1,=0x8084                    ; 080242DA
 add   r0,r3,r1                      ; 080242DC
-ldrh  r0,[r0]                       ; 080242DE
+ldrh  r0,[r0]                       ; 080242DE  dynamic tile 1200+n
 cmp   r2,r0                         ; 080242E0
-blo   @@Return                      ; 080242E2
+blo   @@Return                      ; 080242E2  return if 0200+4n <= prevtile < 1200+n
 @@Code080242E4:
 ldr   r0,=0x150D                    ; 080242E4
 cmp   r2,r0                         ; 080242E6
-beq   @@Return                      ; 080242E8
-add   r0,0x1                        ; 080242EA
+beq   @@Return                      ; 080242E8  return if prevtile == 150D
+add   r0,0x1                        ; 080242EA  150E
 cmp   r2,r0                         ; 080242EC
-beq   @@Return                      ; 080242EE
+beq   @@Return                      ; 080242EE  return if prevtile == 150E
 mov   r0,r2                         ; 080242F0
 sub   r0,0xD1                       ; 080242F2
 lsl   r0,r0,0x10                    ; 080242F4
-lsr   r0,r0,0x10                    ; 080242F6
+lsr   r0,r0,0x10                    ; 080242F6  prevtile -00D1
 cmp   r0,0x1                        ; 080242F8
 bhi   @@Code0802431C                ; 080242FA
 cmp   r2,0xD2                       ; 080242FC
 bne   @@Code08024306                ; 080242FE
 add   r0,r4,0x2                     ; 08024300
 lsl   r0,r0,0x10                    ; 08024302
-lsr   r4,r0,0x10                    ; 08024304
+lsr   r4,r0,0x10                    ; 08024304  if prevtile is 00D2, add 2 to r4
 @@Code08024306:
-ldr   r1,=Data081C048A              ; 08024306
-b     @@Code08024338                ; 08024308
+ldr   r1,=Obj54_56_EdgeReplace00D1to00D2; 08024306 \ runs if prevtile is 00D1-00D2
+b     @@SetTileFromTable            ; 08024308 /
 .pool                               ; 0802430A
 
-@@Code0802431C:
+@@Code0802431C:                     ;          \ runs if prevtile is not in any of the previous ranges
 mov   r0,r12                        ; 0802431C
 add   r0,0x4E                       ; 0802431E
 mov   r1,0x0                        ; 08024320
-ldsh  r0,[r0,r1]                    ; 08024322
+ldsh  r0,[r0,r1]                    ; 08024322  width (signed)
 cmp   r0,0x0                        ; 08024324
 bge   @@Code08024330                ; 08024326
-mov   r0,0x2                        ; 08024328
+mov   r0,0x2                        ; 08024328 \ if negative width, toggle bit 1 in r4
 eor   r4,r0                         ; 0802432A
 lsl   r0,r4,0x10                    ; 0802432C
-lsr   r4,r0,0x10                    ; 0802432E
+lsr   r4,r0,0x10                    ; 0802432E /
 @@Code08024330:
 cmp   r5,0xC5                       ; 08024330
 bne   @@Code08024336                ; 08024332
-mov   r4,0x4                        ; 08024334
+mov   r4,0x4                        ; 08024334  if prevtile is 00C5, r4 = 4 -> tile 151B
 @@Code08024336:
-ldr   r1,=Data081C0484              ; 08024336
-@@Code08024338:
+ldr   r1,=Obj54_56_EdgeDefaultTiles ; 08024336
+@@SetTileFromTable:
 lsr   r0,r4,0x1                     ; 08024338
 lsl   r0,r0,0x1                     ; 0802433A
-add   r0,r0,r1                      ; 0802433C
-ldrh  r2,[r0]                       ; 0802433E
+add   r0,r0,r1                      ; 0802433C  apply offset r4
+ldrh  r2,[r0]                       ; 0802433E  tile ID
 mov   r0,r12                        ; 08024340
 add   r0,0x4A                       ; 08024342
 ldrh  r0,[r0]                       ; 08024344
@@ -14625,7 +14631,7 @@ ldr   r1,[r6]                       ; 08024346
 lsr   r0,r0,0x1                     ; 08024348
 lsl   r0,r0,0x1                     ; 0802434A
 add   r1,r1,r0                      ; 0802434C
-strh  r2,[r1]                       ; 0802434E
+strh  r2,[r1]                       ; 0802434E  set tile
 @@Return:
 pop   {r4-r6}                       ; 08024350
 pop   {r0}                          ; 08024352
@@ -14637,66 +14643,66 @@ Obj53_Main:
 push  {r4-r7,lr}                    ; 0802435C
 mov   r3,r0                         ; 0802435E
 add   r0,0x40                       ; 08024360
-ldrh  r1,[r0]                       ; 08024362
+ldrh  r1,[r0]                       ; 08024362  pre-existing tile
 cmp   r1,0xC1                       ; 08024364
 bhi   @@Code0802436A                ; 08024366
-b     @@Return                      ; 08024368
+b     @@Return                      ; 08024368  if prevtile < 00C2, return
 @@Code0802436A:
 cmp   r1,0xC7                       ; 0802436A
 bls   @@Code08024370                ; 0802436C
-b     @@Return                      ; 0802436E
+b     @@Return                      ; 0802436E  if prevtile > 00C7, return
 @@Code08024370:
 ldr   r0,=0x150D                    ; 08024370
 cmp   r1,r0                         ; 08024372
 bne   @@Code08024378                ; 08024374
-b     @@Return                      ; 08024376
+b     @@Return                      ; 08024376  (never branches)
 @@Code08024378:
-add   r0,0x1                        ; 08024378
+add   r0,0x1                        ; 08024378  150E
 cmp   r1,r0                         ; 0802437A
 bne   @@Code08024380                ; 0802437C
-b     @@Return                      ; 0802437E
+b     @@Return                      ; 0802437E  (never branches)
 @@Code08024380:
-mov   r2,0x0                        ; 08024380
+mov   r2,0x0                        ; 08024380  r2 = 0 if first X
 mov   r0,r3                         ; 08024382
 add   r0,0x4C                       ; 08024384
-ldrh  r1,[r0]                       ; 08024386
-mov   r6,r0                         ; 08024388
+ldrh  r1,[r0]                       ; 08024386  relative X
+mov   r6,r0                         ; 08024388  r6 = +4C
 cmp   r1,0x0                        ; 0802438A
-beq   @@Code080243B4                ; 0802438C
+beq   @@XDone                       ; 0802438C
 add   r0,r1,0x1                     ; 0802438E
 lsl   r0,r0,0x10                    ; 08024390
-lsr   r1,r0,0x10                    ; 08024392
+lsr   r1,r0,0x10                    ; 08024392  relX+1
 mov   r0,r3                         ; 08024394
 add   r0,0x4E                       ; 08024396
-ldrh  r0,[r0]                       ; 08024398
+ldrh  r0,[r0]                       ; 08024398  width
 cmp   r1,r0                         ; 0802439A
 bne   @@Code080243A8                ; 0802439C
-mov   r2,0x6                        ; 0802439E
-b     @@Code080243B4                ; 080243A0
+mov   r2,0x6                        ; 0802439E  r2 = 6 if last X
+b     @@XDone                       ; 080243A0
 .pool                               ; 080243A2
 
 @@Code080243A8:
-mov   r2,0x2                        ; 080243A8
+mov   r2,0x2                        ; 080243A8  r2 = 2 if mid X, even
 mov   r0,0x1                        ; 080243AA
-and   r1,r0                         ; 080243AC
+and   r1,r0                         ; 080243AC  X parity
 cmp   r1,0x0                        ; 080243AE
-beq   @@Code080243B4                ; 080243B0
-mov   r2,0x4                        ; 080243B2
-@@Code080243B4:
-ldrh  r1,[r6]                       ; 080243B4
+beq   @@XDone                       ; 080243B0
+mov   r2,0x4                        ; 080243B2  r2 = 4 if mid X, odd
+@@XDone:
+ldrh  r1,[r6]                       ; 080243B4  relative X
 cmp   r1,0x0                        ; 080243B6
-beq   @@Code0802441C                ; 080243B8
+beq   @@FirstOrLastX                ; 080243B8
 add   r0,r1,0x1                     ; 080243BA
 lsl   r0,r0,0x10                    ; 080243BC
-lsr   r1,r0,0x10                    ; 080243BE
+lsr   r1,r0,0x10                    ; 080243BE  relX+1
 mov   r0,r3                         ; 080243C0
 add   r0,0x4E                       ; 080243C2
-ldrh  r0,[r0]                       ; 080243C4
+ldrh  r0,[r0]                       ; 080243C4  width
 cmp   r1,r0                         ; 080243C6
-beq   @@Code0802441C                ; 080243C8
-ldr   r0,=Data081C0474              ; 080243CA
+beq   @@FirstOrLastX                ; 080243C8
+ldr   r0,=Obj53_DefaultTiles        ; 080243CA \ runs if mid X
 add   r0,r2,r0                      ; 080243CC
-ldrh  r1,[r0]                       ; 080243CE
+ldrh  r1,[r0]                       ; 080243CE  tile ID
 mov   r4,r3                         ; 080243D0
 add   r4,0x4A                       ; 080243D2
 ldrh  r2,[r4]                       ; 080243D4
@@ -14705,50 +14711,50 @@ ldr   r5,[r0]                       ; 080243D8
 lsr   r0,r2,0x1                     ; 080243DA
 lsl   r0,r0,0x1                     ; 080243DC
 add   r0,r5,r0                      ; 080243DE
-strh  r1,[r0]                       ; 080243E0
+strh  r1,[r0]                       ; 080243E0  set tile
 mov   r0,r3                         ; 080243E2
 add   r0,0x40                       ; 080243E4
-ldrh  r1,[r0]                       ; 080243E6
+ldrh  r1,[r0]                       ; 080243E6  pre-existing tile
 mov   r0,r1                         ; 080243E8
 cmp   r1,0xC3                       ; 080243EA
-bls   @@Return                      ; 080243EC
+bls   @@Return                      ; 080243EC  if tile 00C2 or 00C3 was replaced, return
 cmp   r1,0xC7                       ; 080243EE
-bhi   @@Return                      ; 080243F0
-ldrh  r1,[r6]                       ; 080243F2
+bhi   @@Return                      ; 080243F0  (never branches)
+ldrh  r1,[r6]                       ; 080243F2  relative X
 cmp   r1,0x0                        ; 080243F4
-beq   @@Return                      ; 080243F6
+beq   @@Return                      ; 080243F6  (never branches)
 sub   r0,0xC4                       ; 080243F8
 lsl   r0,r0,0x11                    ; 080243FA
 ldrh  r2,[r4]                       ; 080243FC
-ldr   r1,=Data081C047C              ; 080243FE
+ldr   r1,=Obj53_Replace00C4to00C7   ; 080243FE
 lsr   r0,r0,0x10                    ; 08024400
-add   r0,r0,r1                      ; 08024402
-ldrh  r1,[r0]                       ; 08024404
+add   r0,r0,r1                      ; 08024402  index with prevtile -00C4
+ldrh  r1,[r0]                       ; 08024404  new tile ID
 lsr   r0,r2,0x1                     ; 08024406
 lsl   r0,r0,0x1                     ; 08024408
 add   r0,r5,r0                      ; 0802440A
-b     @@Code0802447E                ; 0802440C
+b     @@SetTile_r1                  ; 0802440C /
 .pool                               ; 0802440E
 
-@@Code0802441C:
-mov   r5,r3                         ; 0802441C
+@@FirstOrLastX:
+mov   r5,r3                         ; 0802441C  runs if first or last X
 add   r5,0x40                       ; 0802441E
-ldrh  r1,[r5]                       ; 08024420
+ldrh  r1,[r5]                       ; 08024420  pre-existing tile
 ldr   r0,=0x03007010                ; 08024422  Layer 1 tilemap EWRAM (0200000C)
 ldr   r4,[r0]                       ; 08024424
 mov   r7,0x80                       ; 08024426
-lsl   r7,r7,0x8                     ; 08024428
+lsl   r7,r7,0x8                     ; 08024428  8000
 add   r0,r4,r7                      ; 0802442A
-ldrh  r0,[r0]                       ; 0802442C
+ldrh  r0,[r0]                       ; 0802442C  dynamic tile 0200+4n
 cmp   r1,r0                         ; 0802442E
-blo   @@Code0802443C                ; 08024430
-add   r7,0x84                       ; 08024432
+blo   @@Unused                      ; 08024430
+add   r7,0x84                       ; 08024432  8084
 add   r0,r4,r7                      ; 08024434
-ldrh  r0,[r0]                       ; 08024436
+ldrh  r0,[r0]                       ; 08024436  dynamic tile 1200+n
 cmp   r1,r0                         ; 08024438
 blo   @@Return                      ; 0802443A
-@@Code0802443C:
-mov   r0,r1                         ; 0802443C
+@@Unused:
+mov   r0,r1                         ; 0802443C \ won't run, because pre-existing tile needs to be both in range 00C2 to 00C7 and in range 0200+4n to 1200+n
 sub   r0,0xD1                       ; 0802443E
 lsl   r0,r0,0x10                    ; 08024440
 lsr   r0,r0,0x10                    ; 08024442
@@ -14756,7 +14762,7 @@ cmp   r0,0x1                        ; 08024444
 bhi   @@Code0802444A                ; 08024446
 mov   r2,0x2                        ; 08024448
 @@Code0802444A:
-ldr   r0,=Data081C0474              ; 0802444A
+ldr   r0,=Obj53_DefaultTiles        ; 0802444A
 add   r0,r2,r0                      ; 0802444C
 ldrh  r1,[r0]                       ; 0802444E
 mov   r0,r3                         ; 08024450
@@ -14777,12 +14783,12 @@ cmp   r1,0x0                        ; 0802446C
 beq   @@Return                      ; 0802446E
 sub   r0,0xC4                       ; 08024470
 lsl   r0,r0,0x11                    ; 08024472
-ldr   r1,=Data081C047C              ; 08024474
+ldr   r1,=Obj53_Replace00C4to00C7   ; 08024474
 lsr   r0,r0,0x10                    ; 08024476
 add   r1,r0,r1                      ; 08024478
 ldrh  r1,[r1]                       ; 0802447A
-add   r0,r4,r0                      ; 0802447C
-@@Code0802447E:
+add   r0,r4,r0                      ; 0802447C /
+@@SetTile_r1:
 strh  r1,[r0]                       ; 0802447E
 @@Return:
 pop   {r4-r7}                       ; 08024480
@@ -16312,11 +16318,11 @@ ldrh  r1,[r0]                       ; 0802508C  relative X
 cmp   r1,0x0                        ; 0802508E
 beq   @@Code0802509A                ; 08025090
 mov   r0,r4                         ; 08025092 \ runs if last Y and relX != 0
-bl    Sub08025950                   ; 08025094
+bl    Obj41486C_BGShadowBottom      ; 08025094
 b     @@Code080250A0                ; 08025098 /
 @@Code0802509A:
 mov   r0,r4                         ; 0802509A \ runs if last Y and relX == 0
-bl    Sub08025A00                   ; 0802509C /
+bl    Obj414243486C_BGShadowBottomLeft; 0802509C /
 @@Code080250A0:
 mov   r0,r4                         ; 080250A0
 add   r0,0x4C                       ; 080250A2
@@ -16337,11 +16343,11 @@ mov   r5,r0                         ; 080250BC  r5 = +50
 cmp   r1,0x0                        ; 080250BE
 beq   @@Code080250CA                ; 080250C0
 mov   r0,r4                         ; 080250C2 \ runs if last X and relY != 0
-bl    Sub08025A54                   ; 080250C4
+bl    Obj4243486C_BGShadowRight     ; 080250C4
 b     @@Code080250D0                ; 080250C8 /
 @@Code080250CA:
 mov   r0,r4                         ; 080250CA \ runs if last X and relY == 0
-bl    Sub080259A8                   ; 080250CC /
+bl    Obj414243486C_BGShadowTopRight; 080250CC /
 @@Code080250D0:
 ldrh  r1,[r5]                       ; 080250D0  relative Y
 add   r0,r1,0x1                     ; 080250D2
@@ -16353,7 +16359,7 @@ ldrh  r0,[r0]                       ; 080250DC  height
 cmp   r1,r0                         ; 080250DE
 bne   @@Return                      ; 080250E0
 mov   r0,r4                         ; 080250E2 \ runs if last X and last Y
-bl    Sub080258DC                   ; 080250E4 /
+bl    Obj414243486C_BGShadowBottomRight; 080250E4 /
 @@Return:
 pop   {r4-r5}                       ; 080250E8
 pop   {r0}                          ; 080250EA
@@ -16800,7 +16806,7 @@ pop   {r4-r5}                       ; 08025452
 pop   {r0}                          ; 08025454
 bx    r0                            ; 08025456
 
-Obj45_46_Y0:
+Obj45_46_AddShadowY0:
 ; called by 45-46 if relY == 0
 push  {r4-r7,lr}                    ; 08025458
 mov   r7,r8                         ; 0802545A
@@ -16879,7 +16885,7 @@ pop   {r1}                          ; 080254F6
 bx    r1                            ; 080254F8
 .pool                               ; 080254FA
 
-Obj45_46_Y1:
+Obj45_46_AddShadowY1:
 ; called by 45-46 if relY == 1
 push  {r4,lr}                       ; 080254FC
 mov   r4,r0                         ; 080254FE
@@ -16945,8 +16951,8 @@ lsl   r3,r2,0x1                     ; 08025574
 orr   r3,r1                         ; 08025576  (objID-45) *4 + relY *2
 lsl   r2,r3,0x10                    ; 08025578
 cmp   r2,0x0                        ; 0802557A
-bne   @@Code0802559C                ; 0802557C  if object 45 and relY == 0, don't check overlap
-mov   r0,r4                         ; 0802557E
+bne   @@Code0802559C                ; 0802557C
+mov   r0,r4                         ; 0802557E \ runs if object 45 and relY == 0
 add   r0,0x40                       ; 08025580
 ldrh  r3,[r0]                       ; 08025582  pre-existing tile
 mov   r0,r3                         ; 08025584
@@ -16960,7 +16966,7 @@ cmp   r3,r0                         ; 08025592
 beq   @@Code080255B2                ; 08025594
 add   r0,0x1                        ; 08025596  77D9
 cmp   r3,r0                         ; 08025598
-beq   @@Code080255B2                ; 0802559A  if any of 00D6-00D7,77D8-77D9 (BG wall left/right edges), don't set tile
+beq   @@Code080255B2                ; 0802559A / if any of 00D6-00D7,77D8-77D9 (BG wall left/right edges), don't set tile
 
 @@Code0802559C:
 ldr   r1,=Obj45_46_TopTiles         ; 0802559C
@@ -16981,15 +16987,15 @@ ldrh  r3,[r0]                       ; 080255B6  relative Y
 cmp   r3,0x0                        ; 080255B8
 beq   @@Y0                          ; 080255BA
 cmp   r3,0x1                        ; 080255BC
-bne   @@Code080255E2                ; 080255BE  don't branch, since relY is 1 if nnonzero?
+bne   @@Code080255E2                ; 080255BE  don't branch, since relY is 1 if nonzero
 mov   r0,r4                         ; 080255C0 \ runs if relY == 1
-bl    Obj45_46_Y1                   ; 080255C2
+bl    Obj45_46_AddShadowY1          ; 080255C2
 b     @@Code080255DA                ; 080255C6 /
 .pool                               ; 080255C8
 
 @@Y0:
 mov   r0,r4                         ; 080255D4 \ runs if relY == 0
-bl    Obj45_46_Y0                   ; 080255D6 /
+bl    Obj45_46_AddShadowY0          ; 080255D6 /
 @@Code080255DA:
 lsl   r0,r0,0x10                    ; 080255DA
 lsr   r3,r0,0x10                    ; 080255DC
@@ -16997,7 +17003,7 @@ cmp   r3,0x0                        ; 080255DE
 bne   @@SetTile_r3                  ; 080255E0  if returned value is nonzero, set tile
 @@Code080255E2:
 mov   r0,r4                         ; 080255E2 \ if returned value is 0...
-bl    Obj444546CCCD_AddLeftShadow   ; 080255E4   check for solid tile on left
+bl    Obj444546CCCD_AddLeftShadow   ; 080255E4   fall back to 44's add-shadow code
 b     @@Return                      ; 080255E8 /
 
 @@SetTile_r3:
@@ -17037,7 +17043,8 @@ bx    r0                            ; 08025622
 .pool                               ; 08025624
 
 Obj444546CCCD_AddLeftShadow:
-; called by 44, 45-46, CC-CD  (44 if first X)
+; called by 44,CC-CD if left edge (44,CC if first X, CD if last X)
+; called by 45-46 always
 push  {r4-r6,lr}                    ; 08025628
 mov   r4,r0                         ; 0802562A
 bl    Obj_GetTileXMinus1            ; 0802562C  r0 = tile ID at x-1
@@ -17097,7 +17104,7 @@ add   r0,r3,r1                      ; 080256A8
 lsl   r0,r0,0x10                    ; 080256AA
 lsr   r0,r0,0x10                    ; 080256AC
 cmp   r0,0xD                        ; 080256AE
-bhi   @@Code080256D4                ; 080256B0
+bhi   @@SolidWallOnLeftOnly         ; 080256B0
 @@SolidWallOnLeftAndAbove:          ;          \ if tile at x-1 and y-1 are both 0151-0160,
 mov   r3,0xD5                       ; 080256B2 /  set tile 00D5 (full top+left shadow)
 @@SetTile_r3:
@@ -17111,7 +17118,7 @@ strh  r3,[r0]                       ; 080256C0
 b     @@Return                      ; 080256C2
 .pool                               ; 080256C4
 
-@@Code080256D4:                     ;           runs if tile at x-1 is 0151-0160
+@@SolidWallOnLeftOnly:              ;           runs if tile at x-1 is 0151-0160
                                     ;           r3: tile at y-1
 cmp   r3,0xC2                       ; 080256D4  00C2: ordinary BG wall
 beq   @@Code080256EA                ; 080256D6
@@ -17146,7 +17153,9 @@ bx    r0                            ; 0802570A
 .pool                               ; 0802570C
 
 Obj44CBCCCD_AddTopShadow:
-; called by 44,CB-CD  (44 if first Y, runs after adding left shadow)
+; called by 44,CB-CD if top edge (44,CB if first Y, CC-CD if last Y)
+; for 44, runs after adding left shadow
+; for CC-CD, ???
 push  {r4-r6,lr}                    ; 08025718
 mov   r4,r0                         ; 0802571A
 add   r0,0x48                       ; 0802571C
@@ -17172,13 +17181,13 @@ lsr   r0,r0,0x10                    ; 08025744  tile at y-1 -0153, capped to 16-
 cmp   r0,0xD                        ; 08025746
 bhi   @@Code0802576C                ; 08025748
 @@SolidWallAbove:                   ;          \ runs if tile at y-1 is 0151-0160
-mov   r5,0x2                        ; 0802574A  r5 = 2, if scratch RAM is nonzero
+mov   r5,0x2                        ; 0802574A  if scratch RAM is nonzero, r5 = 2 -> 00C6
 ldrh  r2,[r4,0x3A]                  ; 0802574C
 cmp   r2,0x0                        ; 0802574E
 bne   @@Code08025778                ; 08025750
-mov   r0,0x6                        ; 08025752  if scratch RAM is 0, set it to 6
-strh  r0,[r4,0x3A]                  ; 08025754
-mov   r5,0x0                        ; 08025756  r5 = 0, if scratch RAM was zero
+mov   r0,0x6                        ; 08025752  if scratch RAM is 0, set it to 6 -> 00C7
+strh  r0,[r4,0x3A]                  ; 08025754  
+mov   r5,0x0                        ; 08025756  r5 = 0 -> 00C3
 b     @@Code08025778                ; 08025758 /
 .pool                               ; 0802575A
 
@@ -17186,7 +17195,7 @@ b     @@Code08025778                ; 08025758 /
 ldrh  r2,[r4,0x3A]                  ; 0802576C
 cmp   r2,0x0                        ; 0802576E
 beq   @@Return                      ; 08025770  if scratch RAM is 0, return
-mov   r5,r2                         ; 08025772  r5 = old scratch RAM value, if scratch RAM was nonzero
+mov   r5,r2                         ; 08025772  r5 = old scratch RAM value (6 -> 00C7), if scratch RAM was nonzero
 mov   r0,0x0                        ; 08025774
 strh  r0,[r4,0x3A]                  ; 08025776 / clear scratch RAM
 
@@ -17197,7 +17206,7 @@ ldrh  r3,[r0]                       ; 0802577C  r3 = L1 tilemap offset
 mov   r6,r0                         ; 0802577E
 cmp   r5,0x0                        ; 08025780
 bne   @@Code080257A4                ; 08025782
-                                    ;          \
+                                    ;          \ runs if r5 == 0
 ldr   r0,=0x03007010                ; 08025784  Layer 1 tilemap EWRAM (0200000C)
 ldr   r1,[r0]                       ; 08025786
 lsr   r0,r3,0x1                     ; 08025788
@@ -17212,7 +17221,7 @@ lsl   r0,r0,0x10                    ; 0802579A
 lsr   r2,r0,0x10                    ; 0802579C
 cmp   r2,0xC6                       ; 0802579E
 bne   @@Code080257A4                ; 080257A0  if tile at x-1 is 00C6 (top shadow)...
-mov   r5,0x2                        ; 080257A2 / replace nonzero r5 with 2
+mov   r5,0x2                        ; 080257A2 / replace zero r5 with 2 -> 00C6
 @@Code080257A4:
 ldrh  r3,[r6]                       ; 080257A4  r3 = L1 tilemap offset
 ldr   r1,=ObjCastle_BGWallTopShadowTiles; 080257A6
@@ -17371,7 +17380,7 @@ pop   {r0}                          ; 080258D6
 bx    r0                            ; 080258D8
 .pool                               ; 080258DA
 
-Sub080258DC:
+Obj414243486C_BGShadowBottomRight:
 ; called by 41,42-43,48,6C if bottom-right corner
 push  {r4-r7,lr}                    ; 080258DC
 mov   r1,r0                         ; 080258DE
@@ -17424,7 +17433,7 @@ pop   {r4-r7}                       ; 0802594A
 pop   {r0}                          ; 0802594C
 bx    r0                            ; 0802594E
 
-Sub08025950:
+Obj41486C_BGShadowBottom:
 ; called by 48,6C if last Y and relX != 0
 ; called by 41 if relX != 0 and width != 1
 push  {r4-r7,lr}                    ; 08025950
@@ -17468,7 +17477,7 @@ pop   {r4-r7}                       ; 080259A2
 pop   {r0}                          ; 080259A4
 bx    r0                            ; 080259A6
 
-Sub080259A8:
+Obj414243486C_BGShadowTopRight:
 ; called by 41,42-43,48,6C if top-right corner
 push  {r4-r7,lr}                    ; 080259A8
 mov   r1,r0                         ; 080259AA
@@ -17511,7 +17520,7 @@ pop   {r4-r7}                       ; 080259FA
 pop   {r0}                          ; 080259FC
 bx    r0                            ; 080259FE
 
-Sub08025A00:
+Obj414243486C_BGShadowBottomLeft:
 ; called by 41,42-43,48,6C if bottom-left corner
 push  {r4-r7,lr}                    ; 08025A00
 mov   r1,r0                         ; 08025A02
@@ -17551,7 +17560,7 @@ pop   {r0}                          ; 08025A40
 bx    r0                            ; 08025A42
 .pool                               ; 08025A44
 
-Sub08025A54:
+Obj4243486C_BGShadowRight:
 ; called by 42-43,48,6C if last X and relY != 0
 push  {r4-r6,lr}                    ; 08025A54
 mov   r5,r0                         ; 08025A56
@@ -17583,7 +17592,7 @@ cmp   r3,0x25                       ; 08025A88
 bls   @@ReplaceBGWallLoop           ; 08025A8A /
 cmp   r2,0x2E                       ; 08025A8C
 bne   @@Code08025AB8                ; 08025A8E
-mov   r2,0x2F                       ; 08025A90  also replace 002E (plain BG wall) with 002F (BG wall shadow on left)
+mov   r2,0x2F                       ; 08025A90  also replace 002E (heat-distorted plain BG wall) with 002F (heat-distorted BG wall, shadow on left)
 b     @@ReplaceXPlus1_r2_BGWall     ; 08025A92
 .pool                               ; 08025A94
 
@@ -17607,7 +17616,7 @@ ldr   r1,=Obj4243486C_LavaSurfaceCheckTiles; 08025ABA
 ldr   r6,=Obj4243486C_RandLavaTiles ; 08025ABC
 lsr   r0,r4,0x1                     ; 08025ABE
 lsl   r4,r0,0x1                     ; 08025AC0
-@@ReplaceLavaSurfaceLoop:           ;          \ loop: replace any of 0xA lava surface tiles at x+1?
+@@ReplaceLavaSurfaceLoop:           ;          \ loop: replace any of 5 lava surface tiles at x+1
 lsr   r0,r3,0x1                     ; 08025AC2
 lsl   r0,r0,0x1                     ; 08025AC4
 add   r0,r0,r1                      ; 08025AC6
@@ -17620,7 +17629,7 @@ mov   r0,r5                         ; 08025AD2  \ lava surface tile found
 add   r0,0x50                       ; 08025AD4
 ldrh  r2,[r0]                       ; 08025AD6  relative Y
 cmp   r2,0x1                        ; 08025AD8
-bne   @@Code08025AF8                ; 08025ADA
+bne   @@ReplaceXPlus1_0031          ; 08025ADA
                                     ;            \ if lava surface tile found and relY == 1
 bl    GenRandomByte                 ; 08025ADC   | Generate pseudo-random byte
 lsl   r0,r0,0x10                    ; 08025AE0   | 
@@ -17633,7 +17642,7 @@ ldrh  r2,[r1]                       ; 08025AEC   / replace with random 0084-0087
 b     @@ReplaceXPlus1_r2_Lava       ; 08025AEE
 .pool                               ; 08025AF0
 
-@@Code08025AF8:
+@@ReplaceXPlus1_0031:               ;           if relY != 1
 mov   r2,0x31                       ; 08025AF8  replace with tile 0031 (lava surface with BG wall shadow on left)
 @@ReplaceXPlus1_r2_Lava:
 ldr   r0,=0x03007010                ; 08025AFA  Layer 1 tilemap EWRAM (0200000C)
@@ -17697,13 +17706,13 @@ ldrh  r2,[r4]                       ; 08025B5A  relative Y
 cmp   r2,0x0                        ; 08025B5C
 bne   @@NotFirstY                   ; 08025B5E
 mov   r0,r5                         ; 08025B60 \ runs if first Y
-bl    Sub080259A8                   ; 08025B62
+bl    Obj414243486C_BGShadowTopRight; 08025B62
 b     @@Return                      ; 08025B66 /
 .pool                               ; 08025B68
 
 @@NotFirstY:
 mov   r0,r5                         ; 08025B70 \ runs if relY != 0
-bl    Sub08025A54                   ; 08025B72
+bl    Obj4243486C_BGShadowRight     ; 08025B72
 ldrh  r2,[r4]                       ; 08025B76  relative Y
 add   r0,r2,0x1                     ; 08025B78
 lsl   r0,r0,0x10                    ; 08025B7A
@@ -17714,9 +17723,9 @@ ldrh  r0,[r0]                       ; 08025B82  height
 cmp   r2,r0                         ; 08025B84 /
 bne   @@Return                      ; 08025B86
 mov   r0,r5                         ; 08025B88 \ runs if last Y
-bl    Sub08025A00                   ; 08025B8A
+bl    Obj414243486C_BGShadowBottomLeft; 08025B8A
 mov   r0,r5                         ; 08025B8E
-bl    Sub080258DC                   ; 08025B90 /
+bl    Obj414243486C_BGShadowBottomRight; 08025B90 /
 @@Return:
 pop   {r4-r5}                       ; 08025B94
 pop   {r0}                          ; 08025B96
@@ -17851,9 +17860,9 @@ lsl   r0,r0,0x1                     ; 08025C80
 add   r1,r1,r0                      ; 08025C82
 strh  r2,[r1]                       ; 08025C84  set tile 0156
 mov   r0,r4                         ; 08025C86
-bl    Sub08025A00                   ; 08025C88
+bl    Obj414243486C_BGShadowBottomLeft; 08025C88
 mov   r0,r4                         ; 08025C8C
-bl    Sub080259A8                   ; 08025C8E
+bl    Obj414243486C_BGShadowTopRight; 08025C8E
 b     @@Code08025CEC                ; 08025C92 /
 .pool                               ; 08025C94
 
@@ -17896,12 +17905,12 @@ ldrh  r0,[r0]                       ; 08025CDA  width
 cmp   r2,r0                         ; 08025CDC
 bne   @@Code08025CFC                ; 08025CDE
 mov   r0,r4                         ; 08025CE0 \ runs if last X, and width != 1
-bl    Sub080259A8                   ; 08025CE2
+bl    Obj414243486C_BGShadowTopRight; 08025CE2
 mov   r0,r4                         ; 08025CE6
-bl    Sub08025950                   ; 08025CE8 /
+bl    Obj41486C_BGShadowBottom      ; 08025CE8 /
 @@Code08025CEC:
 mov   r0,r4                         ; 08025CEC \ runs if last X (regardless of width)
-bl    Sub080258DC                   ; 08025CEE
+bl    Obj414243486C_BGShadowBottomRight; 08025CEE
 b     @@Return                      ; 08025CF2 /
 .pool                               ; 08025CF4
 
@@ -17909,11 +17918,11 @@ b     @@Return                      ; 08025CF2 /
 cmp   r5,0x0                        ; 08025CFC
 bne   @@Code08025D08                ; 08025CFE
 mov   r0,r4                         ; 08025D00 \ runs if first X, and width != 1
-bl    Sub08025A00                   ; 08025D02
+bl    Obj414243486C_BGShadowBottomLeft; 08025D02
 b     @@Return                      ; 08025D06 /
 @@Code08025D08:
 mov   r0,r4                         ; 08025D08 \ runs if mid X, and width != 1
-bl    Sub08025950                   ; 08025D0A /
+bl    Obj41486C_BGShadowBottom      ; 08025D0A /
 @@Return:
 pop   {r4-r6}                       ; 08025D0E
 pop   {r0}                          ; 08025D10

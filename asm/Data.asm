@@ -2272,7 +2272,7 @@ Obj59_5E_MainPtrs:                  ; 08168800
 Obj58_CodePtrs:                     ; 0816880C
 .word Sub08023F34+1, Sub08023E08+1, Sub08023CE4+1
 Obj54_56_CodePtrs:                  ; 08168818
-.word Sub080241FC+1, Sub080241A0+1, Sub08024140+1
+.word Obj54_MidX+1, Obj55_MidX+1, Obj56_MidX+1
 Obj4E_CodePtrs08168824:             ; 08168824
 .word Sub08024688+1, Sub080246D8+1, Sub080246C4+1, Sub080246C4+1
 .word Sub080246D8+1, Sub080246C4+1, Sub080246C4+1, Sub080246C4+1
@@ -36239,7 +36239,7 @@ ExtObj50_A8_FlowerTiles:            ; 081BD926
 .halfword 0x000C, 0x000D, 0x008E, 0x008F, 0x0013, 0x0014
 ExtObj52_Tilemap:                   ; 081BD932
 .halfword 0x3D63, 0x3D64, 0x3D65, 0x0000, 0x3D66, 0x3D67, 0x3D68, 0x015C
-ExtObj53_Tilemap:                   ; 081BD942
+ExtObj53_DefaultTiles:              ; 081BD942
 .halfword 0x3D63, 0x3D6C, 0x3D65, 0x0000, 0x3D69, 0x3D6A, 0x3D6B, 0x0000
 .halfword 0x8000, 0x010E, 0x010F
 ExtObj54_Tilemap:                   ; 081BD958
@@ -37216,8 +37216,9 @@ Obj43_Tilemap:                      ; 081BF372
 Obj42_43_LavaPillarTiles:           ; 081BF378
 .halfword 0x7794, 0x7795, 0x7796, 0x7794, 0x7794
 Obj4243486C_LavaSurfaceCheckTiles:  ; 081BF382
-.halfword 0x0084, 0x0085, 0x0086, 0x0087, 0x0088, 0x0089, 0x008A, 0x008B
-.halfword 0x008C, 0x008D
+.halfword 0x0084, 0x0085, 0x0086, 0x0087, 0x0088
+                                    ; 081BF38C  unused tile IDs?
+.halfword 0x0089, 0x008A, 0x008B, 0x008C, 0x008D
 Obj4243486C_RandLavaTiles:          ; 081BF396
 .halfword 0x0084, 0x0085, 0x0086, 0x0087
                                     ; 081BF39E  unused tile IDs?
@@ -37553,19 +37554,19 @@ Obj50_51_DynIndex:                  ; 081C0468
 .halfword 0x0136, 0x013C
 Obj52_DynIndex:                     ; 081C046C
 .halfword 0x013B, 0x013A, 0x0138, 0x0139
-Data081C0474:                       ; 081C0474
+Obj53_DefaultTiles:                 ; 081C0474
 .halfword 0x00D1, 0x150D, 0x150E, 0x00D2
-Data081C047C:                       ; 081C047C
+Obj53_Replace00C4to00C7:            ; 081C047C
 .halfword 0x151B, 0x151B, 0x0000, 0x151A
-Data081C0484:                       ; 081C0484
+Obj54_56_EdgeDefaultTiles:          ; 081C0484
 .halfword 0x00D1, 0x00D2, 0x151B
-Data081C048A:                       ; 081C048A
+Obj54_56_EdgeReplace00D1to00D2:     ; 081C048A
 .halfword 0x150D, 0x150E, 0x150D
-Data081C0490:                       ; 081C0490
+Obj54_SlopeDynIndex:                ; 081C0490
 .halfword 0x0034, 0x0043, 0x003B, 0x0041, 0x002D, 0x0042, 0x0028, 0x0033
-Data081C04A0:                       ; 081C04A0
+Obj55_SlopeDynIndex:                ; 081C04A0
 .halfword 0x001E, 0x0027, 0x0014, 0x001D
-Data081C04A8:                       ; 081C04A8
+Obj56_SlopeDynIndex:                ; 081C04A8
 .halfword 0x000A, 0x000E, 0x0013, 0x0000, 0x0004, 0x0009
 Obj57_Tilemap:                      ; 081C04B4
 .halfword 0x01AB, 0x01AC, 0x01AD, 0x0000, 0x01AE, 0x01AC, 0x01AF
@@ -38053,13 +38054,13 @@ ObjCB_DefaultTiles:                 ; 081C12A8
 .halfword 0x00D6, 0x00C2, 0x00D7
 ObjCB_TopShadowTiles:               ; 081C12AE
 .halfword 0x77D8, 0x0000, 0x77D9
-ObjCD_DefaultTIles:                 ; 081C12B4
+ObjCD_DefaultTiles:                 ; 081C12B4
 .halfword 0x00CC, 0x00CB, 0x00C2
-Data081C12BA:                       ; 081C12BA
+ObjCC_CD_SlopeTilesTopShadow:       ; 081C12BA
 .halfword 0x77DD, 0x77DC, 0x77DA, 0x77DB
-Data081C12C2:                       ; 081C12C2
+ObjCC_CD_SlopeTilesLeftShadow:      ; 081C12C2
 .halfword 0x77E4, 0x77E2, 0x77E5, 0x77E3
-ObjCC_DefaultTIles:                 ; 081C12CA
+ObjCC_DefaultTiles:                 ; 081C12CA
 .halfword 0x00C9, 0x00CA, 0x00C2
 ObjCF_BaseTiles:                    ; 081C12D0
 .halfword 0x8702, 0x8704

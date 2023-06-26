@@ -2727,7 +2727,7 @@ mov   r0,r3                         ; 0802AD4C
 add   r0,0x40                       ; 0802AD4E
 ldrh  r0,[r0]                       ; 0802AD50  pre-existing tile
 cmp   r2,r0                         ; 0802AD52
-bne   @@Code0802AD88                ; 0802AD54  if pre-existing tile does not match, continue
+bne   @@ContinueLoop                ; 0802AD54  if pre-existing tile does not match, continue
 mov   r0,r3                         ; 0802AD56
 add   r0,0x4A                       ; 0802AD58
 ldrh  r3,[r0]                       ; 0802AD5A  offset to layer 1 tilemap
@@ -2751,7 +2751,7 @@ strh  r2,[r1]                       ; 0802AD78  set tile
 b     @@Return                      ; 0802AD7A
 .pool                               ; 0802AD7C
 
-@@Code0802AD88:
+@@ContinueLoop:
 add   r0,r5,0x2                     ; 0802AD88  add 2 to loop index
 lsl   r0,r0,0x10                    ; 0802AD8A
 lsr   r5,r0,0x10                    ; 0802AD8C
@@ -3078,7 +3078,7 @@ lsl   r1,r2,0x13                    ; 0802AFE2
 sub   r0,r4,0x1                     ; 0802AFE4  relX-1
 lsl   r0,r0,0x11                    ; 0802AFE6
 orr   r0,r1                         ; 0802AFE8  (relY*4 + relX-1) << 0x11
-ldr   r1,=ExtObj53_Tilemap          ; 0802AFEA
+ldr   r1,=ExtObj53_DefaultTiles     ; 0802AFEA
 lsr   r0,r0,0x10                    ; 0802AFEC
 add   r0,r0,r1                      ; 0802AFEE  index with relY*4 + relX-1
 ldrh  r2,[r0]                       ; 0802AFF0  tile ID
