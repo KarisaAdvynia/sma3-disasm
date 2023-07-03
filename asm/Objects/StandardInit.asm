@@ -1981,7 +1981,7 @@ add   r3,r3,r0                      ; 0801AF4C
 mov   r12,r3                        ; 0801AF4E
 mov   r3,0x2                        ; 0801AF50
 mov   r4,r12                        ; 0801AF52
-strh  r3,[r4]                       ; 0801AF54
+strh  r3,[r4]                       ; 0801AF54  set height to 2
 bl    ObjMain_Slope0_NoRelY         ; 0801AF56  Object processing main, slope=0, no relative Y threshold
 pop   {r4}                          ; 0801AF5A
 pop   {r0}                          ; 0801AF5C
@@ -1996,21 +1996,22 @@ lsr   r1,r1,0x10                    ; 0801AF66
 lsl   r2,r2,0x18                    ; 0801AF68
 lsr   r2,r2,0x18                    ; 0801AF6A
 add   r0,0x4E                       ; 0801AF6C
-ldrh  r3,[r0]                       ; 0801AF6E
+ldrh  r3,[r0]                       ; 0801AF6E  width
 mov   r5,0x0                        ; 0801AF70
-ldsh  r0,[r0,r5]                    ; 0801AF72
+ldsh  r0,[r0,r5]                    ; 0801AF72  width (signed)
 cmp   r0,0x0                        ; 0801AF74
 bge   @@Code0801AF84                ; 0801AF76
-mvn   r0,r3                         ; 0801AF78
+                                    ;          \ runs if negative width
+mvn   r0,r3                         ; 0801AF78  abs(width)
 lsl   r0,r0,0x10                    ; 0801AF7A
 mov   r3,0x80                       ; 0801AF7C
 lsl   r3,r3,0x9                     ; 0801AF7E  10000
 add   r0,r0,r3                      ; 0801AF80
-lsr   r3,r0,0x10                    ; 0801AF82
-@@Code0801AF84:
+lsr   r3,r0,0x10                    ; 0801AF82 / abs(width)+1
+@@Code0801AF84:                     ;           r3: width if positive, abs(width)+1 if negative
 mov   r0,r4                         ; 0801AF84
 add   r0,0x52                       ; 0801AF86
-strh  r3,[r0]                       ; 0801AF88
+strh  r3,[r0]                       ; 0801AF88  set height dependent on width
 mov   r0,r4                         ; 0801AF8A
 bl    ObjMain_Slope0_NoRelY         ; 0801AF8C  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r5}                       ; 0801AF90
@@ -4083,7 +4084,7 @@ add   r0,0x44                       ; 0801BEE8
 strh  r1,[r0]                       ; 0801BEEA  clear slope
 strh  r1,[r3,0x3A]                  ; 0801BEEC  clear 03002246
 cmp   r5,0x7                        ; 0801BEEE  if object ID *2 <= 7...
-bhi   @@Code0801BF36                ; 0801BEF0
+bhi   @@CallObjMain                 ; 0801BEF0
 
 mov   r7,r3                         ; 0801BEF2 \ runs if object 02-03
 add   r7,0x48                       ; 0801BEF4
@@ -4122,7 +4123,7 @@ strh  r6,[r2]                       ; 0801BF30 /
 @@Code0801BF32:
 orr   r4,r1                         ; 0801BF32  YXyx with y-1 and possibly x-1
 strh  r4,[r7]                       ; 0801BF34  set new YXyx
-@@Code0801BF36:
+@@CallObjMain:
 mov   r0,r3                         ; 0801BF36
 mov   r1,r9                         ; 0801BF38
 mov   r2,r8                         ; 0801BF3A
@@ -4159,7 +4160,7 @@ strh  r0,[r6]                       ; 0801BF7C
 mov   r4,r12                        ; 0801BF7E
 add   r4,0x52                       ; 0801BF80  [03007240]+52 (0300225E)
 ldrh  r0,[r4]                       ; 0801BF82
-add   r0,0x1                        ; 0801BF84  increment object's height
+add   r0,0x1                        ; 0801BF84  add 1 to height
 strh  r0,[r4]                       ; 0801BF86
 sub   r4,0xC                        ; 0801BF88  [03007240]+46 (03002252)
 mov   r0,0x3                        ; 0801BF8A

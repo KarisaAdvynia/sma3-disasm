@@ -2236,21 +2236,25 @@ ObjA9_CodePtrs:                     ; 081686F4
 ObjA5_A6_CodePtrs:                  ; 08168700
 .word ObjA5_Castle+1, ObjA6_Castle+1, ObjA5_T3+1, ObjA6_T3+1
 Obj9D_CodePtrs:                     ; 08168710
-.word Obj9D_FirstY+1, Obj9D_LastY+1, Obj9D_OddY+1, Obj9D_EvenY+1
-CodePtrs08168720:                   ; 08168720
-.word Sub08020AA0+1, Sub08020A8C+1, Sub08020A50+1, Sub08020A28+1
-.word Sub08020A3C+1
-CodePtrs08168734:                   ; 08168734
-.word Sub08020AB4+1, Sub08020AC8+1, Sub08020A50+1, Sub08020A3C+1
-.word Sub08020A28+1
-CodePtrs08168748:                   ; 08168748
-.word Sub08020A78+1, Sub08020A50+1, Sub08020A28+1, Sub08020A3C+1
-CodePtrs08168758:                   ; 08168758
-.word Sub08020A64+1, Sub08020A50+1, Sub08020A3C+1, Sub08020A28+1
-CodePtrs08168768:                   ; 08168768
-.word Sub08020C90+1, Sub08020C68+1, Sub08020C40+1, Sub08020C18+1
-CodePtrs08168778:                   ; 08168778
-.word Sub08020D4C+1, Sub08020D24+1, Sub08020CFC+1, Sub08020CD4+1
+.word Obj9D_FirstY+1, Obj9D_LastY+1, Obj9D_MidOddY+1, Obj9D_MidEvenY+1
+Obj9C_CodePtrsHeightOdd:            ; 08168720
+.word Obj9C_Y0_HeightOdd+1, Obj9C_Y1_HeightOdd+1, Obj9B_9C_YLast+1
+.word Obj9A_9C_YMidParity0+1, Obj9A_9C_YMidParity1+1
+Obj9C_CodePtrsHeightEven:           ; 08168734
+.word Obj9C_Y0_HeightEven+1, Obj9C_Y1_HeightEven+1, Obj9B_9C_YLast+1
+.word Obj9A_9C_YMidParity1+1, Obj9A_9C_YMidParity0+1
+Obj9B_CodePtrsHeightOdd:            ; 08168748
+.word Obj9B_Y0_HeightOdd+1, Obj9B_9C_YLast+1
+.word Obj9A_9C_YMidParity0+1, Obj9A_9C_YMidParity1+1
+Obj9B_CodePtrsHeightEven:           ; 08168758
+.word Obj9B_Y0_HeightEven+1, Obj9B_9C_YLast+1
+.word Obj9A_9C_YMidParity1+1, Obj9A_9C_YMidParity0+1
+Obj9A_CodePtrsHeightEven:           ; 08168768
+.word Obj9A_Y0Y1_HeightEven+1, Obj9A_YLast_HeightEven+1
+.word Obj9A_YMidEven_HeightEven+1, Obj9A_YMidOdd_HeightEven+1
+Obj9A_CodePtrsHeightOdd:            ; 08168778
+.word Obj9A_Y0Y1_HeightOdd+1, Obj9A_YLast_HeightOdd+1
+.word Obj9A_YMidEven_HeightOdd+1, Obj9A_YMidOdd_HeightOdd+1
 Obj98_CodePtrs:                     ; 08168788
 .word Obj98_Y0+1, Obj98_Y1+1, Obj98_Y2+1
 CodePtrs08168794:                   ; 08168794
@@ -2260,13 +2264,13 @@ Obj8F_CodePtrs:                     ; 081687A4
 Obj89_CodePtrs:                     ; 081687B0
 .word Obj89_Single+1, Obj89_Height1+1, Obj89_Width1+1, Obj89_Rect+1
 Obj87_88_CodePtrs:                  ; 081687C0
-.word Sub080217A8+1, Sub080217A8+1, Obj_LandInterior+1
+.word Obj87_88_Top+1, Obj87_88_Top+1, Obj_LandInterior+1
 Obj7B_CodePtrs:                     ; 081687CC
 .word Sub08022444+1, Sub08022388+1, Sub080222CC+1, Sub080221FC+1
 Obj7A_CodePtrs:                     ; 081687DC
-.word Sub0802285C+1, Sub08022854+1, Sub080227EC+1, Sub08022730+1
-.word Sub0802271C+1, Sub08022664+1, Sub080225DC+1, Sub080225B8+1
-.word Sub08022528+1
+.word Obj7A_TopLeft+1, Obj7A_TopCenter+1, Obj7A_TopRight+1
+.word Obj7A_CenterLeft+1, Obj7A_Center+1, Obj7A_CenterRight+1
+.word Obj7A_BottomLeft+1, Obj7A_Bottom+1, Obj7A_BottomRight+1
 Obj59_5E_MainPtrs:                  ; 08168800
 .word Obj59_5C_Main+1, Obj5A_5D_Main+1, Obj5B_5E_Main+1
 Obj58_CodePtrs:                     ; 0816880C
@@ -2331,7 +2335,7 @@ Obj20_EE_F3_CodePtrs:               ; 08168A44
 Obj1F_20_CodePtrs:                  ; 08168A4C
 .word Obj1F_20_Top+1, Obj1F_20_Top+1, Obj1F_20_Bottom+1
 Obj06_09_CodePtrs:                  ; 08168A58
-.word Sub08028EEC+1, Sub08028E8C+1, Obj_LandInterior+1
+.word Obj06_09_Top_EvenXWrapper+1, Obj06_09_Top+1, Obj_LandInterior+1
 Obj04_05_CodePtrs:                  ; 08168A64
 .word Obj04_05_EvenX+1, Obj04_05_OddX+1
 Obj02030A0B_TopCodePtrs:            ; 08168A6C
@@ -2339,22 +2343,22 @@ Obj02030A0B_TopCodePtrs:            ; 08168A6C
 .word Return08029318+1, Return08029318+1, Return08029318+1, Return08029318+1
 .word Obj0A_0B_Top+1, Obj0A_0B_Top+1
 Obj02030A0B_ThresholdPtrs:          ; 08168A94
-.word Obj02_03_0A_0B_Top+1, Obj02_03_0A_0B_Top+1, Obj_LandWall+1
+.word Obj02030A0B_Top+1, Obj02030A0B_Top+1, Obj_LandWall+1
 Obj01_CodePtrs:                     ; 08168AA0
-.word Sub0802979C+1, Sub08029738+1, Obj_LandInterior+1
+.word Obj01_Top_EvenX+1, Obj01_Top_OddX+1, Obj_LandInterior+1
 StdObjMainPtrs:                     ; 08168AAC
 .word Return08029818+1              ; 00
 .word Obj01_Main+1                  ; 01
-.word Obj02_03_0A_0B_Main+1         ; 02
-.word Obj02_03_0A_0B_Main+1         ; 03
+.word Obj02030A0B_Main+1            ; 02
+.word Obj02030A0B_Main+1            ; 03
 .word Obj04_05_Main+1               ; 04
 .word Obj04_05_Main+1               ; 05
 .word Obj06_09_Main+1               ; 06
 .word Obj06_09_Main+1               ; 07
 .word Obj06_09_Main+1               ; 08
 .word Obj06_09_Main+1               ; 09
-.word Obj02_03_0A_0B_Main+1         ; 0A
-.word Obj02_03_0A_0B_Main+1         ; 0B
+.word Obj02030A0B_Main+1            ; 0A
+.word Obj02030A0B_Main+1            ; 0B
 .word Obj0C_0E_0F_Main+1            ; 0C
 .word Obj0D_Main+1                  ; 0D
 .word Obj0C_0E_0F_Main+1            ; 0E
@@ -36574,7 +36578,7 @@ ExtObj98_Tilemap:                   ; 081BE294
 .byte 0x00, 0x37, 0x38, 0x00, 0x00, 0x00, 0x00, 0x00
 .byte 0x00, 0x00, 0x34, 0x35, 0x36, 0x00, 0x00, 0x00
 .byte 0x00, 0x00, 0x00, 0x00, 0x30, 0x31, 0x32, 0x33
-ExtObj99_Tilemap:                   ; 081BE2D4
+ExtObj99_Y0Y1Tiles:                 ; 081BE2D4
 .byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50
 .byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x51
 .byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x52
@@ -36584,7 +36588,7 @@ ExtObj99_Tilemap:                   ; 081BE2D4
 .byte 0x00, 0x00, 0x00, 0x58, 0x59, 0x5A, 0x00, 0x00
 .byte 0x5B, 0x5C, 0x5D, 0x5E, 0x00, 0x00, 0x00, 0x00
 ExtObj96_99_TilemapPtrs:            ; 081BE314
-.word ExtObj96_Tilemap, ExtObj97_Tilemap, ExtObj98_Tilemap, ExtObj99_Tilemap
+.word ExtObj96_Tilemap, ExtObj97_Tilemap, ExtObj98_Tilemap, ExtObj99_Y0Y1Tiles
 ExtObj9A_9D_DashedHalf:             ; 081BE324
 .halfword 0x872F, 0x873F, 0x874F, 0x875F
 ExtObj9A_9D_NonDashedHalf:          ; 081BE32C
@@ -36802,48 +36806,50 @@ ExtObjD4_DF_NewTiles:               ; 081BE8B8
 .halfword 0x100E, 0x0C0C
 ExtObjE0_Tilemap:                   ; 081BE8BC
 .halfword 0x7D24, 0x7D25, 0x0118, 0x0119
-Data081BE8C4:                       ; 081BE8C4
+Obj01_TopIndex_EvenX:               ; 081BE8C4
 .halfword 0x0141, 0x016E, 0x0170, 0x0174
-Data081BE8CC:                       ; 081BE8CC
+Obj01_TopIndex_OddX:                ; 081BE8CC
 .halfword 0x0142, 0x016F, 0x0171, 0x0175
-Data081BE8D4:                       ; 081BE8D4
+Obj01_TopIndex_X0SameHigh:          ; 081BE8D4
 .halfword 0x0186, 0x0163, 0x0170, 0x0174
-Data081BE8DC:                       ; 081BE8DC
+Obj01_TopIndex_NotX0_SameHigh:      ; 081BE8DC
 .halfword 0x0185, 0x0164, 0x0171, 0x0175
-Data081BE8E4:                       ; 081BE8E4
+Obj_LandInterior_RandIndex:         ; 081BE8E4
 .halfword 0x016A, 0x016B, 0x016C, 0x016D, 0x0187, 0x0188, 0x016A, 0x016B
-Data081BE8F4:                       ; 081BE8F4
+Obj_LandWallIndex:                  ; 081BE8F4
 .halfword 0x017F, 0x0181, 0x0183, 0x017F, 0x0180, 0x0182, 0x0184, 0x0180
-Data081BE904:                       ; 081BE904
-.halfword 0x019C, 0x0142, 0x0142, 0x019D, 0x019E, 0x017B, 0x017C, 0x019F
-.halfword 0x0000, 0x017D, 0x017E, 0x0192, 0x0193
-Data081BE91E:                       ; 081BE91E
+Obj02_03_TileIndexTop:              ; 081BE904
+.halfword 0x019C, 0x0142, 0x0142, 0x019D
+.halfword 0x019E, 0x017B, 0x017C, 0x019F
+.halfword 0x0000, 0x017D, 0x017E
+.halfword         0x0192, 0x0193
+Obj0A_0B_Y0Index:                   ; 081BE91E
 .halfword 0x0165, 0x0166
-Data081BE922:                       ; 081BE922
+Obj04_TileDynIndex_EvenX:           ; 081BE922
 .halfword 0x0143, 0x0034, 0x0043, 0x016A
-Data081BE92A:                       ; 081BE92A
+Obj05_TileDynIndex_EvenX:           ; 081BE92A
 .halfword 0x0145, 0x0028, 0x0033, 0x0175
-Data081BE932:                       ; 081BE932
+Obj04_TileDynIndex_OddX:            ; 081BE932
 .halfword 0x0144, 0x003B, 0x0041, 0x0174
-Data081BE93A:                       ; 081BE93A
+Obj05_TileDynIndex_OddX:            ; 081BE93A
 .halfword 0x0146, 0x002D, 0x0042, 0x016B
-Data081BE942:                       ; 081BE942
+Unused081BE942:                     ; 081BE942
 .halfword 0x0143, 0x0034, 0x0043, 0x0000, 0x0028, 0x0033, 0x0175
-Data081BE950:                       ; 081BE950
+Unused081BE950:                     ; 081BE950
 .halfword 0x003B, 0x0041, 0x0174
-Data081BE956:                       ; 081BE956
+Obj06_TileDynIndex:                 ; 081BE956
 .halfword 0x0148, 0x001E, 0x0027, 0x0172
-Data081BE95E:                       ; 081BE95E
+Obj08_TileDynIndex:                 ; 081BE95E
 .halfword 0x0149, 0x000A, 0x000E, 0x0013, 0x0189
-Data081BE968:                       ; 081BE968
+Unused081BE968:                     ; 081BE968
 .halfword 0x0146, 0x002D, 0x0042
-Data081BE96E:                       ; 081BE96E
+Obj07_TileDynIndex:                 ; 081BE96E
 .halfword 0x0147, 0x0014, 0x001D, 0x0173
-Data081BE976:                       ; 081BE976
+Obj09_TileDynIndex:                 ; 081BE976
 .halfword 0x014A, 0x0000, 0x0004, 0x0009, 0x018A
-DataPtrs081BE980:                   ; 081BE980
-.word Data081BE950, Data081BE968, Data081BE956, Data081BE96E
-.word Data081BE95E, Data081BE976
+Obj06_09_TilemapPtrs:               ; 081BE980
+.word Unused081BE950, Unused081BE968, Obj06_TileDynIndex, Obj07_TileDynIndex
+.word Obj08_TileDynIndex, Obj09_TileDynIndex
 Obj0C0E0F_TilemapMidY:              ; 081BE998
 .halfword 0x01FB, 0x0000, 0x0095, 0x0094
 Obj0C0E0F_TilemapFirstY:            ; 081BE9A0
@@ -36861,104 +36867,104 @@ Obj10_12_HighBitLookup:             ; 081BE9CC
 Obj11_12_Tiles:                     ; 081BE9D0
 .halfword 0x0097, 0x0098, 0x0096, 0x0099, 0x00A5, 0x00A0, 0x00A3, 0x00A2
 .halfword 0x00A4, 0x00A1
-Data081BE9E4:                       ; 081BE9E4
+Obj14_RectTopReplaceTiles:          ; 081BE9E4
 .halfword 0x007E, 0x0000, 0x007F
-Data081BE9EA:                       ; 081BE9EA
+Obj14_CheckTiles:                   ; 081BE9EA
 .halfword 0x016E, 0x016F, 0x0141, 0x0142, 0x018C, 0x018F, 0x017F, 0x0181
 .halfword 0x0183, 0x0103, 0x0103, 0x0103, 0x0103, 0x0180, 0x0182, 0x0184
 .halfword 0x0185, 0x0186
-Data081BEA0E:                       ; 081BEA0E
+Obj14_Width1CenterTiles:            ; 081BEA0E
 .halfword 0x0103, 0x0103, 0x011F, 0x011F, 0x011F, 0x010C, 0x010B, 0x010C
 .halfword 0x010B, 0x010B, 0x010C, 0x011F, 0x0115, 0x010F, 0x0110, 0x010F
 .halfword 0x012C, 0x010F, 0x0110, 0x0115, 0x0116, 0x0116, 0x0118, 0x0119
 .halfword 0x011A, 0x011B, 0x011C, 0x011D, 0x011E, 0x011F, 0x011F, 0x0121
 .halfword 0x0122, 0x0123, 0x0124, 0x0125, 0x0126, 0x0127, 0x0128, 0x0129
 .halfword 0x012A, 0x012B, 0x012C, 0x010C, 0x010B, 0x0103, 0x0103
-Data081BEA6C:                       ; 081BEA6C
+Obj14_Width1TopTiles:               ; 081BEA6C
 .halfword 0x012F, 0x0103, 0x011F, 0x0105, 0x0105, 0x010C, 0x0108, 0x0109
 .halfword 0x010B, 0x0108, 0x0109, 0x010D, 0x0115, 0x010F, 0x0110, 0x0111
 .halfword 0x0112, 0x010F, 0x0110, 0x0115, 0x0116, 0x0116, 0x007D, 0x007D
 .halfword 0x011A, 0x011B, 0x011C, 0x011D, 0x011E, 0x011F, 0x011F, 0x0121
 .halfword 0x0122, 0x0123, 0x0124, 0x0125, 0x0126, 0x0127, 0x0128, 0x0129
 .halfword 0x012A, 0x012B, 0x012C, 0x0109, 0x0108, 0x012F, 0x0103
-Data081BEACA:                       ; 081BEACA
+Obj14_Width1BottomTiles:            ; 081BEACA
 .halfword 0x0130, 0x0103, 0x0104, 0x011F, 0x0120, 0x0107, 0x010B, 0x010C
 .halfword 0x010A, 0x010A, 0x0107, 0x011F, 0x010E, 0x010F, 0x0110, 0x010F
 .halfword 0x012C, 0x0114, 0x0114, 0x0115, 0x0116, 0x0117, 0x0118, 0x0119
 .halfword 0x0129, 0x0129, 0x011C, 0x011D, 0x011E, 0x011F, 0x0120, 0x0121
 .halfword 0x0122, 0x0123, 0x0124, 0x0125, 0x0126, 0x0127, 0x0128, 0x0129
 .halfword 0x012A, 0x012B, 0x012C, 0x0107, 0x010A, 0x0103, 0x0130
-Data081BEB28:                       ; 081BEB28
+Obj14_Height1CenterTiles:           ; 081BEB28
 .halfword 0x0106, 0x011F, 0x0104, 0x0105, 0x0106, 0x0120, 0x0105, 0x0105
 .halfword 0x0120, 0x011F, 0x011F, 0x010D, 0x010E, 0x011F, 0x0115, 0x0105
 .halfword 0x010D, 0x0120, 0x010E, 0x0115, 0x0116, 0x0117, 0x0118, 0x0119
 .halfword 0x011A, 0x011B, 0x011C, 0x011D, 0x011E, 0x011F, 0x0120, 0x0121
 .halfword 0x0122, 0x0123, 0x0124, 0x0125, 0x0126, 0x0127, 0x0128, 0x0129
 .halfword 0x012A, 0x012B, 0x012C, 0x0106, 0x0106, 0x0105, 0x0104
-Data081BEB86:                       ; 081BEB86
+Obj14_Height1LeftTiles:             ; 081BEB86
 .halfword 0x012D, 0x010C, 0x0107, 0x0109, 0x0106, 0x0107, 0x0105, 0x0109
 .halfword 0x0120, 0x011F, 0x010C, 0x010D, 0x010E, 0x010F, 0x0115, 0x0111
 .halfword 0x010D, 0x010E, 0x010E, 0x0115, 0x0116, 0x0117, 0x0118, 0x0119
 .halfword 0x011A, 0x011B, 0x0117, 0x0117, 0x0117, 0x011F, 0x0120, 0x0121
 .halfword 0x0122, 0x0123, 0x0124, 0x0125, 0x0131, 0x0127, 0x0128, 0x0129
 .halfword 0x012A, 0x012B, 0x012C, 0x012D, 0x0106, 0x0109, 0x0107
-Data081BEBE4:                       ; 081BEBE4
+Obj14_Height1RightTiles:            ; 081BEBE4
 .halfword 0x012E, 0x010B, 0x010A, 0x0108, 0x0106, 0x0120, 0x0108, 0x0105
 .halfword 0x010A, 0x010B, 0x011F, 0x010D, 0x010E, 0x011F, 0x0110, 0x010D
 .halfword 0x0112, 0x0120, 0x0114, 0x0115, 0x0116, 0x0117, 0x0118, 0x0119
 .halfword 0x011A, 0x011B, 0x011C, 0x011D, 0x011E, 0x011F, 0x0120, 0x0121
 .halfword 0x0122, 0x0118, 0x0118, 0x0118, 0x0126, 0x0132, 0x0128, 0x0129
 .halfword 0x012A, 0x012B, 0x012C, 0x0106, 0x012E, 0x0108, 0x010A
-Data081BEC42:                       ; 081BEC42
+Obj14_TopLeftTiles:                 ; 081BEC42
 .halfword 0x0111, 0x010F, 0x011F, 0x010D, 0x0105, 0x010F, 0x010D, 0x0111
 .halfword 0x011F, 0x011F, 0x010F, 0x010D, 0x0115, 0x010F, 0x0115, 0x0111
 .halfword 0x010D, 0x010F, 0x0115, 0x0115, 0x0123, 0x0123, 0x0123, 0x0123
 .halfword 0x011A, 0x011B, 0x011B, 0x011B, 0x011B, 0x011F, 0x011F, 0x0121
 .halfword 0x0122, 0x0123, 0x0124, 0x0125, 0x0126, 0x0127, 0x0128, 0x0129
 .halfword 0x012A, 0x012B, 0x012C, 0x0111, 0x010D, 0x0111, 0x010F
-Data081BECA0:                       ; 081BECA0
+Obj14_CenterLeftTiles:              ; 081BECA0
 .halfword 0x010F, 0x010F, 0x010F, 0x011F, 0x011F, 0x010F, 0x011F, 0x010F
 .halfword 0x011F, 0x011F, 0x010F, 0x011F, 0x0115, 0x010F, 0x0115, 0x010F
 .halfword 0x011F, 0x010F, 0x0115, 0x0115, 0x0116, 0x0117, 0x0118, 0x0119
 .halfword 0x011A, 0x011B, 0x0119, 0x0119, 0x0119, 0x011F, 0x011F, 0x0121
 .halfword 0x0122, 0x0123, 0x0124, 0x0125, 0x0126, 0x0127, 0x0128, 0x0129
 .halfword 0x012A, 0x012B, 0x012C, 0x010F, 0x011F, 0x010F, 0x010F
-Data081BECFE:                       ; 081BECFE
+Obj14_BottomLeftTiles:              ; 081BECFE
 .halfword 0x0113, 0x010F, 0x0120, 0x011F, 0x0120, 0x0113, 0x0115, 0x010F
 .halfword 0x0120, 0x011F, 0x010F, 0x011F, 0x010E, 0x010F, 0x0115, 0x010F
 .halfword 0x011F, 0x0113, 0x010E, 0x0115, 0x0116, 0x0117, 0x0118, 0x0119
 .halfword 0x0126, 0x011B, 0x011D, 0x011D, 0x011D, 0x011F, 0x0120, 0x0121
 .halfword 0x0122, 0x0126, 0x0126, 0x0126, 0x0133, 0x0127, 0x0128, 0x0129
 .halfword 0x012A, 0x012B, 0x012C, 0x0113, 0x0120, 0x010F, 0x0113
-Data081BED5C:                       ; 081BED5C
+Obj14_TopCenterTiles:               ; 081BED5C
 .halfword 0x010D, 0x011F, 0x011F, 0x010D, 0x010D, 0x011F, 0x010D, 0x010D
 .halfword 0x011F, 0x011F, 0x011F, 0x010D, 0x0115, 0x011F, 0x0115, 0x010D
 .halfword 0x010D, 0x011F, 0x0115, 0x0115, 0x0124, 0x0124, 0x0118, 0x0119
 .halfword 0x011A, 0x011B, 0x011C, 0x011D, 0x011E, 0x011F, 0x011F, 0x0121
 .halfword 0x0122, 0x0123, 0x0124, 0x0125, 0x0126, 0x0127, 0x0128, 0x0129
 .halfword 0x012A, 0x012B, 0x012C, 0x010D, 0x010D, 0x010D, 0x011F
-Data081BEDBA:                       ; 081BEDBA
+Obj14_BottomCenterTiles:            ; 081BEDBA
 .halfword 0x010E, 0x0115, 0x010E, 0x0115, 0x010E, 0x010E, 0x0115, 0x0115
 .halfword 0x010E, 0x0115, 0x0115, 0x0115, 0x010E, 0x0115, 0x0115, 0x0115
 .halfword 0x0115, 0x010E, 0x010E, 0x0115, 0x0116, 0x0117, 0x0118, 0x0119
 .halfword 0x0127, 0x0127, 0x011C, 0x011D, 0x011E, 0x0115, 0x010E, 0x0121
 .halfword 0x0122, 0x0123, 0x0124, 0x0125, 0x0126, 0x0127, 0x0128, 0x0129
 .halfword 0x012A, 0x012B, 0x012C, 0x010E, 0x010E, 0x0115, 0x010E
-Data081BEE18:                       ; 081BEE18
+Obj14_TopRightTiles:                ; 081BEE18
 .halfword 0x0112, 0x012C, 0x011F, 0x011F, 0x010D, 0x011F, 0x0112, 0x010D
 .halfword 0x012C, 0x012C, 0x011F, 0x010D, 0x0115, 0x011F, 0x0110, 0x010D
 .halfword 0x010D, 0x011F, 0x0110, 0x0115, 0x0125, 0x0125, 0x0118, 0x0119
 .halfword 0x011A, 0x011B, 0x011C, 0x011D, 0x011A, 0x0115, 0x011F, 0x0121
 .halfword 0x0122, 0x011C, 0x011C, 0x011C, 0x0126, 0x0127, 0x0128, 0x0129
 .halfword 0x012A, 0x012B, 0x012C, 0x010D, 0x0112, 0x0112, 0x012C
-Data081BEE76:                       ; 081BEE76
+Obj14_CenterRightTiles:             ; 081BEE76
 .halfword 0x0110, 0x0110, 0x0115, 0x0115, 0x0115, 0x0115, 0x0110, 0x0115
 .halfword 0x0110, 0x0110, 0x0115, 0x0115, 0x0115, 0x0115, 0x0110, 0x0115
 .halfword 0x0110, 0x0115, 0x0110, 0x0115, 0x0116, 0x0117, 0x0118, 0x0119
 .halfword 0x011A, 0x011B, 0x011C, 0x011D, 0x011E, 0x0115, 0x0115, 0x0121
 .halfword 0x0122, 0x011A, 0x011A, 0x011A, 0x0126, 0x011E, 0x0128, 0x0129
 .halfword 0x012A, 0x012B, 0x012C, 0x0115, 0x0110, 0x0110, 0x0110
-Data081BEED4:                       ; 081BEED4
+Obj14_BottomRightTiles:             ; 081BEED4
 .halfword 0x0114, 0x0110, 0x010E, 0x0115, 0x010E, 0x010E, 0x0110, 0x0115
 .halfword 0x0114, 0x0110, 0x0115, 0x0115, 0x010E, 0x0115, 0x0110, 0x0115
 .halfword 0x0110, 0x010E, 0x0114, 0x0115, 0x0116, 0x0117, 0x0118, 0x0119
@@ -37696,28 +37702,28 @@ Obj78_Tilemap:                      ; 081C0912
 .halfword 0x3D3E, 0x3D3D, 0x3D3F, 0x3D40
 Obj79_Tilemap:                      ; 081C091A
 .halfword 0x3D5A, 0x6700, 0x3D59, 0x6600
-Data081C0922:                       ; 081C0922
+Obj7A_Data081C0922:                 ; 081C0922
 .halfword 0x01D8, 0x01E8
-Data081C0926:                       ; 081C0926
+Obj7A_Data081C0926:                 ; 081C0926
 .halfword 0x01D9, 0x01DA
-Data081C092A:                       ; 081C092A
+Obj7A_Data081C092A:                 ; 081C092A
 .halfword 0x01DB, 0x01E9
-Data081C092E:                       ; 081C092E
+Obj7A_Data081C092E:                 ; 081C092E
 .halfword 0x01DD, 0x01DE
-Data081C0932:                       ; 081C0932
+Obj7B_Data081C0932:                 ; 081C0932
 .halfword 0x01E0, 0x01E1, 0x01D8, 0x01E8, 0x01D9, 0x01DA, 0x01DD, 0x01DE
 .halfword 0x01DC
-Data081C0944:                       ; 081C0944
+Obj7B_Data081C0944:                 ; 081C0944
 .halfword 0x01E3, 0x01E2, 0x01DB, 0x01E9, 0x01D9, 0x01DA, 0x01DD, 0x01DE
 .halfword 0x01DF
-Data081C0956:                       ; 081C0956
+Obj7C_Data081C0956:                 ; 081C0956
 .halfword 0x01E4, 0x01E5, 0x01D9, 0x01DA
-Data081C095E:                       ; 081C095E
+Obj7C_Data081C095E:                 ; 081C095E
 .halfword 0x01E7, 0x01E6, 0x01D9, 0x01DA
-Data081C0966:                       ; 081C0966
+Obj7D_Data081C0966:                 ; 081C0966
 .halfword 0x01EC, 0x01ED, 0x01EE, 0x01EF, 0x0153, 0x0155, 0x0156, 0x0158
 .halfword 0x01F0, 0x01F0, 0x01F1, 0x01F1, 0x0154, 0x0155, 0x0156, 0x0157
-Data081C0986:                       ; 081C0986
+Obj7D_Data081C0986:                 ; 081C0986
 .halfword 0x01F2, 0x01F3, 0x01F4, 0x01F5, 0x0153, 0x0155, 0x0156, 0x0158
 .halfword 0x01F0, 0x01F0, 0x01F1, 0x01F1, 0x0154, 0x0155, 0x0156, 0x0157
 Data081C09A6:                       ; 081C09A6
@@ -37757,25 +37763,25 @@ Data081C0AE6:                       ; 081C0AE6
 .halfword 0xFFFF, 0x01E1, 0x01EA, 0xFFFF, 0x01E4, 0x01E8, 0xFFFF, 0x0000
 .halfword 0x01E8, 0x01E9, 0x01EA, 0xFFFF
 .align 4
-DataPtrs081C0B10:                   ; 081C0B10
-.word Data081C09A6, Data081C09CE, Data081C09F6, Data081C0A1E
-.word Data081C0A46, Data081C0A6E, Data081C0A96, Data081C0ABE
-.word Data081C0AE6
-Data081C0B34:                       ; 081C0B34
+Obj7F_DataPtrs081C0B10:             ; 081C0B10
+.word Data081C09A6, Data081C09CE, Data081C09F6
+.word Data081C0A1E, Data081C0A46, Data081C0A6E
+.word Data081C0A96, Data081C0ABE, Data081C0AE6
+Obj7F_Data081C0B34:                 ; 081C0B34
 .halfword 0x01E6, 0x01EB, 0x01E5, 0x01E9, 0x0000, 0x01E8, 0x01E2, 0x01EA
 .halfword 0x01E1
-Data081C0B46:                       ; 081C0B46
+Obj7F_Data081C0B46:                 ; 081C0B46
 .halfword 0x01E4, 0x01EB, 0x01E7, 0x0000, 0x0000, 0x0000, 0x01E0, 0x01EA
 .halfword 0x01E3
-Data081C0B58:                       ; 081C0B58
+Obj80_81_Data081C0B58:              ; 081C0B58
 .halfword 0x01D9, 0x01DA
-Data081C0B5C:                       ; 081C0B5C
+Obj85_Data081C0B5C:                 ; 081C0B5C
 .halfword 0x020E, 0x020C
-Data081C0B60:                       ; 081C0B60
+Obj86_Data081C0B60:                 ; 081C0B60
 .halfword 0x020A, 0x0208
-Data081C0B64:                       ; 081C0B64
+Obj87_88_RandSurfaceTiles:          ; 081C0B64
 .halfword 0x0146, 0x0147, 0x0148, 0x0149, 0x014E, 0x014F, 0x014E, 0x014F
-Data081C0B74:                       ; 081C0B74
+Obj87_88_EdgeReplace:               ; 081C0B74
 .halfword 0x019D, 0x019C, 0x0145, 0x0150
 Obj89_TilemapHeight1:               ; 081C0B7C
 .halfword 0x7209, 0x720A, 0x720B
@@ -37800,11 +37806,11 @@ Data081C0BD4:                       ; 081C0BD4
 .halfword 0x003E, 0x0029, 0x3DC1, 0x3DBC, 0x3DBF, 0x3DBE
 Data081C0BE0:                       ; 081C0BE0
 .halfword 0x003F, 0x002C, 0x3DDD, 0x3DD8, 0x3DDB, 0x3DDA
-Data081C0BEC:                       ; 081C0BEC
+Obj90_X0Tiles:                      ; 081C0BEC
 .halfword 0x0019, 0x001F, 0x3DB1, 0x3DB0, 0x3DB6, 0x3DB5
-Data081C0BF8:                       ; 081C0BF8
+Obj90_NotX0_ReplaceEmpty:           ; 081C0BF8
 .halfword 0x0022, 0x0016, 0x3DBB, 0x3DB8, 0x3DBA, 0x3DB9
-Data081C0C04:                       ; 081C0C04
+Obj90_NotX0_LandSurface:            ; 081C0C04
 .halfword 0x0023, 0x0015, 0x3DB7, 0x3DB4, 0x3DB6, 0x3DB5
 Data081C0C10:                       ; 081C0C10
 .halfword 0x3DC2, 0x3DC3, 0x3DC4, 0x0000, 0x3DC8, 0x3DC9, 0x3DCA
@@ -37821,37 +37827,37 @@ Obj98_TilemapY1:                    ; 081C0C60
 .halfword 0x7800, 0x7801, 0x7802, 0x7803
 Obj98_TilemapY2:                    ; 081C0C68
 .halfword 0x01B7, 0x01B8
-Data081C0C6C:                       ; 081C0C6C
+Obj99_Y0Y1Tiles:                    ; 081C0C6C
 .halfword 0x01B9, 0x01BA, 0x01BB, 0x0000, 0x01BC, 0x01BD, 0x01BE
-Data081C0C7A:                       ; 081C0C7A
+Obj9A_Y0Y1_HeightOdd_Tiles:         ; 081C0C7A
 .halfword 0x0000, 0x7701, 0x7702, 0x7703, 0x7710, 0x7711, 0x7712, 0x7713
-Data081C0C8A:                       ; 081C0C8A
+Obj9A_Y0Y1_HeightEven_Tiles:        ; 081C0C8A
 .halfword 0x7730, 0x7731, 0x7732, 0x0000, 0x7740, 0x7741, 0x7742, 0x7743
-Data081C0C9A:                       ; 081C0C9A
+Obj9A_9C_YMid_TilesParity1:         ; 081C0C9A  9B-9C invert the index
 .halfword 0x7700, 0x7704, 0x7708, 0x770C
-Data081C0CA2:                       ; 081C0CA2
+Obj9A_9C_YMid_TilesParity0:         ; 081C0CA2  9B-9C invert the index
 .halfword 0x7733, 0x7737, 0x773B, 0x773F
-Data081C0CAA:                       ; 081C0CAA
+Obj9A_9C_YLast_Tiles:               ; 081C0CAA  9B-9C invert the index
 .halfword 0x7723, 0x7727, 0x772B, 0x772F
-Data081C0CB2:                       ; 081C0CB2
+Obj9B_Y0_HeightEven_Tiles:          ; 081C0CB2
 .halfword 0x7722, 0x7724, 0x7728, 0x772C
-Data081C0CBA:                       ; 081C0CBA
+Obj9B_Y0_HeightOdd_Tiles:           ; 081C0CBA
 .halfword 0x7751, 0x7757, 0x775A, 0x775D
-Data081C0CC2:                       ; 081C0CC2
+Obj9C_Y0_HeightEven_Tiles:          ; 081C0CC2
 .halfword 0x7753, 0x7756, 0x7759, 0x775C
-Data081C0CCA:                       ; 081C0CCA
+Obj9C_Y1_HeightEven_Tiles:          ; 081C0CCA
 .halfword 0x7752, 0x7755, 0x7758, 0x775B
-Data081C0CD2:                       ; 081C0CD2
+Obj9C_Y0_HeightOdd_Tiles:           ; 081C0CD2
 .halfword 0x7720, 0x7725, 0x7729, 0x772D
-Data081C0CDA:                       ; 081C0CDA
+Obj9C_Y1_HeightOdd_Tiles:           ; 081C0CDA
 .halfword 0x7721, 0x7726, 0x772A, 0x772E
-Obj9D_TilemapFirstY:                ; 081C0CE2
+Obj9D_FirstYTiles:                  ; 081C0CE2
 .halfword 0x7900, 0x7901, 0x7902
-Obj9D_TilemapOddY:                  ; 081C0CE8
+Obj9D_MidOddYTiles:                 ; 081C0CE8
 .halfword 0x7903, 0x7904, 0x7905
-Obj9D_TilemapEvenY:                 ; 081C0CEE
+Obj9D_MidEvenYTiles:                ; 081C0CEE
 .halfword 0x7906, 0x7907, 0x7908
-Obj9D_TilemapLastY:                 ; 081C0CF4
+Obj9D_LastYTiles:                   ; 081C0CF4
 .halfword 0x7909, 0x790A, 0x790B, 0x790C, 0x790D, 0x790E
 Obj9F_Tilemap:                      ; 081C0D00
 .halfword 0x3308, 0x3508, 0x0004, 0x0005
@@ -38129,7 +38135,7 @@ ObjDC_EdgeTilemap:                  ; 081C1442
 ObjDC_WaterTilemap:                 ; 081C1456
 .halfword 0x0000, 0x0000, 0x0015, 0x0016, 0x1621, 0x1622, 0x1623, 0x1624
 .halfword 0x1625, 0x1625
-Data081C146A:                       ; 081C146A
+ObjDD_TilesY1ToY5:                  ; 081C146A
 .halfword 0x8C0F, 0x8C10, 0x8C11, 0x8C10, 0x8C11, 0x8C12, 0x8C0F, 0x8C10
 .halfword 0x798C, 0x798D, 0x798E, 0x798D, 0x798F, 0x7990, 0x798C, 0x7990
 .halfword 0x7991, 0x7992, 0x7991, 0x7993, 0x7994, 0x7997, 0x7997, 0x7997

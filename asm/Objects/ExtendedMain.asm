@@ -138,7 +138,7 @@ bx    r0                            ; 08029926
 
 ExtObjCA_D3_Main:
 ; object 00.CA-D3 main
-; 0300224E: extID-CA
+; 0300224E(+42): extID-CA
 mov   r1,r0                         ; 08029928
 add   r1,0x42                       ; 0802992A
 ldr   r3,=0x79BB                    ; 0802992C
@@ -158,7 +158,7 @@ bx    lr                            ; 08029944
 
 ExtObjC5_C9_Main:
 ; object 00.C5-C9 main
-; 0300224E: (extID-C5)*2
+; 0300224E(+42): (extID-C5)*2
 push  {lr}                          ; 08029950
 mov   r3,r0                         ; 08029952
 add   r0,0x42                       ; 08029954
@@ -215,7 +215,7 @@ bx    lr                            ; 080299BA
 
 ExtObjC2_C3_Main:
 ; object 00.C2-C3 main
-; 0300224E: 00,10 for C2,C3
+; 0300224E(+42): 00,10 for C2,C3
 ; width: 4, height: 4
 mov   r3,r0                         ; 080299C4
 add   r0,0x50                       ; 080299C6
@@ -359,7 +359,7 @@ bx    r0                            ; 08029AD8
 ExtObjBA_BF_Main:
 ; object 00.BA-BF main
 ; height: 2,3,4,4,3,2
-; 0300224E: (extID-BA)*2
+; 0300224E(+42): (extID-BA)*2
 ; 03002246: random value from 0,0,1,2
 push  {lr}                          ; 08029AF0
 mov   r3,r0                         ; 08029AF2
@@ -410,7 +410,7 @@ bx    r0                            ; 08029B40
 ExtObjB8_B9_Main:
 ; object 00.B8-B9 main
 ; width: 4,5; height: 4,6
-; 0300224E: (extID-B8)*2
+; 0300224E(+42): (extID-B8)*2
 push  {r4-r5,lr}                    ; 08029B4C
 mov   r12,r0                        ; 08029B4E
 add   r0,0x42                       ; 08029B50
@@ -510,7 +510,7 @@ bx    r0                            ; 08029C08
 
 ExtObjB6_B7_Main:
 ; object 00.B6-B7 main
-; 0300224E: (extID-B6)*4 + random bit*2
+; 0300224E(+42): (extID-B6)*4 + random bit*2
 ; width: 3, height: 3
 push  {r4-r5,lr}                    ; 08029C10
 mov   r12,r0                        ; 08029C12
@@ -600,7 +600,7 @@ bx    r0                            ; 08029CB4
 
 ExtObjB4_B5_Main:
 ; object 00.B4-B5 main
-; 0300224E: extID-B4
+; 0300224E(+42): extID-B4
 ; 03002246: random bit <<2
 ; width: 2, height: 2
 push  {r4,lr}                       ; 08029CBC
@@ -690,7 +690,7 @@ bx    r0                            ; 08029D5C
 
 ExtObjAD_B2_Main:
 ; object 00.AD-B2 main
-; 0300224E: (extID-AD)*2
+; 0300224E(+42): (extID-AD)*2
 ; 03002246: random 00,0E,1C,2A
 ; width: 2, height: 3,3,2,2,2,2
 mov   r3,r0                         ; 08029D70
@@ -729,7 +729,7 @@ bx    lr                            ; 08029DAE
 
 ExtObjA9_AC_Main:
 ; object 00.A9-AC main
-; 0300224E: (objID-A9)*2
+; 0300224E(+42): (objID-A9)*2
 ; height: 5,4,3,3
 push  {lr}                          ; 08029DB8
 mov   r12,r0                        ; 08029DBA
@@ -784,7 +784,7 @@ bx    lr                            ; 08029E16
 
 ExtObjA5_A6_Main:
 ; object 00.A5-A6 main
-; 0300224E: 1,0 if A5,A6
+; 0300224E(+42): 1,0 if A5,A6
 push  {r4,lr}                       ; 08029E20
 mov   r3,r0                         ; 08029E22
 add   r0,0x4C                       ; 08029E24
@@ -1228,7 +1228,7 @@ bx    r0                            ; 0802A1CA
 
 ExtObj9E_9F_Main:
 ; object 00.9E-9F main
-; 0300224E: (extID-9E)*2
+; 0300224E(+42): (extID-9E)*2
 push  {r4-r5,lr}                    ; 0802A1D0
 mov   r12,r0                        ; 0802A1D2
 add   r0,0x4A                       ; 0802A1D4
@@ -1614,7 +1614,7 @@ bx    r0                            ; 0802A4F8
 ExtObj8B_8C_Main:
 ; object 00.8B-8C main
 ; width: 1, height: 2
-; 0300224E: 0,2
+; 0300224E(+42): 0,2
 push  {r4-r7,lr}                    ; 0802A508
 mov   r12,r0                        ; 0802A50A
 add   r0,0x4A                       ; 0802A50C
@@ -1677,7 +1677,7 @@ bx    r0                            ; 0802A576
 ExtObj89_8A_Main:
 ; object 00.89-8A main
 ; width: 2, height: 1
-; 0300224E: 0,2
+; 0300224E(+42): 0,2
 push  {r4-r7,lr}                    ; 0802A58C
 mov   r12,r0                        ; 0802A58E
 add   r0,0x4A                       ; 0802A590
@@ -2069,7 +2069,7 @@ bx    r0                            ; 0802A850
 
 ExtObj83_87_Main:
 ; object 00.83-87 main
-; 0300224E: (objID-83)*2
+; 0300224E(+42): (objID-83)*2
 push  {lr}                          ; 0802A860
 mov   r12,r0                        ; 0802A862
 add   r0,0x42                       ; 0802A864
@@ -2201,7 +2201,7 @@ bx    lr                            ; 0802A95E
 
 ExtObj7E_7F_Main:
 ; object 00.7E-7F main
-; 0300224E: extID-7E
+; 0300224E(+42): extID-7E
 mov   r1,r0                         ; 0802A964
 add   r1,0x4A                       ; 0802A966
 ldrh  r1,[r1]                       ; 0802A968  offset to layer 1 tilemap
@@ -2557,7 +2557,7 @@ bx    r0                            ; 0802AC06
 
 ExtObj6D_70_Main:
 ; object 00.6D-70 main
-; 0300224E: (extID-6D)*2
+; 0300224E(+42): (extID-6D)*2
 ; width: 2, height: 2
 push  {r4,lr}                       ; 0802AC0C
 mov   r4,r0                         ; 0802AC0E
@@ -2906,7 +2906,7 @@ bx    r0                            ; 0802AE9E
 
 ExtObj5B_5D_Main:
 ; object 00.5B-5D main
-; 0300224E: (extID-5C)*2
+; 0300224E(+42): (extID-5C)*2
 ; width: 3, height: 2
 push  {lr}                          ; 0802AEA8
 mov   r12,r0                        ; 0802AEAA
@@ -2940,7 +2940,7 @@ bx    r0                            ; 0802AEE0
 
 ExtObj58_5A_Main:
 ; object 00.58-5A main
-; 0300224E: (extID-58)*2
+; 0300224E(+42): (extID-58)*2
 ; width: 3, height: 2
 push  {lr}                          ; 0802AEE8
 mov   r12,r0                        ; 0802AEEA
@@ -2974,7 +2974,7 @@ bx    r0                            ; 0802AF20
 
 ExtObj56_57_Main:
 ; object 00.56-57 main
-; 0300224E: (extID-56)*2
+; 0300224E(+42): (extID-56)*2
 ; width: 5, height: 3
 push  {lr}                          ; 0802AF28
 mov   r12,r0                        ; 0802AF2A
@@ -3008,7 +3008,7 @@ bx    r0                            ; 0802AF60
 
 ExtObj54_55_Main:
 ; object 00.54-55 main
-; 0300224E: (extID-54)*2
+; 0300224E(+42): (extID-54)*2
 ; width: 3, height: 3
 push  {lr}                          ; 0802AF68
 mov   r12,r0                        ; 0802AF6A
@@ -3211,7 +3211,7 @@ bx    lr                            ; 0802B0E2
 
 ExtObj50_A8_Main:
 ; object 00.50,00.A8 main: arrow signs
-; 0300224E: 00 for 50, 10 for A8
+; 0300224E(+42): 00 for 50, 10 for A8
 push  {r4-r7,lr}                    ; 0802B0EC
 mov   r6,r0                         ; 0802B0EE
 add   r0,0x4C                       ; 0802B0F0  r0 = [03007240]+4C (03002258)
@@ -3968,7 +3968,7 @@ bx    r0                            ; 0802B6D8
 
 ExtObj1B_1D_Main:
 ; object 00.1B-1D main
-; 0300224E: (objID-1B)*2
+; 0300224E(+42): (objID-1B)*2
 ; width: 2, height: 2
 push  {lr}                          ; 0802B6E4
 mov   r3,r0                         ; 0802B6E6
@@ -4009,7 +4009,7 @@ bx    r0                            ; 0802B726
 
 ExtObj19_1A_Main:
 ; object 00.19-1A main
-; 0300224E: extID-19
+; 0300224E(+42): extID-19
 ; 19: width 18, height 3
 ; 1A: width 20, height C
 push  {r4,lr}                       ; 0802B730
@@ -4376,7 +4376,7 @@ bx    lr                            ; 0802BA06
 ExtObj0D_0E_Main:
 ; object 00.0D-0E main
 ; width: 8, height: 10
-; 0300224E: (extID-0D)*2
+; 0300224E(+42): (extID-0D)*2
 push  {lr}                          ; 0802BA0C
 mov   r12,r0                        ; 0802BA0E
 add   r0,0x50                       ; 0802BA10
@@ -4474,7 +4474,7 @@ bx    r0                            ; 0802BABE
 
 ExtObj0A_0B_Main:
 ; object 00.0A-0B main
-; 0300224E: (extID-0A)*2
+; 0300224E(+42): (extID-0A)*2
 ; width: 2, height: 2
 mov   r3,r0                         ; 0802BAD0
 add   r0,0x42                       ; 0802BAD2
@@ -4510,7 +4510,7 @@ bx    lr                            ; 0802BB0A
 
 ExtObj00_09_Main:
 ; object 00.00-09 main
-; 0300224E: extID*2
+; 0300224E(+42): extID*2
 ; width: 2,2,2,2,1,1,1,1,3,2 for 00-09
 ; height: 3
 push  {lr}                          ; 0802BB14
