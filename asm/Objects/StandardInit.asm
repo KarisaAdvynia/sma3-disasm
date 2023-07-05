@@ -1879,27 +1879,28 @@ lsr   r2,r2,0x18                    ; 0801AE8E
 mov   r1,r3                         ; 0801AE90
 add   r1,0x46                       ; 0801AE92
 ldr   r0,=0x7FFF                    ; 0801AE94
-strh  r0,[r1]                       ; 0801AE96
-sub   r1,0x2                        ; 0801AE98
+strh  r0,[r1]                       ; 0801AE96  set relative Y threshold to 7FFF
+sub   r1,0x2                        ; 0801AE98  +44
 ldr   r0,=0xFFFF                    ; 0801AE9A
-strh  r0,[r1]                       ; 0801AE9C
+strh  r0,[r1]                       ; 0801AE9C  set slope to -1
 mov   r0,r3                         ; 0801AE9E
 add   r0,0x4E                       ; 0801AEA0
-ldrh  r1,[r0]                       ; 0801AEA2
+ldrh  r1,[r0]                       ; 0801AEA2  width
 mov   r5,0x0                        ; 0801AEA4
-ldsh  r0,[r0,r5]                    ; 0801AEA6
+ldsh  r0,[r0,r5]                    ; 0801AEA6  width (signed)
 cmp   r0,0x0                        ; 0801AEA8
 bge   @@Code0801AEB8                ; 0801AEAA
-mvn   r0,r1                         ; 0801AEAC
+                                    ;          \ runs if negative width
+mvn   r0,r1                         ; 0801AEAC  abs(width)-1
 lsl   r0,r0,0x10                    ; 0801AEAE
 mov   r1,0x80                       ; 0801AEB0
 lsl   r1,r1,0x9                     ; 0801AEB2  10000
 add   r0,r0,r1                      ; 0801AEB4
-lsr   r1,r0,0x10                    ; 0801AEB6
+lsr   r1,r0,0x10                    ; 0801AEB6 / abs(width)
 @@Code0801AEB8:
 mov   r0,r3                         ; 0801AEB8
 add   r0,0x52                       ; 0801AEBA
-strh  r1,[r0]                       ; 0801AEBC
+strh  r1,[r0]                       ; 0801AEBC  set height to abs(width)
 mov   r0,r3                         ; 0801AEBE
 mov   r1,r4                         ; 0801AEC0
 bl    ObjMain_Shared                ; 0801AEC2  Object processing main
@@ -1917,21 +1918,22 @@ lsr   r1,r1,0x10                    ; 0801AEDA
 lsl   r2,r2,0x18                    ; 0801AEDC
 lsr   r2,r2,0x18                    ; 0801AEDE
 add   r0,0x4E                       ; 0801AEE0
-ldrh  r3,[r0]                       ; 0801AEE2
+ldrh  r3,[r0]                       ; 0801AEE2  width
 mov   r5,0x0                        ; 0801AEE4
-ldsh  r0,[r0,r5]                    ; 0801AEE6
+ldsh  r0,[r0,r5]                    ; 0801AEE6  width (signed)
 cmp   r0,0x0                        ; 0801AEE8
 bge   @@Code0801AEF8                ; 0801AEEA
-mvn   r0,r3                         ; 0801AEEC
+                                    ;          \ runs if negative width
+mvn   r0,r3                         ; 0801AEEC  abs(width)-1
 lsl   r0,r0,0x10                    ; 0801AEEE
 mov   r3,0x80                       ; 0801AEF0
 lsl   r3,r3,0x9                     ; 0801AEF2  10000
 add   r0,r0,r3                      ; 0801AEF4
-lsr   r3,r0,0x10                    ; 0801AEF6
+lsr   r3,r0,0x10                    ; 0801AEF6 / abs(width)
 @@Code0801AEF8:
 mov   r0,r4                         ; 0801AEF8
 add   r0,0x52                       ; 0801AEFA
-strh  r3,[r0]                       ; 0801AEFC
+strh  r3,[r0]                       ; 0801AEFC  set height to abs(width)
 mov   r0,r4                         ; 0801AEFE
 bl    ObjMain_Slope0_NoRelY         ; 0801AF00  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r5}                       ; 0801AF04
@@ -2002,16 +2004,16 @@ ldsh  r0,[r0,r5]                    ; 0801AF72  width (signed)
 cmp   r0,0x0                        ; 0801AF74
 bge   @@Code0801AF84                ; 0801AF76
                                     ;          \ runs if negative width
-mvn   r0,r3                         ; 0801AF78  abs(width)
+mvn   r0,r3                         ; 0801AF78  abs(width)-1
 lsl   r0,r0,0x10                    ; 0801AF7A
 mov   r3,0x80                       ; 0801AF7C
 lsl   r3,r3,0x9                     ; 0801AF7E  10000
 add   r0,r0,r3                      ; 0801AF80
-lsr   r3,r0,0x10                    ; 0801AF82 / abs(width)+1
-@@Code0801AF84:                     ;           r3: width if positive, abs(width)+1 if negative
+lsr   r3,r0,0x10                    ; 0801AF82 / abs(width)
+@@Code0801AF84:
 mov   r0,r4                         ; 0801AF84
 add   r0,0x52                       ; 0801AF86
-strh  r3,[r0]                       ; 0801AF88  set height dependent on width
+strh  r3,[r0]                       ; 0801AF88  set height to abs(width)
 mov   r0,r4                         ; 0801AF8A
 bl    ObjMain_Slope0_NoRelY         ; 0801AF8C  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r5}                       ; 0801AF90
@@ -3186,27 +3188,27 @@ lsr   r1,r1,0x10                    ; 0801B85A
 lsl   r2,r2,0x18                    ; 0801B85C
 lsr   r2,r2,0x18                    ; 0801B85E
 add   r0,0x4E                       ; 0801B860
-ldrh  r0,[r0]                       ; 0801B862
+ldrh  r0,[r0]                       ; 0801B862  width
 lsl   r0,r0,0x11                    ; 0801B864
-lsr   r0,r0,0x10                    ; 0801B866
+lsr   r0,r0,0x10                    ; 0801B866  width*2
 mov   r3,0x52                       ; 0801B868
 add   r3,r3,r4                      ; 0801B86A
-mov   r12,r3                        ; 0801B86C
-ldrh  r3,[r3]                       ; 0801B86E
+mov   r12,r3                        ; 0801B86C  r12 = +52
+ldrh  r3,[r3]                       ; 0801B86E  height
 sub   r0,r3,r0                      ; 0801B870
 lsl   r0,r0,0x10                    ; 0801B872
-lsr   r3,r0,0x10                    ; 0801B874
+lsr   r3,r0,0x10                    ; 0801B874  height - width*2
 cmp   r3,0x0                        ; 0801B876
 bne   @@Code0801B87C                ; 0801B878
-mov   r3,0x1                        ; 0801B87A
+mov   r3,0x1                        ; 0801B87A  if height - width*2 == 0, use 1 instead
 @@Code0801B87C:
 lsl   r0,r3,0x10                    ; 0801B87C
 cmp   r0,0x0                        ; 0801B87E
 bge   @@Code0801B884                ; 0801B880
-mov   r3,0x1                        ; 0801B882
+mov   r3,0x1                        ; 0801B882  if height - width*2 < 0, use 1 instead
 @@Code0801B884:
 mov   r5,r12                        ; 0801B884
-strh  r3,[r5]                       ; 0801B886
+strh  r3,[r5]                       ; 0801B886  set height
 mov   r0,r4                         ; 0801B888
 bl    ObjMain_Slope0_NoRelY         ; 0801B88A  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r5}                       ; 0801B88E

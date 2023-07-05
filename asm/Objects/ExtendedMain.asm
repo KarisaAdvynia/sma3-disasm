@@ -1240,16 +1240,16 @@ mov   r2,r12                        ; 0802A1DE
 add   r2,0x40                       ; 0802A1E0
 ldr   r4,=0x7AB5                    ; 0802A1E2
 mov   r1,r4                         ; 0802A1E4
-ldrh  r2,[r2]                       ; 0802A1E6  pre-existing tile
-add   r1,r1,r2                      ; 0802A1E8  pre-existing tile -854B +10000
+ldrh  r2,[r2]                       ; 0802A1E6  prevtile
+add   r1,r1,r2                      ; 0802A1E8  prevtile -854B +10000
 lsl   r1,r1,0x10                    ; 0802A1EA
 ldr   r2,=ExtObj9E_9F_Data          ; 0802A1EC
 lsr   r0,r0,0x1                     ; 0802A1EE
 lsl   r0,r0,0x1                     ; 0802A1F0
 add   r0,r0,r2                      ; 0802A1F2  index with extID-9E
-lsr   r1,r1,0x10                    ; 0802A1F4  pre-existing tile -854B
+lsr   r1,r1,0x10                    ; 0802A1F4  prevtile -854B
 ldrh  r0,[r0]                       ; 0802A1F6  tile ID
-add   r1,r1,r0                      ; 0802A1F8  tile ID + pre-existing tile -854B (doesn't check for overflow?!)
+add   r1,r1,r0                      ; 0802A1F8  tile ID + prevtile -854B (doesn't check for overflow?!)
                                     ;           9E: tileID+8562-854B = tileID+17
                                     ;           9F: tileID+8566-854B = tileID+1B
 ldr   r4,=0x03007010                ; 0802A1FA  Layer 1 tilemap EWRAM (0200000C)
@@ -1454,7 +1454,7 @@ bx    lr                            ; 0802A392
 .pool                               ; 0802A394
 
 ExtObj8D_EvenTile:
-; called by 00.8D if pre-existing tile is even (intended for top-right corner)
+; called by 00.8D if prevtile is even (intended for top-right corner)
 push  {r4-r6,lr}                    ; 0802A39C
 mov   r6,r9                         ; 0802A39E
 mov   r5,r8                         ; 0802A3A0
@@ -1516,7 +1516,7 @@ bx    r0                            ; 0802A414
 .pool                               ; 0802A416
 
 ExtObj8D_OddTile:
-; called by 00.8D if pre-existing tile is odd (intended for top-left corner)
+; called by 00.8D if prevtile is odd (intended for top-left corner)
 push  {r4-r6,lr}                    ; 0802A42C
 mov   r6,r9                         ; 0802A42E
 mov   r5,r8                         ; 0802A430
@@ -1582,13 +1582,13 @@ mov   r1,r0                         ; 0802A4BA
 add   r1,0x4A                       ; 0802A4BC  r1 = [03007240]+4A (03002256)
 ldrh  r4,[r1]                       ; 0802A4BE  r4 = offset to layer 1 tilemap
 sub   r1,0xA                        ; 0802A4C0  r1 = [03007240]+40 (0300224C)
-ldrh  r1,[r1]                       ; 0802A4C2  r1 = pre-existing tile
+ldrh  r1,[r1]                       ; 0802A4C2  r1 = prevtile
 ldr   r2,=0x03007010                ; 0802A4C4  Layer 1 tilemap EWRAM (0200000C)
 ldr   r3,[r2]                       ; 0802A4C6
 ldr   r5,=0x82F6                    ; 0802A4C8
 add   r2,r3,r5                      ; 0802A4CA
 ldrh  r2,[r2]                       ; 0802A4CC  r2 = ??1F, high byte 39/3A/3E/6E
-sub   r1,r1,r2                      ; 0802A4CE  r1 = ??1F - pre-existing tile
+sub   r1,r1,r2                      ; 0802A4CE  r1 = ??1F - prevtile
 lsl   r1,r1,0x10                    ; 0802A4D0
 lsr   r1,r1,0x10                    ; 0802A4D2
 mov   r2,0x1                        ; 0802A4D4
@@ -1625,25 +1625,25 @@ mov   r1,r12                        ; 0802A514
 add   r1,0x40                       ; 0802A516
 ldr   r3,=0xFFFF8867                ; 0802A518  -7799
 mov   r0,r3                         ; 0802A51A
-ldrh  r1,[r1]                       ; 0802A51C  pre-existing tile
-add   r0,r0,r1                      ; 0802A51E  pre-existing tile -7799
+ldrh  r1,[r1]                       ; 0802A51C  prevtile
+add   r0,r0,r1                      ; 0802A51E  prevtile -7799
 lsl   r0,r0,0x10                    ; 0802A520
 mov   r3,0xE0                       ; 0802A522
 lsl   r3,r3,0xC                     ; 0802A524  E0000
 and   r3,r0                         ; 0802A526
-lsr   r3,r3,0x10                    ; 0802A528  (pre-existing tile -9) & 0E
+lsr   r3,r3,0x10                    ; 0802A528  (prevtile -9) & 0E
 ldr   r0,=ExtObj8B_8C_TileBaseX0    ; 0802A52A
 lsr   r2,r2,0x1                     ; 0802A52C
 lsl   r6,r2,0x1                     ; 0802A52E  0,2 for 8B,8C
 add   r0,r6,r0                      ; 0802A530
 ldrh  r0,[r0]                       ; 0802A532  852B,8533
-add   r0,r3,r0                      ; 0802A534  852B,8533 + (pre-existing tile -9) & 0E
+add   r0,r3,r0                      ; 0802A534  852B,8533 + (prevtile -9) & 0E
 lsl   r0,r0,0x10                    ; 0802A536
 mov   r5,r12                        ; 0802A538
 add   r5,0x50                       ; 0802A53A
 lsr   r0,r0,0x10                    ; 0802A53C
 ldrh  r1,[r5]                       ; 0802A53E  relative Y
-add   r0,r0,r1                      ; 0802A540  852B,8533 + (pre-existing tile -9) & 0E + relY
+add   r0,r0,r1                      ; 0802A540  852B,8533 + (prevtile -9) & 0E + relY
 ldr   r7,=0x03007010                ; 0802A542  Layer 1 tilemap EWRAM (0200000C)
 ldr   r1,[r7]                       ; 0802A544
 lsr   r4,r4,0x1                     ; 0802A546
@@ -1653,7 +1653,7 @@ strh  r0,[r1]                       ; 0802A54C
 cmp   r3,0x0                        ; 0802A54E
 bne   @@Return                      ; 0802A550
 
-mov   r0,r12                        ; 0802A552 \ runs if (pre-existing tile -9) & 0E == 0
+mov   r0,r12                        ; 0802A552 \ runs if (prevtile -9) & 0E == 0
 add   r0,0x48                       ; 0802A554
 ldrh  r1,[r0]                       ; 0802A556
 mov   r0,r12                        ; 0802A558
@@ -1688,25 +1688,25 @@ mov   r1,r12                        ; 0802A598
 add   r1,0x40                       ; 0802A59A
 ldr   r3,=0xFFFF8857                ; 0802A59C  -77A9
 mov   r0,r3                         ; 0802A59E
-ldrh  r1,[r1]                       ; 0802A5A0  pre-existing tile
-add   r0,r0,r1                      ; 0802A5A2  pre-existing tile -77A9
+ldrh  r1,[r1]                       ; 0802A5A0  prevtile
+add   r0,r0,r1                      ; 0802A5A2  prevtile -77A9
 lsl   r0,r0,0x10                    ; 0802A5A4
 mov   r3,0xE0                       ; 0802A5A6
 lsl   r3,r3,0xC                     ; 0802A5A8  E0000
 and   r3,r0                         ; 0802A5AA
-lsr   r3,r3,0x10                    ; 0802A5AC  r3 = (pre-existing tile -9) & 0E
+lsr   r3,r3,0x10                    ; 0802A5AC  r3 = (prevtile -9) & 0E
 ldr   r0,=ExtObj89_8A_TileBaseY0    ; 0802A5AE
 lsr   r2,r2,0x1                     ; 0802A5B0
 lsl   r6,r2,0x1                     ; 0802A5B2  0,2 for 89,8A
 add   r0,r6,r0                      ; 0802A5B4
 ldrh  r0,[r0]                       ; 0802A5B6  851B,8523
-add   r0,r3,r0                      ; 0802A5B8  851B,8523 + ((pre-existing tile -9) & 0E)
+add   r0,r3,r0                      ; 0802A5B8  851B,8523 + ((prevtile -9) & 0E)
 lsl   r0,r0,0x10                    ; 0802A5BA
 mov   r5,r12                        ; 0802A5BC
 add   r5,0x4C                       ; 0802A5BE
 lsr   r0,r0,0x10                    ; 0802A5C0
 ldrh  r1,[r5]                       ; 0802A5C2  relative X
-add   r0,r0,r1                      ; 0802A5C4  851B,8523 + ((pre-existing tile -9) & 0E) + relX
+add   r0,r0,r1                      ; 0802A5C4  851B,8523 + ((prevtile -9) & 0E) + relX
 ldr   r7,=0x03007010                ; 0802A5C6  Layer 1 tilemap EWRAM (0200000C)
 ldr   r1,[r7]                       ; 0802A5C8
 lsr   r4,r4,0x1                     ; 0802A5CA
@@ -1716,7 +1716,7 @@ strh  r0,[r1]                       ; 0802A5D0  set tile
 cmp   r3,0x0                        ; 0802A5D2
 bne   @@Return                      ; 0802A5D4
 
-mov   r0,r12                        ; 0802A5D6 \ runs if (pre-existing tile -9) & 0E == 0
+mov   r0,r12                        ; 0802A5D6 \ runs if (prevtile -9) & 0E == 0
 add   r0,0x48                       ; 0802A5D8
 ldrh  r1,[r0]                       ; 0802A5DA
 mov   r0,r12                        ; 0802A5DC
@@ -2725,9 +2725,9 @@ ldrh  r2,[r0]                       ; 0802AD4A  tile ID
 @@Code0802AD4C:
 mov   r0,r3                         ; 0802AD4C
 add   r0,0x40                       ; 0802AD4E
-ldrh  r0,[r0]                       ; 0802AD50  pre-existing tile
+ldrh  r0,[r0]                       ; 0802AD50  prevtile
 cmp   r2,r0                         ; 0802AD52
-bne   @@ContinueLoop                ; 0802AD54  if pre-existing tile does not match, continue
+bne   @@ContinueLoop                ; 0802AD54  if prevtile does not match, continue
 mov   r0,r3                         ; 0802AD56
 add   r0,0x4A                       ; 0802AD58
 ldrh  r3,[r0]                       ; 0802AD5A  offset to layer 1 tilemap
@@ -2865,7 +2865,7 @@ bne   @@Code0802AE68                ; 0802AE4E
 
 mov   r0,r3                         ; 0802AE50 \ runs if new tile is 3D9F
 add   r0,0x40                       ; 0802AE52
-ldrh  r2,[r0]                       ; 0802AE54  pre-existing tile
+ldrh  r2,[r0]                       ; 0802AE54  prevtile
 ldr   r0,=0x3D72                    ; 0802AE56
 cmp   r2,r0                         ; 0802AE58
 bne   @@SetTile_r1                  ; 0802AE5A
@@ -2878,7 +2878,7 @@ cmp   r2,r0                         ; 0802AE6A
 bne   @@SetTile                     ; 0802AE6C \ runs if new tile is 3DA0
 mov   r0,r3                         ; 0802AE6E
 add   r0,0x40                       ; 0802AE70
-ldrh  r2,[r0]                       ; 0802AE72  pre-existing tile
+ldrh  r2,[r0]                       ; 0802AE72  prevtile
 ldr   r0,=0x3D71                    ; 0802AE74
 cmp   r2,r0                         ; 0802AE76
 beq   @@SetTile3DA8                 ; 0802AE78 / if new tile is 3DA0 and prev tile is 3D71, use tile 3DA8
@@ -3056,7 +3056,7 @@ ldrh  r2,[r0]                       ; 0802AFB8  relative Y
 cmp   r2,0x2                        ; 0802AFBA
 beq   @@Return                      ; 0802AFBC  if relY is 2, return
 sub   r0,0x10                       ; 0802AFBE  +40
-ldrh  r2,[r0]                       ; 0802AFC0  pre-existing tile
+ldrh  r2,[r0]                       ; 0802AFC0  prevtile
 ldr   r0,=ExtObj30_52_53_CheckTiles ; 0802AFC2
 ldrh  r0,[r0]                       ; 0802AFC4  015A
 b     @@Code0802B022                ; 0802AFC6
@@ -3088,7 +3088,7 @@ cmp   r0,0x0                        ; 0802AFF6
 bge   @@SetTile_r2                  ; 0802AFF8  if signed tile > 0 (in practice if tile < 0x8000), skip
 mov   r0,r3                         ; 0802AFFA
 add   r0,0x40                       ; 0802AFFC
-ldrh  r2,[r0]                       ; 0802AFFE  pre-existing tile
+ldrh  r2,[r0]                       ; 0802AFFE  prevtile
 mov   r0,0xAD                       ; 0802B000
 lsl   r0,r0,0x1                     ; 0802B002  015A (left half of castle brick)
 cmp   r2,r0                         ; 0802B004
@@ -3103,7 +3103,7 @@ ldrh  r2,[r0]                       ; 0802B014  relative Y
 cmp   r2,0x2                        ; 0802B016
 beq   @@Return                      ; 0802B018  if relY is 2, return
 sub   r0,0x10                       ; 0802B01A  +40
-ldrh  r2,[r0]                       ; 0802B01C  pre-existing tile
+ldrh  r2,[r0]                       ; 0802B01C  prevtile
 ldr   r0,=ExtObj30_52_53_CheckTiles ; 0802B01E  015B (right half of castle brick)
 ldrh  r0,[r0,0x2]                   ; 0802B020 /
 @@Code0802B022:
@@ -3169,7 +3169,7 @@ mov   r4,0x2                        ; 0802B090  r4 = 2 if last X
 @@Code0802B092:
 mov   r0,r3                         ; 0802B092 \ runs if first or last X
 add   r0,0x40                       ; 0802B094
-ldrh  r2,[r0]                       ; 0802B096  pre-existing tile
+ldrh  r2,[r0]                       ; 0802B096  prevtile
 ldr   r1,=ExtObj30_52_53_CheckTiles ; 0802B098
 lsr   r0,r4,0x1                     ; 0802B09A
 lsl   r0,r0,0x1                     ; 0802B09C
@@ -3181,7 +3181,7 @@ mov   r0,r3                         ; 0802B0A6
 add   r0,0x4A                       ; 0802B0A8
 ldrh  r3,[r0]                       ; 0802B0AA
 ldr   r0,=ExtObj52_Tilemap          ; 0802B0AC
-ldrh  r2,[r0,0xE]                   ; 0802B0AE / if pre-existing tile matches, use tile 015C
+ldrh  r2,[r0,0xE]                   ; 0802B0AE / if prevtile matches, use tile 015C
 @@SetTile_r2:
 ldr   r0,=0x03007010                ; 0802B0B0  Layer 1 tilemap EWRAM (0200000C)
 ldr   r1,[r0]                       ; 0802B0B2
@@ -3229,7 +3229,7 @@ orr   r5,r0                         ; 0802B106
 lsr   r2,r5,0x10                    ; 0802B108  r2 = <00,10 if 50,A8> + YX*2
 mov   r0,r6                         ; 0802B10A
 add   r0,0x40                       ; 0802B10C  r0 = [03007240]+40 (0300224C)
-ldrh  r4,[r0]                       ; 0802B10E  r4 = pre-existing tile
+ldrh  r4,[r0]                       ; 0802B10E  r4 = prevtile
 ldr   r0,=0x03007010                ; 0802B110  Layer 1 tilemap EWRAM (0200000C)
 ldr   r3,[r0]                       ; 0802B112
 ldr   r7,=0x8282                    ; 0802B114
@@ -3253,7 +3253,7 @@ add   r0,r3,r1                      ; 0802B136
 ldrh  r0,[r0]                       ; 0802B138  tile 6A02+n*0E
 cmp   r4,r0                         ; 0802B13A
 bne   @@Code0802B16C                ; 0802B13C
-@@LandSurfaceTile:                  ;          \ runs if pre-existing tile is one of four land surface tiles
+@@LandSurfaceTile:                  ;          \ runs if prevtile is one of four land surface tiles
 ldr   r1,=ExtObj50_A8_MainTiles     ; 0802B13E
 lsr   r0,r2,0x1                     ; 0802B140  r0 = <0,8 if 50,A8> + YX
 add   r0,0x2                        ; 0802B142
@@ -3338,10 +3338,10 @@ cmp   r3,0x3                        ; 0802B1FE
 bls   @@Code0802B21C                ; 0802B200  if YX parity < 2 (if Y == 0), index with YX parity
 mov   r0,r6                         ; 0802B202
 add   r0,0x40                       ; 0802B204  r0 = [03007240]+40 (0300224C)
-ldrh  r1,[r0]                       ; 0802B206  r1 = pre-existing tile
+ldrh  r1,[r0]                       ; 0802B206  r1 = prevtile
 mov   r0,0xFF                       ; 0802B208
 lsl   r0,r0,0x8                     ; 0802B20A  FF00
-and   r0,r1                         ; 0802B20C  high byte of pre-existing tile
+and   r0,r1                         ; 0802B20C  high byte of prevtile
 mov   r1,0x85                       ; 0802B20E
 lsl   r1,r1,0x8                     ; 0802B210
 cmp   r0,r1                         ; 0802B212
@@ -3582,24 +3582,24 @@ mov   r0,r2                         ; 0802B3F6
 add   r0,0x4C                       ; 0802B3F8
 ldrh  r1,[r0]                       ; 0802B3FA  relative X
 cmp   r1,0x0                        ; 0802B3FC
-beq   @@Code0802B416                ; 0802B3FE  if relX is 0, return pre-existing tile?
+beq   @@Code0802B416                ; 0802B3FE  if relX is 0, return prevtile?
 mov   r1,r3                         ; 0802B400
 cmp   r1,0xF                        ; 0802B402
 bls   @@Code0802B40A                ; 0802B404
 sub   r0,0xC                        ; 0802B406  +40
-b     @@Code0802B41A                ; 0802B408  if relY <= 0F, return pre-existing tile?
+b     @@Code0802B41A                ; 0802B408  if relY <= 0F, return prevtile?
 @@Code0802B40A:
 mov   r0,0x1                        ; 0802B40A
 and   r0,r1                         ; 0802B40C  Y parity
 cmp   r0,0x0                        ; 0802B40E
-beq   @@Code0802B416                ; 0802B410  if Y parity is 0, return pre-existing tile?
+beq   @@Code0802B416                ; 0802B410  if Y parity is 0, return prevtile?
 mov   r0,0xE5                       ; 0802B412  else (if relX == 1, relY odd > 0F... the only valid relY is 0x11), return tile 00E5
 b     @@Return                      ; 0802B414
 @@Code0802B416:
 mov   r0,r2                         ; 0802B416
 add   r0,0x40                       ; 0802B418
 @@Code0802B41A:
-ldrh  r1,[r0]                       ; 0802B41A  pre-existing tile
+ldrh  r1,[r0]                       ; 0802B41A  prevtile
 mov   r0,r1                         ; 0802B41C
 @@Return:
 pop   {r1}                          ; 0802B41E
@@ -3813,11 +3813,11 @@ cmp   r2,0x0                        ; 0802B5AC
 bne   @@Code0802B5D4                ; 0802B5AE
                                     ;          \ runs if first X
 sub   r0,0xC                        ; 0802B5B0  +40
-ldrh  r2,[r0]                       ; 0802B5B2  pre-existing tile
+ldrh  r2,[r0]                       ; 0802B5B2  prevtile
 ldr   r0,=ExtObj30_52_53_CheckTiles ; 0802B5B4
 ldrh  r0,[r0]                       ; 0802B5B6  015A
 cmp   r2,r0                         ; 0802B5B8
-beq   @@Return                      ; 0802B5BA  if pre-existing tile is 015A, return
+beq   @@Return                      ; 0802B5BA  if prevtile is 015A, return
 ldr   r0,=ExtObj30_Tiles            ; 0802B5BC
 ldrh  r2,[r0,0x8]                   ; 0802B5BE  else, use tile 015C
 ldr   r0,=0x03007010                ; 0802B5C0  Layer 1 tilemap EWRAM (0200000C)
@@ -3837,11 +3837,11 @@ cmp   r2,r0                         ; 0802B5E0
 bne   @@Code0802B60C                ; 0802B5E2
 mov   r0,r3                         ; 0802B5E4 \ runs if last X
 add   r0,0x40                       ; 0802B5E6
-ldrh  r2,[r0]                       ; 0802B5E8  pre-existing tile
+ldrh  r2,[r0]                       ; 0802B5E8  prevtile
 ldr   r0,=ExtObj30_52_53_CheckTiles ; 0802B5EA
 ldrh  r0,[r0,0x2]                   ; 0802B5EC  015B
 cmp   r2,r0                         ; 0802B5EE
-beq   @@Return                      ; 0802B5F0  if pre-existing tile is 015B, return
+beq   @@Return                      ; 0802B5F0  if prevtile is 015B, return
 ldr   r0,=ExtObj30_Tiles            ; 0802B5F2
 ldrh  r2,[r0,0x8]                   ; 0802B5F4  else, use tile 015C
 ldr   r0,=0x03007010                ; 0802B5F6  Layer 1 tilemap EWRAM (0200000C)
@@ -4175,7 +4175,7 @@ cmp   r0,0x0                        ; 0802B86A
 bne   @@Return                      ; 0802B86C  return if item memory is set
 mov   r0,r4                         ; 0802B86E
 add   r0,0x40                       ; 0802B870  [03007240]+40 (0300224C)
-ldrb  r2,[r0]                       ; 0802B872  r2 = pre-existing tile, low byte
+ldrb  r2,[r0]                       ; 0802B872  r2 = prevtile, low byte
 ldr   r0,=0x03007010                ; 0802B874  Layer 1 tilemap EWRAM (0200000C)
 ldr   r1,[r0]                       ; 0802B876
 ldr   r3,=0x841E                    ; 0802B878
@@ -4450,11 +4450,11 @@ add   r0,r0,r1                      ; 0802BA92  index with relY
 ldrh  r1,[r0]                       ; 0802BA94  tile ID
 mov   r0,r12                        ; 0802BA96
 add   r0,0x40                       ; 0802BA98
-ldrh  r3,[r0]                       ; 0802BA9A  pre-existing tile
+ldrh  r3,[r0]                       ; 0802BA9A  prevtile
 ldr   r0,=0x9216                    ; 0802BA9C
 cmp   r3,r0                         ; 0802BA9E
 bne   @@Code0802BAA4                ; 0802BAA0
-ldr   r1,=0x9213                    ; 0802BAA2  if pre-existing tile is 9216, use tile 9213 instead
+ldr   r1,=0x9213                    ; 0802BAA2  if prevtile is 9216, use tile 9213 instead
 @@Code0802BAA4:
 mov   r0,r12                        ; 0802BAA4
 add   r0,0x4C                       ; 0802BAA6
