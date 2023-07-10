@@ -1088,7 +1088,7 @@ pop   {r4}                          ; 0801C812
 pop   {r0}                          ; 0801C814
 bx    r0                            ; 0801C816
 
-Sub0801C818:
+ExtObj6A_6C_SetDimensions:
 ; shared code for 00.6A-6C init
 ;    r1,r2
 ; 6A: 3,2
@@ -1130,7 +1130,7 @@ strh  r1,[r4]                       ; 0801C854  [0300224E] = 4
 str   r2,[sp]                       ; 0801C856
 mov   r1,0x5                        ; 0801C858
 mov   r2,0x3                        ; 0801C85A
-bl    Sub0801C818                   ; 0801C85C
+bl    ExtObj6A_6C_SetDimensions     ; 0801C85C
 add   sp,0x4                        ; 0801C860
 pop   {r4}                          ; 0801C862
 pop   {r0}                          ; 0801C864
@@ -1154,7 +1154,7 @@ strh  r1,[r4]                       ; 0801C880  [0300224E] = 2
 str   r2,[sp]                       ; 0801C882
 mov   r1,0x4                        ; 0801C884
 mov   r2,0x3                        ; 0801C886
-bl    Sub0801C818                   ; 0801C888
+bl    ExtObj6A_6C_SetDimensions     ; 0801C888
 add   sp,0x4                        ; 0801C88C
 pop   {r4}                          ; 0801C88E
 pop   {r0}                          ; 0801C890
@@ -1178,7 +1178,7 @@ strh  r1,[r4]                       ; 0801C8AC  [0300224E] = 0
 str   r2,[sp]                       ; 0801C8AE
 mov   r1,0x3                        ; 0801C8B0
 mov   r2,0x2                        ; 0801C8B2
-bl    Sub0801C818                   ; 0801C8B4
+bl    ExtObj6A_6C_SetDimensions     ; 0801C8B4
 add   sp,0x4                        ; 0801C8B8
 pop   {r4}                          ; 0801C8BA
 pop   {r0}                          ; 0801C8BC
@@ -1276,7 +1276,7 @@ add   sp,0x8                        ; 0801C952
 pop   {r0}                          ; 0801C954
 bx    r0                            ; 0801C956
 
-Sub0801C958:
+ExtObj63_64_SharedInit:
 ; called by 00.63-64 init
 ; r0: 8,A for 63,64
 push  {r4,lr}                       ; 0801C958
@@ -1314,7 +1314,7 @@ lsr   r3,r3,0x18                    ; 0801C992
 mov   r0,0xA                        ; 0801C994
 mov   r1,r4                         ; 0801C996
 mov   r2,r5                         ; 0801C998
-bl    Sub0801C958                   ; 0801C99A
+bl    ExtObj63_64_SharedInit        ; 0801C99A
 pop   {r4-r5}                       ; 0801C99E
 pop   {r0}                          ; 0801C9A0
 bx    r0                            ; 0801C9A2
@@ -1332,12 +1332,12 @@ lsr   r3,r3,0x18                    ; 0801C9B2
 mov   r0,0x8                        ; 0801C9B4
 mov   r1,r4                         ; 0801C9B6
 mov   r2,r5                         ; 0801C9B8
-bl    Sub0801C958                   ; 0801C9BA
+bl    ExtObj63_64_SharedInit        ; 0801C9BA
 pop   {r4-r5}                       ; 0801C9BE
 pop   {r0}                          ; 0801C9C0
 bx    r0                            ; 0801C9C2
 
-Sub0801C9C4:
+ExtObj61_62_SharedInit:
 ; called by 00.61-62 init
 ; r0: 4,6 for 61,62
 push  {r4,lr}                       ; 0801C9C4
@@ -1375,7 +1375,7 @@ lsr   r3,r3,0x18                    ; 0801C9FE
 mov   r0,0x6                        ; 0801CA00
 mov   r1,r4                         ; 0801CA02
 mov   r2,r5                         ; 0801CA04
-bl    Sub0801C9C4                   ; 0801CA06
+bl    ExtObj61_62_SharedInit        ; 0801CA06
 pop   {r4-r5}                       ; 0801CA0A
 pop   {r0}                          ; 0801CA0C
 bx    r0                            ; 0801CA0E
@@ -1393,7 +1393,7 @@ lsr   r3,r3,0x18                    ; 0801CA1E
 mov   r0,0x4                        ; 0801CA20
 mov   r1,r4                         ; 0801CA22
 mov   r2,r5                         ; 0801CA24
-bl    Sub0801C9C4                   ; 0801CA26
+bl    ExtObj61_62_SharedInit        ; 0801CA26
 pop   {r4-r5}                       ; 0801CA2A
 pop   {r0}                          ; 0801CA2C
 bx    r0                            ; 0801CA2E
@@ -2007,7 +2007,7 @@ pop   {r4}                          ; 0801CEC2
 pop   {r0}                          ; 0801CEC4
 bx    r0                            ; 0801CEC6
 
-Sub0801CEC8:
+ExtObj1B_1D_SetDimensions:
 ; shared code for 00.1B-00.1D init
 push  {r4,lr}                       ; 0801CEC8
 lsl   r1,r1,0x10                    ; 0801CECA
@@ -2040,7 +2040,7 @@ mov   r12,r3                        ; 0801CEFA
 mov   r3,0x0                        ; 0801CEFC
 mov   r4,r12                        ; 0801CEFE
 strh  r3,[r4]                       ; 0801CF00  [0300224E] = 0
-bl    Sub0801CEC8                   ; 0801CF02  set width and height to 2
+bl    ExtObj1B_1D_SetDimensions     ; 0801CF02  set width and height to 2
 pop   {r4}                          ; 0801CF06
 pop   {r0}                          ; 0801CF08
 bx    r0                            ; 0801CF0A
@@ -2058,7 +2058,7 @@ mov   r12,r3                        ; 0801CF1A
 mov   r3,0x2                        ; 0801CF1C
 mov   r4,r12                        ; 0801CF1E
 strh  r3,[r4]                       ; 0801CF20  [0300224E] = 2
-bl    Sub0801CEC8                   ; 0801CF22  set width and height to 2
+bl    ExtObj1B_1D_SetDimensions     ; 0801CF22  set width and height to 2
 pop   {r4}                          ; 0801CF26
 pop   {r0}                          ; 0801CF28
 bx    r0                            ; 0801CF2A
@@ -2076,7 +2076,7 @@ mov   r12,r3                        ; 0801CF3A
 mov   r3,0x4                        ; 0801CF3C
 mov   r4,r12                        ; 0801CF3E
 strh  r3,[r4]                       ; 0801CF40  [0300224E] = 4
-bl    Sub0801CEC8                   ; 0801CF42  set width and height to 2
+bl    ExtObj1B_1D_SetDimensions     ; 0801CF42  set width and height to 2
 pop   {r4}                          ; 0801CF46
 pop   {r0}                          ; 0801CF48
 bx    r0                            ; 0801CF4A

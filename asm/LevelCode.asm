@@ -9087,7 +9087,7 @@ b     @@Code08018652                ; 080184BC
 mov   r1,0xFF                       ; 080184BE
 mov   r10,r1                        ; 080184C0
 and   r3,r1                         ; 080184C2
-ldr   r2,=DataPtrs081C0454          ; 080184C4
+ldr   r2,=Obj4F_ReplaceDynIndexPtrs ; 080184C4
 ldr   r1,[r2,0x10]                  ; 080184C6
 lsl   r0,r3,0x1                     ; 080184C8
 add   r0,r0,r1                      ; 080184CA
@@ -9133,7 +9133,7 @@ bhi   @@Code0801854C                ; 0801851A
 mov   r0,r3                         ; 0801851C
 mov   r1,r10                        ; 0801851E
 and   r0,r1                         ; 08018520
-ldr   r2,=DataPtrs081C0454          ; 08018522
+ldr   r2,=Obj4F_ReplaceDynIndexPtrs ; 08018522
 ldr   r1,[r2]                       ; 08018524
 lsl   r0,r0,0x1                     ; 08018526
 add   r0,r0,r1                      ; 08018528
@@ -9179,7 +9179,7 @@ mov   r8,r1                         ; 08018578
 cmp   r2,0x2                        ; 0801857A
 bhi   @@Code080185A6                ; 0801857C
 mov   r0,0xFF                       ; 0801857E
-ldr   r1,=DataPtrs081C0454          ; 08018580
+ldr   r1,=Obj4F_ReplaceDynIndexPtrs ; 08018580
 and   r0,r3                         ; 08018582
 ldr   r1,[r1,0xC]                   ; 08018584
 lsl   r0,r0,0x1                     ; 08018586
@@ -9221,7 +9221,7 @@ lsr   r2,r0,0x10                    ; 080185CE
 cmp   r2,0x2                        ; 080185D0
 bhi   @@Code080185FC                ; 080185D2
 mov   r0,0xFF                       ; 080185D4
-ldr   r1,=DataPtrs081C0454          ; 080185D6
+ldr   r1,=Obj4F_ReplaceDynIndexPtrs ; 080185D6
 and   r0,r3                         ; 080185D8
 ldr   r1,[r1,0x8]                   ; 080185DA
 lsl   r0,r0,0x1                     ; 080185DC
@@ -9263,7 +9263,7 @@ lsr   r2,r0,0x10                    ; 08018624
 cmp   r2,0x2                        ; 08018626
 bhi   @@Code08018652                ; 08018628
 mov   r0,0xFF                       ; 0801862A
-ldr   r1,=DataPtrs081C0454          ; 0801862C
+ldr   r1,=Obj4F_ReplaceDynIndexPtrs ; 0801862C
 and   r0,r3                         ; 0801862E
 ldr   r1,[r1,0x4]                   ; 08018630
 lsl   r0,r0,0x1                     ; 08018632

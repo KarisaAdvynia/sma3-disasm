@@ -1802,23 +1802,23 @@ lsr   r5,r1,0x10                    ; 0801ADFE
 lsl   r2,r2,0x18                    ; 0801AE00
 lsr   r2,r2,0x18                    ; 0801AE02
 add   r0,0x4E                       ; 0801AE04
-ldrh  r0,[r0]                       ; 0801AE06
+ldrh  r0,[r0]                       ; 0801AE06  width
 mov   r1,0x52                       ; 0801AE08
 add   r1,r1,r4                      ; 0801AE0A
 mov   r12,r1                        ; 0801AE0C
-ldrh  r3,[r1]                       ; 0801AE0E
+ldrh  r3,[r1]                       ; 0801AE0E  height
 sub   r0,r3,r0                      ; 0801AE10
 lsl   r0,r0,0x10                    ; 0801AE12
-lsr   r3,r0,0x10                    ; 0801AE14
+lsr   r3,r0,0x10                    ; 0801AE14  height-width
 ldr   r1,=0xFFFF0000                ; 0801AE16
-add   r0,r0,r1                      ; 0801AE18
+add   r0,r0,r1                      ; 0801AE18  height-width-1
 ldr   r1,=0x7FFE0000                ; 0801AE1A
 cmp   r0,r1                         ; 0801AE1C
-bls   @@Code0801AE22                ; 0801AE1E
-mov   r3,0x1                        ; 0801AE20
+bls   @@Code0801AE22                ; 0801AE1E  branch if height-width-1 is positive
+mov   r3,0x1                        ; 0801AE20  if height-width < 1: r3 = 1
 @@Code0801AE22:
 mov   r0,r12                        ; 0801AE22
-strh  r3,[r0]                       ; 0801AE24
+strh  r3,[r0]                       ; 0801AE24  height = height-width or 1, whichever is greater
 mov   r0,r4                         ; 0801AE26
 mov   r1,r5                         ; 0801AE28
 bl    ObjMain_Slope0_NoRelY         ; 0801AE2A  Object processing main, slope=0, no relative Y threshold
@@ -2493,84 +2493,87 @@ ldr   r0,=0x7FFF                    ; 0801B2F2
 strh  r0,[r2]                       ; 0801B2F4
 mov   r0,r12                        ; 0801B2F6
 add   r0,0x44                       ; 0801B2F8
-strh  r1,[r0]                       ; 0801B2FA
-sub   r0,0x2                        ; 0801B2FC
-ldrh  r1,[r0]                       ; 0801B2FE
+strh  r1,[r0]                       ; 0801B2FA  disable slope
+sub   r0,0x2                        ; 0801B2FC  +42
+ldrh  r1,[r0]                       ; 0801B2FE  object ID
 mov   r0,0x2                        ; 0801B300
-and   r0,r1                         ; 0801B302
+and   r0,r1                         ; 0801B302  0,2 for 61,62
 cmp   r0,0x0                        ; 0801B304
-beq   @@Code0801B33A                ; 0801B306
-add   r2,0x8                        ; 0801B308
-ldrh  r4,[r2]                       ; 0801B30A
-mov   r3,r4                         ; 0801B30C
+beq   @@Obj61                       ; 0801B306
+                                    ;          \ runs if object 62
+add   r2,0x8                        ; 0801B308  +4E
+ldrh  r4,[r2]                       ; 0801B30A  r4 = width
+mov   r3,r4                         ; 0801B30C  r3 = width
 mov   r1,r12                        ; 0801B30E
 add   r1,0x52                       ; 0801B310
-ldrh  r0,[r1]                       ; 0801B312
+ldrh  r0,[r1]                       ; 0801B312  r0 = height
 orr   r4,r0                         ; 0801B314
-mov   r5,r1                         ; 0801B316
+mov   r5,r1                         ; 0801B316  r5 = +52
 cmp   r4,0x1                        ; 0801B318
 bne   @@Code0801B328                ; 0801B31A
-add   r0,r3,0x2                     ; 0801B31C
-strh  r0,[r2]                       ; 0801B31E
+                                    ;           \ if width|height == 1 -> width and height are both 1
+add   r0,r3,0x2                     ; 0801B31C  add 2 to width
+strh  r0,[r2]                       ; 0801B31E  /
 b     @@Code0801B362                ; 0801B320
 .pool                               ; 0801B322
 
 @@Code0801B328:
-add   r0,r3,0x2                     ; 0801B328
-strh  r0,[r2]                       ; 0801B32A
-ldrh  r4,[r5]                       ; 0801B32C
+add   r0,r3,0x2                     ; 0801B328  add 2 to width
+strh  r0,[r2]                       ; 0801B32A  /
+ldrh  r4,[r5]                       ; 0801B32C  height
 cmp   r4,0x1                        ; 0801B32E
 bls   @@Code0801B362                ; 0801B330
-add   r0,r4,0x2                     ; 0801B332
+add   r0,r4,0x2                     ; 0801B332  if height > 1, add 2 to height
 strh  r0,[r5]                       ; 0801B334
-ldrh  r0,[r2]                       ; 0801B336
-b     @@Code0801B358                ; 0801B338
-@@Code0801B33A:
-mov   r1,r12                        ; 0801B33A
+ldrh  r0,[r2]                       ; 0801B336  r0 = new width
+b     @@Code0801B358                ; 0801B338 /
+
+@@Obj61:
+mov   r1,r12                        ; 0801B33A \ runs if object 61
 add   r1,0x4E                       ; 0801B33C
-ldrh  r0,[r1]                       ; 0801B33E
-add   r0,0x2                        ; 0801B340
-strh  r0,[r1]                       ; 0801B342
+ldrh  r0,[r1]                       ; 0801B33E  \
+add   r0,0x2                        ; 0801B340   add 2 to width
+strh  r0,[r1]                       ; 0801B342  /
 mov   r0,r12                        ; 0801B344
 add   r0,0x52                       ; 0801B346
-ldrh  r4,[r0]                       ; 0801B348
+ldrh  r4,[r0]                       ; 0801B348  height
 mov   r5,r0                         ; 0801B34A
 cmp   r4,0x1                        ; 0801B34C
 bls   @@Code0801B362                ; 0801B34E
-add   r0,r4,0x2                     ; 0801B350
+add   r0,r4,0x2                     ; 0801B350  if height > 1, add 2 to height
 strh  r0,[r5]                       ; 0801B352
-ldrh  r0,[r1]                       ; 0801B354
-lsr   r0,r0,0x1                     ; 0801B356
-@@Code0801B358:
-ldrh  r4,[r5]                       ; 0801B358
-sub   r0,r4,r0                      ; 0801B35A
+ldrh  r0,[r1]                       ; 0801B354  new width
+lsr   r0,r0,0x1                     ; 0801B356 / r0 = new width /2
+@@Code0801B358:                     ;          \ runs if 61, or 62 and initial height > 1
+ldrh  r4,[r5]                       ; 0801B358  new height
+sub   r0,r4,r0                      ; 0801B35A  new height - new width (/2)
 lsl   r0,r0,0x10                    ; 0801B35C
 lsr   r4,r0,0x10                    ; 0801B35E
-strh  r4,[r5]                       ; 0801B360
+strh  r4,[r5]                       ; 0801B360 / subtract width/2(61) or width(62) from new height
 @@Code0801B362:
 mov   r3,r12                        ; 0801B362
 add   r3,0x48                       ; 0801B364
-ldrh  r2,[r3]                       ; 0801B366
+ldrh  r2,[r3]                       ; 0801B366 \
 ldr   r0,=0xF0F0                    ; 0801B368
 and   r0,r2                         ; 0801B36A
 ldr   r1,=0x0F0F                    ; 0801B36C
 mov   r4,r1                         ; 0801B36E
 and   r4,r2                         ; 0801B370
-sub   r4,0x1                        ; 0801B372
+sub   r4,0x1                        ; 0801B372  subtract 1 from initial X
 and   r4,r1                         ; 0801B374
 orr   r4,r0                         ; 0801B376
 mov   r0,0x0                        ; 0801B378
-strh  r4,[r3]                       ; 0801B37A
+strh  r4,[r3]                       ; 0801B37A /
 mov   r1,r12                        ; 0801B37C
-strh  r0,[r1,0x3A]                  ; 0801B37E
-ldrh  r4,[r5]                       ; 0801B380
-sub   r0,r4,0x1                     ; 0801B382
+strh  r0,[r1,0x3A]                  ; 0801B37E  clear scratch RAM
+ldrh  r4,[r5]                       ; 0801B380  height
+sub   r0,r4,0x1                     ; 0801B382  height-1
 lsl   r0,r0,0x10                    ; 0801B384
 ldr   r1,=0x7FFE0000                ; 0801B386
 cmp   r0,r1                         ; 0801B388
 bls   @@Code0801B390                ; 0801B38A
 mov   r0,0x1                        ; 0801B38C
-strh  r0,[r5]                       ; 0801B38E
+strh  r0,[r5]                       ; 0801B38E  if height < 1, set height to 1
 @@Code0801B390:
 mov   r0,r12                        ; 0801B390
 mov   r1,r7                         ; 0801B392
@@ -2596,44 +2599,44 @@ ldr   r0,=0x7FFF                    ; 0801B3BE
 strh  r0,[r1]                       ; 0801B3C0
 mov   r0,r12                        ; 0801B3C2
 add   r0,0x44                       ; 0801B3C4
-strh  r7,[r0]                       ; 0801B3C6
+strh  r7,[r0]                       ; 0801B3C6  disable slope
 mov   r3,r12                        ; 0801B3C8
 add   r3,0x4E                       ; 0801B3CA
-ldrh  r2,[r3]                       ; 0801B3CC
-sub   r0,0x2                        ; 0801B3CE
-ldrh  r1,[r0]                       ; 0801B3D0
+ldrh  r2,[r3]                       ; 0801B3CC  r2 = width
+sub   r0,0x2                        ; 0801B3CE  +4C
+ldrh  r1,[r0]                       ; 0801B3D0  relative X
 mov   r0,0xF                        ; 0801B3D2
-and   r0,r1                         ; 0801B3D4
+and   r0,r1                         ; 0801B3D4  F,0 for 5F,60
 cmp   r0,0x0                        ; 0801B3D6
 beq   @@Code0801B3DC                ; 0801B3D8
-lsr   r2,r2,0x1                     ; 0801B3DA
+lsr   r2,r2,0x1                     ; 0801B3DA  if 5F, r2 = width/2
 @@Code0801B3DC:
 mov   r4,r2                         ; 0801B3DC
 mov   r1,r12                        ; 0801B3DE
 add   r1,0x52                       ; 0801B3E0
-ldrh  r0,[r1]                       ; 0801B3E2
+ldrh  r0,[r1]                       ; 0801B3E2  height
 cmp   r4,r0                         ; 0801B3E4
 blo   @@Code0801B3EA                ; 0801B3E6
-strh  r4,[r1]                       ; 0801B3E8
+strh  r4,[r1]                       ; 0801B3E8  if width(/2) >= height: height = width(/2)
 @@Code0801B3EA:
-ldrh  r0,[r3]                       ; 0801B3EA
-add   r0,0x2                        ; 0801B3EC
-strh  r0,[r3]                       ; 0801B3EE
-ldrh  r0,[r1]                       ; 0801B3F0
-add   r0,0x1                        ; 0801B3F2
-strh  r0,[r1]                       ; 0801B3F4
+ldrh  r0,[r3]                       ; 0801B3EA \
+add   r0,0x2                        ; 0801B3EC   add 2 to width
+strh  r0,[r3]                       ; 0801B3EE /
+ldrh  r0,[r1]                       ; 0801B3F0 \
+add   r0,0x1                        ; 0801B3F2   add 1 to height (after adjustment)
+strh  r0,[r1]                       ; 0801B3F4 /
 mov   r3,r12                        ; 0801B3F6
 add   r3,0x48                       ; 0801B3F8
-ldrh  r0,[r3]                       ; 0801B3FA
+ldrh  r0,[r3]                       ; 0801B3FA \ object YXyx
 ldr   r1,=0xF0F0                    ; 0801B3FC
 and   r1,r0                         ; 0801B3FE
 ldr   r2,=0x0F0F                    ; 0801B400
 mov   r4,r2                         ; 0801B402
 and   r4,r0                         ; 0801B404
-sub   r0,r4,0x1                     ; 0801B406
+sub   r0,r4,0x1                     ; 0801B406  subtract 1 from initial X
 and   r0,r2                         ; 0801B408
 orr   r1,r0                         ; 0801B40A
-strh  r1,[r3]                       ; 0801B40C
+strh  r1,[r3]                       ; 0801B40C /
 mov   r0,r12                        ; 0801B40E
 strh  r7,[r0,0x3A]                  ; 0801B410
 mov   r1,r6                         ; 0801B412
@@ -2670,21 +2673,21 @@ add   r0,0x44                       ; 0801B454
 strh  r3,[r0]                       ; 0801B456  set slope
 mov   r3,r12                        ; 0801B458
 add   r3,0x4E                       ; 0801B45A
-ldrh  r0,[r3]                       ; 0801B45C
-add   r0,0x2                        ; 0801B45E
-strh  r0,[r3]                       ; 0801B460
+ldrh  r0,[r3]                       ; 0801B45C \
+add   r0,0x2                        ; 0801B45E   add 2 to width
+strh  r0,[r3]                       ; 0801B460 /
 mov   r6,r12                        ; 0801B462
 add   r6,0x48                       ; 0801B464
-ldrh  r5,[r6]                       ; 0801B466
+ldrh  r5,[r6]                       ; 0801B466 \ object YXyx
 ldr   r3,=0xF0F0                    ; 0801B468
-and   r3,r5                         ; 0801B46A
+and   r3,r5                         ; 0801B46A  Y0y0
 ldr   r4,=0x0F0F                    ; 0801B46C
 mov   r0,r4                         ; 0801B46E
-and   r0,r5                         ; 0801B470
-sub   r0,0x1                        ; 0801B472
-and   r0,r4                         ; 0801B474
-orr   r0,r3                         ; 0801B476
-strh  r0,[r6]                       ; 0801B478
+and   r0,r5                         ; 0801B470  0X0x
+sub   r0,0x1                        ; 0801B472  subtract 1 from initial X
+and   r0,r4                         ; 0801B474  0X0x with x-1
+orr   r0,r3                         ; 0801B476  YXyx with x-1
+strh  r0,[r6]                       ; 0801B478 /
 mov   r0,r12                        ; 0801B47A
 bl    ObjMain_Shared                ; 0801B47C  Object processing main
 pop   {r4-r6}                       ; 0801B480
@@ -2720,28 +2723,28 @@ add   r0,0x44                       ; 0801B4C4
 strh  r3,[r0]                       ; 0801B4C6  set slope
 mov   r3,r12                        ; 0801B4C8
 add   r3,0x52                       ; 0801B4CA
-ldrh  r0,[r3]                       ; 0801B4CC
-add   r0,0x1                        ; 0801B4CE
-strh  r0,[r3]                       ; 0801B4D0
-sub   r3,0x4                        ; 0801B4D2
-ldrh  r0,[r3]                       ; 0801B4D4
-add   r0,0x2                        ; 0801B4D6
-strh  r0,[r3]                       ; 0801B4D8
+ldrh  r0,[r3]                       ; 0801B4CC \
+add   r0,0x1                        ; 0801B4CE   add 1 to height
+strh  r0,[r3]                       ; 0801B4D0 /
+sub   r3,0x4                        ; 0801B4D2  +4E
+ldrh  r0,[r3]                       ; 0801B4D4 \
+add   r0,0x2                        ; 0801B4D6   add 2 to width
+strh  r0,[r3]                       ; 0801B4D8 /
 mov   r6,r12                        ; 0801B4DA
 add   r6,0x48                       ; 0801B4DC
-ldrh  r5,[r6]                       ; 0801B4DE
+ldrh  r5,[r6]                       ; 0801B4DE \ object YXyx
 ldr   r0,=0xF0F0                    ; 0801B4E0
 mov   r3,r0                         ; 0801B4E2
-and   r3,r5                         ; 0801B4E4
-sub   r3,0x10                       ; 0801B4E6
-and   r3,r0                         ; 0801B4E8
+and   r3,r5                         ; 0801B4E4  Y0y0
+sub   r3,0x10                       ; 0801B4E6  subtract 1 from initial Y
+and   r3,r0                         ; 0801B4E8  Y0y0 with y-1
 ldr   r4,=0x0F0F                    ; 0801B4EA
 mov   r0,r4                         ; 0801B4EC
-and   r0,r5                         ; 0801B4EE
-sub   r0,0x1                        ; 0801B4F0
-and   r0,r4                         ; 0801B4F2
-orr   r0,r3                         ; 0801B4F4
-strh  r0,[r6]                       ; 0801B4F6
+and   r0,r5                         ; 0801B4EE  0X0x
+sub   r0,0x1                        ; 0801B4F0  subtract 1 from initial X
+and   r0,r4                         ; 0801B4F2  0X0x with x-1
+orr   r0,r3                         ; 0801B4F4  YXyx with x-1, y-1
+strh  r0,[r6]                       ; 0801B4F6 /
 mov   r0,r12                        ; 0801B4F8
 bl    ObjMain_Shared                ; 0801B4FA  Object processing main
 pop   {r4-r6}                       ; 0801B4FE
@@ -3946,7 +3949,7 @@ pop   {r0}                          ; 0801BDD2
 bx    r0                            ; 0801BDD4
 .pool                               ; 0801BDD6
 
-Sub0801BDD8:
+Obj04_09_AdjustYAndHeight:
 ; y -= 1, height += 1 (called twice each by objects 04-09 init)
 push  {r4-r5,lr}                    ; 0801BDD8
 mov   r5,r0                         ; 0801BDDA
@@ -3978,7 +3981,7 @@ lsl   r1,r1,0x10                    ; 0801BE0C
 lsr   r6,r1,0x10                    ; 0801BE0E
 lsl   r2,r2,0x18                    ; 0801BE10
 lsr   r5,r2,0x18                    ; 0801BE12
-bl    Sub0801BDD8                   ; 0801BE14  y -= 1, height += 1
+bl    Obj04_09_AdjustYAndHeight     ; 0801BE14  y -= 1, height += 1
 mov   r0,r4                         ; 0801BE18
 add   r0,0x42                       ; 0801BE1A
 ldrh  r0,[r0]                       ; 0801BE1C  object ID
@@ -3988,7 +3991,7 @@ cmp   r0,0x9                        ; 0801BE22
 bne   @@Code0801BE2C                ; 0801BE24
 @@Code0801BE26:
 mov   r0,r4                         ; 0801BE26 \ runs if object 07/09
-bl    Sub0801BDD8                   ; 0801BE28 / y -= 1, height += 1 (again)
+bl    Obj04_09_AdjustYAndHeight     ; 0801BE28 / y -= 1, height += 1 (again)
 @@Code0801BE2C:
 mov   r0,r4                         ; 0801BE2C
 add   r0,0x42                       ; 0801BE2E
@@ -4025,7 +4028,7 @@ lsl   r1,r1,0x10                    ; 0801BE6C
 lsr   r6,r1,0x10                    ; 0801BE6E
 lsl   r2,r2,0x18                    ; 0801BE70
 lsr   r5,r2,0x18                    ; 0801BE72
-bl    Sub0801BDD8                   ; 0801BE74  y -= 1, height += 1
+bl    Obj04_09_AdjustYAndHeight     ; 0801BE74  y -= 1, height += 1
 mov   r3,r4                         ; 0801BE78
 add   r3,0x42                       ; 0801BE7A
 ldrh  r1,[r3]                       ; 0801BE7C  object ID
@@ -4045,7 +4048,7 @@ strh  r1,[r0]                       ; 0801BE96  set slope
 cmp   r2,0x0                        ; 0801BE98
 beq   @@Code0801BEA2                ; 0801BE9A
 mov   r0,r4                         ; 0801BE9C \ runs if object 05
-bl    Sub0801BDD8                   ; 0801BE9E / y -= 1, height += 1 (again)
+bl    Obj04_09_AdjustYAndHeight     ; 0801BE9E / y -= 1, height += 1 (again)
 @@Code0801BEA2:
 mov   r0,r4                         ; 0801BEA2
 mov   r1,r6                         ; 0801BEA4
