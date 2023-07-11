@@ -260,18 +260,18 @@ ldr   r0,=0x03006D70                ; 08004420
 mov   r12,r0                        ; 08004422
 ldr   r1,=0x03006B6D                ; 08004424
 mov   r8,r1                         ; 08004426
-ldr   r7,=Data08164660              ; 08004428
-@@Code0800442A:
-lsl   r0,r4,0x1                     ; 0800442A
-add   r0,r0,r4                      ; 0800442C
-lsl   r0,r0,0x2                     ; 0800442E
-add   r0,0x7                        ; 08004430
+ldr   r7,=WorldSelect_CastleFlagData; 08004428
+@@RemoveCastleFlagsLoop:            ;          \ loop: remove flags for castles that aren't yet cleared
+lsl   r0,r4,0x1                     ; 0800442A  world index *2
+add   r0,r0,r4                      ; 0800442C  world index *3
+lsl   r0,r0,0x2                     ; 0800442E  world index *0C
+add   r0,0x7                        ; 08004430  level ID for this world's x-8 level
 add   r0,r8                         ; 08004432
-ldrb  r1,[r0]                       ; 08004434
+ldrb  r1,[r0]                       ; 08004434  x-8 level unlock/clear flags
 mov   r0,0xF                        ; 08004436
 and   r0,r1                         ; 08004438
 cmp   r0,0x0                        ; 0800443A
-bne   @@Code0800447E                ; 0800443C
+bne   @@ContinueLoop                ; 0800443C
 lsl   r1,r4,0x2                     ; 0800443E
 lsl   r0,r4,0x3                     ; 08004440
 add   r0,r0,r7                      ; 08004442
@@ -290,43 +290,43 @@ add   r1,r1,r7                      ; 0800445A
 ldrh  r2,[r1]                       ; 0800445C
 mov   r1,0x0                        ; 0800445E
 cmp   r1,r2                         ; 08004460
-bhs   @@Code0800447E                ; 08004462
+bhs   @@ContinueLoop                ; 08004462
 add   r3,r0,r5                      ; 08004464
 ldr   r6,=0x0600B000                ; 08004466
 ldr   r0,=0x012F                    ; 08004468
 mov   r5,r0                         ; 0800446A
-@@Code0800446C:
+@@RemoveAFlagLoop:                  ;           \ loop: remove a castle's flag (r2 tiles)
 lsl   r0,r1,0x1                     ; 0800446C
 add   r0,r0,r3                      ; 0800446E
 add   r0,r0,r6                      ; 08004470
-strh  r5,[r0]                       ; 08004472
+strh  r5,[r0]                       ; 08004472  set tile to 012F (blank)
 add   r0,r1,0x1                     ; 08004474
 lsl   r0,r0,0x10                    ; 08004476
 lsr   r1,r0,0x10                    ; 08004478
 cmp   r1,r2                         ; 0800447A
-blo   @@Code0800446C                ; 0800447C
-@@Code0800447E:
+blo   @@RemoveAFlagLoop             ; 0800447C  /
+@@ContinueLoop:
 add   r0,r4,0x1                     ; 0800447E
 lsl   r0,r0,0x10                    ; 08004480
 lsr   r4,r0,0x10                    ; 08004482
 cmp   r4,0x5                        ; 08004484
-bls   @@Code0800442A                ; 08004486
+bls   @@RemoveCastleFlagsLoop       ; 08004486 /
 mov   r4,0x0                        ; 08004488
 ldr   r3,=0x03006B6D                ; 0800448A
-@@Code0800448C:
+@@Loop0800448C:
 mov   r1,r12                        ; 0800448C
 ldr   r0,[r1]                       ; 0800448E
 ldr   r1,=0x0CB6                    ; 08004490
-add   r0,r0,r1                      ; 08004492
+add   r0,r0,r1                      ; 08004492  [03006D70]+CB6 (03002EC2)
 add   r0,r0,r4                      ; 08004494
 mov   r1,0x0                        ; 08004496
 strb  r1,[r0]                       ; 08004498
-lsl   r0,r4,0x1                     ; 0800449A
-add   r0,r0,r4                      ; 0800449C
+lsl   r0,r4,0x1                     ; 0800449A  world index *2
+add   r0,r0,r4                      ; 0800449C  world index *3
 lsl   r0,r0,0x12                    ; 0800449E
-lsr   r2,r0,0x10                    ; 080044A0
+lsr   r2,r0,0x10                    ; 080044A0  world index *0C
 add   r0,r2,r3                      ; 080044A2
-ldrb  r5,[r0]                       ; 080044A4
+ldrb  r5,[r0]                       ; 080044A4 \ count levels unlocked in this world?
 add   r0,r2,0x1                     ; 080044A6
 add   r0,r0,r3                      ; 080044A8
 ldrb  r0,[r0]                       ; 080044AA
@@ -363,15 +363,15 @@ lsl   r0,r0,0x10                    ; 080044E6
 add   r1,r2,0x7                     ; 080044E8
 add   r1,r1,r3                      ; 080044EA
 lsr   r0,r0,0x10                    ; 080044EC
-ldrb  r1,[r1]                       ; 080044EE
+ldrb  r1,[r1]                       ; 080044EE /
 add   r0,r0,r1                      ; 080044F0
 lsl   r0,r0,0x10                    ; 080044F2
 cmp   r0,0x0                        ; 080044F4
 beq   @@Code08004506                ; 080044F6
-mov   r1,r12                        ; 080044F8
+mov   r1,r12                        ; 080044F8  if any levels are unlocked, set the world as unlocked?
 ldr   r0,[r1]                       ; 080044FA
 ldr   r1,=0x0CB6                    ; 080044FC
-add   r0,r0,r1                      ; 080044FE
+add   r0,r0,r1                      ; 080044FE  [03006D70]+CB6 (03002EC2)
 add   r0,r0,r4                      ; 08004500
 mov   r1,0x1                        ; 08004502
 strb  r1,[r0]                       ; 08004504
@@ -380,7 +380,7 @@ add   r0,r4,0x1                     ; 08004506
 lsl   r0,r0,0x10                    ; 08004508
 lsr   r4,r0,0x10                    ; 0800450A
 cmp   r4,0x5                        ; 0800450C
-bls   @@Code0800448C                ; 0800450E
+bls   @@Loop0800448C                ; 0800450E
 pop   {r3}                          ; 08004510
 mov   r8,r3                         ; 08004512
 pop   {r4-r7}                       ; 08004514
@@ -983,19 +983,19 @@ mov   r5,r8                         ; 08004B7A
 push  {r5-r7}                       ; 08004B7C
 ldr   r1,=0x03002200                ; 08004B7E
 ldr   r2,=0x47D0                    ; 08004B80
-add   r0,r1,r2                      ; 08004B82
-ldrh  r7,[r0]                       ; 08004B84
+add   r0,r1,r2                      ; 08004B82  030069D0
+ldrh  r7,[r0]                       ; 08004B84  slots used in OAM buffer
 mov   r0,0x0                        ; 08004B86
 mov   r10,r0                        ; 08004B88
 ldr   r1,=0x030021B0                ; 08004B8A
 mov   r12,r1                        ; 08004B8C
-@@Code08004B8E:
+@@Loop08004B8E:
 ldr   r2,=0x03006D70                ; 08004B8E
 ldr   r0,[r2]                       ; 08004B90
 ldr   r1,=0x0CB6                    ; 08004B92
-add   r0,r0,r1                      ; 08004B94
+add   r0,r0,r1                      ; 08004B94  [03006D70]+CB6 (03002EC2)
 add   r0,r10                        ; 08004B96
-ldrb  r0,[r0]                       ; 08004B98
+ldrb  r0,[r0]                       ; 08004B98  World unlock flag
 cmp   r0,0x0                        ; 08004B9A
 beq   @@Code08004C88                ; 08004B9C
 lsl   r1,r7,0x3                     ; 08004B9E
@@ -1021,7 +1021,7 @@ mov   r2,r12                        ; 08004BC4
 ldr   r4,[r2]                       ; 08004BC6
 mov   r0,r10                        ; 08004BC8
 lsl   r3,r0,0x1                     ; 08004BCA
-ldr   r1,=Data08164690              ; 08004BCC
+ldr   r1,=WorldSelect_SignCoords    ; 08004BCC
 add   r0,r3,r1                      ; 08004BCE
 ldrb  r5,[r0]                       ; 08004BD0
 mov   r1,r5                         ; 08004BD2
@@ -1033,14 +1033,14 @@ and   r0,r2                         ; 08004BDC
 orr   r0,r1                         ; 08004BDE
 strh  r0,[r4,0x2]                   ; 08004BE0
 add   r6,r3,0x1                     ; 08004BE2
-ldr   r1,=Data08164690              ; 08004BE4
+ldr   r1,=WorldSelect_SignCoords    ; 08004BE4
 add   r0,r6,r1                      ; 08004BE6
 ldrb  r0,[r0]                       ; 08004BE8
 mov   r9,r0                         ; 08004BEA
 strb  r0,[r4]                       ; 08004BEC
 mov   r2,r12                        ; 08004BEE
 ldr   r4,[r2]                       ; 08004BF0
-ldr   r0,=Data0816469C              ; 08004BF2
+ldr   r0,=WorldSelect_SignTiles     ; 08004BF2
 add   r3,r3,r0                      ; 08004BF4
 ldrb  r1,[r3]                       ; 08004BF6
 ldr   r2,=0x03FF                    ; 08004BF8
@@ -1095,7 +1095,7 @@ mov   r0,r9                         ; 08004C58
 strb  r0,[r2]                       ; 08004C5A
 mov   r1,r12                        ; 08004C5C
 ldr   r3,[r1]                       ; 08004C5E
-ldr   r2,=Data0816469C              ; 08004C60
+ldr   r2,=WorldSelect_SignTiles     ; 08004C60
 add   r6,r6,r2                      ; 08004C62
 ldrb  r1,[r6]                       ; 08004C64
 ldr   r0,=0x03FF                    ; 08004C66
@@ -1123,7 +1123,7 @@ lsr   r0,r0,0x10                    ; 08004C8E
 mov   r10,r0                        ; 08004C90
 cmp   r0,0x5                        ; 08004C92
 bhi   @@Code08004C98                ; 08004C94
-b     @@Code08004B8E                ; 08004C96
+b     @@Loop08004B8E                ; 08004C96
 @@Code08004C98:
 ldr   r2,=0x03002200                ; 08004C98
 ldr   r1,=0x47D0                    ; 08004C9A
@@ -1175,8 +1175,8 @@ ldr   r3,=0x03002200                ; 08004D1E
 ldr   r0,=0x030069D0                ; 08004D20
 ldrh  r4,[r0]                       ; 08004D22
 ldr   r1,=0x413C                    ; 08004D24
-add   r0,r3,r1                      ; 08004D26
-ldrh  r2,[r0]                       ; 08004D28
+add   r0,r3,r1                      ; 08004D26  0300633C
+ldrh  r2,[r0]                       ; 08004D28  world index
 lsr   r2,r2,0x1                     ; 08004D2A
 ldr   r5,=0x030021B0                ; 08004D2C
 lsl   r1,r4,0x3                     ; 08004D2E
@@ -1197,12 +1197,12 @@ mov   r1,0x70                       ; 08004D4A
 orr   r0,r1                         ; 08004D4C
 strb  r0,[r3,0x5]                   ; 08004D4E
 ldr   r6,[r5]                       ; 08004D50
-ldr   r3,=Data08164690              ; 08004D52
+ldr   r3,=WorldSelect_SignCoords    ; 08004D52
 lsl   r1,r2,0x1                     ; 08004D54
 add   r0,r1,r3                      ; 08004D56
 ldrb  r0,[r0]                       ; 08004D58
 mov   r10,r0                        ; 08004D5A
-ldr   r0,=Data081646C8              ; 08004D5C
+ldr   r0,=WorldSelect_YoshiOffsets  ; 08004D5C
 mov   r8,r0                         ; 08004D5E
 lsl   r2,r2,0x2                     ; 08004D60
 add   r2,r8                         ; 08004D62
@@ -2229,15 +2229,16 @@ bx    r0                            ; 0800563E
 .pool                               ; 08005640
 
 Sub0800564C:
+; subroutine: process left/right inputs on world select
 push  {r4,lr}                       ; 0800564C
 ldr   r1,=0x03002200                ; 0800564E
 ldr   r2,=0x413C                    ; 08005650
 add   r0,r1,r2                      ; 08005652
-ldrh  r4,[r0]                       ; 08005654
+ldrh  r4,[r0]                       ; 08005654  world index (00=W1 0A=W6)
 ldr   r3,=0x47C0                    ; 08005656
 add   r0,r1,r3                      ; 08005658
-ldrh  r2,[r0]                       ; 0800565A
-mov   r0,0x10                       ; 0800565C
+ldrh  r2,[r0]                       ; 0800565A  buttons newly pressed this frame
+mov   r0,0x10                       ; 0800565C  bit 4: right
 and   r0,r2                         ; 0800565E
 cmp   r0,0x0                        ; 08005660
 beq   @@Code080056A4                ; 08005662
@@ -2257,8 +2258,8 @@ ldr   r1,[r2]                       ; 08005684
 lsr   r0,r0,0x11                    ; 08005686
 ldr   r3,=0x0CB6                    ; 08005688
 add   r1,r1,r3                      ; 0800568A
-add   r1,r1,r0                      ; 0800568C
-ldrb  r0,[r1]                       ; 0800568E
+add   r1,r1,r0                      ; 0800568C  [03006D70]+CB6 (03002EC2)
+ldrb  r0,[r1]                       ; 0800568E  world unlock flag
 cmp   r0,0x0                        ; 08005690
 beq   @@Code08005678                ; 08005692
 cmp   r4,0xB                        ; 08005694
@@ -2268,7 +2269,7 @@ b     @@Code0800576A                ; 0800569A
 .pool                               ; 0800569C
 
 @@Code080056A4:
-mov   r0,0x20                       ; 080056A4
+mov   r0,0x20                       ; 080056A4  bit 5: left
 and   r0,r2                         ; 080056A6
 cmp   r0,0x0                        ; 080056A8
 beq   @@Code080056E0                ; 080056AA
@@ -2430,7 +2431,7 @@ bl    PlayYISound                   ; 080057E2
 ldr   r0,=0x03002200                ; 080057E6
 ldr   r1,=0x413C                    ; 080057E8
 add   r0,r0,r1                      ; 080057EA
-strh  r4,[r0]                       ; 080057EC
+strh  r4,[r0]                       ; 080057EC  set new world index
 pop   {r4}                          ; 080057EE
 pop   {r0}                          ; 080057F0
 bx    r0                            ; 080057F2
@@ -2583,7 +2584,7 @@ cmp   r1,r0                         ; 08005974
 bne   @@Code080059BE                ; 08005976
 mov   r3,0x0                        ; 08005978
 mov   r2,0x0                        ; 0800597A
-ldr   r6,=WorldSelectMusicIDs       ; 0800597C
+ldr   r6,=WorldSelect_MusicIDs      ; 0800597C
 ldr   r0,=0x496D                    ; 0800597E
 add   r4,r4,r0                      ; 08005980
 mov   r5,0xF                        ; 08005982
