@@ -2302,7 +2302,7 @@ ldrb  r0,[r1]                       ; 0811056C
 cmp   r0,0x9                        ; 0811056E
 bls   @@Code08110600                ; 08110570
 mov   r1,0xA                        ; 08110572
-bl    DivideAlt                     ; 08110574
+bl    DivideUnsigned                ; 08110574
 lsl   r0,r0,0x18                    ; 08110578
 lsr   r0,r0,0x18                    ; 0811057A
 ldr   r2,=0x4140                    ; 0811057C
@@ -4097,7 +4097,7 @@ strh  r1,[r3,0x2]                   ; 081115AA
 mov   r4,sp                         ; 081115AC
 mov   r0,r5                         ; 081115AE
 mov   r1,0x6                        ; 081115B0
-bl    DivideAlt                     ; 081115B2
+bl    DivideUnsigned                ; 081115B2
 mov   r1,0x8A                       ; 081115B6
 lsl   r1,r1,0x5                     ; 081115B8
 add   r0,r0,r1                      ; 081115BA
@@ -23782,7 +23782,7 @@ ldr   r1,=0x4901                    ; 0811C572
 add   r0,r2,r1                      ; 0811C574
 ldrb  r0,[r0]                       ; 0811C576
 mov   r1,0x1A                       ; 0811C578
-bl    DivideAlt                     ; 0811C57A
+bl    DivideUnsigned                ; 0811C57A
 lsl   r0,r0,0x18                    ; 0811C57E
 lsr   r1,r0,0x18                    ; 0811C580
 cmp   r1,0x9                        ; 0811C582
@@ -32297,7 +32297,7 @@ cmp   r5,0xF                        ; 08120932
 bls   @@Code08120962                ; 08120934
 mov   r0,r5                         ; 08120936
 mov   r1,0xA                        ; 08120938
-bl    DivideAlt                     ; 0812093A
+bl    DivideUnsigned                ; 0812093A
 lsl   r0,r0,0x18                    ; 0812093E
 lsr   r5,r0,0x18                    ; 08120940
 cmp   r5,0x4                        ; 08120942
@@ -50951,7 +50951,7 @@ add   r4,r3,r1                      ; 08129E26
 add   r0,r4,r0                      ; 08129E28
 ldrb  r0,[r0]                       ; 08129E2A
 mov   r1,0xA                        ; 08129E2C
-bl    DivideAlt                     ; 08129E2E
+bl    DivideUnsigned                ; 08129E2E
 strb  r0,[r5,0x1]                   ; 08129E32
 mov   r5,sp                         ; 08129E34
 ldrb  r0,[r7]                       ; 08129E36

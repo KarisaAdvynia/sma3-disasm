@@ -160,14 +160,20 @@ Sub080BF884:
 push  {lr}                          ; 080BF884
 add   r0,0x6E                       ; 080BF886
 ldrh  r0,[r0]                       ; 080BF888  sprite+6E: Boss index
-bl    Sub080BF894                   ; 080BF88A
+bl    LoadBossPalette               ; 080BF88A
 pop   {r0}                          ; 080BF88E
 bx    r0                            ; 080BF890
 .pool                               ; 080BF892
 
-Sub080BF894:
-; subroutine: Load some kind of boss palette
-; r0: sprite+6E: Boss index
+LoadBossPalette:
+; subroutine: Load boss palette
+; r0: sprite+6E (boss index, 00-0B) if called by Kamek enlarge
+;     0C if called by Burt the Bashful init
+;     0E if called by Marching Milde init
+;     0F if called by Potted Ghost init
+;     12 if called by Prince Froggy init
+;     14 if called by Sluggy the Unshaven init
+;     16 if called by giant Tap-Tap init
 push  {r4-r5,lr}                    ; 080BF894
 lsl   r0,r0,0x10                    ; 080BF896
 ldr   r1,=KamekEnlarge_BossPalettePtrs; 080BF898
@@ -180,8 +186,8 @@ mov   r1,r0                         ; 080BF8A4
 add   r1,0x1C                       ; 080BF8A6  offset palette pointer with 1C bytes (0E colors)
 ldr   r3,=0x02010ADE                ; 080BF8A8
 ldr   r2,=0x020106DE                ; 080BF8AA
-@@Code080BF8AC:
-ldrh  r0,[r1]                       ; 080BF8AC \
+@@CopyPaletteLoop:                  ;          \ loop: copy 0F colors to 020106C2/AC2
+ldrh  r0,[r1]                       ; 080BF8AC  color
 strh  r0,[r3]                       ; 080BF8AE
 strh  r0,[r2]                       ; 080BF8B0
 sub   r1,0x2                        ; 080BF8B2
@@ -189,7 +195,7 @@ sub   r3,0x2                        ; 080BF8B4
 sub   r2,0x2                        ; 080BF8B6
 sub   r4,0x1                        ; 080BF8B8
 cmp   r4,0x0                        ; 080BF8BA
-bge   @@Code080BF8AC                ; 080BF8BC /
+bge   @@CopyPaletteLoop             ; 080BF8BC / loop from index 0E to 00 inclusive
 mov   r0,0x91                       ; 080BF8BE
 lsl   r0,r0,0x7                     ; 080BF8C0  4880
 add   r1,r5,r0                      ; 080BF8C2  03006A80

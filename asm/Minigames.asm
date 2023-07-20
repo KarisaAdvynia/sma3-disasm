@@ -5139,7 +5139,7 @@ ldrh  r4,[r1]                       ; 080EC580
 add   r1,r4,0x1                     ; 080EC582
 lsl   r1,r1,0x10                    ; 080EC584
 lsr   r1,r1,0x10                    ; 080EC586
-bl    DivideAlt                     ; 080EC588
+bl    DivideUnsigned                ; 080EC588
 lsl   r0,r0,0x10                    ; 080EC58C
 lsr   r7,r0,0x10                    ; 080EC58E
 lsl   r4,r4,0x11                    ; 080EC590

@@ -2943,7 +2943,7 @@ sub   r2,r4,r2                      ; 0812D9AC
 lsl   r2,r2,0x16                    ; 0812D9AE
 mov   r0,r2                         ; 0812D9B0
 mov   r1,r3                         ; 0812D9B2
-bl    DivideAlt                     ; 0812D9B4
+bl    DivideUnsigned                ; 0812D9B4
 mov   r2,r0                         ; 0812D9B8
 sub   r2,r4,r2                      ; 0812D9BA
 b     @@Code0812DA16                ; 0812D9BC
@@ -2971,7 +2971,7 @@ lsl   r2,r2,0xF                     ; 0812D9E4
 lsr   r3,r3,0x7                     ; 0812D9E6
 mov   r0,r2                         ; 0812D9E8
 mov   r1,r3                         ; 0812D9EA
-bl    DivideAlt                     ; 0812D9EC
+bl    DivideUnsigned                ; 0812D9EC
 mov   r2,r0                         ; 0812D9F0
 b     @@Code0812DA16                ; 0812D9F2
 .pool                               ; 0812D9F4
@@ -3031,7 +3031,7 @@ mov   r3,0x80                       ; 0812DA5A
 lsl   r3,r3,0x9                     ; 0812DA5C
 add   r1,r1,r3                      ; 0812DA5E
 mov   r0,r2                         ; 0812DA60
-bl    DivideAlt                     ; 0812DA62
+bl    DivideUnsigned                ; 0812DA62
 mov   r2,r0                         ; 0812DA66
 lsl   r2,r2,0x4                     ; 0812DA68
 b     @@Code0812DAA4                ; 0812DA6A
@@ -3048,7 +3048,7 @@ mul   r1,r3                         ; 0812DA7C
 mov   r2,0x80                       ; 0812DA7E
 lsl   r2,r2,0xC                     ; 0812DA80
 add   r1,r1,r2                      ; 0812DA82
-bl    DivideAlt                     ; 0812DA84
+bl    DivideUnsigned                ; 0812DA84
 b     @@Code0812DA9E                ; 0812DA88
 @@Code0812DA8A:
 mov   r0,0x80                       ; 0812DA8A
@@ -3174,7 +3174,7 @@ ldr   r0,[r0,0x4]                   ; 0812DB82
 mul   r2,r0                         ; 0812DB84
 mov   r0,r2                         ; 0812DB86
 ldr   r1,=0x2910                    ; 0812DB88
-bl    DivideAlt                     ; 0812DB8A
+bl    DivideUnsigned                ; 0812DB8A
 mov   r2,r0                         ; 0812DB8E
 lsr   r2,r2,0x5                     ; 0812DB90
 mov   r0,r4                         ; 0812DB92
@@ -3696,7 +3696,7 @@ ldrh  r4,[r4,0x30]                  ; 0812DFAA
 add   r1,r1,r4                      ; 0812DFAC
 @@Code0812DFAE:
 mov   r0,r8                         ; 0812DFAE
-bl    DivideAlt                     ; 0812DFB0
+bl    DivideUnsigned                ; 0812DFB0
 mov   r8,r0                         ; 0812DFB4
 mov   r0,r5                         ; 0812DFB6
 add   r0,0x49                       ; 0812DFB8

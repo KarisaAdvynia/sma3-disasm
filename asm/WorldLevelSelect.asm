@@ -7986,7 +7986,7 @@ ldrh  r2,[r0]                       ; 08008C5E
 mov   r0,0x80                       ; 08008C60
 lsl   r0,r0,0x9                     ; 08008C62
 mov   r1,r2                         ; 08008C64
-bl    DivideAlt                     ; 08008C66
+bl    DivideUnsigned                ; 08008C66
 mov   r1,r0                         ; 08008C6A
 ldr   r0,=0x030021A8                ; 08008C6C
 strh  r1,[r0]                       ; 08008C6E
@@ -13283,7 +13283,7 @@ ldrh  r2,[r0]                       ; 0800BA1C
 mov   r0,0x80                       ; 0800BA1E
 lsl   r0,r0,0x9                     ; 0800BA20
 mov   r1,r2                         ; 0800BA22
-bl    DivideAlt                     ; 0800BA24
+bl    DivideUnsigned                ; 0800BA24
 mov   r1,r0                         ; 0800BA28
 ldr   r0,=0x030021A8                ; 0800BA2A
 mov   r2,0x0                        ; 0800BA2C

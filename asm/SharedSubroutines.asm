@@ -626,7 +626,7 @@ nop                                 ; 0812FB72
 
 Sub0812FB74:
 cmp   r1,0x0                        ; 0812FB74
-beq   @@Code0812FBFC                ; 0812FB76
+beq   @@Return0                     ; 0812FB76
 push  {r4}                          ; 0812FB78
 mov   r4,r0                         ; 0812FB7A
 eor   r4,r1                         ; 0812FB7C
@@ -706,23 +706,23 @@ neg   r0,r0                         ; 0812FBF6
 pop   {r4}                          ; 0812FBF8
 mov   pc,lr                         ; 0812FBFA
 
-@@Code0812FBFC:
+@@Return0:
 push  {lr}                          ; 0812FBFC
-bl    Sub0812FC08                   ; 0812FBFE
+bl    Return0812FC08                ; 0812FBFE
 mov   r0,0x0                        ; 0812FC02
 pop   {pc}                          ; 0812FC04
 .pool                               ; 0812FC06
 
-Sub0812FC08:
+Return0812FC08:
 mov   pc,lr                         ; 0812FC08
 .pool                               ; 0812FC0A
 
-DivideAlt:
+DivideUnsigned:
 ; input r0: numerator, r1: denominator
-; output r0: quotient, unclear if anything else is returned
+; output r0: quotient
 ; from context, seems to break if numerator is 0, not just denominator?
 cmp   r1,0x0                        ; 0812FC0C
-beq   @@Code0812FC7A                ; 0812FC0E
+beq   @@Return0                     ; 0812FC0E
 mov   r3,0x1                        ; 0812FC10
 mov   r2,0x0                        ; 0812FC12
 push  {r4}                          ; 0812FC14
@@ -786,9 +786,9 @@ mov   r0,r2                         ; 0812FC74
 pop   {r4}                          ; 0812FC76
 mov   pc,lr                         ; 0812FC78
 
-@@Code0812FC7A:
+@@Return0:
 push  {lr}                          ; 0812FC7A
-bl    Sub0812FC08                   ; 0812FC7C
+bl    Return0812FC08                ; 0812FC7C
 mov   r0,0x0                        ; 0812FC80
 pop   {pc}                          ; 0812FC82
 
@@ -904,7 +904,7 @@ mov   pc,lr                         ; 0812FD38
 
 @@Code0812FD3A:
 push  {lr}                          ; 0812FD3A
-bl    Sub0812FC08                   ; 0812FD3C
+bl    Return0812FC08                ; 0812FD3C
 mov   r0,0x0                        ; 0812FD40
 pop   {pc}                          ; 0812FD42
 
