@@ -181,8 +181,8 @@ Return080E2C40:
 bx    lr                            ; 080E2C40
 .pool                               ; 080E2C42
 
-Sub080E2C44:
-; subroutine: animate 0400 bytes of source graphics at VRAM 06008C00
+GraphicsAnim_Set06008C00:
+; Animate 0400 bytes of source graphics at VRAM 06008C00
 ; called by 05,06,0A,0B,0D,0E,0F
 ; r0: pointer to source graphics, r1: animation slot to use (always 1)
 push  {r4-r5,lr}                    ; 080E2C44
@@ -238,7 +238,7 @@ lsl   r0,r2,0x1                     ; 080E2CB2
 add   r0,r0,r1                      ; 080E2CB4  index with [0300229E] &FC
 ldr   r0,[r0]                       ; 080E2CB6
 mov   r1,0x1                        ; 080E2CB8
-bl    Sub080E2C44                   ; 080E2CBA  animate 0400 bytes at 06008C00
+bl    GraphicsAnim_Set06008C00      ; 080E2CBA  animate 0400 bytes at 06008C00
 pop   {r0}                          ; 080E2CBE
 bx    r0                            ; 080E2CC0
 .pool                               ; 080E2CC2
@@ -303,7 +303,7 @@ lsl   r1,r4,0x2                     ; 080E2D4E  r1 = [0300229E]*2
 add   r1,r1,r0                      ; 080E2D50
 ldr   r0,[r1]                       ; 080E2D52
 mov   r1,0x1                        ; 080E2D54
-bl    Sub080E2C44                   ; 080E2D56  animate 0400 bytes at 06008C00
+bl    GraphicsAnim_Set06008C00      ; 080E2D56  animate 0400 bytes at 06008C00
 @@Code080E2D5A:                     ;          /
 pop   {r4}                          ; 080E2D5A
 pop   {r0}                          ; 080E2D5C
@@ -675,7 +675,7 @@ ldrh  r0,[r0]                       ; 080E30C0
 ldr   r1,=Data0828787C              ; 080E30C2
 add   r0,r0,r1                      ; 080E30C4  offset with ?
 mov   r1,0x1                        ; 080E30C6
-bl    Sub080E2C44                   ; 080E30C8  animate 0400 bytes at 06008C00
+bl    GraphicsAnim_Set06008C00      ; 080E30C8  animate 0400 bytes at 06008C00
 pop   {r0}                          ; 080E30CC
 bx    r0                            ; 080E30CE
 .pool                               ; 080E30D0
@@ -726,7 +726,7 @@ lsl   r1,r4,0x2                     ; 080E3128
 add   r1,r1,r0                      ; 080E312A
 ldr   r0,[r1]                       ; 080E312C
 mov   r1,0x1                        ; 080E312E
-bl    Sub080E2C44                   ; 080E3130  animate 0400 bytes at 06008C00
+bl    GraphicsAnim_Set06008C00      ; 080E3130  animate 0400 bytes at 06008C00
 @@Code080E3134:                     ;          /
 pop   {r4}                          ; 080E3134
 pop   {r0}                          ; 080E3136
@@ -877,7 +877,7 @@ lsl   r0,r0,0x1                     ; 080E3290
 add   r0,r0,r1                      ; 080E3292  offset with [030022A0]*2
 ldr   r0,[r0]                       ; 080E3294
 mov   r1,0x1                        ; 080E3296
-bl    Sub080E2C44                   ; 080E3298  animate 0400 bytes at 06008C00
+bl    GraphicsAnim_Set06008C00      ; 080E3298  animate 0400 bytes at 06008C00
 b     @@Code080E32AA                ; 080E329C /
 .pool                               ; 080E329E
 
@@ -918,7 +918,7 @@ lsl   r0,r0,0x1                     ; 080E32DE
 add   r0,r0,r1                      ; 080E32E0  offset with [030022A0]*2
 ldr   r0,[r0]                       ; 080E32E2
 mov   r1,0x1                        ; 080E32E4
-bl    Sub080E2C44                   ; 080E32E6  animate 0400 bytes at 06008C00
+bl    GraphicsAnim_Set06008C00      ; 080E32E6  animate 0400 bytes at 06008C00
 b     @@Code080E32FE                ; 080E32EA /
 .pool                               ; 080E32EC
 
@@ -961,7 +961,7 @@ lsl   r0,r2,0x1                     ; 080E3336
 add   r0,r0,r1                      ; 080E3338  offset with [030022A2]*2
 ldr   r0,[r0]                       ; 080E333A
 mov   r1,0x1                        ; 080E333C
-bl    Sub080E2C44                   ; 080E333E  animate 0400 bytes at 06008C00
+bl    GraphicsAnim_Set06008C00      ; 080E333E  animate 0400 bytes at 06008C00
 @@Code080E3342:                     ;          /
 pop   {r0}                          ; 080E3342
 bx    r0                            ; 080E3344
@@ -1201,7 +1201,7 @@ bx    r0                            ; 080E3550
 .pool                               ; 080E3552
 
 GraphicsAnimInit:
-; subroutine: Initialize graphics animations
+; Initialize graphics animations
 push  {r4-r7,lr}                    ; 080E3584
 mov   r7,r9                         ; 080E3586
 mov   r6,r8                         ; 080E3588

@@ -2715,7 +2715,7 @@ ldr   r2,=0x05000200                ; 080FE532
 mov   r0,r4                         ; 080FE534
 mov   r3,0x20                       ; 080FE536  20 bytes (color 100-10F)
 bl    Sub0810B794                   ; 080FE538
-ldr   r1,=Data081A46F8              ; 080FE53C  pointer to layer 0/file select sprite palette
+ldr   r1,=YITitleL0_FileSelectSpr_Pal; 080FE53C  pointer to layer 0/file select sprite palette
 ldr   r2,=0x05000260                ; 080FE53E
 mov   r3,0x80                       ; 080FE540
 lsl   r3,r3,0x1                     ; 080FE542  100 bytes (color 130-1AF)
@@ -2907,8 +2907,8 @@ pop   {r0}                          ; 080FE70C
 bx    r0                            ; 080FE70E
 .pool                               ; 080FE710
 
-Sub080FE72C:
-; subroutine: Load YI title screen graphics?
+YITitle_LoadGraphics:
+; Load YI title screen graphics
 push  {r4-r7,lr}                    ; 080FE72C
 mov   r7,r10                        ; 080FE72E
 mov   r6,r9                         ; 080FE730
@@ -2958,7 +2958,7 @@ ldr   r1,=0x06004000                ; 080FE788
 bl    swi_LZ77_VRAM                 ; 080FE78A  LZ77 decompress (VRAM)
 ldr   r0,=0x06008000                ; 080FE78E
 bl    Sub08102104                   ; 080FE790
-ldr   r1,=DataPtrs08199110          ; 080FE794  pointer to pointers to layer 3 graphics
+ldr   r1,=YITitle_L3GraphicsPtrs    ; 080FE794  pointer to pointers to layer 3 graphics
 mov   r6,r9                         ; 080FE796
 add   r6,0x56                       ; 080FE798
 ldrb  r0,[r6]                       ; 080FE79A  0 for W1-5, 1 for W6
@@ -2988,7 +2988,7 @@ add   r0,sp,0x4                     ; 080FE7CC
 ldr   r1,=0x0600FFE0                ; 080FE7CE
 ldr   r2,=0x01000008                ; 080FE7D0
 bl    swi_MemoryCopy32              ; 080FE7D2  Memory copy/fill, 32-byte blocks
-ldr   r1,=DataPtrs08199108          ; 080FE7D6
+ldr   r1,=YITitle_L23PalettePtrs    ; 080FE7D6
 ldrb  r0,[r6]                       ; 080FE7D8  0 for W1-5, 1 for W6
 lsl   r0,r0,0x2                     ; 080FE7DA
 add   r0,r0,r1                      ; 080FE7DC
@@ -2999,12 +2999,12 @@ lsl   r2,r2,0x13                    ; 080FE7E4  05000000
 mov   r0,r4                         ; 080FE7E6
 mov   r3,0x40                       ; 080FE7E8  40 bytes (colors 00-1F)
 bl    Sub0810B794                   ; 080FE7EA
-ldr   r1,=Data0819F2B8              ; 080FE7EE  pointer to layer 1 palette
+ldr   r1,=YITitle_L1Palette         ; 080FE7EE  pointer to layer 1 palette
 ldr   r2,=0x05000040                ; 080FE7F0
 mov   r0,r4                         ; 080FE7F2
 mov   r3,0x20                       ; 080FE7F4  20 bytes (colors 20-2F)
 bl    Sub0810B794                   ; 080FE7F6
-ldr   r1,=Data081A46F8              ; 080FE7FA  pointer to layer 0/file select sprite palette
+ldr   r1,=YITitleL0_FileSelectSpr_Pal; 080FE7FA  pointer to layer 0/file select sprite palette
 ldr   r2,=0x05000060                ; 080FE7FC
 mov   r3,0x80                       ; 080FE7FE
 lsl   r3,r3,0x1                     ; 080FE800  100 bytes (colors 30-AF)
@@ -3012,7 +3012,7 @@ mov   r0,r4                         ; 080FE802
 bl    Sub0810B794                   ; 080FE804
 ldrb  r0,[r6]                       ; 080FE808  0 for W1-5, 1 for W6
 bl    Sub080FD09C                   ; 080FE80A
-ldr   r1,=DataPtrs08199118          ; 080FE80E  pointer to pointers to layer 3 tilemaps
+ldr   r1,=YITitle_L3TilemapPtrs     ; 080FE80E  pointer to pointers to layer 3 tilemaps
 ldrb  r0,[r6]                       ; 080FE810  0 for W1-5, 1 for W6
 lsl   r0,r0,0x2                     ; 080FE812
 add   r0,r0,r1                      ; 080FE814
@@ -3354,7 +3354,7 @@ ldr   r1,[r7]                       ; 080FEBB2
 mov   r0,r1                         ; 080FEBB4
 add   r0,0x60                       ; 080FEBB6
 add   r1,0x4                        ; 080FEBB8
-bl    Sub080FE72C                   ; 080FEBBA
+bl    YITitle_LoadGraphics          ; 080FEBBA
 ldr   r1,[r7]                       ; 080FEBBE
 add   r0,r1,0x4                     ; 080FEBC0
 ldr   r1,[r1]                       ; 080FEBC2
@@ -3365,7 +3365,7 @@ add   r0,r4,r3                      ; 080FEBCC
 mov   r5,0x0                        ; 080FEBCE
 mov   r6,0x1                        ; 080FEBD0
 strb  r6,[r0]                       ; 080FEBD2
-bl    Sub08002338                   ; 080FEBD4
+bl    InitOAMBuffer03005A00         ; 080FEBD4
 ldr   r1,[r7]                       ; 080FEBD8
 ldr   r2,=0x0D74                    ; 080FEBDA
 add   r0,r1,r2                      ; 080FEBDC
@@ -3864,7 +3864,7 @@ ldr   r0,=FileSelectTextPtrs        ; 080FF096
 ldr   r0,[r0]                       ; 080FF098
 mov   r1,0xC                        ; 080FF09A
 mov   r2,0x8                        ; 080FF09C
-bl    Sub080FFEF4                   ; 080FF09E
+bl    FileSelect_DispText           ; 080FF09E
 ldr   r0,=0x03007248                ; 080FF0A2  pointer to message buffer
 mov   r9,r0                         ; 080FF0A4
 ldr   r0,[r0]                       ; 080FF0A6
@@ -5365,7 +5365,12 @@ pop   {r0}                          ; 080FFD86
 bx    r0                            ; 080FFD88
 .pool                               ; 080FFD8A
 
-Sub080FFDA8:
+FileSelect_DispChar:
+; Display one file select character
+; r0: X position in pixels
+; r1: Y position in pixels
+; r2: character ID
+; r3: text color (0-F)
 push  {r4-r7,lr}                    ; 080FFDA8
 mov   r7,r10                        ; 080FFDAA
 mov   r6,r9                         ; 080FFDAC
@@ -5390,7 +5395,7 @@ mov   r0,0x7F                       ; 080FFDD0
 mov   r9,r0                         ; 080FFDD2
 ldr   r3,=0x03007248                ; 080FFDD4  pointer to message buffer
 mov   r8,r3                         ; 080FFDD6
-@@Code080FFDD8:
+@@Loop080FFDD8:
 mov   r0,r10                        ; 080FFDD8
 ldrb  r4,[r0]                       ; 080FFDDA
 mov   r3,0x1                        ; 080FFDDC
@@ -5518,9 +5523,9 @@ bl    Sub08000558                   ; 080FFECC  Write one pixel's color to graph
 add   r5,0x1                        ; 080FFED0
 ldr   r0,[sp]                       ; 080FFED2
 cmp   r5,r0                         ; 080FFED4
-bhs   @@Code080FFEDA                ; 080FFED6
-b     @@Code080FFDD8                ; 080FFED8
-@@Code080FFEDA:
+bhs   @@Return                      ; 080FFED6
+b     @@Loop080FFDD8                ; 080FFED8
+@@Return:
 add   sp,0x4                        ; 080FFEDA
 pop   {r3-r5}                       ; 080FFEDC
 mov   r8,r3                         ; 080FFEDE
@@ -5531,8 +5536,8 @@ pop   {r0}                          ; 080FFEE6
 bx    r0                            ; 080FFEE8
 .pool                               ; 080FFEEA
 
-Sub080FFEF4:
-; subroutine: Display file select message
+FileSelect_DispText:
+; Display file select message
 ; r0: pointer to message data
 ; r1: background color (0-F)
 ; r2: text color (0-F)
@@ -5544,40 +5549,40 @@ ldr   r0,=0x03007248                ; 080FFEFC  pointer to message buffer
 ldr   r0,[r0]                       ; 080FFEFE
 mov   r1,0x10                       ; 080FFF00
 mov   r2,0x30                       ; 080FFF02
-bl    Sub080FCA88                   ; 080FFF04  fill message buffer rows with single color
+bl    FillMessageBuffer             ; 080FFF04  fill message buffer rows with single color
 mov   r6,0x0                        ; 080FFF08
 mov   r5,0x0                        ; 080FFF0A
-b     @@Code080FFF24                ; 080FFF0C
+b     @@StartCharLoop               ; 080FFF0C
 .pool                               ; 080FFF0E
 
-@@Code080FFF14:                     ;           runs if command
+@@Command:                          ;           runs if command
 add   r4,0x1                        ; 080FFF14
 ldrb  r0,[r4]                       ; 080FFF16  r0 = command param
 cmp   r0,0xFF                       ; 080FFF18
-beq   @@Code080FFF48                ; 080FFF1A  if command FF, return
+beq   @@Return                      ; 080FFF1A  if command FF, return
 mov   r5,r0                         ; 080FFF1C  r5 = first param (X)
 add   r4,0x1                        ; 080FFF1E
 ldrb  r6,[r4]                       ; 080FFF20  r6 = second param (Y)
-@@Code080FFF22:
+@@CharLoop:
 add   r4,0x1                        ; 080FFF22  loop to here
-@@Code080FFF24:                     ;           start processing byte here
+@@StartCharLoop:                    ;           start processing byte here
 ldrb  r0,[r4]                       ; 080FFF24  byte from message data
 cmp   r0,0xFF                       ; 080FFF26
-beq   @@Code080FFF14                ; 080FFF28
+beq   @@Command                     ; 080FFF28
 ldrb  r2,[r4]                       ; 080FFF2A
 mov   r0,r5                         ; 080FFF2C  r0 = X
 mov   r1,r6                         ; 080FFF2E  r1 = Y
 mov   r3,r7                         ; 080FFF30
-bl    Sub080FFDA8                   ; 080FFF32
+bl    FileSelect_DispChar           ; 080FFF32
 ldr   r1,=Text_CharWidths           ; 080FFF36  text width table
 ldrb  r0,[r4]                       ; 080FFF38
 add   r0,r0,r1                      ; 080FFF3A
 ldrb  r0,[r0]                       ; 080FFF3C
 add   r5,r5,r0                      ; 080FFF3E  add width to X
-b     @@Code080FFF22                ; 080FFF40
+b     @@CharLoop                    ; 080FFF40
 .pool                               ; 080FFF42
 
-@@Code080FFF48:
+@@Return:
 mov   r0,r4                         ; 080FFF48
 pop   {r4-r7}                       ; 080FFF4A
 pop   {r1}                          ; 080FFF4C
@@ -6894,7 +6899,7 @@ mov   r9,r1                         ; 08100ACA
 ldr   r0,[r0]                       ; 08100ACC
 mov   r1,0xC                        ; 08100ACE
 mov   r2,0x8                        ; 08100AD0
-bl    Sub080FFEF4                   ; 08100AD2
+bl    FileSelect_DispText           ; 08100AD2
 ldr   r7,=0x03007248                ; 08100AD6  pointer to message buffer
 ldr   r0,[r7]                       ; 08100AD8
 ldr   r4,=0x0300724C                ; 08100ADA
@@ -9076,7 +9081,7 @@ mov   r5,r1                         ; 08101E34
 ldr   r0,=0x0913                    ; 08101E36
 add   r4,r5,r0                      ; 08101E38
 ldrb  r0,[r4]                       ; 08101E3A
-bl    Sub080FAFFC                   ; 08101E3C
+bl    SetLastSaveFile               ; 08101E3C
 ldr   r0,=0x091B                    ; 08101E40
 add   r1,r5,r0                      ; 08101E42
 ldrb  r0,[r4]                       ; 08101E44

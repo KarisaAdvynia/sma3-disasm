@@ -348,7 +348,7 @@ add   sp,-0x28                      ; 080F5CAE
 mov   r0,0x0                        ; 080F5CB0
 mov   r8,r0                         ; 080F5CB2
 bl    Sub08002534                   ; 080F5CB4
-bl    Sub08002338                   ; 080F5CB8
+bl    InitOAMBuffer03005A00         ; 080F5CB8
 ldr   r7,=0x03002200                ; 080F5CBC
 ldr   r2,=0x47C6                    ; 080F5CBE
 add   r1,r7,r2                      ; 080F5CC0
@@ -505,7 +505,7 @@ bl    GraphicsAnimInit              ; 080F5E04
 mov   r7,0x0                        ; 080F5E08
 mov   r0,0xA                        ; 080F5E0A
 strh  r0,[r6,0x36]                  ; 080F5E0C
-bl    Sub08017488                   ; 080F5E0E
+bl    LoadObjectsAndScreenExits     ; 080F5E0E
 bl    Sub080F5A34                   ; 080F5E12
 ldr   r5,=0x03002200                ; 080F5E16
 mov   r0,r6                         ; 080F5E18
@@ -560,7 +560,7 @@ ldr   r0,=0x4852                    ; 080F5E78
 add   r4,r5,r0                      ; 080F5E7A
 mov   r1,0x1                        ; 080F5E7C
 strh  r1,[r4]                       ; 080F5E7E
-bl    Sub08016C04                   ; 080F5E80
+bl    ProcessL23Images              ; 080F5E80
 strh  r7,[r4]                       ; 080F5E84
 ldr   r3,=0x47D8                    ; 080F5E86
 add   r2,r5,r3                      ; 080F5E88
@@ -1409,7 +1409,7 @@ bx    r0                            ; 080F66E6
 IntroCutsceneMain:
 ; Game state 3B: Intro cutscene
 push  {r4-r6,lr}                    ; 080F6718
-bl    Sub08002338                   ; 080F671A
+bl    InitOAMBuffer03005A00         ; 080F671A
 ldr   r1,=CodePtrs081975B0          ; 080F671E
 ldr   r4,=0x03002200                ; 080F6720
 ldr   r2,=0x48B0                    ; 080F6722

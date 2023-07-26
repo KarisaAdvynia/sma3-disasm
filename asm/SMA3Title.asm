@@ -347,7 +347,7 @@ ldr   r1,=0x4A50                    ; 08003E1C
 add   r0,r4,r1                      ; 08003E1E
 ldr   r7,[r0]                       ; 08003E20
 bl    Sub08003CA4                   ; 08003E22
-bl    Sub08002338                   ; 08003E26
+bl    InitOAMBuffer03005A00         ; 08003E26
 ldr   r2,=0x47D0                    ; 08003E2A
 add   r4,r4,r2                      ; 08003E2C
 mov   r0,0x0                        ; 08003E2E

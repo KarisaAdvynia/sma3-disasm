@@ -1420,7 +1420,7 @@ pop   {r0}                          ; 080EA460
 bx    r0                            ; 080EA462
 
 Sub080EA464:
-; subroutine: set background on Bandit minigame win/loss?
+; set background on Bandit minigame win/loss?
 push  {r4,lr}                       ; 080EA464
 add   sp,-0x4                       ; 080EA466
 mov   r4,r0                         ; 080EA468
@@ -2012,7 +2012,7 @@ mov   r0,sp                         ; 080EA9E8
 mov   r1,r9                         ; 080EA9EA
 bl    swi_MemoryCopy4or2            ; 080EA9EC  Memory copy/fill, 4- or 2-byte blocks
 bl    Sub0804C9A4                   ; 080EA9F0
-bl    Sub08002338                   ; 080EA9F4
+bl    InitOAMBuffer03005A00         ; 080EA9F4
 mov   r0,r9                         ; 080EA9F8
 bl    Sub080EA850                   ; 080EA9FA
 bl    Sub080EA7D8                   ; 080EA9FE
@@ -7265,7 +7265,7 @@ push  {r4-r6,lr}                    ; 080ED82C
 mov   r5,r0                         ; 080ED82E
 ldr   r4,=0x03007240                ; 080ED830  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r6,[r4]                       ; 080ED832
-bl    Sub08002338                   ; 080ED834
+bl    InitOAMBuffer03005A00         ; 080ED834
 ldr   r0,[r4]                       ; 080ED838
 ldr   r1,=0x29CE                    ; 080ED83A
 add   r0,r0,r1                      ; 080ED83C
@@ -8116,7 +8116,7 @@ bx    r0                            ; 080EDFD8
 Sub080EDFE8:
 push  {r4-r6,lr}                    ; 080EDFE8
 mov   r6,r0                         ; 080EDFEA
-bl    Sub08002338                   ; 080EDFEC
+bl    InitOAMBuffer03005A00         ; 080EDFEC
 ldr   r0,=0x03007240                ; 080EDFF0  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                       ; 080EDFF2
 ldr   r1,=0x29CE                    ; 080EDFF4
@@ -8671,7 +8671,7 @@ ldr   r0,[r4]                       ; 080EE49A
 mov   r1,0xE0                       ; 080EE49C
 lsl   r1,r1,0x1                     ; 080EE49E
 add   r6,r0,r1                      ; 080EE4A0
-bl    Sub08002338                   ; 080EE4A2
+bl    InitOAMBuffer03005A00         ; 080EE4A2
 ldr   r0,[r4]                       ; 080EE4A6
 ldr   r2,=0x29CE                    ; 080EE4A8
 add   r0,r0,r2                      ; 080EE4AA
@@ -9341,7 +9341,7 @@ bx    r0                            ; 080EEA5C
 Sub080EEA60:
 push  {r4-r6,lr}                    ; 080EEA60
 mov   r6,r0                         ; 080EEA62
-bl    Sub08002338                   ; 080EEA64
+bl    InitOAMBuffer03005A00         ; 080EEA64
 ldr   r0,=0x03007240                ; 080EEA68  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                       ; 080EEA6A
 ldr   r1,=0x29CE                    ; 080EEA6C
@@ -9568,7 +9568,7 @@ lsl   r0,r0,0x8                     ; 080EEC52
 str   r0,[r1]                       ; 080EEC54
 str   r4,[r1,0x4]                   ; 080EEC56
 bl    Sub0804F2F8                   ; 080EEC58
-bl    Sub08017488                   ; 080EEC5C
+bl    LoadObjectsAndScreenExits     ; 080EEC5C
 pop   {r3-r5}                       ; 080EEC60
 mov   r8,r3                         ; 080EEC62
 mov   r9,r4                         ; 080EEC64
@@ -10434,7 +10434,7 @@ bx    r0                            ; 080EF3A4
 GoalMinigameMain:
 ; Game state 1D: Goal minigame
 push  {r4-r5,lr}                    ; 080EF3C4
-bl    Sub08002338                   ; 080EF3C6
+bl    InitOAMBuffer03005A00         ; 080EF3C6
 ldr   r5,=0x03007240                ; 080EF3CA  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r5]                       ; 080EF3CC
 ldr   r1,=0x29CE                    ; 080EF3CE
@@ -10950,7 +10950,7 @@ ldr   r4,=0x0300702C                ; 080EF8B4  Sprite RAM structs (03002460)
 ldr   r1,[r4]                       ; 080EF8B6
 ldr   r2,=0x05000628                ; 080EF8B8
 bl    swi_MemoryCopy4or2            ; 080EF8BA  Memory copy/fill, 4- or 2-byte blocks
-bl    Sub08002338                   ; 080EF8BE
+bl    InitOAMBuffer03005A00         ; 080EF8BE
 mov   r5,r9                         ; 080EF8C2
 ldr   r0,[r5]                       ; 080EF8C4
 mov   r1,0x95                       ; 080EF8C6
@@ -10993,7 +10993,7 @@ ldr   r4,[r5]                       ; 080EF90C
 ldr   r0,=0x27D0                    ; 080EF90E
 add   r0,r0,r4                      ; 080EF910
 mov   r8,r0                         ; 080EF912
-bl    Sub080EFC34                   ; 080EF914
+bl    GoalMinigame_LoadGraphics     ; 080EF914
 bl    Sub080EFD54                   ; 080EF918
 ldr   r2,=0x47C6                    ; 080EF91C
 add   r1,r6,r2                      ; 080EF91E
@@ -11259,8 +11259,8 @@ pop   {r0}                          ; 080EFB2A
 bx    r0                            ; 080EFB2C
 .pool                               ; 080EFB2E
 
-Sub080EFC34:
-; subroutine: Load goal minigame graphics/tilemaps
+GoalMinigame_LoadGraphics:
+; Load goal minigame graphics/tilemaps
 push  {r4,lr}                       ; 080EFC34
 ldr   r0,=0x03002200                ; 080EFC36
 ldr   r1,=0x48AA                    ; 080EFC38

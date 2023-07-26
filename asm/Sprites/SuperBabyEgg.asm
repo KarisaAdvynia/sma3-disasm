@@ -115,7 +115,7 @@ strh  r5,[r0]                       ; 08051206
 sub   r3,0xBE                       ; 08051208
 add   r0,r6,r3                      ; 0805120A
 strh  r5,[r0]                       ; 0805120C
-bl    Sub0802C2D4                   ; 0805120E
+bl    ProcessSublevelHeaderMusic    ; 0805120E
 b     @@Code080512A2                ; 08051212
 .pool                               ; 08051214
 

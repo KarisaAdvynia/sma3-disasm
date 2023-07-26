@@ -10,7 +10,7 @@ CodePtrs08163FC8:                   ; 08163FC8
 .word Sub0800144C+1, Sub080019F0+1, Sub08001784+1, Sub08001570+1
 .word Sub08001B50+1, Sub08001140+1, Sub080016E8+1, Sub08001DCC+1
 CodePtrs08163FF8:                   ; 08163FF8
-.word Sub0810C054+1, Sub0810C060+1, Sub0810C080+1, Sub0810C0C4+1
+.word Sub0810C054+1, Sub0810C060+1, YITitle_ScanlineLogoColor+1, Sub0810C0C4+1
 .word 0x03007041, 0x03007041, 0x03007041, 0x03007041
 .word 0x03007041, 0x03007041, 0x03007041, 0x03007041
 .word 0x03007041, 0x03007041, 0x03007041
@@ -728,8 +728,8 @@ DataPtrs081655AC:                   ; 081655AC
 .word Data0816557E, Data08165584, Data0816558A, Data08165592
 .word Data0816559B, Data081655A2
 CodePtrs081655C4:                   ; 081655C4
-.word Sub0800FA74+1, Sub0800F8EC+1, Sub0800F7CC+1, Sub0800F75C+1
-.word Sub0800F6E0+1, Sub0800F628+1, Sub0800F5CC+1, Sub0800F4B4+1
+.word LevelSelect_InitL01TilemapBuffer+1, Sub0800F8EC+1, Sub0800F7CC+1, Sub0800F75C+1
+.word LevelSelect_LoadL3Tilemap+1, LevelSelect_LoadL2Tilemap+1, Sub0800F5CC+1, Sub0800F4B4+1
 Data081655E4:                       ; 081655E4
 .word 0x00130014, 0x00130034, 0x00130054, 0x00130074
 .word 0x00130094, 0x001300B4, 0x003B0014, 0x003B0034
@@ -3693,8 +3693,8 @@ DataPtrs0816B748:                   ; 0816B748
 .word StoryIntroText28, 0x00000000, 0x00000000
 .byte 0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01
 CodePtrs0816B7FC:                   ; 0816B7FC
-.word Sub0802F35C+1, Sub0802F3C4+1, Sub0802F3CC+1, Sub0802F3E4+1
-.word Sub0802F3FC+1, Sub0802F40C+1
+.word StoryIntroText_DispChar+1, StoryIntroText_Cmd01+1, StoryIntroText_SetY+1, StoryIntroText_SetX+1
+.word StoryIntroText_2xScale+1, StoryIntroText_Disp1LargeChar+1
 Data0816B814:                       ; 0816B814
 .word 0x000000A0, 0x00000000, 0x00000000
 Data0816B820:                       ; 0816B820
@@ -4274,7 +4274,7 @@ DataPtrs0816DB0C:                   ; 0816DB0C
 .word CreditsText20, CreditsText21, CreditsText22, CreditsText23
 .word 0x00000000
 CodePtrs0816DBA0:                   ; 0816DBA0
-.word Sub08033DE0+1, Sub08033E60+1, Sub08033E68+1, Sub08033E80+1
+.word CreditsText_DispChar+1, CreditsText_Cmd01+1, CreditsText_SetY+1, CreditsText_SetX+1
 Data0816DBB0:                       ; 0816DBB0
 .halfword 0x0000, 0x0001, 0x0002, 0x0003, 0x0004, 0x0005, 0x0006, 0x0007
 .halfword 0x0008, 0x0009, 0x000A, 0x000B, 0x000C
@@ -25686,11 +25686,11 @@ Data081990F8:                       ; 081990F8
 .word 0x000002A0, 0x00000000
 CodePtrs08199100:                   ; 08199100
 .word Return080FE45C+1, Sub080FE460+1
-DataPtrs08199108:                   ; 08199108
-.word Data0819D9FC, Data0819DA3C
-DataPtrs08199110:                   ; 08199110
+YITitle_L23PalettePtrs:             ; 08199108
+.word YITitle_L23Palette_W15, YITitle_L23Palette_W6
+YITitle_L3GraphicsPtrs:             ; 08199110
 .word Graphics_YITitle_L3_W15_LZ77, Graphics_YITitle_L3_W6_LZ77
-DataPtrs08199118:                   ; 08199118
+YITitle_L3TilemapPtrs:              ; 08199118
 .word Tilemaps_YITitle_L3_W15_LZ77, Tilemaps_YITitle_L3_W6_LZ77
 CodePtrs08199120:                   ; 08199120
 .word Return080FE650+1, Sub080FE654+1
@@ -25866,12 +25866,12 @@ Graphics_YITitle_L2_8bpp_LZ77:      ; 08199EA4
 .incbin "../data/Graphics/YITitle_L2_8bpp_LZ77.bin"
 Graphics_YITitle_sprite_LZ77:       ; 0819A890
 .incbin "../data/Graphics/YITitle_sprite_LZ77.bin"
-Data0819D9FC:                       ; 0819D9FC
+YITitle_L23Palette_W15:             ; 0819D9FC
 .halfword 0x4943, 0x0000, 0x7FFF, 0x0140, 0x0E20, 0x22A0, 0x3DEF, 0x56B5
 .halfword 0x6B5A, 0x3A33, 0x52F9, 0x5F7F, 0x4943, 0x55A3, 0x6A43, 0x7323
 .halfword 0x55A3, 0x7F70, 0x77FA, 0x7FFF, 0x4943, 0x55A3, 0x6A43, 0x7FFF
 .halfword 0x7C13, 0x7C1F, 0x7C1F, 0x7C1F, 0x7C13, 0x7C1F, 0x7C1F, 0x7C1F
-Data0819DA3C:                       ; 0819DA3C
+YITitle_L23Palette_W6:              ; 0819DA3C
 .halfword 0x0000, 0x63BF, 0x575C, 0x4AF9, 0x3E75, 0x31F1, 0x218D, 0x152A
 .halfword 0x08C6, 0x0463, 0x0022, 0x0000, 0x1E3F, 0x1D5D, 0x0CB2, 0x7FFF
 .halfword 0x55A3, 0x1420, 0x50E7, 0x5FFF, 0x22A0, 0x1420, 0x0C20, 0x0420
@@ -25903,14 +25903,14 @@ Graphics_YITitle_L1_LZ77:           ; 0819E984
 .incbin "../data/Graphics/YITitle_L1_LZ77.bin"
 Tilemaps_YITitle_L1_LZ77:           ; 0819F0C8
 .incbin "../data/Tilemaps/YITitle_L1_LZ77.bin"
-Data0819F2B8:                       ; 0819F2B8
+YITitle_L1Palette:                  ; 0819F2B8
 .halfword 0x7C08, 0x0000, 0x7EE0, 0x03E0, 0x7C08, 0x0000, 0x063E, 0x7FFF
 .halfword 0x7C08, 0x0000, 0x7EE0, 0x04DF, 0x7C08, 0x0000, 0x7EE0, 0x035F
 Graphics_YITitle_icon32:            ; 0819F2D8
 .incbin "../data/Graphics/YITitle_icon32.bin"
 Graphics_YITitle_L0_LZ77:           ; 081A42D8
 .incbin "../data/Graphics/YITitle_L0_LZ77.bin"
-Data081A46F8:                       ; 081A46F8
+YITitleL0_FileSelectSpr_Pal:        ; 081A46F8
 .halfword 0x7C13, 0x3339, 0x2273, 0x3B46, 0x2281, 0x04DB, 0x6318, 0x4E73
 .halfword 0x0000, 0x7FFF, 0x177F, 0x063E, 0x53FC, 0x7F6D, 0x6EA7, 0x5DE2
 .halfword 0x7F6D, 0x1A3A, 0x0995, 0x1F9F, 0x095D, 0x35AD, 0x7BB4, 0x7ACF

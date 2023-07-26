@@ -3141,7 +3141,7 @@ bx    r0                            ; 0801EAD4
 .pool                               ; 0801EAD6
 
 ObjCF_D2_SetTile:
-; subroutine: set tile, called by CF-D2
+; called by CF-D2: set tile
 add   r0,0x4A                       ; 0801EAE0
 ldrh  r0,[r0]                       ; 0801EAE2
 ldr   r2,=0x03007010                ; 0801EAE4  Layer 1 tilemap EWRAM (0200000C)
@@ -24692,8 +24692,8 @@ pop   {r0}                          ; 0802901C
 bx    r0                            ; 0802901E
 
 Obj01_Y2Overlap:
-; subroutine: if relY == 2 and tile at relY-1 is ??07 or ??08, r0=6; else, r0=relY*2
-; runs in object 01 if relY < 3
+; runs for object 01 if relY < 3
+; if relY == 2 and tile at relY-1 is ??07 or ??08, return 6; else, return relY*2
 ; r1: relY*2
 push  {r4,lr}                       ; 08029020
 mov   r2,r0                         ; 08029022
@@ -24732,7 +24732,6 @@ bx    r1                            ; 0802905E
 .pool                               ; 08029060
 
 Obj01_Top_SameHighByteOverlap:
-; subroutine: ?
 ; runs for object 01 if relY < 3 and prevtile has same high byte (39/3A/3E/6E)
 ; r1: relY*2
 push  {r4,lr}                       ; 0802906C
@@ -25408,7 +25407,7 @@ bx    r0                            ; 080295F0
 .pool                               ; 080295F2
 
 Obj_LandInterior:
-; subroutine: Regular land interior tile
+; Regular land interior tile
 ; runs for 01 if relY >= 3
 ; runs for 04-07 if relY >= 4
 ; runs for 08-09 if relY >= 5

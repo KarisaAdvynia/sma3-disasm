@@ -95,7 +95,7 @@ pop   {r0}                          ; 0802F356
 bx    r0                            ; 0802F358
 .pool                               ; 0802F35A
 
-Sub0802F35C:
+StoryIntroText_DispChar:
 ; Story intro text command 00: Display normal text character
 push  {r4-r6,lr}                    ; 0802F35C
 mov   r5,r0                         ; 0802F35E
@@ -141,14 +141,14 @@ pop   {r0}                          ; 0802F3AC
 bx    r0                            ; 0802F3AE
 .pool                               ; 0802F3B0
 
-Sub0802F3C4:
+StoryIntroText_Cmd01:
 ; Story intro text command 01
 ldr   r1,[r0]                       ; 0802F3C4 \
 add   r1,0x1                        ; 0802F3C6 | increment byte to read
 str   r1,[r0]                       ; 0802F3C8 /
 bx    lr                            ; 0802F3CA
 
-Sub0802F3CC:
+StoryIntroText_SetY:
 ; Story intro text command 02: set Y
 ldr   r1,[r0]                       ; 0802F3CC
 ldrb  r1,[r1]                       ; 0802F3CE  read next byte
@@ -162,7 +162,7 @@ str   r1,[r0]                       ; 0802F3DC /
 bx    lr                            ; 0802F3DE
 .pool                               ; 0802F3E0
 
-Sub0802F3E4:
+StoryIntroText_SetX:
 ; Story intro text command 03: set X
 ldr   r1,[r0]                       ; 0802F3E4
 ldrb  r2,[r1]                       ; 0802F3E6  read next byte
@@ -175,7 +175,7 @@ str   r1,[r0]                       ; 0802F3F2 /
 bx    lr                            ; 0802F3F4
 .pool                               ; 0802F3F6
 
-Sub0802F3FC:
+StoryIntroText_2xScale:
 ; Story intro text command 04/31: 2x scale
 ldr   r1,=0x1B58                    ; 0802F3FC
 add   r0,r0,r1                      ; 0802F3FE  [0300637C]+1B58 (03003D64)
@@ -184,7 +184,7 @@ strh  r1,[r0]                       ; 0802F402  set 2x scale flag
 bx    lr                            ; 0802F404
 .pool                               ; 0802F406
 
-Sub0802F40C:
+StoryIntroText_Disp1LargeChar:
 ; Story intro text command 05: Display large text character
 push  {r4-r7,lr}                    ; 0802F40C
 mov   r7,r10                        ; 0802F40E
@@ -307,8 +307,8 @@ pop   {r0}                          ; 0802F4EA
 bx    r0                            ; 0802F4EC
 .pool                               ; 0802F4EE
 
-Sub0802F504:
-; subroutine: Process story intro message
+StoryIntroText_Main:
+; Process story intro message
 ; r0: 0300220C, r1: pointer to message data
 push  {r4,lr}                       ; 0802F504
 add   sp,-0x4                       ; 0802F506
@@ -344,7 +344,7 @@ add   r0,r2,0x1                     ; 0802F53C  increment message pointer
 str   r0,[r4]                       ; 0802F53E
 ldrb  r1,[r2,0x1]                   ; 0802F540  read next byte
 cmp   r1,0xFF                       ; 0802F542
-beq   @@Code0802F590                ; 0802F544  if command FF, return
+beq   @@Return                      ; 0802F544  if command FF, return
 cmp   r1,0x31                       ; 0802F546
 bne   @@Code0802F54C                ; 0802F548
 mov   r1,0x4                        ; 0802F54A  if command 31, r1=4
@@ -372,7 +372,7 @@ bl    Sub_bx_r1                     ; 0802F580
 b     @@Code0802F534                ; 0802F584
 .pool                               ; 0802F586
 
-@@Code0802F590:
+@@Return:
 add   sp,0x4                        ; 0802F590
 pop   {r4}                          ; 0802F592
 pop   {r0}                          ; 0802F594
@@ -671,7 +671,7 @@ ldr   r0,=0x7FFF                    ; 0802F7D0
 and   r0,r1                         ; 0802F7D2
 strh  r0,[r2,0xA]                   ; 0802F7D4
 ldrh  r0,[r2,0xA]                   ; 0802F7D6
-bl    Sub08002338                   ; 0802F7D8
+bl    InitOAMBuffer03005A00         ; 0802F7D8
 ldr   r3,=0x03002200                ; 0802F7DC
 ldr   r0,=0x47C6                    ; 0802F7DE
 add   r1,r3,r0                      ; 0802F7E0
@@ -1229,7 +1229,7 @@ sub   r3,0x6E                       ; 0802FD0E
 add   r1,r5,r3                      ; 0802FD10
 mov   r0,0xFF                       ; 0802FD12
 strh  r0,[r1]                       ; 0802FD14
-bl    Sub08002338                   ; 0802FD16
+bl    InitOAMBuffer03005A00         ; 0802FD16
 ldr   r0,=0x47C6                    ; 0802FD1A
 add   r1,r5,r0                      ; 0802FD1C
 mov   r0,0xB8                       ; 0802FD1E
@@ -1397,7 +1397,7 @@ str   r4,[r6,0x8]                   ; 0802FE7A
 ldr   r3,[r6,0x8]                   ; 0802FE7C
 add   r0,0x1                        ; 0802FE7E
 str   r0,[r1]                       ; 0802FE80
-ldr   r4,=Sub0802F35C+1             ; 0802FE82
+ldr   r4,=StoryIntroText_DispChar+1 ; 0802FE82
 ldr   r0,=Sub0802F2A4+1             ; 0802FE84
 mov   r8,r0                         ; 0802FE86
 sub   r4,r4,r0                      ; 0802FE88
@@ -7404,7 +7404,7 @@ b     @@Code080330BA                ; 0803306E
 @@Code08033084:
 mov   r0,r4                         ; 08033084
 mov   r1,r2                         ; 08033086
-bl    Sub0802F504                   ; 08033088
+bl    StoryIntroText_Main           ; 08033088
 ldr   r0,=0x1BE4                    ; 0803308C
 add   r1,r4,r0                      ; 0803308E
 ldrb  r0,[r1]                       ; 08033090
@@ -8414,7 +8414,7 @@ b     @@Code0803392E                ; 080338E0
 ldr   r6,=0x47D0                    ; 080338F4
 add   r0,r2,r6                      ; 080338F6
 strh  r1,[r0]                       ; 080338F8
-bl    Sub08002338                   ; 080338FA
+bl    InitOAMBuffer03005A00         ; 080338FA
 ldr   r7,=0x1088                    ; 080338FE
 add   r2,r4,r7                      ; 08033900
 mov   r3,0x0                        ; 08033902
@@ -8454,7 +8454,7 @@ ldr   r5,=0x47D0                    ; 0803394A
 add   r0,r0,r5                      ; 0803394C
 mov   r1,0x0                        ; 0803394E
 strh  r1,[r0]                       ; 08033950
-bl    Sub08002338                   ; 08033952
+bl    InitOAMBuffer03005A00         ; 08033952
 ldr   r6,=0x1088                    ; 08033956
 add   r2,r4,r6                      ; 08033958
 mov   r3,0x0                        ; 0803395A

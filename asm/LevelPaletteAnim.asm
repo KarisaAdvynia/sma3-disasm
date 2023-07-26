@@ -1,15 +1,16 @@
-Sub0802E3AC:
-; subroutine: called from most(all?) palette animation subroutines
+PalAnim_LoadFromColorTable:
+; called by most palette animations
 ; r0: color table index
-; r1: ?
-; r2: color number to modify?
+; r1: bytes of colors to copy
+; r2: first palette color to replace
+; r3: palette animation slot
 push  {r4-r6,lr}                    ; 0802E3AC
 mov   r6,r9                         ; 0802E3AE
 mov   r5,r8                         ; 0802E3B0
 push  {r5-r6}                       ; 0802E3B2
 mov   r4,r2                         ; 0802E3B4
 lsl   r2,r1,0x10                    ; 0802E3B6
-mov   r9,r2                         ; 0802E3B8
+mov   r9,r2                         ; 0802E3B8  r9 = bytes of colors to copy, <<0x10
 lsl   r4,r4,0x10                    ; 0802E3BA
 lsl   r3,r3,0x18                    ; 0802E3BC
 lsr   r3,r3,0x18                    ; 0802E3BE
@@ -17,7 +18,7 @@ lsr   r4,r4,0x11                    ; 0802E3C0
 ldr   r6,=0xFFFE                    ; 0802E3C2
 and   r6,r0                         ; 0802E3C4
 ldr   r0,=ColorTable                ; 0802E3C6  color table
-add   r6,r6,r0                      ; 0802E3C8
+add   r6,r6,r0                      ; 0802E3C8  r6 = source address
 ldr   r5,=0x03002200                ; 0802E3CA
 ldr   r2,=0x4963                    ; 0802E3CC
 add   r0,r5,r2                      ; 0802E3CE  r0 = 03006B63
@@ -37,9 +38,9 @@ add   r3,r3,r0                      ; 0802E3E8
 strh  r4,[r3]                       ; 0802E3EA
 lsl   r4,r4,0x1                     ; 0802E3EC
 ldr   r2,=0x02010400                ; 0802E3EE
-add   r1,r4,r2                      ; 0802E3F0
-mov   r0,r9                         ; 0802E3F2
-lsr   r0,r0,0x11                    ; 0802E3F4
+add   r1,r4,r2                      ; 0802E3F0  r1 = destination address
+mov   r0,r9                         ; 0802E3F2  bytes of colors to copy, <<0x10
+lsr   r0,r0,0x11                    ; 0802E3F4  number of colors to copy
 mov   r9,r0                         ; 0802E3F6
 mov   r0,r6                         ; 0802E3F8
 mov   r2,r9                         ; 0802E3FA
@@ -93,7 +94,7 @@ lsr   r4,r4,0x18                    ; 0802E47E
 mov   r1,0x1A                       ; 0802E480
 mov   r2,0x86                       ; 0802E482
 mov   r3,r4                         ; 0802E484
-bl    Sub0802E3AC                   ; 0802E486
+bl    PalAnim_LoadFromColorTable    ; 0802E486
 pop   {r4-r5}                       ; 0802E48A
 pop   {r0}                          ; 0802E48C
 bx    r0                            ; 0802E48E
@@ -125,6 +126,7 @@ bx    r0                            ; 0802E4CA
 .pool                               ; 0802E4CC
 
 Sub0802E4D0:
+; called by 11,12
 push  {r4-r5,lr}                    ; 0802E4D0
 mov   r5,r0                         ; 0802E4D2
 lsl   r1,r1,0x18                    ; 0802E4D4
@@ -155,7 +157,7 @@ lsr   r2,r0,0x10                    ; 0802E502
 mov   r0,r2                         ; 0802E504
 mov   r1,0x8                        ; 0802E506
 mov   r2,0x0                        ; 0802E508
-bl    Sub0802E3AC                   ; 0802E50A
+bl    PalAnim_LoadFromColorTable    ; 0802E50A
 ldr   r0,=0x03007240                ; 0802E50E  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                       ; 0802E510
 ldr   r1,=0x2AAC                    ; 0802E512
@@ -263,7 +265,7 @@ add   r1,r2,r1                      ; 0802E604
 ldrh  r0,[r1]                       ; 0802E606
 mov   r1,0xE                        ; 0802E608
 mov   r2,0x92                       ; 0802E60A
-bl    Sub0802E3AC                   ; 0802E60C
+bl    PalAnim_LoadFromColorTable    ; 0802E60C
 @@Code0802E610:
 ldrh  r0,[r4]                       ; 0802E610
 sub   r0,0x1                        ; 0802E612
@@ -315,12 +317,13 @@ add   r0,r0,r1                      ; 0802E67A
 ldrh  r0,[r0]                       ; 0802E67C
 mov   r1,0x6                        ; 0802E67E
 mov   r2,0xA                        ; 0802E680
-bl    Sub0802E3AC                   ; 0802E682
+bl    PalAnim_LoadFromColorTable    ; 0802E682
 pop   {r0}                          ; 0802E686
 bx    r0                            ; 0802E688
 .pool                               ; 0802E68A
 
 Sub0802E698:
+; called by 0E/11, 13/14
 push  {r4-r6,lr}                    ; 0802E698
 lsl   r1,r1,0x18                    ; 0802E69A
 lsr   r6,r1,0x18                    ; 0802E69C
@@ -366,7 +369,7 @@ mov   r0,r4                         ; 0802E6E8
 mov   r1,0x10                       ; 0802E6EA
 mov   r2,r5                         ; 0802E6EC
 mov   r3,r6                         ; 0802E6EE
-bl    Sub0802E3AC                   ; 0802E6F0
+bl    PalAnim_LoadFromColorTable    ; 0802E6F0
 pop   {r4-r6}                       ; 0802E6F4
 pop   {r0}                          ; 0802E6F6
 bx    r0                            ; 0802E6F8
@@ -381,11 +384,11 @@ lsr   r4,r1,0x18                    ; 0802E71E
 ldr   r0,=0x03007240                ; 0802E720  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                       ; 0802E722
 ldr   r1,=0x2992                    ; 0802E724
-add   r0,r0,r1                      ; 0802E726
-ldrh  r0,[r0]                       ; 0802E728
+add   r0,r0,r1                      ; 0802E726  [03007240]+2992
+ldrh  r0,[r0]                       ; 0802E728  layer 1 tileset ID
 cmp   r0,0x8                        ; 0802E72A
-bne   @@Code0802E74C                ; 0802E72C
-mov   r0,r5                         ; 0802E72E
+bne   @@NotTileset8                 ; 0802E72C
+mov   r0,r5                         ; 0802E72E \ runs if tileset 8
 mov   r1,r4                         ; 0802E730
 bl    PaletteAnim0A                 ; 0802E732
 add   r1,r4,0x1                     ; 0802E736
@@ -393,10 +396,10 @@ lsl   r1,r1,0x18                    ; 0802E738
 lsr   r1,r1,0x18                    ; 0802E73A
 mov   r0,r5                         ; 0802E73C
 bl    Sub0802E698                   ; 0802E73E
-b     @@Code0802E776                ; 0802E742
+b     @@Return                      ; 0802E742 / 
 .pool                               ; 0802E744
 
-@@Code0802E74C:
+@@NotTileset8:                      ;          \ runs if not tileset 8
 ldr   r0,=0x03002200                ; 0802E74C
 ldr   r1,=0x48A2                    ; 0802E74E
 add   r0,r0,r1                      ; 0802E750
@@ -410,13 +413,13 @@ ldrh  r0,[r0]                       ; 0802E75E
 mov   r1,0x8                        ; 0802E760
 mov   r2,0xA6                       ; 0802E762
 mov   r3,r4                         ; 0802E764
-bl    Sub0802E3AC                   ; 0802E766
+bl    PalAnim_LoadFromColorTable    ; 0802E766
 add   r1,r4,0x1                     ; 0802E76A
 lsl   r1,r1,0x18                    ; 0802E76C
 lsr   r1,r1,0x18                    ; 0802E76E
 mov   r0,r5                         ; 0802E770
-bl    Sub0802E698                   ; 0802E772
-@@Code0802E776:
+bl    Sub0802E698                   ; 0802E772 /
+@@Return:
 pop   {r4-r5}                       ; 0802E776
 pop   {r0}                          ; 0802E778
 bx    r0                            ; 0802E77A
@@ -472,7 +475,7 @@ ldrh  r0,[r0]                       ; 0802E7E2
 mov   r4,0x2                        ; 0802E7E4
 mov   r1,0x6                        ; 0802E7E6
 mov   r2,0x2                        ; 0802E7E8
-bl    Sub0802E3AC                   ; 0802E7EA
+bl    PalAnim_LoadFromColorTable    ; 0802E7EA
 mov   r0,r5                         ; 0802E7EE
 add   r0,0x88                       ; 0802E7F0  r0 = [03007240]+88 (03002294)
 strh  r4,[r0]                       ; 0802E7F2
@@ -490,11 +493,11 @@ lsl   r1,r1,0x18                    ; 0802E808
 lsr   r4,r1,0x18                    ; 0802E80A
 ldr   r0,=0x03007240                ; 0802E80C  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                       ; 0802E80E
-ldr   r1,=0x2AAC                    ; 0802E810
+ldr   r1,=0x2AAC                    ; 0802E810  [03007240]+2AAC (03004CB8)
 add   r0,r0,r1                      ; 0802E812
-ldrh  r0,[r0]                       ; 0802E814
-cmp   r0,0x87                       ; 0802E816
-beq   @@Code0802E880                ; 0802E818
+ldrh  r0,[r0]                       ; 0802E814  sublevel ID
+cmp   r0,0x87                       ; 0802E816  87: 5-1 3/3
+beq   @@Return                      ; 0802E818
 mov   r0,r2                         ; 0802E81A
 add   r0,0xA0                       ; 0802E81C
 ldrh  r1,[r0]                       ; 0802E81E
@@ -505,7 +508,7 @@ lsr   r1,r1,0x10                    ; 0802E826
 mov   r0,0xD8                       ; 0802E828
 lsl   r0,r0,0x1                     ; 0802E82A
 cmp   r1,r0                         ; 0802E82C
-bhi   @@Code0802E880                ; 0802E82E
+bhi   @@Return                      ; 0802E82E
 cmp   r1,0x8F                       ; 0802E830
 bls   @@Code0802E872                ; 0802E832
 mov   r1,r2                         ; 0802E834
@@ -547,8 +550,8 @@ ldrh  r0,[r0]                       ; 0802E874
 mov   r1,0x6                        ; 0802E876
 mov   r2,0x2                        ; 0802E878
 mov   r3,r4                         ; 0802E87A
-bl    Sub0802E3AC                   ; 0802E87C
-@@Code0802E880:
+bl    PalAnim_LoadFromColorTable    ; 0802E87C
+@@Return:
 pop   {r4}                          ; 0802E880
 pop   {r0}                          ; 0802E882
 bx    r0                            ; 0802E884
@@ -611,7 +614,7 @@ ldrh  r0,[r0]                       ; 0802E902
 mov   r1,0x6                        ; 0802E904
 mov   r2,0x2                        ; 0802E906
 mov   r3,r4                         ; 0802E908
-bl    Sub0802E3AC                   ; 0802E90A
+bl    PalAnim_LoadFromColorTable    ; 0802E90A
 @@Code0802E90E:
 pop   {r4}                          ; 0802E90E
 pop   {r0}                          ; 0802E910
@@ -619,7 +622,7 @@ bx    r0                            ; 0802E912
 .pool                               ; 0802E914
 
 PaletteAnim0A:
-; also called by 0E,11,12
+; also called by 12, and 0E/11 in tileset 8
 push  {lr}                          ; 0802E924
 lsl   r3,r1,0x18                    ; 0802E926
 lsr   r3,r3,0x18                    ; 0802E928
@@ -635,7 +638,7 @@ add   r0,r0,r1                      ; 0802E93A
 ldrh  r0,[r0]                       ; 0802E93C
 mov   r1,0x8                        ; 0802E93E
 mov   r2,0xA6                       ; 0802E940
-bl    Sub0802E3AC                   ; 0802E942
+bl    PalAnim_LoadFromColorTable    ; 0802E942
 pop   {r0}                          ; 0802E946
 bx    r0                            ; 0802E948
 .pool                               ; 0802E94A
@@ -726,7 +729,7 @@ ldrh  r0,[r0]                       ; 0802EA14
 mov   r1,0x8                        ; 0802EA16
 mov   r2,0xA6                       ; 0802EA18
 mov   r3,0x0                        ; 0802EA1A
-bl    Sub0802E3AC                   ; 0802EA1C
+bl    PalAnim_LoadFromColorTable    ; 0802EA1C
 pop   {r0}                          ; 0802EA20
 bx    r0                            ; 0802EA22
 .pool                               ; 0802EA24
@@ -771,7 +774,7 @@ lsl   r3,r3,0x18                    ; 0802EA76
 lsr   r3,r3,0x18                    ; 0802EA78
 mov   r1,0x1A                       ; 0802EA7A
 mov   r2,0x86                       ; 0802EA7C
-bl    Sub0802E3AC                   ; 0802EA7E
+bl    PalAnim_LoadFromColorTable    ; 0802EA7E
 ldrh  r1,[r5]                       ; 0802EA82
 mov   r0,0x18                       ; 0802EA84
 and   r0,r1                         ; 0802EA86
@@ -785,13 +788,14 @@ lsr   r4,r4,0x18                    ; 0802EA94
 mov   r1,0x8                        ; 0802EA96
 mov   r2,0xA6                       ; 0802EA98
 mov   r3,r4                         ; 0802EA9A
-bl    Sub0802E3AC                   ; 0802EA9C
+bl    PalAnim_LoadFromColorTable    ; 0802EA9C
 pop   {r4-r5}                       ; 0802EAA0
 pop   {r0}                          ; 0802EAA2
 bx    r0                            ; 0802EAA4
 .pool                               ; 0802EAA6
 
 Sub0802EAB8:
+; called by 05,06,07,10/12
 push  {r4-r7,lr}                    ; 0802EAB8
 lsl   r1,r1,0x18                    ; 0802EABA
 lsr   r1,r1,0x18                    ; 0802EABC
@@ -885,7 +889,7 @@ mov   r0,r4                         ; 0802EB88
 mov   r1,0x1A                       ; 0802EB8A
 mov   r2,0x86                       ; 0802EB8C
 mov   r3,r5                         ; 0802EB8E
-bl    Sub0802E3AC                   ; 0802EB90
+bl    PalAnim_LoadFromColorTable    ; 0802EB90
 add   r4,0x1A                       ; 0802EB94
 lsl   r4,r4,0x10                    ; 0802EB96
 lsr   r4,r4,0x10                    ; 0802EB98
@@ -895,7 +899,7 @@ lsr   r3,r3,0x18                    ; 0802EB9E
 mov   r0,r4                         ; 0802EBA0
 mov   r1,0xC                        ; 0802EBA2
 mov   r2,0x4                        ; 0802EBA4
-bl    Sub0802E3AC                   ; 0802EBA6
+bl    PalAnim_LoadFromColorTable    ; 0802EBA6
 @@Code0802EBAA:
 add   r1,r6,0x2                     ; 0802EBAA
 lsl   r1,r1,0x18                    ; 0802EBAC
@@ -980,7 +984,7 @@ bx    r0                            ; 0802EC56
 .pool                               ; 0802EC58
 
 PaletteAnim03:
-; r1: palette animation slot number
+; r1: palette animation slot number, 0 by default
 push  {r4-r7,lr}                    ; 0802EC7C
 lsl   r1,r1,0x18                    ; 0802EC7E
 lsr   r1,r1,0x18                    ; 0802EC80
@@ -1126,7 +1130,7 @@ add   r3,r3,r1                      ; 0802EDAA
 and   r3,r2                         ; 0802EDAC
 strh  r3,[r0]                       ; 0802EDAE
 cmp   r3,0x7F                       ; 0802EDB0
-bls   @@Code0802EE2A                ; 0802EDB2
+bls   @@Return                      ; 0802EDB2
 mov   r3,r5                         ; 0802EDB4
 add   r3,0x9E                       ; 0802EDB6
 ldrh  r0,[r3]                       ; 0802EDB8
@@ -1188,7 +1192,7 @@ add   r4,r4,r2                      ; 0802EE22
 ldrb  r0,[r4]                       ; 0802EE24
 orr   r5,r0                         ; 0802EE26
 strb  r5,[r4]                       ; 0802EE28
-@@Code0802EE2A:
+@@Return:
 pop   {r4-r7}                       ; 0802EE2A
 pop   {r0}                          ; 0802EE2C
 bx    r0                            ; 0802EE2E
@@ -1244,19 +1248,19 @@ ldrh  r0,[r0]                       ; 0802EEAE
 mov   r1,0x1A                       ; 0802EEB0
 mov   r2,0x86                       ; 0802EEB2
 mov   r3,0x0                        ; 0802EEB4
-bl    Sub0802E3AC                   ; 0802EEB6
+bl    PalAnim_LoadFromColorTable    ; 0802EEB6
 pop   {r4}                          ; 0802EEBA
 pop   {r0}                          ; 0802EEBC
 bx    r0                            ; 0802EEBE
 .pool                               ; 0802EEC0
 
 Return0802EEC4:
-; runs if palette animation ID is 00
+; palette animation 00
 bx    lr                            ; 0802EEC4
 .pool                               ; 0802EEC6
 
 PaletteAnimMain:
-; subroutine: Process palette animations
+; Process palette animations
 ; runs every frame during levels
 push  {r4-r6,lr}                    ; 0802EEC8
 mov   r6,r0                         ; 0802EECA
@@ -1279,19 +1283,19 @@ ldr   r2,=0x29A2                    ; 0802EEE8
 add   r0,r1,r2                      ; 0802EEEA  r0 = [03007240]+29A2 (03004BAE)
 ldrh  r0,[r0]                       ; 0802EEEC  header index 9: layer effects?
 cmp   r0,0x9                        ; 0802EEEE \ if Froggy interior, skip
-beq   @@Code0802EF20                ; 0802EEF0 /
+beq   @@Return                      ; 0802EEF0 /
 ldr   r2,=0x4A07                    ; 0802EEF2
 add   r0,r5,r2                      ; 0802EEF4  r0 = 03006C07
 ldrb  r0,[r0]                       ; 0802EEF6
 cmp   r0,0x0                        ; 0802EEF8
-bne   @@Code0802EF20                ; 0802EEFA  if 03006C07 is nonzero, skip
+bne   @@Return                      ; 0802EEFA  if 03006C07 is nonzero, skip
 ldr   r0,=0x03006D80                ; 0802EEFC
 mov   r2,0xD4                       ; 0802EEFE
 lsl   r2,r2,0x1                     ; 0802EF00  r2 = 1A8
 add   r0,r0,r2                      ; 0802EF02  r0 = 03006F28
 ldrh  r0,[r0]                       ; 0802EF04
 cmp   r0,0x0                        ; 0802EF06
-bne   @@Code0802EF20                ; 0802EF08  if 03006F28 is nonzero, skip
+bne   @@Return                      ; 0802EF08  if 03006F28 is nonzero, skip
 ldr   r2,=0x29A6                    ; 0802EF0A
 add   r0,r1,r2                      ; 0802EF0C  r0 = [03007240]+29A6 (03004BB2)
 ldrh  r0,[r0]                       ; 0802EF0E  r0 = palette animation ID
@@ -1302,7 +1306,7 @@ ldr   r2,[r0]                       ; 0802EF16  r2 = pointer from table
 mov   r0,r6                         ; 0802EF18  r0 = [03007240] (0300220C)
 mov   r1,0x0                        ; 0802EF1A
 bl    Sub_bx_r2                     ; 0802EF1C
-@@Code0802EF20:
+@@Return:
 pop   {r4-r6}                       ; 0802EF20
 pop   {r0}                          ; 0802EF22
 bx    r0                            ; 0802EF24
@@ -1410,7 +1414,7 @@ mov   r6,r5                         ; 0802F00A
 add   r6,0xB0                       ; 0802F00C
 ldrb  r0,[r6]                       ; 0802F00E
 cmp   r0,0x0                        ; 0802F010
-beq   @@Code0802F032                ; 0802F012
+beq   @@Return                      ; 0802F012
 ldr   r0,=0x02010000                ; 0802F014
 ldr   r4,=0x020293D0                ; 0802F016
 mov   r5,0xE0                       ; 0802F018
@@ -1424,14 +1428,14 @@ mov   r2,r5                         ; 0802F028
 bl    swi_MemoryCopy4or2            ; 0802F02A  Memory copy/fill, 4- or 2-byte blocks
 mov   r0,0x0                        ; 0802F02E
 strb  r0,[r6]                       ; 0802F030
-@@Code0802F032:
+@@Return:
 pop   {r4-r6}                       ; 0802F032
 pop   {r0}                          ; 0802F034
 bx    r0                            ; 0802F036
 .pool                               ; 0802F038
 
-Sub0802F050:
-; subroutine: generate background gradient in RAM, for background color IDs 10-1F
+GenBGGradient:
+; Generate background gradient in RAM, for background color IDs 10-1F
 push  {r4-r7,lr}                    ; 0802F050
 mov   r7,r10                        ; 0802F052
 mov   r6,r9                         ; 0802F054
@@ -1445,7 +1449,7 @@ add   r0,r0,r1                      ; 0802F062  r0 = [03007240]+2990 (03004B9C)
 ldrh  r2,[r0]                       ; 0802F064  header index 0: background color
 cmp   r2,0xF                        ; 0802F066
 bhi   @@Code0802F06C                ; 0802F068
-b     @@Code0802F21E                ; 0802F06A  if background color ID < 10, return
+b     @@Return                      ; 0802F06A  if background color ID < 10, return
 @@Code0802F06C:
 lsl   r0,r2,0x11                    ; 0802F06C
 ldr   r1,=Data0816961C              ; 0802F06E
@@ -1458,7 +1462,7 @@ mov   r2,0x0                        ; 0802F07A
 mov   r9,r2                         ; 0802F07C  r9 = color index for calculated gradient (stored from the end of table: 020293D0 + 2*(1B5-r9))
 mov   r3,0x0                        ; 0802F07E
 str   r3,[sp,0x10]                  ; 0802F080  [sp+10] = outer loop index (color to process, 00-17)
-@@Code0802F082:                     ; loop across each pair of consecutive colors in ROM gradient
+@@GradientPairsLoop:                ; loop across each pair of consecutive colors in ROM gradient
 ldr   r0,[sp,0xC]                   ; 0802F082  r0 = color table index for start of gradient /2
 ldr   r2,[sp,0x10]                  ; 0802F084
 add   r1,r0,r2                      ; 0802F086  r1 = color table index for current color, /2
@@ -1570,7 +1574,7 @@ str   r1,[sp,0x14]                  ; 0802F150  [sp+14] = color table index for 
 ldr   r3,[sp,0xC]                   ; 0802F152
 add   r3,0x17                       ; 0802F154
 str   r3,[sp,0x18]                  ; 0802F156  [sp+18] = color table index for final color, /2
-@@Code0802F158:                     ; loop: interpolate for a more detailed gradient, 0x10 colors per pair of colors in ROM gradient
+@@InterpolateLoop:                  ;          \ subloop: interpolate for a more detailed gradient, 0x10 colors per pair of colors in ROM gradient
 mov   r0,r7                         ; 0802F158  red component difference
 mul   r0,r2                         ; 0802F15A
 lsr   r0,r0,0x10                    ; 0802F15C
@@ -1615,12 +1619,12 @@ sub   r0,r1,r0                      ; 0802F1AA
 @@Code0802F1AC:
 lsl   r0,r0,0x10                    ; 0802F1AC
 lsr   r1,r0,0x10                    ; 0802F1AE  r1 = new blue component
-lsl   r0,r4,0x5                     ; 0802F1B0 \ create new color from components
+lsl   r0,r4,0x5                     ; 0802F1B0  \ create new color from components
 orr   r3,r0                         ; 0802F1B2
 lsl   r0,r3,0x10                    ; 0802F1B4
 lsl   r1,r1,0x1A                    ; 0802F1B6
 orr   r1,r0                         ; 0802F1B8
-lsr   r1,r1,0x10                    ; 0802F1BA / r1 = new color
+lsr   r1,r1,0x10                    ; 0802F1BA  / r1 = new color
 ldr   r0,=0x01B5                    ; 0802F1BC
 mov   r3,r9                         ; 0802F1BE
 sub   r0,r0,r3                      ; 0802F1C0
@@ -1638,14 +1642,14 @@ add   r0,0x10                       ; 0802F1D6
 lsl   r0,r0,0x10                    ; 0802F1D8
 lsr   r2,r0,0x10                    ; 0802F1DA
 cmp   r2,0xFF                       ; 0802F1DC
-bls   @@Code0802F158                ; 0802F1DE /
+bls   @@InterpolateLoop             ; 0802F1DE /
 ldr   r1,[sp,0x14]                  ; 0802F1E0
 lsl   r0,r1,0x10                    ; 0802F1E2
 lsr   r0,r0,0x10                    ; 0802F1E4
 str   r0,[sp,0x10]                  ; 0802F1E6  update color table index
 cmp   r0,0x16                       ; 0802F1E8  loop across indexes 00-16 (last comparison would be 16-17)
 bhi   @@Code0802F1EE                ; 0802F1EA
-b     @@Code0802F082                ; 0802F1EC
+b     @@GradientPairsLoop           ; 0802F1EC
 @@Code0802F1EE:
 mov   r2,0x0                        ; 0802F1EE
 mov   r9,r2                         ; 0802F1F0
@@ -1655,7 +1659,7 @@ ldr   r3,[sp,0x18]                  ; 0802F1F6  r3 = color table index for final
 lsl   r0,r3,0x1                     ; 0802F1F8
 add   r0,r0,r1                      ; 0802F1FA
 ldrh  r1,[r0]                       ; 0802F1FC  r1 = final color
-@@Code0802F1FE:                     ; loop: fill in remaining 46 colors in the gradient table with a copy of the final color
+@@FillColorsLoop:                   ; loop: fill in remaining 46 colors in the gradient table with a copy of the final color
 mov   r3,r9                         ; 0802F1FE \
 lsl   r0,r3,0x1                     ; 0802F200
 add   r0,r0,r2                      ; 0802F202
@@ -1666,13 +1670,13 @@ lsl   r0,r0,0x10                    ; 0802F20A
 lsr   r0,r0,0x10                    ; 0802F20C
 mov   r9,r0                         ; 0802F20E
 cmp   r0,0x45                       ; 0802F210
-bls   @@Code0802F1FE                ; 0802F212 /
+bls   @@FillColorsLoop              ; 0802F212 /
 ldr   r0,=0x03002200                ; 0802F214
 ldr   r2,=0x4A13                    ; 0802F216
 add   r1,r0,r2                      ; 0802F218
 mov   r0,0x0                        ; 0802F21A
 strb  r0,[r1]                       ; 0802F21C
-@@Code0802F21E:
+@@Return:
 add   sp,0x1C                       ; 0802F21E
 pop   {r3-r5}                       ; 0802F220
 mov   r8,r3                         ; 0802F222
@@ -1699,7 +1703,7 @@ strh  r3,[r1]                       ; 0802F25A
 ldr   r0,=0x0300700C                ; 0802F25C
 ldr   r0,[r0]                       ; 0802F25E
 cmp   r0,0x0                        ; 0802F260
-beq   @@Code0802F282                ; 0802F262
+beq   @@Return                      ; 0802F262
 ldr   r0,=0x03007240                ; 0802F264  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r2,[r0]                       ; 0802F266
 ldr   r3,=0x2990                    ; 0802F268
@@ -1712,11 +1716,11 @@ lsl   r3,r3,0x6                     ; 0802F274
 add   r0,r2,r3                      ; 0802F276
 ldrh  r0,[r0,0x4]                   ; 0802F278
 cmp   r0,0x0                        ; 0802F27A
-beq   @@Code0802F282                ; 0802F27C
+beq   @@Return                      ; 0802F27C
 @@Code0802F27E:
 mov   r0,0x1                        ; 0802F27E
 strh  r0,[r1]                       ; 0802F280
-@@Code0802F282:
+@@Return:
 pop   {r0}                          ; 0802F282
 bx    r0                            ; 0802F284
 .pool                               ; 0802F286

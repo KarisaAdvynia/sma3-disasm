@@ -44,7 +44,7 @@ bx    r0                            ; 08013470
 .pool                               ; 08013472
 
 LoadTilesetGraphics:
-; subroutine: Load tileset-specific graphics for layer 1, layer 2, layer 3, and sprites
+; Load tileset-specific graphics for layer 1, layer 2, layer 3, and sprites
 push  {r4-r7,lr}                    ; 08013474
 mov   r7,r10                        ; 08013476
 mov   r6,r9                         ; 08013478
@@ -376,7 +376,7 @@ bx    r0                            ; 08013768
 .pool                               ; 0801376A
 
 Sub080137EC:
-; subroutine: replace moving platform graphics, in sublevel EA if layer 1 tileset is 3
+; Replace moving platform graphics, in sublevel EA if layer 1 tileset is 3
 push  {r4,lr}                       ; 080137EC
 ldr   r0,=0x03007240                ; 080137EE  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                       ; 080137F0
@@ -403,8 +403,8 @@ pop   {r0}                          ; 0801381A
 bx    r0                            ; 0801381C
 .pool                               ; 0801381E
 
-Sub08013834:
-; subroutine: Load palettes from header
+LoadHeaderPalettes:
+; Load palettes from header
 push  {r4-r7,lr}                    ; 08013834
 mov   r7,r10                        ; 08013836
 mov   r6,r9                         ; 08013838
@@ -547,7 +547,7 @@ ldr   r6,=0x154A                    ; 08013954
 add   r2,r2,r6                      ; 08013956  r2 = [0300702C]+154A (030039AA)
 strh  r0,[r2]                       ; 08013958  color table offset 800C = [08167404 + 2*Yoshi color]
 mov   r0,0x0                        ; 0801395A
-bl    Sub08013E3C                   ; 0801395C  subroutine: load palettes, using color table offsets
+bl    LoadHeaderPalsFromColorTable  ; 0801395C  subroutine: load palettes, using color table offsets
 mov   r5,0x0                        ; 08013960  r5 = loop index
 mov   r10,r4                        ; 08013962
 ldr   r4,=0x020105E0                ; 08013964
@@ -903,7 +903,7 @@ bx    r0                            ; 08013C5C
 .pool                               ; 08013C5E
 
 Sub08013CC4:
-; subroutine: Froggy VRAM and some sublevel hardcoded background colors?
+; Froggy VRAM and some sublevel hardcoded background colors?
 ; r0 starts with hv09 +2
 push  {r4-r5,lr}                    ; 08013CC4
 lsl   r0,r0,0x10                    ; 08013CC6
@@ -1071,9 +1071,9 @@ pop   {r0}                          ; 08013E28
 bx    r0                            ; 08013E2A
 .pool                               ; 08013E2C
 
-Sub08013E3C:
-; subroutine: load palettes
-; r0 starts at with index of palette offset data to load
+LoadHeaderPalsFromColorTable:
+; Load palettes from color table offsets
+; r0: index of palette offset data to load
 push  {r4-r7,lr}                    ; 08013E3C
 mov   r7,r10                        ; 08013E3E
 mov   r6,r9                         ; 08013E40
@@ -1618,7 +1618,7 @@ ldr   r0,[r0]                       ; 080143E0
 mov   r1,0x8C                       ; 080143E2
 lsl   r1,r1,0x2                     ; 080143E4  230
 add   r7,r0,r1                      ; 080143E6  [03007240]+230 (0300243C)
-bl    Sub08013834                   ; 080143E8
+bl    LoadHeaderPalettes            ; 080143E8
 ldr   r0,=Graphics_Gameplay_Raphael_L2_8bpp_LZ77; 080143EC
 mov   r1,0xC0                       ; 080143EE
 lsl   r1,r1,0x13                    ; 080143F0  06000000
@@ -2102,7 +2102,6 @@ bx    r0                            ; 080148AC
 .pool                               ; 080148AE
 
 Sub080148B4:
-; subroutine: ?
 push  {r4-r7,lr}                    ; 080148B4
 mov   r7,r10                        ; 080148B6
 mov   r6,r9                         ; 080148B8
@@ -5990,7 +5989,7 @@ bx    r0                            ; 08016A16
 .pool                               ; 08016A18
 
 Sub08016A24:
-; subroutine: override layer 0 control register in sublevel 78 (2-8 sewer rooms), only if they're the correct layer 1 tileset/layer 2 image/layer 3 image
+; Override layer 0 control register in sublevel 78 (2-8 sewer rooms), only if they're the correct layer 1 tileset/layer 2 image/layer 3 image
 push  {lr}                          ; 08016A24
 ldr   r0,=0x03007240                ; 08016A26  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                       ; 08016A28
@@ -6112,7 +6111,7 @@ pop   {r0}                          ; 08016B2C
 bx    r0                            ; 08016B2E
 
 Sub08016B30:
-; subroutine: something VRAM/palette-related for snowing animation
+; something VRAM/palette-related for snowing animation?
 push  {r4,lr}                       ; 08016B30
 ldr   r0,=0x03007240                ; 08016B32  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                       ; 08016B34
@@ -6120,13 +6119,14 @@ ldr   r2,=0x29A4                    ; 08016B36
 add   r0,r1,r2                      ; 08016B38  r0 = [03007240]+29A4 (03004BB0)
 ldrh  r0,[r0]                       ; 08016B3A  Graphics animation ID
 cmp   r0,0x9                        ; 08016B3C  09: snowing animation
-bne   @@Code08016BBC                ; 08016B3E  if ID is not 09, return
-add   r2,0x2                        ; 08016B40
-add   r0,r1,r2                      ; 08016B42  r0 =
-ldrh  r0,[r0]                       ; 08016B44
+bne   @@Return                      ; 08016B3E  if ID is not 09, return
+add   r2,0x2                        ; 08016B40  29A6
+add   r0,r1,r2                      ; 08016B42  r0 = [03007240]+29A6 (03004BB2)
+ldrh  r0,[r0]                       ; 08016B44  Palette animation ID
 cmp   r0,0xB                        ; 08016B46
-bne   @@Code08016BA8                ; 08016B48
-ldr   r4,=Data082D183E              ; 08016B4A
+bne   @@PalAnimNotB                 ; 08016B48
+                                    ;          \ runs if palette anim 0B
+ldr   r4,=Data082D183E              ; 08016B4A  overwrite colors 01-04 with white?
 ldr   r1,=0x02010402                ; 08016B4C
 mov   r0,r4                         ; 08016B4E
 mov   r2,0x3                        ; 08016B50
@@ -6148,10 +6148,10 @@ ldr   r1,=0x06008E00                ; 08016B76
 mov   r0,r4                         ; 08016B78
 mov   r2,0x80                       ; 08016B7A
 bl    swi_MemoryCopy4or2            ; 08016B7C  Memory copy/fill, 4- or 2-byte blocks
-b     @@Code08016BBC                ; 08016B80
+b     @@Return                      ; 08016B80 /
 .pool                               ; 08016B82
 
-@@Code08016BA8:
+@@PalAnimNotB:                      ;          \ runs if palette anim not 0B
 ldr   r0,=0x0202EDB0                ; 08016BA8
 ldr   r1,=0x06008C00                ; 08016BAA
 mov   r2,0x80                       ; 08016BAC
@@ -6159,15 +6159,15 @@ bl    swi_MemoryCopy4or2            ; 08016BAE  Memory copy/fill, 4- or 2-byte b
 ldr   r0,=0x0202EFB0                ; 08016BB2
 ldr   r1,=0x06008E00                ; 08016BB4
 mov   r2,0x80                       ; 08016BB6
-bl    swi_MemoryCopy4or2            ; 08016BB8  Memory copy/fill, 4- or 2-byte blocks
-@@Code08016BBC:
+bl    swi_MemoryCopy4or2            ; 08016BB8 / Memory copy/fill, 4- or 2-byte blocks
+@@Return:
 pop   {r4}                          ; 08016BBC
 pop   {r0}                          ; 08016BBE
 bx    r0                            ; 08016BC0
 .pool                               ; 08016BC2
 
 Sub08016BD4:
-; subroutine: unrolled loop to clear halfwords at 0300229E-22B0
+; unrolled loop to clear halfwords at 0300229E-22B0
 mov   r2,r0                         ; 08016BD4
 add   r0,0x9E                       ; 08016BD6  [03007240]+9E (030022AA)
 mov   r1,0x0                        ; 08016BD8
@@ -6193,8 +6193,8 @@ strh  r1,[r0]                       ; 08016BFE
 bx    lr                            ; 08016C00
 .pool                               ; 08016C02
 
-Sub08016C04:
-; subroutine: Layer 2/3 image processing
+ProcessL23Images:
+; Layer 2/3 image processing
 push  {r4-r7,lr}                    ; 08016C04
 mov   r7,r9                         ; 08016C06
 mov   r6,r8                         ; 08016C08
@@ -6374,10 +6374,10 @@ bls   @@Code08016D84                ; 08016D94 /
 ldr   r4,=0x03002200                ; 08016D96
 ldr   r3,=0x4852                    ; 08016D98
 add   r0,r4,r3                      ; 08016D9A  r0 = 03006A52
-ldrh  r0,[r0]                       ; 08016D9C  entrance type (00: level entrance, 01: screen exit, 02: midway entrance)
+ldrh  r0,[r0]                       ; 08016D9C  entrance type (00: main entrance, 01: screen exit, 02: midway entrance)
 cmp   r0,0x0                        ; 08016D9E
-bne   @@Code08016DA6                ; 08016DA0  skip parsing sublevel data if this isn't from a level entrance
-bl    Sub08017488                   ; 08016DA2  subroutine: Parse sublevel main data
+bne   @@Code08016DA6                ; 08016DA0  skip parsing sublevel data if this isn't from a main entrance
+bl    LoadObjectsAndScreenExits     ; 08016DA2  subroutine: Process sublevel main data after header
 @@Code08016DA6:
 mov   r5,0x0                        ; 08016DA6
 ldr   r7,=0x03007240                ; 08016DA8  Normal gameplay IWRAM (Ptr to 0300220C)
@@ -6699,8 +6699,8 @@ pop   {r0}                          ; 0801707C
 bx    r0                            ; 0801707E
 .pool                               ; 08017080
 
-Sub080170CC:
-; subroutine: Extract bitwise values from object data header, into tables at 0300399E and 03004B9C, every 2 bytes
+ExtractSublevelHeaderBits:
+; Extract bitwise values from object data header, into tables at 0300399E and 03004B9C, every 2 bytes
 push  {r4-r7,lr}                    ; 080170CC \ push LR and r4-r10
 mov   r7,r10                        ; 080170CE |
 mov   r6,r9                         ; 080170D0 |
@@ -6902,8 +6902,8 @@ pop   {r0}                          ; 08017236
 bx    r0                            ; 08017238
 .pool                               ; 0801723A
 
-Sub08017288:
-; subroutine: Generate table of tileset-specific layer 1 16x16 tiles at 0200800C, using data at 081BC6E8
+GenL1DynTile16Table:
+; Generate table of tileset-specific layer 1 16x16 tiles at 0200800C, using data at 081BC6E8
 push  {r4-r7,lr}                    ; 08017288
 mov   r7,r10                        ; 0801728A
 mov   r6,r9                         ; 0801728C
@@ -6980,8 +6980,8 @@ pop   {r0}                          ; 0801731A
 bx    r0                            ; 0801731C
 .pool                               ; 0801731E
 
-Sub08017320:
-; subroutine: Process standard object
+StdObjProcess:
+; Process standard object
 ; r1: offset of next byte to process in sublevel main data
 push  {r4-r6,lr}                    ; 08017320
 mov   r12,r0                        ; 08017322
@@ -7106,8 +7106,8 @@ pop   {r0}                          ; 0801740A
 bx    r0                            ; 0801740C
 .pool                               ; 0801740E
 
-Sub08017418:
-; subroutine: Process extended object
+ExtObjProcess:
+; Process extended object
 ; r1: offset of next byte to process in sublevel main data
 push  {r4-r5,lr}                    ; 08017418
 lsl   r1,r1,0x10                    ; 0801741A \
@@ -7153,8 +7153,8 @@ pop   {r0}                          ; 0801746A
 bx    r0                            ; 0801746C
 .pool                               ; 0801746E
 
-Sub08017488:
-; subroutine: Process sublevel main data, after header
+LoadObjectsAndScreenExits:
+; Process sublevel main data, after header
 push  {r4-r7,lr}                    ; 08017488
 mov   r7,r10                        ; 0801748A
 mov   r6,r9                         ; 0801748C
@@ -7183,7 +7183,7 @@ lsr   r2,r0,0x10                    ; 080174B6
 cmp   r2,r4                         ; 080174B8
 bls   @@Code080174AA                ; 080174BA /
 str   r3,[sp,0x4]                   ; 080174BC
-bl    Sub08017288                   ; 080174BE  subroutine: ? generate 0200800C
+bl    GenL1DynTile16Table           ; 080174BE
 mov   r2,0x0                        ; 080174C2  loop index
 ldr   r3,[sp,0x4]                   ; 080174C4
 mov   r7,r3                         ; 080174C6
@@ -7274,7 +7274,7 @@ ldr   r4,=0x2B08                    ; 08017564
 add   r0,r0,r4                      ; 08017566  r0 = [03007240]+2B08 (03004D14)
 ldr   r6,[r0]                       ; 08017568  r6 = pointer to sublevel main data
 mov   r7,r9                         ; 0801756A  r7 = [03007240]+42 (0300224E)
-@@Code0801756C:                     ;          \ loop: init object ID and position, then call standard/extended object-specific init
+@@ObjectLoop:                       ;          \ loop: init object ID and position, then call standard/extended object-specific init
 mov   r1,0x0                        ; 0801756C
 mov   r0,0x1                        ; 0801756E
 ldr   r2,[sp]                       ; 08017570  [03007240]+4E (0300225A)
@@ -7309,9 +7309,9 @@ bne   @@Code080175DC                ; 080175A6
 mov   r0,r3                         ; 080175A8 \ runs if extended object
 mov   r1,r5                         ; 080175AA
 str   r3,[sp,0x4]                   ; 080175AC
-bl    Sub08017418                   ; 080175AE  subroutine: process extended object
+bl    ExtObjProcess                 ; 080175AE  subroutine: process extended object
 ldr   r3,[sp,0x4]                   ; 080175B2
-b     @@Code0801756C                ; 080175B4 /
+b     @@ObjectLoop                  ; 080175B4 /
 .pool                               ; 080175B6
 
 @@Code080175DC:
@@ -7320,16 +7320,16 @@ beq   @@Code080175EE                ; 080175DE  if FF, end loop
 mov   r0,r3                         ; 080175E0
 mov   r1,r5                         ; 080175E2
 str   r3,[sp,0x4]                   ; 080175E4
-bl    Sub08017320                   ; 080175E6  subroutine: process standard object
+bl    StdObjProcess                 ; 080175E6  subroutine: process standard object
 ldr   r3,[sp,0x4]                   ; 080175EA
-b     @@Code0801756C                ; 080175EC /
+b     @@ObjectLoop                  ; 080175EC /
 @@Code080175EE:
 lsl   r0,r0,0x10                    ; 080175EE
 lsr   r4,r0,0x18                    ; 080175F0  object FF "screen number" bytes, now used as first screen exit's screen
 cmp   r4,0x7F                       ; 080175F2
-bhi   @@Code08017694                ; 080175F4  if screen >7F, return
+bhi   @@Return                      ; 080175F4  if screen >7F, return
 ldr   r7,=0x03007240                ; 080175F6  Normal gameplay IWRAM (Ptr to 0300220C)
-@@Code080175F8:
+@@ScreenExitLoop:
 mov   r0,0x7F                       ; 080175F8
 and   r4,r0                         ; 080175FA  r4 is still screen number
 lsl   r3,r4,0x13                    ; 080175FC
@@ -7392,14 +7392,14 @@ lsr   r5,r0,0x10                    ; 0801766C
 add   r0,r6,r5                      ; 0801766E
 ldrb  r4,[r0]                       ; 08017670
 cmp   r4,0xFF                       ; 08017672
-beq   @@Code08017694                ; 08017674
+beq   @@Return                      ; 08017674
 add   r0,r5,0x1                     ; 08017676
 lsl   r0,r0,0x10                    ; 08017678
 lsr   r5,r0,0x10                    ; 0801767A
-b     @@Code080175F8                ; 0801767C
+b     @@ScreenExitLoop              ; 0801767C
 .pool                               ; 0801767E
 
-@@Code08017694:
+@@Return:
 add   sp,0x8                        ; 08017694
 pop   {r3-r5}                       ; 08017696
 mov   r8,r3                         ; 08017698
@@ -7410,7 +7410,6 @@ pop   {r0}                          ; 080176A0
 bx    r0                            ; 080176A2
 
 ObjShared_TestItemMemory:
-; subroutine: test item memory
 ; r0: 0300220C
 ; r1: offset to layer 1 tilemap
 push  {r4-r5,lr}                    ; 080176A4
@@ -8240,8 +8239,8 @@ pop   {r0}                          ; 08017DB8
 bx    r0                            ; 08017DBA
 .pool                               ; 08017DBC
 
-Sub08017DC4:
-; subroutine: Set item memory
+SetItemMemory:
+; Set item memory
 ; r2: screen number
 push  {r4-r6,lr}                    ; 08017DC4
 lsl   r2,r2,0x10                    ; 08017DC6
@@ -8319,7 +8318,7 @@ mov   r0,r4                         ; 08017E5E
 add   r0,0xAC                       ; 08017E60
 ldrh  r2,[r0]                       ; 08017E62
 mov   r0,r5                         ; 08017E64
-bl    Sub08017DC4                   ; 08017E66
+bl    SetItemMemory                 ; 08017E66
 ldrh  r1,[r5,0x6]                   ; 08017E6A
 mov   r0,r4                         ; 08017E6C
 bl    Sub08017AC4                   ; 08017E6E
@@ -8793,7 +8792,7 @@ add   r0,0xAC                       ; 0801823A
 ldrh  r2,[r0]                       ; 0801823C
 mov   r0,r4                         ; 0801823E
 mov   r1,r5                         ; 08018240
-bl    Sub08017DC4                   ; 08018242
+bl    SetItemMemory                 ; 08018242
 bl    TileInteract_RedCoin          ; 08018246
 @@Code0801824A:
 ldrh  r1,[r4,0x6]                   ; 0801824A
@@ -9371,7 +9370,6 @@ bx    r0                            ; 08018706
 .pool                               ; 08018708
 
 Sub0801870C:
-; subroutine: ?
 push  {r4-r6,lr}                    ; 0801870C
 ldr   r5,=0x03007240                ; 0801870E  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r5]                       ; 08018710
@@ -9692,7 +9690,6 @@ bx    lr                            ; 080189AC
 .pool                               ; 080189AE
 
 Sub080189B0:
-; subroutine: ?
 push  {lr}                          ; 080189B0
 ldr   r0,=0x03007240                ; 080189B2  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r2,[r0]                       ; 080189B4
@@ -9763,7 +9760,6 @@ bx    r0                            ; 08018A3C
 .pool                               ; 08018A3E
 
 Sub08018A40:
-; subroutine: ?
 push  {r4-r7,lr}                    ; 08018A40
 mov   r7,r10                        ; 08018A42
 mov   r6,r9                         ; 08018A44
@@ -9934,7 +9930,7 @@ bx    r0                            ; 08018BA0
 .pool                               ; 08018BA2
 
 Sub08018BA4:
-; subroutine: if layer 3 image is 0C/01/2C/2D, toggle bit 11 of 030069C6
+; If layer 3 image is 0C/01/2C/2D, toggle bit 11 of 030069C6
 push  {lr}                          ; 08018BA4
 ldr   r0,=0x03007240                ; 08018BA6  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                       ; 08018BA8
@@ -11561,7 +11557,7 @@ bx    r0                            ; 08019A8A
 .pool                               ; 08019A8C
 
 L1TilemapOffsetYPlus1:
-; subroutine: return offset to layer 1 tilemap for y+1
+; Return offset to layer 1 tilemap for y+1
 ; r0: 0300220C, r1: tile YXyx
 lsl   r1,r1,0x10                    ; 08019A94
 lsr   r1,r1,0x10                    ; 08019A96
@@ -11611,7 +11607,7 @@ bx    lr                            ; 08019AEC
 .pool                               ; 08019AEE
 
 L1TilemapOffsetYMinus1:
-; subroutine: return offset to layer 1 tilemap for y-1
+; Return offset to layer 1 tilemap for y-1
 lsl   r1,r1,0x10                    ; 08019AFC
 lsr   r1,r1,0x10                    ; 08019AFE
 add   r0,0x50                       ; 08019B00  r0 = [03007420]+50 (0300225C)
@@ -11656,7 +11652,7 @@ bx    lr                            ; 08019B4C
 .pool                               ; 08019B4E
 
 L1TilemapOffsetXMinus1:
-; subroutine: return offset to layer 1 tilemap for x-1
+; Return offset to layer 1 tilemap for x-1
 ; r0: 0300220C, r1: tile YXyx
 lsl   r1,r1,0x10                    ; 08019B5C
 lsr   r1,r1,0x10                    ; 08019B5E
@@ -11704,7 +11700,7 @@ bx    lr                            ; 08019BB0
 .pool                               ; 08019BB2
 
 L1TilemapOffsetXPlus1:
-; subroutine: return offset to layer 1 tilemap for x+1
+; Return offset to layer 1 tilemap for x+1
 ; r0: 0300220C, r1: tile YXyx
 lsl   r1,r1,0x10                    ; 08019BC0
 lsr   r1,r1,0x10                    ; 08019BC2
@@ -11815,7 +11811,7 @@ bx    r1                            ; 08019C9C
 .pool                               ; 08019C9E
 
 L1TilemapCurrentOffset:
-; subroutine: Calculate current tile's offset to layer 1 tilemap, assigning a new screen memory index if needed
+; Calculate current tile's offset to layer 1 tilemap, assigning a new screen memory index if needed
 ; r0: current tile's screen number
 ; r1: current tile's yx *2
 push  {r4-r7,lr}                    ; 08019CA4
@@ -11894,7 +11890,7 @@ bx    r1                            ; 08019D24
 .pool                               ; 08019D26
 
 ObjShared_AdjustSlope:
-; subroutine: adjust Y for sloped objects
+; Adjust Y for sloped objects
 push  {r4-r5,lr}                    ; 08019D2C
 mov   r1,r0                         ; 08019D2E
 add   r1,0x44                       ; 08019D30  r1 = [03007240]+44 (03002250)
@@ -11922,7 +11918,7 @@ bx    r0                            ; 08019D5A
 .pool                               ; 08019D5C
 
 ObjShared_SetL1Index:
-; subroutine: Set layer 1 tilemap index and pre-existing tile, for current tile coordinates
+; Set layer 1 tilemap index and pre-existing tile, for current tile coordinates
 push  {r4,lr}                       ; 08019D64
 mov   r4,r0                         ; 08019D66  r4 = [03007240] (0300220C)
 add   r0,0x48                       ; 08019D68  r0 = [03007240]+48 (03002254)
@@ -11958,7 +11954,7 @@ bx    r0                            ; 08019DA0
 .pool                               ; 08019DA2
 
 ObjMain_Shared:
-; subroutine: Object processing main
+; Object processing main
 ; r0: 0300220C
 ; r1: object ID or extended object ID
 ; r2: 1=standard object, 0=extended object
@@ -12316,7 +12312,7 @@ pop   {r0}                          ; 0801A048
 bx    r0                            ; 0801A04A
 
 ObjMain_NoRelY:
-; subroutine: Disable relative Y threshold, then call object processing main
+; Disable relative Y threshold, then call object processing main
 push  {r4,lr}                       ; 0801A04C
 lsl   r1,r1,0x10                    ; 0801A04E
 lsr   r1,r1,0x10                    ; 0801A050
@@ -12335,7 +12331,7 @@ bx    r0                            ; 0801A06A
 .pool                               ; 0801A06C
 
 ObjMain_Slope0_NoRelY:
-; subroutine: Clear object's slope, disable relative Y threshold, then call object processing main
+; Clear object's slope, disable relative Y threshold, then call object processing main
 push  {r4,lr}                       ; 0801A070
 lsl   r1,r1,0x10                    ; 0801A072
 lsr   r1,r1,0x10                    ; 0801A074
@@ -12354,7 +12350,7 @@ bx    r0                            ; 0801A08A
 .include "Objects/ExtendedInit.asm"
 
 Obj_GetTileXMinus1:
-; subroutine: Return tile ID at x-1
+; Return tile ID at x-1
 push  {lr}                          ; 0801D20C
 mov   r1,r0                         ; 0801D20E
 add   r1,0x48                       ; 0801D210  [03007240]+48 (03002254)
@@ -12371,7 +12367,7 @@ bx    r1                            ; 0801D226
 .pool                               ; 0801D228
 
 Obj_GetTileXPlus1:
-; subroutine: Return tile ID at x+1
+; Return tile ID at x+1
 push  {lr}                          ; 0801D230
 mov   r1,r0                         ; 0801D232
 add   r1,0x48                       ; 0801D234  [03007240]+48 (03002254)
@@ -13279,8 +13275,8 @@ pop   {r0}                          ; 0802C29C
 bx    r0                            ; 0802C29E
 .pool                               ; 0802C2A0
 
-Sub0802C2D4:
-; Subroutine: Process header music value
+ProcessSublevelHeaderMusic:
+; Process header music value
 push  {r4-r6,lr}                    ; 0802C2D4
 ldr   r2,=0x03007240                ; 0802C2D6  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r3,[r2]                       ; 0802C2D8  r3 = [03007240] (0300220C)
@@ -13555,7 +13551,7 @@ add   sp,-0x24                      ; 0802C50E
 mov   r0,0x0                        ; 0802C510
 mov   r9,r0                         ; 0802C512  r9 = 0
 bl    Sub08002534                   ; 0802C514
-bl    Sub08002338                   ; 0802C518
+bl    InitOAMBuffer03005A00         ; 0802C518
 
 ; Memory initialization?
 ldr   r6,=0x03002200                ; 0802C51C
@@ -13971,7 +13967,7 @@ strh  r4,[r2]                       ; 0802C930  [03004CB8] = sublevel ID
 mov   r0,0x0                        ; 0802C932
 ldr   r2,[sp,0x8]                   ; 0802C934  load an address previously allocated on the stack
 strh  r0,[r2,0x6]                   ; 0802C936  clear 16-bit value at [address from stack]+6
-bl    Sub080170CC                   ; 0802C938  subroutine: extract bitwise values from object data header, into tables at 0300399E and 03004B9C
+bl    ExtractSublevelHeaderBits     ; 0802C938  subroutine: extract bitwise values from object data header, into tables at 0300399E and 03004B9C
 ldr   r4,=0x03007240                ; 0802C93C  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r4]                       ; 0802C93E  r0 = [03007240] (0300220C)
 ldr   r2,=0x299A                    ; 0802C940
@@ -14107,7 +14103,7 @@ cmp   r0,0x3                        ; 0802CA84
 bne   @@Code0802CA8C                ; 0802CA86
 bl    Sub080137EC                   ; 0802CA88  runs if layer 1 tileset ID is 3
 @@Code0802CA8C:
-bl    Sub08013834                   ; 0802CA8C  subroutine: load level palettes
+bl    LoadHeaderPalettes            ; 0802CA8C  subroutine: load level palettes
 ldr   r1,=Data0816937D              ; 0802CA90
 ldr   r0,[r4]                       ; 0802CA92
 ldr   r6,=0x29A2                    ; 0802CA94
@@ -14117,7 +14113,7 @@ add   r0,r0,r1                      ; 0802CA9A
 ldrb  r0,[r0]                       ; 0802CA9C  r0 = hv09+2 (loaded from data table, but simply adds 2 for hv09 in range 00-0F)
 bl    Sub08013CC4                   ; 0802CA9E  subroutine: Froggy layer 1 VRAM layout, hardcode background color in some sublevels
 @@Code0802CAA2:
-bl    Sub0802F050                   ; 0802CAA2  subroutine: generate background gradient
+bl    GenBGGradient                 ; 0802CAA2  subroutine: generate background gradient
 ldr   r0,=0x03007240                ; 0802CAA6  Normal gameplay IWRAM (Ptr to 0300220C)
 mov   r10,r0                        ; 0802CAA8
 ldr   r0,[r0]                       ; 0802CAAA
@@ -14147,7 +14143,7 @@ ldr   r3,=0x48FB                    ; 0802CAD6
 add   r1,r6,r3                      ; 0802CAD8
 mov   r0,0x1                        ; 0802CADA
 strb  r0,[r1]                       ; 0802CADC  set 03006AFB to 01
-bl    Sub08016C04                   ; 0802CADE  subroutine: Layer 2/3 image processing
+bl    ProcessL23Images              ; 0802CADE  subroutine: Layer 2/3 image processing
 mov   r4,r8                         ; 0802CAE2
 strh  r4,[r5]                       ; 0802CAE4  clear entrance type
 bl    Sub08037224                   ; 0802CAE6  subroutine: set layer 1 initial position?
@@ -14296,7 +14292,7 @@ lsl   r0,r0,0x10                    ; 0802CC92
 lsr   r0,r0,0x10                    ; 0802CC94
 cmp   r0,0x1                        ; 0802CC96
 bhi   @@Code0802CCAE                ; 0802CC98
-bl    Sub08017488                   ; 0802CC9A
+bl    LoadObjectsAndScreenExits     ; 0802CC9A
 mov   r1,r10                        ; 0802CC9E
 ldr   r0,[r1]                       ; 0802CCA0
 add   r0,r0,r4                      ; 0802CCA2
@@ -14485,7 +14481,7 @@ ldrh  r1,[r2]                       ; 0802CE76
 add   r0,0xCA                       ; 0802CE78
 strh  r1,[r0]                       ; 0802CE7A
 strh  r5,[r7,0x1A]                  ; 0802CE7C
-bl    Sub08016C04                   ; 0802CE7E
+bl    ProcessL23Images              ; 0802CE7E
 ldr   r1,=0x4852                    ; 0802CE82
 add   r0,r4,r1                      ; 0802CE84
 strh  r5,[r0]                       ; 0802CE86
@@ -14493,7 +14489,7 @@ ldr   r2,=0x4905                    ; 0802CE88
 add   r4,r4,r2                      ; 0802CE8A
 mov   r0,0xB                        ; 0802CE8C
 strb  r0,[r4]                       ; 0802CE8E
-bl    Sub0802C2D4                   ; 0802CE90
+bl    ProcessSublevelHeaderMusic    ; 0802CE90
 @@Code0802CE94:
 bl    Sub080E962C                   ; 0802CE94
 bl    Sub080371AC                   ; 0802CE98
@@ -14884,7 +14880,7 @@ mov   r10,r3                        ; 0802D21A
 ldr   r0,=0x2618                    ; 0802D21C
 add   r0,r0,r6                      ; 0802D21E
 mov   r9,r0                         ; 0802D220
-bl    Sub08002338                   ; 0802D222
+bl    InitOAMBuffer03005A00         ; 0802D222
 ldr   r0,=0x03002200                ; 0802D226
 ldr   r1,=0x4A0A                    ; 0802D228
 add   r0,r0,r1                      ; 0802D22A
@@ -15880,7 +15876,7 @@ bx    r0                            ; 0802DBCE
 
 Sub0802DBE0:
 push  {r4-r6,lr}                    ; 0802DBE0
-bl    Sub08002338                   ; 0802DBE2
+bl    InitOAMBuffer03005A00         ; 0802DBE2
 ldr   r5,=0x03007240                ; 0802DBE6  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r5]                       ; 0802DBE8
 ldr   r0,=0x29CE                    ; 0802DBEA
@@ -15918,7 +15914,7 @@ bx    r0                            ; 0802DC30
 
 Sub0802DC50:
 push  {r4-r5,lr}                    ; 0802DC50
-bl    Sub08002338                   ; 0802DC52
+bl    InitOAMBuffer03005A00         ; 0802DC52
 ldr   r0,=0x03007240                ; 0802DC56  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                       ; 0802DC58
 ldr   r0,=0x29CE                    ; 0802DC5A
@@ -16049,7 +16045,7 @@ add   r0,0x42                       ; 0802DD76  r0 = 03006DC2
 mov   r1,0x2                        ; 0802DD78
 strh  r1,[r0]                       ; 0802DD7A  set Yoshi to facing left
 @@Code0802DD7C:
-bl    Sub0802C2D4                   ; 0802DD7C
+bl    ProcessSublevelHeaderMusic    ; 0802DD7C
 ldr   r0,=0x03002200                ; 0802DD80
 ldr   r1,=0x4088                    ; 0802DD82
 add   r0,r0,r1                      ; 0802DD84

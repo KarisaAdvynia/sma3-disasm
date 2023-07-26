@@ -2095,7 +2095,6 @@ bx    r0                            ; 08001ECE
 .pool                               ; 08001ED0
 
 Sub08001EFC:
-; subroutine: ?
 ; r0: code pointer offset +4?
 push  {r4,lr}                       ; 08001EFC
 mov   r4,r0                         ; 08001EFE
@@ -2472,8 +2471,7 @@ Return080022FC:
 bx    lr                            ; 080022FC
 .pool                               ; 080022FE
 
-Sub08002300:
-; subroutine: Process buttons pressed
+SetButtonFlags:
 push  {r4,lr}                       ; 08002300
 ldr   r0,=0x04000130                ; 08002302  button flags (released)
 ldrh  r1,[r0]                       ; 08002304
@@ -2495,8 +2493,8 @@ pop   {r0}                          ; 08002322
 bx    r0                            ; 08002324
 .pool                               ; 08002326
 
-Sub08002338:
-; subroutine: init OAM buffer at 03005A00-61FF to repeating [A0 00 00 00 00 00 00 00] (all 0 bits, except Y position A0 is below the screen)
+InitOAMBuffer03005A00:
+; Init OAM buffer at 03005A00-61FF to repeating [A0 00 00 00 00 00 00 00] (all 0 bits, except Y position A0 is below the screen)
 push  {r4,lr}                       ; 08002338
 ldr   r4,=0x03005A00                ; 0800233A
 ldr   r0,=Data08164034              ; 0800233C
@@ -2922,7 +2920,7 @@ ldr   r1,=0x47C0                    ; 08002754
 add   r0,r6,r1                      ; 08002756
 ldrh  r4,[r0]                       ; 08002758
 mov   r5,r4                         ; 0800275A
-bl    Sub08002338                   ; 0800275C
+bl    InitOAMBuffer03005A00         ; 0800275C
 ldr   r0,=0x47D0                    ; 08002760
 add   r1,r6,r0                      ; 08002762
 mov   r0,0x0                        ; 08002764
@@ -3286,7 +3284,7 @@ ldr   r0,=0xFFFE                    ; 08002ABA
 mov   r7,r0                         ; 08002ABC  r7 = FFFE
 
 @@MainLoop:
-bl    Sub08002300                   ; 08002ABE  process buttons pressed
+bl    SetButtonFlags                ; 08002ABE  process buttons pressed
 ldr   r1,=0x4903                    ; 08002AC2
 add   r0,r6,r1                      ; 08002AC4  r0 = 03006B03
 ldrb  r0,[r0]                       ; 08002AC6
@@ -3415,7 +3413,7 @@ bx    r0                            ; 08002BDC
 .pool                               ; 08002BDE
 
 DeathRestartMenu_Shared:
-; subroutine: Shared code between game states 24/28 (death-restart menu inits)
+; Shared code between game states 24/28 (death-restart menu inits)
 push  {r4-r7,lr}                    ; 08002BE0
 mov   r7,r9                         ; 08002BE2
 mov   r6,r8                         ; 08002BE4
@@ -3474,7 +3472,7 @@ mov   r0,sp                         ; 08002C4E
 bl    swi_MemoryCopy4or2            ; 08002C50  Memory copy/fill, 4- or 2-byte blocks
 bl    DynamicAllocate_Text          ; 08002C54
 @@Code08002C58:
-bl    Sub08002338                   ; 08002C58
+bl    InitOAMBuffer03005A00         ; 08002C58
 ldr   r2,=0x47C6                    ; 08002C5C
 add   r1,r4,r2                      ; 08002C5E
 mov   r0,0x80                       ; 08002C60
@@ -4402,7 +4400,7 @@ str   r0,[r4,0x4]                   ; 080034B6
 ldr   r0,=0x81000400                ; 080034B8
 str   r0,[r4,0x8]                   ; 080034BA
 ldr   r0,[r4,0x8]                   ; 080034BC
-bl    Sub08002338                   ; 080034BE
+bl    InitOAMBuffer03005A00         ; 080034BE
 mov   r0,sp                         ; 080034C2
 strh  r6,[r0]                       ; 080034C4
 str   r0,[r4]                       ; 080034C6
@@ -4893,7 +4891,7 @@ mov   r0,0xFD                       ; 08003984
 and   r0,r5                         ; 08003986
 mov   r1,r8                         ; 08003988
 strb  r0,[r1]                       ; 0800398A
-bl    Sub08002338                   ; 0800398C
+bl    InitOAMBuffer03005A00         ; 0800398C
 str   r6,[sp]                       ; 08003990
 mov   r1,0xC0                       ; 08003992
 lsl   r1,r1,0x13                    ; 08003994

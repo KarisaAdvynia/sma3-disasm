@@ -3899,7 +3899,6 @@ bx    r0                            ; 0803721A
 .pool                               ; 0803721C
 
 Sub08037224:
-; subroutine: ?
 push  {r4-r7,lr}                    ; 08037224
 mov   r7,r8                         ; 08037226
 push  {r7}                          ; 08037228
@@ -4435,7 +4434,7 @@ bx    r0                            ; 080376CA
 .pool                               ; 080376CC
 
 SkiEnableCheck:
-; subroutine: Check if skiing should be enabled
+; Check if skiing should be enabled
 ; output r0: 0 if skiing should be enabled, 1 if not
 ; specifically, returns 0 if in 5-3 or 5-Extra, snow tileset, and item memory index 3
 push  {lr}                          ; 080376D8

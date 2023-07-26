@@ -3006,7 +3006,7 @@ ldrh  r1,[r4]                       ; 08110BB0
 ldr   r0,=0xE0FF                    ; 08110BB2
 and   r0,r1                         ; 08110BB4
 strh  r0,[r2]                       ; 08110BB6
-bl    Sub08002338                   ; 08110BB8
+bl    InitOAMBuffer03005A00         ; 08110BB8
 ldr   r1,=0x47D0                    ; 08110BBC
 add   r0,r7,r1                      ; 08110BBE
 mov   r2,0x0                        ; 08110BC0
@@ -10257,7 +10257,7 @@ strb  r1,[r3,0x1]                   ; 08114CC8  set phase ones digit
 mov   r2,r8                         ; 08114CCA
 ldrb  r0,[r2,0x4]                   ; 08114CCC
 bl    Sub081145C0                   ; 08114CCE
-bl    Sub08002338                   ; 08114CD2
+bl    InitOAMBuffer03005A00         ; 08114CD2
 ldr   r4,=0x03002200                ; 08114CD6
 ldr   r1,=0x47D0                    ; 08114CD8
 add   r0,r4,r1                      ; 08114CDA
@@ -19484,7 +19484,7 @@ lsl   r0,r0,0x18                    ; 08119FA6
 lsr   r0,r0,0x18                    ; 08119FA8
 cmp   r0,0x1                        ; 08119FAA
 bls   @@Code08119FC2                ; 08119FAC
-bl    Sub08002338                   ; 08119FAE
+bl    InitOAMBuffer03005A00         ; 08119FAE
 ldr   r0,=0x47D0                    ; 08119FB2
 add   r1,r4,r0                      ; 08119FB4
 mov   r0,0x0                        ; 08119FB6
@@ -19964,7 +19964,7 @@ add   sp,-0x4                       ; 0811A42E
 mov   r0,0x0                        ; 0811A430
 str   r0,[sp]                       ; 0811A432
 @@Code0811A434:
-bl    Sub08002300                   ; 0811A434
+bl    SetButtonFlags                ; 0811A434
 ldr   r0,=0x030074C4                ; 0811A438
 ldrb  r0,[r0]                       ; 0811A43A
 cmp   r0,0x2                        ; 0811A43C
@@ -20154,7 +20154,7 @@ lsr   r5,r0,0x18                    ; 0811A5B0
 cmp   r5,r2                         ; 0811A5B2
 blo   @@Code0811A59C                ; 0811A5B4
 @@Code0811A5B6:
-bl    Sub08002338                   ; 0811A5B6
+bl    InitOAMBuffer03005A00         ; 0811A5B6
 ldr   r4,=0x03002200                ; 0811A5BA
 ldr   r1,=0x47D0                    ; 0811A5BC
 add   r0,r4,r1                      ; 0811A5BE
@@ -20896,7 +20896,7 @@ strh  r4,[r6]                       ; 0811AC74
 ldr   r2,=0x496C                    ; 0811AC76
 add   r0,r7,r2                      ; 0811AC78
 strb  r1,[r0]                       ; 0811AC7A
-bl    Sub08002338                   ; 0811AC7C
+bl    InitOAMBuffer03005A00         ; 0811AC7C
 ldr   r1,=0x47D0                    ; 0811AC80
 add   r0,r7,r1                      ; 0811AC82
 strh  r4,[r0]                       ; 0811AC84
@@ -20936,7 +20936,7 @@ mov   r6,r9                         ; 0811AD14
 mov   r5,r8                         ; 0811AD16
 push  {r5-r7}                       ; 0811AD18
 @@Code0811AD1A:
-bl    Sub08002300                   ; 0811AD1A
+bl    SetButtonFlags                ; 0811AD1A
 ldr   r0,=0x030074C4                ; 0811AD1E
 ldrb  r0,[r0]                       ; 0811AD20
 cmp   r0,0x2                        ; 0811AD22
@@ -21189,7 +21189,7 @@ ldrb  r2,[r7]                       ; 0811AF72
 cmp   r5,r2                         ; 0811AF74
 blo   @@Code0811AF08                ; 0811AF76
 @@Code0811AF78:
-bl    Sub08002338                   ; 0811AF78
+bl    InitOAMBuffer03005A00         ; 0811AF78
 ldr   r4,=0x03002200                ; 0811AF7C
 ldr   r3,=0x47D0                    ; 0811AF7E
 add   r1,r4,r3                      ; 0811AF80

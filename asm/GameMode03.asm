@@ -669,8 +669,8 @@ pop   {r0}                          ; 080F956E
 bx    r0                            ; 080F9570
 .pool                               ; 080F9572
 
-Sub080F958C:
-; subroutine: Initialize global save data in WRAM (0x18 bytes at 03006260)
+InitSaveGlobalWRAM:
+; Initialize global save data in WRAM (0x18 bytes at 03006260)
 push  {r4-r5,lr}                    ; 080F958C
 ldr   r4,=0x03006260                ; 080F958E
 mov   r0,r4                         ; 080F9590
@@ -1046,7 +1046,7 @@ mov   r7,0x1                        ; 080F98F6
 @@Code080F98F8:
 cmp   r7,0x0                        ; 080F98F8
 beq   @@Code080F995E                ; 080F98FA
-bl    Sub080F958C                   ; 080F98FC
+bl    InitSaveGlobalWRAM            ; 080F98FC
 bl    Sub080F96F4                   ; 080F9900
 ldr   r1,=0x03002200                ; 080F9904
 ldr   r4,=0x4A37                    ; 080F9906
@@ -1666,7 +1666,7 @@ mov   r6,0x1                        ; 080F9E26
 @@Code080F9E28:
 cmp   r6,0x0                        ; 080F9E28
 beq   @@Code080F9E8A                ; 080F9E2A
-bl    Sub080FA098                   ; 080F9E2C
+bl    InitSaveFileWRAM              ; 080F9E2C
 ldr   r0,=0x03002200                ; 080F9E30
 ldr   r1,=0x4A39                    ; 080F9E32
 add   r2,r0,r1                      ; 080F9E34
@@ -1913,8 +1913,8 @@ pop   {r0}                          ; 080FA078
 bx    r0                            ; 080FA07A
 .pool                               ; 080FA07C
 
-Sub080FA098:
-; subroutine: Initialize file-specific save data in WRAM (0xF0 bytes at 03006278)
+InitSaveFileWRAM:
+; Initialize file-specific save data in WRAM (0xF0 bytes at 03006278)
 push  {r4-r5,lr}                    ; 080FA098
 ldr   r4,=0x03006278                ; 080FA09A
 mov   r0,r4                         ; 080FA09C
@@ -2251,20 +2251,20 @@ add   r0,r4,r1                      ; 080FA3B6
 ldrb  r5,[r0]                       ; 080FA3B8
 cmp   r5,0x0                        ; 080FA3BA
 bne   @@Code080FA3E6                ; 080FA3BC
-bl    Sub080F958C                   ; 080FA3BE
+bl    InitSaveGlobalWRAM            ; 080FA3BE
 bl    Sub080F96F4                   ; 080FA3C2
 ldr   r0,=0x4A39                    ; 080FA3C6
 add   r4,r4,r0                      ; 080FA3C8
 strb  r5,[r4]                       ; 080FA3CA
-bl    Sub080FA098                   ; 080FA3CC
+bl    InitSaveFileWRAM              ; 080FA3CC
 ldrb  r0,[r4]                       ; 080FA3D0
 add   r0,0x1                        ; 080FA3D2
 strb  r0,[r4]                       ; 080FA3D4
-bl    Sub080FA098                   ; 080FA3D6
+bl    InitSaveFileWRAM              ; 080FA3D6
 ldrb  r0,[r4]                       ; 080FA3DA
 add   r0,0x1                        ; 080FA3DC
 strb  r0,[r4]                       ; 080FA3DE
-bl    Sub080FA098                   ; 080FA3E0
+bl    InitSaveFileWRAM              ; 080FA3E0
 strb  r5,[r4]                       ; 080FA3E4
 @@Code080FA3E6:
 pop   {r4-r5}                       ; 080FA3E6
@@ -2275,7 +2275,7 @@ bx    r0                            ; 080FA3EA
 Sub080FA3F8:
 ; Game init state 01: Display save corruption message
 push  {r4-r6,lr}                    ; 080FA3F8
-bl    Sub08002338                   ; 080FA3FA
+bl    InitOAMBuffer03005A00         ; 080FA3FA
 ldr   r0,=Data082E7740              ; 080FA3FE
 mov   r1,0xC0                       ; 080FA400
 lsl   r1,r1,0x13                    ; 080FA402
@@ -3296,7 +3296,7 @@ ldr   r4,=0x03002200                ; 080FADB4
 ldr   r2,=0x4A39                    ; 080FADB6
 add   r1,r4,r2                      ; 080FADB8
 strb  r0,[r1]                       ; 080FADBA
-bl    Sub080FA098                   ; 080FADBC
+bl    InitSaveFileWRAM              ; 080FADBC
 ldr   r0,=0x47C2                    ; 080FADC0
 add   r4,r4,r0                      ; 080FADC2
 ldrh  r0,[r4]                       ; 080FADC4
@@ -3550,8 +3550,8 @@ pop   {r4}                          ; 080FAFF6
 pop   {r1}                          ; 080FAFF8
 bx    r1                            ; 080FAFFA
 
-Sub080FAFFC:
-; subroutine: Set last save file loaded
+SetLastSaveFile:
+; Set last save file loaded
 lsl   r0,r0,0x10                    ; 080FAFFC
 lsr   r0,r0,0x10                    ; 080FAFFE
 ldr   r1,=0x03002200                ; 080FB000

@@ -926,7 +926,7 @@ Cutscene100Init:
 push  {r4-r7,lr}                    ; 080F7088
 add   sp,-0x4                       ; 080F708A
 bl    Sub08002534                   ; 080F708C
-bl    Sub08002338                   ; 080F7090
+bl    InitOAMBuffer03005A00         ; 080F7090
 ldr   r0,=0x0300700C                ; 080F7094
 mov   r5,0x0                        ; 080F7096
 str   r5,[r0]                       ; 080F7098
@@ -4252,7 +4252,7 @@ Cutscene100Main:
 ; Game state 4A: 100% cutscene
 push  {lr}                          ; 080F8F6C
 bl    Sub080F67D4                   ; 080F8F6E
-bl    Sub08002338                   ; 080F8F72
+bl    InitOAMBuffer03005A00         ; 080F8F72
 ldr   r1,=0x03002200                ; 080F8F76
 ldr   r0,=0x47D0                    ; 080F8F78
 add   r2,r1,r0                      ; 080F8F7A

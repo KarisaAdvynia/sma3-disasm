@@ -45,7 +45,6 @@ swi   0x1                           ; 0812F6E0 RegisterRamReset
 bx    lr                            ; 0812F6E2
 
 SoftResetSinglePlayer:
-; Soft reset (single-player)
 ldr   r3,=0x04000208                ; 0812F6E4
 mov   r2,0x0                        ; 0812F6E6
 strb  r2,[r3]                       ; 0812F6E8
@@ -57,18 +56,17 @@ swi   0x0                           ; 0812F6F0 SoftReset
 
 swi_SoundBias_0:
 mov   r0,0x0                        ; 0812F6FC
-swi   0x19                          ; 0812F6FE SoundBias
+swi   0x19                          ; 0812F6FE
 bx    lr                            ; 0812F700
 .pool                               ; 0812F702
 
 swi_SoundBias_1:
 mov   r0,0x1                        ; 0812F704
-swi   0x19                          ; 0812F706 SoundBias
+swi   0x19                          ; 0812F706
 bx    lr                            ; 0812F708
 .pool                               ; 0812F70A
 
 SoftResetMultiplayer:
-; Soft reset (multiplayer)
 ldr   r3,=0x04000208                ; 0812F70C
 mov   r2,0x0                        ; 0812F70E
 strb  r2,[r3]                       ; 0812F710

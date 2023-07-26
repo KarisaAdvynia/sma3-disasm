@@ -140,8 +140,8 @@ pop   {r0}                          ; 080FCA80
 bx    r0                            ; 080FCA82
 .pool                               ; 080FCA84
 
-Sub080FCA88:
-; subroutine: Fill rows in message buffer with a single color
+FillMessageBuffer:
+; Fill rows in message buffer with a single color
 ; r0: pointer to message buffer
 ; r1: initial Y pixel
 ; r2: number of rows to fill, in pixels
@@ -310,7 +310,7 @@ bx    lr                            ; 080FCBBA
 .pool                               ; 080FCBBC
 
 DynamicAllocate_Text:
-; subroutine: allocate dynamic memory for text graphics
+; Allocate dynamic memory for text graphics
 push  {r4,lr}                       ; 080FCBC4
 ldr   r4,=0x03007248                ; 080FCBC6  pointer to message buffer
 ldr   r0,[r4]                       ; 080FCBC8
@@ -366,8 +366,8 @@ pop   {r0}                          ; 080FCC2C
 bx    r0                            ; 080FCC2E
 .pool                               ; 080FCC30
 
-Sub080FCC38:
-; subroutine: Display one level name variable-width character
+LevelName_DispChar:
+; Display one level name variable-width character
 ; r0: X position, in pixels from top-left of text
 ; r1: Y position, in pixels from top-left of text
 ; r2: character ID
@@ -493,8 +493,8 @@ pop   {r0}                          ; 080FCD1E
 bx    r0                            ; 080FCD20
 .pool                               ; 080FCD22
 
-Sub080FCD2C:
-; subroutine: Process next level name character. If next byte is a command, process that then the next character.
+LevelName_ProcessChar:
+; Process next level name character. If next byte is a command, process that then the next character.
 ; r0: 0300490C (pointer to pointer to next byte of level name data)
 ; r1: 03004910 (pointer to X position)
 ; r2: 03004911 (pointer to Y position)
@@ -534,7 +534,7 @@ b     @@Code080FCD42                ; 080FCD62  proccess next byte immediately
 mov   r0,r6                         ; 080FCD64  X position
 mov   r1,r7                         ; 080FCD66  Y position
 mov   r2,r5                         ; 080FCD68  character ID
-bl    Sub080FCC38                   ; 080FCD6A  subroutine: Display one level name character
+bl    LevelName_DispChar            ; 080FCD6A  subroutine: Display one level name character
 ldr   r0,=Text_CharWidths           ; 080FCD6E  character width table
 add   r0,r5,r0                      ; 080FCD70  index with character ID
 ldrb  r0,[r0]                       ; 080FCD72
@@ -575,7 +575,7 @@ ldr   r0,=0x03007248                ; 080FCDB4  pointer to message buffer
 ldr   r0,[r0]                       ; 080FCDB6
 mov   r2,0x40                       ; 080FCDB8
 mov   r3,0x0                        ; 080FCDBA
-bl    Sub080FCA88                   ; 080FCDBC  fill message buffer rows with single color
+bl    FillMessageBuffer             ; 080FCDBC  fill message buffer rows with single color
 pop   {r0}                          ; 080FCDC0
 bx    r0                            ; 080FCDC2
 .pool                               ; 080FCDC4
@@ -617,7 +617,7 @@ bne   @@Code080FCE16                ; 080FCE0A
 add   r1,r3,0x4                     ; 080FCE0C  r1 = 03004910
 add   r2,r3,0x5                     ; 080FCE0E  r2 = 03004911
 mov   r0,r3                         ; 080FCE10  r0 = 0300490C
-bl    Sub080FCD2C                   ; 080FCE12 / subroutine: Process next level name character
+bl    LevelName_ProcessChar         ; 080FCE12 / subroutine: Process next level name character
 @@Code080FCE16:
 ldr   r0,=0x03007248                ; 080FCE16  pointer to message buffer
 ldr   r0,[r0]                       ; 080FCE18

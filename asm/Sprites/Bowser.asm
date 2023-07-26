@@ -8735,7 +8735,7 @@ mov   r1,r5                         ; 08106E1A
 bl    Sub081071AC                   ; 08106E1C  Init ending message struct
 @@Code08106E20:
 mov   r0,r6                         ; 08106E20
-bl    Sub08107284                   ; 08106E22  Process ending message line, ending at command
+bl    EndingMessage_ProcessLine     ; 08106E22  Process ending message line, ending at command
 mov   r5,r0                         ; 08106E26  r5 = returned command ID
 mov   r0,r6                         ; 08106E28
 bl    Sub081072E4                   ; 08106E2A  ldrh r0,[r0,#0xA]
@@ -9228,27 +9228,27 @@ pop   {r0}                          ; 0810727C
 bx    r0                            ; 0810727E
 .pool                               ; 08107280
 
-Sub08107284:
-; subroutine: Process ending message line
+EndingMessage_ProcessLine:
+; Process ending message line
 ; r0: 03003590
 push  {r4-r7,lr}                    ; 08107284
 add   sp,-0x4                       ; 08107286
 mov   r5,r0                         ; 08107288
 mov   r6,0x0                        ; 0810728A
 ldr   r7,[r5]                       ; 0810728C  VRAM pointer
-@@Code0810728E:
+@@CharLoop:
 ldr   r0,[r5,0x4]                   ; 0810728E  pointer to current character
 ldrb  r1,[r0]                       ; 08107290  r1 = character ID
 add   r0,0x1                        ; 08107292 \
 str   r0,[r5,0x4]                   ; 08107294 / increment pointer
 cmp   r1,0xFF                       ; 08107296
-bne   @@Code081072C0                ; 08107298
+bne   @@Char                        ; 08107298
                                     ;           runs if FF: command then return
 ldrb  r1,[r0]                       ; 0810729A  load command byte
 add   r0,0x1                        ; 0810729C \ increment pointer again
 str   r0,[r5,0x4]                   ; 0810729E /
 cmp   r1,0xA                        ; 081072A0
-beq   @@Code081072B4                ; 081072A2
+beq   @@Command0A                   ; 081072A2
 cmp   r1,0x9                        ; 081072A4
 bne   @@Code081072AE                ; 081072A6
                                     ;          \ command 09
@@ -9258,15 +9258,17 @@ strh  r0,[r5,0x8]                   ; 081072AC  /
 @@Code081072AE:                     ;          ; any other command jumps here
 strh  r6,[r5,0xA]                   ; 081072AE  [0300359A] = width
 mov   r0,r1                         ; 081072B0
-b     @@Code081072DC                ; 081072B2 / return command ID
-@@Code081072B4:                     ;          \ command 0A
+b     @@Return                      ; 081072B2 / return command ID
+
+@@Command0A:                        ;          \ command 0A
 strh  r6,[r5,0xA]                   ; 081072B4  [0300359A] = width
 ldrh  r0,[r5,0x8]                   ; 081072B6  \
 add   r0,0x10                       ; 081072B8  | add 10 to Y position
 strh  r0,[r5,0x8]                   ; 081072BA  /
 mov   r0,0xA                        ; 081072BC
-b     @@Code081072DC                ; 081072BE / return command ID
-@@Code081072C0:                     ;          \ runs if not FF: load character then loop
+b     @@Return                      ; 081072BE / return command ID
+
+@@Char:                             ;          \ runs if not FF: load character then loop
 ldr   r0,=Text_CharWidths           ; 081072C0  character width table
 add   r0,r1,r0                      ; 081072C2
 ldrb  r4,[r0]                       ; 081072C4  character width
@@ -9277,10 +9279,10 @@ mov   r1,r4                         ; 081072CC  r1 = width
 mov   r2,r6                         ; 081072CE  r2 = X position
 bl    Sub08107230                   ; 081072D0
 add   r6,r6,r4                      ; 081072D4  r6 (X pos) += width
-b     @@Code0810728E                ; 081072D6 / loop
+b     @@CharLoop                    ; 081072D6 / loop
 .pool                               ; 081072D8
 
-@@Code081072DC:
+@@Return:
 add   sp,0x4                        ; 081072DC
 pop   {r4-r7}                       ; 081072DE
 pop   {r1}                          ; 081072E0

@@ -477,7 +477,7 @@ pop   {r4-r7}                       ; 08033DDA
 pop   {r0}                          ; 08033DDC
 bx    r0                            ; 08033DDE
 
-Sub08033DE0:
+CreditsText_DispChar:
 ; Credits text command 00: Display text character
 push  {r4-r6,lr}                    ; 08033DE0
 mov   r6,r0                         ; 08033DE2
@@ -540,14 +540,14 @@ pop   {r0}                          ; 08033E54
 bx    r0                            ; 08033E56
 .pool                               ; 08033E58
 
-Sub08033E60:
+CreditsText_Cmd01:
 ; Credits text command 01
 ldr   r1,[r0]                       ; 08033E60 \
 add   r1,0x1                        ; 08033E62 | increment byte to read
 str   r1,[r0]                       ; 08033E64 /
 bx    lr                            ; 08033E66
 
-Sub08033E68:
+CreditsText_SetY:
 ; Credits text command 02: set Y
 ldr   r1,[r0]                       ; 08033E68
 ldrb  r1,[r1]                       ; 08033E6A  read next byte
@@ -561,7 +561,7 @@ str   r1,[r0]                       ; 08033E78 /
 bx    lr                            ; 08033E7A
 .pool                               ; 08033E7C
 
-Sub08033E80:
+CreditsText_SetX:
 ; Credits text command 03: set X
 ldr   r1,[r0]                       ; 08033E80
 ldrb  r2,[r1]                       ; 08033E82  read next byte
@@ -574,8 +574,8 @@ add   r1,0x1                        ; 08033E8E | increment byte to read
 str   r1,[r0]                       ; 08033E90 /
 bx    lr                            ; 08033E92
 
-Sub08033E94:
-; subroutine: Process credits message
+CreditsText_ProcessMsg:
+; Process credits message
 ; r0: 0300220C
 push  {r4-r5,lr}                    ; 08033E94
 mov   r4,r0                         ; 08033E96
@@ -710,7 +710,7 @@ ldr   r0,=0x2001                    ; 08033F88
 strh  r0,[r1]                       ; 08033F8A
 strh  r0,[r2]                       ; 08033F8C
 bl    Sub0802E020                   ; 08033F8E
-bl    Sub08002338                   ; 08033F92
+bl    InitOAMBuffer03005A00         ; 08033F92
 mov   r0,r10                        ; 08033F96
 str   r0,[sp]                       ; 08033F98
 mov   r1,0xC0                       ; 08033F9A
@@ -1102,7 +1102,7 @@ mov   r1,r4                         ; 080342AC
 ldr   r2,=0x05000200                ; 080342AE
 bl    swi_MemoryCopy4or2            ; 080342B0  Memory copy/fill, 4- or 2-byte blocks
 mov   r0,r6                         ; 080342B4
-bl    Sub08033E94                   ; 080342B6
+bl    CreditsText_ProcessMsg        ; 080342B6
 mov   r0,r4                         ; 080342BA
 mov   r1,r5                         ; 080342BC
 mov   r2,0x80                       ; 080342BE
@@ -1624,7 +1624,7 @@ ldr   r2,=0x05000200                ; 0803483C
 mov   r1,r9                         ; 0803483E
 bl    swi_MemoryCopy4or2            ; 08034840  Memory copy/fill, 4- or 2-byte blocks
 mov   r0,r5                         ; 08034844
-bl    Sub08033E94                   ; 08034846
+bl    CreditsText_ProcessMsg        ; 08034846
 mov   r1,r10                        ; 0803484A
 ldrh  r0,[r1]                       ; 0803484C
 and   r4,r0                         ; 0803484E
@@ -2415,7 +2415,7 @@ ldr   r2,=0x05000200                ; 08034F98
 mov   r1,r5                         ; 08034F9A
 bl    swi_MemoryCopy4or2            ; 08034F9C  Memory copy/fill, 4- or 2-byte blocks
 mov   r0,r7                         ; 08034FA0
-bl    Sub08033E94                   ; 08034FA2
+bl    CreditsText_ProcessMsg        ; 08034FA2
 ldr   r2,=0x47CC                    ; 08034FA6
 add   r4,r4,r2                      ; 08034FA8
 ldrh  r0,[r4]                       ; 08034FAA
@@ -2556,7 +2556,7 @@ mov   r0,sp                         ; 08035118
 mov   r1,r4                         ; 0803511A
 bl    swi_MemoryCopy4or2            ; 0803511C  Memory copy/fill, 4- or 2-byte blocks
 mov   r0,r6                         ; 08035120
-bl    Sub08033E94                   ; 08035122
+bl    CreditsText_ProcessMsg        ; 08035122
 ldr   r0,=0x03002200                ; 08035126
 ldr   r1,=0x47CC                    ; 08035128
 add   r0,r0,r1                      ; 0803512A

@@ -68,7 +68,7 @@ mov   r0,0xFF                       ; 0810D54A
 ldr   r2,=0x03006A88                ; 0810D54C
 strh  r0,[r2]                       ; 0810D54E
 strh  r0,[r1]                       ; 0810D550
-bl    Sub08002338                   ; 0810D552
+bl    InitOAMBuffer03005A00         ; 0810D552
 ldr   r3,=0x47C6                    ; 0810D556
 add   r1,r5,r3                      ; 0810D558
 mov   r0,0xB8                       ; 0810D55A
@@ -1467,7 +1467,7 @@ asr   r1,r1,0x8                     ; 0810E176
 ldr   r2,=0x47F0                    ; 0810E178
 add   r0,r4,r2                      ; 0810E17A
 strh  r1,[r0]                       ; 0810E17C
-bl    Sub08002338                   ; 0810E17E
+bl    InitOAMBuffer03005A00         ; 0810E17E
 ldr   r3,=0x47D0                    ; 0810E182
 add   r0,r4,r3                      ; 0810E184
 strh  r5,[r0]                       ; 0810E186

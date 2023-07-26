@@ -1,5 +1,5 @@
 CommandSpr_ClearHalfword:
-; subroutine: clear halfword at [r0]
+; Clear halfword at [r0]
 mov   r1,0x0                        ; 080D68C0
 strh  r1,[r0]                       ; 080D68C2
 bx    lr                            ; 080D68C4
@@ -285,7 +285,7 @@ bx    r0                            ; 080D6B36
 .pool                               ; 080D6B38
 
 Autoscroll_ProcessNextData:
-; subroutine: Process next 3 bytes of autoscroll data. Runs each time an autoscroll destination is reached.
+; Process next 3 bytes of autoscroll data. Runs each time an autoscroll destination is reached.
 ; r0: 0300243C
 ; r1: [03002452], loaded as a single 16-bit input. High byte is autoscroll ID, low byte is current offset within autoscroll data
 push  {lr}                          ; 080D6B48

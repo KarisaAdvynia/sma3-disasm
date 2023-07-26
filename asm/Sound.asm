@@ -190,7 +190,7 @@ bx    r0                            ; 0812C3B0
 .pool                               ; 0812C3B2
 
 PlayYIMusic:
-; subroutine: Change music (YI)
+; Change music (YI)
 ; r0: new music ID
 push  {r4-r5,lr}                    ; 0812C3B4
 lsl   r0,r0,0x10                    ; 0812C3B6
@@ -285,7 +285,7 @@ bx    r0                            ; 0812C46C
 .pool                               ; 0812C46E
 
 Sub0812C470:
-; subroutine: if 0300000C is 0, return -1, else, return value of 0300000A?
+; If 0300000C is 0, return -1, else, return value of 0300000A?
 push  {lr}                          ; 0812C470
 ldr   r0,=0x0300000C                ; 0812C472
 ldrb  r0,[r0]                       ; 0812C474
@@ -1454,7 +1454,7 @@ bx    lr                            ; 0812CD8C
 .pool                               ; 0812CD8E
 
 PlayMBMusicOrSound:
-; subroutine: Change music/play sound effect (Mario Bros.)
+; Change music/play sound effect (Mario Bros.)
 ; r0: music/sound effect ID
 push  {r4-r7,lr}                    ; 0812CD90
 lsl   r0,r0,0x10                    ; 0812CD92
@@ -5293,7 +5293,7 @@ pop   {r0}                          ; 0812EC0C
 bx    r0                            ; 0812EC0E
 
 Sub0812EC10:
-; subroutine: runs if first value from sound buffer is 0000
+; runs if first value from sound buffer is 0000
 ; r0: first argument from buffer (13 if change music)
 ; r1: second argument from buffer (index to tables at 08309C50 and 08324D3C, low byte of value from table at 083077E4 if YI music, if change music)
 push  {r4,lr}                       ; 0812EC10
@@ -5547,7 +5547,7 @@ bx    lr                            ; 0812EDFE
 .pool                               ; 0812EE00
 
 Sub0812EE04:
-; subroutine: Advance through sound buffer by 0C, looping to 030000F0 if out of memory
+; Advance through sound buffer by 0C, looping to 030000F0 if out of memory
 push  {lr}                          ; 0812EE04
 ldr   r2,=0x03000328                ; 0812EE06
 ldr   r0,[r2]                       ; 0812EE08
@@ -5586,7 +5586,7 @@ bx    lr                            ; 0812EE4E
 .pool                               ; 0812EE50
 
 Sub0812EE6C:
-; subroutine: compare 03000324/032C; if different, increment 03000324 by 0C and return its old value
+; Compare 03000324/032C; if different, increment 03000324 by 0C and return its old value
 push  {lr}                          ; 0812EE6C
 ldr   r3,=0x03000324                ; 0812EE6E
 ldr   r2,[r3]                       ; 0812EE70
@@ -5868,7 +5868,6 @@ bx    r0                            ; 0812F0C0
 .pool                               ; 0812F0C2
 
 Sub0812F0C8:
-; subroutine: ?
 ; r0: 06 if music-related bit 10 is set, 07 if bit 10 is clear
 push  {lr}                          ; 0812F0C8
 lsl   r0,r0,0x18                    ; 0812F0CA
@@ -6294,7 +6293,7 @@ bx    r0                            ; 0812F3C4
 .pool                               ; 0812F3C6
 
 Sub0812F3C8:
-; subroutine: Process new sound command buffer entries
+; Process new sound command buffer entries
 push  {r4,lr}                       ; 0812F3C8
 bl    Sub0812EE6C                   ; 0812F3CA  compare 03000324/032C; if different, increment 03000324 by 0C and return its old value
 mov   r2,r0                         ; 0812F3CE

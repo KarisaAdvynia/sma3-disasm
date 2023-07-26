@@ -1420,8 +1420,8 @@ pop   {r0}                          ; 080E41E0
 bx    r0                            ; 080E41E2
 .pool                               ; 080E41E4
 
-Sub080E4210:
-; subroutine: Give total world score bonuses
+WorldScore_GiveBonus:
+; Give total world score bonuses
 push  {r4-r6,lr}                    ; 080E4210
 mov   r12,r0                        ; 080E4212
 mov   r1,r12                        ; 080E4214
@@ -1653,7 +1653,7 @@ ldrh  r0,[r0]                       ; 080E43DC
 cmp   r0,r5                         ; 080E43DE
 bhs   @@Code080E4414                ; 080E43E0
 mov   r0,r4                         ; 080E43E2
-bl    Sub080E4210                   ; 080E43E4
+bl    WorldScore_GiveBonus          ; 080E43E4
 ldrh  r0,[r6]                       ; 080E43E8
 lsr   r0,r0,0x1                     ; 080E43EA
 lsl   r0,r0,0x1                     ; 080E43EC
@@ -2296,7 +2296,7 @@ bx    r0                            ; 080E4954
 .pool                               ; 080E4956
 
 Sub080E496C:
-; subroutine: Determine goal minigame
+; Determine goal minigame
 push  {r4-r5,lr}                    ; 080E496C
 bl    Sub08035648                   ; 080E496E
 ldr   r0,=0x03007240                ; 080E4972  Normal gameplay IWRAM (Ptr to 0300220C)
@@ -2337,7 +2337,7 @@ bx    r0                            ; 080E49B4
 .pool                               ; 080E49B6
 
 Sub080E49D4:
-; subroutine: copy score calculation layer 3 tilemap to VRAM
+; Copy score calculation layer 3 tilemap to VRAM
 push  {r4-r6,lr}                    ; 080E49D4
 mov   r3,0x0                        ; 080E49D6  loop index
 ldr   r6,=0x0600E080                ; 080E49D8  VRAM destination for layer 3 tilemap
@@ -4286,7 +4286,7 @@ bx    lr                            ; 080E5ADA
 LevelVictory:
 ; Game state 0E: Goal cutscene/Score screen
 push  {r4-r6,lr}                    ; 080E5ADC
-bl    Sub08002338                   ; 080E5ADE
+bl    InitOAMBuffer03005A00         ; 080E5ADE
 ldr   r2,=0x03002200                ; 080E5AE2
 ldr   r1,=0x47D0                    ; 080E5AE4
 add   r0,r2,r1                      ; 080E5AE6
@@ -4516,7 +4516,7 @@ bx    r0                            ; 080E5CEA
 BossVictoryTransition:
 ; Game state 23
 push  {r4-r5,lr}                    ; 080E5D24
-bl    Sub08002338                   ; 080E5D26
+bl    InitOAMBuffer03005A00         ; 080E5D26
 ldr   r1,=0x03002200                ; 080E5D2A
 ldr   r2,=0x47D0                    ; 080E5D2C
 add   r0,r1,r2                      ; 080E5D2E

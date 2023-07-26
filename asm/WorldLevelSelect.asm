@@ -725,7 +725,7 @@ ldr   r1,=0x02011002                ; 080048DE
 ldr   r6,=0xFFFF                    ; 080048E0
 mov   r0,r6                         ; 080048E2
 strh  r0,[r1]                       ; 080048E4
-bl    Sub08002338                   ; 080048E6
+bl    InitOAMBuffer03005A00         ; 080048E6
 ldr   r1,=0x47D0                    ; 080048EA
 add   r0,r4,r1                      ; 080048EC
 strh  r5,[r0]                       ; 080048EE
@@ -2228,8 +2228,8 @@ pop   {r0}                          ; 0800563C
 bx    r0                            ; 0800563E
 .pool                               ; 08005640
 
-Sub0800564C:
-; subroutine: process left/right inputs on world select
+WorldSelect_LeftRightInputs:
+; process left/right inputs on world select
 push  {r4,lr}                       ; 0800564C
 ldr   r1,=0x03002200                ; 0800564E
 ldr   r2,=0x413C                    ; 08005650
@@ -2440,7 +2440,7 @@ bx    r0                            ; 080057F2
 Sub08005804:
 push  {r4-r6,lr}                    ; 08005804
 add   sp,-0x8                       ; 08005806
-bl    Sub0800564C                   ; 08005808
+bl    WorldSelect_LeftRightInputs   ; 08005808
 ldr   r5,=0x03002200                ; 0800580C
 ldr   r1,=0x47C0                    ; 0800580E
 add   r0,r5,r1                      ; 08005810
@@ -2794,7 +2794,7 @@ bx    r0                            ; 08005B60
 WorldSelectMain:
 ; Game state 40: World select (loaded from something other than B from level select)
 push  {lr}                          ; 08005B84
-bl    Sub08002338                   ; 08005B86
+bl    InitOAMBuffer03005A00         ; 08005B86
 ldr   r0,=0x03002200                ; 08005B8A
 ldr   r2,=0x47D0                    ; 08005B8C
 add   r1,r0,r2                      ; 08005B8E
@@ -2836,7 +2836,7 @@ bx    lr                            ; 08005BF0
 WorldSelect_State43:
 ; Game state 43: World select (B from level select)
 push  {lr}                          ; 08005BFC
-bl    Sub08002338                   ; 08005BFE
+bl    InitOAMBuffer03005A00         ; 08005BFE
 ldr   r0,=0x03002200                ; 08005C02
 ldr   r2,=0x47D0                    ; 08005C04
 add   r1,r0,r2                      ; 08005C06
@@ -5854,7 +5854,7 @@ bx    r0                            ; 08007806
 .pool                               ; 08007808
 
 LevelSelect_ProcessLLBAR:
-; subroutine: Process LLBAR password input
+; Process LLBAR password input
 push  {r4-r7,lr}                    ; 0800780C
 ldr   r5,=0x03002200                ; 0800780E
 ldr   r0,=0x47C0                    ; 08007810
@@ -6532,7 +6532,7 @@ bx    r0                            ; 08007E0A
 LevelSelectMain:
 ; Game state 35: Level select
 push  {r4-r7,lr}                    ; 08007E3C
-bl    Sub08002338                   ; 08007E3E
+bl    InitOAMBuffer03005A00         ; 08007E3E
 ldr   r5,=0x03002200                ; 08007E42
 ldr   r1,=0x47D0                    ; 08007E44
 add   r0,r5,r1                      ; 08007E46
@@ -7311,7 +7311,7 @@ ldr   r2,=0x47C6                    ; 08008606
 add   r0,r5,r2                      ; 08008608
 strh  r4,[r0]                       ; 0800860A
 strh  r4,[r1]                       ; 0800860C
-bl    Sub08002338                   ; 0800860E
+bl    InitOAMBuffer03005A00         ; 0800860E
 ldr   r3,=0x47D0                    ; 08008612
 add   r0,r5,r3                      ; 08008614
 strh  r4,[r0]                       ; 08008616
@@ -9242,7 +9242,7 @@ strh  r2,[r1]                       ; 08009812
 ldr   r3,=0x47D2                    ; 08009814
 add   r0,r0,r3                      ; 08009816  030069D2
 strh  r2,[r0]                       ; 08009818
-bl    Sub08002338                   ; 0800981A
+bl    InitOAMBuffer03005A00         ; 0800981A
 ldr   r0,=0x03006D70                ; 0800981E
 ldr   r2,[r0]                       ; 08009820
 ldr   r1,=0x0D24                    ; 08009822
@@ -14320,7 +14320,7 @@ strh  r2,[r1]                       ; 0800C42A
 ldr   r1,=0x47D2                    ; 0800C42C
 add   r0,r0,r1                      ; 0800C42E
 strh  r2,[r0]                       ; 0800C430
-bl    Sub08002338                   ; 0800C432
+bl    InitOAMBuffer03005A00         ; 0800C432
 ldr   r1,=CodePtrs08164FA8          ; 0800C436
 ldr   r0,=0x03006D70                ; 0800C438
 ldr   r0,[r0]                       ; 0800C43A
@@ -14942,7 +14942,7 @@ strh  r5,[r1]                       ; 0800CA1E
 ldr   r1,=0x47D2                    ; 0800CA20
 add   r0,r0,r1                      ; 0800CA22
 strh  r5,[r0]                       ; 0800CA24
-bl    Sub08002338                   ; 0800CA26
+bl    InitOAMBuffer03005A00         ; 0800CA26
 ldr   r1,=CodePtrs08164FD4          ; 0800CA2A
 ldr   r4,=0x03006D70                ; 0800CA2C
 ldr   r0,[r4]                       ; 0800CA2E
@@ -18164,7 +18164,7 @@ strh  r2,[r1]                       ; 0800E846
 ldr   r1,=0x47D2                    ; 0800E848
 add   r0,r0,r1                      ; 0800E84A
 strh  r2,[r0]                       ; 0800E84C
-bl    Sub08002338                   ; 0800E84E
+bl    InitOAMBuffer03005A00         ; 0800E84E
 ldr   r1,=CodePtrs08165094          ; 0800E852
 ldr   r4,=0x03006D70                ; 0800E854
 ldr   r0,[r4]                       ; 0800E856
@@ -18729,7 +18729,7 @@ strh  r5,[r1]                       ; 0800EDC2
 ldr   r1,=0x47D2                    ; 0800EDC4
 add   r0,r0,r1                      ; 0800EDC6
 strh  r5,[r0]                       ; 0800EDC8
-bl    Sub08002338                   ; 0800EDCA
+bl    InitOAMBuffer03005A00         ; 0800EDCA
 ldr   r1,=CodePtrs08165154          ; 0800EDCE
 ldr   r4,=0x03006D70                ; 0800EDD0
 ldr   r0,[r4]                       ; 0800EDD2
@@ -19161,7 +19161,7 @@ bx    r0                            ; 0800F126
 .pool                               ; 0800F128
 
 Sub0800F154:
-; subroutine: Level select: load layer 0/1 tilemap for current world, to buffer (03002274)
+; Level select: load layer 0/1 tilemap for current world, to buffer (03002274)
 push  {r4-r7,lr}                    ; 0800F154
 mov   r7,r10                        ; 0800F156
 mov   r6,r9                         ; 0800F158
@@ -19653,7 +19653,7 @@ bx    r0                            ; 0800F58E
 .pool                               ; 0800F590
 
 Sub0800F5CC:
-; subroutine: Load level select palette?
+; Load level select palette?
 push  {lr}                          ; 0800F5CC
 ldr   r0,=0x03002200                ; 0800F5CE
 ldr   r1,=0x413C                    ; 0800F5D0
@@ -19683,8 +19683,8 @@ pop   {r0}                          ; 0800F602
 bx    r0                            ; 0800F604
 .pool                               ; 0800F606
 
-Sub0800F628:
-; subroutine: Load level select layer 2 tilemap
+LevelSelect_LoadL2Tilemap:
+; Load level select layer 2 tilemap
 push  {r4-r6,lr}                    ; 0800F628
 ldr   r1,=LevelSelectL2TilemapPtrs  ; 0800F62A
 ldr   r6,=0x03002200                ; 0800F62C
@@ -19744,8 +19744,8 @@ pop   {r0}                          ; 0800F69E
 bx    r0                            ; 0800F6A0
 .pool                               ; 0800F6A2
 
-Sub0800F6E0:
-; subroutine: load level select layer 3 tilemap
+LevelSelect_LoadL3Tilemap:
+; Load level select layer 3 tilemap
 push  {r4-r5,lr}                    ; 0800F6E0
 ldr   r1,=LevelSelectL3TilemapPtrs  ; 0800F6E2  pointer table to layer 3 tilemaps
 ldr   r0,=0x03002200                ; 0800F6E4
@@ -20106,8 +20106,8 @@ pop   {r0}                          ; 0800FA1C
 bx    r0                            ; 0800FA1E
 .pool                               ; 0800FA20
 
-Sub0800FA74:
-; subroutine: Level select: Initialize layer 0/1 tilemap buffer
+LevelSelect_InitL01TilemapBuffer:
+; Level select: Initialize layer 0/1 tilemap buffer
 push  {r4,lr}                       ; 0800FA74
 add   sp,-0x4                       ; 0800FA76
 mov   r1,sp                         ; 0800FA78

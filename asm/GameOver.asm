@@ -1140,7 +1140,7 @@ ldr   r0,[r0]                       ; 08107BAE
 mov   r1,0x40                       ; 08107BB0
 mov   r2,0x40                       ; 08107BB2
 mov   r3,0x0                        ; 08107BB4
-bl    Sub080FCA88                   ; 08107BB6  fill message buffer rows with single color
+bl    FillMessageBuffer             ; 08107BB6  fill message buffer rows with single color
 mov   r0,r5                         ; 08107BBA
 bl    Sub081079CC                   ; 08107BBC
 bl    Sub08107A34                   ; 08107BC0
@@ -9765,8 +9765,8 @@ strh  r0,[r1]                       ; 0810C074
 bx    lr                            ; 0810C076
 .pool                               ; 0810C078
 
-Sub0810C080:
-; subroutine: change YI logo color each scanline
+YITitle_ScanlineLogoColor:
+; Change YI logo color each scanline
 push  {lr}                          ; 0810C080
 ldr   r0,=0x03002200                ; 0810C082
 ldr   r1,=0x4178                    ; 0810C084  03006378
@@ -10919,7 +10919,7 @@ mov   r0,sp                         ; 0810CAB2
 bl    swi_MemoryCopy4or2            ; 0810CAB4  Memory copy/fill, 4- or 2-byte blocks
 mov   r0,0x2                        ; 0810CAB8
 bl    Sub08013CC4                   ; 0810CABA
-bl    Sub08002338                   ; 0810CABE
+bl    InitOAMBuffer03005A00         ; 0810CABE
 bl    Sub0810C9C4                   ; 0810CAC2
 bl    Sub0810CA08                   ; 0810CAC6
 bl    Sub0810D1CC                   ; 0810CACA
@@ -11646,7 +11646,7 @@ ldr   r0,[r4]                       ; 0810D1D2
 mov   r1,0x0                        ; 0810D1D4
 mov   r2,0x10                       ; 0810D1D6
 mov   r3,0x0                        ; 0810D1D8
-bl    Sub080FCA88                   ; 0810D1DA  fill message buffer rows with single color
+bl    FillMessageBuffer             ; 0810D1DA  fill message buffer rows with single color
 mov   r0,0x0                        ; 0810D1DE
 mov   r1,0x0                        ; 0810D1E0
 mov   r2,0xD4                       ; 0810D1E2

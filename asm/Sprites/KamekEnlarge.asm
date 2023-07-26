@@ -166,7 +166,7 @@ bx    r0                            ; 080BF890
 .pool                               ; 080BF892
 
 LoadBossPalette:
-; subroutine: Load boss palette
+; Load boss palette
 ; r0: sprite+6E (boss index, 00-0B) if called by Kamek enlarge
 ;     0C if called by Burt the Bashful init
 ;     0E if called by Marching Milde init

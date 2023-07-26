@@ -11,7 +11,7 @@ bx    lr                            ; 080E8128
 .pool                               ; 080E812A
 
 StdMsg_DispMsgCharScaled:
-; subroutine: Display message character, scaled
+; Display message character, scaled
 push  {r4-r7,lr}                    ; 080E8134
 mov   r7,r10                        ; 080E8136
 mov   r6,r9                         ; 080E8138
@@ -149,7 +149,7 @@ bx    r0                            ; 080E8232
 .pool                               ; 080E8234
 
 StdMsg_DispMsgChar1x:
-; subroutine: Display message character, unscaled
+; Display message character, unscaled
 push  {r4-r7,lr}                    ; 080E8244
 mov   r7,r10                        ; 080E8246
 mov   r6,r9                         ; 080E8248
@@ -297,7 +297,7 @@ bx    r0                            ; 080E835C
 .pool                               ; 080E835E
 
 StdMsg_DispMsgChar:
-; subroutine: Display message character
+; Display message character
 push  {lr}                          ; 080E836C
 ldrh  r1,[r0,0x1E]                  ; 080E836E  text vertical scale
 lsl   r1,r1,0x12                    ; 080E8370
@@ -657,7 +657,7 @@ bx    r0                            ; 080E85F6
 .pool                               ; 080E85F8
 
 StdMsg_Advance2Bytes:
-; subroutine: add 2 to current message's byte to read
+; Add 2 to current message's byte to read
 ; called by FF 00-09, 0B-0E, 20-3B, possibly others
 ldr   r1,[r0,0x4]                   ; 080E8600
 add   r1,0x2                        ; 080E8602
@@ -1748,7 +1748,7 @@ lsr   r2,r2,0x10                    ; 080E8E2A
 ldr   r0,=0x03007248                ; 080E8E2C  pointer to message buffer
 ldr   r0,[r0]                       ; 080E8E2E
 mov   r3,0xD                        ; 080E8E30
-bl    Sub080FCA88                   ; 080E8E32  fill message buffer rows with single color
+bl    FillMessageBuffer             ; 080E8E32  fill message buffer rows with single color
 mov   r0,r4                         ; 080E8E36
 bl    StdMsg_Advance2Bytes          ; 080E8E38  add 2 to byte to read (030023D0)
 pop   {r4}                          ; 080E8E3C
