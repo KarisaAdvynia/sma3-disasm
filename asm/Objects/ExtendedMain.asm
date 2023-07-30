@@ -4112,13 +4112,13 @@ add   r0,r0,r1                      ; 0802B7EE  index with relY*10 + relX
 ldrb  r3,[r0]                       ; 0802B7F0  tile low byte (byte in a table of halfwords)
 cmp   r2,0xB                        ; 0802B7F2
 bls   @@Code0802B800                ; 0802B7F4
-mov   r1,0x9D                       ; 0802B7F6 \ runs if tile index > 0B
+mov   r1,0x9D                       ; 0802B7F6 \ runs if relY > 0B
 lsl   r1,r1,0x8                     ; 0802B7F8  9D00
 b     @@Code0802B804                ; 0802B7FA /
 .pool                               ; 0802B7FC
 
 @@Code0802B800:
-mov   r1,0xA5                       ; 0802B800 \ runs if tile index <= 0B
+mov   r1,0xA5                       ; 0802B800 \ runs if relY <= 0B
 lsl   r1,r1,0x8                     ; 0802B802 / A500
 @@Code0802B804:
 mov   r0,r1                         ; 0802B804

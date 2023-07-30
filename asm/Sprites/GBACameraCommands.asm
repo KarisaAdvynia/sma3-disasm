@@ -23,14 +23,14 @@ ldr   r1,=0x4905                    ; 080A5526
 add   r0,r0,r1                      ; 080A5528  03006B05
 ldrb  r0,[r0]                       ; 080A552A  Game state
 cmp   r0,0xB                        ; 080A552C  0B: Transition effect to new sublevel
-bne   @@Code080A55A0                ; 080A552E
+bne   @@SetHitbox                   ; 080A552E
 ldr   r0,=0x03007240                ; 080A5530  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                       ; 080A5532
 ldr   r1,=0x2AAC                    ; 080A5534
 add   r0,r0,r1                      ; 080A5536  [03007240]+2AAC (03004CB8)
 ldrh  r0,[r0]                       ; 080A5538  sublevel ID
 cmp   r0,0x23                       ; 080A553A  23: 4-Extra light half
-bne   @@Code080A55A0                ; 080A553C
+bne   @@SetHitbox                   ; 080A553C
                                     ;          \ runs if transitioning into sublevel 23
 ldrh  r1,[r4,0x32]                  ; 080A553E  sprite ID
 mov   r0,0xDD                       ; 080A5540
@@ -72,24 +72,24 @@ add   r1,0x6A                       ; 080A559A
 mov   r0,0x1                        ; 080A559C
 strh  r0,[r1]                       ; 080A559E / set sprite+6A to 1
 
-@@Code080A55A0:
+@@SetHitbox:
 mov   r0,r4                         ; 080A55A0
 add   r0,0x6C                       ; 080A55A2
-ldrh  r0,[r0]                       ; 080A55A4
+ldrh  r0,[r0]                       ; 080A55A4  extra byte, high digit filtered
 lsr   r0,r0,0x1                     ; 080A55A6
 mov   r1,r4                         ; 080A55A8
-add   r1,0x4E                       ; 080A55AA
-strh  r0,[r1]                       ; 080A55AC  [sprite+4E] = [sprite+6C] / 2
+add   r1,0x4E                       ; 080A55AA  sprite+4E
+strh  r0,[r1]                       ; 080A55AC  hitbox half width = [sprite+6C] / 2
 sub   r1,0x4                        ; 080A55AE  sprite+4A
-strh  r0,[r1]                       ; 080A55B0  [sprite+4A] = [sprite+6C] / 2 - 4
+strh  r0,[r1]                       ; 080A55B0  hitbox X center offset = [sprite+6C] / 2 - 4
 mov   r0,r4                         ; 080A55B2
 add   r0,0x6E                       ; 080A55B4  sprite+6E
-ldrh  r0,[r0]                       ; 080A55B6
+ldrh  r0,[r0]                       ; 080A55B6  extra byte, low digit <<4
 lsr   r0,r0,0x1                     ; 080A55B8
 add   r1,0x6                        ; 080A55BA  sprite+50
-strh  r0,[r1]                       ; 080A55BC  [sprite+50] = [sprite+6E] / 2
+strh  r0,[r1]                       ; 080A55BC  hitbox half height = [sprite+6E] / 2
 sub   r1,0x4                        ; 080A55BE  sprite+4C
-strh  r0,[r1]                       ; 080A55C0  [sprite+4C] = [sprite+6E] / 2 - 4
+strh  r0,[r1]                       ; 080A55C0  hitbox Y center offset = [sprite+6E] / 2 - 4
 pop   {r4}                          ; 080A55C2
 pop   {r0}                          ; 080A55C4
 bx    r0                            ; 080A55C6

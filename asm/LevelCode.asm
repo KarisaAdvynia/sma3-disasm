@@ -617,7 +617,7 @@ strh  r0,[r1]                       ; 08013A0E  [03006ABE] = 0
 mov   r5,0x0                        ; 08013A10  r5 = loop index
 ldr   r6,=L3ImagePalettePtrs        ; 08013A12
 mov   r9,r6                         ; 08013A14  r9 = 08167434
-@@Code08013A16:                     ; loop: check if layer 3 image is one of 8 specific values
+@@L3ImagePal8_Loop:                 ; loop: check if layer 3 image is one of 8 specific values
                                     ;  if so, replace colors 80-8F. Layer 3 image 18 additionally replaces colors 90-9F
 mov   r0,r10                        ; 08013A16
 ldr   r4,[r0]                       ; 08013A18  r4 = [03007240] (0300220C)
@@ -727,7 +727,7 @@ lsl   r0,r0,0x10                    ; 08013B0C
 lsr   r5,r0,0x10                    ; 08013B0E  increment loop index
 cmp   r5,0x7                        ; 08013B10 \ if loop index has reached 8, end loop
 bhi   @@Code08013B16                ; 08013B12 /
-b     @@Code08013A16                ; 08013B14
+b     @@L3ImagePal8_Loop            ; 08013B14
 @@Code08013B16:
 mov   r3,r10                        ; 08013B16
 ldr   r0,[r3]                       ; 08013B18  r0 = [03007240] (0300220C)
@@ -788,7 +788,7 @@ bls   @@Code08013B62                ; 08013B7C /
 mov   r5,0x0                        ; 08013B7E  loop index
 ldr   r6,=0x02010600                ; 08013B80  palette buffers, color 100
 ldr   r4,=0x02010A00                ; 08013B82
-ldr   r3,=Data082D285C              ; 08013B84
+ldr   r3,=LevelSprGlobalPal_100_15F ; 08013B84
 @@Code08013B86:
 lsl   r0,r5,0x1                     ; 08013B86 \ loop: copy 60 global colors to 100-15F
 add   r2,r0,r6                      ; 08013B88
@@ -805,7 +805,7 @@ bls   @@Code08013B86                ; 08013B9C /
 mov   r5,0x0                        ; 08013B9E  loop index
 ldr   r6,=0x02010700                ; 08013BA0  palette buffers, color 180
 ldr   r4,=0x02010B00                ; 08013BA2
-ldr   r3,=Data082D311C              ; 08013BA4
+ldr   r3,=LevelSprGlobalPal_180_1FF ; 08013BA4
 @@Code08013BA6:
 lsl   r0,r5,0x1                     ; 08013BA6 \ loop: copy 80 global colors to 180-1FF
 add   r2,r0,r6                      ; 08013BA8
@@ -958,9 +958,9 @@ bl    swi_MemoryCopy4or2            ; 08013D20 / Memory copy, 4-byte or 2-byte b
 @@Code08013D24:
 ldr   r0,[r5]                       ; 08013D24
 add   r0,r0,r4                      ; 08013D26  r0 = [03007240]+2AAC (03004CB8)
-ldrh  r0,[r0]                       ; 08013D28
+ldrh  r0,[r0]                       ; 08013D28  sublevel ID
 cmp   r0,0x6A                       ; 08013D2A
-bne   @@Code08013D44                ; 08013D2C
+bne   @@Return                      ; 08013D2C
 ldr   r0,=0x02010400                ; 08013D2E \ runs if sublevel ID is 6A: hardcode background color
 ldr   r2,=0x02010800                ; 08013D30
 ldr   r3,=0x28E7                    ; 08013D32
@@ -971,7 +971,7 @@ mov   r1,0xA0                       ; 08013D3A
 lsl   r1,r1,0x13                    ; 08013D3C  r1 = 05000000
 mov   r2,0x1                        ; 08013D3E
 bl    swi_MemoryCopy4or2            ; 08013D40 / Memory copy, 4-byte or 2-byte blocks
-@@Code08013D44:
+@@Return:
 pop   {r4-r5}                       ; 08013D44
 pop   {r0}                          ; 08013D46
 bx    r0                            ; 08013D48
@@ -985,9 +985,9 @@ lsl   r1,r1,0xB                     ; 08013D7E
 add   r0,r0,r1                      ; 08013D80
 lsr   r0,r0,0x10                    ; 08013D82
 cmp   r0,0x1F                       ; 08013D84
-bls   @@Code08013D8A                ; 08013D86
+bls   @@Return                      ; 08013D86
 mov   r0,0x1F                       ; 08013D88
-@@Code08013D8A:
+@@Return:
 pop   {r1}                          ; 08013D8A
 bx    r1                            ; 08013D8C
 .pool                               ; 08013D8E
@@ -1029,7 +1029,7 @@ bx    r1                            ; 08013DD4
 
 push  {r4-r6,lr}                    ; 08013DD8
 cmp   r2,0x0                        ; 08013DDA
-ble   @@Code08013DF6                ; 08013DDC
+ble   @@Return                      ; 08013DDC
 mov   r6,r1                         ; 08013DDE
 mov   r4,r0                         ; 08013DE0
 mov   r5,r2                         ; 08013DE2
@@ -1042,7 +1042,7 @@ add   r4,0x2                        ; 08013DEE
 sub   r5,0x1                        ; 08013DF0
 cmp   r5,0x0                        ; 08013DF2
 bne   @@Code08013DE4                ; 08013DF4
-@@Code08013DF6:
+@@Return:
 pop   {r4-r6}                       ; 08013DF6
 pop   {r0}                          ; 08013DF8
 bx    r0                            ; 08013DFA
@@ -1280,14 +1280,14 @@ pop   {r0}                          ; 08014000
 bx    r0                            ; 08014002
 .pool                               ; 08014004
 
-Sub08014028:
+KamekRoom_LoadGraphics:
 push  {r4-r7,lr}                    ; 08014028
 ldr   r7,=DataPtrs0826DC70          ; 0801402A
 ldr   r0,[r7]                       ; 0801402C
 mov   r1,0xC0                       ; 0801402E
-lsl   r1,r1,0x13                    ; 08014030
+lsl   r1,r1,0x13                    ; 08014030  06000000
 bl    swi_LZ77_VRAM                 ; 08014032  LZ77 decompress (VRAM)
-add   r7,0xC                        ; 08014036  0826DC7C
+add   r7,GraphicsPtr_KamekRoom_LZ77-DataPtrs0826DC70; 08014036
 ldr   r0,[r7]                       ; 08014038
 ldr   r1,=0x06001000                ; 0801403A
 bl    swi_LZ77_VRAM                 ; 0801403C  LZ77 decompress (VRAM)
@@ -1297,7 +1297,7 @@ bl    swi_LZ77_VRAM                 ; 08014044  LZ77 decompress (VRAM)
 ldr   r0,[r7]                       ; 08014048
 ldr   r1,=0x06005000                ; 0801404A
 bl    swi_LZ77_VRAM                 ; 0801404C  LZ77 decompress (VRAM)
-ldr   r6,=DataPtrs081675BC          ; 08014050
+ldr   r6,=KamekRoom_SprStripePtrs   ; 08014050  hardcoded sprite graphics (same as sprite tileset 79)
 ldr   r7,[r6]                       ; 08014052
 ldr   r0,[r7]                       ; 08014054
 ldr   r4,=0x0201FC00                ; 08014056  decompressed graphics buffer
@@ -1407,12 +1407,12 @@ ldr   r0,=0x298A                    ; 08014190
 add   r1,r1,r0                      ; 08014192
 mov   r0,0x29                       ; 08014194
 strh  r0,[r1]                       ; 08014196
-bl    Sub08014028                   ; 08014198
+bl    KamekRoom_LoadGraphics        ; 08014198
 pop   {r0}                          ; 0801419C
 bx    r0                            ; 0801419E
 .pool                               ; 080141A0
 
-Sub080141B4:
+KamekRoom_LoadPalette:
 push  {r4-r7,lr}                    ; 080141B4
 mov   r7,r10                        ; 080141B6
 mov   r6,r9                         ; 080141B8
@@ -1424,12 +1424,12 @@ mov   r8,r0                         ; 080141C2
 ldr   r7,=0x03002200                ; 080141C4
 ldr   r1,=0x03007240                ; 080141C6  Normal gameplay IWRAM (Ptr to 0300220C)
 mov   r10,r1                        ; 080141C8
-ldr   r3,=Data082095E4              ; 080141CA
+ldr   r3,=KamekRoom_LayerPal        ; 080141CA
 mov   r9,r3                         ; 080141CC
 ldr   r6,=0x02010600                ; 080141CE
 ldr   r5,=0x02010A00                ; 080141D0
-ldr   r3,=Data082D285C              ; 080141D2
-@@Code080141D4:
+ldr   r3,=LevelSprGlobalPal_100_15F ; 080141D2
+@@Loop_LoadColors100_15F:
 lsl   r0,r4,0x1                     ; 080141D4
 add   r2,r0,r6                      ; 080141D6
 add   r1,r0,r5                      ; 080141D8
@@ -1441,12 +1441,12 @@ add   r0,r4,0x1                     ; 080141E2
 lsl   r0,r0,0x10                    ; 080141E4
 lsr   r4,r0,0x10                    ; 080141E6
 cmp   r4,0x5F                       ; 080141E8
-bls   @@Code080141D4                ; 080141EA
+bls   @@Loop_LoadColors100_15F      ; 080141EA
 mov   r4,0x0                        ; 080141EC
 ldr   r6,=0x02010700                ; 080141EE
 ldr   r5,=0x02010B00                ; 080141F0
-ldr   r3,=Data082D311C              ; 080141F2
-@@Code080141F4:
+ldr   r3,=LevelSprGlobalPal_180_1FF ; 080141F2
+@@Loop_LoadColors180_1FF:
 lsl   r0,r4,0x1                     ; 080141F4
 add   r2,r0,r6                      ; 080141F6
 add   r1,r0,r5                      ; 080141F8
@@ -1458,7 +1458,7 @@ add   r0,r4,0x1                     ; 08014202
 lsl   r0,r0,0x10                    ; 08014204
 lsr   r4,r0,0x10                    ; 08014206
 cmp   r4,0x4F                       ; 08014208
-bls   @@Code080141F4                ; 0801420A
+bls   @@Loop_LoadColors180_1FF      ; 0801420A
 ldr   r1,=0x4896                    ; 0801420C
 add   r0,r7,r1                      ; 0801420E
 ldrh  r0,[r0]                       ; 08014210
@@ -1472,7 +1472,7 @@ ldr   r0,=Data082D2F1C              ; 0801421E
 mov   r12,r0                        ; 08014220
 ldr   r7,=0x020106A0                ; 08014222
 ldr   r6,=0x02010AA2                ; 08014224
-@@Code08014226:
+@@Loop08014226:
 lsl   r1,r4,0x2                     ; 08014226
 mov   r0,r8                         ; 08014228
 add   r3,r1,r0                      ; 0801422A
@@ -1493,7 +1493,7 @@ add   r0,r4,0x1                     ; 08014246
 lsl   r0,r0,0x10                    ; 08014248
 lsr   r4,r0,0x10                    ; 0801424A
 cmp   r4,0x7                        ; 0801424C
-bls   @@Code08014226                ; 0801424E
+bls   @@Loop08014226                ; 0801424E
 mov   r1,r10                        ; 08014250
 ldr   r0,[r1]                       ; 08014252
 ldr   r3,=0x29A0                    ; 08014254
@@ -1521,7 +1521,7 @@ cmp   r4,0x1F                       ; 0801427C
 bls   @@Code08014268                ; 0801427E
 ldr   r5,=0x02010400                ; 08014280
 mov   r4,0x80                       ; 08014282
-lsl   r4,r4,0x1                     ; 08014284
+lsl   r4,r4,0x1                     ; 08014284  100
 mov   r0,r9                         ; 08014286
 mov   r1,r5                         ; 08014288
 mov   r2,r4                         ; 0801428A
@@ -1531,7 +1531,7 @@ mov   r0,r9                         ; 08014292
 mov   r2,r4                         ; 08014294
 bl    swi_MemoryCopy4or2            ; 08014296  Memory copy/fill, 4- or 2-byte blocks
 mov   r1,0xA0                       ; 0801429A
-lsl   r1,r1,0x13                    ; 0801429C
+lsl   r1,r1,0x13                    ; 0801429C  05000000
 mov   r0,r5                         ; 0801429E
 mov   r2,r4                         ; 080142A0
 bl    swi_MemoryCopy4or2            ; 080142A2  Memory copy/fill, 4- or 2-byte blocks
@@ -1553,9 +1553,9 @@ pop   {r0}                          ; 080142C6
 bx    r0                            ; 080142C8
 .pool                               ; 080142CA
 
-Sub08014328:
+LoadRaphaelStripeGraphics:
 push  {r4-r6,lr}                    ; 08014328
-ldr   r6,=Data081675D4              ; 0801432A
+ldr   r6,=Raphael_SprStripePtrs     ; 0801432A
 ldr   r0,[r6]                       ; 0801432C
 ldr   r0,[r0]                       ; 0801432E
 ldr   r4,=0x0201FC00                ; 08014330  decompressed graphics buffer
@@ -1726,7 +1726,7 @@ strh  r2,[r0]                       ; 080144BC
 add   r3,0x6                        ; 080144BE
 add   r1,r1,r3                      ; 080144C0
 strh  r2,[r1]                       ; 080144C2
-bl    Sub08014328                   ; 080144C4
+bl    LoadRaphaelStripeGraphics     ; 080144C4
 ldr   r4,=0x03002200                ; 080144C8
 ldr   r1,=0x47D8                    ; 080144CA
 add   r0,r4,r1                      ; 080144CC
@@ -6557,7 +6557,7 @@ bne   @@Code08016F74                ; 08016EFA
 mov   r0,0x1                        ; 08016EFC \ runs if Kamek block room
 strb  r0,[r4]                       ; 08016EFE
 mov   r0,r8                         ; 08016F00
-bl    Sub08017728                   ; 08016F02
+bl    KamekRoom_LoadL23Tilemaps     ; 08016F02
 b     @@Code08016F78                ; 08016F06 /
 .pool                               ; 08016F08
 
@@ -7472,12 +7472,12 @@ pop   {r1}                          ; 08017720
 bx    r1                            ; 08017722
 .pool                               ; 08017724
 
-Sub08017728:
+KamekRoom_LoadL23Tilemaps:
 push  {lr}                          ; 08017728
-ldr   r0,=Data08208D58              ; 0801772A  Kamek room layer 2 tilemap
+ldr   r0,=KamekRoom_L2Tilemap       ; 0801772A  Kamek room layer 2 tilemap
 ldr   r1,=0x0600B000                ; 0801772C
 bl    swi_LZ77_VRAM                 ; 0801772E  LZ77 decompress (VRAM)
-ldr   r0,=Data082091A0              ; 08017732  Kamek room layer 3 tilemap
+ldr   r0,=KamekRoom_L3Tilemap       ; 08017732  Kamek room layer 3 tilemap
 ldr   r1,=0x0600D000                ; 08017734
 bl    swi_LZ77_VRAM                 ; 08017736  LZ77 decompress (VRAM)
 ldr   r1,=0x03002200                ; 0801773A
@@ -13822,7 +13822,7 @@ lsl   r0,r0,0x10                    ; 0802C7FA
 lsr   r2,r0,0x10                    ; 0802C7FC  00=screen exit, 01=midway entrance
 cmp   r2,0x1                        ; 0802C7FE
 bls   @@Code0802C804                ; 0802C800
-b     @@Code0802C932                ; 0802C802  if at least 02, skip directly to loading sublevel header, without loading sublevel ID or coordinates?
+b     @@LoadSublevelHeader          ; 0802C802  if at least 02, skip directly to loading sublevel header, without loading sublevel ID or coordinates?
 
 @@Code0802C804:
 ldrh  r0,[r7,0x3E]                  ; 0802C804  load from [03007240]+3E (0300224A): screen YX *8
@@ -13834,7 +13834,7 @@ mov   r12,r0                        ; 0802C80E  r12 = pointer to current screen'
 ldrh  r2,[r0]                       ; 0802C810
 ldrb  r4,[r0]                       ; 0802C812  r4 = sublevel ID
 cmp   r4,0xF5                       ; 0802C814  check if sublevel ID <= F5
-bls   @@Code0802C8B0                ; 0802C816  if valid sublevel, continue processing midway entrance/screen exit
+bls   @@NotMainEntr_Continued       ; 0802C816  if valid sublevel, continue processing midway entrance/screen exit
 
 ; if sublevel ID > F5, it's actually a Bandit minigame
 mov   r0,r4                         ; 0802C818
@@ -13891,7 +13891,7 @@ bl    BanditMinigameInit            ; 0802C87E
 b     @@Return                      ; 0802C882
 .pool                               ; 0802C884
 
-@@Code0802C8B0:
+@@NotMainEntr_Continued:
 ; runs if midway entrance/screen exit, continued
 ; r2 has first 2 bytes of entrance data
 ldr   r3,=0x03006D80                ; 0802C8B0
@@ -13963,7 +13963,7 @@ str   r0,[r3]                       ; 0802C92A  [03004B74] = pointer to sprite d
 ldr   r1,=0x2AAC                    ; 0802C92C
 add   r2,r2,r1                      ; 0802C92E  r2 = [03007240]+2AAC (03004CB8)
 strh  r4,[r2]                       ; 0802C930  [03004CB8] = sublevel ID
-@@Code0802C932:
+@@LoadSublevelHeader:
 mov   r0,0x0                        ; 0802C932
 ldr   r2,[sp,0x8]                   ; 0802C934  load an address previously allocated on the stack
 strh  r0,[r2,0x6]                   ; 0802C936  clear 16-bit value at [address from stack]+6
@@ -14009,7 +14009,7 @@ ldrh  r0,[r0]                       ; 0802C986  r0 = header index 9
 cmp   r0,0xA                        ; 0802C988  0A: Kamek block room
 bne   @@Code0802CA00                ; 0802C98A
 bl    Sub0801415C                   ; 0802C98C \ runs if Kamek block room
-bl    Sub080141B4                   ; 0802C990
+bl    KamekRoom_LoadPalette         ; 0802C990
 mov   r0,r7                         ; 0802C994
 add   r0,0x66                       ; 0802C996
 str   r0,[sp,0x10]                  ; 0802C998
@@ -14058,8 +14058,7 @@ b     @@Code0802CAA2                ; 0802CA2C / skip loading normal graphics
 @@Code0802CA2E:
 bl    LoadTilesetGraphics           ; 0802CA2E  load tileset-specific graphics for layer 1, layer 2, layer 3, and sprites
 mov   r2,0x0                        ; 0802CA32  loop index
-                                    ; the following lines set sp+0C to sp+20, to 03002270-227A
-mov   r5,r7                         ; 0802CA34
+mov   r5,r7                         ; 0802CA34 \ set sp+0C to sp+20, to 03002270-227A
 add   r5,0x66                       ; 0802CA36
 str   r5,[sp,0x10]                  ; 0802CA38
 mov   r6,r7                         ; 0802CA3A
@@ -14076,7 +14075,7 @@ add   r3,0x6E                       ; 0802CA4E
 str   r3,[sp,0x20]                  ; 0802CA50
 mov   r4,r7                         ; 0802CA52
 add   r4,0x6C                       ; 0802CA54
-str   r4,[sp,0x1C]                  ; 0802CA56
+str   r4,[sp,0x1C]                  ; 0802CA56 /
 ldr   r3,=0x03006B60                ; 0802CA58  r3 = 03006B60
 mov   r1,0x0                        ; 0802CA5A
 add   r5,r3,0x3                     ; 0802CA5C  r5 = 03006B63

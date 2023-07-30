@@ -11295,7 +11295,7 @@ bl    swi_LZ77_VRAM                 ; 080EFC7A  LZ77 decompress (VRAM)
 ldr   r0,[r4]                       ; 080EFC7E
 ldr   r1,=0x06005000                ; 080EFC80
 bl    swi_LZ77_VRAM                 ; 080EFC82  LZ77 decompress (VRAM)
-ldr   r4,=Data0826DC74              ; 080EFC86
+ldr   r4,=DataPtrs0826DC74          ; 080EFC86
 ldr   r0,[r4]                       ; 080EFC88
 ldr   r1,=0x06007000                ; 080EFC8A
 bl    swi_LZ77_VRAM                 ; 080EFC8C  LZ77 decompress (VRAM)

@@ -898,15 +898,18 @@ pop   {r0}                          ; 0800085E
 bx    r0                            ; 08000860
 .pool                               ; 08000862
 
-Sub08000868:
+FindSpritesToSpawn:
+; r0: pointer to sublevel sprite data
+; r1: pointer to sprite spawn flags (always 0201BA00)
+; r2: pointer to write sprites to spawn (always 0201B900)
 push  {r4-r7,lr}                    ; 08000868
 mov   r7,r10                        ; 0800086A
 mov   r6,r9                         ; 0800086C
 mov   r5,r8                         ; 0800086E
 push  {r5-r7}                       ; 08000870
-ldr   r4,[r0]                       ; 08000872
+ldr   r4,[r0]                       ; 08000872  sprite 4 bytes
 add   r5,r4,0x1                     ; 08000874
-beq   @@Code08000902                ; 08000876
+beq   @@End                         ; 08000876  if sprite data starts with FFFFFFFF, skip
 mov   r8,r3                         ; 08000878
 ldr   r5,[sp,0x20]                  ; 0800087A
 mov   r9,r5                         ; 0800087C
@@ -917,75 +920,76 @@ mov   lr,r5                         ; 08000884
 ldr   r5,=0x01BA                    ; 08000886
 mov   r12,r5                        ; 08000888
 mov   r7,0x0                        ; 0800088A
-@@Code0800088C:
-ldrh  r3,[r1]                       ; 0800088C
+@@ReadSpritesLoop:
+ldrh  r3,[r1]                       ; 0800088C  sprite spawn flags
 lsl   r3,r3,0x18                    ; 0800088E
 lsr   r3,r3,0x18                    ; 08000890
-bne   @@Code080008E4                ; 08000892
+bne   @@AdvanceToNextSprite         ; 08000892  if spawning is not allowed, skip sprite
 lsl   r6,r4,0x10                    ; 08000894
-lsr   r6,r6,0x19                    ; 08000896
+lsr   r6,r6,0x19                    ; 08000896  r6 = Y position (bits 9-15)
 lsl   r5,r4,0x8                     ; 08000898
-lsr   r5,r5,0x18                    ; 0800089A
+lsr   r5,r5,0x18                    ; 0800089A  r5 = X position (byte 2)
 cmp   r6,r10                        ; 0800089C
 bne   @@Code080008AA                ; 0800089E
 mov   r3,lr                         ; 080008A0
 sub   r3,r5,r3                      ; 080008A2
 bmi   @@Code080008AA                ; 080008A4
 cmp   r3,0x16                       ; 080008A6
-blt   @@Code080008B8                ; 080008A8
+blt   @@SpawnSprite                 ; 080008A8
 @@Code080008AA:
 cmp   r5,r8                         ; 080008AA
-bne   @@Code080008E4                ; 080008AC
+bne   @@AdvanceToNextSprite         ; 080008AC
 mov   r3,r9                         ; 080008AE
 sub   r3,r6,r3                      ; 080008B0
-bmi   @@Code080008E4                ; 080008B2
+bmi   @@AdvanceToNextSprite         ; 080008B2
 cmp   r3,0x14                       ; 080008B4
-bge   @@Code080008E4                ; 080008B6
-@@Code080008B8:
+bge   @@AdvanceToNextSprite         ; 080008B6
+@@SpawnSprite:
 lsl   r3,r4,0x17                    ; 080008B8
-lsr   r3,r3,0x17                    ; 080008BA
-strh  r3,[r2]                       ; 080008BC
-strh  r5,[r2,0x2]                   ; 080008BE
-strh  r6,[r2,0x4]                   ; 080008C0
+lsr   r3,r3,0x17                    ; 080008BA  r3 = sprite ID (bits 0-8)
+strh  r3,[r2]                       ; 080008BC  halfword 0 = sprite ID
+strh  r5,[r2,0x2]                   ; 080008BE  halfword 1 = X position
+strh  r6,[r2,0x4]                   ; 080008C0  halfword 2 = Y position
 add   r2,0x6                        ; 080008C2
 cmp   r3,r12                        ; 080008C4
 blo   @@Code080008DA                ; 080008C6
 mov   r5,r12                        ; 080008C8
-add   r5,0x3                        ; 080008CA
+add   r5,0x3                        ; 080008CA  1BD
 cmp   r3,r5                         ; 080008CC
 bhi   @@Code080008DA                ; 080008CE
-ldr   r3,[r0,0x4]                   ; 080008D0
+                                    ;          \ runs if sprite 1BA-1BD
+ldr   r3,[r0,0x4]                   ; 080008D0  ??? (byte 4)
 lsl   r3,r3,0x18                    ; 080008D2
 lsr   r3,r3,0x18                    ; 080008D4
-strh  r3,[r2]                       ; 080008D6
-add   r2,0x2                        ; 080008D8
+strh  r3,[r2]                       ; 080008D6  halfword 3 = ??? (byte 4)
+add   r2,0x2                        ; 080008D8 / add 2 to output pointer
 @@Code080008DA:
-strh  r7,[r2]                       ; 080008DA
+strh  r7,[r2]                       ; 080008DA  halfword 3 (4 if 1BA-1BD) = sublevel sprite index
 add   r2,0x2                        ; 080008DC
 mov   r3,0x0                        ; 080008DE
 sub   r3,0x1                        ; 080008E0
 strh  r3,[r1]                       ; 080008E2
-@@Code080008E4:
+@@AdvanceToNextSprite:
 lsl   r3,r4,0x17                    ; 080008E4
-lsr   r3,r3,0x17                    ; 080008E6
+lsr   r3,r3,0x17                    ; 080008E6  r3 = sprite ID (bits 0-8)
 cmp   r3,r12                        ; 080008E8
 blo   @@Code080008F6                ; 080008EA
 mov   r5,r12                        ; 080008EC
 add   r5,0x3                        ; 080008EE
 cmp   r3,r5                         ; 080008F0
 bhi   @@Code080008F6                ; 080008F2
-add   r0,0x4                        ; 080008F4
+add   r0,0x4                        ; 080008F4  if 1BA-1BD, add an extra 4 to sprite data pointer
 @@Code080008F6:
-add   r7,0x1                        ; 080008F6
-add   r1,0x2                        ; 080008F8
-add   r0,0x4                        ; 080008FA
-ldr   r4,[r0]                       ; 080008FC
+add   r7,0x1                        ; 080008F6  add 1 to sublevel data sprite index
+add   r1,0x2                        ; 080008F8  add 2 to spawn flag pointer
+add   r0,0x4                        ; 080008FA  add 4 to sprite data pointer
+ldr   r4,[r0]                       ; 080008FC  next sprite's 4 bytes
 add   r5,r4,0x1                     ; 080008FE
-bne   @@Code0800088C                ; 08000900
-@@Code08000902:
+bne   @@ReadSpritesLoop             ; 08000900  if FFFFFFFF, end of data
+@@End:
 mov   r3,0x0                        ; 08000902
-sub   r3,0x1                        ; 08000904
-strh  r3,[r2]                       ; 08000906
+sub   r3,0x1                        ; 08000904  -1
+strh  r3,[r2]                       ; 08000906  store FFFF to mark end of RAM table
 pop   {r3-r5}                       ; 08000908
 mov   r8,r3                         ; 0800090A
 mov   r9,r4                         ; 0800090C

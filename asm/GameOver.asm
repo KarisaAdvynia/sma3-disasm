@@ -8374,7 +8374,7 @@ str   r3,[sp]                       ; 0810B58C
 lsl   r2,r2,0x9                     ; 0810B58E
 lsr   r2,r2,0xB                     ; 0810B590
 mov   r0,0x80                       ; 0810B592
-lsl   r0,r0,0x11                    ; 0810B594
+lsl   r0,r0,0x11                    ; 0810B594  01000000
 orr   r2,r0                         ; 0810B596
 mov   r0,sp                         ; 0810B598
 bl    swi_MemoryCopy32              ; 0810B59A  Memory copy/fill, 32-byte blocks

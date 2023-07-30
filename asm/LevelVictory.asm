@@ -4026,7 +4026,7 @@ strh  r0,[r2,0x4]                   ; 080E5814
 mov   r3,0x0                        ; 080E5816
 ldr   r6,=0x02010600                ; 080E5818
 ldr   r5,=0x02010A00                ; 080E581A
-ldr   r4,=Data082D285C              ; 080E581C
+ldr   r4,=LevelSprGlobalPal_100_15F ; 080E581C
 @@Code080E581E:
 lsl   r0,r3,0x1                     ; 080E581E
 add   r2,r0,r6                      ; 080E5820
@@ -4043,7 +4043,7 @@ bls   @@Code080E581E                ; 080E5834
 mov   r3,0x0                        ; 080E5836
 ldr   r6,=0x02010700                ; 080E5838
 ldr   r5,=0x02010B00                ; 080E583A
-ldr   r4,=Data082D311C              ; 080E583C
+ldr   r4,=LevelSprGlobalPal_180_1FF ; 080E583C
 @@Code080E583E:
 lsl   r0,r3,0x1                     ; 080E583E
 add   r2,r0,r6                      ; 080E5840

@@ -1291,7 +1291,7 @@ mov   r6,r0                         ; 08102D90
 ldr   r0,=Data08264454              ; 08102D92
 ldr   r0,[r0]                       ; 08102D94
 mov   r1,0xC0                       ; 08102D96
-lsl   r1,r1,0x13                    ; 08102D98
+lsl   r1,r1,0x13                    ; 08102D98  06000000
 bl    swi_LZ77_VRAM                 ; 08102D9A  LZ77 decompress (VRAM)
 ldr   r0,=Graphics_Gameplay_Bowser_L2_8bpp_LZ77; 08102D9E
 ldr   r1,=0x0600C000                ; 08102DA0
@@ -2083,8 +2083,8 @@ add   r0,r2,r1                      ; 081034F6
 ldrh  r0,[r0]                       ; 081034F8
 strh  r0,[r5]                       ; 081034FA
 mov   r3,0x8D                       ; 081034FC
-lsl   r3,r3,0x5                     ; 081034FE
-add   r0,r2,r3                      ; 08103500
+lsl   r3,r3,0x5                     ; 081034FE  11A0
+add   r0,r2,r3                      ; 08103500  [0300702C]+11A0 (03003600)
 mov   r1,0x6                        ; 08103502
 ldsb  r1,[r4,r1]                    ; 08103504
 ldrh  r0,[r0]                       ; 08103506
@@ -2096,7 +2096,7 @@ ldrh  r0,[r0]                       ; 08103510
 add   r0,r0,r1                      ; 08103512
 strh  r0,[r5,0x2]                   ; 08103514
 ldr   r0,=0x11A2                    ; 08103516
-add   r2,r2,r0                      ; 08103518
+add   r2,r2,r0                      ; 08103518  [0300702C]+11A2 (03003602)
 mov   r0,0x5                        ; 0810351A
 ldsb  r0,[r4,r0]                    ; 0810351C
 ldrh  r2,[r2]                       ; 0810351E

@@ -1342,11 +1342,11 @@ Data08207980:                       ; 08207980
 .org 0x08207E3C
 Data08207E3C:                       ; 08207E3C
 .org 0x08208D58
-Data08208D58:                       ; 08208D58
+KamekRoom_L2Tilemap:                ; 08208D58
 .org 0x082091A0
-Data082091A0:                       ; 082091A0
+KamekRoom_L3Tilemap:                ; 082091A0
 .org 0x082095E4
-Data082095E4:                       ; 082095E4
+KamekRoom_LayerPal:                 ; 082095E4
 .org 0x0820C1D4
 Tilemaps_Gameplay_Raphael_L2_LZ77:  ; 0820C1D4
 .incbin "../data/Tilemaps/Gameplay_Raphael_L2_LZ77.bin"
@@ -2105,7 +2105,7 @@ Data0826444C:                       ; 0826444C
 Data08264450:                       ; 08264450
 .org 0x08264454
 Data08264454:                       ; 08264454
-.org 0x08264458
+.word Data08262F94
 Data08264458:                       ; 08264458
 .org 0x0826445C
 Data0826445C:                       ; 0826445C
@@ -2184,20 +2184,24 @@ Data0826C380:                       ; 0826C380
 .org 0x0826CBA4
 Data0826CBA4:                       ; 0826CBA4
 .org 0x0826D1A4
-Data0826D1A4:                       ; 0826D1A4
-.org 0x0826D854
+Graphics_Gameplay_KamekRoom_LZ77:   ; 0826D1A4
+.incbin "../data/Graphics/Gameplay_KamekRoom_LZ77.bin"
 Data0826D854:                       ; 0826D854
 .org 0x0826DC64
 DataPtrs0826DC64:                   ; 0826DC64
 .word Data0826ABE4
-Data0826DC68:                       ; 0826DC68
-.org 0x0826DC6C
+DataPtrs0826DC68:                   ; 0826DC68
+.word Data0826B328
 DataPtrs0826DC6C:                   ; 0826DC6C
 .word Data0826B994
 DataPtrs0826DC70:                   ; 0826DC70
 .word Data0826BD60
-Data0826DC74:                       ; 0826DC74
-.org 0x0826DC84
+DataPtrs0826DC74:                   ; 0826DC74
+.word Data0826C380, Data0826CBA4
+GraphicsPtr_KamekRoom_LZ77:         ; 0826DC7C
+.word Graphics_Gameplay_KamekRoom_LZ77
+DataPtrs0826DC80:                   ; 0826DC80
+.word Data0826D854
 Data0826DC84:                       ; 0826DC84
 .org 0x0826E1C4
 Data0826E1C4:                       ; 0826E1C4
@@ -3378,7 +3382,7 @@ Data082C2540:                       ; 082C2540
 .org 0x082C2544
 Data082C2544:                       ; 082C2544
 .org 0x082C2548
-DataPtrs082C2548:                   ; 082C2548
+SprStripeAB_Ptr:                    ; 082C2548
 .word Data082C12B8, Data082C15B4
 Data082C2550:                       ; 082C2550
 .org 0x082C2554
@@ -4127,7 +4131,7 @@ Data082D1CE4:                       ; 082D1CE4
 .org 0x082D1D20
 Data082D1D20:                       ; 082D1D20
 .org 0x082D285C
-Data082D285C:                       ; 082D285C
+LevelSprGlobalPal_100_15F:          ; 082D285C
 .org 0x082D291C
 Data082D291C:                       ; 082D291C
 .org 0x082D295C
@@ -4165,7 +4169,7 @@ Data082D2D1C:                       ; 082D2D1C
 .org 0x082D2F1C
 Data082D2F1C:                       ; 082D2F1C
 .org 0x082D311C
-Data082D311C:                       ; 082D311C
+LevelSprGlobalPal_180_1FF:          ; 082D311C
 .org 0x082D321C
 Data082D321C:                       ; 082D321C
 .org 0x082D323C

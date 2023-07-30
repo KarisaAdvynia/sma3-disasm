@@ -129,7 +129,7 @@ pop   {r0}                          ; 080F5A20
 bx    r0                            ; 080F5A22
 .pool                               ; 080F5A24
 
-Sub080F5A34:
+IntroCutscene_LoadPalette:
 push  {r4-r7,lr}                    ; 080F5A34
 mov   r7,r8                         ; 080F5A36
 push  {r7}                          ; 080F5A38
@@ -166,7 +166,7 @@ lsl   r0,r0,0x10                    ; 080F5A78
 lsr   r5,r0,0x10                    ; 080F5A7A
 cmp   r5,0xF                        ; 080F5A7C
 bls   @@Code080F5A6C                ; 080F5A7E
-mov   r5,0x0                        ; 080F5A80
+mov   r5,0x0                        ; 080F5A80  loop index
 ldr   r0,=0x02010E00                ; 080F5A82
 mov   r8,r0                         ; 080F5A84
 ldr   r1,=0x02010600                ; 080F5A86
@@ -174,7 +174,7 @@ mov   r12,r1                        ; 080F5A88
 ldr   r7,=ColorTable                ; 080F5A8A
 ldr   r6,=0x02010A00                ; 080F5A8C
 ldr   r4,=0x1813                    ; 080F5A8E
-@@Code080F5A90:
+@@Loop080F5A90:
 lsl   r1,r5,0x1                     ; 080F5A90
 mov   r0,r8                         ; 080F5A92
 add   r3,r1,r0                      ; 080F5A94
@@ -192,12 +192,12 @@ add   r0,r5,0x1                     ; 080F5AAA
 lsl   r0,r0,0x10                    ; 080F5AAC
 lsr   r5,r0,0x10                    ; 080F5AAE
 cmp   r5,0x7F                       ; 080F5AB0
-bls   @@Code080F5A90                ; 080F5AB2
+bls   @@Loop080F5A90                ; 080F5AB2
 ldr   r0,=0x02010400                ; 080F5AB4
 mov   r1,0xA0                       ; 080F5AB6
-lsl   r1,r1,0x13                    ; 080F5AB8
+lsl   r1,r1,0x13                    ; 080F5AB8  05000000
 mov   r4,0x80                       ; 080F5ABA
-lsl   r4,r4,0x1                     ; 080F5ABC
+lsl   r4,r4,0x1                     ; 080F5ABC  100
 mov   r2,r4                         ; 080F5ABE
 bl    swi_MemoryCopy4or2            ; 080F5AC0  Memory copy/fill, 4- or 2-byte blocks
 ldr   r0,=0x02010600                ; 080F5AC4
@@ -212,7 +212,7 @@ pop   {r0}                          ; 080F5AD6
 bx    r0                            ; 080F5AD8
 .pool                               ; 080F5ADA
 
-Sub080F5B10:
+IntroCutscene_LoadGraphics:
 push  {r4,lr}                       ; 080F5B10
 ldr   r4,=Data082272C8              ; 080F5B12
 ldr   r0,[r4]                       ; 080F5B14
@@ -271,7 +271,7 @@ strh  r2,[r0]                       ; 080F5BAE
 ldr   r0,=0x298A                    ; 080F5BB0
 add   r1,r1,r0                      ; 080F5BB2
 strh  r2,[r1]                       ; 080F5BB4
-ldr   r6,=DataPtrs082C2548          ; 080F5BB6
+ldr   r6,=SprStripeAB_Ptr           ; 080F5BB6
 ldmia r6!,{r0}                      ; 080F5BB8
 ldr   r4,=0x0201FC00                ; 080F5BBA  decompressed graphics buffer
 mov   r1,r4                         ; 080F5BBC
@@ -464,7 +464,7 @@ ldr   r0,=Data082AF690              ; 080F5DAC  global sprite graphics
 ldr   r1,=0x06010000                ; 080F5DAE
 bl    swi_LZ77_VRAM                 ; 080F5DB0  LZ77 decompress (VRAM)
 bl    LoadTilesetGraphics           ; 080F5DB4
-bl    Sub080F5B10                   ; 080F5DB8
+bl    IntroCutscene_LoadGraphics    ; 080F5DB8
 bl    Sub080F5B84                   ; 080F5DBC
 mov   r2,0x0                        ; 080F5DC0
 mov   r0,sp                         ; 080F5DC2
@@ -506,7 +506,7 @@ mov   r7,0x0                        ; 080F5E08
 mov   r0,0xA                        ; 080F5E0A
 strh  r0,[r6,0x36]                  ; 080F5E0C
 bl    LoadObjectsAndScreenExits     ; 080F5E0E
-bl    Sub080F5A34                   ; 080F5E12
+bl    IntroCutscene_LoadPalette     ; 080F5E12
 ldr   r5,=0x03002200                ; 080F5E16
 mov   r0,r6                         ; 080F5E18
 add   r0,0x6E                       ; 080F5E1A
@@ -598,27 +598,27 @@ strh  r1,[r0,0x12]                  ; 080F5EC6
 strh  r1,[r0,0x14]                  ; 080F5EC8
 ldr   r0,=Data082225D4              ; 080F5ECA
 ldr   r2,=0x47CC                    ; 080F5ECC
-add   r2,r2,r5                      ; 080F5ECE
+add   r2,r2,r5                      ; 080F5ECE  030069CC
 mov   r8,r2                         ; 080F5ED0
-ldrh  r2,[r2]                       ; 080F5ED2
+ldrh  r2,[r2]                       ; 080F5ED2  layer 2 control buffer
 mov   r4,0xF8                       ; 080F5ED4
-lsl   r4,r4,0x5                     ; 080F5ED6
+lsl   r4,r4,0x5                     ; 080F5ED6  1F00
 mov   r1,r4                         ; 080F5ED8
-and   r1,r2                         ; 080F5EDA
+and   r1,r2                         ; 080F5EDA  bits 8-12
 lsl   r1,r1,0x3                     ; 080F5EDC
 mov   r3,0xC0                       ; 080F5EDE
-lsl   r3,r3,0x13                    ; 080F5EE0
+lsl   r3,r3,0x13                    ; 080F5EE0  06000000
 mov   r9,r3                         ; 080F5EE2
-add   r1,r9                         ; 080F5EE4
+add   r1,r9                         ; 080F5EE4  dest ptr: layer 2 tilemap in VRAM
 bl    swi_LZ77_VRAM                 ; 080F5EE6  LZ77 decompress (VRAM)
 ldr   r0,=Data08223004              ; 080F5EEA
-ldr   r1,=0x47CE                    ; 080F5EEC
+ldr   r1,=0x47CE                    ; 080F5EEC  030069CE
 add   r6,r5,r1                      ; 080F5EEE
-ldrh  r1,[r6]                       ; 080F5EF0
+ldrh  r1,[r6]                       ; 080F5EF0  layer 3 control buffer
 and   r4,r1                         ; 080F5EF2
 lsl   r4,r4,0x3                     ; 080F5EF4
 add   r4,r9                         ; 080F5EF6
-mov   r1,r4                         ; 080F5EF8
+mov   r1,r4                         ; 080F5EF8  dest ptr: layer 3 tilemap in VRAM
 bl    swi_LZ77_VRAM                 ; 080F5EFA  LZ77 decompress (VRAM)
 mov   r3,r8                         ; 080F5EFE
 ldrh  r2,[r3]                       ; 080F5F00

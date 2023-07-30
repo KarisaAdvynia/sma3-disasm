@@ -8786,7 +8786,7 @@ ldr   r2,=0x0201B900                ; 0804E744
 str   r5,[sp]                       ; 0804E746
 str   r4,[sp,0x4]                   ; 0804E748
 str   r6,[sp,0x8]                   ; 0804E74A
-bl    Sub08000868                   ; 0804E74C
+bl    FindSpritesToSpawn            ; 0804E74C
 add   sp,0xC                        ; 0804E750
 pop   {r3}                          ; 0804E752
 mov   r8,r3                         ; 0804E754
@@ -8994,16 +8994,17 @@ ldr   r2,=0x021A                    ; 0804E926
 add   r0,r0,r2                      ; 0804E928
 ldrh  r0,[r0]                       ; 0804E92A
 str   r0,[sp,0x4]                   ; 0804E92C
-ldrh  r1,[r7]                       ; 0804E92E
-ldr   r0,=0xFFFF                    ; 0804E930
+ldrh  r1,[r7]                       ; 0804E92E  sprite ID
+ldr   r0,=0xFFFF                    ; 0804E930  FFFF: end of data
 cmp   r1,r0                         ; 0804E932
-bne   @@Code0804E938                ; 0804E934
-b     @@Code0804EBDA                ; 0804E936
-@@Code0804E938:
+bne   @@LoopAcross0201B900          ; 0804E934
+b     @@Return                      ; 0804E936
+@@LoopAcross0201B900:
 ldr   r0,=0x01C3                    ; 0804E938
 cmp   r1,r0                         ; 0804E93A
-bls   @@Code0804E970                ; 0804E93C
-ldr   r2,=0xFFFFFE3C                ; 0804E93E
+bls   @@StandardSprite              ; 0804E93C
+                                    ;          \ runs if command sprite
+ldr   r2,=0xFFFFFE3C                ; 0804E93E  -1C4
 add   r0,r1,r2                      ; 0804E940
 lsl   r0,r0,0x10                    ; 0804E942
 lsr   r0,r0,0x10                    ; 0804E944
@@ -9012,11 +9013,11 @@ bl    Sub0804E82C                   ; 0804E948
 lsl   r0,r0,0x18                    ; 0804E94C
 cmp   r0,0x0                        ; 0804E94E
 bne   @@Code0804E9D4                ; 0804E950
-b     @@Code0804EBCE                ; 0804E952
+b     @@ContinueLoop                ; 0804E952 /
 .pool                               ; 0804E954
 
-@@Code0804E970:
-ldr   r0,[sp,0x4]                   ; 0804E970
+@@StandardSprite:
+ldr   r0,[sp,0x4]                   ; 0804E970  runs if standard sprite
 cmp   r0,0x0                        ; 0804E972
 beq   @@Code0804E9BE                ; 0804E974
 ldr   r1,=StdSprData_28             ; 0804E976
@@ -9088,7 +9089,7 @@ b     @@Code0804EA40                ; 0804E9F4
 .pool                               ; 0804E9F6
 
 @@Code0804EA04:
-ldr   r1,=0xFFFFFE46                ; 0804EA04
+ldr   r1,=0xFFFFFE46                ; 0804EA04  -1BA
 mov   r0,r1                         ; 0804EA06
 ldrh  r2,[r7]                       ; 0804EA08
 add   r0,r0,r2                      ; 0804EA0A
@@ -9096,23 +9097,24 @@ lsl   r0,r0,0x10                    ; 0804EA0C
 lsr   r0,r0,0x10                    ; 0804EA0E
 cmp   r0,0x3                        ; 0804EA10
 bhi   @@Code0804EA2C                ; 0804EA12
-ldrh  r0,[r7,0x8]                   ; 0804EA14
+                                    ;          \ runs if sprite 1BA-1BD
+ldrh  r0,[r7,0x8]                   ; 0804EA14  sublevel sprite index
 lsl   r0,r0,0x1                     ; 0804EA16
 ldr   r1,=0x0201BA00                ; 0804EA18
 add   r0,r0,r1                      ; 0804EA1A
 mov   r1,0x0                        ; 0804EA1C
 strh  r1,[r0]                       ; 0804EA1E
-b     @@Code0804EBCC                ; 0804EA20
+b     @@Add2ToPtr_Continue          ; 0804EA20 /
 .pool                               ; 0804EA22
 
-@@Code0804EA2C:
-ldrh  r0,[r7,0x6]                   ; 0804EA2C
+@@Code0804EA2C:                     ;          \ runs if not sprite 1BA-1BD
+ldrh  r0,[r7,0x6]                   ; 0804EA2C  sublevel sprite index
 lsl   r0,r0,0x1                     ; 0804EA2E
 ldr   r2,=0x0201BA00                ; 0804EA30
 add   r0,r0,r2                      ; 0804EA32
 mov   r1,0x0                        ; 0804EA34
 strh  r1,[r0]                       ; 0804EA36
-b     @@Code0804EBCE                ; 0804EA38
+b     @@ContinueLoop                ; 0804EA38 /
 .pool                               ; 0804EA3A
 
 @@Code0804EA40:
@@ -9271,51 +9273,52 @@ lsl   r0,r0,0x1                     ; 0804EB7E
 strh  r0,[r5,0x36]                  ; 0804EB80
 mov   r0,0x1                        ; 0804EB82
 strh  r0,[r5,0x24]                  ; 0804EB84
-ldrh  r0,[r7,0x6]                   ; 0804EB86
+ldrh  r0,[r7,0x6]                   ; 0804EB86  sublevel data index
 mov   r2,r9                         ; 0804EB88  sprite+9B
 strb  r0,[r2]                       ; 0804EB8A
 ldrh  r0,[r7,0x6]                   ; 0804EB8C
-lsr   r0,r0,0x8                     ; 0804EB8E
+lsr   r0,r0,0x8                     ; 0804EB8E  always 0, since sublevel data index is 8-bit
 ldr   r1,[sp,0x1C]                  ; 0804EB90  sprite+9C
 strb  r0,[r1]                       ; 0804EB92
-ldr   r2,=0xFFFFFE46                ; 0804EB94
+ldr   r2,=0xFFFFFE46                ; 0804EB94  -1BA
 mov   r0,r2                         ; 0804EB96
-ldrh  r1,[r5,0x32]                  ; 0804EB98
+ldrh  r1,[r5,0x32]                  ; 0804EB98  sprite ID
 add   r0,r0,r1                      ; 0804EB9A
 lsl   r0,r0,0x10                    ; 0804EB9C
-lsr   r0,r0,0x10                    ; 0804EB9E
+lsr   r0,r0,0x10                    ; 0804EB9E  sprID -1BA
 cmp   r0,0x3                        ; 0804EBA0
-bhi   @@Code0804EBCE                ; 0804EBA2
-ldrh  r1,[r7,0x6]                   ; 0804EBA4
+bhi   @@ContinueLoop                ; 0804EBA2
+                                    ;          \ runs if sprite ID is 1BA-1BD
+ldrh  r1,[r7,0x6]                   ; 0804EBA4  sprite data extra byte
 mov   r0,0xF0                       ; 0804EBA6
-and   r0,r1                         ; 0804EBA8
+and   r0,r1                         ; 0804EBA8  extra byte, high digit filtered
 mov   r1,r5                         ; 0804EBAA
 add   r1,0x6C                       ; 0804EBAC
-strh  r0,[r1]                       ; 0804EBAE
-ldrh  r1,[r7,0x6]                   ; 0804EBB0
+strh  r0,[r1]                       ; 0804EBAE  store to sprite+6C
+ldrh  r1,[r7,0x6]                   ; 0804EBB0  sprite data extra byte
 mov   r0,0xF                        ; 0804EBB2
-and   r0,r1                         ; 0804EBB4
-lsl   r0,r0,0x4                     ; 0804EBB6
+and   r0,r1                         ; 0804EBB4  extra byte, low digit
+lsl   r0,r0,0x4                     ; 0804EBB6  extra byte, low digit *10
 mov   r1,r5                         ; 0804EBB8
 add   r1,0x6E                       ; 0804EBBA
-strh  r0,[r1]                       ; 0804EBBC
-ldrh  r0,[r7,0x8]                   ; 0804EBBE
-mov   r2,r9                         ; 0804EBC0
+strh  r0,[r1]                       ; 0804EBBC  store to sprite+6E
+ldrh  r0,[r7,0x8]                   ; 0804EBBE  sublevel data index
+mov   r2,r9                         ; 0804EBC0  sprite+9B
 strb  r0,[r2]                       ; 0804EBC2
 ldrh  r0,[r7,0x8]                   ; 0804EBC4
-lsr   r0,r0,0x8                     ; 0804EBC6
-ldr   r1,[sp,0x1C]                  ; 0804EBC8
+lsr   r0,r0,0x8                     ; 0804EBC6  always 0, since sublevel data index is 8-bit
+ldr   r1,[sp,0x1C]                  ; 0804EBC8  sprite+9C
 strb  r0,[r1]                       ; 0804EBCA
-@@Code0804EBCC:
-add   r7,0x2                        ; 0804EBCC
-@@Code0804EBCE:
+@@Add2ToPtr_Continue:
+add   r7,0x2                        ; 0804EBCC /
+@@ContinueLoop:
 add   r7,0x8                        ; 0804EBCE
 ldrh  r1,[r7]                       ; 0804EBD0
 ldr   r2,=0xFFFF                    ; 0804EBD2
 cmp   r1,r2                         ; 0804EBD4
-beq   @@Code0804EBDA                ; 0804EBD6
-b     @@Code0804E938                ; 0804EBD8
-@@Code0804EBDA:
+beq   @@Return                      ; 0804EBD6
+b     @@LoopAcross0201B900          ; 0804EBD8
+@@Return:
 add   sp,0x20                       ; 0804EBDA
 pop   {r3-r5}                       ; 0804EBDC
 mov   r8,r3                         ; 0804EBDE
