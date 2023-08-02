@@ -21297,7 +21297,7 @@ add   r0,r0,r2                      ; 0801051A
 mov   r1,0x10                       ; 0801051C
 strb  r1,[r0]                       ; 0801051E
 mov   r4,0x0                        ; 08010520
-ldr   r5,=Graphics_YITitle_icon32+0x1180; 08010522
+ldr   r5,=YITitle_icon32_Graphics+0x1180; 08010522
 @@Code08010524:
 lsl   r1,r4,0xA                     ; 08010524
 add   r0,r1,r5                      ; 08010526
@@ -23078,7 +23078,7 @@ bx    r0                            ; 08011620
 Sub08011634:
 push  {r4-r6,lr}                    ; 08011634
 mov   r4,0x0                        ; 08011636
-ldr   r5,=Graphics_YITitle_icon32+0x1180; 08011638
+ldr   r5,=YITitle_icon32_Graphics+0x1180; 08011638
 @@Code0801163A:
 lsl   r1,r4,0xA                     ; 0801163A
 add   r0,r1,r5                      ; 0801163C

@@ -44,6 +44,7 @@
 .include "asm/SingleCart.asm"
 .include "asm/Data.asm"
 .include "asm/Data2.asm"
+.include "asm/DataSound.asm"
 
 .fill 0x08400000-.
 

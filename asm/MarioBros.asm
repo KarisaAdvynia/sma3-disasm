@@ -20909,7 +20909,7 @@ ldr   r1,=0x06010000                ; 0811AC90
 ldr   r4,=0x04000018                ; 0811AC92
 mov   r2,r4                         ; 0811AC94
 bl    swi_MemoryCopy4or2            ; 0811AC96  Memory copy/fill, 4- or 2-byte blocks
-ldr   r0,=Data082E9B60              ; 0811AC9A
+ldr   r0,=Data082E9B00+0x60         ; 0811AC9A
 ldr   r1,=0x06010400                ; 0811AC9C
 mov   r2,r4                         ; 0811AC9E
 bl    swi_MemoryCopy4or2            ; 0811ACA0  Memory copy/fill, 4- or 2-byte blocks

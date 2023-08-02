@@ -2697,7 +2697,7 @@ mov   r1,r6                         ; 080FE506
 bl    Sub080FD338                   ; 080FE508
 mov   r0,r5                         ; 080FE50C
 bl    Sub080FE484                   ; 080FE50E
-ldr   r0,=Graphics_YITitle_sprite_LZ77; 080FE512
+ldr   r0,=YITitle_SpriteGraphics_LZ77; 080FE512
 ldr   r1,=0x06010000                ; 080FE514
 bl    swi_LZ77_VRAM                 ; 080FE516  LZ77 decompress (VRAM)
 ldr   r0,=Data082AF690              ; 080FE51A  global sprite graphics
@@ -2953,7 +2953,7 @@ lsl   r1,r1,0x13                    ; 080FE77C
 ldr   r2,=0x01004000                ; 080FE77E
 mov   r0,sp                         ; 080FE780
 bl    swi_MemoryCopy32              ; 080FE782  Memory copy/fill, 32-byte blocks
-ldr   r0,=Graphics_YITitle_L2_8bpp_LZ77; 080FE786  pointer to layer 2 (mode 1) graphics
+ldr   r0,=YITitle_L2Graphics_8bpp_LZ77; 080FE786  pointer to layer 2 (mode 1) graphics
 ldr   r1,=0x06004000                ; 080FE788
 bl    swi_LZ77_VRAM                 ; 080FE78A  LZ77 decompress (VRAM)
 ldr   r0,=0x06008000                ; 080FE78E
@@ -2974,11 +2974,11 @@ lsl   r0,r0,0x18                    ; 080FE7AE
 asr   r0,r0,0x18                    ; 080FE7B0
 cmp   r0,0x0                        ; 080FE7B2
 bne   @@Code080FE7BE                ; 080FE7B4
-ldr   r0,=Graphics_YITitle_L1_LZ77  ; 080FE7B6  pointer to layer 1 (logo) graphics
+ldr   r0,=YITitle_L1_Graphics_LZ77  ; 080FE7B6  pointer to layer 1 (logo) graphics
 ldr   r1,=0x0600A000                ; 080FE7B8
 bl    swi_LZ77_VRAM                 ; 080FE7BA  LZ77 decompress (VRAM)
 @@Code080FE7BE:
-ldr   r0,=Graphics_YITitle_L0_LZ77  ; 080FE7BE  pointer to layer 0 (file select menu) graphics
+ldr   r0,=YITitle_L0_Graphics_LZ77  ; 080FE7BE  pointer to layer 0 (file select menu) graphics
 ldr   r1,=0x0600E000                ; 080FE7C0
 bl    swi_LZ77_VRAM                 ; 080FE7C2  LZ77 decompress (VRAM)
 mov   r0,0x1                        ; 080FE7C6
@@ -3035,7 +3035,7 @@ lsl   r0,r0,0x18                    ; 080FE838
 asr   r0,r0,0x18                    ; 080FE83A
 cmp   r0,0x0                        ; 080FE83C
 bne   @@Code080FE848                ; 080FE83E
-ldr   r0,=Tilemaps_YITitle_L1_LZ77  ; 080FE840  pointer to layer 1 (logo) tilemap
+ldr   r0,=YITitle_L1_Tilemap_LZ77   ; 080FE840  pointer to layer 1 (logo) tilemap
 mov   r1,r4                         ; 080FE842
 bl    swi_LZ77_VRAM                 ; 080FE844  LZ77 decompress (VRAM)
 @@Code080FE848:
@@ -5381,7 +5381,7 @@ mov   r7,r0                         ; 080FFDB4
 mov   r6,r3                         ; 080FFDB6
 mov   r0,0xFF                       ; 080FFDB8
 and   r2,r0                         ; 080FFDBA
-ldr   r0,=Graphics_Font_main_1bpp   ; 080FFDBC
+ldr   r0,=Font_main_Graphics_1bpp   ; 080FFDBC
 mov   r10,r0                        ; 080FFDBE
 lsl   r0,r2,0x1                     ; 080FFDC0
 add   r0,r0,r2                      ; 080FFDC2
@@ -5815,7 +5815,7 @@ push  {r4-r6,lr}                    ; 08100140
 mov   r6,r8                         ; 08100142
 push  {r6}                          ; 08100144
 mov   r5,r1                         ; 08100146
-ldr   r4,=Graphics_YITitle_icon32   ; 08100148
+ldr   r4,=YITitle_icon32_Graphics   ; 08100148
 mov   r1,0x7                        ; 0810014A
 and   r1,r0                         ; 0810014C
 lsl   r1,r1,0x7                     ; 0810014E
@@ -5984,7 +5984,7 @@ mov   r6,r8                         ; 081002B8
 push  {r6-r7}                       ; 081002BA
 add   sp,-0x8                       ; 081002BC
 mov   r9,r1                         ; 081002BE
-ldr   r7,=Graphics_YITitle_icon32   ; 081002C0
+ldr   r7,=YITitle_icon32_Graphics   ; 081002C0
 mov   r1,0x7                        ; 081002C2
 and   r1,r0                         ; 081002C4
 lsl   r1,r1,0x7                     ; 081002C6

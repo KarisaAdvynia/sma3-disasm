@@ -1,6 +1,6 @@
 from pathlib import Path
 
-def exportbin(sourcepath, outputdir, binptrs):
+def importbinptrs(binptrs):
     ptrmap = []
     fillnext = False
     for line in open(binptrs, "r", encoding="UTF-8"):
@@ -26,6 +26,11 @@ def exportbin(sourcepath, outputdir, binptrs):
         else:
             raise ValueError("Error parsing line:\n" + line +
                 "\nLine must contain either 1 or 2 hex pointers followed by a file path.")
+
+    return ptrmap
+
+def exportbin(sourcepath, outputdir, binptrs):
+    ptrmap = importbinptrs(binptrs)
 
     with sourcepath.open("rb") as f:
         outputdir = Path(outputdir)

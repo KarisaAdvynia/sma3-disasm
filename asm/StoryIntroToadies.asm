@@ -12,7 +12,7 @@ mov   r9,r1                         ; 0802F2B6
 lsl   r2,r2,0x10                    ; 0802F2B8
 lsr   r2,r2,0x10                    ; 0802F2BA
 mov   r7,0x0                        ; 0802F2BC
-ldr   r0,=Graphics_Font_main_1bpp   ; 0802F2BE
+ldr   r0,=Font_main_Graphics_1bpp   ; 0802F2BE
 mov   r10,r0                        ; 0802F2C0
 @@Code0802F2C2:
 mov   r1,r10                        ; 0802F2C2
@@ -208,7 +208,7 @@ lsl   r0,r0,0x2                     ; 0802F430
 mov   r8,r0                         ; 0802F432
 mov   r5,0x0                        ; 0802F434
 @@Code0802F436:
-ldr   r0,=Graphics_Font_main_1bpp   ; 0802F436
+ldr   r0,=Font_main_Graphics_1bpp   ; 0802F436
 add   r0,r8                         ; 0802F438
 ldrb  r3,[r0]                       ; 0802F43A
 mov   r1,0x7                        ; 0802F43C

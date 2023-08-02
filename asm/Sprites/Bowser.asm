@@ -1080,7 +1080,7 @@ bx    r0                            ; 08102B8A
 
 Sub08102BBC:
 push  {r4-r6,lr}                    ; 08102BBC
-ldr   r0,=Data08264458              ; 08102BBE
+ldr   r0,=DataPtrs08264458          ; 08102BBE
 ldr   r0,[r0]                       ; 08102BC0
 ldr   r4,=0x0201FC00                ; 08102BC2  decompressed graphics buffer
 mov   r1,r4                         ; 08102BC4
@@ -1102,7 +1102,7 @@ lsl   r0,r0,0x3                     ; 08102BE4
 add   r5,r5,r0                      ; 08102BE6
 cmp   r4,r6                         ; 08102BE8
 blo   @@Code08102BD2                ; 08102BEA
-ldr   r0,=Data08264450              ; 08102BEC
+ldr   r0,=DataPtrs08264450          ; 08102BEC
 ldr   r0,[r0]                       ; 08102BEE
 ldr   r4,=0x0201FC00                ; 08102BF0  decompressed graphics buffer
 mov   r1,r4                         ; 08102BF2
@@ -1288,12 +1288,12 @@ Sub08102D8C:
 push  {r4-r6,lr}                    ; 08102D8C
 add   sp,-0x4                       ; 08102D8E
 mov   r6,r0                         ; 08102D90
-ldr   r0,=Data08264454              ; 08102D92
+ldr   r0,=DataPtrs08264454          ; 08102D92
 ldr   r0,[r0]                       ; 08102D94
 mov   r1,0xC0                       ; 08102D96
 lsl   r1,r1,0x13                    ; 08102D98  06000000
 bl    swi_LZ77_VRAM                 ; 08102D9A  LZ77 decompress (VRAM)
-ldr   r0,=Graphics_Gameplay_Bowser_L2_8bpp_LZ77; 08102D9E
+ldr   r0,=Bowser_L2_Graphics_8bpp_LZ77; 08102D9E
 ldr   r1,=0x0600C000                ; 08102DA0
 bl    swi_LZ77_VRAM                 ; 08102DA2  LZ77 decompress (VRAM)
 bl    Sub08102BBC                   ; 08102DA6
@@ -8252,7 +8252,7 @@ bx    r0                            ; 08106998
 
 Sub081069B4:
 push  {r4,lr}                       ; 081069B4
-ldr   r4,=Data082D0D8C              ; 081069B6
+ldr   r4,=ColorTable+0x1D84         ; 081069B6
 ldr   r1,=0x02010802                ; 081069B8
 mov   r0,r4                         ; 081069BA
 mov   r2,0xF                        ; 081069BC
@@ -8567,7 +8567,7 @@ bx    r0                            ; 08106C82
 
 Sub08106C98:
 push  {r4-r6,lr}                    ; 08106C98
-ldr   r0,=Data08264450              ; 08106C9A
+ldr   r0,=DataPtrs08264450          ; 08106C9A
 ldr   r0,[r0]                       ; 08106C9C
 ldr   r1,=0x0201FC00                ; 08106C9E  decompressed graphics buffer
 bl    swi_LZ77_WRAM                 ; 08106CA0  LZ77 decompress (WRAM)
@@ -9197,7 +9197,7 @@ ldr   r2,[sp,0x20]                  ; 08107240
 lsl   r0,r2,0x1                     ; 08107242
 add   r0,r0,r2                      ; 08107244
 lsl   r0,r0,0x2                     ; 08107246
-ldr   r2,=Graphics_Font_main_1bpp   ; 08107248
+ldr   r2,=Font_main_Graphics_1bpp   ; 08107248
 add   r5,r0,r2                      ; 0810724A
 add   r1,r1,r7                      ; 0810724C
 mov   r8,r1                         ; 0810724E

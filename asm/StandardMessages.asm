@@ -45,7 +45,7 @@ lsl   r0,r0,0x2                     ; 080E816E
 str   r0,[sp,0xC]                   ; 080E8170
 mov   r2,0xC                        ; 080E8172
 @@Code080E8174:
-ldr   r0,=Graphics_Font_main_1bpp   ; 080E8174
+ldr   r0,=Font_main_Graphics_1bpp   ; 080E8174
 ldr   r1,[sp,0xC]                   ; 080E8176
 add   r0,r1,r0                      ; 080E8178
 ldrb  r0,[r0]                       ; 080E817A
@@ -160,7 +160,7 @@ ldrb  r4,[r0,0xE]                   ; 080E8250
 lsl   r0,r4,0x1                     ; 080E8252
 add   r0,r0,r4                      ; 080E8254
 lsl   r1,r0,0x2                     ; 080E8256
-ldr   r0,=Graphics_Font_main_1bpp   ; 080E8258
+ldr   r0,=Font_main_Graphics_1bpp   ; 080E8258
 add   r1,r1,r0                      ; 080E825A
 mov   r9,r1                         ; 080E825C
 mov   r0,r8                         ; 080E825E
@@ -400,7 +400,7 @@ str   r0,[sp]                       ; 080E83F4
 ldr   r7,=0x03007248                ; 080E83F6  pointer to message buffer
 @@Code080E83F8:
 mov   r4,r10                        ; 080E83F8
-ldr   r0,=Graphics_Font_main_1bpp   ; 080E83FA
+ldr   r0,=Font_main_Graphics_1bpp   ; 080E83FA
 add   r0,r9                         ; 080E83FC
 ldrb  r6,[r0]                       ; 080E83FE
 mov   r0,r9                         ; 080E8400
@@ -745,7 +745,7 @@ mov   r0,r9                         ; 080E867A
 add   r0,r8                         ; 080E867C
 lsl   r0,r0,0x10                    ; 080E867E
 lsr   r0,r0,0x10                    ; 080E8680
-ldr   r1,=Graphics_MessageImages_1bpp; 080E8682
+ldr   r1,=MessageImages_Graphics_1bpp; 080E8682
 add   r0,r0,r1                      ; 080E8684
 ldrb  r5,[r0]                       ; 080E8686
 mov   r0,0x80                       ; 080E8688
@@ -2588,7 +2588,7 @@ mov   r10,r0                        ; 080E94FA
 ldr   r2,[sp]                       ; 080E94FC
 mov   r3,r12                        ; 080E94FE
 lsl   r0,r3,0x1                     ; 080E9500
-ldr   r4,=Tilemaps_StandardMessage  ; 080E9502
+ldr   r4,=StandardMessage_Tilemap   ; 080E9502
 add   r5,r0,r4                      ; 080E9504
 @@Code080E9506:
 lsr   r3,r2,0x10                    ; 080E9506
@@ -2678,7 +2678,7 @@ lsl   r6,r0,0x6                     ; 080E95C0
 mov   r4,r10                        ; 080E95C2
 mov   r1,r12                        ; 080E95C4
 lsl   r0,r1,0x1                     ; 080E95C6
-ldr   r2,=Tilemaps_StandardMessage  ; 080E95C8
+ldr   r2,=StandardMessage_Tilemap   ; 080E95C8
 add   r5,r0,r2                      ; 080E95CA
 @@Code080E95CC:
 lsr   r3,r4,0x10                    ; 080E95CC

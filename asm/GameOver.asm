@@ -11509,7 +11509,7 @@ str   r0,[sp]                       ; 0810D0C0
 mov   r7,r3                         ; 0810D0C2
 mov   r0,0xFF                       ; 0810D0C4
 and   r2,r0                         ; 0810D0C6
-ldr   r0,=Graphics_Font_main_1bpp   ; 0810D0C8
+ldr   r0,=Font_main_Graphics_1bpp   ; 0810D0C8
 mov   r9,r0                         ; 0810D0CA
 lsl   r0,r2,0x1                     ; 0810D0CC
 add   r0,r0,r2                      ; 0810D0CE

@@ -4793,7 +4793,7 @@ add   r1,r1,r0                      ; 08003858
 ldr   r2,=0x01000400                ; 0800385A
 mov   r0,sp                         ; 0800385C
 bl    swi_MemoryCopy4or2            ; 0800385E  Memory copy/fill, 4- or 2-byte blocks
-ldr   r0,=Graphics_SMA3Title_buildtext_LZ77; 08003862  build-date graphics
+ldr   r0,=SMA3Title_buildtext_Graphics_LZ77; 08003862  build-date graphics
 ldrh  r2,[r5]                       ; 08003864
 mov   r1,0xC                        ; 08003866
 and   r1,r2                         ; 08003868

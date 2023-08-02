@@ -1,5 +1,5 @@
 GraphicsAnim00:
-; runs if graphics animation ID is 00
+; clear animated region
 push  {lr}                          ; 080E2A7C
 ldr   r3,=0x03002200                ; 080E2A7E
 ldr   r1,=0x4B65                    ; 080E2A80
@@ -177,7 +177,7 @@ bx    lr                            ; 080E2C22
 .pool                               ; 080E2C24
 
 Return080E2C40:
-; runs if graphics animation ID is 04: return
+; graphics animation 04
 bx    lr                            ; 080E2C40
 .pool                               ; 080E2C42
 

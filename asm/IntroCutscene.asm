@@ -214,7 +214,7 @@ bx    r0                            ; 080F5AD8
 
 IntroCutscene_LoadGraphics:
 push  {r4,lr}                       ; 080F5B10
-ldr   r4,=Data082272C8              ; 080F5B12
+ldr   r4,=DataPtrs082272C8          ; 080F5B12
 ldr   r0,[r4]                       ; 080F5B14
 mov   r1,0xC0                       ; 080F5B16
 lsl   r1,r1,0x13                    ; 080F5B18
@@ -236,7 +236,7 @@ ldr   r4,=DataPtrs0826DC6C          ; 080F5B40
 ldr   r0,[r4]                       ; 080F5B42
 ldr   r1,=0x06007000                ; 080F5B44
 bl    swi_LZ77_VRAM                 ; 080F5B46  LZ77 decompress (VRAM)
-ldr   r4,=Data0826ABE0              ; 080F5B4A
+ldr   r4,=DataPtrs0826ABE0          ; 080F5B4A
 ldr   r0,[r4]                       ; 080F5B4C
 ldr   r1,=0x06008000                ; 080F5B4E
 bl    swi_LZ77_VRAM                 ; 080F5B50  LZ77 decompress (VRAM)

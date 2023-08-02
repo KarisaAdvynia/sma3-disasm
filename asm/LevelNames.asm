@@ -379,7 +379,7 @@ push  {r5-r7}                       ; 080FCC40
 mov   r9,r0                         ; 080FCC42  r9 = starting X position
 mov   r0,0xFF                       ; 080FCC44
 and   r2,r0                         ; 080FCC46
-ldr   r0,=Graphics_Font_main_1bpp   ; 080FCC48  text graphics
+ldr   r0,=Font_main_Graphics_1bpp   ; 080FCC48  text graphics
 mov   r8,r0                         ; 080FCC4A
 lsl   r0,r2,0x1                     ; 080FCC4C \
 add   r0,r0,r2                      ; 080FCC4E | r0 = character ID *0C

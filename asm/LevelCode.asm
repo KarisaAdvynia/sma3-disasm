@@ -385,7 +385,7 @@ add   r0,r0,r1                      ; 080137F4  [03007240]+2AAC (03004CB8)
 ldrh  r0,[r0]                       ; 080137F6  sublevel ID
 cmp   r0,0xEA                       ; 080137F8  EA: 4-secret Bullet Bill autoscroller
 beq   @@Code08013818                ; 080137FA
-ldr   r4,=Data082CA988              ; 080137FC
+ldr   r4,=Data082C7008+0x3980       ; 080137FC
 ldr   r1,=0x06010900                ; 080137FE
 mov   r0,r4                         ; 08013800
 mov   r2,0x20                       ; 08013802  copy 80 bytes from 082CA988 to 06010900
@@ -1619,7 +1619,7 @@ mov   r1,0x8C                       ; 080143E2
 lsl   r1,r1,0x2                     ; 080143E4  230
 add   r7,r0,r1                      ; 080143E6  [03007240]+230 (0300243C)
 bl    LoadHeaderPalettes            ; 080143E8
-ldr   r0,=Graphics_Gameplay_Raphael_L2_8bpp_LZ77; 080143EC
+ldr   r0,=Raphael_L2_Graphics_8bpp_LZ77; 080143EC
 mov   r1,0xC0                       ; 080143EE
 lsl   r1,r1,0x13                    ; 080143F0  06000000
 bl    swi_LZ77_VRAM                 ; 080143F2  LZ77 decompress (VRAM)
@@ -1800,7 +1800,7 @@ ldr   r0,=0x47C6                    ; 08014554
 add   r1,r4,r0                      ; 08014556
 ldr   r0,=0x1401                    ; 08014558
 strh  r0,[r1]                       ; 0801455A
-ldr   r0,=Tilemaps_Gameplay_Raphael_L2_LZ77; 0801455C
+ldr   r0,=Raphael_L2_Tilemap_LZ77   ; 0801455C
 ldr   r1,=0x0600B000                ; 0801455E
 bl    swi_LZ77_VRAM                 ; 08014560  LZ77 decompress (VRAM)
 ldr   r1,=0x47CC                    ; 08014564
@@ -14970,7 +14970,7 @@ bl    Sub0804F304                   ; 0802D2E0
 bl    Sub08109A24                   ; 0802D2E4
 bl    Sub080195F4                   ; 0802D2E8
 mov   r0,r6                         ; 0802D2EC
-bl    PaletteAnimMain               ; 0802D2EE
+bl    PalAnimMain                   ; 0802D2EE
 ldr   r0,[r4]                       ; 0802D2F2
 ldr   r4,=0x29B0                    ; 0802D2F4
 add   r2,r0,r4                      ; 0802D2F6

@@ -369,13 +369,13 @@ mov   r3,0x0                        ; 08033D0A
 ldr   r0,[sp,0x4]                   ; 08033D0C
 cmp   r0,0x0                        ; 08033D0E
 beq   @@Code08033D1C                ; 08033D10
-ldr   r0,=Graphics_Font_main_1bpp   ; 08033D12
+ldr   r0,=Font_main_Graphics_1bpp   ; 08033D12
 add   r0,r6,r0                      ; 08033D14
 b     @@Code08033D24                ; 08033D16
 .pool                               ; 08033D18
 
 @@Code08033D1C:
-ldr   r1,=Graphics_Font_credits_1bpp; 08033D1C
+ldr   r1,=Font_credits_1bpp_Graphics; 08033D1C
 ldr   r4,=0xFFFFFA00                ; 08033D1E
 add   r0,r6,r4                      ; 08033D20
 add   r0,r0,r1                      ; 08033D22

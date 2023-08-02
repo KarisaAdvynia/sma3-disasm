@@ -2416,7 +2416,7 @@ add   r2,r4,r0                      ; 080E4A70
 ldr   r0,=Data08194498              ; 080E4A72
 add   r6,r6,r0                      ; 080E4A74
 ldr   r0,[r6]                       ; 080E4A76
-ldr   r1,=Data082237CC              ; 080E4A78
+ldr   r1,=Data082235CC+0x200        ; 080E4A78
 add   r0,r0,r1                      ; 080E4A7A
 str   r0,[r2]                       ; 080E4A7C
 ldr   r0,=0x4862                    ; 080E4A7E
@@ -3591,7 +3591,7 @@ mov   r2,0x1                        ; 080E546A
 strb  r2,[r4]                       ; 080E546C
 ldr   r2,=0x47B0                    ; 080E546E
 add   r4,r3,r2                      ; 080E5470
-ldr   r2,=Data082237CC              ; 080E5472
+ldr   r2,=Data082235CC+0x200        ; 080E5472
 str   r2,[r4]                       ; 080E5474
 ldr   r2,=0x4862                    ; 080E5476
 add   r4,r3,r2                      ; 080E5478

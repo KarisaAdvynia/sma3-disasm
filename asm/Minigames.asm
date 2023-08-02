@@ -1657,7 +1657,7 @@ ldr   r6,[r4]                       ; 080EA68A
 ldr   r0,[r6]                       ; 080EA68C
 ldr   r1,=0x06006000                ; 080EA68E
 bl    swi_LZ77_VRAM                 ; 080EA690  LZ77 decompress (VRAM)
-ldr   r6,=Data082741F8              ; 080EA694
+ldr   r6,=DataPtrs082741F8          ; 080EA694
 ldr   r0,[r6]                       ; 080EA696
 ldr   r1,=0x06007000                ; 080EA698
 bl    swi_LZ77_VRAM                 ; 080EA69A  LZ77 decompress (VRAM)
@@ -2145,7 +2145,7 @@ add   r0,r0,r1                      ; 080EAB66
 ldrh  r0,[r0]                       ; 080EAB68
 lsr   r0,r0,0x2                     ; 080EAB6A
 lsl   r0,r0,0x2                     ; 080EAB6C
-ldr   r1,=Graphics_YITitle_icon32   ; 080EAB6E
+ldr   r1,=YITitle_icon32_Graphics   ; 080EAB6E
 add   r0,r0,r1                      ; 080EAB70
 mov   r9,r0                         ; 080EAB72
 mov   r4,0x0                        ; 080EAB74
@@ -10994,7 +10994,7 @@ ldr   r0,=0x27D0                    ; 080EF90E
 add   r0,r0,r4                      ; 080EF910
 mov   r8,r0                         ; 080EF912
 bl    GoalMinigame_LoadGraphics     ; 080EF914
-bl    Sub080EFD54                   ; 080EF918
+bl    GoalMinigame_LoadPalette      ; 080EF918
 ldr   r2,=0x47C6                    ; 080EF91C
 add   r1,r6,r2                      ; 080EF91E
 mov   r2,0x0                        ; 080EF920
@@ -11267,13 +11267,13 @@ ldr   r1,=0x48AA                    ; 080EFC38
 add   r0,r0,r1                      ; 080EFC3A
 ldrh  r4,[r0]                       ; 080EFC3C
 lsr   r4,r4,0x1                     ; 080EFC3E
-ldr   r0,=DataPtrs08196B18          ; 080EFC40
+ldr   r0,=GoalMinigame_L1TilemapPtrs; 080EFC40
 lsl   r4,r4,0x2                     ; 080EFC42
 add   r0,r4,r0                      ; 080EFC44
 ldr   r0,[r0]                       ; 080EFC46
 ldr   r1,=0x0600A000                ; 080EFC48
 bl    swi_LZ77_VRAM                 ; 080EFC4A  LZ77 decompress (VRAM)
-ldr   r0,=Data08196B30              ; 080EFC4E
+ldr   r0,=GoalMinigame_L2TilemapPtrs; 080EFC4E
 add   r4,r4,r0                      ; 080EFC50
 ldr   r0,[r4]                       ; 080EFC52
 ldr   r1,=0x0600B000                ; 080EFC54
@@ -11349,27 +11349,27 @@ pop   {r0}                          ; 080EFCF4
 bx    r0                            ; 080EFCF6
 .pool                               ; 080EFCF8
 
-Sub080EFD54:
+GoalMinigame_LoadPalette:
 push  {r4,lr}                       ; 080EFD54
 ldr   r0,=0x03002200                ; 080EFD56
 ldr   r1,=0x48AA                    ; 080EFD58
-add   r0,r0,r1                      ; 080EFD5A
-ldrh  r0,[r0]                       ; 080EFD5C
+add   r0,r0,r1                      ; 080EFD5A  03006AAA
+ldrh  r0,[r0]                       ; 080EFD5C  goal minigame ID <<1 (00-0A)
 lsr   r0,r0,0x1                     ; 080EFD5E
-ldr   r1,=Data08196B48              ; 080EFD60
+ldr   r1,=GoalMinigame_LayerPalPtrs ; 080EFD60
 lsl   r0,r0,0x2                     ; 080EFD62
-add   r0,r0,r1                      ; 080EFD64
+add   r0,r0,r1                      ; 080EFD64  index with goal minigame ID
 ldr   r4,[r0]                       ; 080EFD66
 ldr   r1,=0x02010400                ; 080EFD68
 mov   r0,r4                         ; 080EFD6A
 mov   r2,0x80                       ; 080EFD6C
 bl    swi_MemoryCopy32              ; 080EFD6E  Memory copy/fill, 32-byte blocks
 mov   r1,0xA0                       ; 080EFD72
-lsl   r1,r1,0x13                    ; 080EFD74
+lsl   r1,r1,0x13                    ; 080EFD74  05000000
 mov   r0,r4                         ; 080EFD76
 mov   r2,0x80                       ; 080EFD78
 bl    swi_MemoryCopy32              ; 080EFD7A  Memory copy/fill, 32-byte blocks
-ldr   r4,=Data082D55FC              ; 080EFD7E
+ldr   r4,=GoalMinigame_SpritePal    ; 080EFD7E
 ldr   r1,=0x02010600                ; 080EFD80
 mov   r0,r4                         ; 080EFD82
 mov   r2,0x80                       ; 080EFD84
@@ -15775,7 +15775,7 @@ bx    r0                            ; 080F2338
 
 Sub080F233C:
 push  {r4-r5,lr}                    ; 080F233C
-ldr   r4,=Graphics_YITitle_icon32+0x2000; 080F233E
+ldr   r4,=YITitle_icon32_Graphics+0x2000; 080F233E
 ldr   r1,=0x06014000                ; 080F2340
 mov   r2,0x80                       ; 080F2342
 lsl   r2,r2,0x4                     ; 080F2344
@@ -16866,7 +16866,7 @@ lsl   r0,r0,0x10                    ; 080F2CB0
 lsr   r5,r0,0x10                    ; 080F2CB2
 cmp   r5,0x6                        ; 080F2CB4
 bls   @@Code080F2C9C                ; 080F2CB6
-ldr   r4,=Graphics_YITitle_icon32+0x2000; 080F2CB8
+ldr   r4,=YITitle_icon32_Graphics+0x2000; 080F2CB8
 ldr   r1,=0x06014000                ; 080F2CBA
 mov   r2,0x80                       ; 080F2CBC
 lsl   r2,r2,0x4                     ; 080F2CBE
@@ -17052,7 +17052,7 @@ mov   r7,r9                         ; 080F2E56
 mov   r6,r8                         ; 080F2E58
 push  {r6-r7}                       ; 080F2E5A
 mov   r7,r0                         ; 080F2E5C
-ldr   r0,=Graphics_YITitle_icon32   ; 080F2E5E
+ldr   r0,=YITitle_icon32_Graphics   ; 080F2E5E
 ldr   r1,=0x06014000                ; 080F2E60
 mov   r2,0x80                       ; 080F2E62
 lsl   r2,r2,0x5                     ; 080F2E64
@@ -19496,7 +19496,7 @@ mov   r2,0xAB                       ; 080F4356
 lsl   r2,r2,0x3                     ; 080F4358
 mov   r0,r4                         ; 080F435A
 bl    swi_MemoryCopy32              ; 080F435C  Memory copy/fill, 32-byte blocks
-ldr   r4,=Graphics_YITitle_icon32+0x2000; 080F4360
+ldr   r4,=YITitle_icon32_Graphics+0x2000; 080F4360
 ldr   r1,=0x06014000                ; 080F4362
 mov   r2,0x80                       ; 080F4364
 lsl   r2,r2,0x4                     ; 080F4366
