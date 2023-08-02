@@ -9,8 +9,8 @@ Currently produces an exact match for these regions of the vanilla ROM:
 - 08163F90-083077E0 (data)
 
 Remaining regions:
-- 0812FDC0-08163F90: Currently labeled as "single-cart pseudo-ROM", a ROM region copied into RAM (for all players) when playing Mario Bros. multiplayer from a single cartridge. This needs further research to determine the correct RAM pointers.
-- 083077E0-end: Music/sound region. These need to be included with `.incbin`, but this sector uses relative instead of absolute pointers, so the pointer labels also need to be generated.
+- 0812FDC0-08163F90: Currently labeled as "single-cart pseudo-ROM", a ROM region copied into RAM (for all players) when playing Mario Bros. multiplayer from a single cartridge. This needs further research to determine the correct RAM pointers for labels, particularly for the single-cart data sectors (081338EC-08138A44, 0815B5DC-08163F90).
+- 083077E0-end: Music/sound data region. These need to be included with `.incbin`, but this sector uses relative instead of absolute pointers, so the pointer labels also need to be generated.
 
 ## About data files
 This repository does not include in-game data files (graphics, etc), which must be extracted from the vanilla game before assembling. A script is provided to do so:

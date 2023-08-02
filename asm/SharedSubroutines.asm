@@ -3,7 +3,7 @@ swi   0xA                           ; 0812F6B4
 bx    lr                            ; 0812F6B6
 
 swi_0E:
-swi   0xE                           ; 0812F6B8 BgAffineSet
+swi   0xE                           ; 0812F6B8
 bx    lr                            ; 0812F6BA
 
 swi_MemoryCopy32:
@@ -32,16 +32,16 @@ bx    lr                            ; 0812F6D2
 
 swi_25_1:
 mov   r1,0x1                        ; 0812F6D4
-swi   0x25                          ; 0812F6D6 MultiBoot
+swi   0x25                          ; 0812F6D6
 bx    lr                            ; 0812F6D8
 .pool                               ; 0812F6DA
 
 swi_0F:
-swi   0xF                           ; 0812F6DC ObjAffineSet
+swi   0xF                           ; 0812F6DC
 bx    lr                            ; 0812F6DE
 
 swi_01:
-swi   0x1                           ; 0812F6E0 RegisterRamReset
+swi   0x1                           ; 0812F6E0
 bx    lr                            ; 0812F6E2
 
 SoftResetSinglePlayer:
@@ -50,8 +50,8 @@ mov   r2,0x0                        ; 0812F6E6
 strb  r2,[r3]                       ; 0812F6E8
 ldr   r1,=0x03007F00                ; 0812F6EA
 mov   sp,r1                         ; 0812F6EC
-swi   0x1                           ; 0812F6EE RegisterRamReset
-swi   0x0                           ; 0812F6F0 SoftReset
+swi   0x1                           ; 0812F6EE
+swi   0x0                           ; 0812F6F0
 .pool                               ; 0812F6F2
 
 swi_SoundBias_0:
@@ -75,8 +75,8 @@ mov   r2,0x0                        ; 0812F714
 strb  r2,[r3]                       ; 0812F716
 sub   r3,0xFA                       ; 0812F718
 mov   sp,r3                         ; 0812F71A
-swi   0x1                           ; 0812F71C RegisterRamReset
-swi   0x0                           ; 0812F71E SoftReset
+swi   0x1                           ; 0812F71C
+swi   0x0                           ; 0812F71E
 .pool                               ; 0812F720
 
 Sub0812F728:

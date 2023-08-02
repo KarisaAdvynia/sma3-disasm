@@ -48,7 +48,6 @@ if __name__ == "__main__":
         "../../sma3.gba",
         "../../sma3-disasm.gba",
         searchregions=[
-            (0, 0x12FE80),
-            (0x163F90, 0x3077E0)
+            (0, 0x3077E0)
             ])
     input()  # wait for Enter, if run on a shell that closes at end of program

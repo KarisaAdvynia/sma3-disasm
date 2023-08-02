@@ -1,6 +1,6 @@
 .arm
 
-; internal header
+InternalHeader:
 b      CodeStart                    ; 08000000
 .incbin "../data/InternalHeader_NintendoLogo.bin"
 .byte "SUPER MARIOCA3AE"            ; 080000A0

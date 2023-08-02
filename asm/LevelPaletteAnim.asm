@@ -405,7 +405,7 @@ lsl   r1,r1,0x18                    ; 0802E738
 lsr   r1,r1,0x18                    ; 0802E73A
 mov   r0,r5                         ; 0802E73C
 bl    PalAnim_L2Image00             ; 0802E73E  also run L2 waterfall/lavafall anim
-b     @@Return                      ; 0802E742 / 
+b     @@Return                      ; 0802E742 /
 .pool                               ; 0802E744
 
 @@NotTileset8:                      ;          \ runs if not tileset 8

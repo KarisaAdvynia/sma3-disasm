@@ -17,4 +17,12 @@ def aligncomments(path, startstr=";", commentpos=36):
     open(path, "w", newline="", encoding="UTF-8").writelines(outputlines)
 
 if __name__ == "__main__":
-    iterate_recursive(aligncomments, "../asm/", ext=".asm")
+    path = "../asm/"
+    import os, sys
+    if len(sys.argv) > 1:
+        path = sys.argv[1]
+    if os.path.isdir(path):
+        # recursively iterate over .asm files in directory
+        iterate_recursive(aligncomments, path, ext=".asm")
+    else:
+        aligncomments(path)
