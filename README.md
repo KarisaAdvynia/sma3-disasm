@@ -1,19 +1,14 @@
 # Yoshi's Island: Super Mario Advance 3 (U) disassembly
 
-For assembling with [Armips](https://github.com/Kingcom/armips). Work in progress.
+For assembling with [Armips](https://github.com/Kingcom/armips).
 
-All ROM pointers in the completed regions have been replaced by labels, to allow freely adding/removing code, though this hasn't yet been thoroughly tested.
-
-Currently produces an exact match for these regions of the vanilla ROM:
-- 08000000-0812FDC0 (code)
-- 08163F90-083077E0 (data)
+Produces an exact match for the entire ROM. All ROM pointers have been replaced by labels, to allow freely adding/removing code, though this hasn't yet been thoroughly tested.
 
 Remaining regions:
 - 0812FDC0-08163F90: Currently labeled as "single-cart pseudo-ROM", a ROM region copied into RAM (for all players) when playing Mario Bros. multiplayer from a single cartridge. This needs further research to determine the correct RAM pointers for labels, particularly for the single-cart data sectors (081338EC-08138A44, 0815B5DC-08163F90).
-- 083077E0-end: Music/sound data region. These need to be included with `.incbin`, but this sector uses relative instead of absolute pointers, so the pointer labels also need to be generated.
 
 ## About data files
-This repository does not include in-game data files (graphics, etc), which must be extracted from the vanilla game before assembling. A script is provided to do so:
+This repository does not include in-game data files (graphics, sound, etc), which must be extracted from the vanilla game before assembling. A script is provided to do so:
 - Place the vanilla ROM in the directory containing the `sma3-disasm` directory
     - Optionally: name the vanilla ROM `sma3.gba`. If the vanilla ROM is the only .gba file in the directory, it will be auto-detected, but if there are multiple .gba files, this is required.
 - Run `exportbin.py` (in `scripts`) to create the `data` folder.
