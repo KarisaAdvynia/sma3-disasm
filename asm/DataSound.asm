@@ -621,9 +621,9 @@ Data08323FC4:                       ; 08323FC4
 RelPtrs083240E4:                    ; 083240E4
 .word Data083240EC-RelPtrs083240E4, Data083240F2-RelPtrs083240E4
 Data083240EC:                       ; 083240EC
-.incbin "../data/Sound/Data083240EC.bin"
+.halfword 0x0001, 0x0003, 0x0000
 Data083240F2:                       ; 083240F2
-.incbin "../data/Sound/Data083240F2.bin"
+.halfword 0x0002, 0x0001, 0x0000, 0x0000, 0x0000
 RelPtrs083240FC:                    ; 083240FC
 .word Data0832410C-RelPtrs083240FC, Data0832458C-RelPtrs083240FC
 .word Data0832496C-RelPtrs083240FC, Data08324CCC-RelPtrs083240FC
