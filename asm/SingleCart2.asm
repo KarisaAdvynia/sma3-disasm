@@ -1,6 +1,6 @@
 .arm
 
-SingleCart_08142544:                ; 08142544
+SingleCart_08142544:
 mov    r0,0x12                      ; 08142544
 msr    cpsr_fc,r0                   ; 08142548
 ldr    r13,[@@Pool+4]               ; 0814254C
@@ -15,8 +15,8 @@ mov    lr,pc                        ; 0814256C
 bx     r1                           ; 08142570
 b      SingleCart_08142544          ; 08142574
 @@Pool:
-.word 0x03007E00
-.word 0x03007F80
+.word 0x03007E00                    ; 08142578
+.word 0x03007F80                    ; 0814257C
 
 Code08142580:
 mov    r12,0x04000000               ; 08142580
@@ -62,7 +62,7 @@ ldr    r1,=0x03002010               ; 08142618
 add    r1,r1,r2                     ; 0814261C
 ldr    r0,[r1]                      ; 08142620
 bx     r0                           ; 08142624
-.pool
+.pool                               ; 08142628
 
 .thumb
 
@@ -47658,13 +47658,13 @@ ldr   r0,[r0]                       ; 0815AE00
 mov   pc,r0                         ; 0815AE02
 .pool                               ; 0815AE04
 
-.word 0x0201E0E4
-.word 0x0201E0EE
-.word 0x0201E104
-.word 0x0201E10E
-.word 0x0201E120
-.word 0x0201E126
-.word 0x0201E118
+.word 0x0201E0E4                    ; 0815AE0C
+.word 0x0201E0EE                    ; 0815AE10
+.word 0x0201E104                    ; 0815AE14
+.word 0x0201E10E                    ; 0815AE18
+.word 0x0201E120                    ; 0815AE1C
+.word 0x0201E126                    ; 0815AE20
+.word 0x0201E118                    ; 0815AE24
 
 ldr   r0,[r3,0x4]                   ; 0815AE28
 ldr   r1,[r3,0x8]                   ; 0815AE2A
@@ -48594,6 +48594,6 @@ pop   {r4-r5,pc}                    ; 0815B5D8
 
 ; 0815B5DC-08163F90: second psuedo-ROM data sector
 
-.incbin "../data/SingleCart2_Data0815B5DC.bin"
+.incbin "../data/SingleCart2_Data.bin"
 SingleCart_08163290:                ; 08163290
-.incbin "../data/SingleCart2_Data08163290.bin"
+.incbin "../data/Graphics/SingleCart_08163290.bin"

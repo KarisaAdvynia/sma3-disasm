@@ -12,13 +12,13 @@ b      Code0812FE80                 ; 0812FDC0/02000000
 .byte 0x00,0x00,0x00,0x00,0x00,0x87,0x00,0x00
 
 Code0812FE80:
-b      @@Code0812FECC               ; 0812FE80
+b      Code0812FECC                 ; 0812FE80
 .fill 0x1C                          ; 0812FE84
 
-@@Code0812FEA0:
+Sub0812FEA0:
 ldrh   r1,[r0,0x8]                  ; 0812FEA0
 tst    r1,0x80                      ; 0812FEA4
-beq    @@Code0812FEA0               ; 0812FEA8
+beq    Sub0812FEA0                  ; 0812FEA8
 @@Code0812FEAC:
 ldrh   r1,[r0,0x8]                  ; 0812FEAC
 tst    r1,0x80                      ; 0812FEB0
@@ -29,10 +29,10 @@ bxne   lr                           ; 0812FEC0
 ldrh   r1,[r0]                      ; 0812FEC4
 bx     lr                           ; 0812FEC8
 
-@@Code0812FECC:
+Code0812FECC:
 ldr    r0,=0x04000120               ; 0812FECC
 @@Code0812FED0:
-bl     @@Code0812FEA0               ; 0812FED0
+bl     Sub0812FEA0                  ; 0812FED0
 bne    @@Code0812FED0               ; 0812FED4
 mov    r2,0x0                       ; 0812FED8
 strh   r2,[r0,0xA]                  ; 0812FEDC
@@ -43,7 +43,7 @@ mov    r2,0x8000                    ; 0812FEE8
 mov    r1,0x0                       ; 0812FEEC
 @@Code0812FEF0:
 strh   r1,[r0,0xA]                  ; 0812FEF0
-bl     @@Code0812FEA0               ; 0812FEF4
+bl     Sub0812FEA0                  ; 0812FEF4
 bne    @@Code0812FED0               ; 0812FEF8
 cmp    r1,r2                        ; 0812FEFC
 bne    @@Code0812FEEC               ; 0812FF00
@@ -53,14 +53,14 @@ bne    @@Code0812FEF0               ; 0812FF0C
 ldr    r3,=0x020000AC               ; 0812FF10
 ldrh   r2,[r3]                      ; 0812FF14
 strh   r2,[r0,0xA]                  ; 0812FF18
-bl     @@Code0812FEA0               ; 0812FF1C
+bl     Sub0812FEA0                  ; 0812FF1C
 @@Code0812FF20:
 bne    @@Code0812FF20               ; 0812FF20
 cmp    r1,r2                        ; 0812FF24
 bne    @@Code0812FF20               ; 0812FF28
 ldrh   r2,[r3,0x2]                  ; 0812FF2C
 strh   r2,[r0,0xA]                  ; 0812FF30
-bl     @@Code0812FEA0               ; 0812FF34
+bl     Sub0812FEA0                  ; 0812FF34
 bne    @@Code0812FF20               ; 0812FF38
 cmp    r1,r2                        ; 0812FF3C
 bne    @@Code0812FF20               ; 0812FF40
@@ -68,7 +68,7 @@ mov    r1,0x0                       ; 0812FF44
 strh   r1,[r0,0xA]                  ; 0812FF48
 ldr    lr,=0x020002A0               ; 0812FF4C
 bx     lr                           ; 0812FF50
-.pool
+.pool                               ; 0812FF54
 
 .fill 0x100                         ; 0812FF60
 
@@ -87,8 +87,8 @@ mov    lr,pc                        ; 08130088
 bx     r1                           ; 0813008C
 b      Code08130060                 ; 08130090
 @@Pool:
-.word 0x03007E00
-.word 0x03007F80
+.word 0x03007E00                    ; 08130094
+.word 0x03007F80                    ; 08130098
 
 Code0813009C:
 mov    r3,0x04000000                ; 0813009C
@@ -156,7 +156,7 @@ ldmfd  r13!,{r0,r3,r12,lr}          ; 08130180
 strh   r12,[r3]                     ; 08130184
 msr    spsr_fc,r0                   ; 08130188
 bx     lr                           ; 0813018C
-.pool
+.pool                               ; 08130190
 
 .thumb
 

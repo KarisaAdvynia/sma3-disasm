@@ -419,10 +419,10 @@ ldr   r1,=L3PaletteOffsets          ; 08013848
 mov   r8,r1                         ; 0801384A  r8 = 08167384 (layer 3 palette indexes)
 ldr   r3,=Palette0D0EOffsets        ; 0801384C
 mov   r9,r3                         ; 0801384E
-ldr   r4,[@@Pool]                   ; 08013850
+ldr   r4,[@@_08167404]              ; 08013850
 mov   r12,r4                        ; 08013852  r9=r12 = 08167404 (unused SNES sprite palette indexes)
 mov   r5,r6                         ; 08013854  r5 = pointer to 03002460
-ldr   r4,[@@Pool+0x4]               ; 08013856
+ldr   r4,[@@_153E]                  ; 08013856
 mov   r3,0x0                        ; 08013858
 @@Code0801385A:                     ; loop: clear first 8 values from buffer at 0300399E?
                                     ;  (original extraction of header indexs was here)
@@ -439,32 +439,31 @@ bls   @@Code0801385A                ; 0801386C /
 ldr   r3,[r6]                       ; 0801386E  r3 = [0300702C] (03002460)
 mov   r5,r10                        ; 08013870
 ldr   r2,[r5]                       ; 08013872  r2 = [03007240] (0300220C)
-ldr   r1,[@@Pool+0x8]               ; 08013874
+ldr   r1,[@@_2990]                  ; 08013874
 add   r0,r2,r1                      ; 08013876  r0 = [03007240]+2990 (03004B9C)
 ldrh  r0,[r0]                       ; 08013878  r0 = header index 0
 lsl   r0,r0,0x1                     ; 0801387A  r0 = 2*hv00
-ldr   r4,[@@Pool+0x4]               ; 0801387C
+ldr   r4,[@@_153E]                  ; 0801387C
 add   r1,r3,r4                      ; 0801387E  r1 = [0300702C]+153E (0300399E)
 strh  r0,[r1]                       ; 08013880  color table offset 8000 = 2*hv00
-ldr   r5,[@@Pool+0xC]               ; 08013882
-ldr   r1,[@@Pool+0x10]              ; 08013884
+ldr   r5,[@@_03002200]              ; 08013882
+ldr   r1,[@@_413C]                  ; 08013884
 add   r0,r5,r1                      ; 08013886  r0 = 0300633C
 ldrh  r0,[r0]                       ; 08013888  r0 = world number
 cmp   r0,0xA                        ; 0801388A
 bne   @@Code080138C0                ; 0801388C
-ldr   r1,[@@Pool+0x14]              ; 0801388E  if in world 6
+ldr   r1,[@@_081672C4]              ; 0801388E  if in world 6
 b     @@Code080138C2                ; 08013890
 .pool                               ; 08013892
 
 ; This pool has a duplicate 08167404 (Palette0D0EOffsets),
 ;  so the rest needs to be manually defined
-@@Pool:
-.word Palette0D0EOffsets            ; 080138A8
-.word 0x0000153E                    ; 080138AC
-.word 0x00002990                    ; 080138B0
-.word 0x03002200                    ; 080138B4
-.word 0x0000413C                    ; 080138B8
-.word L1PaletteOffsetsW6            ; 080138BC
+@@_08167404: .word Palette0D0EOffsets; 080138A8
+@@_153E:     .word 0x0000153E       ; 080138AC
+@@_2990:     .word 0x00002990       ; 080138B0
+@@_03002200: .word 0x03002200       ; 080138B4
+@@_413C:     .word 0x0000413C       ; 080138B8
+@@_081672C4: .word L1PaletteOffsetsW6; 080138BC
 
 @@Code080138C0:
 ldr   r1,=L1PaletteOffsets          ; 080138C0  if not in world 6

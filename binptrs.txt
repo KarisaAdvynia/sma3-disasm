@@ -2,8 +2,8 @@
 081338EC          SingleCart1_Data.bin
 08138A44          Graphics/SingleCart_08138A44.bin
 0813B244 08142544 Graphics/SingleCart_0813B244.bin
-0815B5DC          SingleCart2_Data0815B5DC.bin
-08163290 08163F90 SingleCart2_Data08163290.bin
+0815B5DC          SingleCart2_Data.bin
+08163290 08163F90 Graphics/SingleCart_08163290.bin
 081644D4 081645C8 Graphics/SMA3Title_buildtext_LZ77.bin
 0816D509 0816DB09 Graphics/Font_credits_1bpp.bin
 081996A4          Graphics/YITitle_081996A4.bin
