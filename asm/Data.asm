@@ -5666,7 +5666,7 @@ StdSprInitPtrs:                     ; 08170248
 .word Sub080515D0+1                 ; 009
 .word Sub08083070+1                 ; 00A
 .word Sub08096C90+1                 ; 00B
-.word Sub080D17A4+1                 ; 00C
+.word Raphael_Init+1                ; 00C
 .word GoalRing_Init+1               ; 00D
 .word Sub08053C44+1                 ; 00E
 .word Sub080537F8+1                 ; 00F
@@ -5676,7 +5676,7 @@ StdSprInitPtrs:                     ; 08170248
 .word Sub080BAF1C+1                 ; 013
 .word Sub080BB4AC+1                 ; 014
 .word Sub08052260+1                 ; 015
-.word Sub080C2FF0+1                 ; 016
+.word BiggerBoo_Init+1              ; 016
 .word Sub080B33A4+1                 ; 017
 .word Return080517F4+1              ; 018
 .word Return080AF380+1              ; 019
@@ -5699,14 +5699,14 @@ StdSprInitPtrs:                     ; 08170248
 .word Return080503A8+1              ; 02A
 .word Return080503AC+1              ; 02B
 .word Sub0805FB14+1                 ; 02C
-.word Sub080BC7C4+1                 ; 02D
+.word SalvoTheSlime_Init+1          ; 02D
 .word Return080D85F8+1              ; 02E
 .word Sub0807E548+1                 ; 02F
 .word Sub0807D7F8+1                 ; 030
 .word Sub080A9434+1                 ; 031
 .word Sub0807E55C+1                 ; 032
 .word Sub0807E828+1                 ; 033
-.word Sub080C43C0+1                 ; 034
+.word PottedGhost034_Init+1         ; 034
 .word Return080D85F8+1              ; 035
 .word Sub08056BA8+1                 ; 036
 .word Sub08060474+1                 ; 037
@@ -5714,18 +5714,18 @@ StdSprInitPtrs:                     ; 08170248
 .word Sub08058944+1                 ; 039
 .word Sub0807855C+1                 ; 03A
 .word Sub0807855C+1                 ; 03B
-.word Sub080D367C+1                 ; 03C
+.word TapTapGiant_Init+1            ; 03C
 .word Sub080575E4+1                 ; 03D
 .word Sub08092C8C+1                 ; 03E
-.word Sub080BCBF8+1                 ; 03F
+.word BlockSlime_Init+1             ; 03F
 .word Sub080821C4+1                 ; 040
 .word Sub080824FC+1                 ; 041
 .word Sub080D516C+1                 ; 042
 .word Sub080921C4+1                 ; 043
 .word Sub080921C4+1                 ; 044
-.word Sub080C5590+1                 ; 045
-.word Sub080C1198+1                 ; 046
-.word Sub080AFD44+1                 ; 047
+.word PrinceFroggy_Init+1           ; 045
+.word BurtTheBashful_Init+1         ; 046
+.word PottedGhostShyGuy_Init+1      ; 047
 .word KamekEnlarge_Init+1           ; 048
 .word Return080D85F8+1              ; 049
 .word Return080D85F8+1              ; 04A
@@ -5828,7 +5828,7 @@ StdSprInitPtrs:                     ; 08170248
 .word Return080512AC+1              ; 0AB
 .word Return081042F8+1              ; 0AC
 .word Sub080D92A0+1                 ; 0AD
-.word Sub080CC564+1                 ; 0AE
+.word Hookbill_Init+1               ; 0AE
 .word Sub080DBE3C+1                 ; 0AF
 .word Sub080DBE3C+1                 ; 0B0
 .word Sub080DBE3C+1                 ; 0B1
@@ -5864,12 +5864,12 @@ StdSprInitPtrs:                     ; 08170248
 .word Sub08103888+1                 ; 0CF
 .word Sub080D5380+1                 ; 0D0
 .word Sub080D5148+1                 ; 0D1
-.word Sub080C9688+1                 ; 0D2
-.word Sub080CB814+1                 ; 0D3
+.word MarchingMilde_Init+1          ; 0D2
+.word Milde4x4_Init+1               ; 0D3
 .word Return08049F40+1              ; 0D4
 .word Return08056A04+1              ; 0D5
 .word Sub080B94C8+1                 ; 0D6
-.word Sub080D0354+1                 ; 0D7
+.word SluggyTheUnshaven_Init+1      ; 0D7
 .word Sub08060D54+1                 ; 0D8
 .word Sub080A3358+1                 ; 0D9
 .word Sub080747D8+1                 ; 0DA
@@ -5918,7 +5918,7 @@ StdSprInitPtrs:                     ; 08170248
 .word RelayBooGuy105_Init+1         ; 105
 .word RelayBooGuy106_Init+1         ; 106
 .word Return08051A1C+1              ; 107
-.word Sub080CAD40+1                 ; 108
+.word Milde1x1_Init+1               ; 108
 .word Sub080763D0+1                 ; 109
 .word Sub080763D0+1                 ; 10A
 .word Sub080763D0+1                 ; 10B
@@ -5960,7 +5960,7 @@ StdSprInitPtrs:                     ; 08170248
 .word Sub080A9E10+1                 ; 12F
 .word Sub080AA024+1                 ; 130
 .word LockedDoor_Init+1             ; 131
-.word Sub080BC190+1                 ; 132
+.word SlimeDrop_Init+1              ; 132
 .word Sub08090008+1                 ; 133
 .word Return08102530+1              ; 134
 .word Sub08079068+1                 ; 135
@@ -6023,7 +6023,7 @@ StdSprInitPtrs:                     ; 08170248
 .word Sub080A79BC+1                 ; 16E
 .word Sub080A7A48+1                 ; 16F
 .word Sub080A22B8+1                 ; 170
-.word Sub080C6374+1                 ; 171
+.word NavalPiranha_Init+1           ; 171
 .word Return080D85F8+1              ; 172
 .word Sub08072078+1                 ; 173
 .word Sub0807206C+1                 ; 174
@@ -6109,7 +6109,7 @@ StdSprInitPtrs:                     ; 08170248
 StdSprMainPtrs:                     ; 08170958
 .word Sub08096074+1                 ; 000
 .word XDoor_Main+1                  ; 001
-.word Sub080C8E9C+1                 ; 002
+.word NavalPiranhaVineCurved_Main+1 ; 002
 .word Sub08074C9C+1                 ; 003
 .word StarBlockBounceSpr_Main+1     ; 004
 .word Sub080517E8+1                 ; 005
@@ -6119,7 +6119,7 @@ StdSprMainPtrs:                     ; 08170958
 .word Sub080516B4+1                 ; 009
 .word Sub080830C4+1                 ; 00A
 .word Sub08096FD0+1                 ; 00B
-.word Sub080D197C+1                 ; 00C
+.word Raphael_Main+1                ; 00C
 .word GoalRing_Main+1               ; 00D
 .word Sub08053FDC+1                 ; 00E
 .word Sub08053BEC+1                 ; 00F
@@ -6129,7 +6129,7 @@ StdSprMainPtrs:                     ; 08170958
 .word Sub080BAF80+1                 ; 013
 .word Sub080BB668+1                 ; 014
 .word Sub080524E0+1                 ; 015
-.word Sub080C3030+1                 ; 016
+.word BiggerBoo_Main+1              ; 016
 .word Sub080B33CC+1                 ; 017
 .word Sub080517F8+1                 ; 018
 .word Sub08051DE4+1                 ; 019
@@ -6152,33 +6152,33 @@ StdSprMainPtrs:                     ; 08170958
 .word GiantEgg02A_Main+1            ; 02A
 .word GiantEgg02B_Main+1            ; 02B
 .word Sub0805FB40+1                 ; 02C
-.word Sub080BCF2C+1                 ; 02D
+.word SalvoBlockSlime_Main+1        ; 02D
 .word Sub080BC00C+1                 ; 02E
 .word Sub0807E550+1                 ; 02F
 .word Sub0807D900+1                 ; 030
 .word Sub080A94F0+1                 ; 031
 .word Sub0807E618+1                 ; 032
 .word Sub0807E8D0+1                 ; 033
-.word Sub080C44B8+1                 ; 034
-.word Sub080C46A0+1                 ; 035
+.word PottedGhost034_Main+1         ; 034
+.word PottedGhost035_Main+1         ; 035
 .word Sub08056D98+1                 ; 036
 .word Sub08060484+1                 ; 037
-.word Sub08060C10+1                 ; 038
+.word PottedGhostFlame_Main+1       ; 038
 .word Sub08058B88+1                 ; 039
 .word Sub080785F4+1                 ; 03A
 .word Sub080785F4+1                 ; 03B
-.word Sub080D37D4+1                 ; 03C
+.word TapTapGiant_Main+1            ; 03C
 .word Sub08057A78+1                 ; 03D
 .word Sub0809325C+1                 ; 03E
-.word Sub080BCF2C+1                 ; 03F
+.word SalvoBlockSlime_Main+1        ; 03F
 .word Sub08082218+1                 ; 040
 .word Sub08082504+1                 ; 041
 .word Sub080D5278+1                 ; 042
 .word Sub080922C8+1                 ; 043
 .word Sub080922C8+1                 ; 044
-.word Sub080C62F8+1                 ; 045
-.word Sub080C2478+1                 ; 046
-.word Sub080AFE14+1                 ; 047
+.word PrinceFroggy_Main+1           ; 045
+.word BurtTheBashful_Main+1         ; 046
+.word PottedGhostShyGuy_Main+1      ; 047
 .word KamekEnlarge_Main+1           ; 048
 .word Sub08060320+1                 ; 049
 .word Sub080603E8+1                 ; 04A
@@ -6197,7 +6197,7 @@ StdSprMainPtrs:                     ; 08170958
 .word Sub08058890+1                 ; 057
 .word Sub0808AA5C+1                 ; 058
 .word Sub08060F18+1                 ; 059
-.word Sub080D1658+1                 ; 05A
+.word RaphaelShockwave_Main+1       ; 05A
 .word Sub0808AEE8+1                 ; 05B
 .word Sub0808AA5C+1                 ; 05C
 .word Return08049F40+1              ; 05D
@@ -6281,7 +6281,7 @@ StdSprMainPtrs:                     ; 08170958
 .word Sub080512E8+1                 ; 0AB
 .word Sub081042FC+1                 ; 0AC
 .word Sub080D94E8+1                 ; 0AD
-.word Sub080CE4B0+1                 ; 0AE
+.word Hookbill_Main+1               ; 0AE
 .word Sub080DC4F4+1                 ; 0AF
 .word Sub080DC4F4+1                 ; 0B0
 .word Sub080DC4F4+1                 ; 0B1
@@ -6317,18 +6317,18 @@ StdSprMainPtrs:                     ; 08170958
 .word Sub08103C4C+1                 ; 0CF
 .word Sub080D5428+1                 ; 0D0
 .word Sub080D52CC+1                 ; 0D1
-.word Sub080CA44C+1                 ; 0D2
-.word Sub080CBF00+1                 ; 0D3
-.word Sub080CB784+1                 ; 0D4
+.word MarchingMilde_Main+1          ; 0D2
+.word Milde4x4_Main+1               ; 0D3
+.word Milde2x2_Main+1               ; 0D4
 .word Sub08056B04+1                 ; 0D5
 .word Sub080B94F8+1                 ; 0D6
-.word Sub080D1090+1                 ; 0D7
+.word SluggyTheUnshaven_Main+1      ; 0D7
 .word Sub08060DFC+1                 ; 0D8
 .word Sub080A459C+1                 ; 0D9
 .word Sub08074838+1                 ; 0DA
 .word Sub080B8044+1                 ; 0DB
 .word Sub08071BF8+1                 ; 0DC
-.word Sub080BE928+1                 ; 0DD
+.word SealBossRoom_Main+1           ; 0DD
 .word Sub0809FDCC+1                 ; 0DE
 .word Sub08099D90+1                 ; 0DF
 .word Sub08099EBC+1                 ; 0E0
@@ -6371,7 +6371,7 @@ StdSprMainPtrs:                     ; 08170958
 .word RelayBooGuy_Main+1            ; 105
 .word RelayBooGuy_Main+1            ; 106
 .word Sub08051A7C+1                 ; 107
-.word Sub080CB128+1                 ; 108
+.word Milde1x1_Main+1               ; 108
 .word Sub08076438+1                 ; 109
 .word Sub08076438+1                 ; 10A
 .word Sub08076438+1                 ; 10B
@@ -6409,11 +6409,11 @@ StdSprMainPtrs:                     ; 08170958
 .word Sub0809804C+1                 ; 12B
 .word Sub0808BC60+1                 ; 12C
 .word Sub08056738+1                 ; 12D
-.word Sub080C4270+1                 ; 12E
+.word Sprite12E_Main+1              ; 12E
 .word Sub080A9EA4+1                 ; 12F
 .word Sub080AA0E8+1                 ; 130
 .word LockedDoor_Main+1             ; 131
-.word Sub080BC198+1                 ; 132
+.word SlimeDrop_Main+1              ; 132
 .word Sub080907C0+1                 ; 133
 .word Sub08102534+1                 ; 134
 .word Sub080790D4+1                 ; 135
@@ -6422,7 +6422,7 @@ StdSprMainPtrs:                     ; 08170958
 .word Sub0809F704+1                 ; 138
 .word Sub0809F704+1                 ; 139
 .word Sub0809F704+1                 ; 13A
-.word Sub080C52D4+1                 ; 13B
+.word StomachAcid_Main+1            ; 13B
 .word Sub08075E18+1                 ; 13C
 .word Sub080733D0+1                 ; 13D
 .word Sub0807342C+1                 ; 13E
@@ -6476,8 +6476,8 @@ StdSprMainPtrs:                     ; 08170958
 .word Sub080A7C74+1                 ; 16E
 .word Sub080A7D4C+1                 ; 16F
 .word Sub080A276C+1                 ; 170
-.word Sub080C64FC+1                 ; 171
-.word Sub080C83B8+1                 ; 172
+.word NavalPiranha_Main+1           ; 171
+.word NavalPiranhaVineVert_Main+1   ; 172
 .word Sub08072324+1                 ; 173
 .word Sub08072324+1                 ; 174
 .word Sub08072324+1                 ; 175
@@ -6612,8 +6612,8 @@ StdSprStatus7Ptrs:                  ; 08171068
 .word Return08049F40+1, Return08049F40+1, Return08049F40+1, Return08049F40+1
 .word Return08049F40+1, Return08049F40+1, Return08049F40+1, Return08049F40+1
 .word Return08049F40+1, Return08049F40+1, Return08049F40+1, Return08049F40+1
-.word Return08049F40+1, Return08049F40+1, Return08049F40+1, Sub080CBF00+1
-.word Sub080CB784+1, Return08049F40+1, Return08049F40+1, Return08049F40+1
+.word Return08049F40+1, Return08049F40+1, Return08049F40+1, Milde4x4_Main+1
+.word Milde2x2_Main+1, Return08049F40+1, Return08049F40+1, Return08049F40+1
 .word Return08049F40+1, Sub080A4644+1, Return08049F40+1, Return08049F40+1
 .word Return08049F40+1, Return08049F40+1, Return08049F40+1, Return08049F40+1
 .word Return08049F40+1, Return08049F40+1, Return08049F40+1, Return08049F40+1
@@ -11664,7 +11664,7 @@ Data08179558:                       ; 08179558
 .word 0xFFD1FFD0, 0xFFCDFFD0, 0xFFC9FFD0, 0xFFC5FFD0
 .word 0xFFC1FFD0, 0xFFC1FFD6, 0xFFC1FFDC, 0xFFC1FFE2
 .word 0xFFC1FFE8, 0xFFC1FFEE, 0xFFC1FFF4, 0xFFC1FFFA
-CodePtrs08179658:                   ; 08179658
+SlimeDrop_SubstatePtrs:             ; 08179658
 .word Sub080BC328+1, Sub080BC37C+1, Sub080BC42C+1, Sub080BC478+1
 .word Sub080BC540+1, Sub080BC5EC+1, Sub080BC328+1, Sub080BC37C+1
 .word Sub080BC670+1, Sub080BC704+1, Sub080BC784+1
@@ -11710,7 +11710,7 @@ Data08179724:                       ; 08179724
 .word 0x01000080, 0x04000200, 0xFF00FF80, 0xFC00FE00
 Data08179734:                       ; 08179734
 .word 0xFF00FF80, 0xFC00FE00, 0xFF4000C0
-CodePtrs08179740:                   ; 08179740
+SealBossRoom_SubstatePtrs:          ; 08179740
 .word Sub080BE9D8+1, Sub080BE9F0+1, Sub080BEACC+1, Sub080BEB70+1
 .word Sub080BEB9C+1, Sub080BEBBC+1, Sub080BECFC+1, Sub080BEE24+1
 .word Sub080BEF48+1, Sub080BF010+1, Sub080BF190+1, Sub080BF1EC+1
