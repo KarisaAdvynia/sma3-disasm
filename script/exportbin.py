@@ -1,9 +1,9 @@
 from pathlib import Path
 
-def importbinptrs(binptrs):
+def importbinptrs(binptrpath):
     ptrmap = []
     fillnext = False
-    for line in open(binptrs, "r", encoding="UTF-8"):
+    for line in open(binptrpath, "r", encoding="UTF-8"):
         rawdata = line.split()
         startptr = int(rawdata[0], 16)
         if fillnext:  # use startptr as previous line's end ptr
@@ -29,8 +29,8 @@ def importbinptrs(binptrs):
 
     return ptrmap
 
-def exportbin(sourcepath, outputdir, binptrs):
-    ptrmap = importbinptrs(binptrs)
+def exportbin(sourcepath, outputdir, binptrpath):
+    ptrmap = importbinptrs(binptrpath)
 
     with sourcepath.open("rb") as f:
         outputdir = Path(outputdir)
@@ -47,7 +47,6 @@ def exportbin(sourcepath, outputdir, binptrs):
                 nextdir.mkdir(parents=True)
 
             # create file
-##            print(f"Creating file ({startptr:08X}, len {length:X}): {exportpath}")
             exportpath.open("wb").write(data)
         print(f"Extracted {len(ptrmap)} files.")
 

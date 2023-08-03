@@ -23,8 +23,7 @@
 081C1D54          Sublevels/Sublevel38_Main.bin
 081C1DA4          Sublevels/Sublevel39_Main.bin
 081C1F29          Sublevels/Sublevel00_Main.bin
-081C2265          Sublevels/Sublevel3A_Main.bin
-081C2320          Sublevels/Sublevel38_Sprites.bin
+081C2265 081C2320 Sublevels/Sublevel3A_Main.bin
 081C2324          Sublevels/Sublevel39_Sprites.bin
 081C2354          Sublevels/Sublevel00_Sprites.bin
 081C2434          Sublevels/Sublevel3A_Sprites.bin
@@ -190,8 +189,7 @@
 081D118C          Sublevels/Sublevel4D_Main.bin
 081D1508          Sublevels/Sublevel7B_Main.bin
 081D17A5          Sublevels/SublevelA3_Main.bin
-081D1888          Sublevels/SublevelBF_Main.bin
-081D1902          Sublevels/SublevelD0_Main.bin
+081D1888 081D1902 Sublevels/SublevelBFD0_Main.bin
 081D197C          Sublevels/SublevelC9_Main.bin
 081D1993          Sublevels/SublevelD5_Main.bin
 081D1AFF          Sublevels/SublevelD7_Main.bin
@@ -233,8 +231,7 @@
 081D3CFC          Sublevels/Sublevel19_Main.bin
 081D3D71          Sublevels/Sublevel51_Main.bin
 081D4455          Sublevels/Sublevel7F_Main.bin
-081D4539          Sublevels/SublevelA7_Main.bin
-081D4620          Sublevels/Sublevel19_Sprites.bin
+081D4539 081D4620 Sublevels/SublevelA7_Main.bin
 081D4624          Sublevels/Sublevel51_Sprites.bin
 081D47A4          Sublevels/Sublevel7F_Sprites.bin
 081D47AC          Sublevels/SublevelA7_Sprites.bin
@@ -391,8 +388,7 @@
 081E4198          Sublevels/Sublevel62_Sprites.bin
 081E426C          Sublevels/Sublevel8E_Sprites.bin
 081E4290          Sublevels/SublevelB3_Sprites.bin
-081E4330          Sublevels/SublevelC4_Sprites.bin
-081E433C          Sublevels/SublevelCB_Sprites.bin
+081E4330 081E433C Sublevels/SublevelC4_Sprites.bin
 081E4340          Sublevels/SublevelD2_Sprites.bin
 081E43CC          Sublevels/Sublevel2C_Main.bin
 081E4557          Sublevels/Sublevel63_Main.bin
@@ -485,9 +481,7 @@
 081EC4EC          Sublevels/SublevelD3_Sprites.bin
 081EC514          Sublevels/SublevelD6_Sprites.bin
 081EC538          Sublevels/SublevelDC_Sprites.bin
-081EC5A8          Sublevels/SublevelDD_Sprites.bin
-081EC5B0          Sublevels/SublevelDA_Sprites.bin
-081EC5B4          Sublevels/SublevelDB_Sprites.bin
+081EC5A8 081EC5B0 Sublevels/SublevelDD_Sprites.bin
 081EC5B8          Sublevels/Sublevel35_Main.bin
 081EC971          Sublevels/Sublevel6C_Main.bin
 081ECB51          Sublevels/Sublevel98_Main.bin
@@ -569,10 +563,7 @@
 08209CC4          Graphics/Unused08209CC4_LZ77.bin
 0820A638          Graphics/Unused0820A638_LZ77.bin
 0820B0BC          Graphics/Unused0820B0BC_LZ77.bin
-0820BA04          Graphics/Empty0820BA04_LZ77.bin
-0820BBF0          Graphics/Empty0820BBF0_LZ77.bin
-0820BDDC          Graphics/Empty0820BDDC_LZ77.bin
-0820BFC8 0820C1B4 Graphics/Empty0820BFC8_LZ77.bin
+0820BA04 0820BBF0 Graphics/Empty1000Bytes_LZ77.bin
 0820C1D4          Tilemaps/Gameplay_Raphael_L2_LZ77.bin
 0820C580          Graphics/Gameplay_Raphael_L2_8bpp_LZ77.bin
 0820DA48          Graphics/Gameplay_Hookbill_L2_8bpp_LZ77.bin
@@ -581,8 +572,8 @@
 0820F13C          Graphics/100Cutscene_sprite_1_LZ77.bin
 0820FFB8 082135CC Graphics/100Cutscene_layer_LZ77.bin
 08213AB0          Tilemaps/100Cutscene_L1_LZ77.bin
-0821400C          Tilemaps/100Cutscene_L2_LZ77.bin
-08214A3C          Tilemaps/100Cutscene_L3_LZ77.bin
+0821400C          Tilemaps/Intro100Cutscene_L2_LZ77.bin
+08214A3C          Tilemaps/Intro100Cutscene_L3_LZ77.bin
 08214EC4          Graphics/100Cutscene_text_LZ77.bin
 08215308          Graphics/100Cutscene_end_LZ77.bin
 082157C4          Graphics/100Cutscene_Congrat_frame0.bin
@@ -660,9 +651,7 @@
 08221F3C          Tilemaps/Gameplay_L3_21_LZ77.bin
 08222068          Tilemaps/Gameplay_L3_24_LZ77.bin
 082222BC          Tilemaps/Gameplay_L3_26_LZ77.bin
-08222464          Tilemaps/Gameplay_L3_2F_LZ77.bin
-082225D4          Tilemaps/IntroCutscene_L2_LZ77.bin
-08223004 0822348C Tilemaps/IntroCutscene_L3_LZ77.bin
+08222464 082225D4 Tilemaps/Gameplay_L3_2F_LZ77.bin
 082235CC          Graphics/LevelSelect.bin
 082255CC          Graphics/BanditMinigame_2_Nintendo_LZ77.bin
 08225ED0          Graphics/BanditMinigame_3_LZ77.bin
@@ -1055,9 +1044,7 @@
 08298EA4          Graphics/Data08298EA4.bin
 08298EE4          Graphics/Data08298EE4.bin
 08298F24          Graphics/Data08298F24.bin
-08298F64          Graphics/Data08298F64.bin
-08298FA4          Graphics/Data08298FA4.bin
-08298FE4          Graphics/Data08298FE4.bin
+08298F64 08298FA4 Graphics/Data08298F64.bin
 08299024          Graphics/Data08299024.bin
 08299064          Graphics/Data08299064.bin
 082996A4          Graphics/Data082996A4.bin
@@ -1083,8 +1070,7 @@
 0829CEA4          Graphics/Data0829CEA4.bin
 0829CF24          Graphics/Data0829CF24.bin
 0829D024          Graphics/Data0829D024.bin
-0829DF24          Graphics/Data0829DF24.bin
-0829DFA4          Graphics/Data0829DFA4.bin
+0829DF24 0829DFA4 Graphics/Data0829DF24.bin
 0829E024          Graphics/Data0829E024.bin
 0829E0A4          Graphics/Data0829E0A4.bin
 0829E124          Graphics/Data0829E124.bin
@@ -1395,8 +1381,6 @@
 08323484          Sound/Data08323484.bin
 083237E4          Sound/Data083237E4.bin
 08323FC4 083240E4 Sound/Data08323FC4.bin
-083240EC          Sound/Data083240EC.bin
-083240F2 083240FC Sound/Data083240F2.bin
 0832410C          Sound/Data0832410C.bin
 0832458C          Sound/Data0832458C.bin
 0832496C          Sound/Data0832496C.bin
