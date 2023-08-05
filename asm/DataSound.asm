@@ -8,13 +8,13 @@ DataPtrs083077C4:                   ; 083077C4
 .word Data08324D2C, RelPtrs08324D3C, RelPtrs083240E4
 Data083077E0:                       ; 083077E0
 .halfword 0x021F, 0x0003
-Data083077E4:                       ; 083077E4
+YIMusicParam:                       ; 083077E4
 .halfword 0x0022, 0x0008, 0x000B, 0x0023, 0x0024, 0x000A, 0x0009, 0x000E
 .halfword 0x000F, 0x0010, 0x0011, 0x0012, 0x0013, 0x0014, 0x0027, 0x0626
 .halfword 0x0621, 0x0625, 0x041D, 0x041B, 0x001A, 0x0000, 0x0419, 0x0016
 .halfword 0x0415, 0x0017, 0x0407, 0x0006, 0x0005, 0x0004, 0x0003, 0x041C
 .halfword 0x0020, 0x001F, 0x0018, 0x001E, 0x000D, 0x000C, 0x0002, 0x0001
-Data08307834:                       ; 08307834
+YISoundParam:                       ; 08307834
 .halfword 0x000E :: .byte 0x02, 0x85
 .halfword 0x0084 :: .byte 0x02, 0x85
 .halfword 0x0088 :: .byte 0x02, 0x85
@@ -211,7 +211,7 @@ Data08307834:                       ; 08307834
 .halfword 0x0061 :: .byte 0x06, 0x00
 .halfword 0x0069 :: .byte 0x06, 0x21
 .halfword 0x002D :: .byte 0x06, 0x00
-Data08307B44:                       ; 08307B44
+YIContinuousSoundParam:             ; 08307B44
 .halfword 0x000C :: .byte 0x00, 0x01
 .halfword 0x0087 :: .byte 0x00, 0x85
 .halfword 0x0079 :: .byte 0x00, 0x85
@@ -223,7 +223,7 @@ Data08307B44:                       ; 08307B44
 .halfword 0x0005 :: .byte 0x00, 0x00
 Data08307B68:                       ; 08307B68
 .word 0x7F542A00
-Data08307B6C:                       ; 08307B6C
+MBMusicSoundParam:                  ; 08307B6C
 .halfword 0x0028 :: .byte 0x13, 0x01
 .halfword 0x0029 :: .byte 0x13, 0x01
 .halfword 0x002A :: .byte 0x13, 0x01

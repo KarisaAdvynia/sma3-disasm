@@ -33,7 +33,7 @@
 .include "asm/080FB01C.asm"
 .include "asm/LevelNames.asm"
 .include "asm/YITitle.asm"
-.include "asm/Sprites/Bowser.asm"
+.include "asm/Sprites/Bosses/Bowser.asm"
 .include "asm/GameOver.asm"
 .include "asm/0810D264.asm"
 .include "asm/ChooseAGame.asm"

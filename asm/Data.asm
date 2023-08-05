@@ -6253,7 +6253,7 @@ StdSprMainPtrs:                     ; 08170958
 .word Sub080B2468+1                 ; 08F
 .word Sub080B71AC+1                 ; 090
 .word Toadies0Stars_Main+1          ; 091
-.word Sub08064280+1                 ; 092
+.word MelonBug_Main+1               ; 092
 .word NormalDoor_Main+1             ; 093
 .word Sub080D9160+1                 ; 094
 .word Sub08095160+1                 ; 095
@@ -6380,7 +6380,7 @@ StdSprMainPtrs:                     ; 08170958
 .word Sub08074C54+1                 ; 10E
 .word Sub08085380+1                 ; 10F
 .word Sub08052F70+1                 ; 110
-.word Sub08068B68+1                 ; 111
+.word GeorgetteJelly_Main+1         ; 111
 .word Sub08069338+1                 ; 112
 .word Sub0808C9E8+1                 ; 113
 .word Sub0808CA30+1                 ; 114
@@ -6449,7 +6449,7 @@ StdSprMainPtrs:                     ; 08170958
 .word Sub0806E5DC+1                 ; 153
 .word Sub080795AC+1                 ; 154
 .word Sub0806D820+1                 ; 155
-.word Sub0806F978+1                 ; 156
+.word NipperSpore_Main+1            ; 156
 .word Sub080A1228+1                 ; 157
 .word Sub0806D820+1                 ; 158
 .word Sub080A98E8+1                 ; 159
@@ -7811,14 +7811,14 @@ Data08174090:                       ; 08174090
 .halfword 0x10F0, 0x08F8, 0x0AF0
 Data08174096:                       ; 08174096
 .halfword 0x0280, 0x0200, 0x0000
-CodePtrs0817409C:                   ; 0817409C
+MelonBug_SubstatePtrs:              ; 0817409C
 .word Sub080643D8+1, Sub08064448+1, Sub080644B4+1
 Data081740A8:                       ; 081740A8
 .halfword 0x6010
 Data081740AA:                       ; 081740AA
 .halfword 0x0180, 0xFE80, 0x0080, 0xFF80, 0xFD00, 0x0300
-Data081740B6:                       ; 081740B6
-.halfword 0xB400, 0xB6B5, 0xB8B7, 0xBAB9
+MelonBug_ComboSounds:               ; 081740B6
+.byte 0x00, 0xB4, 0xB5, 0xB6, 0xB7, 0xB8, 0xB9, 0xBA
 Data081740BE:                       ; 081740BE
 .halfword 0xFE00, 0x0200
 Data081740C2:                       ; 081740C2
@@ -8179,8 +8179,9 @@ Data08174786:                       ; 08174786
 .halfword 0x00E0, 0x0140
 Data0817478A:                       ; 0817478A
 .halfword 0x0200, 0xFE00
-Data0817478E:                       ; 0817478E
-.halfword 0xB400, 0xB6B5, 0xB8B7, 0xBAB9, 0x0000
+NipperSpore_ComboSounds:            ; 0817478E
+.byte 0x00, 0xB4, 0xB5, 0xB6, 0xB7, 0xB8, 0xB9, 0xBA
+.align 4
 CodePtrs08174798:                   ; 08174798
 .word Sub080709C4+1, Sub08070B0C+1, Sub08070B84+1, Sub08070BBC+1
 Data081747A8:                       ; 081747A8
@@ -9035,7 +9036,7 @@ Data081758FA:                       ; 081758FA
 .halfword 0x0100, 0xFF00
 Data081758FE:                       ; 081758FE
 .halfword 0xFF00, 0x0100
-Data08175902:                       ; 08175902
+Bandit_ComboSounds:                 ; 08175902
 .halfword 0x00B4, 0x00B5, 0x00B6, 0x00B7, 0x00B8, 0x00B9, 0x00BA
 Data08175910:                       ; 08175910
 .word 0xFF000100
@@ -10202,7 +10203,7 @@ CodePtrs0817713C:                   ; 0817713C
 Data0817714C:                       ; 0817714C
 .word 0x0080FF80
 Data08177150:                       ; 08177150
-.word 0xFE00FD00, 0xFFC0FF00, 0x01000040, 0x03000200
+.halfword 0xFD00, 0xFE00, 0xFF00, 0xFFC0, 0x0040, 0x0100, 0x0200, 0x0300
 Data08177160:                       ; 08177160
 .halfword 0x0201, 0x0203, 0x0001
 Data08177166:                       ; 08177166
@@ -10211,18 +10212,18 @@ CodePtrs0817716C:                   ; 0817716C
 .word Sub080A5138+1, Sub080A5268+1
 Data08177174:                       ; 08177174
 .halfword 0x0076, 0x0075, 0x0074, 0x0073, 0x0072, 0x0071, 0x0070, 0x006F
-Data08177184:                       ; 08177184
+ArrowCloud_EggXVelocity:            ; 08177184
 .halfword 0xFA58, 0xF800, 0xFA58, 0x0000, 0x05A8, 0x0800, 0x05A8, 0x0000
-Data08177194:                       ; 08177194
+ArrowCloud_EggYVelocity:            ; 08177194
 .halfword 0xFA58, 0x0000, 0x05A8, 0x0800, 0x05A8, 0x0000, 0xFA58, 0xF800
-Data081771A4:                       ; 081771A4
+ArrowCloud_RandPal:                 ; 081771A4
 .byte 0x00, 0x02, 0x04, 0x08
 Data081771A8:                       ; 081771A8
-.word 0xFC800380
+.halfword 0x0380, 0xFC80
 Data081771AC:                       ; 081771AC
-.word 0xFF00FE40
-Data081771B0:                       ; 081771B0
-.word 0x00B500B4, 0x00B700B6, 0x00B900B8, 0x00BA00BA
+.halfword 0xFE40, 0xFF00
+KoopaShell_ComboSounds:             ; 081771B0
+.halfword 0x00B4, 0x00B5, 0x00B6, 0x00B7, 0x00B8, 0x00B9, 0x00BA, 0x00BA
 Data081771C0:                       ; 081771C0
 .word 0xFE000200
 Data081771C4:                       ; 081771C4

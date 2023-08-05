@@ -214,7 +214,7 @@ lsl   r0,r0,0x10                    ; 0812C3D4
 asr   r0,r0,0x10                    ; 0812C3D6  cap result to signed 16-bit
 cmp   r0,r4                         ; 0812C3D8
 beq   @@Code0812C430                ; 0812C3DA  if new music == old music, and 0300000C is nonzero, return
-ldr   r1,=Data083077E4              ; 0812C3DC
+ldr   r1,=YIMusicParam              ; 0812C3DC
 lsl   r0,r4,0x1                     ; 0812C3DE
 add   r0,r0,r1                      ; 0812C3E0  r0 = 083077E4 + 2*new music
 ldrh  r1,[r0]                       ; 0812C3E2  r1 = 16-bit value from table
@@ -310,7 +310,7 @@ lsl   r0,r0,0x10                    ; 0812C49A
 asr   r0,r0,0x10                    ; 0812C49C
 cmp   r0,0x0                        ; 0812C49E
 blt   @@Code0812C4BC                ; 0812C4A0
-ldr   r1,=Data083077E4              ; 0812C4A2
+ldr   r1,=YIMusicParam              ; 0812C4A2
 lsl   r0,r0,0x1                     ; 0812C4A4
 add   r0,r0,r1                      ; 0812C4A6
 ldrh  r1,[r0]                       ; 0812C4A8
@@ -396,7 +396,7 @@ lsl   r0,r0,0x10                    ; 0812C54A
 asr   r0,r0,0x10                    ; 0812C54C
 cmp   r0,0x0                        ; 0812C54E
 blt   @@Code0812C5B0                ; 0812C550
-ldr   r1,=Data083077E4              ; 0812C552
+ldr   r1,=YIMusicParam              ; 0812C552
 lsl   r0,r0,0x1                     ; 0812C554
 add   r0,r0,r1                      ; 0812C556
 ldrh  r1,[r0]                       ; 0812C558
@@ -846,7 +846,7 @@ str   r1,[sp]                       ; 0812C8A0
 lsl   r0,r0,0x10                    ; 0812C8A2
 lsr   r0,r0,0x10                    ; 0812C8A4
 mov   r10,r0                        ; 0812C8A6
-ldr   r3,=Data08307834              ; 0812C8A8
+ldr   r3,=YISoundParam              ; 0812C8A8
 lsl   r0,r0,0x2                     ; 0812C8AA
 add   r0,r0,r3                      ; 0812C8AC
 ldr   r1,[r0]                       ; 0812C8AE
@@ -1085,7 +1085,7 @@ Sub0812CA94:
 push  {lr}                          ; 0812CA94
 lsl   r0,r0,0x10                    ; 0812CA96
 lsr   r0,r0,0x10                    ; 0812CA98
-ldr   r2,=Data08307834              ; 0812CA9A
+ldr   r2,=YISoundParam              ; 0812CA9A
 lsl   r1,r0,0x2                     ; 0812CA9C
 add   r1,r1,r2                      ; 0812CA9E
 ldr   r1,[r1]                       ; 0812CAA0
@@ -1123,7 +1123,7 @@ mov   r2,0x1                        ; 0812CADE
 mov   r8,r2                         ; 0812CAE0
 mov   r5,r8                         ; 0812CAE2
 bic   r5,r0                         ; 0812CAE4
-ldr   r4,=Data08307B44              ; 0812CAE6
+ldr   r4,=YIContinuousSoundParam    ; 0812CAE6
 mov   r10,r4                        ; 0812CAE8
 ldr   r0,=0x03000068                ; 0812CAEA
 mov   r12,r0                        ; 0812CAEC
@@ -1294,7 +1294,7 @@ lsr   r1,r1,0x10                    ; 0812CC32
 str   r1,[sp]                       ; 0812CC34
 mov   r0,0x80                       ; 0812CC36
 str   r0,[sp,0x8]                   ; 0812CC38
-ldr   r1,=Data08307B44              ; 0812CC3A
+ldr   r1,=YIContinuousSoundParam    ; 0812CC3A
 ldr   r2,[sp]                       ; 0812CC3C
 lsl   r0,r2,0x2                     ; 0812CC3E
 add   r0,r0,r1                      ; 0812CC40
@@ -1459,7 +1459,7 @@ PlayMBMusicOrSound:
 push  {r4-r7,lr}                    ; 0812CD90
 lsl   r0,r0,0x10                    ; 0812CD92
 lsr   r6,r0,0x10                    ; 0812CD94
-ldr   r1,=Data08307B6C              ; 0812CD96
+ldr   r1,=MBMusicSoundParam         ; 0812CD96
 lsl   r0,r6,0x2                     ; 0812CD98
 add   r0,r0,r1                      ; 0812CD9A
 ldr   r1,[r0]                       ; 0812CD9C
@@ -1531,7 +1531,7 @@ Sub0812CE20:
 push  {r4-r5,lr}                    ; 0812CE20
 lsl   r0,r0,0x10                    ; 0812CE22
 lsr   r3,r0,0x10                    ; 0812CE24
-ldr   r1,=Data08307B6C              ; 0812CE26
+ldr   r1,=MBMusicSoundParam         ; 0812CE26
 lsl   r0,r3,0x2                     ; 0812CE28
 add   r0,r0,r1                      ; 0812CE2A
 ldr   r4,[r0]                       ; 0812CE2C
@@ -6406,7 +6406,7 @@ bx     lr                           ; 0812F518/03001484
 
 Sub0812F51C:
 ; copied to 03001488 in 0812CE84
-mov    r12,sp                       ; 0812F51C/03001488
+mov    r12,r13                      ; 0812F51C/03001488
 stmfd  r13!,{r4-r8}                 ; 0812F520/0300148C
 ldmia  r12,{r4-r7}                  ; 0812F524/03001490
 sub    r12,r3,r1                    ; 0812F528/03001494
@@ -6455,6 +6455,7 @@ bcc    @@Code0812F538               ; 0812F5CC/03001538
 mov    r0,r4                        ; 0812F5D0/0300153C
 ldmfd  r13!,{r4-r8}                 ; 0812F5D4/03001540
 bx     lr                           ; 0812F5D8/03001544
+
 @@Code0812F5DC:
 add    r12,r0,r4,lsr 0x8            ; 0812F5DC/03001548
 ldrsb  r8,[r12]                     ; 0812F5E0/0300154C

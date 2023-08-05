@@ -769,7 +769,9 @@ pop   {r1}                          ; 0804A47C
 bx    r1                            ; 0804A47E
 .pool                               ; 0804A480
 
-Sub0804A498:
+SpawnLifeSecSpr:
+; Gives lives, plays sound effect, and spawns secondary sprite
+; r0: number of lives to give. Seems to only work properly with 1, 3, or (partially implemented) 5
 push  {r4-r7,lr}                    ; 0804A498
 lsl   r0,r0,0x10                    ; 0804A49A
 lsr   r0,r0,0x10                    ; 0804A49C
@@ -814,40 +816,41 @@ pop   {r1}                          ; 0804A4EA
 bx    r1                            ; 0804A4EC
 .pool                               ; 0804A4EE
 
-Sub0804A50C:
+Spawn1upSecSpr:
 push  {lr}                          ; 0804A50C
 mov   r0,0x1                        ; 0804A50E
-bl    Sub0804A498                   ; 0804A510
+bl    SpawnLifeSecSpr               ; 0804A510
 lsl   r0,r0,0x18                    ; 0804A514
 lsr   r0,r0,0x18                    ; 0804A516
 pop   {r1}                          ; 0804A518
 bx    r1                            ; 0804A51A
 
-Sub0804A51C:
+Spawn1upAtSprCoords:
+; r0: pointer to sprite struct
 push  {r4,lr}                       ; 0804A51C
 ldr   r1,=0x03007240                ; 0804A51E  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r3,[r1]                       ; 0804A520
-ldr   r1,[r0]                       ; 0804A522
-asr   r1,r1,0x8                     ; 0804A524
+ldr   r1,[r0]                       ; 0804A522  sprite X, in pixels, *0x100
+asr   r1,r1,0x8                     ; 0804A524  sprite X, in pixels
 ldr   r4,=0x29D2                    ; 0804A526
-add   r2,r3,r4                      ; 0804A528
+add   r2,r3,r4                      ; 0804A528  [03007240]+29D2 (03004BDE)
 strh  r1,[r2]                       ; 0804A52A
-ldr   r0,[r0,0x4]                   ; 0804A52C
-asr   r0,r0,0x8                     ; 0804A52E
+ldr   r0,[r0,0x4]                   ; 0804A52C  sprite Y, in pixels, *0x100
+asr   r0,r0,0x8                     ; 0804A52E  sprite Y, in pixels
 ldr   r1,=0x29D6                    ; 0804A530
 add   r3,r3,r1                      ; 0804A532
-strh  r0,[r3]                       ; 0804A534
+strh  r0,[r3]                       ; 0804A534  [03007240]+29D6 (03004BE2)
 mov   r0,0x1                        ; 0804A536
-bl    Sub0804A498                   ; 0804A538
+bl    SpawnLifeSecSpr               ; 0804A538
 pop   {r4}                          ; 0804A53C
 pop   {r0}                          ; 0804A53E
 bx    r0                            ; 0804A540
 .pool                               ; 0804A542
 
-Sub0804A550:
+Spawn3upSecSpr:
 push  {lr}                          ; 0804A550
 mov   r0,0x3                        ; 0804A552
-bl    Sub0804A498                   ; 0804A554
+bl    SpawnLifeSecSpr               ; 0804A554
 pop   {r0}                          ; 0804A558
 bx    r0                            ; 0804A55A
 
@@ -865,7 +868,7 @@ lsl   r0,r0,0x10                    ; 0804A56E
 lsr   r0,r0,0x10                    ; 0804A570
 cmp   r0,0x63                       ; 0804A572
 bls   @@Code0804A592                ; 0804A574
-bl    Sub0804A50C                   ; 0804A576
+bl    Spawn1upSecSpr                ; 0804A576
 lsl   r0,r0,0x18                    ; 0804A57A
 lsr   r0,r0,0x18                    ; 0804A57C
 mov   r1,0xB0                       ; 0804A57E
@@ -3181,7 +3184,7 @@ ldrh  r0,[r0]                       ; 0804B906
 add   r0,0x1                        ; 0804B908
 lsl   r0,r0,0x10                    ; 0804B90A
 lsr   r0,r0,0x10                    ; 0804B90C
-bl    Sub0804A498                   ; 0804B90E
+bl    SpawnLifeSecSpr               ; 0804B90E
 @@Code0804B912:
 ldr   r2,=0x03007240                ; 0804B912  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,=0x0300702C                ; 0804B914  Sprite RAM structs (03002460)
