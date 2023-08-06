@@ -11,13 +11,13 @@ Message_FlipCards:                  ; 082F215C
 .strn "@{0E}Kamek\{, } you lose all@{12#8}"
 .strn "@{0E}the items! Hit Exit@{12#8}"
 .strn "@{0E}to quit\{. }@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_FlipCardsExit:              ; 082F228E
 .strn "@{05}"
 .strn "@{06} \{triright} Continue"
 .strn "@{07}    Exit"
 .strn "@{08}@{51}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_ScratchAndMatch:            ; 082F22AD
 .strn "@{05}SCRATCH AND"
 .strn "@{06}MATCH"
@@ -31,7 +31,7 @@ Message_ScratchAndMatch:            ; 082F22AD
 .strn "@{0E}1 Mario    - 1-UP@{12#8}"
 .strn "@{0E}2 Marios  - 2-UP@{12#8}"
 .strn "@{0E}3 Marios  - 5-UP@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_DrawingLots:                ; 082F23E0
 .strn "@{05}DRAWING LOTS"
 .strn "@{06}"
@@ -44,7 +44,7 @@ Message_DrawingLots:                ; 082F23E0
 .strn "@{0E}Flip a single card@{0A}@{12#8}"
 .strn "@{0E}and receive the@{12#8}"
 .strn "@{0E}item shown!@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_MatchCards:                 ; 082F24D6
 .strn "@{05}MATCH CARDS"
 .strn "@{06}"
@@ -58,7 +58,7 @@ Message_MatchCards:                 ; 082F24D6
 .strn "@{0E}you've missed a@{12#8}"
 .strn "@{0E}match twice in a@{12#8}"
 .strn "@{0E}row\{. }@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_Roulette:                   ; 082F25FD
 .strn "@{05}ROULETTE"
 .strn "@{06}"
@@ -76,7 +76,7 @@ Message_Roulette:                   ; 082F25FD
 .strn "@{0E}this game if you@{12#8}"
 .strn "@{0E}have only 1 Yoshi@{12#8}"
 .strn "@{0E}remaining\{. }@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_SlotMachine:                ; 082F27B4
 .strn "@{05}SLOT MACHINE"
 .strn "@{06}"
@@ -86,7 +86,7 @@ Message_SlotMachine:                ; 082F27B4
 .strn "@{0E}Press \{Abutton0}\{Abutton1}@{12#8}"
 .strn "@{0E}to stop@{12#8}"
 .strn "@{0E}each wheel!@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_ThrowingBalloons1up:        ; 082F284B
 .strn "@{05}"
 .strn "@{06}   THROWING"
@@ -103,7 +103,7 @@ Message_ThrowingBalloons1up:        ; 082F284B
 .strn "@{0E}@{0A}@{12#8}"
 .strn "@{0E}If you win\{, } you'll@{12#8}"
 .strn "@{0E}collect a 1-UP!@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_ThrowingBalloons2up:        ; 082F29CD
 .strn "@{05}"
 .strn "@{06}   THROWING"
@@ -120,7 +120,7 @@ Message_ThrowingBalloons2up:        ; 082F29CD
 .strn "@{0E}@{0A}@{12#8}"
 .strn "@{0E}If you win\{, } you'll@{12#8}"
 .strn "@{0E}collect a 2-UP!@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_ThrowingBalloons3up:        ; 082F2B4F
 .strn "@{05}"
 .strn "@{06}   THROWING"
@@ -137,7 +137,7 @@ Message_ThrowingBalloons3up:        ; 082F2B4F
 .strn "@{0E}@{0A}@{12#8}"
 .strn "@{0E}If you win\{, } you'll@{12#8}"
 .strn "@{0E}collect a 3-UP!@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_GatherCoins:                ; 082F2CD1
 .strn "@{05}"
 .strn "@{06}   GATHER COINS"
@@ -151,7 +151,7 @@ Message_GatherCoins:                ; 082F2CD1
 .strn "@{0E}If Yoshi wins\{, } you@{12#8}"
 .strn "@{0E}will get a helpful@{12#8}"
 .strn "@{0E}item!@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_PoppingBalloons:            ; 082F2DE1
 .strn "@{05}"
 .strn "@{06}    POPPING"
@@ -166,7 +166,7 @@ Message_PoppingBalloons:            ; 082F2DE1
 .strn "@{0E}will get a 10 pt\{. }@{12#8}"
 .strn "@{0E}Star or a 20 pt\{. }@{12#8}"
 .strn "@{0E}Star!@{0A}@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_SeedSpitting:               ; 082F2F1E
 .strn "@{05}"
 .strn "@{06} WATERMELON SEED"
@@ -184,7 +184,7 @@ Message_SeedSpitting:               ; 082F2F1E
 .strn "@{0E}If Yoshi wins\{, } you@{12#8}"
 .strn "@{0E}will get a@{12#8}"
 .strn "@{0E}Watermelon Item!@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_IntroCutscene1:             ; 082F30BC
 .strn "@{05}Welcome to Yoshi's"
 .strn "@{06}Island\{, } a paradise"
@@ -194,7 +194,7 @@ Message_IntroCutscene1:             ; 082F30BC
 .strn "@{0E}uproar over a@{12#8}"
 .strn "@{0E}baby that fell@{12#8}"
 .strn "@{0E}from the sky\{. }@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_IntroCutscene2:             ; 082F3189
 .strn "@{05}Wait! It seems as"
 .strn "@{06}though the baby"
@@ -212,7 +212,7 @@ Message_IntroCutscene2:             ; 082F3189
 .strn "@{0E}new adventure for@{12#8}"
 .strn "@{0E}the Yoshis and@{12#8}"
 .strn "@{0E}Baby Mario\{. }\{. }\{. }@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_IntroLevel:                 ; 082F3371
 .strn "@{05}If Baby Mario falls"
 .strn "@{06}off Yoshi's back\{, }"
@@ -234,13 +234,13 @@ Message_IntroLevel:                 ; 082F3371
 .strn "@{0E}by passing Baby@{12#8}"
 .strn "@{0E}Mario to the next@{12#8}"
 .strn "@{0E}helpful Yoshi\{. }@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_1_1_FirstFlower:            ; 082F35D3
 .strn "@{05}Special Flower"
 .strn "@{06}Gather 5 for a"
 .strn "@{07}1-UP! They add to"
 .strn "@{08}your point total\{. }@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_1_1_GrabBabyMario:          ; 082F361D
 .strn "@{05}Grab Baby Mario!"
 .strn "@{06}Jump or use your"
@@ -250,32 +250,32 @@ Message_1_1_GrabBabyMario:          ; 082F361D
 .strn "@{0E}If the Timer drops@{12#8}"
 .strn "@{0E}to 0\{, } Kamek's@{12#8}"
 .strn "@{0E}goons will nab him!@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_1_2_FirstMiddleRing:        ; 082F36F2
 .strn "@{05}This is the"
 .strn "@{06}Middle Ring for"
 .strn "@{07}this level\{. } You can"
 .strn "@{08}continue here\{. }@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_TryAgain:                   ; 082F3739
 .strn "@{05}      \{yoshi0}\{yoshi1}\{times}@{3D}@{3E}@{3F}"
 .strn "@{06}Try this stage"
 .strn "@{07}again?"
 .strn "@{08} \{triright} Yes    No"
 .strn "@{0E}@{50}@{0A}@{12#8}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_RestartFromMiddleRing:      ; 082F3788
 .strn "@{05}      \{yoshi0}\{yoshi1}\{times}@{3D}@{3E}@{3F}"
 .strn "@{06}Restart from the"
 .strn "@{07}Middle Ring?"
 .strn "@{08} \{triright} Yes    No"
 .strn "@{0E}@{50}@{0A}@{12#8}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_GameOver:                   ; 082F37DF
 .strn "@{05}Would you like to"
 .strn "@{06}continue?"
 .strn "@{07}  Yes    No@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_1_C_3:                      ; 082F380E
 .strn "@{05}   Flutter Jump:"
 .strn "@{06}By holding \{Abutton0}\{Abutton1}"
@@ -284,7 +284,7 @@ Message_1_C_3:                      ; 082F380E
 .strn "@{0E}for a short time\{. }@{0A}@{12#8}"
 .strn "@{0E}Make the@{12#8}"
 .strn "@{0E}extra effort!@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_1_1_0:                      ; 082F38B2
 .strn "@{05}Making Eggs:"
 .strn "@{06}",0xFF,0x60,0x00,0x00,0x00,0x80,0x30,0x00,0x10
@@ -297,7 +297,7 @@ Message_1_1_0:                      ; 082F38B2
 .strn "@{0E}Now\{, } try throwing@{0A}@{12#8}"
 .strn "@{0E}the egg\{. }@{12#8}"
 .strn "@{0E}Press \{Rbutton0}\{Rbutton1}\{Rbutton2} !@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_1_1_1_Patient:              ; 082F39AF
 .strn "@{05}Throwing Eggs:"
 .strn "@{06}",0xFF,0x60,0x00,0x80,0x00,0x80,0x30,0x00,0x10
@@ -315,7 +315,7 @@ Message_1_1_1_Patient:              ; 082F39AF
 .strn "@{0E}happen! To cancel@{12#8}"
 .strn "@{0E}the throw\{, } press@{12#8}"
 .strn "@{0E}\{down} on \{dpad0}\{dpad1}\{. }@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_1_1_1_Hasty:                ; 082F3B62
 .strn "@{05}Throwing Eggs:"
 .strn "@{06}",0xFF,0x60,0x00,0x80,0x00,0x80,0x30,0x00,0x10
@@ -336,7 +336,7 @@ Message_1_1_1_Hasty:                ; 082F3B62
 .strn "@{0E}To cancel the@{0A}@{12#8}"
 .strn "@{0E}throw\{, } press@{12#8}"
 .strn "@{0E}\{down} on \{dpad0}\{dpad1}\{. }@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_1_1_2:                      ; 082F3D4B
 .strn "@{05}In each level\{, }"
 .strn "@{06}20 red coins are"
@@ -345,7 +345,7 @@ Message_1_1_2:                      ; 082F3D4B
 .strn "@{0E}They each add@{0A}@{12#8}"
 .strn "@{0E}1 point to your@{12#8}"
 .strn "@{0E}total points\{. }@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_1_1_3:                      ; 082F3DF2
 .strn "@{05}A Chomp Rock is"
 .strn "@{06}a useful thing\{. }\{. }\{. }"
@@ -359,7 +359,7 @@ Message_1_1_3:                      ; 082F3DF2
 .strn "@{0E}stand on one edge@{12#8}"
 .strn "@{0E}to make it roll@{12#8}"
 .strn "@{0E}again\{. }@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_1_2_0:                      ; 082F3F1A
 .strn "@{05}Press \{select0}\{select1}\{select2} to"
 .strn "@{06}display your"
@@ -369,7 +369,7 @@ Message_1_2_0:                      ; 082F3F1A
 .strn "@{0E}choose an item@{12#8}"
 .strn "@{0E}and press \{Abutton0}\{Abutton1}\{. }@{12#8}"
 .strn "@{0E}To exit\{, } press \{Bbutton0}\{Bbutton1}\{. }@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_1_2_1:                      ; 082F3FE4
 .strn "@{05}You can morph"
 .strn "@{06}into a helicopter"
@@ -379,7 +379,7 @@ Message_1_2_1:                      ; 082F3FE4
 .strn "@{0E}Block in time\{, } and@{12#8}"
 .strn "@{0E}Baby Mario will be@{12#8}"
 .strn "@{0E}warped to Yoshi\{. }@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_1_2_2:                      ; 082F40BC
 .strn "@{05}Do you remember?"
 .strn "@{06}Press \{Bbutton0}\{Bbutton1}\{, } then \{down}"
@@ -387,7 +387,7 @@ Message_1_2_2:                      ; 082F40BC
 .strn "@{08}an egg\{. }"
 .strn "@{0E}Press \{Rbutton0}\{Rbutton1}\{Rbutton2} to@{0A}@{12#8}"
 .strn "@{0E}throw an egg\{. }@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_1_3_0:                      ; 082F413B
 .strn "@{05}Pound The Ground:"
 .strn "@{06}",0xFF,0x60,0x00,0x30,0x00,0x80,0x30,0x00,0x10
@@ -399,7 +399,7 @@ Message_1_3_0:                      ; 082F413B
 .strn "@{0E}the ground\{. }@{12#8}"
 .strn "@{0E}This move has many@{0A}@{12#8}"
 .strn "@{0E}uses\{. } It rocks!@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_1_3_1:                      ; 082F422D
 .strn "@{05}There are two"
 .strn "@{06}Controller"
@@ -409,7 +409,7 @@ Message_1_3_1:                      ; 082F422D
 .strn "@{0E}switch?@{12#8}"
 .strn "@{0E}\{triright} No    Yes@{12#8}"
 .strn "@{0E}@{52}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_1_3_2:                      ; 082F42CC
 .strn "@{05}There are very"
 .strn "@{06}dangerous Donut"
@@ -419,7 +419,7 @@ Message_1_3_2:                      ; 082F42CC
 .strn "@{0E}shortly after you@{12#8}"
 .strn "@{0E}stand on them\{. }@{12#8}"
 .strn "@{0E}Step lightly!@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_1_5_2:                      ; 082F4394
 .strn "@{05}Yellow eggs create"
 .strn "@{06}coins\{. } Red eggs"
@@ -428,31 +428,31 @@ Message_1_5_2:                      ; 082F4394
 .strn "@{0E}Hit an enemy to@{0A}@{12#8}"
 .strn "@{0E}receive these@{12#8}"
 .strn "@{0E}unique prizes\{. }@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_1_6_1:                      ; 082F4445
 .strn "@{05}Morph into the"
 .strn "@{06}Mole Tank here\{. }"
 .strn "@{07}Dig like mad to"
 .strn "@{08}find 2 red coins!@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_1_6_2:                      ; 082F448E
 .strn "@{05}When you find \{!switch0}\{!switch1}\{, }"
 .strn "@{06}step on it\{. } You"
 .strn "@{07}might find a secret"
 .strn "@{08}entrance nearby\{. }@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_1_8_0:                      ; 082F44DD
 .strn "@{05}- Top Secret -"
 .strn "@{06}Tell No One!"
 .strn "@{07}Aim directly at the"
 .strn "@{08}top-right corner!@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_1_8_1:                      ; 082F4527
 .strn "@{05}Hit the block to"
 .strn "@{06}the right with an"
 .strn "@{07}egg and some"
 .strn "@{08}platforms will flip!@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_2_1_0:                      ; 082F4574
 .strn "@{05}First\{, } touch a"
 .strn "@{06}Super Star to"
@@ -464,7 +464,7 @@ Message_2_1_0:                      ; 082F4574
 .strn "@{0E}across ceilings!!@{12#8}"
 .strn "@{0E}Hold \{Abutton0}\{Abutton1} to float!@{0A}@{12#8}"
 .strn "@{0E}Hold \{Bbutton0}\{Bbutton1} to dash!@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_2_1_2:                      ; 082F4687
 .strn "@{05}This dog's name is"
 .strn "@{06}Poochy\{. } He's"
@@ -473,13 +473,13 @@ Message_2_1_2:                      ; 082F4687
 .strn "@{0E}He runs in the@{0A}@{12#8}"
 .strn "@{0E}direction that@{12#8}"
 .strn "@{0E}Yoshi faces\{. }@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_2_1_3:                      ; 082F472F
 .strn "@{05}Hit \{upcloud0}\{upcloud1} with an egg"
 .strn "@{06}and it'll fly off in"
 .strn "@{07}the direction \{upcloud0}\{upcloud1}"
 .strn "@{08}currently points\{. }@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_2_2_1:                      ; 082F4782
 .strn "@{05}Touch a Super"
 .strn "@{06}Star and become"
@@ -489,13 +489,13 @@ Message_2_2_1:                      ; 082F4782
 .strn "@{0E}Float in the air !!@{12#8}"
 .strn "@{0E}Run up a wall !!!@{12#8}"
 .strn "@{0E}You're invincible!@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_2_2_2:                      ; 082F4858
 .strn "@{05}    Warning:"
 .strn "@{06}Only someone small"
 .strn "@{07}can go on from"
 .strn "@{08}here\{. }@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_2_2_3:                      ; 082F4895
 .strn "@{05}Throw an enemy or"
 .strn "@{06}an egg into the"
@@ -506,25 +506,25 @@ Message_2_2_3:                      ; 082F4895
 .strn "@{0E}enemy upward by@{12#8}"
 .strn "@{0E}pressing \{Bbutton0}\{Bbutton1} while@{12#8}"
 .strn "@{0E}holding \{up} on \{dpad0}\{dpad1}\{. }@{0A}@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_2_3_0:                      ; 082F4994
 .strn "@{05}Grab a green"
 .strn "@{06}watermelon and"
 .strn "@{07}press \{Bbutton0}\{Bbutton1} to fire"
 .strn "@{08}out seeds\{. }@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_2_3_1:                      ; 082F49D4
 .strn "@{05}These types of"
 .strn "@{06}walls may be"
 .strn "@{07}destroyed by"
 .strn "@{08}throwing eggs\{. }@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_2_3_3:                      ; 082F4A14
 .strn "@{05}Morph into the"
 .strn "@{06}Mole Tank here\{. }"
 .strn "@{07}Dig through the"
 .strn "@{08}dirt wall!@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_2_5_0:                      ; 082F4A56
 .strn "@{05}The train can"
 .strn "@{06}travel along the"
@@ -533,13 +533,13 @@ Message_2_5_0:                      ; 082F4A56
 .strn "@{0E}Accelerate to@{0A}@{12#8}"
 .strn "@{0E}dodge enemies  by@{12#8}"
 .strn "@{0E}using \{Bbutton0}\{Bbutton1}\{. }@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_2_5_2:                      ; 082F4AF7
 .strn "@{05}Being a good"
 .strn "@{06}driver is simple!"
 .strn "@{07}Use \{Bbutton0}\{Bbutton1} to avoid"
 .strn "@{08}your enemies\{. }@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_2_7_2:                      ; 082F4B3C
 .strn "@{05}Do not touch the"
 .strn "@{06}thorns\{. } They'll"
@@ -548,7 +548,7 @@ Message_2_7_2:                      ; 082F4B3C
 .strn "@{0E}the thorns by@{0A}@{12#8}"
 .strn "@{0E}hitting them@{12#8}"
 .strn "@{0E}with eggs\{. }@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_2_8_1:                      ; 082F4BDF
 .strn "@{05}When throwing\{, }"
 .strn "@{06}you may stop the"
@@ -557,7 +557,7 @@ Message_2_8_1:                      ; 082F4BDF
 .strn "@{0E}This can greatly@{0A}@{12#8}"
 .strn "@{0E}increase your@{12#8}"
 .strn "@{0E}accuracy\{. }@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_2_8_2:                      ; 082F4C84
 .strn "@{05}How do you like"
 .strn "@{06}this game? Goodies"
@@ -569,7 +569,7 @@ Message_2_8_2:                      ; 082F4C84
 .strn "@{0E}Investigate@{12#8}"
 .strn "@{0E}anything that@{0A}@{12#8}"
 .strn "@{0E}looks suspicious\{. }@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_3_2_2:                      ; 082F4DA2
 .strn "@{05}Try to throw an"
 .strn "@{06}egg at the arrow\{, }"
@@ -578,7 +578,7 @@ Message_3_2_2:                      ; 082F4DA2
 .strn "@{0E}You can get the@{0A}@{12#8}"
 .strn "@{0E}coins placed@{12#8}"
 .strn "@{0E}underneath!@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_3_8_2:                      ; 082F4E38
 .strn "@{05}You can get these"
 .strn "@{06}coins directly\{, }"
@@ -588,7 +588,7 @@ Message_3_8_2:                      ; 082F4E38
 .strn "@{0E}surface of the@{12#8}"
 .strn "@{0E}water to collect@{12#8}"
 .strn "@{0E}the coins\{. }@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_3_8_1:                      ; 082F4F05
 .strn "@{05}Roses are red\{, }"
 .strn "@{06}violets are blue\{, }"
@@ -598,7 +598,7 @@ Message_3_8_1:                      ; 082F4F05
 .strn "@{0E}aim must be true\{, }@{12#8}"
 .strn "@{0E}measure the angle@{12#8}"
 .strn "@{0E}and win\{, } do!@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_3_8_3:                      ; 082F4FD7
 .strn "@{05}As Yoshi falls"
 .strn "@{06}after hovering\{, }"
@@ -608,7 +608,7 @@ Message_3_8_3:                      ; 082F4FD7
 .strn "@{0E}and the Magnifying@{12#8}"
 .strn "@{0E}Glass to get all 5@{12#8}"
 .strn "@{0E}red coins here\{. }@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_4_2_1:                      ; 082F50B0
 .strn "@{05}When you jump off"
 .strn "@{06}one of these"
@@ -618,19 +618,19 @@ Message_4_2_1:                      ; 082F50B0
 .strn "@{0E}If the number@{12#8}"
 .strn "@{0E}reaches 0\{, } the@{12#8}"
 .strn "@{0E}platform vanishes\{. }@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_4_3_1:                      ; 082F517C
 .strn "@{05}This is a Chomp"
 .strn "@{06}Rock\{. } Roll it as"
 .strn "@{07}far as you can and"
 .strn "@{08}see what happens!@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_4_5_1:                      ; 082F51CA
 .strn "@{05}Hit this \{?cloud0}\{?cloud1} with an"
 .strn "@{06}egg to morph into"
 .strn "@{07}a helicopter\{. }"
 .strn "@{08}Find 5 red coins!@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_5_1_1:                      ; 082F5218
 .strn "@{05}This is an icy"
 .strn "@{06}stage\{. } Be careful!"
@@ -643,7 +643,7 @@ Message_5_1_1:                      ; 082F5218
 .strn "@{0E}Use it to melt ice@{0A}@{12#8}"
 .strn "@{0E}or to attack@{12#8}"
 .strn "@{0E}your enemies\{. }@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_5_3_1:                      ; 082F534C
 .strn "@{05}This is top secret"
 .strn "@{06}so LISTEN UP!"
@@ -652,13 +652,13 @@ Message_5_3_1:                      ; 082F534C
 .strn "@{0E}hold \{select0}\{select1}\{select2} and press@{0A}@{12#8}"
 .strn "@{0E}\{Lbutton0}\{Lbutton1}\{Lbutton2}\{, }\{Lbutton0}\{Lbutton1}\{Lbutton2}\{, }\{Bbutton0}\{Bbutton1}\{, }\{Abutton0}\{Abutton1}@{12#8}"
 .strn "@{0E}and \{Rbutton0}\{Rbutton1}\{Rbutton2}!!@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_5_4_1:                      ; 082F53F4
 .strn "@{05}Don't tell anyone\{, }"
 .strn "@{06}but you can grab"
 .strn "@{07}Arrow Lifts to use"
 .strn "@{08}them elsewhere!@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_5_8_1:                      ; 082F5443
 .strn "@{05}@{31}RUN"
 .strn "@{06}"
@@ -667,13 +667,13 @@ Message_5_8_1:                      ; 082F5443
 .strn "@{0E}@{0A}@{12#8}"
 .strn "@{0E}@{31}"
 .strn "@{08}HURRY!!!@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_1_4_Boss:                   ; 082F548F
 .strn "@{05}So\{, } you're still on"
 .strn "@{06}the baby's side\{, }"
 .strn "@{07}Yoshi-baby? Then"
 .strn "@{08}get a load of THIS!@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_1_8_Boss:                   ; 082F54E1
 .strn "@{05}Hi there\{, } cute li'l"
 .strn "@{06}Yoshi! Does Baby"
@@ -682,7 +682,7 @@ Message_1_8_Boss:                   ; 082F54E1
 .strn "@{0E}I'll take him there@{0A}@{12#8}"
 .strn "@{0E}in a hurry!@{12#8}"
 .strn "@{0E}Tee hee hee\{. }\{. }\{. }@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_2_4_Boss:                   ; 082F5595
 .strn "@{05}Oh yes\{, } we have"
 .strn "@{06}Baby Mario's"
@@ -692,7 +692,7 @@ Message_2_4_Boss:                   ; 082F5595
 .strn "@{0E}handing him over@{12#8}"
 .strn "@{0E}to the likes of@{12#8}"
 .strn "@{0E}you!@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_2_8_Boss:                   ; 082F5650
 .strn "@{05}Yoshi dear\{, } that"
 .strn "@{06}baby is going to"
@@ -701,36 +701,36 @@ Message_2_8_Boss:                   ; 082F5650
 .strn "@{0E}So give him here@{0A}@{12#8}"
 .strn "@{0E}before you get@{12#8}"
 .strn "@{0E}hurt by accident!@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_3_4_Boss:                   ; 082F56FF
 .strn "@{05}Great job\{, } Yoshi!"
 .strn "@{06}Now\{, } you will be"
 .strn "@{07}Froggy's lunch!!"
 .strn "@{08}Hee hee hee!@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_3_8_Boss:                   ; 082F5748
 .strn "@{05}Give up\{, } Yoshi\{, }"
 .strn "@{06}you egg-throwing"
 .strn "@{07}maniac! Ooops\{. }\{. }\{. }"
 .strn "@{08}Forget that!@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_3_8_OHMY:                   ; 082F578F
 .strn "@{05}@{31}OH\{, }"
 .strn "@{06}"
 .strn "@{07}@{31}MY@{35}@{38}!!!@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_4_4_Boss:                   ; 082F57A9
 .strn "@{05}Yoshi! Oh dear\{. }\{. }\{. }"
 .strn "@{06}Well\{, } Marching"
 .strn "@{07}Milde will pound"
 .strn "@{08}you to bits!!@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_4_8_Boss:                   ; 082F57F1
 .strn "@{05}Little Koopa\{, } come"
 .strn "@{06}through for me"
 .strn "@{07}now! Go and rock"
 .strn "@{08}Yoshi's world!@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_5_4_Boss:                   ; 082F583B
 .strn "@{05}Aaaaagh! Yoshi!"
 .strn "@{06}To get this far\{, }"
@@ -738,7 +738,7 @@ Message_5_4_Boss:                   ; 082F583B
 .strn "@{08}power\{, } but\{. }\{. }\{. }"
 .strn "@{0E}This slug has no@{0A}@{12#8}"
 .strn "@{0E}weak points!!@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_5_8_Boss:                   ; 082F58C9
 .strn "@{05}You can\{, } ah\{, } will\{, }"
 .strn "@{06}aaah\{, } never enter"
@@ -748,7 +748,7 @@ Message_5_8_Boss:                   ; 082F58C9
 .strn "@{0E}forever twinkle in@{12#8}"
 .strn "@{0E}the heavens\{. }@{12#8}"
 .strn "@{0E}BEGONE!!@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_6_4_Boss:                   ; 082F5988
 .strn "@{05}Eeeeek!! How did"
 .strn "@{06}you\{. }\{. }\{. }? You! I "
@@ -758,25 +758,25 @@ Message_6_4_Boss:                   ; 082F5988
 .strn "@{0E}Now it's over!@{12#8}"
 .strn "@{0E}Your game ends@{12#8}"
 .strn "@{0E}HERE!!@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_6_8_PreBoss1:               ; 082F5A46
 .strn "@{05}Welcome!!! Yoshi\{, }"
 .strn "@{06}if you would be so"
 .strn "@{07}kind\{, } please HAND"
 .strn "@{08}OVER THE BABY!@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_6_8_PreBoss2:               ; 082F5A94
 .strn "@{05}Oh\{, } dear\{. }\{. }\{. }"
 .strn "@{06}What to do\{. }\{. }\{. }"
 .strn "@{07}Young Master"
 .strn "@{08}Bowser wakes\{. }\{. }\{. }@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_6_8_PreBoss3:               ; 082F5AD3
 .strn "@{05}Kamek\{, } it's too"
 .strn "@{06}noisy in here!!"
 .strn "@{07}I wanna go"
 .strn "@{08}sweepy-byyye!!!@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_6_8_PreBoss4:               ; 082F5B16
 .strn "@{05}Huh??"
 .strn "@{06}Hmm?!!?"
@@ -792,13 +792,13 @@ Message_6_8_PreBoss4:               ; 082F5B16
 .strn "@{0E}@{12#8}"
 .strn "@{0E}@{31}"
 .strn "@{08}MINE!!@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_6_8_KamekEnlarge:           ; 082F5C20
 .strn "@{05}Yoshi\{, } how could"
 .strn "@{06}you do this???"
 .strn "@{07}Young Master\{, } let"
 .strn "@{08}me help you! Here!@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF
 Message_6_8_PostBoss:               ; 082F5C6D
 .strn "@{05}How dare you?!"
 .strn "@{06}It's not fair\{. }\{. }\{. }"
@@ -807,4 +807,4 @@ Message_6_8_PostBoss:               ; 082F5C6D
 .strn "@{0E}Someday\{. }\{. }\{. }@{0A}@{12#8}"
 .strn "@{0E}We will be back\{. }\{. }\{. }@{12#8}"
 .strn "@{0E}You'll see!@{12#8}@{0F}"
-.byte 0xFF,0xFF
+.d8 0xFF,0xFF

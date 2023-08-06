@@ -3,10 +3,10 @@
 InternalHeader:
 b      CodeStart                    ; 08000000
 .incbin "../data/InternalHeader_NintendoLogo.bin"
-.byte "SUPER MARIOCA3AE"            ; 080000A0
-.byte "01"                          ; 080000B0
-.byte 0x96,0x00,0x00,0x00,0x00,0x00
-.byte 0x00,0x00,0x00,0x00,0x00,0x8C,0x00,0x00
+.d8 "SUPER MARIOCA3AE"              ; 080000A0
+.d8 "01"                            ; 080000B0
+.d8 0x96,0x00,0x00,0x00,0x00,0x00
+.d8 0x00,0x00,0x00,0x00,0x00,0x8C,0x00,0x00
 
 CodeStart:
 mov    r0,0x12                      ; 080000C0
@@ -23,8 +23,8 @@ mov    lr,pc                        ; 080000E8
 bx     r1                           ; 080000EC
 b      CodeStart                    ; 080000F0
 @@Pool:
-.word  0x03007E00                   ; 080000F4
-.word  0x03007F80                   ; 080000F8
+.d32  0x03007E00                    ; 080000F4
+.d32  0x03007F80                    ; 080000F8
 
 InterruptHandler:
 mov    r12,0x04000000               ; 080000FC/030065AC
@@ -130,7 +130,7 @@ ldr    r0,[r1]                      ; 08000270
 bx     r0                           ; 08000274
 .pool                               ; 08000278
 @@Pool:
-.word  0x030021C0                   ; 08000284
+.d32  0x030021C0                    ; 08000284
 
 Sub08000288:
 mov    r12,r13                      ; 08000288
@@ -195,8 +195,8 @@ pop   {r1}                          ; 08000356
 bx    r1                            ; 08000358
 .pool                               ; 0800035A
 
-.word 0xFFFF8000                    ; 0800035C
-.word 0x0000FFF3                    ; 08000360
+.d32 0xFFFF8000                     ; 0800035C
+.d32 0x0000FFF3                     ; 08000360
 
 Sub08000364:
 push  {r4-r7,lr}                    ; 08000364

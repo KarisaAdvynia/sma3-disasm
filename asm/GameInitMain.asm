@@ -2111,16 +2111,16 @@ mov   pc,r0                         ; 08001F10
 .pool                               ; 08001F12
 @@CodePtrs08001F18:
 ; code pointers for r0: 0-9
-.word @@Code08001F40                ; 08001F18
-.word @@Code08001F58                ; 08001F1C
-.word @@Code08001F70                ; 08001F20
-.word @@Code08001F88                ; 08001F24
-.word @@Code08001FA0                ; 08001F28
-.word @@Code08001FB8                ; 08001F2C
-.word @@Code08001FD0                ; 08001F30
-.word @@Code08001FE8                ; 08001F34
-.word @@Code0800201C                ; 08001F38
-.word @@Code0800200C                ; 08001F3C
+.d32 @@Code08001F40                 ; 08001F18
+.d32 @@Code08001F58                 ; 08001F1C
+.d32 @@Code08001F70                 ; 08001F20
+.d32 @@Code08001F88                 ; 08001F24
+.d32 @@Code08001FA0                 ; 08001F28
+.d32 @@Code08001FB8                 ; 08001F2C
+.d32 @@Code08001FD0                 ; 08001F30
+.d32 @@Code08001FE8                 ; 08001F34
+.d32 @@Code0800201C                 ; 08001F38
+.d32 @@Code0800200C                 ; 08001F3C
 
 @@Code08001F40:
 ldr   r1,=0x030021C0                ; 08001F40
@@ -2232,12 +2232,12 @@ ldr   r0,[r0]                       ; 0800206C
 mov   pc,r0                         ; 0800206E
 .pool                               ; 08002070
 @@CodePtrs0800207C:
-.word @@Code080021A4                ; 0800207C
-.word @@Code08002094                ; 08002080
-.word @@Code080020E0                ; 08002084
-.word @@Code08002148                ; 08002088
-.word @@Code0800222C                ; 0800208C
-.word @@Code08002240                ; 08002090
+.d32 @@Code080021A4                 ; 0800207C
+.d32 @@Code08002094                 ; 08002080
+.d32 @@Code080020E0                 ; 08002084
+.d32 @@Code08002148                 ; 08002088
+.d32 @@Code0800222C                 ; 0800208C
+.d32 @@Code08002240                 ; 08002090
 
 @@Code08002094:
 ldr   r2,=0x040000B0                ; 08002094

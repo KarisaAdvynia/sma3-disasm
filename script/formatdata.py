@@ -16,7 +16,7 @@ def formatdata(filepath, start, end, bytewidth=1, linebreak=None):
     if linebreak is None:
         linebreak = defaultlinebreaks[bytewidth]
 
-    nextline = "\n" + prefixes[bytewidth]
+    nextline = f"\n.d{bytewidth*8} "
     output = ["Data", format(start, "08X"),
               ":                   ; ", format(start, "08X"),
               nextline]
@@ -34,11 +34,6 @@ def formatdata(filepath, start, end, bytewidth=1, linebreak=None):
 
     print("".join(output))
 
-prefixes = {
-    1: ".byte ",
-    2: ".halfword ",
-    4: ".word ",
-    8: ".doubleword "}
 defaultlinebreaks = {
     1: 8,
     2: 8,

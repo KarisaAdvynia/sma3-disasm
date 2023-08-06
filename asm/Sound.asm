@@ -4025,11 +4025,11 @@ ldr   r0,[r0]                       ; 0812E226
 mov   pc,r0                         ; 0812E228
 .pool                               ; 0812E22A
 @@CodePtrs0812E230:
-.word @@Code0812E244                ; 0812E230
-.word @@Code0812E260                ; 0812E234
-.word @@Code0812E270                ; 0812E238
-.word @@Code0812E278                ; 0812E23C
-.word @@Code0812E284                ; 0812E240
+.d32 @@Code0812E244                 ; 0812E230
+.d32 @@Code0812E260                 ; 0812E234
+.d32 @@Code0812E270                 ; 0812E238
+.d32 @@Code0812E278                 ; 0812E23C
+.d32 @@Code0812E284                 ; 0812E240
 
 @@Code0812E244:
 ldr   r1,=0x030000D0                ; 0812E244
@@ -4684,68 +4684,68 @@ ldr   r0,[r0]                       ; 0812E734
 mov   pc,r0                         ; 0812E736
 .pool                               ; 0812E738
 @@CodePtrs0812E73C:
-.word @@Code0812E892                ; 0812E73C
-.word @@Code0812E8AE                ; 0812E740
-.word @@Code0812E8BA                ; 0812E744
-.word @@Code0812E90E                ; 0812E748
-.word @@Code0812E90E                ; 0812E74C
-.word @@Code0812E89E                ; 0812E750
-.word @@Code0812E922                ; 0812E754
-.word @@Code0812E92C                ; 0812E758
-.word @@Code0812E936                ; 0812E75C
-.word @@Code0812EA42                ; 0812E760
-.word @@Code0812EA42                ; 0812E764
-.word @@Code0812EA42                ; 0812E768
-.word @@Code0812EA42                ; 0812E76C
-.word @@Code0812EA42                ; 0812E770
-.word @@Code0812EA42                ; 0812E774
-.word @@Code0812EA42                ; 0812E778
-.word @@Code0812EA42                ; 0812E77C
-.word @@Code0812EA42                ; 0812E780
-.word @@Code0812EA42                ; 0812E784
-.word @@Code0812EA42                ; 0812E788
-.word @@Code0812EA42                ; 0812E78C
-.word @@Code0812EA42                ; 0812E790
-.word @@Code0812EA42                ; 0812E794
-.word @@Code0812EA42                ; 0812E798
-.word @@Code0812EA42                ; 0812E79C
-.word @@Code0812EA42                ; 0812E7A0
-.word @@Code0812EA42                ; 0812E7A4
-.word @@Code0812EA42                ; 0812E7A8
-.word @@Code0812EA42                ; 0812E7AC
-.word @@Code0812EA42                ; 0812E7B0
-.word @@Code0812E8C6                ; 0812E7B4
-.word @@Code0812E8DE                ; 0812E7B8
-.word @@Code0812E8EA                ; 0812E7BC
-.word @@Code0812E902                ; 0812E7C0
-.word @@Code0812E95C                ; 0812E7C4
-.word @@Code0812E968                ; 0812E7C8
-.word @@Code0812E978                ; 0812E7CC
-.word @@Code0812E970                ; 0812E7D0
-.word @@Code0812E84A                ; 0812E7D4
-.word @@Code0812E8F6                ; 0812E7D8
-.word @@Code0812E8D2                ; 0812E7DC
-.word @@Code0812EA42                ; 0812E7E0
-.word @@Code0812EA42                ; 0812E7E4
-.word @@Code0812EA42                ; 0812E7E8
-.word @@Code0812EA42                ; 0812E7EC
-.word @@Code0812EA42                ; 0812E7F0
-.word @@Code0812E850                ; 0812E7F4
-.word @@Code0812EA42                ; 0812E7F8
-.word @@Code0812EA42                ; 0812E7FC
-.word @@Code0812EA42                ; 0812E800
-.word @@Code0812E86A                ; 0812E804
-.word @@Code0812EA42                ; 0812E808
-.word @@Code0812EA42                ; 0812E80C
-.word @@Code0812EA42                ; 0812E810
-.word @@Code0812E984                ; 0812E814
-.word @@Code0812EA42                ; 0812E818
-.word @@Code0812EA42                ; 0812E81C
-.word @@Code0812EA42                ; 0812E820
-.word @@Code0812EA42                ; 0812E824
-.word @@Code0812EA42                ; 0812E828
-.word @@Code0812EA42                ; 0812E82C
-.word @@Code0812E834                ; 0812E830
+.d32 @@Code0812E892                 ; 0812E73C
+.d32 @@Code0812E8AE                 ; 0812E740
+.d32 @@Code0812E8BA                 ; 0812E744
+.d32 @@Code0812E90E                 ; 0812E748
+.d32 @@Code0812E90E                 ; 0812E74C
+.d32 @@Code0812E89E                 ; 0812E750
+.d32 @@Code0812E922                 ; 0812E754
+.d32 @@Code0812E92C                 ; 0812E758
+.d32 @@Code0812E936                 ; 0812E75C
+.d32 @@Code0812EA42                 ; 0812E760
+.d32 @@Code0812EA42                 ; 0812E764
+.d32 @@Code0812EA42                 ; 0812E768
+.d32 @@Code0812EA42                 ; 0812E76C
+.d32 @@Code0812EA42                 ; 0812E770
+.d32 @@Code0812EA42                 ; 0812E774
+.d32 @@Code0812EA42                 ; 0812E778
+.d32 @@Code0812EA42                 ; 0812E77C
+.d32 @@Code0812EA42                 ; 0812E780
+.d32 @@Code0812EA42                 ; 0812E784
+.d32 @@Code0812EA42                 ; 0812E788
+.d32 @@Code0812EA42                 ; 0812E78C
+.d32 @@Code0812EA42                 ; 0812E790
+.d32 @@Code0812EA42                 ; 0812E794
+.d32 @@Code0812EA42                 ; 0812E798
+.d32 @@Code0812EA42                 ; 0812E79C
+.d32 @@Code0812EA42                 ; 0812E7A0
+.d32 @@Code0812EA42                 ; 0812E7A4
+.d32 @@Code0812EA42                 ; 0812E7A8
+.d32 @@Code0812EA42                 ; 0812E7AC
+.d32 @@Code0812EA42                 ; 0812E7B0
+.d32 @@Code0812E8C6                 ; 0812E7B4
+.d32 @@Code0812E8DE                 ; 0812E7B8
+.d32 @@Code0812E8EA                 ; 0812E7BC
+.d32 @@Code0812E902                 ; 0812E7C0
+.d32 @@Code0812E95C                 ; 0812E7C4
+.d32 @@Code0812E968                 ; 0812E7C8
+.d32 @@Code0812E978                 ; 0812E7CC
+.d32 @@Code0812E970                 ; 0812E7D0
+.d32 @@Code0812E84A                 ; 0812E7D4
+.d32 @@Code0812E8F6                 ; 0812E7D8
+.d32 @@Code0812E8D2                 ; 0812E7DC
+.d32 @@Code0812EA42                 ; 0812E7E0
+.d32 @@Code0812EA42                 ; 0812E7E4
+.d32 @@Code0812EA42                 ; 0812E7E8
+.d32 @@Code0812EA42                 ; 0812E7EC
+.d32 @@Code0812EA42                 ; 0812E7F0
+.d32 @@Code0812E850                 ; 0812E7F4
+.d32 @@Code0812EA42                 ; 0812E7F8
+.d32 @@Code0812EA42                 ; 0812E7FC
+.d32 @@Code0812EA42                 ; 0812E800
+.d32 @@Code0812E86A                 ; 0812E804
+.d32 @@Code0812EA42                 ; 0812E808
+.d32 @@Code0812EA42                 ; 0812E80C
+.d32 @@Code0812EA42                 ; 0812E810
+.d32 @@Code0812E984                 ; 0812E814
+.d32 @@Code0812EA42                 ; 0812E818
+.d32 @@Code0812EA42                 ; 0812E81C
+.d32 @@Code0812EA42                 ; 0812E820
+.d32 @@Code0812EA42                 ; 0812E824
+.d32 @@Code0812EA42                 ; 0812E828
+.d32 @@Code0812EA42                 ; 0812E82C
+.d32 @@Code0812E834                 ; 0812E830
 
 @@Code0812E834:
 mov   r0,r5                         ; 0812E834
@@ -5938,13 +5938,13 @@ ldr   r0,[r0]                       ; 0812F15C
 mov   pc,r0                         ; 0812F15E
 .pool                               ; 0812F160
 @@CodePtrs0812F168:
-.word @@Value0000                   ; 0812F168
-.word @@Value0001                   ; 0812F16C
-.word @@Value0002                   ; 0812F170
-.word @@Value0003                   ; 0812F174
-.word @@Value0004                   ; 0812F178
-.word @@Value0005                   ; 0812F17C
-.word @@Value0006                   ; 0812F180
+.d32 @@Value0000                    ; 0812F168
+.d32 @@Value0001                    ; 0812F16C
+.d32 @@Value0002                    ; 0812F170
+.d32 @@Value0003                    ; 0812F174
+.d32 @@Value0004                    ; 0812F178
+.d32 @@Value0005                    ; 0812F17C
+.d32 @@Value0006                    ; 0812F180
 
 @@Value0000:
 ; runs if first buffer value is 0000
@@ -6249,11 +6249,11 @@ mov   pc,r0                         ; 0812F376
 .pool                               ; 0812F378
 @@CodePtrs0812F380:
 ; code pointer table
-.word @@Value0300                   ; 0812F380
-.word @@Value0301                   ; 0812F384
-.word @@Value0302                   ; 0812F388
-.word @@Value0303                   ; 0812F38C
-.word @@Value0304                   ; 0812F390
+.d32 @@Value0300                    ; 0812F380
+.d32 @@Value0301                    ; 0812F384
+.d32 @@Value0302                    ; 0812F388
+.d32 @@Value0303                    ; 0812F38C
+.d32 @@Value0304                    ; 0812F390
 
 @@Value0301:
 ; runs if first buffer value is 0301
@@ -6327,7 +6327,7 @@ mov    r4,0x7F                      ; 0812F400/0300136C
 mov    r5,0xFF00                    ; 0812F404/03001370
 orr    r5,r5,0x80                   ; 0812F408/03001374
 @@Code0812F40C:
-.word  0xE0D030F2
+.d32  0xE0D030F2
 ;ldrsh  r3,[r0],0x2                  ; 0812F40C/03001378
 cmp    r3,0x0                       ; 0812F410/0300137C
 addmi  r3,r3,0x7F                   ; 0812F414/03001380
@@ -6336,7 +6336,7 @@ ands   r12,r3,r5                    ; 0812F41C/03001388
 cmpne  r12,r5                       ; 0812F420/0300138C
 addne  r3,r4,r3,lsr 0x1F            ; 0812F424/03001390
 strb   r3,[r1],0x1                  ; 0812F428/03001394
-.word  0xE0D030F2
+.d32  0xE0D030F2
 ;ldrsh  r3,[r0],0x2                  ; 0812F42C/03001398a
 cmp    r3,0x0                       ; 0812F430/0300139C
 addmi  r3,r3,0x7F                   ; 0812F434/030013A0
@@ -6345,7 +6345,7 @@ ands   r12,r3,r5                    ; 0812F43C/030013A8
 cmpne  r12,r5                       ; 0812F440/030013AC
 addne  r3,r4,r3,lsr 0x1F            ; 0812F444/030013B0
 strb   r3,[r1],0x1                  ; 0812F448/030013B4
-.word  0xE0D030F2
+.d32  0xE0D030F2
 ;ldrsh  r3,[r0],0x2                  ; 0812F44C/030013B8
 cmp    r3,0x0                       ; 0812F450/030013BC
 addmi  r3,r3,0x7F                   ; 0812F454/030013C0
@@ -6354,7 +6354,7 @@ ands   r12,r3,r5                    ; 0812F45C/030013C8
 cmpne  r12,r5                       ; 0812F460/030013CC
 addne  r3,r4,r3,lsr 0x1F            ; 0812F464/030013D0
 strb   r3,[r1],0x1                  ; 0812F468/030013D4
-.word  0xE0D030F2
+.d32  0xE0D030F2
 ;ldrsh  r3,[r0],0x2                  ; 0812F46C/030013D8
 cmp    r3,0x0                       ; 0812F470/030013DC
 addmi  r3,r3,0x7F                   ; 0812F474/030013E0
@@ -6363,7 +6363,7 @@ ands   r12,r3,r5                    ; 0812F47C/030013E8
 cmpne  r12,r5                       ; 0812F480/030013EC
 addne  r3,r4,r3,lsr 0x1F            ; 0812F484/030013F0
 strb   r3,[r1],0x1                  ; 0812F488/030013F4
-.word  0xE0D030F2
+.d32  0xE0D030F2
 ;ldrsh  r3,[r0],0x2                  ; 0812F48C/030013F8
 cmp    r3,0x0                       ; 0812F490/030013FC
 addmi  r3,r3,0x7F                   ; 0812F494/03001400
@@ -6372,7 +6372,7 @@ ands   r12,r3,r5                    ; 0812F49C/03001408
 cmpne  r12,r5                       ; 0812F4A0/0300140C
 addne  r3,r4,r3,lsr 0x1F            ; 0812F4A4/03001410
 strb   r3,[r1],0x1                  ; 0812F4A8/03001414
-.word  0xE0D030F2
+.d32  0xE0D030F2
 ;ldrsh  r3,[r0],0x2                  ; 0812F4AC/03001418
 cmp    r3,0x0                       ; 0812F4B0/0300141C
 addmi  r3,r3,0x7F                   ; 0812F4B4/03001420
@@ -6381,7 +6381,7 @@ ands   r12,r3,r5                    ; 0812F4BC/03001428
 cmpne  r12,r5                       ; 0812F4C0/0300142C
 addne  r3,r4,r3,lsr 0x1F            ; 0812F4C4/03001430
 strb   r3,[r1],0x1                  ; 0812F4C8/03001434
-.word  0xE0D030F2
+.d32  0xE0D030F2
 ;ldrsh  r3,[r0],0x2                  ; 0812F4CC/03001438
 cmp    r3,0x0                       ; 0812F4D0/0300143C
 addmi  r3,r3,0x7F                   ; 0812F4D4/03001440
@@ -6390,7 +6390,7 @@ ands   r12,r3,r5                    ; 0812F4DC/03001448
 cmpne  r12,r5                       ; 0812F4E0/0300144C
 addne  r3,r4,r3,lsr 0x1F            ; 0812F4E4/03001450
 strb   r3,[r1],0x1                  ; 0812F4E8/03001454
-.word  0xE0D030F2
+.d32  0xE0D030F2
 ;ldrsh  r3,[r0],0x2                  ; 0812F4EC/03001458
 cmp    r3,0x0                       ; 0812F4F0/0300145C
 addmi  r3,r3,0x7F                   ; 0812F4F4/03001460

@@ -6,10 +6,10 @@ SingleCart_0812FDC0:
 ; Japanese version's internal header
 b      Code0812FE80                 ; 0812FDC0/02000000
 .incbin "../data/InternalHeader_NintendoLogo.bin"
-.byte "SUPER MARIOCA3AJ"            ; 0812FE60/020000A0
-.byte "01"                          ; 0812FE70/020000B0
-.byte 0x96,0x00,0x00,0x00,0x00,0x00
-.byte 0x00,0x00,0x00,0x00,0x00,0x87,0x00,0x00
+.d8 "SUPER MARIOCA3AJ"              ; 0812FE60/020000A0
+.d8 "01"                            ; 0812FE70/020000B0
+.d8 0x96,0x00,0x00,0x00,0x00,0x00
+.d8 0x00,0x00,0x00,0x00,0x00,0x87,0x00,0x00
 
 Code0812FE80:
 b      Code0812FECC                 ; 0812FE80
@@ -87,8 +87,8 @@ mov    lr,pc                        ; 08130088
 bx     r1                           ; 0813008C
 b      Code08130060                 ; 08130090
 @@Pool:
-.word 0x03007E00                    ; 08130094
-.word 0x03007F80                    ; 08130098
+.d32 0x03007E00                     ; 08130094
+.d32 0x03007F80                     ; 08130098
 
 Code0813009C:
 mov    r3,0x04000000                ; 0813009C

@@ -458,12 +458,12 @@ b     @@Code080138C2                ; 08013890
 
 ; This pool has a duplicate 08167404 (Palette0D0EOffsets),
 ;  so the rest needs to be manually defined
-@@_08167404: .word Palette0D0EOffsets; 080138A8
-@@_153E:     .word 0x0000153E       ; 080138AC
-@@_2990:     .word 0x00002990       ; 080138B0
-@@_03002200: .word 0x03002200       ; 080138B4
-@@_413C:     .word 0x0000413C       ; 080138B8
-@@_081672C4: .word L1PaletteOffsetsW6; 080138BC
+@@_08167404: .d32 Palette0D0EOffsets; 080138A8
+@@_153E:     .d32 0x0000153E        ; 080138AC
+@@_2990:     .d32 0x00002990        ; 080138B0
+@@_03002200: .d32 0x03002200        ; 080138B4
+@@_413C:     .d32 0x0000413C        ; 080138B8
+@@_081672C4: .d32 L1PaletteOffsetsW6; 080138BC
 
 @@Code080138C0:
 ldr   r1,=L1PaletteOffsets          ; 080138C0  if not in world 6
