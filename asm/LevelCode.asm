@@ -94,7 +94,7 @@ ldr   r0,[r1]                       ; 080134DE  load from pointer again
 mov   r1,0xC0                       ; 080134E0
 lsl   r1,r1,0x13                    ; 080134E2  r1 = 06000000 (VRAM layer tile 000)
 bl    swi_LZ77_VRAM                 ; 080134E4  LZ77 decompress (VRAM)
-ldr   r0,=Data0824C2BC              ; 080134E8
+ldr   r0,=L1Global_4A00_LZ77        ; 080134E8
 ldr   r1,=0x06004A00                ; 080134EA  r1 = 06004A00 (VRAM layer tile 260)
 bl    swi_LZ77_VRAM                 ; 080134EC  LZ77 decompress (VRAM)
 mov   r1,sp                         ; 080134F0
@@ -108,7 +108,7 @@ str   r0,[r1,0x4]                   ; 080134FE  DMA 3 dest address = 06009000 (V
 ldr   r0,=0x81000400                ; 08013500
 str   r0,[r1,0x8]                   ; 08013502  DMA 3 word count = 4000, DMA 3 control = 1000 (how is 81000400 interpreted as that?)
 ldr   r0,[r1,0x8]                   ; 08013504
-ldr   r1,=DataPtrs0824ACC8          ; 08013506
+ldr   r1,=L1Global_1000_Ptr2        ; 08013506
 ldr   r0,[r1]                       ; 08013508  r0 = 0824A070 (value at 0824ACC8)
 ldr   r1,=0x06001000                ; 0801350A  r1 = 06001000 (VRAM layer tile 080)
 bl    swi_LZ77_VRAM                 ; 0801350C  LZ77 decompress (VRAM)
@@ -1080,7 +1080,7 @@ mov   r5,r8                         ; 08013E42
 push  {r5-r7}                       ; 08013E44
 add   sp,-0xC                       ; 08013E46
 lsl   r0,r0,0x10                    ; 08013E48
-ldr   r1,=DataPtrs08167260          ; 08013E4A
+ldr   r1,=HeaderPalDataPtrs         ; 08013E4A
 lsr   r0,r0,0xE                     ; 08013E4C  r0 = 4*index, capped to 16-bit
 add   r0,r0,r1                      ; 08013E4E  r0 = index to pointer table at 08167260
 ldr   r6,[r0]                       ; 08013E50  r6 = pointer to data
@@ -1281,12 +1281,12 @@ bx    r0                            ; 08014002
 
 KamekRoom_LoadGraphics:
 push  {r4-r7,lr}                    ; 08014028
-ldr   r7,=DataPtrs0826DC70          ; 0801402A
+ldr   r7,=L3Image18_7000_Ptr2       ; 0801402A
 ldr   r0,[r7]                       ; 0801402C
 mov   r1,0xC0                       ; 0801402E
 lsl   r1,r1,0x13                    ; 08014030  06000000
 bl    swi_LZ77_VRAM                 ; 08014032  LZ77 decompress (VRAM)
-add   r7,GraphicsPtr_KamekRoom_LZ77-DataPtrs0826DC70; 08014036
+add   r7,KamekRoom_Graphics_Ptr2-L3Image18_7000_Ptr2; 08014036
 ldr   r0,[r7]                       ; 08014038
 ldr   r1,=0x06001000                ; 0801403A
 bl    swi_LZ77_VRAM                 ; 0801403C  LZ77 decompress (VRAM)
@@ -1618,7 +1618,7 @@ mov   r1,0x8C                       ; 080143E2
 lsl   r1,r1,0x2                     ; 080143E4  230
 add   r7,r0,r1                      ; 080143E6  [03007240]+230 (0300243C)
 bl    LoadHeaderPalettes            ; 080143E8
-ldr   r0,=Raphael_L2_Graphics_8bpp_LZ77; 080143EC
+ldr   r0,=Raphael_L2Graphics_8bpp_LZ77; 080143EC
 mov   r1,0xC0                       ; 080143EE
 lsl   r1,r1,0x13                    ; 080143F0  06000000
 bl    swi_LZ77_VRAM                 ; 080143F2  LZ77 decompress (VRAM)
@@ -1799,7 +1799,7 @@ ldr   r0,=0x47C6                    ; 08014554
 add   r1,r4,r0                      ; 08014556
 ldr   r0,=0x1401                    ; 08014558
 strh  r0,[r1]                       ; 0801455A
-ldr   r0,=Raphael_L2_Tilemap_LZ77   ; 0801455C
+ldr   r0,=Raphael_L2Tilemap_LZ77    ; 0801455C
 ldr   r1,=0x0600B000                ; 0801455E
 bl    swi_LZ77_VRAM                 ; 08014560  LZ77 decompress (VRAM)
 ldr   r1,=0x47CC                    ; 08014564
@@ -1900,9 +1900,9 @@ push  {r4-r6,lr}                    ; 08014680
 ldr   r0,=0x03007240                ; 08014682  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                       ; 08014684
 ldr   r1,=0x28D4                    ; 08014686
-add   r5,r0,r1                      ; 08014688
+add   r5,r0,r1                      ; 08014688  [03007240]+28D4 (03004AE0)
 ldr   r1,=0x2AA4                    ; 0801468A
-add   r0,r0,r1                      ; 0801468C
+add   r0,r0,r1                      ; 0801468C  [03007240]+2AA4 (03004CB0)
 ldrh  r4,[r0]                       ; 0801468E
 cmp   r4,0x0                        ; 08014690
 bne   @@Code0801474C                ; 08014692
@@ -1994,7 +1994,7 @@ ldrb  r0,[r0]                       ; 08014754
 cmp   r0,0x0                        ; 08014756
 beq   @@Code08014790                ; 08014758
 ldr   r0,=0x2954                    ; 0801475A
-add   r4,r4,r0                      ; 0801475C
+add   r4,r4,r0                      ; 0801475C  [03007240]+2954 (030044B0)
 ldr   r0,[r4]                       ; 0801475E
 ldr   r1,=0x06011840                ; 08014760
 mov   r2,0x10                       ; 08014762
@@ -2017,19 +2017,19 @@ add   r0,r0,r1                      ; 0801478A
 mov   r1,0x0                        ; 0801478C
 strb  r1,[r0]                       ; 0801478E
 @@Code08014790:
-ldr   r0,[r5,0x30]                  ; 08014790
+ldr   r0,[r5,0x30]                  ; 08014790  top-left corner of star count graphics
 ldr   r1,=0x06010180                ; 08014792
 mov   r2,0x8                        ; 08014794
 bl    swi_MemoryCopy32              ; 08014796  Memory copy/fill, 32-byte blocks
-ldr   r0,[r5,0x38]                  ; 0801479A
+ldr   r0,[r5,0x38]                  ; 0801479A  top-right corner of star count graphics
 ldr   r1,=0x060101A0                ; 0801479C
 mov   r2,0x8                        ; 0801479E
 bl    swi_MemoryCopy32              ; 080147A0  Memory copy/fill, 32-byte blocks
-ldr   r0,[r5,0x34]                  ; 080147A4
+ldr   r0,[r5,0x34]                  ; 080147A4  bottom-left corner of star count graphics
 ldr   r1,=0x06010580                ; 080147A6
 mov   r2,0x8                        ; 080147A8
 bl    swi_MemoryCopy32              ; 080147AA  Memory copy/fill, 32-byte blocks
-ldr   r0,[r5,0x3C]                  ; 080147AE
+ldr   r0,[r5,0x3C]                  ; 080147AE  bottom-right corner of star count graphics
 ldr   r1,=0x060105A0                ; 080147B0
 mov   r2,0x8                        ; 080147B2
 bl    swi_MemoryCopy32              ; 080147B4  Memory copy/fill, 32-byte blocks
@@ -6380,9 +6380,9 @@ bl    LoadObjectsAndScreenExits     ; 08016DA2  subroutine: Process sublevel mai
 @@Code08016DA6:
 mov   r5,0x0                        ; 08016DA6
 ldr   r7,=0x03007240                ; 08016DA8  Normal gameplay IWRAM (Ptr to 0300220C)
-ldr   r6,=DataPtrs08167810          ; 08016DAA  r6 = 08167810 (table of pointers to L3 control values)
-ldr   r0,=DataPtrs08167780          ; 08016DAC
-mov   r12,r0                        ; 08016DAE  r12 = 08167780 (table of pointers to L2 control values)
+ldr   r6,=L3ImageControlPtrs        ; 08016DAA  r6 = L3ImageControlPtrs
+ldr   r0,=L2ImageControlPtrs        ; 08016DAC
+mov   r12,r0                        ; 08016DAE  r12 = L2ImageControlPtrs
 ldr   r1,=0x4960                    ; 08016DB0
 add   r2,r4,r1                      ; 08016DB2  r2 = [03007240]+4960 (03006B60)
 mov   r1,0x0                        ; 08016DB4
@@ -6414,7 +6414,7 @@ add   r0,r3,r1                      ; 08016DE4  r0 = [03007240]+2998 (03004BA4)
 ldrh  r0,[r0]                       ; 08016DE6  layer 2 palette
 cmp   r0,0xE                        ; 08016DE8
 bne   @@Code08016DEE                ; 08016DEA
-ldr   r2,=Data08167776+0x4          ; 08016DEC / if L2 image and palette are both 0E, use different L2 control pointer
+ldr   r2,=L2CtrlF602                ; 08016DEC / if L2 image and palette are both 0E, use different L2 control pointer
 @@Code08016DEE:
 ldr   r1,[r7]                       ; 08016DEE
 ldr   r3,=0x299A                    ; 08016DF0
@@ -6427,7 +6427,7 @@ add   r0,r1,r5                      ; 08016DFC  r0 = [03007240]+29A2 (03004BAE)
 ldrh  r0,[r0]                       ; 08016DFE
 cmp   r0,0x6                        ; 08016E00
 bne   @@Code08016E06                ; 08016E02
-ldr   r4,=Data08167804+0x8          ; 08016E04 / if L3 image is 2C and hv09 is 06, use different L3 control pointer
+ldr   r4,=L3CtrlFA06                ; 08016E04 / if L3 image is 2C and hv09 is 06, use different L3 control pointer
 @@Code08016E06:
 ldr   r1,[r7]                       ; 08016E06
 ldr   r3,=0x2996                    ; 08016E08
@@ -6440,7 +6440,7 @@ add   r0,r1,r5                      ; 08016E14  r0 = [03007240]+299A (03004BA6)
 ldrh  r0,[r0]                       ; 08016E16  layer 3 image ID
 cmp   r0,0x2A                       ; 08016E18
 bne   @@Code08016E1E                ; 08016E1A
-ldr   r2,=Data08167776+0x4          ; 08016E1C / if L2 image is 01 and L3 image is 2A, use different L2 control pointer
+ldr   r2,=L2CtrlF602                ; 08016E1C / if L2 image is 01 and L3 image is 2A, use different L2 control pointer
 @@Code08016E1E:
 ldr   r1,[r7]                       ; 08016E1E
 ldr   r3,=0x299A                    ; 08016E20
@@ -6453,7 +6453,7 @@ add   r0,r1,r5                      ; 08016E2C  r0 = [03007240]+2AAC (03004CB8)
 ldrh  r0,[r0]                       ; 08016E2E  sublevel ID
 cmp   r0,0x29                       ; 08016E30  29: 5-6 1/2
 bne   @@Code08016E36                ; 08016E32
-ldr   r4,=Data08167804+0x8          ; 08016E34 / if layer 3 image is 2E and sublevel is 29, use different L3 control pointer
+ldr   r4,=L3CtrlFA06                ; 08016E34 / if layer 3 image is 2E and sublevel is 29, use different L3 control pointer
 @@Code08016E36:
 ldr   r1,[r7]                       ; 08016E36
 ldr   r3,=0x2AAC                    ; 08016E38
@@ -6461,7 +6461,7 @@ add   r0,r1,r3                      ; 08016E3A  r0 = [03007240]+2AAC (03004CB8)
 ldrh  r3,[r0]                       ; 08016E3C  sublevel ID
 cmp   r3,0x2C                       ; 08016E3E  2C: 5-Extra first half
 bne   @@Code08016E44                ; 08016E40
-ldr   r4,=Data08167804+0x8          ; 08016E42  if sublevel is 2C: use different L3 control pointer
+ldr   r4,=L3CtrlFA06                ; 08016E42  if sublevel is 2C: use different L3 control pointer
 @@Code08016E44:
 ldr   r5,=0x299A                    ; 08016E44
 add   r0,r1,r5                      ; 08016E46  r0 = [03007240]+299A (03004BA6)
@@ -6470,7 +6470,7 @@ cmp   r0,0x2E                       ; 08016E4A
 bne   @@Code08016E54                ; 08016E4C
 cmp   r3,0xEB                       ; 08016E4E  EB: 5-Secret jungle rooms
 bne   @@Code08016E54                ; 08016E50
-ldr   r4,=Data08167804+0x8          ; 08016E52  if layer 3 image is 2E and sublevel is EB, use different L3 control pointer
+ldr   r4,=L3CtrlFA06                ; 08016E52  if layer 3 image is 2E and sublevel is EB, use different L3 control pointer
 @@Code08016E54:
 ldr   r1,=0x03002200                ; 08016E54
 ldr   r2,[r2]                       ; 08016E56  load layer 2 control from pointer
@@ -6698,7 +6698,7 @@ pop   {r0}                          ; 0801707C
 bx    r0                            ; 0801707E
 .pool                               ; 08017080
 
-ExtractSublevelHeaderBits:
+ExtractSublevelHeaderBitCounts:
 ; Extract bitwise values from object data header, into tables at 0300399E and 03004B9C, every 2 bytes
 push  {r4-r7,lr}                    ; 080170CC \ push LR and r4-r10
 mov   r7,r10                        ; 080170CE |
@@ -6721,7 +6721,7 @@ mov   r10,r0                        ; 080170EE  r10 = [03007240]
 ldr   r0,=0x2B08                    ; 080170F0 \ r0 = [03007240]+2B08 (03004D14)
 add   r0,r10                        ; 080170F2 /
 ldr   r4,[r0]                       ; 080170F4  r4 = pointer to sublevel object data
-ldr   r3,=SublevelHeaderBits        ; 080170F6  r3 = pointer to table of bit counts to retrieve from header, 00-terminated
+ldr   r3,=SublevelHeaderBitCounts   ; 080170F6  r3 = pointer to table of bit counts to retrieve from header, 00-terminated
 ldrb  r0,[r3]                       ; 080170F8  r0 = number of bits to retrieve
 cmp   r0,0x0                        ; 080170FA \ first byte is 05,
 beq   @@Code0801716A                ; 080170FC /  so this branch never occurs
@@ -6787,7 +6787,7 @@ mov   r1,r8                         ; 08017158 \
 lsl   r0,r1,0x10                    ; 0801715A | clear high 16 bits of r8
 lsr   r0,r0,0x10                    ; 0801715C |
 mov   r8,r0                         ; 0801715E /
-ldr   r3,=SublevelHeaderBits        ; 08017160  r3 = pointer to table of number of bits to retrieve
+ldr   r3,=SublevelHeaderBitCounts   ; 08017160  r3 = pointer to table of number of bits to retrieve
 add   r0,r6,r3                      ; 08017162
 ldrb  r0,[r0]                       ; 08017164  r0 = number of bits to retrieve
 cmp   r0,0x0                        ; 08017166  if 0, end of table, so exit loop
@@ -7473,10 +7473,10 @@ bx    r1                            ; 08017722
 
 KamekRoom_LoadL23Tilemaps:
 push  {lr}                          ; 08017728
-ldr   r0,=KamekRoom_L2Tilemap       ; 0801772A  Kamek room layer 2 tilemap
+ldr   r0,=KamekRoom_L2Tilemap_LZ77  ; 0801772A  Kamek room layer 2 tilemap
 ldr   r1,=0x0600B000                ; 0801772C
 bl    swi_LZ77_VRAM                 ; 0801772E  LZ77 decompress (VRAM)
-ldr   r0,=KamekRoom_L3Tilemap       ; 08017732  Kamek room layer 3 tilemap
+ldr   r0,=KamekRoom_L3Tilemap_LZ77  ; 08017732  Kamek room layer 3 tilemap
 ldr   r1,=0x0600D000                ; 08017734
 bl    swi_LZ77_VRAM                 ; 08017736  LZ77 decompress (VRAM)
 ldr   r1,=0x03002200                ; 0801773A
@@ -7492,12 +7492,15 @@ pop   {r0}                          ; 0801774C
 bx    r0                            ; 0801774E
 .pool                               ; 08017750
 
+Return08017774:
 bx    lr                            ; 08017774
 .pool                               ; 08017776
 
+Return08017778:
 bx    lr                            ; 08017778
 .pool                               ; 0801777A
 
+Return0801777C:
 bx    lr                            ; 0801777C
 .pool                               ; 0801777E
 
@@ -11391,7 +11394,7 @@ cmp   r0,0x0                        ; 08019908
 beq   @@Code0801991C                ; 0801990A
 cmp   r1,0x0                        ; 0801990C
 bne   @@Code0801991C                ; 0801990E
-ldr   r0,=DataPtrs0826ABCC          ; 08019910
+ldr   r0,=L3Image0A_7000_Ptr2       ; 08019910
 ldr   r0,[r0]                       ; 08019912
 ldr   r1,=0x030021B4                ; 08019914
 ldr   r1,[r1]                       ; 08019916
@@ -13966,7 +13969,7 @@ strh  r4,[r2]                       ; 0802C930  [03004CB8] = sublevel ID
 mov   r0,0x0                        ; 0802C932
 ldr   r2,[sp,0x8]                   ; 0802C934  load an address previously allocated on the stack
 strh  r0,[r2,0x6]                   ; 0802C936  clear 16-bit value at [address from stack]+6
-bl    ExtractSublevelHeaderBits     ; 0802C938  subroutine: extract bitwise values from object data header, into tables at 0300399E and 03004B9C
+bl    ExtractSublevelHeaderBitCounts; 0802C938  subroutine: extract bitwise values from object data header, into tables at 0300399E and 03004B9C
 ldr   r4,=0x03007240                ; 0802C93C  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r4]                       ; 0802C93E  r0 = [03007240] (0300220C)
 ldr   r2,=0x299A                    ; 0802C940
@@ -14889,7 +14892,7 @@ lsl   r0,r0,0x18                    ; 0802D234
 lsr   r2,r0,0x18                    ; 0802D236
 cmp   r2,0x1                        ; 0802D238
 bne   @@Code0802D23E                ; 0802D23A
-b     @@Code0802D66E                ; 0802D23C
+b     @@Return                      ; 0802D23C
 @@Code0802D23E:
 cmp   r2,0x0                        ; 0802D23E
 bne   @@Code0802D264                ; 0802D240
@@ -14913,7 +14916,7 @@ bl    Sub080E6070                   ; 0802D260
 bl    Sub08036B7C                   ; 0802D264
 bl    Sub080169B4                   ; 0802D268
 mov   r0,r6                         ; 0802D26C
-bl    GraphicsAnimMain              ; 0802D26E  process graphics animations
+bl    GraphicsAnimMain              ; 0802D26E
 ldr   r5,=0x03002200                ; 0802D272
 ldr   r4,=0x47EC                    ; 0802D274
 add   r0,r5,r4                      ; 0802D276
@@ -15254,7 +15257,7 @@ add   r0,r0,r3                      ; 0802D5CE
 ldrh  r0,[r0]                       ; 0802D5D0
 cmp   r0,0xD                        ; 0802D5D2
 beq   @@Code0802D5FA                ; 0802D5D4
-b     @@Code0802D66E                ; 0802D5D6
+b     @@Return                      ; 0802D5D6
 .pool                               ; 0802D5D8
 
 @@Code0802D5E4:
@@ -15272,11 +15275,11 @@ bl    Sub080DFC8C                   ; 0802D5F6
 @@Code0802D5FA:
 ldr   r3,=0x03002200                ; 0802D5FA
 ldr   r2,=0x48D0                    ; 0802D5FC
-add   r1,r3,r2                      ; 0802D5FE
-ldrh  r0,[r1]                       ; 0802D600
+add   r1,r3,r2                      ; 0802D5FE  03006AD0
+ldrh  r0,[r1]                       ; 0802D600  star count, tens digit
 cmp   r0,0x0                        ; 0802D602
-beq   @@Code0802D644                ; 0802D604
-ldr   r2,=Data0816941C              ; 0802D606
+beq   @@SingleDigit                 ; 0802D604
+ldr   r2,=StarYellow8x16DigitPtrs   ; 0802D606
 lsl   r0,r0,0x2                     ; 0802D608
 add   r0,r0,r2                      ; 0802D60A
 ldr   r0,[r0]                       ; 0802D60C
@@ -15286,8 +15289,8 @@ lsl   r1,r1,0x3                     ; 0802D612
 add   r0,r0,r1                      ; 0802D614
 str   r0,[r7,0x34]                  ; 0802D616
 ldr   r4,=0x48D2                    ; 0802D618
-add   r0,r3,r4                      ; 0802D61A
-ldrh  r0,[r0]                       ; 0802D61C
+add   r0,r3,r4                      ; 0802D61A  03006AD2
+ldrh  r0,[r0]                       ; 0802D61C  star count, ones digit
 lsl   r0,r0,0x2                     ; 0802D61E
 add   r0,r0,r2                      ; 0802D620
 ldr   r0,[r0]                       ; 0802D622
@@ -15296,29 +15299,29 @@ add   r0,r0,r1                      ; 0802D626
 b     @@Code0802D668                ; 0802D628
 .pool                               ; 0802D62A
 
-@@Code0802D644:
-ldr   r1,=Data081693F4              ; 0802D644
+@@SingleDigit:
+ldr   r1,=StarRed16x16DigitPtrs     ; 0802D644
 ldr   r2,=0x48D2                    ; 0802D646
-add   r0,r3,r2                      ; 0802D648
-ldrh  r0,[r0]                       ; 0802D64A
+add   r0,r3,r2                      ; 0802D648  03006AD2
+ldrh  r0,[r0]                       ; 0802D64A  star count, ones digit
 lsl   r0,r0,0x2                     ; 0802D64C
 add   r0,r0,r1                      ; 0802D64E
 ldr   r0,[r0]                       ; 0802D650
 str   r0,[r7,0x30]                  ; 0802D652
 mov   r3,0x80                       ; 0802D654
-lsl   r3,r3,0x3                     ; 0802D656
+lsl   r3,r3,0x3                     ; 0802D656  400
 add   r1,r0,r3                      ; 0802D658
 str   r1,[r7,0x34]                  ; 0802D65A
 mov   r1,r0                         ; 0802D65C
 add   r1,0x20                       ; 0802D65E
 str   r1,[r7,0x38]                  ; 0802D660
 mov   r4,0x84                       ; 0802D662
-lsl   r4,r4,0x3                     ; 0802D664
+lsl   r4,r4,0x3                     ; 0802D664  420
 add   r0,r0,r4                      ; 0802D666
 @@Code0802D668:
 str   r0,[r7,0x3C]                  ; 0802D668
 bl    Sub0802D064                   ; 0802D66A
-@@Code0802D66E:
+@@Return:
 add   sp,0x4                        ; 0802D66E
 pop   {r3-r5}                       ; 0802D670
 mov   r8,r3                         ; 0802D672
@@ -15357,7 +15360,7 @@ add   r1,r3,r2                      ; 0802D6C2
 ldrh  r0,[r1]                       ; 0802D6C4
 cmp   r0,0x0                        ; 0802D6C6
 beq   @@Code0802D704                ; 0802D6C8
-ldr   r2,=Data0816941C              ; 0802D6CA
+ldr   r2,=StarYellow8x16DigitPtrs   ; 0802D6CA
 lsl   r0,r0,0x2                     ; 0802D6CC
 add   r0,r0,r2                      ; 0802D6CE
 ldr   r0,[r0]                       ; 0802D6D0
@@ -15377,7 +15380,7 @@ b     @@Code0802D726                ; 0802D6EA
 .pool                               ; 0802D6EC
 
 @@Code0802D704:
-ldr   r1,=Data081693F4              ; 0802D704
+ldr   r1,=StarRed16x16DigitPtrs     ; 0802D704
 ldr   r2,=0x48D2                    ; 0802D706
 add   r0,r3,r2                      ; 0802D708
 ldrh  r0,[r0]                       ; 0802D70A

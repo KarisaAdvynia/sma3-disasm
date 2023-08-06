@@ -304,7 +304,7 @@ lsl   r1,r1,0x12                    ; 080E8370
 ldrh  r2,[r0,0x1C]                  ; 080E8372  text horizontal scale
 lsr   r1,r1,0x10                    ; 080E8374
 orr   r1,r2                         ; 080E8376  vertical scale *4 + horizontal scale
-ldr   r2,=CodePtrs08195560          ; 080E8378
+ldr   r2,=StdMsg_DispMsgCharPtrs    ; 080E8378
 lsl   r1,r1,0x2                     ; 080E837A  use as code pointer table index
 add   r1,r1,r2                      ; 080E837C
 ldr   r1,[r1]                       ; 080E837E  080E8245 if text is unscaled, 080E8135 if text is scaled at all

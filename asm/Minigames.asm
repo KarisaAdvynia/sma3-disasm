@@ -1622,12 +1622,12 @@ bx    r0                            ; 080EA62A
 
 Sub080EA640:
 push  {r4-r6,lr}                    ; 080EA640
-ldr   r6,=DataPtrs08240B28          ; 080EA642
+ldr   r6,=L1Tileset0109_0000_Ptr2   ; 080EA642
 ldr   r0,[r6]                       ; 080EA644
 mov   r1,0xC0                       ; 080EA646
 lsl   r1,r1,0x13                    ; 080EA648
 bl    swi_LZ77_VRAM                 ; 080EA64A  LZ77 decompress (VRAM)
-ldr   r6,=DataPtrs0824ACC8          ; 080EA64E
+ldr   r6,=L1Global_1000_Ptr2        ; 080EA64E
 ldr   r0,[r6]                       ; 080EA650
 ldr   r1,=0x06001000                ; 080EA652
 bl    swi_LZ77_VRAM                 ; 080EA654  LZ77 decompress (VRAM)
@@ -1706,7 +1706,7 @@ lsl   r0,r0,0x10                    ; 080EA6FE
 lsr   r4,r0,0x10                    ; 080EA700
 cmp   r4,0x7                        ; 080EA702
 bls   @@Code080EA6EC                ; 080EA704
-ldr   r6,=DataPtrs082BD2F8          ; 080EA706
+ldr   r6,=SprStripe4E_Ptr2          ; 080EA706
 ldmia r6!,{r0}                      ; 080EA708
 ldr   r4,=0x0201FC00                ; 080EA70A  decompressed graphics buffer
 mov   r1,r4                         ; 080EA70C
@@ -11299,7 +11299,7 @@ ldr   r4,=DataPtrs0826DC74          ; 080EFC86
 ldr   r0,[r4]                       ; 080EFC88
 ldr   r1,=0x06007000                ; 080EFC8A
 bl    swi_LZ77_VRAM                 ; 080EFC8C  LZ77 decompress (VRAM)
-ldr   r4,=DataPtrs082741F0          ; 080EFC90
+ldr   r4,=L3Image131D_7000_misc_8000_Ptr2; 080EFC90
 ldr   r0,[r4]                       ; 080EFC92
 ldr   r1,=0x06008000                ; 080EFC94
 bl    swi_LZ77_VRAM                 ; 080EFC96  LZ77 decompress (VRAM)

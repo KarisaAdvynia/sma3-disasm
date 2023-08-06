@@ -232,11 +232,11 @@ bl    swi_LZ77_VRAM                 ; 080F5B34  LZ77 decompress (VRAM)
 ldr   r0,[r4]                       ; 080F5B38
 ldr   r1,=0x06006000                ; 080F5B3A
 bl    swi_LZ77_VRAM                 ; 080F5B3C  LZ77 decompress (VRAM)
-ldr   r4,=DataPtrs0826DC6C          ; 080F5B40
+ldr   r4,=L3Image0CIntro_7000_Ptr2  ; 080F5B40
 ldr   r0,[r4]                       ; 080F5B42
 ldr   r1,=0x06007000                ; 080F5B44
 bl    swi_LZ77_VRAM                 ; 080F5B46  LZ77 decompress (VRAM)
-ldr   r4,=DataPtrs0826ABE0          ; 080F5B4A
+ldr   r4,=L3Image121B26Intro_8000_Ptr2; 080F5B4A
 ldr   r0,[r4]                       ; 080F5B4C
 ldr   r1,=0x06008000                ; 080F5B4E
 bl    swi_LZ77_VRAM                 ; 080F5B50  LZ77 decompress (VRAM)
@@ -271,7 +271,7 @@ strh  r2,[r0]                       ; 080F5BAE
 ldr   r0,=0x298A                    ; 080F5BB0
 add   r1,r1,r0                      ; 080F5BB2
 strh  r2,[r1]                       ; 080F5BB4
-ldr   r6,=SprStripeAB_Ptr           ; 080F5BB6
+ldr   r6,=SprStripeAB_Ptr2          ; 080F5BB6
 ldmia r6!,{r0}                      ; 080F5BB8
 ldr   r4,=0x0201FC00                ; 080F5BBA  decompressed graphics buffer
 mov   r1,r4                         ; 080F5BBC
@@ -296,7 +296,7 @@ ldr   r1,=0x06010E00                ; 080F5BEA
 mov   r0,r5                         ; 080F5BEC
 mov   r2,0x80                       ; 080F5BEE
 bl    swi_MemoryCopy32              ; 080F5BF0  Memory copy/fill, 32-byte blocks
-ldr   r6,=DataPtrs082B7FC0          ; 080F5BF4
+ldr   r6,=SprStripe1A_Ptr2          ; 080F5BF4
 ldr   r0,[r6]                       ; 080F5BF6
 mov   r1,r4                         ; 080F5BF8
 bl    swi_LZ77_WRAM                 ; 080F5BFA  LZ77 decompress (WRAM)

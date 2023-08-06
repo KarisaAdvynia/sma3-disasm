@@ -241,7 +241,7 @@ bx    lr                            ; 080BC9D4
 Sub080BC9D8:
 push  {r4,lr}                       ; 080BC9D8
 mov   r4,r0                         ; 080BC9DA
-ldr   r0,=DataPtrs0826ABDC          ; 080BC9DC
+ldr   r0,=L3Spr_7000_Ptr2           ; 080BC9DC
 ldr   r0,[r0]                       ; 080BC9DE
 ldr   r1,=0x06007000                ; 080BC9E0
 bl    swi_LZ77_VRAM                 ; 080BC9E2  LZ77 decompress (VRAM)
@@ -256,7 +256,7 @@ bx    r0                            ; 080BC9F4
 Sub080BCA00:
 push  {r4,lr}                       ; 080BCA00
 mov   r4,r0                         ; 080BCA02
-ldr   r0,=DataPtrs0826ABD8          ; 080BCA04
+ldr   r0,=L3Image12_7000_Spr_8000_Ptr2; 080BCA04
 ldr   r0,[r0]                       ; 080BCA06
 ldr   r1,=0x06008000                ; 080BCA08
 bl    swi_LZ77_VRAM                 ; 080BCA0A  LZ77 decompress (VRAM)

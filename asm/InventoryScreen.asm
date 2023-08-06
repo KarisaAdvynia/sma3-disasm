@@ -2854,7 +2854,7 @@ cmp   r0,0x0                        ; 080E7BE4
 beq   @@Code080E7C40                ; 080E7BE6
 ldr   r7,=0x2904                    ; 080E7BE8
 add   r1,r4,r7                      ; 080E7BEA
-ldr   r3,=Data0816941C              ; 080E7BEC
+ldr   r3,=StarYellow8x16DigitPtrs   ; 080E7BEC
 lsl   r0,r0,0x2                     ; 080E7BEE
 add   r0,r0,r3                      ; 080E7BF0
 ldr   r0,[r0]                       ; 080E7BF2
@@ -2883,7 +2883,7 @@ b     @@Code080E7C76                ; 080E7C1A
 @@Code080E7C40:
 ldr   r7,=0x2904                    ; 080E7C40
 add   r3,r4,r7                      ; 080E7C42
-ldr   r1,=Data081693F4              ; 080E7C44
+ldr   r1,=StarRed16x16DigitPtrs     ; 080E7C44
 ldr   r2,=0x48D2                    ; 080E7C46
 add   r0,r5,r2                      ; 080E7C48
 ldrh  r0,[r0]                       ; 080E7C4A

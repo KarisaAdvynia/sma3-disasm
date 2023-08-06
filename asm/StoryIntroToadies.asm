@@ -3423,7 +3423,7 @@ strb  r1,[r0]                       ; 080310AA
 ldr   r1,=Data0816B91C              ; 080310AC
 mov   r0,r7                         ; 080310AE
 bl    Sub0802F72C                   ; 080310B0
-ldr   r0,=DataPtrs082315D4          ; 080310B4
+ldr   r0,=L1Tileset02_2000_Ptr2     ; 080310B4
 ldr   r0,[r0,0x4]                   ; 080310B6
 ldr   r1,=0x0201FC00                ; 080310B8  decompressed graphics buffer
 bl    swi_LZ77_WRAM                 ; 080310BA  LZ77 decompress (WRAM)

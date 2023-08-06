@@ -3298,10 +3298,10 @@ add   r0,r0,r1                      ; 080CDBAA
 mov   r1,0x80                       ; 080CDBAC
 lsl   r1,r1,0x4                     ; 080CDBAE
 strh  r1,[r0]                       ; 080CDBB0
-ldr   r0,=Data0820DA48              ; 080CDBB2
+ldr   r0,=Hookbill_L2Graphics_8bpp_LZ77; 080CDBB2
 ldr   r1,=0x06005000                ; 080CDBB4
 bl    swi_LZ77_VRAM                 ; 080CDBB6  LZ77 decompress (VRAM)
-ldr   r0,=Data0820E054              ; 080CDBBA
+ldr   r0,=Hookbill_L2Tilemap_LZ77   ; 080CDBBA
 ldr   r1,=0x0600B000                ; 080CDBBC
 bl    swi_LZ77_VRAM                 ; 080CDBBE  LZ77 decompress (VRAM)
 ldr   r0,=0x03002200                ; 080CDBC2

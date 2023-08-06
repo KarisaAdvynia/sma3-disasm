@@ -1406,9 +1406,9 @@ Data08207E3C:                       ; 08207E3C
 .incbin "../data/Graphics/Gameplay_anim_12_LZ77.bin"
 Unused08208918:                     ; 08208918
 .incbin "../data/Data08208918_LZ77.bin"
-KamekRoom_L2Tilemap:                ; 08208D58
+KamekRoom_L2Tilemap_LZ77:           ; 08208D58
 .incbin "../data/Tilemaps/Gameplay_Kamek_L2_LZ77.bin"
-KamekRoom_L3Tilemap:                ; 082091A0
+KamekRoom_L3Tilemap_LZ77:           ; 082091A0
 .incbin "../data/Tilemaps/Gameplay_Kamek_L3_LZ77.bin"
 KamekRoom_LayerPal:                 ; 082095E4
 .d16 0x0821, 0x0000, 0x4A15, 0x7378, 0x7FFF, 0x26A6, 0x26A6, 0x5A13
@@ -1462,13 +1462,13 @@ Unused0820BFC8:                     ; 0820BFC8
 DataPtrs0820C1B4:                   ; 0820C1B4
 .d32 Unused082097E4, Unused08209CC4, Unused0820A638, Unused0820B0BC
 .d32 Unused0820BA04, Unused0820BBF0, Unused0820BDDC, Unused0820BFC8
-Raphael_L2_Tilemap_LZ77:            ; 0820C1D4
+Raphael_L2Tilemap_LZ77:             ; 0820C1D4
 .incbin "../data/Tilemaps/Gameplay_Raphael_L2_LZ77.bin"
-Raphael_L2_Graphics_8bpp_LZ77:      ; 0820C580
+Raphael_L2Graphics_8bpp_LZ77:       ; 0820C580
 .incbin "../data/Graphics/Gameplay_Raphael_L2_8bpp_LZ77.bin"
-Data0820DA48:                       ; 0820DA48
+Hookbill_L2Graphics_8bpp_LZ77:      ; 0820DA48
 .incbin "../data/Graphics/Gameplay_Hookbill_L2_8bpp_LZ77.bin"
-Data0820E054:                       ; 0820E054
+Hookbill_L2Tilemap_LZ77:            ; 0820E054
 .incbin "../data/Tilemaps/Gameplay_Hookbill_L2_LZ77.bin"
 Data0820E290:                       ; 0820E290
 .incbin "../data/Graphics/100Cutscene_sprite_0_LZ77.bin"
@@ -1696,145 +1696,145 @@ Data0821724C:                       ; 0821724C
 .incbin "../data/Tilemaps/100Cutscene_L0_1_LZ77.bin"
 Data082173D4:                       ; 082173D4
 .incbin "../data/Tilemaps/100Cutscene_L0_0_LZ77.bin"
-Data08217518:                       ; 08217518
+L2Image11171D_Tilemap_LZ77:         ; 08217518
 .incbin "../data/Tilemaps/Gameplay_L2_11_LZ77.bin"
-Data0821783C:                       ; 0821783C
+L2Image0E_Tilemap_LZ77:             ; 0821783C
 .incbin "../data/Tilemaps/Gameplay_L2_0E_LZ77.bin"
-Data08217AB0:                       ; 08217AB0
+L2Image1C_Tilemap_LZ77:             ; 08217AB0
 .incbin "../data/Tilemaps/Gameplay_L2_1C_LZ77.bin"
-Data08217D08:                       ; 08217D08
+L2Image14_Tilemap_LZ77:             ; 08217D08
 .incbin "../data/Tilemaps/Gameplay_L2_14_LZ77.bin"
-Data08218044:                       ; 08218044
+L2Image1A_Tilemap_LZ77:             ; 08218044
 .incbin "../data/Tilemaps/Gameplay_L2_1A_LZ77.bin"
-Data08218448:                       ; 08218448
+L2Image08_Tilemap_LZ77:             ; 08218448
 .incbin "../data/Tilemaps/Gameplay_L2_08_LZ77.bin"
-Data08218964:                       ; 08218964
+L2Image06_Tilemap_LZ77:             ; 08218964
 .incbin "../data/Tilemaps/Gameplay_L2_06_LZ77.bin"
-Data08218BD4:                       ; 08218BD4
+L2Image00_Tilemap_LZ77:             ; 08218BD4
 .incbin "../data/Tilemaps/Gameplay_L2_00_LZ77.bin"
-Data08219490:                       ; 08219490
+L2Image04_Tilemap_LZ77:             ; 08219490
 .incbin "../data/Tilemaps/Gameplay_L2_04_LZ77.bin"
-Data08219808:                       ; 08219808
+L2Image15_Tilemap_LZ77:             ; 08219808
 .incbin "../data/Tilemaps/Gameplay_L2_15_LZ77.bin"
-Data08219B1C:                       ; 08219B1C
+L2Image07_Tilemap_LZ77:             ; 08219B1C
 .incbin "../data/Tilemaps/Gameplay_L2_07_LZ77.bin"
-Data08219D80:                       ; 08219D80
+L2Image0B_Tilemap_LZ77:             ; 08219D80
 .incbin "../data/Tilemaps/Gameplay_L2_0B_LZ77.bin"
-Data0821A014:                       ; 0821A014
+L2Image19_Tilemap_LZ77:             ; 0821A014
 .incbin "../data/Tilemaps/Gameplay_L2_19_LZ77.bin"
-Data0821A2C0:                       ; 0821A2C0
+L2Image01_Tilemap_LZ77:             ; 0821A2C0
 .incbin "../data/Tilemaps/Gameplay_L2_01_LZ77.bin"
-Data0821A63C:                       ; 0821A63C
+L2Image0A_Tilemap_LZ77:             ; 0821A63C
 .incbin "../data/Tilemaps/Gameplay_L2_0A_LZ77.bin"
-Data0821A8BC:                       ; 0821A8BC
+L2Image02_Tilemap_LZ77:             ; 0821A8BC
 .incbin "../data/Tilemaps/Gameplay_L2_02_LZ77.bin"
-Data0821ACD4:                       ; 0821ACD4
+L2Image0910_Tilemap_LZ77:           ; 0821ACD4
 .incbin "../data/Tilemaps/Gameplay_L2_09_LZ77.bin"
-Data0821B020:                       ; 0821B020
+L2Image1E_Tilemap_LZ77:             ; 0821B020
 .incbin "../data/Tilemaps/Gameplay_L2_1E_LZ77.bin"
-Data0821B2EC:                       ; 0821B2EC
+L2Image1B_Tilemap_LZ77:             ; 0821B2EC
 .incbin "../data/Tilemaps/Gameplay_L2_1B_LZ77.bin"
-Data0821B4D8:                       ; 0821B4D8
+L2Image12_Tilemap_LZ77:             ; 0821B4D8
 .incbin "../data/Tilemaps/Gameplay_L2_12_LZ77.bin"
-Data0821B734:                       ; 0821B734
+L2Image0F_Tilemap_LZ77:             ; 0821B734
 .incbin "../data/Tilemaps/Gameplay_L2_0F_LZ77.bin"
-Data0821B944:                       ; 0821B944
+L2Image13_Tilemap_LZ77:             ; 0821B944
 .incbin "../data/Tilemaps/Gameplay_L2_13_LZ77.bin"
-Data0821BDBC:                       ; 0821BDBC
+L2Image0D_Tilemap_LZ77:             ; 0821BDBC
 .incbin "../data/Tilemaps/Gameplay_L2_0D_LZ77.bin"
-Data0821C0CC:                       ; 0821C0CC
+L2Image03_Tilemap_LZ77:             ; 0821C0CC
 .incbin "../data/Tilemaps/Gameplay_L2_03_LZ77.bin"
-Data0821C2D4:                       ; 0821C2D4
+L2Image05_Tilemap_LZ77:             ; 0821C2D4
 .incbin "../data/Tilemaps/Gameplay_L2_05_LZ77.bin"
 Unused0821C58C:                     ; 0821C58C
 .incbin "../data/Data0821C58C_LZ77.bin"
-Data0821C938:                       ; 0821C938
+L2Image0C_Tilemap_LZ77:             ; 0821C938
 .incbin "../data/Tilemaps/Gameplay_L2_0C_LZ77.bin"
-Data0821CDA4:                       ; 0821CDA4
+L2Image1F_Tilemap_LZ77:             ; 0821CDA4
 .incbin "../data/Tilemaps/Gameplay_L2_1F_LZ77.bin"
-Data0821D090:                       ; 0821D090
+L2Image16_Tilemap_LZ77:             ; 0821D090
 .incbin "../data/Tilemaps/Gameplay_L2_16_LZ77.bin"
-Data0821D49C:                       ; 0821D49C
+L2Image18_Tilemap_LZ77:             ; 0821D49C
 .incbin "../data/Tilemaps/Gameplay_L2_18_LZ77.bin"
-Data0821D9F0:                       ; 0821D9F0
+L3Image1B_Tilemap_LZ77:             ; 0821D9F0
 .incbin "../data/Tilemaps/Gameplay_L3_1B_LZ77.bin"
-Data0821DB98:                       ; 0821DB98
+L3Image2B_Tilemap_LZ77:             ; 0821DB98
 .incbin "../data/Tilemaps/Gameplay_L3_2B_LZ77.bin"
-Data0821DE64:                       ; 0821DE64
+L3Spr_Tilemap_LZ77:                 ; 0821DE64
 .incbin "../data/Tilemaps/Gameplay_L3_02_LZ77.bin"
-Data0821E3B0:                       ; 0821E3B0
+L3Image0009_Tilemap_LZ77:           ; 0821E3B0
 .incbin "../data/Tilemaps/Gameplay_L3_00_LZ77.bin"
-Data0821E4AC:                       ; 0821E4AC
+L3Image12_Tilemap_LZ77:             ; 0821E4AC
 .incbin "../data/Tilemaps/Gameplay_L3_12_LZ77.bin"
-Data0821E75C:                       ; 0821E75C
+L3Image0D_Tilemap_LZ77:             ; 0821E75C
 .incbin "../data/Tilemaps/Gameplay_L3_0D_LZ77.bin"
 Unused0821EA54:                     ; 0821EA54
 .incbin "../data/Data0821EA54_LZ77.bin"
-Data0821EC5C:                       ; 0821EC5C
+L3Image27_Tilemap_LZ77:             ; 0821EC5C
 .incbin "../data/Tilemaps/Gameplay_L3_27_LZ77.bin"
-Data0821EE88:                       ; 0821EE88
+L3Image28_Tilemap_LZ77:             ; 0821EE88
 .incbin "../data/Tilemaps/Gameplay_L3_28_LZ77.bin"
-Data0821F0E4:                       ; 0821F0E4
+L3Image18_Tilemap_LZ77:             ; 0821F0E4
 .incbin "../data/Tilemaps/Gameplay_L3_18_LZ77.bin"
-Data0821F288:                       ; 0821F288
+L3Image10_Tilemap_LZ77:             ; 0821F288
 .incbin "../data/Tilemaps/Gameplay_L3_10_LZ77.bin"
-Data0821F42C:                       ; 0821F42C
+L3Image23_Tilemap_LZ77:             ; 0821F42C
 .incbin "../data/Tilemaps/Gameplay_L3_23_LZ77.bin"
-Data0821F600:                       ; 0821F600
+L3Image14_Tilemap_LZ77:             ; 0821F600
 .incbin "../data/Tilemaps/Gameplay_L3_14_LZ77.bin"
-Data0821F7B8:                       ; 0821F7B8
+L3Image20_Tilemap_LZ77:             ; 0821F7B8
 .incbin "../data/Tilemaps/Gameplay_L3_20_LZ77.bin"
-Data0821F970:                       ; 0821F970
+L3Image29_Tilemap_LZ77:             ; 0821F970
 .incbin "../data/Tilemaps/Gameplay_L3_29_LZ77.bin"
-Data0821FB54:                       ; 0821FB54
+L3Image16_Tilemap_LZ77:             ; 0821FB54
 .incbin "../data/Tilemaps/Gameplay_L3_16_LZ77.bin"
-Data0821FE10:                       ; 0821FE10
+L3Image131D_Tilemap_LZ77:           ; 0821FE10
 .incbin "../data/Tilemaps/Gameplay_L3_13_LZ77.bin"
-Data0821FF10:                       ; 0821FF10
+L3Image1C_Tilemap_LZ77:             ; 0821FF10
 .incbin "../data/Tilemaps/Gameplay_L3_1C_LZ77.bin"
-Data08220078:                       ; 08220078
+L3Image19_Tilemap_LZ77:             ; 08220078
 .incbin "../data/Tilemaps/Gameplay_L3_19_LZ77.bin"
-Data0822017C:                       ; 0822017C
+L3Image2E_Tilemap_LZ77:             ; 0822017C
 .incbin "../data/Tilemaps/Gameplay_L3_2E_LZ77.bin"
-Data08220328:                       ; 08220328
+L3Image2C2D_Tilemap_LZ77:           ; 08220328
 .incbin "../data/Tilemaps/Gameplay_L3_2C_LZ77.bin"
-Data082204A0:                       ; 082204A0
+L3Image2A_Tilemap_LZ77:             ; 082204A0
 .incbin "../data/Tilemaps/Gameplay_L3_2A_LZ77.bin"
-Data08220694:                       ; 08220694
+L3Image01_Tilemap_LZ77:             ; 08220694
 .incbin "../data/Tilemaps/Gameplay_L3_01_LZ77.bin"
-Data08220798:                       ; 08220798
+L3Image1A_Tilemap_LZ77:             ; 08220798
 .incbin "../data/Tilemaps/Gameplay_L3_1A_LZ77.bin"
-Data082208DC:                       ; 082208DC
+L3Image0C_Tilemap_LZ77:             ; 082208DC
 .incbin "../data/Tilemaps/Gameplay_L3_0C_LZ77.bin"
-Data08220AC8:                       ; 08220AC8
+L3Image15_Tilemap_LZ77:             ; 08220AC8
 .incbin "../data/Tilemaps/Gameplay_L3_15_LZ77.bin"
-Data08220C20:                       ; 08220C20
+L3Image0A_Tilemap_LZ77:             ; 08220C20
 .incbin "../data/Tilemaps/Gameplay_L3_0A_LZ77.bin"
-Data08220D1C:                       ; 08220D1C
+L3Image0304_Tilemap_LZ77:           ; 08220D1C
 .incbin "../data/Tilemaps/Gameplay_L3_03_LZ77.bin"
-Data08220E2C:                       ; 08220E2C
+L3Image22_Tilemap_LZ77:             ; 08220E2C
 .incbin "../data/Tilemaps/Gameplay_L3_22_LZ77.bin"
-Data08220FA0:                       ; 08220FA0
+L3Image0E_Tilemap_LZ77:             ; 08220FA0
 .incbin "../data/Tilemaps/Gameplay_L3_0E_LZ77.bin"
-Data082212B4:                       ; 082212B4
+L3Image25_Tilemap_LZ77:             ; 082212B4
 .incbin "../data/Tilemaps/Gameplay_L3_25_LZ77.bin"
-Data082215C8:                       ; 082215C8
+L3Image1E_Tilemap_LZ77:             ; 082215C8
 .incbin "../data/Tilemaps/Gameplay_L3_1E_LZ77.bin"
-Data082217D0:                       ; 082217D0
+L3Image1F_Tilemap_LZ77:             ; 082217D0
 .incbin "../data/Tilemaps/Gameplay_L3_1F_LZ77.bin"
-Data082218D4:                       ; 082218D4
+L3Image0F_Tilemap_LZ77:             ; 082218D4
 .incbin "../data/Tilemaps/Gameplay_L3_0F_LZ77.bin"
-Data08221B7C:                       ; 08221B7C
+L3Image11_Tilemap_LZ77:             ; 08221B7C
 .incbin "../data/Tilemaps/Gameplay_L3_11_LZ77.bin"
-Data08221DB8:                       ; 08221DB8
+L3Image17_Tilemap_LZ77:             ; 08221DB8
 .incbin "../data/Tilemaps/Gameplay_L3_17_LZ77.bin"
-Data08221F3C:                       ; 08221F3C
+L3Image21_Tilemap_LZ77:             ; 08221F3C
 .incbin "../data/Tilemaps/Gameplay_L3_21_LZ77.bin"
-Data08222068:                       ; 08222068
+L3Image24_Tilemap_LZ77:             ; 08222068
 .incbin "../data/Tilemaps/Gameplay_L3_24_LZ77.bin"
-Data082222BC:                       ; 082222BC
+L3Image26_Tilemap_LZ77:             ; 082222BC
 .incbin "../data/Tilemaps/Gameplay_L3_26_LZ77.bin"
-Data08222464:                       ; 08222464
+L3Image2F_Tilemap_LZ77:             ; 08222464
 .incbin "../data/Tilemaps/Gameplay_L3_2F_LZ77.bin"
 Data082225D4:                       ; 082225D4
 .incbin "../data/Tilemaps/Intro100Cutscene_L2_LZ77.bin"
@@ -1882,177 +1882,177 @@ Data08227A18:                       ; 08227A18
 .incbin "../data/Tilemaps/BanditMinigame_L2_win_LZ77.bin"
 Data08227B54:                       ; 08227B54
 .incbin "../data/Tilemaps/BanditMinigame_L2_loss_LZ77.bin"
-Data08227C90:                       ; 08227C90
+L1Tileset00_2000_LZ77:              ; 08227C90
 .incbin "../data/Graphics/Gameplay_L1_200_LZ77.bin"
-Data0822874C:                       ; 0822874C
+L1Tileset00_3000_LZ77:              ; 0822874C
 .incbin "../data/Graphics/Gameplay_L1_300_LZ77.bin"
-Data082291C4:                       ; 082291C4
+L1Tileset01_2000_LZ77:              ; 082291C4
 .incbin "../data/Graphics/Gameplay_L1_201_LZ77.bin"
-Data08229C0C:                       ; 08229C0C
+L1Tileset01_3000_LZ77:              ; 08229C0C
 .incbin "../data/Graphics/Gameplay_L1_301_LZ77.bin"
-Data0822A5D4:                       ; 0822A5D4
+L1Tileset04_2000_LZ77:              ; 0822A5D4
 .incbin "../data/Graphics/Gameplay_L1_204_LZ77.bin"
-Data0822AD94:                       ; 0822AD94
+L1Tileset04_3000_LZ77:              ; 0822AD94
 .incbin "../data/Graphics/Gameplay_L1_304_LZ77.bin"
-Data0822B4EC:                       ; 0822B4EC
+L1Tileset05_2000_LZ77:              ; 0822B4EC
 .incbin "../data/Graphics/Gameplay_L1_205_LZ77.bin"
-Data0822BEDC:                       ; 0822BEDC
+L1Tileset05_3000_LZ77:              ; 0822BEDC
 .incbin "../data/Graphics/Gameplay_L1_305_LZ77.bin"
-DataPtrs0822C8E0:                   ; 0822C8E0
-.d32 Data08227C90
-DataPtrs0822C8E4:                   ; 0822C8E4
-.d32 Data0822874C
-DataPtrs0822C8E8:                   ; 0822C8E8
-.d32 Data082291C4
-DataPtrs0822C8EC:                   ; 0822C8EC
-.d32 Data08229C0C
-DataPtrs0822C8F0:                   ; 0822C8F0
-.d32 Data0822A5D4
-DataPtrs0822C8F4:                   ; 0822C8F4
-.d32 Data0822AD94
-DataPtrs0822C8F8:                   ; 0822C8F8
-.d32 Data0822B4EC
-DataPtrs0822C8FC:                   ; 0822C8FC
-.d32 Data0822BEDC
-Data0822C900:                       ; 0822C900
+L1Tileset00_2000_Ptr2:              ; 0822C8E0
+.d32 L1Tileset00_2000_LZ77
+L1Tileset00_3000_Ptr2:              ; 0822C8E4
+.d32 L1Tileset00_3000_LZ77
+L1Tileset01_2000_Ptr2:              ; 0822C8E8
+.d32 L1Tileset01_2000_LZ77
+L1Tileset01_3000_Ptr2:              ; 0822C8EC
+.d32 L1Tileset01_3000_LZ77
+L1Tileset04_2000_Ptr2:              ; 0822C8F0
+.d32 L1Tileset04_2000_LZ77
+L1Tileset04_3000_Ptr2:              ; 0822C8F4
+.d32 L1Tileset04_3000_LZ77
+L1Tileset05_2000_Ptr2:              ; 0822C8F8
+.d32 L1Tileset05_2000_LZ77
+L1Tileset05_3000_Ptr2:              ; 0822C8FC
+.d32 L1Tileset05_3000_LZ77
+L1Tileset02_2000_LZ77:              ; 0822C900
 .incbin "../data/Graphics/Gameplay_L1_202_LZ77.bin"
-Data0822D394:                       ; 0822D394
+L1Tileset02_3000_LZ77:              ; 0822D394
 .incbin "../data/Graphics/Gameplay_L1_302_LZ77.bin"
-Data0822DC68:                       ; 0822DC68
+L1Tileset03_2000_LZ77:              ; 0822DC68
 .incbin "../data/Graphics/Gameplay_L1_203_LZ77.bin"
-Data0822E578:                       ; 0822E578
+L1Tileset03_3000_LZ77:              ; 0822E578
 .incbin "../data/Graphics/Gameplay_L1_303_LZ77.bin"
-Data0822EBEC:                       ; 0822EBEC
+L1Tileset06_2000_LZ77:              ; 0822EBEC
 .incbin "../data/Graphics/Gameplay_L1_206_LZ77.bin"
-Data0822F6B4:                       ; 0822F6B4
+L1Tileset06_3000_LZ77:              ; 0822F6B4
 .incbin "../data/Graphics/Gameplay_L1_306_LZ77.bin"
-Data08230294:                       ; 08230294
+L1Tileset07_2000_LZ77:              ; 08230294
 .incbin "../data/Graphics/Gameplay_L1_207_LZ77.bin"
-Data08230CC8:                       ; 08230CC8
+L1Tileset07_3000_LZ77:              ; 08230CC8
 .incbin "../data/Graphics/Gameplay_L1_307_LZ77.bin"
-DataPtrs082315D4:                   ; 082315D4
-.d32 Data0822C900
-DataPtrs082315D8:                   ; 082315D8
-.d32 Data0822D394
-DataPtrs082315DC:                   ; 082315DC
-.d32 Data0822DC68
-DataPtrs082315E0:                   ; 082315E0
-.d32 Data0822E578
-DataPtrs082315E4:                   ; 082315E4
-.d32 Data0822EBEC
-DataPtrs082315E8:                   ; 082315E8
-.d32 Data0822F6B4
-DataPtrs082315EC:                   ; 082315EC
-.d32 Data08230294
-DataPtrs082315F0:                   ; 082315F0
-.d32 Data08230CC8
-Data082315F4:                       ; 082315F4
+L1Tileset02_2000_Ptr2:              ; 082315D4
+.d32 L1Tileset02_2000_LZ77
+L1Tileset02_3000_Ptr2:              ; 082315D8
+.d32 L1Tileset02_3000_LZ77
+L1Tileset03_2000_Ptr2:              ; 082315DC
+.d32 L1Tileset03_2000_LZ77
+L1Tileset03_3000_Ptr2:              ; 082315E0
+.d32 L1Tileset03_3000_LZ77
+L1Tileset06_2000_Ptr2:              ; 082315E4
+.d32 L1Tileset06_2000_LZ77
+L1Tileset06_3000_Ptr2:              ; 082315E8
+.d32 L1Tileset06_3000_LZ77
+L1Tileset07_2000_Ptr2:              ; 082315EC
+.d32 L1Tileset07_2000_LZ77
+L1Tileset07_3000_Ptr2:              ; 082315F0
+.d32 L1Tileset07_3000_LZ77
+L1Tileset08_2000_LZ77:              ; 082315F4
 .incbin "../data/Graphics/Gameplay_L1_208_LZ77.bin"
-Data0823213C:                       ; 0823213C
+L1Tileset08_3000_LZ77:              ; 0823213C
 .incbin "../data/Graphics/Gameplay_L1_308_LZ77.bin"
-Data08232C80:                       ; 08232C80
+L1Tileset09_2000_LZ77:              ; 08232C80
 .incbin "../data/Graphics/Gameplay_L1_209_LZ77.bin"
-Data0823362C:                       ; 0823362C
+L1Tileset09_3000_LZ77:              ; 0823362C
 .incbin "../data/Graphics/Gameplay_L1_309_LZ77.bin"
-Data08234278:                       ; 08234278
+L1Tileset0C_2000_LZ77:              ; 08234278
 .incbin "../data/Graphics/Gameplay_L1_20C_LZ77.bin"
-Data08234EB0:                       ; 08234EB0
+L1Tileset0C_3000_LZ77:              ; 08234EB0
 .incbin "../data/Graphics/Gameplay_L1_30C_LZ77.bin"
-Data082355A0:                       ; 082355A0
+L1Tileset0D_2000_LZ77:              ; 082355A0
 .incbin "../data/Graphics/Gameplay_L1_20D_LZ77.bin"
-Data08235EDC:                       ; 08235EDC
+L1Tileset0D_3000_LZ77:              ; 08235EDC
 .incbin "../data/Graphics/Gameplay_L1_30D_LZ77.bin"
-DataPtrs08236630:                   ; 08236630
-.d32 Data082315F4
-DataPtrs08236634:                   ; 08236634
-.d32 Data0823213C
-DataPtrs08236638:                   ; 08236638
-.d32 Data08232C80
-DataPtrs0823663C:                   ; 0823663C
-.d32 Data0823362C
-DataPtrs08236640:                   ; 08236640
-.d32 Data08234278
-DataPtrs08236644:                   ; 08236644
-.d32 Data08234EB0
-DataPtrs08236648:                   ; 08236648
-.d32 Data082355A0
-DataPtrs0823664C:                   ; 0823664C
-.d32 Data08235EDC
-Data08236650:                       ; 08236650
+L1Tileset08_2000_Ptr2:              ; 08236630
+.d32 L1Tileset08_2000_LZ77
+L1Tileset08_3000_Ptr2:              ; 08236634
+.d32 L1Tileset08_3000_LZ77
+L1Tileset09_2000_Ptr2:              ; 08236638
+.d32 L1Tileset09_2000_LZ77
+L1Tileset09_3000_Ptr2:              ; 0823663C
+.d32 L1Tileset09_3000_LZ77
+L1Tileset0C_2000_Ptr2:              ; 08236640
+.d32 L1Tileset0C_2000_LZ77
+L1Tileset0C_3000_Ptr2:              ; 08236644
+.d32 L1Tileset0C_3000_LZ77
+L1Tileset0D_2000_Ptr2:              ; 08236648
+.d32 L1Tileset0D_2000_LZ77
+L1Tileset0D_3000_Ptr2:              ; 0823664C
+.d32 L1Tileset0D_3000_LZ77
+L1Tileset0A_2000_LZ77:              ; 08236650
 .incbin "../data/Graphics/Gameplay_L1_20A_LZ77.bin"
-Data08237050:                       ; 08237050
+L1Tileset0A_3000_LZ77:              ; 08237050
 .incbin "../data/Graphics/Gameplay_L1_30A_LZ77.bin"
-Data08237AE0:                       ; 08237AE0
+L1Tileset0B_2000_LZ77:              ; 08237AE0
 .incbin "../data/Graphics/Gameplay_L1_20B_LZ77.bin"
-Data0823869C:                       ; 0823869C
+L1Tileset0B_3000_LZ77:              ; 0823869C
 .incbin "../data/Graphics/Gameplay_L1_30B_LZ77.bin"
-Data08239234:                       ; 08239234
+L1Tileset0E_2000_LZ77:              ; 08239234
 .incbin "../data/Graphics/Gameplay_L1_20E_LZ77.bin"
-Data08239E70:                       ; 08239E70
+L1Tileset0E_3000_LZ77:              ; 08239E70
 .incbin "../data/Graphics/Gameplay_L1_30E_LZ77.bin"
-Data0823A8A8:                       ; 0823A8A8
+L1Tileset0F_2000_LZ77:              ; 0823A8A8
 .incbin "../data/Graphics/Gameplay_L1_20F_LZ77.bin"
-Data0823B1B8:                       ; 0823B1B8
+L1Tileset0F_3000_LZ77:              ; 0823B1B8
 .incbin "../data/Graphics/Gameplay_L1_30F_LZ77.bin"
-DataPtrs0823BC34:                   ; 0823BC34
-.d32 Data08236650
-DataPtrs0823BC38:                   ; 0823BC38
-.d32 Data08237050
-DataPtrs0823BC3C:                   ; 0823BC3C
-.d32 Data08237AE0
-DataPtrs0823BC40:                   ; 0823BC40
-.d32 Data0823869C
-DataPtrs0823BC44:                   ; 0823BC44
-.d32 Data08239234
-DataPtrs0823BC48:                   ; 0823BC48
-.d32 Data08239E70
-DataPtrs0823BC4C:                   ; 0823BC4C
-.d32 Data0823A8A8
-DataPtrs0823BC50:                   ; 0823BC50
-.d32 Data0823B1B8
-Data0823BC54:                       ; 0823BC54
+L1Tileset0A_2000_Ptr2:              ; 0823BC34
+.d32 L1Tileset0A_2000_LZ77
+L1Tileset0A_3000_Ptr2:              ; 0823BC38
+.d32 L1Tileset0A_3000_LZ77
+L1Tileset0B_2000_Ptr2:              ; 0823BC3C
+.d32 L1Tileset0B_2000_LZ77
+L1Tileset0B_3000_Ptr2:              ; 0823BC40
+.d32 L1Tileset0B_3000_LZ77
+L1Tileset0E_2000_Ptr2:              ; 0823BC44
+.d32 L1Tileset0E_2000_LZ77
+L1Tileset0E_3000_Ptr2:              ; 0823BC48
+.d32 L1Tileset0E_3000_LZ77
+L1Tileset0F_2000_Ptr2:              ; 0823BC4C
+.d32 L1Tileset0F_2000_LZ77
+L1Tileset0F_3000_Ptr2:              ; 0823BC50
+.d32 L1Tileset0F_3000_LZ77
+L1Tileset0008_0000_LZ77:            ; 0823BC54
 .incbin "../data/Graphics/Gameplay_L1_000_LZ77.bin"
-Data0823C774:                       ; 0823C774
+L1Tileset0109_0000_LZ77:            ; 0823C774
 .incbin "../data/Graphics/Gameplay_L1_001_LZ77.bin"
-Data0823D378:                       ; 0823D378
+L1Tileset040C_0000_LZ77:            ; 0823D378
 .incbin "../data/Graphics/Gameplay_L1_004_LZ77.bin"
-Data0823DD3C:                       ; 0823DD3C
+L1Tileset05_0000_LZ77:              ; 0823DD3C
 .incbin "../data/Graphics/Gameplay_L1_005_LZ77.bin"
-Data0823E734:                       ; 0823E734
+L1Tileset02_0000_LZ77:              ; 0823E734
 .incbin "../data/Graphics/Gameplay_L1_002_LZ77.bin"
-Data0823EC78:                       ; 0823EC78
+L1Tileset030B_0000_LZ77:            ; 0823EC78
 .incbin "../data/Graphics/Gameplay_L1_003_LZ77.bin"
-Data0823F4C8:                       ; 0823F4C8
+L1Tileset060A0E_0000_LZ77:          ; 0823F4C8
 .incbin "../data/Graphics/Gameplay_L1_006_LZ77.bin"
-Data0823FFAC:                       ; 0823FFAC
+L1Tileset070D0F_0000_LZ77:          ; 0823FFAC
 .incbin "../data/Graphics/Gameplay_L1_007_LZ77.bin"
-DataPtrs08240B24:                   ; 08240B24
-.d32 Data0823BC54
-DataPtrs08240B28:                   ; 08240B28
-.d32 Data0823C774
-DataPtrs08240B2C:                   ; 08240B2C
-.d32 Data0823D378
-DataPtrs08240B30:                   ; 08240B30
-.d32 Data0823DD3C
-DataPtrs08240B34:                   ; 08240B34
-.d32 Data0823E734
-DataPtrs08240B38:                   ; 08240B38
-.d32 Data0823EC78
-DataPtrs08240B3C:                   ; 08240B3C
-.d32 Data0823F4C8
-DataPtrs08240B40:                   ; 08240B40
-.d32 Data0823FFAC
+L1Tileset0008_0000_Ptr2:            ; 08240B24
+.d32 L1Tileset0008_0000_LZ77
+L1Tileset0109_0000_Ptr2:            ; 08240B28
+.d32 L1Tileset0109_0000_LZ77
+L1Tileset040C_0000_Ptr2:            ; 08240B2C
+.d32 L1Tileset040C_0000_LZ77
+L1Tileset05_0000_Ptr2:              ; 08240B30
+.d32 L1Tileset05_0000_LZ77
+L1Tileset02_0000_Ptr2:              ; 08240B34
+.d32 L1Tileset02_0000_LZ77
+L1Tileset030B_0000_Ptr2:            ; 08240B38
+.d32 L1Tileset030B_0000_LZ77
+L1Tileset060A0E_0000_Ptr2:          ; 08240B3C
+.d32 L1Tileset060A0E_0000_LZ77
+L1Tileset070D0F_0000_Ptr2:          ; 08240B40
+.d32 L1Tileset070D0F_0000_LZ77
 Data08240B44:                       ; 08240B44
 .incbin "../data/Graphics/IntroCutscene_L2_5_LZ77.bin"
 Data082414A0:                       ; 082414A0
 .incbin "../data/Graphics/IntroCutscene_L2_6_LZ77.bin"
 Data08241C9C:                       ; 08241C9C
 .incbin "../data/Graphics/Credits_L0_LZ77.bin"
-Data082423BC:                       ; 082423BC
+L1Tileset11_2000_LZ77:              ; 082423BC
 .incbin "../data/Graphics/Gameplay_L1_211_LZ77.bin"
-Data0824300C:                       ; 0824300C
+L1Tileset11_3000_LZ77:              ; 0824300C
 .incbin "../data/Graphics/Gameplay_L1_311_LZ77.bin"
-Data08243CA4:                       ; 08243CA4
+L1Tileset11_0000_LZ77:              ; 08243CA4
 .incbin "../data/Graphics/Gameplay_L1_011_LZ77.bin"
 Data082448F0:                       ; 082448F0
 .incbin "../data/Graphics/Credits_201_LZ77.bin"
@@ -2060,12 +2060,12 @@ Data08245430:                       ; 08245430
 .incbin "../data/Graphics/Unused08245430_LZ77.bin"
 DataPtrs08245CB0:                   ; 08245CB0
 .d32 Data08240B44, Data082414A0, Data08241C9C
-DataPtrs08245CBC:                   ; 08245CBC
-.d32 Data082423BC
-DataPtrs08245CC0:                   ; 08245CC0
-.d32 Data0824300C
-DataPtrs08245CC4:                   ; 08245CC4
-.d32 Data08243CA4, Data082448F0, Data08245430
+L1Tileset11_2000_Ptr2:              ; 08245CBC
+.d32 L1Tileset11_2000_LZ77
+L1Tileset11_3000_Ptr2:              ; 08245CC0
+.d32 L1Tileset11_3000_LZ77
+L1Tileset11_0000_Ptr2:              ; 08245CC4
+.d32 L1Tileset11_0000_LZ77, Data082448F0, Data08245430
 Data08245CD0:                       ; 08245CD0
 .incbin "../data/Graphics/GoalMinigame_2_LZ77.bin"
 Data08246EB8:                       ; 08246EB8
@@ -2076,22 +2076,23 @@ Data08247D90:                       ; 08247D90
 .incbin "../data/Graphics/GoalMinigame_4_LZ77.bin"
 Data082485D4:                       ; 082485D4
 .incbin "../data/Graphics/GoalMinigame_5_LZ77.bin"
-Data08248E48:                       ; 08248E48
+L2Image00_5000_LZ77:                ; 08248E48
 .incbin "../data/Graphics/Gameplay_L2_500_LZ77.bin"
-Data08249700:                       ; 08249700
+L2Image00_6000_LZ77:                ; 08249700
 .incbin "../data/Graphics/Gameplay_L2_600_LZ77.bin"
-Data0824A070:                       ; 0824A070
+L1Global_1000_LZ77:                 ; 0824A070
 .incbin "../data/Graphics/Gameplay_L1_100_LZ77.bin"
 Data0824AABC:                       ; 0824AABC
 .incbin "../data/Graphics/Unused0824AABC_LZ77.bin"
 DataPtrs0824ACB0:                   ; 0824ACB0
 .d32 Data08246EB8, Data08247760, Data08247D90, Data082485D4
-DataPtrs0824ACC0:                   ; 0824ACC0
-.d32 Data08248E48
-DataPtrs0824ACC4:                   ; 0824ACC4
-.d32 Data08249700
-DataPtrs0824ACC8:                   ; 0824ACC8
-.d32 Data0824A070, Data0824AABC
+L2Image00_5000_Ptr2:                ; 0824ACC0
+.d32 L2Image00_5000_LZ77
+L2Image00_6000_Ptr2:                ; 0824ACC4
+.d32 L2Image00_6000_LZ77
+L1Global_1000_Ptr2:                 ; 0824ACC8
+.d32 L1Global_1000_LZ77
+.d32 Data0824AABC
 Data0824ACD0:                       ; 0824ACD0
 .incbin "../data/Tilemaps/GoalMinigame_L1_0_LZ77.bin"
 Data0824AE74:                       ; 0824AE74
@@ -2137,134 +2138,135 @@ Data0824BE2C:                       ; 0824BE2C
 .d16 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
 Data0824BFAC:                       ; 0824BFAC
 .incbin "../data/Tilemaps/Gameplay_BossKeyhole_LZ77.bin"
-Data0824C2BC:                       ; 0824C2BC
+L1Global_4A00_LZ77:                 ; 0824C2BC
 .incbin "../data/Graphics/Gameplay_L1_4A0_LZ77.bin"
-Data0824C578:                       ; 0824C578
+L2Image03041112_5000_LZ77:          ; 0824C578
 .incbin "../data/Graphics/Gameplay_L2_503_LZ77.bin"
-Data0824CF0C:                       ; 0824CF0C
+L2Image0304_6000_LZ77:              ; 0824CF0C
 .incbin "../data/Graphics/Gameplay_L2_603_LZ77.bin"
-Data0824D6E8:                       ; 0824D6E8
+L2Image02_5000_LZ77:                ; 0824D6E8
 .incbin "../data/Graphics/Gameplay_L2_502_LZ77.bin"
-Data0824E2D8:                       ; 0824E2D8
+L2Image02_6000_LZ77:                ; 0824E2D8
 .incbin "../data/Graphics/Gameplay_L2_602_LZ77.bin"
-Data0824EEAC:                       ; 0824EEAC
+L2Image0B_5000_LZ77:                ; 0824EEAC
 .incbin "../data/Graphics/Gameplay_L2_50B_LZ77.bin"
-Data0824F700:                       ; 0824F700
+L2Image1112_6000_LZ77:              ; 0824F700
 .incbin "../data/Graphics/Gameplay_L2_611_LZ77.bin"
-Data0824FF94:                       ; 0824FF94
+L2Image08_5000_LZ77:                ; 0824FF94
 .incbin "../data/Graphics/Gameplay_L2_508_LZ77.bin"
-Data082507DC:                       ; 082507DC
+L2Image08_6000_LZ77:                ; 082507DC
 .incbin "../data/Graphics/Gameplay_L2_608_LZ77.bin"
-DataPtrs08251260:                   ; 08251260
-.d32 Data0824C578
-DataPtrs08251264:                   ; 08251264
-.d32 Data0824CF0C
-DataPtrs08251268:                   ; 08251268
-.d32 Data0824D6E8
-DataPtrs0825126C:                   ; 0825126C
-.d32 Data0824E2D8
-DataPtrs08251270:                   ; 08251270
-.d32 Data0824EEAC
-DataPtrs08251274:                   ; 08251274
-.d32 Data0824F700
-DataPtrs08251278:                   ; 08251278
-.d32 Data0824FF94
-DataPtrs0825127C:                   ; 0825127C
-.d32 Data082507DC
-Data08251280:                       ; 08251280
+L2Image03041112_5000_Ptr2:          ; 08251260
+.d32 L2Image03041112_5000_LZ77
+L2Image0304_6000_Ptr2:              ; 08251264
+.d32 L2Image0304_6000_LZ77
+L2Image02_5000_Ptr2:                ; 08251268
+.d32 L2Image02_5000_LZ77
+L2Image02_6000_Ptr2:                ; 0825126C
+.d32 L2Image02_6000_LZ77
+L2Image0B_5000_Ptr2:                ; 08251270
+.d32 L2Image0B_5000_LZ77
+L2Image1112_6000_Ptr2:              ; 08251274
+.d32 L2Image1112_6000_LZ77
+L2Image08_5000_Ptr2:                ; 08251278
+.d32 L2Image08_5000_LZ77
+L2Image08_6000_Ptr2:                ; 0825127C
+.d32 L2Image08_6000_LZ77
+L2Image0117_5000_LZ77:              ; 08251280
 .incbin "../data/Graphics/Gameplay_L2_501_LZ77.bin"
-Data08251B50:                       ; 08251B50
+L2Image1C_5000_171C_6000_LZ77:      ; 08251B50
 .incbin "../data/Graphics/Gameplay_L2_51C_LZ77.bin"
-Data082524D8:                       ; 082524D8
+L2Image07_5000_LZ77:                ; 082524D8
 .incbin "../data/Graphics/Gameplay_L2_507_LZ77.bin"
-Data0825320C:                       ; 0825320C
+L2Image07_6000_LZ77:                ; 0825320C
 .incbin "../data/Graphics/Gameplay_L2_607_LZ77.bin"
-Data08253A9C:                       ; 08253A9C
+L2Image06_5000_LZ77:                ; 08253A9C
 .incbin "../data/Graphics/Gameplay_L2_506_LZ77.bin"
-Data082544B4:                       ; 082544B4
+L2Image18_5000_LZ77:                ; 082544B4
 .incbin "../data/Graphics/Gameplay_L2_518_LZ77.bin"
-Data08254CFC:                       ; 08254CFC
+L2Image19_5000_0A_6000_LZ77:        ; 08254CFC
 .incbin "../data/Graphics/Gameplay_L2_519_LZ77.bin"
 Data0825573C:                       ; 0825573C
 .incbin "../data/Graphics/Unused0825573C_LZ77.bin"
-DataPtrs08255F58:                   ; 08255F58
-.d32 Data08251280
-DataPtrs08255F5C:                   ; 08255F5C
-.d32 Data08251B50
-DataPtrs08255F60:                   ; 08255F60
-.d32 Data082524D8
-DataPtrs08255F64:                   ; 08255F64
-.d32 Data0825320C
-DataPtrs08255F68:                   ; 08255F68
-.d32 Data08253A9C
-DataPtrs08255F6C:                   ; 08255F6C
-.d32 Data082544B4
-DataPtrs08255F70:                   ; 08255F70
-.d32 Data08254CFC, Data0825573C
-Data08255F78:                       ; 08255F78
+L2Image0117_5000_Ptr2:              ; 08255F58
+.d32 L2Image0117_5000_LZ77
+L2Image1C_5000_171C_6000_Ptr2:      ; 08255F5C
+.d32 L2Image1C_5000_171C_6000_LZ77
+L2Image07_5000_Ptr2:                ; 08255F60
+.d32 L2Image07_5000_LZ77
+L2Image07_6000_Ptr2:                ; 08255F64
+.d32 L2Image07_6000_LZ77
+L2Image06_5000_Ptr2:                ; 08255F68
+.d32 L2Image06_5000_LZ77
+L2Image18_5000_Ptr2:                ; 08255F6C
+.d32 L2Image18_5000_LZ77
+L2Image19_5000_0A_6000_Ptr2:        ; 08255F70
+.d32 L2Image19_5000_0A_6000_LZ77
+.d32 Data0825573C
+L2Image050910_5000_LZ77:            ; 08255F78
 .incbin "../data/Graphics/Gameplay_L2_505_LZ77.bin"
-Data0825665C:                       ; 0825665C
+L2Image0910_6000_LZ77:              ; 0825665C
 .incbin "../data/Graphics/Gameplay_L2_609_LZ77.bin"
-Data082571B0:                       ; 082571B0
+L2Image0A_5000_LZ77:                ; 082571B0
 .incbin "../data/Graphics/Gameplay_L2_50A_LZ77.bin"
-Data08257C30:                       ; 08257C30
+L2Image1E_5000_0B_6000_LZ77:        ; 08257C30
 .incbin "../data/Graphics/Gameplay_L2_51E_LZ77.bin"
-Data08258688:                       ; 08258688
+L2Image0C_5000_1E_6000_LZ77:        ; 08258688
 .incbin "../data/Graphics/Gameplay_L2_50C_LZ77.bin"
-Data0825913C:                       ; 0825913C
+L2Image0C_6000_LZ77:                ; 0825913C
 .incbin "../data/Graphics/Gameplay_L2_60C_LZ77.bin"
-Data08259D80:                       ; 08259D80
+L2Image0D_5000_LZ77:                ; 08259D80
 .incbin "../data/Graphics/Gameplay_L2_50D_LZ77.bin"
-Data0825A250:                       ; 0825A250
+L2Image050E18_6000_LZ77:            ; 0825A250
 .incbin "../data/Graphics/Gameplay_L2_605_LZ77.bin"
-DataPtrs0825A844:                   ; 0825A844
-.d32 Data08255F78
-DataPtrs0825A848:                   ; 0825A848
-.d32 Data0825665C
-DataPtrs0825A84C:                   ; 0825A84C
-.d32 Data082571B0
-DataPtrs0825A850:                   ; 0825A850
-.d32 Data08257C30
-DataPtrs0825A854:                   ; 0825A854
-.d32 Data08258688
-DataPtrs0825A858:                   ; 0825A858
-.d32 Data0825913C
-DataPtrs0825A85C:                   ; 0825A85C
-.d32 Data08259D80
-DataPtrs0825A860:                   ; 0825A860
-.d32 Data0825A250
-Data0825A864:                       ; 0825A864
+L2Image050910_5000_Ptr2:            ; 0825A844
+.d32 L2Image050910_5000_LZ77
+L2Image0910_6000_Ptr2:              ; 0825A848
+.d32 L2Image0910_6000_LZ77
+L2Image0A_5000_Ptr2:                ; 0825A84C
+.d32 L2Image0A_5000_LZ77
+L2Image1E_5000_0B_6000_Ptr2:        ; 0825A850
+.d32 L2Image1E_5000_0B_6000_LZ77
+L2Image0C_5000_1E_6000_Ptr2:        ; 0825A854
+.d32 L2Image0C_5000_1E_6000_LZ77
+L2Image0C_6000_Ptr2:                ; 0825A858
+.d32 L2Image0C_6000_LZ77
+L2Image0D_5000_Ptr2:                ; 0825A85C
+.d32 L2Image0D_5000_LZ77
+L2Image050E18_6000_Ptr2:            ; 0825A860
+.d32 L2Image050E18_6000_LZ77
+L2Image0E_5000_LZ77:                ; 0825A864
 .incbin "../data/Graphics/Gameplay_L2_50E_LZ77.bin"
-Data0825B3A4:                       ; 0825B3A4
+L2Image14_5000_LZ77:                ; 0825B3A4
 .incbin "../data/Graphics/Gameplay_L2_514_LZ77.bin"
-Data0825C070:                       ; 0825C070
+L2Image0F_5000_14_6000_LZ77:        ; 0825C070
 .incbin "../data/Graphics/Gameplay_L2_50F_LZ77.bin"
-Data0825CA18:                       ; 0825CA18
+L2Image0F_6000_LZ77:                ; 0825CA18
 .incbin "../data/Graphics/Gameplay_L2_60F_LZ77.bin"
-Data0825D3B0:                       ; 0825D3B0
+L2Image13_5000_LZ77:                ; 0825D3B0
 .incbin "../data/Graphics/Gameplay_L2_513_LZ77.bin"
-Data0825DC50:                       ; 0825DC50
+L2Image13_6000_LZ77:                ; 0825DC50
 .incbin "../data/Graphics/Gameplay_L2_613_LZ77.bin"
-Data0825E690:                       ; 0825E690
+L2Image151A1B_5000_LZ77:            ; 0825E690
 .incbin "../data/Graphics/Gameplay_L2_515_LZ77.bin"
-Data0825F038:                       ; 0825F038
+L2Image151A1B_6000_LZ77:            ; 0825F038
 .incbin "../data/Graphics/Gameplay_L2_615_LZ77.bin"
-DataPtrs0825FA20:                   ; 0825FA20
-.d32 Data0825A864
-DataPtrs0825FA24:                   ; 0825FA24
-.d32 Data0825B3A4
-DataPtrs0825FA28:                   ; 0825FA28
-.d32 Data0825C070
-DataPtrs0825FA2C:                   ; 0825FA2C
-.d32 Data0825CA18
-DataPtrs0825FA30:                   ; 0825FA30
-.d32 Data0825D3B0
-DataPtrs0825FA34:                   ; 0825FA34
-.d32 Data0825DC50
-DataPtrs0825FA38:                   ; 0825FA38
-.d32 Data0825E690
-DataPtrs0825FA3C:                   ; 0825FA3C
-.d32 Data0825F038
+L2Image0E_5000_Ptr2:                ; 0825FA20
+.d32 L2Image0E_5000_LZ77
+L2Image14_5000_Ptr2:                ; 0825FA24
+.d32 L2Image14_5000_LZ77
+L2Image0F_5000_14_6000_Ptr2:        ; 0825FA28
+.d32 L2Image0F_5000_14_6000_LZ77
+L2Image0F_6000_Ptr2:                ; 0825FA2C
+.d32 L2Image0F_6000_LZ77
+L2Image13_5000_Ptr2:                ; 0825FA30
+.d32 L2Image13_5000_LZ77
+L2Image13_6000_Ptr2:                ; 0825FA34
+.d32 L2Image13_6000_LZ77
+L2Image151A1B_5000_Ptr2:            ; 0825FA38
+.d32 L2Image151A1B_5000_LZ77
+L2Image151A1B_6000_Ptr2:            ; 0825FA3C
+.d32 L2Image151A1B_6000_LZ77
 Data0825FA40:                       ; 0825FA40
 .incbin "../data/Graphics/LevelSelect_Yoshi_LZ77.bin"
 Data082601E4:                       ; 082601E4
@@ -2273,7 +2275,7 @@ Data08260FB4:                       ; 08260FB4
 .incbin "../data/Graphics/Credits_300_LZ77.bin"
 Data08261938:                       ; 08261938
 .incbin "../data/Graphics/WorldSelect_stripe00_LZ77.bin"
-Data08261DAC:                       ; 08261DAC
+L2Image0619_6000_LZ77:              ; 08261DAC
 .incbin "../data/Graphics/Gameplay_L2_606_LZ77.bin"
 Data08262668:                       ; 08262668
 .incbin "../data/Graphics/Gameplay_Bowser_stripe22_LZ77.bin"
@@ -2282,88 +2284,90 @@ Data08262F94:                       ; 08262F94
 Data08263AB4:                       ; 08263AB4
 .incbin "../data/Graphics/Gameplay_Bowser_stripe02_LZ77.bin"
 DataPtrs0826443C:                   ; 0826443C
-.d32 Data0825FA40, Data082601E4, Data08260FB4
+.d32 Data0825FA40
+.d32 Data082601E4
+.d32 Data08260FB4
 DataPtrs08264448:                   ; 08264448
 .d32 Data08261938
-DataPtrs0826444C:                   ; 0826444C
-.d32 Data08261DAC
+L2Image0619_6000_Ptr2:              ; 0826444C
+.d32 L2Image0619_6000_LZ77
 DataPtrs08264450:                   ; 08264450
 .d32 Data08262668
 DataPtrs08264454:                   ; 08264454
 .d32 Data08262F94
 DataPtrs08264458:                   ; 08264458
 .d32 Data08263AB4
-DataPtrs0826445C:                   ; 0826445C
+L2Image16_5000_LZ77:                ; 0826445C
 .incbin "../data/Graphics/Gameplay_L2_516_LZ77.bin"
-Data08264B68:                       ; 08264B68
+L2Image16_6000_LZ77:                ; 08264B68
 .incbin "../data/Graphics/Gameplay_L2_616_LZ77.bin"
-Data082650D8:                       ; 082650D8
+L2Image01_6000_LZ77:                ; 082650D8
 .incbin "../data/Graphics/Gameplay_L2_601_LZ77.bin"
-Data08265808:                       ; 08265808
+L2Image0D_6000_LZ77:                ; 08265808
 .incbin "../data/Graphics/Gameplay_L2_60D_LZ77.bin"
-Data082660C0:                       ; 082660C0
+L2Image1D_5000_LZ77:                ; 082660C0
 .incbin "../data/Graphics/Gameplay_L2_51D_LZ77.bin"
-Data08266A10:                       ; 08266A10
+L2Image1D_6000_LZ77:                ; 08266A10
 .incbin "../data/Graphics/Gameplay_L2_61D_LZ77.bin"
-Data082672D0:                       ; 082672D0
+L2Image1F_5000_LZ77:                ; 082672D0
 .incbin "../data/Graphics/Gameplay_L2_51F_LZ77.bin"
-Data08267CB8:                       ; 08267CB8
+L2Image1F_6000_LZ77:                ; 08267CB8
 .incbin "../data/Graphics/Gameplay_L2_61F_LZ77.bin"
-DataPtrs082686EC:                   ; 082686EC
-.d32 DataPtrs0826445C
-DataPtrs082686F0:                   ; 082686F0
-.d32 Data08264B68
-DataPtrs082686F4:                   ; 082686F4
-.d32 Data082650D8
-DataPtrs082686F8:                   ; 082686F8
-.d32 Data08265808
-DataPtrs082686FC:                   ; 082686FC
-.d32 Data082660C0
-DataPtrs08268700:                   ; 08268700
-.d32 Data08266A10
-DataPtrs08268704:                   ; 08268704
-.d32 Data082672D0
-DataPtrs08268708:                   ; 08268708
-.d32 Data08267CB8
-Data0826870C:                       ; 0826870C
+L2Image16_5000_Ptr2:                ; 082686EC
+.d32 L2Image16_5000_LZ77
+L2Image16_6000_Ptr2:                ; 082686F0
+.d32 L2Image16_6000_LZ77
+L2Image01_6000_Ptr2:                ; 082686F4
+.d32 L2Image01_6000_LZ77
+L2Image0D_6000_Ptr2:                ; 082686F8
+.d32 L2Image0D_6000_LZ77
+L2Image1D_5000_Ptr2:                ; 082686FC
+.d32 L2Image1D_5000_LZ77
+L2Image1D_6000_Ptr2:                ; 08268700
+.d32 L2Image1D_6000_LZ77
+L2Image1F_5000_Ptr2:                ; 08268704
+.d32 L2Image1F_5000_LZ77
+L2Image1F_6000_Ptr2:                ; 08268708
+.d32 L2Image1F_6000_LZ77
+L3Image0D11_7000_LZ77:              ; 0826870C
 .incbin "../data/Graphics/Gameplay_L3_70D_LZ77.bin"
-Data08268C3C:                       ; 08268C3C
+L3Image0C0D_8000_LZ77:              ; 08268C3C
 .incbin "../data/Graphics/Gameplay_L3_80C_LZ77.bin"
-Data0826922C:                       ; 0826922C
+L3Image0A_7000_LZ77:                ; 0826922C
 .incbin "../data/Graphics/Gameplay_L3_70A_LZ77.bin"
-Data082695CC:                       ; 082695CC
+L3Image09_LZ77:                     ; 082695CC
 .incbin "../data/Graphics/Gameplay_L3_709_LZ77.bin"
-Data0826982C:                       ; 0826982C
+L3Image01_7000_1C_LZ77:             ; 0826982C
 .incbin "../data/Graphics/Gameplay_L3_701_LZ77.bin"
-Data08269E98:                       ; 08269E98
+L3Image12_7000_Spr_8000_LZ77:       ; 08269E98
 .incbin "../data/Graphics/Gameplay_L3_712_LZ77.bin"
-Data0826A200:                       ; 0826A200
+L3Spr_7000_LZ77:                    ; 0826A200
 .incbin "../data/Graphics/Gameplay_L3_702_LZ77.bin"
-Data0826A59C:                       ; 0826A59C
+L3Image121B26Intro_8000_LZ77:       ; 0826A59C
 .incbin "../data/Graphics/Gameplay_L3_812_LZ77.bin"
-DataPtrs0826ABC4:                   ; 0826ABC4
-.d32 Data0826870C
-DataPtrs0826ABC8:                   ; 0826ABC8
-.d32 Data08268C3C
-DataPtrs0826ABCC:                   ; 0826ABCC
-.d32 Data0826922C
-DataPtrs0826ABD0:                   ; 0826ABD0
-.d32 Data082695CC
-DataPtrs0826ABD4:                   ; 0826ABD4
-.d32 Data0826982C
-DataPtrs0826ABD8:                   ; 0826ABD8
-.d32 Data08269E98
-DataPtrs0826ABDC:                   ; 0826ABDC
-.d32 Data0826A200
-DataPtrs0826ABE0:                   ; 0826ABE0
-.d32 Data0826A59C
-Data0826ABE4:                       ; 0826ABE4
+L3Image0D11_7000_Ptr2:              ; 0826ABC4
+.d32 L3Image0D11_7000_LZ77
+L3Image0C0D_8000_Ptr2:              ; 0826ABC8
+.d32 L3Image0C0D_8000_LZ77
+L3Image0A_7000_Ptr2:                ; 0826ABCC
+.d32 L3Image0A_7000_LZ77
+L3Image09_Ptr2:                     ; 0826ABD0
+.d32 L3Image09_LZ77
+L3Image01_7000_1C_Ptr2:             ; 0826ABD4
+.d32 L3Image01_7000_1C_LZ77
+L3Image12_7000_Spr_8000_Ptr2:       ; 0826ABD8
+.d32 L3Image12_7000_Spr_8000_LZ77
+L3Spr_7000_Ptr2:                    ; 0826ABDC
+.d32 L3Spr_7000_LZ77
+L3Image121B26Intro_8000_Ptr2:       ; 0826ABE0
+.d32 L3Image121B26Intro_8000_LZ77
+L3Image031B_7000_0320_8000_LZ77:    ; 0826ABE4
 .incbin "../data/Graphics/Gameplay_L3_703_LZ77.bin"
-Data0826B328:                       ; 0826B328
+L3Image1E232A_7000_1E2A_8000_LZ77:  ; 0826B328
 .incbin "../data/Graphics/Gameplay_L3_71E_LZ77.bin"
-Data0826B994:                       ; 0826B994
+L3Image0CIntro_7000_LZ77:           ; 0826B994
 .incbin "../data/Graphics/Gameplay_L3_70C_LZ77.bin"
-Data0826BD60:                       ; 0826BD60
+L3Image18_7000_LZ77:                ; 0826BD60
 .incbin "../data/Graphics/Gameplay_L3_718_LZ77.bin"
 Data0826C380:                       ; 0826C380
 .incbin "../data/Graphics/GoalMinigame_7_LZ77.bin"
@@ -2373,17 +2377,17 @@ KamekRoom_Graphics_LZ77:            ; 0826D1A4
 .incbin "../data/Graphics/Gameplay_KamekRoom_LZ77.bin"
 Data0826D854:                       ; 0826D854
 .incbin "../data/Graphics/Unused0826D854_LZ77.bin"
-DataPtrs0826DC64:                   ; 0826DC64
-.d32 Data0826ABE4
-DataPtrs0826DC68:                   ; 0826DC68
-.d32 Data0826B328
-DataPtrs0826DC6C:                   ; 0826DC6C
-.d32 Data0826B994
-DataPtrs0826DC70:                   ; 0826DC70
-.d32 Data0826BD60
+L3Image031B_7000_0320_8000_Ptr2:    ; 0826DC64
+.d32 L3Image031B_7000_0320_8000_LZ77
+L3Image1E232A_7000_1E2A_8000_Ptr2:  ; 0826DC68
+.d32 L3Image1E232A_7000_1E2A_8000_LZ77
+L3Image0CIntro_7000_Ptr2:           ; 0826DC6C
+.d32 L3Image0CIntro_7000_LZ77
+L3Image18_7000_Ptr2:                ; 0826DC70
+.d32 L3Image18_7000_LZ77
 DataPtrs0826DC74:                   ; 0826DC74
 .d32 Data0826C380, Data0826CBA4
-GraphicsPtr_KamekRoom_LZ77:         ; 0826DC7C
+KamekRoom_Graphics_Ptr2:            ; 0826DC7C
 .d32 KamekRoom_Graphics_LZ77
 DataPtrs0826DC80:                   ; 0826DC80
 .d32 Data0826D854
@@ -2395,13 +2399,13 @@ Data0826E734:                       ; 0826E734
 .incbin "../data/Graphics/ScoreCalc_L3anim_2_LZ77.bin"
 Data0826ECA0:                       ; 0826ECA0
 .incbin "../data/Graphics/StoryIntro_L2_LZ77.bin"
-Data0826F1BC:                       ; 0826F1BC
+L3Image0E_7000_LZ77:                ; 0826F1BC
 .incbin "../data/Graphics/Gameplay_L3_70E_LZ77.bin"
-Data0826F84C:                       ; 0826F84C
+L3Image0E_8000_LZ77:                ; 0826F84C
 .incbin "../data/Graphics/Gameplay_L3_80E_LZ77.bin"
-Data0826FF24:                       ; 0826FF24
+L3Image0F_7000_LZ77:                ; 0826FF24
 .incbin "../data/Graphics/Gameplay_L3_70F_LZ77.bin"
-Data0827070C:                       ; 0827070C
+L3Image0F_8000_LZ77:                ; 0827070C
 .incbin "../data/Graphics/Gameplay_L3_80F_LZ77.bin"
 DataPtrs08270C38:                   ; 08270C38
 .d32 Data0826DC84
@@ -2409,108 +2413,109 @@ DataPtrs08270C3C:                   ; 08270C3C
 .d32 Data0826E1C4
 DataPtrs08270C40:                   ; 08270C40
 .d32 Data0826E734, Data0826ECA0
-DataPtrs08270C48:                   ; 08270C48
-.d32 Data0826F1BC
-DataPtrs08270C4C:                   ; 08270C4C
-.d32 Data0826F84C
-DataPtrs08270C50:                   ; 08270C50
-.d32 Data0826FF24
-DataPtrs08270C54:                   ; 08270C54
-.d32 Data0827070C
-Data08270C58:                       ; 08270C58
+L3Image0E_7000_Ptr2:                ; 08270C48
+.d32 L3Image0E_7000_LZ77
+L3Image0E_8000_Ptr2:                ; 08270C4C
+.d32 L3Image0E_8000_LZ77
+L3Image0F_7000_Ptr2:                ; 08270C50
+.d32 L3Image0F_7000_LZ77
+L3Image0F_8000_Ptr2:                ; 08270C54
+.d32 L3Image0F_8000_LZ77
+L3Image00101F_7000_LZ77:            ; 08270C58
 .incbin "../data/Graphics/Gameplay_L3_700_LZ77.bin"
-Data082712F8:                       ; 082712F8
+L3Image131D_7000_misc_8000_LZ77:    ; 082712F8
 .incbin "../data/Graphics/Gameplay_L3_713_LZ77.bin"
 Data082718B8:                       ; 082718B8
 .incbin "../data/Graphics/082718B8_LZ77.bin"
 Data08271EEC:                       ; 08271EEC
 .incbin "../data/Graphics/BanditMinigame_7_LZ77.bin"
-Data082725DC:                       ; 082725DC
+L3Image0414191A21_7000_LZ77:        ; 082725DC
 .incbin "../data/Graphics/Gameplay_L3_704_LZ77.bin"
-Data08272CDC:                       ; 08272CDC
+L3Image041415191A2127_8000_LZ77:    ; 08272CDC
 .incbin "../data/Graphics/Gameplay_L3_804_LZ77.bin"
-Data08273350:                       ; 08273350
+L3Image15_7000_LZ77:                ; 08273350
 .incbin "../data/Graphics/Gameplay_L3_715_LZ77.bin"
-Data0827380C:                       ; 0827380C
+L3Image17_7000_1718_8000_LZ77:      ; 0827380C
 .incbin "../data/Graphics/Gameplay_L3_717_LZ77.bin"
-DataPtrs082741EC:                   ; 082741EC
-.d32 Data08270C58
-DataPtrs082741F0:                   ; 082741F0
-.d32 Data082712F8
+L3Image00101F_7000_Ptr2:            ; 082741EC
+.d32 L3Image00101F_7000_LZ77
+L3Image131D_7000_misc_8000_Ptr2:    ; 082741F0
+.d32 L3Image131D_7000_misc_8000_LZ77
 DataPtrs082741F4:                   ; 082741F4
 .d32 Data082718B8
 DataPtrs082741F8:                   ; 082741F8
 .d32 Data08271EEC
-DataPtrs082741FC:                   ; 082741FC
-.d32 Data082725DC
-DataPtrs08274200:                   ; 08274200
-.d32 Data08272CDC
-DataPtrs08274204:                   ; 08274204
-.d32 Data08273350
-DataPtrs08274208:                   ; 08274208
-.d32 Data0827380C
+L3Image0414191A21_7000_Ptr2:        ; 082741FC
+.d32 L3Image0414191A21_7000_LZ77
+L3Image041415191A2127_8000_Ptr2:    ; 08274200
+.d32 L3Image041415191A2127_8000_LZ77
+L3Image15_7000_Ptr2:                ; 08274204
+.d32 L3Image15_7000_LZ77
+L3Image17_7000_1718_8000_Ptr2:      ; 08274208
+.d32 L3Image17_7000_1718_8000_LZ77
 Unused0827420C:                     ; 0827420C
 .incbin "../data/Graphics/Unused0827420C_LZ77.bin"
 Data082747D8:                       ; 082747D8
 .incbin "../data/Graphics/WorldSelect_L3_8_LZ77.bin"
-Data08274DBC:                       ; 08274DBC
+L3Image292B2E_7000_LZ77:            ; 08274DBC
 .incbin "../data/Graphics/Gameplay_L3_729_LZ77.bin"
-Data08275540:                       ; 08275540
+L3Image292B2E2F_8000_LZ77:          ; 08275540
 .incbin "../data/Graphics/Gameplay_L3_829_LZ77.bin"
-Data08275B74:                       ; 08275B74
+L3Image2F_7000_LZ77:                ; 08275B74
 .incbin "../data/Graphics/Gameplay_L3_72F_LZ77.bin"
 Data082760C8:                       ; 082760C8
 .incbin "../data/Graphics/Unused082760C8_LZ77.bin"
-Data082762E4:                       ; 082762E4
+L3Image16_7000_LZ77:                ; 082762E4
 .incbin "../data/Graphics/Gameplay_L3_716_LZ77.bin"
-Data08276764:                       ; 08276764
+L3Image16_8000_LZ77:                ; 08276764
 .incbin "../data/Graphics/Gameplay_L3_816_LZ77.bin"
 DataPtrs08276C30:                   ; 08276C30
 .d32 Unused0827420C
 DataPtrs08276C34:                   ; 08276C34
 .d32 Data082747D8
-DataPtrs08276C38:                   ; 08276C38
-.d32 Data08274DBC
-DataPtrs08276C3C:                   ; 08276C3C
-.d32 Data08275540
-DataPtrs08276C40:                   ; 08276C40
-.d32 Data08275B74, Data082760C8
-DataPtrs08276C48:                   ; 08276C48
-.d32 Data082762E4
-DataPtrs08276C4C:                   ; 08276C4C
-.d32 Data08276764
-Data08276C50:                       ; 08276C50
+L3Image292B2E_7000_Ptr2:            ; 08276C38
+.d32 L3Image292B2E_7000_LZ77
+L3Image292B2E2F_8000_Ptr2:          ; 08276C3C
+.d32 L3Image292B2E2F_8000_LZ77
+L3Image2F_7000_Ptr2:                ; 08276C40
+.d32 L3Image2F_7000_LZ77
+.d32 Data082760C8
+L3Image16_7000_Ptr2:                ; 08276C48
+.d32 L3Image16_7000_LZ77
+L3Image16_8000_Ptr2:                ; 08276C4C
+.d32 L3Image16_8000_LZ77
+L3Image20_7000_LZ77:                ; 08276C50
 .incbin "../data/Graphics/Gameplay_L3_720_LZ77.bin"
-Data08277254:                       ; 08277254
+L3Image2228_7000_282C2D_8000_LZ77:  ; 08277254
 .incbin "../data/Graphics/Gameplay_L3_722_LZ77.bin"
-Data082776BC:                       ; 082776BC
+L3Image1123_8000_LZ77:              ; 082776BC
 .incbin "../data/Graphics/Gameplay_L3_811_LZ77.bin"
-Data08277BB8:                       ; 08277BB8
+L3Image24_7000_LZ77:                ; 08277BB8
 .incbin "../data/Graphics/Gameplay_L3_724_LZ77.bin"
-Data0827834C:                       ; 0827834C
+L3Image25_LZ77:                     ; 0827834C
 .incbin "../data/Graphics/Gameplay_L3_725_LZ77.bin"
-Data0827893C:                       ; 0827893C
+L3Image26_7000_LZ77:                ; 0827893C
 .incbin "../data/Graphics/Gameplay_L3_726_LZ77.bin"
-Data08278C58:                       ; 08278C58
+L3Image27_7000_LZ77:                ; 08278C58
 .incbin "../data/Graphics/Gameplay_L3_727_LZ77.bin"
-Data08279214:                       ; 08279214
+L3Image2C2D_7000_LZ77:              ; 08279214
 .incbin "../data/Graphics/Gameplay_L3_72C_LZ77.bin"
-DataPtrs0827985C:                   ; 0827985C
-.d32 Data08276C50
-DataPtrs08279860:                   ; 08279860
-.d32 Data08277254
-DataPtrs08279864:                   ; 08279864
-.d32 Data082776BC
-DataPtrs08279868:                   ; 08279868
-.d32 Data08277BB8
-DataPtrs0827986C:                   ; 0827986C
-.d32 Data0827834C
-DataPtrs08279870:                   ; 08279870
-.d32 Data0827893C
-DataPtrs08279874:                   ; 08279874
-.d32 Data08278C58
-DataPtrs08279878:                   ; 08279878
-.d32 Data08279214
+L3Image20_7000_Ptr2:                ; 0827985C
+.d32 L3Image20_7000_LZ77
+L3Image2228_7000_282C2D_8000_Ptr2:  ; 08279860
+.d32 L3Image2228_7000_282C2D_8000_LZ77
+L3Image1123_8000_Ptr2:              ; 08279864
+.d32 L3Image1123_8000_LZ77
+L3Image24_7000_Ptr2:                ; 08279868
+.d32 L3Image24_7000_LZ77
+L3Image25_Ptr2:                     ; 0827986C
+.d32 L3Image25_LZ77
+L3Image26_7000_Ptr2:                ; 08279870
+.d32 L3Image26_7000_LZ77
+L3Image27_7000_Ptr2:                ; 08279874
+.d32 L3Image27_7000_LZ77
+L3Image2C2D_7000_Ptr2:              ; 08279878
+.d32 L3Image2C2D_7000_LZ77
 Data0827987C:                       ; 0827987C
 .incbin "../data/Graphics/Data0827987C.bin"
 Data08279C7C:                       ; 08279C7C
@@ -3201,386 +3206,388 @@ Data082AF690:                       ; 082AF690
 .incbin "../data/Graphics/Gameplay_sprite_1000_LZ77.bin"
 Data082B2480:                       ; 082B2480
 .incbin "../data/Graphics/Gameplay_PauseMenu_LZ77.bin"
-Data082B2C8C:                       ; 082B2C8C
+SprStripe1A_LZ77:                   ; 082B2C8C
 .incbin "../data/Graphics/Gameplay_stripe_1A_LZ77.bin"
-Data082B2FAC:                       ; 082B2FAC
+SprStripe1B_LZ77:                   ; 082B2FAC
 .incbin "../data/Graphics/Gameplay_stripe_1B_LZ77.bin"
-Data082B3194:                       ; 082B3194
+SprStripe1C_LZ77:                   ; 082B3194
 .incbin "../data/Graphics/Gameplay_stripe_1C_LZ77.bin"
-Data082B3394:                       ; 082B3394
+SprStripe1D_LZ77:                   ; 082B3394
 .incbin "../data/Graphics/Gameplay_stripe_1D_LZ77.bin"
-Data082B3614:                       ; 082B3614
+SprStripe1E_LZ77:                   ; 082B3614
 .incbin "../data/Graphics/Gameplay_stripe_1E_LZ77.bin"
-Data082B3924:                       ; 082B3924
+SprStripe1F_LZ77:                   ; 082B3924
 .incbin "../data/Graphics/Gameplay_stripe_1F_LZ77.bin"
-Data082B3BF0:                       ; 082B3BF0
+SprStripe20_LZ77:                   ; 082B3BF0
 .incbin "../data/Graphics/Gameplay_stripe_20_LZ77.bin"
-Data082B3F44:                       ; 082B3F44
+SprStripe21_LZ77:                   ; 082B3F44
 .incbin "../data/Graphics/Gameplay_stripe_21_LZ77.bin"
-Data082B4218:                       ; 082B4218
+SprStripe22_LZ77:                   ; 082B4218
 .incbin "../data/Graphics/Gameplay_stripe_22_LZ77.bin"
-Data082B44C0:                       ; 082B44C0
+SprStripe23_LZ77:                   ; 082B44C0
 .incbin "../data/Graphics/Gameplay_stripe_23_LZ77.bin"
-Data082B470C:                       ; 082B470C
+SprStripe24_LZ77:                   ; 082B470C
 .incbin "../data/Graphics/Gameplay_stripe_24_LZ77.bin"
-Data082B4980:                       ; 082B4980
+SprStripe25_LZ77:                   ; 082B4980
 .incbin "../data/Graphics/Gameplay_stripe_25_LZ77.bin"
-Data082B4C44:                       ; 082B4C44
+SprStripe26_LZ77:                   ; 082B4C44
 .incbin "../data/Graphics/Gameplay_stripe_26_LZ77.bin"
-Data082B4F5C:                       ; 082B4F5C
+SprStripe27_LZ77:                   ; 082B4F5C
 .incbin "../data/Graphics/Gameplay_stripe_27_LZ77.bin"
-Data082B5200:                       ; 082B5200
+SprStripe28_LZ77:                   ; 082B5200
 .incbin "../data/Graphics/Gameplay_stripe_28_LZ77.bin"
-Data082B5480:                       ; 082B5480
+SprStripe29_LZ77:                   ; 082B5480
 .incbin "../data/Graphics/Gameplay_stripe_29_LZ77.bin"
-Data082B5768:                       ; 082B5768
+SprStripe2A_LZ77:                   ; 082B5768
 .incbin "../data/Graphics/Gameplay_stripe_2A_LZ77.bin"
-Data082B5928:                       ; 082B5928
+SprStripe2B_LZ77:                   ; 082B5928
 .incbin "../data/Graphics/Gameplay_stripe_2B_LZ77.bin"
-Data082B5B88:                       ; 082B5B88
+SprStripe2C_LZ77:                   ; 082B5B88
 .incbin "../data/Graphics/Gameplay_stripe_2C_LZ77.bin"
-Data082B5DF0:                       ; 082B5DF0
+SprStripe2D_LZ77:                   ; 082B5DF0
 .incbin "../data/Graphics/Gameplay_stripe_2D_LZ77.bin"
-Data082B60AC:                       ; 082B60AC
+SprStripe2E_LZ77:                   ; 082B60AC
 .incbin "../data/Graphics/Gameplay_stripe_2E_LZ77.bin"
-Data082B62C0:                       ; 082B62C0
+SprStripe2F_LZ77:                   ; 082B62C0
 .incbin "../data/Graphics/Gameplay_stripe_2F_LZ77.bin"
-Data082B6538:                       ; 082B6538
+SprStripe30_LZ77:                   ; 082B6538
 .incbin "../data/Graphics/Gameplay_stripe_30_LZ77.bin"
-Data082B6750:                       ; 082B6750
+SprStripe31_LZ77:                   ; 082B6750
 .incbin "../data/Graphics/Gameplay_stripe_31_LZ77.bin"
-Data082B697C:                       ; 082B697C
+SprStripe32_LZ77:                   ; 082B697C
 .incbin "../data/Graphics/Gameplay_stripe_32_LZ77.bin"
-Data082B6C1C:                       ; 082B6C1C
+SprStripe33_LZ77:                   ; 082B6C1C
 .incbin "../data/Graphics/Gameplay_stripe_33_LZ77.bin"
-Data082B6ED4:                       ; 082B6ED4
+SprStripe34_LZ77:                   ; 082B6ED4
 .incbin "../data/Graphics/Gameplay_stripe_34_LZ77.bin"
-Data082B71C0:                       ; 082B71C0
+SprStripe35_LZ77:                   ; 082B71C0
 .incbin "../data/Graphics/Gameplay_stripe_35_LZ77.bin"
-Data082B74E0:                       ; 082B74E0
+SprStripe36_LZ77:                   ; 082B74E0
 .incbin "../data/Graphics/Gameplay_stripe_36_LZ77.bin"
-Data082B77E0:                       ; 082B77E0
+SprStripe37_LZ77:                   ; 082B77E0
 .incbin "../data/Graphics/Gameplay_stripe_37_LZ77.bin"
-Data082B79E0:                       ; 082B79E0
+SprStripe38_LZ77:                   ; 082B79E0
 .incbin "../data/Graphics/Gameplay_stripe_38_LZ77.bin"
-Data082B7C80:                       ; 082B7C80
+SprStripe39_LZ77:                   ; 082B7C80
 .incbin "../data/Graphics/Gameplay_stripe_39_LZ77.bin"
-DataPtrs082B7FC0:                   ; 082B7FC0
-.d32 Data082B2C8C
-DataPtrs082B7FC4:                   ; 082B7FC4
-.d32 Data082B2FAC
-DataPtrs082B7FC8:                   ; 082B7FC8
-.d32 Data082B3194
-DataPtrs082B7FCC:                   ; 082B7FCC
-.d32 Data082B3394
-DataPtrs082B7FD0:                   ; 082B7FD0
-.d32 Data082B3614
-DataPtrs082B7FD4:                   ; 082B7FD4
-.d32 Data082B3924
-DataPtrs082B7FD8:                   ; 082B7FD8
-.d32 Data082B3BF0
-DataPtrs082B7FDC:                   ; 082B7FDC
-.d32 Data082B3F44
-DataPtrs082B7FE0:                   ; 082B7FE0
-.d32 Data082B4218
-DataPtrs082B7FE4:                   ; 082B7FE4
-.d32 Data082B44C0
-DataPtrs082B7FE8:                   ; 082B7FE8
-.d32 Data082B470C
-DataPtrs082B7FEC:                   ; 082B7FEC
-.d32 Data082B4980
-DataPtrs082B7FF0:                   ; 082B7FF0
-.d32 Data082B4C44
-DataPtrs082B7FF4:                   ; 082B7FF4
-.d32 Data082B4F5C
-DataPtrs082B7FF8:                   ; 082B7FF8
-.d32 Data082B5200
-DataPtrs082B7FFC:                   ; 082B7FFC
-.d32 Data082B5480
-DataPtrs082B8000:                   ; 082B8000
-.d32 Data082B5768
-DataPtrs082B8004:                   ; 082B8004
-.d32 Data082B5928
-DataPtrs082B8008:                   ; 082B8008
-.d32 Data082B5B88
-DataPtrs082B800C:                   ; 082B800C
-.d32 Data082B5DF0
-DataPtrs082B8010:                   ; 082B8010
-.d32 Data082B60AC
-DataPtrs082B8014:                   ; 082B8014
-.d32 Data082B62C0
-DataPtrs082B8018:                   ; 082B8018
-.d32 Data082B6538
-DataPtrs082B801C:                   ; 082B801C
-.d32 Data082B6750
-DataPtrs082B8020:                   ; 082B8020
-.d32 Data082B697C
-DataPtrs082B8024:                   ; 082B8024
-.d32 Data082B6C1C
-DataPtrs082B8028:                   ; 082B8028
-.d32 Data082B6ED4
-DataPtrs082B802C:                   ; 082B802C
-.d32 Data082B71C0
-DataPtrs082B8030:                   ; 082B8030
-.d32 Data082B74E0
-DataPtrs082B8034:                   ; 082B8034
-.d32 Data082B77E0
-DataPtrs082B8038:                   ; 082B8038
-.d32 Data082B79E0
-DataPtrs082B803C:                   ; 082B803C
-.d32 Data082B7C80
-Data082B8040:                       ; 082B8040
+SprStripe1A_Ptr2:                   ; 082B7FC0
+.d32 SprStripe1A_LZ77
+SprStripe1B_Ptr2:                   ; 082B7FC4
+.d32 SprStripe1B_LZ77
+SprStripe1C_Ptr2:                   ; 082B7FC8
+.d32 SprStripe1C_LZ77
+SprStripe1D_Ptr2:                   ; 082B7FCC
+.d32 SprStripe1D_LZ77
+SprStripe1E_Ptr2:                   ; 082B7FD0
+.d32 SprStripe1E_LZ77
+SprStripe1F_Ptr2:                   ; 082B7FD4
+.d32 SprStripe1F_LZ77
+SprStripe20_Ptr2:                   ; 082B7FD8
+.d32 SprStripe20_LZ77
+SprStripe21_Ptr2:                   ; 082B7FDC
+.d32 SprStripe21_LZ77
+SprStripe22_Ptr2:                   ; 082B7FE0
+.d32 SprStripe22_LZ77
+SprStripe23_Ptr2:                   ; 082B7FE4
+.d32 SprStripe23_LZ77
+SprStripe24_Ptr2:                   ; 082B7FE8
+.d32 SprStripe24_LZ77
+SprStripe25_Ptr2:                   ; 082B7FEC
+.d32 SprStripe25_LZ77
+SprStripe26_Ptr2:                   ; 082B7FF0
+.d32 SprStripe26_LZ77
+SprStripe27_Ptr2:                   ; 082B7FF4
+.d32 SprStripe27_LZ77
+SprStripe28_Ptr2:                   ; 082B7FF8
+.d32 SprStripe28_LZ77
+SprStripe29_Ptr2:                   ; 082B7FFC
+.d32 SprStripe29_LZ77
+SprStripe2A_Ptr2:                   ; 082B8000
+.d32 SprStripe2A_LZ77
+SprStripe2B_Ptr2:                   ; 082B8004
+.d32 SprStripe2B_LZ77
+SprStripe2C_Ptr2:                   ; 082B8008
+.d32 SprStripe2C_LZ77
+SprStripe2D_Ptr2:                   ; 082B800C
+.d32 SprStripe2D_LZ77
+SprStripe2E_Ptr2:                   ; 082B8010
+.d32 SprStripe2E_LZ77
+SprStripe2F_Ptr2:                   ; 082B8014
+.d32 SprStripe2F_LZ77
+SprStripe30_Ptr2:                   ; 082B8018
+.d32 SprStripe30_LZ77
+SprStripe31_Ptr2:                   ; 082B801C
+.d32 SprStripe31_LZ77
+SprStripe32_Ptr2:                   ; 082B8020
+.d32 SprStripe32_LZ77
+SprStripe33_Ptr2:                   ; 082B8024
+.d32 SprStripe33_LZ77
+SprStripe34_Ptr2:                   ; 082B8028
+.d32 SprStripe34_LZ77
+SprStripe35_Ptr2:                   ; 082B802C
+.d32 SprStripe35_LZ77
+SprStripe36_Ptr2:                   ; 082B8030
+.d32 SprStripe36_LZ77
+SprStripe37_Ptr2:                   ; 082B8034
+.d32 SprStripe37_LZ77
+SprStripe38_Ptr2:                   ; 082B8038
+.d32 SprStripe38_LZ77
+SprStripe39_Ptr2:                   ; 082B803C
+.d32 SprStripe39_LZ77
+SprStripe3A_LZ77:                   ; 082B8040
 .incbin "../data/Graphics/Gameplay_stripe_3A_LZ77.bin"
-Data082B82F0:                       ; 082B82F0
+SprStripe3B_LZ77:                   ; 082B82F0
 .incbin "../data/Graphics/Gameplay_stripe_3B_LZ77.bin"
-Data082B8620:                       ; 082B8620
+SprStripe3C_LZ77:                   ; 082B8620
 .incbin "../data/Graphics/Gameplay_stripe_3C_LZ77.bin"
-Data082B88FC:                       ; 082B88FC
+SprStripe3D_LZ77:                   ; 082B88FC
 .incbin "../data/Graphics/Gameplay_stripe_3D_LZ77.bin"
-Data082B8BB4:                       ; 082B8BB4
+SprStripe3E_LZ77:                   ; 082B8BB4
 .incbin "../data/Graphics/Gameplay_stripe_3E_LZ77.bin"
-Data082B8E98:                       ; 082B8E98
+SprStripe3F_LZ77:                   ; 082B8E98
 .incbin "../data/Graphics/Gameplay_stripe_3F_LZ77.bin"
-Data082B9130:                       ; 082B9130
+SprStripe40_LZ77:                   ; 082B9130
 .incbin "../data/Graphics/Gameplay_stripe_40_LZ77.bin"
-Data082B939C:                       ; 082B939C
+SprStripe41_LZ77:                   ; 082B939C
 .incbin "../data/Graphics/Gameplay_stripe_41_LZ77.bin"
-Data082B95BC:                       ; 082B95BC
+SprStripe42_LZ77:                   ; 082B95BC
 .incbin "../data/Graphics/Gameplay_stripe_42_LZ77.bin"
-Data082B97E4:                       ; 082B97E4
+SprStripe43_LZ77:                   ; 082B97E4
 .incbin "../data/Graphics/Gameplay_stripe_43_LZ77.bin"
-Data082B9A2C:                       ; 082B9A2C
+SprStripe44_LZ77:                   ; 082B9A2C
 .incbin "../data/Graphics/Gameplay_stripe_44_LZ77.bin"
-Data082B9D8C:                       ; 082B9D8C
+SprStripe45_LZ77:                   ; 082B9D8C
 .incbin "../data/Graphics/Gameplay_stripe_45_LZ77.bin"
-Data082BA008:                       ; 082BA008
+SprStripe46_LZ77:                   ; 082BA008
 .incbin "../data/Graphics/Gameplay_stripe_46_LZ77.bin"
-Data082BA21C:                       ; 082BA21C
+SprStripe47_LZ77:                   ; 082BA21C
 .incbin "../data/Graphics/Gameplay_stripe_47_LZ77.bin"
-Data082BA500:                       ; 082BA500
+SprStripe48_LZ77:                   ; 082BA500
 .incbin "../data/Graphics/Gameplay_stripe_48_LZ77.bin"
-Data082BA824:                       ; 082BA824
+SprStripe49_LZ77:                   ; 082BA824
 .incbin "../data/Graphics/Gameplay_stripe_49_LZ77.bin"
-Data082BAAE8:                       ; 082BAAE8
+SprStripe4A_LZ77:                   ; 082BAAE8
 .incbin "../data/Graphics/Gameplay_stripe_4A_LZ77.bin"
-Data082BAD90:                       ; 082BAD90
+SprStripe4B_LZ77:                   ; 082BAD90
 .incbin "../data/Graphics/Gameplay_stripe_4B_LZ77.bin"
-Data082BB018:                       ; 082BB018
+SprStripe4C_LZ77:                   ; 082BB018
 .incbin "../data/Graphics/Gameplay_stripe_4C_LZ77.bin"
-Data082BB340:                       ; 082BB340
+SprStripe4D_LZ77:                   ; 082BB340
 .incbin "../data/Graphics/Gameplay_stripe_4D_LZ77.bin"
-Data082BB568:                       ; 082BB568
+SprStripe4E_LZ77:                   ; 082BB568
 .incbin "../data/Graphics/Gameplay_stripe_4E_LZ77.bin"
-Data082BB888:                       ; 082BB888
+SprStripe4F_LZ77:                   ; 082BB888
 .incbin "../data/Graphics/Gameplay_stripe_4F_LZ77.bin"
-Data082BBB04:                       ; 082BBB04
+SprStripe50_LZ77:                   ; 082BBB04
 .incbin "../data/Graphics/Gameplay_stripe_50_LZ77.bin"
-Data082BBD84:                       ; 082BBD84
+SprStripe51_LZ77:                   ; 082BBD84
 .incbin "../data/Graphics/Gameplay_stripe_51_LZ77.bin"
-Data082BBFF0:                       ; 082BBFF0
+SprStripe52_LZ77:                   ; 082BBFF0
 .incbin "../data/Graphics/Gameplay_stripe_52_LZ77.bin"
-Data082BC124:                       ; 082BC124
+SprStripe53_LZ77:                   ; 082BC124
 .incbin "../data/Graphics/Gameplay_stripe_53_LZ77.bin"
-Data082BC318:                       ; 082BC318
+SprStripe54_LZ77:                   ; 082BC318
 .incbin "../data/Graphics/Gameplay_stripe_54_LZ77.bin"
-Data082BC5FC:                       ; 082BC5FC
+SprStripe55_LZ77:                   ; 082BC5FC
 .incbin "../data/Graphics/Gameplay_stripe_55_LZ77.bin"
-Data082BC8F0:                       ; 082BC8F0
+SprStripe56_LZ77:                   ; 082BC8F0
 .incbin "../data/Graphics/Gameplay_stripe_56_LZ77.bin"
-Data082BCBC4:                       ; 082BCBC4
+SprStripe57_LZ77:                   ; 082BCBC4
 .incbin "../data/Graphics/Gameplay_stripe_57_LZ77.bin"
-Data082BCDF0:                       ; 082BCDF0
+SprStripe58_LZ77:                   ; 082BCDF0
 .incbin "../data/Graphics/Gameplay_stripe_58_LZ77.bin"
-Data082BD034:                       ; 082BD034
+SprStripe59_LZ77:                   ; 082BD034
 .incbin "../data/Graphics/Gameplay_stripe_59_LZ77.bin"
-DataPtrs082BD2A8:                   ; 082BD2A8
-.d32 Data082B8040
-DataPtrs082BD2AC:                   ; 082BD2AC
-.d32 Data082B82F0
-DataPtrs082BD2B0:                   ; 082BD2B0
-.d32 Data082B8620
-DataPtrs082BD2B4:                   ; 082BD2B4
-.d32 Data082B88FC
-DataPtrs082BD2B8:                   ; 082BD2B8
-.d32 Data082B8BB4
-DataPtrs082BD2BC:                   ; 082BD2BC
-.d32 Data082B8E98
-DataPtrs082BD2C0:                   ; 082BD2C0
-.d32 Data082B9130
-DataPtrs082BD2C4:                   ; 082BD2C4
-.d32 Data082B939C
-DataPtrs082BD2C8:                   ; 082BD2C8
-.d32 Data082B95BC
-DataPtrs082BD2CC:                   ; 082BD2CC
-.d32 Data082B97E4
-DataPtrs082BD2D0:                   ; 082BD2D0
-.d32 Data082B9A2C
-DataPtrs082BD2D4:                   ; 082BD2D4
-.d32 Data082B9D8C
-DataPtrs082BD2D8:                   ; 082BD2D8
-.d32 Data082BA008
-DataPtrs082BD2DC:                   ; 082BD2DC
-.d32 Data082BA21C
-DataPtrs082BD2E0:                   ; 082BD2E0
-.d32 Data082BA500
-DataPtrs082BD2E4:                   ; 082BD2E4
-.d32 Data082BA824
-DataPtrs082BD2E8:                   ; 082BD2E8
-.d32 Data082BAAE8
-DataPtrs082BD2EC:                   ; 082BD2EC
-.d32 Data082BAD90
-DataPtrs082BD2F0:                   ; 082BD2F0
-.d32 Data082BB018
-DataPtrs082BD2F4:                   ; 082BD2F4
-.d32 Data082BB340
-DataPtrs082BD2F8:                   ; 082BD2F8
-.d32 Data082BB568
-DataPtrs082BD2FC:                   ; 082BD2FC
-.d32 Data082BB888
-DataPtrs082BD300:                   ; 082BD300
-.d32 Data082BBB04
-DataPtrs082BD304:                   ; 082BD304
-.d32 Data082BBD84
-DataPtrs082BD308:                   ; 082BD308
-.d32 Data082BBFF0
-DataPtrs082BD30C:                   ; 082BD30C
-.d32 Data082BC124
-DataPtrs082BD310:                   ; 082BD310
-.d32 Data082BC318
-DataPtrs082BD314:                   ; 082BD314
-.d32 Data082BC5FC
-DataPtrs082BD318:                   ; 082BD318
-.d32 Data082BC8F0
-DataPtrs082BD31C:                   ; 082BD31C
-.d32 Data082BCBC4
-DataPtrs082BD320:                   ; 082BD320
-.d32 Data082BCDF0
-DataPtrs082BD324:                   ; 082BD324
-.d32 Data082BD034
-Data082BD328:                       ; 082BD328
+SprStripe3A_Ptr2:                   ; 082BD2A8
+.d32 SprStripe3A_LZ77
+SprStripe3B_Ptr2:                   ; 082BD2AC
+.d32 SprStripe3B_LZ77
+SprStripe3C_Ptr2:                   ; 082BD2B0
+.d32 SprStripe3C_LZ77
+SprStripe3D_Ptr2:                   ; 082BD2B4
+.d32 SprStripe3D_LZ77
+SprStripe3E_Ptr2:                   ; 082BD2B8
+.d32 SprStripe3E_LZ77
+SprStripe3F_Ptr2:                   ; 082BD2BC
+.d32 SprStripe3F_LZ77
+SprStripe40_Ptr2:                   ; 082BD2C0
+.d32 SprStripe40_LZ77
+SprStripe41_Ptr2:                   ; 082BD2C4
+.d32 SprStripe41_LZ77
+SprStripe42_Ptr2:                   ; 082BD2C8
+.d32 SprStripe42_LZ77
+SprStripe43_Ptr2:                   ; 082BD2CC
+.d32 SprStripe43_LZ77
+SprStripe44_Ptr2:                   ; 082BD2D0
+.d32 SprStripe44_LZ77
+SprStripe45_Ptr2:                   ; 082BD2D4
+.d32 SprStripe45_LZ77
+SprStripe46_Ptr2:                   ; 082BD2D8
+.d32 SprStripe46_LZ77
+SprStripe47_Ptr2:                   ; 082BD2DC
+.d32 SprStripe47_LZ77
+SprStripe48_Ptr2:                   ; 082BD2E0
+.d32 SprStripe48_LZ77
+SprStripe49_Ptr2:                   ; 082BD2E4
+.d32 SprStripe49_LZ77
+SprStripe4A_Ptr2:                   ; 082BD2E8
+.d32 SprStripe4A_LZ77
+SprStripe4B_Ptr2:                   ; 082BD2EC
+.d32 SprStripe4B_LZ77
+SprStripe4C_Ptr2:                   ; 082BD2F0
+.d32 SprStripe4C_LZ77
+SprStripe4D_Ptr2:                   ; 082BD2F4
+.d32 SprStripe4D_LZ77
+SprStripe4E_Ptr2:                   ; 082BD2F8
+.d32 SprStripe4E_LZ77
+SprStripe4F_Ptr2:                   ; 082BD2FC
+.d32 SprStripe4F_LZ77
+SprStripe50_Ptr2:                   ; 082BD300
+.d32 SprStripe50_LZ77
+SprStripe51_Ptr2:                   ; 082BD304
+.d32 SprStripe51_LZ77
+SprStripe52_Ptr2:                   ; 082BD308
+.d32 SprStripe52_LZ77
+SprStripe53_Ptr2:                   ; 082BD30C
+.d32 SprStripe53_LZ77
+SprStripe54_Ptr2:                   ; 082BD310
+.d32 SprStripe54_LZ77
+SprStripe55_Ptr2:                   ; 082BD314
+.d32 SprStripe55_LZ77
+SprStripe56_Ptr2:                   ; 082BD318
+.d32 SprStripe56_LZ77
+SprStripe57_Ptr2:                   ; 082BD31C
+.d32 SprStripe57_LZ77
+SprStripe58_Ptr2:                   ; 082BD320
+.d32 SprStripe58_LZ77
+SprStripe59_Ptr2:                   ; 082BD324
+.d32 SprStripe59_LZ77
+SprStripe6A_LZ77:                   ; 082BD328
 .incbin "../data/Graphics/Gameplay_stripe_6A_LZ77.bin"
-Data082BD634:                       ; 082BD634
+SprStripe6B_LZ77:                   ; 082BD634
 .incbin "../data/Graphics/Gameplay_stripe_6B_LZ77.bin"
-Data082BD8FC:                       ; 082BD8FC
+SprStripe6C_LZ77:                   ; 082BD8FC
 .incbin "../data/Graphics/Gameplay_stripe_6C_LZ77.bin"
-Data082BDB7C:                       ; 082BDB7C
+SprStripe6D_LZ77:                   ; 082BDB7C
 .incbin "../data/Graphics/Gameplay_stripe_6D_LZ77.bin"
-Data082BDD24:                       ; 082BDD24
+SprStripe6E_LZ77:                   ; 082BDD24
 .incbin "../data/Graphics/Gameplay_stripe_6E_LZ77.bin"
-Data082BDF68:                       ; 082BDF68
+SprStripe6F_LZ77:                   ; 082BDF68
 .incbin "../data/Graphics/Gameplay_stripe_6F_LZ77.bin"
-Data082BE164:                       ; 082BE164
+SprStripe70_LZ77:                   ; 082BE164
 .incbin "../data/Graphics/Gameplay_stripe_70_LZ77.bin"
-Data082BE40C:                       ; 082BE40C
+SprStripe71_LZ77:                   ; 082BE40C
 .incbin "../data/Graphics/Gameplay_stripe_71_LZ77.bin"
-Data082BE600:                       ; 082BE600
+SprStripe5A_LZ77:                   ; 082BE600
 .incbin "../data/Graphics/Gameplay_stripe_5A_LZ77.bin"
-Data082BE8A0:                       ; 082BE8A0
+SprStripe5B_LZ77:                   ; 082BE8A0
 .incbin "../data/Graphics/Gameplay_stripe_5B_LZ77.bin"
-Data082BEBA0:                       ; 082BEBA0
+SprStripe5C_LZ77:                   ; 082BEBA0
 .incbin "../data/Graphics/Gameplay_stripe_5C_LZ77.bin"
-Data082BEE40:                       ; 082BEE40
+SprStripe5D_LZ77:                   ; 082BEE40
 .incbin "../data/Graphics/Gameplay_stripe_5D_LZ77.bin"
-Data082BF0EC:                       ; 082BF0EC
+SprStripe5E_LZ77:                   ; 082BF0EC
 .incbin "../data/Graphics/Gameplay_stripe_5E_LZ77.bin"
-Data082BF3B0:                       ; 082BF3B0
+SprStripe5F_LZ77:                   ; 082BF3B0
 .incbin "../data/Graphics/Gameplay_stripe_5F_LZ77.bin"
-Data082BF584:                       ; 082BF584
+SprStripe60_LZ77:                   ; 082BF584
 .incbin "../data/Graphics/Gameplay_stripe_60_LZ77.bin"
-Data082BF7F0:                       ; 082BF7F0
+SprStripe61_LZ77:                   ; 082BF7F0
 .incbin "../data/Graphics/Gameplay_stripe_61_LZ77.bin"
-Data082BFA8C:                       ; 082BFA8C
+SprStripe62_LZ77:                   ; 082BFA8C
 .incbin "../data/Graphics/Gameplay_stripe_62_LZ77.bin"
-Data082BFC88:                       ; 082BFC88
+SprStripe63_LZ77:                   ; 082BFC88
 .incbin "../data/Graphics/Gameplay_stripe_63_LZ77.bin"
-Data082BFED8:                       ; 082BFED8
+SprStripe64_LZ77:                   ; 082BFED8
 .incbin "../data/Graphics/Gameplay_stripe_64_LZ77.bin"
-Data082C018C:                       ; 082C018C
+SprStripe65_LZ77:                   ; 082C018C
 .incbin "../data/Graphics/Gameplay_stripe_65_LZ77.bin"
-Data082C0408:                       ; 082C0408
+SprStripe66_LZ77:                   ; 082C0408
 .incbin "../data/Graphics/Gameplay_stripe_66_LZ77.bin"
-Data082C06D0:                       ; 082C06D0
+SprStripe67_LZ77:                   ; 082C06D0
 .incbin "../data/Graphics/Gameplay_stripe_67_LZ77.bin"
-Data082C0970:                       ; 082C0970
+SprStripe68_LZ77:                   ; 082C0970
 .incbin "../data/Graphics/Gameplay_stripe_68_LZ77.bin"
-Data082C0C20:                       ; 082C0C20
+SprStripe69_LZ77:                   ; 082C0C20
 .incbin "../data/Graphics/Gameplay_stripe_69_LZ77.bin"
-Data082C0EC8:                       ; 082C0EC8
+SprStripeA9_LZ77:                   ; 082C0EC8
 .incbin "../data/Graphics/Gameplay_stripe_A9_LZ77.bin"
-Data082C10E4:                       ; 082C10E4
+SprStripeAA_LZ77:                   ; 082C10E4
 .incbin "../data/Graphics/Gameplay_stripe_AA_LZ77.bin"
-Data082C12B8:                       ; 082C12B8
+SprStripeAB_LZ77:                   ; 082C12B8
 .incbin "../data/Graphics/Gameplay_stripe_AB_LZ77.bin"
-Data082C15B4:                       ; 082C15B4
+SprStripeAC_LZ77:                   ; 082C15B4
 .incbin "../data/Graphics/Gameplay_stripe_AC_LZ77.bin"
-Data082C1910:                       ; 082C1910
+SprStripeAD_LZ77:                   ; 082C1910
 .incbin "../data/Graphics/Gameplay_stripe_AD_LZ77.bin"
-Data082C1B9C:                       ; 082C1B9C
+SprStripeAE_LZ77:                   ; 082C1B9C
 .incbin "../data/Graphics/Gameplay_stripe_AE_LZ77.bin"
-Data082C1E74:                       ; 082C1E74
+SprStripeAF_LZ77:                   ; 082C1E74
 .incbin "../data/Graphics/Gameplay_stripe_AF_LZ77.bin"
-Data082C21C4:                       ; 082C21C4
+SprStripeB0_LZ77:                   ; 082C21C4
 .incbin "../data/Graphics/Gameplay_stripe_B0_LZ77.bin"
-DataPtrs082C24E0:                   ; 082C24E0
-.d32 Data082BD328
-DataPtrs082C24E4:                   ; 082C24E4
-.d32 Data082BD634
-DataPtrs082C24E8:                   ; 082C24E8
-.d32 Data082BD8FC
-DataPtrs082C24EC:                   ; 082C24EC
-.d32 Data082BDB7C
-DataPtrs082C24F0:                   ; 082C24F0
-.d32 Data082BDD24
-DataPtrs082C24F4:                   ; 082C24F4
-.d32 Data082BDF68
-DataPtrs082C24F8:                   ; 082C24F8
-.d32 Data082BE164
-DataPtrs082C24FC:                   ; 082C24FC
-.d32 Data082BE40C
-DataPtrs082C2500:                   ; 082C2500
-.d32 Data082BE600
-DataPtrs082C2504:                   ; 082C2504
-.d32 Data082BE8A0
-DataPtrs082C2508:                   ; 082C2508
-.d32 Data082BEBA0
-DataPtrs082C250C:                   ; 082C250C
-.d32 Data082BEE40
-DataPtrs082C2510:                   ; 082C2510
-.d32 Data082BF0EC
-DataPtrs082C2514:                   ; 082C2514
-.d32 Data082BF3B0
-DataPtrs082C2518:                   ; 082C2518
-.d32 Data082BF584
-DataPtrs082C251C:                   ; 082C251C
-.d32 Data082BF7F0
-DataPtrs082C2520:                   ; 082C2520
-.d32 Data082BFA8C
-DataPtrs082C2524:                   ; 082C2524
-.d32 Data082BFC88
-DataPtrs082C2528:                   ; 082C2528
-.d32 Data082BFED8
-DataPtrs082C252C:                   ; 082C252C
-.d32 Data082C018C
-DataPtrs082C2530:                   ; 082C2530
-.d32 Data082C0408
-DataPtrs082C2534:                   ; 082C2534
-.d32 Data082C06D0
-DataPtrs082C2538:                   ; 082C2538
-.d32 Data082C0970, Data082C0C20
-DataPtrs082C2540:                   ; 082C2540
-.d32 Data082C0EC8
-DataPtrs082C2544:                   ; 082C2544
-.d32 Data082C10E4
-SprStripeAB_Ptr:                    ; 082C2548
-.d32 Data082C12B8, Data082C15B4
-DataPtrs082C2550:                   ; 082C2550
-.d32 Data082C1910
-DataPtrs082C2554:                   ; 082C2554
-.d32 Data082C1B9C
-DataPtrs082C2558:                   ; 082C2558
-.d32 Data082C1E74
-DataPtrs082C255C:                   ; 082C255C
-.d32 Data082C21C4
+SprStripe6A_Ptr2:                   ; 082C24E0
+.d32 SprStripe6A_LZ77
+SprStripe6B_Ptr2:                   ; 082C24E4
+.d32 SprStripe6B_LZ77
+SprStripe6C_Ptr2:                   ; 082C24E8
+.d32 SprStripe6C_LZ77
+SprStripe6D_Ptr2:                   ; 082C24EC
+.d32 SprStripe6D_LZ77
+SprStripe6E_Ptr2:                   ; 082C24F0
+.d32 SprStripe6E_LZ77
+SprStripe6F_Ptr2:                   ; 082C24F4
+.d32 SprStripe6F_LZ77
+SprStripe70_Ptr2:                   ; 082C24F8
+.d32 SprStripe70_LZ77
+SprStripe71_Ptr2:                   ; 082C24FC
+.d32 SprStripe71_LZ77
+SprStripe5A_Ptr2:                   ; 082C2500
+.d32 SprStripe5A_LZ77
+SprStripe5B_Ptr2:                   ; 082C2504
+.d32 SprStripe5B_LZ77
+SprStripe5C_Ptr2:                   ; 082C2508
+.d32 SprStripe5C_LZ77
+SprStripe5D_Ptr2:                   ; 082C250C
+.d32 SprStripe5D_LZ77
+SprStripe5E_Ptr2:                   ; 082C2510
+.d32 SprStripe5E_LZ77
+SprStripe5F_Ptr2:                   ; 082C2514
+.d32 SprStripe5F_LZ77
+SprStripe60_Ptr2:                   ; 082C2518
+.d32 SprStripe60_LZ77
+SprStripe61_Ptr2:                   ; 082C251C
+.d32 SprStripe61_LZ77
+SprStripe62_Ptr2:                   ; 082C2520
+.d32 SprStripe62_LZ77
+SprStripe63_Ptr2:                   ; 082C2524
+.d32 SprStripe63_LZ77
+SprStripe64_Ptr2:                   ; 082C2528
+.d32 SprStripe64_LZ77
+SprStripe65_Ptr2:                   ; 082C252C
+.d32 SprStripe65_LZ77
+SprStripe66_Ptr2:                   ; 082C2530
+.d32 SprStripe66_LZ77
+SprStripe67_Ptr2:                   ; 082C2534
+.d32 SprStripe67_LZ77
+SprStripe68_Ptr2:                   ; 082C2538
+.d32 SprStripe68_LZ77
+.d32 SprStripe69_LZ77
+SprStripeA9_Ptr2:                   ; 082C2540
+.d32 SprStripeA9_LZ77
+SprStripeAA_Ptr2:                   ; 082C2544
+.d32 SprStripeAA_LZ77
+SprStripeAB_Ptr2:                   ; 082C2548
+.d32 SprStripeAB_LZ77
+.d32 SprStripeAC_LZ77
+SprStripeAD_Ptr2:                   ; 082C2550
+.d32 SprStripeAD_LZ77
+SprStripeAE_Ptr2:                   ; 082C2554
+.d32 SprStripeAE_LZ77
+SprStripeAF_Ptr2:                   ; 082C2558
+.d32 SprStripeAF_LZ77
+SprStripeB0_Ptr2:                   ; 082C255C
+.d32 SprStripeB0_LZ77
 Data082C2560:                       ; 082C2560
 .incbin "../data/Graphics/Credits_sprite_8bpp_LZ77.bin"
 Data082C6CF8:                       ; 082C6CF8
