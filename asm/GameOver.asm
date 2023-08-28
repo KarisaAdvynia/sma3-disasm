@@ -24,7 +24,7 @@ add   r2,r0,r1                      ; 0810731A
 lsl   r1,r3,0x6                     ; 0810731C
 str   r1,[r2]                       ; 0810731E
 mov   r1,0xA5                       ; 08107320
-lsl   r1,r1,0x3                     ; 08107322
+lsl   r1,r1,0x3                     ; 08107322  0528
 add   r2,r0,r1                      ; 08107324
 lsl   r1,r4,0x6                     ; 08107326
 str   r1,[r2]                       ; 08107328
@@ -71,7 +71,7 @@ lsl   r1,r1,0x3                     ; 08107382
 add   r0,r0,r1                      ; 08107384
 ldr   r1,[r0]                       ; 08107386
 cmp   r3,r5                         ; 08107388
-bhs   @@Code081073C0                ; 0810738A
+bhs   @@Return                      ; 0810738A
 @@Code0810738C:
 mov   r0,0x0                        ; 0810738C
 ldsb  r0,[r4,r0]                    ; 0810738E
@@ -100,7 +100,7 @@ add   r3,0x1                        ; 081073B8
 add   r4,0x4                        ; 081073BA
 cmp   r3,r5                         ; 081073BC
 blo   @@Code0810738C                ; 081073BE
-@@Code081073C0:
+@@Return:
 pop   {r4-r7}                       ; 081073C0
 pop   {r0}                          ; 081073C2
 bx    r0                            ; 081073C4
@@ -123,12 +123,12 @@ lsl   r1,r3,0x2                     ; 081073EC
 add   r1,r12                        ; 081073EE
 str   r1,[sp,0x4]                   ; 081073F0
 mov   r3,0xA3                       ; 081073F2
-lsl   r3,r3,0x3                     ; 081073F4
+lsl   r3,r3,0x3                     ; 081073F4  0518
 add   r1,r0,r3                      ; 081073F6
 ldr   r1,[r1]                       ; 081073F8
 str   r1,[sp,0x8]                   ; 081073FA
 mov   r6,0xA5                       ; 081073FC
-lsl   r6,r6,0x3                     ; 081073FE
+lsl   r6,r6,0x3                     ; 081073FE  0528
 add   r1,r0,r6                      ; 08107400
 ldr   r1,[r1]                       ; 08107402
 str   r1,[sp,0xC]                   ; 08107404
@@ -150,7 +150,7 @@ ldr   r0,[r0]                       ; 08107422
 mov   r10,r0                        ; 08107424
 ldr   r0,[sp,0x4]                   ; 08107426
 cmp   r12,r0                        ; 08107428
-bhs   @@Code08107514                ; 0810742A
+bhs   @@Return                      ; 0810742A
 lsl   r0,r2,0x10                    ; 0810742C
 asr   r0,r0,0x18                    ; 0810742E
 str   r0,[sp,0x1C]                  ; 08107430
@@ -268,7 +268,7 @@ add   r12,r2                        ; 0810750C
 ldr   r3,[sp,0x4]                   ; 0810750E
 cmp   r12,r3                        ; 08107510
 blo   @@Code08107438                ; 08107512
-@@Code08107514:
+@@Return:
 ldr   r0,[sp]                       ; 08107514
 add   sp,0x28                       ; 08107516
 pop   {r3-r5}                       ; 08107518
@@ -294,10 +294,10 @@ lsl   r2,r2,0x3                     ; 0810753E
 add   r2,r10                        ; 08107540
 str   r2,[sp]                       ; 08107542
 mov   r4,0x94                       ; 08107544
-lsl   r4,r4,0x2                     ; 08107546
+lsl   r4,r4,0x2                     ; 08107546  0250
 add   r4,r10                        ; 08107548
 mov   r2,0xF8                       ; 0810754A
-lsl   r2,r2,0x2                     ; 0810754C
+lsl   r2,r2,0x2                     ; 0810754C  03E0
 add   r2,r10                        ; 0810754E
 mov   r0,0x0                        ; 08107550
 str   r0,[sp,0x4]                   ; 08107552
@@ -427,7 +427,7 @@ push  {r4-r7,lr}                    ; 0810763C
 mov   r7,r0                         ; 0810763E
 add   r7,0xA0                       ; 08107640
 mov   r1,0x94                       ; 08107642
-lsl   r1,r1,0x2                     ; 08107644
+lsl   r1,r1,0x2                     ; 08107644  0250
 add   r6,r0,r1                      ; 08107646
 ldr   r1,=0x052C                    ; 08107648
 add   r0,r0,r1                      ; 0810764A
@@ -436,7 +436,7 @@ lsl   r0,r0,0x3                     ; 0810764E
 add   r0,r0,r6                      ; 08107650
 mov   r12,r0                        ; 08107652
 cmp   r6,r12                        ; 08107654
-bhs   @@Code081076A8                ; 08107656
+bhs   @@Return                      ; 08107656
 @@Code08107658:
 ldr   r1,[r6]                       ; 08107658
 ldrb  r0,[r1]                       ; 0810765A
@@ -478,7 +478,7 @@ strb  r0,[r6,0x6]                   ; 081076A0
 add   r6,0x8                        ; 081076A2
 cmp   r6,r12                        ; 081076A4
 blo   @@Code08107658                ; 081076A6
-@@Code081076A8:
+@@Return:
 pop   {r4-r7}                       ; 081076A8
 pop   {r0}                          ; 081076AA
 bx    r0                            ; 081076AC
@@ -504,7 +504,7 @@ str   r1,[sp,0x8]                   ; 081076D2
 add   r0,0xA0                       ; 081076D4
 mov   r8,r0                         ; 081076D6
 cmp   r2,r1                         ; 081076D8
-bhs   @@Code08107744                ; 081076DA
+bhs   @@Return                      ; 081076DA
 @@Code081076DC:
 ldr   r5,[r2]                       ; 081076DC
 ldrb  r0,[r2,0x4]                   ; 081076DE
@@ -558,7 +558,7 @@ mov   r2,r9                         ; 0810773C
 ldr   r1,[sp,0x8]                   ; 0810773E
 cmp   r2,r1                         ; 08107740
 blo   @@Code081076DC                ; 08107742
-@@Code08107744:
+@@Return:
 add   sp,0xC                        ; 08107744
 pop   {r3-r5}                       ; 08107746
 mov   r8,r3                         ; 08107748
@@ -573,6 +573,14 @@ bx    lr                            ; 08107758
 .pool                               ; 0810775A
 
 Sub0810775C:
+; r0: 02028EA0
+; r1: pointer to current letter's parameter struct
+; r2: pointer to first text buffer
+; r3: text buffer offset? from GameOver_LetterGeneralParam 
+; [sp]: "Game Over" X rotation angle (from [03007374]+10 (03004D60))
+; [sp+4]: "Game Over" Y rotation angle (from [03007374]+11 (03004D61))
+; [sp+8]: "Game Over" letter size (from [03007374] (03004D50))
+; [sp+C]: ? (from [03007374]+14 (03004D64))
 push  {r4-r7,lr}                    ; 0810775C
 mov   r7,r9                         ; 0810775E
 mov   r6,r8                         ; 08107760
@@ -613,7 +621,7 @@ beq   @@Code081077BC                ; 081077AC
 mov   r0,r6                         ; 081077AE
 mov   r1,r8                         ; 081077B0
 bl    Sub081076B4                   ; 081077B2
-b     @@Code081077D4                ; 081077B6
+b     @@Return                      ; 081077B6
 .pool                               ; 081077B8
 
 @@Code081077BC:
@@ -626,8 +634,8 @@ ldrb  r0,[r7,0xD]                   ; 081077C8
 str   r0,[sp]                       ; 081077CA
 mov   r0,r6                         ; 081077CC
 mov   r1,r8                         ; 081077CE
-bl    Sub_bx_r9                     ; 081077D0
-@@Code081077D4:
+bl    Sub_bx_r9                     ; 081077D0  bl Sub081077E4
+@@Return:
 add   sp,0x4                        ; 081077D4
 pop   {r3-r4}                       ; 081077D6
 mov   r8,r3                         ; 081077D8
@@ -690,7 +698,7 @@ add   r5,r6,r5                      ; 08107844
 str   r5,[sp,0x18]                  ; 08107846
 cmp   r6,r5                         ; 08107848
 blo   @@Code0810784E                ; 0810784A
-b     @@Code081079AE                ; 0810784C
+b     @@Return                      ; 0810784C
 @@Code0810784E:
 ldrb  r0,[r6]                       ; 0810784E
 lsl   r0,r0,0x3                     ; 08107850
@@ -882,9 +890,9 @@ b     @@Code0810786A                ; 081079A2
 ldr   r6,[sp,0x38]                  ; 081079A4
 ldr   r0,[sp,0x18]                  ; 081079A6
 cmp   r6,r0                         ; 081079A8
-bhs   @@Code081079AE                ; 081079AA
+bhs   @@Return                      ; 081079AA
 b     @@Code0810784E                ; 081079AC
-@@Code081079AE:
+@@Return:
 add   sp,0x40                       ; 081079AE
 pop   {r3-r5}                       ; 081079B0
 mov   r8,r3                         ; 081079B2
@@ -908,7 +916,7 @@ mov   r8,r1                         ; 081079DA  r8 = ?
 ldr   r4,=GameOver_LetterGeneralParam; 081079DC  table of 8 structs, 8 bytes each
 mov   r1,0x40                       ; 081079DE
 add   r1,r1,r4                      ; 081079E0
-mov   r10,r1                        ; 081079E2
+mov   r10,r1                        ; 081079E2  r10 = end of 8-struct table
 ldr   r7,[r0]                       ; 081079E4  r7 = "Game Over" size
 ldr   r1,=GameOver_LetterDataPtrs   ; 081079E6
 mov   r9,r1                         ; 081079E8
@@ -917,8 +925,8 @@ ldrb  r5,[r0,0x11]                  ; 081079EC  r5 = "Game Over" Y rotation angl
 @@Loop081079EE:                     ;          \ iterate over each of the 8 Game Over letters
 ldrb  r0,[r4,0x4]                   ; 081079EE  struct+4: letter index
 lsl   r0,r0,0x2                     ; 081079F0
-add   r0,r9                         ; 081079F2  r0 = pointer to letter-specific parameters
-ldr   r1,[r0]                       ; 081079F4
+add   r0,r9                         ; 081079F2
+ldr   r1,[r0]                       ; 081079F4  r1 = pointer to letter-specific parameter struct
 ldr   r0,=0x03007248                ; 081079F6  pointer to message buffer
 ldr   r2,[r0]                       ; 081079F8  r2 = pointer to first text buffer
 ldr   r3,[r4]                       ; 081079FA  r3 = text buffer offset? from struct
@@ -949,7 +957,7 @@ ldr   r5,[r0]                       ; 08107A38
 ldr   r4,=GameOver_LetterGeneralParam; 08107A3A
 mov   r6,r4                         ; 08107A3C
 add   r6,0x40                       ; 08107A3E
-@@Code08107A40:
+@@Loop08107A40:
 ldr   r0,=0x03007248                ; 08107A40  pointer to message buffer
 ldr   r0,[r0]                       ; 08107A42
 mov   r2,0x0                        ; 08107A44
@@ -965,7 +973,7 @@ lsl   r0,r0,0x2                     ; 08107A58
 add   r5,r5,r0                      ; 08107A5A
 add   r4,0x8                        ; 08107A5C
 cmp   r4,r6                         ; 08107A5E
-blo   @@Code08107A40                ; 08107A60
+blo   @@Loop08107A40                ; 08107A60
 pop   {r4-r6}                       ; 08107A62
 pop   {r0}                          ; 08107A64
 bx    r0                            ; 08107A66
@@ -10900,7 +10908,7 @@ bl    DynamicAllocate               ; 0810CA88
 str   r0,[r4]                       ; 0810CA8C
 cmp   r0,0x0                        ; 0810CA8E
 bne   @@Code0810CA94                ; 0810CA90
-b     @@Code0810CBAA                ; 0810CA92
+b     @@Return                      ; 0810CA92
 @@Code0810CA94:
 mov   r0,r7                         ; 0810CA94
 mov   r1,0x24                       ; 0810CA96
@@ -10909,7 +10917,7 @@ ldr   r1,=0x03007374                ; 0810CA9C
 str   r0,[r1]                       ; 0810CA9E
 cmp   r0,0x0                        ; 0810CAA0
 bne   @@Code0810CAA6                ; 0810CAA2
-b     @@Code0810CBAA                ; 0810CAA4
+b     @@Return                      ; 0810CAA4
 @@Code0810CAA6:
 bl    DynamicAllocate_Text          ; 0810CAA6
 mov   r2,0x0                        ; 0810CAAA
@@ -11026,7 +11034,7 @@ add   r1,r7,r0                      ; 0810CBA2
 ldrb  r0,[r1]                       ; 0810CBA4
 add   r0,0x1                        ; 0810CBA6
 strb  r0,[r1]                       ; 0810CBA8
-@@Code0810CBAA:
+@@Return:
 add   sp,0x8                        ; 0810CBAA
 pop   {r3-r5}                       ; 0810CBAC
 mov   r8,r3                         ; 0810CBAE

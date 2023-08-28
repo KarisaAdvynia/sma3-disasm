@@ -2095,7 +2095,7 @@ bx    r0                            ; 08001ECE
 .pool                               ; 08001ED0
 
 Sub08001EFC:
-; r0: code pointer offset +4?
+; r0: code pointer index +4?
 push  {r4,lr}                       ; 08001EFC
 mov   r4,r0                         ; 08001EFE
 sub   r0,r4,0x4                     ; 08001F00
@@ -2497,21 +2497,21 @@ InitOAMBuffer03005A00:
 ; Init OAM buffer at 03005A00-61FF to repeating [A0 00 00 00 00 00 00 00] (all 0 bits, except Y position A0 is below the screen)
 push  {r4,lr}                       ; 08002338
 ldr   r4,=0x03005A00                ; 0800233A
-ldr   r0,=Data08164034              ; 0800233C
+ldr   r0,=OAMBuffer03005A00InitData ; 0800233C
 ldr   r1,[r0,0x4]                   ; 0800233E  00000000
 ldr   r0,[r0]                       ; 08002340  000000A0
 mov   r3,r4                         ; 08002342
 stmia r3!,{r0-r1}                   ; 08002344
-ldr   r2,=0x04000006                ; 08002346
-mov   r0,r4                         ; 08002348
-mov   r1,r3                         ; 0800234A
+ldr   r2,=0x04000006                ; 08002346  32-bit copy, 6 words -> 18 bytes
+mov   r0,r4                         ; 08002348  r0 = 03005A00
+mov   r1,r3                         ; 0800234A  r1 = 03005A08
 bl    swi_MemoryCopy4or2            ; 0800234C  Memory copy/fill, 4- or 2-byte blocks
 mov   r3,r4                         ; 08002350
-add   r3,0x20                       ; 08002352
+add   r3,0x20                       ; 08002352  r3 = 03005A20
 mov   r2,0xFC                       ; 08002354
 lsl   r2,r2,0x1                     ; 08002356  r2 = 1F8
-mov   r0,r4                         ; 08002358
-mov   r1,r3                         ; 0800235A
+mov   r0,r4                         ; 08002358  r0 = 03005A00
+mov   r1,r3                         ; 0800235A  r1 = 03005A20
 bl    swi_MemoryCopy32              ; 0800235C  Memory copy/fill, 32-byte blocks
 pop   {r4}                          ; 08002360
 pop   {r0}                          ; 08002362
@@ -2767,21 +2767,22 @@ bx    r0                            ; 0800260E
 .pool                               ; 08002610
 
 Sub08002624:
+; Init OAM buffer at 0201A800-ABFF to repeating [A0 00 00 00 00 00 00 00] (all 0 bits, except Y position A0 is below the screen)
 push  {r4,lr}                       ; 08002624
 ldr   r4,=0x0201A800                ; 08002626
-ldr   r0,=Data0816403C              ; 08002628
-ldr   r1,[r0,0x4]                   ; 0800262A
-ldr   r0,[r0]                       ; 0800262C
+ldr   r0,=OAMBuffer0201A800InitData ; 08002628
+ldr   r1,[r0,0x4]                   ; 0800262A  00000000
+ldr   r0,[r0]                       ; 0800262C  000000A0
 mov   r3,r4                         ; 0800262E
 stmia r3!,{r0-r1}                   ; 08002630
-ldr   r2,=0x04000006                ; 08002632
-mov   r0,r4                         ; 08002634
-mov   r1,r3                         ; 08002636
+ldr   r2,=0x04000006                ; 08002632  32-bit copy, 6 words -> 18 bytes
+mov   r0,r4                         ; 08002634  r0 = 0201A800
+mov   r1,r3                         ; 08002636  r1 = 0201A808
 bl    swi_MemoryCopy4or2            ; 08002638  Memory copy/fill, 4- or 2-byte blocks
 mov   r3,r4                         ; 0800263C
-add   r3,0x20                       ; 0800263E
-mov   r0,r4                         ; 08002640
-mov   r1,r3                         ; 08002642
+add   r3,0x20                       ; 0800263E  r3 = 0201A820
+mov   r0,r4                         ; 08002640  r0 = 0201A800
+mov   r1,r3                         ; 08002642  r1 = 0201A820
 mov   r2,0xF8                       ; 08002644
 bl    swi_MemoryCopy32              ; 08002646  Memory copy/fill, 32-byte blocks
 pop   {r4}                          ; 0800264A
@@ -4793,7 +4794,7 @@ add   r1,r1,r0                      ; 08003858
 ldr   r2,=0x01000400                ; 0800385A
 mov   r0,sp                         ; 0800385C
 bl    swi_MemoryCopy4or2            ; 0800385E  Memory copy/fill, 4- or 2-byte blocks
-ldr   r0,=SMA3Title_buildtext_Graphics_LZ77; 08003862  build-date graphics
+ldr   r0,=SMA3Title_BuildText_Graphics_LZ77; 08003862  build-date graphics
 ldrh  r2,[r5]                       ; 08003864
 mov   r1,0xC                        ; 08003866
 and   r1,r2                         ; 08003868

@@ -418,7 +418,7 @@ bne   @Return080FD2FC               ; 080FD264
                                     ;           runs if W6 castle cutscene
 sub   r4,0x16                       ; 080FD266
 add   r1,r5,r4                      ; 080FD268
-ldr   r0,=YITitleYoshiMoveData      ; 080FD26A
+ldr   r0,=YITitle_YoshiMoveData     ; 080FD26A
 ldr   r0,[r0,0x14]                  ; 080FD26C  pointer to W6 movement data
 str   r0,[r1]                       ; 080FD26E
 ldr   r0,=Data08198F98              ; 080FD270
@@ -439,7 +439,7 @@ b     @Return080FD2FC               ; 080FD288
 @@Code080FD2BC:
 ldr   r0,=0x1028                    ; 080FD2BC
 add   r2,r5,r0                      ; 080FD2BE
-ldr   r1,=YITitleYoshiMoveData      ; 080FD2C0
+ldr   r1,=YITitle_YoshiMoveData     ; 080FD2C0
 lsl   r0,r6,0x2                     ; 080FD2C2
 add   r0,r0,r1                      ; 080FD2C4
 ldr   r0,[r0]                       ; 080FD2C6  pointer to current world's movement data
@@ -2110,7 +2110,7 @@ push  {r4,lr}                       ; 080FE02C
 add   r1,0x56                       ; 080FE02E
 ldrb  r1,[r1]                       ; 080FE030
 lsl   r1,r1,0x3                     ; 080FE032
-ldr   r2,=DataPtrs08198F78          ; 080FE034
+ldr   r2,=YITitle_SpriteDataPtrs    ; 080FE034
 add   r1,r1,r2                      ; 080FE036
 ldr   r4,[r1]                       ; 080FE038
 ldrb  r1,[r1,0x4]                   ; 080FE03A
@@ -3423,7 +3423,7 @@ mov   r0,0x2                        ; 080FEC6C
 strb  r0,[r1]                       ; 080FEC6E
 ldr   r3,=0x03007250                ; 080FEC70
 ldr   r1,[r3]                       ; 080FEC72
-ldr   r2,=YITitleMusicIDs           ; 080FEC74
+ldr   r2,=YITitle_MusicIDs          ; 080FEC74
 mov   r0,r1                         ; 080FEC76
 add   r0,0x5A                       ; 080FEC78
 ldrb  r0,[r0]                       ; 080FEC7A
@@ -3671,7 +3671,7 @@ add   r5,r4,r0                      ; 080FEEEC  r5 = 03006C0B
 ldrb  r0,[r5]                       ; 080FEEEE
 mov   r0,0x0                        ; 080FEEF0
 strb  r0,[r5]                       ; 080FEEF2
-ldr   r1,=YITitleSubstatePtrs       ; 080FEEF4
+ldr   r1,=YITitle_SubstatePtrs      ; 080FEEF4
 ldr   r2,=0x4906                    ; 080FEEF6
 add   r0,r4,r2                      ; 080FEEF8  r0 = 03006B06
 ldrb  r0,[r0]                       ; 080FEEFA  Game substate

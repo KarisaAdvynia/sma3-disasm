@@ -1861,7 +1861,7 @@ pop   {r0}                          ; 0810E4CE
 bx    r0                            ; 0810E4D0
 .pool                               ; 0810E4D2
 
-GameState_30:
+ChooseAGame_State30:
 ; Game state 30
 push  {r4-r7,lr}                    ; 0810E4D8
 mov   r7,r10                        ; 0810E4DA
