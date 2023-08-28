@@ -2868,7 +2868,7 @@ bx    r0                            ; 080FA9C8
 GameMode03_GameInit:
 ; Game mode 03: Game init/soft reset
 push  {lr}                          ; 080FA9D8
-ldr   r1,=CodePtrs08197DA8          ; 080FA9DA
+ldr   r1,=GameInitStatePtrs         ; 080FA9DA
 ldr   r0,=0x03002200                ; 080FA9DC
 ldr   r2,=0x4905                    ; 080FA9DE
 add   r0,r0,r2                      ; 080FA9E0  r0 = 03006B05

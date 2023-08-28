@@ -2723,7 +2723,7 @@ ldrb  r1,[r0]                       ; 08005AC8
 mov   r0,0xF                        ; 08005ACA
 and   r0,r1                         ; 08005ACC
 cmp   r0,0x0                        ; 08005ACE
-bne   @@Code08005B5C                ; 08005AD0
+bne   @@Return                      ; 08005AD0
 mov   r0,0x1B                       ; 08005AD2
 bl    Sub0812CA94                   ; 08005AD4
 lsl   r0,r0,0x18                    ; 08005AD8
@@ -2785,7 +2785,7 @@ add   r0,r0,r1                      ; 08005B56
 mov   r1,0x0                        ; 08005B58
 @@Code08005B5A:
 strb  r1,[r0]                       ; 08005B5A
-@@Code08005B5C:
+@@Return:
 pop   {r4-r5}                       ; 08005B5C
 pop   {r0}                          ; 08005B5E
 bx    r0                            ; 08005B60

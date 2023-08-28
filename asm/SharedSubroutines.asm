@@ -85,27 +85,27 @@ lsr   r0,r0,0x10                    ; 0812F72A
 mov   r2,0x0                        ; 0812F72C
 cmp   r0,0x4                        ; 0812F72E
 bne   @@Code0812F744                ; 0812F730
-ldr   r1,=0x030074E8                ; 0812F732
+ldr   r1,=0x030074E8                ; 0812F732 \ runs if input r0 is 4
 ldr   r0,=Data083081B0              ; 0812F734
 str   r0,[r1]                       ; 0812F736
-b     @@Code0812F760                ; 0812F738
+b     @@Return_r2                   ; 0812F738 / return 0
 .pool                               ; 0812F73A
 
 @@Code0812F744:
 cmp   r0,0x40                       ; 0812F744
 bne   @@Code0812F758                ; 0812F746
-ldr   r1,=0x030074E8                ; 0812F748
+ldr   r1,=0x030074E8                ; 0812F748 \ runs if input r0 is 40
 ldr   r0,=Data083081BC              ; 0812F74A
 str   r0,[r1]                       ; 0812F74C
-b     @@Code0812F760                ; 0812F74E
+b     @@Return_r2                   ; 0812F74E / return 0
 .pool                               ; 0812F750
 
 @@Code0812F758:
-ldr   r1,=0x030074E8                ; 0812F758
+ldr   r1,=0x030074E8                ; 0812F758 \ runs if input r0 is any other value
 ldr   r0,=Data083081B0              ; 0812F75A
 str   r0,[r1]                       ; 0812F75C
-mov   r2,0x1                        ; 0812F75E
-@@Code0812F760:
+mov   r2,0x1                        ; 0812F75E / return 1
+@@Return_r2:
 mov   r0,r2                         ; 0812F760
 bx    lr                            ; 0812F762
 .pool                               ; 0812F764
@@ -114,17 +114,17 @@ Sub0812F76C:
 ldr   r1,=0x03002192                ; 0812F76C
 ldrh  r0,[r1]                       ; 0812F76E
 cmp   r0,0x0                        ; 0812F770
-beq   @@Code0812F786                ; 0812F772
+beq   @@Return                      ; 0812F772
 ldrh  r0,[r1]                       ; 0812F774
 sub   r0,0x1                        ; 0812F776
 strh  r0,[r1]                       ; 0812F778
 lsl   r0,r0,0x10                    ; 0812F77A
 cmp   r0,0x0                        ; 0812F77C
-bne   @@Code0812F786                ; 0812F77E
+bne   @@Return                      ; 0812F77E
 ldr   r1,=0x03002194                ; 0812F780
 mov   r0,0x1                        ; 0812F782
 strb  r0,[r1]                       ; 0812F784
-@@Code0812F786:
+@@Return:
 bx    lr                            ; 0812F786
 .pool                               ; 0812F788
 
@@ -133,7 +133,7 @@ mov   r2,r1                         ; 0812F790
 lsl   r0,r0,0x18                    ; 0812F792
 lsr   r1,r0,0x18                    ; 0812F794
 cmp   r1,0x3                        ; 0812F796
-bhi   @@Code0812F7C4                ; 0812F798
+bhi   @@Return_1                    ; 0812F798
 ldr   r0,=0x03002190                ; 0812F79A
 strb  r1,[r0]                       ; 0812F79C
 ldr   r1,=0x03002198                ; 0812F79E
@@ -145,15 +145,16 @@ str   r0,[r1]                       ; 0812F7A8
 ldr   r0,=Sub0812F76C+1             ; 0812F7AA
 str   r0,[r2]                       ; 0812F7AC
 mov   r0,0x0                        ; 0812F7AE
-b     @@Code0812F7C6                ; 0812F7B0
+b     @@Return_r0                   ; 0812F7B0
 .pool                               ; 0812F7B2
 
-@@Code0812F7C4:
+@@Return_1:
 mov   r0,0x1                        ; 0812F7C4
-@@Code0812F7C6:
+@@Return_r0:
 bx    lr                            ; 0812F7C6
 
 Sub0812F7C8:
+; r0: always Data083081C8
 push  {r4-r7,lr}                    ; 0812F7C8
 mov   r7,r9                         ; 0812F7CA
 mov   r6,r8                         ; 0812F7CC
@@ -235,53 +236,57 @@ strh  r0,[r3]                       ; 0812F87A
 bx    lr                            ; 0812F87C
 .pool                               ; 0812F87E
 
-Sub0812F894:
+EEPROM_WriteDMA:
+; Write to DMA when saving to EEPROM? Called twice by 0812F914 and once by 0812F9C4
+; r0: DMA source address
+; r1: DMA dest address
+; r2: length in 16-bit words?
 push  {r4-r6,lr}                    ; 0812F894
 lsl   r2,r2,0x10                    ; 0812F896
 lsr   r2,r2,0x10                    ; 0812F898
 ldr   r4,=0x04000208                ; 0812F89A
 ldrh  r3,[r4]                       ; 0812F89C
-mov   r6,r3                         ; 0812F89E
+mov   r6,r3                         ; 0812F89E  r6 = old interrupt register value
 mov   r3,0x0                        ; 0812F8A0
-strh  r3,[r4]                       ; 0812F8A2
+strh  r3,[r4]                       ; 0812F8A2  disable all interrupts
 ldr   r5,=0x04000204                ; 0812F8A4
 ldrh  r4,[r5]                       ; 0812F8A6
-ldr   r3,=0xF8FF                    ; 0812F8A8
+ldr   r3,=0xF8FF                    ; 0812F8A8  1111 1000 1111 1111
 and   r4,r3                         ; 0812F8AA
 ldr   r3,=0x030074E8                ; 0812F8AC
-ldr   r3,[r3]                       ; 0812F8AE
-ldrh  r3,[r3,0x6]                   ; 0812F8B0
-orr   r4,r3                         ; 0812F8B2
-strh  r4,[r5]                       ; 0812F8B4
+ldr   r3,[r3]                       ; 0812F8AE  EEPROM struct ptr? 083081B0 or 083081BC
+ldrh  r3,[r3,0x6]                   ; 0812F8B0  always 0300?
+orr   r4,r3                         ; 0812F8B2  set bits from struct+6
+strh  r4,[r5]                       ; 0812F8B4  store new value to 04000204
 ldr   r3,=0x040000D4                ; 0812F8B6
-str   r0,[r3]                       ; 0812F8B8
+str   r0,[r3]                       ; 0812F8B8  set DMA 3 source addr
 ldr   r0,=0x040000D8                ; 0812F8BA
-str   r1,[r0]                       ; 0812F8BC
+str   r1,[r0]                       ; 0812F8BC  set DMA 3 dest addr
 ldr   r1,=0x040000DC                ; 0812F8BE
 mov   r0,0x80                       ; 0812F8C0
-lsl   r0,r0,0x18                    ; 0812F8C2
-orr   r2,r0                         ; 0812F8C4
-str   r2,[r1]                       ; 0812F8C6
-add   r1,0x2                        ; 0812F8C8
+lsl   r0,r0,0x18                    ; 0812F8C2  80000000
+orr   r2,r0                         ; 0812F8C4  set highest bit (enable DMA)
+str   r2,[r1]                       ; 0812F8C6  set word count and enable DMA
+add   r1,0x2                        ; 0812F8C8  040000DE
 mov   r2,0x80                       ; 0812F8CA
-lsl   r2,r2,0x8                     ; 0812F8CC
+lsl   r2,r2,0x8                     ; 0812F8CC  8000
 mov   r0,r2                         ; 0812F8CE
-ldrh  r1,[r1]                       ; 0812F8D0
-and   r0,r1                         ; 0812F8D2
+ldrh  r1,[r1]                       ; 0812F8D0  load DMA enable register again
+and   r0,r1                         ; 0812F8D2  filter highest bit
 cmp   r0,0x0                        ; 0812F8D4
-beq   @@Code0812F8E8                ; 0812F8D6
-ldr   r2,=0x040000DE                ; 0812F8D8
+beq   @@RestoreInterruptAndReturn   ; 0812F8D6  if highest bit is now clear, return
+ldr   r2,=0x040000DE                ; 0812F8D8 \ else, wait for bit to clear
 mov   r0,0x80                       ; 0812F8DA
-lsl   r0,r0,0x8                     ; 0812F8DC
+lsl   r0,r0,0x8                     ; 0812F8DC  8000
 mov   r1,r0                         ; 0812F8DE
-@@Code0812F8E0:
+@@WaitForBitClear:
 ldrh  r0,[r2]                       ; 0812F8E0
 and   r0,r1                         ; 0812F8E2
 cmp   r0,0x0                        ; 0812F8E4
-bne   @@Code0812F8E0                ; 0812F8E6
-@@Code0812F8E8:
+bne   @@WaitForBitClear             ; 0812F8E6 /
+@@RestoreInterruptAndReturn:
 ldr   r0,=0x04000208                ; 0812F8E8
-strh  r6,[r0]                       ; 0812F8EA
+strh  r6,[r0]                       ; 0812F8EA  restore old interrupt register value
 pop   {r4-r6}                       ; 0812F8EC
 pop   {r0}                          ; 0812F8EE
 bx    r0                            ; 0812F8F0
@@ -299,7 +304,7 @@ ldrh  r0,[r0,0x4]                   ; 0812F922
 cmp   r3,r0                         ; 0812F924
 blo   @@Code0812F934                ; 0812F926
 ldr   r0,=0x80FF                    ; 0812F928
-b     @@Code0812F9B6                ; 0812F92A
+b     @@Return_r0                   ; 0812F92A
 .pool                               ; 0812F92C
 
 @@Code0812F934:
@@ -331,18 +336,18 @@ strh  r0,[r2]                       ; 0812F960
 sub   r2,0x2                        ; 0812F962
 strh  r0,[r2]                       ; 0812F964
 mov   r4,0xD0                       ; 0812F966
-lsl   r4,r4,0x14                    ; 0812F968
+lsl   r4,r4,0x14                    ; 0812F968  0D000000
 ldr   r0,=0x030074E8                ; 0812F96A
 ldr   r0,[r0]                       ; 0812F96C
 ldrb  r2,[r0,0x8]                   ; 0812F96E
 add   r2,0x3                        ; 0812F970
 mov   r0,sp                         ; 0812F972
 mov   r1,r4                         ; 0812F974
-bl    Sub0812F894                   ; 0812F976
+bl    EEPROM_WriteDMA               ; 0812F976
 mov   r0,r4                         ; 0812F97A
 mov   r1,sp                         ; 0812F97C
 mov   r2,0x44                       ; 0812F97E
-bl    Sub0812F894                   ; 0812F980
+bl    EEPROM_WriteDMA               ; 0812F980
 add   r2,sp,0x8                     ; 0812F984
 add   r5,0x6                        ; 0812F986
 mov   r4,0x0                        ; 0812F988
@@ -370,7 +375,7 @@ lsr   r4,r0,0x18                    ; 0812F9AE
 cmp   r4,0x3                        ; 0812F9B0
 bls   @@Code0812F98C                ; 0812F9B2
 mov   r0,0x0                        ; 0812F9B4
-@@Code0812F9B6:
+@@Return_r0:
 add   sp,0x88                       ; 0812F9B6
 pop   {r4-r6}                       ; 0812F9B8
 pop   {r1}                          ; 0812F9BA
@@ -389,7 +394,7 @@ ldrh  r0,[r0,0x4]                   ; 0812F9D2
 cmp   r4,r0                         ; 0812F9D4
 blo   @@Code0812F9E4                ; 0812F9D6
 ldr   r0,=0x80FF                    ; 0812F9D8
-b     @@Code0812FA88                ; 0812F9DA
+b     @@Return_r0                   ; 0812F9DA
 .pool                               ; 0812F9DC
 
 @@Code0812F9E4:
@@ -447,18 +452,18 @@ sub   r3,0x2                        ; 0812FA40
 mov   r0,0x1                        ; 0812FA42
 strh  r0,[r3]                       ; 0812FA44
 mov   r1,0xD0                       ; 0812FA46
-lsl   r1,r1,0x14                    ; 0812FA48
+lsl   r1,r1,0x14                    ; 0812FA48  0D000000
 ldr   r0,=0x030074E8                ; 0812FA4A
 ldr   r0,[r0]                       ; 0812FA4C
 ldrb  r2,[r0,0x8]                   ; 0812FA4E
 add   r2,0x43                       ; 0812FA50
 mov   r0,sp                         ; 0812FA52
-bl    Sub0812F894                   ; 0812FA54
+bl    EEPROM_WriteDMA               ; 0812FA54
 ldr   r0,=Data083081C8              ; 0812FA58
 bl    Sub0812F7C8                   ; 0812FA5A
 mov   r4,0x0                        ; 0812FA5E
 mov   r1,0xD0                       ; 0812FA60
-lsl   r1,r1,0x14                    ; 0812FA62
+lsl   r1,r1,0x14                    ; 0812FA62  0D000000
 mov   r3,0x1                        ; 0812FA64
 ldr   r2,=0x03002194                ; 0812FA66
 @@Code0812FA68:
@@ -478,7 +483,7 @@ ldr   r4,=0xC001                    ; 0812FA80
 @@Code0812FA82:
 bl    Sub0812F850                   ; 0812FA82
 mov   r0,r4                         ; 0812FA86
-@@Code0812FA88:
+@@Return_r0:
 add   sp,0xA4                       ; 0812FA88
 pop   {r4-r5}                       ; 0812FA8A
 pop   {r1}                          ; 0812FA8C
@@ -498,7 +503,7 @@ ldrh  r0,[r0,0x4]                   ; 0812FAB0
 cmp   r1,r0                         ; 0812FAB2
 blo   @@Code0812FAC4                ; 0812FAB4
 ldr   r0,=0x80FF                    ; 0812FAB6
-b     @@Code0812FAEE                ; 0812FAB8
+b     @@Return_r0                   ; 0812FAB8
 .pool                               ; 0812FABA
 
 @@Code0812FAC4:
@@ -513,7 +518,7 @@ add   r0,r3,0x1                     ; 0812FAD2
 lsl   r0,r0,0x18                    ; 0812FAD4
 lsr   r3,r0,0x18                    ; 0812FAD6
 cmp   r3,0x3                        ; 0812FAD8
-bhi   @@Code0812FAEC                ; 0812FADA
+bhi   @@Return_r5                   ; 0812FADA
 @@Code0812FADC:
 ldrh  r1,[r4]                       ; 0812FADC
 ldrh  r0,[r2]                       ; 0812FADE
@@ -523,9 +528,9 @@ cmp   r1,r0                         ; 0812FAE4
 beq   @@Code0812FAD2                ; 0812FAE6
 mov   r5,0x80                       ; 0812FAE8
 lsl   r5,r5,0x8                     ; 0812FAEA
-@@Code0812FAEC:
+@@Return_r5:
 mov   r0,r5                         ; 0812FAEC
-@@Code0812FAEE:
+@@Return_r0:
 add   sp,0x8                        ; 0812FAEE
 pop   {r4-r5}                       ; 0812FAF0
 pop   {r1}                          ; 0812FAF2
@@ -545,7 +550,7 @@ lsl   r0,r0,0x18                    ; 0812FB06
 lsr   r6,r0,0x18                    ; 0812FB08
 @@Code0812FB0A:
 cmp   r6,0x2                        ; 0812FB0A
-bhi   @@Code0812FB2E                ; 0812FB0C
+bhi   @@Return_r2                   ; 0812FB0C
 mov   r0,r4                         ; 0812FB0E
 mov   r1,r5                         ; 0812FB10
 bl    Sub0812F9C4                   ; 0812FB12
@@ -560,7 +565,7 @@ lsl   r0,r0,0x10                    ; 0812FB26
 lsr   r2,r0,0x10                    ; 0812FB28
 cmp   r2,0x0                        ; 0812FB2A
 bne   @@Code0812FB04                ; 0812FB2C
-@@Code0812FB2E:
+@@Return_r2:
 mov   r0,r2                         ; 0812FB2E
 pop   {r4-r6}                       ; 0812FB30
 pop   {r1}                          ; 0812FB32
@@ -725,7 +730,7 @@ mov   r3,0x1                        ; 0812FC10
 mov   r2,0x0                        ; 0812FC12
 push  {r4}                          ; 0812FC14
 cmp   r0,r1                         ; 0812FC16
-blo   @@Code0812FC74                ; 0812FC18
+blo   @@Return_r2                   ; 0812FC18
 mov   r4,0x1                        ; 0812FC1A
 lsl   r4,r4,0x1C                    ; 0812FC1C
 @@Code0812FC1E:
@@ -774,12 +779,12 @@ lsr   r4,r3,0x3                     ; 0812FC64
 orr   r2,r4                         ; 0812FC66
 @@Code0812FC68:
 cmp   r0,0x0                        ; 0812FC68
-beq   @@Code0812FC74                ; 0812FC6A
+beq   @@Return_r2                   ; 0812FC6A
 lsr   r3,r3,0x4                     ; 0812FC6C
-beq   @@Code0812FC74                ; 0812FC6E
+beq   @@Return_r2                   ; 0812FC6E
 lsr   r1,r1,0x4                     ; 0812FC70
 b     @@Code0812FC3C                ; 0812FC72
-@@Code0812FC74:
+@@Return_r2:
 mov   r0,r2                         ; 0812FC74
 pop   {r4}                          ; 0812FC76
 mov   pc,lr                         ; 0812FC78
@@ -869,7 +874,6 @@ lsl   r4,r4,0x1C                    ; 0812FD02
 and   r2,r4                         ; 0812FD04
 bne   @@Code0812FD0C                ; 0812FD06
 pop   {r4}                          ; 0812FD08
-
 mov   pc,lr                         ; 0812FD0A
 
 @@Code0812FD0C:
@@ -911,16 +915,16 @@ mov   r2,r0                         ; 0812FD44
 mov   r0,r1                         ; 0812FD46
 sub   r1,0x1                        ; 0812FD48
 cmp   r0,0x0                        ; 0812FD4A
-beq   @@Code0812FD5C                ; 0812FD4C
+beq   @@Return                      ; 0812FD4C
 mov   r3,0x0                        ; 0812FD4E
-@@Code0812FD50:
+@@Loop0812FD50:
 strb  r3,[r2]                       ; 0812FD50
 add   r2,0x1                        ; 0812FD52
 mov   r0,r1                         ; 0812FD54
 sub   r1,0x1                        ; 0812FD56
 cmp   r0,0x0                        ; 0812FD58
-bne   @@Code0812FD50                ; 0812FD5A
-@@Code0812FD5C:
+bne   @@Loop0812FD50                ; 0812FD5A
+@@Return:
 bx    lr                            ; 0812FD5C
 .pool                               ; 0812FD5E
 

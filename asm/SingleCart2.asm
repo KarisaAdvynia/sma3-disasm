@@ -3,10 +3,10 @@
 SingleCart_08142544:
 mov    r0,0x12                      ; 08142544
 msr    cpsr_fc,r0                   ; 08142548
-ldr    r13,[@@Pool+4]               ; 0814254C
+ldr    r13,[@@_03007F80]            ; 0814254C
 mov    r0,0x1F                      ; 08142550
 msr    cpsr_fc,r0                   ; 08142554
-ldr    r13,[@@Pool]                 ; 08142558
+ldr    r13,[@@_03007E00]            ; 08142558
 ldr    r1,=0x03007FFC               ; 0814255C
 add    r0,=Code08142580             ; 08142560
 str    r0,[r1]                      ; 08142564
@@ -14,9 +14,8 @@ ldr    r1,=0x020058F1               ; 08142568
 mov    lr,pc                        ; 0814256C
 bx     r1                           ; 08142570
 b      SingleCart_08142544          ; 08142574
-@@Pool:
-.d32 0x03007E00                     ; 08142578
-.d32 0x03007F80                     ; 0814257C
+@@_03007E00: .d32 0x03007E00        ; 08142578
+@@_03007F80: .d32 0x03007F80        ; 0814257C
 
 Code08142580:
 mov    r12,0x04000000               ; 08142580
@@ -47963,49 +47962,49 @@ mov    r4,0x7F                      ; 0815B050
 mov    r5,0xFF00                    ; 0815B054
 orr    r5,r5,0x80                   ; 0815B058
 @@Code0815B05C:
-.d32  0xE0D030F2
+.d32 0xE0D030F2
 ;ldrsh  r3,[r0],0x2                  ; 0815B05C
 ands   r12,r3,r5                    ; 0815B060
 cmpne  r12,r5                       ; 0815B064
 addne  r3,r4,r3,lsr 0x1F            ; 0815B068
 strb   r3,[r1],0x1                  ; 0815B06C
-.d32  0xE0D030F2
+.d32 0xE0D030F2
 ;ldrsh  r3,[r0],0x2                  ; 0815B070
 ands   r12,r3,r5                    ; 0815B074
 cmpne  r12,r5                       ; 0815B078
 addne  r3,r4,r3,lsr 0x1F            ; 0815B07C
 strb   r3,[r1],0x1                  ; 0815B080
-.d32  0xE0D030F2
+.d32 0xE0D030F2
 ;ldrsh  r3,[r0],0x2                  ; 0815B084
 ands   r12,r3,r5                    ; 0815B088
 cmpne  r12,r5                       ; 0815B08C
 addne  r3,r4,r3,lsr 0x1F            ; 0815B090
 strb   r3,[r1],0x1                  ; 0815B094
-.d32  0xE0D030F2
+.d32 0xE0D030F2
 ;ldrsh  r3,[r0],0x2                  ; 0815B098
 ands   r12,r3,r5                    ; 0815B09C
 cmpne  r12,r5                       ; 0815B0A0
 addne  r3,r4,r3,lsr 0x1F            ; 0815B0A4
 strb   r3,[r1],0x1                  ; 0815B0A8
-.d32  0xE0D030F2
+.d32 0xE0D030F2
 ;ldrsh  r3,[r0],0x2                  ; 0815B0AC
 ands   r12,r3,r5                    ; 0815B0B0
 cmpne  r12,r5                       ; 0815B0B4
 addne  r3,r4,r3,lsr 0x1F            ; 0815B0B8
 strb   r3,[r1],0x1                  ; 0815B0BC
-.d32  0xE0D030F2
+.d32 0xE0D030F2
 ;ldrsh  r3,[r0],0x2                  ; 0815B0C0
 ands   r12,r3,r5                    ; 0815B0C4
 cmpne  r12,r5                       ; 0815B0C8
 addne  r3,r4,r3,lsr 0x1F            ; 0815B0CC
 strb   r3,[r1],0x1                  ; 0815B0D0
-.d32  0xE0D030F2
+.d32 0xE0D030F2
 ;ldrsh  r3,[r0],0x2                  ; 0815B0D4
 ands   r12,r3,r5                    ; 0815B0D8
 cmpne  r12,r5                       ; 0815B0DC
 addne  r3,r4,r3,lsr 0x1F            ; 0815B0E0
 strb   r3,[r1],0x1                  ; 0815B0E4
-.d32  0xE0D030F2
+.d32 0xE0D030F2
 ;ldrsh  r3,[r0],0x2                  ; 0815B0E8
 ands   r12,r3,r5                    ; 0815B0EC
 cmpne  r12,r5                       ; 0815B0F0

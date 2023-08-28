@@ -176,7 +176,7 @@ LoadBossPalette:
 ;     16 if called by giant Tap-Tap init
 push  {r4-r5,lr}                    ; 080BF894
 lsl   r0,r0,0x10                    ; 080BF896
-ldr   r1,=KamekEnlarge_BossPalettePtrs; 080BF898
+ldr   r1,=BossPalettePtrs           ; 080BF898
 lsr   r0,r0,0xE                     ; 080BF89A
 add   r0,r0,r1                      ; 080BF89C  Offset with boss index <<2
 ldr   r0,[r0]                       ; 080BF89E  Pointer to some kind of palette. ROM for bosses 0 (Burt), 6 (Milde), 9 (Raphael), A (Tap-Tap), EWRAM (palette buffer) for other bosses

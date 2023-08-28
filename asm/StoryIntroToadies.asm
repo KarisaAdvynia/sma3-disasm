@@ -363,7 +363,7 @@ cmp   r0,0x0                        ; 0802F570
 beq   @@Code0802F576                ; 0802F572
 mov   r1,0x5                        ; 0802F574 / r1=5, if large character
 @@Code0802F576:
-ldr   r0,=CodePtrs0816B7FC          ; 0802F576
+ldr   r0,=StoryIntroText_CmdPtrs    ; 0802F576
 lsl   r1,r1,0x2                     ; 0802F578
 add   r1,r1,r0                      ; 0802F57A  index with r1 (command ID for 00-03, 04 for command 31, 05 for character)
 ldr   r1,[r1]                       ; 0802F57C

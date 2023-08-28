@@ -896,6 +896,7 @@ bx    r0                            ; 081079BC
 .pool                               ; 081079BE
 
 Sub081079CC:
+; r0: Start of game over dynamic memory [03007374] (03004D50)
 push  {r4-r7,lr}                    ; 081079CC
 mov   r7,r10                        ; 081079CE
 mov   r6,r9                         ; 081079D0
@@ -903,34 +904,34 @@ mov   r5,r8                         ; 081079D2
 push  {r5-r7}                       ; 081079D4
 add   sp,-0x10                      ; 081079D6
 ldr   r1,[r0,0x14]                  ; 081079D8
-mov   r8,r1                         ; 081079DA
-ldr   r4,=Data081A72B0              ; 081079DC
+mov   r8,r1                         ; 081079DA  r8 = ?
+ldr   r4,=GameOver_LetterGeneralParam; 081079DC  table of 8 structs, 8 bytes each
 mov   r1,0x40                       ; 081079DE
 add   r1,r1,r4                      ; 081079E0
 mov   r10,r1                        ; 081079E2
-ldr   r7,[r0]                       ; 081079E4
-ldr   r1,=DataPtrs081A7828          ; 081079E6
+ldr   r7,[r0]                       ; 081079E4  r7 = "Game Over" size
+ldr   r1,=GameOver_LetterDataPtrs   ; 081079E6
 mov   r9,r1                         ; 081079E8
-ldrb  r6,[r0,0x10]                  ; 081079EA
-ldrb  r5,[r0,0x11]                  ; 081079EC
-@@Code081079EE:
-ldrb  r0,[r4,0x4]                   ; 081079EE
+ldrb  r6,[r0,0x10]                  ; 081079EA  r6 = "Game Over" X rotation angle
+ldrb  r5,[r0,0x11]                  ; 081079EC  r5 = "Game Over" Y rotation angle
+@@Loop081079EE:                     ;          \ iterate over each of the 8 Game Over letters
+ldrb  r0,[r4,0x4]                   ; 081079EE  struct+4: letter index
 lsl   r0,r0,0x2                     ; 081079F0
-add   r0,r9                         ; 081079F2
+add   r0,r9                         ; 081079F2  r0 = pointer to letter-specific parameters
 ldr   r1,[r0]                       ; 081079F4
 ldr   r0,=0x03007248                ; 081079F6  pointer to message buffer
-ldr   r2,[r0]                       ; 081079F8
-ldr   r3,[r4]                       ; 081079FA
-str   r6,[sp]                       ; 081079FC
-str   r5,[sp,0x4]                   ; 081079FE
-str   r7,[sp,0x8]                   ; 08107A00
+ldr   r2,[r0]                       ; 081079F8  r2 = pointer to first text buffer
+ldr   r3,[r4]                       ; 081079FA  r3 = text buffer offset? from struct
+str   r6,[sp]                       ; 081079FC  [sp] = X rotation angle
+str   r5,[sp,0x4]                   ; 081079FE  [sp+4] = Y rotation angle
+str   r7,[sp,0x8]                   ; 08107A00  [sp+8] = size
 mov   r0,r8                         ; 08107A02
-str   r0,[sp,0xC]                   ; 08107A04
+str   r0,[sp,0xC]                   ; 08107A04  [sp+C] = ? (from [03007374]+14 (03004D64))
 ldr   r0,=0x02028EA0                ; 08107A06
 bl    Sub0810775C                   ; 08107A08
 add   r4,0x8                        ; 08107A0C
 cmp   r4,r10                        ; 08107A0E
-blo   @@Code081079EE                ; 08107A10
+blo   @@Loop081079EE                ; 08107A10 /
 add   sp,0x10                       ; 08107A12
 pop   {r3-r5}                       ; 08107A14
 mov   r8,r3                         ; 08107A16
@@ -945,7 +946,7 @@ Sub08107A34:
 push  {r4-r6,lr}                    ; 08107A34
 ldr   r0,=0x0300724C                ; 08107A36
 ldr   r5,[r0]                       ; 08107A38
-ldr   r4,=Data081A72B0              ; 08107A3A
+ldr   r4,=GameOver_LetterGeneralParam; 08107A3A
 mov   r6,r4                         ; 08107A3C
 add   r6,0x40                       ; 08107A3E
 @@Code08107A40:

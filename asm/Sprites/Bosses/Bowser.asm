@@ -8215,13 +8215,13 @@ Sub08106954:
 push  {r4-r7,lr}                    ; 08106954
 mov   r7,r8                         ; 08106956
 push  {r7}                          ; 08106958
-ldr   r5,=Data081A7288              ; 0810695A
+ldr   r5,=AfterBowser_SprStripePtrs ; 0810695A
 mov   r0,0x14                       ; 0810695C
 add   r0,r0,r5                      ; 0810695E
 mov   r8,r0                         ; 08106960
 ldr   r6,=0x06014200                ; 08106962
 cmp   r5,r8                         ; 08106964
-bhs   @@Code08106990                ; 08106966
+bhs   @@Return                      ; 08106966
 ldr   r7,=0x0201FC00                ; 08106968  decompressed graphics buffer
 @@Code0810696A:
 ldmia r5!,{r0}                      ; 0810696A
@@ -8242,7 +8242,7 @@ cmp   r4,r7                         ; 08106988
 bhi   @@Code08106976                ; 0810698A
 cmp   r5,r8                         ; 0810698C
 blo   @@Code0810696A                ; 0810698E
-@@Code08106990:
+@@Return:
 pop   {r3}                          ; 08106990
 mov   r8,r3                         ; 08106992
 pop   {r4-r7}                       ; 08106994

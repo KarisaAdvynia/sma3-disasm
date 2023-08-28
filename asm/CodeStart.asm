@@ -11,10 +11,10 @@ b      CodeStart                    ; 08000000
 CodeStart:
 mov    r0,0x12                      ; 080000C0
 msr    cpsr_fc,r0                   ; 080000C4
-ldr    sp,[@@Pool+4]                ; 080000C8
+ldr    sp,[@@_03007F80]             ; 080000C8
 mov    r0,0x1F                      ; 080000CC
 msr    cpsr_fc,r0                   ; 080000D0
-ldr    sp,[@@Pool]                  ; 080000D4  set stack pointer
+ldr    sp,[@@_03007E00]             ; 080000D4  set stack pointer
 ldr    r1,=0x03007FFC               ; 080000D8
 add    r0,=InterruptHandler         ; 080000DC
 str    r0,[r1]                      ; 080000E0
@@ -22,9 +22,8 @@ ldr    r1,=CodeStartPart2+1         ; 080000E4
 mov    lr,pc                        ; 080000E8
 bx     r1                           ; 080000EC
 b      CodeStart                    ; 080000F0
-@@Pool:
-.d32  0x03007E00                    ; 080000F4
-.d32  0x03007F80                    ; 080000F8
+@@_03007E00: .d32 0x03007E00        ; 080000F4
+@@_03007F80: .d32 0x03007F80        ; 080000F8
 
 InterruptHandler:
 mov    r12,0x04000000               ; 080000FC/030065AC
@@ -124,13 +123,12 @@ add    r2,r2,0x4                    ; 0800025C
 ands   r0,r1,0x1000                 ; 08000260
 @@Code08000264:
 strh   r0,[r3,0x2]                  ; 08000264
-ldr    r1,[@@Pool]                  ; 08000268
+ldr    r1,[@@_030021C0]             ; 08000268
 add    r1,r1,r2                     ; 0800026C
 ldr    r0,[r1]                      ; 08000270
 bx     r0                           ; 08000274
 .pool                               ; 08000278
-@@Pool:
-.d32  0x030021C0                    ; 08000284
+@@_030021C0: .d32 0x030021C0        ; 08000284
 
 Sub08000288:
 mov    r12,r13                      ; 08000288
