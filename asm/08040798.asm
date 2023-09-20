@@ -4165,7 +4165,7 @@ lsl   r0,r0,0x6                     ; 08042A4A
 add   r0,r9                         ; 08042A4C
 add   r1,r1,r0                      ; 08042A4E
 str   r1,[r2]                       ; 08042A50
-ldr   r6,=Data081AC634              ; 08042A52
+ldr   r6,=YoshiAnimData             ; 08042A52
 add   r0,r3,0x2                     ; 08042A54
 add   r0,r0,r6                      ; 08042A56
 ldrb  r0,[r0]                       ; 08042A58
@@ -4517,7 +4517,7 @@ ldrh  r0,[r0]                       ; 08042D3A
 lsr   r0,r0,0x2                     ; 08042D3C
 str   r0,[sp]                       ; 08042D3E
 ldrh  r0,[r1,0x32]                  ; 08042D40
-mov   r4,r1                         ; 08042D42
+mov   r4,r1                         ; 08042D42  r4 = 03006D80
 cmp   r0,0x0                        ; 08042D44
 bne   @@Code08042D4E                ; 08042D46
 ldr   r0,[sp]                       ; 08042D48
@@ -4529,20 +4529,20 @@ lsl   r0,r1,0x3                     ; 08042D50
 ldr   r1,=0x03005A00                ; 08042D52
 add   r0,r0,r1                      ; 08042D54
 mov   r8,r0                         ; 08042D56
-ldr   r2,=Data081AC22C              ; 08042D58
-ldrh  r0,[r4,0x3C]                  ; 08042D5A
+ldr   r2,=YoshiAnimOffsets          ; 08042D58
+ldrh  r0,[r4,0x3C]                  ; 08042D5A  Yoshi animation frame (03006DBC)
 lsl   r0,r0,0x1                     ; 08042D5C
-add   r0,r0,r2                      ; 08042D5E
+add   r0,r0,r2                      ; 08042D5E  index 16-bit table with Yoshi animation frame
 ldrh  r0,[r0]                       ; 08042D60
 ldr   r2,=0x0FF8                    ; 08042D62
-add   r1,r1,r2                      ; 08042D64
+add   r1,r1,r2                      ; 08042D64  030069F8
 strh  r0,[r1]                       ; 08042D66
 ldrh  r1,[r1]                       ; 08042D68
-ldr   r0,=Data081AC634              ; 08042D6A
-add   r6,r1,r0                      ; 08042D6C
-ldr   r1,=Data081AC028              ; 08042D6E
+ldr   r0,=YoshiAnimData             ; 08042D6A
+add   r6,r1,r0                      ; 08042D6C  offset with 16-bit value from table
+ldr   r1,=YoshiAnimLengths          ; 08042D6E
 ldrh  r0,[r4,0x3C]                  ; 08042D70
-add   r0,r0,r1                      ; 08042D72
+add   r0,r0,r1                      ; 08042D72  index 8-bit table with Yoshi animation frame
 ldrb  r0,[r0]                       ; 08042D74
 str   r0,[sp,0x4]                   ; 08042D76
 mov   r0,r4                         ; 08042D78
@@ -4550,10 +4550,10 @@ add   r0,0xA2                       ; 08042D7A
 ldrh  r0,[r0]                       ; 08042D7C
 lsl   r0,r0,0x6                     ; 08042D7E
 mov   r1,0xC0                       ; 08042D80
-lsl   r1,r1,0x4                     ; 08042D82
+lsl   r1,r1,0x4                     ; 08042D82  C00
 eor   r0,r1                         ; 08042D84
 mov   r3,0x80                       ; 08042D86
-lsl   r3,r3,0x3                     ; 08042D88
+lsl   r3,r3,0x3                     ; 08042D88  400
 add   r3,r0,r3                      ; 08042D8A
 and   r3,r1                         ; 08042D8C
 mov   r0,r4                         ; 08042D8E
@@ -4561,7 +4561,7 @@ add   r0,0xA0                       ; 08042D90
 ldrh  r0,[r0]                       ; 08042D92
 lsl   r0,r0,0xB                     ; 08042D94
 mov   r1,0xF0                       ; 08042D96
-lsl   r1,r1,0x8                     ; 08042D98
+lsl   r1,r1,0x8                     ; 08042D98  F000
 and   r0,r1                         ; 08042D9A
 orr   r3,r0                         ; 08042D9C
 str   r3,[sp,0xC]                   ; 08042D9E
@@ -4570,12 +4570,12 @@ str   r0,[sp,0x8]                   ; 08042DA2
 ldr   r1,[sp,0x4]                   ; 08042DA4
 cmp   r0,r1                         ; 08042DA6
 blo   @@Code08042DAC                ; 08042DA8
-b     @@Code08042F98                ; 08042DAA
+b     @@EndLoop                     ; 08042DAA
 @@Code08042DAC:
 mov   r2,0x18                       ; 08042DAC
 mov   r10,r2                        ; 08042DAE
 mov   r9,r0                         ; 08042DB0
-@@Code08042DB2:
+@@Loop08042DB2:
 mov   r0,0x2                        ; 08042DB2
 ldsb  r0,[r6,r0]                    ; 08042DB4
 ldrh  r3,[r4,0x2E]                  ; 08042DB6
@@ -4790,9 +4790,9 @@ str   r2,[sp,0x8]                   ; 08042F8C
 ldr   r4,=0x03006D80                ; 08042F8E
 ldr   r3,[sp,0x4]                   ; 08042F90
 cmp   r2,r3                         ; 08042F92
-bhs   @@Code08042F98                ; 08042F94
-b     @@Code08042DB2                ; 08042F96
-@@Code08042F98:
+bhs   @@EndLoop                     ; 08042F94
+b     @@Loop08042DB2                ; 08042F96
+@@EndLoop:
 ldr   r0,[sp]                       ; 08042F98
 ldr   r1,[sp,0x8]                   ; 08042F9A
 add   r0,r0,r1                      ; 08042F9C

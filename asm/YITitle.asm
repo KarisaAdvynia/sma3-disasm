@@ -2957,7 +2957,7 @@ ldr   r0,=YITitle_L2Graphics_8bpp_LZ77; 080FE786  pointer to layer 2 (mode 1) gr
 ldr   r1,=0x06004000                ; 080FE788
 bl    swi_LZ77_VRAM                 ; 080FE78A  LZ77 decompress (VRAM)
 ldr   r0,=0x06008000                ; 080FE78E
-bl    Sub08102104                   ; 080FE790
+bl    YITitle_LoadIconsToLayerVRAM  ; 080FE790
 ldr   r1,=YITitle_L3GraphicsPtrs    ; 080FE794  pointer to pointers to layer 3 graphics
 mov   r6,r9                         ; 080FE796
 add   r6,0x56                       ; 080FE798
@@ -3982,42 +3982,46 @@ pop   {r0}                          ; 080FF1AE
 bx    r0                            ; 080FF1B0
 .pool                               ; 080FF1B2
 
-Sub080FF1B8:
+FileSelect_SetFileIconIndex:
+; Set file select icon index for each save file
+; r0: pointer to 3-byte icon index table (FileSelect+904 (030048DC))
 push  {r4-r7,lr}                    ; 080FF1B8
 mov   r2,r0                         ; 080FF1BA
-add   r5,r2,0x3                     ; 080FF1BC
-ldr   r3,=0x03006C44                ; 080FF1BE
-sub   r4,r3,0x3                     ; 080FF1C0
+add   r5,r2,0x3                     ; 080FF1BC  r5 = end of 030048DC table
+ldr   r3,=0x03006C44                ; 080FF1BE  r3 = 03006C44 (file exists table)
+sub   r4,r3,0x3                     ; 080FF1C0  r4 = 03006C41 (file world progress table)
 mov   r7,0x7                        ; 080FF1C2
 mov   r6,0x8                        ; 080FF1C4
-@@Code080FF1C6:
+@@SaveFileLoop:
 ldrb  r1,[r4]                       ; 080FF1C6
 mov   r0,r1                         ; 080FF1C8
 cmp   r1,0x0                        ; 080FF1CA
 bne   @@Code080FF1E0                ; 080FF1CC
 ldrb  r0,[r3]                       ; 080FF1CE
 cmp   r0,0x0                        ; 080FF1D0
-beq   @@Code080FF1DC                ; 080FF1D2
-strb  r7,[r2]                       ; 080FF1D4
-b     @@Code080FF1EA                ; 080FF1D6
+beq   @@NewFile                     ; 080FF1D2
+strb  r7,[r2]                       ; 080FF1D4  set to 7 (World 0)
+b     @@Continue                    ; 080FF1D6
 .pool                               ; 080FF1D8
 
-@@Code080FF1DC:
-strb  r1,[r2]                       ; 080FF1DC
-b     @@Code080FF1EA                ; 080FF1DE
+@@NewFile:                          ;           both 03006C41+file and 03006C44+file are 0:
+strb  r1,[r2]                       ; 080FF1DC  set to 0 (New)
+b     @@Continue                    ; 080FF1DE
+
 @@Code080FF1E0:
 cmp   r1,0x80                       ; 080FF1E0
 bne   @@Code080FF1E8                ; 080FF1E2
-strb  r6,[r2]                       ; 080FF1E4
-b     @@Code080FF1EA                ; 080FF1E6
+strb  r6,[r2]                       ; 080FF1E4  03006C41+file is 80: set to 8 (Clear)
+b     @@Continue                    ; 080FF1E6
+
 @@Code080FF1E8:
-strb  r0,[r2]                       ; 080FF1E8
-@@Code080FF1EA:
-add   r3,0x1                        ; 080FF1EA
-add   r4,0x1                        ; 080FF1EC
-add   r2,0x1                        ; 080FF1EE
+strb  r0,[r2]                       ; 080FF1E8  set to world number?
+@@Continue:
+add   r3,0x1                        ; 080FF1EA  increment file exists table pointer
+add   r4,0x1                        ; 080FF1EC  increment file world progress table pointer
+add   r2,0x1                        ; 080FF1EE  increment icon index table pointer
 cmp   r2,r5                         ; 080FF1F0
-blo   @@Code080FF1C6                ; 080FF1F2
+blo   @@SaveFileLoop                ; 080FF1F2
 pop   {r4-r7}                       ; 080FF1F4
 pop   {r0}                          ; 080FF1F6
 bx    r0                            ; 080FF1F8
@@ -4032,8 +4036,8 @@ mov   r4,r1                         ; 080FF204
 bl    Sub080FF08C                   ; 080FF206
 bl    Sub08100088                   ; 080FF20A
 ldr   r1,=0x0904                    ; 080FF20E
-add   r0,r4,r1                      ; 080FF210
-bl    Sub080FF1B8                   ; 080FF212
+add   r0,r4,r1                      ; 080FF210  FileSelect+904 (030048DC)
+bl    FileSelect_SetFileIconIndex                   ; 080FF212
 ldr   r2,=0x03002200                ; 080FF216
 mov   r8,r2                         ; 080FF218
 ldr   r1,=0x4072                    ; 080FF21A
@@ -4532,40 +4536,44 @@ pop   {r0}                          ; 080FF654
 bx    r0                            ; 080FF656
 .pool                               ; 080FF658
 
-Sub080FF65C:
+FileSelect_Write24x24Icon:
+; r0: pointer to start of top row, in tilemap buffer
+; r1: pointer to start of center row, in tilemap buffer
+; r2: pointer to start of bottom row, in tilemap buffer
+; r3: first tilemap halfword to store (top-left corner tile)
 push  {r4-r5,lr}                    ; 080FF65C
 lsl   r3,r3,0x10                    ; 080FF65E
 lsr   r4,r3,0x10                    ; 080FF660
 mov   r5,0x80                       ; 080FF662
-lsl   r5,r5,0x9                     ; 080FF664
+lsl   r5,r5,0x9                     ; 080FF664  10000
 add   r3,r3,r5                      ; 080FF666
-strh  r4,[r0]                       ; 080FF668
+strh  r4,[r0]                       ; 080FF668  store tile+0 to top-left
 add   r0,0x2                        ; 080FF66A
 lsr   r4,r3,0x10                    ; 080FF66C
 add   r3,r3,r5                      ; 080FF66E
-strh  r4,[r0]                       ; 080FF670
+strh  r4,[r0]                       ; 080FF670  store tile+1 to top-center
 lsr   r4,r3,0x10                    ; 080FF672
 add   r3,r3,r5                      ; 080FF674
-strh  r4,[r0,0x2]                   ; 080FF676
+strh  r4,[r0,0x2]                   ; 080FF676  store tile+2 to top-right
 lsr   r0,r3,0x10                    ; 080FF678
 add   r3,r3,r5                      ; 080FF67A
-strh  r0,[r1]                       ; 080FF67C
+strh  r0,[r1]                       ; 080FF67C  store tile+3 to center-left
 add   r1,0x2                        ; 080FF67E
 lsr   r0,r3,0x10                    ; 080FF680
 add   r3,r3,r5                      ; 080FF682
-strh  r0,[r1]                       ; 080FF684
+strh  r0,[r1]                       ; 080FF684  store tile+4 to center
 lsr   r0,r3,0x10                    ; 080FF686
 add   r3,r3,r5                      ; 080FF688
-strh  r0,[r1,0x2]                   ; 080FF68A
+strh  r0,[r1,0x2]                   ; 080FF68A  store tile+5 to center-right
 lsr   r0,r3,0x10                    ; 080FF68C
 add   r3,r3,r5                      ; 080FF68E
-strh  r0,[r2]                       ; 080FF690
+strh  r0,[r2]                       ; 080FF690  store tile+6 to bottom-left
 add   r2,0x2                        ; 080FF692
 lsr   r0,r3,0x10                    ; 080FF694
 add   r3,r3,r5                      ; 080FF696
 lsr   r3,r3,0x10                    ; 080FF698
-strh  r0,[r2]                       ; 080FF69A
-strh  r3,[r2,0x2]                   ; 080FF69C
+strh  r0,[r2]                       ; 080FF69A  store tile+7 to bottom-center
+strh  r3,[r2,0x2]                   ; 080FF69C  store tile+8 to bottom-right
 pop   {r4-r5}                       ; 080FF69E
 pop   {r0}                          ; 080FF6A0
 bx    r0                            ; 080FF6A2
@@ -5155,7 +5163,7 @@ mov   r3,0xF7                       ; 080FFB80
 lsl   r3,r3,0x1                     ; 080FFB82
 add   r2,r4,r3                      ; 080FFB84
 ldr   r3,=0x3051                    ; 080FFB86
-bl    Sub080FF65C                   ; 080FFB88
+bl    FileSelect_Write24x24Icon     ; 080FFB88
 ldr   r1,=0x026E                    ; 080FFB8C
 add   r0,r4,r1                      ; 080FFB8E
 ldr   r2,=0x02AE                    ; 080FFB90
@@ -5176,7 +5184,7 @@ ldr   r3,=0x026E                    ; 080FFBBA
 add   r2,r4,r3                      ; 080FFBBC
 ldr   r3,=0x3048                    ; 080FFBBE
 @@Code080FFBC0:
-bl    Sub080FF65C                   ; 080FFBC0
+bl    FileSelect_Write24x24Icon     ; 080FFBC0
 pop   {r4}                          ; 080FFBC4
 pop   {r0}                          ; 080FFBC6
 bx    r0                            ; 080FFBC8
@@ -5259,21 +5267,21 @@ mov   r1,r5                         ; 080FFC80
 mov   r2,r4                         ; 080FFC82
 bl    Sub080FFAF0                   ; 080FFC84
 mov   r2,0xE5                       ; 080FFC88
-lsl   r2,r2,0x1                     ; 080FFC8A
-add   r0,r7,r2                      ; 080FFC8C
+lsl   r2,r2,0x1                     ; 080FFC8A  1CA
+add   r0,r7,r2                      ; 080FFC8C  r0: pointer to top row of tilemap buffer
 ldr   r3,=0x020A                    ; 080FFC8E
-add   r1,r7,r3                      ; 080FFC90
+add   r1,r7,r3                      ; 080FFC90  r1: pointer to middle row of tilemap buffer
 ldr   r5,=0x024A                    ; 080FFC92
-add   r2,r7,r5                      ; 080FFC94
-ldr   r4,=Data08199496              ; 080FFC96
+add   r2,r7,r5                      ; 080FFC94  r2: pointer to bottom row of tilemap buffer
+ldr   r4,=FileSelect_FileIconTilemaps; 080FFC96
 mov   r5,r10                        ; 080FFC98
-ldrb  r3,[r5]                       ; 080FFC9A
+ldrb  r3,[r5]                       ; 080FFC9A  current file's icon index
 lsl   r3,r3,0x1                     ; 080FFC9C
 add   r3,r3,r4                      ; 080FFC9E
-ldrh  r3,[r3]                       ; 080FFCA0
-bl    Sub080FF65C                   ; 080FFCA2
+ldrh  r3,[r3]                       ; 080FFCA0  r3: first tilemap halfword
+bl    FileSelect_Write24x24Icon     ; 080FFCA2
 mov   r1,0xEB                       ; 080FFCA6
-lsl   r1,r1,0x1                     ; 080FFCA8
+lsl   r1,r1,0x1                     ; 080FFCA8  1D6
 add   r0,r7,r1                      ; 080FFCAA
 ldr   r2,=0x0216                    ; 080FFCAC
 add   r1,r7,r2                      ; 080FFCAE
@@ -5283,7 +5291,7 @@ ldrb  r3,[r5,0x1]                   ; 080FFCB4
 lsl   r3,r3,0x1                     ; 080FFCB6
 add   r3,r3,r4                      ; 080FFCB8
 ldrh  r3,[r3]                       ; 080FFCBA
-bl    Sub080FF65C                   ; 080FFCBC
+bl    FileSelect_Write24x24Icon     ; 080FFCBC
 mov   r5,0xF1                       ; 080FFCC0
 lsl   r5,r5,0x1                     ; 080FFCC2
 add   r0,r7,r5                      ; 080FFCC4
@@ -5296,7 +5304,7 @@ ldrb  r3,[r5,0x2]                   ; 080FFCD0
 lsl   r3,r3,0x1                     ; 080FFCD2
 add   r3,r3,r4                      ; 080FFCD4
 ldrh  r3,[r3]                       ; 080FFCD6
-bl    Sub080FF65C                   ; 080FFCD8
+bl    FileSelect_Write24x24Icon     ; 080FFCD8
 mov   r0,r7                         ; 080FFCDC
 mov   r1,r9                         ; 080FFCDE
 bl    Sub080FFB68                   ; 080FFCE0
@@ -5331,7 +5339,7 @@ add   r1,r0,r4                      ; 080FFD40
 ldrb  r4,[r1]                       ; 080FFD42
 add   r2,r2,r4                      ; 080FFD44
 ldrb  r1,[r2]                       ; 080FFD46
-ldr   r2,=Data08199496              ; 080FFD48
+ldr   r2,=FileSelect_FileIconTilemaps; 080FFD48
 lsl   r1,r1,0x1                     ; 080FFD4A
 add   r1,r1,r2                      ; 080FFD4C
 ldrh  r6,[r1]                       ; 080FFD4E
@@ -5353,7 +5361,7 @@ add   r1,0x40                       ; 080FFD6A
 mov   r2,r0                         ; 080FFD6C
 add   r2,0x80                       ; 080FFD6E
 mov   r3,r6                         ; 080FFD70
-bl    Sub080FF65C                   ; 080FFD72
+bl    FileSelect_Write24x24Icon     ; 080FFD72
 ldr   r0,=0x02027C00                ; 080FFD76
 ldr   r2,=0x06001800                ; 080FFD78
 mov   r3,0x90                       ; 080FFD7A
@@ -5815,7 +5823,7 @@ push  {r4-r6,lr}                    ; 08100140
 mov   r6,r8                         ; 08100142
 push  {r6}                          ; 08100144
 mov   r5,r1                         ; 08100146
-ldr   r4,=YITitle_icon32_Graphics   ; 08100148
+ldr   r4,=YITitle_Icon32_Graphics   ; 08100148
 mov   r1,0x7                        ; 0810014A
 and   r1,r0                         ; 0810014C
 lsl   r1,r1,0x7                     ; 0810014E
@@ -5984,7 +5992,7 @@ mov   r6,r8                         ; 081002B8
 push  {r6-r7}                       ; 081002BA
 add   sp,-0x8                       ; 081002BC
 mov   r9,r1                         ; 081002BE
-ldr   r7,=YITitle_icon32_Graphics   ; 081002C0
+ldr   r7,=YITitle_Icon32_Graphics   ; 081002C0
 mov   r1,0x7                        ; 081002C2
 and   r1,r0                         ; 081002C4
 lsl   r1,r1,0x7                     ; 081002C6
@@ -9387,7 +9395,7 @@ push  {r4-r7,lr}                    ; 081020D0
 mov   r4,r0                         ; 081020D2
 mov   r5,r1                         ; 081020D4
 mov   r0,0xC0                       ; 081020D6
-lsl   r0,r0,0x4                     ; 081020D8
+lsl   r0,r0,0x4                     ; 081020D8  C00
 add   r7,r4,r0                      ; 081020DA
 @@Code081020DC:
 mov   r6,r4                         ; 081020DC
@@ -9401,7 +9409,7 @@ add   r5,0x20                       ; 081020EA
 cmp   r4,r6                         ; 081020EC
 blo   @@Code081020E0                ; 081020EE
 mov   r0,0xE8                       ; 081020F0
-lsl   r0,r0,0x2                     ; 081020F2
+lsl   r0,r0,0x2                     ; 081020F2  3A0
 add   r4,r4,r0                      ; 081020F4
 cmp   r4,r7                         ; 081020F6
 blo   @@Code081020DC                ; 081020F8
@@ -9411,18 +9419,19 @@ pop   {r1}                          ; 081020FE
 bx    r1                            ; 08102100
 .pool                               ; 08102102
 
-Sub08102104:
+YITitle_LoadIconsToLayerVRAM:
+; r0: 06008000
 push  {r4-r5,lr}                    ; 08102104
 mov   r1,r0                         ; 08102106
-ldr   r4,=DataPtrs08199670          ; 08102108
+ldr   r4,=YITitle_Icon32Ptrs        ; 08102108
 mov   r5,r4                         ; 0810210A
-add   r5,0x34                       ; 0810210C
-@@Code0810210E:
+add   r5,YITitle_Icon32Ptrs_End - YITitle_Icon32Ptrs; 0810210C  r5 = end of pointer table
+@@Loop:
 ldmia r4!,{r0}                      ; 0810210E
 bl    Sub081020D0                   ; 08102110
 mov   r1,r0                         ; 08102114
 cmp   r4,r5                         ; 08102116
-blo   @@Code0810210E                ; 08102118
+blo   @@Loop                        ; 08102118
 pop   {r4-r5}                       ; 0810211A
 pop   {r0}                          ; 0810211C
 bx    r0                            ; 0810211E

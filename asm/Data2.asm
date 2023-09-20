@@ -1232,68 +1232,70 @@ SublevelSpritePtrs:                 ; 081EF57C
 .d32 SublevelEC_Sprites, SublevelED_Sprites, SublevelEE_Sprites, SublevelEF_Sprites
 .d32 SublevelF0_Sprites, SublevelF1_Sprites, SublevelF2_Sprites, SublevelF3_Sprites
 .d32 SublevelF4_Sprites, SublevelF5_Sprites
-Data081EF954:                       ; 081EF954
-.incbin "../data/Graphics/LevelSelect_icon24_LZ77.bin"
-Data081F3398:                       ; 081F3398
-.incbin "../data/Graphics/LevelSelect_icon32_0_LZ77.bin"
-Data081F7174:                       ; 081F7174
-.incbin "../data/Graphics/LevelSelect_icon32_1_LZ77.bin"
-Data081F7A90:                       ; 081F7A90
-.incbin "../data/Graphics/LevelSelect_controls_StoryIntro_LZ77.bin"
-Data081F897C:                       ; 081F897C
+LevelSelect_Icon24_Graphics_LZ77:   ; 081EF954
+.incbin "../data/Graphics/LevelSelect_Icon24_LZ77.bin"
+LevelSelect_Icon32_0_Graphics_LZ77: ; 081F3398
+.incbin "../data/Graphics/LevelSelect_Icon32_0_LZ77.bin"
+LevelSelect_Icon32_1_Graphics_LZ77: ; 081F7174
+.incbin "../data/Graphics/LevelSelect_Icon32_1_LZ77.bin"
+LevelSelectControls_StoryIntro_Graphics_LZ77:; 081F7A90
+.incbin "../data/Graphics/LevelSelect_Controls_StoryIntro_LZ77.bin"
+LevelSelect_A000_W6_Graphics:       ; 081F897C
 .incbin "../data/Graphics/LevelSelect_A000_W6.bin"
-Data081F917C:                       ; 081F917C
+LevelSelect_A800_W6_Graphics:       ; 081F917C
 .incbin "../data/Graphics/LevelSelect_A800_W6.bin"
-Data081F997C:                       ; 081F997C
+LevelSelect_B000_W6_Graphics:       ; 081F997C
 .incbin "../data/Graphics/LevelSelect_B000_W6.bin"
-Data081FA17C:                       ; 081FA17C
+LevelSelect_8000_Graphics:          ; 081FA17C
 .incbin "../data/Graphics/LevelSelect_8000.bin"
-Data081FA97C:                       ; 081FA97C
+LevelSelect_8800_Graphics:          ; 081FA97C
 .incbin "../data/Graphics/LevelSelect_8800.bin"
-Data081FB17C:                       ; 081FB17C
+LevelSelect_9000_Graphics:          ; 081FB17C
 .incbin "../data/Graphics/LevelSelect_9000.bin"
-Data081FB97C:                       ; 081FB97C
+LevelSelect_9800_Graphics:          ; 081FB97C
 .incbin "../data/Graphics/LevelSelect_9800.bin"
-Data081FC17C:                       ; 081FC17C
+LevelSelect_A000_W15_Graphics:      ; 081FC17C
 .incbin "../data/Graphics/LevelSelect_A000_W15.bin"
-Data081FC97C:                       ; 081FC97C
+LevelSelect_A800_W15_Graphics:      ; 081FC97C
 .incbin "../data/Graphics/LevelSelect_A800_W15.bin"
-Data081FD17C:                       ; 081FD17C
+LevelSelect_B000_W15_Graphics:      ; 081FD17C
 .incbin "../data/Graphics/LevelSelect_B000_W15.bin"
-Data081FD97C:                       ; 081FD97C
+LevelSelect_B800_W15_Graphics:      ; 081FD97C
 .incbin "../data/Graphics/LevelSelect_B800_W15.bin"
-Data081FE17C:                       ; 081FE17C
-.incbin "../data/Graphics/LevelSelect_stripe00_LZ77.bin"
-Data081FE2B0:                       ; 081FE2B0
-.incbin "../data/Graphics/LevelSelect_stripe08_LZ77.bin"
+LevelSelect_Stripe00_Graphics_LZ77: ; 081FE17C
+.incbin "../data/Graphics/LevelSelect_Stripe00_LZ77.bin"
+LevelSelect_Stripe08_Graphics_LZ77: ; 081FE2B0
+.incbin "../data/Graphics/LevelSelect_Stripe08_LZ77.bin"
 DataPtrs081FE384:                   ; 081FE384
-.d32 Data081FE17C, Data081FE2B0
-Data081FE38C:                       ; 081FE38C
+.d32 LevelSelect_Stripe00_Graphics_LZ77, LevelSelect_Stripe08_Graphics_LZ77
+LevelSelect_Perfect_Graphics_LZ77:  ; 081FE38C
 .incbin "../data/Graphics/LevelSelect_Perfect_LZ77.bin"
-Data081FE754:                       ; 081FE754
+LevelSelect_400_Graphics_LZ77:      ; 081FE754
 .incbin "../data/Graphics/LevelSelect_400_LZ77.bin"
-Data081FEBA8:                       ; 081FEBA8
+WorldSelect_L1_Tilemap_LZ77:        ; 081FEBA8
 .incbin "../data/Tilemaps/WorldSelect_L1_LZ77.bin"
-Data081FEECC:                       ; 081FEECC
+WorldSelect_L2_Tilemap_LZ77:        ; 081FEECC
 .incbin "../data/Tilemaps/WorldSelect_L2_LZ77.bin"
-Data081FF1D4:                       ; 081FF1D4
+WorldSelect_L3_Tilemap_LZ77:        ; 081FF1D4
 .incbin "../data/Tilemaps/WorldSelect_L3_LZ77.bin"
-Data081FF38C:                       ; 081FF38C
+WorldSelect_L12_0_Graphics_LZ77:    ; 081FF38C
 .incbin "../data/Graphics/WorldSelect_L12_0_LZ77.bin"
-Data081FFF20:                       ; 081FFF20
+WorldSelect_L12_1_Graphics_LZ77:    ; 081FFF20
 .incbin "../data/Graphics/WorldSelect_L12_1_LZ77.bin"
-Data08200B70:                       ; 08200B70
+WorldSelect_L12_2_Graphics_LZ77:    ; 08200B70
 .incbin "../data/Graphics/WorldSelect_L12_2_LZ77.bin"
-DataPtrs082010E4:                   ; 082010E4
-.d32 Data081FF38C, Data081FFF20, Data08200B70
-Data082010F0:                       ; 082010F0
-.incbin "../data/Graphics/WorldSelect_stripe02_LZ77.bin"
-Data08201334:                       ; 08201334
-.incbin "../data/Graphics/WorldSelect_stripe0A_LZ77.bin"
-Data08201550:                       ; 08201550
+WorldSelect_L12GraphicsPtrs:        ; 082010E4
+.d32 WorldSelect_L12_0_Graphics_LZ77, WorldSelect_L12_1_Graphics_LZ77
+.d32 WorldSelect_L12_2_Graphics_LZ77
+WorldSelect_Stripe02_Graphics_LZ77: ; 082010F0
+.incbin "../data/Graphics/WorldSelect_Stripe02_LZ77.bin"
+WorldSelect_Stripe0A_Graphics_LZ77: ; 08201334
+.incbin "../data/Graphics/WorldSelect_Stripe0A_LZ77.bin"
+WorldSelect_BabyLuigi_Graphics_LZ77:; 08201550
 .incbin "../data/Graphics/WorldSelect_BabyLuigi_LZ77.bin"
 DataPtrs082016AC:                   ; 082016AC
-.d32 Data082010F0, Data08201334, Data08201550
+.d32 WorldSelect_Stripe02_Graphics_LZ77, WorldSelect_Stripe0A_Graphics_LZ77
+.d32 WorldSelect_BabyLuigi_Graphics_LZ77
 Data082016B8:                       ; 082016B8
 .d16 0x0000, 0x4B9F, 0x3B1C, 0x25B3, 0x0000, 0x4B9F, 0x3B1C, 0x25B3
 .d16 0x318C, 0x7FFF, 0x7FFF, 0x7FFF, 0x731B, 0x424C, 0x36B5, 0x473C

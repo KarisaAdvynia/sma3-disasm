@@ -8547,13 +8547,13 @@ mov   r6,r8                         ; 0810B6C0
 push  {r6-r7}                       ; 0810B6C2
 mov   r6,r0                         ; 0810B6C4
 mov   r1,0x82                       ; 0810B6C6
-lsl   r1,r1,0x1                     ; 0810B6C8
+lsl   r1,r1,0x1                     ; 0810B6C8  104
 add   r0,r6,r1                      ; 0810B6CA
 ldr   r5,[r0]                       ; 0810B6CC
-add   r1,0x4                        ; 0810B6CE
+add   r1,0x4                        ; 0810B6CE  108
 add   r0,r6,r1                      ; 0810B6D0
 ldr   r7,[r0]                       ; 0810B6D2
-sub   r1,0x8                        ; 0810B6D4
+sub   r1,0x8                        ; 0810B6D4  100
 add   r0,r6,r1                      ; 0810B6D6
 ldr   r0,[r0]                       ; 0810B6D8
 mov   r8,r0                         ; 0810B6DA
@@ -9786,7 +9786,7 @@ ble   @@Code0810C090                ; 0810C08C
 mov   r0,0x3F                       ; 0810C08E  if ? > 3F, load 3F instaed
 @@Code0810C090:
 ldr   r2,=0x0500004C                ; 0810C090
-ldr   r1,=Data0819E904              ; 0810C092  color table
+ldr   r1,=YITitle_LogoRippleColors  ; 0810C092  color table
 lsl   r0,r0,0x1                     ; 0810C094
 add   r0,r0,r1                      ; 0810C096  index with [03006378]
 ldrh  r0,[r0]                       ; 0810C098
@@ -10003,7 +10003,7 @@ ldrh  r0,[r0]                       ; 0810C2A4
 strh  r0,[r1]                       ; 0810C2A6
 @@Code0810C2A8:
 ldr   r3,=0x0400001C                ; 0810C2A8
-ldr   r2,=Data081A88D8              ; 0810C2AA
+ldr   r2,=RAMPtrs081A88D8           ; 0810C2AA
 ldr   r1,=0x4901                    ; 0810C2AC
 add   r0,r5,r1                      ; 0810C2AE
 ldrb  r1,[r0]                       ; 0810C2B0
@@ -10059,7 +10059,7 @@ ldrh  r0,[r0]                       ; 0810C330
 strh  r0,[r1]                       ; 0810C332
 @@Code0810C334:
 ldr   r3,=0x0400001C                ; 0810C334
-ldr   r2,=Data081A88D8              ; 0810C336
+ldr   r2,=RAMPtrs081A88D8           ; 0810C336
 ldr   r1,=0x4901                    ; 0810C338
 add   r0,r5,r1                      ; 0810C33A
 ldrb  r1,[r0]                       ; 0810C33C
@@ -10115,7 +10115,7 @@ ldrh  r0,[r0]                       ; 0810C3BC
 strh  r0,[r1]                       ; 0810C3BE
 @@Code0810C3C0:
 ldr   r3,=0x0400001C                ; 0810C3C0
-ldr   r2,=Data081A88D8              ; 0810C3C2
+ldr   r2,=RAMPtrs081A88D8           ; 0810C3C2
 ldr   r1,=0x4901                    ; 0810C3C4
 add   r0,r5,r1                      ; 0810C3C6
 ldrb  r1,[r0]                       ; 0810C3C8
@@ -10171,7 +10171,7 @@ ldrh  r0,[r0]                       ; 0810C448
 strh  r0,[r1]                       ; 0810C44A
 @@Code0810C44C:
 ldr   r3,=0x0400001C                ; 0810C44C
-ldr   r2,=Data081A88D8              ; 0810C44E
+ldr   r2,=RAMPtrs081A88D8           ; 0810C44E
 ldr   r1,=0x4901                    ; 0810C450
 add   r0,r5,r1                      ; 0810C452
 ldrb  r1,[r0]                       ; 0810C454
@@ -10227,7 +10227,7 @@ ldrh  r0,[r0]                       ; 0810C4D4
 strh  r0,[r1]                       ; 0810C4D6
 @@Code0810C4D8:
 ldr   r3,=0x04000018                ; 0810C4D8
-ldr   r2,=Data081A88E0              ; 0810C4DA
+ldr   r2,=RAMPtrs081A88E0           ; 0810C4DA
 ldr   r1,=0x4901                    ; 0810C4DC
 add   r0,r5,r1                      ; 0810C4DE
 ldrb  r1,[r0]                       ; 0810C4E0
@@ -10316,7 +10316,7 @@ and   r0,r1                         ; 0810C59C
 cmp   r0,0x0                        ; 0810C59E
 beq   @@Code0810C5BE                ; 0810C5A0
 ldr   r3,=0x0400001C                ; 0810C5A2
-ldr   r2,=Data081A88D8              ; 0810C5A4
+ldr   r2,=RAMPtrs081A88D8           ; 0810C5A4
 ldr   r1,=0x4901                    ; 0810C5A6
 add   r0,r5,r1                      ; 0810C5A8
 ldrb  r1,[r0]                       ; 0810C5AA
@@ -10836,7 +10836,6 @@ bl    Sub080E9100                   ; 0810C9EE
 add   sp,0x4                        ; 0810C9F2
 pop   {r4}                          ; 0810C9F4
 pop   {r0}                          ; 0810C9F6
-
 bx    r0                            ; 0810C9F8
 .pool                               ; 0810C9FA
 

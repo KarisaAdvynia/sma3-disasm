@@ -2145,7 +2145,7 @@ add   r0,r0,r1                      ; 080EAB66
 ldrh  r0,[r0]                       ; 080EAB68
 lsr   r0,r0,0x2                     ; 080EAB6A
 lsl   r0,r0,0x2                     ; 080EAB6C
-ldr   r1,=YITitle_icon32_Graphics   ; 080EAB6E
+ldr   r1,=YITitle_Icon32_Graphics   ; 080EAB6E
 add   r0,r0,r1                      ; 080EAB70
 mov   r9,r0                         ; 080EAB72
 mov   r4,0x0                        ; 080EAB74
@@ -15775,7 +15775,7 @@ bx    r0                            ; 080F2338
 
 Sub080F233C:
 push  {r4-r5,lr}                    ; 080F233C
-ldr   r4,=YITitle_icon32_Graphics+0x2000; 080F233E
+ldr   r4,=YITitle_Icon32_Graphics+0x2000; 080F233E
 ldr   r1,=0x06014000                ; 080F2340
 mov   r2,0x80                       ; 080F2342
 lsl   r2,r2,0x4                     ; 080F2344
@@ -16866,7 +16866,7 @@ lsl   r0,r0,0x10                    ; 080F2CB0
 lsr   r5,r0,0x10                    ; 080F2CB2
 cmp   r5,0x6                        ; 080F2CB4
 bls   @@Code080F2C9C                ; 080F2CB6
-ldr   r4,=YITitle_icon32_Graphics+0x2000; 080F2CB8
+ldr   r4,=YITitle_Icon32_Graphics+0x2000; 080F2CB8
 ldr   r1,=0x06014000                ; 080F2CBA
 mov   r2,0x80                       ; 080F2CBC
 lsl   r2,r2,0x4                     ; 080F2CBE
@@ -17052,7 +17052,7 @@ mov   r7,r9                         ; 080F2E56
 mov   r6,r8                         ; 080F2E58
 push  {r6-r7}                       ; 080F2E5A
 mov   r7,r0                         ; 080F2E5C
-ldr   r0,=YITitle_icon32_Graphics   ; 080F2E5E
+ldr   r0,=YITitle_Icon32_Graphics   ; 080F2E5E
 ldr   r1,=0x06014000                ; 080F2E60
 mov   r2,0x80                       ; 080F2E62
 lsl   r2,r2,0x5                     ; 080F2E64
@@ -19496,7 +19496,7 @@ mov   r2,0xAB                       ; 080F4356
 lsl   r2,r2,0x3                     ; 080F4358
 mov   r0,r4                         ; 080F435A
 bl    swi_MemoryCopy32              ; 080F435C  Memory copy/fill, 32-byte blocks
-ldr   r4,=YITitle_icon32_Graphics+0x2000; 080F4360
+ldr   r4,=YITitle_Icon32_Graphics+0x2000; 080F4360
 ldr   r1,=0x06014000                ; 080F4362
 mov   r2,0x80                       ; 080F4364
 lsl   r2,r2,0x4                     ; 080F4366

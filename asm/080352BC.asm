@@ -641,7 +641,7 @@ mul   r0,r1                         ; 08035814
 add   r0,r0,r2                      ; 08035816
 lsl   r0,r0,0x8                     ; 08035818
 lsr   r2,r0,0x10                    ; 0803581A
-ldr   r1,=Data081ABC3E              ; 0803581C
+ldr   r1,=SublevelL23YOffsets       ; 0803581C
 ldr   r0,=0x03007240                ; 0803581E  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                       ; 08035820
 ldr   r6,=0x2AAC                    ; 08035822
@@ -682,7 +682,7 @@ mul   r0,r1                         ; 08035868
 add   r0,r0,r2                      ; 0803586A
 lsl   r0,r0,0x8                     ; 0803586C
 lsr   r2,r0,0x10                    ; 0803586E
-ldr   r1,=Data081ABC3E              ; 08035870
+ldr   r1,=SublevelL23YOffsets       ; 08035870
 ldr   r0,=0x03007240                ; 08035872  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                       ; 08035874
 ldr   r6,=0x2AAC                    ; 08035876
@@ -3933,7 +3933,7 @@ asr   r1,r1,0x8                     ; 08037260
 mov   r0,0xFF                       ; 08037262
 lsl   r0,r0,0x8                     ; 08037264
 mov   r4,r0                         ; 08037266
-ldr   r3,=Data081AC016              ; 08037268
+ldr   r3,=NoVertScrollL1YOffsets    ; 08037268
 mov   r0,r5                         ; 0803726A
 add   r0,0xC4                       ; 0803726C
 ldrh  r2,[r0]                       ; 0803726E
@@ -4095,7 +4095,7 @@ asr   r1,r1,0x8                     ; 080373D8
 mov   r0,0xFF                       ; 080373DA
 lsl   r0,r0,0x8                     ; 080373DC  FF00
 mov   r4,r0                         ; 080373DE
-ldr   r3,=Data081AC016              ; 080373E0
+ldr   r3,=NoVertScrollL1YOffsets    ; 080373E0
 mov   r0,r2                         ; 080373E2
 add   r0,0xC4                       ; 080373E4  03006E44
 ldrh  r2,[r0]                       ; 080373E6  entrance byte 4
@@ -17506,9 +17506,9 @@ add   r1,r4,r3                      ; 0803E1D4
 mov   r0,0xB                        ; 0803E1D6
 strh  r0,[r1]                       ; 0803E1D8
 ldr   r0,=0x4150                    ; 0803E1DA
-add   r1,r4,r0                      ; 0803E1DC
+add   r1,r4,r0                      ; 0803E1DC  03006350
 mov   r0,0x1                        ; 0803E1DE
-strb  r0,[r1]                       ; 0803E1E0
+strb  r0,[r1]                       ; 0803E1E0  set flag: file exists
 b     @@Code0803E2B0                ; 0803E1E2
 .pool                               ; 0803E1E4
 

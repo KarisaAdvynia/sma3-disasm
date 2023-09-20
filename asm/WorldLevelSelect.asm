@@ -439,7 +439,7 @@ lsl   r0,r0,0x10                    ; 080045B2
 lsr   r6,r0,0x10                    ; 080045B4
 cmp   r6,0x3                        ; 080045B6
 bls   @@Code0800458C                ; 080045B8
-ldr   r5,=DataPtrs082010E4          ; 080045BA
+ldr   r5,=WorldSelect_L12GraphicsPtrs; 080045BA
 ldmia r5!,{r0}                      ; 080045BC
 mov   r1,0xC0                       ; 080045BE
 lsl   r1,r1,0x13                    ; 080045C0
@@ -531,13 +531,13 @@ lsl   r0,r0,0x10                    ; 0800467E
 lsr   r6,r0,0x10                    ; 08004680
 cmp   r6,0x2                        ; 08004682
 bls   @@Code0800464E                ; 08004684
-ldr   r0,=Data081FEBA8              ; 08004686
+ldr   r0,=WorldSelect_L1_Tilemap_LZ77; 08004686
 ldr   r1,=0x0600B000                ; 08004688
 bl    swi_LZ77_VRAM                 ; 0800468A  LZ77 decompress (VRAM)
-ldr   r0,=Data081FEECC              ; 0800468E
+ldr   r0,=WorldSelect_L2_Tilemap_LZ77; 0800468E
 ldr   r1,=0x0600B800                ; 08004690
 bl    swi_LZ77_VRAM                 ; 08004692  LZ77 decompress (VRAM)
-ldr   r0,=Data081FF1D4              ; 08004696
+ldr   r0,=WorldSelect_L3_Tilemap_LZ77; 08004696
 ldr   r1,=0x0600C000                ; 08004698
 bl    swi_LZ77_VRAM                 ; 0800469A  LZ77 decompress (VRAM)
 ldr   r4,=Data082016B8              ; 0800469E
@@ -6690,7 +6690,7 @@ lsl   r0,r0,0x10                    ; 08007FCE
 lsr   r7,r0,0x10                    ; 08007FD0
 cmp   r7,0x3                        ; 08007FD2
 bls   @@Code08007F8E                ; 08007FD4
-ldr   r0,=Data081F7A90              ; 08007FD6  story intro Yoshi with map / level select controls menu grpahics
+ldr   r0,=LevelSelectControls_StoryIntro_Graphics_LZ77; 08007FD6  story intro Yoshi with map / level select controls menu grpahics
 ldr   r4,=0x0201FC00                ; 08007FD8  decompressed graphics buffer
 mov   r1,r4                         ; 08007FDA
 bl    swi_LZ77_WRAM                 ; 08007FDC  LZ77 decompress (WRAM)
@@ -6699,7 +6699,7 @@ ldr   r1,=0x06002000                ; 08007FE2
 mov   r2,0x80                       ; 08007FE4
 lsl   r2,r2,0x3                     ; 08007FE6
 bl    swi_MemoryCopy32              ; 08007FE8  Memory copy/fill, 32-byte blocks
-ldr   r0,=Data081FE754              ; 08007FEC
+ldr   r0,=LevelSelect_400_Graphics_LZ77; 08007FEC
 mov   r1,r4                         ; 08007FEE
 bl    swi_LZ77_WRAM                 ; 08007FF0  LZ77 decompress (WRAM)
 ldr   r1,=0x06004000                ; 08007FF4
@@ -7053,11 +7053,11 @@ str   r0,[r3,0x48]                  ; 0800835E
 mov   r5,0x80                       ; 08008360
 lsl   r5,r5,0x8                     ; 08008362
 str   r5,[r3,0x4C]                  ; 08008364
-ldr   r0,=Data081F3398              ; 08008366  level select 32x32 icons, W1-W6
+ldr   r0,=LevelSelect_Icon32_0_Graphics_LZ77; 08008366  level select 32x32 icons, W1-W6
 ldr   r4,=0x03007014                ; 08008368
 ldr   r1,[r4]                       ; 0800836A
 bl    swi_LZ77_WRAM                 ; 0800836C  LZ77 decompress (WRAM)
-ldr   r0,=Data081F7174              ; 08008370  level select 32x32 icons, Secrets/LLBAR
+ldr   r0,=LevelSelect_Icon32_1_Graphics_LZ77; 08008370  level select 32x32 icons, Secrets/LLBAR
 ldr   r1,[r4]                       ; 08008372
 add   r1,r1,r5                      ; 08008374
 bl    swi_LZ77_WRAM                 ; 08008376  LZ77 decompress (WRAM)
@@ -8294,14 +8294,14 @@ add   r0,r0,r1                      ; 08008F4C
 ldrh  r5,[r0]                       ; 08008F4E
 cmp   r2,0x8                        ; 08008F50
 bne   @@Code08008F8C                ; 08008F52
-ldr   r0,=Data081F7174              ; 08008F54  level select 32x32 icons, Secrets/LLBAR
+ldr   r0,=LevelSelect_Icon32_1_Graphics_LZ77; 08008F54  level select 32x32 icons, Secrets/LLBAR
 ldr   r1,=0x0201FC00                ; 08008F56  decompressed graphics buffer
 bl    swi_LZ77_WRAM                 ; 08008F58  LZ77 decompress (WRAM)
 b     @@Code08008F94                ; 08008F5C
 .pool                               ; 08008F5E
 
 @@Code08008F8C:
-ldr   r0,=Data081F3398              ; 08008F8C  level select 32x32 icons, W1-W6
+ldr   r0,=LevelSelect_Icon32_0_Graphics_LZ77; 08008F8C  level select 32x32 icons, W1-W6
 ldr   r1,=0x0201FC00                ; 08008F8E  decompressed graphics buffer
 bl    swi_LZ77_WRAM                 ; 08008F90  LZ77 decompress (WRAM)
 @@Code08008F94:
@@ -8617,7 +8617,7 @@ add   r1,r1,r0                      ; 08009270
 lsl   r1,r1,0x1                     ; 08009272
 add   r1,r1,r3                      ; 08009274
 ldrh  r5,[r1]                       ; 08009276
-ldr   r0,=Data081F3398              ; 08009278  level select 32x32 icons, W1-W6
+ldr   r0,=LevelSelect_Icon32_0_Graphics_LZ77; 08009278  level select 32x32 icons, W1-W6
 ldr   r1,=0x0201FC00                ; 0800927A  decompressed graphics buffer
 bl    swi_LZ77_WRAM                 ; 0800927C  LZ77 decompress (WRAM)
 mov   r4,0x0                        ; 08009280
@@ -13381,7 +13381,7 @@ add   r0,0x8                        ; 0800BB2A
 lsl   r0,r0,0x1                     ; 0800BB2C
 add   r0,r9                         ; 0800BB2E
 ldrh  r6,[r0]                       ; 0800BB30
-ldr   r0,=Data081F7174              ; 0800BB32  level select 32x32 icons, Secrets/LLBAR
+ldr   r0,=LevelSelect_Icon32_1_Graphics_LZ77; 0800BB32  level select 32x32 icons, Secrets/LLBAR
 ldr   r1,=0x0201FC00                ; 0800BB34  decompressed graphics buffer
 bl    swi_LZ77_WRAM                 ; 0800BB36  LZ77 decompress (WRAM)
 mov   r4,0x0                        ; 0800BB3A
@@ -13409,7 +13409,7 @@ b     @@Code0800BBB6                ; 0800BB5E
 lsl   r0,r1,0x1                     ; 0800BB80
 add   r0,r9                         ; 0800BB82
 ldrh  r6,[r0]                       ; 0800BB84
-ldr   r0,=Data081F3398              ; 0800BB86  level select 32x32 icons, W1-W6
+ldr   r0,=LevelSelect_Icon32_0_Graphics_LZ77; 0800BB86  level select 32x32 icons, W1-W6
 ldr   r1,=0x0201FC00                ; 0800BB88  decompressed graphics buffer
 bl    swi_LZ77_WRAM                 ; 0800BB8A  LZ77 decompress (WRAM)
 mov   r4,0x0                        ; 0800BB8E
@@ -13768,7 +13768,7 @@ add   r0,r0,r2                      ; 0800BEE6
 lsl   r0,r0,0x1                     ; 0800BEE8
 add   r0,r0,r1                      ; 0800BEEA
 ldrh  r5,[r0]                       ; 0800BEEC
-ldr   r0,=Data081F3398              ; 0800BEEE  level select 32x32 icons, W1-W6
+ldr   r0,=LevelSelect_Icon32_0_Graphics_LZ77; 0800BEEE  level select 32x32 icons, W1-W6
 ldr   r1,=0x0201FC00                ; 0800BEF0  decompressed graphics buffer
 bl    swi_LZ77_WRAM                 ; 0800BEF2  LZ77 decompress (WRAM)
 mov   r4,0x0                        ; 0800BEF6
@@ -13795,7 +13795,7 @@ add   r0,0x8                        ; 0800BF3A
 lsl   r0,r0,0x1                     ; 0800BF3C
 add   r0,r0,r1                      ; 0800BF3E
 ldrh  r5,[r0]                       ; 0800BF40
-ldr   r0,=Data081F7174              ; 0800BF42  level select 32x32 icons, Secrets/LLBAR
+ldr   r0,=LevelSelect_Icon32_1_Graphics_LZ77; 0800BF42  level select 32x32 icons, Secrets/LLBAR
 ldr   r1,=0x0201FC00                ; 0800BF44  decompressed graphics buffer
 bl    swi_LZ77_WRAM                 ; 0800BF46  LZ77 decompress (WRAM)
 mov   r4,0x0                        ; 0800BF4A
@@ -14280,7 +14280,7 @@ lsl   r2,r2,0x4                     ; 0800C3B8
 add   r0,r0,r2                      ; 0800C3BA
 strb  r1,[r0]                       ; 0800C3BC
 bl    Sub08012F30                   ; 0800C3BE
-ldr   r0,=Data081F3398              ; 0800C3C2  level select 32x32 icons, W1-W6
+ldr   r0,=LevelSelect_Icon32_0_Graphics_LZ77; 0800C3C2  level select 32x32 icons, W1-W6
 ldr   r1,=0x0201FC00                ; 0800C3C4  decompressed graphics buffer
 bl    swi_LZ77_WRAM                 ; 0800C3C6  LZ77 decompress (WRAM)
 mov   r4,0x0                        ; 0800C3CA
@@ -14716,7 +14716,7 @@ add   r0,r6,r7                      ; 0800C7F0
 lsl   r0,r0,0x1                     ; 0800C7F2
 add   r0,r0,r1                      ; 0800C7F4
 ldrh  r5,[r0]                       ; 0800C7F6
-ldr   r0,=Data081F3398              ; 0800C7F8  level select 32x32 icons, W1-W6
+ldr   r0,=LevelSelect_Icon32_0_Graphics_LZ77; 0800C7F8  level select 32x32 icons, W1-W6
 ldr   r1,=0x0201FC00                ; 0800C7FA  decompressed graphics buffer
 bl    swi_LZ77_WRAM                 ; 0800C7FC  LZ77 decompress (WRAM)
 mov   r4,0x0                        ; 0800C800
@@ -15984,7 +15984,7 @@ add   r0,r0,r3                      ; 0800D386
 ldrh  r5,[r0]                       ; 0800D388
 cmp   r4,0x10                       ; 0800D38A
 beq   @@Code0800D3D4                ; 0800D38C
-ldr   r0,=Data081F3398              ; 0800D38E  level select 32x32 icons, W1-W6
+ldr   r0,=LevelSelect_Icon32_0_Graphics_LZ77; 0800D38E  level select 32x32 icons, W1-W6
 ldr   r1,=0x0201FC00                ; 0800D390  decompressed graphics buffer
 bl    swi_LZ77_WRAM                 ; 0800D392  LZ77 decompress (WRAM)
 mov   r4,0x0                        ; 0800D396
@@ -16006,7 +16006,7 @@ b     @@Code0800D3FA                ; 0800D3B4
 .pool                               ; 0800D3B6
 
 @@Code0800D3D4:
-ldr   r0,=Data081F7174              ; 0800D3D4  level select 32x32 icons, Secrets/LLBAR
+ldr   r0,=LevelSelect_Icon32_1_Graphics_LZ77; 0800D3D4  level select 32x32 icons, Secrets/LLBAR
 ldr   r1,=0x0201FC00                ; 0800D3D6  decompressed graphics buffer
 bl    swi_LZ77_WRAM                 ; 0800D3D8  LZ77 decompress (WRAM)
 mov   r4,0x0                        ; 0800D3DC
@@ -16507,7 +16507,7 @@ strh  r0,[r1]                       ; 0800D88C
 lsl   r0,r0,0x10                    ; 0800D88E
 cmp   r0,0x0                        ; 0800D890
 bne   @@Code0800D8FA                ; 0800D892
-ldr   r0,=Data081FE38C              ; 0800D894
+ldr   r0,=LevelSelect_Perfect_Graphics_LZ77; 0800D894
 ldr   r1,=0x06017000                ; 0800D896
 bl    swi_LZ77_VRAM                 ; 0800D898  LZ77 decompress (VRAM)
 ldr   r1,=0x03006258                ; 0800D89C
@@ -16909,7 +16909,7 @@ add   r1,r1,r3                      ; 0800DC5C
 ldrh  r5,[r1]                       ; 0800DC5E
 cmp   r4,0x10                       ; 0800DC60
 beq   @@Code0800DCAC                ; 0800DC62
-ldr   r0,=Data081F3398              ; 0800DC64  level select 32x32 icons, W1-W6
+ldr   r0,=LevelSelect_Icon32_0_Graphics_LZ77; 0800DC64  level select 32x32 icons, W1-W6
 ldr   r1,=0x0201FC00                ; 0800DC66  decompressed graphics buffer
 bl    swi_LZ77_WRAM                 ; 0800DC68  LZ77 decompress (WRAM)
 mov   r4,0x0                        ; 0800DC6C
@@ -16931,7 +16931,7 @@ b     @@Code0800DCD2                ; 0800DC8A
 .pool                               ; 0800DC8C
 
 @@Code0800DCAC:
-ldr   r0,=Data081F7174              ; 0800DCAC  level select 32x32 icons, Secrets/LLBAR
+ldr   r0,=LevelSelect_Icon32_1_Graphics_LZ77; 0800DCAC  level select 32x32 icons, Secrets/LLBAR
 ldr   r1,=0x0201FC00                ; 0800DCAE  decompressed graphics buffer
 bl    swi_LZ77_WRAM                 ; 0800DCB0  LZ77 decompress (WRAM)
 mov   r4,0x0                        ; 0800DCB4
@@ -17778,7 +17778,7 @@ ldr   r1,=Data08164F02              ; 0800E47E
 lsr   r0,r0,0xF                     ; 0800E480
 add   r0,r0,r1                      ; 0800E482
 ldrh  r5,[r0]                       ; 0800E484
-ldr   r0,=Data081F3398              ; 0800E486  level select 32x32 icons, W1-W6
+ldr   r0,=LevelSelect_Icon32_0_Graphics_LZ77; 0800E486  level select 32x32 icons, W1-W6
 ldr   r1,=0x0201FC00                ; 0800E488  decompressed graphics buffer
 bl    swi_LZ77_WRAM                 ; 0800E48A  LZ77 decompress (WRAM)
 mov   r4,0x0                        ; 0800E48E
@@ -18488,14 +18488,14 @@ add   r0,r0,r1                      ; 0800EB60
 ldrh  r7,[r0]                       ; 0800EB62
 cmp   r5,0x8                        ; 0800EB64
 beq   @@Code0800EB8C                ; 0800EB66
-ldr   r0,=Data081F3398              ; 0800EB68  level select 32x32 icons, W1-W6
+ldr   r0,=LevelSelect_Icon32_0_Graphics_LZ77; 0800EB68  level select 32x32 icons, W1-W6
 ldr   r1,=0x0201FC00                ; 0800EB6A  decompressed graphics buffer
 bl    swi_LZ77_WRAM                 ; 0800EB6C  LZ77 decompress (WRAM)
 b     @@Code0800EB94                ; 0800EB70
 .pool                               ; 0800EB72
 
 @@Code0800EB8C:
-ldr   r0,=Data081F7174              ; 0800EB8C  level select 32x32 icons, Secrets/LLBAR
+ldr   r0,=LevelSelect_Icon32_1_Graphics_LZ77; 0800EB8C  level select 32x32 icons, Secrets/LLBAR
 ldr   r1,=0x0201FC00                ; 0800EB8E  decompressed graphics buffer
 bl    swi_LZ77_WRAM                 ; 0800EB90  LZ77 decompress (WRAM)
 @@Code0800EB94:
@@ -19387,7 +19387,7 @@ ldr   r4,=0x16F4                    ; 0800F2FA
 add   r1,r1,r4                      ; 0800F2FC
 ldrb  r5,[r1]                       ; 0800F2FE
 ldr   r4,=0x0201FC00                ; 0800F300  decompressed graphics buffer
-ldr   r0,=Data081EF954              ; 0800F302  level select 24x24 icons
+ldr   r0,=LevelSelect_Icon24_Graphics_LZ77; 0800F302  level select 24x24 icons
 mov   r1,r4                         ; 0800F304
 bl    swi_LZ77_WRAM                 ; 0800F306  LZ77 decompress (WRAM)
 ldr   r7,[sp]                       ; 0800F30A
@@ -21297,7 +21297,7 @@ add   r0,r0,r2                      ; 0801051A
 mov   r1,0x10                       ; 0801051C
 strb  r1,[r0]                       ; 0801051E
 mov   r4,0x0                        ; 08010520
-ldr   r5,=YITitle_icon32_Graphics+0x1180; 08010522
+ldr   r5,=YITitle_Icon32_Graphics+0x1180; 08010522
 @@Code08010524:
 lsl   r1,r4,0xA                     ; 08010524
 add   r0,r1,r5                      ; 08010526
@@ -22304,7 +22304,7 @@ ldr   r0,[r4]                       ; 08010E90
 ldr   r1,=0x16F4                    ; 08010E92
 add   r0,r0,r1                      ; 08010E94
 ldrb  r4,[r0]                       ; 08010E96
-ldr   r0,=Data081EF954              ; 08010E98  level select 24x24 icons
+ldr   r0,=LevelSelect_Icon24_Graphics_LZ77; 08010E98  level select 24x24 icons
 mov   r1,r5                         ; 08010E9A
 bl    swi_LZ77_WRAM                 ; 08010E9C  LZ77 decompress (WRAM)
 ldr   r0,=0x02026C00                ; 08010EA0
@@ -22673,7 +22673,7 @@ ldrh  r0,[r0]                       ; 08011240
 lsl   r0,r0,0x1                     ; 08011242
 add   r0,r0,r1                      ; 08011244
 ldrh  r5,[r0]                       ; 08011246
-ldr   r0,=Data081F7174              ; 08011248  level select 32x32 icons, Secrets/LLBAR
+ldr   r0,=LevelSelect_Icon32_1_Graphics_LZ77; 08011248  level select 32x32 icons, Secrets/LLBAR
 ldr   r1,=0x0201FC00                ; 0801124A  decompressed graphics buffer
 bl    swi_LZ77_WRAM                 ; 0801124C  LZ77 decompress (WRAM)
 mov   r4,0x0                        ; 08011250
@@ -23078,7 +23078,7 @@ bx    r0                            ; 08011620
 Sub08011634:
 push  {r4-r6,lr}                    ; 08011634
 mov   r4,0x0                        ; 08011636
-ldr   r5,=YITitle_icon32_Graphics+0x1180; 08011638
+ldr   r5,=YITitle_Icon32_Graphics+0x1180; 08011638
 @@Code0801163A:
 lsl   r1,r4,0xA                     ; 0801163A
 add   r0,r1,r5                      ; 0801163C
@@ -25941,7 +25941,7 @@ add   r0,0x8                        ; 080130AA
 lsl   r0,r0,0x1                     ; 080130AC
 add   r0,r9                         ; 080130AE
 ldrh  r6,[r0]                       ; 080130B0
-ldr   r0,=Data081F7174              ; 080130B2  level select 32x32 icons, Secrets/LLBAR
+ldr   r0,=LevelSelect_Icon32_1_Graphics_LZ77; 080130B2  level select 32x32 icons, Secrets/LLBAR
 ldr   r1,=0x0201FC00                ; 080130B4  decompressed graphics buffer
 bl    swi_LZ77_WRAM                 ; 080130B6  LZ77 decompress (WRAM)
 mov   r4,0x0                        ; 080130BA
@@ -25969,7 +25969,7 @@ b     @@Code08013136                ; 080130DE
 lsl   r0,r1,0x1                     ; 08013100
 add   r0,r9                         ; 08013102
 ldrh  r6,[r0]                       ; 08013104
-ldr   r0,=Data081F3398              ; 08013106  level select 32x32 icons, W1-W6
+ldr   r0,=LevelSelect_Icon32_0_Graphics_LZ77; 08013106  level select 32x32 icons, W1-W6
 ldr   r1,=0x0201FC00                ; 08013108  decompressed graphics buffer
 bl    swi_LZ77_WRAM                 ; 0801310A  LZ77 decompress (WRAM)
 mov   r4,0x0                        ; 0801310E
@@ -26126,7 +26126,7 @@ add   r2,r2,r0                      ; 08013266
 ldrh  r5,[r2]                       ; 08013268
 cmp   r3,0x10                       ; 0801326A
 beq   @@Code080132B8                ; 0801326C
-ldr   r0,=Data081F3398              ; 0801326E  level select 32x32 icons, W1-W6
+ldr   r0,=LevelSelect_Icon32_0_Graphics_LZ77; 0801326E  level select 32x32 icons, W1-W6
 ldr   r1,=0x0201FC00                ; 08013270  decompressed graphics buffer
 bl    swi_LZ77_WRAM                 ; 08013272  LZ77 decompress (WRAM)
 mov   r4,0x0                        ; 08013276
@@ -26148,7 +26148,7 @@ b     @@Code080132DE                ; 08013294
 .pool                               ; 08013296
 
 @@Code080132B8:
-ldr   r0,=Data081F7174              ; 080132B8  level select 32x32 icons, Secrets/LLBAR
+ldr   r0,=LevelSelect_Icon32_1_Graphics_LZ77; 080132B8  level select 32x32 icons, Secrets/LLBAR
 ldr   r1,=0x0201FC00                ; 080132BA  decompressed graphics buffer
 bl    swi_LZ77_WRAM                 ; 080132BC  LZ77 decompress (WRAM)
 mov   r4,0x0                        ; 080132C0

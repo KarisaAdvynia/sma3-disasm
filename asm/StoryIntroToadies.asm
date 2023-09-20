@@ -3315,7 +3315,7 @@ ldr   r1,=0x4967                    ; 08030FA2
 add   r0,r0,r1                      ; 08030FA4
 mov   r1,0x1                        ; 08030FA6
 strb  r1,[r0]                       ; 08030FA8
-ldr   r0,=Data081F7A90              ; 08030FAA  story intro Yoshi with map / level select controls menu grpahics
+ldr   r0,=LevelSelectControls_StoryIntro_Graphics_LZ77; 08030FAA  story intro Yoshi with map / level select controls menu grpahics
 ldr   r1,=0x06002000                ; 08030FAC
 bl    swi_LZ77_VRAM                 ; 08030FAE  LZ77 decompress (VRAM)
 mov   r0,0xB0                       ; 08030FB2

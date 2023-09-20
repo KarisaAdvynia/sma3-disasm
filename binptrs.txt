@@ -16,7 +16,7 @@
 0819E5E8 0819E904 Tilemaps/YITitle_L3_W6_LZ77.bin
 0819E984          Graphics/YITitle_L1_LZ77.bin
 0819F0C8 0819F2B8 Tilemaps/YITitle_L1_LZ77.bin
-0819F2D8          Graphics/YITitle_icon32.bin
+0819F2D8          Graphics/YITitle_Icon32.bin
 081A42D8 081A46F8 Graphics/YITitle_L0_LZ77.bin
 081A4A60 081A5EA0 Graphics/Gameplay_Bowser_L2_8bpp_LZ77.bin
 081A8034 081A80A0 Graphics/Gameplay_Froggy_LZ77.bin
@@ -506,10 +506,10 @@
 081EEDEF          Sublevels/Sublevel37_Main.bin
 081EEE5C          Sublevels/Sublevel36_Sprites.bin
 081EEE70 081EEE8C Sublevels/Sublevel37_Sprites.bin
-081EF954          Graphics/LevelSelect_icon24_LZ77.bin
-081F3398          Graphics/LevelSelect_icon32_0_LZ77.bin
-081F7174          Graphics/LevelSelect_icon32_1_LZ77.bin
-081F7A90          Graphics/LevelSelect_controls_StoryIntro_LZ77.bin
+081EF954          Graphics/LevelSelect_Icon24_LZ77.bin
+081F3398          Graphics/LevelSelect_Icon32_0_LZ77.bin
+081F7174          Graphics/LevelSelect_Icon32_1_LZ77.bin
+081F7A90          Graphics/LevelSelect_Controls_StoryIntro_LZ77.bin
 081F897C          Graphics/LevelSelect_A000_W6.bin
 081F917C          Graphics/LevelSelect_A800_W6.bin
 081F997C          Graphics/LevelSelect_B000_W6.bin
@@ -521,8 +521,8 @@
 081FC97C          Graphics/LevelSelect_A800_W15.bin
 081FD17C          Graphics/LevelSelect_B000_W15.bin
 081FD97C          Graphics/LevelSelect_B800_W15.bin
-081FE17C          Graphics/LevelSelect_stripe00_LZ77.bin
-081FE2B0 081FE384 Graphics/LevelSelect_stripe08_LZ77.bin
+081FE17C          Graphics/LevelSelect_Stripe00_LZ77.bin
+081FE2B0 081FE384 Graphics/LevelSelect_Stripe08_LZ77.bin
 081FE38C          Graphics/LevelSelect_Perfect_LZ77.bin
 081FE754          Graphics/LevelSelect_400_LZ77.bin
 081FEBA8          Tilemaps/WorldSelect_L1_LZ77.bin
@@ -531,8 +531,8 @@
 081FF38C          Graphics/WorldSelect_L12_0_LZ77.bin
 081FFF20          Graphics/WorldSelect_L12_1_LZ77.bin
 08200B70 082010E4 Graphics/WorldSelect_L12_2_LZ77.bin
-082010F0          Graphics/WorldSelect_stripe02_LZ77.bin
-08201334          Graphics/WorldSelect_stripe0A_LZ77.bin
+082010F0          Graphics/WorldSelect_Stripe02_LZ77.bin
+08201334          Graphics/WorldSelect_Stripe0A_LZ77.bin
 08201550 082016AC Graphics/WorldSelect_BabyLuigi_LZ77.bin
 08201AB8          Tilemaps/LevelSelect_Controls_Patient_LZ77.bin
 08201D30          Tilemaps/LevelSelect_Controls_Hasty_LZ77.bin

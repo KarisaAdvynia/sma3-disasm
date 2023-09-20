@@ -3051,35 +3051,35 @@ ldr   r0,=0x03002200                ; 080FAB92
 mov   r9,r0                         ; 080FAB94
 @@Code080FAB96:
 ldr   r6,=0x4072                    ; 080FAB96
-add   r6,r9                         ; 080FAB98
+add   r6,r9                         ; 080FAB98  03006272
 add   r1,r5,0x1                     ; 080FAB9A
 mov   r8,r1                         ; 080FAB9C
 ldrb  r2,[r6]                       ; 080FAB9E
 cmp   r5,r2                         ; 080FABA0
 beq   @@Code080FAC4A                ; 080FABA2
 ldr   r0,=0x4A39                    ; 080FABA4
-add   r0,r9                         ; 080FABA6
-strb  r5,[r0]                       ; 080FABA8
+add   r0,r9                         ; 080FABA6  03006C39
+strb  r5,[r0]                       ; 080FABA8  set current file
 bl    Sub080FAAD0                   ; 080FABAA
-ldr   r1,=0x4A44                    ; 080FABAE
+ldr   r1,=0x4A44                    ; 080FABAE  03006C44
 add   r1,r9                         ; 080FABB0
 add   r1,r5,r1                      ; 080FABB2
-ldr   r0,=0x4150                    ; 080FABB4
+ldr   r0,=0x4150                    ; 080FABB4  03006350
 add   r0,r9                         ; 080FABB6
-ldrb  r0,[r0]                       ; 080FABB8
-strb  r0,[r1]                       ; 080FABBA
+ldrb  r0,[r0]                       ; 080FABB8  save file exists flag, current file
+strb  r0,[r1]                       ; 080FABBA  set 03006C44+file to save file exists flag
 mov   r3,0x0                        ; 080FABBC
 mov   r0,sp                         ; 080FABBE
-add   r4,r0,r5                      ; 080FABC0
+add   r4,r0,r5                      ; 080FABC0  r4 = sp+file
 ldr   r1,=0xFFFFBF8E                ; 080FABC2
-add   r1,r1,r6                      ; 080FABC4
+add   r1,r1,r6                      ; 080FABC4  r1 = 03002200
 mov   r9,r1                         ; 080FABC6
 mov   r7,r9                         ; 080FABC8
-ldr   r2,=Data08197DB4              ; 080FABCA
+ldr   r2,=FileSelect_MultOf0xC              ; 080FABCA
 mov   r12,r2                        ; 080FABCC
 ldr   r6,=0x496D                    ; 080FABCE
-add   r6,r9                         ; 080FABD0
-mov   r1,r4                         ; 080FABD2
+add   r6,r9                         ; 080FABD0  03006B6D
+mov   r1,r4                         ; 080FABD2  r1 = sp+file
 @@Code080FABD4:
 mov   r2,0x0                        ; 080FABD4
 mov   r5,r12                        ; 080FABD6
@@ -3136,116 +3136,120 @@ cmp   r5,0x2                        ; 080FAC50
 bls   @@Code080FAB96                ; 080FAC52
 ldr   r4,=0x03002200                ; 080FAC54
 ldr   r1,=0x4072                    ; 080FAC56
-add   r0,r4,r1                      ; 080FAC58
+add   r0,r4,r1                      ; 080FAC58  03006272
 ldrb  r0,[r0]                       ; 080FAC5A
 ldr   r2,=0x4A39                    ; 080FAC5C
-add   r5,r4,r2                      ; 080FAC5E
+add   r5,r4,r2                      ; 080FAC5E  03006C39
 strb  r0,[r5]                       ; 080FAC60
 bl    Sub080FAAD0                   ; 080FAC62
 mov   r1,0x0                        ; 080FAC66
 ldsb  r1,[r5,r1]                    ; 080FAC68
-ldr   r2,=0x4A44                    ; 080FAC6A
+ldr   r2,=0x4A44                    ; 080FAC6A  03006C44
 add   r0,r4,r2                      ; 080FAC6C
 add   r1,r1,r0                      ; 080FAC6E
-ldr   r2,=0x4150                    ; 080FAC70
+ldr   r2,=0x4150                    ; 080FAC70  03006350
 add   r0,r4,r2                      ; 080FAC72
 ldrb  r0,[r0]                       ; 080FAC74
 strb  r0,[r1]                       ; 080FAC76
-mov   r3,0x0                        ; 080FAC78
+mov   r3,0x0                        ; 080FAC78  r3: outer loop index: 0-indexed world number
 mov   r9,r4                         ; 080FAC7A
-ldr   r4,=Data08197DB4              ; 080FAC7C
+ldr   r4,=FileSelect_MultOf0xC              ; 080FAC7C
 ldr   r7,=0x496D                    ; 080FAC7E
-add   r7,r9                         ; 080FAC80
+add   r7,r9                         ; 080FAC80  r7 = 03006B6D (start of table of unlock/clear flags for each level ID)
 ldr   r6,=0x4978                    ; 080FAC82
-add   r6,r9                         ; 080FAC84
-@@Code080FAC86:
-mov   r2,0x0                        ; 080FAC86
+add   r6,r9                         ; 080FAC84  r6 = 03006B78 (pointer to unlock/clear flags for intro level)
+@@WorldLoop:                     ;          \ outer loop: iterate over 6 worlds
+mov   r2,0x0                        ; 080FAC86  r2: inner loop index: 0-indexed level number
 add   r0,r3,r4                      ; 080FAC88
-ldrb  r1,[r0]                       ; 080FAC8A
-@@Code080FAC8C:
+ldrb  r1,[r0]                       ; 080FAC8A  r1 = loop index *0C
+@@LevelLoop:                        ;           \ inner loop: iterate over 8 levels
 add   r0,r2,r1                      ; 080FAC8C
 add   r0,r0,r7                      ; 080FAC8E
-ldrb  r0,[r0]                       ; 080FAC90
-cmp   r0,0x80                       ; 080FAC92
-bne   @@Code080FACDE                ; 080FAC94
+ldrb  r0,[r0]                       ; 080FAC90  unlock/clear flags for current level
+cmp   r0,0x80                       ; 080FAC92  80: unlocked but not cleared
+bne   @@ContinueLevelLoop                ; 080FAC94
+                                    ;           runs if a level is unlocked but not cleared
 cmp   r2,0x0                        ; 080FAC96
 bne   @@Code080FACD0                ; 080FAC98
 cmp   r3,0x0                        ; 080FAC9A
 bne   @@Code080FACD0                ; 080FAC9C
-ldrb  r0,[r6]                       ; 080FAC9E
+                                    ;           runs if 1-1 is unlocked but not cleared
+ldrb  r0,[r6]                       ; 080FAC9E  intro level's unlock/clear flags
 cmp   r0,0x0                        ; 080FACA0
 bne   @@Code080FACD0                ; 080FACA2
-mov   r0,0x0                        ; 080FACA4
-ldsb  r0,[r5,r0]                    ; 080FACA6
+mov   r0,0x0                        ; 080FACA4  runs if intro level's flags are 0
+ldsb  r0,[r5,r0]                    ; 080FACA6  current save file
 add   r0,sp                         ; 080FACA8
-strb  r3,[r0]                       ; 080FACAA
-b     @@Code080FACE8                ; 080FACAC
+strb  r3,[r0]                       ; 080FACAA  [sp+file] = 0
+b     @@EndLevelLoop                ; 080FACAC
 .pool                               ; 080FACAE
 
-@@Code080FACD0:
+@@Code080FACD0:                     ;           runs if any other x-1 to x-8 (not 1-1) is unlocked but not cleared
 mov   r0,0x0                        ; 080FACD0
-ldsb  r0,[r5,r0]                    ; 080FACD2
+ldsb  r0,[r5,r0]                    ; 080FACD2  current save file
 mov   r2,sp                         ; 080FACD4
-add   r1,r2,r0                      ; 080FACD6
-add   r0,r3,0x1                     ; 080FACD8
-strb  r0,[r1]                       ; 080FACDA
-b     @@Code080FACE8                ; 080FACDC
-@@Code080FACDE:
+add   r1,r2,r0                      ; 080FACD6  sp+file
+add   r0,r3,0x1                     ; 080FACD8  r0 = 1-indexed world number
+strb  r0,[r1]                       ; 080FACDA  [sp+file] = world number
+b     @@EndLevelLoop                ; 080FACDC
+
+@@ContinueLevelLoop:
 add   r0,r2,0x1                     ; 080FACDE
 lsl   r0,r0,0x18                    ; 080FACE0
 lsr   r2,r0,0x18                    ; 080FACE2
 cmp   r2,0x7                        ; 080FACE4
-bls   @@Code080FAC8C                ; 080FACE6
-@@Code080FACE8:
+bls   @@LevelLoop                ; 080FACE6  /
+
+@@EndLevelLoop:
 mov   r0,0x0                        ; 080FACE8
-ldsb  r0,[r5,r0]                    ; 080FACEA
-add   r0,sp                         ; 080FACEC
+ldsb  r0,[r5,r0]                    ; 080FACEA  current save file
+add   r0,sp                         ; 080FACEC  r0 = sp+file
 ldrb  r0,[r0]                       ; 080FACEE
 cmp   r0,0xFF                       ; 080FACF0
-bne   @@Code080FAD16                ; 080FACF2
+bne   @@Code080FAD16                ; 080FACF2  if [sp+file] != FF, exit world loop
 add   r0,r3,0x1                     ; 080FACF4
 lsl   r0,r0,0x18                    ; 080FACF6
 lsr   r3,r0,0x18                    ; 080FACF8
-cmp   r3,0x5                        ; 080FACFA
-bls   @@Code080FAC86                ; 080FACFC
+cmp   r3,0x5                        ; 080FACFA  loop across index 0-5 (worlds 1-6)
+bls   @@WorldLoop                ; 080FACFC /
 ldr   r0,=0x4A39                    ; 080FACFE
-add   r0,r9                         ; 080FAD00
-ldrb  r0,[r0]                       ; 080FAD02
+add   r0,r9                         ; 080FAD00  03006C39
+ldrb  r0,[r0]                       ; 080FAD02  current save file
 lsl   r0,r0,0x18                    ; 080FAD04
 asr   r0,r0,0x18                    ; 080FAD06
 mov   r5,sp                         ; 080FAD08
-add   r1,r5,r0                      ; 080FAD0A
+add   r1,r5,r0                      ; 080FAD0A  r1 = sp+file
 ldrb  r0,[r1]                       ; 080FAD0C
 cmp   r0,0xFF                       ; 080FAD0E
-bne   @@Code080FAD16                ; 080FAD10
-mov   r0,0x80                       ; 080FAD12
-strb  r0,[r1]                       ; 080FAD14
+bne   @@Code080FAD16                ; 080FAD10  (redundant) if [sp+file] != FF, exit world loop
+mov   r0,0x80                       ; 080FAD12  runs if no main levels from 1-1 to 6-8 are unlocked but not cleared
+strb  r0,[r1]                       ; 080FAD14  [sp+file] = 80
 @@Code080FAD16:
-mov   r0,sp                         ; 080FAD16
+mov   r0,sp                         ; 080FAD16 \ copy 3 bytes from [sp] to [03006C41]
 ldrb  r1,[r0]                       ; 080FAD18
 ldr   r0,=0x4A41                    ; 080FAD1A
-add   r0,r9                         ; 080FAD1C
+add   r0,r9                         ; 080FAD1C  03006C41
 strb  r1,[r0]                       ; 080FAD1E
 mov   r0,sp                         ; 080FAD20
 ldrb  r1,[r0,0x1]                   ; 080FAD22
 ldr   r0,=0x4A42                    ; 080FAD24
-add   r0,r9                         ; 080FAD26
+add   r0,r9                         ; 080FAD26  03006C42
 strb  r1,[r0]                       ; 080FAD28
 mov   r0,sp                         ; 080FAD2A
 ldrb  r1,[r0,0x2]                   ; 080FAD2C
 ldr   r0,=0x4A43                    ; 080FAD2E
-add   r0,r9                         ; 080FAD30
-strb  r1,[r0]                       ; 080FAD32
+add   r0,r9                         ; 080FAD30  03006C43
+strb  r1,[r0]                       ; 080FAD32 /
 mov   r5,0x0                        ; 080FAD34
 ldr   r0,=0x4A34                    ; 080FAD36
-add   r0,r9                         ; 080FAD38
+add   r0,r9                         ; 080FAD38  03006C34
 ldrb  r0,[r0]                       ; 080FAD3A
 cmp   r0,0x2                        ; 080FAD3C
 bne   @@Code080FAD60                ; 080FAD3E
 ldr   r0,=0x4A37                    ; 080FAD40
-add   r0,r9                         ; 080FAD42
+add   r0,r9                         ; 080FAD42  03006C47
 strb  r5,[r0]                       ; 080FAD44
-b     @@Code080FAD96                ; 080FAD46
+b     @@Return                ; 080FAD46
 .pool                               ; 080FAD48
 
 @@Code080FAD60:
@@ -3267,7 +3271,7 @@ strb  r2,[r3]                       ; 080FAD7A
 lsl   r0,r5,0x18                    ; 080FAD7C
 lsr   r5,r0,0x18                    ; 080FAD7E
 cmp   r5,0x3                        ; 080FAD80
-beq   @@Code080FAD96                ; 080FAD82
+beq   @@Return                ; 080FAD82
 add   r0,r5,0x1                     ; 080FAD84
 add   r0,r0,r6                      ; 080FAD86
 ldrb  r0,[r0]                       ; 080FAD88
@@ -3277,7 +3281,7 @@ ldr   r1,=0x4A37                    ; 080FAD8E
 add   r1,r9                         ; 080FAD90
 mov   r0,0x0                        ; 080FAD92
 strb  r0,[r1]                       ; 080FAD94
-@@Code080FAD96:
+@@Return:
 add   sp,0x4                        ; 080FAD96
 pop   {r3-r4}                       ; 080FAD98
 mov   r8,r3                         ; 080FAD9A

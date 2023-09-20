@@ -1,4 +1,4 @@
-BabyMario_init:
+BabyMario_Init:
 ; sprite 061 init
 ldr   r0,=0x03007240                ; 080DFE44  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                       ; 080DFE46
