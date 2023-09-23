@@ -4037,7 +4037,7 @@ bl    Sub080FF08C                   ; 080FF206
 bl    Sub08100088                   ; 080FF20A
 ldr   r1,=0x0904                    ; 080FF20E
 add   r0,r4,r1                      ; 080FF210  FileSelect+904 (030048DC)
-bl    FileSelect_SetFileIconIndex                   ; 080FF212
+bl    FileSelect_SetFileIconIndex   ; 080FF212
 ldr   r2,=0x03002200                ; 080FF216
 mov   r8,r2                         ; 080FF218
 ldr   r1,=0x4072                    ; 080FF21A

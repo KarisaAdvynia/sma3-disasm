@@ -3075,7 +3075,7 @@ ldr   r1,=0xFFFFBF8E                ; 080FABC2
 add   r1,r1,r6                      ; 080FABC4  r1 = 03002200
 mov   r9,r1                         ; 080FABC6
 mov   r7,r9                         ; 080FABC8
-ldr   r2,=FileSelect_MultOf0xC              ; 080FABCA
+ldr   r2,=FileSelect_MultOf0xC      ; 080FABCA
 mov   r12,r2                        ; 080FABCC
 ldr   r6,=0x496D                    ; 080FABCE
 add   r6,r9                         ; 080FABD0  03006B6D
@@ -3153,12 +3153,12 @@ ldrb  r0,[r0]                       ; 080FAC74
 strb  r0,[r1]                       ; 080FAC76
 mov   r3,0x0                        ; 080FAC78  r3: outer loop index: 0-indexed world number
 mov   r9,r4                         ; 080FAC7A
-ldr   r4,=FileSelect_MultOf0xC              ; 080FAC7C
+ldr   r4,=FileSelect_MultOf0xC      ; 080FAC7C
 ldr   r7,=0x496D                    ; 080FAC7E
 add   r7,r9                         ; 080FAC80  r7 = 03006B6D (start of table of unlock/clear flags for each level ID)
 ldr   r6,=0x4978                    ; 080FAC82
 add   r6,r9                         ; 080FAC84  r6 = 03006B78 (pointer to unlock/clear flags for intro level)
-@@WorldLoop:                     ;          \ outer loop: iterate over 6 worlds
+@@WorldLoop:                        ;          \ outer loop: iterate over 6 worlds
 mov   r2,0x0                        ; 080FAC86  r2: inner loop index: 0-indexed level number
 add   r0,r3,r4                      ; 080FAC88
 ldrb  r1,[r0]                       ; 080FAC8A  r1 = loop index *0C
@@ -3167,7 +3167,7 @@ add   r0,r2,r1                      ; 080FAC8C
 add   r0,r0,r7                      ; 080FAC8E
 ldrb  r0,[r0]                       ; 080FAC90  unlock/clear flags for current level
 cmp   r0,0x80                       ; 080FAC92  80: unlocked but not cleared
-bne   @@ContinueLevelLoop                ; 080FAC94
+bne   @@ContinueLevelLoop           ; 080FAC94
                                     ;           runs if a level is unlocked but not cleared
 cmp   r2,0x0                        ; 080FAC96
 bne   @@Code080FACD0                ; 080FAC98
@@ -3198,7 +3198,7 @@ add   r0,r2,0x1                     ; 080FACDE
 lsl   r0,r0,0x18                    ; 080FACE0
 lsr   r2,r0,0x18                    ; 080FACE2
 cmp   r2,0x7                        ; 080FACE4
-bls   @@LevelLoop                ; 080FACE6  /
+bls   @@LevelLoop                   ; 080FACE6  /
 
 @@EndLevelLoop:
 mov   r0,0x0                        ; 080FACE8
@@ -3211,7 +3211,7 @@ add   r0,r3,0x1                     ; 080FACF4
 lsl   r0,r0,0x18                    ; 080FACF6
 lsr   r3,r0,0x18                    ; 080FACF8
 cmp   r3,0x5                        ; 080FACFA  loop across index 0-5 (worlds 1-6)
-bls   @@WorldLoop                ; 080FACFC /
+bls   @@WorldLoop                   ; 080FACFC /
 ldr   r0,=0x4A39                    ; 080FACFE
 add   r0,r9                         ; 080FAD00  03006C39
 ldrb  r0,[r0]                       ; 080FAD02  current save file
@@ -3249,7 +3249,7 @@ bne   @@Code080FAD60                ; 080FAD3E
 ldr   r0,=0x4A37                    ; 080FAD40
 add   r0,r9                         ; 080FAD42  03006C47
 strb  r5,[r0]                       ; 080FAD44
-b     @@Return                ; 080FAD46
+b     @@Return                      ; 080FAD46
 .pool                               ; 080FAD48
 
 @@Code080FAD60:
@@ -3271,7 +3271,7 @@ strb  r2,[r3]                       ; 080FAD7A
 lsl   r0,r5,0x18                    ; 080FAD7C
 lsr   r5,r0,0x18                    ; 080FAD7E
 cmp   r5,0x3                        ; 080FAD80
-beq   @@Return                ; 080FAD82
+beq   @@Return                      ; 080FAD82
 add   r0,r5,0x1                     ; 080FAD84
 add   r0,r0,r6                      ; 080FAD86
 ldrb  r0,[r0]                       ; 080FAD88

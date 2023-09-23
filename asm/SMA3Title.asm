@@ -285,20 +285,20 @@ pop   {r0}                          ; 08003D7A
 bx    r0                            ; 08003D7C
 .pool                               ; 08003D7E
 
-Sub08003DA4:
+SMA3Title_ProcessBuildDateButtons:
 push  {r4-r6,lr}                    ; 08003DA4
 mov   r5,r0                         ; 08003DA6
 ldr   r6,=0x03002200                ; 08003DA8
-ldr   r1,=0x47C0                    ; 08003DAA
+ldr   r1,=0x47C0                    ; 08003DAA  030069C0
 add   r0,r6,r1                      ; 08003DAC
-ldrh  r4,[r0]                       ; 08003DAE
+ldrh  r4,[r0]                       ; 08003DAE  buttons pressed this frame
 ldr   r0,=0x03FF                    ; 08003DB0
 and   r0,r4                         ; 08003DB2
 cmp   r0,0x0                        ; 08003DB4
-beq   @@Code08003E04                ; 08003DB6
-ldr   r1,=Data081645C8              ; 08003DB8
+beq   @@Return                      ; 08003DB6
+ldr   r1,=SMA3Title_BuildDateButtons; 08003DB8
 mov   r3,r5                         ; 08003DBA
-add   r3,0x76                       ; 08003DBC
+add   r3,0x76                       ; 08003DBC  [03006C50]+76 (03002282)
 ldrh  r2,[r3]                       ; 08003DBE
 lsl   r0,r2,0x1                     ; 08003DC0
 add   r0,r0,r1                      ; 08003DC2
@@ -307,7 +307,7 @@ and   r0,r4                         ; 08003DC6
 cmp   r0,0x0                        ; 08003DC8
 bne   @@Code08003DE0                ; 08003DCA
 strh  r0,[r3]                       ; 08003DCC
-b     @@Code08003E04                ; 08003DCE
+b     @@Return                      ; 08003DCE
 .pool                               ; 08003DD0
 
 @@Code08003DE0:
@@ -316,7 +316,7 @@ strh  r0,[r3]                       ; 08003DE2
 lsl   r0,r0,0x10                    ; 08003DE4
 lsr   r0,r0,0x10                    ; 08003DE6
 cmp   r0,0x8                        ; 08003DE8
-bls   @@Code08003E04                ; 08003DEA
+bls   @@Return                      ; 08003DEA
 ldr   r3,=0x47C6                    ; 08003DEC
 add   r2,r6,r3                      ; 08003DEE
 ldrh  r0,[r2]                       ; 08003DF0
@@ -329,7 +329,7 @@ mov   r1,r5                         ; 08003DFC
 add   r1,0x74                       ; 08003DFE
 mov   r0,0xB4                       ; 08003E00
 strh  r0,[r1]                       ; 08003E02
-@@Code08003E04:
+@@Return:
 pop   {r4-r6}                       ; 08003E04
 pop   {r0}                          ; 08003E06
 bx    r0                            ; 08003E08
@@ -512,14 +512,14 @@ strh  r1,[r0]                       ; 08003FAE
 @@Code08003FB0:
 ldr   r4,=0x03002200                ; 08003FB0
 ldr   r1,=0x47C0                    ; 08003FB2
-add   r0,r4,r1                      ; 08003FB4
+add   r0,r4,r1                      ; 08003FB4  030069C0
 ldrh  r1,[r0]                       ; 08003FB6
 mov   r0,0x9                        ; 08003FB8
 and   r0,r1                         ; 08003FBA
 cmp   r0,0x0                        ; 08003FBC
 bne   @@Code08004044                ; 08003FBE
 mov   r0,r7                         ; 08003FC0
-bl    Sub08003DA4                   ; 08003FC2
+bl    SMA3Title_ProcessBuildDateButtons; 08003FC2
 ldr   r2,=0x47BE                    ; 08003FC6
 add   r0,r4,r2                      ; 08003FC8
 ldrh  r1,[r0]                       ; 08003FCA

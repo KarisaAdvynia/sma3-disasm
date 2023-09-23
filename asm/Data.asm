@@ -264,7 +264,7 @@ MidwayEntrancePtrs:                 ; 081643BC
 .d32 MidwayEntrances+0x228, MidwayEntrances+0x220
 SMA3Title_BuildText_Graphics_LZ77:  ; 081644D4
 .incbin "../data/Graphics/SMA3Title_BuildText_LZ77.bin"
-Data081645C8:                       ; 081645C8
+SMA3Title_BuildDateButtons:         ; 081645C8
 .d16 0x0040, 0x0080, 0x0040, 0x0080, 0x0200, 0x0100, 0x0020, 0x0020
 .d16 0x0010
 Data081645DA:                       ; 081645DA
@@ -25529,7 +25529,7 @@ CodePtrs08197D88:                   ; 08197D88
 .d32 Return080FA924+1, Return080FA928+1, Sub080FA8BC+1, Return080FA9AC+1
 GameInitStatePtrs:                  ; 08197DA8
 .d32 Sub080FA2F8+1, Sub080FA3F8+1, Sub080FA9B0+1
-FileSelect_MultOf0xC:                       ; 08197DB4
+FileSelect_MultOf0xC:               ; 08197DB4
 .d8 0x00, 0x0C, 0x18, 0x24, 0x30, 0x3C, 0x00, 0x00
 Data08197DBC:                       ; 08197DBC
 .d16 0x80F0, 0xE000, 0xA011, 0x0000, 0x80F0, 0xE1E0, 0xA011, 0x0000
