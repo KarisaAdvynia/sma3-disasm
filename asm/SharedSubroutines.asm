@@ -163,23 +163,23 @@ ldr   r2,=0x0300219C                ; 0812F7D0
 ldr   r1,=0x04000208                ; 0812F7D2
 mov   r9,r1                         ; 0812F7D4
 ldrh  r1,[r1]                       ; 0812F7D6
-strh  r1,[r2]                       ; 0812F7D8
+strh  r1,[r2]                       ; 0812F7D8  [0300219C] = old value of 04000208
 mov   r6,0x0                        ; 0812F7DA
 mov   r2,r9                         ; 0812F7DC
-strh  r6,[r2]                       ; 0812F7DE
+strh  r6,[r2]                       ; 0812F7DE  disable interrupts
 ldr   r3,=0x03002198                ; 0812F7E0
 mov   r8,r3                         ; 0812F7E2
-ldr   r5,[r3]                       ; 0812F7E4
-strh  r6,[r5,0x2]                   ; 0812F7E6
+ldr   r5,[r3]                       ; 0812F7E4  pointer to timer count register (can be 04000108)
+strh  r6,[r5,0x2]                   ; 0812F7E6  clear timer control register
 ldr   r3,=0x04000202                ; 0812F7E8
 ldr   r4,=0x03002190                ; 0812F7EA
 ldrb  r1,[r4]                       ; 0812F7EC
-mov   r2,0x8                        ; 0812F7EE
-mov   r7,r2                         ; 0812F7F0
-lsl   r7,r1                         ; 0812F7F2
+mov   r2,0x8                        ; 0812F7EE  r2 = 8
+mov   r7,r2                         ; 0812F7F0  r7 = 8
+lsl   r7,r1                         ; 0812F7F2  r7 = [03002190]*2
 mov   r1,r7                         ; 0812F7F4
 strh  r1,[r3]                       ; 0812F7F6
-sub   r3,0x2                        ; 0812F7F8
+sub   r3,0x2                        ; 0812F7F8  r3 = 04000200
 ldrb  r1,[r4]                       ; 0812F7FA
 lsl   r2,r1                         ; 0812F7FC
 ldrh  r1,[r3]                       ; 0812F7FE
@@ -188,20 +188,20 @@ strh  r1,[r3]                       ; 0812F802
 ldr   r1,=0x03002194                ; 0812F804
 strb  r6,[r1]                       ; 0812F806
 ldr   r2,=0x03002192                ; 0812F808
-ldrh  r1,[r0]                       ; 0812F80A
+ldrh  r1,[r0]                       ; 0812F80A  000A ([Data083081C8+0])
 strh  r1,[r2]                       ; 0812F80C
-add   r0,0x2                        ; 0812F80E
-ldrh  r1,[r0]                       ; 0812F810
-strh  r1,[r5]                       ; 0812F812
-add   r1,r5,0x2                     ; 0812F814
+add   r0,0x2                        ; 0812F80E  r0 = Data083081C8+2
+ldrh  r1,[r0]                       ; 0812F810  FFBD ([Data083081C8+2])
+strh  r1,[r5]                       ; 0812F812  set timer count register
+add   r1,r5,0x2                     ; 0812F814  pointer to timer control register
 mov   r2,r8                         ; 0812F816
-str   r1,[r2]                       ; 0812F818
-ldrh  r0,[r0,0x2]                   ; 0812F81A
-strh  r0,[r5,0x2]                   ; 0812F81C
+str   r1,[r2]                       ; 0812F818  [03002198] = pointer to timer control register
+ldrh  r0,[r0,0x2]                   ; 0812F81A  00C2 (0000 0000 1100 0010) ([Data083081C8+4])
+strh  r0,[r5,0x2]                   ; 0812F81C  set timer control register
 str   r5,[r2]                       ; 0812F81E
 mov   r0,0x1                        ; 0812F820
 mov   r3,r9                         ; 0812F822
-strh  r0,[r3]                       ; 0812F824
+strh  r0,[r3]                       ; 0812F824  enable interrupts
 pop   {r3-r4}                       ; 0812F826
 mov   r8,r3                         ; 0812F828
 mov   r9,r4                         ; 0812F82A
@@ -252,11 +252,11 @@ strh  r3,[r4]                       ; 0812F8A2  disable all interrupts
 ldr   r5,=0x04000204                ; 0812F8A4
 ldrh  r4,[r5]                       ; 0812F8A6
 ldr   r3,=0xF8FF                    ; 0812F8A8  1111 1000 1111 1111
-and   r4,r3                         ; 0812F8AA
+and   r4,r3                         ; 0812F8AA  [04000204] with bits 8-10 clear
 ldr   r3,=0x030074E8                ; 0812F8AC
 ldr   r3,[r3]                       ; 0812F8AE  EEPROM struct ptr? 083081B0 or 083081BC
-ldrh  r3,[r3,0x6]                   ; 0812F8B0  always 0300?
-orr   r4,r3                         ; 0812F8B2  set bits from struct+6
+ldrh  r3,[r3,0x6]                   ; 0812F8B0  always 0300 (0000 0011 0000 0000)
+orr   r4,r3                         ; 0812F8B2  set bits 8-9 from struct+6
 strh  r4,[r5]                       ; 0812F8B4  store new value to 04000204
 ldr   r3,=0x040000D4                ; 0812F8B6
 str   r0,[r3]                       ; 0812F8B8  set DMA 3 source addr
@@ -409,11 +409,11 @@ mov   r0,0x0                        ; 0812F9F2
 strh  r0,[r3]                       ; 0812F9F4
 sub   r3,0x2                        ; 0812F9F6
 mov   r1,0x0                        ; 0812F9F8
-@@Code0812F9FA:
+@@Loop0812F9FA:
 ldrh  r2,[r5]                       ; 0812F9FA
 add   r5,0x2                        ; 0812F9FC
 mov   r0,0x0                        ; 0812F9FE
-@@Code0812FA00:
+@@Loop0812FA00:
 strh  r2,[r3]                       ; 0812FA00
 sub   r3,0x2                        ; 0812FA02
 lsr   r2,r2,0x1                     ; 0812FA04
@@ -421,12 +421,12 @@ add   r0,0x1                        ; 0812FA06
 lsl   r0,r0,0x18                    ; 0812FA08
 lsr   r0,r0,0x18                    ; 0812FA0A
 cmp   r0,0xF                        ; 0812FA0C
-bls   @@Code0812FA00                ; 0812FA0E
+bls   @@Loop0812FA00                ; 0812FA0E
 add   r0,r1,0x1                     ; 0812FA10
 lsl   r0,r0,0x18                    ; 0812FA12
 lsr   r1,r0,0x18                    ; 0812FA14
 cmp   r1,0x3                        ; 0812FA16
-bls   @@Code0812F9FA                ; 0812FA18
+bls   @@Loop0812F9FA                ; 0812FA18
 mov   r1,0x0                        ; 0812FA1A
 ldr   r0,=0x030074E8                ; 0812FA1C
 mov   r2,r0                         ; 0812FA1E
@@ -434,7 +434,7 @@ ldr   r0,[r0]                       ; 0812FA20
 b     @@Code0812FA36                ; 0812FA22
 .pool                               ; 0812FA24
 
-@@Code0812FA28:
+@@Loop0812FA28:
 strh  r4,[r3]                       ; 0812FA28
 sub   r3,0x2                        ; 0812FA2A
 lsr   r4,r4,0x1                     ; 0812FA2C
@@ -445,7 +445,7 @@ ldr   r0,[r2]                       ; 0812FA34
 @@Code0812FA36:
 ldrb  r0,[r0,0x8]                   ; 0812FA36
 cmp   r1,r0                         ; 0812FA38
-blo   @@Code0812FA28                ; 0812FA3A
+blo   @@Loop0812FA28                ; 0812FA3A
 mov   r0,0x0                        ; 0812FA3C
 strh  r0,[r3]                       ; 0812FA3E
 sub   r3,0x2                        ; 0812FA40
@@ -466,14 +466,14 @@ mov   r1,0xD0                       ; 0812FA60
 lsl   r1,r1,0x14                    ; 0812FA62  0D000000
 mov   r3,0x1                        ; 0812FA64
 ldr   r2,=0x03002194                ; 0812FA66
-@@Code0812FA68:
+@@Loop0812FA68:
 ldrh  r0,[r1]                       ; 0812FA68
 and   r0,r3                         ; 0812FA6A
 cmp   r0,0x0                        ; 0812FA6C
 bne   @@Code0812FA82                ; 0812FA6E
 ldrb  r0,[r2]                       ; 0812FA70
 cmp   r0,0x0                        ; 0812FA72
-beq   @@Code0812FA68                ; 0812FA74
+beq   @@Loop0812FA68                ; 0812FA74
 ldrh  r0,[r1]                       ; 0812FA76
 mov   r1,0x1                        ; 0812FA78
 and   r0,r1                         ; 0812FA7A

@@ -679,7 +679,7 @@ bl    Sub080F9104                   ; 080F9594  clear r1 bytes at address r0
 mov   r1,0x0                        ; 080F9598  loop index
 ldr   r0,=0xFFFFBFA0                ; 080F959A
 add   r3,r4,r0                      ; 080F959C
-ldr   r5,=Data08197848              ; 080F959E
+ldr   r5,=SaveGlobal_ASCII          ; 080F959E
 @@Code080F95A0:                     ; loop: copy 8-byte ASCII "SMA3MWE0" from 08197848 to 03006260
 lsl   r0,r1,0x10                    ; 080F95A0 \
 asr   r0,r0,0x10                    ; 080F95A2
@@ -906,7 +906,7 @@ mov   r1,r5                         ; 080F97B0
 mov   r2,0x18                       ; 080F97B2
 bl    Sub080F9124                   ; 080F97B4  copy r2 bytes from r1 to r0
 mov   r3,0x0                        ; 080F97B8
-ldr   r1,=Data08197848              ; 080F97BA
+ldr   r1,=SaveGlobal_ASCII          ; 080F97BA
 ldrb  r0,[r4]                       ; 080F97BC
 b     @@Code080F97FE                ; 080F97BE
 .pool                               ; 080F97C0
@@ -924,7 +924,7 @@ bgt   @@Code080F9806                ; 080F97F0
 ldr   r4,=0x4060                    ; 080F97F2
 add   r0,r6,r4                      ; 080F97F4
 add   r0,r2,r0                      ; 080F97F6
-ldr   r1,=Data08197848              ; 080F97F8
+ldr   r1,=SaveGlobal_ASCII          ; 080F97F8
 add   r1,r2,r1                      ; 080F97FA
 ldrb  r0,[r0]                       ; 080F97FC
 @@Code080F97FE:
@@ -990,7 +990,7 @@ mov   r1,r5                         ; 080F986C
 mov   r2,0x18                       ; 080F986E
 bl    Sub080F9124                   ; 080F9870  copy r2 bytes from r1 to r0
 mov   r3,0x0                        ; 080F9874
-ldr   r1,=Data08197848              ; 080F9876
+ldr   r1,=SaveGlobal_ASCII          ; 080F9876
 ldrb  r0,[r4]                       ; 080F9878
 b     @@Code080F98BE                ; 080F987A
 .pool                               ; 080F987C
@@ -1008,7 +1008,7 @@ bgt   @@Code080F98C6                ; 080F98B0
 ldr   r1,=0x4060                    ; 080F98B2
 add   r0,r6,r1                      ; 080F98B4
 add   r0,r2,r0                      ; 080F98B6
-ldr   r1,=Data08197848              ; 080F98B8
+ldr   r1,=SaveGlobal_ASCII          ; 080F98B8
 add   r1,r2,r1                      ; 080F98BA
 ldrb  r0,[r0]                       ; 080F98BC
 @@Code080F98BE:
@@ -1122,7 +1122,7 @@ mov   r1,r5                         ; 080F99A2
 mov   r2,0x18                       ; 080F99A4
 bl    Sub080F9124                   ; 080F99A6  copy r2 bytes from r1 to r0
 mov   r3,0x0                        ; 080F99AA
-ldr   r1,=Data08197848              ; 080F99AC
+ldr   r1,=SaveGlobal_ASCII          ; 080F99AC
 ldrb  r0,[r4]                       ; 080F99AE
 b     @@Code080F99E6                ; 080F99B0
 .pool                               ; 080F99B2
@@ -1140,7 +1140,7 @@ bgt   @@Code080F99EE                ; 080F99D8
 ldr   r4,=0x4060                    ; 080F99DA
 add   r0,r6,r4                      ; 080F99DC
 add   r0,r2,r0                      ; 080F99DE
-ldr   r1,=Data08197848              ; 080F99E0
+ldr   r1,=SaveGlobal_ASCII          ; 080F99E0
 add   r1,r2,r1                      ; 080F99E2
 ldrb  r0,[r0]                       ; 080F99E4
 @@Code080F99E6:
@@ -1523,7 +1523,7 @@ add   r6,r4,r0                      ; 080F9D12
 ldrb  r0,[r6]                       ; 080F9D14
 cmp   r0,0x0                        ; 080F9D16
 beq   @@Code080F9D1C                ; 080F9D18
-b     @@Code080F9FE0                ; 080F9D1A
+b     @@Return                      ; 080F9D1A
 @@Code080F9D1C:
 ldr   r5,=0x02010000                ; 080F9D1C
 mov   r1,0xC0                       ; 080F9D1E
@@ -1551,12 +1551,12 @@ bl    Sub080F91A8                   ; 080F9D4A
 ldrb  r0,[r6]                       ; 080F9D4E
 cmp   r0,0x0                        ; 080F9D50
 beq   @@Code080F9D56                ; 080F9D52
-b     @@Code080F9FE0                ; 080F9D54
+b     @@Return                      ; 080F9D54
 @@Code080F9D56:
 mov   r6,0x0                        ; 080F9D56
 mov   r2,r5                         ; 080F9D58
 mov   r3,0x0                        ; 080F9D5A
-ldr   r0,=Data08197860              ; 080F9D5C
+ldr   r0,=SaveFile_ASCII            ; 080F9D5C
 ldrb  r1,[r2]                       ; 080F9D5E
 mov   r4,r0                         ; 080F9D60
 ldrb  r0,[r4]                       ; 080F9D62
@@ -1624,12 +1624,12 @@ add   r4,r4,r0                      ; 080F9DD8
 ldrb  r0,[r4]                       ; 080F9DDA
 cmp   r0,0x0                        ; 080F9DDC
 beq   @@Code080F9DE2                ; 080F9DDE
-b     @@Code080F9FE0                ; 080F9DE0
+b     @@Return                      ; 080F9DE0
 @@Code080F9DE2:
 mov   r6,0x0                        ; 080F9DE2
 mov   r2,r5                         ; 080F9DE4
 mov   r3,0x0                        ; 080F9DE6
-ldr   r0,=Data08197860              ; 080F9DE8
+ldr   r0,=SaveFile_ASCII            ; 080F9DE8
 ldrb  r1,[r2]                       ; 080F9DEA
 mov   r4,r0                         ; 080F9DEC
 ldrb  r0,[r4]                       ; 080F9DEE
@@ -1744,10 +1744,10 @@ ldr   r0,=0x4A37                    ; 080F9EF4
 add   r4,r4,r0                      ; 080F9EF6
 ldrb  r0,[r4]                       ; 080F9EF8
 cmp   r0,0x0                        ; 080F9EFA
-bne   @@Code080F9FE0                ; 080F9EFC
+bne   @@Return                      ; 080F9EFC
 mov   r2,r5                         ; 080F9EFE
 mov   r3,0x0                        ; 080F9F00
-ldr   r0,=Data08197860              ; 080F9F02
+ldr   r0,=SaveFile_ASCII            ; 080F9F02
 ldrb  r1,[r2]                       ; 080F9F04
 mov   r4,r0                         ; 080F9F06
 ldrb  r0,[r4]                       ; 080F9F08
@@ -1813,7 +1813,7 @@ ldr   r1,=0x4A37                    ; 080F9F7C
 add   r0,r4,r1                      ; 080F9F7E
 ldrb  r0,[r0]                       ; 080F9F80
 cmp   r0,0x0                        ; 080F9F82
-bne   @@Code080F9FE0                ; 080F9F84
+bne   @@Return                      ; 080F9F84
 ldr   r1,=0x4078                    ; 080F9F86
 add   r0,r4,r1                      ; 080F9F88
 mov   r1,r5                         ; 080F9F8A
@@ -1827,7 +1827,7 @@ add   r0,r0,r6                      ; 080F9F9C
 ldrb  r0,[r0]                       ; 080F9F9E
 @@Code080F9FA0:
 cmp   r0,0x3                        ; 080F9FA0
-bhi   @@Code080F9FE0                ; 080F9FA2
+bhi   @@Return                      ; 080F9FA2
 b     @@Code080F9FDC                ; 080F9FA4
 .pool                               ; 080F9FA6
 
@@ -1839,7 +1839,7 @@ mov   r2,0xF0                       ; 080F9FD6
 bl    Sub080F9124                   ; 080F9FD8  copy r2 bytes from r1 to r0
 @@Code080F9FDC:
 bl    Sub080F9A7C                   ; 080F9FDC
-@@Code080F9FE0:
+@@Return:
 pop   {r4-r7}                       ; 080F9FE0
 pop   {r0}                          ; 080F9FE2
 bx    r0                            ; 080F9FE4
@@ -1924,7 +1924,7 @@ mov   r2,0x0                        ; 080FA0A4  loop index
 mov   r3,r4                         ; 080FA0A6
 ldr   r0,=0xFFFFBF88                ; 080FA0A8
 add   r4,r3,r0                      ; 080FA0AA  r4 = 03002200
-ldr   r5,=Data08197860              ; 080FA0AC
+ldr   r5,=SaveFile_ASCII            ; 080FA0AC
 @@Code080FA0AE:                     ; loop: copy 4-byte ASCII "AYE0" from 08197860 to 03006278
 lsl   r0,r2,0x10                    ; 080FA0AE \
 asr   r0,r0,0x10                    ; 080FA0B0
@@ -1981,8 +1981,8 @@ mov   r2,0x0                        ; 080FA114
 ldr   r0,=0x4140                    ; 080FA116
 add   r5,r4,r0                      ; 080FA118  r5 = 03006340
 mov   r3,0x0                        ; 080FA11A
-@@Code080FA11C:
-lsl   r1,r2,0x10                    ; 080FA11C \ loop: clear egg slots
+@@Loop_ClearEggSlots:
+lsl   r1,r2,0x10                    ; 080FA11C
 asr   r1,r1,0x10                    ; 080FA11E
 lsl   r0,r1,0x1                     ; 080FA120
 add   r0,r0,r5                      ; 080FA122
@@ -1992,12 +1992,12 @@ lsl   r1,r1,0x10                    ; 080FA128
 lsr   r2,r1,0x10                    ; 080FA12A
 asr   r1,r1,0x10                    ; 080FA12C
 cmp   r1,0x5                        ; 080FA12E
-ble   @@Code080FA11C                ; 080FA130 /
+ble   @@Loop_ClearEggSlots          ; 080FA130
 mov   r2,0x0                        ; 080FA132
 ldr   r5,=0x0300628A                ; 080FA134
 mov   r3,0x0                        ; 080FA136
-@@Code080FA138:
-lsl   r0,r2,0x10                    ; 080FA138 \ loop: clear inventory slots
+@@Loop_ClearInventorySlots:
+lsl   r0,r2,0x10                    ; 080FA138
 asr   r0,r0,0x10                    ; 080FA13A
 add   r1,r0,r5                      ; 080FA13C
 strb  r3,[r1]                       ; 080FA13E
@@ -2006,7 +2006,7 @@ lsl   r0,r0,0x10                    ; 080FA142
 lsr   r2,r0,0x10                    ; 080FA144
 asr   r0,r0,0x10                    ; 080FA146
 cmp   r0,0x1A                       ; 080FA148
-ble   @@Code080FA138                ; 080FA14A /
+ble   @@Loop_ClearInventorySlots    ; 080FA14A
 ldr   r2,=0x40A6                    ; 080FA14C
 add   r1,r4,r2                      ; 080FA14E  r1 = 030062A6
 mov   r0,0x80                       ; 080FA150
@@ -2015,8 +2015,8 @@ strh  r0,[r1]                       ; 080FA154
 mov   r2,0x1                        ; 080FA156
 mov   r5,r1                         ; 080FA158
 mov   r3,0x0                        ; 080FA15A
-@@Code080FA15C:
-lsl   r1,r2,0x10                    ; 080FA15C \ loop: clear level high scores and unlock/clear flags
+@@Loop_ClearLevelScoresAndFlags:    ;          \ loop: clear level high scores and unlock/clear flags
+lsl   r1,r2,0x10                    ; 080FA15C
 asr   r1,r1,0x10                    ; 080FA15E
 lsl   r0,r1,0x1                     ; 080FA160
 add   r0,r0,r5                      ; 080FA162
@@ -2026,7 +2026,7 @@ lsl   r1,r1,0x10                    ; 080FA168
 lsr   r2,r1,0x10                    ; 080FA16A
 asr   r1,r1,0x10                    ; 080FA16C
 cmp   r1,0x47                       ; 080FA16E
-ble   @@Code080FA15C                ; 080FA170 /
+ble   @@Loop_ClearLevelScoresAndFlags; 080FA170 /
 ldr   r0,=0x407C                    ; 080FA172
 add   r1,r4,r0                      ; 080FA174  r1 = 0300627C
 mov   r0,0x0                        ; 080FA176
@@ -2050,9 +2050,9 @@ ldr   r2,=0x4A3C                    ; 080FA19E
 add   r0,r0,r2                      ; 080FA1A0
 ldrb  r0,[r0]                       ; 080FA1A2  r0 = 03006C3C
 cmp   r0,0x3                        ; 080FA1A4
-bhi   @@Code080FA1AC                ; 080FA1A6
+bhi   @@Return                      ; 080FA1A6
 bl    Sub080F9C5C                   ; 080FA1A8
-@@Code080FA1AC:
+@@Return:
 pop   {r4-r5}                       ; 080FA1AC
 pop   {r0}                          ; 080FA1AE
 bx    r0                            ; 080FA1B0
@@ -2965,26 +2965,26 @@ Sub080FAAD0:
 push  {r4-r7,lr}                    ; 080FAAD0
 ldr   r7,=0x04000200                ; 080FAAD2
 mov   r5,0x0                        ; 080FAAD4
-strh  r5,[r7]                       ; 080FAAD6
+strh  r5,[r7]                       ; 080FAAD6  disable interrupts
 bl    Sub080F9D08                   ; 080FAAD8
 ldr   r6,=0x03002200                ; 080FAADC
 ldr   r0,=0x4A39                    ; 080FAADE
-add   r4,r6,r0                      ; 080FAAE0
+add   r4,r6,r0                      ; 080FAAE0  03006A39
 mov   r0,0x0                        ; 080FAAE2
-ldsb  r0,[r4,r0]                    ; 080FAAE4
+ldsb  r0,[r4,r0]                    ; 080FAAE4  current file
 add   r0,0x1                        ; 080FAAE6
 ldr   r1,=0x4A33                    ; 080FAAE8
-add   r3,r6,r1                      ; 080FAAEA
-add   r0,r0,r3                      ; 080FAAEC
-add   r1,0x4                        ; 080FAAEE
-add   r2,r6,r1                      ; 080FAAF0
+add   r3,r6,r1                      ; 080FAAEA  r3 = 03006A33
+add   r0,r0,r3                      ; 080FAAEC  r0 = 03006A33+file+1
+add   r1,0x4                        ; 080FAAEE  4A77
+add   r2,r6,r1                      ; 080FAAF0  03006A37
 ldrb  r1,[r2]                       ; 080FAAF2
 strb  r1,[r0]                       ; 080FAAF4
 strb  r5,[r2]                       ; 080FAAF6
 mov   r0,0x0                        ; 080FAAF8
-ldsb  r0,[r4,r0]                    ; 080FAAFA
+ldsb  r0,[r4,r0]                    ; 080FAAFA  current file
 add   r0,0x1                        ; 080FAAFC
-add   r1,r0,r3                      ; 080FAAFE
+add   r1,r0,r3                      ; 080FAAFE  r1 = 03006A33+file+1
 ldrb  r0,[r1]                       ; 080FAB00
 cmp   r0,0x3                        ; 080FAB02
 bne   @@Code080FAB0A                ; 080FAB04
@@ -2992,9 +2992,9 @@ mov   r0,0x2                        ; 080FAB06
 strb  r0,[r1]                       ; 080FAB08
 @@Code080FAB0A:
 ldr   r1,=0x47C2                    ; 080FAB0A
-add   r0,r6,r1                      ; 080FAB0C
+add   r0,r6,r1                      ; 080FAB0C  030069C2
 ldrh  r0,[r0]                       ; 080FAB0E
-strh  r0,[r7]                       ; 080FAB10
+strh  r0,[r7]                       ; 080FAB10  restore old value for interrupt register?
 pop   {r4-r7}                       ; 080FAB12
 pop   {r0}                          ; 080FAB14
 bx    r0                            ; 080FAB16

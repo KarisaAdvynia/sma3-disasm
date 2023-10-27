@@ -60,7 +60,7 @@ str   r0,[sp,0x24]                  ; 080E818A
 sub   r2,0x1                        ; 080E818C
 str   r2,[sp,0x18]                  ; 080E818E
 @@Code080E8190:
-ldr   r0,=Data08195558              ; 080E8190
+ldr   r0,=BitTable8Desc_08195558    ; 080E8190
 add   r0,r1,r0                      ; 080E8192
 ldrb  r0,[r0]                       ; 080E8194
 ldr   r2,[sp,0x14]                  ; 080E8196

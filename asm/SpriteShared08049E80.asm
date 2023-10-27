@@ -1753,7 +1753,7 @@ ldr   r0,=0x0300702C                ; 0804AD06  Sprite RAM structs (03002460)
 ldr   r7,[r0]                       ; 0804AD08
 ldr   r0,=0x1148                    ; 0804AD0A
 add   r5,r7,r0                      ; 0804AD0C
-ldr   r1,=Data08171EEC              ; 0804AD0E
+ldr   r1,=BitTable16Desc_08171EEC   ; 0804AD0E
 mov   r12,r1                        ; 0804AD10
 ldrh  r6,[r5]                       ; 0804AD12
 @@Code0804AD14:
@@ -1837,7 +1837,7 @@ mov   r4,r3                         ; 0804ADAE
 lsl   r0,r4,0x1A                    ; 0804ADB0
 lsr   r3,r0,0x18                    ; 0804ADB2
 mov   r4,0x0                        ; 0804ADB4
-ldr   r2,=Data08171EEC              ; 0804ADB6
+ldr   r2,=BitTable16Desc_08171EEC   ; 0804ADB6
 mov   r12,r2                        ; 0804ADB8
 ldr   r0,=0x0300702C                ; 0804ADBA  Sprite RAM structs (03002460)
 ldr   r1,[r0]                       ; 0804ADBC
@@ -1937,7 +1937,7 @@ ldr   r0,=0x0300702C                ; 0804AE76  Sprite RAM structs (03002460)
 ldr   r7,[r0]                       ; 0804AE78
 ldr   r0,=0x1148                    ; 0804AE7A
 add   r5,r7,r0                      ; 0804AE7C
-ldr   r1,=Data08171EEC              ; 0804AE7E
+ldr   r1,=BitTable16Desc_08171EEC   ; 0804AE7E
 mov   r12,r1                        ; 0804AE80
 ldrh  r6,[r5]                       ; 0804AE82
 @@Code0804AE84:
@@ -3644,7 +3644,7 @@ bl    Sub0804A250                   ; 0804BC8A
 strh  r4,[r5,0x34]                  ; 0804BC8E
 strh  r7,[r6]                       ; 0804BC90
 mov   r0,r5                         ; 0804BC92
-bl    SpriteStatus1Init             ; 0804BC94  Sprite status 1-2: init
+bl    SpriteStatus1_Init            ; 0804BC94  Sprite status 1-2: init
 mov   r0,r5                         ; 0804BC98
 add   r0,0x60                       ; 0804BC9A
 ldrh  r0,[r0]                       ; 0804BC9C
@@ -7061,8 +7061,8 @@ pop   {r0}                          ; 0804D8E4
 bx    r0                            ; 0804D8E6
 .pool                               ; 0804D8E8
 
-SpriteStatus1Init:
-; Sprite status 1-2 (init)
+SpriteStatus1_Init:
+; Sprite status 1-2: init
 push  {lr}                          ; 0804D8F4
 mov   r1,0x8                        ; 0804D8F6
 strh  r1,[r0,0x24]                  ; 0804D8F8  set sprite status to 8
@@ -7076,8 +7076,8 @@ pop   {r0}                          ; 0804D908
 bx    r0                            ; 0804D90A
 .pool                               ; 0804D90C
 
-SpriteStatus8Main:
-; Sprite status 8 (main)
+SpriteStatus8_Main:
+; Sprite status 8: main
 push  {lr}                          ; 0804D910
 ldr   r2,=StdSprMainPtrs            ; 0804D912
 ldrh  r1,[r0,0x32]                  ; 0804D914  sprite ID
@@ -7090,7 +7090,7 @@ bx    r0                            ; 0804D922
 .pool                               ; 0804D924
 
 SpriteStatus3:
-; Sprite status 3
+; Sprite status 3: transforming (e.g. into star/coin/winged cloud)
 push  {r4-r7,lr}                    ; 0804D928
 mov   r4,r0                         ; 0804D92A
 add   r0,0xA6                       ; 0804D92C
@@ -7108,7 +7108,7 @@ mov   r0,r4                         ; 0804D942
 bl    Sub0804A3B8                   ; 0804D944
 @@Code0804D948:
 mov   r0,r4                         ; 0804D948
-bl    SpriteStatus8Main             ; 0804D94A
+bl    SpriteStatus8_Main            ; 0804D94A
 ldr   r1,=0x03002200                ; 0804D94E
 ldr   r0,[r4]                       ; 0804D950
 asr   r0,r0,0x8                     ; 0804D952
@@ -7473,7 +7473,7 @@ add   r0,r0,r2                      ; 0804DC6A
 ldrb  r0,[r0]                       ; 0804DC6C
 mov   r10,r0                        ; 0804DC6E
 mov   r0,r7                         ; 0804DC70
-bl    SpriteStatus8Main             ; 0804DC72
+bl    SpriteStatus8_Main            ; 0804DC72
 ldr   r0,[r4]                       ; 0804DC76
 ldr   r3,=0x11B0                    ; 0804DC78
 add   r0,r0,r3                      ; 0804DC7A
@@ -8409,7 +8409,7 @@ SpriteStatus5:
 ; Sprite status 5: on Yoshi's back
 push  {r4-r5,lr}                    ; 0804E434
 mov   r4,r0                         ; 0804E436
-bl    SpriteStatus8Main             ; 0804E438
+bl    SpriteStatus8_Main            ; 0804E438
 mov   r0,0x0                        ; 0804E43C
 str   r0,[r4,0xC]                   ; 0804E43E
 str   r0,[r4,0x8]                   ; 0804E440
@@ -8520,7 +8520,7 @@ ldr   r4,[r0]                       ; 0804E512
 ldr   r0,=0x2708                    ; 0804E514
 add   r4,r4,r0                      ; 0804E516
 mov   r0,r5                         ; 0804E518
-bl    SpriteStatus8Main             ; 0804E51A
+bl    SpriteStatus8_Main            ; 0804E51A
 ldrh  r0,[r4,0x28]                  ; 0804E51E
 cmp   r0,0x0                        ; 0804E520
 bne   @@Code0804E530                ; 0804E522
@@ -8548,7 +8548,7 @@ bx    r0                            ; 0804E552
 .pool                               ; 0804E554
 
 SpriteStatus9:
-; Sprite status 9
+; Sprite status 9: dying to fire
 push  {r4-r6,lr}                    ; 0804E558
 mov   r5,r0                         ; 0804E55A
 ldr   r6,=0x03007240                ; 0804E55C  Normal gameplay IWRAM (Ptr to 0300220C)
@@ -8556,7 +8556,7 @@ ldr   r4,[r6]                       ; 0804E55E
 ldr   r0,=0x2708                    ; 0804E560
 add   r4,r4,r0                      ; 0804E562
 mov   r0,r5                         ; 0804E564
-bl    SpriteStatus8Main             ; 0804E566
+bl    SpriteStatus8_Main            ; 0804E566
 ldrh  r0,[r4,0x28]                  ; 0804E56A
 cmp   r0,0x0                        ; 0804E56C
 bne   @@Code0804E5FC                ; 0804E56E
@@ -8673,7 +8673,7 @@ Sub0804E660:
 ; sprite 005,007,009,023-025,027-02B,107,1A5-1A9,1B7 status 7 code
 push  {r4,lr}                       ; 0804E660
 mov   r4,r0                         ; 0804E662
-bl    SpriteStatus8Main             ; 0804E664
+bl    SpriteStatus8_Main            ; 0804E664
 ldrh  r1,[r4,0x2A]                  ; 0804E668
 ldr   r0,=0xFFF3                    ; 0804E66A
 and   r0,r1                         ; 0804E66C

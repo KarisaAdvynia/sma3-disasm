@@ -3993,11 +3993,11 @@ sub   r4,r3,0x3                     ; 080FF1C0  r4 = 03006C41 (file world progre
 mov   r7,0x7                        ; 080FF1C2
 mov   r6,0x8                        ; 080FF1C4
 @@SaveFileLoop:
-ldrb  r1,[r4]                       ; 080FF1C6
-mov   r0,r1                         ; 080FF1C8
+ldrb  r1,[r4]                       ; 080FF1C6  r1 = file world progress value
+mov   r0,r1                         ; 080FF1C8  r0 = file world progress value
 cmp   r1,0x0                        ; 080FF1CA
-bne   @@Code080FF1E0                ; 080FF1CC
-ldrb  r0,[r3]                       ; 080FF1CE
+bne   @@WorldProgressNonzero        ; 080FF1CC
+ldrb  r0,[r3]                       ; 080FF1CE  r0 = file exists value
 cmp   r0,0x0                        ; 080FF1D0
 beq   @@NewFile                     ; 080FF1D2
 strb  r7,[r2]                       ; 080FF1D4  set to 7 (World 0)
@@ -4008,14 +4008,14 @@ b     @@Continue                    ; 080FF1D6
 strb  r1,[r2]                       ; 080FF1DC  set to 0 (New)
 b     @@Continue                    ; 080FF1DE
 
-@@Code080FF1E0:
+@@WorldProgressNonzero:
 cmp   r1,0x80                       ; 080FF1E0
 bne   @@Code080FF1E8                ; 080FF1E2
-strb  r6,[r2]                       ; 080FF1E4  03006C41+file is 80: set to 8 (Clear)
+strb  r6,[r2]                       ; 080FF1E4  world progress value is 80: set to 8 (Clear)
 b     @@Continue                    ; 080FF1E6
 
 @@Code080FF1E8:
-strb  r0,[r2]                       ; 080FF1E8  set to world number?
+strb  r0,[r2]                       ; 080FF1E8  else, set to world progress value (world number)
 @@Continue:
 add   r3,0x1                        ; 080FF1EA  increment file exists table pointer
 add   r4,0x1                        ; 080FF1EC  increment file world progress table pointer

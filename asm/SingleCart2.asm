@@ -6869,7 +6869,7 @@ pop   {r0}                          ; 081461FA
 bx    r0                            ; 081461FC
 .pool                               ; 081461FE
 
-Sub08146220:
+Return08146220:
 bx    lr                            ; 08146220
 .pool                               ; 08146222
 
@@ -7640,7 +7640,7 @@ ldr   r2,=0x0424                    ; 08146964
 add   r0,r0,r2                      ; 08146966
 mov   r1,0x0                        ; 08146968
 strh  r1,[r0]                       ; 0814696A
-bl    Sub08146220                   ; 0814696C
+bl    Return08146220                ; 0814696C
 ldr   r0,=0x4906                    ; 08146970
 add   r4,r4,r0                      ; 08146972
 ldrb  r0,[r4]                       ; 08146974
@@ -43435,7 +43435,7 @@ Sub08158BF8:
 push  {lr}                          ; 08158BF8
 ldr   r0,=0x02022414                ; 08158BFA
 bl    Sub08158E44                   ; 08158BFC
-bl    Sub08158D18                   ; 08158C00
+bl    Return08158D18                ; 08158C00
 bl    Sub08158C50                   ; 08158C04
 bl    Sub08158D2C                   ; 08158C08
 pop   {r0}                          ; 08158C0C
@@ -43444,9 +43444,9 @@ bx    r0                            ; 08158C0E
 
 Sub08158C14:
 push  {lr}                          ; 08158C14
-bl    Sub08158D1C                   ; 08158C16
+bl    Return08158D1C                ; 08158C16
 bl    Sub08158C6C                   ; 08158C1A
-bl    Sub08158D4C                   ; 08158C1E
+bl    Return08158D4C                ; 08158C1E
 bl    Sub0815AB9C                   ; 08158C22
 pop   {r0}                          ; 08158C26
 bx    r0                            ; 08158C28
@@ -43576,11 +43576,11 @@ bx    lr                            ; 08158D10
 bx    lr                            ; 08158D14
 .pool                               ; 08158D16
 
-Sub08158D18:
+Return08158D18:
 bx    lr                            ; 08158D18
 .pool                               ; 08158D1A
 
-Sub08158D1C:
+Return08158D1C:
 bx    lr                            ; 08158D1C
 .pool                               ; 08158D1E
 
@@ -43609,7 +43609,7 @@ bge   @@Code08158D34                ; 08158D40
 bx    lr                            ; 08158D42
 .pool                               ; 08158D44
 
-Sub08158D4C:
+Return08158D4C:
 bx    lr                            ; 08158D4C
 .pool                               ; 08158D4E
 
@@ -44342,7 +44342,7 @@ pop   {r4-r5}                       ; 081593A2
 pop   {r1}                          ; 081593A4
 bx    r1                            ; 081593A6
 
-Sub081593A8:
+Return081593A8:
 bx    lr                            ; 081593A8
 .pool                               ; 081593AA
 
@@ -47924,7 +47924,7 @@ b     @@Code0815B012                ; 0815B006
 
 @@Code0815B00C:
 ldrb  r0,[r2,0x4]                   ; 0815B00C
-bl    Sub081593A8                   ; 0815B00E
+bl    Return081593A8                ; 0815B00E
 @@Code0815B012:
 pop   {r0}                          ; 0815B012
 bx    r0                            ; 0815B014

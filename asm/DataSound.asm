@@ -4,7 +4,7 @@ BuildDate:                          ; 083077B0
 .d8 "02-07-31 17:17:44"
 .align 4
 DataPtrs083077C4:                   ; 083077C4
-.d32 RelPtrs08324EAC, RelPtrs083240FC, RelPtrs08309C50, RelPtrs08308228
+.d32 RelPtrs08324EAC, RelPtrs083240FC, MusicRelPtrs, RelPtrs08308228
 .d32 Data08324D2C, RelPtrs08324D3C, RelPtrs083240E4
 Data083077E0:                       ; 083077E0
 .d16 0x021F, 0x0003
@@ -222,7 +222,7 @@ YIContinuousSoundParam:             ; 08307B44
 .d16 0x001F :: .d8 0x00, 0x01
 .d16 0x0005 :: .d8 0x00, 0x00
 Data08307B68:                       ; 08307B68
-.d32 0x7F542A00
+.d8 0x00, 0x2A, 0x54, 0x7F
 MBMusicSoundParam:                  ; 08307B6C
 .d16 0x0028 :: .d8 0x13, 0x01
 .d16 0x0029 :: .d8 0x13, 0x01
@@ -441,7 +441,10 @@ Data083080A4:                       ; 083080A4
 .d8 0xB9, 0xBC, 0xBF, 0xC1, 0xC4, 0xC7, 0xCA, 0xCD
 .d8 0xCF, 0xD2, 0xD5, 0xD8, 0xDB, 0xDE, 0xE1, 0xE4
 .d8 0xE8, 0xEB, 0xEE, 0xF1, 0xF4, 0xF7, 0xFA, 0xFD
-Unused083081A4:                     ; 083081A4
+
+; EEPROM paramters
+
+SaveTypeStringUnused:               ; 083081A4
 .d8 "EEPROM_V122"
 .align 4
 Data083081B0:                       ; 083081B0
@@ -455,7 +458,8 @@ Data083081BC:                       ; 083081BC
 .d8 0x0E
 .align 4
 Data083081C8:                       ; 083081C8
-.d16 0x000A, 0xFFBD, 0x00C2, 0x0000
+.d16 0x000A, 0xFFBD, 0x00C2
+.align 4
 UnusedPtrs083081D0:                 ; 083081D0
 .d32 0x030074E8, Data083081B0, Data083081BC, 0x03002192
 .d32 0x03002194, 0x03002190, 0x03002198, Sub0812F76C+1
@@ -463,44 +467,47 @@ UnusedPtrs083081D0:                 ; 083081D0
 .d32 0x03002192, 0x03002198, 0x03002190, 0x0300219C
 .d32 0x030074E8, 0x030074E8, 0x030074E8, Data083081C8
 .d32 0x03002194, 0x030074E8
+
+; Sound data
+
 RelPtrs08308228:                    ; 08308228
 .d32 Data08308230-RelPtrs08308228, Data08309530-RelPtrs08308228
 Data08308230:                       ; 08308230
 .incbin "../data/Sound/Data08308230.bin"
 Data08309530:                       ; 08309530
 .incbin "../data/Sound/Data08309530.bin"
-RelPtrs08309C50:                    ; 08309C50
-.d32 Data08309D44-RelPtrs08309C50, Data08309EA4-RelPtrs08309C50
-.d32 Data0830AB24-RelPtrs08309C50, Data0830AEE4-RelPtrs08309C50
-.d32 Data0830B684-RelPtrs08309C50, Data0830D6E4-RelPtrs08309C50
-.d32 Data0830DFA4-RelPtrs08309C50, Data0830E344-RelPtrs08309C50
-.d32 Data0830FA44-RelPtrs08309C50, Data08310044-RelPtrs08309C50
-.d32 Data083104E4-RelPtrs08309C50, Data083110E4-RelPtrs08309C50
-.d32 Data08311504-RelPtrs08309C50, Data08311784-RelPtrs08309C50
-.d32 Data08311984-RelPtrs08309C50, Data083125E4-RelPtrs08309C50
-.d32 Data08313244-RelPtrs08309C50, Data08313EC4-RelPtrs08309C50
-.d32 Data08314B44-RelPtrs08309C50, Data083157C4-RelPtrs08309C50
-.d32 Data08316444-RelPtrs08309C50, Data083170C4-RelPtrs08309C50
-.d32 Data08318204-RelPtrs08309C50, Data08318644-RelPtrs08309C50
-.d32 Data08318A24-RelPtrs08309C50, Data08319664-RelPtrs08309C50
-.d32 Data0831A604-RelPtrs08309C50, Data0831A924-RelPtrs08309C50
-.d32 Data0831B4E4-RelPtrs08309C50, Data0831BD64-RelPtrs08309C50
-.d32 Data0831C484-RelPtrs08309C50, Data0831C5A4-RelPtrs08309C50
-.d32 Data0831D004-RelPtrs08309C50, Data0831D2A4-RelPtrs08309C50
-.d32 Data0831D9E4-RelPtrs08309C50, Data0831E0E4-RelPtrs08309C50
-.d32 Data0831EBE4-RelPtrs08309C50, Data0831F364-RelPtrs08309C50
-.d32 Data083208C4-RelPtrs08309C50, Data08321784-RelPtrs08309C50
-.d32 Data08321804-RelPtrs08309C50, Data08321C44-RelPtrs08309C50
-.d32 Data08321D04-RelPtrs08309C50, Data08321D64-RelPtrs08309C50
-.d32 Data08321EC4-RelPtrs08309C50, Data08321FC4-RelPtrs08309C50
-.d32 Data08322124-RelPtrs08309C50, Data08322244-RelPtrs08309C50
-.d32 Data083223C4-RelPtrs08309C50, Data08322484-RelPtrs08309C50
-.d32 Data08322544-RelPtrs08309C50, Data08322684-RelPtrs08309C50
-.d32 Data08322764-RelPtrs08309C50, Data08322A64-RelPtrs08309C50
-.d32 Data08322BE4-RelPtrs08309C50, Data08322C84-RelPtrs08309C50
-.d32 Data08322DA4-RelPtrs08309C50, Data08322E64-RelPtrs08309C50
-.d32 Data08323484-RelPtrs08309C50, Data083237E4-RelPtrs08309C50
-.d32 Data08323FC4-RelPtrs08309C50
+MusicRelPtrs:                       ; 08309C50
+.d32 Data08309D44-MusicRelPtrs, Data08309EA4-MusicRelPtrs
+.d32 Data0830AB24-MusicRelPtrs, Data0830AEE4-MusicRelPtrs
+.d32 Data0830B684-MusicRelPtrs, Data0830D6E4-MusicRelPtrs
+.d32 Data0830DFA4-MusicRelPtrs, Data0830E344-MusicRelPtrs
+.d32 Data0830FA44-MusicRelPtrs, Data08310044-MusicRelPtrs
+.d32 Data083104E4-MusicRelPtrs, Data083110E4-MusicRelPtrs
+.d32 Data08311504-MusicRelPtrs, Data08311784-MusicRelPtrs
+.d32 Data08311984-MusicRelPtrs, Data083125E4-MusicRelPtrs
+.d32 Data08313244-MusicRelPtrs, Data08313EC4-MusicRelPtrs
+.d32 Data08314B44-MusicRelPtrs, Data083157C4-MusicRelPtrs
+.d32 Data08316444-MusicRelPtrs, Data083170C4-MusicRelPtrs
+.d32 Data08318204-MusicRelPtrs, Data08318644-MusicRelPtrs
+.d32 Data08318A24-MusicRelPtrs, Data08319664-MusicRelPtrs
+.d32 Data0831A604-MusicRelPtrs, Data0831A924-MusicRelPtrs
+.d32 Data0831B4E4-MusicRelPtrs, Data0831BD64-MusicRelPtrs
+.d32 Data0831C484-MusicRelPtrs, Data0831C5A4-MusicRelPtrs
+.d32 Data0831D004-MusicRelPtrs, Data0831D2A4-MusicRelPtrs
+.d32 Data0831D9E4-MusicRelPtrs, Data0831E0E4-MusicRelPtrs
+.d32 Data0831EBE4-MusicRelPtrs, Data0831F364-MusicRelPtrs
+.d32 Data083208C4-MusicRelPtrs, Data08321784-MusicRelPtrs
+.d32 Data08321804-MusicRelPtrs, Data08321C44-MusicRelPtrs
+.d32 Data08321D04-MusicRelPtrs, Data08321D64-MusicRelPtrs
+.d32 Data08321EC4-MusicRelPtrs, Data08321FC4-MusicRelPtrs
+.d32 Data08322124-MusicRelPtrs, Data08322244-MusicRelPtrs
+.d32 Data083223C4-MusicRelPtrs, Data08322484-MusicRelPtrs
+.d32 Data08322544-MusicRelPtrs, Data08322684-MusicRelPtrs
+.d32 Data08322764-MusicRelPtrs, Data08322A64-MusicRelPtrs
+.d32 Data08322BE4-MusicRelPtrs, Data08322C84-MusicRelPtrs
+.d32 Data08322DA4-MusicRelPtrs, Data08322E64-MusicRelPtrs
+.d32 Data08323484-MusicRelPtrs, Data083237E4-MusicRelPtrs
+.d32 Data08323FC4-MusicRelPtrs
 Data08309D44:                       ; 08309D44
 .incbin "../data/Sound/Data08309D44.bin"
 Data08309EA4:                       ; 08309EA4

@@ -13424,7 +13424,7 @@ ldr   r1,=0x4802                    ; 0803C02C
 add   r0,r3,r1                      ; 0803C02E
 ldrh  r0,[r0]                       ; 0803C030
 cmp   r0,0x0                        ; 0803C032
-bne   @@Code0803C084                ; 0803C034
+bne   @@Return_0                    ; 0803C034
 ldr   r4,=0x4808                    ; 0803C036
 add   r0,r3,r4                      ; 0803C038
 ldrh  r1,[r0]                       ; 0803C03A
@@ -13449,16 +13449,16 @@ add   r0,r3,r4                      ; 0803C05E
 ldrh  r0,[r0]                       ; 0803C060
 and   r2,r0                         ; 0803C062
 lsr   r2,r2,0x1                     ; 0803C064
-ldr   r0,=Data081A8B8D              ; 0803C066
+ldr   r0,=BitTable8Desc_081A8B8D    ; 0803C066
 add   r2,r2,r0                      ; 0803C068
 ldrb  r0,[r2]                       ; 0803C06A
 and   r0,r1                         ; 0803C06C
-b     @@Code0803C086                ; 0803C06E
+b     @@Return_r0                   ; 0803C06E
 .pool                               ; 0803C070
 
-@@Code0803C084:
+@@Return_0:
 mov   r0,0x0                        ; 0803C084
-@@Code0803C086:
+@@Return_r0:
 pop   {r4}                          ; 0803C086
 pop   {r1}                          ; 0803C088
 bx    r1                            ; 0803C08A

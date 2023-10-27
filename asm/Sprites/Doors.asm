@@ -562,7 +562,7 @@ add   r3,r2,r0                      ; 080D5986
 ldrh  r1,[r3]                       ; 080D5988
 mov   r0,0xF0                       ; 080D598A
 and   r0,r1                         ; 080D598C
-ldr   r1,=Data0817CC40              ; 080D598E
+ldr   r1,=BitTable16Desc_0817CC40   ; 080D598E
 lsr   r0,r0,0x3                     ; 080D5990
 add   r0,r0,r1                      ; 080D5992
 ldrh  r1,[r0]                       ; 080D5994

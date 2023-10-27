@@ -8,7 +8,7 @@ ldr   r4,[r0]                       ; 08013422
 ldrh  r0,[r4,0x8]                   ; 08013424
 ldr   r1,=0xFFFF                    ; 08013426
 cmp   r0,r1                         ; 08013428
-beq   @@Code0801346C                ; 0801342A
+beq   @@Return                      ; 0801342A
 mov   r5,r1                         ; 0801342C
 @@Code0801342E:
 ldr   r2,[r4,0x4]                   ; 0801342E
@@ -37,7 +37,7 @@ add   r4,0xC                        ; 08013464
 ldrh  r0,[r4,0x8]                   ; 08013466
 cmp   r0,r5                         ; 08013468
 bne   @@Code0801342E                ; 0801346A
-@@Code0801346C:
+@@Return:
 pop   {r4-r5}                       ; 0801346C
 pop   {r0}                          ; 0801346E
 bx    r0                            ; 08013470
@@ -384,7 +384,7 @@ ldr   r1,=0x2AAC                    ; 080137F2
 add   r0,r0,r1                      ; 080137F4  [03007240]+2AAC (03004CB8)
 ldrh  r0,[r0]                       ; 080137F6  sublevel ID
 cmp   r0,0xEA                       ; 080137F8  EA: 4-secret Bullet Bill autoscroller
-beq   @@Code08013818                ; 080137FA
+beq   @@Return                      ; 080137FA
 ldr   r4,=Data082C7008+0x3980       ; 080137FC
 ldr   r1,=0x06010900                ; 080137FE
 mov   r0,r4                         ; 08013800
@@ -397,7 +397,7 @@ ldr   r1,=0x06010D00                ; 0801380E
 mov   r0,r4                         ; 08013810
 mov   r2,0x20                       ; 08013812  copy 80 bytes from 082CAD88 to 06010D00
 bl    swi_MemoryCopy32              ; 08013814  Memory copy/fill, 32-byte blocks
-@@Code08013818:
+@@Return:
 pop   {r4}                          ; 08013818
 pop   {r0}                          ; 0801381A
 bx    r0                            ; 0801381C
@@ -424,8 +424,8 @@ mov   r12,r4                        ; 08013852  r9=r12 = 08167404 (unused SNES s
 mov   r5,r6                         ; 08013854  r5 = pointer to 03002460
 ldr   r4,[@@_153E]                  ; 08013856
 mov   r3,0x0                        ; 08013858
-@@Code0801385A:                     ; loop: clear first 8 values from buffer at 0300399E?
-                                    ;  (original extraction of header indexs was here)
+@@Loop0801385A:                     ; loop: clear first 8 values from buffer at 0300399E?
+                                    ;  (original extraction of header indexes was here)
 ldr   r0,[r5]                       ; 0801385A  r0 = [0300702C] (03002460)
 lsl   r1,r2,0x1                     ; 0801385C
 add   r0,r0,r4                      ; 0801385E  r0 = [0300702C]+153E (0300399E)
@@ -435,7 +435,7 @@ add   r0,r2,0x1                     ; 08013864
 lsl   r0,r0,0x10                    ; 08013866
 lsr   r2,r0,0x10                    ; 08013868
 cmp   r2,0x7                        ; 0801386A
-bls   @@Code0801385A                ; 0801386C /
+bls   @@Loop0801385A                ; 0801386C /
 ldr   r3,[r6]                       ; 0801386E  r3 = [0300702C] (03002460)
 mov   r5,r10                        ; 08013870
 ldr   r2,[r5]                       ; 08013872  r2 = [03007240] (0300220C)
@@ -551,14 +551,14 @@ mov   r5,0x0                        ; 08013960  r5 = loop index
 mov   r10,r4                        ; 08013962
 ldr   r4,=0x020105E0                ; 08013964
 ldr   r3,=0x020109E0                ; 08013966
-@@Code08013968:                     ; loop: copy layer palette 2 (if magnifying glass is not active) or 1 (if magnifying glass is active) to layer palette F
+@@Loop_LoadPaletteF:                ; loop: copy layer palette 2 (if magnifying glass is not active) or 1 (if magnifying glass is active) to layer palette F
 ldr   r0,=0x03007240                ; 08013968 \
 ldr   r0,[r0]                       ; 0801396A
 ldr   r1,=0x2A74                    ; 0801396C
 add   r0,r0,r1                      ; 0801396E  r0 = [03007240]+2A74 (03004C80)
 ldrh  r0,[r0]                       ; 08013970
 cmp   r0,0x0                        ; 08013972
-beq   @@Code080139C4                ; 08013974
+beq   @@NoMagnify                   ; 08013974
 lsl   r1,r5,0x1                     ; 08013976 \ runs if magnifying glass is active
 add   r2,r1,r4                      ; 08013978
 ldr   r6,=0x02010420                ; 0801397A
@@ -570,7 +570,7 @@ ldr   r0,=0x02010820                ; 08013984
 b     @@Code080139D4                ; 08013986 /
 .pool                               ; 08013988
 
-@@Code080139C4:
+@@NoMagnify:
 lsl   r1,r5,0x1                     ; 080139C4 \ runs if magnifying glass is not active
 add   r2,r1,r4                      ; 080139C6
 ldr   r6,=0x02010440                ; 080139C8
@@ -587,7 +587,7 @@ add   r0,r5,0x1                     ; 080139DA
 lsl   r0,r0,0x10                    ; 080139DC
 lsr   r5,r0,0x10                    ; 080139DE
 cmp   r5,0xF                        ; 080139E0
-bls   @@Code08013968                ; 080139E2 / loop
+bls   @@Loop_LoadPaletteF           ; 080139E2 / loop
 
 mov   r2,r10                        ; 080139E4
 ldr   r1,[r2]                       ; 080139E6  r1 = [03007240] (0300220C)
@@ -616,7 +616,7 @@ strh  r0,[r1]                       ; 08013A0E  [03006ABE] = 0
 mov   r5,0x0                        ; 08013A10  r5 = loop index
 ldr   r6,=L3ImagePalettePtrs        ; 08013A12
 mov   r9,r6                         ; 08013A14  r9 = 08167434
-@@L3ImagePal8_Loop:                 ; loop: check if layer 3 image is one of 8 specific values
+@@Loop_L3ImagePal8:                 ; loop: check if layer 3 image is one of 8 specific values
                                     ;  if so, replace colors 80-8F. Layer 3 image 18 additionally replaces colors 90-9F
 mov   r0,r10                        ; 08013A16
 ldr   r4,[r0]                       ; 08013A18  r4 = [03007240] (0300220C)
@@ -726,7 +726,8 @@ lsl   r0,r0,0x10                    ; 08013B0C
 lsr   r5,r0,0x10                    ; 08013B0E  increment loop index
 cmp   r5,0x7                        ; 08013B10 \ if loop index has reached 8, end loop
 bhi   @@Code08013B16                ; 08013B12 /
-b     @@L3ImagePal8_Loop            ; 08013B14
+b     @@Loop_L3ImagePal8            ; 08013B14
+
 @@Code08013B16:
 mov   r3,r10                        ; 08013B16
 ldr   r0,[r3]                       ; 08013B18  r0 = [03007240] (0300220C)
@@ -788,8 +789,8 @@ mov   r5,0x0                        ; 08013B7E  loop index
 ldr   r6,=0x02010600                ; 08013B80  palette buffers, color 100
 ldr   r4,=0x02010A00                ; 08013B82
 ldr   r3,=LevelSprGlobalPal_100_15F ; 08013B84
-@@Code08013B86:
-lsl   r0,r5,0x1                     ; 08013B86 \ loop: copy 60 global colors to 100-15F
+@@Loop_LoadColors100_15F:           ;          \ loop: copy 60 global colors to 100-15F
+lsl   r0,r5,0x1                     ; 08013B86
 add   r2,r0,r6                      ; 08013B88
 add   r1,r0,r4                      ; 08013B8A
 add   r0,r0,r3                      ; 08013B8C
@@ -800,13 +801,13 @@ add   r0,r5,0x1                     ; 08013B94
 lsl   r0,r0,0x10                    ; 08013B96
 lsr   r5,r0,0x10                    ; 08013B98
 cmp   r5,0x5F                       ; 08013B9A
-bls   @@Code08013B86                ; 08013B9C /
+bls   @@Loop_LoadColors100_15F      ; 08013B9C /
 mov   r5,0x0                        ; 08013B9E  loop index
 ldr   r6,=0x02010700                ; 08013BA0  palette buffers, color 180
 ldr   r4,=0x02010B00                ; 08013BA2
 ldr   r3,=LevelSprGlobalPal_180_1FF ; 08013BA4
-@@Code08013BA6:
-lsl   r0,r5,0x1                     ; 08013BA6 \ loop: copy 80 global colors to 180-1FF
+@@Loop_LoadColors180_1FF:           ;          \ loop: copy 80 global colors to 180-1FF
+lsl   r0,r5,0x1                     ; 08013BA6
 add   r2,r0,r6                      ; 08013BA8
 add   r1,r0,r4                      ; 08013BAA
 add   r0,r0,r3                      ; 08013BAC
@@ -817,7 +818,7 @@ add   r0,r5,0x1                     ; 08013BB4
 lsl   r0,r0,0x10                    ; 08013BB6
 lsr   r5,r0,0x10                    ; 08013BB8
 cmp   r5,0x7F                       ; 08013BBA
-bls   @@Code08013BA6                ; 08013BBC /
+bls   @@Loop_LoadColors180_1FF      ; 08013BBC /
 ldr   r1,=0x03002200                ; 08013BBE
 ldr   r2,=0x4896                    ; 08013BC0
 add   r0,r1,r2                      ; 08013BC2  r0 = 03006A96
@@ -833,7 +834,7 @@ ldr   r0,=Data082D2F1C              ; 08013BD4
 mov   r8,r0                         ; 08013BD6
 ldr   r7,=0x020106A0                ; 08013BD8
 add   r6,0x2                        ; 08013BDA
-@@Code08013BDC:                     ; loop: copy 10 colors from ROM at 082D2F1C + 4*(value from table at 08167404, indexed by 2*Yoshi color). In practice is this one of the 20-byte blocks 082D301C to 082D30EC?
+@@Loop_LoadUnusedPaletteD:          ; loop: copy 10 colors from ROM at 082D2F1C + 4*(value from table at 08167404, indexed by 2*Yoshi color). In practice is this one of the 20-byte blocks 082D301C to 082D30EC
 lsl   r1,r5,0x2                     ; 08013BDC \
 mov   r2,r12                        ; 08013BDE
 add   r3,r1,r2                      ; 08013BE0
@@ -854,7 +855,7 @@ add   r0,r5,0x1                     ; 08013BFC
 lsl   r0,r0,0x10                    ; 08013BFE
 lsr   r5,r0,0x10                    ; 08013C00
 cmp   r5,0x7                        ; 08013C02
-bls   @@Code08013BDC                ; 08013C04 /
+bls   @@Loop_LoadUnusedPaletteD     ; 08013C04 /
 mov   r4,r10                        ; 08013C06
 ldr   r0,[r4]                       ; 08013C08  r0 = [03007240] (0300220C)
 ldr   r5,=0x29A0                    ; 08013C0A
@@ -867,8 +868,8 @@ ldr   r3,[r0]                       ; 08013C16  r3 = pointer to sprite palette
 mov   r5,0x0                        ; 08013C18  loop index
 ldr   r6,=0x020106C0                ; 08013C1A
 ldr   r4,=0x02010AC0                ; 08013C1C
-@@Code08013C1E:
-lsl   r0,r5,0x1                     ; 08013C1E \ loop: copy sprite palette to 160-17F
+@@Loop_LoadSprPalette:              ;          \ loop: copy sprite palette to 160-17F
+lsl   r0,r5,0x1                     ; 08013C1E
 add   r2,r0,r6                      ; 08013C20
 add   r0,r0,r4                      ; 08013C22
 ldrh  r1,[r3]                       ; 08013C24
@@ -879,14 +880,14 @@ add   r0,r5,0x1                     ; 08013C2C
 lsl   r0,r0,0x10                    ; 08013C2E
 lsr   r5,r0,0x10                    ; 08013C30
 cmp   r5,0x1F                       ; 08013C32
-bls   @@Code08013C1E                ; 08013C34 /
+bls   @@Loop_LoadSprPalette         ; 08013C34 /
                                     ;           copy palette buffer to memory, each half at a time for some reason
 ldr   r0,=0x02010400                ; 08013C36
 mov   r1,0xA0                       ; 08013C38
 lsl   r1,r1,0x13                    ; 08013C3A  r1 = 05000000
 mov   r4,0x80                       ; 08013C3C
 lsl   r4,r4,0x1                     ; 08013C3E
-mov   r2,r4                         ; 08013C40
+mov   r2,r4                         ; 08013C40  r2 = 100
 bl    swi_MemoryCopy4or2            ; 08013C42  Memory copy/fill, 4- or 2-byte blocks
 ldr   r0,=0x02010600                ; 08013C46
 ldr   r1,=0x05000200                ; 08013C48
@@ -1089,7 +1090,7 @@ ldr   r0,=0xFFFF                    ; 08013E54
 cmp   r2,r0                         ; 08013E56
 beq   @@Code08013F4E                ; 08013E58  if first halfword is FFFF, skip ahead
 mov   r7,sp                         ; 08013E5A
-@@Code08013E5C:                     ;          \ begin loop for every 6 bytes of data
+@@Loop08013E5C:                     ;          \ begin loop for every 6 bytes of data
 strh  r2,[r7]                       ; 08013E5C  store first halfword to [sp+0]
 add   r6,0x2                        ; 08013E5E
 ldrh  r0,[r6]                       ; 08013E60
@@ -1209,7 +1210,7 @@ blo   @@Code08013EE0                ; 08013F44 / end loop for number of palettes
 ldrh  r2,[r6]                       ; 08013F46
 ldr   r3,=0xFFFF                    ; 08013F48
 cmp   r2,r3                         ; 08013F4A  if next halfword is FFFF, end loop
-bne   @@Code08013E5C                ; 08013F4C / outermost loop
+bne   @@Loop08013E5C                ; 08013F4C / outermost loop
 @@Code08013F4E:
 ldr   r5,=0x02010400                ; 08013F4E
 ldr   r1,=0x02010800                ; 08013F50  copy 022010400-5FF to 800-9FF
@@ -1891,7 +1892,6 @@ pop   {r3}                          ; 08014666
 mov   r8,r3                         ; 08014668
 pop   {r4-r7}                       ; 0801466A
 pop   {r0}                          ; 0801466C
-
 bx    r0                            ; 0801466E
 .pool                               ; 08014670
 
@@ -2038,7 +2038,7 @@ ldr   r1,=0x2964                    ; 080147BA
 add   r4,r0,r1                      ; 080147BC
 ldr   r0,[r4]                       ; 080147BE
 cmp   r0,0x0                        ; 080147C0
-beq   @@Code080147E0                ; 080147C2
+beq   @@Return                      ; 080147C2
 ldr   r1,=0x06010800                ; 080147C4
 mov   r2,0x40                       ; 080147C6
 bl    swi_MemoryCopy32              ; 080147C8  Memory copy/fill, 32-byte blocks
@@ -2051,7 +2051,7 @@ mov   r2,0x40                       ; 080147D6
 bl    swi_MemoryCopy32              ; 080147D8  Memory copy/fill, 32-byte blocks
 mov   r0,0x0                        ; 080147DC
 str   r0,[r4]                       ; 080147DE
-@@Code080147E0:
+@@Return:
 pop   {r4-r6}                       ; 080147E0
 pop   {r0}                          ; 080147E2
 bx    r0                            ; 080147E4
@@ -2123,7 +2123,7 @@ ldr   r1,=0x0600D000                ; 080148D8  VRAM layer 3 tilemap
 ldr   r2,=0x01001000                ; 080148DA  fill entire layer with 0192?
 mov   r0,sp                         ; 080148DC
 bl    swi_MemoryCopy4or2            ; 080148DE  Memory copy/fill, 4- or 2-byte blocks
-b     @@Code080149D6                ; 080148E2 /
+b     @@Return                      ; 080148E2 /
 .pool                               ; 080148E4
 
 @@Code080148F4:
@@ -2243,7 +2243,7 @@ mov   r12,r10                       ; 080149CE
 mov   r1,r12                        ; 080149D0
 cmp   r1,0x1F                       ; 080149D2
 bls   @@Code0801491A                ; 080149D4
-@@Code080149D6:
+@@Return:
 add   sp,0x8                        ; 080149D6
 pop   {r3-r5}                       ; 080149D8
 mov   r8,r3                         ; 080149DA
@@ -2532,7 +2532,7 @@ blo   @@Code08014BEC                ; 08014C44
 @@Code08014C46:
 mov   r1,r9                         ; 08014C46
 cmp   r1,0xD                        ; 08014C48
-bhi   @@Code08014D14                ; 08014C4A
+bhi   @@Return                      ; 08014C4A
 add   r0,r5,r1                      ; 08014C4C
 lsl   r0,r0,0x10                    ; 08014C4E
 lsr   r5,r0,0x10                    ; 08014C50
@@ -2566,7 +2566,7 @@ add   r4,r0,r2                      ; 08014CA6
 @@Code08014CA8:
 mov   r0,r8                         ; 08014CA8
 cmp   r0,0xD                        ; 08014CAA
-bhi   @@Code08014D14                ; 08014CAC
+bhi   @@Return                      ; 08014CAC
 ldr   r5,=Data08167740              ; 08014CAE
 ldr   r1,=Data08167730              ; 08014CB0
 mov   r10,r1                        ; 08014CB2
@@ -2619,7 +2619,7 @@ add   r8,r1                         ; 08014D0C
 mov   r2,r8                         ; 08014D0E
 cmp   r2,0xD                        ; 08014D10
 bls   @@Code08014CBC                ; 08014D12
-@@Code08014D14:
+@@Return:
 add   sp,0x8                        ; 08014D14
 pop   {r3-r5}                       ; 08014D16
 mov   r8,r3                         ; 08014D18
@@ -2638,19 +2638,19 @@ ldr   r1,=0x4A05                    ; 08014D42
 add   r0,r2,r1                      ; 08014D44
 ldrb  r0,[r0]                       ; 08014D46
 cmp   r0,0x0                        ; 08014D48
-bne   @@Code08014E30                ; 08014D4A
+bne   @@Return                      ; 08014D4A
 ldr   r0,=0x03007240                ; 08014D4C  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                       ; 08014D4E
 ldr   r3,=0x2B38                    ; 08014D50
 add   r0,r1,r3                      ; 08014D52
 ldrb  r0,[r0]                       ; 08014D54
 cmp   r0,0x0                        ; 08014D56
-bne   @@Code08014E30                ; 08014D58
+bne   @@Return                      ; 08014D58
 ldr   r3,=0x29A2                    ; 08014D5A
 add   r0,r1,r3                      ; 08014D5C
 ldrh  r0,[r0]                       ; 08014D5E
 cmp   r0,0x9                        ; 08014D60
-beq   @@Code08014E30                ; 08014D62
+beq   @@Return                      ; 08014D62
 ldrh  r5,[r4,0x1A]                  ; 08014D64
 mov   r0,r4                         ; 08014D66
 add   r0,0x68                       ; 08014D68
@@ -2696,13 +2696,13 @@ lsl   r2,r2,0x1                     ; 08014DCE
 add   r0,r4,r2                      ; 08014DD0
 ldrb  r0,[r0]                       ; 08014DD2
 cmp   r0,0x0                        ; 08014DD4
-bne   @@Code08014E30                ; 08014DD6
+bne   @@Return                      ; 08014DD6
 mov   r3,0xDE                       ; 08014DD8
 lsl   r3,r3,0x1                     ; 08014DDA
 add   r0,r4,r3                      ; 08014DDC
 ldrb  r0,[r0]                       ; 08014DDE
 cmp   r0,0x0                        ; 08014DE0
-bne   @@Code08014E30                ; 08014DE2
+bne   @@Return                      ; 08014DE2
 mov   r1,r4                         ; 08014DE4
 add   r1,0x6C                       ; 08014DE6
 ldrh  r3,[r1]                       ; 08014DE8
@@ -2714,7 +2714,7 @@ strh  r2,[r1]                       ; 08014DF2
 lsr   r1,r3,0x4                     ; 08014DF4
 lsr   r0,r2,0x4                     ; 08014DF6
 cmp   r1,r0                         ; 08014DF8
-beq   @@Code08014E30                ; 08014DFA
+beq   @@Return                      ; 08014DFA
 ldrh  r2,[r4]                       ; 08014DFC
 cmp   r5,0x0                        ; 08014DFE
 beq   @@Code08014E1C                ; 08014E00
@@ -2737,7 +2737,7 @@ lsr   r2,r2,0x4                     ; 08014E26
 mov   r0,r2                         ; 08014E28
 mov   r1,0x1                        ; 08014E2A
 bl    Sub08014B0C                   ; 08014E2C
-@@Code08014E30:
+@@Return:
 pop   {r4-r6}                       ; 08014E30
 pop   {r0}                          ; 08014E32
 bx    r0                            ; 08014E34
@@ -3029,7 +3029,7 @@ add   r4,r0,r2                      ; 08015092
 @@Code08015094:
 mov   r0,r8                         ; 08015094
 cmp   r0,0x12                       ; 08015096
-bhi   @@Code08015100                ; 08015098
+bhi   @@Return                      ; 08015098
 ldr   r5,=Data08167740              ; 0801509A
 ldr   r1,=Data08167730              ; 0801509C
 mov   r10,r1                        ; 0801509E
@@ -3082,7 +3082,7 @@ add   r8,r1                         ; 080150F8
 mov   r2,r8                         ; 080150FA
 cmp   r2,0x12                       ; 080150FC
 bls   @@Code080150A8                ; 080150FE
-@@Code08015100:
+@@Return:
 add   sp,0x4                        ; 08015100
 pop   {r3-r5}                       ; 08015102
 mov   r8,r3                         ; 08015104
@@ -3102,18 +3102,18 @@ ldr   r2,=0x2B38                    ; 08015130
 add   r0,r1,r2                      ; 08015132
 ldrb  r0,[r0]                       ; 08015134
 cmp   r0,0x0                        ; 08015136
-bne   @@Code0801521E                ; 08015138
+bne   @@Return                      ; 08015138
 ldr   r2,=0x03002200                ; 0801513A
 ldr   r3,=0x4A05                    ; 0801513C
 add   r0,r2,r3                      ; 0801513E
 ldrb  r0,[r0]                       ; 08015140
 cmp   r0,0x0                        ; 08015142
-bne   @@Code0801521E                ; 08015144
+bne   @@Return                      ; 08015144
 ldr   r3,=0x29A2                    ; 08015146
 add   r0,r1,r3                      ; 08015148
 ldrh  r0,[r0]                       ; 0801514A
 cmp   r0,0x9                        ; 0801514C
-beq   @@Code0801521E                ; 0801514E
+beq   @@Return                      ; 0801514E
 ldrh  r5,[r4,0x1C]                  ; 08015150
 mov   r0,r4                         ; 08015152
 add   r0,0x6A                       ; 08015154
@@ -3159,13 +3159,13 @@ lsl   r2,r2,0x1                     ; 080151BC
 add   r0,r4,r2                      ; 080151BE
 ldrb  r0,[r0]                       ; 080151C0
 cmp   r0,0x0                        ; 080151C2
-bne   @@Code0801521E                ; 080151C4
+bne   @@Return                      ; 080151C4
 mov   r3,0xDE                       ; 080151C6
 lsl   r3,r3,0x1                     ; 080151C8
 add   r0,r4,r3                      ; 080151CA
 ldrb  r0,[r0]                       ; 080151CC
 cmp   r0,0x0                        ; 080151CE
-bne   @@Code0801521E                ; 080151D0
+bne   @@Return                      ; 080151D0
 mov   r1,r4                         ; 080151D2
 add   r1,0x6E                       ; 080151D4
 ldrh  r3,[r1]                       ; 080151D6
@@ -3177,7 +3177,7 @@ strh  r2,[r1]                       ; 080151E0
 lsr   r1,r3,0x4                     ; 080151E2
 lsr   r0,r2,0x4                     ; 080151E4
 cmp   r1,r0                         ; 080151E6
-beq   @@Code0801521E                ; 080151E8
+beq   @@Return                      ; 080151E8
 ldrh  r0,[r4]                       ; 080151EA
 lsr   r2,r0,0x4                     ; 080151EC
 cmp   r5,0x0                        ; 080151EE
@@ -3200,7 +3200,7 @@ lsr   r2,r0,0x10                    ; 08015214
 mov   r0,r2                         ; 08015216
 mov   r1,0x1                        ; 08015218
 bl    Sub08014E3C                   ; 0801521A
-@@Code0801521E:
+@@Return:
 pop   {r4-r6}                       ; 0801521E
 pop   {r0}                          ; 08015220
 bx    r0                            ; 08015222
@@ -3234,7 +3234,7 @@ ldr   r3,=0x299A                    ; 08015256
 add   r0,r0,r3                      ; 08015258
 ldrh  r0,[r0]                       ; 0801525A
 cmp   r0,0xA                        ; 0801525C
-bne   @@Code08015320                ; 0801525E
+bne   @@Return                      ; 0801525E
 ldr   r0,=0x03FF                    ; 08015260
 and   r0,r4                         ; 08015262
 ldr   r3,=0xFFFFFE80                ; 08015264
@@ -3262,7 +3262,7 @@ strh  r0,[r1]                       ; 0801528E
 mov   r5,r12                        ; 08015290
 strh  r0,[r5,0x2]                   ; 08015292
 strh  r0,[r5]                       ; 08015294
-b     @@Code08015320                ; 08015296
+b     @@Return                      ; 08015296
 .pool                               ; 08015298
 
 @@Code080152B0:
@@ -3322,7 +3322,7 @@ ldrb  r0,[r0]                       ; 08015318
 add   r0,r0,r4                      ; 0801531A
 add   r3,r3,r0                      ; 0801531C
 strh  r3,[r5]                       ; 0801531E
-@@Code08015320:
+@@Return:
 pop   {r3-r5}                       ; 08015320
 mov   r8,r3                         ; 08015322
 mov   r9,r4                         ; 08015324
@@ -3355,7 +3355,7 @@ ldr   r7,=0x299A                    ; 08015374
 add   r0,r0,r7                      ; 08015376
 ldrh  r0,[r0]                       ; 08015378
 cmp   r0,0xA                        ; 0801537A
-bne   @@Code08015434                ; 0801537C
+bne   @@Return                      ; 0801537C
 ldr   r0,=0x03FF                    ; 0801537E
 and   r0,r3                         ; 08015380
 ldr   r3,=0xFFFFFE80                ; 08015382
@@ -3381,7 +3381,7 @@ strh  r0,[r1]                       ; 080153A8
 mov   r1,r12                        ; 080153AA
 strh  r0,[r1,0x2]                   ; 080153AC
 strh  r0,[r1]                       ; 080153AE
-b     @@Code08015434                ; 080153B0
+b     @@Return                      ; 080153B0
 .pool                               ; 080153B2
 
 @@Code080153CC:
@@ -3437,7 +3437,7 @@ ldrb  r0,[r0]                       ; 0801542C
 add   r0,r0,r4                      ; 0801542E
 add   r3,r3,r0                      ; 08015430
 strh  r3,[r5]                       ; 08015432
-@@Code08015434:
+@@Return:
 pop   {r3}                          ; 08015434
 mov   r8,r3                         ; 08015436
 pop   {r4-r7}                       ; 08015438
@@ -3677,13 +3677,13 @@ add   r0,r0,r1                      ; 0801561C
 ldrb  r0,[r0]                       ; 0801561E
 cmp   r0,0x0                        ; 08015620
 beq   @@Code08015626                ; 08015622
-b     @@Code08015808                ; 08015624
+b     @@Return                      ; 08015624
 @@Code08015626:
 ldr   r0,=0x03007270                ; 08015626
 ldr   r0,[r0,0x2C]                  ; 08015628
 cmp   r0,0x0                        ; 0801562A
 beq   @@Code08015630                ; 0801562C
-b     @@Code08015808                ; 0801562E
+b     @@Return                      ; 0801562E
 @@Code08015630:
 mov   r2,r8                         ; 08015630
 ldrh  r3,[r2]                       ; 08015632
@@ -3826,7 +3826,7 @@ add   r1,r1,r0                      ; 0801575C
 mov   r9,r1                         ; 0801575E
 ldr   r3,[sp,0xC]                   ; 08015760
 cmp   r3,0xD                        ; 08015762
-bhi   @@Code08015808                ; 08015764
+bhi   @@Return                      ; 08015764
 ldr   r4,=L1_8x8TilemapPtrs         ; 08015766
 mov   r12,r4                        ; 08015768
 ldr   r5,=0x60FF                    ; 0801576A
@@ -3908,7 +3908,7 @@ add   r1,0x1                        ; 08015800
 str   r1,[sp,0xC]                   ; 08015802
 cmp   r1,0xD                        ; 08015804
 bls   @@Code08015776                ; 08015806
-@@Code08015808:
+@@Return:
 add   sp,0x18                       ; 08015808
 pop   {r3-r5}                       ; 0801580A
 mov   r8,r3                         ; 0801580C
@@ -4034,11 +4034,11 @@ ldr   r3,=0x2B38                    ; 080158F2
 add   r0,r0,r3                      ; 080158F4
 ldrb  r0,[r0]                       ; 080158F6
 cmp   r0,0x0                        ; 080158F8
-bne   @@Code080159D8                ; 080158FA
+bne   @@Return                      ; 080158FA
 ldr   r0,=0x03007270                ; 080158FC
 ldr   r0,[r0,0x2C]                  ; 080158FE
 cmp   r0,0x0                        ; 08015900
-bne   @@Code080159D8                ; 08015902
+bne   @@Return                      ; 08015902
 ldr   r0,[sp,0xC]                   ; 08015904
 ldrh  r1,[r0]                       ; 08015906
 lsl   r1,r1,0x2                     ; 08015908
@@ -4133,7 +4133,7 @@ add   r10,r1                        ; 080159D0
 mov   r2,r10                        ; 080159D2
 cmp   r2,0xD                        ; 080159D4
 bls   @@Code0801592E                ; 080159D6
-@@Code080159D8:
+@@Return:
 add   sp,0x18                       ; 080159D8
 pop   {r3-r5}                       ; 080159DA
 mov   r8,r3                         ; 080159DC
@@ -4157,14 +4157,14 @@ strh  r0,[r2]                       ; 080159FA
 lsr   r1,r1,0x4                     ; 080159FC
 lsr   r0,r0,0x4                     ; 080159FE
 cmp   r1,r0                         ; 08015A00
-beq   @@Code08015AD2                ; 08015A02
+beq   @@Return                      ; 08015A02
 ldr   r0,=0x03007240                ; 08015A04  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                       ; 08015A06
 ldr   r2,=0x29A2                    ; 08015A08
 add   r0,r1,r2                      ; 08015A0A
 ldrh  r0,[r0]                       ; 08015A0C
 cmp   r0,0x9                        ; 08015A0E
-beq   @@Code08015AD2                ; 08015A10
+beq   @@Return                      ; 08015A10
 ldr   r0,=0x29D2                    ; 08015A12
 add   r5,r1,r0                      ; 08015A14
 ldr   r1,=0x47EC                    ; 08015A16
@@ -4243,13 +4243,13 @@ cmp   r6,0xD                        ; 08015AB8
 bls   @@Code08015ACC                ; 08015ABA
 mov   r0,r1                         ; 08015ABC
 bl    Sub08015818                   ; 08015ABE
-b     @@Code08015AD2                ; 08015AC2
+b     @@Return                      ; 08015AC2
 .pool                               ; 08015AC4
 
 @@Code08015ACC:
 mov   r0,r6                         ; 08015ACC
 bl    Sub08015460                   ; 08015ACE
-@@Code08015AD2:
+@@Return:
 pop   {r4-r7}                       ; 08015AD2
 pop   {r0}                          ; 08015AD4
 bx    r0                            ; 08015AD6
@@ -4277,7 +4277,7 @@ ldr   r7,=0x299A                    ; 08015AFC
 add   r0,r0,r7                      ; 08015AFE
 ldrh  r0,[r0]                       ; 08015B00
 cmp   r0,0xA                        ; 08015B02
-bne   @@Code08015BCA                ; 08015B04
+bne   @@Return                      ; 08015B04
 ldr   r0,=0x03FF                    ; 08015B06
 and   r0,r3                         ; 08015B08
 ldr   r3,=0xFFFFFE80                ; 08015B0A
@@ -4304,7 +4304,7 @@ strh  r1,[r0]                       ; 08015B32
 strh  r1,[r2]                       ; 08015B34
 strh  r1,[r3]                       ; 08015B36
 strh  r1,[r4]                       ; 08015B38
-b     @@Code08015BCA                ; 08015B3A
+b     @@Return                      ; 08015B3A
 .pool                               ; 08015B3C
 
 @@Code08015B5C:
@@ -4363,7 +4363,7 @@ ldrb  r0,[r0]                       ; 08015BC2
 add   r0,r0,r5                      ; 08015BC4
 add   r3,r3,r0                      ; 08015BC6
 strh  r3,[r2]                       ; 08015BC8
-@@Code08015BCA:
+@@Return:
 pop   {r3}                          ; 08015BCA
 mov   r8,r3                         ; 08015BCC
 pop   {r4-r7}                       ; 08015BCE
@@ -4408,7 +4408,7 @@ mov   r3,0x0                        ; 08015C3A
 str   r3,[sp,0x10]                  ; 08015C3C
 cmp   r0,0x12                       ; 08015C3E
 bls   @@Code08015C44                ; 08015C40
-b     @@Code08015E54                ; 08015C42
+b     @@Return                      ; 08015C42
 @@Code08015C44:
 mov   r0,0x0                        ; 08015C44
 str   r0,[sp,0x1C]                  ; 08015C46
@@ -4638,9 +4638,9 @@ ldr   r2,[sp,0x14]                  ; 08015E48
 add   r2,0x1                        ; 08015E4A
 str   r2,[sp,0x14]                  ; 08015E4C
 cmp   r2,0x12                       ; 08015E4E
-bhi   @@Code08015E54                ; 08015E50
+bhi   @@Return                      ; 08015E50
 b     @@Code08015C48                ; 08015E52
-@@Code08015E54:
+@@Return:
 add   sp,0x20                       ; 08015E54
 pop   {r3-r5}                       ; 08015E56
 mov   r8,r3                         ; 08015E58
@@ -4674,7 +4674,7 @@ ldr   r7,=0x299A                    ; 08015E90
 add   r0,r0,r7                      ; 08015E92
 ldrh  r0,[r0]                       ; 08015E94
 cmp   r0,0xA                        ; 08015E96
-bne   @@Code08015F5E                ; 08015E98
+bne   @@Return                      ; 08015E98
 ldr   r0,=0x03FF                    ; 08015E9A
 and   r0,r3                         ; 08015E9C
 ldr   r3,=0xFFFFFE80                ; 08015E9E
@@ -4701,7 +4701,7 @@ strh  r1,[r0]                       ; 08015EC6
 strh  r1,[r2]                       ; 08015EC8
 strh  r1,[r3]                       ; 08015ECA
 strh  r1,[r4]                       ; 08015ECC
-b     @@Code08015F5E                ; 08015ECE
+b     @@Return                      ; 08015ECE
 .pool                               ; 08015ED0
 
 @@Code08015EF0:
@@ -4760,7 +4760,7 @@ ldrb  r0,[r0]                       ; 08015F56
 add   r0,r0,r5                      ; 08015F58
 add   r3,r3,r0                      ; 08015F5A
 strh  r3,[r2]                       ; 08015F5C
-@@Code08015F5E:
+@@Return:
 pop   {r3}                          ; 08015F5E
 mov   r8,r3                         ; 08015F60
 pop   {r4-r7}                       ; 08015F62
@@ -4986,9 +4986,9 @@ ldr   r2,[sp,0x14]                  ; 08016160
 add   r2,0x1                        ; 08016162
 str   r2,[sp,0x14]                  ; 08016164
 cmp   r2,0xF                        ; 08016166
-bhi   @@Code0801616C                ; 08016168
+bhi   @@Return                      ; 08016168
 b     @@Code08015FEA                ; 0801616A
-@@Code0801616C:
+@@Return:
 add   sp,0x1C                       ; 0801616C
 pop   {r3-r5}                       ; 0801616E
 mov   r8,r3                         ; 08016170
@@ -5028,7 +5028,7 @@ ldr   r7,=0x299A                    ; 080161B0
 add   r0,r0,r7                      ; 080161B2
 ldrh  r0,[r0]                       ; 080161B4
 cmp   r0,0xA                        ; 080161B6
-bne   @@Code0801628E                ; 080161B8
+bne   @@Return                      ; 080161B8
 ldr   r0,=0x03FF                    ; 080161BA
 and   r0,r4                         ; 080161BC
 ldr   r4,=0xFFFFFE80                ; 080161BE
@@ -5058,7 +5058,7 @@ strh  r0,[r1]                       ; 080161EC
 strh  r0,[r2]                       ; 080161EE
 strh  r0,[r3]                       ; 080161F0
 strh  r0,[r4]                       ; 080161F2
-b     @@Code0801628E                ; 080161F4
+b     @@Return                      ; 080161F4
 .pool                               ; 080161F6
 
 @@Code0801621C:
@@ -5119,7 +5119,7 @@ ldrb  r0,[r0]                       ; 08016286
 add   r0,r0,r5                      ; 08016288
 add   r4,r4,r0                      ; 0801628A
 strh  r4,[r3]                       ; 0801628C
-@@Code0801628E:
+@@Return:
 pop   {r3-r5}                       ; 0801628E
 mov   r8,r3                         ; 08016290
 mov   r9,r4                         ; 08016292
@@ -5167,7 +5167,7 @@ add   r1,r1,r2                      ; 08016304
 ldrh  r1,[r1]                       ; 08016306
 cmp   r0,r1                         ; 08016308
 blo   @@Code0801630E                ; 0801630A
-b     @@Code080164FA                ; 0801630C
+b     @@Return                      ; 0801630C
 @@Code0801630E:
 ldr   r4,[sp,0x18]                  ; 0801630E
 lsl   r1,r4,0x7                     ; 08016310
@@ -5387,9 +5387,9 @@ add   r0,r0,r1                      ; 080164EE
 ldr   r2,[sp,0x1C]                  ; 080164F0
 ldrh  r0,[r0]                       ; 080164F2
 cmp   r2,r0                         ; 080164F4
-bhs   @@Code080164FA                ; 080164F6
+bhs   @@Return                      ; 080164F6
 b     @@Code08016340                ; 080164F8
-@@Code080164FA:
+@@Return:
 add   sp,0x24                       ; 080164FA
 pop   {r3-r5}                       ; 080164FC
 mov   r8,r3                         ; 080164FE
@@ -5412,14 +5412,14 @@ strh  r1,[r0]                       ; 08016526
 lsr   r2,r2,0x4                     ; 08016528
 lsr   r1,r1,0x4                     ; 0801652A
 cmp   r2,r1                         ; 0801652C
-beq   @@Code0801653C                ; 0801652E
+beq   @@Return_0                    ; 0801652E
 mov   r0,0x1                        ; 08016530
-b     @@Code0801653E                ; 08016532
+b     @@Return_r0                   ; 08016532
 .pool                               ; 08016534
 
-@@Code0801653C:
+@@Return_0:
 mov   r0,0x0                        ; 0801653C
-@@Code0801653E:
+@@Return_r0:
 pop   {r1}                          ; 0801653E
 bx    r1                            ; 08016540
 .pool                               ; 08016542
@@ -5435,7 +5435,7 @@ bl    Sub08016518                   ; 08016550
 lsl   r0,r0,0x10                    ; 08016554
 cmp   r0,0x0                        ; 08016556
 bne   @@Code0801655C                ; 08016558
-b     @@Code08016710                ; 0801655A
+b     @@Return                      ; 0801655A
 @@Code0801655C:
 ldr   r0,=0x03007240                ; 0801655C  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                       ; 0801655E
@@ -5444,7 +5444,7 @@ add   r0,r0,r1                      ; 08016562
 ldrh  r0,[r0]                       ; 08016564
 cmp   r0,0x9                        ; 08016566
 bne   @@Code0801656C                ; 08016568
-b     @@Code08016710                ; 0801656A
+b     @@Return                      ; 0801656A
 @@Code0801656C:
 ldr   r1,=0x03002200                ; 0801656C
 ldr   r2,=0x47E4                    ; 0801656E
@@ -5632,7 +5632,7 @@ add   r0,r0,r1                      ; 08016706
 strh  r4,[r0]                       ; 08016708
 mov   r0,r3                         ; 0801670A
 bl    Sub08015BFC                   ; 0801670C
-@@Code08016710:
+@@Return:
 add   sp,0x4                        ; 08016710
 pop   {r3-r4}                       ; 08016712
 mov   r8,r3                         ; 08016714
@@ -5651,15 +5651,15 @@ ldr   r3,=0x299A                    ; 0801672C
 add   r0,r1,r3                      ; 0801672E
 ldrh  r0,[r0]                       ; 08016730
 cmp   r0,0x2D                       ; 08016732
-bne   @@Code08016772                ; 08016734
+bne   @@Return                      ; 08016734
 add   r3,0x2                        ; 08016736
 add   r0,r1,r3                      ; 08016738
 ldrh  r0,[r0]                       ; 0801673A
 cmp   r0,0x2B                       ; 0801673C
-bne   @@Code08016772                ; 0801673E
+bne   @@Return                      ; 0801673E
 ldrh  r0,[r2,0x14]                  ; 08016740
 cmp   r0,0x0                        ; 08016742
-beq   @@Code08016772                ; 08016744
+beq   @@Return                      ; 08016744
 add   r0,0x1                        ; 08016746
 strh  r0,[r2,0x14]                  ; 08016748
 lsl   r3,r0,0x10                    ; 0801674A
@@ -5668,7 +5668,7 @@ cmp   r0,0x2F                       ; 0801674E
 bls   @@Code08016760                ; 08016750
 mov   r0,0x30                       ; 08016752
 strh  r0,[r2,0x14]                  ; 08016754
-b     @@Code08016772                ; 08016756
+b     @@Return                      ; 08016756
 .pool                               ; 08016758
 
 @@Code08016760:
@@ -5681,7 +5681,7 @@ ldrh  r0,[r0]                       ; 0801676A
 ldr   r2,=0x488A                    ; 0801676C
 add   r1,r1,r2                      ; 0801676E
 strh  r0,[r1]                       ; 08016770
-@@Code08016772:
+@@Return:
 pop   {r0}                          ; 08016772
 bx    r0                            ; 08016774
 .pool                               ; 08016776
@@ -5963,7 +5963,7 @@ mov   r0,r5                         ; 080169DC
 bl    Sub080159E8                   ; 080169DE
 mov   r0,r5                         ; 080169E2
 bl    Sub08016544                   ; 080169E4
-b     @@Code08016A12                ; 080169E8
+b     @@Return                      ; 080169E8
 .pool                               ; 080169EA
 
 @@Code080169F4:
@@ -5981,7 +5981,7 @@ mov   r0,r5                         ; 08016A08
 add   r0,0x66                       ; 08016A0A
 strh  r1,[r0]                       ; 08016A0C
 bl    Sub08016784                   ; 08016A0E
-@@Code08016A12:
+@@Return:
 pop   {r4-r5}                       ; 08016A12
 pop   {r0}                          ; 08016A14
 bx    r0                            ; 08016A16
@@ -5996,28 +5996,28 @@ ldr   r2,=0x2992                    ; 08016A2A
 add   r0,r1,r2                      ; 08016A2C  r0 = [03007240]+2992 (03004B9E)
 ldrh  r0,[r0]                       ; 08016A2E  layer 1 tileset
 cmp   r0,0xB                        ; 08016A30  0B: sewer
-bne   @@Code08016A5C                ; 08016A32  if not sewer tileset, return
+bne   @@Return                      ; 08016A32
 add   r2,0x4                        ; 08016A34
 add   r0,r1,r2                      ; 08016A36  r0 = [03007240]+2996 (03004BA2)
 ldrh  r0,[r0]                       ; 08016A38  layer 2 image
 cmp   r0,0x1B                       ; 08016A3A  1B: no image
-bne   @@Code08016A5C                ; 08016A3C  if not no image, return
+bne   @@Return                      ; 08016A3C
 add   r2,0x4                        ; 08016A3E
 add   r0,r1,r2                      ; 08016A40  r0 = [03007240]+299A (03004BA6)
 ldrh  r0,[r0]                       ; 08016A42  layer 3 image
 cmp   r0,0x1C                       ; 08016A44  1C: dark room light circle
-bne   @@Code08016A5C                ; 08016A46  if not dark room light circle, return
+bne   @@Return                      ; 08016A46
 ldr   r2,=0x2AAC                    ; 08016A48
 add   r0,r1,r2                      ; 08016A4A  r0 = [03007240]+2AAC (03004CB8)
 ldrh  r0,[r0]                       ; 08016A4C  sublevel ID
 cmp   r0,0x78                       ; 08016A4E  78: 2-8 sewer rooms
-bne   @@Code08016A5C                ; 08016A50  if not 2-8 sewer rooms, return
+bne   @@Return                      ; 08016A50
 ldr   r0,=0x03002200                ; 08016A52
 ldr   r1,=0x47C8                    ; 08016A54
 add   r0,r0,r1                      ; 08016A56  r0 = 030069C8
 ldr   r1,=0x7E02                    ; 08016A58  %01111110 00000010
 strh  r1,[r0]                       ; 08016A5A  set layer 0 control register to 7E02
-@@Code08016A5C:
+@@Return:
 pop   {r0}                          ; 08016A5C
 bx    r0                            ; 08016A5E
 .pool                               ; 08016A60
@@ -6165,29 +6165,30 @@ pop   {r0}                          ; 08016BBE
 bx    r0                            ; 08016BC0
 .pool                               ; 08016BC2
 
-Sub08016BD4:
-; unrolled loop to clear halfwords at 0300229E-22B0
+GraPalAnim_ClearRAM:
+; unrolled loop to clear graphics/palette animation RAM: halfwords at 0300229E-22B1 ([03007240]+92 to +A5)
+; r0: 0300220C
 mov   r2,r0                         ; 08016BD4
 add   r0,0x9E                       ; 08016BD6  [03007240]+9E (030022AA)
 mov   r1,0x0                        ; 08016BD8
 strh  r1,[r0]                       ; 08016BDA
-add   r0,0x2                        ; 08016BDC
+add   r0,0x2                        ; 08016BDC  +A0
 strh  r1,[r0]                       ; 08016BDE
-add   r0,0x2                        ; 08016BE0
+add   r0,0x2                        ; 08016BE0  +A2
 strh  r1,[r0]                       ; 08016BE2
-add   r0,0x2                        ; 08016BE4
+add   r0,0x2                        ; 08016BE4  +A4
 strh  r1,[r0]                       ; 08016BE6
-sub   r0,0x12                       ; 08016BE8
+sub   r0,0x12                       ; 08016BE8  +92
 strh  r1,[r0]                       ; 08016BEA
-add   r0,0x2                        ; 08016BEC
+add   r0,0x2                        ; 08016BEC  +94
 strh  r1,[r0]                       ; 08016BEE
-add   r0,0x2                        ; 08016BF0
+add   r0,0x2                        ; 08016BF0  +96
 strh  r1,[r0]                       ; 08016BF2
-add   r0,0x2                        ; 08016BF4
+add   r0,0x2                        ; 08016BF4  +98
 strh  r1,[r0]                       ; 08016BF6
-add   r0,0x2                        ; 08016BF8
+add   r0,0x2                        ; 08016BF8  +9A
 strh  r1,[r0]                       ; 08016BFA
-add   r0,0x2                        ; 08016BFC
+add   r0,0x2                        ; 08016BFC  +9C
 strh  r1,[r0]                       ; 08016BFE
 bx    lr                            ; 08016C00
 .pool                               ; 08016C02
@@ -6221,7 +6222,7 @@ add   r0,r8                         ; 08016C32  r0 = [03007240]+29A2 (03004BAE)
 ldrh  r0,[r0]                       ; 08016C34  r0 = header index 9
 cmp   r0,0x9                        ; 08016C36  09: Froggy interior
 bne   @@Code08016C3C                ; 08016C38
-b     @@Code08017072                ; 08016C3A
+b     @@Return                      ; 08016C3A
 @@Code08016C3C:
 ldr   r6,=0x29A4                    ; 08016C3C \ runs if not Froggy interior
 mov   r2,r8                         ; 08016C3E
@@ -6259,7 +6260,7 @@ ldr   r0,=0x01BD                    ; 08016C7C
 add   r0,r8                         ; 08016C7E  r0 = [03007240]+1BD (030023C9)
 strb  r1,[r0]                       ; 08016C80
 mov   r0,r8                         ; 08016C82
-bl    Sub08016BD4                   ; 08016C84  unrolled loop to clear halfwords at 0300229E-22B0
+bl    GraPalAnim_ClearRAM           ; 08016C84  unrolled loop to clear halfwords at 0300229E-22B0
 mov   r0,r8                         ; 08016C88
 bl    Sub08016B30                   ; 08016C8A  ? for snowing animation
 ldr   r1,=0x48B6                    ; 08016C8E
@@ -6414,7 +6415,7 @@ add   r0,r3,r1                      ; 08016DE4  r0 = [03007240]+2998 (03004BA4)
 ldrh  r0,[r0]                       ; 08016DE6  layer 2 palette
 cmp   r0,0xE                        ; 08016DE8
 bne   @@Code08016DEE                ; 08016DEA
-ldr   r2,=L2CtrlF602                ; 08016DEC / if L2 image and palette are both 0E, use different L2 control pointer
+ldr   r2,=L2CtrlF602                ; 08016DEC / if L2 image and palette are both 0E, use different L2 control pointer (F602 instead of 7603)
 @@Code08016DEE:
 ldr   r1,[r7]                       ; 08016DEE
 ldr   r3,=0x299A                    ; 08016DF0
@@ -6427,7 +6428,7 @@ add   r0,r1,r5                      ; 08016DFC  r0 = [03007240]+29A2 (03004BAE)
 ldrh  r0,[r0]                       ; 08016DFE
 cmp   r0,0x6                        ; 08016E00
 bne   @@Code08016E06                ; 08016E02
-ldr   r4,=L3CtrlFA06                ; 08016E04 / if L3 image is 2C and hv09 is 06, use different L3 control pointer
+ldr   r4,=L3CtrlFA06                ; 08016E04 / if L3 image is 2C and hv09 is 06, use different L3 control pointer (FA06 instead of FA04)
 @@Code08016E06:
 ldr   r1,[r7]                       ; 08016E06
 ldr   r3,=0x2996                    ; 08016E08
@@ -6440,7 +6441,7 @@ add   r0,r1,r5                      ; 08016E14  r0 = [03007240]+299A (03004BA6)
 ldrh  r0,[r0]                       ; 08016E16  layer 3 image ID
 cmp   r0,0x2A                       ; 08016E18
 bne   @@Code08016E1E                ; 08016E1A
-ldr   r2,=L2CtrlF602                ; 08016E1C / if L2 image is 01 and L3 image is 2A, use different L2 control pointer
+ldr   r2,=L2CtrlF602                ; 08016E1C / if L2 image is 01 and L3 image is 2A, use different L2 control pointer (F602 instead of 7603)
 @@Code08016E1E:
 ldr   r1,[r7]                       ; 08016E1E
 ldr   r3,=0x299A                    ; 08016E20
@@ -6453,7 +6454,7 @@ add   r0,r1,r5                      ; 08016E2C  r0 = [03007240]+2AAC (03004CB8)
 ldrh  r0,[r0]                       ; 08016E2E  sublevel ID
 cmp   r0,0x29                       ; 08016E30  29: 5-6 1/2
 bne   @@Code08016E36                ; 08016E32
-ldr   r4,=L3CtrlFA06                ; 08016E34 / if layer 3 image is 2E and sublevel is 29, use different L3 control pointer
+ldr   r4,=L3CtrlFA06                ; 08016E34 / if layer 3 image is 2E and sublevel is 29, use different L3 control pointer (FA06 instead of FA07)
 @@Code08016E36:
 ldr   r1,[r7]                       ; 08016E36
 ldr   r3,=0x2AAC                    ; 08016E38
@@ -6461,7 +6462,7 @@ add   r0,r1,r3                      ; 08016E3A  r0 = [03007240]+2AAC (03004CB8)
 ldrh  r3,[r0]                       ; 08016E3C  sublevel ID
 cmp   r3,0x2C                       ; 08016E3E  2C: 5-Extra first half
 bne   @@Code08016E44                ; 08016E40
-ldr   r4,=L3CtrlFA06                ; 08016E42  if sublevel is 2C: use different L3 control pointer
+ldr   r4,=L3CtrlFA06                ; 08016E42  if sublevel is 2C: use different L3 control pointer (FA06)
 @@Code08016E44:
 ldr   r5,=0x299A                    ; 08016E44
 add   r0,r1,r5                      ; 08016E46  r0 = [03007240]+299A (03004BA6)
@@ -6470,7 +6471,7 @@ cmp   r0,0x2E                       ; 08016E4A
 bne   @@Code08016E54                ; 08016E4C
 cmp   r3,0xEB                       ; 08016E4E  EB: 5-Secret jungle rooms
 bne   @@Code08016E54                ; 08016E50
-ldr   r4,=L3CtrlFA06                ; 08016E52  if layer 3 image is 2E and sublevel is EB, use different L3 control pointer
+ldr   r4,=L3CtrlFA06                ; 08016E52  if layer 3 image is 2E and sublevel is EB, use different L3 control pointer (FA06 instead of FA07)
 @@Code08016E54:
 ldr   r1,=0x03002200                ; 08016E54
 ldr   r2,[r2]                       ; 08016E56  load layer 2 control from pointer
@@ -6478,7 +6479,7 @@ ldr   r3,=0x47CC                    ; 08016E58
 add   r0,r1,r3                      ; 08016E5A  r0 = 030069CC
 mov   r7,0x0                        ; 08016E5C
 strh  r2,[r0]                       ; 08016E5E  030069CC = L2 control
-ldr   r2,[r4]                       ; 08016E60
+ldr   r2,[r4]                       ; 08016E60  load layer 3 control from pointer
 ldr   r5,=0x47CE                    ; 08016E62
 add   r0,r1,r5                      ; 08016E64  r0 = 030069CE
 strh  r2,[r0]                       ; 08016E66  030069CE = L3 control
@@ -6640,9 +6641,9 @@ blo   @@Code08016FDE                ; 08017002
 ldr   r0,=0x03007240                ; 08017004  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                       ; 08017006
 ldr   r2,=0x2AAC                    ; 08017008
-add   r0,r0,r2                      ; 0801700A
-ldrh  r0,[r0]                       ; 0801700C
-cmp   r0,0xC9                       ; 0801700E
+add   r0,r0,r2                      ; 0801700A  [03007240]+2AAC (03004CB8)
+ldrh  r0,[r0]                       ; 0801700C  sublevel ID
+cmp   r0,0xC9                       ; 0801700E  C9: Froggy interior
 bne   @@Code08017044                ; 08017010
 bl    Sub08016A78                   ; 08017012
 mov   r4,0x0                        ; 08017016
@@ -6688,7 +6689,7 @@ ldr   r2,=0x01000800                ; 08017068
 bl    swi_MemoryCopy4or2            ; 0801706A / Memory copy, 4-byte or 2-byte blocks
 @@Code0801706E:
 bl    Sub08016A24                   ; 0801706E  subroutine: override layer 0 control register in sublevel 78 (2-8 sewer rooms)
-@@Code08017072:
+@@Return:
 add   sp,0x14                       ; 08017072
 pop   {r3-r4}                       ; 08017074
 mov   r8,r3                         ; 08017076
@@ -6724,11 +6725,11 @@ ldr   r4,[r0]                       ; 080170F4  r4 = pointer to sublevel object 
 ldr   r3,=SublevelHeaderBitCounts   ; 080170F6  r3 = pointer to table of bit counts to retrieve from header, 00-terminated
 ldrb  r0,[r3]                       ; 080170F8  r0 = number of bits to retrieve
 cmp   r0,0x0                        ; 080170FA \ first byte is 05,
-beq   @@Code0801716A                ; 080170FC /  so this branch never occurs
+beq   @@SkipLoopUnused              ; 080170FC /  so this branch never occurs
 ldr   r0,=0x1792                    ; 080170FE
 add   r0,r10                        ; 08017100  r0 = [03007240]+1792 (0300399E)
 str   r0,[sp]                       ; 08017102  top of stack = [03007240]+1792 (0300399E)
-@@Code08017104:                     ;           begin loop
+@@Loop_ExtractHeaderSettings:       ;           begin loop
 ; during loop:
 ; r3 = (byte) number of bits to retrieve
 ; r6 = r8 = (halfword) bit count table index. r8 is only used for calculating r7
@@ -6791,8 +6792,8 @@ ldr   r3,=SublevelHeaderBitCounts   ; 08017160  r3 = pointer to table of number 
 add   r0,r6,r3                      ; 08017162
 ldrb  r0,[r0]                       ; 08017164  r0 = number of bits to retrieve
 cmp   r0,0x0                        ; 08017166  if 0, end of table, so exit loop
-bne   @@Code08017104                ; 08017168
-@@Code0801716A:
+bne   @@Loop_ExtractHeaderSettings  ; 08017168
+@@SkipLoopUnused:
 mov   r3,r9                         ; 0801716A  r3 = number of header bytes processed
 mov   r2,r10                        ; 0801716C  r2 = [03007240]
 strh  r3,[r2,0x36]                  ; 0801716E  [03007240]+36 (03002242) = number of header bytes processed (should always be 0A)
@@ -6891,12 +6892,12 @@ ldrh  r0,[r0]                       ; 08017222
 add   r3,0x2                        ; 08017224
 add   r1,r1,r3                      ; 08017226
 strh  r0,[r1]                       ; 08017228
-add   sp,0x4                        ; 0801722A  correct stack pointer value
-pop   {r3-r5}                       ; 0801722C \
-mov   r8,r3                         ; 0801722E |
-mov   r9,r4                         ; 08017230 | pop r4-r10
-mov   r10,r5                        ; 08017232 |
-pop   {r4-r7}                       ; 08017234 /
+add   sp,0x4                        ; 0801722A
+pop   {r3-r5}                       ; 0801722C
+mov   r8,r3                         ; 0801722E
+mov   r9,r4                         ; 08017230
+mov   r10,r5                        ; 08017232
+pop   {r4-r7}                       ; 08017234
 pop   {r0}                          ; 08017236
 bx    r0                            ; 08017238
 .pool                               ; 0801723A
@@ -6915,14 +6916,14 @@ ldr   r1,=0x03007240                ; 08017298  Normal gameplay IWRAM (Ptr to 03
 mov   r10,r1                        ; 0801729A
 ldr   r0,=0x03007010                ; 0801729C  Layer 1 tilemap EWRAM (0200000C)
 mov   r9,r0                         ; 0801729E
-@@Code080172A0:                     ;          \ loop: generate tileset-specific RAM table at 0200800C, using data at 081BC6E8
+@@Loop_GenTable:                    ;          \ loop: generate tileset-specific RAM table at 0200800C, using data at 081BC6E8
 mov   r5,r3                         ; 080172A0  r5: index to 081BC6E8 (halved)
 lsl   r0,r3,0x1                     ; 080172A2
 add   r0,r8                         ; 080172A4
 ldrb  r2,[r0]                       ; 080172A6  from 081BC6E8: number of halfwords to store
 mov   r4,r2                         ; 080172A8
 cmp   r4,0x0                        ; 080172AA
-beq   @@Code08017310                ; 080172AC  if 0, end loop
+beq   @@Return                      ; 080172AC  if 0, end loop
 add   r0,r3,0x1                     ; 080172AE
 lsl   r0,r0,0x1                     ; 080172B0
 add   r0,r8                         ; 080172B2
@@ -6943,7 +6944,7 @@ add   r5,0x12                       ; 080172CE  add 0x12 to 081BC6E8 index (adva
 mov   r12,r9                        ; 080172D0  r12 = 03007010
 mov   r7,0x80                       ; 080172D2
 lsl   r7,r7,0x8                     ; 080172D4  r7 = 8000
-@@Code080172D6:                     ;          \ inner loop
+@@Loop_StoreIncTileIDs:             ;          \ inner loop
                                     ; store r3 incrementing halfwords (first of which is r2),
                                     ; starting at 0200800C + r6
 mov   r1,r12                        ; 080172D6
@@ -6963,13 +6964,13 @@ sub   r0,r3,0x1                     ; 080172F0  decrement r3
 lsl   r0,r0,0x10                    ; 080172F2
 lsr   r3,r0,0x10                    ; 080172F4
 cmp   r3,0x0                        ; 080172F6
-bne   @@Code080172D6                ; 080172F8 /
+bne   @@Loop_StoreIncTileIDs        ; 080172F8 /
 lsl   r0,r5,0x10                    ; 080172FA \ mov r3, r5 (then loop to mov r5, r3)
 lsr   r3,r0,0x10                    ; 080172FC /
-b     @@Code080172A0                ; 080172FE /
+b     @@Loop_GenTable               ; 080172FE /
 .pool                               ; 08017300
 
-@@Code08017310:
+@@Return:
 pop   {r3-r5}                       ; 08017310
 mov   r8,r3                         ; 08017312
 mov   r9,r4                         ; 08017314
@@ -6999,7 +7000,7 @@ ldr   r3,=0x2B08                    ; 0801733A
 add   r0,r5,r3                      ; 0801733C  [03007240]+2B08 (03004D14)
 ldr   r6,[r0]                       ; 0801733E  r6 = pointer to sublevel main data
 cmp   r2,0x1                        ; 08017340
-bne   @@Code08017368                ; 08017342
+bne   @@ObjHasWidth                 ; 08017342
 add   r0,r1,0x1                     ; 08017344 \ runs if parameter info is 1 (1 parameter: height)
 lsl   r0,r0,0x10                    ; 08017346
 lsr   r1,r0,0x10                    ; 08017348
@@ -7014,7 +7015,7 @@ lsl   r0,r0,0x10                    ; 08017358
 b     @@Code080173E2                ; 0801735A /
 .pool                               ; 0801735C
 
-@@Code08017368:                     ; runs if parameter info is 0 (1 parameter: width) or 2 (2 parameters: width then height)
+@@ObjHasWidth:                      ; runs if parameter info is 0 (1 parameter: width) or 2 (2 parameters: width then height)
 mov   r4,r2                         ; 08017368  r4 = parameter info
 add   r0,r1,0x1                     ; 0801736A
 lsl   r0,r0,0x10                    ; 0801736C
@@ -7171,8 +7172,8 @@ strh  r2,[r0]                       ; 080174A2
 ldr   r6,=0x8428                    ; 080174A4
 mov   r5,0x0                        ; 080174A6
 ldr   r4,=0x01FF                    ; 080174A8
-@@Code080174AA:
-ldr   r0,[r1]                       ; 080174AA \ loop: clear 02008434-8633
+@@Loop_Clear02008434:               ;          \ loop: clear 02008434-8633 (extended object ID slots?)
+ldr   r0,[r1]                       ; 080174AA
 add   r0,r0,r6                      ; 080174AC  r0 = [03007010]+8428 (02008434)
 add   r0,r0,r2                      ; 080174AE
 strb  r5,[r0]                       ; 080174B0
@@ -7180,7 +7181,7 @@ add   r0,r2,0x1                     ; 080174B2
 lsl   r0,r0,0x10                    ; 080174B4
 lsr   r2,r0,0x10                    ; 080174B6
 cmp   r2,r4                         ; 080174B8
-bls   @@Code080174AA                ; 080174BA /
+bls   @@Loop_Clear02008434          ; 080174BA /
 str   r3,[sp,0x4]                   ; 080174BC
 bl    GenL1DynTile16Table           ; 080174BE
 mov   r2,0x0                        ; 080174C2  loop index
@@ -7206,31 +7207,31 @@ mov   r4,0xA2                       ; 080174E8
 lsl   r4,r4,0x1                     ; 080174EA  r4 = 144
 add   r1,r3,r4                      ; 080174EC  r1 = [03007240]+144 (03002350)
 mov   r4,0x0                        ; 080174EE
-@@Code080174F0:
-add   r0,r1,r2                      ; 080174F0 \ loop: clear 03002350-C7
+@@Loop_Clear25DVertShift:           ;          \ loop: clear 03002350-C7 (2.5D vertical shift slots)
+add   r0,r1,r2                      ; 080174F0
 strb  r4,[r0]                       ; 080174F2
 add   r0,r2,0x1                     ; 080174F4
 lsl   r0,r0,0x10                    ; 080174F6
 lsr   r2,r0,0x10                    ; 080174F8
 cmp   r2,0x77                       ; 080174FA
-bls   @@Code080174F0                ; 080174FC /
+bls   @@Loop_Clear25DVertShift      ; 080174FC /
 mov   r2,0x0                        ; 080174FE  loop index
 ldr   r4,=0x0201B000                ; 08017500
 mov   r1,0x0                        ; 08017502
-@@Code08017504:
-lsl   r0,r2,0x1                     ; 08017504 \ loop: clear 0201B000-B1FF (half of screen exit table)
+@@Loop_Clear0201B000:               ;          \ loop: clear 0201B000-B1FF (half of screen exit table)
+lsl   r0,r2,0x1                     ; 08017504
 add   r0,r0,r4                      ; 08017506
 strh  r1,[r0]                       ; 08017508
 add   r0,r2,0x1                     ; 0801750A
 lsl   r0,r0,0x10                    ; 0801750C
 lsr   r2,r0,0x10                    ; 0801750E
 cmp   r2,0xFF                       ; 08017510
-bls   @@Code08017504                ; 08017512 /
+bls   @@Loop_Clear0201B000          ; 08017512 /
 mov   r2,0x0                        ; 08017514
 ldr   r6,=0x03007010                ; 08017516  Layer 1 tilemap EWRAM (0200000C)
 mov   r5,0x0                        ; 08017518
 ldr   r4,=0x3FFF                    ; 0801751A
-@@Code0801751C:                     ;          \ loop: clear 0200000C-800B
+@@Loop_ClearL1Tilemap:              ;          \ loop: clear 0200000C-800B (layer 1 tilemap)
 ldr   r0,[r6]                       ; 0801751C  r0 = [03007010] (0200000C)
 lsl   r1,r2,0x1                     ; 0801751E
 add   r0,r0,r1                      ; 08017520
@@ -7239,32 +7240,32 @@ add   r0,r2,0x1                     ; 08017524
 lsl   r0,r0,0x10                    ; 08017526
 lsr   r2,r0,0x10                    ; 08017528
 cmp   r2,r4                         ; 0801752A
-bls   @@Code0801751C                ; 0801752C /
+bls   @@Loop_ClearL1Tilemap         ; 0801752C /
 mov   r2,0x0                        ; 0801752E  loop index
 mov   r1,r7                         ; 08017530
 mov   r4,0x0                        ; 08017532
-@@Code08017534:
+@@Loop_Clear030022C0:
 add   r0,r1,r2                      ; 08017534 \ loop: clear 030022C0-FF
 strb  r4,[r0]                       ; 08017536
 add   r0,r2,0x1                     ; 08017538
 lsl   r0,r0,0x10                    ; 0801753A
 lsr   r2,r0,0x10                    ; 0801753C
 cmp   r2,0x3F                       ; 0801753E
-bls   @@Code08017534                ; 08017540 /
+bls   @@Loop_Clear030022C0          ; 08017540 /
 mov   r0,0x0                        ; 08017542
 mov   r1,r12                        ; 08017544
 strb  r0,[r1]                       ; 08017546  clear 030022BF
 mov   r2,0x0                        ; 08017548  loop index
 ldr   r4,=0x0201B800                ; 0801754A
 mov   r1,0x80                       ; 0801754C
-@@Code0801754E:
+@@Loop_InitScreenMemory:
 add   r0,r2,r4                      ; 0801754E \ loop: set all bytes of 0201B800-FF (screen memory index) to 80
 strb  r1,[r0]                       ; 08017550
 add   r0,r2,0x1                     ; 08017552
 lsl   r0,r0,0x10                    ; 08017554
 lsr   r2,r0,0x10                    ; 08017556
 cmp   r2,0xFF                       ; 08017558
-bls   @@Code0801754E                ; 0801755A /
+bls   @@Loop_InitScreenMemory       ; 0801755A /
 mov   r0,0x0                        ; 0801755C
 strh  r0,[r3,0x34]                  ; 0801755E  clear [03007240]+34 (03002240)
 ldr   r2,=0x03007240                ; 08017560  Normal gameplay IWRAM (Ptr to 0300220C)
@@ -7304,7 +7305,7 @@ mov   r1,r8                         ; 0801759E
 strh  r0,[r1]                       ; 080175A0  store to 03002254
 ldrh  r4,[r7]                       ; 080175A2  r4 = object ID
 cmp   r4,0x0                        ; 080175A4  00: extended object
-bne   @@Code080175DC                ; 080175A6
+bne   @@StdObj                      ; 080175A6
 mov   r0,r3                         ; 080175A8 \ runs if extended object
 mov   r1,r5                         ; 080175AA
 str   r3,[sp,0x4]                   ; 080175AC
@@ -7313,22 +7314,23 @@ ldr   r3,[sp,0x4]                   ; 080175B2
 b     @@ObjectLoop                  ; 080175B4 /
 .pool                               ; 080175B6
 
-@@Code080175DC:
+@@StdObj:
 cmp   r4,0xFF                       ; 080175DC  FF: end of object data
-beq   @@Code080175EE                ; 080175DE  if FF, end loop
+beq   @@EndOfObjData                ; 080175DE  if FF, end loop
 mov   r0,r3                         ; 080175E0
 mov   r1,r5                         ; 080175E2
 str   r3,[sp,0x4]                   ; 080175E4
 bl    StdObjProcess                 ; 080175E6  subroutine: process standard object
 ldr   r3,[sp,0x4]                   ; 080175EA
 b     @@ObjectLoop                  ; 080175EC /
-@@Code080175EE:
+
+@@EndOfObjData:
 lsl   r0,r0,0x10                    ; 080175EE
 lsr   r4,r0,0x18                    ; 080175F0  object FF "screen number" bytes, now used as first screen exit's screen
 cmp   r4,0x7F                       ; 080175F2
 bhi   @@Return                      ; 080175F4  if screen >7F, return
 ldr   r7,=0x03007240                ; 080175F6  Normal gameplay IWRAM (Ptr to 0300220C)
-@@ScreenExitLoop:
+@@Loop_ProcessScreenExits:
 mov   r0,0x7F                       ; 080175F8
 and   r4,r0                         ; 080175FA  r4 is still screen number
 lsl   r3,r4,0x13                    ; 080175FC
@@ -7395,7 +7397,7 @@ beq   @@Return                      ; 08017674
 add   r0,r5,0x1                     ; 08017676
 lsl   r0,r0,0x10                    ; 08017678
 lsr   r5,r0,0x10                    ; 0801767A
-b     @@ScreenExitLoop              ; 0801767C
+b     @@Loop_ProcessScreenExits     ; 0801767C
 .pool                               ; 0801767E
 
 @@Return:
@@ -7416,7 +7418,7 @@ lsl   r1,r1,0x10                    ; 080176A6  offset to layer 1 tilemap << 10
 mov   r2,0xF8                       ; 080176A8
 lsl   r2,r2,0xD                     ; 080176AA  r2 = 1F0000
 and   r2,r1                         ; 080176AC  X position of current tile within screen, *20000
-ldr   r1,=Data081678DE              ; 080176AE  16-bit bitwise conversion table, high to low
+ldr   r1,=BitTable16Desc_081678DE   ; 080176AE  16-bit bitwise conversion table, high to low
 lsr   r2,r2,0x11                    ; 080176B0
 lsl   r2,r2,0x1                     ; 080176B2  X position of current tile within screen, *2
 add   r2,r2,r1                      ; 080176B4
@@ -7526,7 +7528,7 @@ lsl   r0,r0,0x10                    ; 080177A2
 ldr   r1,=0x012F0000                ; 080177A4
 cmp   r0,r1                         ; 080177A6
 bls   @@Code080177AC                ; 080177A8
-b     @@Code080179E8                ; 080177AA
+b     @@Return                      ; 080177AA
 @@Code080177AC:
 mov   r0,r6                         ; 080177AC
 add   r0,0xAA                       ; 080177AE
@@ -7540,7 +7542,7 @@ lsl   r0,r0,0x10                    ; 080177BC
 lsr   r0,r0,0x10                    ; 080177BE
 cmp   r0,0xFF                       ; 080177C0
 bls   @@Code080177C6                ; 080177C2
-b     @@Code080179E8                ; 080177C4
+b     @@Return                      ; 080177C4
 @@Code080177C6:
 lsl   r4,r4,0x10                    ; 080177C6
 lsr   r0,r4,0x18                    ; 080177C8
@@ -7794,7 +7796,7 @@ mov   r1,r2                         ; 080179E0
 strh  r1,[r0]                       ; 080179E2
 ldr   r0,=0x02011000                ; 080179E4
 strh  r7,[r0]                       ; 080179E6
-@@Code080179E8:
+@@Return:
 add   sp,0xC                        ; 080179E8
 pop   {r3-r5}                       ; 080179EA
 mov   r8,r3                         ; 080179EC
@@ -7897,7 +7899,7 @@ beq   @@Code08017AF0                ; 08017AE0
 mov   r0,r8                         ; 08017AE2
 mov   r1,r4                         ; 08017AE4
 bl    Sub08017A1C                   ; 08017AE6
-b     @@Code08017DAC                ; 08017AEA
+b     @@Return                      ; 08017AEA
 .pool                               ; 08017AEC
 
 @@Code08017AF0:
@@ -7946,7 +7948,7 @@ add   r0,0x80                       ; 08017B42
 ldrh  r4,[r1]                       ; 08017B44
 cmp   r0,r4                         ; 08017B46
 bgt   @@Code08017B4C                ; 08017B48
-b     @@Code08017DAC                ; 08017B4A
+b     @@Return                      ; 08017B4A
 @@Code08017B4C:
 cmp   r2,r3                         ; 08017B4C
 bls   @@Code08017B60                ; 08017B4E
@@ -7957,7 +7959,7 @@ add   r0,r0,r1                      ; 08017B56
 ldrh  r5,[r5]                       ; 08017B58
 cmp   r0,r5                         ; 08017B5A
 bgt   @@Code08017B60                ; 08017B5C
-b     @@Code08017DAC                ; 08017B5E
+b     @@Return                      ; 08017B5E
 @@Code08017B60:
 mov   r2,r9                         ; 08017B60
 ldrh  r3,[r2]                       ; 08017B62
@@ -7969,12 +7971,12 @@ mov   r0,r1                         ; 08017B6C
 add   r0,0xC0                       ; 08017B6E
 cmp   r3,r0                         ; 08017B70
 ble   @@Code08017B76                ; 08017B72
-b     @@Code08017DAC                ; 08017B74
+b     @@Return                      ; 08017B74
 @@Code08017B76:
 sub   r0,0xF0                       ; 08017B76
 cmp   r3,r0                         ; 08017B78
 bge   @@Code08017B7E                ; 08017B7A
-b     @@Code08017DAC                ; 08017B7C
+b     @@Return                      ; 08017B7C
 @@Code08017B7E:
 mov   r0,r12                        ; 08017B7E
 lsr   r1,r0,0x7                     ; 08017B80
@@ -8197,7 +8199,7 @@ ldr   r2,=0x2B38                    ; 08017D60
 add   r0,r0,r2                      ; 08017D62
 ldrb  r0,[r0]                       ; 08017D64
 cmp   r0,0x0                        ; 08017D66
-bne   @@Code08017DAC                ; 08017D68
+bne   @@Return                      ; 08017D68
 ldr   r4,=0x0600F042                ; 08017D6A
 add   r2,r5,r4                      ; 08017D6C
 mov   r1,r8                         ; 08017D6E
@@ -8230,7 +8232,7 @@ lsl   r0,r7,0x3                     ; 08017DA4
 add   r0,r0,r1                      ; 08017DA6
 ldrh  r0,[r0,0x6]                   ; 08017DA8
 strh  r0,[r2]                       ; 08017DAA
-@@Code08017DAC:
+@@Return:
 add   sp,0x4                        ; 08017DAC
 pop   {r3-r5}                       ; 08017DAE
 mov   r8,r3                         ; 08017DB0
@@ -8262,7 +8264,7 @@ ldrh  r0,[r0,0x2]                   ; 08017DE0
 lsr   r0,r0,0x4                     ; 08017DE2
 mov   r1,0xF                        ; 08017DE4
 and   r0,r1                         ; 08017DE6
-ldr   r1,=Data081678DE              ; 08017DE8
+ldr   r1,=BitTable16Desc_081678DE   ; 08017DE8
 lsl   r0,r0,0x1                     ; 08017DEA
 add   r0,r0,r1                      ; 08017DEC
 ldrh  r2,[r0]                       ; 08017DEE
