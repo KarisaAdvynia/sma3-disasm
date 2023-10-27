@@ -6415,7 +6415,7 @@ add   r0,r3,r1                      ; 08016DE4  r0 = [03007240]+2998 (03004BA4)
 ldrh  r0,[r0]                       ; 08016DE6  layer 2 palette
 cmp   r0,0xE                        ; 08016DE8
 bne   @@Code08016DEE                ; 08016DEA
-ldr   r2,=L2CtrlF602                ; 08016DEC / if L2 image and palette are both 0E, use different L2 control pointer (F602 instead of 7603)
+ldr   r2,=L2Ctrl7602                ; 08016DEC / if L2 image and palette are both 0E, use different L2 control pointer (7602 instead of 7603)
 @@Code08016DEE:
 ldr   r1,[r7]                       ; 08016DEE
 ldr   r3,=0x299A                    ; 08016DF0
@@ -6441,7 +6441,7 @@ add   r0,r1,r5                      ; 08016E14  r0 = [03007240]+299A (03004BA6)
 ldrh  r0,[r0]                       ; 08016E16  layer 3 image ID
 cmp   r0,0x2A                       ; 08016E18
 bne   @@Code08016E1E                ; 08016E1A
-ldr   r2,=L2CtrlF602                ; 08016E1C / if L2 image is 01 and L3 image is 2A, use different L2 control pointer (F602 instead of 7603)
+ldr   r2,=L2Ctrl7602                ; 08016E1C / if L2 image is 01 and L3 image is 2A, use different L2 control pointer (7602 instead of 7603)
 @@Code08016E1E:
 ldr   r1,[r7]                       ; 08016E1E
 ldr   r3,=0x299A                    ; 08016E20
@@ -6676,7 +6676,7 @@ cmp   r0,0x0                        ; 0801704E
 bne   @@Code0801706E                ; 08017050
 ldr   r2,=0x29A2                    ; 08017052 \ runs if layer 3 image is 00
 add   r0,r1,r2                      ; 08017054  r0 = [03007240]+29A2 (03004BAE)
-ldrh  r0,[r0]                       ; 08017056
+ldrh  r0,[r0]                       ; 08017056  Layer effects/special tileset
 cmp   r0,0xA                        ; 08017058  0A: Kamek block room
 beq   @@Code0801706E                ; 0801705A
 mov   r0,sp                         ; 0801705C
