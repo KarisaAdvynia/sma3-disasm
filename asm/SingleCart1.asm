@@ -5,7 +5,7 @@
 SingleCart_0812FDC0:
 ; Japanese version's internal header
 b      Code0812FE80                 ; 0812FDC0/02000000
-.incbin "../data/InternalHeader_NintendoLogo.bin"
+.incbin "data/InternalHeader_NintendoLogo.bin"
 .d8 "SUPER MARIOCA3AJ"              ; 0812FE60/020000A0
 .d8 "01"                            ; 0812FE70/020000B0
 .d8 0x96,0x00,0x00,0x00,0x00,0x00
@@ -6736,8 +6736,8 @@ mov   pc,lr                         ; 081338E8
 
 ; 081338EC-08142543: first psuedo-ROM data sector
 
-.incbin "../data/SingleCart1_Data.bin"
+.incbin "data/SingleCart1_Data.bin"
 SingleCart_08138A44:                ; 08138A44
-.incbin "../data/Graphics/SingleCart_08138A44.bin"
+.incbin "data/Graphics/SingleCart_08138A44.bin"
 SingleCart_0813B244:                ; 0813B244
-.incbin "../data/Graphics/SingleCart_0813B244.bin"
+.incbin "data/Graphics/SingleCart_0813B244.bin"

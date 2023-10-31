@@ -1,913 +1,913 @@
 ; Large data
 
 Sublevel38_Main:                    ; 081C1D54
-.incbin "../data/Sublevels/Sublevel38_Main.bin"
+.incbin "data/Sublevels/Sublevel38_Main.bin"
 Sublevel39_Main:                    ; 081C1DA4
-.incbin "../data/Sublevels/Sublevel39_Main.bin"
+.incbin "data/Sublevels/Sublevel39_Main.bin"
 Sublevel00_Main:                    ; 081C1F29
-.incbin "../data/Sublevels/Sublevel00_Main.bin"
+.incbin "data/Sublevels/Sublevel00_Main.bin"
 Sublevel3A_Main:                    ; 081C2265
-.incbin "../data/Sublevels/Sublevel3A_Main.bin"
+.incbin "data/Sublevels/Sublevel3A_Main.bin"
 Sublevel38_Sprites:                 ; 081C2320
 .d32 0xFFFFFFFF
 Sublevel39_Sprites:                 ; 081C2324
-.incbin "../data/Sublevels/Sublevel39_Sprites.bin"
+.incbin "data/Sublevels/Sublevel39_Sprites.bin"
 Sublevel00_Sprites:                 ; 081C2354
-.incbin "../data/Sublevels/Sublevel00_Sprites.bin"
+.incbin "data/Sublevels/Sublevel00_Sprites.bin"
 Sublevel3A_Sprites:                 ; 081C2434
-.incbin "../data/Sublevels/Sublevel3A_Sprites.bin"
+.incbin "data/Sublevels/Sublevel3A_Sprites.bin"
 Sublevel01_Main:                    ; 081C245C
-.incbin "../data/Sublevels/Sublevel01_Main.bin"
+.incbin "data/Sublevels/Sublevel01_Main.bin"
 Sublevel3B_Main:                    ; 081C264E
-.incbin "../data/Sublevels/Sublevel3B_Main.bin"
+.incbin "data/Sublevels/Sublevel3B_Main.bin"
 Sublevel01_Sprites:                 ; 081C2D70
-.incbin "../data/Sublevels/Sublevel01_Sprites.bin"
+.incbin "data/Sublevels/Sublevel01_Sprites.bin"
 Sublevel3B_Sprites:                 ; 081C2E18
-.incbin "../data/Sublevels/Sublevel3B_Sprites.bin"
+.incbin "data/Sublevels/Sublevel3B_Sprites.bin"
 Sublevel02_Main:                    ; 081C2F00
-.incbin "../data/Sublevels/Sublevel02_Main.bin"
+.incbin "data/Sublevels/Sublevel02_Main.bin"
 Sublevel3C_Main:                    ; 081C2FD1
-.incbin "../data/Sublevels/Sublevel3C_Main.bin"
+.incbin "data/Sublevels/Sublevel3C_Main.bin"
 Sublevel6D_Main:                    ; 081C3856
-.incbin "../data/Sublevels/Sublevel6D_Main.bin"
+.incbin "data/Sublevels/Sublevel6D_Main.bin"
 Sublevel02_Sprites:                 ; 081C39B4
-.incbin "../data/Sublevels/Sublevel02_Sprites.bin"
+.incbin "data/Sublevels/Sublevel02_Sprites.bin"
 Sublevel3C_Sprites:                 ; 081C39E0
-.incbin "../data/Sublevels/Sublevel3C_Sprites.bin"
+.incbin "data/Sublevels/Sublevel3C_Sprites.bin"
 Sublevel6D_Sprites:                 ; 081C3AD8
-.incbin "../data/Sublevels/Sublevel6D_Sprites.bin"
+.incbin "data/Sublevels/Sublevel6D_Sprites.bin"
 Sublevel03_Main:                    ; 081C3B04
-.incbin "../data/Sublevels/Sublevel03_Main.bin"
+.incbin "data/Sublevels/Sublevel03_Main.bin"
 Sublevel3D_Main:                    ; 081C4026
-.incbin "../data/Sublevels/Sublevel3D_Main.bin"
+.incbin "data/Sublevels/Sublevel3D_Main.bin"
 Sublevel6E_Main:                    ; 081C40DE
-.incbin "../data/Sublevels/Sublevel6E_Main.bin"
+.incbin "data/Sublevels/Sublevel6E_Main.bin"
 Sublevel99_Main:                    ; 081C4194
-.incbin "../data/Sublevels/Sublevel99_Main.bin"
+.incbin "data/Sublevels/Sublevel99_Main.bin"
 Sublevel03_Sprites:                 ; 081C4218
-.incbin "../data/Sublevels/Sublevel03_Sprites.bin"
+.incbin "data/Sublevels/Sublevel03_Sprites.bin"
 Sublevel3D_Sprites:                 ; 081C4320
-.incbin "../data/Sublevels/Sublevel3D_Sprites.bin"
+.incbin "data/Sublevels/Sublevel3D_Sprites.bin"
 Sublevel6E_Sprites:                 ; 081C4330
-.incbin "../data/Sublevels/Sublevel6E_Sprites.bin"
+.incbin "data/Sublevels/Sublevel6E_Sprites.bin"
 Sublevel99_Sprites:                 ; 081C4368
-.incbin "../data/Sublevels/Sublevel99_Sprites.bin"
+.incbin "data/Sublevels/Sublevel99_Sprites.bin"
 Sublevel04_Main:                    ; 081C4380
-.incbin "../data/Sublevels/Sublevel04_Main.bin"
+.incbin "data/Sublevels/Sublevel04_Main.bin"
 Sublevel04_Sprites:                 ; 081C4660
-.incbin "../data/Sublevels/Sublevel04_Sprites.bin"
+.incbin "data/Sublevels/Sublevel04_Sprites.bin"
 Sublevel05_Main:                    ; 081C46E8
-.incbin "../data/Sublevels/Sublevel05_Main.bin"
+.incbin "data/Sublevels/Sublevel05_Main.bin"
 Sublevel3E_Main:                    ; 081C4980
-.incbin "../data/Sublevels/Sublevel3E_Main.bin"
+.incbin "data/Sublevels/Sublevel3E_Main.bin"
 Sublevel6F_Main:                    ; 081C4B87
-.incbin "../data/Sublevels/Sublevel6F_Main.bin"
+.incbin "data/Sublevels/Sublevel6F_Main.bin"
 Sublevel9A_Main:                    ; 081C4CBB
-.incbin "../data/Sublevels/Sublevel9A_Main.bin"
+.incbin "data/Sublevels/Sublevel9A_Main.bin"
 Sublevel05_Sprites:                 ; 081C4FFC
-.incbin "../data/Sublevels/Sublevel05_Sprites.bin"
+.incbin "data/Sublevels/Sublevel05_Sprites.bin"
 Sublevel3E_Sprites:                 ; 081C50B0
-.incbin "../data/Sublevels/Sublevel3E_Sprites.bin"
+.incbin "data/Sublevels/Sublevel3E_Sprites.bin"
 Sublevel6F_Sprites:                 ; 081C5100
-.incbin "../data/Sublevels/Sublevel6F_Sprites.bin"
+.incbin "data/Sublevels/Sublevel6F_Sprites.bin"
 Sublevel9A_Sprites:                 ; 081C511C
-.incbin "../data/Sublevels/Sublevel9A_Sprites.bin"
+.incbin "data/Sublevels/Sublevel9A_Sprites.bin"
 Sublevel06_Main:                    ; 081C5168
-.incbin "../data/Sublevels/Sublevel06_Main.bin"
+.incbin "data/Sublevels/Sublevel06_Main.bin"
 Sublevel3F_Main:                    ; 081C58F0
-.incbin "../data/Sublevels/Sublevel3F_Main.bin"
+.incbin "data/Sublevels/Sublevel3F_Main.bin"
 Sublevel06_Sprites:                 ; 081C59C4
-.incbin "../data/Sublevels/Sublevel06_Sprites.bin"
+.incbin "data/Sublevels/Sublevel06_Sprites.bin"
 Sublevel3F_Sprites:                 ; 081C5A9C
-.incbin "../data/Sublevels/Sublevel3F_Sprites.bin"
+.incbin "data/Sublevels/Sublevel3F_Sprites.bin"
 Sublevel07_Main:                    ; 081C5AF4
-.incbin "../data/Sublevels/Sublevel07_Main.bin"
+.incbin "data/Sublevels/Sublevel07_Main.bin"
 Sublevel40_Main:                    ; 081C5D60
-.incbin "../data/Sublevels/Sublevel40_Main.bin"
+.incbin "data/Sublevels/Sublevel40_Main.bin"
 Sublevel70_Main:                    ; 081C5E78
-.incbin "../data/Sublevels/Sublevel70_Main.bin"
+.incbin "data/Sublevels/Sublevel70_Main.bin"
 Sublevel9B_Main:                    ; 081C5F39
-.incbin "../data/Sublevels/Sublevel9B_Main.bin"
+.incbin "data/Sublevels/Sublevel9B_Main.bin"
 Sublevel07_Sprites:                 ; 081C6238
-.incbin "../data/Sublevels/Sublevel07_Sprites.bin"
+.incbin "data/Sublevels/Sublevel07_Sprites.bin"
 Sublevel40_Sprites:                 ; 081C62A8
-.incbin "../data/Sublevels/Sublevel40_Sprites.bin"
+.incbin "data/Sublevels/Sublevel40_Sprites.bin"
 Sublevel70_Sprites:                 ; 081C62CC
-.incbin "../data/Sublevels/Sublevel70_Sprites.bin"
+.incbin "data/Sublevels/Sublevel70_Sprites.bin"
 Sublevel9B_Sprites:                 ; 081C62D8
-.incbin "../data/Sublevels/Sublevel9B_Sprites.bin"
+.incbin "data/Sublevels/Sublevel9B_Sprites.bin"
 Sublevel08_Main:                    ; 081C637C
-.incbin "../data/Sublevels/Sublevel08_Main.bin"
+.incbin "data/Sublevels/Sublevel08_Main.bin"
 Sublevel08_Sprites:                 ; 081C66A0
-.incbin "../data/Sublevels/Sublevel08_Sprites.bin"
+.incbin "data/Sublevels/Sublevel08_Sprites.bin"
 SublevelDE_Main:                    ; 081C6724
-.incbin "../data/Sublevels/SublevelDE_Main.bin"
+.incbin "data/Sublevels/SublevelDE_Main.bin"
 SublevelDF_Main:                    ; 081C6A9E
-.incbin "../data/Sublevels/SublevelDF_Main.bin"
+.incbin "data/Sublevels/SublevelDF_Main.bin"
 SublevelF3_Main:                    ; 081C6D62
-.incbin "../data/Sublevels/SublevelF3_Main.bin"
+.incbin "data/Sublevels/SublevelF3_Main.bin"
 SublevelDE_Sprites:                 ; 081C70CC
-.incbin "../data/Sublevels/SublevelDE_Sprites.bin"
+.incbin "data/Sublevels/SublevelDE_Sprites.bin"
 SublevelDF_Sprites:                 ; 081C7170
-.incbin "../data/Sublevels/SublevelDF_Sprites.bin"
+.incbin "data/Sublevels/SublevelDF_Sprites.bin"
 SublevelF3_Sprites:                 ; 081C7238
-.incbin "../data/Sublevels/SublevelF3_Sprites.bin"
+.incbin "data/Sublevels/SublevelF3_Sprites.bin"
 Sublevel09_Main:                    ; 081C72D0
-.incbin "../data/Sublevels/Sublevel09_Main.bin"
+.incbin "data/Sublevels/Sublevel09_Main.bin"
 Sublevel41_Main:                    ; 081C7436
-.incbin "../data/Sublevels/Sublevel41_Main.bin"
+.incbin "data/Sublevels/Sublevel41_Main.bin"
 Sublevel71_Main:                    ; 081C785B
-.incbin "../data/Sublevels/Sublevel71_Main.bin"
+.incbin "data/Sublevels/Sublevel71_Main.bin"
 Sublevel9C_Main:                    ; 081C7954
-.incbin "../data/Sublevels/Sublevel9C_Main.bin"
+.incbin "data/Sublevels/Sublevel9C_Main.bin"
 SublevelBA_Main:                    ; 081C7BCF
-.incbin "../data/Sublevels/SublevelBA_Main.bin"
+.incbin "data/Sublevels/SublevelBA_Main.bin"
 Sublevel09_Sprites:                 ; 081C7C18
-.incbin "../data/Sublevels/Sublevel09_Sprites.bin"
+.incbin "data/Sublevels/Sublevel09_Sprites.bin"
 Sublevel41_Sprites:                 ; 081C7C5C
-.incbin "../data/Sublevels/Sublevel41_Sprites.bin"
+.incbin "data/Sublevels/Sublevel41_Sprites.bin"
 Sublevel71_Sprites:                 ; 081C7D68
-.incbin "../data/Sublevels/Sublevel71_Sprites.bin"
+.incbin "data/Sublevels/Sublevel71_Sprites.bin"
 Sublevel9C_Sprites:                 ; 081C7D9C
-.incbin "../data/Sublevels/Sublevel9C_Sprites.bin"
+.incbin "data/Sublevels/Sublevel9C_Sprites.bin"
 SublevelBA_Sprites:                 ; 081C7DEC
-.incbin "../data/Sublevels/SublevelBA_Sprites.bin"
+.incbin "data/Sublevels/SublevelBA_Sprites.bin"
 Sublevel0A_Main:                    ; 081C7E0C
-.incbin "../data/Sublevels/Sublevel0A_Main.bin"
+.incbin "data/Sublevels/Sublevel0A_Main.bin"
 Sublevel42_Main:                    ; 081C8363
-.incbin "../data/Sublevels/Sublevel42_Main.bin"
+.incbin "data/Sublevels/Sublevel42_Main.bin"
 Sublevel72_Main:                    ; 081C865C
-.incbin "../data/Sublevels/Sublevel72_Main.bin"
+.incbin "data/Sublevels/Sublevel72_Main.bin"
 Sublevel0A_Sprites:                 ; 081C8A4C
-.incbin "../data/Sublevels/Sublevel0A_Sprites.bin"
+.incbin "data/Sublevels/Sublevel0A_Sprites.bin"
 Sublevel42_Sprites:                 ; 081C8B9C
-.incbin "../data/Sublevels/Sublevel42_Sprites.bin"
+.incbin "data/Sublevels/Sublevel42_Sprites.bin"
 Sublevel72_Sprites:                 ; 081C8C20
-.incbin "../data/Sublevels/Sublevel72_Sprites.bin"
+.incbin "data/Sublevels/Sublevel72_Sprites.bin"
 Sublevel0B_Main:                    ; 081C8D68
-.incbin "../data/Sublevels/Sublevel0B_Main.bin"
+.incbin "data/Sublevels/Sublevel0B_Main.bin"
 Sublevel43_Main:                    ; 081C8FF9
-.incbin "../data/Sublevels/Sublevel43_Main.bin"
+.incbin "data/Sublevels/Sublevel43_Main.bin"
 Sublevel73_Main:                    ; 081C978E
-.incbin "../data/Sublevels/Sublevel73_Main.bin"
+.incbin "data/Sublevels/Sublevel73_Main.bin"
 Sublevel0B_Sprites:                 ; 081C988C
-.incbin "../data/Sublevels/Sublevel0B_Sprites.bin"
+.incbin "data/Sublevels/Sublevel0B_Sprites.bin"
 Sublevel43_Sprites:                 ; 081C9918
-.incbin "../data/Sublevels/Sublevel43_Sprites.bin"
+.incbin "data/Sublevels/Sublevel43_Sprites.bin"
 Sublevel73_Sprites:                 ; 081C9A6C
-.incbin "../data/Sublevels/Sublevel73_Sprites.bin"
+.incbin "data/Sublevels/Sublevel73_Sprites.bin"
 Sublevel0C_Main:                    ; 081C9A80
-.incbin "../data/Sublevels/Sublevel0C_Main.bin"
+.incbin "data/Sublevels/Sublevel0C_Main.bin"
 Sublevel44_Main:                    ; 081C9BC4
-.incbin "../data/Sublevels/Sublevel44_Main.bin"
+.incbin "data/Sublevels/Sublevel44_Main.bin"
 Sublevel74_Main:                    ; 081C9F7C
-.incbin "../data/Sublevels/Sublevel74_Main.bin"
+.incbin "data/Sublevels/Sublevel74_Main.bin"
 Sublevel9D_Main:                    ; 081C9FD6
-.incbin "../data/Sublevels/Sublevel9D_Main.bin"
+.incbin "data/Sublevels/Sublevel9D_Main.bin"
 SublevelBB_Main:                    ; 081CA2EA
-.incbin "../data/Sublevels/SublevelBB_Main.bin"
+.incbin "data/Sublevels/SublevelBB_Main.bin"
 SublevelC7_Main:                    ; 081CA356
-.incbin "../data/Sublevels/SublevelC7_Main.bin"
+.incbin "data/Sublevels/SublevelC7_Main.bin"
 SublevelCE_Main:                    ; 081CA3FA
-.incbin "../data/Sublevels/SublevelCE_Main.bin"
+.incbin "data/Sublevels/SublevelCE_Main.bin"
 Sublevel0C_Sprites:                 ; 081CA498
-.incbin "../data/Sublevels/Sublevel0C_Sprites.bin"
+.incbin "data/Sublevels/Sublevel0C_Sprites.bin"
 Sublevel44_Sprites:                 ; 081CA4C8
-.incbin "../data/Sublevels/Sublevel44_Sprites.bin"
+.incbin "data/Sublevels/Sublevel44_Sprites.bin"
 Sublevel74_Sprites:                 ; 081CA558
-.incbin "../data/Sublevels/Sublevel74_Sprites.bin"
+.incbin "data/Sublevels/Sublevel74_Sprites.bin"
 Sublevel9D_Sprites:                 ; 081CA560
-.incbin "../data/Sublevels/Sublevel9D_Sprites.bin"
+.incbin "data/Sublevels/Sublevel9D_Sprites.bin"
 SublevelBB_Sprites:                 ; 081CA5D8
-.incbin "../data/Sublevels/SublevelBB_Sprites.bin"
+.incbin "data/Sublevels/SublevelBB_Sprites.bin"
 SublevelC7_Sprites:                 ; 081CA5F4
-.incbin "../data/Sublevels/SublevelC7_Sprites.bin"
+.incbin "data/Sublevels/SublevelC7_Sprites.bin"
 SublevelCE_Sprites:                 ; 081CA644
-.incbin "../data/Sublevels/SublevelCE_Sprites.bin"
+.incbin "data/Sublevels/SublevelCE_Sprites.bin"
 Sublevel0D_Main:                    ; 081CA660
-.incbin "../data/Sublevels/Sublevel0D_Main.bin"
+.incbin "data/Sublevels/Sublevel0D_Main.bin"
 Sublevel45_Main:                    ; 081CAA6B
-.incbin "../data/Sublevels/Sublevel45_Main.bin"
+.incbin "data/Sublevels/Sublevel45_Main.bin"
 Sublevel75_Main:                    ; 081CAC9F
-.incbin "../data/Sublevels/Sublevel75_Main.bin"
+.incbin "data/Sublevels/Sublevel75_Main.bin"
 Sublevel9E_Main:                    ; 081CAF6A
-.incbin "../data/Sublevels/Sublevel9E_Main.bin"
+.incbin "data/Sublevels/Sublevel9E_Main.bin"
 SublevelBC_Main:                    ; 081CB200
-.incbin "../data/Sublevels/SublevelBC_Main.bin"
+.incbin "data/Sublevels/SublevelBC_Main.bin"
 Sublevel0D_Sprites:                 ; 081CB318
-.incbin "../data/Sublevels/Sublevel0D_Sprites.bin"
+.incbin "data/Sublevels/Sublevel0D_Sprites.bin"
 Sublevel45_Sprites:                 ; 081CB3F8
-.incbin "../data/Sublevels/Sublevel45_Sprites.bin"
+.incbin "data/Sublevels/Sublevel45_Sprites.bin"
 Sublevel75_Sprites:                 ; 081CB4A4
-.incbin "../data/Sublevels/Sublevel75_Sprites.bin"
+.incbin "data/Sublevels/Sublevel75_Sprites.bin"
 Sublevel9E_Sprites:                 ; 081CB54C
-.incbin "../data/Sublevels/Sublevel9E_Sprites.bin"
+.incbin "data/Sublevels/Sublevel9E_Sprites.bin"
 SublevelBC_Sprites:                 ; 081CB568
-.incbin "../data/Sublevels/SublevelBC_Sprites.bin"
+.incbin "data/Sublevels/SublevelBC_Sprites.bin"
 Sublevel0E_Main:                    ; 081CB5A8
-.incbin "../data/Sublevels/Sublevel0E_Main.bin"
+.incbin "data/Sublevels/Sublevel0E_Main.bin"
 Sublevel46_Main:                    ; 081CB810
-.incbin "../data/Sublevels/Sublevel46_Main.bin"
+.incbin "data/Sublevels/Sublevel46_Main.bin"
 Sublevel76_Main:                    ; 081CBEBE
-.incbin "../data/Sublevels/Sublevel76_Main.bin"
+.incbin "data/Sublevels/Sublevel76_Main.bin"
 Sublevel9F_Main:                    ; 081CC045
-.incbin "../data/Sublevels/Sublevel9F_Main.bin"
+.incbin "data/Sublevels/Sublevel9F_Main.bin"
 SublevelBD_Main:                    ; 081CC0DE
-.incbin "../data/Sublevels/SublevelBD_Main.bin"
+.incbin "data/Sublevels/SublevelBD_Main.bin"
 Sublevel0E_Sprites:                 ; 081CC154
-.incbin "../data/Sublevels/Sublevel0E_Sprites.bin"
+.incbin "data/Sublevels/Sublevel0E_Sprites.bin"
 Sublevel46_Sprites:                 ; 081CC1F4
-.incbin "../data/Sublevels/Sublevel46_Sprites.bin"
+.incbin "data/Sublevels/Sublevel46_Sprites.bin"
 Sublevel76_Sprites:                 ; 081CC2AC
-.incbin "../data/Sublevels/Sublevel76_Sprites.bin"
+.incbin "data/Sublevels/Sublevel76_Sprites.bin"
 Sublevel9F_Sprites:                 ; 081CC2D0
-.incbin "../data/Sublevels/Sublevel9F_Sprites.bin"
+.incbin "data/Sublevels/Sublevel9F_Sprites.bin"
 SublevelBD_Sprites:                 ; 081CC2F4
-.incbin "../data/Sublevels/SublevelBD_Sprites.bin"
+.incbin "data/Sublevels/SublevelBD_Sprites.bin"
 Sublevel0F_Main:                    ; 081CC318
-.incbin "../data/Sublevels/Sublevel0F_Main.bin"
+.incbin "data/Sublevels/Sublevel0F_Main.bin"
 Sublevel47_Main:                    ; 081CCA82
-.incbin "../data/Sublevels/Sublevel47_Main.bin"
+.incbin "data/Sublevels/Sublevel47_Main.bin"
 Sublevel77_Main:                    ; 081CCC6D
-.incbin "../data/Sublevels/Sublevel77_Main.bin"
+.incbin "data/Sublevels/Sublevel77_Main.bin"
 SublevelA0_Main:                    ; 081CD06D
-.incbin "../data/Sublevels/SublevelA0_Main.bin"
+.incbin "data/Sublevels/SublevelA0_Main.bin"
 Sublevel0F_Sprites:                 ; 081CD0FC
-.incbin "../data/Sublevels/Sublevel0F_Sprites.bin"
+.incbin "data/Sublevels/Sublevel0F_Sprites.bin"
 Sublevel47_Sprites:                 ; 081CD284
-.incbin "../data/Sublevels/Sublevel47_Sprites.bin"
+.incbin "data/Sublevels/Sublevel47_Sprites.bin"
 Sublevel77_Sprites:                 ; 081CD320
-.incbin "../data/Sublevels/Sublevel77_Sprites.bin"
+.incbin "data/Sublevels/Sublevel77_Sprites.bin"
 SublevelA0_Sprites:                 ; 081CD3D0
-.incbin "../data/Sublevels/SublevelA0_Sprites.bin"
+.incbin "data/Sublevels/SublevelA0_Sprites.bin"
 Sublevel10_Main:                    ; 081CD3E8
-.incbin "../data/Sublevels/Sublevel10_Main.bin"
+.incbin "data/Sublevels/Sublevel10_Main.bin"
 Sublevel48_Main:                    ; 081CD4C9
-.incbin "../data/Sublevels/Sublevel48_Main.bin"
+.incbin "data/Sublevels/Sublevel48_Main.bin"
 Sublevel78_Main:                    ; 081CD684
-.incbin "../data/Sublevels/Sublevel78_Main.bin"
+.incbin "data/Sublevels/Sublevel78_Main.bin"
 SublevelA1_Main:                    ; 081CD854
-.incbin "../data/Sublevels/SublevelA1_Main.bin"
+.incbin "data/Sublevels/SublevelA1_Main.bin"
 SublevelBE_Main:                    ; 081CDB6A
-.incbin "../data/Sublevels/SublevelBE_Main.bin"
+.incbin "data/Sublevels/SublevelBE_Main.bin"
 SublevelC8_Main:                    ; 081CDCC3
-.incbin "../data/Sublevels/SublevelC8_Main.bin"
+.incbin "data/Sublevels/SublevelC8_Main.bin"
 SublevelCF_Main:                    ; 081CDDAA
-.incbin "../data/Sublevels/SublevelCF_Main.bin"
+.incbin "data/Sublevels/SublevelCF_Main.bin"
 SublevelD4_Main:                    ; 081CDDC6
-.incbin "../data/Sublevels/SublevelD4_Main.bin"
+.incbin "data/Sublevels/SublevelD4_Main.bin"
 Sublevel10_Sprites:                 ; 081CDED4
-.incbin "../data/Sublevels/Sublevel10_Sprites.bin"
+.incbin "data/Sublevels/Sublevel10_Sprites.bin"
 Sublevel48_Sprites:                 ; 081CDEE0
-.incbin "../data/Sublevels/Sublevel48_Sprites.bin"
+.incbin "data/Sublevels/Sublevel48_Sprites.bin"
 Sublevel78_Sprites:                 ; 081CDF38
-.incbin "../data/Sublevels/Sublevel78_Sprites.bin"
+.incbin "data/Sublevels/Sublevel78_Sprites.bin"
 SublevelA1_Sprites:                 ; 081CDF88
-.incbin "../data/Sublevels/SublevelA1_Sprites.bin"
+.incbin "data/Sublevels/SublevelA1_Sprites.bin"
 SublevelBE_Sprites:                 ; 081CE018
-.incbin "../data/Sublevels/SublevelBE_Sprites.bin"
+.incbin "data/Sublevels/SublevelBE_Sprites.bin"
 SublevelC8_Sprites:                 ; 081CE04C
-.incbin "../data/Sublevels/SublevelC8_Sprites.bin"
+.incbin "data/Sublevels/SublevelC8_Sprites.bin"
 SublevelCF_Sprites:                 ; 081CE07C
-.incbin "../data/Sublevels/SublevelCF_Sprites.bin"
+.incbin "data/Sublevels/SublevelCF_Sprites.bin"
 SublevelD4_Sprites:                 ; 081CE088
-.incbin "../data/Sublevels/SublevelD4_Sprites.bin"
+.incbin "data/Sublevels/SublevelD4_Sprites.bin"
 Sublevel11_Main:                    ; 081CE0C4
-.incbin "../data/Sublevels/Sublevel11_Main.bin"
+.incbin "data/Sublevels/Sublevel11_Main.bin"
 Sublevel49_Main:                    ; 081CE2E9
-.incbin "../data/Sublevels/Sublevel49_Main.bin"
+.incbin "data/Sublevels/Sublevel49_Main.bin"
 Sublevel11_Sprites:                 ; 081CE3F8
-.incbin "../data/Sublevels/Sublevel11_Sprites.bin"
+.incbin "data/Sublevels/Sublevel11_Sprites.bin"
 Sublevel49_Sprites:                 ; 081CE45C
-.incbin "../data/Sublevels/Sublevel49_Sprites.bin"
+.incbin "data/Sublevels/Sublevel49_Sprites.bin"
 SublevelE0_Main:                    ; 081CE47C
-.incbin "../data/Sublevels/SublevelE0_Main.bin"
+.incbin "data/Sublevels/SublevelE0_Main.bin"
 SublevelE1_Main:                    ; 081CEB4F
-.incbin "../data/Sublevels/SublevelE1_Main.bin"
+.incbin "data/Sublevels/SublevelE1_Main.bin"
 SublevelE2_Main:                    ; 081CEF16
-.incbin "../data/Sublevels/SublevelE2_Main.bin"
+.incbin "data/Sublevels/SublevelE2_Main.bin"
 SublevelF4_Main:                    ; 081CF31F
-.incbin "../data/Sublevels/SublevelF4_Main.bin"
+.incbin "data/Sublevels/SublevelF4_Main.bin"
 SublevelE0_Sprites:                 ; 081CF37C
-.incbin "../data/Sublevels/SublevelE0_Sprites.bin"
+.incbin "data/Sublevels/SublevelE0_Sprites.bin"
 SublevelE1_Sprites:                 ; 081CF460
-.incbin "../data/Sublevels/SublevelE1_Sprites.bin"
+.incbin "data/Sublevels/SublevelE1_Sprites.bin"
 SublevelE2_Sprites:                 ; 081CF538
-.incbin "../data/Sublevels/SublevelE2_Sprites.bin"
+.incbin "data/Sublevels/SublevelE2_Sprites.bin"
 SublevelF4_Sprites:                 ; 081CF61C
-.incbin "../data/Sublevels/SublevelF4_Sprites.bin"
+.incbin "data/Sublevels/SublevelF4_Sprites.bin"
 Sublevel12_Main:                    ; 081CF638
-.incbin "../data/Sublevels/Sublevel12_Main.bin"
+.incbin "data/Sublevels/Sublevel12_Main.bin"
 Sublevel4A_Main:                    ; 081CF7A4
-.incbin "../data/Sublevels/Sublevel4A_Main.bin"
+.incbin "data/Sublevels/Sublevel4A_Main.bin"
 Sublevel79_Main:                    ; 081CFC27
-.incbin "../data/Sublevels/Sublevel79_Main.bin"
+.incbin "data/Sublevels/Sublevel79_Main.bin"
 SublevelA2_Main:                    ; 081CFDD1
-.incbin "../data/Sublevels/SublevelA2_Main.bin"
+.incbin "data/Sublevels/SublevelA2_Main.bin"
 Sublevel12_Sprites:                 ; 081CFE20
-.incbin "../data/Sublevels/Sublevel12_Sprites.bin"
+.incbin "data/Sublevels/Sublevel12_Sprites.bin"
 Sublevel4A_Sprites:                 ; 081CFE54
-.incbin "../data/Sublevels/Sublevel4A_Sprites.bin"
+.incbin "data/Sublevels/Sublevel4A_Sprites.bin"
 Sublevel79_Sprites:                 ; 081CFF5C
-.incbin "../data/Sublevels/Sublevel79_Sprites.bin"
+.incbin "data/Sublevels/Sublevel79_Sprites.bin"
 SublevelA2_Sprites:                 ; 081CFF90
-.incbin "../data/Sublevels/SublevelA2_Sprites.bin"
+.incbin "data/Sublevels/SublevelA2_Sprites.bin"
 Sublevel13_Main:                    ; 081CFFEC
-.incbin "../data/Sublevels/Sublevel13_Main.bin"
+.incbin "data/Sublevels/Sublevel13_Main.bin"
 Sublevel4B_Main:                    ; 081D024E
-.incbin "../data/Sublevels/Sublevel4B_Main.bin"
+.incbin "data/Sublevels/Sublevel4B_Main.bin"
 Sublevel13_Sprites:                 ; 081D02AC
-.incbin "../data/Sublevels/Sublevel13_Sprites.bin"
+.incbin "data/Sublevels/Sublevel13_Sprites.bin"
 Sublevel4B_Sprites:                 ; 081D03F8
-.incbin "../data/Sublevels/Sublevel4B_Sprites.bin"
+.incbin "data/Sublevels/Sublevel4B_Sprites.bin"
 Sublevel14_Main:                    ; 081D0404
-.incbin "../data/Sublevels/Sublevel14_Main.bin"
+.incbin "data/Sublevels/Sublevel14_Main.bin"
 Sublevel4C_Main:                    ; 081D0756
-.incbin "../data/Sublevels/Sublevel4C_Main.bin"
+.incbin "data/Sublevels/Sublevel4C_Main.bin"
 Sublevel7A_Main:                    ; 081D0BC4
-.incbin "../data/Sublevels/Sublevel7A_Main.bin"
+.incbin "data/Sublevels/Sublevel7A_Main.bin"
 Sublevel14_Sprites:                 ; 081D0D30
-.incbin "../data/Sublevels/Sublevel14_Sprites.bin"
+.incbin "data/Sublevels/Sublevel14_Sprites.bin"
 Sublevel4C_Sprites:                 ; 081D0DD0
-.incbin "../data/Sublevels/Sublevel4C_Sprites.bin"
+.incbin "data/Sublevels/Sublevel4C_Sprites.bin"
 Sublevel7A_Sprites:                 ; 081D0F20
-.incbin "../data/Sublevels/Sublevel7A_Sprites.bin"
+.incbin "data/Sublevels/Sublevel7A_Sprites.bin"
 Sublevel15_Main:                    ; 081D1030
-.incbin "../data/Sublevels/Sublevel15_Main.bin"
+.incbin "data/Sublevels/Sublevel15_Main.bin"
 Sublevel4D_Main:                    ; 081D118C
-.incbin "../data/Sublevels/Sublevel4D_Main.bin"
+.incbin "data/Sublevels/Sublevel4D_Main.bin"
 Sublevel7B_Main:                    ; 081D1508
-.incbin "../data/Sublevels/Sublevel7B_Main.bin"
+.incbin "data/Sublevels/Sublevel7B_Main.bin"
 SublevelA3_Main:                    ; 081D17A5
-.incbin "../data/Sublevels/SublevelA3_Main.bin"
+.incbin "data/Sublevels/SublevelA3_Main.bin"
 SublevelBF_Main:                    ; 081D1888
-.incbin "../data/Sublevels/SublevelBFD0_Main.bin"
+.incbin "data/Sublevels/SublevelBFD0_Main.bin"
 SublevelD0_Main:                    ; 081D1902
-.incbin "../data/Sublevels/SublevelBFD0_Main.bin"
+.incbin "data/Sublevels/SublevelBFD0_Main.bin"
 SublevelC9_Main:                    ; 081D197C
-.incbin "../data/Sublevels/SublevelC9_Main.bin"
+.incbin "data/Sublevels/SublevelC9_Main.bin"
 SublevelD5_Main:                    ; 081D1993
-.incbin "../data/Sublevels/SublevelD5_Main.bin"
+.incbin "data/Sublevels/SublevelD5_Main.bin"
 SublevelD7_Main:                    ; 081D1AFF
-.incbin "../data/Sublevels/SublevelD7_Main.bin"
+.incbin "data/Sublevels/SublevelD7_Main.bin"
 Sublevel15_Sprites:                 ; 081D1BA4
-.incbin "../data/Sublevels/Sublevel15_Sprites.bin"
+.incbin "data/Sublevels/Sublevel15_Sprites.bin"
 Sublevel4D_Sprites:                 ; 081D1BF8
-.incbin "../data/Sublevels/Sublevel4D_Sprites.bin"
+.incbin "data/Sublevels/Sublevel4D_Sprites.bin"
 Sublevel7B_Sprites:                 ; 081D1C94
-.incbin "../data/Sublevels/Sublevel7B_Sprites.bin"
+.incbin "data/Sublevels/Sublevel7B_Sprites.bin"
 SublevelA3_Sprites:                 ; 081D1D2C
-.incbin "../data/Sublevels/SublevelA3_Sprites.bin"
+.incbin "data/Sublevels/SublevelA3_Sprites.bin"
 SublevelBF_Sprites:                 ; 081D1D4C
-.incbin "../data/Sublevels/SublevelBF_Sprites.bin"
+.incbin "data/Sublevels/SublevelBF_Sprites.bin"
 SublevelC9_Sprites:                 ; 081D1D54
-.incbin "../data/Sublevels/SublevelC9_Sprites.bin"
+.incbin "data/Sublevels/SublevelC9_Sprites.bin"
 SublevelD0_Sprites:                 ; 081D1D5C
-.incbin "../data/Sublevels/SublevelD0_Sprites.bin"
+.incbin "data/Sublevels/SublevelD0_Sprites.bin"
 SublevelD5_Sprites:                 ; 081D1D64
-.incbin "../data/Sublevels/SublevelD5_Sprites.bin"
+.incbin "data/Sublevels/SublevelD5_Sprites.bin"
 SublevelD7_Sprites:                 ; 081D1D90
-.incbin "../data/Sublevels/SublevelD7_Sprites.bin"
+.incbin "data/Sublevels/SublevelD7_Sprites.bin"
 Sublevel16_Main:                    ; 081D1DC8
-.incbin "../data/Sublevels/Sublevel16_Main.bin"
+.incbin "data/Sublevels/Sublevel16_Main.bin"
 Sublevel4E_Main:                    ; 081D1F5E
-.incbin "../data/Sublevels/Sublevel4E_Main.bin"
+.incbin "data/Sublevels/Sublevel4E_Main.bin"
 Sublevel7C_Main:                    ; 081D2246
-.incbin "../data/Sublevels/Sublevel7C_Main.bin"
+.incbin "data/Sublevels/Sublevel7C_Main.bin"
 SublevelA4_Main:                    ; 081D24B6
-.incbin "../data/Sublevels/SublevelA4_Main.bin"
+.incbin "data/Sublevels/SublevelA4_Main.bin"
 Sublevel16_Sprites:                 ; 081D2558
-.incbin "../data/Sublevels/Sublevel16_Sprites.bin"
+.incbin "data/Sublevels/Sublevel16_Sprites.bin"
 Sublevel4E_Sprites:                 ; 081D25C4
-.incbin "../data/Sublevels/Sublevel4E_Sprites.bin"
+.incbin "data/Sublevels/Sublevel4E_Sprites.bin"
 Sublevel7C_Sprites:                 ; 081D2640
-.incbin "../data/Sublevels/Sublevel7C_Sprites.bin"
+.incbin "data/Sublevels/Sublevel7C_Sprites.bin"
 SublevelA4_Sprites:                 ; 081D26D0
-.incbin "../data/Sublevels/SublevelA4_Sprites.bin"
+.incbin "data/Sublevels/SublevelA4_Sprites.bin"
 Sublevel17_Main:                    ; 081D2724
-.incbin "../data/Sublevels/Sublevel17_Main.bin"
+.incbin "data/Sublevels/Sublevel17_Main.bin"
 Sublevel4F_Main:                    ; 081D27D0
-.incbin "../data/Sublevels/Sublevel4F_Main.bin"
+.incbin "data/Sublevels/Sublevel4F_Main.bin"
 Sublevel7D_Main:                    ; 081D2F79
-.incbin "../data/Sublevels/Sublevel7D_Main.bin"
+.incbin "data/Sublevels/Sublevel7D_Main.bin"
 SublevelA5_Main:                    ; 081D305B
-.incbin "../data/Sublevels/SublevelA5_Main.bin"
+.incbin "data/Sublevels/SublevelA5_Main.bin"
 Sublevel17_Sprites:                 ; 081D30D0
-.incbin "../data/Sublevels/Sublevel17_Sprites.bin"
+.incbin "data/Sublevels/Sublevel17_Sprites.bin"
 Sublevel4F_Sprites:                 ; 081D30E8
-.incbin "../data/Sublevels/Sublevel4F_Sprites.bin"
+.incbin "data/Sublevels/Sublevel4F_Sprites.bin"
 Sublevel7D_Sprites:                 ; 081D31D0
-.incbin "../data/Sublevels/Sublevel7D_Sprites.bin"
+.incbin "data/Sublevels/Sublevel7D_Sprites.bin"
 SublevelA5_Sprites:                 ; 081D31E8
-.incbin "../data/Sublevels/SublevelA5_Sprites.bin"
+.incbin "data/Sublevels/SublevelA5_Sprites.bin"
 Sublevel18_Main:                    ; 081D31F8
-.incbin "../data/Sublevels/Sublevel18_Main.bin"
+.incbin "data/Sublevels/Sublevel18_Main.bin"
 Sublevel50_Main:                    ; 081D33C5
-.incbin "../data/Sublevels/Sublevel50_Main.bin"
+.incbin "data/Sublevels/Sublevel50_Main.bin"
 Sublevel7E_Main:                    ; 081D368E
-.incbin "../data/Sublevels/Sublevel7E_Main.bin"
+.incbin "data/Sublevels/Sublevel7E_Main.bin"
 SublevelA6_Main:                    ; 081D3884
-.incbin "../data/Sublevels/SublevelA6_Main.bin"
+.incbin "data/Sublevels/SublevelA6_Main.bin"
 SublevelC0_Main:                    ; 081D3997
-.incbin "../data/Sublevels/SublevelC0_Main.bin"
+.incbin "data/Sublevels/SublevelC0_Main.bin"
 Sublevel18_Sprites:                 ; 081D3AB4
-.incbin "../data/Sublevels/Sublevel18_Sprites.bin"
+.incbin "data/Sublevels/Sublevel18_Sprites.bin"
 Sublevel50_Sprites:                 ; 081D3B18
-.incbin "../data/Sublevels/Sublevel50_Sprites.bin"
+.incbin "data/Sublevels/Sublevel50_Sprites.bin"
 Sublevel7E_Sprites:                 ; 081D3BD4
-.incbin "../data/Sublevels/Sublevel7E_Sprites.bin"
+.incbin "data/Sublevels/Sublevel7E_Sprites.bin"
 SublevelA6_Sprites:                 ; 081D3C74
-.incbin "../data/Sublevels/SublevelA6_Sprites.bin"
+.incbin "data/Sublevels/SublevelA6_Sprites.bin"
 SublevelC0_Sprites:                 ; 081D3CC8
-.incbin "../data/Sublevels/SublevelC0_Sprites.bin"
+.incbin "data/Sublevels/SublevelC0_Sprites.bin"
 Sublevel19_Main:                    ; 081D3CFC
-.incbin "../data/Sublevels/Sublevel19_Main.bin"
+.incbin "data/Sublevels/Sublevel19_Main.bin"
 Sublevel51_Main:                    ; 081D3D71
-.incbin "../data/Sublevels/Sublevel51_Main.bin"
+.incbin "data/Sublevels/Sublevel51_Main.bin"
 Sublevel7F_Main:                    ; 081D4455
-.incbin "../data/Sublevels/Sublevel7F_Main.bin"
+.incbin "data/Sublevels/Sublevel7F_Main.bin"
 SublevelA7_Main:                    ; 081D4539
-.incbin "../data/Sublevels/SublevelA7_Main.bin"
+.incbin "data/Sublevels/SublevelA7_Main.bin"
 Sublevel19_Sprites:                 ; 081D4620
 .d32 0xFFFFFFFF
 Sublevel51_Sprites:                 ; 081D4624
-.incbin "../data/Sublevels/Sublevel51_Sprites.bin"
+.incbin "data/Sublevels/Sublevel51_Sprites.bin"
 Sublevel7F_Sprites:                 ; 081D47A4
-.incbin "../data/Sublevels/Sublevel7F_Sprites.bin"
+.incbin "data/Sublevels/Sublevel7F_Sprites.bin"
 SublevelA7_Sprites:                 ; 081D47AC
-.incbin "../data/Sublevels/SublevelA7_Sprites.bin"
+.incbin "data/Sublevels/SublevelA7_Sprites.bin"
 Sublevel1A_Main:                    ; 081D47D8
-.incbin "../data/Sublevels/Sublevel1A_Main.bin"
+.incbin "data/Sublevels/Sublevel1A_Main.bin"
 Sublevel1A_Sprites:                 ; 081D49F4
-.incbin "../data/Sublevels/Sublevel1A_Sprites.bin"
+.incbin "data/Sublevels/Sublevel1A_Sprites.bin"
 SublevelE3_Main:                    ; 081D4AB4
-.incbin "../data/Sublevels/SublevelE3_Main.bin"
+.incbin "data/Sublevels/SublevelE3_Main.bin"
 SublevelE4_Main:                    ; 081D4CB7
-.incbin "../data/Sublevels/SublevelE4_Main.bin"
+.incbin "data/Sublevels/SublevelE4_Main.bin"
 SublevelE5_Main:                    ; 081D4FAF
-.incbin "../data/Sublevels/SublevelE5_Main.bin"
+.incbin "data/Sublevels/SublevelE5_Main.bin"
 SublevelE6_Main:                    ; 081D568F
-.incbin "../data/Sublevels/SublevelE6_Main.bin"
+.incbin "data/Sublevels/SublevelE6_Main.bin"
 SublevelE3_Sprites:                 ; 081D5EDC
-.incbin "../data/Sublevels/SublevelE3_Sprites.bin"
+.incbin "data/Sublevels/SublevelE3_Sprites.bin"
 SublevelE4_Sprites:                 ; 081D5F4C
-.incbin "../data/Sublevels/SublevelE4_Sprites.bin"
+.incbin "data/Sublevels/SublevelE4_Sprites.bin"
 SublevelE5_Sprites:                 ; 081D6048
-.incbin "../data/Sublevels/SublevelE5_Sprites.bin"
+.incbin "data/Sublevels/SublevelE5_Sprites.bin"
 SublevelE6_Sprites:                 ; 081D6144
-.incbin "../data/Sublevels/SublevelE6_Sprites.bin"
+.incbin "data/Sublevels/SublevelE6_Sprites.bin"
 Sublevel1B_Main:                    ; 081D6274
-.incbin "../data/Sublevels/Sublevel1B_Main.bin"
+.incbin "data/Sublevels/Sublevel1B_Main.bin"
 Sublevel52_Main:                    ; 081D65D9
-.incbin "../data/Sublevels/Sublevel52_Main.bin"
+.incbin "data/Sublevels/Sublevel52_Main.bin"
 Sublevel80_Main:                    ; 081D68B3
-.incbin "../data/Sublevels/Sublevel80_Main.bin"
+.incbin "data/Sublevels/Sublevel80_Main.bin"
 SublevelA8_Main:                    ; 081D6CAB
-.incbin "../data/Sublevels/SublevelA8_Main.bin"
+.incbin "data/Sublevels/SublevelA8_Main.bin"
 Sublevel1B_Sprites:                 ; 081D6E7C
-.incbin "../data/Sublevels/Sublevel1B_Sprites.bin"
+.incbin "data/Sublevels/Sublevel1B_Sprites.bin"
 Sublevel52_Sprites:                 ; 081D6F74
-.incbin "../data/Sublevels/Sublevel52_Sprites.bin"
+.incbin "data/Sublevels/Sublevel52_Sprites.bin"
 Sublevel80_Sprites:                 ; 081D6FCC
-.incbin "../data/Sublevels/Sublevel80_Sprites.bin"
+.incbin "data/Sublevels/Sublevel80_Sprites.bin"
 SublevelA8_Sprites:                 ; 081D70A8
-.incbin "../data/Sublevels/SublevelA8_Sprites.bin"
+.incbin "data/Sublevels/SublevelA8_Sprites.bin"
 Sublevel1C_Main:                    ; 081D70C4
-.incbin "../data/Sublevels/Sublevel1C_Main.bin"
+.incbin "data/Sublevels/Sublevel1C_Main.bin"
 Sublevel53_Main:                    ; 081D710A
-.incbin "../data/Sublevels/Sublevel53_Main.bin"
+.incbin "data/Sublevels/Sublevel53_Main.bin"
 Sublevel81_Main:                    ; 081D75CA
-.incbin "../data/Sublevels/Sublevel81_Main.bin"
+.incbin "data/Sublevels/Sublevel81_Main.bin"
 SublevelA9_Main:                    ; 081D79C6
-.incbin "../data/Sublevels/SublevelA9_Main.bin"
+.incbin "data/Sublevels/SublevelA9_Main.bin"
 Sublevel1C_Sprites:                 ; 081D7AF0
-.incbin "../data/Sublevels/Sublevel1C_Sprites.bin"
+.incbin "data/Sublevels/Sublevel1C_Sprites.bin"
 Sublevel53_Sprites:                 ; 081D7B08
-.incbin "../data/Sublevels/Sublevel53_Sprites.bin"
+.incbin "data/Sublevels/Sublevel53_Sprites.bin"
 Sublevel81_Sprites:                 ; 081D7C0C
-.incbin "../data/Sublevels/Sublevel81_Sprites.bin"
+.incbin "data/Sublevels/Sublevel81_Sprites.bin"
 SublevelA9_Sprites:                 ; 081D7CF8
-.incbin "../data/Sublevels/SublevelA9_Sprites.bin"
+.incbin "data/Sublevels/SublevelA9_Sprites.bin"
 Sublevel1D_Main:                    ; 081D7D10
-.incbin "../data/Sublevels/Sublevel1D_Main.bin"
+.incbin "data/Sublevels/Sublevel1D_Main.bin"
 Sublevel54_Main:                    ; 081D7FC4
-.incbin "../data/Sublevels/Sublevel54_Main.bin"
+.incbin "data/Sublevels/Sublevel54_Main.bin"
 Sublevel1D_Sprites:                 ; 081D8260
-.incbin "../data/Sublevels/Sublevel1D_Sprites.bin"
+.incbin "data/Sublevels/Sublevel1D_Sprites.bin"
 Sublevel54_Sprites:                 ; 081D8378
-.incbin "../data/Sublevels/Sublevel54_Sprites.bin"
+.incbin "data/Sublevels/Sublevel54_Sprites.bin"
 Sublevel1E_Main:                    ; 081D8474
-.incbin "../data/Sublevels/Sublevel1E_Main.bin"
+.incbin "data/Sublevels/Sublevel1E_Main.bin"
 Sublevel55_Main:                    ; 081D85FE
-.incbin "../data/Sublevels/Sublevel55_Main.bin"
+.incbin "data/Sublevels/Sublevel55_Main.bin"
 Sublevel82_Main:                    ; 081D8A45
-.incbin "../data/Sublevels/Sublevel82_Main.bin"
+.incbin "data/Sublevels/Sublevel82_Main.bin"
 SublevelAA_Main:                    ; 081D8AE0
-.incbin "../data/Sublevels/SublevelAA_Main.bin"
+.incbin "data/Sublevels/SublevelAA_Main.bin"
 SublevelC1_Main:                    ; 081D8EE7
-.incbin "../data/Sublevels/SublevelC1_Main.bin"
+.incbin "data/Sublevels/SublevelC1_Main.bin"
 Sublevel1E_Sprites:                 ; 081D8FD4
-.incbin "../data/Sublevels/Sublevel1E_Sprites.bin"
+.incbin "data/Sublevels/Sublevel1E_Sprites.bin"
 Sublevel55_Sprites:                 ; 081D9070
-.incbin "../data/Sublevels/Sublevel55_Sprites.bin"
+.incbin "data/Sublevels/Sublevel55_Sprites.bin"
 Sublevel82_Sprites:                 ; 081D91F8
-.incbin "../data/Sublevels/Sublevel82_Sprites.bin"
+.incbin "data/Sublevels/Sublevel82_Sprites.bin"
 SublevelAA_Sprites:                 ; 081D9204
-.incbin "../data/Sublevels/SublevelAA_Sprites.bin"
+.incbin "data/Sublevels/SublevelAA_Sprites.bin"
 SublevelC1_Sprites:                 ; 081D936C
-.incbin "../data/Sublevels/SublevelC1_Sprites.bin"
+.incbin "data/Sublevels/SublevelC1_Sprites.bin"
 Sublevel1F_Main:                    ; 081D93DC
-.incbin "../data/Sublevels/Sublevel1F_Main.bin"
+.incbin "data/Sublevels/Sublevel1F_Main.bin"
 Sublevel56_Main:                    ; 081D99B9
-.incbin "../data/Sublevels/Sublevel56_Main.bin"
+.incbin "data/Sublevels/Sublevel56_Main.bin"
 Sublevel83_Main:                    ; 081D9B45
-.incbin "../data/Sublevels/Sublevel83_Main.bin"
+.incbin "data/Sublevels/Sublevel83_Main.bin"
 Sublevel1F_Sprites:                 ; 081D9B98
-.incbin "../data/Sublevels/Sublevel1F_Sprites.bin"
+.incbin "data/Sublevels/Sublevel1F_Sprites.bin"
 Sublevel56_Sprites:                 ; 081D9CDC
-.incbin "../data/Sublevels/Sublevel56_Sprites.bin"
+.incbin "data/Sublevels/Sublevel56_Sprites.bin"
 Sublevel83_Sprites:                 ; 081D9D68
-.incbin "../data/Sublevels/Sublevel83_Sprites.bin"
+.incbin "data/Sublevels/Sublevel83_Sprites.bin"
 Sublevel20_Main:                    ; 081D9D88
-.incbin "../data/Sublevels/Sublevel20_Main.bin"
+.incbin "data/Sublevels/Sublevel20_Main.bin"
 Sublevel57_Main:                    ; 081DA16E
-.incbin "../data/Sublevels/Sublevel57_Main.bin"
+.incbin "data/Sublevels/Sublevel57_Main.bin"
 Sublevel84_Main:                    ; 081DA394
-.incbin "../data/Sublevels/Sublevel84_Main.bin"
+.incbin "data/Sublevels/Sublevel84_Main.bin"
 SublevelAB_Main:                    ; 081DA6A2
-.incbin "../data/Sublevels/SublevelAB_Main.bin"
+.incbin "data/Sublevels/SublevelAB_Main.bin"
 Sublevel20_Sprites:                 ; 081DA80C
-.incbin "../data/Sublevels/Sublevel20_Sprites.bin"
+.incbin "data/Sublevels/Sublevel20_Sprites.bin"
 Sublevel57_Sprites:                 ; 081DA8F8
-.incbin "../data/Sublevels/Sublevel57_Sprites.bin"
+.incbin "data/Sublevels/Sublevel57_Sprites.bin"
 Sublevel84_Sprites:                 ; 081DA998
-.incbin "../data/Sublevels/Sublevel84_Sprites.bin"
+.incbin "data/Sublevels/Sublevel84_Sprites.bin"
 SublevelAB_Sprites:                 ; 081DAA34
-.incbin "../data/Sublevels/SublevelAB_Sprites.bin"
+.incbin "data/Sublevels/SublevelAB_Sprites.bin"
 Sublevel21_Main:                    ; 081DAA58
-.incbin "../data/Sublevels/Sublevel21_Main.bin"
+.incbin "data/Sublevels/Sublevel21_Main.bin"
 Sublevel58_Main:                    ; 081DAF78
-.incbin "../data/Sublevels/Sublevel58_Main.bin"
+.incbin "data/Sublevels/Sublevel58_Main.bin"
 Sublevel85_Main:                    ; 081DB198
-.incbin "../data/Sublevels/Sublevel85_Main.bin"
+.incbin "data/Sublevels/Sublevel85_Main.bin"
 Sublevel21_Sprites:                 ; 081DB20C
-.incbin "../data/Sublevels/Sublevel21_Sprites.bin"
+.incbin "data/Sublevels/Sublevel21_Sprites.bin"
 Sublevel58_Sprites:                 ; 081DB2C8
-.incbin "../data/Sublevels/Sublevel58_Sprites.bin"
+.incbin "data/Sublevels/Sublevel58_Sprites.bin"
 Sublevel85_Sprites:                 ; 081DB338
-.incbin "../data/Sublevels/Sublevel85_Sprites.bin"
+.incbin "data/Sublevels/Sublevel85_Sprites.bin"
 Sublevel22_Main:                    ; 081DB388
-.incbin "../data/Sublevels/Sublevel22_Main.bin"
+.incbin "data/Sublevels/Sublevel22_Main.bin"
 Sublevel59_Main:                    ; 081DB90B
-.incbin "../data/Sublevels/Sublevel59_Main.bin"
+.incbin "data/Sublevels/Sublevel59_Main.bin"
 Sublevel86_Main:                    ; 081DBC69
-.incbin "../data/Sublevels/Sublevel86_Main.bin"
+.incbin "data/Sublevels/Sublevel86_Main.bin"
 SublevelAC_Main:                    ; 081DBDF9
-.incbin "../data/Sublevels/SublevelAC_Main.bin"
+.incbin "data/Sublevels/SublevelAC_Main.bin"
 Sublevel22_Sprites:                 ; 081DBE70
-.incbin "../data/Sublevels/Sublevel22_Sprites.bin"
+.incbin "data/Sublevels/Sublevel22_Sprites.bin"
 Sublevel59_Sprites:                 ; 081DBF50
-.incbin "../data/Sublevels/Sublevel59_Sprites.bin"
+.incbin "data/Sublevels/Sublevel59_Sprites.bin"
 Sublevel86_Sprites:                 ; 081DC030
-.incbin "../data/Sublevels/Sublevel86_Sprites.bin"
+.incbin "data/Sublevels/Sublevel86_Sprites.bin"
 SublevelAC_Sprites:                 ; 081DC040
-.incbin "../data/Sublevels/SublevelAC_Sprites.bin"
+.incbin "data/Sublevels/SublevelAC_Sprites.bin"
 Sublevel23_Main:                    ; 081DC050
-.incbin "../data/Sublevels/Sublevel23_Main.bin"
+.incbin "data/Sublevels/Sublevel23_Main.bin"
 Sublevel5A_Main:                    ; 081DC5E0
-.incbin "../data/Sublevels/Sublevel5A_Main.bin"
+.incbin "data/Sublevels/Sublevel5A_Main.bin"
 Sublevel23_Sprites:                 ; 081DC988
-.incbin "../data/Sublevels/Sublevel23_Sprites.bin"
+.incbin "data/Sublevels/Sublevel23_Sprites.bin"
 Sublevel5A_Sprites:                 ; 081DCA4C
-.incbin "../data/Sublevels/Sublevel5A_Sprites.bin"
+.incbin "data/Sublevels/Sublevel5A_Sprites.bin"
 SublevelE7_Main:                    ; 081DCB30
-.incbin "../data/Sublevels/SublevelE7_Main.bin"
+.incbin "data/Sublevels/SublevelE7_Main.bin"
 SublevelE8_Main:                    ; 081DCE28
-.incbin "../data/Sublevels/SublevelE8_Main.bin"
+.incbin "data/Sublevels/SublevelE8_Main.bin"
 SublevelE9_Main:                    ; 081DD352
-.incbin "../data/Sublevels/SublevelE9_Main.bin"
+.incbin "data/Sublevels/SublevelE9_Main.bin"
 SublevelEA_Main:                    ; 081DD4D9
-.incbin "../data/Sublevels/SublevelEA_Main.bin"
+.incbin "data/Sublevels/SublevelEA_Main.bin"
 SublevelE7_Sprites:                 ; 081DD690
-.incbin "../data/Sublevels/SublevelE7_Sprites.bin"
+.incbin "data/Sublevels/SublevelE7_Sprites.bin"
 SublevelE8_Sprites:                 ; 081DD788
-.incbin "../data/Sublevels/SublevelE8_Sprites.bin"
+.incbin "data/Sublevels/SublevelE8_Sprites.bin"
 SublevelE9_Sprites:                 ; 081DD88C
-.incbin "../data/Sublevels/SublevelE9_Sprites.bin"
+.incbin "data/Sublevels/SublevelE9_Sprites.bin"
 SublevelEA_Sprites:                 ; 081DD8F8
-.incbin "../data/Sublevels/SublevelEA_Sprites.bin"
+.incbin "data/Sublevels/SublevelEA_Sprites.bin"
 Sublevel24_Main:                    ; 081DD9A0
-.incbin "../data/Sublevels/Sublevel24_Main.bin"
+.incbin "data/Sublevels/Sublevel24_Main.bin"
 Sublevel5B_Main:                    ; 081DDE4D
-.incbin "../data/Sublevels/Sublevel5B_Main.bin"
+.incbin "data/Sublevels/Sublevel5B_Main.bin"
 Sublevel87_Main:                    ; 081DE1AA
-.incbin "../data/Sublevels/Sublevel87_Main.bin"
+.incbin "data/Sublevels/Sublevel87_Main.bin"
 SublevelAD_Main:                    ; 081DE3BB
-.incbin "../data/Sublevels/SublevelAD_Main.bin"
+.incbin "data/Sublevels/SublevelAD_Main.bin"
 SublevelC2_Main:                    ; 081DE3E3
-.incbin "../data/Sublevels/SublevelC2_Main.bin"
+.incbin "data/Sublevels/SublevelC2_Main.bin"
 Sublevel24_Sprites:                 ; 081DE474
-.incbin "../data/Sublevels/Sublevel24_Sprites.bin"
+.incbin "data/Sublevels/Sublevel24_Sprites.bin"
 Sublevel5B_Sprites:                 ; 081DE534
-.incbin "../data/Sublevels/Sublevel5B_Sprites.bin"
+.incbin "data/Sublevels/Sublevel5B_Sprites.bin"
 Sublevel87_Sprites:                 ; 081DE5FC
-.incbin "../data/Sublevels/Sublevel87_Sprites.bin"
+.incbin "data/Sublevels/Sublevel87_Sprites.bin"
 SublevelAD_Sprites:                 ; 081DE6A8
-.incbin "../data/Sublevels/SublevelAD_Sprites.bin"
+.incbin "data/Sublevels/SublevelAD_Sprites.bin"
 SublevelC2_Sprites:                 ; 081DE6BC
-.incbin "../data/Sublevels/SublevelC2_Sprites.bin"
+.incbin "data/Sublevels/SublevelC2_Sprites.bin"
 Sublevel25_Main:                    ; 081DE6DC
-.incbin "../data/Sublevels/Sublevel25_Main.bin"
+.incbin "data/Sublevels/Sublevel25_Main.bin"
 Sublevel5C_Main:                    ; 081DE85C
-.incbin "../data/Sublevels/Sublevel5C_Main.bin"
+.incbin "data/Sublevels/Sublevel5C_Main.bin"
 Sublevel88_Main:                    ; 081DE9D8
-.incbin "../data/Sublevels/Sublevel88_Main.bin"
+.incbin "data/Sublevels/Sublevel88_Main.bin"
 SublevelAE_Main:                    ; 081DECC8
-.incbin "../data/Sublevels/SublevelAE_Main.bin"
+.incbin "data/Sublevels/SublevelAE_Main.bin"
 Sublevel25_Sprites:                 ; 081DEE14
-.incbin "../data/Sublevels/Sublevel25_Sprites.bin"
+.incbin "data/Sublevels/Sublevel25_Sprites.bin"
 Sublevel5C_Sprites:                 ; 081DEE50
-.incbin "../data/Sublevels/Sublevel5C_Sprites.bin"
+.incbin "data/Sublevels/Sublevel5C_Sprites.bin"
 Sublevel88_Sprites:                 ; 081DEEC8
-.incbin "../data/Sublevels/Sublevel88_Sprites.bin"
+.incbin "data/Sublevels/Sublevel88_Sprites.bin"
 SublevelAE_Sprites:                 ; 081DEF74
-.incbin "../data/Sublevels/SublevelAE_Sprites.bin"
+.incbin "data/Sublevels/SublevelAE_Sprites.bin"
 Sublevel26_Main:                    ; 081DEF94
-.incbin "../data/Sublevels/Sublevel26_Main.bin"
+.incbin "data/Sublevels/Sublevel26_Main.bin"
 Sublevel5D_Main:                    ; 081DF18D
-.incbin "../data/Sublevels/Sublevel5D_Main.bin"
+.incbin "data/Sublevels/Sublevel5D_Main.bin"
 Sublevel89_Main:                    ; 081DF44C
-.incbin "../data/Sublevels/Sublevel89_Main.bin"
+.incbin "data/Sublevels/Sublevel89_Main.bin"
 SublevelAF_Main:                    ; 081DF6AA
-.incbin "../data/Sublevels/SublevelAF_Main.bin"
+.incbin "data/Sublevels/SublevelAF_Main.bin"
 SublevelC3_Main:                    ; 081DF9AD
-.incbin "../data/Sublevels/SublevelC3_Main.bin"
+.incbin "data/Sublevels/SublevelC3_Main.bin"
 SublevelCA_Main:                    ; 081DFB24
-.incbin "../data/Sublevels/SublevelCA_Main.bin"
+.incbin "data/Sublevels/SublevelCA_Main.bin"
 SublevelD1_Main:                    ; 081DFD4C
-.incbin "../data/Sublevels/SublevelD1_Main.bin"
+.incbin "data/Sublevels/SublevelD1_Main.bin"
 Sublevel26_Sprites:                 ; 081DFD74
-.incbin "../data/Sublevels/Sublevel26_Sprites.bin"
+.incbin "data/Sublevels/Sublevel26_Sprites.bin"
 Sublevel5D_Sprites:                 ; 081DFDFC
-.incbin "../data/Sublevels/Sublevel5D_Sprites.bin"
+.incbin "data/Sublevels/Sublevel5D_Sprites.bin"
 Sublevel89_Sprites:                 ; 081DFED0
-.incbin "../data/Sublevels/Sublevel89_Sprites.bin"
+.incbin "data/Sublevels/Sublevel89_Sprites.bin"
 SublevelAF_Sprites:                 ; 081DFF8C
-.incbin "../data/Sublevels/SublevelAF_Sprites.bin"
+.incbin "data/Sublevels/SublevelAF_Sprites.bin"
 SublevelC3_Sprites:                 ; 081DFFD8
-.incbin "../data/Sublevels/SublevelC3_Sprites.bin"
+.incbin "data/Sublevels/SublevelC3_Sprites.bin"
 SublevelCA_Sprites:                 ; 081E0004
-.incbin "../data/Sublevels/SublevelCA_Sprites.bin"
+.incbin "data/Sublevels/SublevelCA_Sprites.bin"
 SublevelD1_Sprites:                 ; 081E0050
-.incbin "../data/Sublevels/SublevelD1_Sprites.bin"
+.incbin "data/Sublevels/SublevelD1_Sprites.bin"
 Sublevel27_Main:                    ; 081E0058
-.incbin "../data/Sublevels/Sublevel27_Main.bin"
+.incbin "data/Sublevels/Sublevel27_Main.bin"
 Sublevel5E_Main:                    ; 081E0670
-.incbin "../data/Sublevels/Sublevel5E_Main.bin"
+.incbin "data/Sublevels/Sublevel5E_Main.bin"
 Sublevel8A_Main:                    ; 081E0A86
-.incbin "../data/Sublevels/Sublevel8A_Main.bin"
+.incbin "data/Sublevels/Sublevel8A_Main.bin"
 SublevelB0_Main:                    ; 081E0B3E
-.incbin "../data/Sublevels/SublevelB0_Main.bin"
+.incbin "data/Sublevels/SublevelB0_Main.bin"
 Sublevel27_Sprites:                 ; 081E0BB8
-.incbin "../data/Sublevels/Sublevel27_Sprites.bin"
+.incbin "data/Sublevels/Sublevel27_Sprites.bin"
 Sublevel5E_Sprites:                 ; 081E0D04
-.incbin "../data/Sublevels/Sublevel5E_Sprites.bin"
+.incbin "data/Sublevels/Sublevel5E_Sprites.bin"
 Sublevel8A_Sprites:                 ; 081E0E00
-.incbin "../data/Sublevels/Sublevel8A_Sprites.bin"
+.incbin "data/Sublevels/Sublevel8A_Sprites.bin"
 SublevelB0_Sprites:                 ; 081E0E10
-.incbin "../data/Sublevels/SublevelB0_Sprites.bin"
+.incbin "data/Sublevels/SublevelB0_Sprites.bin"
 Sublevel28_Main:                    ; 081E0E78
-.incbin "../data/Sublevels/Sublevel28_Main.bin"
+.incbin "data/Sublevels/Sublevel28_Main.bin"
 Sublevel5F_Main:                    ; 081E142B
-.incbin "../data/Sublevels/Sublevel5F_Main.bin"
+.incbin "data/Sublevels/Sublevel5F_Main.bin"
 Sublevel8B_Main:                    ; 081E1950
-.incbin "../data/Sublevels/Sublevel8B_Main.bin"
+.incbin "data/Sublevels/Sublevel8B_Main.bin"
 SublevelB1_Main:                    ; 081E1D9A
-.incbin "../data/Sublevels/SublevelB1_Main.bin"
+.incbin "data/Sublevels/SublevelB1_Main.bin"
 Sublevel28_Sprites:                 ; 081E1DCC
-.incbin "../data/Sublevels/Sublevel28_Sprites.bin"
+.incbin "data/Sublevels/Sublevel28_Sprites.bin"
 Sublevel5F_Sprites:                 ; 081E1E84
-.incbin "../data/Sublevels/Sublevel5F_Sprites.bin"
+.incbin "data/Sublevels/Sublevel5F_Sprites.bin"
 Sublevel8B_Sprites:                 ; 081E1FB0
-.incbin "../data/Sublevels/Sublevel8B_Sprites.bin"
+.incbin "data/Sublevels/Sublevel8B_Sprites.bin"
 SublevelB1_Sprites:                 ; 081E20A8
-.incbin "../data/Sublevels/SublevelB1_Sprites.bin"
+.incbin "data/Sublevels/SublevelB1_Sprites.bin"
 Sublevel29_Main:                    ; 081E20C8
-.incbin "../data/Sublevels/Sublevel29_Main.bin"
+.incbin "data/Sublevels/Sublevel29_Main.bin"
 Sublevel60_Main:                    ; 081E2269
-.incbin "../data/Sublevels/Sublevel60_Main.bin"
+.incbin "data/Sublevels/Sublevel60_Main.bin"
 Sublevel8C_Main:                    ; 081E2461
-.incbin "../data/Sublevels/Sublevel8C_Main.bin"
+.incbin "data/Sublevels/Sublevel8C_Main.bin"
 Sublevel29_Sprites:                 ; 081E24BC
-.incbin "../data/Sublevels/Sublevel29_Sprites.bin"
+.incbin "data/Sublevels/Sublevel29_Sprites.bin"
 Sublevel60_Sprites:                 ; 081E25AC
-.incbin "../data/Sublevels/Sublevel60_Sprites.bin"
+.incbin "data/Sublevels/Sublevel60_Sprites.bin"
 Sublevel8C_Sprites:                 ; 081E2680
-.incbin "../data/Sublevels/Sublevel8C_Sprites.bin"
+.incbin "data/Sublevels/Sublevel8C_Sprites.bin"
 Sublevel2A_Main:                    ; 081E2690
-.incbin "../data/Sublevels/Sublevel2A_Main.bin"
+.incbin "data/Sublevels/Sublevel2A_Main.bin"
 Sublevel61_Main:                    ; 081E2BD3
-.incbin "../data/Sublevels/Sublevel61_Main.bin"
+.incbin "data/Sublevels/Sublevel61_Main.bin"
 Sublevel8D_Main:                    ; 081E2C69
-.incbin "../data/Sublevels/Sublevel8D_Main.bin"
+.incbin "data/Sublevels/Sublevel8D_Main.bin"
 SublevelB2_Main:                    ; 081E2E8F
-.incbin "../data/Sublevels/SublevelB2_Main.bin"
+.incbin "data/Sublevels/SublevelB2_Main.bin"
 Sublevel2A_Sprites:                 ; 081E2F48
-.incbin "../data/Sublevels/Sublevel2A_Sprites.bin"
+.incbin "data/Sublevels/Sublevel2A_Sprites.bin"
 Sublevel61_Sprites:                 ; 081E30A0
-.incbin "../data/Sublevels/Sublevel61_Sprites.bin"
+.incbin "data/Sublevels/Sublevel61_Sprites.bin"
 Sublevel8D_Sprites:                 ; 081E30B0
-.incbin "../data/Sublevels/Sublevel8D_Sprites.bin"
+.incbin "data/Sublevels/Sublevel8D_Sprites.bin"
 SublevelB2_Sprites:                 ; 081E3114
-.incbin "../data/Sublevels/SublevelB2_Sprites.bin"
+.incbin "data/Sublevels/SublevelB2_Sprites.bin"
 Sublevel2B_Main:                    ; 081E313C
-.incbin "../data/Sublevels/Sublevel2B_Main.bin"
+.incbin "data/Sublevels/Sublevel2B_Main.bin"
 Sublevel62_Main:                    ; 081E327C
-.incbin "../data/Sublevels/Sublevel62_Main.bin"
+.incbin "data/Sublevels/Sublevel62_Main.bin"
 Sublevel8E_Main:                    ; 081E3951
-.incbin "../data/Sublevels/Sublevel8E_Main.bin"
+.incbin "data/Sublevels/Sublevel8E_Main.bin"
 SublevelB3_Main:                    ; 081E3A3E
-.incbin "../data/Sublevels/SublevelB3_Main.bin"
+.incbin "data/Sublevels/SublevelB3_Main.bin"
 SublevelC4_Main:                    ; 081E3DDF
-.incbin "../data/Sublevels/SublevelC4_Main.bin"
+.incbin "data/Sublevels/SublevelC4_Main.bin"
 SublevelCB_Main:                    ; 081E3E49
-.incbin "../data/Sublevels/SublevelCB_Main.bin"
+.incbin "data/Sublevels/SublevelCB_Main.bin"
 SublevelD2_Main:                    ; 081E3E73
-.incbin "../data/Sublevels/SublevelD2_Main.bin"
+.incbin "data/Sublevels/SublevelD2_Main.bin"
 Sublevel2B_Sprites:                 ; 081E4148
-.incbin "../data/Sublevels/Sublevel2B_Sprites.bin"
+.incbin "data/Sublevels/Sublevel2B_Sprites.bin"
 Sublevel62_Sprites:                 ; 081E4198
-.incbin "../data/Sublevels/Sublevel62_Sprites.bin"
+.incbin "data/Sublevels/Sublevel62_Sprites.bin"
 Sublevel8E_Sprites:                 ; 081E426C
-.incbin "../data/Sublevels/Sublevel8E_Sprites.bin"
+.incbin "data/Sublevels/Sublevel8E_Sprites.bin"
 SublevelB3_Sprites:                 ; 081E4290
-.incbin "../data/Sublevels/SublevelB3_Sprites.bin"
+.incbin "data/Sublevels/SublevelB3_Sprites.bin"
 SublevelC4_Sprites:                 ; 081E4330
-.incbin "../data/Sublevels/SublevelC4_Sprites.bin"
+.incbin "data/Sublevels/SublevelC4_Sprites.bin"
 SublevelCB_Sprites:                 ; 081E433C
 .d32 0xFFFFFFFF
 SublevelD2_Sprites:                 ; 081E4340
-.incbin "../data/Sublevels/SublevelD2_Sprites.bin"
+.incbin "data/Sublevels/SublevelD2_Sprites.bin"
 Sublevel2C_Main:                    ; 081E43CC
-.incbin "../data/Sublevels/Sublevel2C_Main.bin"
+.incbin "data/Sublevels/Sublevel2C_Main.bin"
 Sublevel63_Main:                    ; 081E4557
-.incbin "../data/Sublevels/Sublevel63_Main.bin"
+.incbin "data/Sublevels/Sublevel63_Main.bin"
 Sublevel8F_Main:                    ; 081E478F
-.incbin "../data/Sublevels/Sublevel8F_Main.bin"
+.incbin "data/Sublevels/Sublevel8F_Main.bin"
 SublevelB4_Main:                    ; 081E4887
-.incbin "../data/Sublevels/SublevelB4_Main.bin"
+.incbin "data/Sublevels/SublevelB4_Main.bin"
 Sublevel2C_Sprites:                 ; 081E4B4C
-.incbin "../data/Sublevels/Sublevel2C_Sprites.bin"
+.incbin "data/Sublevels/Sublevel2C_Sprites.bin"
 Sublevel63_Sprites:                 ; 081E4BE0
-.incbin "../data/Sublevels/Sublevel63_Sprites.bin"
+.incbin "data/Sublevels/Sublevel63_Sprites.bin"
 Sublevel8F_Sprites:                 ; 081E4C10
-.incbin "../data/Sublevels/Sublevel8F_Sprites.bin"
+.incbin "data/Sublevels/Sublevel8F_Sprites.bin"
 SublevelB4_Sprites:                 ; 081E4C18
-.incbin "../data/Sublevels/SublevelB4_Sprites.bin"
+.incbin "data/Sublevels/SublevelB4_Sprites.bin"
 SublevelEB_Main:                    ; 081E4CD0
-.incbin "../data/Sublevels/SublevelEB_Main.bin"
+.incbin "data/Sublevels/SublevelEB_Main.bin"
 SublevelEC_Main:                    ; 081E507A
-.incbin "../data/Sublevels/SublevelEC_Main.bin"
+.incbin "data/Sublevels/SublevelEC_Main.bin"
 SublevelED_Main:                    ; 081E55BD
-.incbin "../data/Sublevels/SublevelED_Main.bin"
+.incbin "data/Sublevels/SublevelED_Main.bin"
 SublevelEB_Sprites:                 ; 081E5A68
-.incbin "../data/Sublevels/SublevelEB_Sprites.bin"
+.incbin "data/Sublevels/SublevelEB_Sprites.bin"
 SublevelEC_Sprites:                 ; 081E5B64
-.incbin "../data/Sublevels/SublevelEC_Sprites.bin"
+.incbin "data/Sublevels/SublevelEC_Sprites.bin"
 SublevelED_Sprites:                 ; 081E5C18
-.incbin "../data/Sublevels/SublevelED_Sprites.bin"
+.incbin "data/Sublevels/SublevelED_Sprites.bin"
 Sublevel2D_Main:                    ; 081E5D14
-.incbin "../data/Sublevels/Sublevel2D_Main.bin"
+.incbin "data/Sublevels/Sublevel2D_Main.bin"
 Sublevel64_Main:                    ; 081E5F05
-.incbin "../data/Sublevels/Sublevel64_Main.bin"
+.incbin "data/Sublevels/Sublevel64_Main.bin"
 Sublevel90_Main:                    ; 081E618E
-.incbin "../data/Sublevels/Sublevel90_Main.bin"
+.incbin "data/Sublevels/Sublevel90_Main.bin"
 SublevelB5_Main:                    ; 081E650A
-.incbin "../data/Sublevels/SublevelB5_Main.bin"
+.incbin "data/Sublevels/SublevelB5_Main.bin"
 Sublevel2D_Sprites:                 ; 081E66A8
-.incbin "../data/Sublevels/Sublevel2D_Sprites.bin"
+.incbin "data/Sublevels/Sublevel2D_Sprites.bin"
 Sublevel64_Sprites:                 ; 081E678C
-.incbin "../data/Sublevels/Sublevel64_Sprites.bin"
+.incbin "data/Sublevels/Sublevel64_Sprites.bin"
 Sublevel90_Sprites:                 ; 081E6834
-.incbin "../data/Sublevels/Sublevel90_Sprites.bin"
+.incbin "data/Sublevels/Sublevel90_Sprites.bin"
 SublevelB5_Sprites:                 ; 081E68D8
-.incbin "../data/Sublevels/SublevelB5_Sprites.bin"
+.incbin "data/Sublevels/SublevelB5_Sprites.bin"
 Sublevel2E_Main:                    ; 081E6970
-.incbin "../data/Sublevels/Sublevel2E_Main.bin"
+.incbin "data/Sublevels/Sublevel2E_Main.bin"
 Sublevel65_Main:                    ; 081E6BBE
-.incbin "../data/Sublevels/Sublevel65_Main.bin"
+.incbin "data/Sublevels/Sublevel65_Main.bin"
 Sublevel91_Main:                    ; 081E6F5C
-.incbin "../data/Sublevels/Sublevel91_Main.bin"
+.incbin "data/Sublevels/Sublevel91_Main.bin"
 Sublevel2E_Sprites:                 ; 081E70F8
-.incbin "../data/Sublevels/Sublevel2E_Sprites.bin"
+.incbin "data/Sublevels/Sublevel2E_Sprites.bin"
 Sublevel65_Sprites:                 ; 081E719C
-.incbin "../data/Sublevels/Sublevel65_Sprites.bin"
+.incbin "data/Sublevels/Sublevel65_Sprites.bin"
 Sublevel91_Sprites:                 ; 081E7270
-.incbin "../data/Sublevels/Sublevel91_Sprites.bin"
+.incbin "data/Sublevels/Sublevel91_Sprites.bin"
 Sublevel2F_Main:                    ; 081E72F0
-.incbin "../data/Sublevels/Sublevel2F_Main.bin"
+.incbin "data/Sublevels/Sublevel2F_Main.bin"
 Sublevel66_Main:                    ; 081E753F
-.incbin "../data/Sublevels/Sublevel66_Main.bin"
+.incbin "data/Sublevels/Sublevel66_Main.bin"
 Sublevel92_Main:                    ; 081E770C
-.incbin "../data/Sublevels/Sublevel92_Main.bin"
+.incbin "data/Sublevels/Sublevel92_Main.bin"
 Sublevel2F_Sprites:                 ; 081E78D8
-.incbin "../data/Sublevels/Sublevel2F_Sprites.bin"
+.incbin "data/Sublevels/Sublevel2F_Sprites.bin"
 Sublevel66_Sprites:                 ; 081E7980
-.incbin "../data/Sublevels/Sublevel66_Sprites.bin"
+.incbin "data/Sublevels/Sublevel66_Sprites.bin"
 Sublevel92_Sprites:                 ; 081E7A18
-.incbin "../data/Sublevels/Sublevel92_Sprites.bin"
+.incbin "data/Sublevels/Sublevel92_Sprites.bin"
 Sublevel30_Main:                    ; 081E7AA0
-.incbin "../data/Sublevels/Sublevel30_Main.bin"
+.incbin "data/Sublevels/Sublevel30_Main.bin"
 Sublevel67_Main:                    ; 081E7C19
-.incbin "../data/Sublevels/Sublevel67_Main.bin"
+.incbin "data/Sublevels/Sublevel67_Main.bin"
 Sublevel93_Main:                    ; 081E7E33
-.incbin "../data/Sublevels/Sublevel93_Main.bin"
+.incbin "data/Sublevels/Sublevel93_Main.bin"
 SublevelB6_Main:                    ; 081E7F39
-.incbin "../data/Sublevels/SublevelB6_Main.bin"
+.incbin "data/Sublevels/SublevelB6_Main.bin"
 SublevelC5_Main:                    ; 081E80FD
-.incbin "../data/Sublevels/SublevelC5_Main.bin"
+.incbin "data/Sublevels/SublevelC5_Main.bin"
 SublevelCC_Main:                    ; 081E819A
-.incbin "../data/Sublevels/SublevelCC_Main.bin"
+.incbin "data/Sublevels/SublevelCC_Main.bin"
 Sublevel30_Sprites:                 ; 081E8290
-.incbin "../data/Sublevels/Sublevel30_Sprites.bin"
+.incbin "data/Sublevels/Sublevel30_Sprites.bin"
 Sublevel67_Sprites:                 ; 081E8360
-.incbin "../data/Sublevels/Sublevel67_Sprites.bin"
+.incbin "data/Sublevels/Sublevel67_Sprites.bin"
 Sublevel93_Sprites:                 ; 081E8378
-.incbin "../data/Sublevels/Sublevel93_Sprites.bin"
+.incbin "data/Sublevels/Sublevel93_Sprites.bin"
 SublevelB6_Sprites:                 ; 081E84C8
-.incbin "../data/Sublevels/SublevelB6_Sprites.bin"
+.incbin "data/Sublevels/SublevelB6_Sprites.bin"
 SublevelC5_Sprites:                 ; 081E85A4
-.incbin "../data/Sublevels/SublevelC5_Sprites.bin"
+.incbin "data/Sublevels/SublevelC5_Sprites.bin"
 SublevelCC_Sprites:                 ; 081E8620
-.incbin "../data/Sublevels/SublevelCC_Sprites.bin"
+.incbin "data/Sublevels/SublevelCC_Sprites.bin"
 Sublevel31_Main:                    ; 081E863C
-.incbin "../data/Sublevels/Sublevel31_Main.bin"
+.incbin "data/Sublevels/Sublevel31_Main.bin"
 Sublevel68_Main:                    ; 081E8E8A
-.incbin "../data/Sublevels/Sublevel68_Main.bin"
+.incbin "data/Sublevels/Sublevel68_Main.bin"
 Sublevel94_Main:                    ; 081E91A7
-.incbin "../data/Sublevels/Sublevel94_Main.bin"
+.incbin "data/Sublevels/Sublevel94_Main.bin"
 Sublevel31_Sprites:                 ; 081E9430
-.incbin "../data/Sublevels/Sublevel31_Sprites.bin"
+.incbin "data/Sublevels/Sublevel31_Sprites.bin"
 Sublevel68_Sprites:                 ; 081E94E0
-.incbin "../data/Sublevels/Sublevel68_Sprites.bin"
+.incbin "data/Sublevels/Sublevel68_Sprites.bin"
 Sublevel94_Sprites:                 ; 081E954C
-.incbin "../data/Sublevels/Sublevel94_Sprites.bin"
+.incbin "data/Sublevels/Sublevel94_Sprites.bin"
 Sublevel32_Main:                    ; 081E95BC
-.incbin "../data/Sublevels/Sublevel32_Main.bin"
+.incbin "data/Sublevels/Sublevel32_Main.bin"
 Sublevel69_Main:                    ; 081E9C4F
-.incbin "../data/Sublevels/Sublevel69_Main.bin"
+.incbin "data/Sublevels/Sublevel69_Main.bin"
 Sublevel95_Main:                    ; 081EA134
-.incbin "../data/Sublevels/Sublevel95_Main.bin"
+.incbin "data/Sublevels/Sublevel95_Main.bin"
 Sublevel32_Sprites:                 ; 081EA4D8
-.incbin "../data/Sublevels/Sublevel32_Sprites.bin"
+.incbin "data/Sublevels/Sublevel32_Sprites.bin"
 Sublevel69_Sprites:                 ; 081EA638
-.incbin "../data/Sublevels/Sublevel69_Sprites.bin"
+.incbin "data/Sublevels/Sublevel69_Sprites.bin"
 Sublevel95_Sprites:                 ; 081EA728
-.incbin "../data/Sublevels/Sublevel95_Sprites.bin"
+.incbin "data/Sublevels/Sublevel95_Sprites.bin"
 Sublevel33_Main:                    ; 081EA7C0
-.incbin "../data/Sublevels/Sublevel33_Main.bin"
+.incbin "data/Sublevels/Sublevel33_Main.bin"
 Sublevel6A_Main:                    ; 081EAAAC
-.incbin "../data/Sublevels/Sublevel6A_Main.bin"
+.incbin "data/Sublevels/Sublevel6A_Main.bin"
 Sublevel96_Main:                    ; 081EB097
-.incbin "../data/Sublevels/Sublevel96_Main.bin"
+.incbin "data/Sublevels/Sublevel96_Main.bin"
 SublevelB7_Main:                    ; 081EB282
-.incbin "../data/Sublevels/SublevelB7_Main.bin"
+.incbin "data/Sublevels/SublevelB7_Main.bin"
 Sublevel33_Sprites:                 ; 081EB380
-.incbin "../data/Sublevels/Sublevel33_Sprites.bin"
+.incbin "data/Sublevels/Sublevel33_Sprites.bin"
 Sublevel6A_Sprites:                 ; 081EB3F4
-.incbin "../data/Sublevels/Sublevel6A_Sprites.bin"
+.incbin "data/Sublevels/Sublevel6A_Sprites.bin"
 Sublevel96_Sprites:                 ; 081EB50C
-.incbin "../data/Sublevels/Sublevel96_Sprites.bin"
+.incbin "data/Sublevels/Sublevel96_Sprites.bin"
 SublevelB7_Sprites:                 ; 081EB5DC
-.incbin "../data/Sublevels/SublevelB7_Sprites.bin"
+.incbin "data/Sublevels/SublevelB7_Sprites.bin"
 Sublevel34_Main:                    ; 081EB630
-.incbin "../data/Sublevels/Sublevel34_Main.bin"
+.incbin "data/Sublevels/Sublevel34_Main.bin"
 Sublevel6B_Main:                    ; 081EB6CA
-.incbin "../data/Sublevels/Sublevel6B_Main.bin"
+.incbin "data/Sublevels/Sublevel6B_Main.bin"
 Sublevel97_Main:                    ; 081EB791
-.incbin "../data/Sublevels/Sublevel97_Main.bin"
+.incbin "data/Sublevels/Sublevel97_Main.bin"
 SublevelB8_Main:                    ; 081EB850
-.incbin "../data/Sublevels/SublevelB8_Main.bin"
+.incbin "data/Sublevels/SublevelB8_Main.bin"
 SublevelC6_Main:                    ; 081EB9FD
-.incbin "../data/Sublevels/SublevelC6_Main.bin"
+.incbin "data/Sublevels/SublevelC6_Main.bin"
 SublevelD8_Main:                    ; 081EBBBD
-.incbin "../data/Sublevels/SublevelD8_Main.bin"
+.incbin "data/Sublevels/SublevelD8_Main.bin"
 SublevelD9_Main:                    ; 081EBCFF
-.incbin "../data/Sublevels/SublevelD9_Main.bin"
+.incbin "data/Sublevels/SublevelD9_Main.bin"
 SublevelCD_Main:                    ; 081EBD4F
-.incbin "../data/Sublevels/SublevelCD_Main.bin"
+.incbin "data/Sublevels/SublevelCD_Main.bin"
 SublevelD3_Main:                    ; 081EBE14
-.incbin "../data/Sublevels/SublevelD3_Main.bin"
+.incbin "data/Sublevels/SublevelD3_Main.bin"
 SublevelD6_Main:                    ; 081EBF01
-.incbin "../data/Sublevels/SublevelD6_Main.bin"
+.incbin "data/Sublevels/SublevelD6_Main.bin"
 SublevelDC_Main:                    ; 081EC0F3
-.incbin "../data/Sublevels/SublevelDC_Main.bin"
+.incbin "data/Sublevels/SublevelDC_Main.bin"
 SublevelDD_Main:                    ; 081EC211
-.incbin "../data/Sublevels/SublevelDD_Main.bin"
+.incbin "data/Sublevels/SublevelDD_Main.bin"
 SublevelDA_Main:                    ; 081EC23E
-.incbin "../data/Sublevels/SublevelDA_Main.bin"
+.incbin "data/Sublevels/SublevelDA_Main.bin"
 SublevelDB_Main:                    ; 081EC24B
-.incbin "../data/Sublevels/SublevelDB_Main.bin"
+.incbin "data/Sublevels/SublevelDB_Main.bin"
 Data081EC259:                       ; 081EC259
 .d8 0x6E, 0x00, 0xD0, 0x0F, 0x02, 0x57, 0x00, 0xA0
 .d8 0x04, 0x57, 0x00, 0x7B, 0x03, 0x57, 0x00, 0x60
@@ -923,81 +923,81 @@ Data081EC259:                       ; 081EC259
 .d8 0x00, 0x00, 0xFF, 0xFF
 .align 4
 Sublevel34_Sprites:                 ; 081EC2B8
-.incbin "../data/Sublevels/Sublevel34_Sprites.bin"
+.incbin "data/Sublevels/Sublevel34_Sprites.bin"
 Sublevel6B_Sprites:                 ; 081EC324
-.incbin "../data/Sublevels/Sublevel6B_Sprites.bin"
+.incbin "data/Sublevels/Sublevel6B_Sprites.bin"
 Sublevel97_Sprites:                 ; 081EC354
-.incbin "../data/Sublevels/Sublevel97_Sprites.bin"
+.incbin "data/Sublevels/Sublevel97_Sprites.bin"
 SublevelB8_Sprites:                 ; 081EC364
-.incbin "../data/Sublevels/SublevelB8_Sprites.bin"
+.incbin "data/Sublevels/SublevelB8_Sprites.bin"
 SublevelC6_Sprites:                 ; 081EC3CC
-.incbin "../data/Sublevels/SublevelC6_Sprites.bin"
+.incbin "data/Sublevels/SublevelC6_Sprites.bin"
 SublevelD8_Sprites:                 ; 081EC43C
-.incbin "../data/Sublevels/SublevelD8_Sprites.bin"
+.incbin "data/Sublevels/SublevelD8_Sprites.bin"
 SublevelD9_Sprites:                 ; 081EC498
-.incbin "../data/Sublevels/SublevelD9_Sprites.bin"
+.incbin "data/Sublevels/SublevelD9_Sprites.bin"
 SublevelCD_Sprites:                 ; 081EC4A8
-.incbin "../data/Sublevels/SublevelCD_Sprites.bin"
+.incbin "data/Sublevels/SublevelCD_Sprites.bin"
 SublevelD3_Sprites:                 ; 081EC4EC
-.incbin "../data/Sublevels/SublevelD3_Sprites.bin"
+.incbin "data/Sublevels/SublevelD3_Sprites.bin"
 SublevelD6_Sprites:                 ; 081EC514
-.incbin "../data/Sublevels/SublevelD6_Sprites.bin"
+.incbin "data/Sublevels/SublevelD6_Sprites.bin"
 SublevelDC_Sprites:                 ; 081EC538
-.incbin "../data/Sublevels/SublevelDC_Sprites.bin"
+.incbin "data/Sublevels/SublevelDC_Sprites.bin"
 SublevelDD_Sprites:                 ; 081EC5A8
-.incbin "../data/Sublevels/SublevelDD_Sprites.bin"
+.incbin "data/Sublevels/SublevelDD_Sprites.bin"
 SublevelDA_Sprites:                 ; 081EC5B0
 .d32 0xFFFFFFFF
 SublevelDB_Sprites:                 ; 081EC5B4
 .d32 0xFFFFFFFF
 Sublevel35_Main:                    ; 081EC5B8
-.incbin "../data/Sublevels/Sublevel35_Main.bin"
+.incbin "data/Sublevels/Sublevel35_Main.bin"
 Sublevel6C_Main:                    ; 081EC971
-.incbin "../data/Sublevels/Sublevel6C_Main.bin"
+.incbin "data/Sublevels/Sublevel6C_Main.bin"
 Sublevel98_Main:                    ; 081ECB51
-.incbin "../data/Sublevels/Sublevel98_Main.bin"
+.incbin "data/Sublevels/Sublevel98_Main.bin"
 SublevelB9_Main:                    ; 081ECCDB
-.incbin "../data/Sublevels/SublevelB9_Main.bin"
+.incbin "data/Sublevels/SublevelB9_Main.bin"
 Sublevel35_Sprites:                 ; 081ECDE8
-.incbin "../data/Sublevels/Sublevel35_Sprites.bin"
+.incbin "data/Sublevels/Sublevel35_Sprites.bin"
 Sublevel6C_Sprites:                 ; 081ECE90
-.incbin "../data/Sublevels/Sublevel6C_Sprites.bin"
+.incbin "data/Sublevels/Sublevel6C_Sprites.bin"
 Sublevel98_Sprites:                 ; 081ECF14
-.incbin "../data/Sublevels/Sublevel98_Sprites.bin"
+.incbin "data/Sublevels/Sublevel98_Sprites.bin"
 SublevelB9_Sprites:                 ; 081ED03C
-.incbin "../data/Sublevels/SublevelB9_Sprites.bin"
+.incbin "data/Sublevels/SublevelB9_Sprites.bin"
 SublevelEE_Main:                    ; 081ED058
-.incbin "../data/Sublevels/SublevelEE_Main.bin"
+.incbin "data/Sublevels/SublevelEE_Main.bin"
 SublevelEF_Main:                    ; 081ED145
-.incbin "../data/Sublevels/SublevelEF_Main.bin"
+.incbin "data/Sublevels/SublevelEF_Main.bin"
 SublevelF0_Main:                    ; 081ED77D
-.incbin "../data/Sublevels/SublevelF0_Main.bin"
+.incbin "data/Sublevels/SublevelF0_Main.bin"
 SublevelF1_Main:                    ; 081EDBE7
-.incbin "../data/Sublevels/SublevelF1_Main.bin"
+.incbin "data/Sublevels/SublevelF1_Main.bin"
 SublevelF2_Main:                    ; 081EE1D7
-.incbin "../data/Sublevels/SublevelF2_Main.bin"
+.incbin "data/Sublevels/SublevelF2_Main.bin"
 SublevelF5_Main:                    ; 081EE595
-.incbin "../data/Sublevels/SublevelF5_Main.bin"
+.incbin "data/Sublevels/SublevelF5_Main.bin"
 SublevelEE_Sprites:                 ; 081EE7D4
-.incbin "../data/Sublevels/SublevelEE_Sprites.bin"
+.incbin "data/Sublevels/SublevelEE_Sprites.bin"
 SublevelEF_Sprites:                 ; 081EE864
-.incbin "../data/Sublevels/SublevelEF_Sprites.bin"
+.incbin "data/Sublevels/SublevelEF_Sprites.bin"
 SublevelF0_Sprites:                 ; 081EEA28
-.incbin "../data/Sublevels/SublevelF0_Sprites.bin"
+.incbin "data/Sublevels/SublevelF0_Sprites.bin"
 SublevelF1_Sprites:                 ; 081EEB2C
-.incbin "../data/Sublevels/SublevelF1_Sprites.bin"
+.incbin "data/Sublevels/SublevelF1_Sprites.bin"
 SublevelF2_Sprites:                 ; 081EEC08
-.incbin "../data/Sublevels/SublevelF2_Sprites.bin"
+.incbin "data/Sublevels/SublevelF2_Sprites.bin"
 SublevelF5_Sprites:                 ; 081EED08
-.incbin "../data/Sublevels/SublevelF5_Sprites.bin"
+.incbin "data/Sublevels/SublevelF5_Sprites.bin"
 Sublevel36_Main:                    ; 081EED90
-.incbin "../data/Sublevels/Sublevel36_Main.bin"
+.incbin "data/Sublevels/Sublevel36_Main.bin"
 Sublevel37_Main:                    ; 081EEDEF
-.incbin "../data/Sublevels/Sublevel37_Main.bin"
+.incbin "data/Sublevels/Sublevel37_Main.bin"
 Sublevel36_Sprites:                 ; 081EEE5C
-.incbin "../data/Sublevels/Sublevel36_Sprites.bin"
+.incbin "data/Sublevels/Sublevel36_Sprites.bin"
 Sublevel37_Sprites:                 ; 081EEE70
-.incbin "../data/Sublevels/Sublevel37_Sprites.bin"
+.incbin "data/Sublevels/Sublevel37_Sprites.bin"
 MainEntrances:                      ; 081EEE8C
 .d8 0x00, 0x07, 0x77, 0x01, 0x28, 0x00
 .d8 0x01, 0x07, 0x7A, 0x02, 0x77, 0x04
@@ -1233,66 +1233,66 @@ SublevelSpritePtrs:                 ; 081EF57C
 .d32 SublevelF0_Sprites, SublevelF1_Sprites, SublevelF2_Sprites, SublevelF3_Sprites
 .d32 SublevelF4_Sprites, SublevelF5_Sprites
 LevelSelect_Icon24_Graphics_LZ77:   ; 081EF954
-.incbin "../data/Graphics/LevelSelect_Icon24_LZ77.bin"
+.incbin "data/Graphics/LevelSelect_Icon24_LZ77.bin"
 LevelSelect_Icon32_0_Graphics_LZ77: ; 081F3398
-.incbin "../data/Graphics/LevelSelect_Icon32_0_LZ77.bin"
+.incbin "data/Graphics/LevelSelect_Icon32_0_LZ77.bin"
 LevelSelect_Icon32_1_Graphics_LZ77: ; 081F7174
-.incbin "../data/Graphics/LevelSelect_Icon32_1_LZ77.bin"
+.incbin "data/Graphics/LevelSelect_Icon32_1_LZ77.bin"
 LevelSelectControls_StoryIntro_Graphics_LZ77:; 081F7A90
-.incbin "../data/Graphics/LevelSelect_Controls_StoryIntro_LZ77.bin"
+.incbin "data/Graphics/LevelSelect_Controls_StoryIntro_LZ77.bin"
 LevelSelect_A000_W6_Graphics:       ; 081F897C
-.incbin "../data/Graphics/LevelSelect_A000_W6.bin"
+.incbin "data/Graphics/LevelSelect_A000_W6.bin"
 LevelSelect_A800_W6_Graphics:       ; 081F917C
-.incbin "../data/Graphics/LevelSelect_A800_W6.bin"
+.incbin "data/Graphics/LevelSelect_A800_W6.bin"
 LevelSelect_B000_W6_Graphics:       ; 081F997C
-.incbin "../data/Graphics/LevelSelect_B000_W6.bin"
+.incbin "data/Graphics/LevelSelect_B000_W6.bin"
 LevelSelect_8000_Graphics:          ; 081FA17C
-.incbin "../data/Graphics/LevelSelect_8000.bin"
+.incbin "data/Graphics/LevelSelect_8000.bin"
 LevelSelect_8800_Graphics:          ; 081FA97C
-.incbin "../data/Graphics/LevelSelect_8800.bin"
+.incbin "data/Graphics/LevelSelect_8800.bin"
 LevelSelect_9000_Graphics:          ; 081FB17C
-.incbin "../data/Graphics/LevelSelect_9000.bin"
+.incbin "data/Graphics/LevelSelect_9000.bin"
 LevelSelect_9800_Graphics:          ; 081FB97C
-.incbin "../data/Graphics/LevelSelect_9800.bin"
+.incbin "data/Graphics/LevelSelect_9800.bin"
 LevelSelect_A000_W15_Graphics:      ; 081FC17C
-.incbin "../data/Graphics/LevelSelect_A000_W15.bin"
+.incbin "data/Graphics/LevelSelect_A000_W15.bin"
 LevelSelect_A800_W15_Graphics:      ; 081FC97C
-.incbin "../data/Graphics/LevelSelect_A800_W15.bin"
+.incbin "data/Graphics/LevelSelect_A800_W15.bin"
 LevelSelect_B000_W15_Graphics:      ; 081FD17C
-.incbin "../data/Graphics/LevelSelect_B000_W15.bin"
+.incbin "data/Graphics/LevelSelect_B000_W15.bin"
 LevelSelect_B800_W15_Graphics:      ; 081FD97C
-.incbin "../data/Graphics/LevelSelect_B800_W15.bin"
+.incbin "data/Graphics/LevelSelect_B800_W15.bin"
 LevelSelect_Stripe00_Graphics_LZ77: ; 081FE17C
-.incbin "../data/Graphics/LevelSelect_Stripe00_LZ77.bin"
+.incbin "data/Graphics/LevelSelect_Stripe00_LZ77.bin"
 LevelSelect_Stripe08_Graphics_LZ77: ; 081FE2B0
-.incbin "../data/Graphics/LevelSelect_Stripe08_LZ77.bin"
+.incbin "data/Graphics/LevelSelect_Stripe08_LZ77.bin"
 DataPtrs081FE384:                   ; 081FE384
 .d32 LevelSelect_Stripe00_Graphics_LZ77, LevelSelect_Stripe08_Graphics_LZ77
 LevelSelect_Perfect_Graphics_LZ77:  ; 081FE38C
-.incbin "../data/Graphics/LevelSelect_Perfect_LZ77.bin"
+.incbin "data/Graphics/LevelSelect_Perfect_LZ77.bin"
 LevelSelect_400_Graphics_LZ77:      ; 081FE754
-.incbin "../data/Graphics/LevelSelect_400_LZ77.bin"
+.incbin "data/Graphics/LevelSelect_400_LZ77.bin"
 WorldSelect_L1_Tilemap_LZ77:        ; 081FEBA8
-.incbin "../data/Tilemaps/WorldSelect_L1_LZ77.bin"
+.incbin "data/Tilemaps/WorldSelect_L1_LZ77.bin"
 WorldSelect_L2_Tilemap_LZ77:        ; 081FEECC
-.incbin "../data/Tilemaps/WorldSelect_L2_LZ77.bin"
+.incbin "data/Tilemaps/WorldSelect_L2_LZ77.bin"
 WorldSelect_L3_Tilemap_LZ77:        ; 081FF1D4
-.incbin "../data/Tilemaps/WorldSelect_L3_LZ77.bin"
+.incbin "data/Tilemaps/WorldSelect_L3_LZ77.bin"
 WorldSelect_L12_0_Graphics_LZ77:    ; 081FF38C
-.incbin "../data/Graphics/WorldSelect_L12_0_LZ77.bin"
+.incbin "data/Graphics/WorldSelect_L12_0_LZ77.bin"
 WorldSelect_L12_1_Graphics_LZ77:    ; 081FFF20
-.incbin "../data/Graphics/WorldSelect_L12_1_LZ77.bin"
+.incbin "data/Graphics/WorldSelect_L12_1_LZ77.bin"
 WorldSelect_L12_2_Graphics_LZ77:    ; 08200B70
-.incbin "../data/Graphics/WorldSelect_L12_2_LZ77.bin"
+.incbin "data/Graphics/WorldSelect_L12_2_LZ77.bin"
 WorldSelect_L12GraphicsPtrs:        ; 082010E4
 .d32 WorldSelect_L12_0_Graphics_LZ77, WorldSelect_L12_1_Graphics_LZ77
 .d32 WorldSelect_L12_2_Graphics_LZ77
 WorldSelect_Stripe02_Graphics_LZ77: ; 082010F0
-.incbin "../data/Graphics/WorldSelect_Stripe02_LZ77.bin"
+.incbin "data/Graphics/WorldSelect_Stripe02_LZ77.bin"
 WorldSelect_Stripe0A_Graphics_LZ77: ; 08201334
-.incbin "../data/Graphics/WorldSelect_Stripe0A_LZ77.bin"
+.incbin "data/Graphics/WorldSelect_Stripe0A_LZ77.bin"
 WorldSelect_BabyLuigi_Graphics_LZ77:; 08201550
-.incbin "../data/Graphics/WorldSelect_BabyLuigi_LZ77.bin"
+.incbin "data/Graphics/WorldSelect_BabyLuigi_LZ77.bin"
 DataPtrs082016AC:                   ; 082016AC
 .d32 WorldSelect_Stripe02_Graphics_LZ77, WorldSelect_Stripe0A_Graphics_LZ77
 .d32 WorldSelect_BabyLuigi_Graphics_LZ77
@@ -1363,55 +1363,55 @@ Data082018B8:                       ; 082018B8
 .d16 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
 .d16 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
 Data08201AB8:                       ; 08201AB8
-.incbin "../data/Tilemaps/LevelSelect_Controls_Patient_LZ77.bin"
+.incbin "data/Tilemaps/LevelSelect_Controls_Patient_LZ77.bin"
 Data08201D30:                       ; 08201D30
-.incbin "../data/Tilemaps/LevelSelect_Controls_Hasty_LZ77.bin"
+.incbin "data/Tilemaps/LevelSelect_Controls_Hasty_LZ77.bin"
 Data08201F9C:                       ; 08201F9C
-.incbin "../data/Tilemaps/LevelSelect_L2_1_LZ77.bin"
+.incbin "data/Tilemaps/LevelSelect_L2_1_LZ77.bin"
 Data08202468:                       ; 08202468
-.incbin "../data/Tilemaps/LevelSelect_L2_2_LZ77.bin"
+.incbin "data/Tilemaps/LevelSelect_L2_2_LZ77.bin"
 Data082029BC:                       ; 082029BC
-.incbin "../data/Tilemaps/LevelSelect_L2_3_LZ77.bin"
+.incbin "data/Tilemaps/LevelSelect_L2_3_LZ77.bin"
 Data08202F80:                       ; 08202F80
-.incbin "../data/Tilemaps/LevelSelect_L2_4_LZ77.bin"
+.incbin "data/Tilemaps/LevelSelect_L2_4_LZ77.bin"
 Data082034F0:                       ; 082034F0
-.incbin "../data/Tilemaps/LevelSelect_L2_5_LZ77.bin"
+.incbin "data/Tilemaps/LevelSelect_L2_5_LZ77.bin"
 Data08203A68:                       ; 08203A68
-.incbin "../data/Tilemaps/LevelSelect_L2_6_LZ77.bin"
+.incbin "data/Tilemaps/LevelSelect_L2_6_LZ77.bin"
 Data08204020:                       ; 08204020
-.incbin "../data/Tilemaps/LevelSelect_L3_1_LZ77.bin"
+.incbin "data/Tilemaps/LevelSelect_L3_1_LZ77.bin"
 Data08204588:                       ; 08204588
-.incbin "../data/Tilemaps/LevelSelect_L3_2_LZ77.bin"
+.incbin "data/Tilemaps/LevelSelect_L3_2_LZ77.bin"
 Data08204B54:                       ; 08204B54
-.incbin "../data/Tilemaps/LevelSelect_L3_3_LZ77.bin"
+.incbin "data/Tilemaps/LevelSelect_L3_3_LZ77.bin"
 Data082051D4:                       ; 082051D4
-.incbin "../data/Tilemaps/LevelSelect_L3_4_LZ77.bin"
+.incbin "data/Tilemaps/LevelSelect_L3_4_LZ77.bin"
 Data0820580C:                       ; 0820580C
-.incbin "../data/Tilemaps/LevelSelect_L3_5_LZ77.bin"
+.incbin "data/Tilemaps/LevelSelect_L3_5_LZ77.bin"
 Data08205E9C:                       ; 08205E9C
-.incbin "../data/Tilemaps/LevelSelect_L3_6_LZ77.bin"
+.incbin "data/Tilemaps/LevelSelect_L3_6_LZ77.bin"
 Unused0820649C:                     ; 0820649C
-.incbin "../data/Data0820649C_LZ77.bin"
+.incbin "data/Data0820649C_LZ77.bin"
 Data082066DC:                       ; 082066DC
-.incbin "../data/Tilemaps/LevelSelect_LLBAR_LZ77.bin"
+.incbin "data/Tilemaps/LevelSelect_LLBAR_LZ77.bin"
 Data082068E0:                       ; 082068E0
-.incbin "../data/Graphics/star1000.bin"
+.incbin "data/Graphics/star1000.bin"
 Data082074E0:                       ; 082074E0
-.incbin "../data/Tilemaps/ScoreCalc_L1_LZ77.bin"
+.incbin "data/Tilemaps/ScoreCalc_L1_LZ77.bin"
 Data082075F4:                       ; 082075F4
-.incbin "../data/Tilemaps/ScoreCalc_L3_8levels_LZ77.bin"
+.incbin "data/Tilemaps/ScoreCalc_L3_8levels_LZ77.bin"
 Data082077B0:                       ; 082077B0
-.incbin "../data/Tilemaps/ScoreCalc_L3_10levels_LZ77.bin"
+.incbin "data/Tilemaps/ScoreCalc_L3_10levels_LZ77.bin"
 Data08207980:                       ; 08207980
-.incbin "../data/Graphics/ScoreCalc_sprite_LZ77.bin"
+.incbin "data/Graphics/ScoreCalc_sprite_LZ77.bin"
 Data08207E3C:                       ; 08207E3C
-.incbin "../data/Graphics/Gameplay_anim_12_LZ77.bin"
+.incbin "data/Graphics/Gameplay_anim_12_LZ77.bin"
 Unused08208918:                     ; 08208918
-.incbin "../data/Data08208918_LZ77.bin"
+.incbin "data/Data08208918_LZ77.bin"
 KamekRoom_L2Tilemap_LZ77:           ; 08208D58
-.incbin "../data/Tilemaps/Gameplay_Kamek_L2_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_Kamek_L2_LZ77.bin"
 KamekRoom_L3Tilemap_LZ77:           ; 082091A0
-.incbin "../data/Tilemaps/Gameplay_Kamek_L3_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_Kamek_L3_LZ77.bin"
 KamekRoom_LayerPal:                 ; 082095E4
 .d16 0x0821, 0x0000, 0x4A15, 0x7378, 0x7FFF, 0x26A6, 0x26A6, 0x5A13
 .d16 0x3B5D, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
@@ -1446,38 +1446,38 @@ KamekRoom_LayerPal:                 ; 082095E4
 .d16 0x0821, 0x0821, 0x0821, 0x0821, 0x0821, 0x0821, 0x0821, 0x0821
 .d16 0x0821, 0x0821, 0x0821, 0x0821, 0x0821, 0x0821, 0x0821, 0x0821
 Unused082097E4:                     ; 082097E4
-.incbin "../data/Graphics/Unused082097E4_LZ77.bin"
+.incbin "data/Graphics/Unused082097E4_LZ77.bin"
 Unused08209CC4:                     ; 08209CC4
-.incbin "../data/Graphics/Unused08209CC4_LZ77.bin"
+.incbin "data/Graphics/Unused08209CC4_LZ77.bin"
 Unused0820A638:                     ; 0820A638
-.incbin "../data/Graphics/Unused0820A638_LZ77.bin"
+.incbin "data/Graphics/Unused0820A638_LZ77.bin"
 Unused0820B0BC:                     ; 0820B0BC
-.incbin "../data/Graphics/Unused0820B0BC_LZ77.bin"
+.incbin "data/Graphics/Unused0820B0BC_LZ77.bin"
 Unused0820BA04:                     ; 0820BA04
-.incbin "../data/Graphics/Empty1000Bytes_LZ77.bin"
+.incbin "data/Graphics/Empty1000Bytes_LZ77.bin"
 Unused0820BBF0:                     ; 0820BBF0
-.incbin "../data/Graphics/Empty1000Bytes_LZ77.bin"
+.incbin "data/Graphics/Empty1000Bytes_LZ77.bin"
 Unused0820BDDC:                     ; 0820BDDC
-.incbin "../data/Graphics/Empty1000Bytes_LZ77.bin"
+.incbin "data/Graphics/Empty1000Bytes_LZ77.bin"
 Unused0820BFC8:                     ; 0820BFC8
-.incbin "../data/Graphics/Empty1000Bytes_LZ77.bin"
+.incbin "data/Graphics/Empty1000Bytes_LZ77.bin"
 DataPtrs0820C1B4:                   ; 0820C1B4
 .d32 Unused082097E4, Unused08209CC4, Unused0820A638, Unused0820B0BC
 .d32 Unused0820BA04, Unused0820BBF0, Unused0820BDDC, Unused0820BFC8
 Raphael_L2Tilemap_LZ77:             ; 0820C1D4
-.incbin "../data/Tilemaps/Gameplay_Raphael_L2_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_Raphael_L2_LZ77.bin"
 Raphael_L2Graphics_8bpp_LZ77:       ; 0820C580
-.incbin "../data/Graphics/Gameplay_Raphael_L2_8bpp_LZ77.bin"
+.incbin "data/Graphics/Gameplay_Raphael_L2_8bpp_LZ77.bin"
 Hookbill_L2Graphics_8bpp_LZ77:      ; 0820DA48
-.incbin "../data/Graphics/Gameplay_Hookbill_L2_8bpp_LZ77.bin"
+.incbin "data/Graphics/Gameplay_Hookbill_L2_8bpp_LZ77.bin"
 Hookbill_L2Tilemap_LZ77:            ; 0820E054
-.incbin "../data/Tilemaps/Gameplay_Hookbill_L2_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_Hookbill_L2_LZ77.bin"
 Data0820E290:                       ; 0820E290
-.incbin "../data/Graphics/100Cutscene_sprite_0_LZ77.bin"
+.incbin "data/Graphics/100Cutscene_sprite_0_LZ77.bin"
 Data0820F13C:                       ; 0820F13C
-.incbin "../data/Graphics/100Cutscene_sprite_1_LZ77.bin"
+.incbin "data/Graphics/100Cutscene_sprite_1_LZ77.bin"
 Data0820FFB8:                       ; 0820FFB8
-.incbin "../data/Graphics/100Cutscene_layer_LZ77.bin"
+.incbin "data/Graphics/100Cutscene_layer_LZ77.bin"
 Data082135CC:                       ; 082135CC
 .d16 0x02F7, 0x9010, 0x0207, 0x9280, 0x1807, 0xD900, 0x1801, 0xD800
 .d16 0x1000, 0x9310
@@ -1677,171 +1677,171 @@ DataPtrs08213A6C:                   ; 08213A6C
 .d32 Data08213A59, Data08213A5E, Data08213A62, Data08213A64
 .d32 Data08213A65
 Data08213AB0:                       ; 08213AB0
-.incbin "../data/Tilemaps/100Cutscene_L1_LZ77.bin"
+.incbin "data/Tilemaps/100Cutscene_L1_LZ77.bin"
 Data0821400C:                       ; 0821400C
-.incbin "../data/Tilemaps/Intro100Cutscene_L2_LZ77.bin"
+.incbin "data/Tilemaps/Intro100Cutscene_L2_LZ77.bin"
 Data08214A3C:                       ; 08214A3C
-.incbin "../data/Tilemaps/Intro100Cutscene_L3_LZ77.bin"
+.incbin "data/Tilemaps/Intro100Cutscene_L3_LZ77.bin"
 Data08214EC4:                       ; 08214EC4
-.incbin "../data/Graphics/100Cutscene_text_LZ77.bin"
+.incbin "data/Graphics/100Cutscene_text_LZ77.bin"
 Data08215308:                       ; 08215308
-.incbin "../data/Graphics/100Cutscene_end_LZ77.bin"
+.incbin "data/Graphics/100Cutscene_end_LZ77.bin"
 Data082157C4:                       ; 082157C4
-.incbin "../data/Graphics/100Cutscene_Congrat_frame0.bin"
+.incbin "data/Graphics/100Cutscene_Congrat_frame0.bin"
 Data08215FC4:                       ; 08215FC4
-.incbin "../data/Graphics/100Cutscene_Congrat_frame1.bin"
+.incbin "data/Graphics/100Cutscene_Congrat_frame1.bin"
 Data082167C4:                       ; 082167C4
-.incbin "../data/Graphics/100Cutscene_Congrat_frame2.bin"
+.incbin "data/Graphics/100Cutscene_Congrat_frame2.bin"
 Data08216FC4:                       ; 08216FC4
-.incbin "../data/Tilemaps/100Cutscene_L0_2_LZ77.bin"
+.incbin "data/Tilemaps/100Cutscene_L0_2_LZ77.bin"
 Data0821724C:                       ; 0821724C
-.incbin "../data/Tilemaps/100Cutscene_L0_1_LZ77.bin"
+.incbin "data/Tilemaps/100Cutscene_L0_1_LZ77.bin"
 Data082173D4:                       ; 082173D4
-.incbin "../data/Tilemaps/100Cutscene_L0_0_LZ77.bin"
+.incbin "data/Tilemaps/100Cutscene_L0_0_LZ77.bin"
 L2Image11171D_Tilemap_LZ77:         ; 08217518
-.incbin "../data/Tilemaps/Gameplay_L2_11_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_11_LZ77.bin"
 L2Image0E_Tilemap_LZ77:             ; 0821783C
-.incbin "../data/Tilemaps/Gameplay_L2_0E_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_0E_LZ77.bin"
 L2Image1C_Tilemap_LZ77:             ; 08217AB0
-.incbin "../data/Tilemaps/Gameplay_L2_1C_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_1C_LZ77.bin"
 L2Image14_Tilemap_LZ77:             ; 08217D08
-.incbin "../data/Tilemaps/Gameplay_L2_14_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_14_LZ77.bin"
 L2Image1A_Tilemap_LZ77:             ; 08218044
-.incbin "../data/Tilemaps/Gameplay_L2_1A_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_1A_LZ77.bin"
 L2Image08_Tilemap_LZ77:             ; 08218448
-.incbin "../data/Tilemaps/Gameplay_L2_08_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_08_LZ77.bin"
 L2Image06_Tilemap_LZ77:             ; 08218964
-.incbin "../data/Tilemaps/Gameplay_L2_06_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_06_LZ77.bin"
 L2Image00_Tilemap_LZ77:             ; 08218BD4
-.incbin "../data/Tilemaps/Gameplay_L2_00_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_00_LZ77.bin"
 L2Image04_Tilemap_LZ77:             ; 08219490
-.incbin "../data/Tilemaps/Gameplay_L2_04_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_04_LZ77.bin"
 L2Image15_Tilemap_LZ77:             ; 08219808
-.incbin "../data/Tilemaps/Gameplay_L2_15_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_15_LZ77.bin"
 L2Image07_Tilemap_LZ77:             ; 08219B1C
-.incbin "../data/Tilemaps/Gameplay_L2_07_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_07_LZ77.bin"
 L2Image0B_Tilemap_LZ77:             ; 08219D80
-.incbin "../data/Tilemaps/Gameplay_L2_0B_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_0B_LZ77.bin"
 L2Image19_Tilemap_LZ77:             ; 0821A014
-.incbin "../data/Tilemaps/Gameplay_L2_19_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_19_LZ77.bin"
 L2Image01_Tilemap_LZ77:             ; 0821A2C0
-.incbin "../data/Tilemaps/Gameplay_L2_01_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_01_LZ77.bin"
 L2Image0A_Tilemap_LZ77:             ; 0821A63C
-.incbin "../data/Tilemaps/Gameplay_L2_0A_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_0A_LZ77.bin"
 L2Image02_Tilemap_LZ77:             ; 0821A8BC
-.incbin "../data/Tilemaps/Gameplay_L2_02_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_02_LZ77.bin"
 L2Image0910_Tilemap_LZ77:           ; 0821ACD4
-.incbin "../data/Tilemaps/Gameplay_L2_09_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_09_LZ77.bin"
 L2Image1E_Tilemap_LZ77:             ; 0821B020
-.incbin "../data/Tilemaps/Gameplay_L2_1E_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_1E_LZ77.bin"
 L2Image1B_Tilemap_LZ77:             ; 0821B2EC
-.incbin "../data/Tilemaps/Gameplay_L2_1B_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_1B_LZ77.bin"
 L2Image12_Tilemap_LZ77:             ; 0821B4D8
-.incbin "../data/Tilemaps/Gameplay_L2_12_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_12_LZ77.bin"
 L2Image0F_Tilemap_LZ77:             ; 0821B734
-.incbin "../data/Tilemaps/Gameplay_L2_0F_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_0F_LZ77.bin"
 L2Image13_Tilemap_LZ77:             ; 0821B944
-.incbin "../data/Tilemaps/Gameplay_L2_13_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_13_LZ77.bin"
 L2Image0D_Tilemap_LZ77:             ; 0821BDBC
-.incbin "../data/Tilemaps/Gameplay_L2_0D_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_0D_LZ77.bin"
 L2Image03_Tilemap_LZ77:             ; 0821C0CC
-.incbin "../data/Tilemaps/Gameplay_L2_03_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_03_LZ77.bin"
 L2Image05_Tilemap_LZ77:             ; 0821C2D4
-.incbin "../data/Tilemaps/Gameplay_L2_05_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_05_LZ77.bin"
 Unused0821C58C:                     ; 0821C58C
-.incbin "../data/Data0821C58C_LZ77.bin"
+.incbin "data/Data0821C58C_LZ77.bin"
 L2Image0C_Tilemap_LZ77:             ; 0821C938
-.incbin "../data/Tilemaps/Gameplay_L2_0C_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_0C_LZ77.bin"
 L2Image1F_Tilemap_LZ77:             ; 0821CDA4
-.incbin "../data/Tilemaps/Gameplay_L2_1F_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_1F_LZ77.bin"
 L2Image16_Tilemap_LZ77:             ; 0821D090
-.incbin "../data/Tilemaps/Gameplay_L2_16_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_16_LZ77.bin"
 L2Image18_Tilemap_LZ77:             ; 0821D49C
-.incbin "../data/Tilemaps/Gameplay_L2_18_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L2_18_LZ77.bin"
 L3Image1B_Tilemap_LZ77:             ; 0821D9F0
-.incbin "../data/Tilemaps/Gameplay_L3_1B_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_1B_LZ77.bin"
 L3Image2B_Tilemap_LZ77:             ; 0821DB98
-.incbin "../data/Tilemaps/Gameplay_L3_2B_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_2B_LZ77.bin"
 L3Spr_Tilemap_LZ77:                 ; 0821DE64
-.incbin "../data/Tilemaps/Gameplay_L3_02_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_02_LZ77.bin"
 L3Image0009_Tilemap_LZ77:           ; 0821E3B0
-.incbin "../data/Tilemaps/Gameplay_L3_00_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_00_LZ77.bin"
 L3Image12_Tilemap_LZ77:             ; 0821E4AC
-.incbin "../data/Tilemaps/Gameplay_L3_12_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_12_LZ77.bin"
 L3Image0D_Tilemap_LZ77:             ; 0821E75C
-.incbin "../data/Tilemaps/Gameplay_L3_0D_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_0D_LZ77.bin"
 Unused0821EA54:                     ; 0821EA54
-.incbin "../data/Data0821EA54_LZ77.bin"
+.incbin "data/Data0821EA54_LZ77.bin"
 L3Image27_Tilemap_LZ77:             ; 0821EC5C
-.incbin "../data/Tilemaps/Gameplay_L3_27_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_27_LZ77.bin"
 L3Image28_Tilemap_LZ77:             ; 0821EE88
-.incbin "../data/Tilemaps/Gameplay_L3_28_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_28_LZ77.bin"
 L3Image18_Tilemap_LZ77:             ; 0821F0E4
-.incbin "../data/Tilemaps/Gameplay_L3_18_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_18_LZ77.bin"
 L3Image10_Tilemap_LZ77:             ; 0821F288
-.incbin "../data/Tilemaps/Gameplay_L3_10_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_10_LZ77.bin"
 L3Image23_Tilemap_LZ77:             ; 0821F42C
-.incbin "../data/Tilemaps/Gameplay_L3_23_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_23_LZ77.bin"
 L3Image14_Tilemap_LZ77:             ; 0821F600
-.incbin "../data/Tilemaps/Gameplay_L3_14_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_14_LZ77.bin"
 L3Image20_Tilemap_LZ77:             ; 0821F7B8
-.incbin "../data/Tilemaps/Gameplay_L3_20_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_20_LZ77.bin"
 L3Image29_Tilemap_LZ77:             ; 0821F970
-.incbin "../data/Tilemaps/Gameplay_L3_29_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_29_LZ77.bin"
 L3Image16_Tilemap_LZ77:             ; 0821FB54
-.incbin "../data/Tilemaps/Gameplay_L3_16_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_16_LZ77.bin"
 L3Image131D_Tilemap_LZ77:           ; 0821FE10
-.incbin "../data/Tilemaps/Gameplay_L3_13_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_13_LZ77.bin"
 L3Image1C_Tilemap_LZ77:             ; 0821FF10
-.incbin "../data/Tilemaps/Gameplay_L3_1C_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_1C_LZ77.bin"
 L3Image19_Tilemap_LZ77:             ; 08220078
-.incbin "../data/Tilemaps/Gameplay_L3_19_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_19_LZ77.bin"
 L3Image2E_Tilemap_LZ77:             ; 0822017C
-.incbin "../data/Tilemaps/Gameplay_L3_2E_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_2E_LZ77.bin"
 L3Image2C2D_Tilemap_LZ77:           ; 08220328
-.incbin "../data/Tilemaps/Gameplay_L3_2C_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_2C_LZ77.bin"
 L3Image2A_Tilemap_LZ77:             ; 082204A0
-.incbin "../data/Tilemaps/Gameplay_L3_2A_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_2A_LZ77.bin"
 L3Image01_Tilemap_LZ77:             ; 08220694
-.incbin "../data/Tilemaps/Gameplay_L3_01_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_01_LZ77.bin"
 L3Image1A_Tilemap_LZ77:             ; 08220798
-.incbin "../data/Tilemaps/Gameplay_L3_1A_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_1A_LZ77.bin"
 L3Image0C_Tilemap_LZ77:             ; 082208DC
-.incbin "../data/Tilemaps/Gameplay_L3_0C_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_0C_LZ77.bin"
 L3Image15_Tilemap_LZ77:             ; 08220AC8
-.incbin "../data/Tilemaps/Gameplay_L3_15_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_15_LZ77.bin"
 L3Image0A_Tilemap_LZ77:             ; 08220C20
-.incbin "../data/Tilemaps/Gameplay_L3_0A_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_0A_LZ77.bin"
 L3Image0304_Tilemap_LZ77:           ; 08220D1C
-.incbin "../data/Tilemaps/Gameplay_L3_03_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_03_LZ77.bin"
 L3Image22_Tilemap_LZ77:             ; 08220E2C
-.incbin "../data/Tilemaps/Gameplay_L3_22_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_22_LZ77.bin"
 L3Image0E_Tilemap_LZ77:             ; 08220FA0
-.incbin "../data/Tilemaps/Gameplay_L3_0E_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_0E_LZ77.bin"
 L3Image25_Tilemap_LZ77:             ; 082212B4
-.incbin "../data/Tilemaps/Gameplay_L3_25_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_25_LZ77.bin"
 L3Image1E_Tilemap_LZ77:             ; 082215C8
-.incbin "../data/Tilemaps/Gameplay_L3_1E_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_1E_LZ77.bin"
 L3Image1F_Tilemap_LZ77:             ; 082217D0
-.incbin "../data/Tilemaps/Gameplay_L3_1F_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_1F_LZ77.bin"
 L3Image0F_Tilemap_LZ77:             ; 082218D4
-.incbin "../data/Tilemaps/Gameplay_L3_0F_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_0F_LZ77.bin"
 L3Image11_Tilemap_LZ77:             ; 08221B7C
-.incbin "../data/Tilemaps/Gameplay_L3_11_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_11_LZ77.bin"
 L3Image17_Tilemap_LZ77:             ; 08221DB8
-.incbin "../data/Tilemaps/Gameplay_L3_17_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_17_LZ77.bin"
 L3Image21_Tilemap_LZ77:             ; 08221F3C
-.incbin "../data/Tilemaps/Gameplay_L3_21_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_21_LZ77.bin"
 L3Image24_Tilemap_LZ77:             ; 08222068
-.incbin "../data/Tilemaps/Gameplay_L3_24_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_24_LZ77.bin"
 L3Image26_Tilemap_LZ77:             ; 082222BC
-.incbin "../data/Tilemaps/Gameplay_L3_26_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_26_LZ77.bin"
 L3Image2F_Tilemap_LZ77:             ; 08222464
-.incbin "../data/Tilemaps/Gameplay_L3_2F_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_L3_2F_LZ77.bin"
 Data082225D4:                       ; 082225D4
-.incbin "../data/Tilemaps/Intro100Cutscene_L2_LZ77.bin"
+.incbin "data/Tilemaps/Intro100Cutscene_L2_LZ77.bin"
 Data08223004:                       ; 08223004
-.incbin "../data/Tilemaps/Intro100Cutscene_L3_LZ77.bin"
+.incbin "data/Tilemaps/Intro100Cutscene_L3_LZ77.bin"
 Data0822348C:                       ; 0822348C
 .d16 0x7FFF, 0x7FFF, 0x6BBF, 0x73DF, 0x4E72, 0x4ABF, 0x537F, 0x6BFF
 .d16 0x7FF8, 0x466D, 0x6FD8, 0x7FFF, 0x0000, 0x466D, 0x3656, 0x31D1
@@ -1865,41 +1865,41 @@ Data0822358C:                       ; 0822358C
 .d16 0x7FFF, 0x0000, 0x1625, 0x0000, 0x2577, 0x1745, 0x5F14, 0x4B5A
 .d16 0x25BF, 0x17E5, 0x165E, 0x16FF, 0x3BBF, 0x5FFF, 0x77FF, 0x7FFF
 Data082235CC:                       ; 082235CC
-.incbin "../data/Graphics/LevelSelect.bin"
+.incbin "data/Graphics/LevelSelect.bin"
 Data082255CC:                       ; 082255CC
-.incbin "../data/Graphics/BanditMinigame_2_Nintendo_LZ77.bin"
+.incbin "data/Graphics/BanditMinigame_2_Nintendo_LZ77.bin"
 Data08225ED0:                       ; 08225ED0
-.incbin "../data/Graphics/BanditMinigame_3_LZ77.bin"
+.incbin "data/Graphics/BanditMinigame_3_LZ77.bin"
 Data08226908:                       ; 08226908
-.incbin "../data/Graphics/IntroCutscene_L1_LZ77.bin"
+.incbin "data/Graphics/IntroCutscene_L1_LZ77.bin"
 DataPtrs082272C0:                   ; 082272C0
 .d32 Data082255CC, Data08225ED0
 DataPtrs082272C8:                   ; 082272C8
 .d32 Data08226908
 Data082272CC:                       ; 082272CC
-.incbin "../data/Tilemaps/BanditMinigame_L1_LZ77.bin"
+.incbin "data/Tilemaps/BanditMinigame_L1_LZ77.bin"
 Data082278F0:                       ; 082278F0
-.incbin "../data/Tilemaps/BanditMinigame_L2_BG_LZ77.bin"
+.incbin "data/Tilemaps/BanditMinigame_L2_BG_LZ77.bin"
 Data08227A18:                       ; 08227A18
-.incbin "../data/Tilemaps/BanditMinigame_L2_win_LZ77.bin"
+.incbin "data/Tilemaps/BanditMinigame_L2_win_LZ77.bin"
 Data08227B54:                       ; 08227B54
-.incbin "../data/Tilemaps/BanditMinigame_L2_loss_LZ77.bin"
+.incbin "data/Tilemaps/BanditMinigame_L2_loss_LZ77.bin"
 L1Tileset00_2000_LZ77:              ; 08227C90
-.incbin "../data/Graphics/Gameplay_L1_200_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_200_LZ77.bin"
 L1Tileset00_3000_LZ77:              ; 0822874C
-.incbin "../data/Graphics/Gameplay_L1_300_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_300_LZ77.bin"
 L1Tileset01_2000_LZ77:              ; 082291C4
-.incbin "../data/Graphics/Gameplay_L1_201_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_201_LZ77.bin"
 L1Tileset01_3000_LZ77:              ; 08229C0C
-.incbin "../data/Graphics/Gameplay_L1_301_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_301_LZ77.bin"
 L1Tileset04_2000_LZ77:              ; 0822A5D4
-.incbin "../data/Graphics/Gameplay_L1_204_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_204_LZ77.bin"
 L1Tileset04_3000_LZ77:              ; 0822AD94
-.incbin "../data/Graphics/Gameplay_L1_304_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_304_LZ77.bin"
 L1Tileset05_2000_LZ77:              ; 0822B4EC
-.incbin "../data/Graphics/Gameplay_L1_205_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_205_LZ77.bin"
 L1Tileset05_3000_LZ77:              ; 0822BEDC
-.incbin "../data/Graphics/Gameplay_L1_305_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_305_LZ77.bin"
 L1Tileset00_2000_Ptr2:              ; 0822C8E0
 .d32 L1Tileset00_2000_LZ77
 L1Tileset00_3000_Ptr2:              ; 0822C8E4
@@ -1917,21 +1917,21 @@ L1Tileset05_2000_Ptr2:              ; 0822C8F8
 L1Tileset05_3000_Ptr2:              ; 0822C8FC
 .d32 L1Tileset05_3000_LZ77
 L1Tileset02_2000_LZ77:              ; 0822C900
-.incbin "../data/Graphics/Gameplay_L1_202_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_202_LZ77.bin"
 L1Tileset02_3000_LZ77:              ; 0822D394
-.incbin "../data/Graphics/Gameplay_L1_302_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_302_LZ77.bin"
 L1Tileset03_2000_LZ77:              ; 0822DC68
-.incbin "../data/Graphics/Gameplay_L1_203_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_203_LZ77.bin"
 L1Tileset03_3000_LZ77:              ; 0822E578
-.incbin "../data/Graphics/Gameplay_L1_303_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_303_LZ77.bin"
 L1Tileset06_2000_LZ77:              ; 0822EBEC
-.incbin "../data/Graphics/Gameplay_L1_206_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_206_LZ77.bin"
 L1Tileset06_3000_LZ77:              ; 0822F6B4
-.incbin "../data/Graphics/Gameplay_L1_306_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_306_LZ77.bin"
 L1Tileset07_2000_LZ77:              ; 08230294
-.incbin "../data/Graphics/Gameplay_L1_207_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_207_LZ77.bin"
 L1Tileset07_3000_LZ77:              ; 08230CC8
-.incbin "../data/Graphics/Gameplay_L1_307_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_307_LZ77.bin"
 L1Tileset02_2000_Ptr2:              ; 082315D4
 .d32 L1Tileset02_2000_LZ77
 L1Tileset02_3000_Ptr2:              ; 082315D8
@@ -1949,21 +1949,21 @@ L1Tileset07_2000_Ptr2:              ; 082315EC
 L1Tileset07_3000_Ptr2:              ; 082315F0
 .d32 L1Tileset07_3000_LZ77
 L1Tileset08_2000_LZ77:              ; 082315F4
-.incbin "../data/Graphics/Gameplay_L1_208_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_208_LZ77.bin"
 L1Tileset08_3000_LZ77:              ; 0823213C
-.incbin "../data/Graphics/Gameplay_L1_308_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_308_LZ77.bin"
 L1Tileset09_2000_LZ77:              ; 08232C80
-.incbin "../data/Graphics/Gameplay_L1_209_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_209_LZ77.bin"
 L1Tileset09_3000_LZ77:              ; 0823362C
-.incbin "../data/Graphics/Gameplay_L1_309_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_309_LZ77.bin"
 L1Tileset0C_2000_LZ77:              ; 08234278
-.incbin "../data/Graphics/Gameplay_L1_20C_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_20C_LZ77.bin"
 L1Tileset0C_3000_LZ77:              ; 08234EB0
-.incbin "../data/Graphics/Gameplay_L1_30C_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_30C_LZ77.bin"
 L1Tileset0D_2000_LZ77:              ; 082355A0
-.incbin "../data/Graphics/Gameplay_L1_20D_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_20D_LZ77.bin"
 L1Tileset0D_3000_LZ77:              ; 08235EDC
-.incbin "../data/Graphics/Gameplay_L1_30D_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_30D_LZ77.bin"
 L1Tileset08_2000_Ptr2:              ; 08236630
 .d32 L1Tileset08_2000_LZ77
 L1Tileset08_3000_Ptr2:              ; 08236634
@@ -1981,21 +1981,21 @@ L1Tileset0D_2000_Ptr2:              ; 08236648
 L1Tileset0D_3000_Ptr2:              ; 0823664C
 .d32 L1Tileset0D_3000_LZ77
 L1Tileset0A_2000_LZ77:              ; 08236650
-.incbin "../data/Graphics/Gameplay_L1_20A_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_20A_LZ77.bin"
 L1Tileset0A_3000_LZ77:              ; 08237050
-.incbin "../data/Graphics/Gameplay_L1_30A_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_30A_LZ77.bin"
 L1Tileset0B_2000_LZ77:              ; 08237AE0
-.incbin "../data/Graphics/Gameplay_L1_20B_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_20B_LZ77.bin"
 L1Tileset0B_3000_LZ77:              ; 0823869C
-.incbin "../data/Graphics/Gameplay_L1_30B_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_30B_LZ77.bin"
 L1Tileset0E_2000_LZ77:              ; 08239234
-.incbin "../data/Graphics/Gameplay_L1_20E_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_20E_LZ77.bin"
 L1Tileset0E_3000_LZ77:              ; 08239E70
-.incbin "../data/Graphics/Gameplay_L1_30E_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_30E_LZ77.bin"
 L1Tileset0F_2000_LZ77:              ; 0823A8A8
-.incbin "../data/Graphics/Gameplay_L1_20F_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_20F_LZ77.bin"
 L1Tileset0F_3000_LZ77:              ; 0823B1B8
-.incbin "../data/Graphics/Gameplay_L1_30F_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_30F_LZ77.bin"
 L1Tileset0A_2000_Ptr2:              ; 0823BC34
 .d32 L1Tileset0A_2000_LZ77
 L1Tileset0A_3000_Ptr2:              ; 0823BC38
@@ -2013,21 +2013,21 @@ L1Tileset0F_2000_Ptr2:              ; 0823BC4C
 L1Tileset0F_3000_Ptr2:              ; 0823BC50
 .d32 L1Tileset0F_3000_LZ77
 L1Tileset0008_0000_LZ77:            ; 0823BC54
-.incbin "../data/Graphics/Gameplay_L1_000_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_000_LZ77.bin"
 L1Tileset0109_0000_LZ77:            ; 0823C774
-.incbin "../data/Graphics/Gameplay_L1_001_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_001_LZ77.bin"
 L1Tileset040C_0000_LZ77:            ; 0823D378
-.incbin "../data/Graphics/Gameplay_L1_004_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_004_LZ77.bin"
 L1Tileset05_0000_LZ77:              ; 0823DD3C
-.incbin "../data/Graphics/Gameplay_L1_005_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_005_LZ77.bin"
 L1Tileset02_0000_LZ77:              ; 0823E734
-.incbin "../data/Graphics/Gameplay_L1_002_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_002_LZ77.bin"
 L1Tileset030B_0000_LZ77:            ; 0823EC78
-.incbin "../data/Graphics/Gameplay_L1_003_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_003_LZ77.bin"
 L1Tileset060A0E_0000_LZ77:          ; 0823F4C8
-.incbin "../data/Graphics/Gameplay_L1_006_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_006_LZ77.bin"
 L1Tileset070D0F_0000_LZ77:          ; 0823FFAC
-.incbin "../data/Graphics/Gameplay_L1_007_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_007_LZ77.bin"
 L1Tileset0008_0000_Ptr2:            ; 08240B24
 .d32 L1Tileset0008_0000_LZ77
 L1Tileset0109_0000_Ptr2:            ; 08240B28
@@ -2045,21 +2045,21 @@ L1Tileset060A0E_0000_Ptr2:          ; 08240B3C
 L1Tileset070D0F_0000_Ptr2:          ; 08240B40
 .d32 L1Tileset070D0F_0000_LZ77
 Data08240B44:                       ; 08240B44
-.incbin "../data/Graphics/IntroCutscene_L2_5_LZ77.bin"
+.incbin "data/Graphics/IntroCutscene_L2_5_LZ77.bin"
 Data082414A0:                       ; 082414A0
-.incbin "../data/Graphics/IntroCutscene_L2_6_LZ77.bin"
+.incbin "data/Graphics/IntroCutscene_L2_6_LZ77.bin"
 Data08241C9C:                       ; 08241C9C
-.incbin "../data/Graphics/Credits_L0_LZ77.bin"
+.incbin "data/Graphics/Credits_L0_LZ77.bin"
 L1Tileset11_2000_LZ77:              ; 082423BC
-.incbin "../data/Graphics/Gameplay_L1_211_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_211_LZ77.bin"
 L1Tileset11_3000_LZ77:              ; 0824300C
-.incbin "../data/Graphics/Gameplay_L1_311_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_311_LZ77.bin"
 L1Tileset11_0000_LZ77:              ; 08243CA4
-.incbin "../data/Graphics/Gameplay_L1_011_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_011_LZ77.bin"
 Data082448F0:                       ; 082448F0
-.incbin "../data/Graphics/Credits_201_LZ77.bin"
+.incbin "data/Graphics/Credits_201_LZ77.bin"
 Data08245430:                       ; 08245430
-.incbin "../data/Graphics/Unused08245430_LZ77.bin"
+.incbin "data/Graphics/Unused08245430_LZ77.bin"
 DataPtrs08245CB0:                   ; 08245CB0
 .d32 Data08240B44, Data082414A0, Data08241C9C
 L1Tileset11_2000_Ptr2:              ; 08245CBC
@@ -2069,23 +2069,23 @@ L1Tileset11_3000_Ptr2:              ; 08245CC0
 L1Tileset11_0000_Ptr2:              ; 08245CC4
 .d32 L1Tileset11_0000_LZ77, Data082448F0, Data08245430
 Data08245CD0:                       ; 08245CD0
-.incbin "../data/Graphics/GoalMinigame_2_LZ77.bin"
+.incbin "data/Graphics/GoalMinigame_2_LZ77.bin"
 Data08246EB8:                       ; 08246EB8
-.incbin "../data/Graphics/GoalMinigame_0_LZ77.bin"
+.incbin "data/Graphics/GoalMinigame_0_LZ77.bin"
 Data08247760:                       ; 08247760
-.incbin "../data/Graphics/GoalMinigame_1_LZ77.bin"
+.incbin "data/Graphics/GoalMinigame_1_LZ77.bin"
 Data08247D90:                       ; 08247D90
-.incbin "../data/Graphics/GoalMinigame_4_LZ77.bin"
+.incbin "data/Graphics/GoalMinigame_4_LZ77.bin"
 Data082485D4:                       ; 082485D4
-.incbin "../data/Graphics/GoalMinigame_5_LZ77.bin"
+.incbin "data/Graphics/GoalMinigame_5_LZ77.bin"
 L2Image00_5000_LZ77:                ; 08248E48
-.incbin "../data/Graphics/Gameplay_L2_500_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_500_LZ77.bin"
 L2Image00_6000_LZ77:                ; 08249700
-.incbin "../data/Graphics/Gameplay_L2_600_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_600_LZ77.bin"
 L1Global_1000_LZ77:                 ; 0824A070
-.incbin "../data/Graphics/Gameplay_L1_100_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_100_LZ77.bin"
 Data0824AABC:                       ; 0824AABC
-.incbin "../data/Graphics/Unused0824AABC_LZ77.bin"
+.incbin "data/Graphics/Unused0824AABC_LZ77.bin"
 DataPtrs0824ACB0:                   ; 0824ACB0
 .d32 Data08246EB8, Data08247760, Data08247D90, Data082485D4
 L2Image00_5000_Ptr2:                ; 0824ACC0
@@ -2096,23 +2096,23 @@ L1Global_1000_Ptr2:                 ; 0824ACC8
 .d32 L1Global_1000_LZ77
 .d32 Data0824AABC
 Data0824ACD0:                       ; 0824ACD0
-.incbin "../data/Tilemaps/GoalMinigame_L1_0_LZ77.bin"
+.incbin "data/Tilemaps/GoalMinigame_L1_0_LZ77.bin"
 Data0824AE74:                       ; 0824AE74
-.incbin "../data/Tilemaps/GoalMinigame_L1_2_LZ77.bin"
+.incbin "data/Tilemaps/GoalMinigame_L1_2_LZ77.bin"
 Data0824B098:                       ; 0824B098
-.incbin "../data/Tilemaps/GoalMinigame_L2_1_LZ77.bin"
+.incbin "data/Tilemaps/GoalMinigame_L2_1_LZ77.bin"
 Data0824B2D4:                       ; 0824B2D4
-.incbin "../data/Tilemaps/GoalMinigame_L2_2_LZ77.bin"
+.incbin "data/Tilemaps/GoalMinigame_L2_2_LZ77.bin"
 Data0824B504:                       ; 0824B504
-.incbin "../data/Tilemaps/GoalMinigame_L2_4_LZ77.bin"
+.incbin "data/Tilemaps/GoalMinigame_L2_4_LZ77.bin"
 Data0824B6B0:                       ; 0824B6B0
-.incbin "../data/Tilemaps/GoalMinigame_L3_LZ77.bin"
+.incbin "data/Tilemaps/GoalMinigame_L3_LZ77.bin"
 Data0824B84C:                       ; 0824B84C
-.incbin "../data/Tilemaps/GoalMinigame_L2_3_LZ77.bin"
+.incbin "data/Tilemaps/GoalMinigame_L2_3_LZ77.bin"
 Data0824B9E0:                       ; 0824B9E0
-.incbin "../data/Tilemaps/GoalMinigame_L2_5_LZ77.bin"
+.incbin "data/Tilemaps/GoalMinigame_L2_5_LZ77.bin"
 Data0824BC50:                       ; 0824BC50
-.incbin "../data/Tilemaps/GoalMinigame_L2_6_LZ77.bin"
+.incbin "data/Tilemaps/GoalMinigame_L2_6_LZ77.bin"
 Data0824BE2C:                       ; 0824BE2C
 .d16 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
 .d16 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
@@ -2139,25 +2139,25 @@ Data0824BE2C:                       ; 0824BE2C
 .d16 0x0000, 0x51AD, 0x40E7, 0x3000, 0x0000, 0x0000, 0x0000, 0x0000
 .d16 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
 Data0824BFAC:                       ; 0824BFAC
-.incbin "../data/Tilemaps/Gameplay_BossKeyhole_LZ77.bin"
+.incbin "data/Tilemaps/Gameplay_BossKeyhole_LZ77.bin"
 L1Global_4A00_LZ77:                 ; 0824C2BC
-.incbin "../data/Graphics/Gameplay_L1_4A0_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L1_4A0_LZ77.bin"
 L2Image03041112_5000_LZ77:          ; 0824C578
-.incbin "../data/Graphics/Gameplay_L2_503_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_503_LZ77.bin"
 L2Image0304_6000_LZ77:              ; 0824CF0C
-.incbin "../data/Graphics/Gameplay_L2_603_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_603_LZ77.bin"
 L2Image02_5000_LZ77:                ; 0824D6E8
-.incbin "../data/Graphics/Gameplay_L2_502_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_502_LZ77.bin"
 L2Image02_6000_LZ77:                ; 0824E2D8
-.incbin "../data/Graphics/Gameplay_L2_602_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_602_LZ77.bin"
 L2Image0B_5000_LZ77:                ; 0824EEAC
-.incbin "../data/Graphics/Gameplay_L2_50B_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_50B_LZ77.bin"
 L2Image1112_6000_LZ77:              ; 0824F700
-.incbin "../data/Graphics/Gameplay_L2_611_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_611_LZ77.bin"
 L2Image08_5000_LZ77:                ; 0824FF94
-.incbin "../data/Graphics/Gameplay_L2_508_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_508_LZ77.bin"
 L2Image08_6000_LZ77:                ; 082507DC
-.incbin "../data/Graphics/Gameplay_L2_608_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_608_LZ77.bin"
 L2Image03041112_5000_Ptr2:          ; 08251260
 .d32 L2Image03041112_5000_LZ77
 L2Image0304_6000_Ptr2:              ; 08251264
@@ -2175,21 +2175,21 @@ L2Image08_5000_Ptr2:                ; 08251278
 L2Image08_6000_Ptr2:                ; 0825127C
 .d32 L2Image08_6000_LZ77
 L2Image0117_5000_LZ77:              ; 08251280
-.incbin "../data/Graphics/Gameplay_L2_501_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_501_LZ77.bin"
 L2Image1C_5000_171C_6000_LZ77:      ; 08251B50
-.incbin "../data/Graphics/Gameplay_L2_51C_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_51C_LZ77.bin"
 L2Image07_5000_LZ77:                ; 082524D8
-.incbin "../data/Graphics/Gameplay_L2_507_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_507_LZ77.bin"
 L2Image07_6000_LZ77:                ; 0825320C
-.incbin "../data/Graphics/Gameplay_L2_607_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_607_LZ77.bin"
 L2Image06_5000_LZ77:                ; 08253A9C
-.incbin "../data/Graphics/Gameplay_L2_506_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_506_LZ77.bin"
 L2Image18_5000_LZ77:                ; 082544B4
-.incbin "../data/Graphics/Gameplay_L2_518_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_518_LZ77.bin"
 L2Image19_5000_0A_6000_LZ77:        ; 08254CFC
-.incbin "../data/Graphics/Gameplay_L2_519_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_519_LZ77.bin"
 Data0825573C:                       ; 0825573C
-.incbin "../data/Graphics/Unused0825573C_LZ77.bin"
+.incbin "data/Graphics/Unused0825573C_LZ77.bin"
 L2Image0117_5000_Ptr2:              ; 08255F58
 .d32 L2Image0117_5000_LZ77
 L2Image1C_5000_171C_6000_Ptr2:      ; 08255F5C
@@ -2206,21 +2206,21 @@ L2Image19_5000_0A_6000_Ptr2:        ; 08255F70
 .d32 L2Image19_5000_0A_6000_LZ77
 .d32 Data0825573C
 L2Image050910_5000_LZ77:            ; 08255F78
-.incbin "../data/Graphics/Gameplay_L2_505_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_505_LZ77.bin"
 L2Image0910_6000_LZ77:              ; 0825665C
-.incbin "../data/Graphics/Gameplay_L2_609_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_609_LZ77.bin"
 L2Image0A_5000_LZ77:                ; 082571B0
-.incbin "../data/Graphics/Gameplay_L2_50A_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_50A_LZ77.bin"
 L2Image1E_5000_0B_6000_LZ77:        ; 08257C30
-.incbin "../data/Graphics/Gameplay_L2_51E_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_51E_LZ77.bin"
 L2Image0C_5000_1E_6000_LZ77:        ; 08258688
-.incbin "../data/Graphics/Gameplay_L2_50C_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_50C_LZ77.bin"
 L2Image0C_6000_LZ77:                ; 0825913C
-.incbin "../data/Graphics/Gameplay_L2_60C_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_60C_LZ77.bin"
 L2Image0D_5000_LZ77:                ; 08259D80
-.incbin "../data/Graphics/Gameplay_L2_50D_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_50D_LZ77.bin"
 L2Image050E18_6000_LZ77:            ; 0825A250
-.incbin "../data/Graphics/Gameplay_L2_605_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_605_LZ77.bin"
 L2Image050910_5000_Ptr2:            ; 0825A844
 .d32 L2Image050910_5000_LZ77
 L2Image0910_6000_Ptr2:              ; 0825A848
@@ -2238,21 +2238,21 @@ L2Image0D_5000_Ptr2:                ; 0825A85C
 L2Image050E18_6000_Ptr2:            ; 0825A860
 .d32 L2Image050E18_6000_LZ77
 L2Image0E_5000_LZ77:                ; 0825A864
-.incbin "../data/Graphics/Gameplay_L2_50E_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_50E_LZ77.bin"
 L2Image14_5000_LZ77:                ; 0825B3A4
-.incbin "../data/Graphics/Gameplay_L2_514_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_514_LZ77.bin"
 L2Image0F_5000_14_6000_LZ77:        ; 0825C070
-.incbin "../data/Graphics/Gameplay_L2_50F_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_50F_LZ77.bin"
 L2Image0F_6000_LZ77:                ; 0825CA18
-.incbin "../data/Graphics/Gameplay_L2_60F_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_60F_LZ77.bin"
 L2Image13_5000_LZ77:                ; 0825D3B0
-.incbin "../data/Graphics/Gameplay_L2_513_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_513_LZ77.bin"
 L2Image13_6000_LZ77:                ; 0825DC50
-.incbin "../data/Graphics/Gameplay_L2_613_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_613_LZ77.bin"
 L2Image151A1B_5000_LZ77:            ; 0825E690
-.incbin "../data/Graphics/Gameplay_L2_515_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_515_LZ77.bin"
 L2Image151A1B_6000_LZ77:            ; 0825F038
-.incbin "../data/Graphics/Gameplay_L2_615_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_615_LZ77.bin"
 L2Image0E_5000_Ptr2:                ; 0825FA20
 .d32 L2Image0E_5000_LZ77
 L2Image14_5000_Ptr2:                ; 0825FA24
@@ -2270,21 +2270,21 @@ L2Image151A1B_5000_Ptr2:            ; 0825FA38
 L2Image151A1B_6000_Ptr2:            ; 0825FA3C
 .d32 L2Image151A1B_6000_LZ77
 Data0825FA40:                       ; 0825FA40
-.incbin "../data/Graphics/LevelSelect_Yoshi_LZ77.bin"
+.incbin "data/Graphics/LevelSelect_Yoshi_LZ77.bin"
 Data082601E4:                       ; 082601E4
-.incbin "../data/Graphics/Credits_200_LZ77.bin"
+.incbin "data/Graphics/Credits_200_LZ77.bin"
 Data08260FB4:                       ; 08260FB4
-.incbin "../data/Graphics/Credits_300_LZ77.bin"
+.incbin "data/Graphics/Credits_300_LZ77.bin"
 Data08261938:                       ; 08261938
-.incbin "../data/Graphics/WorldSelect_stripe00_LZ77.bin"
+.incbin "data/Graphics/WorldSelect_stripe00_LZ77.bin"
 L2Image0619_6000_LZ77:              ; 08261DAC
-.incbin "../data/Graphics/Gameplay_L2_606_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_606_LZ77.bin"
 Data08262668:                       ; 08262668
-.incbin "../data/Graphics/Gameplay_Bowser_stripe22_LZ77.bin"
+.incbin "data/Graphics/Gameplay_Bowser_stripe22_LZ77.bin"
 Data08262F94:                       ; 08262F94
-.incbin "../data/Graphics/Gameplay_Bowser_L1_LZ77.bin"
+.incbin "data/Graphics/Gameplay_Bowser_L1_LZ77.bin"
 Data08263AB4:                       ; 08263AB4
-.incbin "../data/Graphics/Gameplay_Bowser_stripe02_LZ77.bin"
+.incbin "data/Graphics/Gameplay_Bowser_stripe02_LZ77.bin"
 DataPtrs0826443C:                   ; 0826443C
 .d32 Data0825FA40
 .d32 Data082601E4
@@ -2300,21 +2300,21 @@ DataPtrs08264454:                   ; 08264454
 DataPtrs08264458:                   ; 08264458
 .d32 Data08263AB4
 L2Image16_5000_LZ77:                ; 0826445C
-.incbin "../data/Graphics/Gameplay_L2_516_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_516_LZ77.bin"
 L2Image16_6000_LZ77:                ; 08264B68
-.incbin "../data/Graphics/Gameplay_L2_616_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_616_LZ77.bin"
 L2Image01_6000_LZ77:                ; 082650D8
-.incbin "../data/Graphics/Gameplay_L2_601_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_601_LZ77.bin"
 L2Image0D_6000_LZ77:                ; 08265808
-.incbin "../data/Graphics/Gameplay_L2_60D_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_60D_LZ77.bin"
 L2Image1D_5000_LZ77:                ; 082660C0
-.incbin "../data/Graphics/Gameplay_L2_51D_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_51D_LZ77.bin"
 L2Image1D_6000_LZ77:                ; 08266A10
-.incbin "../data/Graphics/Gameplay_L2_61D_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_61D_LZ77.bin"
 L2Image1F_5000_LZ77:                ; 082672D0
-.incbin "../data/Graphics/Gameplay_L2_51F_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_51F_LZ77.bin"
 L2Image1F_6000_LZ77:                ; 08267CB8
-.incbin "../data/Graphics/Gameplay_L2_61F_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L2_61F_LZ77.bin"
 L2Image16_5000_Ptr2:                ; 082686EC
 .d32 L2Image16_5000_LZ77
 L2Image16_6000_Ptr2:                ; 082686F0
@@ -2332,21 +2332,21 @@ L2Image1F_5000_Ptr2:                ; 08268704
 L2Image1F_6000_Ptr2:                ; 08268708
 .d32 L2Image1F_6000_LZ77
 L3Image0D11_7000_LZ77:              ; 0826870C
-.incbin "../data/Graphics/Gameplay_L3_70D_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_70D_LZ77.bin"
 L3Image0C0D_8000_LZ77:              ; 08268C3C
-.incbin "../data/Graphics/Gameplay_L3_80C_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_80C_LZ77.bin"
 L3Image0A_7000_LZ77:                ; 0826922C
-.incbin "../data/Graphics/Gameplay_L3_70A_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_70A_LZ77.bin"
 L3Image09_LZ77:                     ; 082695CC
-.incbin "../data/Graphics/Gameplay_L3_709_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_709_LZ77.bin"
 L3Image01_7000_1C_LZ77:             ; 0826982C
-.incbin "../data/Graphics/Gameplay_L3_701_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_701_LZ77.bin"
 L3Image12_7000_Spr_8000_LZ77:       ; 08269E98
-.incbin "../data/Graphics/Gameplay_L3_712_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_712_LZ77.bin"
 L3Spr_7000_LZ77:                    ; 0826A200
-.incbin "../data/Graphics/Gameplay_L3_702_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_702_LZ77.bin"
 L3Image121B26Intro_8000_LZ77:       ; 0826A59C
-.incbin "../data/Graphics/Gameplay_L3_812_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_812_LZ77.bin"
 L3Image0D11_7000_Ptr2:              ; 0826ABC4
 .d32 L3Image0D11_7000_LZ77
 L3Image0C0D_8000_Ptr2:              ; 0826ABC8
@@ -2364,21 +2364,21 @@ L3Spr_7000_Ptr2:                    ; 0826ABDC
 L3Image121B26Intro_8000_Ptr2:       ; 0826ABE0
 .d32 L3Image121B26Intro_8000_LZ77
 L3Image031B_7000_0320_8000_LZ77:    ; 0826ABE4
-.incbin "../data/Graphics/Gameplay_L3_703_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_703_LZ77.bin"
 L3Image1E232A_7000_1E2A_8000_LZ77:  ; 0826B328
-.incbin "../data/Graphics/Gameplay_L3_71E_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_71E_LZ77.bin"
 L3Image0CIntro_7000_LZ77:           ; 0826B994
-.incbin "../data/Graphics/Gameplay_L3_70C_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_70C_LZ77.bin"
 L3Image18_7000_LZ77:                ; 0826BD60
-.incbin "../data/Graphics/Gameplay_L3_718_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_718_LZ77.bin"
 Data0826C380:                       ; 0826C380
-.incbin "../data/Graphics/GoalMinigame_7_LZ77.bin"
+.incbin "data/Graphics/GoalMinigame_7_LZ77.bin"
 Data0826CBA4:                       ; 0826CBA4
-.incbin "../data/Graphics/GoalMinigame_8_LZ77.bin"
+.incbin "data/Graphics/GoalMinigame_8_LZ77.bin"
 KamekRoom_Graphics_LZ77:            ; 0826D1A4
-.incbin "../data/Graphics/Gameplay_KamekRoom_LZ77.bin"
+.incbin "data/Graphics/Gameplay_KamekRoom_LZ77.bin"
 Data0826D854:                       ; 0826D854
-.incbin "../data/Graphics/Unused0826D854_LZ77.bin"
+.incbin "data/Graphics/Unused0826D854_LZ77.bin"
 L3Image031B_7000_0320_8000_Ptr2:    ; 0826DC64
 .d32 L3Image031B_7000_0320_8000_LZ77
 L3Image1E232A_7000_1E2A_8000_Ptr2:  ; 0826DC68
@@ -2394,21 +2394,21 @@ KamekRoom_Graphics_Ptr2:            ; 0826DC7C
 DataPtrs0826DC80:                   ; 0826DC80
 .d32 Data0826D854
 Data0826DC84:                       ; 0826DC84
-.incbin "../data/Graphics/ScoreCalc_L3anim_0_LZ77.bin"
+.incbin "data/Graphics/ScoreCalc_L3anim_0_LZ77.bin"
 Data0826E1C4:                       ; 0826E1C4
-.incbin "../data/Graphics/ScoreCalc_L3anim_1_LZ77.bin"
+.incbin "data/Graphics/ScoreCalc_L3anim_1_LZ77.bin"
 Data0826E734:                       ; 0826E734
-.incbin "../data/Graphics/ScoreCalc_L3anim_2_LZ77.bin"
+.incbin "data/Graphics/ScoreCalc_L3anim_2_LZ77.bin"
 Data0826ECA0:                       ; 0826ECA0
-.incbin "../data/Graphics/StoryIntro_L2_LZ77.bin"
+.incbin "data/Graphics/StoryIntro_L2_LZ77.bin"
 L3Image0E_7000_LZ77:                ; 0826F1BC
-.incbin "../data/Graphics/Gameplay_L3_70E_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_70E_LZ77.bin"
 L3Image0E_8000_LZ77:                ; 0826F84C
-.incbin "../data/Graphics/Gameplay_L3_80E_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_80E_LZ77.bin"
 L3Image0F_7000_LZ77:                ; 0826FF24
-.incbin "../data/Graphics/Gameplay_L3_70F_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_70F_LZ77.bin"
 L3Image0F_8000_LZ77:                ; 0827070C
-.incbin "../data/Graphics/Gameplay_L3_80F_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_80F_LZ77.bin"
 DataPtrs08270C38:                   ; 08270C38
 .d32 Data0826DC84
 DataPtrs08270C3C:                   ; 08270C3C
@@ -2424,21 +2424,21 @@ L3Image0F_7000_Ptr2:                ; 08270C50
 L3Image0F_8000_Ptr2:                ; 08270C54
 .d32 L3Image0F_8000_LZ77
 L3Image00101F_7000_LZ77:            ; 08270C58
-.incbin "../data/Graphics/Gameplay_L3_700_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_700_LZ77.bin"
 L3Image131D_7000_misc_8000_LZ77:    ; 082712F8
-.incbin "../data/Graphics/Gameplay_L3_713_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_713_LZ77.bin"
 Data082718B8:                       ; 082718B8
-.incbin "../data/Graphics/082718B8_LZ77.bin"
+.incbin "data/Graphics/082718B8_LZ77.bin"
 Data08271EEC:                       ; 08271EEC
-.incbin "../data/Graphics/BanditMinigame_7_LZ77.bin"
+.incbin "data/Graphics/BanditMinigame_7_LZ77.bin"
 L3Image0414191A21_7000_LZ77:        ; 082725DC
-.incbin "../data/Graphics/Gameplay_L3_704_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_704_LZ77.bin"
 L3Image041415191A2127_8000_LZ77:    ; 08272CDC
-.incbin "../data/Graphics/Gameplay_L3_804_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_804_LZ77.bin"
 L3Image15_7000_LZ77:                ; 08273350
-.incbin "../data/Graphics/Gameplay_L3_715_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_715_LZ77.bin"
 L3Image17_7000_1718_8000_LZ77:      ; 0827380C
-.incbin "../data/Graphics/Gameplay_L3_717_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_717_LZ77.bin"
 L3Image00101F_7000_Ptr2:            ; 082741EC
 .d32 L3Image00101F_7000_LZ77
 L3Image131D_7000_misc_8000_Ptr2:    ; 082741F0
@@ -2456,21 +2456,21 @@ L3Image15_7000_Ptr2:                ; 08274204
 L3Image17_7000_1718_8000_Ptr2:      ; 08274208
 .d32 L3Image17_7000_1718_8000_LZ77
 Unused0827420C:                     ; 0827420C
-.incbin "../data/Graphics/Unused0827420C_LZ77.bin"
+.incbin "data/Graphics/Unused0827420C_LZ77.bin"
 Data082747D8:                       ; 082747D8
-.incbin "../data/Graphics/WorldSelect_L3_8_LZ77.bin"
+.incbin "data/Graphics/WorldSelect_L3_8_LZ77.bin"
 L3Image292B2E_7000_LZ77:            ; 08274DBC
-.incbin "../data/Graphics/Gameplay_L3_729_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_729_LZ77.bin"
 L3Image292B2E2F_8000_LZ77:          ; 08275540
-.incbin "../data/Graphics/Gameplay_L3_829_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_829_LZ77.bin"
 L3Image2F_7000_LZ77:                ; 08275B74
-.incbin "../data/Graphics/Gameplay_L3_72F_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_72F_LZ77.bin"
 Data082760C8:                       ; 082760C8
-.incbin "../data/Graphics/Unused082760C8_LZ77.bin"
+.incbin "data/Graphics/Unused082760C8_LZ77.bin"
 L3Image16_7000_LZ77:                ; 082762E4
-.incbin "../data/Graphics/Gameplay_L3_716_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_716_LZ77.bin"
 L3Image16_8000_LZ77:                ; 08276764
-.incbin "../data/Graphics/Gameplay_L3_816_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_816_LZ77.bin"
 DataPtrs08276C30:                   ; 08276C30
 .d32 Unused0827420C
 DataPtrs08276C34:                   ; 08276C34
@@ -2487,21 +2487,21 @@ L3Image16_7000_Ptr2:                ; 08276C48
 L3Image16_8000_Ptr2:                ; 08276C4C
 .d32 L3Image16_8000_LZ77
 L3Image20_7000_LZ77:                ; 08276C50
-.incbin "../data/Graphics/Gameplay_L3_720_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_720_LZ77.bin"
 L3Image2228_7000_282C2D_8000_LZ77:  ; 08277254
-.incbin "../data/Graphics/Gameplay_L3_722_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_722_LZ77.bin"
 L3Image1123_8000_LZ77:              ; 082776BC
-.incbin "../data/Graphics/Gameplay_L3_811_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_811_LZ77.bin"
 L3Image24_7000_LZ77:                ; 08277BB8
-.incbin "../data/Graphics/Gameplay_L3_724_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_724_LZ77.bin"
 L3Image25_LZ77:                     ; 0827834C
-.incbin "../data/Graphics/Gameplay_L3_725_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_725_LZ77.bin"
 L3Image26_7000_LZ77:                ; 0827893C
-.incbin "../data/Graphics/Gameplay_L3_726_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_726_LZ77.bin"
 L3Image27_7000_LZ77:                ; 08278C58
-.incbin "../data/Graphics/Gameplay_L3_727_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_727_LZ77.bin"
 L3Image2C2D_7000_LZ77:              ; 08279214
-.incbin "../data/Graphics/Gameplay_L3_72C_LZ77.bin"
+.incbin "data/Graphics/Gameplay_L3_72C_LZ77.bin"
 L3Image20_7000_Ptr2:                ; 0827985C
 .d32 L3Image20_7000_LZ77
 L3Image2228_7000_282C2D_8000_Ptr2:  ; 08279860
@@ -2519,759 +2519,759 @@ L3Image27_7000_Ptr2:                ; 08279874
 L3Image2C2D_7000_Ptr2:              ; 08279878
 .d32 L3Image2C2D_7000_LZ77
 Data0827987C:                       ; 0827987C
-.incbin "../data/Graphics/Data0827987C.bin"
+.incbin "data/Graphics/Data0827987C.bin"
 Data08279C7C:                       ; 08279C7C
-.incbin "../data/Graphics/Data08279C7C.bin"
+.incbin "data/Graphics/Data08279C7C.bin"
 Data0827A07C:                       ; 0827A07C
-.incbin "../data/Graphics/Data0827A07C.bin"
+.incbin "data/Graphics/Data0827A07C.bin"
 Data0827A47C:                       ; 0827A47C
-.incbin "../data/Graphics/Data0827A47C.bin"
+.incbin "data/Graphics/Data0827A47C.bin"
 Data0827A87C:                       ; 0827A87C
-.incbin "../data/Graphics/Data0827A87C.bin"
+.incbin "data/Graphics/Data0827A87C.bin"
 Data0827A97C:                       ; 0827A97C
-.incbin "../data/Graphics/Data0827A97C.bin"
+.incbin "data/Graphics/Data0827A97C.bin"
 Data0827AA7C:                       ; 0827AA7C
-.incbin "../data/Graphics/Data0827AA7C.bin"
+.incbin "data/Graphics/Data0827AA7C.bin"
 Data0827AB7C:                       ; 0827AB7C
-.incbin "../data/Graphics/Data0827AB7C.bin"
+.incbin "data/Graphics/Data0827AB7C.bin"
 Data0827AC7C:                       ; 0827AC7C
-.incbin "../data/Graphics/Data0827AC7C.bin"
+.incbin "data/Graphics/Data0827AC7C.bin"
 Data0827AD7C:                       ; 0827AD7C
-.incbin "../data/Graphics/Data0827AD7C.bin"
+.incbin "data/Graphics/Data0827AD7C.bin"
 Data0827AE7C:                       ; 0827AE7C
-.incbin "../data/Graphics/Data0827AE7C.bin"
+.incbin "data/Graphics/Data0827AE7C.bin"
 Data0827AF7C:                       ; 0827AF7C
-.incbin "../data/Graphics/Data0827AF7C.bin"
+.incbin "data/Graphics/Data0827AF7C.bin"
 Data0827B07C:                       ; 0827B07C
-.incbin "../data/Graphics/Data0827B07C.bin"
+.incbin "data/Graphics/Data0827B07C.bin"
 Data0827B17C:                       ; 0827B17C
-.incbin "../data/Graphics/Data0827B17C.bin"
+.incbin "data/Graphics/Data0827B17C.bin"
 Data0827B27C:                       ; 0827B27C
-.incbin "../data/Graphics/Data0827B27C.bin"
+.incbin "data/Graphics/Data0827B27C.bin"
 Data0827B37C:                       ; 0827B37C
-.incbin "../data/Graphics/Data0827B37C.bin"
+.incbin "data/Graphics/Data0827B37C.bin"
 Data0827B47C:                       ; 0827B47C
-.incbin "../data/Graphics/Data0827B47C.bin"
+.incbin "data/Graphics/Data0827B47C.bin"
 Data0827B57C:                       ; 0827B57C
-.incbin "../data/Graphics/Data0827B57C.bin"
+.incbin "data/Graphics/Data0827B57C.bin"
 Data0827B67C:                       ; 0827B67C
-.incbin "../data/Graphics/Data0827B67C.bin"
+.incbin "data/Graphics/Data0827B67C.bin"
 Data0827B77C:                       ; 0827B77C
-.incbin "../data/Graphics/Data0827B77C.bin"
+.incbin "data/Graphics/Data0827B77C.bin"
 Data0827B87C:                       ; 0827B87C
-.incbin "../data/Graphics/Data0827B87C.bin"
+.incbin "data/Graphics/Data0827B87C.bin"
 Data0827BA7C:                       ; 0827BA7C
-.incbin "../data/Graphics/Data0827BA7C.bin"
+.incbin "data/Graphics/Data0827BA7C.bin"
 Data0827BC7C:                       ; 0827BC7C
-.incbin "../data/Graphics/Data0827BC7C.bin"
+.incbin "data/Graphics/Data0827BC7C.bin"
 Data0827BE7C:                       ; 0827BE7C
-.incbin "../data/Graphics/Data0827BE7C.bin"
+.incbin "data/Graphics/Data0827BE7C.bin"
 Data0827C07C:                       ; 0827C07C
-.incbin "../data/Graphics/Data0827C07C.bin"
+.incbin "data/Graphics/Data0827C07C.bin"
 Data0827C27C:                       ; 0827C27C
-.incbin "../data/Graphics/Data0827C27C.bin"
+.incbin "data/Graphics/Data0827C27C.bin"
 Data0827C47C:                       ; 0827C47C
-.incbin "../data/Graphics/Data0827C47C.bin"
+.incbin "data/Graphics/Data0827C47C.bin"
 Data0827C67C:                       ; 0827C67C
-.incbin "../data/Graphics/Data0827C67C.bin"
+.incbin "data/Graphics/Data0827C67C.bin"
 Data0827C87C:                       ; 0827C87C
-.incbin "../data/Graphics/Data0827C87C.bin"
+.incbin "data/Graphics/Data0827C87C.bin"
 Data0827CA7C:                       ; 0827CA7C
-.incbin "../data/Graphics/Data0827CA7C.bin"
+.incbin "data/Graphics/Data0827CA7C.bin"
 Data0827CC7C:                       ; 0827CC7C
-.incbin "../data/Graphics/Data0827CC7C.bin"
+.incbin "data/Graphics/Data0827CC7C.bin"
 Data0827CE7C:                       ; 0827CE7C
-.incbin "../data/Graphics/Data0827CE7C.bin"
+.incbin "data/Graphics/Data0827CE7C.bin"
 Data0827D07C:                       ; 0827D07C
-.incbin "../data/Graphics/Data0827D07C.bin"
+.incbin "data/Graphics/Data0827D07C.bin"
 Data0827D27C:                       ; 0827D27C
-.incbin "../data/Graphics/Data0827D27C.bin"
+.incbin "data/Graphics/Data0827D27C.bin"
 Data0827D47C:                       ; 0827D47C
-.incbin "../data/Graphics/Data0827D47C.bin"
+.incbin "data/Graphics/Data0827D47C.bin"
 Data0827D67C:                       ; 0827D67C
-.incbin "../data/Graphics/Data0827D67C.bin"
+.incbin "data/Graphics/Data0827D67C.bin"
 Data0827D87C:                       ; 0827D87C
-.incbin "../data/Graphics/Data0827D87C.bin"
+.incbin "data/Graphics/Data0827D87C.bin"
 Data0827DC7C:                       ; 0827DC7C
-.incbin "../data/Graphics/Data0827DC7C.bin"
+.incbin "data/Graphics/Data0827DC7C.bin"
 Data0827E47C:                       ; 0827E47C
-.incbin "../data/Graphics/Data0827E47C.bin"
+.incbin "data/Graphics/Data0827E47C.bin"
 Data0827E87C:                       ; 0827E87C
-.incbin "../data/Graphics/Data0827E87C.bin"
+.incbin "data/Graphics/Data0827E87C.bin"
 Data0827F87C:                       ; 0827F87C
-.incbin "../data/Graphics/Data0827F87C.bin"
+.incbin "data/Graphics/Data0827F87C.bin"
 Data0827F8FC:                       ; 0827F8FC
-.incbin "../data/Graphics/Data0827F8FC.bin"
+.incbin "data/Graphics/Data0827F8FC.bin"
 Data0827F97C:                       ; 0827F97C
-.incbin "../data/Graphics/Data0827F97C.bin"
+.incbin "data/Graphics/Data0827F97C.bin"
 Data0827F9FC:                       ; 0827F9FC
-.incbin "../data/Graphics/Data0827F9FC.bin"
+.incbin "data/Graphics/Data0827F9FC.bin"
 Data0827FA7C:                       ; 0827FA7C
-.incbin "../data/Graphics/Data0827FA7C.bin"
+.incbin "data/Graphics/Data0827FA7C.bin"
 Data0827FAFC:                       ; 0827FAFC
-.incbin "../data/Graphics/Data0827FAFC.bin"
+.incbin "data/Graphics/Data0827FAFC.bin"
 Data0827FB7C:                       ; 0827FB7C
-.incbin "../data/Graphics/Data0827FB7C.bin"
+.incbin "data/Graphics/Data0827FB7C.bin"
 Data0827FBFC:                       ; 0827FBFC
-.incbin "../data/Graphics/Data0827FBFC.bin"
+.incbin "data/Graphics/Data0827FBFC.bin"
 Data0827FC7C:                       ; 0827FC7C
-.incbin "../data/Graphics/Data0827FC7C.bin"
+.incbin "data/Graphics/Data0827FC7C.bin"
 Data0827FCFC:                       ; 0827FCFC
-.incbin "../data/Graphics/Data0827FCFC.bin"
+.incbin "data/Graphics/Data0827FCFC.bin"
 Data0827FD7C:                       ; 0827FD7C
-.incbin "../data/Graphics/Data0827FD7C.bin"
+.incbin "data/Graphics/Data0827FD7C.bin"
 Data0827FDFC:                       ; 0827FDFC
-.incbin "../data/Graphics/Data0827FDFC.bin"
+.incbin "data/Graphics/Data0827FDFC.bin"
 Data0827FE7C:                       ; 0827FE7C
-.incbin "../data/Graphics/Data0827FE7C.bin"
+.incbin "data/Graphics/Data0827FE7C.bin"
 Data0827FEFC:                       ; 0827FEFC
-.incbin "../data/Graphics/Data0827FEFC.bin"
+.incbin "data/Graphics/Data0827FEFC.bin"
 Data0827FF7C:                       ; 0827FF7C
-.incbin "../data/Graphics/Data0827FF7C.bin"
+.incbin "data/Graphics/Data0827FF7C.bin"
 Data0827FFFC:                       ; 0827FFFC
-.incbin "../data/Graphics/Data0827FFFC.bin"
+.incbin "data/Graphics/Data0827FFFC.bin"
 Data0828007C:                       ; 0828007C
-.incbin "../data/Graphics/Data0828007C.bin"
+.incbin "data/Graphics/Data0828007C.bin"
 Data0828017C:                       ; 0828017C
-.incbin "../data/Graphics/Data0828017C.bin"
+.incbin "data/Graphics/Data0828017C.bin"
 Data0828027C:                       ; 0828027C
-.incbin "../data/Graphics/Data0828027C.bin"
+.incbin "data/Graphics/Data0828027C.bin"
 Data0828037C:                       ; 0828037C
-.incbin "../data/Graphics/Data0828037C.bin"
+.incbin "data/Graphics/Data0828037C.bin"
 Data0828047C:                       ; 0828047C
-.incbin "../data/Graphics/Data0828047C.bin"
+.incbin "data/Graphics/Data0828047C.bin"
 Data0828057C:                       ; 0828057C
-.incbin "../data/Graphics/Data0828057C.bin"
+.incbin "data/Graphics/Data0828057C.bin"
 Data0828067C:                       ; 0828067C
-.incbin "../data/Graphics/Data0828067C.bin"
+.incbin "data/Graphics/Data0828067C.bin"
 Data0828077C:                       ; 0828077C
-.incbin "../data/Graphics/Data0828077C.bin"
+.incbin "data/Graphics/Data0828077C.bin"
 Data0828087C:                       ; 0828087C
-.incbin "../data/Graphics/Data0828087C.bin"
+.incbin "data/Graphics/Data0828087C.bin"
 Data08280A7C:                       ; 08280A7C
-.incbin "../data/Graphics/Data08280A7C.bin"
+.incbin "data/Graphics/Data08280A7C.bin"
 Data08280C7C:                       ; 08280C7C
-.incbin "../data/Graphics/Data08280C7C.bin"
+.incbin "data/Graphics/Data08280C7C.bin"
 Data08280E7C:                       ; 08280E7C
-.incbin "../data/Graphics/Data08280E7C.bin"
+.incbin "data/Graphics/Data08280E7C.bin"
 Data0828107C:                       ; 0828107C
-.incbin "../data/Graphics/Data0828107C.bin"
+.incbin "data/Graphics/Data0828107C.bin"
 Data0828127C:                       ; 0828127C
-.incbin "../data/Graphics/Data0828127C.bin"
+.incbin "data/Graphics/Data0828127C.bin"
 Data0828147C:                       ; 0828147C
-.incbin "../data/Graphics/Data0828147C.bin"
+.incbin "data/Graphics/Data0828147C.bin"
 Data0828167C:                       ; 0828167C
-.incbin "../data/Graphics/Data0828167C.bin"
+.incbin "data/Graphics/Data0828167C.bin"
 Data0828187C:                       ; 0828187C
-.incbin "../data/Graphics/Data0828187C.bin"
+.incbin "data/Graphics/Data0828187C.bin"
 Data0828197C:                       ; 0828197C
-.incbin "../data/Graphics/Data0828197C.bin"
+.incbin "data/Graphics/Data0828197C.bin"
 Data08281A7C:                       ; 08281A7C
-.incbin "../data/Graphics/Data08281A7C.bin"
+.incbin "data/Graphics/Data08281A7C.bin"
 Data08281B7C:                       ; 08281B7C
-.incbin "../data/Graphics/Data08281B7C.bin"
+.incbin "data/Graphics/Data08281B7C.bin"
 Data08281C7C:                       ; 08281C7C
-.incbin "../data/Graphics/Data08281C7C.bin"
+.incbin "data/Graphics/Data08281C7C.bin"
 Data08281D7C:                       ; 08281D7C
-.incbin "../data/Graphics/Data08281D7C.bin"
+.incbin "data/Graphics/Data08281D7C.bin"
 Data08281E7C:                       ; 08281E7C
-.incbin "../data/Graphics/Data08281E7C.bin"
+.incbin "data/Graphics/Data08281E7C.bin"
 Data08281F7C:                       ; 08281F7C
-.incbin "../data/Graphics/Data08281F7C.bin"
+.incbin "data/Graphics/Data08281F7C.bin"
 Data0828207C:                       ; 0828207C
-.incbin "../data/Graphics/Data0828207C.bin"
+.incbin "data/Graphics/Data0828207C.bin"
 Data0828217C:                       ; 0828217C
-.incbin "../data/Graphics/Data0828217C.bin"
+.incbin "data/Graphics/Data0828217C.bin"
 Data0828227C:                       ; 0828227C
-.incbin "../data/Graphics/Data0828227C.bin"
+.incbin "data/Graphics/Data0828227C.bin"
 Data0828237C:                       ; 0828237C
-.incbin "../data/Graphics/Data0828237C.bin"
+.incbin "data/Graphics/Data0828237C.bin"
 Data0828247C:                       ; 0828247C
-.incbin "../data/Graphics/Data0828247C.bin"
+.incbin "data/Graphics/Data0828247C.bin"
 Data0828257C:                       ; 0828257C
-.incbin "../data/Graphics/Data0828257C.bin"
+.incbin "data/Graphics/Data0828257C.bin"
 Data0828267C:                       ; 0828267C
-.incbin "../data/Graphics/Data0828267C.bin"
+.incbin "data/Graphics/Data0828267C.bin"
 Data0828277C:                       ; 0828277C
-.incbin "../data/Graphics/Data0828277C.bin"
+.incbin "data/Graphics/Data0828277C.bin"
 Data0828287C:                       ; 0828287C
-.incbin "../data/Graphics/Data0828287C.bin"
+.incbin "data/Graphics/Data0828287C.bin"
 Data0828297C:                       ; 0828297C
-.incbin "../data/Graphics/Data0828297C.bin"
+.incbin "data/Graphics/Data0828297C.bin"
 Data08282A7C:                       ; 08282A7C
-.incbin "../data/Graphics/Data08282A7C.bin"
+.incbin "data/Graphics/Data08282A7C.bin"
 Data08282B7C:                       ; 08282B7C
-.incbin "../data/Graphics/Data08282B7C.bin"
+.incbin "data/Graphics/Data08282B7C.bin"
 Data08282C7C:                       ; 08282C7C
-.incbin "../data/Graphics/Data08282C7C.bin"
+.incbin "data/Graphics/Data08282C7C.bin"
 Data08282D7C:                       ; 08282D7C
-.incbin "../data/Graphics/Data08282D7C.bin"
+.incbin "data/Graphics/Data08282D7C.bin"
 Data08282E7C:                       ; 08282E7C
-.incbin "../data/Graphics/Data08282E7C.bin"
+.incbin "data/Graphics/Data08282E7C.bin"
 Data08282F7C:                       ; 08282F7C
-.incbin "../data/Graphics/Data08282F7C.bin"
+.incbin "data/Graphics/Data08282F7C.bin"
 Data0828307C:                       ; 0828307C
-.incbin "../data/Graphics/Data0828307C.bin"
+.incbin "data/Graphics/Data0828307C.bin"
 Data0828317C:                       ; 0828317C
-.incbin "../data/Graphics/Data0828317C.bin"
+.incbin "data/Graphics/Data0828317C.bin"
 Data0828327C:                       ; 0828327C
-.incbin "../data/Graphics/Data0828327C.bin"
+.incbin "data/Graphics/Data0828327C.bin"
 Data0828337C:                       ; 0828337C
-.incbin "../data/Graphics/Data0828337C.bin"
+.incbin "data/Graphics/Data0828337C.bin"
 Data0828347C:                       ; 0828347C
-.incbin "../data/Graphics/Data0828347C.bin"
+.incbin "data/Graphics/Data0828347C.bin"
 Data0828357C:                       ; 0828357C
-.incbin "../data/Graphics/Data0828357C.bin"
+.incbin "data/Graphics/Data0828357C.bin"
 Data0828367C:                       ; 0828367C
-.incbin "../data/Graphics/Data0828367C.bin"
+.incbin "data/Graphics/Data0828367C.bin"
 Data0828377C:                       ; 0828377C
-.incbin "../data/Graphics/Data0828377C.bin"
+.incbin "data/Graphics/Data0828377C.bin"
 Data0828387C:                       ; 0828387C
-.incbin "../data/Graphics/Data0828387C.bin"
+.incbin "data/Graphics/Data0828387C.bin"
 Data08283C7C:                       ; 08283C7C
-.incbin "../data/Graphics/Data08283C7C.bin"
+.incbin "data/Graphics/Data08283C7C.bin"
 Data0828407C:                       ; 0828407C
-.incbin "../data/Graphics/Data0828407C.bin"
+.incbin "data/Graphics/Data0828407C.bin"
 Data0828447C:                       ; 0828447C
-.incbin "../data/Graphics/Data0828447C.bin"
+.incbin "data/Graphics/Data0828447C.bin"
 Data0828487C:                       ; 0828487C
-.incbin "../data/Graphics/Data0828487C.bin"
+.incbin "data/Graphics/Data0828487C.bin"
 Data08284C7C:                       ; 08284C7C
-.incbin "../data/Graphics/Data08284C7C.bin"
+.incbin "data/Graphics/Data08284C7C.bin"
 Data0828507C:                       ; 0828507C
-.incbin "../data/Graphics/Data0828507C.bin"
+.incbin "data/Graphics/Data0828507C.bin"
 Data0828547C:                       ; 0828547C
-.incbin "../data/Graphics/Data0828547C.bin"
+.incbin "data/Graphics/Data0828547C.bin"
 Data0828587C:                       ; 0828587C
-.incbin "../data/Graphics/Data0828587C.bin"
+.incbin "data/Graphics/Data0828587C.bin"
 Data08285C7C:                       ; 08285C7C
-.incbin "../data/Graphics/Data08285C7C.bin"
+.incbin "data/Graphics/Data08285C7C.bin"
 Data0828607C:                       ; 0828607C
-.incbin "../data/Graphics/Data0828607C.bin"
+.incbin "data/Graphics/Data0828607C.bin"
 Data0828647C:                       ; 0828647C
-.incbin "../data/Graphics/Data0828647C.bin"
+.incbin "data/Graphics/Data0828647C.bin"
 Data0828687C:                       ; 0828687C
-.incbin "../data/Graphics/Data0828687C.bin"
+.incbin "data/Graphics/Data0828687C.bin"
 Data08286C7C:                       ; 08286C7C
-.incbin "../data/Graphics/Data08286C7C.bin"
+.incbin "data/Graphics/Data08286C7C.bin"
 Data0828707C:                       ; 0828707C
-.incbin "../data/Graphics/Data0828707C.bin"
+.incbin "data/Graphics/Data0828707C.bin"
 Data0828747C:                       ; 0828747C
-.incbin "../data/Graphics/Data0828747C.bin"
+.incbin "data/Graphics/Data0828747C.bin"
 Data0828787C:                       ; 0828787C
-.incbin "../data/Graphics/Data0828787C.bin"
+.incbin "data/Graphics/Data0828787C.bin"
 Data08287C7C:                       ; 08287C7C
-.incbin "../data/Graphics/Data08287C7C.bin"
+.incbin "data/Graphics/Data08287C7C.bin"
 Data0828807C:                       ; 0828807C
-.incbin "../data/Graphics/Data0828807C.bin"
+.incbin "data/Graphics/Data0828807C.bin"
 Data0828847C:                       ; 0828847C
-.incbin "../data/Graphics/Data0828847C.bin"
+.incbin "data/Graphics/Data0828847C.bin"
 Data0828887C:                       ; 0828887C
-.incbin "../data/Graphics/Data0828887C.bin"
+.incbin "data/Graphics/Data0828887C.bin"
 Data08288C7C:                       ; 08288C7C
-.incbin "../data/Graphics/Data08288C7C.bin"
+.incbin "data/Graphics/Data08288C7C.bin"
 Data0828907C:                       ; 0828907C
-.incbin "../data/Graphics/Data0828907C.bin"
+.incbin "data/Graphics/Data0828907C.bin"
 Data0828947C:                       ; 0828947C
-.incbin "../data/Graphics/Data0828947C.bin"
+.incbin "data/Graphics/Data0828947C.bin"
 Data0828987C:                       ; 0828987C
-.incbin "../data/Graphics/Data0828987C.bin"
+.incbin "data/Graphics/Data0828987C.bin"
 Data0828997C:                       ; 0828997C
-.incbin "../data/Graphics/Data0828997C.bin"
+.incbin "data/Graphics/Data0828997C.bin"
 Data08289A7C:                       ; 08289A7C
-.incbin "../data/Graphics/Data08289A7C.bin"
+.incbin "data/Graphics/Data08289A7C.bin"
 Data08289B7C:                       ; 08289B7C
-.incbin "../data/Graphics/Data08289B7C.bin"
+.incbin "data/Graphics/Data08289B7C.bin"
 Data08289C7C:                       ; 08289C7C
-.incbin "../data/Graphics/Data08289C7C.bin"
+.incbin "data/Graphics/Data08289C7C.bin"
 Data08289D7C:                       ; 08289D7C
-.incbin "../data/Graphics/Data08289D7C.bin"
+.incbin "data/Graphics/Data08289D7C.bin"
 Data08289E7C:                       ; 08289E7C
-.incbin "../data/Graphics/Data08289E7C.bin"
+.incbin "data/Graphics/Data08289E7C.bin"
 Data08289F3C:                       ; 08289F3C
-.incbin "../data/Graphics/Data08289F3C.bin"
+.incbin "data/Graphics/Data08289F3C.bin"
 Data08289F7C:                       ; 08289F7C
-.incbin "../data/Graphics/Data08289F7C.bin"
+.incbin "data/Graphics/Data08289F7C.bin"
 Data0828C0FC:                       ; 0828C0FC
-.incbin "../data/Graphics/Data0828C0FC.bin"
+.incbin "data/Graphics/Data0828C0FC.bin"
 Data0828C2FC:                       ; 0828C2FC
-.incbin "../data/Graphics/Data0828C2FC.bin"
+.incbin "data/Graphics/Data0828C2FC.bin"
 Data0828C4FC:                       ; 0828C4FC
-.incbin "../data/Graphics/Data0828C4FC.bin"
+.incbin "data/Graphics/Data0828C4FC.bin"
 Data0828C6FC:                       ; 0828C6FC
-.incbin "../data/Graphics/Data0828C6FC.bin"
+.incbin "data/Graphics/Data0828C6FC.bin"
 Data0828C87C:                       ; 0828C87C
-.incbin "../data/Graphics/Data0828C87C.bin"
+.incbin "data/Graphics/Data0828C87C.bin"
 Data0828CC7C:                       ; 0828CC7C
-.incbin "../data/Graphics/Data0828CC7C.bin"
+.incbin "data/Graphics/Data0828CC7C.bin"
 Data0828D47C:                       ; 0828D47C
-.incbin "../data/Graphics/Data0828D47C.bin"
+.incbin "data/Graphics/Data0828D47C.bin"
 Data0828F87C:                       ; 0828F87C
-.incbin "../data/Graphics/Gameplay_anim_09_LZ77.bin"
+.incbin "data/Graphics/Gameplay_anim_09_LZ77.bin"
 Data0828FEA4:                       ; 0828FEA4
-.incbin "../data/Graphics/Data0828FEA4.bin"
+.incbin "data/Graphics/Data0828FEA4.bin"
 Data0828FFA4:                       ; 0828FFA4
-.incbin "../data/Graphics/Data0828FFA4.bin"
+.incbin "data/Graphics/Data0828FFA4.bin"
 Data08290024:                       ; 08290024
-.incbin "../data/Graphics/Data08290024.bin"
+.incbin "data/Graphics/Data08290024.bin"
 Data08290124:                       ; 08290124
-.incbin "../data/Graphics/Data08290124.bin"
+.incbin "data/Graphics/Data08290124.bin"
 Data082906C0:                       ; 082906C0
-.incbin "../data/Graphics/Data082906C0.bin"
+.incbin "data/Graphics/Data082906C0.bin"
 Data08290EA4:                       ; 08290EA4
-.incbin "../data/Graphics/Data08290EA4.bin"
+.incbin "data/Graphics/Data08290EA4.bin"
 Data08290F24:                       ; 08290F24
-.incbin "../data/Graphics/Data08290F24.bin"
+.incbin "data/Graphics/Data08290F24.bin"
 Data08290FA4:                       ; 08290FA4
-.incbin "../data/Graphics/Data08290FA4.bin"
+.incbin "data/Graphics/Data08290FA4.bin"
 Data08290FE4:                       ; 08290FE4
-.incbin "../data/Graphics/Data08290FE4.bin"
+.incbin "data/Graphics/Data08290FE4.bin"
 Data08291024:                       ; 08291024
-.incbin "../data/Graphics/Data08291024.bin"
+.incbin "data/Graphics/Data08291024.bin"
 Data082910A4:                       ; 082910A4
-.incbin "../data/Graphics/Data082910A4.bin"
+.incbin "data/Graphics/Data082910A4.bin"
 Data08291124:                       ; 08291124
-.incbin "../data/Graphics/Data08291124.bin"
+.incbin "data/Graphics/Data08291124.bin"
 Data082911A4:                       ; 082911A4
-.incbin "../data/Graphics/Data082911A4.bin"
+.incbin "data/Graphics/Data082911A4.bin"
 Data08291224:                       ; 08291224
-.incbin "../data/Graphics/Data08291224.bin"
+.incbin "data/Graphics/Data08291224.bin"
 Data082917A4:                       ; 082917A4
-.incbin "../data/Graphics/Data082917A4.bin"
+.incbin "data/Graphics/Data082917A4.bin"
 Data082917E4:                       ; 082917E4
-.incbin "../data/Graphics/Data082917E4.bin"
+.incbin "data/Graphics/Data082917E4.bin"
 Data08291AC0:                       ; 08291AC0
-.incbin "../data/Graphics/Data08291AC0.bin"
+.incbin "data/Graphics/Data08291AC0.bin"
 Data08291EA4:                       ; 08291EA4
-.incbin "../data/Graphics/Data08291EA4.bin"
+.incbin "data/Graphics/Data08291EA4.bin"
 Data08291F24:                       ; 08291F24
-.incbin "../data/Graphics/Data08291F24.bin"
+.incbin "data/Graphics/Data08291F24.bin"
 Data08291FA4:                       ; 08291FA4
-.incbin "../data/Graphics/Data08291FA4.bin"
+.incbin "data/Graphics/Data08291FA4.bin"
 Data082920A4:                       ; 082920A4
-.incbin "../data/Graphics/Data082920A4.bin"
+.incbin "data/Graphics/Data082920A4.bin"
 Data082921A4:                       ; 082921A4
-.incbin "../data/Graphics/Data082921A4.bin"
+.incbin "data/Graphics/Data082921A4.bin"
 Data08292264:                       ; 08292264
-.incbin "../data/Graphics/Data08292264.bin"
+.incbin "data/Graphics/Data08292264.bin"
 Data08292B40:                       ; 08292B40
-.incbin "../data/Graphics/Data08292B40.bin"
+.incbin "data/Graphics/Data08292B40.bin"
 Data08292BC0:                       ; 08292BC0
-.incbin "../data/Graphics/Data08292BC0.bin"
+.incbin "data/Graphics/Data08292BC0.bin"
 Data08292EA4:                       ; 08292EA4
-.incbin "../data/Graphics/Data08292EA4.bin"
+.incbin "data/Graphics/Data08292EA4.bin"
 Data08292F64:                       ; 08292F64
-.incbin "../data/Graphics/Data08292F64.bin"
+.incbin "data/Graphics/Data08292F64.bin"
 Data082930A4:                       ; 082930A4
-.incbin "../data/Graphics/Data082930A4.bin"
+.incbin "data/Graphics/Data082930A4.bin"
 Data08293124:                       ; 08293124
-.incbin "../data/Graphics/Data08293124.bin"
+.incbin "data/Graphics/Data08293124.bin"
 Data082931A4:                       ; 082931A4
-.incbin "../data/Graphics/Data082931A4.bin"
+.incbin "data/Graphics/Data082931A4.bin"
 Data08293724:                       ; 08293724
-.incbin "../data/Graphics/Data08293724.bin"
+.incbin "data/Graphics/Data08293724.bin"
 Data08293EA4:                       ; 08293EA4
-.incbin "../data/Graphics/Data08293EA4.bin"
+.incbin "data/Graphics/Data08293EA4.bin"
 Data08293EE4:                       ; 08293EE4
-.incbin "../data/Graphics/Data08293EE4.bin"
+.incbin "data/Graphics/Data08293EE4.bin"
 Data08293F24:                       ; 08293F24
-.incbin "../data/Graphics/Data08293F24.bin"
+.incbin "data/Graphics/Data08293F24.bin"
 Data08294024:                       ; 08294024
-.incbin "../data/Graphics/Data08294024.bin"
+.incbin "data/Graphics/Data08294024.bin"
 Data082940A4:                       ; 082940A4
-.incbin "../data/Graphics/Data082940A4.bin"
+.incbin "data/Graphics/Data082940A4.bin"
 Data08294124:                       ; 08294124
-.incbin "../data/Graphics/Data08294124.bin"
+.incbin "data/Graphics/Data08294124.bin"
 Data082941A4:                       ; 082941A4
-.incbin "../data/Graphics/Data082941A4.bin"
+.incbin "data/Graphics/Data082941A4.bin"
 Data08294224:                       ; 08294224
-.incbin "../data/Graphics/Data08294224.bin"
+.incbin "data/Graphics/Data08294224.bin"
 Data082946A4:                       ; 082946A4
-.incbin "../data/Graphics/Data082946A4.bin"
+.incbin "data/Graphics/Data082946A4.bin"
 Data082946E4:                       ; 082946E4
-.incbin "../data/Graphics/Data082946E4.bin"
+.incbin "data/Graphics/Data082946E4.bin"
 Data08294EA4:                       ; 08294EA4
-.incbin "../data/Graphics/Data08294EA4.bin"
+.incbin "data/Graphics/Data08294EA4.bin"
 Data08294F24:                       ; 08294F24
-.incbin "../data/Graphics/Data08294F24.bin"
+.incbin "data/Graphics/Data08294F24.bin"
 Data08294F64:                       ; 08294F64
-.incbin "../data/Graphics/Data08294F64.bin"
+.incbin "data/Graphics/Data08294F64.bin"
 Data082950E4:                       ; 082950E4
-.incbin "../data/Graphics/Data082950E4.bin"
+.incbin "data/Graphics/Data082950E4.bin"
 Data08295124:                       ; 08295124
-.incbin "../data/Graphics/Data08295124.bin"
+.incbin "data/Graphics/Data08295124.bin"
 Data082951A4:                       ; 082951A4
-.incbin "../data/Graphics/Data082951A4.bin"
+.incbin "data/Graphics/Data082951A4.bin"
 Data08295224:                       ; 08295224
-.incbin "../data/Graphics/Data08295224.bin"
+.incbin "data/Graphics/Data08295224.bin"
 Data08295724:                       ; 08295724
-.incbin "../data/Graphics/Data08295724.bin"
+.incbin "data/Graphics/Data08295724.bin"
 Data082957A4:                       ; 082957A4
-.incbin "../data/Graphics/Data082957A4.bin"
+.incbin "data/Graphics/Data082957A4.bin"
 Data082957E4:                       ; 082957E4
-.incbin "../data/Graphics/Data082957E4.bin"
+.incbin "data/Graphics/Data082957E4.bin"
 Data08295F24:                       ; 08295F24
-.incbin "../data/Graphics/Data08295F24.bin"
+.incbin "data/Graphics/Data08295F24.bin"
 Data08295FA4:                       ; 08295FA4
-.incbin "../data/Graphics/Data08295FA4.bin"
+.incbin "data/Graphics/Data08295FA4.bin"
 Data08296024:                       ; 08296024
-.incbin "../data/Graphics/Data08296024.bin"
+.incbin "data/Graphics/Data08296024.bin"
 Data082960A4:                       ; 082960A4
-.incbin "../data/Graphics/Data082960A4.bin"
+.incbin "data/Graphics/Data082960A4.bin"
 Data08296124:                       ; 08296124
-.incbin "../data/Graphics/Data08296124.bin"
+.incbin "data/Graphics/Data08296124.bin"
 Data08296224:                       ; 08296224
-.incbin "../data/Graphics/Data08296224.bin"
+.incbin "data/Graphics/Data08296224.bin"
 Data08296C40:                       ; 08296C40
-.incbin "../data/Graphics/Data08296C40.bin"
+.incbin "data/Graphics/Data08296C40.bin"
 Data08296F24:                       ; 08296F24
-.incbin "../data/Graphics/Data08296F24.bin"
+.incbin "data/Graphics/Data08296F24.bin"
 Data08296FA4:                       ; 08296FA4
-.incbin "../data/Graphics/Data08296FA4.bin"
+.incbin "data/Graphics/Data08296FA4.bin"
 Data082970A4:                       ; 082970A4
-.incbin "../data/Graphics/Data082970A4.bin"
+.incbin "data/Graphics/Data082970A4.bin"
 Data08297124:                       ; 08297124
-.incbin "../data/Graphics/Data08297124.bin"
+.incbin "data/Graphics/Data08297124.bin"
 Data082971A4:                       ; 082971A4
-.incbin "../data/Graphics/Data082971A4.bin"
+.incbin "data/Graphics/Data082971A4.bin"
 Data08297224:                       ; 08297224
-.incbin "../data/Graphics/Data08297224.bin"
+.incbin "data/Graphics/Data08297224.bin"
 Data082977C0:                       ; 082977C0
-.incbin "../data/Graphics/Data082977C0.bin"
+.incbin "data/Graphics/Data082977C0.bin"
 Data08297C40:                       ; 08297C40
-.incbin "../data/Graphics/Data08297C40.bin"
+.incbin "data/Graphics/Data08297C40.bin"
 Data08297EA4:                       ; 08297EA4
-.incbin "../data/Graphics/Data08297EA4.bin"
+.incbin "data/Graphics/Data08297EA4.bin"
 Data08297EE4:                       ; 08297EE4
-.incbin "../data/Graphics/Data08297EE4.bin"
+.incbin "data/Graphics/Data08297EE4.bin"
 Data08297F24:                       ; 08297F24
-.incbin "../data/Graphics/Data08297F24.bin"
+.incbin "data/Graphics/Data08297F24.bin"
 Data08297FA4:                       ; 08297FA4
-.incbin "../data/Graphics/Data08297FA4.bin"
+.incbin "data/Graphics/Data08297FA4.bin"
 Data08298024:                       ; 08298024
-.incbin "../data/Graphics/Data08298024.bin"
+.incbin "data/Graphics/Data08298024.bin"
 Data082986A4:                       ; 082986A4
-.incbin "../data/Graphics/Data082986A4.bin"
+.incbin "data/Graphics/Data082986A4.bin"
 Data08298EA4:                       ; 08298EA4
-.incbin "../data/Graphics/Data08298EA4.bin"
+.incbin "data/Graphics/Data08298EA4.bin"
 Data08298EE4:                       ; 08298EE4
-.incbin "../data/Graphics/Data08298EE4.bin"
+.incbin "data/Graphics/Data08298EE4.bin"
 Data08298F24:                       ; 08298F24
-.incbin "../data/Graphics/Data08298F24.bin"
+.incbin "data/Graphics/Data08298F24.bin"
 Data08298F64:                       ; 08298F64
-.incbin "../data/Graphics/Data08298F64.bin"
+.incbin "data/Graphics/Data08298F64.bin"
 Data08298FA4:                       ; 08298FA4
-.incbin "../data/Graphics/Data08298F64.bin"
+.incbin "data/Graphics/Data08298F64.bin"
 Data08298FE4:                       ; 08298FE4
-.incbin "../data/Graphics/Data08298F64.bin"
+.incbin "data/Graphics/Data08298F64.bin"
 Data08299024:                       ; 08299024
-.incbin "../data/Graphics/Data08299024.bin"
+.incbin "data/Graphics/Data08299024.bin"
 Data08299064:                       ; 08299064
-.incbin "../data/Graphics/Data08299064.bin"
+.incbin "data/Graphics/Data08299064.bin"
 Data082996A4:                       ; 082996A4
-.incbin "../data/Graphics/Data082996A4.bin"
+.incbin "data/Graphics/Data082996A4.bin"
 Data08299864:                       ; 08299864
-.incbin "../data/Graphics/Data08299864.bin"
+.incbin "data/Graphics/Data08299864.bin"
 Data08299F64:                       ; 08299F64
-.incbin "../data/Graphics/Data08299F64.bin"
+.incbin "data/Graphics/Data08299F64.bin"
 Data08299FA4:                       ; 08299FA4
-.incbin "../data/Graphics/Data08299FA4.bin"
+.incbin "data/Graphics/Data08299FA4.bin"
 Data0829A024:                       ; 0829A024
-.incbin "../data/Graphics/Data0829A024.bin"
+.incbin "data/Graphics/Data0829A024.bin"
 Data0829A1A4:                       ; 0829A1A4
-.incbin "../data/Graphics/Data0829A1A4.bin"
+.incbin "data/Graphics/Data0829A1A4.bin"
 Data0829A224:                       ; 0829A224
-.incbin "../data/Graphics/Data0829A224.bin"
+.incbin "data/Graphics/Data0829A224.bin"
 Data0829A6A4:                       ; 0829A6A4
-.incbin "../data/Graphics/Data0829A6A4.bin"
+.incbin "data/Graphics/Data0829A6A4.bin"
 Data0829A6E4:                       ; 0829A6E4
-.incbin "../data/Graphics/Data0829A6E4.bin"
+.incbin "data/Graphics/Data0829A6E4.bin"
 Data0829A724:                       ; 0829A724
-.incbin "../data/Graphics/Data0829A724.bin"
+.incbin "data/Graphics/Data0829A724.bin"
 Data0829A764:                       ; 0829A764
-.incbin "../data/Graphics/Data0829A764.bin"
+.incbin "data/Graphics/Data0829A764.bin"
 Data0829AEA4:                       ; 0829AEA4
-.incbin "../data/Graphics/Data0829AEA4.bin"
+.incbin "data/Graphics/Data0829AEA4.bin"
 Data0829AF24:                       ; 0829AF24
-.incbin "../data/Graphics/Data0829AF24.bin"
+.incbin "data/Graphics/Data0829AF24.bin"
 Data0829BEA4:                       ; 0829BEA4
-.incbin "../data/Graphics/Data0829BEA4.bin"
+.incbin "data/Graphics/Data0829BEA4.bin"
 Data0829BF24:                       ; 0829BF24
-.incbin "../data/Graphics/Data0829BF24.bin"
+.incbin "data/Graphics/Data0829BF24.bin"
 Data0829BFA4:                       ; 0829BFA4
-.incbin "../data/Graphics/Data0829BFA4.bin"
+.incbin "data/Graphics/Data0829BFA4.bin"
 Data0829C024:                       ; 0829C024
-.incbin "../data/Graphics/Data0829C024.bin"
+.incbin "data/Graphics/Data0829C024.bin"
 Data0829C124:                       ; 0829C124
-.incbin "../data/Graphics/Data0829C124.bin"
+.incbin "data/Graphics/Data0829C124.bin"
 Data0829C1A4:                       ; 0829C1A4
-.incbin "../data/Graphics/Data0829C1A4.bin"
+.incbin "data/Graphics/Data0829C1A4.bin"
 Data0829C224:                       ; 0829C224
-.incbin "../data/Graphics/Data0829C224.bin"
+.incbin "data/Graphics/Data0829C224.bin"
 Data0829CEA4:                       ; 0829CEA4
-.incbin "../data/Graphics/Data0829CEA4.bin"
+.incbin "data/Graphics/Data0829CEA4.bin"
 Data0829CF24:                       ; 0829CF24
-.incbin "../data/Graphics/Data0829CF24.bin"
+.incbin "data/Graphics/Data0829CF24.bin"
 Data0829D024:                       ; 0829D024
-.incbin "../data/Graphics/Data0829D024.bin"
+.incbin "data/Graphics/Data0829D024.bin"
 Data0829DF24:                       ; 0829DF24
-.incbin "../data/Graphics/Data0829DF24.bin"
+.incbin "data/Graphics/Data0829DF24.bin"
 Data0829DFA4:                       ; 0829DFA4
-.incbin "../data/Graphics/Data0829DF24.bin"
+.incbin "data/Graphics/Data0829DF24.bin"
 Data0829E024:                       ; 0829E024
-.incbin "../data/Graphics/Data0829E024.bin"
+.incbin "data/Graphics/Data0829E024.bin"
 Data0829E0A4:                       ; 0829E0A4
-.incbin "../data/Graphics/Data0829E0A4.bin"
+.incbin "data/Graphics/Data0829E0A4.bin"
 Data0829E124:                       ; 0829E124
-.incbin "../data/Graphics/Data0829E124.bin"
+.incbin "data/Graphics/Data0829E124.bin"
 Data0829E1A4:                       ; 0829E1A4
-.incbin "../data/Graphics/Data0829E1A4.bin"
+.incbin "data/Graphics/Data0829E1A4.bin"
 Data0829E224:                       ; 0829E224
-.incbin "../data/Graphics/Data0829E224.bin"
+.incbin "data/Graphics/Data0829E224.bin"
 Data0829EEA4:                       ; 0829EEA4
-.incbin "../data/Graphics/Data0829EEA4.bin"
+.incbin "data/Graphics/Data0829EEA4.bin"
 Data0829EF24:                       ; 0829EF24
-.incbin "../data/Graphics/Data0829EF24.bin"
+.incbin "data/Graphics/Data0829EF24.bin"
 Data0829EFA4:                       ; 0829EFA4
-.incbin "../data/Graphics/Data0829EFA4.bin"
+.incbin "data/Graphics/Data0829EFA4.bin"
 Data0829F024:                       ; 0829F024
-.incbin "../data/Graphics/Data0829F024.bin"
+.incbin "data/Graphics/Data0829F024.bin"
 Data0829F0A4:                       ; 0829F0A4
-.incbin "../data/Graphics/Data0829F0A4.bin"
+.incbin "data/Graphics/Data0829F0A4.bin"
 Data0829F124:                       ; 0829F124
-.incbin "../data/Graphics/Data0829F124.bin"
+.incbin "data/Graphics/Data0829F124.bin"
 Data0829F1A4:                       ; 0829F1A4
-.incbin "../data/Graphics/Data0829F1A4.bin"
+.incbin "data/Graphics/Data0829F1A4.bin"
 Data0829F224:                       ; 0829F224
-.incbin "../data/Graphics/Data0829F224.bin"
+.incbin "data/Graphics/Data0829F224.bin"
 Data0829FEA4:                       ; 0829FEA4
-.incbin "../data/Graphics/Data0829FEA4.bin"
+.incbin "data/Graphics/Data0829FEA4.bin"
 Data0829FF24:                       ; 0829FF24
-.incbin "../data/Graphics/Data0829FF24.bin"
+.incbin "data/Graphics/Data0829FF24.bin"
 Data0829FF64:                       ; 0829FF64
-.incbin "../data/Graphics/Data0829FF64.bin"
+.incbin "data/Graphics/Data0829FF64.bin"
 Data0829FFA4:                       ; 0829FFA4
-.incbin "../data/Graphics/Data0829FFA4.bin"
+.incbin "data/Graphics/Data0829FFA4.bin"
 Data082A0024:                       ; 082A0024
-.incbin "../data/Graphics/Data082A0024.bin"
+.incbin "data/Graphics/Data082A0024.bin"
 Data082A01A4:                       ; 082A01A4
-.incbin "../data/Graphics/Data082A01A4.bin"
+.incbin "data/Graphics/Data082A01A4.bin"
 Data082A0224:                       ; 082A0224
-.incbin "../data/Graphics/Data082A0224.bin"
+.incbin "data/Graphics/Data082A0224.bin"
 Data082A0764:                       ; 082A0764
-.incbin "../data/Graphics/Data082A0764.bin"
+.incbin "data/Graphics/Data082A0764.bin"
 Data082A1F24:                       ; 082A1F24
-.incbin "../data/Graphics/Data082A1F24.bin"
+.incbin "data/Graphics/Data082A1F24.bin"
 Data082A1FA4:                       ; 082A1FA4
-.incbin "../data/Graphics/Data082A1FA4.bin"
+.incbin "data/Graphics/Data082A1FA4.bin"
 Data082A2024:                       ; 082A2024
-.incbin "../data/Graphics/Data082A2024.bin"
+.incbin "data/Graphics/Data082A2024.bin"
 Data082A20A4:                       ; 082A20A4
-.incbin "../data/Graphics/Data082A20A4.bin"
+.incbin "data/Graphics/Data082A20A4.bin"
 Data082A20E4:                       ; 082A20E4
-.incbin "../data/Graphics/Data082A20E4.bin"
+.incbin "data/Graphics/Data082A20E4.bin"
 Data082A2124:                       ; 082A2124
-.incbin "../data/Graphics/Data082A2124.bin"
+.incbin "data/Graphics/Data082A2124.bin"
 Data082A21A4:                       ; 082A21A4
-.incbin "../data/Graphics/Data082A21A4.bin"
+.incbin "data/Graphics/Data082A21A4.bin"
 Data082A2224:                       ; 082A2224
-.incbin "../data/Graphics/Data082A2224.bin"
+.incbin "data/Graphics/Data082A2224.bin"
 Data082A28A4:                       ; 082A28A4
-.incbin "../data/Graphics/Data082A28A4.bin"
+.incbin "data/Graphics/Data082A28A4.bin"
 Data082A28E4:                       ; 082A28E4
-.incbin "../data/Graphics/Data082A28E4.bin"
+.incbin "data/Graphics/Data082A28E4.bin"
 Data082A2EA4:                       ; 082A2EA4
-.incbin "../data/Graphics/Data082A2EA4.bin"
+.incbin "data/Graphics/Data082A2EA4.bin"
 Data082A2F24:                       ; 082A2F24
-.incbin "../data/Graphics/Data082A2F24.bin"
+.incbin "data/Graphics/Data082A2F24.bin"
 Data082A2FA4:                       ; 082A2FA4
-.incbin "../data/Graphics/Data082A2FA4.bin"
+.incbin "data/Graphics/Data082A2FA4.bin"
 Data082A3024:                       ; 082A3024
-.incbin "../data/Graphics/Data082A3024.bin"
+.incbin "data/Graphics/Data082A3024.bin"
 Data082A30A4:                       ; 082A30A4
-.incbin "../data/Graphics/Data082A30A4.bin"
+.incbin "data/Graphics/Data082A30A4.bin"
 Data082A3124:                       ; 082A3124
-.incbin "../data/Graphics/Data082A3124.bin"
+.incbin "data/Graphics/Data082A3124.bin"
 Data082A3164:                       ; 082A3164
-.incbin "../data/Graphics/Data082A3164.bin"
+.incbin "data/Graphics/Data082A3164.bin"
 Data082A31A4:                       ; 082A31A4
-.incbin "../data/Graphics/Data082A31A4.bin"
+.incbin "data/Graphics/Data082A31A4.bin"
 Data082A3224:                       ; 082A3224
-.incbin "../data/Graphics/Data082A3224.bin"
+.incbin "data/Graphics/Data082A3224.bin"
 Data082A3EA4:                       ; 082A3EA4
-.incbin "../data/Graphics/Data082A3EA4.bin"
+.incbin "data/Graphics/Data082A3EA4.bin"
 Data082A3F24:                       ; 082A3F24
-.incbin "../data/Graphics/Data082A3F24.bin"
+.incbin "data/Graphics/Data082A3F24.bin"
 Data082A3FA4:                       ; 082A3FA4
-.incbin "../data/Graphics/Data082A3FA4.bin"
+.incbin "data/Graphics/Data082A3FA4.bin"
 Data082A4024:                       ; 082A4024
-.incbin "../data/Graphics/Data082A4024.bin"
+.incbin "data/Graphics/Data082A4024.bin"
 Data082A40A4:                       ; 082A40A4
-.incbin "../data/Graphics/Data082A40A4.bin"
+.incbin "data/Graphics/Data082A40A4.bin"
 Data082A4124:                       ; 082A4124
-.incbin "../data/Graphics/Data082A4124.bin"
+.incbin "data/Graphics/Data082A4124.bin"
 Data082A41A4:                       ; 082A41A4
-.incbin "../data/Graphics/Data082A41A4.bin"
+.incbin "data/Graphics/Data082A41A4.bin"
 Data082A4224:                       ; 082A4224
-.incbin "../data/Graphics/Data082A4224.bin"
+.incbin "data/Graphics/Data082A4224.bin"
 Data082A4EA4:                       ; 082A4EA4
-.incbin "../data/Graphics/Data082A4EA4.bin"
+.incbin "data/Graphics/Data082A4EA4.bin"
 Data082A4F24:                       ; 082A4F24
-.incbin "../data/Graphics/Data082A4F24.bin"
+.incbin "data/Graphics/Data082A4F24.bin"
 Data082A4FA4:                       ; 082A4FA4
-.incbin "../data/Graphics/Data082A4FA4.bin"
+.incbin "data/Graphics/Data082A4FA4.bin"
 Data082A50A4:                       ; 082A50A4
-.incbin "../data/Graphics/Data082A50A4.bin"
+.incbin "data/Graphics/Data082A50A4.bin"
 Data082A51A4:                       ; 082A51A4
-.incbin "../data/Graphics/Data082A51A4.bin"
+.incbin "data/Graphics/Data082A51A4.bin"
 Data082A5EA4:                       ; 082A5EA4
-.incbin "../data/Graphics/Data082A5EA4.bin"
+.incbin "data/Graphics/Data082A5EA4.bin"
 Data082A5F24:                       ; 082A5F24
-.incbin "../data/Graphics/Data082A5F24.bin"
+.incbin "data/Graphics/Data082A5F24.bin"
 Data082A5FA4:                       ; 082A5FA4
-.incbin "../data/Graphics/Data082A5FA4.bin"
+.incbin "data/Graphics/Data082A5FA4.bin"
 Data082A6024:                       ; 082A6024
-.incbin "../data/Graphics/Data082A6024.bin"
+.incbin "data/Graphics/Data082A6024.bin"
 Data082A6EA4:                       ; 082A6EA4
-.incbin "../data/Graphics/Data082A6EA4.bin"
+.incbin "data/Graphics/Data082A6EA4.bin"
 Data082A6F24:                       ; 082A6F24
-.incbin "../data/Graphics/Data082A6F24.bin"
+.incbin "data/Graphics/Data082A6F24.bin"
 Data082A6FA4:                       ; 082A6FA4
-.incbin "../data/Graphics/Data082A6FA4.bin"
+.incbin "data/Graphics/Data082A6FA4.bin"
 Data082A7024:                       ; 082A7024
-.incbin "../data/Graphics/Data082A7024.bin"
+.incbin "data/Graphics/Data082A7024.bin"
 Data082A70A4:                       ; 082A70A4
-.incbin "../data/Graphics/Data082A70A4.bin"
+.incbin "data/Graphics/Data082A70A4.bin"
 Data082A71A4:                       ; 082A71A4
-.incbin "../data/Graphics/Data082A71A4.bin"
+.incbin "data/Graphics/Data082A71A4.bin"
 Data082A7224:                       ; 082A7224
-.incbin "../data/Graphics/Data082A7224.bin"
+.incbin "data/Graphics/Data082A7224.bin"
 Data082A7EA4:                       ; 082A7EA4
-.incbin "../data/Graphics/Data082A7EA4.bin"
+.incbin "data/Graphics/Data082A7EA4.bin"
 Data082A7EE4:                       ; 082A7EE4
-.incbin "../data/Graphics/Data082A7EE4.bin"
+.incbin "data/Graphics/Data082A7EE4.bin"
 Data082A7F24:                       ; 082A7F24
-.incbin "../data/Graphics/Data082A7F24.bin"
+.incbin "data/Graphics/Data082A7F24.bin"
 Data082A7FA4:                       ; 082A7FA4
-.incbin "../data/Graphics/Data082A7FA4.bin"
+.incbin "data/Graphics/Data082A7FA4.bin"
 Data082A8024:                       ; 082A8024
-.incbin "../data/Graphics/Data082A8024.bin"
+.incbin "data/Graphics/Data082A8024.bin"
 Data082A81A4:                       ; 082A81A4
-.incbin "../data/Graphics/Data082A81A4.bin"
+.incbin "data/Graphics/Data082A81A4.bin"
 Data082A8224:                       ; 082A8224
-.incbin "../data/Graphics/Data082A8224.bin"
+.incbin "data/Graphics/Data082A8224.bin"
 Data082A8264:                       ; 082A8264
-.incbin "../data/Graphics/Data082A8264.bin"
+.incbin "data/Graphics/Data082A8264.bin"
 Data082A86E4:                       ; 082A86E4
-.incbin "../data/Graphics/Data082A86E4.bin"
+.incbin "data/Graphics/Data082A86E4.bin"
 Data082A8A24:                       ; 082A8A24
-.incbin "../data/Graphics/Data082A8A24.bin"
+.incbin "data/Graphics/Data082A8A24.bin"
 Data082A8A64:                       ; 082A8A64
-.incbin "../data/Graphics/Data082A8A64.bin"
+.incbin "data/Graphics/Data082A8A64.bin"
 Data082A8EA4:                       ; 082A8EA4
-.incbin "../data/Graphics/Data082A8EA4.bin"
+.incbin "data/Graphics/Data082A8EA4.bin"
 Data082A8F24:                       ; 082A8F24
-.incbin "../data/Graphics/Data082A8F24.bin"
+.incbin "data/Graphics/Data082A8F24.bin"
 Data082A8FA4:                       ; 082A8FA4
-.incbin "../data/Graphics/Data082A8FA4.bin"
+.incbin "data/Graphics/Data082A8FA4.bin"
 Data082A9024:                       ; 082A9024
-.incbin "../data/Graphics/Data082A9024.bin"
+.incbin "data/Graphics/Data082A9024.bin"
 Data082A90A4:                       ; 082A90A4
-.incbin "../data/Graphics/Data082A90A4.bin"
+.incbin "data/Graphics/Data082A90A4.bin"
 Data082A9124:                       ; 082A9124
-.incbin "../data/Graphics/Data082A9124.bin"
+.incbin "data/Graphics/Data082A9124.bin"
 Data082A91A4:                       ; 082A91A4
-.incbin "../data/Graphics/Data082A91A4.bin"
+.incbin "data/Graphics/Data082A91A4.bin"
 Data082A9224:                       ; 082A9224
-.incbin "../data/Graphics/Data082A9224.bin"
+.incbin "data/Graphics/Data082A9224.bin"
 Data082A9FA4:                       ; 082A9FA4
-.incbin "../data/Graphics/Data082A9FA4.bin"
+.incbin "data/Graphics/Data082A9FA4.bin"
 Data082AA024:                       ; 082AA024
-.incbin "../data/Graphics/Data082AA024.bin"
+.incbin "data/Graphics/Data082AA024.bin"
 Data082AA064:                       ; 082AA064
-.incbin "../data/Graphics/Data082AA064.bin"
+.incbin "data/Graphics/Data082AA064.bin"
 Data082AA0A4:                       ; 082AA0A4
-.incbin "../data/Graphics/Data082AA0A4.bin"
+.incbin "data/Graphics/Data082AA0A4.bin"
 Data082AA1A4:                       ; 082AA1A4
-.incbin "../data/Graphics/Data082AA1A4.bin"
+.incbin "data/Graphics/Data082AA1A4.bin"
 Data082AA224:                       ; 082AA224
-.incbin "../data/Graphics/Data082AA224.bin"
+.incbin "data/Graphics/Data082AA224.bin"
 Data082AA824:                       ; 082AA824
-.incbin "../data/Graphics/Data082AA824.bin"
+.incbin "data/Graphics/Data082AA824.bin"
 Data082AA864:                       ; 082AA864
-.incbin "../data/Graphics/Data082AA864.bin"
+.incbin "data/Graphics/Data082AA864.bin"
 Data082AAEA4:                       ; 082AAEA4
-.incbin "../data/Graphics/StoryIntro_sprite_00_LZ77.bin"
+.incbin "data/Graphics/StoryIntro_sprite_00_LZ77.bin"
 Data082AE310:                       ; 082AE310
-.incbin "../data/Graphics/StoryIntro_sprite_01_LZ77.bin"
+.incbin "data/Graphics/StoryIntro_sprite_01_LZ77.bin"
 Data082AF690:                       ; 082AF690
-.incbin "../data/Graphics/Gameplay_sprite_1000_LZ77.bin"
+.incbin "data/Graphics/Gameplay_sprite_1000_LZ77.bin"
 Data082B2480:                       ; 082B2480
-.incbin "../data/Graphics/Gameplay_PauseMenu_LZ77.bin"
+.incbin "data/Graphics/Gameplay_PauseMenu_LZ77.bin"
 SprStripe1A_LZ77:                   ; 082B2C8C
-.incbin "../data/Graphics/Gameplay_stripe_1A_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_1A_LZ77.bin"
 SprStripe1B_LZ77:                   ; 082B2FAC
-.incbin "../data/Graphics/Gameplay_stripe_1B_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_1B_LZ77.bin"
 SprStripe1C_LZ77:                   ; 082B3194
-.incbin "../data/Graphics/Gameplay_stripe_1C_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_1C_LZ77.bin"
 SprStripe1D_LZ77:                   ; 082B3394
-.incbin "../data/Graphics/Gameplay_stripe_1D_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_1D_LZ77.bin"
 SprStripe1E_LZ77:                   ; 082B3614
-.incbin "../data/Graphics/Gameplay_stripe_1E_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_1E_LZ77.bin"
 SprStripe1F_LZ77:                   ; 082B3924
-.incbin "../data/Graphics/Gameplay_stripe_1F_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_1F_LZ77.bin"
 SprStripe20_LZ77:                   ; 082B3BF0
-.incbin "../data/Graphics/Gameplay_stripe_20_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_20_LZ77.bin"
 SprStripe21_LZ77:                   ; 082B3F44
-.incbin "../data/Graphics/Gameplay_stripe_21_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_21_LZ77.bin"
 SprStripe22_LZ77:                   ; 082B4218
-.incbin "../data/Graphics/Gameplay_stripe_22_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_22_LZ77.bin"
 SprStripe23_LZ77:                   ; 082B44C0
-.incbin "../data/Graphics/Gameplay_stripe_23_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_23_LZ77.bin"
 SprStripe24_LZ77:                   ; 082B470C
-.incbin "../data/Graphics/Gameplay_stripe_24_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_24_LZ77.bin"
 SprStripe25_LZ77:                   ; 082B4980
-.incbin "../data/Graphics/Gameplay_stripe_25_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_25_LZ77.bin"
 SprStripe26_LZ77:                   ; 082B4C44
-.incbin "../data/Graphics/Gameplay_stripe_26_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_26_LZ77.bin"
 SprStripe27_LZ77:                   ; 082B4F5C
-.incbin "../data/Graphics/Gameplay_stripe_27_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_27_LZ77.bin"
 SprStripe28_LZ77:                   ; 082B5200
-.incbin "../data/Graphics/Gameplay_stripe_28_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_28_LZ77.bin"
 SprStripe29_LZ77:                   ; 082B5480
-.incbin "../data/Graphics/Gameplay_stripe_29_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_29_LZ77.bin"
 SprStripe2A_LZ77:                   ; 082B5768
-.incbin "../data/Graphics/Gameplay_stripe_2A_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_2A_LZ77.bin"
 SprStripe2B_LZ77:                   ; 082B5928
-.incbin "../data/Graphics/Gameplay_stripe_2B_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_2B_LZ77.bin"
 SprStripe2C_LZ77:                   ; 082B5B88
-.incbin "../data/Graphics/Gameplay_stripe_2C_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_2C_LZ77.bin"
 SprStripe2D_LZ77:                   ; 082B5DF0
-.incbin "../data/Graphics/Gameplay_stripe_2D_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_2D_LZ77.bin"
 SprStripe2E_LZ77:                   ; 082B60AC
-.incbin "../data/Graphics/Gameplay_stripe_2E_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_2E_LZ77.bin"
 SprStripe2F_LZ77:                   ; 082B62C0
-.incbin "../data/Graphics/Gameplay_stripe_2F_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_2F_LZ77.bin"
 SprStripe30_LZ77:                   ; 082B6538
-.incbin "../data/Graphics/Gameplay_stripe_30_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_30_LZ77.bin"
 SprStripe31_LZ77:                   ; 082B6750
-.incbin "../data/Graphics/Gameplay_stripe_31_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_31_LZ77.bin"
 SprStripe32_LZ77:                   ; 082B697C
-.incbin "../data/Graphics/Gameplay_stripe_32_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_32_LZ77.bin"
 SprStripe33_LZ77:                   ; 082B6C1C
-.incbin "../data/Graphics/Gameplay_stripe_33_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_33_LZ77.bin"
 SprStripe34_LZ77:                   ; 082B6ED4
-.incbin "../data/Graphics/Gameplay_stripe_34_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_34_LZ77.bin"
 SprStripe35_LZ77:                   ; 082B71C0
-.incbin "../data/Graphics/Gameplay_stripe_35_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_35_LZ77.bin"
 SprStripe36_LZ77:                   ; 082B74E0
-.incbin "../data/Graphics/Gameplay_stripe_36_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_36_LZ77.bin"
 SprStripe37_LZ77:                   ; 082B77E0
-.incbin "../data/Graphics/Gameplay_stripe_37_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_37_LZ77.bin"
 SprStripe38_LZ77:                   ; 082B79E0
-.incbin "../data/Graphics/Gameplay_stripe_38_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_38_LZ77.bin"
 SprStripe39_LZ77:                   ; 082B7C80
-.incbin "../data/Graphics/Gameplay_stripe_39_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_39_LZ77.bin"
 SprStripe1A_Ptr2:                   ; 082B7FC0
 .d32 SprStripe1A_LZ77
 SprStripe1B_Ptr2:                   ; 082B7FC4
@@ -3337,69 +3337,69 @@ SprStripe38_Ptr2:                   ; 082B8038
 SprStripe39_Ptr2:                   ; 082B803C
 .d32 SprStripe39_LZ77
 SprStripe3A_LZ77:                   ; 082B8040
-.incbin "../data/Graphics/Gameplay_stripe_3A_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_3A_LZ77.bin"
 SprStripe3B_LZ77:                   ; 082B82F0
-.incbin "../data/Graphics/Gameplay_stripe_3B_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_3B_LZ77.bin"
 SprStripe3C_LZ77:                   ; 082B8620
-.incbin "../data/Graphics/Gameplay_stripe_3C_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_3C_LZ77.bin"
 SprStripe3D_LZ77:                   ; 082B88FC
-.incbin "../data/Graphics/Gameplay_stripe_3D_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_3D_LZ77.bin"
 SprStripe3E_LZ77:                   ; 082B8BB4
-.incbin "../data/Graphics/Gameplay_stripe_3E_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_3E_LZ77.bin"
 SprStripe3F_LZ77:                   ; 082B8E98
-.incbin "../data/Graphics/Gameplay_stripe_3F_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_3F_LZ77.bin"
 SprStripe40_LZ77:                   ; 082B9130
-.incbin "../data/Graphics/Gameplay_stripe_40_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_40_LZ77.bin"
 SprStripe41_LZ77:                   ; 082B939C
-.incbin "../data/Graphics/Gameplay_stripe_41_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_41_LZ77.bin"
 SprStripe42_LZ77:                   ; 082B95BC
-.incbin "../data/Graphics/Gameplay_stripe_42_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_42_LZ77.bin"
 SprStripe43_LZ77:                   ; 082B97E4
-.incbin "../data/Graphics/Gameplay_stripe_43_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_43_LZ77.bin"
 SprStripe44_LZ77:                   ; 082B9A2C
-.incbin "../data/Graphics/Gameplay_stripe_44_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_44_LZ77.bin"
 SprStripe45_LZ77:                   ; 082B9D8C
-.incbin "../data/Graphics/Gameplay_stripe_45_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_45_LZ77.bin"
 SprStripe46_LZ77:                   ; 082BA008
-.incbin "../data/Graphics/Gameplay_stripe_46_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_46_LZ77.bin"
 SprStripe47_LZ77:                   ; 082BA21C
-.incbin "../data/Graphics/Gameplay_stripe_47_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_47_LZ77.bin"
 SprStripe48_LZ77:                   ; 082BA500
-.incbin "../data/Graphics/Gameplay_stripe_48_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_48_LZ77.bin"
 SprStripe49_LZ77:                   ; 082BA824
-.incbin "../data/Graphics/Gameplay_stripe_49_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_49_LZ77.bin"
 SprStripe4A_LZ77:                   ; 082BAAE8
-.incbin "../data/Graphics/Gameplay_stripe_4A_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_4A_LZ77.bin"
 SprStripe4B_LZ77:                   ; 082BAD90
-.incbin "../data/Graphics/Gameplay_stripe_4B_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_4B_LZ77.bin"
 SprStripe4C_LZ77:                   ; 082BB018
-.incbin "../data/Graphics/Gameplay_stripe_4C_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_4C_LZ77.bin"
 SprStripe4D_LZ77:                   ; 082BB340
-.incbin "../data/Graphics/Gameplay_stripe_4D_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_4D_LZ77.bin"
 SprStripe4E_LZ77:                   ; 082BB568
-.incbin "../data/Graphics/Gameplay_stripe_4E_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_4E_LZ77.bin"
 SprStripe4F_LZ77:                   ; 082BB888
-.incbin "../data/Graphics/Gameplay_stripe_4F_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_4F_LZ77.bin"
 SprStripe50_LZ77:                   ; 082BBB04
-.incbin "../data/Graphics/Gameplay_stripe_50_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_50_LZ77.bin"
 SprStripe51_LZ77:                   ; 082BBD84
-.incbin "../data/Graphics/Gameplay_stripe_51_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_51_LZ77.bin"
 SprStripe52_LZ77:                   ; 082BBFF0
-.incbin "../data/Graphics/Gameplay_stripe_52_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_52_LZ77.bin"
 SprStripe53_LZ77:                   ; 082BC124
-.incbin "../data/Graphics/Gameplay_stripe_53_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_53_LZ77.bin"
 SprStripe54_LZ77:                   ; 082BC318
-.incbin "../data/Graphics/Gameplay_stripe_54_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_54_LZ77.bin"
 SprStripe55_LZ77:                   ; 082BC5FC
-.incbin "../data/Graphics/Gameplay_stripe_55_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_55_LZ77.bin"
 SprStripe56_LZ77:                   ; 082BC8F0
-.incbin "../data/Graphics/Gameplay_stripe_56_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_56_LZ77.bin"
 SprStripe57_LZ77:                   ; 082BCBC4
-.incbin "../data/Graphics/Gameplay_stripe_57_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_57_LZ77.bin"
 SprStripe58_LZ77:                   ; 082BCDF0
-.incbin "../data/Graphics/Gameplay_stripe_58_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_58_LZ77.bin"
 SprStripe59_LZ77:                   ; 082BD034
-.incbin "../data/Graphics/Gameplay_stripe_59_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_59_LZ77.bin"
 SprStripe3A_Ptr2:                   ; 082BD2A8
 .d32 SprStripe3A_LZ77
 SprStripe3B_Ptr2:                   ; 082BD2AC
@@ -3465,69 +3465,69 @@ SprStripe58_Ptr2:                   ; 082BD320
 SprStripe59_Ptr2:                   ; 082BD324
 .d32 SprStripe59_LZ77
 SprStripe6A_LZ77:                   ; 082BD328
-.incbin "../data/Graphics/Gameplay_stripe_6A_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_6A_LZ77.bin"
 SprStripe6B_LZ77:                   ; 082BD634
-.incbin "../data/Graphics/Gameplay_stripe_6B_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_6B_LZ77.bin"
 SprStripe6C_LZ77:                   ; 082BD8FC
-.incbin "../data/Graphics/Gameplay_stripe_6C_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_6C_LZ77.bin"
 SprStripe6D_LZ77:                   ; 082BDB7C
-.incbin "../data/Graphics/Gameplay_stripe_6D_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_6D_LZ77.bin"
 SprStripe6E_LZ77:                   ; 082BDD24
-.incbin "../data/Graphics/Gameplay_stripe_6E_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_6E_LZ77.bin"
 SprStripe6F_LZ77:                   ; 082BDF68
-.incbin "../data/Graphics/Gameplay_stripe_6F_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_6F_LZ77.bin"
 SprStripe70_LZ77:                   ; 082BE164
-.incbin "../data/Graphics/Gameplay_stripe_70_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_70_LZ77.bin"
 SprStripe71_LZ77:                   ; 082BE40C
-.incbin "../data/Graphics/Gameplay_stripe_71_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_71_LZ77.bin"
 SprStripe5A_LZ77:                   ; 082BE600
-.incbin "../data/Graphics/Gameplay_stripe_5A_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_5A_LZ77.bin"
 SprStripe5B_LZ77:                   ; 082BE8A0
-.incbin "../data/Graphics/Gameplay_stripe_5B_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_5B_LZ77.bin"
 SprStripe5C_LZ77:                   ; 082BEBA0
-.incbin "../data/Graphics/Gameplay_stripe_5C_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_5C_LZ77.bin"
 SprStripe5D_LZ77:                   ; 082BEE40
-.incbin "../data/Graphics/Gameplay_stripe_5D_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_5D_LZ77.bin"
 SprStripe5E_LZ77:                   ; 082BF0EC
-.incbin "../data/Graphics/Gameplay_stripe_5E_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_5E_LZ77.bin"
 SprStripe5F_LZ77:                   ; 082BF3B0
-.incbin "../data/Graphics/Gameplay_stripe_5F_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_5F_LZ77.bin"
 SprStripe60_LZ77:                   ; 082BF584
-.incbin "../data/Graphics/Gameplay_stripe_60_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_60_LZ77.bin"
 SprStripe61_LZ77:                   ; 082BF7F0
-.incbin "../data/Graphics/Gameplay_stripe_61_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_61_LZ77.bin"
 SprStripe62_LZ77:                   ; 082BFA8C
-.incbin "../data/Graphics/Gameplay_stripe_62_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_62_LZ77.bin"
 SprStripe63_LZ77:                   ; 082BFC88
-.incbin "../data/Graphics/Gameplay_stripe_63_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_63_LZ77.bin"
 SprStripe64_LZ77:                   ; 082BFED8
-.incbin "../data/Graphics/Gameplay_stripe_64_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_64_LZ77.bin"
 SprStripe65_LZ77:                   ; 082C018C
-.incbin "../data/Graphics/Gameplay_stripe_65_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_65_LZ77.bin"
 SprStripe66_LZ77:                   ; 082C0408
-.incbin "../data/Graphics/Gameplay_stripe_66_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_66_LZ77.bin"
 SprStripe67_LZ77:                   ; 082C06D0
-.incbin "../data/Graphics/Gameplay_stripe_67_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_67_LZ77.bin"
 SprStripe68_LZ77:                   ; 082C0970
-.incbin "../data/Graphics/Gameplay_stripe_68_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_68_LZ77.bin"
 SprStripe69_LZ77:                   ; 082C0C20
-.incbin "../data/Graphics/Gameplay_stripe_69_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_69_LZ77.bin"
 SprStripeA9_LZ77:                   ; 082C0EC8
-.incbin "../data/Graphics/Gameplay_stripe_A9_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_A9_LZ77.bin"
 SprStripeAA_LZ77:                   ; 082C10E4
-.incbin "../data/Graphics/Gameplay_stripe_AA_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_AA_LZ77.bin"
 SprStripeAB_LZ77:                   ; 082C12B8
-.incbin "../data/Graphics/Gameplay_stripe_AB_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_AB_LZ77.bin"
 SprStripeAC_LZ77:                   ; 082C15B4
-.incbin "../data/Graphics/Gameplay_stripe_AC_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_AC_LZ77.bin"
 SprStripeAD_LZ77:                   ; 082C1910
-.incbin "../data/Graphics/Gameplay_stripe_AD_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_AD_LZ77.bin"
 SprStripeAE_LZ77:                   ; 082C1B9C
-.incbin "../data/Graphics/Gameplay_stripe_AE_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_AE_LZ77.bin"
 SprStripeAF_LZ77:                   ; 082C1E74
-.incbin "../data/Graphics/Gameplay_stripe_AF_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_AF_LZ77.bin"
 SprStripeB0_LZ77:                   ; 082C21C4
-.incbin "../data/Graphics/Gameplay_stripe_B0_LZ77.bin"
+.incbin "data/Graphics/Gameplay_stripe_B0_LZ77.bin"
 SprStripe6A_Ptr2:                   ; 082C24E0
 .d32 SprStripe6A_LZ77
 SprStripe6B_Ptr2:                   ; 082C24E4
@@ -3591,11 +3591,11 @@ SprStripeAF_Ptr2:                   ; 082C2558
 SprStripeB0_Ptr2:                   ; 082C255C
 .d32 SprStripeB0_LZ77
 Data082C2560:                       ; 082C2560
-.incbin "../data/Graphics/Credits_sprite_8bpp_LZ77.bin"
+.incbin "data/Graphics/Credits_sprite_8bpp_LZ77.bin"
 Data082C6CF8:                       ; 082C6CF8
-.incbin "../data/Graphics/Gameplay_sprite_1400_LZ77.bin"
+.incbin "data/Graphics/Gameplay_sprite_1400_LZ77.bin"
 Data082C7008:                       ; 082C7008
-.incbin "../data/Graphics/Data082C7008.bin"
+.incbin "data/Graphics/Data082C7008.bin"
 ColorTable:                         ; 082CF008
 .d16 0x0000, 0x28E5, 0x7967, 0x7EE5, 0x7FFB, 0x77FF, 0x4D7F, 0x6645
 .d16 0x7FFF, 0x7E38, 0x2908, 0x7CBF, 0x7CA5, 0x77FF, 0x5F1A, 0x0000
@@ -5478,23 +5478,23 @@ Data082D5E3E:                       ; 082D5E3E
 Data082D5E50:                       ; 082D5E50
 .d16 0x03FF, 0x03FF, 0x03FF, 0x03FF, 0x03FF, 0x03FF
 Data082D5E5C:                       ; 082D5E5C
-.incbin "../data/Tilemaps/StoryIntro_L2_LZ77.bin"
+.incbin "data/Tilemaps/StoryIntro_L2_LZ77.bin"
 Data082D6078:                       ; 082D6078
-.incbin "../data/Tilemaps/StoryIntro_L01_0_LZ77.bin"
+.incbin "data/Tilemaps/StoryIntro_L01_0_LZ77.bin"
 Data082D6444:                       ; 082D6444
-.incbin "../data/Tilemaps/StoryIntro_L01_1_LZ77.bin"
+.incbin "data/Tilemaps/StoryIntro_L01_1_LZ77.bin"
 Data082D68C0:                       ; 082D68C0
-.incbin "../data/Tilemaps/StoryIntro_L01_2_LZ77.bin"
+.incbin "data/Tilemaps/StoryIntro_L01_2_LZ77.bin"
 Data082D6B68:                       ; 082D6B68
-.incbin "../data/Tilemaps/StoryIntro_L01_3_LZ77.bin"
+.incbin "data/Tilemaps/StoryIntro_L01_3_LZ77.bin"
 Data082D6D84:                       ; 082D6D84
-.incbin "../data/Tilemaps/StoryIntro_L01_4_LZ77.bin"
+.incbin "data/Tilemaps/StoryIntro_L01_4_LZ77.bin"
 Data082D6FE0:                       ; 082D6FE0
-.incbin "../data/Tilemaps/StoryIntro_L01_5_LZ77.bin"
+.incbin "data/Tilemaps/StoryIntro_L01_5_LZ77.bin"
 Data082D71C8:                       ; 082D71C8
-.incbin "../data/Tilemaps/StoryIntro_L01_6_LZ77.bin"
+.incbin "data/Tilemaps/StoryIntro_L01_6_LZ77.bin"
 Data082D7414:                       ; 082D7414
-.incbin "../data/Tilemaps/StoryIntro_L01_7_LZ77.bin"
+.incbin "data/Tilemaps/StoryIntro_L01_7_LZ77.bin"
 Data082D75F8:                       ; 082D75F8
 .d16 0x0000, 0x0000, 0x679F, 0x6FD9, 0x7FED, 0x0000, 0x2144, 0x1D51
 .d16 0x7FF0, 0x0CC3, 0x73FF, 0x7BFC, 0x732A, 0x0000, 0x41EC, 0x3DF9
@@ -5669,26 +5669,26 @@ Data082D7FD8:                       ; 082D7FD8
 .d16 0x0000, 0x0000, 0x0420, 0x0C61, 0x1082, 0x18C3, 0x18C3, 0x2525
 .d16 0x3188, 0x3DEB, 0x4E4E, 0x56B1, 0x6777, 0x0000, 0x0000, 0x0000
 Data082D7FF8:                       ; 082D7FF8
-.incbin "../data/Graphics/StoryIntro_L01_LZ77.bin"
+.incbin "data/Graphics/StoryIntro_L01_LZ77.bin"
 Data082DCD30:                       ; 082DCD30
 .d16 0x0000, 0x0013, 0x0017, 0x001F, 0x1CFF, 0x1916, 0x35DE, 0x36DE
 .d16 0x0000, 0x0006, 0x0008, 0x000F, 0x088C, 0x0D30, 0x3DEF, 0x6739
 .d16 0x0000, 0x73FF, 0x679F, 0x5F5F, 0x52FF, 0x423B, 0x2D93, 0x2930
 .d16 0x007D, 0x0077, 0x0051, 0x002B, 0x1CE2, 0x7BFC, 0x7FB7, 0x7ACF
 Data082DCD70:                       ; 082DCD70
-.incbin "../data/Tilemaps/Credits_L0_LZ77.bin"
+.incbin "data/Tilemaps/Credits_L0_LZ77.bin"
 Data082DCF80:                       ; 082DCF80
-.incbin "../data/Tilemaps/Credits_L1_0_LZ77.bin"
+.incbin "data/Tilemaps/Credits_L1_0_LZ77.bin"
 Data082DD134:                       ; 082DD134
-.incbin "../data/Tilemaps/Credits_L1_1_LZ77.bin"
+.incbin "data/Tilemaps/Credits_L1_1_LZ77.bin"
 Data082DD378:                       ; 082DD378
-.incbin "../data/Tilemaps/Credits_L1_2_LZ77.bin"
+.incbin "data/Tilemaps/Credits_L1_2_LZ77.bin"
 Data082DD568:                       ; 082DD568
-.incbin "../data/Tilemaps/Credits_L1_3_LZ77.bin"
+.incbin "data/Tilemaps/Credits_L1_3_LZ77.bin"
 Data082DD788:                       ; 082DD788
-.incbin "../data/Tilemaps/Credits_L1_4_LZ77.bin"
+.incbin "data/Tilemaps/Credits_L1_4_LZ77.bin"
 Data082DDA18:                       ; 082DDA18
-.incbin "../data/Tilemaps/Credits_L2_LZ77.bin"
+.incbin "data/Tilemaps/Credits_L2_LZ77.bin"
 Data082DE31C:                       ; 082DE31C
 .d16 0x1840, 0x0000, 0x2CA0, 0x7FFF, 0x5B1A, 0x4EB7, 0x3E33, 0x31D0
 .d16 0x214C, 0x10C8, 0x7FFF, 0x7778, 0x666D, 0x49C7, 0x3124, 0x1CA1
@@ -5931,7 +5931,7 @@ CodePtrs082DEF80:                   ; 082DEF80
 .d32 Sub0810EA2C+1, Sub0810EC94+1, Sub0810EDC0+1, Sub0810EE78+1
 .d32 Sub0810EF88+1, Sub0810F098+1, Sub0810F0F0+1
 Data082DEFBC:                       ; 082DEFBC
-.incbin "../data/Graphics/ChooseAGame_layer_LZ77.bin"
+.incbin "data/Graphics/ChooseAGame_layer_LZ77.bin"
 Data082DFC50:                       ; 082DFC50
 .d16 0x5EA2, 0x0000, 0x7FFF, 0x66E4, 0x227B, 0x7256, 0x567E, 0x4F68
 .d16 0x77AC, 0x32FF, 0x775D, 0x777D, 0x6BBA, 0x4E20, 0x11F7, 0x3AC3
@@ -5940,11 +5940,11 @@ Data082DFC50:                       ; 082DFC50
 .d16 0x5EA2, 0x47FF, 0x37BE, 0x6FFF, 0x337D, 0x0000, 0x0000, 0x0000
 .d16 0x0000, 0x0000, 0x0000, 0x0000, 0x639E, 0x475C, 0x36D8, 0x2233
 Data082DFCB0:                       ; 082DFCB0
-.incbin "../data/Tilemaps/ChooseAGame_L0_LZ77.bin"
+.incbin "data/Tilemaps/ChooseAGame_L0_LZ77.bin"
 Data082DFF44:                       ; 082DFF44
-.incbin "../data/Tilemaps/ChooseAGame_L1_LZ77.bin"
+.incbin "data/Tilemaps/ChooseAGame_L1_LZ77.bin"
 Data082E00D8:                       ; 082E00D8
-.incbin "../data/Tilemaps/ChooseAGame_L2_LZ77.bin"
+.incbin "data/Tilemaps/ChooseAGame_L2_LZ77.bin"
 Data082E02CC:                       ; 082E02CC
 .d16 0x0000, 0x0000, 0x5BF5, 0x0000, 0x0000, 0x0000, 0x0000, 0xFFFF
 Data082E02DC:                       ; 082E02DC
@@ -5952,9 +5952,9 @@ Data082E02DC:                       ; 082E02DC
 Data082E02EC:                       ; 082E02EC
 .d16 0x0000, 0x0000, 0x5BF7, 0x0000, 0x0000, 0x0000, 0x0000, 0xFFFF
 Data082E02FC:                       ; 082E02FC
-.incbin "../data/Graphics/ChooseAGame_sprite_LZ77.bin"
+.incbin "data/Graphics/ChooseAGame_sprite_LZ77.bin"
 Data082E27D4:                       ; 082E27D4
-.incbin "../data/Graphics/ChooseAGame_sleep_LZ77.bin"
+.incbin "data/Graphics/ChooseAGame_sleep_LZ77.bin"
 Data082E2E3C:                       ; 082E2E3C
 .d16 0x03FF, 0x2108, 0x7F9D, 0x7F5B, 0x7EB6, 0x7FFF, 0x23A9, 0x47F1
 .d16 0x5FF6, 0x6BBF, 0x575E, 0x49C0, 0x56AA, 0x3E9B, 0x4E9F, 0x211E
@@ -6306,11 +6306,11 @@ Data082E3E34:                       ; 082E3E34
 .d16 0x44BE, 0xD006, 0xA010, 0x0000, 0x44F3, 0xF006, 0xA010, 0x0000
 .d16 0x440B, 0x21F8, 0xA016, 0x0000, 0x0000, 0x0000, 0x0000, 0xFFFF
 Data082E3EE4:                       ; 082E3EE4
-.incbin "../data/Graphics/SMA3Title_L1_LZ77.bin"
+.incbin "data/Graphics/SMA3Title_L1_LZ77.bin"
 Data082E3F50:                       ; 082E3F50
-.incbin "../data/Graphics/SMA3Title_L0_8bpp_LZ77.bin"
+.incbin "data/Graphics/SMA3Title_L0_8bpp_LZ77.bin"
 Data082E6870:                       ; 082E6870
-.incbin "../data/Graphics/SMA3Title_sprite_LZ77.bin"
+.incbin "data/Graphics/SMA3Title_sprite_LZ77.bin"
 Data082E6E00:                       ; 082E6E00
 .d16 0x6B1D, 0x0000, 0x0421, 0x0842, 0x0C63, 0x1085, 0x14A5, 0x18C6
 .d16 0x1CE7, 0x20E8, 0x2529, 0x292A, 0x2D6B, 0x356C, 0x358D, 0x3DAE
@@ -6344,9 +6344,9 @@ Data082E6F40:                       ; 082E6F40
 .d16 0x1F39, 0x7BFF, 0x73DF, 0x6FBE, 0x733A, 0x775A, 0x777A, 0x779C
 .d16 0x6699, 0x6ADA, 0x6AFB, 0x733C, 0x735D, 0x737E, 0x733F, 0x0000
 Data082E6FE0:                       ; 082E6FE0
-.incbin "../data/Tilemaps/SMA3Title_L0_LZ77.bin"
+.incbin "data/Tilemaps/SMA3Title_L0_LZ77.bin"
 Data082E72D0:                       ; 082E72D0
-.incbin "../data/Tilemaps/SMA3Title_L1_LZ77.bin"
+.incbin "data/Tilemaps/SMA3Title_L1_LZ77.bin"
 Data082E7400:                       ; 082E7400
 .d16 0x00D4, 0x41DA, 0x0348, 0x0000, 0x40E4, 0x01AA, 0x034A, 0x0000
 .d16 0x40E4, 0x01D2, 0x036A, 0x0000, 0x40D4, 0x81BA, 0x0344, 0x0000
@@ -6417,9 +6417,9 @@ Data082E7680:                       ; 082E7680
 .d16 0x80E8, 0x01B4, 0x4785, 0x0000, 0x8008, 0x0194, 0x4782, 0x0000
 .d16 0x0008, 0x4184, 0x4780, 0x0000, 0x0000, 0x0000, 0x0000, 0xFFFF
 Data082E7740:                       ; 082E7740
-.incbin "../data/Graphics/SaveDataCorruption_LZ77.bin"
+.incbin "data/Graphics/SaveDataCorruption_LZ77.bin"
 Data082E8830:                       ; 082E8830
-.incbin "../data/Tilemaps/SaveDataCorruption_LZ77.bin"
+.incbin "data/Tilemaps/SaveDataCorruption_LZ77.bin"
 Data082E8E84:                       ; 082E8E84
 .d16 0x0000, 0x7FDD, 0x6F7B, 0x5EF7, 0x39CE, 0x7FFF, 0x77BD, 0x51EF
 .d16 0x6B51, 0x7BD5, 0x7FF9, 0x4E73, 0x0000, 0x0000, 0x0000, 0x0000
@@ -6780,7 +6780,7 @@ CodePtrs082E9ABC:                   ; 082E9ABC
 CodePtrs082E9AF4:                   ; 082E9AF4
 .d32 Sub0811B63C+1, MBGameplay+1, Sub0811AA90+1
 Data082E9B00:                       ; 082E9B00
-.incbin "../data/Graphics/MarioBros_ERROR.bin"
+.incbin "data/Graphics/MarioBros_ERROR.bin"
 Data082E9BC0:                       ; 082E9BC0
 .d16 0x0100, 0x0201, 0x0001, 0x0000
 CodePtrs082E9BC8:                   ; 082E9BC8
@@ -8179,15 +8179,15 @@ Data082ED524:                       ; 082ED524
 .d16 0x0E31, 0x7FFF, 0x0000, 0x03FF, 0x001F, 0x031F, 0x5018, 0x381A
 .d16 0x6F9F, 0x0314, 0x5012, 0x7FFF, 0x6943, 0x6DC7, 0x768D, 0x7F33
 Data082ED724:                       ; 082ED724
-.incbin "../data/Tilemaps/MarioBros_L3_0_LZ77.bin"
+.incbin "data/Tilemaps/MarioBros_L3_0_LZ77.bin"
 Data082EDC60:                       ; 082EDC60
-.incbin "../data/Tilemaps/MarioBros_L3_1_LZ77.bin"
+.incbin "data/Tilemaps/MarioBros_L3_1_LZ77.bin"
 Data082EE204:                       ; 082EE204
-.incbin "../data/Tilemaps/MarioBros_L3_2_LZ77.bin"
+.incbin "data/Tilemaps/MarioBros_L3_2_LZ77.bin"
 Data082EE764:                       ; 082EE764
-.incbin "../data/Tilemaps/MarioBros_L3_3_LZ77.bin"
+.incbin "data/Tilemaps/MarioBros_L3_3_LZ77.bin"
 Data082EEC30:                       ; 082EEC30
-.incbin "../data/Graphics/MarioBros_L3anim.bin"
+.incbin "data/Graphics/MarioBros_L3anim.bin"
 Data082F0830:                       ; 082F0830
 .d16 0x6693, 0x7FFF, 0x0000, 0x00F2, 0x2A9F, 0x33FF, 0x4EFF, 0x5BBF
 .d16 0x0000, 0x152F, 0x40C4, 0x61C7, 0x7E8A, 0x423F, 0x211E, 0x2117
@@ -8431,11 +8431,11 @@ Data082F0FF8:                       ; 082F0FF8
 .d16 0x03FF, 0x6F7B, 0x0000, 0x5AD6, 0x5AD6, 0x5AD6, 0x2D6B, 0x0000
 .d16 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
 Data082F11F8:                       ; 082F11F8
-.incbin "../data/Tilemaps/MarioBrosTitle_L2_LZ77.bin"
+.incbin "data/Tilemaps/MarioBrosTitle_L2_LZ77.bin"
 Data082F1508:                       ; 082F1508
-.incbin "../data/Tilemaps/MarioBrosTitle_L1_LZ77.bin"
+.incbin "data/Tilemaps/MarioBrosTitle_L1_LZ77.bin"
 Data082F1640:                       ; 082F1640
-.incbin "../data/Tilemaps/MarioBrosTitle_L0_LZ77.bin"
+.incbin "data/Tilemaps/MarioBrosTitle_L0_LZ77.bin"
 Data082F1768:                       ; 082F1768
 .d16 0x6693, 0x7FFF, 0x0000, 0x00F2, 0x2A9F, 0x33FF, 0x4EFF, 0x5BBF
 .d16 0x0000, 0x152F, 0x40C4, 0x61C7, 0x7E8A, 0x423F, 0x211E, 0x2117
@@ -8470,15 +8470,15 @@ Data082F1768:                       ; 082F1768
 .d16 0x001F, 0x7FFF, 0x1084, 0x2529, 0x4210, 0x5294, 0x0000, 0x0000
 .d16 0x0000, 0x0000, 0x0000, 0x7F98, 0x7F52, 0x7E8A, 0x7206, 0x61A5
 Data082F1968:                       ; 082F1968
-.incbin "../data/Tilemaps/MarioBros_BonusResults1P_Huffman.bin"
+.incbin "data/Tilemaps/MarioBros_BonusResults1P_Huffman.bin"
 Data082F1B24:                       ; 082F1B24
-.incbin "../data/Tilemaps/MarioBros_BonusResults2P_Huffman.bin"
+.incbin "data/Tilemaps/MarioBros_BonusResults2P_Huffman.bin"
 Data082F1D0C:                       ; 082F1D0C
-.incbin "../data/Tilemaps/MarioBros_BonusResults3P_Huffman.bin"
+.incbin "data/Tilemaps/MarioBros_BonusResults3P_Huffman.bin"
 Data082F1F20:                       ; 082F1F20
-.incbin "../data/Tilemaps/MarioBros_BonusResults4P_Huffman.bin"
+.incbin "data/Tilemaps/MarioBros_BonusResults4P_Huffman.bin"
 
-.include "Text/StandardMessages.asm"
+.include "asm/Text/StandardMessages.asm"
 
 EndingText:                         ; 082F5D11
 .strn "Thus\{, } due to the marvelous"
@@ -8627,13 +8627,13 @@ Text_CharWidths:                    ; 082F62CC
 .d8 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08
 .d8 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08
 Font_main_Graphics_1bpp:            ; 082F63CC
-.incbin "../data/Graphics/Font_main_1bpp.bin"
+.incbin "data/Graphics/Font_main_1bpp.bin"
 MessageImages_Graphics_1bpp:        ; 082F6FCC
-.incbin "../data/Graphics/MessageImages_1bpp.bin"
+.incbin "data/Graphics/MessageImages_1bpp.bin"
 StandardMessage_Tilemap:            ; 082F8ECC
-.incbin "../data/Tilemaps/StandardMessage.bin"
+.incbin "data/Tilemaps/StandardMessage.bin"
 
-.include "Text/LevelNames.asm"
+.include "asm/Text/LevelNames.asm"
 
 .align 4
 LevelNamePtrs:                      ; 082F9888
@@ -8656,16 +8656,16 @@ LevelNamePtrs:                      ; 082F9888
 .d32 LevelName6_5, LevelName6_6, LevelName6_7, LevelName6_8
 .d32 LevelName6_S, LevelName6_E, LevelName_Intro, LevelName_Intro
 Data082F99A8:                       ; 082F99A8
-.incbin "../data/Graphics/MessageBorder_0_LZ77.bin"
+.incbin "data/Graphics/MessageBorder_0_LZ77.bin"
 Data082F9A6C:                       ; 082F9A6C
-.incbin "../data/Graphics/MessageBorder_1_LZ77.bin"
+.incbin "data/Graphics/MessageBorder_1_LZ77.bin"
 Data082F9B18:                       ; 082F9B18
-.incbin "../data/Graphics/MessageBorder_2_LZ77.bin"
+.incbin "data/Graphics/MessageBorder_2_LZ77.bin"
 Data082F9BF4:                       ; 082F9BF4
-.incbin "../data/Graphics/MarioBros_layer_Huffman.bin"
+.incbin "data/Graphics/MarioBros_layer_Huffman.bin"
 Data082FDDB4:                       ; 082FDDB4
-.incbin "../data/Graphics/MarioBros_sprite_Huffman.bin"
+.incbin "data/Graphics/MarioBros_sprite_Huffman.bin"
 Data08303210:                       ; 08303210
-.incbin "../data/Graphics/MarioBrosTitle_layer_LZ77.bin"
+.incbin "data/Graphics/MarioBrosTitle_layer_LZ77.bin"
 Data08304838:                       ; 08304838
-.incbin "../data/Graphics/MarioBrosTitle_sprite_Huffman.bin"
+.incbin "data/Graphics/MarioBrosTitle_sprite_Huffman.bin"

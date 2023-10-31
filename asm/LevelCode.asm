@@ -12350,8 +12350,8 @@ pop   {r4}                          ; 0801A086
 pop   {r0}                          ; 0801A088
 bx    r0                            ; 0801A08A
 
-.include "Objects/StandardInit.asm"
-.include "Objects/ExtendedInit.asm"
+.include "asm/Objects/StandardInit.asm"
+.include "asm/Objects/ExtendedInit.asm"
 
 Obj_GetTileXMinus1:
 ; Return tile ID at x-1
@@ -12387,8 +12387,8 @@ pop   {r1}                          ; 0801D248
 bx    r1                            ; 0801D24A
 .pool                               ; 0801D24C
 
-.include "Objects/StandardMain.asm"
-.include "Objects/ExtendedMain.asm"
+.include "asm/Objects/StandardMain.asm"
+.include "asm/Objects/ExtendedMain.asm"
 
 Sub0802BB74:
 push  {r4-r7,lr}                    ; 0802BB74

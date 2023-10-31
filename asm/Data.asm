@@ -263,7 +263,7 @@ MidwayEntrancePtrs:                 ; 081643BC
 .d32 MidwayEntrances+0x1F8, MidwayEntrances+0x204, MidwayEntrances+0x208, MidwayEntrances+0x210
 .d32 MidwayEntrances+0x228, MidwayEntrances+0x220
 SMA3Title_BuildText_Graphics_LZ77:  ; 081644D4
-.incbin "../data/Graphics/SMA3Title_BuildText_LZ77.bin"
+.incbin "data/Graphics/SMA3Title_BuildText_LZ77.bin"
 SMA3Title_BuildDateButtons:         ; 081645C8
 .d16 0x0040, 0x0080, 0x0040, 0x0080, 0x0200, 0x0100, 0x0020, 0x0020
 .d16 0x0010
@@ -3812,7 +3812,7 @@ Data0816B0BC:                       ; 0816B0BC
 .d32 0x91E040F0, 0x0000508C, 0x91D080D0, 0x000050CC
 .d32 0x91E000D0, 0x0000500C, 0x00000000, 0xFFFF0000
 
-.include "Text/StoryIntro.asm"
+.include "asm/Text/StoryIntro.asm"
 
 .align 4
 DataPtrs0816B748:                   ; 0816B748
@@ -4380,7 +4380,7 @@ Data0816CAE0:                       ; 0816CAE0
 .d16 0x60C0, 0x41A0, 0x0408, 0x0000, 0x60C0, 0x4180, 0x0400, 0x0000
 .d16 0x0000, 0x0000, 0x0000, 0xFFFF
 
-.include "Text/Credits.asm"
+.include "asm/Text/Credits.asm"
 
 Credits_CharWidths:                 ; 0816D489
 .d8 0x0A, 0x0A, 0x0A, 0x0A, 0x0A, 0x0A, 0x0A, 0x0A
@@ -4400,7 +4400,7 @@ Credits_CharWidths:                 ; 0816D489
 .d8 0x0A, 0x0A, 0x0A, 0x0A, 0x08, 0x0A, 0x08, 0x0A
 .d8 0x08, 0x0A, 0x0A, 0x08, 0x08, 0x08, 0x08, 0x0A
 Font_credits_1bpp_Graphics:         ; 0816D509
-.incbin "../data/Graphics/Font_credits_1bpp.bin"
+.incbin "data/Graphics/Font_credits_1bpp.bin"
 .align 4
 DataPtrs0816DB0C:                   ; 0816DB0C
 .d32 CreditsText00, CreditsText01, CreditsText02, CreditsText03
@@ -26203,13 +26203,13 @@ YITitle_Icon32Ptrs:                 ; 08199670
 .d32 YITitle_Icon32_Graphics+0x4010 ; Clear
 YITitle_Icon32Ptrs_End:
 YITitle_081996A4_8bpp_Graphics:     ; 081996A4
-.incbin "../data/Graphics/YITitle_081996A4_8bpp.bin"
+.incbin "data/Graphics/YITitle_081996A4_8bpp.bin"
 YITitle_08199AA4_8bpp_Graphics:     ; 08199AA4
-.incbin "../data/Graphics/YITitle_08199AA4_8bpp.bin"
+.incbin "data/Graphics/YITitle_08199AA4_8bpp.bin"
 YITitle_L2Graphics_8bpp_LZ77:       ; 08199EA4
-.incbin "../data/Graphics/YITitle_L2_8bpp_LZ77.bin"
+.incbin "data/Graphics/YITitle_L2_8bpp_LZ77.bin"
 YITitle_SpriteGraphics_LZ77:        ; 0819A890
-.incbin "../data/Graphics/YITitle_sprite_LZ77.bin"
+.incbin "data/Graphics/YITitle_sprite_LZ77.bin"
 YITitle_L23Palette_W15:             ; 0819D9FC
 .d16 0x4943, 0x0000, 0x7FFF, 0x0140, 0x0E20, 0x22A0, 0x3DEF, 0x56B5
 .d16 0x6B5A, 0x3A33, 0x52F9, 0x5F7F, 0x4943, 0x55A3, 0x6A43, 0x7323
@@ -26227,13 +26227,13 @@ YITitle_SprPalette_W6:              ; 0819DA9C
 .d16 0x0000, 0x0000, 0x7FFF, 0x35F6, 0x531D, 0x0286, 0x0371, 0x3BBF
 .d16 0x371F, 0x2112, 0x359F, 0x4E73, 0x6F7B, 0x4151, 0x59F2, 0x6F14
 YITitle_L3_W15_Graphics_LZ77:       ; 0819DABC
-.incbin "../data/Graphics/YITitle_L3_W15_LZ77.bin"
+.incbin "data/Graphics/YITitle_L3_W15_LZ77.bin"
 YITitle_L3_W15_Tilemap_LZ77:        ; 0819DED0
-.incbin "../data/Tilemaps/YITitle_L3_W15_LZ77.bin"
+.incbin "data/Tilemaps/YITitle_L3_W15_LZ77.bin"
 YITitle_L3_W6_Graphics_LZ77:        ; 0819E1E0
-.incbin "../data/Graphics/YITitle_L3_W6_LZ77.bin"
+.incbin "data/Graphics/YITitle_L3_W6_LZ77.bin"
 YITitle_L3_W6_Tilemap_LZ77:         ; 0819E5E8
-.incbin "../data/Tilemaps/YITitle_L3_W6_LZ77.bin"
+.incbin "data/Tilemaps/YITitle_L3_W6_LZ77.bin"
 YITitle_LogoRippleColors:           ; 0819E904
 .d16 0x021F, 0x023F, 0x025F, 0x027F, 0x029F, 0x02BF, 0x02DF, 0x02FF
 .d16 0x031F, 0x033F, 0x035F, 0x037F, 0x039F, 0x03BF, 0x03DF, 0x03FF
@@ -26244,16 +26244,16 @@ YITitle_LogoRippleColors:           ; 0819E904
 .d16 0x03FF, 0x03DF, 0x03BF, 0x039F, 0x037F, 0x035F, 0x033F, 0x031F
 .d16 0x02FF, 0x02DF, 0x02BF, 0x029F, 0x027F, 0x025F, 0x023F, 0x021F
 YITitle_L1_Graphics_LZ77:           ; 0819E984
-.incbin "../data/Graphics/YITitle_L1_LZ77.bin"
+.incbin "data/Graphics/YITitle_L1_LZ77.bin"
 YITitle_L1_Tilemap_LZ77:            ; 0819F0C8
-.incbin "../data/Tilemaps/YITitle_L1_LZ77.bin"
+.incbin "data/Tilemaps/YITitle_L1_LZ77.bin"
 YITitle_L1Palette:                  ; 0819F2B8
 .d16 0x7C08, 0x0000, 0x7EE0, 0x03E0, 0x7C08, 0x0000, 0x063E, 0x7FFF
 .d16 0x7C08, 0x0000, 0x7EE0, 0x04DF, 0x7C08, 0x0000, 0x7EE0, 0x035F
 YITitle_Icon32_Graphics:            ; 0819F2D8
-.incbin "../data/Graphics/YITitle_Icon32.bin"
+.incbin "data/Graphics/YITitle_Icon32.bin"
 YITitle_L0_Graphics_LZ77:           ; 081A42D8
-.incbin "../data/Graphics/YITitle_L0_LZ77.bin"
+.incbin "data/Graphics/YITitle_L0_LZ77.bin"
 YITitleL0_FileSelectSpr_Pal:        ; 081A46F8
 .d16 0x7C13, 0x3339, 0x2273, 0x3B46, 0x2281, 0x04DB, 0x6318, 0x4E73
 .d16 0x0000, 0x7FFF, 0x177F, 0x063E, 0x53FC, 0x7F6D, 0x6EA7, 0x5DE2
@@ -26345,7 +26345,7 @@ Data081A48B0:                       ; 081A48B0
 .d8 0x30, 0x40, 0x4C, 0x6B, 0x31, 0x3F, 0x4E, 0x6A
 .d8 0x33, 0x3E, 0x51, 0x68, 0x36, 0x3C, 0x5A, 0x65
 Bowser_L2_Graphics_8bpp_LZ77:       ; 081A4A60
-.incbin "../data/Graphics/Gameplay_Bowser_L2_8bpp_LZ77.bin"
+.incbin "data/Graphics/Gameplay_Bowser_L2_8bpp_LZ77.bin"
 Data081A5EA0:                       ; 081A5EA0
 .d16 0xC000
 Data081A5EA2:                       ; 081A5EA2
@@ -27250,7 +27250,7 @@ Data081A7FF0:                       ; 081A7FF0
 Data081A8030:                       ; 081A8030
 .d32 0x00000010
 Data081A8034:                       ; 081A8034
-.incbin "../data/Graphics/Gameplay_Froggy_LZ77.bin"
+.incbin "data/Graphics/Gameplay_Froggy_LZ77.bin"
 Data081A80A0:                       ; 081A80A0
 .d16 0x7F1C, 0x7F1C, 0x7F1C, 0x7E1C, 0x7D1A, 0x7E1B, 0x7E1C, 0x7F1B
 .d16 0x8019, 0x7F1A, 0x7F19, 0x7F1A, 0x801B, 0x811B, 0x811A, 0x8317

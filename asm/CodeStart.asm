@@ -2,7 +2,7 @@
 
 InternalHeader:
 b      CodeStart                    ; 08000000
-.incbin "../data/InternalHeader_NintendoLogo.bin"
+.incbin "data/InternalHeader_NintendoLogo.bin"
 .d8 "SUPER MARIOCA3AE"              ; 080000A0
 .d8 "01"                            ; 080000B0
 .d8 0x96,0x00,0x00,0x00,0x00,0x00

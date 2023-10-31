@@ -48593,6 +48593,6 @@ pop   {r4-r5,pc}                    ; 0815B5D8
 
 ; 0815B5DC-08163F90: second psuedo-ROM data sector
 
-.incbin "../data/SingleCart2_Data.bin"
+.incbin "data/SingleCart2_Data.bin"
 SingleCart_08163290:                ; 08163290
-.incbin "../data/Graphics/SingleCart_08163290.bin"
+.incbin "data/Graphics/SingleCart_08163290.bin"
