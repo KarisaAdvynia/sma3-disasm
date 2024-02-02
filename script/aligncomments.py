@@ -1,12 +1,12 @@
 """Align all in-line comments in each code file to a particular character
 position. Start-of-line comments are unaffected."""
 
-from _iterate_recursive import iterate_recursive
+from pathlib import Path
 
 def aligncomments(path, startstr=";", commentpos=36):
-    print("Processing:", path)
+    print("Processing: " + path.as_posix())
     outputlines = []
-    for line in open(path, "r", newline="", encoding="UTF-8"):
+    for line in path.open("r", newline="", encoding="UTF-8"):
         pos = line.find(startstr)
         if pos < 1 or pos == commentpos:
             outputlines.append(line)
@@ -14,15 +14,19 @@ def aligncomments(path, startstr=";", commentpos=36):
             left, right = line.split(startstr, maxsplit=1)
             outputlines.append(
                 left.rstrip(" ").ljust(commentpos) + startstr + right)
-    open(path, "w", newline="", encoding="UTF-8").writelines(outputlines)
+    path.open("w", newline="", encoding="UTF-8").writelines(outputlines)
+
+def aligncomments_dir(dirpath, ext, *args, **kwargs):
+    for path in dirpath.glob("**/*" + ext):
+        aligncomments(path, *args, **kwargs)
 
 if __name__ == "__main__":
-    path = "../asm/"
-    import os, sys
+    path = Path("../asm/")
+    import sys
     if len(sys.argv) > 1:
-        path = sys.argv[1]
-    if os.path.isdir(path):
-        # recursively iterate over .asm files in directory
-        iterate_recursive(aligncomments, path, ext=".asm")
+        path = Path(sys.argv[1])
+    if path.is_dir():
+        # align comments for all .asm files in directory
+        aligncomments_dir(path, ext=".asm")
     else:
         aligncomments(path)

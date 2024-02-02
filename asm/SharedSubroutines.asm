@@ -31,7 +31,7 @@ swi   0x11                          ; 0812F6D0  LZ77 decompress (WRAM)
 bx    lr                            ; 0812F6D2
 
 swi_25_1:
-mov   r1,0x1                        ; 0812F6D4
+mov   r1,0x1                        ; 0812F6D4  1: up to 4 players
 swi   0x25                          ; 0812F6D6
 bx    lr                            ; 0812F6D8
 .pool                               ; 0812F6DA

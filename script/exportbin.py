@@ -4,6 +4,7 @@ def importbinptrs(binptrpath):
     ptrmap = []
     fillnext = False
     for line in open(binptrpath, "r", encoding="UTF-8"):
+        if not line or line.isspace(): continue
         rawdata = line.split()
         startptr = int(rawdata[0], 16)
         if fillnext:  # use startptr as previous line's end ptr

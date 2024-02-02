@@ -1938,7 +1938,7 @@ mov   r0,0x4                        ; 0801CE38
 strh  r0,[r3]                       ; 0801CE3A  set width to 4
 add   r3,0x4                        ; 0801CE3C  +52
 mov   r0,0x2                        ; 0801CE3E
-strh  r0,[r3]                       ; 0801CE40  set height to 4
+strh  r0,[r3]                       ; 0801CE40  set height to 2
 mov   r0,r12                        ; 0801CE42
 bl    ObjMain_Slope0_NoRelY         ; 0801CE44  Object processing main, slope=0, no relative Y threshold
 pop   {r4-r5}                       ; 0801CE48

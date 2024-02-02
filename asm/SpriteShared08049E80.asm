@@ -3303,17 +3303,17 @@ lsl   r2,r2,0x1                     ; 0804BA04
 add   r1,r0,r2                      ; 0804BA06
 ldrh  r0,[r1]                       ; 0804BA08
 cmp   r6,r0                         ; 0804BA0A
-bne   @@Code0804BA20                ; 0804BA0C
+bne   @@Return                      ; 0804BA0C
 mov   r0,0x0                        ; 0804BA0E
 strh  r0,[r1]                       ; 0804BA10
-b     @@Code0804BA20                ; 0804BA12
+b     @@Return                      ; 0804BA12
 .pool                               ; 0804BA14
 
 @@Code0804BA18:
 mov   r0,r4                         ; 0804BA18
 mov   r1,r6                         ; 0804BA1A
 bl    Sub0804B978                   ; 0804BA1C
-@@Code0804BA20:
+@@Return:
 pop   {r4-r6}                       ; 0804BA20
 pop   {r0}                          ; 0804BA22
 bx    r0                            ; 0804BA24
@@ -3323,25 +3323,25 @@ Sub0804BA28:
 push  {lr}                          ; 0804BA28
 ldrh  r1,[r0,0x32]                  ; 0804BA2A
 cmp   r1,0x1E                       ; 0804BA2C
-beq   @@Code0804BA44                ; 0804BA2E
+beq   @@Return_0                    ; 0804BA2E
 ldr   r0,=0x0133                    ; 0804BA30
 cmp   r1,r0                         ; 0804BA32
-beq   @@Code0804BA44                ; 0804BA34
+beq   @@Return_0                    ; 0804BA34
 sub   r0,0x9                        ; 0804BA36
 cmp   r1,r0                         ; 0804BA38
-beq   @@Code0804BA44                ; 0804BA3A
+beq   @@Return_0                    ; 0804BA3A
 cmp   r1,0x9B                       ; 0804BA3C
-beq   @@Code0804BA44                ; 0804BA3E
+beq   @@Return_0                    ; 0804BA3E
 cmp   r1,0x74                       ; 0804BA40
-bne   @@Code0804BA4C                ; 0804BA42
-@@Code0804BA44:
+bne   @@Return_1                    ; 0804BA42
+@@Return_0:
 mov   r0,0x0                        ; 0804BA44
-b     @@Code0804BA4E                ; 0804BA46
+b     @@Return_r0                   ; 0804BA46
 .pool                               ; 0804BA48
 
-@@Code0804BA4C:
+@@Return_1:
 mov   r0,0x1                        ; 0804BA4C
-@@Code0804BA4E:
+@@Return_r0:
 pop   {r1}                          ; 0804BA4E
 bx    r1                            ; 0804BA50
 .pool                               ; 0804BA52
@@ -3352,12 +3352,12 @@ ldrh  r1,[r0,0x32]                  ; 0804BA56
 mov   r0,0xAB                       ; 0804BA58
 lsl   r0,r0,0x1                     ; 0804BA5A
 cmp   r1,r0                         ; 0804BA5C
-beq   @@Code0804BA64                ; 0804BA5E
+beq   @@Return_0                    ; 0804BA5E
 mov   r0,0x1                        ; 0804BA60
-b     @@Code0804BA66                ; 0804BA62
-@@Code0804BA64:
+b     @@Return_r0                   ; 0804BA62
+@@Return_0:
 mov   r0,0x0                        ; 0804BA64
-@@Code0804BA66:
+@@Return_r0:
 pop   {r1}                          ; 0804BA66
 bx    r1                            ; 0804BA68
 .pool                               ; 0804BA6A
@@ -3372,22 +3372,22 @@ beq   @@Code0804BA98                ; 0804BA76
 mov   r0,r4                         ; 0804BA78
 bl    Sub0804BA28                   ; 0804BA7A
 cmp   r0,0x0                        ; 0804BA7E
-beq   @@Code0804BA9C                ; 0804BA80
+beq   @@Return_1                    ; 0804BA80
 mov   r0,r4                         ; 0804BA82
 bl    Sub0804BA54                   ; 0804BA84
 cmp   r0,0x0                        ; 0804BA88
-beq   @@Code0804BA9C                ; 0804BA8A
+beq   @@Return_1                    ; 0804BA8A
 mov   r0,r4                         ; 0804BA8C
 mov   r1,r5                         ; 0804BA8E
 bl    Sub0804B9A4                   ; 0804BA90
 mov   r0,0x0                        ; 0804BA94
-b     @@Code0804BA9E                ; 0804BA96
+b     @@Return_r0                   ; 0804BA96
 @@Code0804BA98:
 mov   r0,0x7                        ; 0804BA98
 strh  r0,[r4,0x24]                  ; 0804BA9A
-@@Code0804BA9C:
+@@Return_1:
 mov   r0,0x1                        ; 0804BA9C
-@@Code0804BA9E:
+@@Return_r0:
 pop   {r4-r5}                       ; 0804BA9E
 pop   {r1}                          ; 0804BAA0
 bx    r1                            ; 0804BAA2
@@ -3402,7 +3402,7 @@ lsl   r0,r0,0x18                    ; 0804BAAE
 lsr   r6,r0,0x18                    ; 0804BAB0
 asr   r2,r0,0x18                    ; 0804BAB2
 cmp   r2,0x0                        ; 0804BAB4
-blt   @@Code0804BB3E                ; 0804BAB6
+blt   @@Return_0                    ; 0804BAB6
 ldr   r1,=0x03007240                ; 0804BAB8  Normal gameplay IWRAM (Ptr to 0300220C)
 mov   r0,0xB0                       ; 0804BABA
 mul   r0,r2                         ; 0804BABC
@@ -3430,7 +3430,7 @@ mov   r0,r2                         ; 0804BAE8
 orr   r0,r1                         ; 0804BAEA
 strh  r0,[r5,0x26]                  ; 0804BAEC
 mov   r0,0x1                        ; 0804BAEE
-b     @@Code0804BB40                ; 0804BAF0
+b     @@Return_r0                   ; 0804BAF0
 .pool                               ; 0804BAF2
 
 @@Code0804BAF8:
@@ -3462,15 +3462,15 @@ ldrb  r1,[r0]                       ; 0804BB24
 mov   r0,r5                         ; 0804BB26
 bl    Sub0804B9A4                   ; 0804BB28
 mov   r0,0x1                        ; 0804BB2C
-b     @@Code0804BB40                ; 0804BB2E
+b     @@Return_r0                   ; 0804BB2E
 .pool                               ; 0804BB30
 
 @@Code0804BB38:
 mov   r0,r5                         ; 0804BB38
 bl    Sub080DF2CC                   ; 0804BB3A
-@@Code0804BB3E:
+@@Return_0:
 mov   r0,0x0                        ; 0804BB3E
-@@Code0804BB40:
+@@Return_r0:
 pop   {r4-r6}                       ; 0804BB40
 pop   {r1}                          ; 0804BB42
 bx    r1                            ; 0804BB44
@@ -3485,7 +3485,7 @@ sub   r0,0x1                        ; 0804BB50
 lsl   r0,r0,0x18                    ; 0804BB52
 asr   r2,r0,0x18                    ; 0804BB54
 cmp   r2,0x0                        ; 0804BB56
-blt   @@Code0804BB7A                ; 0804BB58
+blt   @@Return_0                    ; 0804BB58
 ldr   r1,=0x03007240                ; 0804BB5A  Normal gameplay IWRAM (Ptr to 0300220C)
 mov   r0,0xB0                       ; 0804BB5C
 mul   r0,r2                         ; 0804BB5E
@@ -3496,15 +3496,15 @@ ldr   r1,[r1]                       ; 0804BB66
 add   r4,r1,r0                      ; 0804BB68
 ldrh  r0,[r4,0x24]                  ; 0804BB6A
 cmp   r0,0x8                        ; 0804BB6C
-bne   @@Code0804BB7A                ; 0804BB6E
+bne   @@Return_0                    ; 0804BB6E
 mov   r0,r4                         ; 0804BB70
 add   r0,0x5E                       ; 0804BB72
 ldrh  r0,[r0]                       ; 0804BB74
 cmp   r0,0x0                        ; 0804BB76
 bne   @@Code0804BB84                ; 0804BB78
-@@Code0804BB7A:
+@@Return_0:
 mov   r0,0x0                        ; 0804BB7A
-b     @@Code0804BBB0                ; 0804BB7C
+b     @@Return_r0                   ; 0804BB7C
 .pool                               ; 0804BB7E
 
 @@Code0804BB84:
@@ -3519,7 +3519,7 @@ lsl   r2,r2,0x2                     ; 0804BB94
 mov   r0,r2                         ; 0804BB96
 orr   r0,r1                         ; 0804BB98
 strh  r0,[r4,0x26]                  ; 0804BB9A
-b     @@Code0804BBAE                ; 0804BB9C
+b     @@Return_1                    ; 0804BB9C
 @@Code0804BB9E:
 ldr   r0,=0x0300702C                ; 0804BB9E  Sprite RAM structs (03002460)
 ldr   r0,[r0]                       ; 0804BBA0
@@ -3528,9 +3528,9 @@ add   r0,r0,r3                      ; 0804BBA4
 ldrb  r1,[r0]                       ; 0804BBA6
 mov   r0,r5                         ; 0804BBA8
 bl    Sub0804B9A4                   ; 0804BBAA
-@@Code0804BBAE:
+@@Return_1:
 mov   r0,0x1                        ; 0804BBAE
-@@Code0804BBB0:
+@@Return_r0:
 pop   {r4-r5}                       ; 0804BBB0
 pop   {r1}                          ; 0804BBB2
 bx    r1                            ; 0804BBB4
@@ -3550,7 +3550,7 @@ bl    Sub080DF3E4                   ; 0804BBD2
 b     @@Code0804BC0A                ; 0804BBD6
 @@Code0804BBD8:
 cmp   r0,0x0                        ; 0804BBD8
-beq   @@Code0804BC14                ; 0804BBDA
+beq   @@Return_0                    ; 0804BBDA
 sub   r0,0x1                        ; 0804BBDC
 ldr   r1,=0x03007240                ; 0804BBDE  Normal gameplay IWRAM (Ptr to 0300220C)
 lsl   r0,r0,0x18                    ; 0804BBE0
@@ -3564,24 +3564,24 @@ ldr   r1,[r1]                       ; 0804BBEE
 add   r1,r1,r0                      ; 0804BBF0
 ldrh  r0,[r1,0x24]                  ; 0804BBF2
 cmp   r0,0x8                        ; 0804BBF4
-bne   @@Code0804BC14                ; 0804BBF6
+bne   @@Return_0                    ; 0804BBF6
 mov   r0,r1                         ; 0804BBF8
 add   r0,0x5E                       ; 0804BBFA
 ldrh  r0,[r0]                       ; 0804BBFC
 cmp   r0,0x0                        ; 0804BBFE
-beq   @@Code0804BC14                ; 0804BC00
+beq   @@Return_0                    ; 0804BC00
 mov   r0,r1                         ; 0804BC02
 mov   r1,r2                         ; 0804BC04
 bl    Sub0804BA6C                   ; 0804BC06
 @@Code0804BC0A:
 lsl   r0,r0,0x18                    ; 0804BC0A
 lsr   r0,r0,0x18                    ; 0804BC0C
-b     @@Code0804BC16                ; 0804BC0E
+b     @@Return_r0                   ; 0804BC0E
 .pool                               ; 0804BC10
 
-@@Code0804BC14:
+@@Return_0:
 mov   r0,0x0                        ; 0804BC14
-@@Code0804BC16:
+@@Return_r0:
 pop   {r1}                          ; 0804BC16
 bx    r1                            ; 0804BC18
 .pool                               ; 0804BC1A
@@ -3649,7 +3649,7 @@ mov   r0,r5                         ; 0804BC98
 add   r0,0x60                       ; 0804BC9A
 ldrh  r0,[r0]                       ; 0804BC9C
 cmp   r0,0x0                        ; 0804BC9E
-beq   @@Code0804BCB2                ; 0804BCA0
+beq   @@Return                      ; 0804BCA0
 mov   r0,0x0                        ; 0804BCA2
 str   r0,[r5,0x8]                   ; 0804BCA4
 ldrh  r1,[r5,0x2C]                  ; 0804BCA6
@@ -3658,7 +3658,7 @@ and   r0,r1                         ; 0804BCAA
 mov   r1,0x6                        ; 0804BCAC
 orr   r0,r1                         ; 0804BCAE
 strh  r0,[r5,0x2C]                  ; 0804BCB0
-@@Code0804BCB2:
+@@Return:
 pop   {r4-r7}                       ; 0804BCB2
 pop   {r0}                          ; 0804BCB4
 bx    r0                            ; 0804BCB6
@@ -3730,7 +3730,7 @@ cmp   r0,0x0                        ; 0804BD34
 beq   @@Code0804BD40                ; 0804BD36
 mov   r0,r4                         ; 0804BD38
 bl    Sub0804AB44                   ; 0804BD3A
-b     @@Code0804BEA8                ; 0804BD3E
+b     @@Return_1                    ; 0804BD3E
 @@Code0804BD40:
 ldr   r2,=0x03002200                ; 0804BD40
 ldr   r0,[r4]                       ; 0804BD42
@@ -3817,7 +3817,7 @@ str   r1,[r4,0x8]                   ; 0804BDEA
 mov   r0,r4                         ; 0804BDEC
 bl    Sub0804BC60                   ; 0804BDEE
 mov   r0,0x0                        ; 0804BDF2
-b     @@Code0804BEAA                ; 0804BDF4
+b     @@Return_r0                   ; 0804BDF4
 .pool                               ; 0804BDF6
 
 @@Code0804BE04:
@@ -3839,7 +3839,7 @@ sub   r0,0x1                        ; 0804BE1E
 lsl   r0,r0,0x18                    ; 0804BE20
 asr   r2,r0,0x18                    ; 0804BE22
 cmp   r2,0x0                        ; 0804BE24
-blt   @@Code0804BEA8                ; 0804BE26
+blt   @@Return_1                    ; 0804BE26
 ldr   r1,=0x03007240                ; 0804BE28  Normal gameplay IWRAM (Ptr to 0300220C)
 mov   r0,0xB0                       ; 0804BE2A
 mul   r0,r2                         ; 0804BE2C
@@ -3850,7 +3850,7 @@ ldr   r1,[r1]                       ; 0804BE34
 add   r5,r1,r0                      ; 0804BE36
 ldrh  r0,[r5,0x24]                  ; 0804BE38
 cmp   r0,0x8                        ; 0804BE3A
-bne   @@Code0804BEA8                ; 0804BE3C
+bne   @@Return_1                    ; 0804BE3C
 mov   r0,r5                         ; 0804BE3E
 add   r0,0x60                       ; 0804BE40
 ldrh  r0,[r0]                       ; 0804BE42
@@ -3866,12 +3866,12 @@ ldrh  r1,[r5,0x26]                  ; 0804BE58
 mov   r0,0x20                       ; 0804BE5A
 and   r0,r1                         ; 0804BE5C
 cmp   r0,0x0                        ; 0804BE5E
-bne   @@Code0804BEA8                ; 0804BE60
+bne   @@Return_1                    ; 0804BE60
 mov   r0,r5                         ; 0804BE62
 mov   r1,r2                         ; 0804BE64
 bl    Sub0804BA6C                   ; 0804BE66
 cmp   r0,0x0                        ; 0804BE6A
-bne   @@Code0804BEA8                ; 0804BE6C
+bne   @@Return_1                    ; 0804BE6C
 @@Code0804BE6E:
 ldr   r0,[r4,0x14]                  ; 0804BE6E
 cmp   r0,0x3F                       ; 0804BE70
@@ -3883,7 +3883,7 @@ cmp   r0,0x2B                       ; 0804BE7A
 bhi   @@Code0804BE84                ; 0804BE7C
 mov   r0,0x4                        ; 0804BE7E
 str   r0,[r4,0x14]                  ; 0804BE80
-b     @@Code0804BEA8                ; 0804BE82
+b     @@Return_1                    ; 0804BE82
 @@Code0804BE84:
 mov   r0,r4                         ; 0804BE84
 add   r0,0x60                       ; 0804BE86
@@ -3893,7 +3893,7 @@ beq   @@Code0804BE98                ; 0804BE8C
 mov   r0,r5                         ; 0804BE8E
 bl    Sub0804AB44                   ; 0804BE90
 mov   r0,0x0                        ; 0804BE94
-b     @@Code0804BEAA                ; 0804BE96
+b     @@Return_r0                   ; 0804BE96
 @@Code0804BE98:
 ldr   r0,=0x0300702C                ; 0804BE98  Sprite RAM structs (03002460)
 ldr   r0,[r0]                       ; 0804BE9A
@@ -3902,9 +3902,9 @@ add   r0,r0,r1                      ; 0804BE9E
 ldrb  r1,[r0]                       ; 0804BEA0
 mov   r0,r4                         ; 0804BEA2
 bl    Sub0804BA6C                   ; 0804BEA4
-@@Code0804BEA8:
+@@Return_1:
 mov   r0,0x1                        ; 0804BEA8
-@@Code0804BEAA:
+@@Return_r0:
 pop   {r4-r5}                       ; 0804BEAA
 pop   {r1}                          ; 0804BEAC
 bx    r1                            ; 0804BEAE
@@ -3936,7 +3936,7 @@ bl    Sub0804AC30                   ; 0804BEE2
 @@Code0804BEE6:
 ldrh  r0,[r4,0x24]                  ; 0804BEE6
 cmp   r0,0x8                        ; 0804BEE8
-bne   @@Code0804BFA2                ; 0804BEEA
+bne   @@Return_1                    ; 0804BEEA
 ldr   r1,=0x03006D80                ; 0804BEEC
 mov   r2,0xD4                       ; 0804BEEE
 lsl   r2,r2,0x1                     ; 0804BEF0
@@ -3953,7 +3953,7 @@ add   r2,r2,r1                      ; 0804BF04
 ldrh  r1,[r2]                       ; 0804BF06
 orr   r0,r1                         ; 0804BF08
 cmp   r0,0x0                        ; 0804BF0A
-bne   @@Code0804BFA2                ; 0804BF0C
+bne   @@Return_1                    ; 0804BF0C
 mov   r0,r4                         ; 0804BF0E
 add   r0,0x60                       ; 0804BF10
 ldrh  r2,[r0]                       ; 0804BF12
@@ -4027,9 +4027,9 @@ str   r0,[r4,0xC]                   ; 0804BF9A
 @@Code0804BF9C:
 mov   r0,r4                         ; 0804BF9C
 bl    Sub080DFC58                   ; 0804BF9E
-@@Code0804BFA2:
+@@Return_1:
 mov   r0,0x1                        ; 0804BFA2
-b     @@Code0804BFDC                ; 0804BFA4
+b     @@Return_r0                   ; 0804BFA4
 .pool                               ; 0804BFA6
 
 @@Code0804BFC8:
@@ -4039,11 +4039,11 @@ ldrh  r0,[r0]                       ; 0804BFCC
 cmp   r0,0x0                        ; 0804BFCE
 bne   @@Code0804BFD6                ; 0804BFD0
 mov   r0,0x0                        ; 0804BFD2
-b     @@Code0804BFDC                ; 0804BFD4
+b     @@Return_r0                   ; 0804BFD4
 @@Code0804BFD6:
 mov   r0,r4                         ; 0804BFD6
 bl    Sub0804BCB8                   ; 0804BFD8
-@@Code0804BFDC:
+@@Return_r0:
 pop   {r4-r5}                       ; 0804BFDC
 pop   {r1}                          ; 0804BFDE
 bx    r1                            ; 0804BFE0
@@ -4054,7 +4054,7 @@ push  {r4-r5,lr}                    ; 0804BFE4
 mov   r4,r0                         ; 0804BFE6
 ldrh  r0,[r4,0x24]                  ; 0804BFE8
 cmp   r0,0x8                        ; 0804BFEA
-bne   @@Code0804C09A                ; 0804BFEC
+bne   @@Return_1                    ; 0804BFEC
 ldr   r1,=0x03006D80                ; 0804BFEE
 mov   r0,0xD4                       ; 0804BFF0
 lsl   r0,r0,0x1                     ; 0804BFF2
@@ -4071,14 +4071,14 @@ add   r2,r2,r1                      ; 0804C006
 ldrh  r1,[r2]                       ; 0804C008
 orr   r0,r1                         ; 0804C00A
 cmp   r0,0x0                        ; 0804C00C
-bne   @@Code0804C09A                ; 0804C00E
+bne   @@Return_1                    ; 0804C00E
 mov   r0,r4                         ; 0804C010
 add   r0,0x60                       ; 0804C012
 ldrh  r2,[r0]                       ; 0804C014
 mov   r1,r2                         ; 0804C016
 mov   r5,r0                         ; 0804C018
 cmp   r1,0x0                        ; 0804C01A
-beq   @@Code0804C0C0                ; 0804C01C
+beq   @@Return_0                    ; 0804C01C
 cmp   r1,0x1F                       ; 0804C01E
 bhi   @@Code0804C058                ; 0804C020
 mov   r0,0x1                        ; 0804C022
@@ -4140,14 +4140,14 @@ str   r0,[r4,0xC]                   ; 0804C092
 @@Code0804C094:
 mov   r0,r4                         ; 0804C094
 bl    Sub080DFC58                   ; 0804C096
-@@Code0804C09A:
+@@Return_1:
 mov   r0,0x1                        ; 0804C09A
-b     @@Code0804C0C2                ; 0804C09C
+b     @@Return_r0                   ; 0804C09C
 .pool                               ; 0804C09E
 
-@@Code0804C0C0:
+@@Return_0:
 mov   r0,0x0                        ; 0804C0C0
-@@Code0804C0C2:
+@@Return_r0:
 pop   {r4-r5}                       ; 0804C0C2
 pop   {r1}                          ; 0804C0C4
 bx    r1                            ; 0804C0C6
@@ -4179,7 +4179,7 @@ bl    Sub0804AC30                   ; 0804C0F2
 ldrh  r0,[r4,0x24]                  ; 0804C0F6
 cmp   r0,0x8                        ; 0804C0F8
 beq   @@Code0804C0FE                ; 0804C0FA
-b     @@Code0804C320                ; 0804C0FC
+b     @@Return_1                    ; 0804C0FC
 @@Code0804C0FE:
 ldr   r1,=0x03006D80                ; 0804C0FE
 mov   r2,0xD4                       ; 0804C100
@@ -4198,14 +4198,14 @@ ldrh  r1,[r2]                       ; 0804C118
 orr   r0,r1                         ; 0804C11A
 cmp   r0,0x0                        ; 0804C11C
 beq   @@Code0804C174                ; 0804C11E
-b     @@Code0804C320                ; 0804C120
+b     @@Return_1                    ; 0804C120
 .pool                               ; 0804C122
 
 @@Code0804C134:
 ldrh  r0,[r4,0x24]                  ; 0804C134
 cmp   r0,0x8                        ; 0804C136
 beq   @@Code0804C13C                ; 0804C138
-b     @@Code0804C320                ; 0804C13A
+b     @@Return_1                    ; 0804C13A
 @@Code0804C13C:
 ldr   r1,=0x03006D80                ; 0804C13C
 mov   r2,0xD4                       ; 0804C13E
@@ -4224,7 +4224,7 @@ ldrh  r1,[r2]                       ; 0804C156
 orr   r0,r1                         ; 0804C158
 cmp   r0,0x0                        ; 0804C15A
 beq   @@Code0804C160                ; 0804C15C
-b     @@Code0804C320                ; 0804C15E
+b     @@Return_1                    ; 0804C15E
 @@Code0804C160:
 b     @@Code0804C27E                ; 0804C160
 .pool                               ; 0804C162
@@ -4361,7 +4361,7 @@ mov   r0,r4                         ; 0804C278
 bl    Sub0804BC60                   ; 0804C27A
 @@Code0804C27E:
 mov   r0,0x0                        ; 0804C27E
-b     @@Code0804C322                ; 0804C280
+b     @@Return_r0                   ; 0804C280
 .pool                               ; 0804C282
 
 @@Code0804C290:
@@ -4383,7 +4383,7 @@ sub   r0,0x1                        ; 0804C2AA
 lsl   r0,r0,0x18                    ; 0804C2AC
 asr   r3,r0,0x18                    ; 0804C2AE
 cmp   r3,0x0                        ; 0804C2B0
-blt   @@Code0804C320                ; 0804C2B2
+blt   @@Return_1                    ; 0804C2B2
 ldr   r1,=0x03007240                ; 0804C2B4  Normal gameplay IWRAM (Ptr to 0300220C)
 mov   r0,0xB0                       ; 0804C2B6
 mul   r0,r3                         ; 0804C2B8
@@ -4394,7 +4394,7 @@ ldr   r1,[r1]                       ; 0804C2C0
 add   r2,r1,r0                      ; 0804C2C2
 ldrh  r0,[r2,0x24]                  ; 0804C2C4
 cmp   r0,0x8                        ; 0804C2C6
-bne   @@Code0804C320                ; 0804C2C8
+bne   @@Return_1                    ; 0804C2C8
 mov   r0,r2                         ; 0804C2CA
 add   r0,0x60                       ; 0804C2CC
 ldrh  r0,[r0]                       ; 0804C2CE
@@ -4410,12 +4410,12 @@ ldrh  r1,[r2,0x26]                  ; 0804C2E4
 mov   r0,0x20                       ; 0804C2E6
 and   r0,r1                         ; 0804C2E8
 cmp   r0,0x0                        ; 0804C2EA
-bne   @@Code0804C320                ; 0804C2EC
+bne   @@Return_1                    ; 0804C2EC
 mov   r0,r2                         ; 0804C2EE
 mov   r1,r3                         ; 0804C2F0
 bl    Sub0804BA6C                   ; 0804C2F2
 cmp   r0,0x0                        ; 0804C2F6
-bne   @@Code0804C320                ; 0804C2F8
+bne   @@Return_1                    ; 0804C2F8
 @@Code0804C2FA:
 ldr   r0,[r4,0x14]                  ; 0804C2FA
 cmp   r0,0x3F                       ; 0804C2FC
@@ -4427,7 +4427,7 @@ cmp   r0,0x2B                       ; 0804C306
 bhi   @@Code0804C310                ; 0804C308
 mov   r0,0x4                        ; 0804C30A
 str   r0,[r4,0x14]                  ; 0804C30C
-b     @@Code0804C320                ; 0804C30E
+b     @@Return_1                    ; 0804C30E
 @@Code0804C310:
 ldr   r0,=0x0300702C                ; 0804C310  Sprite RAM structs (03002460)
 ldr   r0,[r0]                       ; 0804C312
@@ -4436,9 +4436,9 @@ add   r0,r0,r3                      ; 0804C316
 ldrb  r1,[r0]                       ; 0804C318
 mov   r0,r4                         ; 0804C31A
 bl    Sub0804BA6C                   ; 0804C31C
-@@Code0804C320:
+@@Return_1:
 mov   r0,0x1                        ; 0804C320
-@@Code0804C322:
+@@Return_r0:
 pop   {r4}                          ; 0804C322
 pop   {r1}                          ; 0804C324
 bx    r1                            ; 0804C326
@@ -4448,7 +4448,7 @@ Sub0804C330:
 push  {lr}                          ; 0804C330
 ldrh  r0,[r0,0x24]                  ; 0804C332
 cmp   r0,0x8                        ; 0804C334
-bne   @@Code0804C370                ; 0804C336
+bne   @@Return_1                    ; 0804C336
 ldr   r1,=0x03006D80                ; 0804C338
 mov   r0,0xD4                       ; 0804C33A
 lsl   r0,r0,0x1                     ; 0804C33C
@@ -4465,14 +4465,14 @@ add   r2,r2,r1                      ; 0804C350
 ldrh  r1,[r2]                       ; 0804C352
 orr   r0,r1                         ; 0804C354
 cmp   r0,0x0                        ; 0804C356
-bne   @@Code0804C370                ; 0804C358
+bne   @@Return_1                    ; 0804C358
 mov   r0,0x0                        ; 0804C35A
-b     @@Code0804C372                ; 0804C35C
+b     @@Return_r0                   ; 0804C35C
 .pool                               ; 0804C35E
 
-@@Code0804C370:
+@@Return_1:
 mov   r0,0x1                        ; 0804C370
-@@Code0804C372:
+@@Return_r0:
 pop   {r1}                          ; 0804C372
 bx    r1                            ; 0804C374
 .pool                               ; 0804C376
@@ -4482,7 +4482,7 @@ push  {r4-r5,lr}                    ; 0804C378
 mov   r4,r0                         ; 0804C37A
 ldrh  r0,[r4,0x24]                  ; 0804C37C
 cmp   r0,0x8                        ; 0804C37E
-bne   @@Code0804C438                ; 0804C380
+bne   @@Return_1                    ; 0804C380
 ldr   r1,=0x03006D80                ; 0804C382
 mov   r0,0xD4                       ; 0804C384
 lsl   r0,r0,0x1                     ; 0804C386
@@ -4499,7 +4499,7 @@ add   r2,r2,r1                      ; 0804C39A
 ldrh  r1,[r2]                       ; 0804C39C
 orr   r0,r1                         ; 0804C39E
 cmp   r0,0x0                        ; 0804C3A0
-bne   @@Code0804C438                ; 0804C3A2
+bne   @@Return_1                    ; 0804C3A2
 mov   r0,r4                         ; 0804C3A4
 add   r0,0x60                       ; 0804C3A6
 ldrh  r2,[r0]                       ; 0804C3A8
@@ -4573,9 +4573,9 @@ str   r0,[r4,0xC]                   ; 0804C430
 @@Code0804C432:
 mov   r0,r4                         ; 0804C432
 bl    Sub080DFC58                   ; 0804C434
-@@Code0804C438:
+@@Return_1:
 mov   r0,0x1                        ; 0804C438
-b     @@Code0804C470                ; 0804C43A
+b     @@Return_r0                   ; 0804C43A
 .pool                               ; 0804C43C
 
 @@Code0804C45C:
@@ -4585,11 +4585,11 @@ ldrh  r0,[r0]                       ; 0804C460
 cmp   r0,0x0                        ; 0804C462
 bne   @@Code0804C46A                ; 0804C464
 mov   r0,0x0                        ; 0804C466
-b     @@Code0804C470                ; 0804C468
+b     @@Return_r0                   ; 0804C468
 @@Code0804C46A:
 mov   r0,r4                         ; 0804C46A
 bl    Sub0804BCB8                   ; 0804C46C
-@@Code0804C470:
+@@Return_r0:
 pop   {r4-r5}                       ; 0804C470
 pop   {r1}                          ; 0804C472
 bx    r1                            ; 0804C474
@@ -4610,7 +4610,7 @@ cmp   r0,0x0                        ; 0804C48C
 beq   @@Code0804C498                ; 0804C48E
 @@Code0804C490:
 mov   r0,0x1                        ; 0804C490
-b     @@Code0804C4AC                ; 0804C492
+b     @@Return_r0                   ; 0804C492
 .pool                               ; 0804C494
 
 @@Code0804C498:
@@ -4618,13 +4618,13 @@ mov   r0,r1                         ; 0804C498
 add   r0,0x5E                       ; 0804C49A
 ldrh  r0,[r0]                       ; 0804C49C
 cmp   r0,0x0                        ; 0804C49E
-beq   @@Code0804C4AA                ; 0804C4A0
+beq   @@Return_0                    ; 0804C4A0
 mov   r0,r1                         ; 0804C4A2
 bl    Sub0804BCB8                   ; 0804C4A4
-b     @@Code0804C4AC                ; 0804C4A8
-@@Code0804C4AA:
+b     @@Return_r0                   ; 0804C4A8
+@@Return_0:
 mov   r0,0x0                        ; 0804C4AA
-@@Code0804C4AC:
+@@Return_r0:
 pop   {r1}                          ; 0804C4AC
 bx    r1                            ; 0804C4AE
 
@@ -4637,7 +4637,7 @@ ldrh  r3,[r2]                       ; 0804C4B8
 mov   r1,0x0                        ; 0804C4BA
 ldsh  r0,[r2,r1]                    ; 0804C4BC
 cmp   r0,0x0                        ; 0804C4BE
-bge   @@Code0804C4E2                ; 0804C4C0
+bge   @@Return                      ; 0804C4C0
 ldr   r0,=0x03007240                ; 0804C4C2  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                       ; 0804C4C4
 mov   r0,0xFF                       ; 0804C4C6
@@ -4648,12 +4648,12 @@ add   r1,r1,r3                      ; 0804C4CE
 strh  r0,[r1]                       ; 0804C4D0
 ldrh  r0,[r2]                       ; 0804C4D2
 mov   r1,0xFE                       ; 0804C4D4
-lsl   r1,r1,0x7                     ; 0804C4D6
+lsl   r1,r1,0x7                     ; 0804C4D6  7F00
 and   r1,r0                         ; 0804C4D8
 lsr   r1,r1,0x4                     ; 0804C4DA
 mov   r0,r4                         ; 0804C4DC
-bl    Sub080D5B74                   ; 0804C4DE
-@@Code0804C4E2:
+bl    SprShared_SetItemMemory       ; 0804C4DE
+@@Return:
 pop   {r4}                          ; 0804C4E2
 pop   {r0}                          ; 0804C4E4
 bx    r0                            ; 0804C4E6

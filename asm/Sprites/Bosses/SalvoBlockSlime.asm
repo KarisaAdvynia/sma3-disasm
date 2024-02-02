@@ -470,7 +470,7 @@ ldrh  r0,[r7]                       ; 080BCC06
 cmp   r0,0x0                        ; 080BCC08
 bne   @@Code080BCC9A                ; 080BCC0A
 mov   r0,r6                         ; 080BCC0C
-bl    Sub080D5AF8                   ; 080BCC0E
+bl    SprShared_TestItemMemory_0    ; 080BCC0E
 lsl   r0,r0,0x10                    ; 080BCC12
 cmp   r0,0x0                        ; 080BCC14
 beq   @@Code080BCC1A                ; 080BCC16

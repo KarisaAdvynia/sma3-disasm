@@ -550,7 +550,9 @@ pop   {r0}                          ; 080D5968
 bx    r0                            ; 080D596A
 .pool                               ; 080D596C
 
-Sub080D5978:
+SprShared_SetOrTestItemMemory:
+; r0: pointer to sprite struct
+; r1: 0 to test, 1 to set
 push  {r4-r7,lr}                    ; 080D5978
 mov   r7,r0                         ; 080D597A
 lsl   r1,r1,0x18                    ; 080D597C
@@ -642,7 +644,7 @@ mov   r0,r7                         ; 080D5A3E
 bl    ClearSpriteSlot               ; 080D5A40
 @@Code080D5A44:
 mov   r0,r6                         ; 080D5A44
-b     @@Code080D5AA0                ; 080D5A46
+b     @@Return                      ; 080D5A46
 .pool                               ; 080D5A48
 
 @@Code080D5A54:
@@ -684,11 +686,11 @@ ldr   r0,[r4]                       ; 080D5A90
 ldr   r1,=0x29EA                    ; 080D5A92
 add   r0,r0,r1                      ; 080D5A94
 ldrh  r1,[r2]                       ; 080D5A96
-ldrh  r0,[r0]                       ; 080D5A98
-orr   r1,r0                         ; 080D5A9A
-strh  r1,[r2]                       ; 080D5A9C
+ldrh  r0,[r0]                       ; 080D5A98 \
+orr   r1,r0                         ; 080D5A9A | set item memory flag
+strh  r1,[r2]                       ; 080D5A9C /
 mov   r0,0x0                        ; 080D5A9E
-@@Code080D5AA0:
+@@Return:
 pop   {r4-r7}                       ; 080D5AA0
 pop   {r1}                          ; 080D5AA2
 bx    r1                            ; 080D5AA4
@@ -702,7 +704,7 @@ ldr   r3,=0x29EE                    ; 080D5AB6
 add   r2,r2,r3                      ; 080D5AB8
 strh  r1,[r2]                       ; 080D5ABA
 mov   r1,0x0                        ; 080D5ABC
-bl    Sub080D5978                   ; 080D5ABE
+bl    SprShared_SetOrTestItemMemory ; 080D5ABE
 lsl   r0,r0,0x10                    ; 080D5AC2
 lsr   r0,r0,0x10                    ; 080D5AC4
 pop   {r1}                          ; 080D5AC6
@@ -716,7 +718,7 @@ ldr   r2,[r2]                       ; 080D5AD8
 ldr   r3,=0x29DE                    ; 080D5ADA
 add   r2,r2,r3                      ; 080D5ADC
 strh  r1,[r2]                       ; 080D5ADE
-mov   r1,0x0                        ; 080D5AE0
+mov   r1,0x0                        ; 080D5AE0  store 0 to [03007240]+29EE
 bl    Sub080D5AB0                   ; 080D5AE2
 lsl   r0,r0,0x10                    ; 080D5AE6
 lsr   r0,r0,0x10                    ; 080D5AE8
@@ -724,7 +726,7 @@ pop   {r1}                          ; 080D5AEA
 bx    r1                            ; 080D5AEC
 .pool                               ; 080D5AEE
 
-Sub080D5AF8:
+SprShared_TestItemMemory_0:
 push  {lr}                          ; 080D5AF8
 ldr   r1,=0x03007240                ; 080D5AFA  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r2,[r1]                       ; 080D5AFC
@@ -750,7 +752,7 @@ ldr   r2,[r2]                       ; 080D5B28
 ldr   r3,=0x29DE                    ; 080D5B2A
 add   r2,r2,r3                      ; 080D5B2C
 strh  r1,[r2]                       ; 080D5B2E
-mov   r1,0x2                        ; 080D5B30
+mov   r1,0x2                        ; 080D5B30  store 2 to [03007240]+29EE
 bl    Sub080D5AB0                   ; 080D5B32
 lsl   r0,r0,0x10                    ; 080D5B36
 lsr   r0,r0,0x10                    ; 080D5B38
@@ -758,7 +760,7 @@ pop   {r1}                          ; 080D5B3A
 bx    r1                            ; 080D5B3C
 .pool                               ; 080D5B3E
 
-SprShared_TestItemMemory:
+SprShared_TestItemMemory_2:
 push  {lr}                          ; 080D5B48
 ldr   r1,=0x03007240                ; 080D5B4A  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r2,[r1]                       ; 080D5B4C
@@ -777,7 +779,7 @@ pop   {r1}                          ; 080D5B66
 bx    r1                            ; 080D5B68
 .pool                               ; 080D5B6A
 
-Sub080D5B74:
+SprShared_SetItemMemory:
 push  {lr}                          ; 080D5B74
 ldr   r2,=0x03007240                ; 080D5B76  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r2,[r2]                       ; 080D5B78
@@ -785,7 +787,7 @@ ldr   r3,=0x29DE                    ; 080D5B7A
 add   r2,r2,r3                      ; 080D5B7C
 strh  r1,[r2]                       ; 080D5B7E
 mov   r1,0x1                        ; 080D5B80
-bl    Sub080D5978                   ; 080D5B82
+bl    SprShared_SetOrTestItemMemory ; 080D5B82
 lsl   r0,r0,0x10                    ; 080D5B86
 lsr   r0,r0,0x10                    ; 080D5B88
 pop   {r1}                          ; 080D5B8A
@@ -804,7 +806,7 @@ strh  r1,[r2]                       ; 080D5BA6
 ldr   r1,[r0,0x4]                   ; 080D5BA8
 lsl   r1,r1,0x8                     ; 080D5BAA
 lsr   r1,r1,0x10                    ; 080D5BAC
-bl    Sub080D5B74                   ; 080D5BAE
+bl    SprShared_SetItemMemory       ; 080D5BAE
 lsl   r0,r0,0x10                    ; 080D5BB2
 lsr   r0,r0,0x10                    ; 080D5BB4
 pop   {r1}                          ; 080D5BB6
@@ -962,7 +964,7 @@ LockedDoor_Init:
 ; sprite 131 init
 push  {r4,lr}                       ; 080D5CE4
 mov   r4,r0                         ; 080D5CE6
-bl    SprShared_TestItemMemory      ; 080D5CE8  Test item memory + ?
+bl    SprShared_TestItemMemory_2    ; 080D5CE8  Test item memory + ?
 lsl   r0,r0,0x10                    ; 080D5CEC
 cmp   r0,0x0                        ; 080D5CEE
 bne   @@Code080D5D04                ; 080D5CF0
@@ -1011,7 +1013,7 @@ LockedDoorMinigame_Init:
 ; sprite 04E init
 push  {r4,lr}                       ; 080D5D40
 mov   r4,r0                         ; 080D5D42
-bl    SprShared_TestItemMemory      ; 080D5D44  Test item memory + ?
+bl    SprShared_TestItemMemory_2    ; 080D5D44  Test item memory + ?
 lsl   r0,r0,0x10                    ; 080D5D48
 cmp   r0,0x0                        ; 080D5D4A
 bne   @@Code080D5D56                ; 080D5D4C

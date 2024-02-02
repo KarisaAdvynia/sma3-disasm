@@ -3800,7 +3800,7 @@ bx    r0                            ; 0802B592
 
 ExtObj30_Main:
 ; object 00.30 main
-; width: 4, height: 4, x-=1
+; width: 4, height: 2, x-=1
 push  {r4-r5,lr}                    ; 0802B59C
 mov   r3,r0                         ; 0802B59E
 add   r0,0x4A                       ; 0802B5A0

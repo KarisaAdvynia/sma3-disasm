@@ -5869,7 +5869,7 @@ StdSprInitPtrs:                     ; 08170248
 .d32 Sub0806BFB8+1                  ; 04C
 .d32 Sub0805F968+1                  ; 04D
 .d32 LockedDoorMinigame_Init+1      ; 04E
-.d32 Sub080A48B4+1                  ; 04F
+.d32 MiddleRing_Init+1              ; 04F
 .d32 Sub080572E8+1                  ; 050
 .d32 Sub08056FD4+1                  ; 051
 .d32 Sub0809FE28+1                  ; 052
@@ -5894,9 +5894,9 @@ StdSprInitPtrs:                     ; 08170248
 .d32 RedCoinSpr_Init+1              ; 065
 .d32 Sub08061AE8+1                  ; 066
 .d32 Sub08081FAC+1                  ; 067
-.d32 Sub080D9A44+1                  ; 068
-.d32 Sub080D9A44+1                  ; 069
-.d32 Sub080D9A44+1                  ; 06A
+.d32 EggBlockShared_Init+1          ; 068
+.d32 EggBlockShared_Init+1          ; 069
+.d32 EggBlockShared_Init+1          ; 06A
 .d32 Sub080D9798+1                  ; 06B
 .d32 Sub08063894+1                  ; 06C
 .d32 Sub080773AC+1                  ; 06D
@@ -6322,7 +6322,7 @@ StdSprMainPtrs:                     ; 08170958
 .d32 Sub0806BFE4+1                  ; 04C
 .d32 Sub0805F9A8+1                  ; 04D
 .d32 DoorShared_Main+1              ; 04E
-.d32 Sub080A4B70+1                  ; 04F
+.d32 MiddleRing_Main+1              ; 04F
 .d32 Sub080574FC+1                  ; 050
 .d32 Sub080570C0+1                  ; 051
 .d32 Sub080A0690+1                  ; 052
@@ -6347,9 +6347,9 @@ StdSprMainPtrs:                     ; 08170958
 .d32 RedCoinSpr_Main+1              ; 065
 .d32 Sub08061E20+1                  ; 066
 .d32 Sub08082008+1                  ; 067
-.d32 Sub080D9E10+1                  ; 068
-.d32 Sub080D9D84+1                  ; 069
-.d32 Sub080D9D84+1                  ; 06A
+.d32 EggBlockFlashing_Main+1        ; 068
+.d32 EggBlockShared_Main+1          ; 069
+.d32 EggBlockShared_Main+1          ; 06A
 .d32 Sub080D9854+1                  ; 06B
 .d32 Sub08063E0C+1                  ; 06C
 .d32 Sub08077404+1                  ; 06D
@@ -10306,7 +10306,7 @@ CodePtrs081770A4:                   ; 081770A4
 .d32 Sub080A4294+1, Sub080A42D8+1, Sub080A43F8+1, Sub080A4438+1
 .d32 Sub080A4494+1, Sub080A44A0+1
 Data081770BC:                       ; 081770BC
-.d32 0x00210013, 0x003D002F
+.d16 0x0013, 0x0021, 0x002F, 0x003D
 Data081770C4:                       ; 081770C4
 .d8 0x84, 0xA4, 0x85, 0xA5, 0x85, 0xA4, 0x84, 0xA4
 .d8 0x85, 0xA5, 0x85, 0xA4, 0x84, 0xA4, 0x85, 0xA5
@@ -13716,7 +13716,7 @@ Data0817D08C:                       ; 0817D08C
 .d32 0xFFFFFC00, 0xFFFFFEC0, 0xFFFFFC00
 Data0817D098:                       ; 0817D098
 .d32 0x00120040, 0x00000040
-CodePtrs0817D0A0:                   ; 0817D0A0
+EggBlockShared_SubstatePtrs:        ; 0817D0A0
 .d32 Sub080D9AC4+1, Sub080D9BCC+1
 Data0817D0A8:                       ; 0817D0A8
 .d32 0x01FF0100, 0x01FF00CC, 0x01990100
