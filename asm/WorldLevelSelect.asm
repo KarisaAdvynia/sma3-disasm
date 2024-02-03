@@ -2992,34 +2992,34 @@ cmp   r0,0x3                        ; 08005D84
 bne   @@Code08005D98                ; 08005D86
 bl    Sub080FAE4C                   ; 08005D88
 ldr   r0,=0x4B64                    ; 08005D8C
-add   r0,r8                         ; 08005D8E
-ldrb  r0,[r0]                       ; 08005D90
-cmp   r0,0x3                        ; 08005D92
+add   r0,r8                         ; 08005D8E  03006D64
+ldrb  r0,[r0]                       ; 08005D90  game mode
+cmp   r0,0x3                        ; 08005D92  03: Game init
 bne   @@Code08005D98                ; 08005D94
-b     @@Code08006402                ; 08005D96
+b     @@Return                      ; 08005D96  if game mode 3, return
 @@Code08005D98:
-mov   r2,0x0                        ; 08005D98
-mov   r1,0x0                        ; 08005D9A
-ldr   r3,=0x0202C8A4                ; 08005D9C
-@@Code08005D9E:
+mov   r2,0x0                        ; 08005D98  r2: partial sum
+mov   r1,0x0                        ; 08005D9A  r1: loop index
+ldr   r3,=0x0202C8A4                ; 08005D9C  Pointer to world high score totals
+@@Loop_CalcTotalScore:              ;          \ loop: r2 = total score of all 6 worlds
 lsl   r0,r1,0x1                     ; 08005D9E
-add   r0,r0,r3                      ; 08005DA0
-ldrh  r0,[r0]                       ; 08005DA2
+add   r0,r0,r3                      ; 08005DA0  index 16-bit table with loop index
+ldrh  r0,[r0]                       ; 08005DA2  world high score total
 add   r0,r2,r0                      ; 08005DA4
 lsl   r0,r0,0x10                    ; 08005DA6
 lsr   r2,r0,0x10                    ; 08005DA8
-add   r0,r1,0x1                     ; 08005DAA
+add   r0,r1,0x1                     ; 08005DAA  increment loop index
 lsl   r0,r0,0x10                    ; 08005DAC
 lsr   r1,r0,0x10                    ; 08005DAE
 cmp   r1,0x5                        ; 08005DB0
-bls   @@Code08005D9E                ; 08005DB2
-ldr   r0,=0x1770                    ; 08005DB4
+bls   @@Loop_CalcTotalScore         ; 08005DB2 / 
+ldr   r0,=0x1770                    ; 08005DB4  6000
 cmp   r2,r0                         ; 08005DB6
 bne   @@Code08005DC2                ; 08005DB8
 ldr   r1,=0x4151                    ; 08005DBA
-add   r1,r8                         ; 08005DBC
+add   r1,r8                         ; 08005DBC  03006351
 mov   r0,0x1                        ; 08005DBE
-strb  r0,[r1]                       ; 08005DC0
+strb  r0,[r1]                       ; 08005DC0  set perfect cutscene seen flag
 @@Code08005DC2:
 ldr   r2,=0x4088                    ; 08005DC2
 add   r2,r8                         ; 08005DC4
@@ -3092,7 +3092,7 @@ add   r0,r8                         ; 08005E8E
 ldrb  r0,[r0]                       ; 08005E90
 cmp   r0,0x3                        ; 08005E92
 bne   @@Code08005E98                ; 08005E94
-b     @@Code08006402                ; 08005E96
+b     @@Return                      ; 08005E96
 @@Code08005E98:
 ldr   r1,=0x4905                    ; 08005E98
 add   r1,r8                         ; 08005E9A
@@ -3109,7 +3109,7 @@ ldr   r4,=0x03007014                ; 08005EB0
 ldr   r1,[r4]                       ; 08005EB2
 bl    DynamicDeallocate             ; 08005EB4
 str   r5,[r4]                       ; 08005EB8
-b     @@Code08006402                ; 08005EBA
+b     @@Return                      ; 08005EBA
 .pool                               ; 08005EBC
 
 @@Code08005ED4:
@@ -3121,7 +3121,7 @@ add   r0,r8                         ; 08005EDE
 ldrb  r0,[r0]                       ; 08005EE0
 cmp   r0,0x3                        ; 08005EE2
 bne   @@Code08005EE8                ; 08005EE4
-b     @@Code08006402                ; 08005EE6
+b     @@Return                      ; 08005EE6
 @@Code08005EE8:
 bl    Sub08005CE0                   ; 08005EE8
 ldr   r0,=0x4850                    ; 08005EEC
@@ -3179,7 +3179,7 @@ ldr   r0,=0x03002200                ; 08005F64
 ldr   r3,=0x4850                    ; 08005F66
 add   r0,r0,r3                      ; 08005F68
 strh  r2,[r0]                       ; 08005F6A
-b     @@Code08006402                ; 08005F6C
+b     @@Return                      ; 08005F6C
 .pool                               ; 08005F6E
 
 @@Code08005F80:
@@ -3278,7 +3278,7 @@ add   r0,r2,r3                      ; 08006052
 ldrb  r0,[r0]                       ; 08006054
 cmp   r0,0x3                        ; 08006056
 bne   @@Code0800605C                ; 08006058
-b     @@Code08006402                ; 0800605A
+b     @@Return                      ; 0800605A
 @@Code0800605C:
 ldr   r1,=0x4A08                    ; 0800605C
 add   r0,r2,r1                      ; 0800605E
@@ -3317,7 +3317,7 @@ ldr   r2,=0x488C                    ; 080060AC
 add   r0,r0,r2                      ; 080060AE
 mov   r1,0xF                        ; 080060B0
 strh  r1,[r0]                       ; 080060B2
-b     @@Code08006402                ; 080060B4
+b     @@Return                      ; 080060B4
 .pool                               ; 080060B6
 
 @@Code080060C8:
@@ -3385,7 +3385,7 @@ add   r0,r2,r3                      ; 0800614C
 ldrb  r0,[r0]                       ; 0800614E
 cmp   r0,0x3                        ; 08006150
 bne   @@Code08006156                ; 08006152
-b     @@Code08006402                ; 08006154
+b     @@Return                      ; 08006154
 @@Code08006156:
 ldr   r1,=0x4A08                    ; 08006156
 add   r0,r2,r1                      ; 08006158
@@ -3438,14 +3438,14 @@ add   r0,r8                         ; 080061D2
 ldrb  r0,[r0]                       ; 080061D4
 cmp   r0,0x3                        ; 080061D6
 bne   @@Code080061DC                ; 080061D8
-b     @@Code08006402                ; 080061DA
+b     @@Return                      ; 080061DA
 @@Code080061DC:
 ldr   r0,=0x03002200                ; 080061DC
 ldr   r1,=0x4850                    ; 080061DE
 add   r0,r0,r1                      ; 080061E0
 mov   r1,0x0                        ; 080061E2
 strh  r1,[r0]                       ; 080061E4
-b     @@Code08006402                ; 080061E6
+b     @@Return                      ; 080061E6
 .pool                               ; 080061E8
 
 @@Code080061F4:
@@ -3537,7 +3537,7 @@ add   r0,r3,r2                      ; 080062AA
 ldrb  r0,[r0]                       ; 080062AC
 cmp   r0,0x3                        ; 080062AE
 bne   @@Code080062B4                ; 080062B0
-b     @@Code08006402                ; 080062B2
+b     @@Return                      ; 080062B2
 @@Code080062B4:
 ldr   r0,=0x4088                    ; 080062B4
 add   r4,r3,r0                      ; 080062B6
@@ -3649,7 +3649,7 @@ ldr   r3,=0x4850                    ; 080063AA
 add   r0,r6,r3                      ; 080063AC
 mov   r1,r9                         ; 080063AE
 strh  r1,[r0]                       ; 080063B0
-b     @@Code08006402                ; 080063B2
+b     @@Return                      ; 080063B2
 .pool                               ; 080063B4
 
 @@Code080063D8:
@@ -3667,12 +3667,12 @@ strh  r0,[r1]                       ; 080063EE
 @@Code080063F0:
 mov   r3,r9                         ; 080063F0
 strh  r3,[r2]                       ; 080063F2
-b     @@Code08006402                ; 080063F4
+b     @@Return                      ; 080063F4
 .pool                               ; 080063F6
 
 @@Code08006400:
 strh  r3,[r0]                       ; 08006400
-@@Code08006402:
+@@Return:
 add   sp,0x4                        ; 08006402
 pop   {r3-r5}                       ; 08006404
 mov   r8,r3                         ; 08006406

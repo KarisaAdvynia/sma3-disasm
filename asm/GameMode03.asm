@@ -1945,38 +1945,38 @@ mov   r1,0x0                        ; 080FA0CC
 mov   r0,0x3                        ; 080FA0CE
 strh  r0,[r2]                       ; 080FA0D0  initialize lives to 3
 ldr   r2,=0x4082                    ; 080FA0D2
-add   r0,r4,r2                      ; 080FA0D4  r2 = 03006282
+add   r0,r4,r2                      ; 080FA0D4  r0 = 03006282
 strh  r1,[r0]                       ; 080FA0D6  clear controls setting
-add   r2,0x2                        ; 080FA0D8  r2 = 03006284
-add   r0,r4,r2                      ; 080FA0DA
+add   r2,0x2                        ; 080FA0D8
+add   r0,r4,r2                      ; 080FA0DA  r0 = 03006284
 strh  r1,[r0]                       ; 080FA0DC  clear seen flags for 1-1/1-2 messages
-sub   r2,0x4                        ; 080FA0DE  r2 = 03006280
-add   r0,r4,r2                      ; 080FA0E0
+sub   r2,0x4                        ; 080FA0DE
+add   r0,r4,r2                      ; 080FA0E0  r0 = 03006280
 strh  r1,[r0]                       ; 080FA0E2  clear coins
-add   r2,0x6                        ; 080FA0E4  r2 = 03006286
-add   r0,r4,r2                      ; 080FA0E6
+add   r2,0x6                        ; 080FA0E4
+add   r0,r4,r2                      ; 080FA0E6  r0 = 03006286
 strh  r1,[r0]                       ; 080FA0E8  clear ?
-add   r2,0xB6                       ; 080FA0EA  r2 = 0300633C
-add   r0,r4,r2                      ; 080FA0EC
+add   r2,0xB6                       ; 080FA0EA
+add   r0,r4,r2                      ; 080FA0EC  r0 = 0300633C
 strh  r1,[r0]                       ; 080FA0EE  clear world number (set to W1)
-add   r2,0x2                        ; 080FA0F0  r2 = 0300633E
-add   r0,r4,r2                      ; 080FA0F2
+add   r2,0x2                        ; 080FA0F0
+add   r0,r4,r2                      ; 080FA0F2  r0 = 0300633E
 strh  r1,[r0]                       ; 080FA0F4  clear cursor position within world
-sub   r2,0xB6                       ; 080FA0F6  r2 = 03006288
-add   r0,r4,r2                      ; 080FA0F8
+sub   r2,0xB6                       ; 080FA0F6
+add   r0,r4,r2                      ; 080FA0F8  r0 = 03006288
 strh  r1,[r0]                       ; 080FA0FA  clear level ID
-add   r2,0xC4                       ; 080FA0FC  r2 = 0300634C
-add   r0,r4,r2                      ; 080FA0FE
+add   r2,0xC4                       ; 080FA0FC
+add   r0,r4,r2                      ; 080FA0FE  r0 = 0300634C
 strh  r1,[r0]                       ; 080FA100  clear death count
-add   r2,0x2                        ; 080FA102  r2 = 0300634E
-add   r0,r4,r2                      ; 080FA104
+add   r2,0x2                        ; 080FA102
+add   r0,r4,r2                      ; 080FA104  r0 = 0300634E
 strh  r1,[r0]                       ; 080FA106  clear cursor position of last level entered
 ldr   r1,=0x4150                    ; 080FA108
 add   r0,r4,r1                      ; 080FA10A  r0 = 03006350
-strb  r3,[r0]                       ; 080FA10C
-add   r2,0x3                        ; 080FA10E  r2 = 03006351
-add   r0,r4,r2                      ; 080FA110
-strb  r3,[r0]                       ; 080FA112
+strb  r3,[r0]                       ; 080FA10C  clear save file exists flag
+add   r2,0x3                        ; 080FA10E
+add   r0,r4,r2                      ; 080FA110  r0 = 03006351
+strb  r3,[r0]                       ; 080FA112  clear perfect cutscene flag
 mov   r2,0x0                        ; 080FA114
 ldr   r0,=0x4140                    ; 080FA116
 add   r5,r4,r0                      ; 080FA118  r5 = 03006340
@@ -1986,7 +1986,7 @@ lsl   r1,r2,0x10                    ; 080FA11C
 asr   r1,r1,0x10                    ; 080FA11E
 lsl   r0,r1,0x1                     ; 080FA120
 add   r0,r0,r5                      ; 080FA122
-strh  r3,[r0]                       ; 080FA124
+strh  r3,[r0]                       ; 080FA124  clear egg slot
 add   r1,0x1                        ; 080FA126
 lsl   r1,r1,0x10                    ; 080FA128
 lsr   r2,r1,0x10                    ; 080FA12A
@@ -2000,7 +2000,7 @@ mov   r3,0x0                        ; 080FA136
 lsl   r0,r2,0x10                    ; 080FA138
 asr   r0,r0,0x10                    ; 080FA13A
 add   r1,r0,r5                      ; 080FA13C
-strb  r3,[r1]                       ; 080FA13E
+strb  r3,[r1]                       ; 080FA13E  clear inventory slot
 add   r0,0x1                        ; 080FA140
 lsl   r0,r0,0x10                    ; 080FA142
 lsr   r2,r0,0x10                    ; 080FA144

@@ -1609,8 +1609,8 @@ push  {r4-r7,lr}                    ; 080414A8
 ldr   r2,=0x03002200                ; 080414AA
 ldr   r3,=0x03006D80                ; 080414AC
 mov   r0,0x92                       ; 080414AE
-lsl   r0,r0,0x2                     ; 080414B0
-add   r4,r3,r0                      ; 080414B2
+lsl   r0,r0,0x2                     ; 080414B0  248
+add   r4,r3,r0                      ; 080414B2  6FC8
 ldrh  r1,[r4]                       ; 080414B4
 ldr   r5,=0x4086                    ; 080414B6
 add   r0,r2,r5                      ; 080414B8
@@ -1619,7 +1619,7 @@ lsl   r1,r1,0x10                    ; 080414BC
 mov   r6,r2                         ; 080414BE
 mov   r5,r3                         ; 080414C0
 cmp   r1,0x0                        ; 080414C2
-beq   @@Code080414F8                ; 080414C4
+beq   @@Return                      ; 080414C4
 ldrh  r1,[r4]                       ; 080414C6
 ldr   r4,=0x03007240                ; 080414C8  Normal gameplay IWRAM (Ptr to 0300220C)
 @@Code080414CA:
@@ -1633,7 +1633,7 @@ ldrh  r1,[r0]                       ; 080414D6
 mov   r0,0xB0                       ; 080414D8
 mul   r0,r1                         ; 080414DA
 mov   r1,0x95                       ; 080414DC
-lsl   r1,r1,0x2                     ; 080414DE
+lsl   r1,r1,0x2                     ; 080414DE  254
 add   r0,r0,r1                      ; 080414E0
 ldr   r1,[r4]                       ; 080414E2
 add   r1,r1,r0                      ; 080414E4
@@ -1646,7 +1646,7 @@ lsl   r3,r3,0x10                    ; 080414F0
 lsr   r1,r3,0x10                    ; 080414F2
 cmp   r1,0x0                        ; 080414F4
 bne   @@Code080414CA                ; 080414F6
-@@Code080414F8:
+@@Return:
 pop   {r4-r7}                       ; 080414F8
 pop   {r0}                          ; 080414FA
 bx    r0                            ; 080414FC

@@ -464,24 +464,24 @@ Sub08035690:
 push  {lr}                          ; 08035690
 ldr   r2,=0x03002200                ; 08035692
 ldr   r0,=0x407E                    ; 08035694
-add   r1,r2,r0                      ; 08035696
-ldrh  r0,[r1]                       ; 08035698
-sub   r0,0x1                        ; 0803569A
-strh  r0,[r1]                       ; 0803569C
+add   r1,r2,r0                      ; 08035696  0300627E
+ldrh  r0,[r1]                       ; 08035698 \
+sub   r0,0x1                        ; 0803569A | decrement lives
+strh  r0,[r1]                       ; 0803569C /
 ldr   r1,=0x4151                    ; 0803569E
-add   r0,r2,r1                      ; 080356A0
+add   r0,r2,r1                      ; 080356A0  03006351
 ldrb  r0,[r0]                       ; 080356A2
 cmp   r0,0x0                        ; 080356A4
-bne   @@Code080356B8                ; 080356A6
+bne   @@DontIncrDeaths              ; 080356A6
 ldr   r0,=0x414C                    ; 080356A8
-add   r1,r2,r0                      ; 080356AA
-ldrh  r2,[r1]                       ; 080356AC
-ldr   r0,=0x270D                    ; 080356AE
+add   r1,r2,r0                      ; 080356AA  0300634C
+ldrh  r2,[r1]                       ; 080356AC  death count
+ldr   r0,=0x270D                    ; 080356AE  9997
 cmp   r2,r0                         ; 080356B0
-bhi   @@Code080356B8                ; 080356B2
-add   r0,r2,0x1                     ; 080356B4
-strh  r0,[r1]                       ; 080356B6
-@@Code080356B8:
+bhi   @@DontIncrDeaths              ; 080356B2
+add   r0,r2,0x1                     ; 080356B4 \ increment death count
+strh  r0,[r1]                       ; 080356B6 /
+@@DontIncrDeaths:
 bl    Sub080414A8                   ; 080356B8
 pop   {r0}                          ; 080356BC
 bx    r0                            ; 080356BE
