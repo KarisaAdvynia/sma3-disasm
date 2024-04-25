@@ -50,13 +50,13 @@ cmp   r5,0x0                        ; 0805117A
 beq   @@Code08051194                ; 0805117C
 cmp   r5,0x2                        ; 0805117E
 beq   @@Code08051184                ; 08051180
-b     @@Code080512A2                ; 08051182
+b     @@Return                      ; 08051182
 @@Code08051184:
 mov   r1,r7                         ; 08051184
 add   r1,0x94                       ; 08051186
 mov   r0,0xFF                       ; 08051188
 strb  r0,[r1]                       ; 0805118A
-b     @@Code080512A2                ; 0805118C
+b     @@Return                      ; 0805118C
 .pool                               ; 0805118E
 
 @@Code08051194:
@@ -115,8 +115,8 @@ strh  r5,[r0]                       ; 08051206
 sub   r3,0xBE                       ; 08051208
 add   r0,r6,r3                      ; 0805120A
 strh  r5,[r0]                       ; 0805120C
-bl    ProcessSublevelHeaderMusic    ; 0805120E
-b     @@Code080512A2                ; 08051212
+bl    ProcessSublevelHeaderMusic    ; 0805120E  revert to music from header
+b     @@Return                      ; 08051212
 .pool                               ; 08051214
 
 @@Code08051220:
@@ -124,7 +124,7 @@ mov   r0,r7                         ; 08051220
 bl    Sub08050B58                   ; 08051222
 lsl   r0,r0,0x18                    ; 08051226
 cmp   r0,0x0                        ; 08051228
-bne   @@Code080512A2                ; 0805122A
+bne   @@Return                      ; 0805122A
 ldr   r4,=0x03006D80                ; 0805122C
 mov   r0,r4                         ; 0805122E
 add   r0,0xAE                       ; 08051230
@@ -170,13 +170,13 @@ mov   r1,0xD3                       ; 08051280
 lsl   r1,r1,0x1                     ; 08051282
 add   r0,r4,r1                      ; 08051284
 strh  r5,[r0]                       ; 08051286
-b     @@Code080512A2                ; 08051288
+b     @@Return                      ; 08051288
 .pool                               ; 0805128A
 
 @@Code0805129C:
 mov   r0,r7                         ; 0805129C
 bl    Sub08050E68                   ; 0805129E
-@@Code080512A2:
+@@Return:
 pop   {r3}                          ; 080512A2
 mov   r8,r3                         ; 080512A4
 pop   {r4-r7}                       ; 080512A6

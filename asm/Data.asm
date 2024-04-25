@@ -5879,7 +5879,7 @@ StdSprInitPtrs:                     ; 08170248
 .d32 Sub0808D758+1                  ; 056
 .d32 Sub080582C4+1                  ; 057
 .d32 Sub0808A2AC+1                  ; 058
-.d32 Sub08060E4C+1                  ; 059
+.d32 SuperStar_ContinuousInit+1     ; 059
 .d32 Return080D85F8+1               ; 05A
 .d32 Sub0808AAF8+1                  ; 05B
 .d32 Sub0808A2AC+1                  ; 05C
@@ -6332,7 +6332,7 @@ StdSprMainPtrs:                     ; 08170958
 .d32 Sub0808E34C+1                  ; 056
 .d32 Sub08058890+1                  ; 057
 .d32 Sub0808AA5C+1                  ; 058
-.d32 Sub08060F18+1                  ; 059
+.d32 SuperStar_Main+1               ; 059
 .d32 RaphaelShockwave_Main+1        ; 05A
 .d32 Sub0808AEE8+1                  ; 05B
 .d32 Sub0808AA5C+1                  ; 05C
@@ -6379,7 +6379,7 @@ StdSprMainPtrs:                     ; 08170958
 .d32 Sub0808CD44+1                  ; 085
 .d32 Return08049F40+1               ; 086
 .d32 Sub080AA2D8+1                  ; 087
-.d32 Sub08060F18+1                  ; 088
+.d32 SuperStar_Main+1               ; 088
 .d32 Sub0808D5B8+1                  ; 089
 .d32 Sub0808D460+1                  ; 08A
 .d32 Sub080826A0+1                  ; 08B
@@ -7887,8 +7887,8 @@ Data08173F7C:                       ; 08173F7C
 .d32 0x0080FF80, 0x0100FF00, Data0829A1A4
 Data08173F88:                       ; 08173F88
 .d32 0x0080FF80, Data082AA064
-CodePtrs08173F90:                   ; 08173F90
-.d32 Sub08060F34+1, Sub08061054+1
+SuperStar_SubstatePtrs:             ; 08173F90
+.d32 SuperStar_Substate0+1, SuperStar_Substate1+1
 Data08173F98:                       ; 08173F98
 .d32 0xFF000100
 DataPtrs08173F9C:                   ; 08173F9C

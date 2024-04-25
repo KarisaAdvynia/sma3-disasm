@@ -4228,7 +4228,7 @@ mov   r0,sp                         ; 08003376
 ldrh  r0,[r0,0x4]                   ; 08003378
 strh  r0,[r5]                       ; 0800337A
 add   r0,r5,0x2                     ; 0800337C
-b     @@Code0800338C                ; 0800337E
+b     @@Return                      ; 0800337E
 @@Code08003380:
 mov   r5,r6                         ; 08003380
 ldrh  r0,[r5]                       ; 08003382
@@ -4237,7 +4237,7 @@ cmp   r0,r1                         ; 08003386
 bne   @@Code080032BA                ; 08003388
 @@Code0800338A:
 mov   r0,0x0                        ; 0800338A
-@@Code0800338C:
+@@Return:
 add   sp,0x8                        ; 0800338C
 pop   {r3-r5}                       ; 0800338E
 mov   r8,r3                         ; 08003390
@@ -4254,28 +4254,28 @@ DynamicDeallocate:
 push  {lr}                          ; 080033A0
 mov   r3,r0                         ; 080033A2
 cmp   r1,0x0                        ; 080033A4
-beq   @@Code080033CE                ; 080033A6
+beq   @@Return                      ; 080033A6
 sub   r2,r1,0x2                     ; 080033A8
 ldrh  r1,[r2]                       ; 080033AA
 mov   r0,0x1                        ; 080033AC
 and   r0,r1                         ; 080033AE
 cmp   r0,0x0                        ; 080033B0
-beq   @@Code080033CE                ; 080033B2
+beq   @@Return                      ; 080033B2
 ldrh  r0,[r2]                       ; 080033B4
 mov   r1,0x2                        ; 080033B6
 neg   r1,r1                         ; 080033B8
 and   r0,r1                         ; 080033BA
 strh  r0,[r2]                       ; 080033BC
 cmp   r3,0x0                        ; 080033BE
-beq   @@Code080033CE                ; 080033C0
+beq   @@Return                      ; 080033C0
 ldr   r0,[r3]                       ; 080033C2
 cmp   r0,r2                         ; 080033C4
 bhi   @@Code080033CC                ; 080033C6
 cmp   r0,0x0                        ; 080033C8
-bne   @@Code080033CE                ; 080033CA
+bne   @@Return                      ; 080033CA
 @@Code080033CC:
 str   r2,[r3]                       ; 080033CC
-@@Code080033CE:
+@@Return:
 pop   {r0}                          ; 080033CE
 bx    r0                            ; 080033D0
 .pool                               ; 080033D2
