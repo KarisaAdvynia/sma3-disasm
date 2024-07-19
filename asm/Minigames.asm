@@ -2080,7 +2080,7 @@ mov   r1,r5                         ; 080EAAE0
 add   r1,0x92                       ; 080EAAE2
 strh  r0,[r1]                       ; 080EAAE4
 @@Code080EAAE6:
-bl    Sub08054074                   ; 080EAAE6
+bl    Sub08054074                   ; 080EAAE6  update Yoshi palette based on 03006E12
 mov   r0,0x1F                       ; 080EAAEA  1F: Bonus room/Super Baby
 bl    PlayYIMusic                   ; 080EAAEC
 ldr   r5,=0x03007240                ; 080EAAF0  Normal gameplay IWRAM (Ptr to 0300220C)

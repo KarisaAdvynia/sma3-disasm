@@ -18670,7 +18670,7 @@ lsl   r0,r0,0x1                     ; 0803EBBC
 mov   r1,r6                         ; 0803EBBE
 add   r1,0x92                       ; 0803EBC0
 strh  r0,[r1]                       ; 0803EBC2
-bl    Sub08054074                   ; 0803EBC4
+bl    Sub08054074                   ; 0803EBC4  update Yoshi palette based on 03006E12
 ldr   r0,=0x4886                    ; 0803EBC8
 add   r4,r4,r0                      ; 0803EBCA
 strh  r5,[r4]                       ; 0803EBCC
@@ -21261,7 +21261,7 @@ lsl   r0,r0,0x1                     ; 08040254
 mov   r1,r7                         ; 08040256
 add   r1,0x92                       ; 08040258
 strh  r0,[r1]                       ; 0804025A
-bl    Sub08054074                   ; 0804025C
+bl    Sub08054074                   ; 0804025C  update Yoshi palette based on 03006E12
 ldr   r2,[r4]                       ; 08040260
 ldr   r0,=0x2964                    ; 08040262
 add   r1,r2,r0                      ; 08040264

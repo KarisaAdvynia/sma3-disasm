@@ -834,7 +834,7 @@ ldr   r0,=Data082D2F1C              ; 08013BD4
 mov   r8,r0                         ; 08013BD6
 ldr   r7,=0x020106A0                ; 08013BD8
 add   r6,0x2                        ; 08013BDA
-@@Loop_LoadUnusedPaletteD:          ; loop: copy 10 colors from ROM at 082D2F1C + 4*(value from table at 08167404, indexed by 2*Yoshi color). In practice is this one of the 20-byte blocks 082D301C to 082D30EC
+@@Loop_LoadYoshiPalette:            ; loop: copy 10 colors from ROM at 082D2F1C + 4*(value from table at 08167404, indexed by 2*Yoshi color ID). In practice is this one of the 20-byte blocks 082D301C to 082D30EC
 lsl   r1,r5,0x2                     ; 08013BDC \
 mov   r2,r12                        ; 08013BDE
 add   r3,r1,r2                      ; 08013BE0
@@ -855,7 +855,7 @@ add   r0,r5,0x1                     ; 08013BFC
 lsl   r0,r0,0x10                    ; 08013BFE
 lsr   r5,r0,0x10                    ; 08013C00
 cmp   r5,0x7                        ; 08013C02
-bls   @@Loop_LoadUnusedPaletteD     ; 08013C04 /
+bls   @@Loop_LoadYoshiPalette       ; 08013C04 /
 mov   r4,r10                        ; 08013C06
 ldr   r0,[r4]                       ; 08013C08  r0 = [03007240] (0300220C)
 ldr   r5,=0x29A0                    ; 08013C0A
@@ -903,7 +903,7 @@ bx    r0                            ; 08013C5C
 .pool                               ; 08013C5E
 
 Sub08013CC4:
-; Froggy VRAM and some sublevel hardcoded background colors?
+; Froggy VRAM and some sublevel hardcoded background colors
 ; r0 starts with hv09 +2
 push  {r4-r5,lr}                    ; 08013CC4
 lsl   r0,r0,0x10                    ; 08013CC6
@@ -923,16 +923,18 @@ ldr   r0,[r0]                       ; 08013CDA
 ldrb  r0,[r0]                       ; 08013CDC  flag, should always be 01 for valid hv09
 cmp   r0,0x0                        ; 08013CDE
 beq   @@Code08013D00                ; 08013CE0
-ldr   r1,=0x02010440                ; 08013CE2  runs if flag is set: copy color 00 to color 20, then clear color 00
+                                    ;           runs if flag is set...
+ldr   r1,=0x02010440                ; 08013CE2 \ copy color 00 to color 20
 ldr   r0,=0x02010400                ; 08013CE4
 ldrh  r2,[r0]                       ; 08013CE6
 strh  r2,[r1]                       ; 08013CE8
 ldr   r1,=0x02010840                ; 08013CEA
-strh  r2,[r1]                       ; 08013CEC
-mov   r2,0x0                        ; 08013CEE
-strh  r2,[r0]                       ; 08013CF0
+strh  r2,[r1]                       ; 08013CEC /
+                                    ; (this zeroes all non-gradient background colors! NOP the next 4 lines to avoid that)
+mov   r2,0x0                        ; 08013CEE \ then clear color 00
+strh  r2,[r0]                       ; 08013CF0   
 sub   r1,0x40                       ; 08013CF2
-strh  r2,[r1]                       ; 08013CF4
+strh  r2,[r1]                       ; 08013CF4 /
 mov   r1,0xA0                       ; 08013CF6
 lsl   r1,r1,0x13                    ; 08013CF8  r1 = 05000000
 mov   r2,0x1                        ; 08013CFA  copy the modified colors to palette RAM
@@ -943,7 +945,7 @@ ldr   r0,[r5]                       ; 08013D02  r0 = [03007240] (0300220C)
 ldr   r4,=0x2AAC                    ; 08013D04
 add   r0,r0,r4                      ; 08013D06  r0 = [03007240]+2AAC (03004CB8)
 ldrh  r0,[r0]                       ; 08013D08  r0 = sublevel ID
-cmp   r0,0x86                       ; 08013D0A
+cmp   r0,0x86                       ; 08013D0A  86: 4-8 boss
 bne   @@Code08013D24                ; 08013D0C
 ldr   r0,=0x02010400                ; 08013D0E \ runs if sublevel ID is 86: hardcode background color
 ldr   r2,=0x02010800                ; 08013D10
@@ -959,7 +961,7 @@ bl    swi_MemoryCopy4or2            ; 08013D20 / Memory copy, 4-byte or 2-byte b
 ldr   r0,[r5]                       ; 08013D24
 add   r0,r0,r4                      ; 08013D26  r0 = [03007240]+2AAC (03004CB8)
 ldrh  r0,[r0]                       ; 08013D28  sublevel ID
-cmp   r0,0x6A                       ; 08013D2A
+cmp   r0,0x6A                       ; 08013D2A  6A: 6-7 2/3 (line-guide room)
 bne   @@Return                      ; 08013D2C
 ldr   r0,=0x02010400                ; 08013D2E \ runs if sublevel ID is 6A: hardcode background color
 ldr   r2,=0x02010800                ; 08013D30
@@ -13281,6 +13283,7 @@ bx    r0                            ; 0802C29E
 
 ProcessSublevelHeaderMusic:
 ; Process header music value
+; Called by sublevel load, and the Super Baby Egg sprite when reverting from Super Star
 push  {r4-r6,lr}                    ; 0802C2D4
 ldr   r2,=0x03007240                ; 0802C2D6  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r3,[r2]                       ; 0802C2D8  r3 = [03007240] (0300220C)

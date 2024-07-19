@@ -284,7 +284,7 @@ mov   r0,0xE0                       ; 080E00DA
 lsl   r0,r0,0x8                     ; 080E00DC
 and   r0,r1                         ; 080E00DE
 cmp   r0,0x0                        ; 080E00E0
-beq   @@Code080E0110                ; 080E00E2
+beq   @@Return                      ; 080E00E2
 mov   r2,0x0                        ; 080E00E4
 mov   r1,0x0                        ; 080E00E6
 mov   r0,0xD                        ; 080E00E8
@@ -306,7 +306,7 @@ add   r0,0x59                       ; 080E0106
 strb  r2,[r0]                       ; 080E0108
 mov   r0,r3                         ; 080E010A
 bl    Sub080E0058                   ; 080E010C
-@@Code080E0110:
+@@Return:
 pop   {r0}                          ; 080E0110
 bx    r0                            ; 080E0112
 .pool                               ; 080E0114
@@ -498,7 +498,7 @@ cmp   r0,0x0                        ; 080E02B0
 beq   @@Code080E02D4                ; 080E02B2
 ldr   r0,[r6,0xC]                   ; 080E02B4
 cmp   r0,0x0                        ; 080E02B6
-blt   @@Code080E0314                ; 080E02B8
+blt   @@Return                      ; 080E02B8
 @@Code080E02BA:
 ldr   r4,[r6,0x8]                   ; 080E02BA
 ldr   r5,[r6,0xC]                   ; 080E02BC
@@ -507,13 +507,13 @@ mov   r1,r3                         ; 080E02C0
 bl    Sub080DFF30                   ; 080E02C2
 str   r4,[r6,0x8]                   ; 080E02C6
 str   r5,[r6,0xC]                   ; 080E02C8
-b     @@Code080E0314                ; 080E02CA
+b     @@Return                      ; 080E02CA
 .pool                               ; 080E02CC
 
 @@Code080E02D4:
 ldr   r0,[r6,0xC]                   ; 080E02D4
 cmp   r0,0x0                        ; 080E02D6
-blt   @@Code080E0314                ; 080E02D8
+blt   @@Return                      ; 080E02D8
 ldrh  r0,[r2,0x4]                   ; 080E02DA
 cmp   r0,0x0                        ; 080E02DC
 bne   @@Code080E02EE                ; 080E02DE
@@ -529,7 +529,7 @@ mov   r1,r6                         ; 080E02EE
 add   r1,0x44                       ; 080E02F0
 ldrh  r0,[r1]                       ; 080E02F2
 cmp   r0,0x0                        ; 080E02F4
-bne   @@Code080E0314                ; 080E02F6
+bne   @@Return                      ; 080E02F6
 mov   r0,0x8                        ; 080E02F8
 strh  r0,[r1]                       ; 080E02FA
 mov   r2,r6                         ; 080E02FC
@@ -544,7 +544,7 @@ ldrh  r0,[r2]                       ; 080E030C
 add   r0,r0,r1                      ; 080E030E
 ldrb  r0,[r0]                       ; 080E0310
 strh  r0,[r6,0x38]                  ; 080E0312
-@@Code080E0314:
+@@Return:
 pop   {r4-r6}                       ; 080E0314
 pop   {r0}                          ; 080E0316
 bx    r0                            ; 080E0318
@@ -681,13 +681,13 @@ strh  r0,[r4,0x28]                  ; 080E0420
 ldrh  r0,[r6,0x2]                   ; 080E0422
 add   r0,0x1                        ; 080E0424
 strh  r0,[r6,0x2]                   ; 080E0426
-b     @@Code080E04E4                ; 080E0428
+b     @@Return                      ; 080E0428
 .pool                               ; 080E042A
 
 @@Code080E0438:
 ldr   r0,[r4,0xC]                   ; 080E0438
 cmp   r0,0x0                        ; 080E043A
-blt   @@Code080E04E4                ; 080E043C
+blt   @@Return                      ; 080E043C
 mov   r0,r4                         ; 080E043E
 add   r0,0x54                       ; 080E0440
 ldrh  r0,[r0]                       ; 080E0442
@@ -751,7 +751,7 @@ sub   r5,0x2                        ; 080E04B4
 add   r0,r3,r5                      ; 080E04B6
 strh  r2,[r0]                       ; 080E04B8
 bl    Sub080E0320                   ; 080E04BA
-b     @@Code080E04E4                ; 080E04BE
+b     @@Return                      ; 080E04BE
 .pool                               ; 080E04C0
 
 @@Code080E04D0:
@@ -759,13 +759,13 @@ ldrh  r1,[r4,0x3E]                  ; 080E04D0
 mov   r0,0x1                        ; 080E04D2
 and   r0,r1                         ; 080E04D4
 cmp   r0,0x0                        ; 080E04D6
-beq   @@Code080E04E4                ; 080E04D8
+beq   @@Return                      ; 080E04D8
 mov   r1,r4                         ; 080E04DA
 add   r1,0x40                       ; 080E04DC
 mov   r0,0x6                        ; 080E04DE
 strh  r0,[r1]                       ; 080E04E0
 strh  r5,[r6,0x2]                   ; 080E04E2
-@@Code080E04E4:
+@@Return:
 pop   {r3}                          ; 080E04E4
 mov   r8,r3                         ; 080E04E6
 pop   {r4-r7}                       ; 080E04E8
@@ -780,7 +780,7 @@ mov   r4,r3                         ; 080E04F4
 add   r4,0x44                       ; 080E04F6
 ldrh  r0,[r4]                       ; 080E04F8
 cmp   r0,0x0                        ; 080E04FA
-bne   @@Code080E0526                ; 080E04FC
+bne   @@Return                      ; 080E04FC
 mov   r2,r3                         ; 080E04FE
 add   r2,0x40                       ; 080E0500
 ldrh  r0,[r2]                       ; 080E0502
@@ -802,7 +802,7 @@ ldrh  r0,[r2]                       ; 080E051E
 add   r0,r0,r1                      ; 080E0520
 ldrb  r0,[r0]                       ; 080E0522
 strh  r0,[r4]                       ; 080E0524
-@@Code080E0526:
+@@Return:
 pop   {r4}                          ; 080E0526
 pop   {r0}                          ; 080E0528
 bx    r0                            ; 080E052A
@@ -828,7 +828,7 @@ ldrh  r0,[r3,0x24]                  ; 080E0552
 cmp   r0,0x1                        ; 080E0554
 bne   @@Code080E0568                ; 080E0556
 bl    Sub080890B8                   ; 080E0558
-b     @@Code080E05AC                ; 080E055C
+b     @@Return                      ; 080E055C
 .pool                               ; 080E055E
 
 @@Code080E0568:
@@ -843,7 +843,7 @@ sub   r0,0x8D                       ; 080E0576
 cmp   r1,r0                         ; 080E0578
 beq   @@Code080E05A8                ; 080E057A
 cmp   r1,0xD9                       ; 080E057C
-beq   @@Code080E05AC                ; 080E057E
+beq   @@Return                      ; 080E057E
 ldr   r0,[r3]                       ; 080E0580
 ldr   r1,[r4]                       ; 080E0582
 sub   r0,r0,r1                      ; 080E0584
@@ -863,10 +863,10 @@ add   r0,0x20                       ; 080E059E
 lsl   r0,r0,0x10                    ; 080E05A0
 lsr   r0,r0,0x10                    ; 080E05A2
 cmp   r0,0x3F                       ; 080E05A4
-bls   @@Code080E05AC                ; 080E05A6
+bls   @@Return                      ; 080E05A6
 @@Code080E05A8:
 bl    Sub08089160                   ; 080E05A8
-@@Code080E05AC:
+@@Return:
 pop   {r4}                          ; 080E05AC
 pop   {r0}                          ; 080E05AE
 bx    r0                            ; 080E05B0
@@ -880,9 +880,9 @@ sub   r0,0x8                        ; 080E05BA
 lsl   r0,r0,0x10                    ; 080E05BC
 lsr   r0,r0,0x10                    ; 080E05BE
 cmp   r0,0x1                        ; 080E05C0
-bhi   @@Code080E05C8                ; 080E05C2
+bhi   @@Return                      ; 080E05C2
 bl    Sub080E0534                   ; 080E05C4
-@@Code080E05C8:
+@@Return:
 pop   {r0}                          ; 080E05C8
 bx    r0                            ; 080E05CA
 
@@ -978,13 +978,13 @@ cmp   r0,0x3                        ; 080E067A
 bne   @@Code080E068C                ; 080E067C
 mov   r0,r1                         ; 080E067E
 bl    Sub080E05CC                   ; 080E0680
-b     @@Code080E0692                ; 080E0684
+b     @@Return                      ; 080E0684
 .pool                               ; 080E0686
 
 @@Code080E068C:
 mov   r0,r1                         ; 080E068C
 bl    Sub080E05B4                   ; 080E068E
-@@Code080E0692:
+@@Return:
 pop   {r0}                          ; 080E0692
 bx    r0                            ; 080E0694
 .pool                               ; 080E0696
@@ -1135,7 +1135,7 @@ mov   r7,0xF                        ; 080E07BE
 and   r7,r0                         ; 080E07C0
 cmp   r7,0x0                        ; 080E07C2
 beq   @@Code080E07C8                ; 080E07C4
-b     @@Code080E08DE                ; 080E07C6
+b     @@Return                      ; 080E07C6
 @@Code080E07C8:
 ldr   r6,=0x03006D80                ; 080E07C8
 mov   r3,0xD4                       ; 080E07CA
@@ -1196,7 +1196,7 @@ strh  r0,[r1]                       ; 080E0838
 mov   r0,r5                         ; 080E083A
 add   r0,0x6E                       ; 080E083C
 strh  r4,[r0]                       ; 080E083E
-b     @@Code080E08DE                ; 080E0840
+b     @@Return                      ; 080E0840
 .pool                               ; 080E0842
 
 @@Code080E086C:
@@ -1261,7 +1261,7 @@ str   r0,[r5,0x1C]                  ; 080E08D6
 @@Code080E08D8:
 mov   r0,r5                         ; 080E08D8
 bl    Sub080E0698                   ; 080E08DA
-@@Code080E08DE:
+@@Return:
 pop   {r4-r7}                       ; 080E08DE
 pop   {r0}                          ; 080E08E0
 bx    r0                            ; 080E08E2
@@ -1271,7 +1271,7 @@ push  {r4,lr}                       ; 080E08E4
 mov   r4,r0                         ; 080E08E6
 ldr   r0,[r4,0xC]                   ; 080E08E8
 cmp   r0,0x0                        ; 080E08EA
-blt   @@Code080E0924                ; 080E08EC
+blt   @@Return                      ; 080E08EC
 ldr   r3,=0x03006D80                ; 080E08EE
 mov   r1,0xD3                       ; 080E08F0
 lsl   r1,r1,0x1                     ; 080E08F2
@@ -1299,7 +1299,7 @@ add   r1,0x6E                       ; 080E091C
 ldrh  r0,[r1]                       ; 080E091E
 sub   r0,0x1                        ; 080E0920
 strh  r0,[r1]                       ; 080E0922
-@@Code080E0924:
+@@Return:
 pop   {r4}                          ; 080E0924
 pop   {r0}                          ; 080E0926
 bx    r0                            ; 080E0928
@@ -1495,7 +1495,7 @@ str   r0,[r5,0xC]                   ; 080E0AB2
 @@Code080E0AB4:
 mov   r0,r5                         ; 080E0AB4
 bl    Sub080E0698                   ; 080E0AB6
-b     @@Code080E0B1E                ; 080E0ABA
+b     @@Return                      ; 080E0ABA
 @@Code080E0ABC:
 ldr   r0,[r5,0x4]                   ; 080E0ABC
 asr   r0,r0,0x8                     ; 080E0ABE
@@ -1545,7 +1545,7 @@ str   r0,[r5,0x1C]                  ; 080E0B16
 @@Code080E0B18:
 mov   r0,r5                         ; 080E0B18
 bl    Sub080E0698                   ; 080E0B1A
-@@Code080E0B1E:
+@@Return:
 pop   {r4-r5}                       ; 080E0B1E
 pop   {r0}                          ; 080E0B20
 bx    r0                            ; 080E0B22
@@ -1651,7 +1651,7 @@ add   r2,0x72                       ; 080E0BD4
 ldrh  r1,[r0,0x38]                  ; 080E0BD6
 ldrh  r3,[r2]                       ; 080E0BD8
 cmp   r1,r3                         ; 080E0BDA
-beq   @@Code080E0C50                ; 080E0BDC
+beq   @@Return                      ; 080E0BDC
 strh  r1,[r2]                       ; 080E0BDE
 ldrh  r2,[r0,0x38]                  ; 080E0BE0
 ldrh  r0,[r0,0x2A]                  ; 080E0BE2
@@ -1711,7 +1711,7 @@ add   r2,r2,r4                      ; 080E0C48
 ldrb  r0,[r2]                       ; 080E0C4A
 add   r0,0x1                        ; 080E0C4C
 strb  r0,[r2]                       ; 080E0C4E
-@@Code080E0C50:
+@@Return:
 pop   {r4-r7}                       ; 080E0C50
 pop   {r0}                          ; 080E0C52
 bx    r0                            ; 080E0C54
@@ -1740,7 +1740,7 @@ strh  r3,[r0]                       ; 080E0CA0
 strh  r4,[r5,0x2]                   ; 080E0CA2
 ldrh  r0,[r2,0x4]                   ; 080E0CA4
 cmp   r0,0x0                        ; 080E0CA6
-bne   @@Code080E0CC4                ; 080E0CA8
+bne   @@Return                      ; 080E0CA8
 ldrh  r0,[r5]                       ; 080E0CAA
 add   r0,0x1                        ; 080E0CAC
 strh  r0,[r5]                       ; 080E0CAE
@@ -1754,7 +1754,7 @@ add   r1,r0,r2                      ; 080E0CBC
 ldrh  r0,[r1]                       ; 080E0CBE
 add   r0,0x1                        ; 080E0CC0
 strh  r0,[r1]                       ; 080E0CC2
-@@Code080E0CC4:
+@@Return:
 pop   {r4-r5}                       ; 080E0CC4
 pop   {r0}                          ; 080E0CC6
 bx    r0                            ; 080E0CC8
@@ -1802,7 +1802,7 @@ ldrh  r0,[r4,0x24]                  ; 080E0D2C
 cmp   r0,0x4                        ; 080E0D2E
 beq   @@Code080E0D8C                ; 080E0D30
 mov   r0,0x0                        ; 080E0D32
-b     @@Code080E0E10                ; 080E0D34
+b     @@Return_r0                   ; 080E0D34
 @@Code080E0D36:
 mov   r0,r4                         ; 080E0D36
 add   r0,0x6E                       ; 080E0D38
@@ -1834,7 +1834,7 @@ orr   r0,r1                         ; 080E0D6A
 cmp   r0,0x0                        ; 080E0D6C
 bne   @@Code080E0D26                ; 080E0D6E
 mov   r0,0x0                        ; 080E0D70
-b     @@Code080E0E10                ; 080E0D72
+b     @@Return_r0                   ; 080E0D72
 .pool                               ; 080E0D74
 
 @@Code080E0D84:
@@ -1909,7 +1909,7 @@ mov   r0,r4                         ; 080E0E06
 bl    Sub0804BEB8                   ; 080E0E08
 lsl   r0,r0,0x18                    ; 080E0E0C
 lsr   r0,r0,0x18                    ; 080E0E0E
-@@Code080E0E10:
+@@Return_r0:
 pop   {r4-r6}                       ; 080E0E10
 pop   {r1}                          ; 080E0E12
 bx    r1                            ; 080E0E14
@@ -1935,17 +1935,17 @@ orr   r0,r1                         ; 080E0E3A
 ldrh  r1,[r2,0x2]                   ; 080E0E3C
 orr   r0,r1                         ; 080E0E3E
 cmp   r0,0x0                        ; 080E0E40
-bne   @@Code080E0F0C                ; 080E0E42
+bne   @@Return                      ; 080E0E42
 ldrh  r0,[r4,0x24]                  ; 080E0E44
 cmp   r0,0x5                        ; 080E0E46
-beq   @@Code080E0F0C                ; 080E0E48
+beq   @@Return                      ; 080E0E48
 mov   r0,r4                         ; 080E0E4A
 add   r0,0xA3                       ; 080E0E4C
 ldrb  r0,[r0]                       ; 080E0E4E
 lsl   r0,r0,0x18                    ; 080E0E50
 asr   r0,r0,0x18                    ; 080E0E52
 cmp   r0,0x0                        ; 080E0E54
-bge   @@Code080E0F0C                ; 080E0E56
+bge   @@Return                      ; 080E0E56
 mov   r1,0xE9                       ; 080E0E58
 lsl   r1,r1,0x1                     ; 080E0E5A
 add   r0,r3,r1                      ; 080E0E5C
@@ -1954,7 +1954,7 @@ sub   r0,0x70                       ; 080E0E60
 lsl   r0,r0,0x10                    ; 080E0E62
 lsr   r0,r0,0x10                    ; 080E0E64
 cmp   r0,0x7F                       ; 080E0E66
-bls   @@Code080E0F0C                ; 080E0E68
+bls   @@Return                      ; 080E0E68
 mov   r0,r4                         ; 080E0E6A
 add   r0,0x6E                       ; 080E0E6C
 ldrh  r1,[r0]                       ; 080E0E6E
@@ -1966,7 +1966,7 @@ mov   r0,r1                         ; 080E0E78
 sub   r0,0x8                        ; 080E0E7A
 lsl   r0,r0,0x10                    ; 080E0E7C
 cmp   r0,0x0                        ; 080E0E7E
-blt   @@Code080E0F0C                ; 080E0E80
+blt   @@Return                      ; 080E0E80
 @@Code080E0E82:
 mov   r0,r4                         ; 080E0E82
 add   r0,0x48                       ; 080E0E84
@@ -1975,12 +1975,12 @@ mov   r5,r0                         ; 080E0E88
 cmp   r1,0x0                        ; 080E0E8A
 beq   @@Code080E0EF8                ; 080E0E8C
 cmp   r1,0x20                       ; 080E0E8E
-bhi   @@Code080E0F0C                ; 080E0E90
+bhi   @@Return                      ; 080E0E90
 mov   r1,r4                         ; 080E0E92
 add   r1,0x6A                       ; 080E0E94
 ldrh  r0,[r1]                       ; 080E0E96
 cmp   r0,0x0                        ; 080E0E98
-beq   @@Code080E0F0C                ; 080E0E9A
+beq   @@Return                      ; 080E0E9A
 mov   r1,r0                         ; 080E0E9C
 mov   r0,0xB0                       ; 080E0E9E
 mul   r0,r1                         ; 080E0EA0
@@ -2015,7 +2015,7 @@ add   r0,0x40                       ; 080E0ED6
 strh  r1,[r0]                       ; 080E0ED8
 mov   r0,0x20                       ; 080E0EDA
 strh  r0,[r5]                       ; 080E0EDC
-b     @@Code080E0F0C                ; 080E0EDE
+b     @@Return                      ; 080E0EDE
 .pool                               ; 080E0EE0
 
 @@Code080E0EF8:
@@ -2026,7 +2026,7 @@ mov   r0,0x0                        ; 080E0F02
 str   r0,[r4,0x8]                   ; 080E0F04
 mov   r0,r4                         ; 080E0F06
 bl    Sub080E0C7C                   ; 080E0F08
-@@Code080E0F0C:
+@@Return:
 pop   {r4-r6}                       ; 080E0F0C
 pop   {r0}                          ; 080E0F0E
 bx    r0                            ; 080E0F10
@@ -2049,7 +2049,7 @@ ldrh  r0,[r0]                       ; 080E0F2C
 mov   r12,r1                        ; 080E0F2E
 cmp   r0,0x0                        ; 080E0F30
 beq   @@Code080E0F36                ; 080E0F32
-b     @@Code080E1112                ; 080E0F34
+b     @@Return                      ; 080E0F34
 @@Code080E0F36:
 ldr   r0,[r2]                       ; 080E0F36
 asr   r1,r0,0x8                     ; 080E0F38
@@ -2099,21 +2099,21 @@ ldrh  r0,[r2,0x36]                  ; 080E0F90
 mov   r1,0x2                        ; 080E0F92
 eor   r0,r1                         ; 080E0F94
 strh  r0,[r2,0x36]                  ; 080E0F96
-b     @@Code080E1112                ; 080E0F98
+b     @@Return                      ; 080E0F98
 .pool                               ; 080E0F9A
 
 @@Code080E0FA4:
 ldrh  r0,[r7,0x10]                  ; 080E0FA4
 cmp   r0,0x0                        ; 080E0FA6
 bne   @@Code080E0FAC                ; 080E0FA8
-b     @@Code080E1112                ; 080E0FAA
+b     @@Return                      ; 080E0FAA
 @@Code080E0FAC:
 mov   r0,r2                         ; 080E0FAC
 add   r0,0x6E                       ; 080E0FAE
 ldrh  r0,[r0]                       ; 080E0FB0
 cmp   r0,0x1                        ; 080E0FB2
 bne   @@Code080E0FB8                ; 080E0FB4
-b     @@Code080E1112                ; 080E0FB6
+b     @@Return                      ; 080E0FB6
 @@Code080E0FB8:
 ldrh  r1,[r2,0x2A]                  ; 080E0FB8
 mov   r0,0xE0                       ; 080E0FBA
@@ -2121,7 +2121,7 @@ lsl   r0,r0,0x8                     ; 080E0FBC
 and   r0,r1                         ; 080E0FBE
 cmp   r0,0x0                        ; 080E0FC0
 bne   @@Code080E0FC6                ; 080E0FC2
-b     @@Code080E1112                ; 080E0FC4
+b     @@Return                      ; 080E0FC4
 @@Code080E0FC6:
 ldrh  r0,[r2,0x20]                  ; 080E0FC6
 sub   r0,0x8                        ; 080E0FC8
@@ -2216,7 +2216,7 @@ sub   r0,0xC0                       ; 080E1084
 lsl   r0,r0,0x10                    ; 080E1086
 lsr   r1,r0,0x10                    ; 080E1088
 cmp   r0,0x0                        ; 080E108A
-blt   @@Code080E1112                ; 080E108C
+blt   @@Return                      ; 080E108C
 mov   r3,r12                        ; 080E108E
 ldr   r0,[r3]                       ; 080E1090
 ldr   r4,=0x2A12                    ; 080E1092
@@ -2240,7 +2240,7 @@ ldr   r4,=0x2AAC                    ; 080E10C0
 add   r0,r3,r4                      ; 080E10C2
 ldrh  r0,[r0]                       ; 080E10C4
 cmp   r0,0x8                        ; 080E10C6
-beq   @@Code080E1112                ; 080E10C8
+beq   @@Return                      ; 080E10C8
 sub   r4,0x9A                       ; 080E10CA
 add   r0,r3,r4                      ; 080E10CC
 strh  r1,[r0]                       ; 080E10CE
@@ -2279,7 +2279,7 @@ str   r0,[r2,0x1C]                  ; 080E110A
 ldr   r0,[r2,0x1C]                  ; 080E110C
 lsl   r0,r0,0x1                     ; 080E110E
 str   r0,[r2,0xC]                   ; 080E1110
-@@Code080E1112:
+@@Return:
 pop   {r4-r7}                       ; 080E1112
 pop   {r0}                          ; 080E1114
 bx    r0                            ; 080E1116
@@ -2300,7 +2300,7 @@ lsr   r1,r0,0x10                    ; 080E1140
 cmp   r0,0x0                        ; 080E1142
 bge   @@Code080E1150                ; 080E1144
 mov   r0,r1                         ; 080E1146
-b     @@Code080E11A6                ; 080E1148
+b     @@Return_r0                   ; 080E1148
 .pool                               ; 080E114A
 
 @@Code080E1150:
@@ -2310,13 +2310,13 @@ lsl   r0,r0,0x10                    ; 080E1154
 lsr   r1,r0,0x10                    ; 080E1156
 ldr   r2,=0x011F                    ; 080E1158
 cmp   r1,r2                         ; 080E115A
-bls   @@Code080E11A4                ; 080E115C
+bls   @@Return_0                    ; 080E115C
 ldrh  r0,[r4,0x22]                  ; 080E115E
 add   r0,0x10                       ; 080E1160
 lsl   r0,r0,0x10                    ; 080E1162
 lsr   r1,r0,0x10                    ; 080E1164
 cmp   r1,r2                         ; 080E1166
-bls   @@Code080E11A4                ; 080E1168
+bls   @@Return_0                    ; 080E1168
 ldr   r3,[r3]                       ; 080E116A
 mov   r0,r4                         ; 080E116C
 add   r0,0x5C                       ; 080E116E
@@ -2339,12 +2339,12 @@ ldr   r2,=0x0201B800                ; 080E118E
 add   r0,r1,r2                      ; 080E1190
 ldrb  r1,[r0]                       ; 080E1192
 mov   r0,r1                         ; 080E1194
-b     @@Code080E11A6                ; 080E1196
+b     @@Return_r0                   ; 080E1196
 .pool                               ; 080E1198
 
-@@Code080E11A4:
+@@Return_0:
 mov   r0,0x0                        ; 080E11A4
-@@Code080E11A6:
+@@Return_r0:
 pop   {r4}                          ; 080E11A6
 pop   {r1}                          ; 080E11A8
 bx    r1                            ; 080E11AA
@@ -2376,13 +2376,13 @@ ldrh  r0,[r0]                       ; 080E11D8
 orr   r0,r1                         ; 080E11DA
 cmp   r0,0x0                        ; 080E11DC
 beq   @@Code080E11E2                ; 080E11DE
-b     @@Code080E1330                ; 080E11E0
+b     @@Return                      ; 080E11E0
 @@Code080E11E2:
 ldr   r6,=0x03006D80                ; 080E11E2
 ldrh  r0,[r6,0x32]                  ; 080E11E4
 cmp   r0,0x0                        ; 080E11E6
 beq   @@Code080E11EC                ; 080E11E8
-b     @@Code080E1330                ; 080E11EA
+b     @@Return                      ; 080E11EA
 @@Code080E11EC:
 ldr   r0,=0x11BA                    ; 080E11EC
 mov   r8,r0                         ; 080E11EE
@@ -2390,17 +2390,17 @@ add   r3,r2,r0                      ; 080E11F0
 ldrh  r1,[r3]                       ; 080E11F2
 cmp   r1,0x0                        ; 080E11F4
 beq   @@Code080E11FA                ; 080E11F6
-b     @@Code080E1330                ; 080E11F8
+b     @@Return                      ; 080E11F8
 @@Code080E11FA:
 ldrh  r0,[r4,0x4]                   ; 080E11FA
 cmp   r0,0x0                        ; 080E11FC
 beq   @@Code080E1202                ; 080E11FE
-b     @@Code080E1330                ; 080E1200
+b     @@Return                      ; 080E1200
 @@Code080E1202:
 ldrh  r4,[r4,0x6]                   ; 080E1202
 cmp   r4,0x0                        ; 080E1204
 beq   @@Code080E120A                ; 080E1206
-b     @@Code080E1330                ; 080E1208
+b     @@Return                      ; 080E1208
 @@Code080E120A:
 add   r0,r1,0x1                     ; 080E120A
 strh  r0,[r3]                       ; 080E120C
@@ -2508,7 +2508,7 @@ lsl   r0,r0,0x18                    ; 080E12D6
 lsr   r2,r0,0x18                    ; 080E12D8
 cmp   r2,0x3                        ; 080E12DA
 bls   @@Code080E129E                ; 080E12DC
-b     @@Code080E1330                ; 080E12DE
+b     @@Return                      ; 080E12DE
 .pool                               ; 080E12E0
 
 @@Code080E1328:
@@ -2516,7 +2516,7 @@ mov   r2,r9                         ; 080E1328
 ldr   r0,[r2]                       ; 080E132A
 add   r0,r8                         ; 080E132C
 strh  r4,[r0]                       ; 080E132E
-@@Code080E1330:
+@@Return:
 pop   {r3-r4}                       ; 080E1330
 mov   r8,r3                         ; 080E1332
 mov   r9,r4                         ; 080E1334
@@ -2628,25 +2628,25 @@ ldr   r1,=0x2618                    ; 080E1410
 add   r0,r0,r1                      ; 080E1412
 ldrh  r0,[r0,0x6]                   ; 080E1414
 cmp   r0,0x0                        ; 080E1416
-beq   @@Code080E144E                ; 080E1418
+beq   @@Return                      ; 080E1418
 mov   r5,r4                         ; 080E141A
 add   r5,0x6E                       ; 080E141C
 ldrh  r0,[r5]                       ; 080E141E
 cmp   r0,0x1                        ; 080E1420
-beq   @@Code080E144E                ; 080E1422
+beq   @@Return                      ; 080E1422
 cmp   r0,0x2                        ; 080E1424
-beq   @@Code080E144E                ; 080E1426
+beq   @@Return                      ; 080E1426
 ldrh  r1,[r4,0x2A]                  ; 080E1428
 mov   r0,0xE0                       ; 080E142A
 lsl   r0,r0,0x8                     ; 080E142C
 and   r0,r1                         ; 080E142E
 cmp   r0,0x0                        ; 080E1430
-beq   @@Code080E144E                ; 080E1432
+beq   @@Return                      ; 080E1432
 ldrh  r0,[r4,0x38]                  ; 080E1434
 sub   r0,0x1F                       ; 080E1436
 lsl   r0,r0,0x10                    ; 080E1438
 cmp   r0,0x0                        ; 080E143A
-blt   @@Code080E144E                ; 080E143C
+blt   @@Return                      ; 080E143C
 bl    Sub08089160                   ; 080E143E
 ldrh  r0,[r4,0x28]                  ; 080E1442
 ldr   r1,=0xFFE0                    ; 080E1444
@@ -2654,7 +2654,7 @@ and   r1,r0                         ; 080E1446
 strh  r1,[r4,0x28]                  ; 080E1448
 mov   r0,0xC                        ; 080E144A
 strh  r0,[r5]                       ; 080E144C
-@@Code080E144E:
+@@Return:
 pop   {r4-r5}                       ; 080E144E
 pop   {r0}                          ; 080E1450
 bx    r0                            ; 080E1452
@@ -2701,12 +2701,12 @@ ldr   r1,=0x2644                    ; 080E14A8
 add   r5,r0,r1                      ; 080E14AA
 ldrh  r0,[r4,0x24]                  ; 080E14AC
 cmp   r0,0x4                        ; 080E14AE
-bne   @@Code080E1522                ; 080E14B0
+bne   @@Return                      ; 080E14B0
 mov   r0,r4                         ; 080E14B2
 add   r0,0x6E                       ; 080E14B4
 ldrh  r0,[r0]                       ; 080E14B6
 cmp   r0,0x2                        ; 080E14B8
-beq   @@Code080E1522                ; 080E14BA
+beq   @@Return                      ; 080E14BA
 ldr   r2,=0x03006D80                ; 080E14BC
 mov   r1,0x1                        ; 080E14BE
 strh  r1,[r5]                       ; 080E14C0
@@ -2735,7 +2735,7 @@ ldrh  r0,[r0]                       ; 080E14EC
 sub   r0,0x10                       ; 080E14EE
 lsl   r0,r0,0x10                    ; 080E14F0
 cmp   r0,0x0                        ; 080E14F2
-blt   @@Code080E1522                ; 080E14F4
+blt   @@Return                      ; 080E14F4
 b     @@Code080E1514                ; 080E14F6
 .pool                               ; 080E14F8
 
@@ -2747,7 +2747,7 @@ add   r0,0x10                       ; 080E150A
 lsl   r0,r0,0x10                    ; 080E150C
 lsr   r0,r0,0x10                    ; 080E150E
 cmp   r0,0x1F                       ; 080E1510
-bhi   @@Code080E1522                ; 080E1512
+bhi   @@Return                      ; 080E1512
 @@Code080E1514:
 add   r1,0xE8                       ; 080E1514
 mov   r0,0x0                        ; 080E1516
@@ -2755,7 +2755,7 @@ strh  r0,[r1]                       ; 080E1518
 mov   r0,r4                         ; 080E151A
 mov   r1,r5                         ; 080E151C
 bl    Sub080E1460                   ; 080E151E
-@@Code080E1522:
+@@Return:
 pop   {r4-r6}                       ; 080E1522
 pop   {r0}                          ; 080E1524
 bx    r0                            ; 080E1526
@@ -2771,20 +2771,20 @@ mov   r0,r2                         ; 080E1534
 add   r0,0x48                       ; 080E1536
 ldrh  r0,[r0]                       ; 080E1538
 cmp   r0,0x0                        ; 080E153A
-bne   @@Code080E1558                ; 080E153C
+bne   @@Return                      ; 080E153C
 mov   r0,r2                         ; 080E153E
 add   r0,0xA3                       ; 080E1540
 ldrb  r0,[r0]                       ; 080E1542
 lsl   r0,r0,0x18                    ; 080E1544
 asr   r0,r0,0x18                    ; 080E1546
 cmp   r0,0x0                        ; 080E1548
-bge   @@Code080E1558                ; 080E154A
+bge   @@Return                      ; 080E154A
 ldrh  r0,[r1,0x2]                   ; 080E154C
 cmp   r0,0x0                        ; 080E154E
-bne   @@Code080E1558                ; 080E1550
+bne   @@Return                      ; 080E1550
 mov   r0,r2                         ; 080E1552
 bl    Sub080E1460                   ; 080E1554
-@@Code080E1558:
+@@Return:
 pop   {r0}                          ; 080E1558
 bx    r0                            ; 080E155A
 .pool                               ; 080E155C
@@ -2798,18 +2798,18 @@ ldr   r1,=0x2618                    ; 080E156C
 add   r0,r0,r1                      ; 080E156E
 ldrh  r0,[r0,0x6]                   ; 080E1570
 cmp   r0,0x0                        ; 080E1572
-beq   @@Code080E158A                ; 080E1574
+beq   @@Return                      ; 080E1574
 ldrh  r1,[r2,0x2A]                  ; 080E1576
 mov   r0,0xE0                       ; 080E1578
 lsl   r0,r0,0x8                     ; 080E157A
 and   r0,r1                         ; 080E157C
 cmp   r0,0x0                        ; 080E157E
-beq   @@Code080E158A                ; 080E1580
+beq   @@Return                      ; 080E1580
 mov   r1,r2                         ; 080E1582
 add   r1,0x6E                       ; 080E1584
 mov   r0,0x4                        ; 080E1586
 strh  r0,[r1]                       ; 080E1588
-@@Code080E158A:
+@@Return:
 pop   {r0}                          ; 080E158A
 bx    r0                            ; 080E158C
 .pool                               ; 080E158E
@@ -2912,12 +2912,12 @@ mov   r0,r2                         ; 080E1664
 add   r0,0x42                       ; 080E1666
 ldrh  r0,[r0]                       ; 080E1668
 cmp   r0,0x0                        ; 080E166A
-bne   @@Code080E16C8                ; 080E166C
+bne   @@Return                      ; 080E166C
 mov   r4,r2                         ; 080E166E
 add   r4,0x44                       ; 080E1670
 ldrh  r5,[r4]                       ; 080E1672
 cmp   r5,0x0                        ; 080E1674
-bne   @@Code080E16C8                ; 080E1676
+bne   @@Return                      ; 080E1676
 mov   r3,r2                         ; 080E1678
 add   r3,0x40                       ; 080E167A
 ldrh  r0,[r3]                       ; 080E167C
@@ -2943,7 +2943,7 @@ add   r1,0x6E                       ; 080E16A2
 ldrh  r0,[r1]                       ; 080E16A4
 add   r0,0x1                        ; 080E16A6
 strh  r0,[r1]                       ; 080E16A8
-b     @@Code080E16C8                ; 080E16AA
+b     @@Return                      ; 080E16AA
 .pool                               ; 080E16AC
 
 @@Code080E16B8:
@@ -2955,7 +2955,7 @@ ldrb  r0,[r0]                       ; 080E16C0
 strh  r0,[r6,0x1A]                  ; 080E16C2
 mov   r0,0x2                        ; 080E16C4
 strh  r0,[r4]                       ; 080E16C6
-@@Code080E16C8:
+@@Return:
 pop   {r4-r6}                       ; 080E16C8
 pop   {r0}                          ; 080E16CA
 bx    r0                            ; 080E16CC
@@ -2995,7 +2995,7 @@ mov   r1,r3                         ; 080E170C
 add   r1,0x42                       ; 080E170E
 ldrh  r0,[r1]                       ; 080E1710
 cmp   r0,0x0                        ; 080E1712
-bne   @@Code080E1736                ; 080E1714
+bne   @@Return                      ; 080E1714
 mov   r0,0x60                       ; 080E1716
 strh  r0,[r1]                       ; 080E1718
 mov   r0,0x8                        ; 080E171A
@@ -3012,7 +3012,7 @@ lsl   r0,r0,0x2                     ; 080E172E
 add   r0,r0,r1                      ; 080E1730
 ldr   r0,[r0]                       ; 080E1732
 str   r0,[r3,0x1C]                  ; 080E1734
-@@Code080E1736:
+@@Return:
 pop   {r4-r5}                       ; 080E1736
 pop   {r0}                          ; 080E1738
 bx    r0                            ; 080E173A
@@ -3089,7 +3089,7 @@ ldr   r1,[r6,0x8]                   ; 080E17D8
 ldrh  r0,[r7,0x12]                  ; 080E17DA
 sub   r0,r0,r1                      ; 080E17DC
 strh  r0,[r7,0x12]                  ; 080E17DE
-b     @@Code080E187A                ; 080E17E0
+b     @@Return                      ; 080E17E0
 @@Code080E17E2:
 ldr   r0,[r6,0xC]                   ; 080E17E2
 cmp   r0,0x0                        ; 080E17E4
@@ -3166,7 +3166,7 @@ add   r1,0x54                       ; 080E1872
 ldrh  r0,[r1]                       ; 080E1874
 add   r0,0x1                        ; 080E1876
 strh  r0,[r1]                       ; 080E1878
-@@Code080E187A:
+@@Return:
 pop   {r3}                          ; 080E187A
 mov   r8,r3                         ; 080E187C
 pop   {r4-r7}                       ; 080E187E
@@ -3219,7 +3219,7 @@ lsr   r4,r0,0x2                     ; 080E18F0
 ldrh  r0,[r6,0x24]                  ; 080E18F2
 cmp   r0,0x5                        ; 080E18F4
 bne   @@Code080E18FA                ; 080E18F6
-b     @@Code080E1A3A                ; 080E18F8
+b     @@Return                      ; 080E18F8
 @@Code080E18FA:
 ldrh  r0,[r1,0x1A]                  ; 080E18FA
 cmp   r0,0x6                        ; 080E18FC
@@ -3373,7 +3373,7 @@ bl    Sub0804CA78                   ; 080E1A30
 ldrh  r0,[r4]                       ; 080E1A34
 add   r0,0x1                        ; 080E1A36
 strh  r0,[r4]                       ; 080E1A38
-@@Code080E1A3A:
+@@Return:
 pop   {r3}                          ; 080E1A3A
 mov   r8,r3                         ; 080E1A3C
 pop   {r4-r7}                       ; 080E1A3E
@@ -3438,7 +3438,7 @@ bl    Sub080E0BD0                   ; 080E1AF8
 mov   r0,r6                         ; 080E1AFC
 bl    Sub0804BEB8                   ; 080E1AFE
 cmp   r0,0x0                        ; 080E1B02
-bne   @@Code080E1BEA                ; 080E1B04
+bne   @@Return                      ; 080E1B04
 @@Code080E1B06:
 bl    Sub080E1A78                   ; 080E1B06
 ldr   r1,=0x03006D80                ; 080E1B0A
@@ -3468,7 +3468,7 @@ beq   @@Code080E1B64                ; 080E1B38
 mov   r0,0x0                        ; 080E1B3A
 strh  r0,[r6,0x30]                  ; 080E1B3C
 strh  r0,[r6,0x2E]                  ; 080E1B3E
-b     @@Code080E1BEA                ; 080E1B40
+b     @@Return                      ; 080E1B40
 .pool                               ; 080E1B42
 
 @@Code080E1B64:
@@ -3521,19 +3521,19 @@ mov   r0,r6                         ; 080E1BC2
 bl    Sub_bx_r1                     ; 080E1BC4
 ldrh  r0,[r4]                       ; 080E1BC8
 cmp   r0,0x0                        ; 080E1BCA
-bne   @@Code080E1BEA                ; 080E1BCC
+bne   @@Return                      ; 080E1BCC
 mov   r0,r6                         ; 080E1BCE
 bl    Sub080E1528                   ; 080E1BD0
 ldrh  r0,[r5]                       ; 080E1BD4
 cmp   r0,0x3                        ; 080E1BD6
-beq   @@Code080E1BEA                ; 080E1BD8
+beq   @@Return                      ; 080E1BD8
 cmp   r0,0x2                        ; 080E1BDA
-beq   @@Code080E1BEA                ; 080E1BDC
+beq   @@Return                      ; 080E1BDC
 mov   r0,r6                         ; 080E1BDE
 bl    Sub080E1598                   ; 080E1BE0
 mov   r0,r6                         ; 080E1BE4
 bl    Sub080E1564                   ; 080E1BE6
-@@Code080E1BEA:
+@@Return:
 pop   {r4-r6}                       ; 080E1BEA
 pop   {r0}                          ; 080E1BEC
 bx    r0                            ; 080E1BEE
@@ -3625,7 +3625,7 @@ cmp   r0,0x9                        ; 080E1CA4
 bne   @@Code080E1CD4                ; 080E1CA6
 mov   r0,r4                         ; 080E1CA8
 bl    Sub080E1ACC                   ; 080E1CAA
-b     @@Code080E1D3A                ; 080E1CAE
+b     @@Return                      ; 080E1CAE
 .pool                               ; 080E1CB0
 
 @@Code080E1CD4:
@@ -3642,7 +3642,7 @@ bl    Sub080E0CD8                   ; 080E1CEA
 lsl   r0,r0,0x18                    ; 080E1CEE
 lsr   r5,r0,0x18                    ; 080E1CF0
 cmp   r5,0x0                        ; 080E1CF2
-bne   @@Code080E1D3A                ; 080E1CF4
+bne   @@Return                      ; 080E1CF4
 ldr   r1,=CodePtrs08190F10          ; 080E1CF6
 mov   r0,r4                         ; 080E1CF8
 add   r0,0x6E                       ; 080E1CFA
@@ -3674,7 +3674,7 @@ mov   r0,0xFF                       ; 080E1D34
 strb  r0,[r1]                       ; 080E1D36
 @@Code080E1D38:
 strh  r5,[r6,0x1C]                  ; 080E1D38
-@@Code080E1D3A:
+@@Return:
 pop   {r3}                          ; 080E1D3A
 mov   r8,r3                         ; 080E1D3C
 pop   {r4-r7}                       ; 080E1D3E
@@ -3697,7 +3697,7 @@ lsl   r1,r1,0x2                     ; 080E1D60
 add   r0,r2,r1                      ; 080E1D62
 ldrh  r0,[r0]                       ; 080E1D64
 cmp   r0,0x0                        ; 080E1D66
-beq   @@Code080E1DAE                ; 080E1D68
+beq   @@Return                      ; 080E1D68
 @@Code080E1D6A:
 ldr   r1,=Data081910D4              ; 080E1D6A
 mov   r0,r2                         ; 080E1D6C
@@ -3732,7 +3732,7 @@ mov   r1,r4                         ; 080E1DA6
 add   r1,0x6E                       ; 080E1DA8
 mov   r0,0x5                        ; 080E1DAA
 strh  r0,[r1]                       ; 080E1DAC
-@@Code080E1DAE:
+@@Return:
 pop   {r4}                          ; 080E1DAE
 pop   {r0}                          ; 080E1DB0
 bx    r0                            ; 080E1DB2
@@ -3862,15 +3862,15 @@ add   r0,r0,r2                      ; 080E1EF0
 ldrh  r1,[r1]                       ; 080E1EF2
 ldrb  r0,[r0]                       ; 080E1EF4
 cmp   r1,r0                         ; 080E1EF6
-beq   @@Code080E1F10                ; 080E1EF8
+beq   @@Return_0                    ; 080E1EF8
 bl    Sub080E1DC4                   ; 080E1EFA
 mov   r0,0x1                        ; 080E1EFE
-b     @@Code080E1F12                ; 080E1F00
+b     @@Return_r0                   ; 080E1F00
 .pool                               ; 080E1F02
 
-@@Code080E1F10:
+@@Return_0:
 mov   r0,0x0                        ; 080E1F10
-@@Code080E1F12:
+@@Return_r0:
 pop   {r1}                          ; 080E1F12
 bx    r1                            ; 080E1F14
 .pool                               ; 080E1F16
@@ -3887,19 +3887,19 @@ lsl   r2,r2,0x1                     ; 080E1F26
 add   r0,r1,r2                      ; 080E1F28
 ldrh  r0,[r0]                       ; 080E1F2A
 cmp   r0,0xEF                       ; 080E1F2C
-bne   @@Code080E1F46                ; 080E1F2E
+bne   @@Return                      ; 080E1F2E
 @@Code080E1F30:
 mov   r0,r4                         ; 080E1F30
 bl    Sub080E1EE4                   ; 080E1F32
 lsl   r0,r0,0x18                    ; 080E1F36
 cmp   r0,0x0                        ; 080E1F38
-bne   @@Code080E1F46                ; 080E1F3A
+bne   @@Return                      ; 080E1F3A
 ldr   r0,[r4,0x4]                   ; 080E1F3C
 mov   r1,0x80                       ; 080E1F3E
 lsl   r1,r1,0x3                     ; 080E1F40
 add   r0,r0,r1                      ; 080E1F42
 str   r0,[r4,0x4]                   ; 080E1F44
-@@Code080E1F46:
+@@Return:
 pop   {r4}                          ; 080E1F46
 pop   {r0}                          ; 080E1F48
 bx    r0                            ; 080E1F4A
@@ -3913,7 +3913,7 @@ add   r3,0x94                       ; 080E1F56
 mov   r0,0x0                        ; 080E1F58
 ldsb  r0,[r3,r0]                    ; 080E1F5A
 cmp   r0,0x0                        ; 080E1F5C
-blt   @@Code080E1FDE                ; 080E1F5E
+blt   @@Return                      ; 080E1F5E
 mov   r4,0xFF                       ; 080E1F60
 ldr   r1,=0x03006D80                ; 080E1F62
 ldrh  r0,[r1,0x32]                  ; 080E1F64
@@ -3932,7 +3932,7 @@ ldrh  r1,[r2,0x2C]                  ; 080E1F7C
 mov   r0,0x30                       ; 080E1F7E
 orr   r0,r1                         ; 080E1F80
 strh  r0,[r2,0x2C]                  ; 080E1F82
-b     @@Code080E1FDE                ; 080E1F84
+b     @@Return                      ; 080E1F84
 .pool                               ; 080E1F86
 
 @@Code080E1F8C:
@@ -3978,7 +3978,7 @@ mov   r4,0x4                        ; 080E1FD6
 mov   r0,r2                         ; 080E1FD8
 add   r0,0x94                       ; 080E1FDA
 strb  r4,[r0]                       ; 080E1FDC
-@@Code080E1FDE:
+@@Return:
 pop   {r4-r5}                       ; 080E1FDE
 pop   {r0}                          ; 080E1FE0
 bx    r0                            ; 080E1FE2
@@ -4044,12 +4044,12 @@ add   r0,r0,r4                      ; 080E2050
 ldrh  r0,[r0]                       ; 080E2052
 cmp   r0,0x0                        ; 080E2054
 bne   @@Code080E205A                ; 080E2056
-b     @@Code080E219A                ; 080E2058
+b     @@Return                      ; 080E2058
 @@Code080E205A:
 mov   r0,0x1F                       ; 080E205A
 mov   r5,r12                        ; 080E205C
 strh  r0,[r5,0x38]                  ; 080E205E
-b     @@Code080E219A                ; 080E2060
+b     @@Return                      ; 080E2060
 .pool                               ; 080E2062
 
 @@Code080E2084:
@@ -4122,7 +4122,7 @@ mov   r5,r12                        ; 080E20FC
 strh  r1,[r5,0x38]                  ; 080E20FE
 @@Code080E2100:
 strh  r3,[r6]                       ; 080E2100
-b     @@Code080E219A                ; 080E2102
+b     @@Return                      ; 080E2102
 .pool                               ; 080E2104
 
 @@Code080E2110:
@@ -4195,7 +4195,7 @@ strh  r0,[r4,0x16]                  ; 080E2194
 @@Code080E2196:
 mov   r7,r12                        ; 080E2196
 strh  r2,[r7,0x38]                  ; 080E2198
-@@Code080E219A:
+@@Return:
 pop   {r4-r7}                       ; 080E219A
 pop   {r0}                          ; 080E219C
 bx    r0                            ; 080E219E
@@ -4233,7 +4233,7 @@ mov   r1,0xBA                       ; 080E21D4
 lsl   r1,r1,0x2                     ; 080E21D6
 add   r0,r2,r1                      ; 080E21D8
 strb  r3,[r0]                       ; 080E21DA
-b     @@Code080E2256                ; 080E21DC
+b     @@Return                      ; 080E21DC
 .pool                               ; 080E21DE
 
 @@Code080E21F0:
@@ -4284,7 +4284,7 @@ mov   r0,r4                         ; 080E224A
 bl    Sub080E1F50                   ; 080E224C
 mov   r0,r4                         ; 080E2250
 bl    Sub080E1FE4                   ; 080E2252
-@@Code080E2256:
+@@Return:
 pop   {r4-r6}                       ; 080E2256
 pop   {r0}                          ; 080E2258
 bx    r0                            ; 080E225A

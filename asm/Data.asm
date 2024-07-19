@@ -5845,7 +5845,7 @@ StdSprInitPtrs:                     ; 08170248
 .d32 PottedGhost034_Init+1          ; 034
 .d32 Return080D85F8+1               ; 035
 .d32 Sub08056BA8+1                  ; 036
-.d32 Sub08060474+1                  ; 037
+.d32 GrimLeecher_Init+1             ; 037
 .d32 Return080D85F8+1               ; 038
 .d32 Sub08058944+1                  ; 039
 .d32 Sub0807855C+1                  ; 03A
@@ -6298,7 +6298,7 @@ StdSprMainPtrs:                     ; 08170958
 .d32 PottedGhost034_Main+1          ; 034
 .d32 PottedGhost035_Main+1          ; 035
 .d32 Sub08056D98+1                  ; 036
-.d32 Sub08060484+1                  ; 037
+.d32 GrimLeecher_Main+1             ; 037
 .d32 PottedGhostFlame_Main+1        ; 038
 .d32 Sub08058B88+1                  ; 039
 .d32 Sub080785F4+1                  ; 03A
@@ -6823,7 +6823,7 @@ StdSprRideYoshiPtrs:                ; 08171778
 .d32 Return08049F40+1, Return08049F40+1, Return08049F40+1, Return08049F40+1
 .d32 Return08049F40+1, Return08049F40+1, Return08049F40+1, Return08049F40+1
 .d32 Return08049F40+1, Return08049F40+1, Return08049F40+1, Return08049F40+1
-.d32 Return08049F40+1, Return08049F40+1, Return08049F40+1, Sub08060A38+1
+.d32 Return08049F40+1, Return08049F40+1, Return08049F40+1, GrimLeecher_RidingYoshi+1
 .d32 Return08049F40+1, Return08049F40+1, Return08049F40+1, Return08049F40+1
 .d32 Return08049F40+1, Return08049F40+1, Return08049F40+1, Return08049F40+1
 .d32 Return08049F40+1, Return08049F40+1, Return08049F40+1, Return08049F40+1
@@ -7866,10 +7866,10 @@ Data08173F01:                       ; 08173F01
 Data08173F14:                       ; 08173F14
 .d32 0x00000000, 0x0004080C, 0x000E0C08, 0x0C000000
 .d32 0x000C060A
-CodePtrs08173F28:                   ; 08173F28
+GrimLeecher_MainSubstatePtrs:       ; 08173F28
 .d32 Sub080605B4+1, Sub08060620+1, Sub080607E4+1, Sub0806082C+1
 .d32 Sub08060894+1, Sub08060918+1, Sub08060988+1
-CodePtrs08173F44:                   ; 08173F44
+GrimLeecher_RidingSubstatePtrs:     ; 08173F44
 .d32 Sub0806082C+1, Sub08060A54+1, Sub08060B58+1
 Data08173F50:                       ; 08173F50
 .d32 0x0000C040
