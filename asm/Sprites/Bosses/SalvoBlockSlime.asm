@@ -1920,7 +1920,7 @@ ldrh  r0,[r1]                       ; 080BD900
 add   r0,0x1                        ; 080BD902
 strh  r0,[r1]                       ; 080BD904
 mov   r0,r4                         ; 080BD906
-bl    Sub08054D30                   ; 080BD908
+bl    LevelClear_CheckEggSlots      ; 080BD908
 pop   {r4}                          ; 080BD90C
 pop   {r0}                          ; 080BD90E
 bx    r0                            ; 080BD910

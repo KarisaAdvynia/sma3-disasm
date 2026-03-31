@@ -365,7 +365,7 @@ ldr   r2,=0x1891                    ; 080D6BD4
 add   r0,r0,r2                      ; 080D6BD6
 mov   r1,0x1                        ; 080D6BD8
 strb  r1,[r0]                       ; 080D6BDA
-b     @@Code080D6CA4                ; 080D6BDC
+b     @@Return                      ; 080D6BDC
 .pool                               ; 080D6BDE
 
 @@Code080D6BF8:
@@ -389,7 +389,7 @@ cmp   r0,0x0                        ; 080D6C1A
 beq   @@Code080D6C30                ; 080D6C1C
 mov   r0,r5                         ; 080D6C1E
 bl    CommandSpr_ClearHalfword      ; 080D6C20  clear halfword at [r0]
-b     @@Code080D6CA4                ; 080D6C24
+b     @@Return                      ; 080D6C24
 .pool                               ; 080D6C26
 
 @@Code080D6C30:
@@ -454,7 +454,7 @@ str   r0,[r4,0xC]                   ; 080D6C9A
 ldrh  r1,[r4,0x16]                  ; 080D6C9C
 mov   r0,r4                         ; 080D6C9E
 bl    Autoscroll_ProcessNextData    ; 080D6CA0
-@@Code080D6CA4:
+@@Return:
 pop   {r4-r6}                       ; 080D6CA4
 pop   {r0}                          ; 080D6CA6
 bx    r0                            ; 080D6CA8
@@ -599,7 +599,7 @@ add   r0,r1,r2                      ; 080D6DCA
 ldrh  r2,[r0]                       ; 080D6DCC
 cmp   r2,0x0                        ; 080D6DCE
 beq   @@Code080D6DD4                ; 080D6DD0
-b     @@Code080D6EF8                ; 080D6DD2
+b     @@Return                      ; 080D6DD2
 @@Code080D6DD4:
 mov   r0,0x8C                       ; 080D6DD4
 lsl   r0,r0,0x2                     ; 080D6DD6
@@ -620,7 +620,7 @@ ldrh  r1,[r0]                       ; 080D6DF2
 mov   r0,0x80                       ; 080D6DF4
 lsl   r0,r0,0x2                     ; 080D6DF6
 cmp   r1,r0                         ; 080D6DF8
-bne   @@Code080D6EF8                ; 080D6DFA
+bne   @@Return                      ; 080D6DFA
 strb  r2,[r3]                       ; 080D6DFC
 ldrh  r1,[r6]                       ; 080D6DFE
 strh  r1,[r4,0x12]                  ; 080D6E00
@@ -687,7 +687,7 @@ str   r0,[r4,0x4]                   ; 080D6E76
 orr   r1,r2                         ; 080D6E78
 lsl   r0,r1,0x10                    ; 080D6E7A
 cmp   r0,0x0                        ; 080D6E7C
-blt   @@Code080D6EF8                ; 080D6E7E
+blt   @@Return                      ; 080D6E7E
 ldr   r1,=AutoscrollDataPtrs        ; 080D6E80
 ldrh  r2,[r4,0x16]                  ; 080D6E82
 lsr   r0,r2,0x8                     ; 080D6E84
@@ -705,7 +705,7 @@ strh  r0,[r4,0x16]                  ; 080D6E9A
 ldrh  r1,[r4,0x16]                  ; 080D6E9C
 mov   r0,r4                         ; 080D6E9E
 bl    Autoscroll_ProcessNextData    ; 080D6EA0
-b     @@Code080D6EF8                ; 080D6EA4
+b     @@Return                      ; 080D6EA4
 .pool                               ; 080D6EA6
 
 @@Code080D6EC8:
@@ -735,7 +735,7 @@ mov   r0,0x0                        ; 080D6EF0
 strh  r0,[r4,0x10]                  ; 080D6EF2
 str   r0,[r4,0x8]                   ; 080D6EF4
 str   r0,[r4,0xC]                   ; 080D6EF6
-@@Code080D6EF8:
+@@Return:
 pop   {r4-r6}                       ; 080D6EF8
 pop   {r0}                          ; 080D6EFA
 bx    r0                            ; 080D6EFC
@@ -750,7 +750,7 @@ ldr   r2,=0x29C8                    ; 080D6F12
 add   r0,r1,r2                      ; 080D6F14
 ldrh  r0,[r0]                       ; 080D6F16
 cmp   r0,0x0                        ; 080D6F18
-bne   @@Code080D6FFC                ; 080D6F1A
+bne   @@Return                      ; 080D6F1A
 mov   r0,0x8C                       ; 080D6F1C
 lsl   r0,r0,0x2                     ; 080D6F1E
 add   r4,r1,r0                      ; 080D6F20
@@ -794,7 +794,7 @@ str   r0,[r4,0x4]                   ; 080D6F68
 orr   r1,r2                         ; 080D6F6A
 lsl   r0,r1,0x10                    ; 080D6F6C
 cmp   r0,0x0                        ; 080D6F6E
-blt   @@Code080D6FFC                ; 080D6F70
+blt   @@Return                      ; 080D6F70
 ldr   r1,=AutoscrollDataPtrs        ; 080D6F72
 ldrh  r2,[r4,0x16]                  ; 080D6F74
 lsr   r0,r2,0x8                     ; 080D6F76
@@ -812,7 +812,7 @@ strh  r0,[r4,0x16]                  ; 080D6F8C
 ldrh  r1,[r4,0x16]                  ; 080D6F8E
 mov   r0,r4                         ; 080D6F90
 bl    Autoscroll_ProcessNextData    ; 080D6F92
-b     @@Code080D6FFC                ; 080D6F96
+b     @@Return                      ; 080D6F96
 .pool                               ; 080D6F98
 
 @@Code080D6FA4:
@@ -834,7 +834,7 @@ ldr   r2,=0x47E4                    ; 080D6FBE
 add   r0,r0,r2                      ; 080D6FC0
 ldrh  r0,[r0]                       ; 080D6FC2
 mov   r2,0x82                       ; 080D6FC4
-lsl   r2,r2,0x2                     ; 080D6FC6
+lsl   r2,r2,0x2                     ; 080D6FC6  0328
 b     @@Code080D6FF0                ; 080D6FC8
 .pool                               ; 080D6FCA
 
@@ -859,7 +859,7 @@ mov   r0,0x0                        ; 080D6FF4
 strh  r0,[r4,0x10]                  ; 080D6FF6
 str   r0,[r4,0x8]                   ; 080D6FF8
 str   r0,[r4,0xC]                   ; 080D6FFA
-@@Code080D6FFC:
+@@Return:
 pop   {r4}                          ; 080D6FFC
 pop   {r0}                          ; 080D6FFE
 bx    r0                            ; 080D7000

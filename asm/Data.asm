@@ -7182,10 +7182,17 @@ CodePtrs08172650:                   ; 08172650
 .d32 Sub08053E90+1, Sub08053EB4+1, Sub08053EE0+1, Sub08053F30+1
 Data08172660:                       ; 08172660
 .d32 0x70807000
-CodePtrs08172664:                   ; 08172664
-.d32 Sub08054C14+1, Return08054D2C+1, Return08054D2C+1, Return08054D2C+1
-.d32 Sub08054C88+1, Sub08054C58+1, Sub08054C70+1, Return08054D2C+1
-.d32 Sub08054C88+1, Sub08054C88+1
+LevelClear_EggCodePtrs:             ; 08172664
+.d32 LevelClear_CollectFlashingEgg+1; 022
+.d32 Return08054D2C+1               ; 023
+.d32 Return08054D2C+1               ; 024
+.d32 Return08054D2C+1               ; 025
+.d32 LevelClear_DestroyGiantEgg+1   ; 026
+.d32 LevelClear_DestroyKey+1        ; 027
+.d32 LevelClear_RemoveHuffinPuffin+1; 028
+.d32 Return08054D2C+1               ; 029
+.d32 LevelClear_DestroyGiantEgg+1   ; 02A
+.d32 LevelClear_DestroyGiantEgg+1   ; 02B
 CodePtrs0817268C:                   ; 0817268C
 .d32 Sub08054D9C+1, Sub08055074+1, Sub08055350+1, Sub080553A4+1
 Data0817269C:                       ; 0817269C

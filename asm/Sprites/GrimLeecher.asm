@@ -375,12 +375,12 @@ add   r1,0x46                       ; 08060776
 mov   r0,0x98                       ; 08060778
 lsl   r0,r0,0x2                     ; 0806077A
 strh  r0,[r1]                       ; 0806077C
-sub   r1,0x4                        ; 0806077E
+sub   r1,0x4                        ; 0806077E  +42
 mov   r0,0x3E                       ; 08060780
-strh  r0,[r1]                       ; 08060782
-add   r1,0x2                        ; 08060784
+strh  r0,[r1]                       ; 08060782  [sprite+42] = 3E
+add   r1,0x2                        ; 08060784  +44
 mov   r0,0x8                        ; 08060786
-strh  r0,[r1]                       ; 08060788
+strh  r0,[r1]                       ; 08060788  [sprite+44] = 8
 add   r1,0x4                        ; 0806078A
 mov   r0,0x10                       ; 0806078C
 strh  r0,[r1]                       ; 0806078E
@@ -828,7 +828,7 @@ str   r0,[r3,0x10]                  ; 08060B12
 mov   r0,r3                         ; 08060B14
 add   r0,0x42                       ; 08060B16
 mov   r2,0x3E                       ; 08060B18
-strh  r2,[r0]                       ; 08060B1A
+strh  r2,[r0]                       ; 08060B1A  [sprite+42] = 3E
 ldr   r0,[r4]                       ; 08060B1C
 mov   r1,0xF4                       ; 08060B1E
 lsl   r1,r1,0x1                     ; 08060B20
@@ -840,7 +840,7 @@ strh  r2,[r0]                       ; 08060B2A
 mov   r1,r3                         ; 08060B2C
 add   r1,0x44                       ; 08060B2E
 mov   r0,0x8                        ; 08060B30
-strh  r0,[r1]                       ; 08060B32
+strh  r0,[r1]                       ; 08060B32  [sprite+44] = 8
 add   r1,0x2A                       ; 08060B34
 mov   r0,0x3                        ; 08060B36
 strh  r0,[r1]                       ; 08060B38

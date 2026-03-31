@@ -6746,7 +6746,7 @@ pop   {r0}                          ; 08054C04
 bx    r0                            ; 08054C06
 .pool                               ; 08054C08
 
-Sub08054C14:
+LevelClear_CollectFlashingEgg:
 push  {r4,lr}                       ; 08054C14
 mov   r4,r0                         ; 08054C16
 ldr   r0,=0x03007240                ; 08054C18  Normal gameplay IWRAM (Ptr to 0300220C)
@@ -6774,7 +6774,7 @@ pop   {r0}                          ; 08054C46
 bx    r0                            ; 08054C48
 .pool                               ; 08054C4A
 
-Sub08054C58:
+LevelClear_DestroyKey:
 push  {r4,lr}                       ; 08054C58
 mov   r4,r0                         ; 08054C5A
 bl    Sub080D56DC                   ; 08054C5C
@@ -6786,7 +6786,7 @@ pop   {r0}                          ; 08054C6A
 bx    r0                            ; 08054C6C
 .pool                               ; 08054C6E
 
-Sub08054C70:
+LevelClear_RemoveHuffinPuffin:
 push  {r4,lr}                       ; 08054C70
 mov   r4,r0                         ; 08054C72
 bl    RemoveFromEggSlotsIfPresent   ; 08054C74
@@ -6797,7 +6797,7 @@ pop   {r0}                          ; 08054C7E
 bx    r0                            ; 08054C80
 .pool                               ; 08054C82
 
-Sub08054C88:
+LevelClear_DestroyGiantEgg:
 push  {r4-r7,lr}                    ; 08054C88
 mov   r5,r0                         ; 08054C8A
 ldr   r2,=0x03007240                ; 08054C8C  Normal gameplay IWRAM (Ptr to 0300220C)
@@ -6810,16 +6810,16 @@ strh  r0,[r1]                       ; 08054C98
 mov   r6,0x0                        ; 08054C9A
 mov   r7,r2                         ; 08054C9C
 mov   r4,0x30                       ; 08054C9E
-@@Code08054CA0:
-ldr   r0,=0x0115                    ; 08054CA0
+@@Loop:
+ldr   r0,=0x0115                    ; 08054CA0  115: coin
 bl    SpawnSpriteMainLowestSlot     ; 08054CA2
 lsl   r0,r0,0x18                    ; 08054CA6
 lsr   r1,r0,0x18                    ; 08054CA8
 cmp   r1,0xFF                       ; 08054CAA
 bne   @@Code08054CC4                ; 08054CAC
 mov   r0,r5                         ; 08054CAE
-bl    Sub08054C58                   ; 08054CB0
-b     @@Code08054D1A                ; 08054CB4
+bl    LevelClear_DestroyKey         ; 08054CB0
+b     @@Return                      ; 08054CB4
 .pool                               ; 08054CB6
 
 @@Code08054CC4:
@@ -6862,10 +6862,10 @@ add   r0,r6,0x1                     ; 08054D0A
 lsl   r0,r0,0x18                    ; 08054D0C
 lsr   r6,r0,0x18                    ; 08054D0E
 cmp   r6,0x2                        ; 08054D10
-bls   @@Code08054CA0                ; 08054D12
+bls   @@Loop                        ; 08054D12
 mov   r0,r5                         ; 08054D14
-bl    Sub08054C58                   ; 08054D16
-@@Code08054D1A:
+bl    LevelClear_DestroyKey         ; 08054D16
+@@Return:
 pop   {r4-r7}                       ; 08054D1A
 pop   {r0}                          ; 08054D1C
 bx    r0                            ; 08054D1E
@@ -6875,47 +6875,47 @@ Return08054D2C:
 bx    lr                            ; 08054D2C
 .pool                               ; 08054D2E
 
-Sub08054D30:
+LevelClear_CheckEggSlots:
 push  {r4,lr}                       ; 08054D30
 bl    Sub08038ACC                   ; 08054D32
 ldr   r0,=0x03006D80                ; 08054D36
 mov   r1,0x92                       ; 08054D38
-lsl   r1,r1,0x2                     ; 08054D3A
-add   r0,r0,r1                      ; 08054D3C
-ldrh  r4,[r0]                       ; 08054D3E
-@@Code08054D40:
-sub   r0,r4,0x2                     ; 08054D40
+lsl   r1,r1,0x2                     ; 08054D3A  248
+add   r0,r0,r1                      ; 08054D3C  03006FC8
+ldrh  r4,[r0]                       ; 08054D3E  r4: length of egg table (egg slots used *2)
+@@EggLoop:                          ;          \ loop across egg slots
+sub   r0,r4,0x2                     ; 08054D40  decrement egg table index
 lsl   r0,r0,0x10                    ; 08054D42
 lsr   r4,r0,0x10                    ; 08054D44
 cmp   r0,0x0                        ; 08054D46
-blt   @@Code08054D8C                ; 08054D48
+blt   @@BreakLoop                   ; 08054D48
 ldr   r2,=0x03007240                ; 08054D4A  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,=0x03006D80                ; 08054D4C
 lsr   r0,r0,0x11                    ; 08054D4E
 lsl   r0,r0,0x1                     ; 08054D50
 ldr   r3,=0x024A                    ; 08054D52
-add   r1,r1,r3                      ; 08054D54
+add   r1,r1,r3                      ; 08054D54  03006FCA
 add   r0,r0,r1                      ; 08054D56
-ldrh  r1,[r0]                       ; 08054D58
+ldrh  r1,[r0]                       ; 08054D58  sprite slot of an egg
 mov   r0,0xB0                       ; 08054D5A
-mul   r1,r0                         ; 08054D5C
+mul   r1,r0                         ; 08054D5C  slot*B0
 mov   r0,0x95                       ; 08054D5E
-lsl   r0,r0,0x2                     ; 08054D60
-add   r1,r1,r0                      ; 08054D62
-ldr   r0,[r2]                       ; 08054D64
-add   r0,r0,r1                      ; 08054D66
-ldrh  r1,[r0,0x32]                  ; 08054D68
-sub   r1,0x22                       ; 08054D6A
-lsl   r1,r1,0x10                    ; 08054D6C
-ldr   r2,=CodePtrs08172664          ; 08054D6E
+lsl   r0,r0,0x2                     ; 08054D60  254
+add   r1,r1,r0                      ; 08054D62  slot*B0+254
+ldr   r0,[r2]                       ; 08054D64  [03007240] (0300220C)
+add   r0,r0,r1                      ; 08054D66  r0: pointer to sprite struct
+ldrh  r1,[r0,0x32]                  ; 08054D68  egg spriteID
+sub   r1,0x22                       ; 08054D6A  egg spriteID-22
+lsl   r1,r1,0x10                    ; 08054D6C  egg spriteID-22, capped to 16-bit
+ldr   r2,=LevelClear_EggCodePtrs    ; 08054D6E
 lsr   r1,r1,0xE                     ; 08054D70
-add   r1,r1,r2                      ; 08054D72
+add   r1,r1,r2                      ; 08054D72  index with egg spriteID-22
 ldr   r1,[r1]                       ; 08054D74
 bl    Sub_bx_r1                     ; 08054D76
-b     @@Code08054D40                ; 08054D7A
+b     @@EggLoop                     ; 08054D7A /
 .pool                               ; 08054D7C
 
-@@Code08054D8C:
+@@BreakLoop:
 ldr   r0,=0xFFFF                    ; 08054D8C
 bl    Sub08054B3C                   ; 08054D8E
 pop   {r4}                          ; 08054D92
@@ -7141,7 +7141,7 @@ ldr   r1,=0x020A                    ; 08054F66
 add   r1,r9                         ; 08054F68
 strh  r0,[r1]                       ; 08054F6A
 mov   r0,r6                         ; 08054F6C
-bl    Sub08054D30                   ; 08054F6E
+bl    LevelClear_CheckEggSlots      ; 08054F6E
 @@Code08054F72:
 pop   {r3-r5}                       ; 08054F72
 mov   r8,r3                         ; 08054F74

@@ -3327,7 +3327,7 @@ and   r5,r6                         ; 080060CC
 lsl   r0,r5,0x2                     ; 080060CE
 add   r0,r0,r1                      ; 080060D0
 ldr   r0,[r0]                       ; 080060D2
-ldrb  r1,[r0,0x3]                   ; 080060D4
+ldrb  r1,[r0,0x3]                   ; 080060D4  main entrance byte 3: level to unlock
 and   r1,r6                         ; 080060D6
 add   r0,r1,r2                      ; 080060D8
 ldrb  r3,[r0]                       ; 080060DA
