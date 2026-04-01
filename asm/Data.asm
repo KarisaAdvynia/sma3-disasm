@@ -5795,23 +5795,23 @@ StdSprInitPtrs:                     ; 08170248
 .d32 Return080D85F8+1               ; 002
 .d32 Sub08074C48+1                  ; 003
 .d32 StarBlockBounceSpr_Init+1      ; 004
-.d32 Sub08051648+1                  ; 005
+.d32 Melon_IceInit+1                ; 005
 .d32 Return08051B48+1               ; 006
-.d32 Sub08051628+1                  ; 007
+.d32 Melon_GreenInit+1              ; 007
 .d32 Return08104158+1               ; 008
-.d32 Sub080515D0+1                  ; 009
+.d32 Melon_FireInit+1               ; 009
 .d32 Sub08083070+1                  ; 00A
 .d32 Sub08096C90+1                  ; 00B
 .d32 Raphael_Init+1                 ; 00C
 .d32 GoalRing_Init+1                ; 00D
-.d32 Sub08053C44+1                  ; 00E
-.d32 Sub080537F8+1                  ; 00F
+.d32 GOALText_Init+1                ; 00E
+.d32 BonusChText_Init+1             ; 00F
 .d32 Sub080B66B0+1                  ; 010
 .d32 Sub08058CD8+1                  ; 011
 .d32 BossDoor_Init+1                ; 012
 .d32 Sub080BAF1C+1                  ; 013
 .d32 Sub080BB4AC+1                  ; 014
-.d32 Sub08052260+1                  ; 015
+.d32 Torpedo_Init+1                 ; 015
 .d32 BiggerBoo_Init+1               ; 016
 .d32 Sub080B33A4+1                  ; 017
 .d32 Return080517F4+1               ; 018
@@ -5930,7 +5930,7 @@ StdSprInitPtrs:                     ; 08170248
 .d32 Sub0808D548+1                  ; 089
 .d32 Sub0808D3E8+1                  ; 08A
 .d32 Sub08082618+1                  ; 08B
-.d32 Sub08054164+1                  ; 08C
+.d32 GoalPrevYoshi_Init+1           ; 08C
 .d32 Sub0808BE54+1                  ; 08D
 .d32 Sub08102898+1                  ; 08E
 .d32 Sub080B2424+1                  ; 08F
@@ -6040,7 +6040,7 @@ StdSprInitPtrs:                     ; 08170248
 .d32 Sub080713B8+1                  ; 0F7
 .d32 Sub0806BFB8+1                  ; 0F8
 .d32 Return080D85F8+1               ; 0F9
-.d32 Sub080529F4+1                  ; 0FA
+.d32 SpFlower_DynInit+1             ; 0FA
 .d32 Sub08091C1C+1                  ; 0FB
 .d32 Sub08091C34+1                  ; 0FC
 .d32 Sub080AC644+1                  ; 0FD
@@ -6062,12 +6062,12 @@ StdSprInitPtrs:                     ; 08170248
 .d32 Sub080693AC+1                  ; 10D
 .d32 Sub08074B88+1                  ; 10E
 .d32 Sub08085310+1                  ; 10F
-.d32 Sub08052E88+1                  ; 110
+.d32 SpFlower_TSInit+1              ; 110
 .d32 Sub08068B38+1                  ; 111
 .d32 Return080D85F8+1               ; 112
 .d32 Sub0808C718+1                  ; 113
 .d32 Sub0808CA18+1                  ; 114
-.d32 Sub080531A4+1                  ; 115
+.d32 CoinMoving_Init+1              ; 115
 .d32 Sub080951CC+1                  ; 116
 .d32 Sub08092AC4+1                  ; 117
 .d32 Sub08092AC4+1                  ; 118
@@ -6083,7 +6083,7 @@ StdSprInitPtrs:                     ; 08170248
 .d32 Sub08084148+1                  ; 122
 .d32 Sub08084148+1                  ; 123
 .d32 Sub08097140+1                  ; 124
-.d32 Sub08083558+1                  ; 125
+.d32 KamekFlying_Init+1             ; 125
 .d32 Sub08076A8C+1                  ; 126
 .d32 Return080D85F8+1               ; 127
 .d32 Return08106068+1               ; 128
@@ -6197,8 +6197,8 @@ StdSprInitPtrs:                     ; 08170248
 .d32 Sub0807AE98+1                  ; 194
 .d32 Sub08079EC0+1                  ; 195
 .d32 Sub08079F48+1                  ; 196
-.d32 Sub08051434+1                  ; 197
-.d32 Sub0805146C+1                  ; 198
+.d32 RedArrow_CardinalInit+1        ; 197
+.d32 RedArrow_DiagInit+1            ; 198
 .d32 Sub0807FCA4+1                  ; 199
 .d32 Sub0807CC50+1                  ; 19A
 .d32 Sub080AB624+1                  ; 19B
@@ -6208,7 +6208,7 @@ StdSprInitPtrs:                     ; 08170248
 .d32 Sub080AA8FC+1                  ; 19F
 .d32 Sub0807AAF4+1                  ; 1A0
 .d32 Sub0807AAF4+1                  ; 1A1
-.d32 Sub08052FA0+1                  ; 1A2
+.d32 StarSpr_Init+1                 ; 1A2
 .d32 Return080D85F8+1               ; 1A3
 .d32 Sub08073E8C+1                  ; 1A4
 .d32 Sub080B0398+1                  ; 1A5
@@ -6248,27 +6248,27 @@ StdSprMainPtrs:                     ; 08170958
 .d32 NavalPiranhaVineCurved_Main+1  ; 002
 .d32 Sub08074C9C+1                  ; 003
 .d32 StarBlockBounceSpr_Main+1      ; 004
-.d32 Sub080517E8+1                  ; 005
-.d32 Sub08051B4C+1                  ; 006
-.d32 Sub080517DC+1                  ; 007
+.d32 Melon_IceMain+1                ; 005
+.d32 IceBreath_Main+1               ; 006
+.d32 Melon_GreenMain+1              ; 007
 .d32 Sub08104278+1                  ; 008
-.d32 Sub080516B4+1                  ; 009
+.d32 Melon_SharedMain+1             ; 009
 .d32 Sub080830C4+1                  ; 00A
 .d32 Sub08096FD0+1                  ; 00B
 .d32 Raphael_Main+1                 ; 00C
 .d32 GoalRing_Main+1                ; 00D
-.d32 Sub08053FDC+1                  ; 00E
-.d32 Sub08053BEC+1                  ; 00F
+.d32 GOALText_Main+1                ; 00E
+.d32 BonusChText_Main+1             ; 00F
 .d32 Sub080B66D4+1                  ; 010
 .d32 Sub08058F6C+1                  ; 011
 .d32 BossDoor_Main+1                ; 012
 .d32 Sub080BAF80+1                  ; 013
 .d32 Sub080BB668+1                  ; 014
-.d32 Sub080524E0+1                  ; 015
+.d32 Torpedo_Main+1                 ; 015
 .d32 BiggerBoo_Main+1               ; 016
 .d32 Sub080B33CC+1                  ; 017
-.d32 Sub080517F8+1                  ; 018
-.d32 Sub08051DE4+1                  ; 019
+.d32 YoshiFireBreath_Main+1         ; 018
+.d32 Bubble_Main+1                  ; 019
 .d32 Sub080AF384+1                  ; 01A
 .d32 Sub08094C28+1                  ; 01B
 .d32 Sub080AEB24+1                  ; 01C
@@ -6383,7 +6383,7 @@ StdSprMainPtrs:                     ; 08170958
 .d32 Sub0808D5B8+1                  ; 089
 .d32 Sub0808D460+1                  ; 08A
 .d32 Sub080826A0+1                  ; 08B
-.d32 Sub08054184+1                  ; 08C
+.d32 GoalPrevYoshi_Main+1           ; 08C
 .d32 Sub0808C6F8+1                  ; 08D
 .d32 Sub081029B4+1                  ; 08E
 .d32 Sub080B2468+1                  ; 08F
@@ -6414,7 +6414,7 @@ StdSprMainPtrs:                     ; 08170958
 .d32 Sub0806A7E4+1                  ; 0A8
 .d32 Sub0806B820+1                  ; 0A9
 .d32 Sub080A8D94+1                  ; 0AA
-.d32 Sub080512E8+1                  ; 0AB
+.d32 FullEgg_Main+1                 ; 0AB
 .d32 Sub081042FC+1                  ; 0AC
 .d32 Sub080D94E8+1                  ; 0AD
 .d32 Hookbill_Main+1                ; 0AE
@@ -6493,20 +6493,20 @@ StdSprMainPtrs:                     ; 08170958
 .d32 Sub080713E0+1                  ; 0F7
 .d32 Sub0806BFE4+1                  ; 0F8
 .d32 Sub0806CD18+1                  ; 0F9
-.d32 Sub08052E4C+1                  ; 0FA
+.d32 SpFlower_DynMain+1             ; 0FA
 .d32 Sub0809206C+1                  ; 0FB
 .d32 Sub0809206C+1                  ; 0FC
 .d32 Sub080AC66C+1                  ; 0FD
 .d32 Sub080AD938+1                  ; 0FE
 .d32 Sub080ADA08+1                  ; 0FF
-.d32 Sub0805337C+1                  ; 100
+.d32 Bubbled1up_Main+1              ; 100
 .d32 Sub0809E984+1                  ; 101
 .d32 Sub0809E984+1                  ; 102
 .d32 Sub0809EA08+1                  ; 103
 .d32 Sub0809B57C+1                  ; 104
 .d32 RelayBooGuy_Main+1             ; 105
 .d32 RelayBooGuy_Main+1             ; 106
-.d32 Sub08051A7C+1                  ; 107
+.d32 MelonSeed_Main+1               ; 107
 .d32 Milde1x1_Main+1                ; 108
 .d32 Sub08076438+1                  ; 109
 .d32 Sub08076438+1                  ; 10A
@@ -6515,12 +6515,12 @@ StdSprMainPtrs:                     ; 08170958
 .d32 Sub080693C4+1                  ; 10D
 .d32 Sub08074C54+1                  ; 10E
 .d32 Sub08085380+1                  ; 10F
-.d32 Sub08052F70+1                  ; 110
+.d32 SpFlower_TSMain+1              ; 110
 .d32 GeorgetteJelly_Main+1          ; 111
 .d32 Sub08069338+1                  ; 112
 .d32 Sub0808C9E8+1                  ; 113
 .d32 Sub0808CA30+1                  ; 114
-.d32 Sub0805323C+1                  ; 115
+.d32 CoinMoving_Main+1              ; 115
 .d32 Sub08095538+1                  ; 116
 .d32 Sub08092B48+1                  ; 117
 .d32 Sub08092B48+1                  ; 118
@@ -6536,7 +6536,7 @@ StdSprMainPtrs:                     ; 08170958
 .d32 Sub08084198+1                  ; 122
 .d32 Sub08084198+1                  ; 123
 .d32 Sub08097770+1                  ; 124
-.d32 Sub080835FC+1                  ; 125
+.d32 KamekFlying_Main+1             ; 125
 .d32 Sub08076BDC+1                  ; 126
 .d32 Sub08077170+1                  ; 127
 .d32 Sub08106340+1                  ; 128
@@ -6650,8 +6650,8 @@ StdSprMainPtrs:                     ; 08170958
 .d32 Sub0807AED8+1                  ; 194
 .d32 Sub0807A060+1                  ; 195
 .d32 Sub0807A29C+1                  ; 196
-.d32 Sub080514A4+1                  ; 197
-.d32 Sub08051538+1                  ; 198
+.d32 RedArrow_CardinalMain+1        ; 197
+.d32 RedArrow_DiagMain+1            ; 198
 .d32 Sub0807FCF0+1                  ; 199
 .d32 Sub0807CCC8+1                  ; 19A
 .d32 Sub080AB648+1                  ; 19B
@@ -6661,7 +6661,7 @@ StdSprMainPtrs:                     ; 08170958
 .d32 Sub080AA9F4+1                  ; 19F
 .d32 Sub0807AB3C+1                  ; 1A0
 .d32 Sub0807AB3C+1                  ; 1A1
-.d32 Sub08052FF4+1                  ; 1A2
+.d32 StarSpr_Main+1                 ; 1A2
 .d32 Sub0807F984+1                  ; 1A3
 .d32 Sub08073EC4+1                  ; 1A4
 .d32 Sub080B0668+1                  ; 1A5
@@ -7010,15 +7010,17 @@ Data081720F8:                       ; 081720F8
 Data08172108:                       ; 08172108
 .d32 0x0080FF80
 Data0817210C:                       ; 0817210C
-.d32 0x04030201, 0x04050605, 0x00010203
+.d8 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x05, 0x04
+.d8 0x03, 0x02, 0x01, 0x00
 Data08172118:                       ; 08172118
-.d32 0x04040404, 0x04040804, 0x08040404
+.d8 0x04, 0x04, 0x04, 0x04, 0x04, 0x08, 0x04, 0x04
+.d8 0x04, 0x04, 0x04, 0x08
 Data08172124:                       ; 08172124
-.d32 0x07070707, 0x07080708
+.d8 0x07, 0x07, 0x07, 0x07, 0x08, 0x07, 0x08, 0x07
 Data0817212C:                       ; 0817212C
-.d32 0x10101010, 0x04040404
+.d8 0x10, 0x10, 0x10, 0x10, 0x04, 0x04, 0x04, 0x04
 Data08172134:                       ; 08172134
-.d32 0x00020202, 0x00000000
+.d8 0x02, 0x02, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00
 Data0817213C:                       ; 0817213C
 .d8 0x09, 0x08, 0x07
 Data0817213F:                       ; 0817213F
@@ -7028,10 +7030,11 @@ Data08172142:                       ; 08172142
 Data08172148:                       ; 08172148
 .d32 0xFFFFFFC0, 0x00000040
 Data08172150:                       ; 08172150
-.d32 0x01040201, 0x02010402
+.d8 0x01, 0x02, 0x04, 0x01, 0x02, 0x04, 0x01, 0x02
 Data08172158:                       ; 08172158
-.d32 0x03020302, 0x03020302, 0x04030302, 0x02010403
-.d32 0x02000200
+.d8 0x02, 0x03, 0x02, 0x03, 0x02, 0x03, 0x02, 0x03
+.d8 0x02, 0x03, 0x03, 0x04, 0x03, 0x04, 0x01, 0x02
+.d8 0x00, 0x02, 0x00, 0x02
 Data0817216C:                       ; 0817216C
 .d32 0x00000060, 0xFFFFFFA0
 Data08172174:                       ; 08172174
@@ -7073,9 +7076,9 @@ Data0817224A:                       ; 0817224A
 Data08172254:                       ; 08172254
 .d32 0xFFFFFE00, 0x00000200
 Data0817225C:                       ; 0817225C
-.d32 0x00030003, 0x00020002, 0x00020002, 0x00020002
-.d32 0x00020002, 0x00020002, 0x00020002, 0x00020002
-.d32 0x00020002, 0x00020002, 0x00000001
+.d16 0x0003, 0x0003, 0x0002, 0x0002, 0x0002, 0x0002, 0x0002, 0x0002
+.d16 0x0002, 0x0002, 0x0002, 0x0002, 0x0002, 0x0002, 0x0002, 0x0002
+.d16 0x0002, 0x0002, 0x0002, 0x0002, 0x0001, 0x0000
 Data08172288:                       ; 08172288
 .d32 0xFFFFFFF0, 0x00000010, 0xFFFFFFE8, 0x00000018
 .d32 0xFFFFFFE0, 0x00000020, 0xFFFFFFD8, 0x00000028
@@ -7084,7 +7087,7 @@ Data081722A8:                       ; 081722A8
 Data081722B4:                       ; 081722B4
 .d16 0x0004, 0x0002, 0x000E, 0x000C
 Data081722BC:                       ; 081722BC
-.d32 0x80400000, 0x00C08000, 0x00408080, 0x80C00080
+.d16 0x0000, 0x8040, 0x8000, 0x00C0, 0x8080, 0x0040, 0x0080, 0x80C0
 Data081722CC:                       ; 081722CC
 .d32 0xFE000200
 Data081722D0:                       ; 081722D0
@@ -7095,9 +7098,9 @@ Data081722D8:                       ; 081722D8
 .d32 0x00B00100
 Data081722DC:                       ; 081722DC
 .d32 0xFFFE0002
-CodePtrs081722E0:                   ; 081722E0
+SpFlower_DynSubstatePtrs:           ; 081722E0
 .d32 Sub08052C28+1, Sub08052C3C+1, Sub08052D98+1, Sub08052DE8+1
-CodePtrs081722F0:                   ; 081722F0
+SpFlower_TSSubstatePtrs:            ; 081722F0
 .d32 Sub08052EB8+1, Sub08052EE8+1, Sub08052F1C+1, Sub08052DE8+1
 Data08172300:                       ; 08172300
 .d32 0xFFFFFF80, 0x00000080
@@ -8976,19 +8979,21 @@ Data08175576:                       ; 08175576
 .d16 0xFE00, 0x0200, 0x0000
 CodePtrs0817557C:                   ; 0817557C
 .d32 Sub08083598+1, Sub080835D0+1
-CodePtrs08175584:                   ; 08175584
+KamekFlying_SubstatePtrs:           ; 08175584
 .d32 Sub0808361C+1, Sub08083C74+1
-CodePtrs0817558C:                   ; 0817558C
+KamekFlying_CodePtrs0:              ; 0817558C
 .d32 Sub0808365C+1, Sub080836BC+1, Sub08083728+1, Sub080837B8+1
 .d32 Sub080837F4+1, Sub08083818+1, Sub080839D8+1, Sub08083A38+1
 .d32 Sub08083AB8+1
 Data081755B0:                       ; 081755B0
-.d32 0x03040505, 0x03040504, 0x03040504, 0x03040504
-.d32 0x03040504
+.d8 0x05, 0x05, 0x04, 0x03, 0x04, 0x05, 0x04, 0x03
+.d8 0x04, 0x05, 0x04, 0x03, 0x04, 0x05, 0x04, 0x03
+.d8 0x04, 0x05, 0x04, 0x03
 Data081755C4:                       ; 081755C4
-.d32 0x06020602, 0x06020602, 0x06020602, 0x06020602
-.d32 0x06020602
-CodePtrs081755D8:                   ; 081755D8
+.d8 0x02, 0x06, 0x02, 0x06, 0x02, 0x06, 0x02, 0x06
+.d8 0x02, 0x06, 0x02, 0x06, 0x02, 0x06, 0x02, 0x06
+.d8 0x02, 0x06, 0x02, 0x06
+KamekFlying_CodePtrs1:              ; 081755D8
 .d32 Sub08083D04+1, Sub08083E58+1, Sub08083EA0+1, Sub08083FFC+1
 .d32 Sub0808404C+1, Sub0808409C+1, Sub080840E4+1
 Data081755F4:                       ; 081755F4
