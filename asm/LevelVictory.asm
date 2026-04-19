@@ -1209,8 +1209,8 @@ b     @@Code080E4110                ; 080E4012
 @@Code080E4024:
 ldr   r0,=0x030021A0                ; 080E4024  Score calc layer 3 buffer (02009758)
 mov   r8,r0                         ; 080E4026
-ldr   r7,=ScoreDigitTilesUpper      ; 080E4028
-ldr   r2,=ScoreDigitTilesLower      ; 080E402A
+ldr   r7,=InvGoalScr_DigitTilesUpper; 080E4028
+ldr   r2,=InvGoalScr_DigitTilesLower; 080E402A
 mov   r12,r2                        ; 080E402C
 cmp   r6,0x63                       ; 080E402E
 bls   @@Code080E4062                ; 080E4030
@@ -1368,12 +1368,12 @@ ldrh  r0,[r4,0x4]                   ; 080E417C
 add   r0,0x2                        ; 080E417E
 strh  r0,[r4,0x4]                   ; 080E4180
 ldr   r0,=0x4088                    ; 080E4182
-add   r1,r5,r0                      ; 080E4184
+add   r1,r5,r0                      ; 080E4184  03006288
 ldr   r2,=0x496D                    ; 080E4186
-add   r0,r5,r2                      ; 080E4188
-ldrh  r1,[r1]                       ; 080E418A
-add   r0,r0,r1                      ; 080E418C
-ldrb  r0,[r0]                       ; 080E418E
+add   r0,r5,r2                      ; 080E4188  03006B6D
+ldrh  r1,[r1]                       ; 080E418A  level ID
+add   r0,r0,r1                      ; 080E418C  index with level ID
+ldrb  r0,[r0]                       ; 080E418E  unlock/clear flag for current level
 cmp   r0,0x80                       ; 080E4190
 beq   @@Code080E419E                ; 080E4192
 ldr   r1,=0x4850                    ; 080E4194
@@ -2004,7 +2004,7 @@ add   r0,r0,r1                      ; 080E46DA
 ldrh  r4,[r0]                       ; 080E46DC
 lsl   r0,r4,0x1                     ; 080E46DE
 add   r3,r2,r0                      ; 080E46E0
-ldr   r1,=ScoreDigitTilesUpper      ; 080E46E2
+ldr   r1,=InvGoalScr_DigitTilesUpper; 080E46E2
 mov   r12,r1                        ; 080E46E4
 lsl   r1,r5,0x1                     ; 080E46E6
 mov   r7,r12                        ; 080E46E8
@@ -2015,7 +2015,7 @@ mov   r0,r4                         ; 080E46F0
 add   r0,0x20                       ; 080E46F2
 lsl   r0,r0,0x1                     ; 080E46F4
 add   r2,r2,r0                      ; 080E46F6
-ldr   r0,=ScoreDigitTilesLower      ; 080E46F8
+ldr   r0,=InvGoalScr_DigitTilesLower; 080E46F8
 mov   r9,r0                         ; 080E46FA
 add   r1,r9                         ; 080E46FC
 ldrh  r0,[r1]                       ; 080E46FE
@@ -2079,14 +2079,14 @@ lsr   r0,r0,0x1                     ; 080E477C
 add   r2,r0,0x1                     ; 080E477E
 ldr   r0,=0x030021A0                ; 080E4780  Score calc layer 3 buffer (02009758)
 ldr   r3,[r0]                       ; 080E4782  r3 = 02009758
-ldr   r0,=ScoreDigitTilesLower      ; 080E4784
+ldr   r0,=InvGoalScr_DigitTilesLower; 080E4784
 lsl   r1,r2,0x1                     ; 080E4786
 add   r0,r1,r0                      ; 080E4788
 ldrh  r2,[r0]                       ; 080E478A
 mov   r0,r3                         ; 080E478C
 add   r0,0xE8                       ; 080E478E
 strh  r2,[r0]                       ; 080E4790
-ldr   r0,=ScoreDigitTilesUpper      ; 080E4792
+ldr   r0,=InvGoalScr_DigitTilesUpper; 080E4792
 add   r1,r1,r0                      ; 080E4794
 ldrh  r0,[r1]                       ; 080E4796
 add   r3,0xA8                       ; 080E4798
@@ -2497,7 +2497,7 @@ cmp   r3,0x0                        ; 080E4B48
 beq   @@Code080E4B8A                ; 080E4B4A
 lsl   r1,r3,0x11                    ; 080E4B4C
 lsr   r1,r1,0x10                    ; 080E4B4E
-ldr   r2,=ScoreDigitTilesUpper      ; 080E4B50
+ldr   r2,=InvGoalScr_DigitTilesUpper; 080E4B50
 add   r0,r1,r2                      ; 080E4B52
 ldrh  r3,[r0]                       ; 080E4B54
 mov   r0,r12                        ; 080E4B56
@@ -2512,7 +2512,7 @@ lsr   r0,r5,0x11                    ; 080E4B66
 lsl   r0,r0,0x1                     ; 080E4B68
 add   r0,r2,r0                      ; 080E4B6A
 strh  r3,[r0]                       ; 080E4B6C
-ldr   r5,=ScoreDigitTilesLower      ; 080E4B6E
+ldr   r5,=InvGoalScr_DigitTilesLower; 080E4B6E
 add   r1,r1,r5                      ; 080E4B70
 ldrh  r3,[r1]                       ; 080E4B72
 mov   r6,r12                        ; 080E4B74
@@ -2533,7 +2533,7 @@ cmp   r0,0x0                        ; 080E4B8E
 blt   @@Code080E4BDC                ; 080E4B90
 lsl   r1,r3,0x11                    ; 080E4B92
 lsr   r1,r1,0x10                    ; 080E4B94
-ldr   r2,=ScoreDigitTilesUpper      ; 080E4B96
+ldr   r2,=InvGoalScr_DigitTilesUpper; 080E4B96
 add   r0,r1,r2                      ; 080E4B98
 ldrh  r3,[r0]                       ; 080E4B9A
 mov   r4,r12                        ; 080E4B9C
@@ -2552,7 +2552,7 @@ asr   r0,r0,0x1                     ; 080E4BB4
 lsl   r0,r0,0x1                     ; 080E4BB6
 add   r0,r2,r0                      ; 080E4BB8
 strh  r3,[r0]                       ; 080E4BBA
-ldr   r6,=ScoreDigitTilesLower      ; 080E4BBC
+ldr   r6,=InvGoalScr_DigitTilesLower; 080E4BBC
 add   r1,r1,r6                      ; 080E4BBE
 ldrh  r3,[r1]                       ; 080E4BC0
 orr   r3,r4                         ; 080E4BC2
@@ -2608,7 +2608,7 @@ cmp   r3,0x9                        ; 080E4C2E
 bhi   @@Code080E4C20                ; 080E4C30
 @@Code080E4C32:
 lsl   r1,r3,0x11                    ; 080E4C32
-ldr   r5,=ScoreDigitTilesUpper      ; 080E4C34
+ldr   r5,=InvGoalScr_DigitTilesUpper; 080E4C34
 lsr   r1,r1,0x10                    ; 080E4C36
 add   r0,r1,r5                      ; 080E4C38
 ldrh  r3,[r0]                       ; 080E4C3A
@@ -2618,7 +2618,7 @@ mov   r4,0xEC                       ; 080E4C40
 lsl   r4,r4,0x2                     ; 080E4C42
 add   r0,r2,r4                      ; 080E4C44
 strh  r3,[r0]                       ; 080E4C46
-ldr   r4,=ScoreDigitTilesLower      ; 080E4C48
+ldr   r4,=InvGoalScr_DigitTilesLower; 080E4C48
 add   r1,r1,r4                      ; 080E4C4A
 ldrh  r3,[r1]                       ; 080E4C4C
 mov   r1,0xFC                       ; 080E4C4E
@@ -2646,7 +2646,7 @@ lsl   r1,r3,0x11                    ; 080E4C76
 cmp   r3,0x0                        ; 080E4C78
 beq   @@Code080E4C9C                ; 080E4C7A
 lsr   r1,r1,0x10                    ; 080E4C7C
-ldr   r2,=ScoreDigitTilesUpper      ; 080E4C7E
+ldr   r2,=InvGoalScr_DigitTilesUpper; 080E4C7E
 add   r0,r1,r2                      ; 080E4C80
 ldrh  r3,[r0]                       ; 080E4C82
 ldr   r2,[r6]                       ; 080E4C84
@@ -2654,7 +2654,7 @@ mov   r4,0xEB                       ; 080E4C86
 lsl   r4,r4,0x2                     ; 080E4C88
 add   r0,r2,r4                      ; 080E4C8A
 strh  r3,[r0]                       ; 080E4C8C
-ldr   r5,=ScoreDigitTilesLower      ; 080E4C8E
+ldr   r5,=InvGoalScr_DigitTilesLower; 080E4C8E
 add   r1,r1,r5                      ; 080E4C90
 ldrh  r3,[r1]                       ; 080E4C92
 mov   r6,0xFB                       ; 080E4C94
@@ -2747,8 +2747,8 @@ ldrh  r0,[r4]                       ; 080E4D6E
 add   r0,0x1                        ; 080E4D70
 strh  r0,[r4]                       ; 080E4D72
 ldr   r2,=0x4088                    ; 080E4D74
-add   r0,r5,r2                      ; 080E4D76
-ldrh  r3,[r0]                       ; 080E4D78
+add   r0,r5,r2                      ; 080E4D76  03006288
+ldrh  r3,[r0]                       ; 080E4D78  level ID
 ldr   r0,=0x48A4                    ; 080E4D7A
 add   r6,r5,r0                      ; 080E4D7C
 ldrh  r1,[r6]                       ; 080E4D7E
@@ -2815,17 +2815,17 @@ bls   @@Code080E4E2C                ; 080E4E0E
 mov   r3,0xB                        ; 080E4E10
 mov   r1,0xA                        ; 080E4E12
 mov   r12,r0                        ; 080E4E14
-ldr   r6,=ScoreDigitTilesUpper      ; 080E4E16
+ldr   r6,=InvGoalScr_DigitTilesUpper; 080E4E16
 ldr   r7,=0x030021A0                ; 080E4E18  Score calc layer 3 buffer (02009758)
-ldr   r4,=ScoreDigitTilesLower      ; 080E4E1A
+ldr   r4,=InvGoalScr_DigitTilesLower; 080E4E1A
 b     @@Code080E4E4A                ; 080E4E1C
 .pool                               ; 080E4E1E
 
 @@Code080E4E2C:
 mov   r12,r0                        ; 080E4E2C
-ldr   r6,=ScoreDigitTilesUpper      ; 080E4E2E
+ldr   r6,=InvGoalScr_DigitTilesUpper; 080E4E2E
 ldr   r7,=0x030021A0                ; 080E4E30  Score calc layer 3 buffer (02009758)
-ldr   r4,=ScoreDigitTilesLower      ; 080E4E32
+ldr   r4,=InvGoalScr_DigitTilesLower; 080E4E32
 cmp   r1,0x9                        ; 080E4E34
 bls   @@Code080E4E4A                ; 080E4E36
 @@Code080E4E38:
@@ -3632,7 +3632,7 @@ lsr   r2,r2,0x10                    ; 080E54D2
 mov   r3,0xFF                       ; 080E54D4
 lsl   r3,r3,0x10                    ; 080E54D6
 and   r3,r0                         ; 080E54D8
-ldr   r0,=Data0819436A              ; 080E54DA
+ldr   r0,=InvGoalScr_TextTilesUpper ; 080E54DA
 lsr   r3,r3,0x11                    ; 080E54DC
 lsl   r3,r3,0x1                     ; 080E54DE
 add   r0,r3,r0                      ; 080E54E0
@@ -3644,7 +3644,7 @@ lsr   r1,r1,0x11                    ; 080E54EA
 lsl   r1,r1,0x1                     ; 080E54EC
 add   r1,r6,r1                      ; 080E54EE
 strh  r4,[r1]                       ; 080E54F0  store to buffer
-ldr   r0,=Data081943FA              ; 080E54F2
+ldr   r0,=InvGoalScr_TextTilesLower ; 080E54F2
 add   r3,r3,r0                      ; 080E54F4
 ldrh  r0,[r3]                       ; 080E54F6
 orr   r0,r2                         ; 080E54F8
@@ -3830,21 +3830,21 @@ cmp   r4,0x63                       ; 080E566A
 bls   @@Code080E56B0                ; 080E566C
 mov   r7,0xB                        ; 080E566E
 mov   r4,0xA                        ; 080E5670
-ldr   r3,=ScoreDigitTilesUpper      ; 080E5672
+ldr   r3,=InvGoalScr_DigitTilesUpper; 080E5672
 mov   r10,r3                        ; 080E5674
 ldr   r0,=0x030021A0                ; 080E5676  Score calc layer 3 buffer (02009758)
 mov   r8,r0                         ; 080E5678
-ldr   r1,=ScoreDigitTilesLower      ; 080E567A
+ldr   r1,=InvGoalScr_DigitTilesLower; 080E567A
 mov   r9,r1                         ; 080E567C
 b     @@Code080E56D2                ; 080E567E
 .pool                               ; 080E5680
 
 @@Code080E56B0:
-ldr   r2,=ScoreDigitTilesUpper      ; 080E56B0
+ldr   r2,=InvGoalScr_DigitTilesUpper; 080E56B0
 mov   r10,r2                        ; 080E56B2
 ldr   r3,=0x030021A0                ; 080E56B4  Score calc layer 3 buffer (02009758)
 mov   r8,r3                         ; 080E56B6
-ldr   r0,=ScoreDigitTilesLower      ; 080E56B8
+ldr   r0,=InvGoalScr_DigitTilesLower; 080E56B8
 mov   r9,r0                         ; 080E56BA
 cmp   r4,0x9                        ; 080E56BC
 bls   @@Code080E56D2                ; 080E56BE

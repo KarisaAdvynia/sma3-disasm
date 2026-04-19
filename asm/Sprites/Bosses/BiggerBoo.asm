@@ -1548,7 +1548,7 @@ add   r1,0x6C                       ; 080C3B70
 mov   r0,0x8                        ; 080C3B72
 strh  r0,[r1]                       ; 080C3B74
 mov   r0,r4                         ; 080C3B76
-bl    Sub080BD8E4                   ; 080C3B78
+bl    BossDefeat_080BD8E4           ; 080C3B78
 mov   r2,r10                        ; 080C3B7C
 ldr   r0,[r2]                       ; 080C3B7E
 ldr   r1,=0x16BE                    ; 080C3B80

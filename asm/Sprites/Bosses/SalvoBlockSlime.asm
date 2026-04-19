@@ -1839,7 +1839,7 @@ ldrh  r0,[r1,0x6]                   ; 080BD846
 cmp   r0,0x0                        ; 080BD848
 bne   @@Code080BD852                ; 080BD84A
 mov   r0,r4                         ; 080BD84C
-bl    Sub080BD8E4                   ; 080BD84E
+bl    BossDefeat_080BD8E4           ; 080BD84E
 @@Code080BD852:
 ldrh  r1,[r4,0x3E]                  ; 080BD852
 mov   r0,0x1                        ; 080BD854
@@ -1902,7 +1902,7 @@ pop   {r0}                          ; 080BD8C2
 bx    r0                            ; 080BD8C4
 .pool                               ; 080BD8C6
 
-Sub080BD8E4:
+BossDefeat_080BD8E4:
 push  {r4,lr}                       ; 080BD8E4
 mov   r4,r0                         ; 080BD8E6
 mov   r0,0xF                        ; 080BD8E8

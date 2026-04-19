@@ -2798,13 +2798,13 @@ strh  r1,[r0]                       ; 0804B5BC
 ldr   r0,=0x03002200                ; 0804B5BE
 ldr   r1,=0x48CE                    ; 0804B5C0
 add   r6,r0,r1                      ; 0804B5C2  03006ACE
-ldrh  r0,[r6]                       ; 0804B5C4
-ldr   r5,=0x012B                    ; 0804B5C6
+ldrh  r0,[r6]                       ; 0804B5C4  star count
+ldr   r5,=0x012B                    ; 0804B5C6  12B (29.9 stars)
 mov   r1,0xD1                       ; 0804B5C8
-lsl   r1,r1,0x1                     ; 0804B5CA  01A2
+lsl   r1,r1,0x1                     ; 0804B5CA  1A2: star sprite
 cmp   r0,r5                         ; 0804B5CC
 bls   @@Code0804B5D2                ; 0804B5CE
-sub   r1,0x8D                       ; 0804B5D0
+sub   r1,0x8D                       ; 0804B5D0  115: coin sprite
 @@Code0804B5D2:
 mov   r0,r4                         ; 0804B5D2
 bl    Sub0804A250                   ; 0804B5D4
@@ -2812,7 +2812,7 @@ mov   r0,r4                         ; 0804B5D8
 add   r0,0x60                       ; 0804B5DA
 mov   r1,0x0                        ; 0804B5DC
 strh  r1,[r0]                       ; 0804B5DE
-ldrh  r0,[r6]                       ; 0804B5E0
+ldrh  r0,[r6]                       ; 0804B5E0  star count
 cmp   r0,r5                         ; 0804B5E2
 bls   @@Code0804B604                ; 0804B5E4
 mov   r0,r4                         ; 0804B5E6
@@ -2836,7 +2836,7 @@ ldr   r2,=0x2A22                    ; 0804B618
 add   r0,r0,r2                      ; 0804B61A
 ldrh  r0,[r0]                       ; 0804B61C
 cmp   r0,0x0                        ; 0804B61E
-beq   @@Code0804B634                ; 0804B620
+beq   @@Return                      ; 0804B620
 ldr   r0,=0x03002200                ; 0804B622
 ldr   r1,=0x48CE                    ; 0804B624
 add   r0,r0,r1                      ; 0804B626
@@ -2845,7 +2845,7 @@ add   r0,0xA                        ; 0804B62A
 lsl   r0,r0,0x10                    ; 0804B62C
 lsr   r0,r0,0x10                    ; 0804B62E
 bl    Sub080DB6D8                   ; 0804B630
-@@Code0804B634:
+@@Return:
 pop   {r4-r6}                       ; 0804B634
 pop   {r0}                          ; 0804B636
 bx    r0                            ; 0804B638
@@ -2927,7 +2927,7 @@ pop   {r0}                          ; 0804B6D6
 bx    r0                            ; 0804B6D8
 .pool                               ; 0804B6DA
 
-Sub0804B6F8:
+SprShared_CollectRedCoin:
 push  {r4,lr}                       ; 0804B6F8
 mov   r4,r0                         ; 0804B6FA
 lsl   r1,r1,0x10                    ; 0804B6FC
@@ -2936,14 +2936,14 @@ bl    Sub0804A63C                   ; 0804B700
 ldr   r3,=0x03002200                ; 0804B704
 ldr   r0,=0x48D6                    ; 0804B706
 add   r2,r3,r0                      ; 0804B708  03006AD6
-ldrh  r1,[r2]                       ; 0804B70A  red coins
+ldrh  r1,[r2]                       ; 0804B70A  red coin count
 add   r0,r1,0x1                     ; 0804B70C
-strh  r0,[r2]                       ; 0804B70E  increment red coins
+strh  r0,[r2]                       ; 0804B70E  increment red coin count
 sub   r1,0x13                       ; 0804B710
 ldrh  r0,[r4,0x20]                  ; 0804B712
 ldr   r2,=0x4058                    ; 0804B714
 add   r3,r3,r2                      ; 0804B716  03006258
-strh  r0,[r3]                       ; 0804B718  set [03006258] (stereo sound X position on screen?) to sprite+20 (sprite X position on screen)
+strh  r0,[r3]                       ; 0804B718  set [03006258] (stereo sound X position on screen?) to [sprite+20] (sprite X position on screen)
 lsl   r1,r1,0x10                    ; 0804B71A
 cmp   r1,0x0                        ; 0804B71C
 blt   @@Code0804B738                ; 0804B71E
@@ -2965,28 +2965,29 @@ pop   {r0}                          ; 0804B742
 bx    r0                            ; 0804B744
 .pool                               ; 0804B746
 
-Sub0804B748:
+SprShared_CollectCoin:
 push  {r4,lr}                       ; 0804B748
 mov   r4,r0                         ; 0804B74A
-ldrh  r1,[r4,0x2C]                  ; 0804B74C
+ldrh  r1,[r4,0x2C]                  ; 0804B74C  remnant of SNES YXPPCCCT
 mov   r0,0x2                        ; 0804B74E
-and   r0,r1                         ; 0804B750
+and   r0,r1                         ; 0804B750  bit 1: low bit of palette
 cmp   r0,0x0                        ; 0804B752
-beq   @@Code0804B760                ; 0804B754
-ldrh  r1,[r4,0x2C]                  ; 0804B756
+beq   @@EvenPal                     ; 0804B754
+                                    ;          \ runs if low bit of palette is odd
+ldrh  r1,[r4,0x2C]                  ; 0804B756  r1 = remnant of SNES YXPPCCCT
 mov   r0,r4                         ; 0804B758
-bl    Sub0804B6F8                   ; 0804B75A
-b     @@Code0804B774                ; 0804B75E
-@@Code0804B760:
+bl    SprShared_CollectRedCoin      ; 0804B75A
+b     @@Return                      ; 0804B75E /
+@@EvenPal:
 bl    Sub0804A55C                   ; 0804B760
 ldr   r1,=0x03002200                ; 0804B764
 ldrh  r0,[r4,0x20]                  ; 0804B766
 ldr   r2,=0x4058                    ; 0804B768
-add   r1,r1,r2                      ; 0804B76A
+add   r1,r1,r2                      ; 0804B76A  03006258
 strh  r0,[r1]                       ; 0804B76C
-mov   r0,0x6B                       ; 0804B76E
+mov   r0,0x6B                       ; 0804B76E  6B: collect coin
 bl    PlayYISound                   ; 0804B770
-@@Code0804B774:
+@@Return:
 pop   {r4}                          ; 0804B774
 pop   {r0}                          ; 0804B776
 bx    r0                            ; 0804B778
@@ -3156,7 +3157,7 @@ ldr   r0,=0x0115                    ; 0804B8CC  115: gravity-affected coin, can 
 cmp   r1,r0                         ; 0804B8CE
 bne   @@Code0804B8E0                ; 0804B8D0
 mov   r0,r4                         ; 0804B8D2
-bl    Sub0804B748                   ; 0804B8D4
+bl    SprShared_CollectCoin         ; 0804B8D4
 b     @@Return                      ; 0804B8D8
 .pool                               ; 0804B8DA
 
@@ -4445,24 +4446,25 @@ bx    r1                            ; 0804C326
 .pool                               ; 0804C328
 
 Sub0804C330:
+; ? check if sprites are paused?
 push  {lr}                          ; 0804C330
-ldrh  r0,[r0,0x24]                  ; 0804C332
-cmp   r0,0x8                        ; 0804C334
+ldrh  r0,[r0,0x24]                  ; 0804C332  sprite status
+cmp   r0,0x8                        ; 0804C334  08: main
 bne   @@Return_1                    ; 0804C336
 ldr   r1,=0x03006D80                ; 0804C338
 mov   r0,0xD4                       ; 0804C33A
-lsl   r0,r0,0x1                     ; 0804C33C
-add   r1,r1,r0                      ; 0804C33E
+lsl   r0,r0,0x1                     ; 0804C33C  1A8
+add   r1,r1,r0                      ; 0804C33E  r1 = 03006F28
 ldr   r0,=0x03007240                ; 0804C340  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r2,[r0]                       ; 0804C342
 ldr   r0,=0x29B0                    ; 0804C344
-add   r3,r2,r0                      ; 0804C346
+add   r3,r2,r0                      ; 0804C346  r3 = [03007240]+29B0 (03004BBC)
 ldrh  r0,[r1]                       ; 0804C348
 ldrh  r1,[r3]                       ; 0804C34A
 orr   r0,r1                         ; 0804C34C
 ldr   r1,=0x29BA                    ; 0804C34E
-add   r2,r2,r1                      ; 0804C350
-ldrh  r1,[r2]                       ; 0804C352
+add   r2,r2,r1                      ; 0804C350  [03007240]+29BA (03004BC6)
+ldrh  r1,[r2]                       ; 0804C352  r1 = inventory item being used
 orr   r0,r1                         ; 0804C354
 cmp   r0,0x0                        ; 0804C356
 bne   @@Return_1                    ; 0804C358
@@ -8318,39 +8320,39 @@ b     @@Code0804E3F8                ; 0804E344
 .pool                               ; 0804E346
 
 @@Code0804E364:
-ldr   r0,=0x0115                    ; 0804E364
+ldr   r0,=0x0115                    ; 0804E364  115: coin sprite (moving)
 cmp   r9,r0                         ; 0804E366
 bne   @@Code0804E3D4                ; 0804E368
-ldrh  r1,[r7,0x2C]                  ; 0804E36A
+ldrh  r1,[r7,0x2C]                  ; 0804E36A  [sprite+2C]: remnant of SNES YXPPCCCT
 mov   r0,0x2                        ; 0804E36C
-and   r0,r1                         ; 0804E36E
+and   r0,r1                         ; 0804E36E  test bit 1
 cmp   r0,0x0                        ; 0804E370
-beq   @@Code0804E3AE                ; 0804E372
-ldr   r3,=0x03002200                ; 0804E374
+beq   @@NotRedCoin                  ; 0804E372
+ldr   r3,=0x03002200                ; 0804E374  runs if lowest bit of palette is set
 ldr   r0,=0x48D6                    ; 0804E376
-add   r2,r3,r0                      ; 0804E378
-ldrh  r1,[r2]                       ; 0804E37A
+add   r2,r3,r0                      ; 0804E378  03006AD6
+ldrh  r1,[r2]                       ; 0804E37A  red coins
 add   r0,r1,0x1                     ; 0804E37C
-strh  r0,[r2]                       ; 0804E37E
+strh  r0,[r2]                       ; 0804E37E  increment red coins
 ldrh  r0,[r4,0x2C]                  ; 0804E380
 ldr   r2,=0x4058                    ; 0804E382
 add   r3,r3,r2                      ; 0804E384
 strh  r0,[r3]                       ; 0804E386
-sub   r1,0x13                       ; 0804E388
+sub   r1,0x13                       ; 0804E388  red coins - 19(dec)
 lsl   r1,r1,0x10                    ; 0804E38A
 cmp   r1,0x0                        ; 0804E38C
 blt   @@Code0804E3A4                ; 0804E38E
-mov   r0,0x7A                       ; 0804E390
+mov   r0,0x7A                       ; 0804E390  7A: final red coin
 b     @@Code0804E3A6                ; 0804E392
 .pool                               ; 0804E394
 
 @@Code0804E3A4:
-mov   r0,0x79                       ; 0804E3A4
+mov   r0,0x79                       ; 0804E3A4  79: red coin
 @@Code0804E3A6:
 mov   r1,r3                         ; 0804E3A6
 bl    PlayYISound                   ; 0804E3A8
 b     @@Code0804E3BE                ; 0804E3AC
-@@Code0804E3AE:
+@@NotRedCoin:
 ldr   r1,=0x03002200                ; 0804E3AE
 ldrh  r0,[r4,0x2C]                  ; 0804E3B0
 ldr   r3,=0x4058                    ; 0804E3B2

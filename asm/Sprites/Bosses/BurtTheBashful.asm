@@ -3216,7 +3216,7 @@ ldrh  r0,[r0]                       ; 080C20FE
 cmp   r0,0x0                        ; 080C2100
 bne   @@Code080C2110                ; 080C2102
 mov   r0,r4                         ; 080C2104
-bl    Sub080BD8E4                   ; 080C2106
+bl    BossDefeat_080BD8E4           ; 080C2106
 mov   r0,r4                         ; 080C210A
 bl    Sub080C1594                   ; 080C210C
 @@Code080C2110:

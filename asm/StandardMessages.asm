@@ -2161,21 +2161,21 @@ lsr   r5,r1,0x10                    ; 080E915A
 ldrh  r0,[r4,0xE]                   ; 080E915C
 lsr   r0,r0,0x8                     ; 080E915E
 cmp   r0,0xF                        ; 080E9160
-beq   @@Code080E91E2                ; 080E9162
+beq   @@Return                      ; 080E9162
 cmp   r0,0x51                       ; 080E9164
-beq   @@Code080E91E2                ; 080E9166
+beq   @@Return                      ; 080E9166
 cmp   r0,0xFF                       ; 080E9168
-beq   @@Code080E91E2                ; 080E916A
+beq   @@Return                      ; 080E916A
 ldrh  r0,[r4,0xA]                   ; 080E916C
 cmp   r0,0x1                        ; 080E916E
-bhi   @@Code080E91E2                ; 080E9170
+bhi   @@Return                      ; 080E9170
 ldr   r1,=0x4901                    ; 080E9172
 add   r0,r3,r1                      ; 080E9174
 ldrb  r1,[r0]                       ; 080E9176
 mov   r0,0x10                       ; 080E9178
 and   r0,r1                         ; 080E917A
 cmp   r0,0x0                        ; 080E917C
-beq   @@Code080E91E2                ; 080E917E
+beq   @@Return                      ; 080E917E
 mov   r0,0xE0                       ; 080E9180
 lsl   r0,r0,0x6                     ; 080E9182
 add   r2,r3,r0                      ; 080E9184
@@ -2225,7 +2225,7 @@ strh  r1,[r2,0x6]                   ; 080E91DA
 mov   r3,r8                         ; 080E91DC
 and   r0,r3                         ; 080E91DE
 strb  r0,[r2,0x5]                   ; 080E91E0
-@@Code080E91E2:
+@@Return:
 pop   {r3-r4}                       ; 080E91E2
 mov   r8,r3                         ; 080E91E4
 mov   r9,r4                         ; 080E91E6
@@ -2429,7 +2429,7 @@ mov   r2,0x2                        ; 080E9398
 mov   r0,r2                         ; 080E939A
 and   r0,r1                         ; 080E939C
 cmp   r0,0x0                        ; 080E939E
-beq   @@Code080E948A                ; 080E93A0
+beq   @@Return                      ; 080E93A0
 ldr   r1,=0x4088                    ; 080E93A2
 add   r1,r8                         ; 080E93A4
 ldr   r0,=0x496D                    ; 080E93A6
@@ -2440,16 +2440,16 @@ ldrb  r1,[r0]                       ; 080E93AE
 mov   r0,0xF                        ; 080E93B0
 and   r0,r1                         ; 080E93B2
 cmp   r0,0x0                        ; 080E93B4
-beq   @@Code080E948A                ; 080E93B6
+beq   @@Return                      ; 080E93B6
 ldr   r0,=0x4A48                    ; 080E93B8
 add   r0,r8                         ; 080E93BA
 ldrb  r1,[r0]                       ; 080E93BC
 mov   r0,r2                         ; 080E93BE
 and   r0,r1                         ; 080E93C0
 cmp   r0,0x0                        ; 080E93C2
-beq   @@Code080E948A                ; 080E93C4
+beq   @@Return                      ; 080E93C4
 strh  r2,[r7,0xA]                   ; 080E93C6
-b     @@Code080E948A                ; 080E93C8
+b     @@Return                      ; 080E93C8
 .pool                               ; 080E93CA
 
 @@Code080E93F0:
@@ -2464,13 +2464,13 @@ mov   r2,0x2                        ; 080E9400
 mov   r0,r2                         ; 080E9402
 and   r0,r1                         ; 080E9404
 cmp   r0,0x0                        ; 080E9406
-beq   @@Code080E948A                ; 080E9408
+beq   @@Return                      ; 080E9408
 strh  r2,[r7,0xA]                   ; 080E940A
 mov   r0,r7                         ; 080E940C
 add   r0,0x56                       ; 080E940E
 mov   r1,r9                         ; 080E9410
 strh  r1,[r0]                       ; 080E9412
-b     @@Code080E948A                ; 080E9414
+b     @@Return                      ; 080E9414
 .pool                               ; 080E9416
 
 @@Code080E941C:
@@ -2485,7 +2485,7 @@ mov   r3,0x2                        ; 080E942C
 mov   r0,r3                         ; 080E942E
 and   r0,r1                         ; 080E9430
 cmp   r0,0x0                        ; 080E9432
-beq   @@Code080E948A                ; 080E9434
+beq   @@Return                      ; 080E9434
 ldr   r0,=0x4A09                    ; 080E9436
 add   r0,r8                         ; 080E9438
 ldrb  r2,[r0]                       ; 080E943A
@@ -2503,27 +2503,27 @@ and   r0,r1                         ; 080E9450
 cmp   r0,0x0                        ; 080E9452
 beq   @@Code080E9470                ; 080E9454
 cmp   r2,0xFF                       ; 080E9456
-bne   @@Code080E948A                ; 080E9458
+bne   @@Return                      ; 080E9458
 @@Code080E945A:
 strh  r3,[r7,0xA]                   ; 080E945A
-b     @@Code080E948A                ; 080E945C
+b     @@Return                      ; 080E945C
 .pool                               ; 080E945E
 
 @@Code080E9470:
 cmp   r2,0xFF                       ; 080E9470
-bne   @@Code080E948A                ; 080E9472
+bne   @@Return                      ; 080E9472
 ldr   r0,=0x48E6                    ; 080E9474
 add   r0,r8                         ; 080E9476
 ldrh  r0,[r0]                       ; 080E9478
 cmp   r0,0x0                        ; 080E947A
-beq   @@Code080E948A                ; 080E947C
+beq   @@Return                      ; 080E947C
 b     @@Code080E945A                ; 080E947E
 .pool                               ; 080E9480
 
 @@Code080E9484:
 mov   r0,r7                         ; 080E9484
 bl    Sub080E920C                   ; 080E9486
-@@Code080E948A:
+@@Return:
 pop   {r3-r4}                       ; 080E948A
 mov   r8,r3                         ; 080E948C
 mov   r9,r4                         ; 080E948E
@@ -2545,7 +2545,7 @@ add   r0,r2,r1                      ; 080E94A8
 ldrb  r0,[r0]                       ; 080E94AA  Game state
 cmp   r0,0xD                        ; 080E94AC  0D: Normal gameplay
 bne   @@Code080E94B2                ; 080E94AE
-b     @@Code080E960A                ; 080E94B0
+b     @@Return                      ; 080E94B0
 @@Code080E94B2:                     ;           Runs if game state != 0D
 ldr   r0,=0x03007240                ; 080E94B2  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                       ; 080E94B4
@@ -2639,7 +2639,7 @@ bls   @@Code080E9506                ; 080E955A
 mov   r1,r8                         ; 080E955C
 cmp   r1,0xB                        ; 080E955E
 bls   @@Code080E94EE                ; 080E9560
-b     @@Code080E960A                ; 080E9562
+b     @@Return                      ; 080E9562
 .pool                               ; 080E9564
 
 @@Code080E9584:
@@ -2712,7 +2712,7 @@ bls   @@Code080E95CC                ; 080E9602
 mov   r1,r8                         ; 080E9604
 cmp   r1,0xB                        ; 080E9606
 bls   @@Code080E95B2                ; 080E9608
-@@Code080E960A:
+@@Return:
 add   sp,0x4                        ; 080E960A
 pop   {r3-r5}                       ; 080E960C
 mov   r8,r3                         ; 080E960E
@@ -2735,7 +2735,7 @@ lsl   r0,r0,0x18                    ; 080E963A
 lsr   r0,r0,0x18                    ; 080E963C
 cmp   r0,0x2                        ; 080E963E
 bls   @@Code080E9644                ; 080E9640
-b     @@Code080E9756                ; 080E9642  if game state is not in range 0B-0D, return
+b     @@Return                      ; 080E9642  if game state is not in range 0B-0D, return
 @@Code080E9644:
 ldr   r0,=Data082F99A8              ; 080E9644  Message border top edge graphics
 ldr   r1,=0x06015000                ; 080E9646
@@ -2853,7 +2853,7 @@ ldr   r1,=0x050003F0                ; 080E974C
 mov   r0,r4                         ; 080E974E
 mov   r2,0x8                        ; 080E9750
 bl    swi_MemoryCopy4or2            ; 080E9752  Memory copy/fill, 4- or 2-byte blocks
-@@Code080E9756:
+@@Return:
 add   sp,0x20                       ; 080E9756
 pop   {r4-r5}                       ; 080E9758
 pop   {r0}                          ; 080E975A

@@ -15550,41 +15550,42 @@ pop   {r0}                          ; 0805DBCC
 bx    r0                            ; 0805DBCE
 .pool                               ; 0805DBD0
 
-Sub0805DBE8:
+CheckIfAllEnemiesDead:
+; called by sprite 161 (reward item) and 0D2 (Marching Milde)
 push  {r4-r5,lr}                    ; 0805DBE8
 ldr   r2,=0x03002200                ; 0805DBEA
 ldr   r0,=0x480A                    ; 0805DBEC
-add   r1,r2,r0                      ; 0805DBEE
+add   r1,r2,r0                      ; 0805DBEE  03006A0A (used for return value)
 mov   r0,0x0                        ; 0805DBF0
-strh  r0,[r1]                       ; 0805DBF2
+strh  r0,[r1]                       ; 0805DBF2  init return value to 0
 ldr   r0,=0x03007240                ; 0805DBF4  Normal gameplay IWRAM (Ptr to 0300220C)
-ldr   r0,[r0]                       ; 0805DBF6
+ldr   r0,[r0]                       ; 0805DBF6  r0 = [03007240] (0300220C)
 mov   r1,0x95                       ; 0805DBF8
-lsl   r1,r1,0x2                     ; 0805DBFA
-add   r4,r0,r1                      ; 0805DBFC
+lsl   r1,r1,0x2                     ; 0805DBFA  254
+add   r4,r0,r1                      ; 0805DBFC  r4 = ptr to start of sprite struct array
 ldr   r1,=0x12D4                    ; 0805DBFE
-add   r3,r0,r1                      ; 0805DC00
-mov   r5,r2                         ; 0805DC02
+add   r3,r0,r1                      ; 0805DC00  r3 = ptr to end of sprite struct array
+mov   r5,r2                         ; 0805DC02  r5 - 03002200
 mov   r2,0xC0                       ; 0805DC04
-lsl   r2,r2,0x7                     ; 0805DC06
-@@Code0805DC08:
-sub   r3,0xB0                       ; 0805DC08
-ldrh  r0,[r3,0x24]                  ; 0805DC0A
+lsl   r2,r2,0x7                     ; 0805DC06  r2 = 6000
+@@Loop:                             ;           loop across all sprite structs
+sub   r3,0xB0                       ; 0805DC08  decrement to next sprite struct
+ldrh  r0,[r3,0x24]                  ; 0805DC0A  [sprite+24]: sprite status
 cmp   r0,0x0                        ; 0805DC0C
-beq   @@Code0805DC1A                ; 0805DC0E
+beq   @@SkipSlot                    ; 0805DC0E  if empty slot, skip
 ldrh  r1,[r3,0x28]                  ; 0805DC10
-mov   r0,r2                         ; 0805DC12
-and   r0,r1                         ; 0805DC14
+mov   r0,r2                         ; 0805DC12  6000
+and   r0,r1                         ; 0805DC14  test bits 13-14
 cmp   r0,0x0                        ; 0805DC16
-beq   @@Code0805DC26                ; 0805DC18
-@@Code0805DC1A:
+beq   @@Return                      ; 0805DC18  if any non-empty slot is an enemy, return 0
+@@SkipSlot:
 cmp   r3,r4                         ; 0805DC1A
-bhi   @@Code0805DC08                ; 0805DC1C
+bhi   @@Loop                        ; 0805DC1C
 ldr   r0,=0x480A                    ; 0805DC1E
-add   r1,r5,r0                      ; 0805DC20
+add   r1,r5,r0                      ; 0805DC20  03006A0A
 ldr   r0,=0xFFFF                    ; 0805DC22
-strh  r0,[r1]                       ; 0805DC24
-@@Code0805DC26:
+strh  r0,[r1]                       ; 0805DC24  if no slots contain enemies, return FFFF
+@@Return:
 pop   {r4-r5}                       ; 0805DC26
 pop   {r0}                          ; 0805DC28
 bx    r0                            ; 0805DC2A
@@ -83494,7 +83495,7 @@ push  {r4-r5,lr}                    ; 08082008
 mov   r4,r0                         ; 0808200A
 bl    Sub0804C330                   ; 0808200C
 cmp   r0,0x0                        ; 08082010
-bne   @@Code080820B4                ; 08082012
+bne   @@Return                      ; 08082012
 ldr   r1,=0x03002200                ; 08082014
 ldr   r0,=0x0300702C                ; 08082016  Sprite RAM structs (03002460)
 ldr   r0,[r0]                       ; 08082018
@@ -83512,7 +83513,7 @@ add   r1,r0,r2                      ; 0808202E
 mov   r2,0x0                        ; 08082030
 ldsh  r0,[r1,r2]                    ; 08082032
 cmp   r0,0x0                        ; 08082034
-blt   @@Code080820B4                ; 08082036
+blt   @@Return                      ; 08082036
 ldr   r2,=0x03007240                ; 08082038  Normal gameplay IWRAM (Ptr to 0300220C)
 ldrh  r1,[r1]                       ; 0808203A
 mov   r0,0xB0                       ; 0808203C
@@ -83561,129 +83562,13 @@ mov   r1,r4                         ; 080820AC
 add   r1,0x94                       ; 080820AE
 mov   r0,0xFF                       ; 080820B0
 strb  r0,[r1]                       ; 080820B2
-@@Code080820B4:
+@@Return:
 pop   {r4-r5}                       ; 080820B4
 pop   {r0}                          ; 080820B6
 bx    r0                            ; 080820B8
 .pool                               ; 080820BA
 
-Sub080820C4:
-; sprite 161 init
-push  {r4,lr}                       ; 080820C4
-mov   r4,r0                         ; 080820C6
-bl    SprShared_TestItemMemory_2    ; 080820C8  Test item memory + ?
-lsl   r0,r0,0x10                    ; 080820CC
-cmp   r0,0x0                        ; 080820CE
-beq   @@Code080820DA                ; 080820D0
-mov   r0,r4                         ; 080820D2
-bl    DespawnSprite                 ; 080820D4
-b     @@Code080820F2                ; 080820D8
-@@Code080820DA:
-ldr   r1,[r4,0x4]                   ; 080820DA
-mov   r2,0x80                       ; 080820DC
-lsl   r2,r2,0x5                     ; 080820DE
-and   r1,r2                         ; 080820E0
-asr   r1,r1,0xB                     ; 080820E2
-ldr   r0,[r4]                       ; 080820E4
-and   r0,r2                         ; 080820E6
-asr   r0,r0,0xC                     ; 080820E8
-orr   r1,r0                         ; 080820EA
-mov   r0,r4                         ; 080820EC
-add   r0,0x62                       ; 080820EE
-strh  r1,[r0]                       ; 080820F0
-@@Code080820F2:
-pop   {r4}                          ; 080820F2
-pop   {r0}                          ; 080820F4
-bx    r0                            ; 080820F6
-
-Sub080820F8:
-; sprite 161 main
-push  {r4-r7,lr}                    ; 080820F8
-mov   r5,r0                         ; 080820FA
-bl    Sub0804C330                   ; 080820FC
-cmp   r0,0x0                        ; 08082100
-bne   @@Code08082158                ; 08082102
-bl    Sub0805DBE8                   ; 08082104
-ldr   r1,=0x03002200                ; 08082108
-ldr   r2,=0x480A                    ; 0808210A
-add   r0,r1,r2                      ; 0808210C
-mov   r2,0x0                        ; 0808210E
-ldsh  r0,[r0,r2]                    ; 08082110
-cmp   r0,0x0                        ; 08082112
-bge   @@Code08082158                ; 08082114
-ldr   r0,=0x4058                    ; 08082116
-add   r1,r1,r0                      ; 08082118
-mov   r0,0x21                       ; 0808211A
-bl    PlayYISound                   ; 0808211C
-mov   r0,r5                         ; 08082120
-bl    Sub0804AAF4                   ; 08082122
-mov   r6,r5                         ; 08082126
-add   r6,0x62                       ; 08082128
-ldrh  r4,[r6]                       ; 0808212A
-ldr   r1,=Data081753F8              ; 0808212C
-lsl   r0,r4,0x1                     ; 0808212E
-add   r0,r0,r1                      ; 08082130
-ldrh  r1,[r0]                       ; 08082132
-mov   r0,r5                         ; 08082134
-bl    Sub0804A250                   ; 08082136
-mov   r7,0x1                        ; 0808213A
-strh  r7,[r5,0x24]                  ; 0808213C
-ldr   r1,=CodePtrs08175400          ; 0808213E
-ldrh  r0,[r6]                       ; 08082140
-lsl   r0,r0,0x2                     ; 08082142
-add   r0,r0,r1                      ; 08082144
-ldr   r1,[r0]                       ; 08082146
-mov   r0,r5                         ; 08082148
-bl    Sub_bx_r1                     ; 0808214A
-cmp   r4,0x2                        ; 0808214E
-bne   @@Code08082158                ; 08082150
-mov   r0,r5                         ; 08082152
-add   r0,0x6C                       ; 08082154
-strh  r7,[r0]                       ; 08082156
-@@Code08082158:
-pop   {r4-r7}                       ; 08082158
-pop   {r0}                          ; 0808215A
-bx    r0                            ; 0808215C
-.pool                               ; 0808215E
-
-Sub08082174:
-mov   r2,r0                         ; 08082174
-add   r2,0x62                       ; 08082176
-mov   r1,0x0                        ; 08082178
-strh  r1,[r2]                       ; 0808217A
-ldrh  r2,[r0,0x2C]                  ; 0808217C
-ldr   r1,=0xFFF1                    ; 0808217E
-and   r1,r2                         ; 08082180
-mov   r2,0x2                        ; 08082182
-orr   r1,r2                         ; 08082184
-strh  r1,[r0,0x2C]                  ; 08082186
-ldr   r2,[r0,0x4]                   ; 08082188
-asr   r2,r2,0x4                     ; 0808218A
-ldr   r3,=0xFFFFFF00                ; 0808218C
-mov   r1,r3                         ; 0808218E
-and   r2,r1                         ; 08082190
-ldr   r3,=0xFFFF8000                ; 08082192
-mov   r1,r3                         ; 08082194
-orr   r2,r1                         ; 08082196
-ldr   r1,[r0]                       ; 08082198
-asr   r1,r1,0xC                     ; 0808219A
-mov   r3,0xFF                       ; 0808219C
-and   r1,r3                         ; 0808219E
-orr   r2,r1                         ; 080821A0
-add   r0,0x66                       ; 080821A2
-strh  r2,[r0]                       ; 080821A4
-bx    lr                            ; 080821A6
-.pool                               ; 080821A8
-
-Sub080821B4:
-mov   r2,r0                         ; 080821B4
-add   r2,0x66                       ; 080821B6
-mov   r1,0x0                        ; 080821B8
-strh  r1,[r2]                       ; 080821BA
-add   r0,0x62                       ; 080821BC
-strh  r1,[r0]                       ; 080821BE
-bx    lr                            ; 080821C0
-.pool                               ; 080821C2
+.include "asm/Sprites/RewardItem.asm"
 
 Sub080821C4:
 ; sprite 040 init
@@ -134037,14 +133922,14 @@ push  {r7}                          ; 0809D6E8
 mov   r4,r0                         ; 0809D6EA
 ldr   r0,=0x03002200                ; 0809D6EC
 ldr   r1,=0x48CE                    ; 0809D6EE
-add   r0,r0,r1                      ; 0809D6F0
+add   r0,r0,r1                      ; 0809D6F0  03006ACE
 ldrh  r1,[r0]                       ; 0809D6F2
 mov   r5,0x3                        ; 0809D6F4
-ldr   r0,=0x012B                    ; 0809D6F6
-ldr   r6,=0x0115                    ; 0809D6F8
+ldr   r0,=0x012B                    ; 0809D6F6  12B: 29.9 stars
+ldr   r6,=0x0115                    ; 0809D6F8  115: coin sprite
 cmp   r1,r0                         ; 0809D6FA
 bhi   @@Code0809D700                ; 0809D6FC
-add   r6,0x8D                       ; 0809D6FE
+add   r6,0x8D                       ; 0809D6FE  1A2: star sprite
 @@Code0809D700:
 ldr   r0,=0x03007240                ; 0809D700  Normal gameplay IWRAM (Ptr to 0300220C)
 mov   r8,r0                         ; 0809D702
@@ -134055,7 +133940,7 @@ bl    Sub0804A23C                   ; 0809D708
 lsl   r0,r0,0x18                    ; 0809D70C
 asr   r1,r0,0x18                    ; 0809D70E
 cmp   r1,0x0                        ; 0809D710
-blt   @@Code0809D754                ; 0809D712
+blt   @@Return                      ; 0809D712
 mov   r0,0xB0                       ; 0809D714
 mul   r0,r1                         ; 0809D716
 mov   r1,0x95                       ; 0809D718
@@ -134088,7 +133973,7 @@ lsl   r1,r1,0x18                    ; 0809D74C
 lsr   r5,r1,0x18                    ; 0809D74E
 cmp   r1,0x0                        ; 0809D750
 bne   @@Code0809D706                ; 0809D752
-@@Code0809D754:
+@@Return:
 pop   {r3}                          ; 0809D754
 mov   r8,r3                         ; 0809D756
 pop   {r4-r7}                       ; 0809D758
@@ -147724,7 +147609,7 @@ ldr   r0,=0x03002200                ; 080A48E2
 ldr   r1,=0x48CE                    ; 080A48E4
 add   r0,r0,r1                      ; 080A48E6  03006ACE
 ldrh  r1,[r0]                       ; 080A48E8  star count
-ldr   r0,=0x012B                    ; 080A48EA
+ldr   r0,=0x012B                    ; 080A48EA  29.9 stars
 cmp   r1,r0                         ; 080A48EC
 bhi   @@Code080A4908                ; 080A48EE
 add   r0,0x77                       ; 080A48F0  1A2: star

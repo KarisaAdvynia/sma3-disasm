@@ -803,7 +803,7 @@ pop   {r1}                          ; 080E68CE
 bx    r1                            ; 080E68D0
 .pool                               ; 080E68D2
 
-Sub080E68D4:
+InvScr_Disp2DigitNumber:
 ; Display 2-digit decimal number to inventory screen, hiding leading zero
 ; r0: ones digit
 ; r1: tens digit
@@ -824,7 +824,7 @@ lsl   r2,r2,0x10                    ; 080E68E6
 lsl   r3,r3,0x10                    ; 080E68E8
 lsl   r4,r4,0x10                    ; 080E68EA
 lsr   r5,r4,0x10                    ; 080E68EC
-ldr   r1,=ScoreDigitTilesUpper      ; 080E68EE
+ldr   r1,=InvGoalScr_DigitTilesUpper; 080E68EE
 mov   r9,r1                         ; 080E68F0
 lsr   r0,r0,0xF                     ; 080E68F2
 add   r1,r0,r1                      ; 080E68F4
@@ -835,7 +835,7 @@ ldr   r4,=0x02015400                ; 080E68FC
 add   r2,r7,r4                      ; 080E68FE
 add   r1,0x80                       ; 080E6900
 strh  r1,[r2]                       ; 080E6902  store ones digit to pause screen tilemap buffer
-ldr   r2,=ScoreDigitTilesLower      ; 080E6904
+ldr   r2,=InvGoalScr_DigitTilesLower; 080E6904
 mov   r8,r2                         ; 080E6906
 add   r0,r8                         ; 080E6908
 ldrh  r0,[r0]                       ; 080E690A
@@ -1224,7 +1224,7 @@ pop   {r0}                          ; 080E6C52
 bx    r0                            ; 080E6C54
 .pool                               ; 080E6C56
 
-Sub080E6C60:
+InvScr_DispLevelHighScore:
 push  {r4-r7,lr}                    ; 080E6C60
 mov   r7,r8                         ; 080E6C62
 push  {r7}                          ; 080E6C64
@@ -1232,12 +1232,12 @@ add   sp,-0x4                       ; 080E6C66
 mov   r2,0x0                        ; 080E6C68
 ldr   r0,=0x03002200                ; 080E6C6A
 ldr   r3,=0x4088                    ; 080E6C6C
-add   r1,r0,r3                      ; 080E6C6E
+add   r1,r0,r3                      ; 080E6C6E  03006288
 ldr   r4,=0x4908                    ; 080E6C70
-add   r0,r0,r4                      ; 080E6C72
-ldrh  r1,[r1]                       ; 080E6C74
-add   r0,r0,r1                      ; 080E6C76
-ldrb  r1,[r0]                       ; 080E6C78
+add   r0,r0,r4                      ; 080E6C72  03006B08 (pointer to high scores)
+ldrh  r1,[r1]                       ; 080E6C74  level ID
+add   r0,r0,r1                      ; 080E6C76  index with level ID
+ldrb  r1,[r0]                       ; 080E6C78  current level's high score
 cmp   r1,0x63                       ; 080E6C7A  99dec
 bls   @@Code080E6C9E                ; 080E6C7C
 mov   r1,0xA                        ; 080E6C7E \ for 100, use special tiles
@@ -1272,15 +1272,15 @@ mov   r0,r1                         ; 080E6CB6
 mov   r1,r2                         ; 080E6CB8
 mov   r2,0x98                       ; 080E6CBA
 mov   r3,0xB8                       ; 080E6CBC
-bl    Sub080E68D4                   ; 080E6CBE  write high score tiles
+bl    InvScr_Disp2DigitNumber       ; 080E6CBE  write high score tiles
 ldr   r1,=0x413C                    ; 080E6CC2
 add   r0,r6,r1                      ; 080E6CC4  0300633C
-ldrh  r2,[r0]                       ; 080E6CC6  world index
+ldrh  r2,[r0]                       ; 080E6CC6  world index (0 to A)
 lsr   r2,r2,0x1                     ; 080E6CC8
-add   r1,r2,0x1                     ; 080E6CCA
+add   r1,r2,0x1                     ; 080E6CCA  r1 = world number (1 to 6)
 ldr   r3,=0x02015508                ; 080E6CCC
 mov   r12,r3                        ; 080E6CCE
-ldr   r3,=ScoreDigitTilesUpper      ; 080E6CD0
+ldr   r3,=InvGoalScr_DigitTilesUpper; 080E6CD0
 lsl   r1,r1,0x1                     ; 080E6CD2
 add   r0,r1,r3                      ; 080E6CD4
 ldrh  r0,[r0]                       ; 080E6CD6
@@ -1289,7 +1289,7 @@ mov   r4,r12                        ; 080E6CDA
 strh  r0,[r4]                       ; 080E6CDC
 ldr   r7,=0x02015548                ; 080E6CDE
 mov   r8,r7                         ; 080E6CE0
-ldr   r4,=ScoreDigitTilesLower      ; 080E6CE2
+ldr   r4,=InvGoalScr_DigitTilesLower; 080E6CE2
 add   r1,r1,r4                      ; 080E6CE4
 ldrh  r0,[r1]                       ; 080E6CE6
 add   r0,0x80                       ; 080E6CE8
@@ -1364,12 +1364,12 @@ ldrh  r1,[r1]                       ; 080E6D6A
 add   r0,r0,r1                      ; 080E6D6C
 ldrb  r0,[r0]                       ; 080E6D6E
 cmp   r0,0x1                        ; 080E6D70
-bls   @@Code080E6D7C                ; 080E6D72
+bls   @@Return                      ; 080E6D72
 ldr   r1,=0x02015574                ; 080E6D74
 ldr   r7,=0x01EF                    ; 080E6D76
 mov   r0,r7                         ; 080E6D78
 strh  r0,[r1]                       ; 080E6D7A
-@@Code080E6D7C:
+@@Return:
 add   sp,0x4                        ; 080E6D7C
 pop   {r3}                          ; 080E6D7E
 mov   r8,r3                         ; 080E6D80
@@ -1378,25 +1378,25 @@ pop   {r0}                          ; 080E6D84
 bx    r0                            ; 080E6D86
 .pool                               ; 080E6D88
 
-Sub080E6DDC:
+InvScr_DispWorldHighScore:
 push  {r4-r7,lr}                    ; 080E6DDC
 mov   r7,r8                         ; 080E6DDE
 push  {r7}                          ; 080E6DE0
 ldr   r2,=0x03002200                ; 080E6DE2
 ldr   r1,=0x413C                    ; 080E6DE4
-add   r0,r2,r1                      ; 080E6DE6
-ldrh  r0,[r0]                       ; 080E6DE8
+add   r0,r2,r1                      ; 080E6DE6  0300633C
+ldrh  r0,[r0]                       ; 080E6DE8  world index (0 to A)
 lsr   r5,r0,0x1                     ; 080E6DEA
-add   r1,r5,0x1                     ; 080E6DEC
+add   r1,r5,0x1                     ; 080E6DEC  world number (1 to 6)
 ldr   r7,=0x02015452                ; 080E6DEE
-ldr   r4,=ScoreDigitTilesUpper      ; 080E6DF0
+ldr   r4,=InvGoalScr_DigitTilesUpper; 080E6DF0
 lsl   r1,r1,0x1                     ; 080E6DF2
 add   r0,r1,r4                      ; 080E6DF4
 ldrh  r0,[r0]                       ; 080E6DF6
 add   r0,0x80                       ; 080E6DF8
 strh  r0,[r7]                       ; 080E6DFA
 ldr   r6,=0x02015492                ; 080E6DFC
-ldr   r3,=ScoreDigitTilesLower      ; 080E6DFE
+ldr   r3,=InvGoalScr_DigitTilesLower; 080E6DFE
 add   r1,r1,r3                      ; 080E6E00
 ldrh  r0,[r1]                       ; 080E6E02
 add   r0,0x80                       ; 080E6E04
@@ -1423,14 +1423,14 @@ mov   r7,0x98                       ; 080E6E2C
 lsl   r7,r7,0x2                     ; 080E6E2E
 mov   r0,r7                         ; 080E6E30
 strh  r0,[r1]                       ; 080E6E32
-b     @@Code080E6F78                ; 080E6E34
+b     @@Return                      ; 080E6E34
 .pool                               ; 080E6E36
 
 @@Code080E6E64:
 lsl   r0,r5,0x1                     ; 080E6E64
 ldr   r1,=0x0202C8A4                ; 080E6E66
-add   r0,r0,r1                      ; 080E6E68
-ldrh  r2,[r0]                       ; 080E6E6A
+add   r0,r0,r1                      ; 080E6E68  index with world number
+ldrh  r2,[r0]                       ; 080E6E6A  world high score total
 cmp   r2,0x1                        ; 080E6E6C
 bls   @@Code080E6E78                ; 080E6E6E
 ldr   r1,=0x020154B4                ; 080E6E70
@@ -1476,7 +1476,7 @@ add   r1,0x40                       ; 080E6EBC
 add   r2,0x11                       ; 080E6EBE
 mov   r0,r2                         ; 080E6EC0
 strh  r0,[r1]                       ; 080E6EC2
-b     @@Code080E6F78                ; 080E6EC4
+b     @@Return                      ; 080E6EC4
 .pool                               ; 080E6EC6
 
 @@Code080E6EE4:
@@ -1559,7 +1559,7 @@ add   r1,r8                         ; 080E6F70
 ldrh  r0,[r1]                       ; 080E6F72
 add   r0,0x80                       ; 080E6F74
 strh  r0,[r2]                       ; 080E6F76
-@@Code080E6F78:
+@@Return:
 pop   {r3}                          ; 080E6F78
 mov   r8,r3                         ; 080E6F7A
 pop   {r4-r7}                       ; 080E6F7C
@@ -1567,19 +1567,21 @@ pop   {r0}                          ; 080E6F7E
 bx    r0                            ; 080E6F80
 .pool                               ; 080E6F82
 
-Sub080E6FA0:
+InvScr_DispTotalPoints:
+; r0: star count
+; r1: red coin count
 push  {r4-r6,lr}                    ; 080E6FA0
 add   sp,-0x4                       ; 080E6FA2
 lsl   r0,r0,0x10                    ; 080E6FA4
-lsr   r4,r0,0x10                    ; 080E6FA6
+lsr   r4,r0,0x10                    ; 080E6FA6  r4 = stars
 lsl   r1,r1,0x10                    ; 080E6FA8
-lsr   r3,r1,0x10                    ; 080E6FAA
+lsr   r3,r1,0x10                    ; 080E6FAA  r3 = red coins
 ldr   r2,=0x03002200                ; 080E6FAC
 ldr   r1,=0x4088                    ; 080E6FAE
 add   r0,r2,r1                      ; 080E6FB0  03006288
 ldrh  r0,[r0]                       ; 080E6FB2  level ID
 cmp   r0,0xB                        ; 080E6FB4  0B: Intro level
-bne   @@Code080E6FE8                ; 080E6FB6
+bne   @@CalcTotalPoints             ; 080E6FB6
 ldr   r0,=0x0201576E                ; 080E6FB8
 ldr   r2,=0x01FF                    ; 080E6FBA
 mov   r1,r2                         ; 080E6FBC
@@ -1593,10 +1595,10 @@ add   r2,0x61                       ; 080E6FCA
 mov   r0,r2                         ; 080E6FCC
 strh  r0,[r1]                       ; 080E6FCE
 mov   r0,0x0                        ; 080E6FD0
-b     @@Code080E7050                ; 080E6FD2
+b     @@Return_r0                   ; 080E6FD2
 .pool                               ; 080E6FD4
 
-@@Code080E6FE8:
+@@CalcTotalPoints:
 mov   r5,0x0                        ; 080E6FE8
 ldr   r1,=0x489A                    ; 080E6FEA
 add   r0,r2,r1                      ; 080E6FEC  03006A9A
@@ -1605,25 +1607,25 @@ lsl   r0,r1,0x2                     ; 080E6FF0 \
 add   r0,r0,r1                      ; 080E6FF2 | multiply flowers by 10
 lsl   r0,r0,0x11                    ; 080E6FF4 |
 lsr   r1,r0,0x10                    ; 080E6FF6 /
-add   r0,r1,r4                      ; 080E6FF8
+add   r0,r1,r4                      ; 080E6FF8  add stars
 lsl   r0,r0,0x10                    ; 080E6FFA
 lsr   r1,r0,0x10                    ; 080E6FFC
-add   r0,r1,r3                      ; 080E6FFE
+add   r0,r1,r3                      ; 080E6FFE  add red coins
 lsl   r0,r0,0x10                    ; 080E7000
-lsr   r4,r0,0x10                    ; 080E7002
-mov   r1,r4                         ; 080E7004
-mov   r6,r4                         ; 080E7006
+lsr   r4,r0,0x10                    ; 080E7002  r4 = total score
+mov   r1,r4                         ; 080E7004  r1 = total score
+mov   r6,r4                         ; 080E7006  r6 = total score
 cmp   r4,0x63                       ; 080E7008  99dec
-bls   @@Code080E7018                ; 080E700A
+bls   @@LessThan100                 ; 080E700A
 mov   r1,0xA                        ; 080E700C \ for 100, use special tiles
 mov   r5,0xB                        ; 080E700E /
-b     @@Code080E702E                ; 080E7010
+b     @@HexDecLoopEnd               ; 080E7010
 .pool                               ; 080E7012
 
-@@Code080E7018:
+@@LessThan100:
 cmp   r4,0x9                        ; 080E7018
-bls   @@Code080E702E                ; 080E701A
-@@Code080E701C:
+bls   @@HexDecLoopEnd               ; 080E701A
+@@HexDecLoop:                       ;          \ set r5 to tens digit, r1 to ones digit
 mov   r0,r1                         ; 080E701C
 sub   r0,0xA                        ; 080E701E
 lsl   r0,r0,0x10                    ; 080E7020
@@ -1632,33 +1634,33 @@ add   r0,r5,0x1                     ; 080E7024
 lsl   r0,r0,0x10                    ; 080E7026
 lsr   r5,r0,0x10                    ; 080E7028
 cmp   r1,0x9                        ; 080E702A
-bhi   @@Code080E701C                ; 080E702C
-@@Code080E702E:
+bhi   @@HexDecLoop                  ; 080E702C /
+@@HexDecLoopEnd:
 mov   r2,0xDC                       ; 080E702E
 lsl   r2,r2,0x1                     ; 080E7030  01B8
 mov   r3,0xEC                       ; 080E7032
 lsl   r3,r3,0x1                     ; 080E7034  01D8
 mov   r0,0x0                        ; 080E7036
 str   r0,[sp]                       ; 080E7038
-mov   r0,r1                         ; 080E703A
-mov   r1,r5                         ; 080E703C
-bl    Sub080E68D4                   ; 080E703E  write total score tiles
+mov   r0,r1                         ; 080E703A  r0: ones digit
+mov   r1,r5                         ; 080E703C  r1: tens digit
+bl    InvScr_Disp2DigitNumber       ; 080E703E  write total score tiles
 cmp   r6,0x1                        ; 080E7042
-bls   @@Code080E704E                ; 080E7044
+bls   @@Return_r4                   ; 080E7044
 ldr   r1,=0x020157B4                ; 080E7046
 ldr   r2,=0x01EF                    ; 080E7048
 mov   r0,r2                         ; 080E704A
 strh  r0,[r1]                       ; 080E704C
-@@Code080E704E:
+@@Return_r4:
 mov   r0,r4                         ; 080E704E
-@@Code080E7050:
+@@Return_r0:
 add   sp,0x4                        ; 080E7050
 pop   {r4-r6}                       ; 080E7052
 pop   {r1}                          ; 080E7054
 bx    r1                            ; 080E7056
 .pool                               ; 080E7058
 
-Sub080E7060:
+InvScr_DispCurrentFlowers:
 push  {r4-r7,lr}                    ; 080E7060
 mov   r5,0x0                        ; 080E7062
 ldr   r0,=0x03002200                ; 080E7064
@@ -1672,7 +1674,7 @@ mov   r5,0x80                       ; 080E7072 \ runs if flowers > 4
 lsl   r5,r5,0x6                     ; 080E7074  2000: use palette 2
 mov   r3,0x5                        ; 080E7076 / display 5
 @@Code080E7078:
-ldr   r7,=ScoreDigitTilesUpper      ; 080E7078
+ldr   r7,=InvGoalScr_DigitTilesUpper; 080E7078
 lsl   r4,r3,0x1                     ; 080E707A
 add   r0,r4,r7                      ; 080E707C
 ldrh  r2,[r0]                       ; 080E707E
@@ -1685,7 +1687,7 @@ ldr   r0,=0x020156AE                ; 080E7088
 mov   r1,r2                         ; 080E708A
 add   r1,0x80                       ; 080E708C
 strh  r1,[r0]                       ; 080E708E
-ldr   r6,=ScoreDigitTilesLower      ; 080E7090
+ldr   r6,=InvGoalScr_DigitTilesLower; 080E7090
 add   r0,r4,r6                      ; 080E7092
 ldrh  r2,[r0]                       ; 080E7094
 cmp   r3,0x0                        ; 080E7096
@@ -1720,7 +1722,7 @@ pop   {r0}                          ; 080E70CC
 bx    r0                            ; 080E70CE
 .pool                               ; 080E70D0
 
-Sub080E70EC:
+InvScr_DispCurrentRedCoins:
 push  {r4-r6,lr}                    ; 080E70EC
 add   sp,-0x4                       ; 080E70EE
 mov   r6,0x0                        ; 080E70F0
@@ -1737,8 +1739,8 @@ mov   r1,0x14                       ; 080E7104 / display 20dec
 @@Code080E7106:
 mov   r5,r1                         ; 080E7106
 cmp   r5,0x9                        ; 080E7108
-bls   @@Code080E711E                ; 080E710A
-@@Code080E710C:
+bls   @@HexDecLoopEnd               ; 080E710A
+@@HexDecLoop:
 mov   r0,r1                         ; 080E710C \ loop: convert to decimal
 sub   r0,0xA                        ; 080E710E
 lsl   r0,r0,0x10                    ; 080E7110
@@ -1747,8 +1749,8 @@ add   r0,r4,0x1                     ; 080E7114
 lsl   r0,r0,0x10                    ; 080E7116
 lsr   r4,r0,0x10                    ; 080E7118
 cmp   r1,0x9                        ; 080E711A
-bhi   @@Code080E710C                ; 080E711C /
-@@Code080E711E:
+bhi   @@HexDecLoop                  ; 080E711C /
+@@HexDecLoopEnd:
 mov   r2,0xA7                       ; 080E711E
 lsl   r2,r2,0x1                     ; 080E7120  014E
 mov   r3,0xB7                       ; 080E7122
@@ -1756,7 +1758,7 @@ lsl   r3,r3,0x1                     ; 080E7124  016E
 str   r6,[sp]                       ; 080E7126
 mov   r0,r1                         ; 080E7128
 mov   r1,r4                         ; 080E712A
-bl    Sub080E68D4                   ; 080E712C  write red coin count tiles
+bl    InvScr_Disp2DigitNumber       ; 080E712C  write red coin count tiles
 mov   r0,r5                         ; 080E7130
 add   sp,0x4                        ; 080E7132
 pop   {r4-r6}                       ; 080E7134
@@ -1764,7 +1766,7 @@ pop   {r1}                          ; 080E7136
 bx    r1                            ; 080E7138
 .pool                               ; 080E713A
 
-Sub080E7144:
+InvScr_DispCurrentStars:
 push  {r4-r6,lr}                    ; 080E7144
 add   sp,-0x4                       ; 080E7146
 mov   r6,0x0                        ; 080E7148
@@ -1777,8 +1779,8 @@ ldrh  r1,[r0]                       ; 080E7154  stars (fixed-point)
 cmp   r1,0x0                        ; 080E7156
 beq   @@Code080E7178                ; 080E7158
 cmp   r1,0x9                        ; 080E715A
-bls   @@Code080E7170                ; 080E715C
-@@Code080E715E:
+bls   @@DivBy10LoopEnd              ; 080E715C
+@@DivBy10Loop:
 mov   r0,r1                         ; 080E715E \ loop: divide by 10dec by repeated subtraction
 sub   r0,0xA                        ; 080E7160
 lsl   r0,r0,0x10                    ; 080E7162
@@ -1787,8 +1789,8 @@ add   r0,r4,0x1                     ; 080E7166
 lsl   r0,r0,0x10                    ; 080E7168
 lsr   r4,r0,0x10                    ; 080E716A
 cmp   r1,0x9                        ; 080E716C
-bhi   @@Code080E715E                ; 080E716E /
-@@Code080E7170:
+bhi   @@DivBy10Loop                 ; 080E716E /
+@@DivBy10LoopEnd:
 cmp   r4,0x1D                       ; 080E7170  29dec
 bls   @@Code080E7178                ; 080E7172
 mov   r6,0x80                       ; 080E7174 \ runs if stars > 29dec
@@ -1796,9 +1798,9 @@ lsl   r6,r6,0x6                     ; 080E7176 / 2000: use palette 2
 @@Code080E7178:                     ;           unlike red coins/flowers, star count is not capped in pause screen
 mov   r1,r4                         ; 080E7178
 cmp   r4,0x9                        ; 080E717A
-bls   @@Code080E7190                ; 080E717C
-@@Code080E717E:
-mov   r0,r1                         ; 080E717E \ loop: convert to decimal
+bls   @@HexDecLoopEnd               ; 080E717C
+@@HexDecLoop:                       ;          \ loop: convert to decimal
+mov   r0,r1                         ; 080E717E
 sub   r0,0xA                        ; 080E7180
 lsl   r0,r0,0x10                    ; 080E7182
 lsr   r1,r0,0x10                    ; 080E7184
@@ -1806,14 +1808,14 @@ add   r0,r5,0x1                     ; 080E7186
 lsl   r0,r0,0x10                    ; 080E7188
 lsr   r5,r0,0x10                    ; 080E718A
 cmp   r1,0x9                        ; 080E718C
-bhi   @@Code080E717E                ; 080E718E /
-@@Code080E7190:
+bhi   @@HexDecLoop                  ; 080E718E /
+@@HexDecLoopEnd:
 ldr   r2,=0x0145                    ; 080E7190
 ldr   r3,=0x0165                    ; 080E7192
 str   r6,[sp]                       ; 080E7194
 mov   r0,r1                         ; 080E7196
 mov   r1,r5                         ; 080E7198
-bl    Sub080E68D4                   ; 080E719A  write star count tiles
+bl    InvScr_Disp2DigitNumber       ; 080E719A  write star count tiles
 mov   r0,r4                         ; 080E719E
 add   sp,0x4                        ; 080E71A0
 pop   {r4-r6}                       ; 080E71A2
@@ -1844,7 +1846,7 @@ ldr   r7,=0x02015B00                ; 080E71DC
 ldr   r6,=0x02010800                ; 080E71DE
 ldr   r5,=0x02015D00                ; 080E71E0
 ldr   r4,=0x02010A00                ; 080E71E2
-@@Code080E71E4:
+@@Loop080E71E4:
 lsl   r1,r3,0x1                     ; 080E71E4
 add   r2,r1,r7                      ; 080E71E6
 add   r0,r1,r6                      ; 080E71E8
@@ -1858,7 +1860,7 @@ add   r0,r3,0x1                     ; 080E71F6
 lsl   r0,r0,0x10                    ; 080E71F8
 lsr   r3,r0,0x10                    ; 080E71FA
 cmp   r3,0xFF                       ; 080E71FC
-bls   @@Code080E71E4                ; 080E71FE
+bls   @@Loop080E71E4                ; 080E71FE
 mov   r7,0x0                        ; 080E7200
 mov   r10,r7                        ; 080E7202
 mov   r0,r10                        ; 080E7204
@@ -1883,7 +1885,7 @@ ldr   r3,=Data082D585C              ; 080E722C
 mov   r12,r3                        ; 080E722E
 ldr   r5,=0x02010D00                ; 080E7230
 mov   r10,r5                        ; 080E7232
-@@Code080E7234:
+@@Loop080E7234:
 add   r4,r6,0x2                     ; 080E7234
 asr   r3,r4,0x1                     ; 080E7236
 lsl   r3,r3,0x1                     ; 080E7238
@@ -1941,13 +1943,13 @@ strh  r5,[r0]                       ; 080E729E
 lsl   r4,r4,0x10                    ; 080E72A0
 lsr   r6,r4,0x10                    ; 080E72A2
 cmp   r6,0x1D                       ; 080E72A4
-bls   @@Code080E7234                ; 080E72A6
+bls   @@Loop080E7234                ; 080E72A6
 ldr   r5,=0x01FF                    ; 080E72A8
 mov   r3,0x0                        ; 080E72AA  loop index
 ldr   r4,=0x03002200                ; 080E72AC
 ldr   r2,=0x02015400                ; 080E72AE
 ldr   r1,=0x037F                    ; 080E72B0  max loop index
-@@Code080E72B2:
+@@Loop_ClearTilemapBuffer:
 lsl   r0,r3,0x1                     ; 080E72B2 \ loop: clear pause screen buffer
 add   r0,r0,r2                      ; 080E72B4
 strh  r5,[r0]                       ; 080E72B6  set to 01FF (blank tile)
@@ -1955,11 +1957,11 @@ add   r0,r3,0x1                     ; 080E72B8  increment loop index
 lsl   r0,r0,0x10                    ; 080E72BA
 lsr   r3,r0,0x10                    ; 080E72BC
 cmp   r3,r1                         ; 080E72BE
-bls   @@Code080E72B2                ; 080E72C0 /
+bls   @@Loop_ClearTilemapBuffer     ; 080E72C0 /
 mov   r2,0x0                        ; 080E72C2
-mov   r12,r2                        ; 080E72C4
-mov   r9,r2                         ; 080E72C6
-mov   r8,r2                         ; 080E72C8
+mov   r12,r2                        ; 080E72C4  r12 = 0
+mov   r9,r2                         ; 080E72C6  r9 = 0
+mov   r8,r2                         ; 080E72C8  r8 = 0
 mov   r2,r4                         ; 080E72CA
 ldr   r3,=0x48CE                    ; 080E72CC
 add   r0,r2,r3                      ; 080E72CE  03006ACE
@@ -1990,12 +1992,18 @@ mov   r2,0x80                       ; 080E72FA \ runs if flowers == 5
 lsl   r2,r2,0x6                     ; 080E72FC  2000
 mov   r8,r2                         ; 080E72FE / r8 = 2000
 @@Code080E7300:
-mov   r7,0x0                        ; 080E7300
+mov   r7,0x0                        ; 080E7300  r7 = 0
 mov   r3,0x0                        ; 080E7302
-mov   r10,r3                        ; 080E7304
-@@Code080E7306:
+mov   r10,r3                        ; 080E7304  r10 = 0
+; Loop: write score item / total points rows to tilemap
+; r12: palette to apply to stars. 2000 if max stars, else 0
+; r9: palette to apply to red coins. 2000 if max red coins, else 0
+; r8: palette to apply to flowers. 2000 if max flowers, else 0
+; r7: loop index, increments each loop. Loops 1C times
+; r10: same as loop index, increments each loop
+@@Loop_DispScoreItemRows:
 mov   r5,r10                        ; 080E7306
-lsl   r3,r5,0x1                     ; 080E7308
+lsl   r3,r5,0x1                     ; 080E7308  r3 = loop index *2
 ldr   r1,=0x02015582                ; 080E730A
 add   r0,r3,r1                      ; 080E730C
 lsl   r4,r7,0x1                     ; 080E730E
@@ -2004,13 +2012,13 @@ add   r1,r4,r2                      ; 080E7312
 ldrh  r1,[r1]                       ; 080E7314
 strh  r1,[r0]                       ; 080E7316
 cmp   r7,0x17                       ; 080E7318
-bhi   @@Code080E739A                ; 080E731A
-ldr   r0,=Data08194868              ; 080E731C
+bhi   @@SkipTotalPointsRow          ; 080E731A
+ldr   r0,=InvScr_TotalPointsChars   ; 080E731C
 add   r0,r7,r0                      ; 080E731E
-ldrb  r6,[r0]                       ; 080E7320
+ldrb  r6,[r0]                       ; 080E7320  load character index from table
 lsr   r1,r6,0x1                     ; 080E7322
-lsl   r1,r1,0x1                     ; 080E7324
-ldr   r5,=Data0819436A              ; 080E7326
+lsl   r1,r1,0x1                     ; 080E7324  r1 = char index *2
+ldr   r5,=InvGoalScr_TextTilesUpper ; 080E7326
 add   r0,r1,r5                      ; 080E7328
 ldrh  r5,[r0]                       ; 080E732A
 ldr   r0,=0x02015746                ; 080E732C
@@ -2018,7 +2026,7 @@ add   r2,r3,r0                      ; 080E732E
 mov   r0,r5                         ; 080E7330
 add   r0,0x80                       ; 080E7332
 strh  r0,[r2]                       ; 080E7334
-ldr   r2,=Data081943FA              ; 080E7336
+ldr   r2,=InvGoalScr_TextTilesLower ; 080E7336
 add   r1,r1,r2                      ; 080E7338
 ldrh  r5,[r1]                       ; 080E733A
 ldr   r0,=0x02015786                ; 080E733C
@@ -2026,12 +2034,12 @@ add   r1,r3,r0                      ; 080E733E
 mov   r0,r5                         ; 080E7340
 add   r0,0x80                       ; 080E7342
 strh  r0,[r1]                       ; 080E7344
-ldr   r0,=Data08194880              ; 080E7346
+ldr   r0,=InvScr_WHighScoreChars    ; 080E7346
 add   r0,r7,r0                      ; 080E7348
 ldrb  r6,[r0]                       ; 080E734A
 lsr   r1,r6,0x1                     ; 080E734C
 lsl   r1,r1,0x1                     ; 080E734E
-ldr   r2,=Data0819436A              ; 080E7350
+ldr   r2,=InvGoalScr_TextTilesUpper ; 080E7350
 add   r0,r1,r2                      ; 080E7352
 ldrh  r5,[r0]                       ; 080E7354
 ldr   r0,=0x02015506                ; 080E7356
@@ -2039,7 +2047,7 @@ add   r2,r3,r0                      ; 080E7358
 mov   r0,r5                         ; 080E735A
 add   r0,0x80                       ; 080E735C
 strh  r0,[r2]                       ; 080E735E
-ldr   r2,=Data081943FA              ; 080E7360
+ldr   r2,=InvGoalScr_TextTilesLower ; 080E7360
 add   r1,r1,r2                      ; 080E7362
 ldrh  r5,[r1]                       ; 080E7364
 ldr   r0,=0x02015546                ; 080E7366
@@ -2047,12 +2055,12 @@ add   r1,r3,r0                      ; 080E7368
 mov   r0,r5                         ; 080E736A
 add   r0,0x80                       ; 080E736C
 strh  r0,[r1]                       ; 080E736E
-ldr   r0,=Data08194898              ; 080E7370
+ldr   r0,=InvScr_WorldNumChars      ; 080E7370
 add   r0,r7,r0                      ; 080E7372
 ldrb  r6,[r0]                       ; 080E7374
 lsr   r1,r6,0x1                     ; 080E7376
 lsl   r1,r1,0x1                     ; 080E7378
-ldr   r2,=Data0819436A              ; 080E737A
+ldr   r2,=InvGoalScr_TextTilesUpper ; 080E737A
 add   r0,r1,r2                      ; 080E737C
 ldrh  r5,[r0]                       ; 080E737E
 ldr   r0,=0x02015446                ; 080E7380
@@ -2060,7 +2068,7 @@ add   r2,r3,r0                      ; 080E7382
 mov   r0,r5                         ; 080E7384
 add   r0,0x80                       ; 080E7386
 strh  r0,[r2]                       ; 080E7388
-ldr   r2,=Data081943FA              ; 080E738A
+ldr   r2,=InvGoalScr_TextTilesLower ; 080E738A
 add   r1,r1,r2                      ; 080E738C
 ldrh  r5,[r1]                       ; 080E738E
 ldr   r0,=0x02015486                ; 080E7390
@@ -2068,12 +2076,13 @@ add   r1,r3,r0                      ; 080E7392
 mov   r0,r5                         ; 080E7394
 add   r0,0x80                       ; 080E7396
 strh  r0,[r1]                       ; 080E7398
-@@Code080E739A:                     ; load 5 rows for star/coin/flower score, and color yellow if 5 flowers
+@@SkipTotalPointsRow:
+; load 5 rows for star/coin/flower score, and color yellow if 5 flowers
 cmp   r7,0x1A                       ; 080E739A  copy 2 text rows up to tile 1A
-bhi   @@Code080E73BE                ; 080E739C
+bhi   @@SkipScoreItemNames          ; 080E739C
 ldr   r1,=0x020155C4                ; 080E739E \
 add   r2,r3,r1                      ; 080E73A0
-ldr   r0,=Data0819497E              ; 080E73A2  tilemap: upper half of "STARS COINS FLOWERS"
+ldr   r0,=InvScr_ScItemsR0Tilemap   ; 080E73A2  tilemap: upper half of "STARS COINS FLOWERS"
 add   r0,r4,r0                      ; 080E73A4
 ldrh  r1,[r0]                       ; 080E73A6
 mov   r0,r8                         ; 080E73A8
@@ -2081,18 +2090,18 @@ orr   r0,r1                         ; 080E73AA  apply palette
 strh  r0,[r2]                       ; 080E73AC
 ldr   r5,=0x02015604                ; 080E73AE
 add   r2,r3,r5                      ; 080E73B0
-ldr   r0,=Data081949B4              ; 080E73B2  tilemap: lower half of "STARS COINS FLOWERS"
+ldr   r0,=InvScr_ScItemsR1Tilemap   ; 080E73B2  tilemap: lower half of "STARS COINS FLOWERS"
 add   r0,r4,r0                      ; 080E73B4
 ldrh  r1,[r0]                       ; 080E73B6
 mov   r0,r8                         ; 080E73B8
 orr   r0,r1                         ; 080E73BA  apply palette
 strh  r0,[r2]                       ; 080E73BC /
-@@Code080E73BE:
+@@SkipScoreItemNames:
 cmp   r7,0x17                       ; 080E73BE  copy remaining 3 rows up to tile 17
-bhi   @@Code080E73F2                ; 080E73C0
+bhi   @@SkipScoreItemCounts         ; 080E73C0
 ldr   r0,=0x02015644                ; 080E73C2 \
 add   r2,r3,r0                      ; 080E73C4
-ldr   r0,=Data081949EA              ; 080E73C6  tilemap: 3 down arrows
+ldr   r0,=InvScr_ScItemsR2Tilemap   ; 080E73C6  tilemap: 3 down arrows
 add   r0,r4,r0                      ; 080E73C8
 ldrh  r1,[r0]                       ; 080E73CA
 mov   r0,r8                         ; 080E73CC
@@ -2100,7 +2109,7 @@ orr   r0,r1                         ; 080E73CE  apply palette
 strh  r0,[r2]                       ; 080E73D0
 ldr   r1,=0x02015688                ; 080E73D2  start this row 2 tiles later
 add   r2,r3,r1                      ; 080E73D4
-ldr   r0,=Data08194A1A              ; 080E73D6  tilemap: upper half of "/30 /20 /50"
+ldr   r0,=InvScr_ScItemsR3Tilemap   ; 080E73D6  tilemap: upper half of "/30 /20 /50"
 add   r0,r4,r0                      ; 080E73D8
 ldrh  r1,[r0]                       ; 080E73DA
 mov   r0,r8                         ; 080E73DC
@@ -2108,18 +2117,18 @@ orr   r0,r1                         ; 080E73DE  apply palette
 strh  r0,[r2]                       ; 080E73E0
 ldr   r5,=0x020156C8                ; 080E73E2  start this row 2 tiles later
 add   r2,r3,r5                      ; 080E73E4
-ldr   r0,=Data08194A4A              ; 080E73E6  tilemap: lower half of "/30 /20 /50"
+ldr   r0,=InvScr_ScItemsR4Tilemap   ; 080E73E6  tilemap: lower half of "/30 /20 /50"
 add   r0,r4,r0                      ; 080E73E8
 ldrh  r1,[r0]                       ; 080E73EA
 mov   r0,r8                         ; 080E73EC
 orr   r0,r1                         ; 080E73EE  apply palette
 strh  r0,[r2]                       ; 080E73F0 /
-@@Code080E73F2:                     ; overwrite red coin text portion using white or yellow palette
+@@SkipScoreItemCounts:              ; overwrite red coin text portion using white or yellow palette
 cmp   r7,0xF                        ; 080E73F2  copy 2 text rows up to tile 0F
-bhi   @@Code080E7416                ; 080E73F4
+bhi   @@SkipRedCoinsR0              ; 080E73F4
 ldr   r0,=0x020155C4                ; 080E73F6 \
 add   r2,r3,r0                      ; 080E73F8
-ldr   r0,=Data081948EA              ; 080E73FA  tilemap: upper half of " COINS" portion
+ldr   r0,=InvScr_RedCoinsR0Tilemap  ; 080E73FA  tilemap: upper half of " COINS" portion
 add   r0,r4,r0                      ; 080E73FC
 ldrh  r1,[r0]                       ; 080E73FE
 mov   r0,r9                         ; 080E7400
@@ -2127,18 +2136,18 @@ orr   r0,r1                         ; 080E7402  apply palette
 strh  r0,[r2]                       ; 080E7404
 ldr   r1,=0x02015604                ; 080E7406
 add   r2,r3,r1                      ; 080E7408
-ldr   r0,=Data0819490A              ; 080E740A  tilemap: lower half of " COINS" portion
+ldr   r0,=InvScr_RedCoinsR1Tilemap  ; 080E740A  tilemap: lower half of " COINS" portion
 add   r0,r4,r0                      ; 080E740C
 ldrh  r1,[r0]                       ; 080E740E
 mov   r0,r9                         ; 080E7410
 orr   r0,r1                         ; 080E7412  apply palette
 strh  r0,[r2]                       ; 080E7414 /
-@@Code080E7416:
+@@SkipRedCoinsR0:
 cmp   r7,0xD                        ; 080E7416  copy remaining 3 rows up to tile 0D
-bhi   @@Code080E744A                ; 080E7418
+bhi   @@SkipRedCoinsR2              ; 080E7418
 ldr   r5,=0x02015644                ; 080E741A \
 add   r2,r3,r5                      ; 080E741C
-ldr   r0,=Data0819492A              ; 080E741E  tilemap: coins down arrow
+ldr   r0,=InvScr_RedCoinsR2Tilemap  ; 080E741E  tilemap: coins down arrow
 add   r0,r4,r0                      ; 080E7420
 ldrh  r1,[r0]                       ; 080E7422
 mov   r0,r9                         ; 080E7424
@@ -2146,7 +2155,7 @@ orr   r0,r1                         ; 080E7426  apply palette
 strh  r0,[r2]                       ; 080E7428
 ldr   r0,=0x02015688                ; 080E742A  start this row 2 tiles later
 add   r2,r3,r0                      ; 080E742C
-ldr   r0,=Data08194946              ; 080E742E  tilemap: upper half of " /20" portion
+ldr   r0,=InvScr_RedCoinsR3Tilemap  ; 080E742E  tilemap: upper half of " /20" portion
 add   r0,r4,r0                      ; 080E7430
 ldrh  r1,[r0]                       ; 080E7432
 mov   r0,r9                         ; 080E7434
@@ -2154,18 +2163,18 @@ orr   r0,r1                         ; 080E7436  apply palette
 strh  r0,[r2]                       ; 080E7438
 ldr   r1,=0x020156C8                ; 080E743A  start this row 2 tiles later
 add   r2,r3,r1                      ; 080E743C
-ldr   r0,=Data08194962              ; 080E743E  tilemap: lower half of " /20" portion
+ldr   r0,=InvScr_RedCoinsR4Tilemap  ; 080E743E  tilemap: lower half of " /20" portion
 add   r0,r4,r0                      ; 080E7440
 ldrh  r1,[r0]                       ; 080E7442
 mov   r0,r9                         ; 080E7444
 orr   r0,r1                         ; 080E7446  apply palette
 strh  r0,[r2]                       ; 080E7448 /
-@@Code080E744A:
+@@SkipRedCoinsR2:
 cmp   r7,0x6                        ; 080E744A
-bhi   @@Code080E746E                ; 080E744C
+bhi   @@SkipStarsR0                 ; 080E744C
 ldr   r5,=0x020155C4                ; 080E744E \
 add   r2,r3,r5                      ; 080E7450
-ldr   r0,=Data081948B0              ; 080E7452  tilemap: upper half of "STARS"
+ldr   r0,=InvScr_StarsR0Tilemap     ; 080E7452  tilemap: upper half of "STARS"
 add   r0,r4,r0                      ; 080E7454
 ldrh  r1,[r0]                       ; 080E7456
 mov   r0,r12                        ; 080E7458
@@ -2173,18 +2182,18 @@ orr   r0,r1                         ; 080E745A  apply palette
 strh  r0,[r2]                       ; 080E745C
 ldr   r0,=0x02015604                ; 080E745E
 add   r2,r3,r0                      ; 080E7460
-ldr   r0,=Data081948BE              ; 080E7462  tilemap: lower half of "STARS"
+ldr   r0,=InvScr_StarsR1Tilemap     ; 080E7462  tilemap: lower half of "STARS"
 add   r0,r4,r0                      ; 080E7464
 ldrh  r1,[r0]                       ; 080E7466
 mov   r0,r12                        ; 080E7468
 orr   r0,r1                         ; 080E746A  apply palette
 strh  r0,[r2]                       ; 080E746C /
-@@Code080E746E:
+@@SkipStarsR0:
 cmp   r7,0x4                        ; 080E746E
-bhi   @@Code080E74A2                ; 080E7470
+bhi   @@SkipStarsR2                 ; 080E7470
 ldr   r1,=0x02015644                ; 080E7472 \
 add   r2,r3,r1                      ; 080E7474
-ldr   r0,=Data081948CC              ; 080E7476  tilemap: stars down arrow
+ldr   r0,=InvScr_StarsR2Tilemap     ; 080E7476  tilemap: stars down arrow
 add   r0,r4,r0                      ; 080E7478
 ldrh  r1,[r0]                       ; 080E747A
 mov   r0,r12                        ; 080E747C
@@ -2192,7 +2201,7 @@ orr   r0,r1                         ; 080E747E  apply palette
 strh  r0,[r2]                       ; 080E7480
 ldr   r5,=0x02015688                ; 080E7482  start this row 2 tiles later
 add   r2,r3,r5                      ; 080E7484
-ldr   r0,=Data081948D6              ; 080E7486  tilemap: upper half of " /30"
+ldr   r0,=InvScr_StarsR3Tilemap     ; 080E7486  tilemap: upper half of " /30"
 add   r0,r4,r0                      ; 080E7488
 ldrh  r1,[r0]                       ; 080E748A
 mov   r0,r12                        ; 080E748C
@@ -2200,38 +2209,38 @@ orr   r0,r1                         ; 080E748E  apply palette
 strh  r0,[r2]                       ; 080E7490
 ldr   r0,=0x020156C8                ; 080E7492  start this row 2 tiles later
 add   r2,r3,r0                      ; 080E7494
-ldr   r0,=Data081948E0              ; 080E7496  tilemap: lower half of " /30"
+ldr   r0,=InvScr_StarsR4Tilemap     ; 080E7496  tilemap: lower half of " /30"
 add   r0,r4,r0                      ; 080E7498
 ldrh  r1,[r0]                       ; 080E749A
 mov   r0,r12                        ; 080E749C
 orr   r0,r1                         ; 080E749E  apply palette
 strh  r0,[r2]                       ; 080E74A0 /
-@@Code080E74A2:
-mov   r0,r10                        ; 080E74A2
+@@SkipStarsR2:
+mov   r0,r10                        ; 080E74A2 \
 add   r0,0x1                        ; 080E74A4
-lsl   r0,r0,0x10                    ; 080E74A6
+lsl   r0,r0,0x10                    ; 080E74A6   increment r10, cap to 16-bit
 lsr   r0,r0,0x10                    ; 080E74A8
-mov   r10,r0                        ; 080E74AA
-add   r0,r7,0x1                     ; 080E74AC
-lsl   r0,r0,0x10                    ; 080E74AE
-lsr   r7,r0,0x10                    ; 080E74B0
+mov   r10,r0                        ; 080E74AA /
+add   r0,r7,0x1                     ; 080E74AC \
+lsl   r0,r0,0x10                    ; 080E74AE   increment r7, cap to 16-bit
+lsr   r7,r0,0x10                    ; 080E74B0 /
 cmp   r7,0x1B                       ; 080E74B2
-bhi   @@Code080E74B8                ; 080E74B4
-b     @@Code080E7306                ; 080E74B6
-@@Code080E74B8:
-bl    Sub080E7144                   ; 080E74B8
+bhi   @@BreakLoop_DispScoreItemRows ; 080E74B4
+b     @@Loop_DispScoreItemRows      ; 080E74B6
+@@BreakLoop_DispScoreItemRows:
+bl    InvScr_DispCurrentStars       ; 080E74B8
 lsl   r0,r0,0x10                    ; 080E74BC
-lsr   r7,r0,0x10                    ; 080E74BE
-bl    Sub080E70EC                   ; 080E74C0
-mov   r4,r0                         ; 080E74C4
+lsr   r7,r0,0x10                    ; 080E74BE  r7 = displayed stars (internal stars /10dec)
+bl    InvScr_DispCurrentRedCoins    ; 080E74C0
+mov   r4,r0                         ; 080E74C4  r4 = red coins
 lsl   r4,r4,0x10                    ; 080E74C6
 lsr   r4,r4,0x10                    ; 080E74C8
-bl    Sub080E7060                   ; 080E74CA
-mov   r0,r7                         ; 080E74CE
-mov   r1,r4                         ; 080E74D0
-bl    Sub080E6FA0                   ; 080E74D2
-bl    Sub080E6C60                   ; 080E74D6
-bl    Sub080E6DDC                   ; 080E74DA
+bl    InvScr_DispCurrentFlowers     ; 080E74CA
+mov   r0,r7                         ; 080E74CE  r0 = displayed stars
+mov   r1,r4                         ; 080E74D0  r1 = red coins
+bl    InvScr_DispTotalPoints        ; 080E74D2
+bl    InvScr_DispLevelHighScore     ; 080E74D6
+bl    InvScr_DispWorldHighScore     ; 080E74DA
 bl    Sub080E6A1C                   ; 080E74DE
 ldr   r0,[sp,0x8]                   ; 080E74E2
 bl    Sub080E6958                   ; 080E74E4
@@ -2362,13 +2371,13 @@ cmp   r4,0x0                        ; 080E76D6
 beq   @@Code080E76EC                ; 080E76D8
 mov   r0,r5                         ; 080E76DA
 bl    Sub080E71B8                   ; 080E76DC
-b     @@Code080E76F2                ; 080E76E0
+b     @@Return_0                    ; 080E76E0
 .pool                               ; 080E76E2
 
 @@Code080E76EC:
 mov   r0,r5                         ; 080E76EC
 bl    Sub080E7658                   ; 080E76EE
-@@Code080E76F2:
+@@Return_0:
 mov   r0,0x0                        ; 080E76F2
 pop   {r4-r5}                       ; 080E76F4
 pop   {r1}                          ; 080E76F6

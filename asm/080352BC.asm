@@ -4760,12 +4760,12 @@ ldrh  r0,[r3,0x30]                  ; 080379A4  entrance animation
 lsl   r0,r0,0x11                    ; 080379A6
 lsr   r4,r0,0x10                    ; 080379A8  entr anim *2
 mov   r5,0x20                       ; 080379AA
-ldr   r1,=Data0816DDB0              ; 080379AC
+ldr   r1,=EntrAnim_YoshiAnim        ; 080379AC
 mov   r0,r4                         ; 080379AE
 add   r0,r0,r1                      ; 080379B0  index with entr anim
-ldrh  r1,[r0]                       ; 080379B2
+ldrh  r1,[r0]                       ; 080379B2  Yoshi anim
 mov   r2,0x0                        ; 080379B4
-strh  r1,[r3,0x30]                  ; 080379B6
+strh  r1,[r3,0x30]                  ; 080379B6  set new Yoshi animation
 mov   r6,0xD4                       ; 080379B8
 lsl   r6,r6,0x1                     ; 080379BA  1A8
 add   r0,r3,r6                      ; 080379BC  03006F28

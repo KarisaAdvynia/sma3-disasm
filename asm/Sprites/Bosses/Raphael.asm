@@ -2594,7 +2594,7 @@ ldr   r1,=0x2A16                    ; 080D2D66
 add   r2,r2,r1                      ; 080D2D68
 strh  r0,[r2]                       ; 080D2D6A
 mov   r0,r4                         ; 080D2D6C
-bl    Sub080BD8E4                   ; 080D2D6E
+bl    BossDefeat_080BD8E4           ; 080D2D6E
 mov   r0,0x1                        ; 080D2D72
 neg   r0,r0                         ; 080D2D74
 bl    Sub080C9678                   ; 080D2D76

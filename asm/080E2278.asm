@@ -138,7 +138,7 @@ mov   r3,0xF                        ; 080E23AE
 and   r3,r0                         ; 080E23B0
 cmp   r3,0x0                        ; 080E23B2
 beq   @@Code080E23B8                ; 080E23B4
-b     @@Code080E254C                ; 080E23B6
+b     @@Return                      ; 080E23B6
 @@Code080E23B8:
 ldrh  r0,[r5,0x8]                   ; 080E23B8
 lsl   r0,r0,0x10                    ; 080E23BA
@@ -215,13 +215,13 @@ lsl   r2,r2,0x2                     ; 080E245A
 add   r0,r0,r2                      ; 080E245C
 ldrh  r0,[r0]                       ; 080E245E
 cmp   r0,0x0                        ; 080E2460
-bne   @@Code080E254C                ; 080E2462
+bne   @@Return                      ; 080E2462
 ldr   r0,=0x03002200                ; 080E2464
 ldr   r1,=0x48CE                    ; 080E2466
 add   r2,r0,r1                      ; 080E2468  03006ACE
 ldrh  r0,[r2]                       ; 080E246A  stars (fixed-point)
 cmp   r0,0x0                        ; 080E246C
-beq   @@Code080E254C                ; 080E246E
+beq   @@Return                      ; 080E246E
 ldr   r0,=0x29B2                    ; 080E2470
 add   r1,r4,r0                      ; 080E2472  [03007240]+29B2 (03004BBE)
 ldrh  r0,[r1]                       ; 080E2474 \
@@ -309,20 +309,20 @@ add   r0,r2,r4                      ; 080E252A
 strh  r1,[r0]                       ; 080E252C
 lsl   r0,r3,0x18                    ; 080E252E
 cmp   r0,0x0                        ; 080E2530
-bne   @@Code080E254C                ; 080E2532
+bne   @@Return                      ; 080E2532
 ldr   r0,=0x03007240                ; 080E2534  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                       ; 080E2536
 ldr   r2,=0x29B2                    ; 080E2538
 add   r0,r1,r2                      ; 080E253A
 ldrh  r0,[r0]                       ; 080E253C
 cmp   r0,0x0                        ; 080E253E
-bne   @@Code080E254C                ; 080E2540
+bne   @@Return                      ; 080E2540
 ldr   r3,=0x29B8                    ; 080E2542
 add   r1,r1,r3                      ; 080E2544
 ldrh  r0,[r1]                       ; 080E2546
 add   r0,0x1                        ; 080E2548
 strh  r0,[r1]                       ; 080E254A
-@@Code080E254C:
+@@Return:
 add   sp,0x8                        ; 080E254C
 pop   {r3-r5}                       ; 080E254E
 mov   r8,r3                         ; 080E2550

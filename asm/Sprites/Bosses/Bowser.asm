@@ -8114,7 +8114,7 @@ ldr   r1,=0x2618                    ; 08106870
 add   r0,r0,r1                      ; 08106872
 strh  r3,[r0,0x6]                   ; 08106874
 mov   r0,r4                         ; 08106876
-bl    Sub080BD8E4                   ; 08106878
+bl    BossDefeat_080BD8E4           ; 08106878
 mov   r1,r4                         ; 0810687C
 add   r1,0x6E                       ; 0810687E
 mov   r0,0x22                       ; 08106880

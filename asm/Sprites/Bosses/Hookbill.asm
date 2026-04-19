@@ -5353,7 +5353,7 @@ lsr   r0,r0,0x10                    ; 080CEE2C
 cmp   r0,0x6                        ; 080CEE2E
 bne   @@Code080CEE5C                ; 080CEE30
 mov   r0,r7                         ; 080CEE32
-bl    Sub080BD8E4                   ; 080CEE34
+bl    BossDefeat_080BD8E4           ; 080CEE34
 ldr   r0,=0x03007240                ; 080CEE38  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r0]                       ; 080CEE3A
 ldr   r2,=0x298E                    ; 080CEE3C

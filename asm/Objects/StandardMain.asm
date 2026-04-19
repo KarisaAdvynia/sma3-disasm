@@ -24872,7 +24872,7 @@ ldr   r1,=0xFFFE                    ; 0802919A
 and   r1,r0                         ; 0802919C
 add   r2,r2,r1                      ; 0802919E
 strh  r3,[r2]                       ; 080291A0  set tile at y+1 to ??19
-sub   r4,0x3                        ; 080291A2 / return 0163 -> ??07
+sub   r4,0x3                        ; 080291A2 / return 0164 -> ??08
 @@Return:
 mov   r0,r4                         ; 080291A4
 pop   {r4-r7}                       ; 080291A6

@@ -466,7 +466,7 @@ add   r0,r0,r1                      ; 08040B62
 ldrb  r0,[r0]                       ; 08040B64
 cmp   r0,0x0                        ; 08040B66
 bne   @@Code08040BBC                ; 08040B68
-ldr   r0,=CodePtrs0816E58C          ; 08040B6A
+ldr   r0,=YoshiAnimCodePtrs         ; 08040B6A
 ldrh  r1,[r6,0x30]                  ; 08040B6C  Yoshi cutscene animation
 lsr   r1,r1,0x1                     ; 08040B6E
 lsl   r1,r1,0x2                     ; 08040B70
@@ -2040,7 +2040,7 @@ lsl   r0,r0,0x10                    ; 0804189E
 ldr   r1,=0x03007240                ; 080418A0  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r1,[r1]                       ; 080418A2
 lsr   r0,r0,0xF                     ; 080418A4
-strh  r0,[r1,0x3E]                  ; 080418A6
+strh  r0,[r1,0x3E]                  ; 080418A6  set [03007240]+3E (0300224A)
 ldr   r2,=0x0201B000                ; 080418A8
 add   r1,r0,r2                      ; 080418AA
 ldrh  r2,[r1]                       ; 080418AC

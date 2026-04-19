@@ -604,7 +604,7 @@ mov   r0,r4                         ; 080C48F0
 add   r0,0x48                       ; 080C48F2
 strh  r1,[r0]                       ; 080C48F4
 mov   r0,r4                         ; 080C48F6
-bl    Sub080BD8E4                   ; 080C48F8
+bl    BossDefeat_080BD8E4           ; 080C48F8
 b     @@Code080C49B6                ; 080C48FC
 .pool                               ; 080C48FE
 

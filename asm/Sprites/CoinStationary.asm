@@ -91,7 +91,7 @@ and   r0,r1                         ; 08051FFC
 add   r0,r0,r2                      ; 08051FFE
 ldrh  r1,[r0]                       ; 08052000
 mov   r0,r4                         ; 08052002
-bl    Sub0804B6F8                   ; 08052004
+bl    SprShared_CollectRedCoin      ; 08052004
 pop   {r4}                          ; 08052008
 pop   {r0}                          ; 0805200A
 bx    r0                            ; 0805200C

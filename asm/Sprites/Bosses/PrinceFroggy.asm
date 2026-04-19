@@ -1456,7 +1456,7 @@ mov   r1,r8                         ; 080C5EDE
 strh  r0,[r1]                       ; 080C5EE0
 bl    Sub080C9554                   ; 080C5EE2
 mov   r0,r5                         ; 080C5EE6
-bl    Sub080BD8E4                   ; 080C5EE8
+bl    BossDefeat_080BD8E4           ; 080C5EE8
 b     @@Code080C5EFE                ; 080C5EEC
 .pool                               ; 080C5EEE
 

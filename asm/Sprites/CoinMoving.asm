@@ -19,7 +19,7 @@ Sub080531C0:
 push  {r4,lr}                       ; 080531C0
 mov   r4,r0                         ; 080531C2
 mov   r0,0xF7                       ; 080531C4
-lsl   r0,r0,0x1                     ; 080531C6
+lsl   r0,r0,0x1                     ; 080531C6  1EE: coin collection sparkles
 bl    SpawnSecondarySprite          ; 080531C8
 lsl   r0,r0,0x18                    ; 080531CC
 lsr   r0,r0,0x18                    ; 080531CE
@@ -50,7 +50,7 @@ ldr   r1,=0x29D6                    ; 080531FE
 add   r2,r2,r1                      ; 08053200
 strh  r0,[r2]                       ; 08053202
 mov   r0,r4                         ; 08053204
-bl    Sub0804B748                   ; 08053206
+bl    SprShared_CollectCoin         ; 08053206
 mov   r0,r4                         ; 0805320A
 bl    Sub0804C4B0                   ; 0805320C
 pop   {r4}                          ; 08053210

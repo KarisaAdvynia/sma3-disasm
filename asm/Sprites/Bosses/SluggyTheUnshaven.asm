@@ -1341,7 +1341,7 @@ sub   r1,0x30                       ; 080D0D14
 mov   r0,0x80                       ; 080D0D16
 strh  r0,[r1]                       ; 080D0D18
 mov   r0,r4                         ; 080D0D1A
-bl    Sub080BD8E4                   ; 080D0D1C
+bl    BossDefeat_080BD8E4           ; 080D0D1C
 ldr   r0,=Data081A7FB0              ; 080D0D20
 ldr   r1,=0x0202B9D0                ; 080D0D22
 ldr   r2,=Data081A8030              ; 080D0D24

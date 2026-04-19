@@ -11768,7 +11768,7 @@ mov   r6,0x20                       ; 08019C36
 ldr   r2,=0x495C                    ; 08019C38
 add   r2,r2,r7                      ; 08019C3A
 mov   r12,r2                        ; 08019C3C  r12 = 03006B5C
-@@Loop08019C3E:
+@@Loop:
 ldrb  r0,[r5]                       ; 08019C3E \ run this twice
 lsl   r1,r0,0x2                     ; 08019C40
 add   r0,r0,r1                      ; 08019C42  3*[03006B5E]
@@ -11807,7 +11807,7 @@ add   r0,r4,0x1                     ; 08019C88
 lsl   r0,r0,0x18                    ; 08019C8A
 lsr   r4,r0,0x18                    ; 08019C8C
 cmp   r4,0x1                        ; 08019C8E
-bls   @@Loop08019C3E                ; 08019C90 /
+bls   @@Loop                        ; 08019C90 /
 ldr   r1,=0x495C                    ; 08019C92
 add   r0,r7,r1                      ; 08019C94  r0 = 030006B5C
 ldrb  r0,[r0]                       ; 08019C96
@@ -15197,10 +15197,10 @@ orr   r2,r0                         ; 0802D520
 cmp   r2,0x0                        ; 0802D522
 bne   @@Code0802D5BC                ; 0802D524
 ldr   r1,=0x48CE                    ; 0802D526
-add   r0,r3,r1                      ; 0802D528
-ldrh  r0,[r0]                       ; 0802D52A
-cmp   r0,0x6C                       ; 0802D52C
-bls   @@Code0802D5E4                ; 0802D52E
+add   r0,r3,r1                      ; 0802D528  03006ACE
+ldrh  r0,[r0]                       ; 0802D52A  star count
+cmp   r0,0x6C                       ; 0802D52C  6C: 10.8
+bls   @@DispStarCount               ; 0802D52E  if stars <= threshold, always display
 mov   r2,r10                        ; 0802D530
 ldrh  r0,[r2,0x8]                   ; 0802D532
 cmp   r0,0x0                        ; 0802D534
@@ -15265,7 +15265,7 @@ beq   @@Code0802D5FA                ; 0802D5D4
 b     @@Return                      ; 0802D5D6
 .pool                               ; 0802D5D8
 
-@@Code0802D5E4:
+@@DispStarCount:
 ldr   r0,=0x03007240                ; 0802D5E4  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r0,[r0]                       ; 0802D5E6
 ldr   r4,=0x2A6C                    ; 0802D5E8

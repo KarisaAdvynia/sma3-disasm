@@ -2509,6 +2509,7 @@ bx    lr                            ; 08054D2C
 .pool                               ; 08054D2E
 
 LevelClear_CheckEggSlots:
+; called by goal ring and all bosses
 push  {r4,lr}                       ; 08054D30
 bl    Sub08038ACC                   ; 08054D32
 ldr   r0,=0x03006D80                ; 08054D36

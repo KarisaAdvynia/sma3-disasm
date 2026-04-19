@@ -182,7 +182,7 @@ pop   {r0}                          ; 080D562E
 bx    r0                            ; 080D5630
 .pool                               ; 080D5632
 
-Door_LoadDynGraphics      :
+Door_LoadDynGraphics:
 ; load door graphics to dynamic slot
 ; input r1: pointer to source graphics
 push  {r4-r6,lr}                    ; 080D5638
@@ -319,7 +319,7 @@ strh  r1,[r0]                       ; 080D576A
 mov   r0,r3                         ; 080D576C
 mov   r1,r2                         ; 080D576E
 bl    Door_LoadDynGraphics          ; 080D5770  load door graphics to dynamic slot
-b     @@Code080D579C                ; 080D5774
+b     @@Return                      ; 080D5774
 .pool                               ; 080D5776
 
 @@Code080D5784:
@@ -334,7 +334,7 @@ strh  r1,[r0]                       ; 080D5792
 mov   r0,r3                         ; 080D5794
 mov   r1,r2                         ; 080D5796
 bl    Door_LoadDynGraphics          ; 080D5798  load door graphics to dynamic slot
-@@Code080D579C:
+@@Return:
 pop   {r4}                          ; 080D579C
 pop   {r0}                          ; 080D579E
 bx    r0                            ; 080D57A0
@@ -351,14 +351,14 @@ add   r0,0x94                       ; 080D57BC
 ldrb  r0,[r0]                       ; 080D57BE
 cmp   r0,0xFF                       ; 080D57C0
 bne   @@Code080D57C6                ; 080D57C2
-b     @@Code080D595E                ; 080D57C4
+b     @@Return                      ; 080D57C4
 @@Code080D57C6:
 mov   r1,r12                        ; 080D57C6
 ldrh  r0,[r1,0x34]                  ; 080D57C8
 lsl   r0,r0,0x10                    ; 080D57CA
 cmp   r0,0x0                        ; 080D57CC
 bge   @@Code080D57D2                ; 080D57CE
-b     @@Code080D595E                ; 080D57D0
+b     @@Return                      ; 080D57D0
 @@Code080D57D2:
 lsr   r0,r0,0x12                    ; 080D57D2
 lsl   r0,r0,0x3                     ; 080D57D4
@@ -411,7 +411,7 @@ add   r0,r0,r5                      ; 080D5830
 ldrh  r0,[r0]                       ; 080D5832
 orr   r3,r0                         ; 080D5834
 strh  r3,[r7,0xC]                   ; 080D5836
-b     @@Code080D595E                ; 080D5838
+b     @@Return                      ; 080D5838
 .pool                               ; 080D583A
 
 @@Code080D5848:
@@ -540,7 +540,7 @@ mov   r6,r10                        ; 080D5956
 ldrh  r0,[r6]                       ; 080D5958
 add   r0,0x1                        ; 080D595A
 strh  r0,[r6]                       ; 080D595C
-@@Code080D595E:
+@@Return:
 pop   {r3-r5}                       ; 080D595E
 mov   r8,r3                         ; 080D5960
 mov   r9,r4                         ; 080D5962
@@ -856,12 +856,12 @@ lsl   r0,r0,0x18                    ; 080D5C10
 cmp   r0,0x0                        ; 080D5C12
 bne   @@Code080D5C1A                ; 080D5C14
 mov   r0,0x0                        ; 080D5C16
-b     @@Code080D5C22                ; 080D5C18
+b     @@Return_r0                   ; 080D5C18
 @@Code080D5C1A:
 mov   r0,r4                         ; 080D5C1A
 bl    Sub080D5BE8                   ; 080D5C1C
 mov   r0,0x1                        ; 080D5C20
-@@Code080D5C22:
+@@Return_r0:
 pop   {r4}                          ; 080D5C22
 pop   {r1}                          ; 080D5C24
 bx    r1                            ; 080D5C26
@@ -875,19 +875,19 @@ mov   r0,0x80                       ; 080D5C2E
 and   r0,r1                         ; 080D5C30
 cmp   r0,0x0                        ; 080D5C32
 beq   @@Code080D5C4C                ; 080D5C34
-ldr   r0,[r2,0x4]                   ; 080D5C36
-ldr   r1,=0xFFFFF000                ; 080D5C38
-add   r0,r0,r1                      ; 080D5C3A
-str   r0,[r2,0x4]                   ; 080D5C3C
+ldr   r0,[r2,0x4]                   ; 080D5C36  sprite Y position, in pixels*100
+ldr   r1,=0xFFFFF000                ; 080D5C38 \
+add   r0,r0,r1                      ; 080D5C3A | move sprite 1 tile upward
+str   r0,[r2,0x4]                   ; 080D5C3C /
 mov   r0,r2                         ; 080D5C3E
 bl    Sub080D5BFC                   ; 080D5C40
-b     @@Code080D5C52                ; 080D5C44
+b     @@Return                      ; 080D5C44
 .pool                               ; 080D5C46
 
 @@Code080D5C4C:
 mov   r0,r2                         ; 080D5C4C
 bl    Sub080D5BD4                   ; 080D5C4E
-@@Code080D5C52:
+@@Return:
 pop   {r0}                          ; 080D5C52
 bx    r0                            ; 080D5C54
 .pool                               ; 080D5C56
@@ -903,57 +903,57 @@ bx    r0                            ; 080D5C60
 XDoor_Init:
 ; sprite 001 init
 push  {lr}                          ; 080D5C64
-mov   r2,r0                         ; 080D5C66
+mov   r2,r0                         ; 080D5C66  r2: pointer to sprite struct
 mov   r0,0x6A                       ; 080D5C68
 add   r0,r0,r2                      ; 080D5C6A
-mov   r12,r0                        ; 080D5C6C
+mov   r12,r0                        ; 080D5C6C  r12: pointer to sprite struct +6A
 mov   r0,0x3                        ; 080D5C6E
 mov   r1,r12                        ; 080D5C70
 strh  r0,[r1]                       ; 080D5C72
 ldr   r0,=0x03002200                ; 080D5C74
 ldr   r1,=0x4905                    ; 080D5C76
-add   r0,r0,r1                      ; 080D5C78
-ldrb  r0,[r0]                       ; 080D5C7A
-cmp   r0,0xB                        ; 080D5C7C
-bne   @@Code080D5CCA                ; 080D5C7E
+add   r0,r0,r1                      ; 080D5C78  03006B05
+ldrb  r0,[r0]                       ; 080D5C7A  game state
+cmp   r0,0xB                        ; 080D5C7C  0B: transition to new sublevel
+bne   @@CallSharedInit              ; 080D5C7E
 ldr   r3,=0x03006D80                ; 080D5C80
-ldr   r1,[r3]                       ; 080D5C82
+ldr   r1,[r3]                       ; 080D5C82  Yoshi X position, in pixels*100
 lsl   r1,r1,0x8                     ; 080D5C84
-lsr   r1,r1,0x10                    ; 080D5C86
-ldr   r0,[r2]                       ; 080D5C88
+lsr   r1,r1,0x10                    ; 080D5C86  r1: Yoshi X in pixels
+ldr   r0,[r2]                       ; 080D5C88  sprite X position, in pixels*100
 lsl   r0,r0,0x8                     ; 080D5C8A
-lsr   r0,r0,0x10                    ; 080D5C8C
-cmp   r1,r0                         ; 080D5C8E
-bne   @@Code080D5CCA                ; 080D5C90
-ldr   r1,[r3,0x4]                   ; 080D5C92
+lsr   r0,r0,0x10                    ; 080D5C8C  r0: sprite X in pixels
+cmp   r1,r0                         ; 080D5C8E  check if Yoshi/sprite X match
+bne   @@CallSharedInit              ; 080D5C90
+ldr   r1,[r3,0x4]                   ; 080D5C92  Yoshi Y position, in pixels*100
 asr   r1,r1,0x8                     ; 080D5C94
-add   r1,0x10                       ; 080D5C96
+add   r1,0x10                       ; 080D5C96  Yoshi Y position, in pixels, +1
 lsl   r1,r1,0x10                    ; 080D5C98
-lsr   r1,r1,0x10                    ; 080D5C9A
-ldr   r0,[r2,0x4]                   ; 080D5C9C
+lsr   r1,r1,0x10                    ; 080D5C9A  r1: Yoshi Y in pixels, +1 tile
+ldr   r0,[r2,0x4]                   ; 080D5C9C  sprite Y position, in pixels*100
 lsl   r0,r0,0x8                     ; 080D5C9E
-lsr   r0,r0,0x10                    ; 080D5CA0
-cmp   r1,r0                         ; 080D5CA2
-bne   @@Code080D5CCA                ; 080D5CA4
+lsr   r0,r0,0x10                    ; 080D5CA0  r0: sprite Y in pixels
+cmp   r1,r0                         ; 080D5CA2  check if Yoshi Y +1 matches sprite Y
+bne   @@CallSharedInit              ; 080D5CA4
 ldr   r0,=0x6005                    ; 080D5CA6
-strh  r0,[r2,0x2A]                  ; 080D5CA8
+strh  r0,[r2,0x2A]                  ; 080D5CA8  set sprite flags?
 mov   r0,0x2                        ; 080D5CAA
 mov   r1,r12                        ; 080D5CAC
-strh  r0,[r1]                       ; 080D5CAE
-ldrh  r0,[r2,0x38]                  ; 080D5CB0
-add   r0,0x1                        ; 080D5CB2
-strh  r0,[r2,0x38]                  ; 080D5CB4
+strh  r0,[r1]                       ; 080D5CAE  [sprite+6A] = 2
+ldrh  r0,[r2,0x38]                  ; 080D5CB0 \
+add   r0,0x1                        ; 080D5CB2  increment [sprite+38]
+strh  r0,[r2,0x38]                  ; 080D5CB4 /
 mov   r1,r2                         ; 080D5CB6
 add   r1,0x6E                       ; 080D5CB8
 mov   r0,0x20                       ; 080D5CBA
-strh  r0,[r1]                       ; 080D5CBC
-add   r1,0x4                        ; 080D5CBE
+strh  r0,[r1]                       ; 080D5CBC  [sprite+6E] = 20
+add   r1,0x4                        ; 080D5CBE  72
 mov   r0,0x4                        ; 080D5CC0
-strh  r0,[r1]                       ; 080D5CC2
-sub   r1,0x30                       ; 080D5CC4
+strh  r0,[r1]                       ; 080D5CC2  [sprite+72] = 4
+sub   r1,0x30                       ; 080D5CC4  42
 mov   r0,0x40                       ; 080D5CC6
-strh  r0,[r1]                       ; 080D5CC8
-@@Code080D5CCA:
+strh  r0,[r1]                       ; 080D5CC8  [sprite+42] = 40
+@@CallSharedInit:
 mov   r0,r2                         ; 080D5CCA
 bl    DoorShared_Init               ; 080D5CCC
 pop   {r0}                          ; 080D5CD0
@@ -967,21 +967,21 @@ mov   r4,r0                         ; 080D5CE6
 bl    SprShared_TestItemMemory_2    ; 080D5CE8  Test item memory + ?
 lsl   r0,r0,0x10                    ; 080D5CEC
 cmp   r0,0x0                        ; 080D5CEE
-bne   @@Code080D5D04                ; 080D5CF0
+bne   @@Unlocked                    ; 080D5CF0
 mov   r1,r4                         ; 080D5CF2
-add   r1,0x76                       ; 080D5CF4
+add   r1,0x76                       ; 080D5CF4 \
 ldrh  r0,[r1]                       ; 080D5CF6
-add   r0,0x1                        ; 080D5CF8
-strh  r0,[r1]                       ; 080D5CFA
+add   r0,0x1                        ; 080D5CF8  increment [sprite+76]
+strh  r0,[r1]                       ; 080D5CFA /
 mov   r0,r4                         ; 080D5CFC
 bl    Sub080D5BFC                   ; 080D5CFE
-b     @@Code080D5D0E                ; 080D5D02
-@@Code080D5D04:
+b     @@Return                      ; 080D5D02
+@@Unlocked:
 mov   r0,0x93                       ; 080D5D04  093: normal door
 strh  r0,[r4,0x32]                  ; 080D5D06  change sprite ID
 mov   r0,r4                         ; 080D5D08
 bl    Sub080D5BFC                   ; 080D5D0A
-@@Code080D5D0E:
+@@Return:
 pop   {r4}                          ; 080D5D0E
 pop   {r0}                          ; 080D5D10
 bx    r0                            ; 080D5D12
@@ -1016,16 +1016,16 @@ mov   r4,r0                         ; 080D5D42
 bl    SprShared_TestItemMemory_2    ; 080D5D44  Test item memory + ?
 lsl   r0,r0,0x10                    ; 080D5D48
 cmp   r0,0x0                        ; 080D5D4A
-bne   @@Code080D5D56                ; 080D5D4C
+bne   @@Unlocked                    ; 080D5D4C
 mov   r0,r4                         ; 080D5D4E
 bl    LockedDoor_Init               ; 080D5D50
-b     @@Code080D5D60                ; 080D5D54
-@@Code080D5D56:
+b     @@Return                      ; 080D5D54
+@@Unlocked:
 mov   r0,0x93                       ; 080D5D56  093: normal door
 strh  r0,[r4,0x32]                  ; 080D5D58  change sprite ID
 mov   r0,r4                         ; 080D5D5A
 bl    Sub080D5BFC                   ; 080D5D5C
-@@Code080D5D60:
+@@Return:
 pop   {r4}                          ; 080D5D60
 pop   {r0}                          ; 080D5D62
 bx    r0                            ; 080D5D64
@@ -1056,20 +1056,20 @@ mov   r0,r6                         ; 080D5D90
 bl    Sub0804BEB8                   ; 080D5D92
 cmp   r0,0x0                        ; 080D5D96
 beq   @@Code080D5D9C                ; 080D5D98
-b     @@Code080D625C                ; 080D5D9A
+b     @@Return                      ; 080D5D9A
 @@Code080D5D9C:
 ldr   r2,=0x03006D80                ; 080D5D9C
 ldrh  r0,[r2,0x3E]                  ; 080D5D9E
 cmp   r0,0x0                        ; 080D5DA0
 beq   @@Code080D5DA6                ; 080D5DA2
-b     @@Code080D625C                ; 080D5DA4
+b     @@Return                      ; 080D5DA4
 @@Code080D5DA6:
 mov   r0,r2                         ; 080D5DA6
 add   r0,0x5C                       ; 080D5DA8
 ldrh  r0,[r0]                       ; 080D5DAA
 cmp   r0,0x0                        ; 080D5DAC
 beq   @@Code080D5DB2                ; 080D5DAE
-b     @@Code080D625C                ; 080D5DB0
+b     @@Return                      ; 080D5DB0
 @@Code080D5DB2:
 ldr   r1,[r6,0x4]                   ; 080D5DB2
 ldr   r0,[r2,0x4]                   ; 080D5DB4
@@ -1079,7 +1079,7 @@ lsl   r0,r0,0x8                     ; 080D5DBA
 lsr   r0,r0,0x10                    ; 080D5DBC
 cmp   r1,r0                         ; 080D5DBE
 beq   @@Code080D5DC4                ; 080D5DC0
-b     @@Code080D625C                ; 080D5DC2
+b     @@Return                      ; 080D5DC2
 @@Code080D5DC4:
 mov   r1,r6                         ; 080D5DC4
 add   r1,0x52                       ; 080D5DC6
@@ -1095,7 +1095,7 @@ add   r0,0x50                       ; 080D5DD8
 ldrh  r0,[r0]                       ; 080D5DDA
 cmp   r5,r0                         ; 080D5DDC
 blo   @@Code080D5DE2                ; 080D5DDE
-b     @@Code080D625C                ; 080D5DE0
+b     @@Return                      ; 080D5DE0
 @@Code080D5DE2:
 ldr   r3,[r7]                       ; 080D5DE2
 ldr   r1,=0x2A66                    ; 080D5DE4
@@ -1105,7 +1105,7 @@ mov   r0,0x40                       ; 080D5DEA
 and   r0,r1                         ; 080D5DEC
 cmp   r0,0x0                        ; 080D5DEE
 bne   @@Code080D5DF4                ; 080D5DF0
-b     @@Code080D625C                ; 080D5DF2
+b     @@Return                      ; 080D5DF2
 @@Code080D5DF4:
 mov   r4,0xD5                       ; 080D5DF4
 lsl   r4,r4,0x1                     ; 080D5DF6
@@ -1114,14 +1114,14 @@ mov   r5,0x0                        ; 080D5DFA
 ldsh  r0,[r0,r5]                    ; 080D5DFC
 cmp   r0,0x0                        ; 080D5DFE
 blt   @@Code080D5E04                ; 080D5E00
-b     @@Code080D625C                ; 080D5E02
+b     @@Return                      ; 080D5E02
 @@Code080D5E04:
 mov   r0,r2                         ; 080D5E04
 add   r0,0xD0                       ; 080D5E06
 ldrh  r0,[r0]                       ; 080D5E08
 cmp   r0,0x0                        ; 080D5E0A
 beq   @@Code080D5E10                ; 080D5E0C
-b     @@Code080D625C                ; 080D5E0E
+b     @@Return                      ; 080D5E0E
 @@Code080D5E10:
 mov   r0,r6                         ; 080D5E10
 add   r0,0x76                       ; 080D5E12
@@ -1134,7 +1134,7 @@ add   r1,r2,r0                      ; 080D5E1E
 ldrh  r0,[r1]                       ; 080D5E20
 cmp   r0,0x0                        ; 080D5E22
 bne   @@Code080D5E28                ; 080D5E24
-b     @@Code080D625C                ; 080D5E26
+b     @@Return                      ; 080D5E26
 @@Code080D5E28:
 sub   r0,0x2                        ; 080D5E28
 asr   r0,r0,0x1                     ; 080D5E2A
@@ -1159,7 +1159,7 @@ add   r1,r1,r2                      ; 080D5E4E
 strh  r0,[r1]                       ; 080D5E50
 mov   r0,0x81                       ; 080D5E52
 bl    PlayYISound                   ; 080D5E54
-b     @@Code080D625C                ; 080D5E58
+b     @@Return                      ; 080D5E58
 .pool                               ; 080D5E5A
 
 @@Code080D5E70:
@@ -1257,12 +1257,12 @@ add   r0,r0,r5                      ; 080D5F2A
 ldrh  r0,[r0]                       ; 080D5F2C
 cmp   r0,0xAA                       ; 080D5F2E
 beq   @@Code080D5F34                ; 080D5F30
-b     @@Code080D625C                ; 080D5F32
+b     @@Return                      ; 080D5F32
 @@Code080D5F34:
 ldr   r1,=0x021A                    ; 080D5F34
 add   r0,r2,r1                      ; 080D5F36
 strh  r4,[r0]                       ; 080D5F38
-b     @@Code080D625C                ; 080D5F3A
+b     @@Return                      ; 080D5F3A
 .pool                               ; 080D5F3C
 
 @@Code080D5F5C:
@@ -1272,11 +1272,11 @@ add   r0,r5,r2                      ; 080D5F60
 ldrh  r0,[r0]                       ; 080D5F62
 cmp   r0,0x0                        ; 080D5F64
 beq   @@Code080D5F6A                ; 080D5F66
-b     @@Code080D625C                ; 080D5F68
+b     @@Return                      ; 080D5F68
 @@Code080D5F6A:
 cmp   r1,0x3                        ; 080D5F6A
 bne   @@Code080D5F70                ; 080D5F6C
-b     @@Code080D625C                ; 080D5F6E
+b     @@Return                      ; 080D5F6E
 @@Code080D5F70:
 mov   r1,r6                         ; 080D5F70
 add   r1,0x42                       ; 080D5F72
@@ -1288,12 +1288,12 @@ strh  r0,[r1]                       ; 080D5F7C
 lsl   r0,r0,0x10                    ; 080D5F7E
 cmp   r0,0x0                        ; 080D5F80
 beq   @@Code080D5F86                ; 080D5F82
-b     @@Code080D625C                ; 080D5F84
+b     @@Return                      ; 080D5F84
 @@Code080D5F86:
 ldrh  r0,[r4]                       ; 080D5F86
 cmp   r0,0x2                        ; 080D5F88
 bne   @@Code080D5F8E                ; 080D5F8A
-b     @@Code080D625C                ; 080D5F8C
+b     @@Return                      ; 080D5F8C
 @@Code080D5F8E:
 ldr   r1,=0x03002200                ; 080D5F8E
 ldrh  r0,[r6,0x20]                  ; 080D5F90
@@ -1302,7 +1302,7 @@ add   r1,r1,r3                      ; 080D5F94
 strh  r0,[r1]                       ; 080D5F96
 mov   r0,0x51                       ; 080D5F98
 bl    PlayYISound                   ; 080D5F9A
-b     @@Code080D625C                ; 080D5F9E
+b     @@Return                      ; 080D5F9E
 .pool                               ; 080D5FA0
 
 @@Code080D5FA8:
@@ -1538,7 +1538,7 @@ ldrh  r1,[r1]                       ; 080D6180
 eor   r0,r1                         ; 080D6182
 lsl   r0,r0,0x10                    ; 080D6184
 cmp   r0,0x0                        ; 080D6186
-blt   @@Code080D625C                ; 080D6188
+blt   @@Return                      ; 080D6188
 mov   r0,0x2                        ; 080D618A
 and   r0,r7                         ; 080D618C
 cmp   r0,0x0                        ; 080D618E
@@ -1619,25 +1619,25 @@ mov   r0,0x1                        ; 080D6230
 strh  r0,[r3]                       ; 080D6232
 mov   r3,r8                         ; 080D6234
 strh  r4,[r3]                       ; 080D6236
-b     @@Code080D625C                ; 080D6238
+b     @@Return                      ; 080D6238
 .pool                               ; 080D623A
 
 @@Code080D6240:
 bl    Sub08041924                   ; 080D6240
-b     @@Code080D625C                ; 080D6244
+b     @@Return                      ; 080D6244
 @@Code080D6246:
 ldrh  r0,[r3]                       ; 080D6246
 add   r0,0x1                        ; 080D6248
 strh  r0,[r3]                       ; 080D624A
 ldr   r0,=0x1005                    ; 080D624C
 strh  r0,[r6,0x2A]                  ; 080D624E
-b     @@Code080D625C                ; 080D6250
+b     @@Return                      ; 080D6250
 .pool                               ; 080D6252
 
 @@Code080D6258:
 mov   r4,r8                         ; 080D6258
 strh  r0,[r4]                       ; 080D625A
-@@Code080D625C:
+@@Return:
 add   sp,0x8                        ; 080D625C
 pop   {r3-r5}                       ; 080D625E
 mov   r8,r3                         ; 080D6260

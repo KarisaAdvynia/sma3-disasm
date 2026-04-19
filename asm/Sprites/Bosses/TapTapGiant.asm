@@ -2636,7 +2636,7 @@ add   r1,0x42                       ; 080D4E1C
 mov   r0,0x20                       ; 080D4E1E
 strh  r0,[r1]                       ; 080D4E20
 mov   r0,r4                         ; 080D4E22
-bl    Sub080BD8E4                   ; 080D4E24
+bl    BossDefeat_080BD8E4           ; 080D4E24
 ldr   r0,=0x03007240                ; 080D4E28  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r2,[r0]                       ; 080D4E2A
 ldr   r0,[r4]                       ; 080D4E2C

@@ -2913,19 +2913,19 @@ bx    r0                            ; 08005CB0
 
 Sub08005CE0:
 ldr   r0,=0x03006D70                ; 08005CE0
-ldr   r2,[r0]                       ; 08005CE2
+ldr   r2,[r0]                       ; 08005CE2  [03006D70] (0300220C)
 ldr   r0,=0x03002200                ; 08005CE4
 ldr   r1,=0x4088                    ; 08005CE6
-add   r3,r0,r1                      ; 08005CE8
-add   r1,0xB4                       ; 08005CEA
-add   r0,r0,r1                      ; 08005CEC
-ldrh  r1,[r0]                       ; 08005CEE
-lsl   r0,r1,0x1                     ; 08005CF0
-add   r0,r0,r1                      ; 08005CF2
-lsl   r0,r0,0x1                     ; 08005CF4
-ldrh  r1,[r3]                       ; 08005CF6
-sub   r1,r1,r0                      ; 08005CF8
-ldr   r0,=0x0D14                    ; 08005CFA
+add   r3,r0,r1                      ; 08005CE8  r3 = 03006288
+add   r1,0xB4                       ; 08005CEA  413C
+add   r0,r0,r1                      ; 08005CEC  0300633C
+ldrh  r1,[r0]                       ; 08005CEE  world number, 0-indexed *2
+lsl   r0,r1,0x1                     ; 08005CF0  world*4
+add   r0,r0,r1                      ; 08005CF2  world*6
+lsl   r0,r0,0x1                     ; 08005CF4  world*C
+ldrh  r1,[r3]                       ; 08005CF6  levelID
+sub   r1,r1,r0                      ; 08005CF8  r1 = levelID - world*C
+ldr   r0,=0x0D14                    ; 08005CFA  [03006D70]+D14 (03002F20)
 add   r2,r2,r0                      ; 08005CFC
 strh  r1,[r2]                       ; 08005CFE
 bx    lr                            ; 08005D00
@@ -3013,7 +3013,7 @@ lsl   r0,r0,0x10                    ; 08005DAC
 lsr   r1,r0,0x10                    ; 08005DAE
 cmp   r1,0x5                        ; 08005DB0
 bls   @@Loop_CalcTotalScore         ; 08005DB2 / 
-ldr   r0,=0x1770                    ; 08005DB4  6000
+ldr   r0,=0x1770                    ; 08005DB4  6000(dec)
 cmp   r2,r0                         ; 08005DB6
 bne   @@Code08005DC2                ; 08005DB8
 ldr   r1,=0x4151                    ; 08005DBA
@@ -3022,38 +3022,38 @@ mov   r0,0x1                        ; 08005DBE
 strb  r0,[r1]                       ; 08005DC0  set perfect cutscene seen flag
 @@Code08005DC2:
 ldr   r2,=0x4088                    ; 08005DC2
-add   r2,r8                         ; 08005DC4
-mov   r12,r2                        ; 08005DC6
-ldrh  r5,[r2]                       ; 08005DC8
+add   r2,r8                         ; 08005DC4  03006288
+mov   r12,r2                        ; 08005DC6  r12 = 03006288
+ldrh  r5,[r2]                       ; 08005DC8  r5 = level ID
 ldr   r1,[r6]                       ; 08005DCA
 ldr   r3,=0x0D18                    ; 08005DCC
 add   r1,r1,r3                      ; 08005DCE
 ldrb  r0,[r1]                       ; 08005DD0
 add   r0,0x1                        ; 08005DD2
 strb  r0,[r1]                       ; 08005DD4
-cmp   r5,0x43                       ; 08005DD6
-beq   @@Code08005DDC                ; 08005DD8
+cmp   r5,0x43                       ; 08005DD6  43: 6-8
+beq   @@W6_8                        ; 08005DD8
 b     @@Code08005F80                ; 08005DDA
-@@Code08005DDC:
+@@W6_8:
 ldr   r0,=0x48EE                    ; 08005DDC
-add   r0,r8                         ; 08005DDE
+add   r0,r8                         ; 08005DDE  03006AEE
 mov   r1,0x1                        ; 08005DE0
 strb  r1,[r0]                       ; 08005DE2
 ldr   r0,=0x4A08                    ; 08005DE4
-add   r0,r8                         ; 08005DE6
-ldrb  r0,[r0]                       ; 08005DE8
-cmp   r0,0x2                        ; 08005DEA
+add   r0,r8                         ; 08005DE6  03006C08
+ldrb  r0,[r0]                       ; 08005DE8  level select cutscene to activate
+cmp   r0,0x2                        ; 08005DEA  2: unlock Extra
 bne   @@Code08005E44                ; 08005DEC
-ldr   r1,=0x49B2                    ; 08005DEE
+ldr   r1,=0x49B2                    ; 08005DEE  r1 = 49B2 if Extra cutscene queued
 b     @@Code08005E4A                ; 08005DF0
 .pool                               ; 08005DF2
 
 @@Code08005E44:
-cmp   r0,0x1                        ; 08005E44
+cmp   r0,0x1                        ; 08005E44  1: unlock Bonus
 bne   @@Code08005E50                ; 08005E46
-ldr   r1,=0x49B3                    ; 08005E48
+ldr   r1,=0x49B3                    ; 08005E48  r1 = 49B3 if Bonus cutscene queued
 @@Code08005E4A:
-add   r1,r8                         ; 08005E4A
+add   r1,r8                         ; 08005E4A  03006BB2 or 03006BB3
 mov   r0,0x80                       ; 08005E4C
 strb  r0,[r1]                       ; 08005E4E
 @@Code08005E50:
@@ -3323,10 +3323,10 @@ b     @@Return                      ; 080060B4
 @@Code080060C8:
 mov   r6,0xFF                       ; 080060C8
 ldr   r1,=MainEntrancePtrs          ; 080060CA
-and   r5,r6                         ; 080060CC
+and   r5,r6                         ; 080060CC  cap level ID to 8-bit
 lsl   r0,r5,0x2                     ; 080060CE
-add   r0,r0,r1                      ; 080060D0
-ldr   r0,[r0]                       ; 080060D2
+add   r0,r0,r1                      ; 080060D0  index with level ID (8-bit)
+ldr   r0,[r0]                       ; 080060D2  pointer to main entrance
 ldrb  r1,[r0,0x3]                   ; 080060D4  main entrance byte 3: level to unlock
 and   r1,r6                         ; 080060D6
 add   r0,r1,r2                      ; 080060D8

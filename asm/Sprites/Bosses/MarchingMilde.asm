@@ -1824,7 +1824,7 @@ push  {r4-r5,lr}                    ; 080CA3C0
 mov   r4,r0                         ; 080CA3C2
 bl    Sub0804C330                   ; 080CA3C4
 cmp   r0,0x0                        ; 080CA3C8
-bne   @@Code080CA428                ; 080CA3CA
+bne   @@Return                      ; 080CA3CA
 mov   r5,r4                         ; 080CA3CC
 add   r5,0x6A                       ; 080CA3CE
 ldrh  r0,[r5]                       ; 080CA3D0
@@ -1832,7 +1832,7 @@ cmp   r0,0x0                        ; 080CA3D2
 beq   @@Code080CA3DE                ; 080CA3D4
 mov   r0,r4                         ; 080CA3D6
 bl    ClearSpriteSlot               ; 080CA3D8
-b     @@Code080CA428                ; 080CA3DC
+b     @@Return                      ; 080CA3DC
 @@Code080CA3DE:
 ldr   r0,=0x0300702C                ; 080CA3DE  Sprite RAM structs (03002460)
 ldr   r0,[r0]                       ; 080CA3E0
@@ -1841,14 +1841,14 @@ add   r0,r0,r1                      ; 080CA3E4
 ldrh  r0,[r0]                       ; 080CA3E6
 cmp   r0,0x0                        ; 080CA3E8
 beq   @@Code080CA41C                ; 080CA3EA
-bl    Sub0805DBE8                   ; 080CA3EC
+bl    CheckIfAllEnemiesDead         ; 080CA3EC  [03006A0A] = 0 if any non-empty slot contains an enemy, else [03006A0A] = FFFF
 ldr   r0,=0x03002200                ; 080CA3F0
 ldr   r3,=0x480A                    ; 080CA3F2
 add   r0,r0,r3                      ; 080CA3F4
 mov   r1,0x0                        ; 080CA3F6
 ldsh  r0,[r0,r1]                    ; 080CA3F8
 cmp   r0,0x0                        ; 080CA3FA
-bge   @@Code080CA428                ; 080CA3FC
+bge   @@Return                      ; 080CA3FC
 ldr   r0,=0x03007240                ; 080CA3FE  Normal gameplay IWRAM (Ptr to 0300220C)
 ldr   r2,[r0]                       ; 080CA400
 ldr   r0,[r4]                       ; 080CA402
@@ -1865,11 +1865,11 @@ strh  r0,[r2]                       ; 080CA416
 bl    Sub080C9658                   ; 080CA418
 @@Code080CA41C:
 mov   r0,r4                         ; 080CA41C
-bl    Sub080BD8E4                   ; 080CA41E
+bl    BossDefeat_080BD8E4           ; 080CA41E
 ldrh  r0,[r5]                       ; 080CA422
 add   r0,0x1                        ; 080CA424
 strh  r0,[r5]                       ; 080CA426
-@@Code080CA428:
+@@Return:
 pop   {r4-r5}                       ; 080CA428
 pop   {r0}                          ; 080CA42A
 bx    r0                            ; 080CA42C

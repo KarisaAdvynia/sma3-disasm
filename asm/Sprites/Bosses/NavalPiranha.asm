@@ -1020,7 +1020,7 @@ lsl   r0,r0,0x10                    ; 080C6C76
 cmp   r0,0x0                        ; 080C6C78
 bne   @@Code080C6CAC                ; 080C6C7A
 mov   r0,r8                         ; 080C6C7C
-bl    Sub080BD8E4                   ; 080C6C7E
+bl    BossDefeat_080BD8E4           ; 080C6C7E
 mov   r2,0xAC                       ; 080C6C82
 mov   r4,0xF                        ; 080C6C84
 mov   r9,r4                         ; 080C6C86
@@ -1828,7 +1828,7 @@ asr   r0,r0,0x8                     ; 080C7358
 add   r1,0x72                       ; 080C735A
 strh  r0,[r1]                       ; 080C735C
 mov   r0,r5                         ; 080C735E
-bl    Sub080BD8E4                   ; 080C7360
+bl    BossDefeat_080BD8E4           ; 080C7360
 mov   r1,r10                        ; 080C7364
 ldr   r0,[r1]                       ; 080C7366
 ldr   r2,=0x1148                    ; 080C7368
